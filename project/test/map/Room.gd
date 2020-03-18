@@ -7,12 +7,6 @@ const SIZE := Vector2(200, 150)
 var exits := {N: false, W:false, E:false, S:false}
 var position : Vector2
 
-var number := 0
-
-
-func _ready():
-	pass
-
 
 func _draw():
 	if exits[N]:

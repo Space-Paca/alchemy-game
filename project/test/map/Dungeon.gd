@@ -1,10 +1,10 @@
 extends Control
 
-export(int) var room_amount := 5
+export(int) var room_amount := 15
 
 enum {N, W, E, S}
 
-const ROOM := preload("res://test/Room.tscn")
+const ROOM := preload("res://test/map/Room.tscn")
 const INITIAL_POS := Vector2(688, 384)
 const INITIAL_ROOM := -1
 const OFFSETS := [Vector2(0, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
@@ -13,14 +13,25 @@ const OPPOSITE := [S, E, W, N]
 var remaining_rooms := room_amount
 var remaining_exits := 0
 var rooms := {}
-var room_queue := []
-
-var counter := 0
+var from_queue := []
+var pos_queue := []
 
 func _ready():
+	Teste.counter += 1
+	
 	randomize()
 	create_room(INITIAL_ROOM, Vector2())
 	create_next_room()
+	
+#	for room in rooms.values():
+#		room.update()
+	
+	assert(remaining_rooms == 0)
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()
 
 
 func create_room(from : int, position : Vector2):
@@ -29,11 +40,13 @@ func create_room(from : int, position : Vector2):
 	room.rect_position = INITIAL_POS + position * room.SIZE - room.SIZE / 2
 	rooms[position] = room
 	add_child(room)
-	remaining_rooms -= 1
+	
+	if from != INITIAL_ROOM:
+		var previous_room = rooms[position + OFFSETS[from]]
+		previous_room.exits[OPPOSITE[from]] = true
 	
 	var directions = [N, W, E, S]
 	directions.shuffle()
-	print(directions)
 	var avaiable_directions = []
 	
 	for dir in directions:
@@ -43,20 +56,21 @@ func create_room(from : int, position : Vector2):
 			avaiable_directions.append(dir)
 			remaining_exits += 1
 	
-	if remaining_rooms == 0:
-		return
-	
 	for dir in avaiable_directions:
+		if remaining_rooms == 0:
+			break
 		if randf() < remaining_rooms / float(room_amount) or\
 				remaining_exits == 1:
-			room.exits[dir] = true
-			room_queue.append([OPPOSITE[dir], position + OFFSETS[dir]])
+			var target_pos = position + OFFSETS[dir]
+			if not pos_queue.has(target_pos):
+				from_queue.append(OPPOSITE[dir])
+				pos_queue.append(target_pos)
+				remaining_rooms -= 1
 		
 		remaining_exits -= 1
 
 
 func create_next_room():
-	var room_info = room_queue.pop_front()
-	if room_info:
-		create_room(room_info[0], room_info[1])
+	if from_queue.size():
+		create_room(from_queue.pop_front(), pos_queue.pop_front())
 		create_next_room()

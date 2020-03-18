@@ -1,7 +1,5 @@
 extends Control
 
-var type = "reagent"
-
 var is_drag = false
 var drag_offset = Vector2(0,0)
 onready var target_position = rect_position

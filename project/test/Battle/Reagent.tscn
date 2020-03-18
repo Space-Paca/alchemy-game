@@ -26,7 +26,6 @@ __meta__ = {
 
 [node name="ReagentCollision" type="Area2D" parent="."]
 priority = 6.0
-collision_layer = 1048575
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReagentCollision"]

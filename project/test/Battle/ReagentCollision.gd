@@ -11,4 +11,17 @@ func _input(event):
 			reagent.is_drag = event.pressed
 			if reagent.is_drag:
 				reagent.drag_offset = -get_local_mouse_position()
+			else:
+				var nearest_slot = null
+				for area in get_overlapping_areas():
+					if area.is_in_group("gridslot"):
+						if not nearest_slot:
+							
+							nearest_slot = area
+						else:
+							if self.global_position.distance_to(nearest_slot.global_position) > \
+							   self.global_position.distance_to(area.global_position):
+								nearest_slot = area
+				if nearest_slot:
+					reagent.target_position = nearest_slot.global_position
 

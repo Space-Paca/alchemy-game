@@ -31,4 +31,3 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReagentCollision"]
 shape = SubResource( 1 )
-[connection signal="input_event" from="ReagentCollision" to="ReagentCollision" method="_on_ReagentCollision_input_event"]

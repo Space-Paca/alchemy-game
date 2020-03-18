@@ -6,10 +6,10 @@
 [node name="Battle" type="Node"]
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
-margin_left = 482.869
-margin_top = 43.155
-margin_right = 482.869
-margin_bottom = 43.155
+margin_left = 418.251
+margin_top = 66.4174
+margin_right = 418.251
+margin_bottom = 66.4174
 
 [node name="Reagents" type="Node" parent="."]
 
@@ -24,3 +24,5 @@ margin_left = 236.501
 margin_top = 400.63
 margin_right = 236.501
 margin_bottom = 400.63
+
+[editable path="Grid"]

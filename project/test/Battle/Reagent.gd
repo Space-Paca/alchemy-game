@@ -1,8 +1,9 @@
-extends TextureButton
+extends Control
 
 var type = "reagent"
 
-func get_drag_data(_pos):
-	var reagent = preload("res://test/battle/Reagent.tscn")
-	set_drag_preview(reagent.instance())
-	return self
+var can_drag = false
+
+func _process(_delta):
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_drag:
+		rect_position = get_global_mouse_position()

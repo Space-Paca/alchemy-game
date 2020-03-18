@@ -3,38 +3,24 @@
 [ext_resource path="res://test/Battle/Reagent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/battle/Grid.tscn" type="PackedScene" id=2]
 
-[node name="Battle" type="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-__meta__ = {
-"__editor_plugin_screen__": "2D",
-"_edit_use_anchors_": false
-}
-
-[node name="Reagents" type="Node" parent="."]
-
-[node name="Reagent" parent="Reagents" instance=ExtResource( 1 )]
-margin_left = 295.949
-margin_top = 416.138
-margin_right = 551.949
-margin_bottom = 672.138
-
-[node name="Reagent2" parent="Reagents" instance=ExtResource( 1 )]
-margin_left = 199.023
-margin_top = 417.431
-margin_right = 455.023
-margin_bottom = 673.431
+[node name="Battle" type="Node"]
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
 margin_left = 482.869
 margin_top = 43.155
 margin_right = 482.869
 margin_bottom = 43.155
+
+[node name="Reagents" type="Node" parent="."]
+
+[node name="Reagent" parent="Reagents" instance=ExtResource( 1 )]
+margin_left = 140.867
+margin_top = 401.922
+margin_right = 140.867
+margin_bottom = 401.922
+
+[node name="Reagent2" parent="Reagents" instance=ExtResource( 1 )]
+margin_left = 236.501
+margin_top = 400.63
+margin_right = 236.501
+margin_bottom = 400.63

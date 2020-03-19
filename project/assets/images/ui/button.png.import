@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/draw_bag.png-c2cb92a4e4157d0579b338975471e3be.stex"
+path="res://.import/button.png-125190c77b623d7aba7858801f9abab2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/draw_bag.png"
-dest_files=[ "res://.import/draw_bag.png-c2cb92a4e4157d0579b338975471e3be.stex" ]
+source_file="res://assets/images/ui/button.png"
+dest_files=[ "res://.import/button.png-125190c77b623d7aba7858801f9abab2.stex" ]
 
 [params]
 

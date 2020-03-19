@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hand_slot.png-0320ac381e7631e1f1160e2bc970d682.stex"
+path="res://.import/hand.png-2e4e31502a92c649048bfd3ca51065be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/hand_slot.png"
-dest_files=[ "res://.import/hand_slot.png-0320ac381e7631e1f1160e2bc970d682.stex" ]
+source_file="res://assets/images/ui/hand.png"
+dest_files=[ "res://.import/hand.png-2e4e31502a92c649048bfd3ca51065be.stex" ]
 
 [params]
 

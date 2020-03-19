@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/discard_bag.png-4e13718e30e072d63497d2920337d692.stex"
+path="res://.import/hand_slot.png-5400770a0bd34ac9889ce50669a82af4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/discard_bag.png"
-dest_files=[ "res://.import/discard_bag.png-4e13718e30e072d63497d2920337d692.stex" ]
+source_file="res://assets/images/ui/hand_slot.png"
+dest_files=[ "res://.import/hand_slot.png-5400770a0bd34ac9889ce50669a82af4.stex" ]
 
 [params]
 

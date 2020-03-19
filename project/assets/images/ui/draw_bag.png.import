@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grid_slot.png-29dd17dacafd1812fc90092a9139a464.stex"
+path="res://.import/draw_bag.png-2d412e65e105f3eaa88c84c3c233a57f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/grid_slot.png"
-dest_files=[ "res://.import/grid_slot.png-29dd17dacafd1812fc90092a9139a464.stex" ]
+source_file="res://assets/images/ui/draw_bag.png"
+dest_files=[ "res://.import/draw_bag.png-2d412e65e105f3eaa88c84c3c233a57f.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/hand_slot.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/hand_slot.png" type="Texture" id=1]
 [ext_resource path="res://test/battle/Slot.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]

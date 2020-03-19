@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/images/grid_slot.png" type="Texture" id=1]
+[ext_resource path="res://test/battle/GridSlot.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.7816, 68.2533 )
@@ -12,6 +13,7 @@ margin_right = -861.0
 margin_bottom = -437.0
 texture = ExtResource( 1 )
 stretch_mode = 3
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

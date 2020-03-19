@@ -8,8 +8,8 @@ extents = Vector2( 90.6062, 88.3299 )
 [node name="HandSlot" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1134.0
-margin_bottom = -543.0
+margin_right = -861.0
+margin_bottom = -437.0
 texture = ExtResource( 1 )
 stretch_mode = 3
 __meta__ = {

@@ -20,3 +20,11 @@ func discard(reagent):
 	reagent.visible = false
 	$DiscardedReagents.add_child(reagent)
 	update_counter()
+
+func return_reagents():
+	var all_reagents = []
+	for reagent in $DiscardedReagents.get_children():
+		$DiscardedReagents.remove_child(reagent)
+		all_reagents.append(reagent)
+	update_counter()
+	return all_reagents

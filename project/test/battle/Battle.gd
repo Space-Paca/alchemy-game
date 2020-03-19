@@ -11,12 +11,13 @@ onready var Grid = $Grid
 func setup_nodes():
 	DrawBag.Hand = Hand
 	DrawBag.Reagents = Reagents
+	DrawBag.DiscardBag = DiscardBag
 	Grid.DiscardBag = DiscardBag
 	DiscardBag.Reagents = Reagents
 
 func setup_player():
 	#Initial dummy bag
-	for _i in range(100):
+	for _i in range(12):
 		DrawBag.add_reagent(REAGENT.instance())
 
 func _ready():

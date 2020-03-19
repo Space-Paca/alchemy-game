@@ -15,7 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reagents" type="Node" parent="."]
+[node name="DrawableReagents" type="Node" parent="."]
 
 [node name="Center" type="Position2D" parent="."]
 

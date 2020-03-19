@@ -1,11 +1,20 @@
 extends TextureButton
+class_name Room
 
-enum {N, W, E, S}
+onready var icon = $Icon
+
+enum { N, W, E, S }
+enum Type { EMPTY, MONSTER, BOSS, SHOP }
 
 const SIZE := Vector2(160, 90)
+const IMAGES := [null,
+	preload("res://assets/images/map/slime.png"),
+	preload("res://assets/images/map/skull.png"),
+	preload("res://assets/images/map/coin.png")]
 
 var exits := {N: false, W:false, E:false, S:false}
 var position : Vector2
+var type : int
 
 
 func _draw():
@@ -36,3 +45,8 @@ func _draw():
 		draw_line(Vector2(SIZE.x / 2 + gap, SIZE.y - w2), Vector2(SIZE.x, SIZE.y - w2), Color.black, width)
 	else:
 		draw_line(Vector2(0, SIZE.y - w2), Vector2(SIZE.x, SIZE.y - w2), Color.black, width)
+
+
+func set_type(new_type : int):
+	type = new_type
+	icon.texture = IMAGES[type]

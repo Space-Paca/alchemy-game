@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/draw_bag.png" type="Texture" id=1]
+[ext_resource path="res://test/battle/Hand/DrawBag.gd" type="Script" id=2]
+
+[node name="DrawBag" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reagents" type="Node" parent="."]

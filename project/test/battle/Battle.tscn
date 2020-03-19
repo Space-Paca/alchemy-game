@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://test/Battle/Reagent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/battle/Grid/Grid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test/Battle/Hand/Hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://test/battle/Battle.gd" type="Script" id=4]
+[ext_resource path="res://test/battle/Hand/DrawBag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://test/battle/Hand/DiscardBag.tscn" type="PackedScene" id=6]
 
 [node name="Battle" type="Node"]
+script = ExtResource( 4 )
 
 [node name="Grid" parent="." instance=ExtResource( 2 )]
-margin_left = 612.581
-margin_top = 52.9333
-margin_right = 612.581
-margin_bottom = 52.9334
+margin_left = 485.647
+margin_top = 49.5929
+margin_right = 485.647
+margin_bottom = 49.5931
 rect_scale = Vector2( 0.7, 0.7 )
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
-position = Vector2( 9.94843, 474.59 )
+position = Vector2( 417.473, 471.25 )
 scale = Vector2( 0.557804, 0.567007 )
 
 [node name="Reagents" type="Node" parent="."]
@@ -30,3 +34,11 @@ margin_left = 236.501
 margin_top = 400.63
 margin_right = 236.501
 margin_bottom = 400.63
+
+[node name="DrawBag" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1.67017, 577.883 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="DiscardBag" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1164.12, 584.564 )
+scale = Vector2( 0.2, 0.2 )

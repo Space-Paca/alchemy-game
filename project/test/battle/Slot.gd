@@ -14,3 +14,6 @@ func set_reagent(reagent):
 
 func remove_reagent():
 	current_reagent = null
+
+func get_pos():
+	return $Area2D.global_position

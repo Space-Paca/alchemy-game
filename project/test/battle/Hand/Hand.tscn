@@ -7,8 +7,8 @@
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 800.0
-margin_bottom = 400.0
+margin_right = 954.0
+margin_bottom = 500.0
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -16,8 +16,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 40.0
+margin_top = 25.0
+margin_right = 80.0
+margin_bottom = 65.0
 custom_constants/vseparation = -8
 custom_constants/hseparation = -8
 columns = 4

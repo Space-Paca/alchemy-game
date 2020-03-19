@@ -12,6 +12,6 @@ func set_grid(size):
 	for child in Grid.get_children():
 		Grid.remove_child(child)
 	Grid.columns = size
-	for i in range(size*size):
+	for _i in range(size*size):
 		Grid.add_child(GRIDSLOT.instance())
 		

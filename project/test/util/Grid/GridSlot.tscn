@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/images/hand_slot.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/grid_slot.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 90.6062, 88.3299 )
+extents = Vector2( 69.7816, 68.2533 )
 
-[node name="HandSlot" type="TextureRect"]
+[node name="GridSlot" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -861.0
@@ -17,10 +17,9 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="." groups=[
-"handslot",
+"gridslot",
 ]]
-position = Vector2( 114.361, 110.777 )
+position = Vector2( 81.1993, 82.4918 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.975372, 0.487671 )
 shape = SubResource( 1 )

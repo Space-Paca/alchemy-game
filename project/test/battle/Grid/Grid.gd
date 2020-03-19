@@ -5,10 +5,10 @@ const GRIDSLOT = preload("res://test/Battle/Grid/GridSlot.tscn")
 onready var Grid = $GridContainer
 
 func _ready():
-	setGrid(3)
+	set_grid(3)
 
 
-func setGrid(size):
+func set_grid(size):
 	for child in Grid.get_children():
 		Grid.remove_child(child)
 	Grid.columns = size

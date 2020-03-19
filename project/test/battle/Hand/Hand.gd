@@ -13,10 +13,10 @@ onready var BG = $TextureRect
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Grid.rect_position = Vector2(H_MARGIN, V_MARGIN)
-	setHand(8)
+	set_hand(8)
 
 
-func setHand(slots):
+func set_hand(slots):
 	for child in Grid.get_children():
 		Grid.remove_child(child)
 	Grid.columns = slots/2

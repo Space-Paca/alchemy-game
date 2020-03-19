@@ -2,7 +2,9 @@ extends Control
 
 var is_drag = false
 var drag_offset = Vector2(0,0)
+var slot = null #current slot this reagent is in
 onready var target_position = rect_position
+
 
 func _process(_delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:

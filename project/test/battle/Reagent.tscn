@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/reagent.png" type="Texture" id=1]
+[ext_resource path="res://test/Battle/Reagent.gd" type="Script" id=2]
+[ext_resource path="res://test/Battle/ReagentCollision.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Reagent" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 224.0
+margin_bottom = 224.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentCollision" type="Area2D" parent="."]
+priority = 6.0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReagentCollision"]
+shape = SubResource( 1 )

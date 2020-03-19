@@ -9,9 +9,13 @@ func _ready():
 func get_center():
 	return $Center.global_position
 
+func update_counter():
+	$Counter.text = str($Reagents.get_child_count())
+
 func add_reagent(reagent):
 	reagent.visible = false
 	$Reagents.add_child(reagent)
+	update_counter()
 
 func refill_hand():
 	for _i in range(Hand.available_slot_count()):
@@ -25,6 +29,7 @@ func draw_reagent():
 		var index = randi()%$Reagents.get_child_count()
 		var reagent = $Reagents.get_child(index)
 		$Reagents.remove_child(reagent)
+		update_counter()
 		reagent.visible = true
 		reagent.rect_position = get_center()
 		Reagents.add_child(reagent)

@@ -1,0 +1,16 @@
+Listed below are assets taken for free from the internet. All other assets in the project were payed or made for the game.
+
+assets/fonts/rm_almanack/rm_almanack.ttf
+CC BY-ND 3.0 https://www.1001fonts.com/rm-almanack-font.html#license
+
+assets/images/map/coin.png
+CC BY 3.0 - https://game-icons.net/1x1/lorc/crown-coin.html
+
+assets/images/map/skull.png
+CC BY 3.0 - https://game-icons.net/1x1/lorc/diablo-skull.html
+
+assets/images/map/slime.png
+CC BY 3.0 - https://game-icons.net/1x1/delapouite/slime.html
+
+assets/images/slime-icon.png
+CC BY 3.0 - https://game-icons.net/1x1/delapouite/slime.html

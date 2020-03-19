@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/images/ui/draw_bag.png" type="Texture" id=1]
 [ext_resource path="res://test/battle/Hand/DrawBag.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=3]
 
 [node name="DrawBag" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,3 +18,14 @@ __meta__ = {
 [node name="Reagents" type="Node" parent="."]
 
 [node name="Center" type="Position2D" parent="."]
+
+[node name="Counter" type="Label" parent="."]
+margin_top = -40.0
+margin_right = 272.0
+margin_bottom = 242.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

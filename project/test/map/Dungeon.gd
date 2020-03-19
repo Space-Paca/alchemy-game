@@ -17,8 +17,6 @@ var from_queue := []
 var pos_queue := []
 
 func _ready():
-	Teste.counter += 1
-	
 	randomize()
 	create_room(INITIAL_ROOM, Vector2())
 	create_next_room()

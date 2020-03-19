@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Alchemy"
-config/icon="res://icon.png"
+config/icon="res://assets/images/slime-icon.png"
 
 [display]
 

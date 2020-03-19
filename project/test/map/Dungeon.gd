@@ -1,6 +1,7 @@
 extends Control
+class_name Dungeon
 
-export(int) var room_amount := 15
+onready var remaining_rooms := (room_amount as int)
 
 enum { N, W, E, S }
 
@@ -10,7 +11,8 @@ const INITIAL_ROOM := -1
 const OFFSETS := [Vector2(0, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 const OPPOSITE := [S, E, W, N]
 
-var remaining_rooms := room_amount
+export(int) var room_amount := 15
+
 var remaining_exits := 0
 var rooms := {}
 var deadend_rooms := []
@@ -35,15 +37,20 @@ func _input(event):
 
 func create_room(from : int, position : Vector2):
 	var room = ROOM.instance()
+	room.entrance = from
 	room.position = position
 	room.rect_position = INITIAL_POS + position * room.SIZE - room.SIZE / 2
+	room.connect("entered", self, "_on_room_entered")
 	rooms[position] = room
 	add_child(room)
 	
 	if from != INITIAL_ROOM:
-		var previous_room = rooms[position + OFFSETS[from]]
+		var previous_pos = position + OFFSETS[from]
+		var previous_room = rooms[previous_pos]
 		previous_room.exits[OPPOSITE[from]] = true
 		room.set_type(Room.Type.MONSTER)
+		if previous_pos != Vector2():
+			room.hide()
 	else:
 		room.set_type(Room.Type.EMPTY)
 	
@@ -90,3 +97,9 @@ func assign_special_rooms():
 	deadend_rooms.shuffle()
 	(deadend_rooms.pop_front() as Room).set_type(Room.Type.BOSS)
 	(deadend_rooms.pop_front() as Room).set_type(Room.Type.SHOP)
+
+
+func _on_room_entered(room: Room):
+	for dir in room.exits:
+		if room.exits[dir]:
+			rooms[room.position + OFFSETS[dir]].show()

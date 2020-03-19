@@ -1,6 +1,6 @@
 extends Control
 
-const GRIDSLOT = preload("res://test/Battle/GridSlot.tscn")
+const GRIDSLOT = preload("res://test/Battle/Grid/GridSlot.tscn")
 
 onready var Grid = $GridContainer
 

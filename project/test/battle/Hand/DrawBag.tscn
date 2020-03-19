@@ -15,3 +15,5 @@ __meta__ = {
 }
 
 [node name="Reagents" type="Node" parent="."]
+
+[node name="Center" type="Position2D" parent="."]

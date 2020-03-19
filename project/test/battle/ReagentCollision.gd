@@ -8,10 +8,12 @@ func _input(event):
 		var mouse_pos = get_local_mouse_position()
 		if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 		   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
-			reagent.is_drag = event.pressed
+			if reagent.can_drag:
+				reagent.is_drag = event.pressed
 			if reagent.is_drag:
 				reagent.drag_offset = -get_local_mouse_position()
 			else:
+				reagent.can_drag = false #Disable dragging until reagent returns to target position
 				var nearest_slot_area = null
 				for area in get_overlapping_areas():
 					if area.is_in_group("gridslot") or area.is_in_group("handslot"):

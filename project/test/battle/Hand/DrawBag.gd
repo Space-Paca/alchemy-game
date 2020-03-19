@@ -1,11 +1,13 @@
 extends Node2D
 
-var Hand
-var Reagents
+var Hand = null #Setted by parent
+var Reagents = null #Setted by parent
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Center.position = $TextureRect.rect_size/2
+
+func get_center():
+	return $Center.global_position
 
 func add_reagent(reagent):
 	reagent.visible = false
@@ -24,7 +26,7 @@ func draw_reagent():
 		var reagent = $Reagents.get_child(index)
 		$Reagents.remove_child(reagent)
 		reagent.visible = true
-		reagent.rect_position = global_position
+		reagent.rect_position = get_center()
 		Reagents.add_child(reagent)
 		return reagent
 	else:

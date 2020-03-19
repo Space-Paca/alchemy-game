@@ -8,6 +8,8 @@ const MARGIN = 30
 onready var Grid = $GridContainer
 onready var RecipeButton = $CreateRecipe 
 
+var DiscardBag = null #Setted by parent
+
 func _ready():
 	set_grid(3)
 
@@ -25,4 +27,14 @@ func set_grid(size):
 	var scale = RecipeButton.rect_scale.x
 	RecipeButton.rect_position.y = slot.rect_size.y * size + MARGIN
 	RecipeButton.rect_position.x = slot.rect_size.x*size/2 - RecipeButton.rect_size.x*scale/2
+
+func clean_grid():
+	for slot in Grid.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			slot.remove_reagent()
+			DiscardBag.discard(reagent)
 	
+
+func _on_CreateRecipe_pressed():
+	clean_grid()

@@ -16,3 +16,6 @@ __meta__ = {
 }
 
 [node name="Reagents" type="Node" parent="."]
+
+[node name="Center" type="Position2D" parent="."]
+position = Vector2( 532.788, 469.321 )

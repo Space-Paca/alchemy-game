@@ -6,11 +6,12 @@ onready var Hand = $Hand
 onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
 onready var DiscardBag = $DiscardBag
+onready var Grid = $Grid
 
 func setup_nodes():
 	DrawBag.Hand = Hand
-	DiscardBag.Hand = Hand
 	DrawBag.Reagents = Reagents
+	Grid.DiscardBag = DiscardBag
 	DiscardBag.Reagents = Reagents
 
 func setup_player():
@@ -25,5 +26,5 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:
+		if event.pressed and event.scancode == KEY_N:
 			DrawBag.refill_hand()

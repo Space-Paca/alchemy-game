@@ -26,6 +26,7 @@ config/icon="res://assets/images/slime-icon.png"
 [autoload]
 
 ReagentManager="res://test/Reagents/ReagentManager.gd"
+DbManager="res://database/db_manager.gd"
 
 [display]
 

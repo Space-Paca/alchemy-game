@@ -2,6 +2,9 @@ extends Node
 
 const REAGENT = preload("res://test/reagents/Reagent.tscn")
 const DB_PATH = "res://database/ReagentsDB.json"
+
+const TYPES = ["regular", "special", "harmless", "funky", "powerful", "tasty", \
+			   "marvellous"]
 var Data
 
 func ready():
@@ -21,10 +24,19 @@ func get_data():
 		assert(false)
 	Data = data_parse.result
 
+func random_type():
+	randomize()
+	TYPES.shuffle()
+	return TYPES[1]
+
 func create(type):
 	if not Data:
 		get_data()
-		
+	
+	if not TYPES.has(type):
+		push_error("Given type of reagent doesn't exist")
+		assert(false)
+	
 	var reagent = REAGENT.instance()
 	reagent.type = type
 	reagent.set_image(Data[type].image)

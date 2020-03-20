@@ -17,8 +17,9 @@ func setup_nodes():
 
 func setup_player():
 	#Initial dummy bag
-	for _i in range(12):
+	for _i in range(6):
 		DrawBag.add_reagent(ReagentManager.create("regular"))
+		DrawBag.add_reagent(ReagentManager.create("special"))
 
 func _ready():
 	setup_nodes()

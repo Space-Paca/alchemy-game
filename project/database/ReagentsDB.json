@@ -1,0 +1,8 @@
+{
+	"regular": {
+		"image": "res://assets/images/reagents/regular.png",
+	},
+	"special": {
+		"image": "res://assets/images/reagents/special.png",
+	}
+}

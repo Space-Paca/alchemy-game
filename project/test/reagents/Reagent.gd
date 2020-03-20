@@ -5,9 +5,11 @@ signal reached_target_pos
 var is_drag = false
 var can_drag = true
 var drag_offset = Vector2(0,0)
-var slot = null #current slot this reagent is in
-onready var target_position = rect_position
 
+var slot = null #current slot this reagent is in
+var target_position = rect_position
+
+var type = "none"
 
 func _process(_delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
@@ -19,3 +21,6 @@ func _process(_delta):
 				can_drag = true
 				rect_position = target_position
 				emit_signal("reached_target_pos")
+
+func set_image(path):
+	$TextureRect.texture = load(path)

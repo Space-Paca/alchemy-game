@@ -48,6 +48,7 @@ func draw_reagent():
 		push_error('Not enough reagents')
 		assert(false)
 	#Remove reagent from draw bag
+	randomize()
 	var index = randi()%$DrawableReagents.get_child_count()
 	var reagent = $DrawableReagents.get_child(index)
 	$DrawableReagents.remove_child(reagent)

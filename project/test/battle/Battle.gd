@@ -1,6 +1,6 @@
 extends Node
 
-const REAGENT = preload("res://test/battle/Reagent.tscn")
+onready var ReagentManager = get_node("/root/ReagentManager")
 
 onready var Hand = $Hand
 onready var Reagents = $Reagents
@@ -18,7 +18,7 @@ func setup_nodes():
 func setup_player():
 	#Initial dummy bag
 	for _i in range(12):
-		DrawBag.add_reagent(REAGENT.instance())
+		DrawBag.add_reagent(ReagentManager.create("regular"))
 
 func _ready():
 	setup_nodes()

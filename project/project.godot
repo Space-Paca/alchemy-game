@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="Alchemy"
 config/icon="res://assets/images/slime-icon.png"
 
+[autoload]
+
+ReagentManager="res://test/Reagents/ReagentManager.gd"
+
 [display]
 
 window/size/width=1360

@@ -1,21 +1,18 @@
-extends Node
+extends Resource
 
 const REAGENT = preload("res://test/reagents/Reagent.tscn")
 const REAGENT_DB = preload("res://database/ReagentsDB.tres")
 
-const TYPES = ["regular", "special", "harmless", "funky", "powerful", "tasty", \
-			   "marvellous"]
+func _ready():
+	print("ready")
 
 func random_type():
+	var types = REAGENT_DB.get_types()
 	randomize()
-	TYPES.shuffle()
-	return TYPES[1]
+	types.shuffle()
+	return types[1]
 
 func create_object(type):
-	
-	if not TYPES.has(type):
-		push_error("Given type of reagent doesn't exist")
-		assert(false)
 	
 	var reagent_data = REAGENT_DB.get(type)
 	
@@ -25,11 +22,4 @@ func create_object(type):
 	return reagent
 
 func get_data(type):
-	
-	if not TYPES.has(type):
-		push_error("Given type of reagent doesn't exist")
-		assert(false)
-	
-	var data = REAGENT_DB.get_data("reagents")
-	
-	return data.get(type)
+	return REAGENT_DB.get(type)

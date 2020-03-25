@@ -45,6 +45,7 @@ config/icon="res://assets/images/slime-icon.png"
 
 EnemyManager="*res://test/enemies/EnemyManager.gd"
 ReagentManager="*res://test/reagents/ReagentManager.gd"
+RecipeManager="*res://database/RecipeManager.gd"
 
 [display]
 

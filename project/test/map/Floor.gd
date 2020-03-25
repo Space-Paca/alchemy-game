@@ -1,5 +1,5 @@
 extends Control
-class_name Dungeon
+class_name Floor
 
 onready var remaining_rooms := (room_amount as int)
 

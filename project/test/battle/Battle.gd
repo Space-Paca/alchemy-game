@@ -21,10 +21,21 @@ func setup_player():
 		var type = ReagentManager.random_type()
 		DrawBag.add_reagent(ReagentManager.create_object(type))
 
+func setup_enemy():
+
+	for child in $Enemies.get_children():
+		$Enemies.remove_child(child)
+		child.queue_free()
+		
+	$Enemies.add_child(EnemyManager.create_object("skeleton"))
+	
+
 func _ready():
 	setup_nodes()
 	
 	setup_player()
+	
+	setup_enemy()
 	
 	#For reasons I don't completely understand, Grid needs some time to	actually
 	#place the slots in the correct position. Without this, all reagents will go

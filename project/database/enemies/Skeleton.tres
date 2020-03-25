@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
 [sub_resource type="GDScript" id=1]
-script/source = "var db = {
-	\"hp\": 10,
-	\"attack\": 5,
-	\"image\": \"res://assets/images/enemies/skeleton/skeletonIDLE.png\",
-}
+script/source = "extends Resource
 
-func get(key):
-	return db[key]
+export var hp = 10
+export var attack = 5
+export var image = \"res://assets/images/enemies/skeleton/skeletonIDLE.png\"
 "
 
 [resource]
 script = SubResource( 1 )
+hp = 10
+attack = 5
+image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"

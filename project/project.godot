@@ -43,10 +43,8 @@ config/icon="res://assets/images/slime-icon.png"
 
 [autoload]
 
-ReagentManager="*res://test/Reagents/ReagentManager.gd"
-EnemieManager="*res://test/enemies/EnemyManager.gd"
-DbManager="*res://database/db_manager.gd"
-RecipeManager="*res://database/RecipeManager.gd"
+EnemyManager="*res://test/enemies/EnemyManager.gd"
+ReagentManager="*res://test/reagents/ReagentManager.gd"
 
 [display]
 

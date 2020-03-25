@@ -24,3 +24,11 @@ func create(type):
 	reagent.type = type
 	reagent.set_image(data[type].image)
 	return reagent
+
+func create_data(type):
+	
+	if not TYPES.has(type):
+		push_error("Given type of reagent doesn't exist")
+		assert(false)
+	
+	return DB.get_data("reagents")

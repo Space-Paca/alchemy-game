@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "
+var db = {
+	\"skeleton\": {
+		\"idle\": [\"res://assets/images/enemies/skeleton/skeletonIDLEleft (1).png\"],
+	},
+	
+}
+
+func get(name):
+	return db[name]
+"
+
+[resource]
+script = SubResource( 1 )

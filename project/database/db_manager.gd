@@ -1,6 +1,7 @@
 extends Node
 
-const PATHS = {"reagents": "res://database/ReagentsDB.tres"}
+const PATHS = {"reagents": "res://database/ReagentsDB.tres",
+			   "enemies": "res://database/ReagentsDB.tres"}
 
 
 func get_data(type):

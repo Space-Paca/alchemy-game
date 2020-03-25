@@ -1,10 +1,7 @@
-extends Resource
+extends Node
 
 const REAGENT = preload("res://test/reagents/Reagent.tscn")
-const REAGENT_DB = preload("res://database/ReagentsDB.tres")
-
-func _ready():
-	print("ready")
+var REAGENT_DB = preload("res://database/ReagentDB.gd").new()
 
 func random_type():
 	var types = REAGENT_DB.get_types()

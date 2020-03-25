@@ -14,6 +14,7 @@ func create_object(enemy_type):
 	var enemy = ENEMY.instance()
 	enemy.type = enemy_type
 	enemy.set_image(load(enemy_data.image))
+	enemy.set_max_hp(enemy_data.hp)
 	return enemy
 
 func get_data(enemy_type):

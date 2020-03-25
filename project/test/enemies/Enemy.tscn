@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://test/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 1121, 93 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1121, 93 )
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,6 +20,20 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 28.0001
+margin_top = 296.0
+margin_right = 228.0
+margin_bottom = 316.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 1.0
+value = 50.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

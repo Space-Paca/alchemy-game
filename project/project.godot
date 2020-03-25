@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "Dungeon",
+"class": "Combination",
 "language": "GDScript",
-"path": "res://test/dungeon/Dungeon.gd"
+"path": "res://test/dungeon/Combination.gd"
 }, {
 "base": "Control",
 "class": "Floor",
@@ -30,7 +30,7 @@ _global_script_classes=[ {
 "path": "res://test/map/Room.gd"
 } ]
 _global_script_class_icons={
-"Dungeon": "",
+"Combination": "",
 "Floor": "",
 "Recipe": "",
 "Room": ""

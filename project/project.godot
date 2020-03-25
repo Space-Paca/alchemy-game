@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Recipe",
 "language": "GDScript",
-"path": "res://test/dungeon/Recipe.gd"
+"path": "res://database/Recipe.gd"
 }, {
 "base": "TextureButton",
 "class": "Room",
@@ -45,6 +45,8 @@ config/icon="res://assets/images/slime-icon.png"
 
 ReagentManager="*res://test/Reagents/ReagentManager.gd"
 EnemieManager="*res://test/enemies/EnemyManager.gd"
+DbManager="*res://database/db_manager.gd"
+RecipeManager="*res://database/RecipeManager.gd"
 
 [display]
 

@@ -1,6 +1,6 @@
 extends Node
 
-const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.tres"}
+const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd"}
 const ENEMY = preload("res://test/enemies/Enemy.tscn")
 
 func create_object(enemy_type):
@@ -9,7 +9,7 @@ func create_object(enemy_type):
 		push_error("Given type of enemy doesn't exist")
 		assert(false)
 	
-	var enemy_data = load(ENEMY_DB[enemy_type])
+	var enemy_data = load(ENEMY_DB[enemy_type]).new()
 	
 	var enemy = ENEMY.instance()
 	enemy.type = enemy_type

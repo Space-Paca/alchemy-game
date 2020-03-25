@@ -1,23 +1,23 @@
 {
 	"regular": {
-		"image": "res://assets/images/reagents/regular.png",
+		"image": "res://assets/images/reagents/regular.png"
 	},
 	"special": {
-		"image": "res://assets/images/reagents/special.png",
+		"image": "res://assets/images/reagents/special.png"
 	},
   "harmless": {
-		"image": "res://assets/images/reagents/harmless.png",
+		"image": "res://assets/images/reagents/harmless.png"
 	},
   "funky": {
-    "image": "res://assets/images/reagents/funky.png",
+    "image": "res://assets/images/reagents/funky.png"
   },
   "tasty": {
-    "image": "res://assets/images/reagents/tasty.png",
+    "image": "res://assets/images/reagents/tasty.png"
   },
   "marvellous": {
-    "image": "res://assets/images/reagents/marvellous.png",
+    "image": "res://assets/images/reagents/marvellous.png"
   },
   "powerful": {
-    "image": "res://assets/images/reagents/powerful.png",
-  },
+    "image": "res://assets/images/reagents/powerful.png"
+  }
 }

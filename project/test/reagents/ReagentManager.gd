@@ -31,4 +31,6 @@ func create_data(type):
 		push_error("Given type of reagent doesn't exist")
 		assert(false)
 	
-	return DB.get_data("reagents")
+	var data = DB.get_data("reagents")
+	
+	return data[type]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/funky.png-bc83d5ae9006ca36147a5c9e437766ca.stex"
+path="res://.import/pass_turn_pressed.png-7eb7d9b336091132007d0dff2819d3c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/reagents/funky.png"
-dest_files=[ "res://.import/funky.png-bc83d5ae9006ca36147a5c9e437766ca.stex" ]
+source_file="res://assets/images/ui/pass_turn_pressed.png"
+dest_files=[ "res://.import/pass_turn_pressed.png-7eb7d9b336091132007d0dff2819d3c5.stex" ]
 
 [params]
 

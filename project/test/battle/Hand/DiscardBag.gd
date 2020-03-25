@@ -1,5 +1,7 @@
 extends Node2D
 
+signal discarded_reagent
+
 var Reagents = null #Setted by parent
 
 func _ready():
@@ -20,6 +22,7 @@ func discard(reagent):
 	reagent.visible = false
 	$DiscardedReagents.add_child(reagent)
 	update_counter()
+	emit_signal("discarded_reagent")
 
 func return_reagents():
 	var all_reagents = []

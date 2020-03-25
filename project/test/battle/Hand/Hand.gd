@@ -1,6 +1,8 @@
 tool
 extends Node2D
 
+signal reagent_placed
+
 const HANDSLOT = preload("res://test/Battle/Hand/HandSlot.tscn")
 const H_MARGIN = 40
 const V_MARGIN = 25
@@ -37,6 +39,8 @@ func place_reagent(reagent):
 	for slot in Grid.get_children():
 		if not slot.get_reagent():
 			slot.set_reagent(reagent)
+			yield(slot, "setted_reagent")
+			emit_signal("reagent_placed")
 			return
 	push_error("Can't place reagent in hand, hand is full.")
 	assert(false)

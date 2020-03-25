@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://test/battle/PassTurnButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/battle/Grid/Grid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test/Battle/Hand/Hand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://test/battle/Battle.gd" type="Script" id=4]
@@ -19,6 +20,7 @@ rect_scale = Vector2( 0.7, 0.7 )
 [node name="Hand" parent="." instance=ExtResource( 3 )]
 position = Vector2( 404.112, 476.26 )
 scale = Vector2( 0.557804, 0.567007 )
+size = 10
 
 [node name="Reagents" type="Node" parent="."]
 
@@ -29,3 +31,10 @@ scale = Vector2( 0.2, 0.2 )
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1164.12, 584.564 )
 scale = Vector2( 0.2, 0.2 )
+
+[node name="PassTurnButton" parent="." instance=ExtResource( 1 )]
+margin_left = 953.674
+margin_top = 576.213
+margin_right = 1121.67
+margin_bottom = 830.213
+rect_scale = Vector2( 0.4, 0.4 )

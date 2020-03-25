@@ -7,6 +7,7 @@ onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
 onready var DiscardBag = $DiscardBag
 onready var Grid = $Grid
+onready var PassTurn = $PassTurnButton
 
 func setup_nodes():
 	DrawBag.Hand = Hand
@@ -14,6 +15,7 @@ func setup_nodes():
 	DrawBag.DiscardBag = DiscardBag
 	Grid.DiscardBag = DiscardBag
 	DiscardBag.Reagents = Reagents
+	PassTurn.Battle = self
 
 func setup_player():
 	#Initial dummy bag
@@ -25,8 +27,21 @@ func _ready():
 	setup_nodes()
 	
 	setup_player()
+	
+	#For reasons I don't completely understand, Grid needs some time to	actually
+	#place the slots in the correct position. Without this, all reagents will go
+	#to the first slot position.
+	yield(get_tree().create_timer(1.0), "timeout")
 
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_N:
-			DrawBag.refill_hand()
+	new_player_turn()
+
+func new_player_turn():
+	if not Grid.is_empty():
+		Grid.clean_grid()
+		yield(Grid, "grid_cleaned")
+		
+	DrawBag.refill_hand()
+	yield(DrawBag,"hand_refilled")
+
+func _input(_event):
+	pass

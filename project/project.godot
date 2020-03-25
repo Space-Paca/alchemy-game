@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://test/map/Floor.gd"
 }, {
+"base": "Resource",
+"class": "Recipe",
+"language": "GDScript",
+"path": "res://test/dungeon/Recipe.gd"
+}, {
 "base": "TextureButton",
 "class": "Room",
 "language": "GDScript",
@@ -27,6 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Dungeon": "",
 "Floor": "",
+"Recipe": "",
 "Room": ""
 }
 

@@ -27,6 +27,9 @@ var db = {
 }
 
 func get(name):
+	if not db.has(name):
+		push_error(\"Given type of reagent doesn't exist\")
+		assert(false)
 	return db[name]
 "
 

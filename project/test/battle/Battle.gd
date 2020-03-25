@@ -1,7 +1,5 @@
 extends Node
 
-onready var ReagentManager = get_node("/root/ReagentManager")
-
 onready var Hand = $Hand
 onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
@@ -21,7 +19,7 @@ func setup_player():
 	#Initial dummy bag
 	for _i in range(12):
 		var type = ReagentManager.random_type()
-		DrawBag.add_reagent(ReagentManager.create(type))
+		DrawBag.add_reagent(ReagentManager.create_object(type))
 
 func _ready():
 	setup_nodes()

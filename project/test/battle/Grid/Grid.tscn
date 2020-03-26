@@ -21,10 +21,10 @@ __meta__ = {
 }
 
 [node name="CreateRecipe" type="TextureButton" parent="."]
-margin_left = 497.726
-margin_top = 183.357
-margin_right = 839.726
-margin_bottom = 318.357
+margin_left = 124.8
+margin_top = 519.0
+margin_right = 466.8
+margin_bottom = 654.0
 rect_scale = Vector2( 0.7, 0.7 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )

@@ -2,7 +2,7 @@ extends Node2D
 
 tool
 
-const HEALTH_BAR_MARGIN = 20
+const HEALTH_BAR_MARGIN = 10
 
 var type
 var damage
@@ -17,8 +17,8 @@ func set_max_hp(hp):
 	
 func set_image(new_texture):
 	$TextureRect.texture = new_texture
-	var w = get_width()
-	var h = get_height()
+	var w = new_texture.get_width()
+	var h = new_texture.get_height()
 	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x/2
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
 

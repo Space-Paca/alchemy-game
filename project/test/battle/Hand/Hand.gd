@@ -3,7 +3,7 @@ extends Node2D
 
 signal reagent_placed
 
-const HANDSLOT = preload("res://test/Battle/Hand/HandSlot.tscn")
+const HANDSLOT = preload("res://test/battle/Hand/HandSlot.tscn")
 const H_MARGIN = 40
 const V_MARGIN = 25
 

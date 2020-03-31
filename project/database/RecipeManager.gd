@@ -7,6 +7,7 @@ func _ready():
 	var dir := Directory.new()
 	var path := "res://database/recipes/"
 	if dir.open(path) == OK:
+# warning-ignore:return_value_discarded
 		dir.list_dir_begin()
 		var file_name := (dir.get_next() as String)
 		while file_name != "":

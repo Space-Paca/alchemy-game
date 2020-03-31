@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Character",
+"language": "GDScript",
+"path": "res://test/character/Character.gd"
+}, {
 "base": "Node",
 "class": "Combination",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://test/map/Room.gd"
 } ]
 _global_script_class_icons={
+"Character": "",
 "Combination": "",
 "Floor": "",
 "Recipe": "",

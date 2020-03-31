@@ -46,7 +46,7 @@ func _ready():
 	
 	setup_enemy()
 	
-	#For reasons I don't completely understand, Grid needs some time to	actually
+	#For reasons I don't completely understand, Grid needs some time to actually
 	#place the slots in the correct position. Without this, all reagents will go
 	#to the first slot position.
 	yield(get_tree().create_timer(1.0), "timeout")

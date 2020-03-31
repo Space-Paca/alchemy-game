@@ -23,7 +23,7 @@ func set_image(new_texture):
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
 
 func get_width():
-	return $TextureRect.rect_size.x
+	return $TextureRect.texture.get_width()
 
 func get_height():
-	return $TextureRect.rect_size.y
+	return $TextureRect.texture.get_height()

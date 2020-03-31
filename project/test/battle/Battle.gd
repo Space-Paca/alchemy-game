@@ -1,5 +1,7 @@
 extends Node
 
+const ENEMY_MARGIN = 10
+
 onready var Hand = $Hand
 onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
@@ -28,6 +30,13 @@ func setup_enemy():
 		child.queue_free()
 		
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
+	$Enemies.add_child(EnemyManager.create_object("skeleton"))
+	
+	#Update enemies positions
+	var x = 0
+	for enemy in $Enemies.get_children():
+		enemy.position.x = x
+		x += ENEMY_MARGIN + enemy.get_width()
 	
 
 func _ready():

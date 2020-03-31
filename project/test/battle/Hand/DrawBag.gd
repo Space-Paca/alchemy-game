@@ -49,8 +49,9 @@ func refill_hand():
 		
 		reagents_to_be_drawn.append(draw_reagent())
 	
-	start_drawing(reagents_to_be_drawn)
-	yield(self, "drew_given_reagents")
+	if not reagents_to_be_drawn.empty():
+		start_drawing(reagents_to_be_drawn)
+		yield(self, "drew_given_reagents")
 	
 	emit_signal("hand_refilled")
 

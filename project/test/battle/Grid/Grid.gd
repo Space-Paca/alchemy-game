@@ -15,7 +15,6 @@ var DiscardBag = null #Setted by parent
 func _ready():
 	set_grid(3)
 
-
 func set_grid(size):
 	assert(size > 0)
 	for child in Grid.get_children():
@@ -55,6 +54,13 @@ func clean_grid():
 			yield(DiscardBag, "discarded_reagent")
 
 	emit_signal("grid_cleaned")
+
+func disable():
+	RecipeButton.disabled = true
+	
+
+func enable():
+	RecipeButton.disabled = false
 
 func _on_CreateRecipe_pressed():
 	clean_grid()

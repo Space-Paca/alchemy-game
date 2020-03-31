@@ -22,6 +22,8 @@ func setup_player():
 	for _i in range(12):
 		var type = ReagentManager.random_type()
 		DrawBag.add_reagent(ReagentManager.create_object(type))
+	
+	disable_player()
 
 func setup_enemy():
 
@@ -54,19 +56,28 @@ func _ready():
 	new_player_turn()
 
 func new_player_turn():
+	if Hand.available_slot_count() > 0: 
+		DrawBag.refill_hand()
+		yield(DrawBag,"hand_refilled")
+	
+	enable_player()
+
+func new_enemy_turn():
+	disable_player()
 	if not Grid.is_empty():
 		Grid.clean_grid()
 		yield(Grid, "grid_cleaned")
-		
-	DrawBag.refill_hand()
-	yield(DrawBag,"hand_refilled")
-
-func new_enemy_turn():
+	
 	for enemy in $Enemies.get_children():
 		enemy.act()
 		yield(enemy, "acted")
 	
 	new_player_turn()
 
-func _input(_event):
-	pass
+func disable_player():
+	PassTurn.disabled = true
+	Grid.disable()
+
+func enable_player():
+	PassTurn.disabled = false
+	Grid.enable()

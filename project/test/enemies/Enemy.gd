@@ -1,13 +1,10 @@
-extends Node2D
+extends Character
 
 tool
 
 signal acted
 
 const HEALTH_BAR_MARGIN = 10
-
-var type
-var damage
 
 func act():
 	print("Attack!")
@@ -16,14 +13,13 @@ func act():
 	$AnimationPlayer.play("idle")
 	emit_signal("acted")
 
-func get_hp():
-	return $HealthBar.value
+func setup(new_texture):
+	set_max_hp()
+	set_image(new_texture)
 	
-
-func set_max_hp(hp):
-	damage = 0
-	$HealthBar.max_value = hp
-	$HealthBar.value = hp
+func set_max_hp():
+	$HealthBar.max_value = max_hp
+	$HealthBar.value = max_hp
 	
 func set_image(new_texture):
 	$TextureRect.texture = new_texture

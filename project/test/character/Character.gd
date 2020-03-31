@@ -1,14 +1,15 @@
-extends Reference
+extends Node
 class_name Character
 
 var max_hp : int
 var hp : int
 var shield : int
-var name : String
+var char_name: String 
 
-func _init(_name: String, _max_hp: int):
-	name = _name
+func init(_name: String, _max_hp: int):
+	char_name = _name
 	max_hp = _max_hp
+	hp = max_hp
 
 
 func take_damage(damage):
@@ -19,4 +20,4 @@ func take_damage(damage):
 
 
 func die():
-	print(name, " dead")
+	print(char_name, " dead")

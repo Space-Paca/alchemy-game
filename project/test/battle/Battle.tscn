@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://test/battle/PassTurnButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/battle/Grid/Grid.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://test/battle/Hand/DrawBag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://test/battle/Hand/DiscardBag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://test/enemies/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://test/battle/PlayerUI/PlayerUI.tscn" type="PackedScene" id=8]
 
 [node name="Battle" type="Node"]
 script = ExtResource( 4 )
@@ -44,3 +45,7 @@ position = Vector2( 843.442, 101.881 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 140.295, -8.35089 )
+
+[node name="PlayerUI" parent="." instance=ExtResource( 8 )]
+position = Vector2( 35.1618, 22.8551 )
+scale = Vector2( 0.4, 0.4 )

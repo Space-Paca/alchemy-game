@@ -8,6 +8,7 @@ onready var DrawBag = $DrawBag
 onready var DiscardBag = $DiscardBag
 onready var Grid = $Grid
 onready var PassTurn = $PassTurnButton
+onready var PlayerUI = $PlayerUI
 
 func setup_nodes():
 	DrawBag.Hand = Hand

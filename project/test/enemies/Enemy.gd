@@ -2,13 +2,23 @@ extends Node2D
 
 tool
 
+signal acted
+
 const HEALTH_BAR_MARGIN = 10
 
 var type
 var damage
 
+func act():
+	print("Attack!")
+	$AnimationPlayer.play("attack")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("idle")
+	emit_signal("acted")
+
 func get_hp():
 	return $HealthBar.value
+	
 
 func set_max_hp(hp):
 	damage = 0

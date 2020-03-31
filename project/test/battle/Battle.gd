@@ -61,5 +61,12 @@ func new_player_turn():
 	DrawBag.refill_hand()
 	yield(DrawBag,"hand_refilled")
 
+func new_enemy_turn():
+	for enemy in $Enemies.get_children():
+		enemy.act()
+		yield(enemy, "acted")
+	
+	new_player_turn()
+
 func _input(_event):
 	pass

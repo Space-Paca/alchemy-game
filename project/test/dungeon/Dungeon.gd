@@ -1,6 +1,9 @@
 extends Node
 
-var combinations := []
+const BATTLE_SCENE = preload("res://test/battle/Battle.tscn")
+
+var battle : Node
+var combinations := {}
 
 
 func _ready():
@@ -8,8 +11,77 @@ func _ready():
 	create_combinations()
 
 
+func _input(event):
+	if event is InputEventKey and event.pressed and event.scancode == KEY_B:
+		new_battle()
+
+
 func create_combinations():
 	for recipe in RecipeManager.recipes.values():
 		var combination = Combination.new()
 		combination.create_from_recipe(recipe)
-		combinations.append(combination)
+		if combinations.has(combination.grid_size):
+			(combinations[combination.grid_size] as Array).append(combination)
+		else:
+			combinations[combination.grid_size] = [combination]
+
+
+func check_combinations(grid_size: int, reagent_matrix: Array):
+	print("check_combinations; grid_size: ", grid_size)
+	print("reagent_matrix: ", reagent_matrix)
+	
+	if not combinations.has(grid_size):
+		print("No recipes exist for grid with size ", grid_size)
+		return false
+	
+	for combination in combinations[grid_size]:
+		if reagent_matrix == (combination as Combination).matrix:
+			# Make recipe have effect here
+			prints((combination as Combination).recipe_name, "found")
+			return true
+	return false
+
+
+func new_battle():
+	if not battle:
+		battle = BATTLE_SCENE.instance()
+		add_child(battle)
+		
+		battle.Grid.connect("combination_made", self, "_on_Grid_combination_made")
+	else:
+		battle.queue_free()
+		battle = null
+		new_battle()
+
+
+func _on_Grid_combination_made(reagent_matrix: Array):
+	print(reagent_matrix)
+	var grid_size = battle.Grid.size
+	
+	if check_combinations(grid_size, reagent_matrix):
+		return
+	
+	var new_grid_size = grid_size
+	while new_grid_size > 2:
+		new_grid_size -= 1
+		var new_matrix = []
+		for _i in range(new_grid_size):
+			var line = []
+			for _j in range(new_grid_size):
+				line.append(null)
+			new_matrix.append(line)
+		
+		for i_offset in range(grid_size - new_grid_size + 1):
+			for j_offset in range(grid_size - new_grid_size + 1):
+				printt(i_offset, j_offset)
+				
+				for i in range(new_grid_size):
+					for j in range(new_grid_size):
+						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
+				
+				if check_combinations(new_grid_size, new_matrix):
+					print("Combination found; size = %d; position = (%d, %d)" %
+							[new_grid_size, i_offset, j_offset])
+					return
+	
+	print("No combinations found!")

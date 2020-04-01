@@ -3,6 +3,7 @@ tool
 extends Control
 
 signal grid_cleaned
+signal combination_made
 
 const GRIDSLOT = preload("res://test/battle/Grid/GridSlot.tscn")
 const MARGIN = 30
@@ -11,12 +12,14 @@ onready var Grid = $GridContainer
 onready var RecipeButton = $CreateRecipe 
 
 var DiscardBag = null #Setted by parent
+var size : int
 
 func _ready():
 	set_grid(3)
 
-func set_grid(size):
-	assert(size > 0)
+func set_grid(_size: int):
+	assert(_size > 1)
+	size = _size
 	for child in Grid.get_children():
 		Grid.remove_child(child)
 	Grid.columns = size
@@ -63,4 +66,21 @@ func enable():
 	RecipeButton.disabled = false
 
 func _on_CreateRecipe_pressed():
+	if is_empty():
+		return
+	
+	var reagent_matrix := []
+	var child_index := 0
+	for _i in range(size):
+		var line = []
+		for _j in range(size):
+			var reagent = Grid.get_child(child_index).current_reagent
+			if reagent:
+				line.append(reagent.type)
+			else:
+				line.append(null)
+			child_index += 1
+		reagent_matrix.append(line)
+	
+	emit_signal("combination_made", reagent_matrix)
 	clean_grid()

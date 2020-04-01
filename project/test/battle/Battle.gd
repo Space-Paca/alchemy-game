@@ -67,7 +67,7 @@ func new_enemy_turn():
 	disable_player()
 	if not Grid.is_empty():
 		Grid.clean_grid()
-		yield(Grid, "grid_cleaned")
+		yield(Grid, "cleaned")
 	
 	for enemy in $Enemies.get_children():
 		enemy.act()

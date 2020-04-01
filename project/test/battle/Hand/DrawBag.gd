@@ -6,9 +6,9 @@ signal hand_refilled
 signal drew_given_reagents
 
 
-var Hand = null #Setted by parent
-var DiscardBag = null #Setted by parent
-var Reagents = null #Setted by parent
+var Hand = null #Set by parent
+var DiscardBag = null #Set by parent
+var Reagents = null #Set by parent
 
 func _ready():
 	$Center.position = $TextureRect.rect_size/2

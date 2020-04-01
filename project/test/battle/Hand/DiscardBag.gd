@@ -2,7 +2,7 @@ extends Node2D
 
 signal discarded_reagent
 
-var Reagents = null #Setted by parent
+var Reagents = null #Set by parent
 
 func _ready():
 	$Center.position = $TextureRect.rect_size/2

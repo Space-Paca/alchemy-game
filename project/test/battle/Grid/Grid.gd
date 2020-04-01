@@ -11,7 +11,7 @@ const MARGIN = 30
 onready var Grid = $GridContainer
 onready var RecipeButton = $CreateRecipe 
 
-var DiscardBag = null #Setted by parent
+var DiscardBag = null #Set by parent
 var size : int
 
 func _ready():

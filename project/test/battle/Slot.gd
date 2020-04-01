@@ -1,6 +1,6 @@
 extends TextureRect
 
-signal setted_reagent
+signal reagent_set
 
 var current_reagent = null
 
@@ -14,7 +14,7 @@ func set_reagent(reagent):
 	reagent.slot = self
 	reagent.target_position = $Area2D.global_position
 	yield(reagent, "reached_target_pos")
-	emit_signal("setted_reagent")
+	emit_signal("reagent_set")
 
 func remove_reagent():
 	current_reagent = null

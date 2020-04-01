@@ -39,7 +39,7 @@ func place_reagent(reagent):
 	for slot in Grid.get_children():
 		if not slot.get_reagent():
 			slot.set_reagent(reagent)
-			yield(slot, "setted_reagent")
+			yield(slot, "reagent_set")
 			emit_signal("reagent_placed")
 			return
 	push_error("Can't place reagent in hand, hand is full.")

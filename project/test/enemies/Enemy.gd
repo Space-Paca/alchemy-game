@@ -1,6 +1,5 @@
-extends Character
-
 tool
+extends Character
 
 signal acted
 

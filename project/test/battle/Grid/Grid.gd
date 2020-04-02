@@ -10,11 +10,13 @@ const MARGIN = 30
 onready var container = $GridContainer
 onready var recipe_button = $CreateRecipe 
 
-var discard_bag = null #Set by parent
+var discard_bag = null # Set by parent
 var size : int
+
 
 func _ready():
 	set_grid(3)
+
 
 func set_grid(_size: int):
 	assert(_size > 1)
@@ -31,12 +33,14 @@ func set_grid(_size: int):
 	recipe_button.rect_position.y = slot.rect_size.y * size + MARGIN
 	recipe_button.rect_position.x = slot.rect_size.x*size/2 - recipe_button.rect_size.x*scale/2
 
+
 func is_empty():
 	for slot in container.get_children():
 		var reagent = slot.get_reagent()
 		if reagent:
 			return false
 	return true
+
 
 func clean_grid():
 	var reagents_to_be_discarded = []
@@ -53,16 +57,18 @@ func clean_grid():
 			randomize()
 			yield(get_tree().create_timer(rand_range(.1, .3)), "timeout")
 		else:
-			yield(discard_bag, "discarded_reagent")
+			yield(discard_bag, "reagent_discarded")
 
 	emit_signal("cleaned")
 
+
 func disable():
 	recipe_button.disabled = true
-	
+
 
 func enable():
 	recipe_button.disabled = false
+
 
 func _on_CreateRecipe_pressed():
 	if is_empty():

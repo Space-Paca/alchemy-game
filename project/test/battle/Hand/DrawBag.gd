@@ -5,24 +5,28 @@ signal reagent_shuffled
 signal hand_refilled
 signal drew_given_reagents
 
-
 var Hand = null #Set by parent
 var DiscardBag = null #Set by parent
 var Reagents = null #Set by parent
 
+
 func _ready():
 	$Center.position = $TextureRect.rect_size/2
+
 
 func get_center():
 	return $Center.global_position
 
+
 func update_counter():
 	$Counter.text = str($DrawableReagents.get_child_count())
+
 
 func add_reagent(reagent):
 	reagent.visible = false
 	$DrawableReagents.add_child(reagent)
 	update_counter()
+
 
 func start_drawing(reagents):
 	while not reagents.empty():
@@ -55,6 +59,7 @@ func refill_hand():
 	
 	emit_signal("hand_refilled")
 
+
 #Shuffle discarded reagents in draw bag
 func reshuffle():
 	var discarded_reagents = DiscardBag.return_reagents()
@@ -67,6 +72,7 @@ func reshuffle():
 			yield(self, "reagent_shuffled")
 	emit_signal("reshuffled")
 
+
 func shuffle_reagent(reagent):
 	reagent.visible = true
 	Reagents.add_child(reagent)
@@ -77,6 +83,7 @@ func shuffle_reagent(reagent):
 	$DrawableReagents.add_child(reagent)
 	update_counter()
 	emit_signal("reagent_shuffled")
+
 
 #Gets and removes a random reagent from the bag
 func draw_reagent():
@@ -93,4 +100,3 @@ func draw_reagent():
 	reagent.rect_position = get_center()
 	Reagents.add_child(reagent)
 	return reagent
-

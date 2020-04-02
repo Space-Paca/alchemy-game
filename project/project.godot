@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://test/map/Floor.gd"
 }, {
+"base": "Reference",
+"class": "ReagentDB",
+"language": "GDScript",
+"path": "res://database/ReagentDB.gd"
+}, {
 "base": "Resource",
 "class": "Recipe",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Character": "",
 "Combination": "",
 "Floor": "",
+"ReagentDB": "",
 "Recipe": "",
 "Room": ""
 }

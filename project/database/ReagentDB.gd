@@ -1,5 +1,6 @@
+class_name ReagentDB
 
-var db = {
+const DB = {
 	"regular": {
 		"image": "res://assets/images/reagents/regular.png",
 	},
@@ -23,11 +24,13 @@ var db = {
 	}
 }
 
-func get_types():
-	return db.keys()
 
-func get(name):
-	if not db.has(name):
+static func get_types() -> Array:
+	return DB.keys()
+
+
+static func get_from_name(name: String) -> Dictionary:
+	if not DB.has(name):
 		push_error("Given type of reagent doesn't exist")
 		assert(false)
-	return db[name]
+	return DB[name]

@@ -1,33 +1,41 @@
 extends Node2D
 
-signal discarded_reagent
+signal reagent_discarded(reagent)
 
-var Reagents = null #Set by parent
+onready var center = $Center
+onready var counter = $Counter
+onready var discarded_reagents = $DiscardedReagents
+onready var texture_rect = $TextureRect
+
 
 func _ready():
-	$Center.position = $TextureRect.rect_size/2
+	center.position = texture_rect.rect_size/2
+
 
 func get_center():
-	return $Center.global_position
-	
+	return center.global_position
+
+
 func update_counter():
-	$Counter.text = str($DiscardedReagents.get_child_count())
+	counter.text = str(discarded_reagents.get_child_count())
+
 
 func discard(reagent):
 	reagent.slot = null
 	reagent.can_drag = false
 	reagent.target_position = get_center()
 	yield(reagent, "reached_target_pos")
-	Reagents.remove_child(reagent)
+	
+	emit_signal("reagent_discarded", reagent)
 	reagent.visible = false
-	$DiscardedReagents.add_child(reagent)
+	discarded_reagents.add_child(reagent)
 	update_counter()
-	emit_signal("discarded_reagent")
+
 
 func return_reagents():
 	var all_reagents = []
-	for reagent in $DiscardedReagents.get_children():
-		$DiscardedReagents.remove_child(reagent)
+	for reagent in discarded_reagents.get_children():
+		discarded_reagents.remove_child(reagent)
 		all_reagents.append(reagent)
 	update_counter()
 	return all_reagents

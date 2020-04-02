@@ -10,13 +10,15 @@ onready var Grid = $Grid
 onready var PassTurn = $PassTurnButton
 onready var PlayerUI = $PlayerUI
 
+
 func setup_nodes():
 	DrawBag.Hand = Hand
 	DrawBag.Reagents = Reagents
 	DrawBag.DiscardBag = DiscardBag
-	Grid.DiscardBag = DiscardBag
-	DiscardBag.Reagents = Reagents
+	Grid.discard_bag = DiscardBag
+	#DiscardBag.Reagents = Reagents
 	PassTurn.Battle = self
+
 
 func setup_player():
 	#Initial dummy bag
@@ -26,8 +28,8 @@ func setup_player():
 	
 	disable_player()
 
-func setup_enemy():
 
+func setup_enemy():
 	for child in $Enemies.get_children():
 		$Enemies.remove_child(child)
 		child.queue_free()
@@ -49,12 +51,12 @@ func _ready():
 	
 	setup_enemy()
 	
-	#For reasons I don't completely understand, Grid needs some time to actually
-	#place the slots in the correct position. Without this, all reagents will go
-	#to the first slot position.
+	# For reasons I don't completely understand, Grid needs some time to actually
+	# place the slots in the correct position. Without this, all reagents will go
+	# to the first slot position.
 	yield(get_tree().create_timer(1.0), "timeout")
-
 	new_player_turn()
+
 
 func new_player_turn():
 	if Hand.available_slot_count() > 0: 
@@ -62,6 +64,7 @@ func new_player_turn():
 		yield(DrawBag,"hand_refilled")
 	
 	enable_player()
+
 
 func new_enemy_turn():
 	disable_player()
@@ -75,10 +78,16 @@ func new_enemy_turn():
 	
 	new_player_turn()
 
+
 func disable_player():
 	PassTurn.disabled = true
 	Grid.disable()
 
+
 func enable_player():
 	PassTurn.disabled = false
 	Grid.enable()
+
+
+func _on_DiscardBag_reagent_discarded(reagent):
+	Reagents.remove_child(reagent)

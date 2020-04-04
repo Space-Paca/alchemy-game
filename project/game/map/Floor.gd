@@ -5,7 +5,7 @@ onready var remaining_rooms := (room_amount as int)
 
 enum { N, W, E, S }
 
-const ROOM := preload("res://test/map/Room.tscn")
+const ROOM := preload("res://game/map/Room.tscn")
 const INITIAL_POS := Vector2(688, 384)
 const INITIAL_ROOM := -1
 const OFFSETS := [Vector2(0, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]

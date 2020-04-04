@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Character",
 "language": "GDScript",
-"path": "res://test/character/Character.gd"
+"path": "res://game/character/Character.gd"
 }, {
 "base": "Node",
 "class": "Combination",
 "language": "GDScript",
-"path": "res://test/dungeon/Combination.gd"
+"path": "res://game/dungeon/Combination.gd"
 }, {
 "base": "Control",
 "class": "Floor",
 "language": "GDScript",
-"path": "res://test/map/Floor.gd"
+"path": "res://game/map/Floor.gd"
 }, {
 "base": "Reference",
 "class": "ReagentDB",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "Room",
 "language": "GDScript",
-"path": "res://test/map/Room.gd"
+"path": "res://game/map/Room.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -55,8 +55,8 @@ config/icon="res://assets/images/slime-icon.png"
 
 [autoload]
 
-EnemyManager="*res://test/enemies/EnemyManager.gd"
-ReagentManager="*res://test/reagents/ReagentManager.gd"
+EnemyManager="*res://game/enemies/EnemyManager.gd"
+ReagentManager="*res://game/reagents/ReagentManager.gd"
 RecipeManager="*res://database/RecipeManager.gd"
 
 [display]

@@ -1,7 +1,7 @@
 extends Node
 
 const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd"}
-const ENEMY = preload("res://test/enemies/Enemy.tscn")
+const ENEMY = preload("res://game/enemies/Enemy.tscn")
 
 func create_object(enemy_type):
 	

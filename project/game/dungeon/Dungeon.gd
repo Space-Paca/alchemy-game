@@ -1,6 +1,6 @@
 extends Node
 
-const BATTLE_SCENE = preload("res://test/battle/Battle.tscn")
+const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 
 var battle : Node
 var combinations := {}

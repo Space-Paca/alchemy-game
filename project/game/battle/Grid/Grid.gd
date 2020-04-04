@@ -4,7 +4,7 @@ extends Control
 signal cleaned
 signal combination_made
 
-const GRIDSLOT = preload("res://test/battle/Grid/GridSlot.tscn")
+const GRIDSLOT = preload("res://game/battle/Grid/GridSlot.tscn")
 const MARGIN = 30
 
 onready var container = $GridContainer

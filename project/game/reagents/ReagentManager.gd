@@ -1,6 +1,6 @@
 extends Node
 
-const REAGENT = preload("res://test/reagents/Reagent.tscn")
+const REAGENT = preload("res://game/reagents/Reagent.tscn")
 
 func random_type():
 	var types = ReagentDB.get_types()

@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/images/white_pixel.png" type="Texture" id=1]
-[ext_resource path="res://test/map/Room.gd" type="Script" id=2]
+[ext_resource path="res://game/map/Room.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/map/slime.png" type="Texture" id=3]
+
 
 [node name="Room" type="TextureButton"]
 margin_right = 160.0

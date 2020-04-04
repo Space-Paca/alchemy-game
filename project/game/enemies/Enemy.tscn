@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://test/enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=3]
+[ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -38,7 +38,7 @@ script = ExtResource( 1 )
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 256.0
 margin_bottom = 256.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

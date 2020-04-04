@@ -4,7 +4,7 @@ onready var shape = $CollisionShape2D.shape
 onready var reagent = get_parent()
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed and reagent.can_drag:
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \

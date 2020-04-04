@@ -25,7 +25,7 @@ func setup_player():
 	for _i in range(12):
 		var type = ReagentManager.random_type()
 		DrawBag.add_reagent(ReagentManager.create_object(type))
-	
+
 	disable_player()
 
 
@@ -33,24 +33,24 @@ func setup_enemy():
 	for child in $Enemies.get_children():
 		$Enemies.remove_child(child)
 		child.queue_free()
-		
+
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
-	
+
 	#Update enemies positions
 	var x = 0
 	for enemy in $Enemies.get_children():
 		enemy.position.x = x
 		x += ENEMY_MARGIN + enemy.get_width()
-	
+
 
 func _ready():
 	setup_nodes()
-	
+
 	setup_player()
-	
+
 	setup_enemy()
-	
+
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
 	# to the first slot position.
@@ -59,10 +59,10 @@ func _ready():
 
 
 func new_player_turn():
-	if Hand.available_slot_count() > 0: 
+	if Hand.available_slot_count() > 0:
 		DrawBag.refill_hand()
 		yield(DrawBag,"hand_refilled")
-	
+
 	enable_player()
 
 
@@ -71,11 +71,11 @@ func new_enemy_turn():
 	if not Grid.is_empty():
 		Grid.clean_grid()
 		yield(Grid, "cleaned")
-	
+
 	for enemy in $Enemies.get_children():
 		enemy.act()
 		yield(enemy, "acted")
-	
+
 	new_player_turn()
 
 

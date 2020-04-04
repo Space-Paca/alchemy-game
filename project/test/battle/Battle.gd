@@ -1,5 +1,7 @@
 extends Node
 
+const ENEMY_MARGIN = 10
+
 onready var Hand = $Hand
 onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
@@ -33,7 +35,6 @@ func setup_enemy():
 		child.queue_free()
 
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
-<<<<<<< HEAD
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
 
 	#Update enemies positions
@@ -42,9 +43,6 @@ func setup_enemy():
 		enemy.position.x = x
 		x += ENEMY_MARGIN + enemy.get_width()
 
-=======
-	
->>>>>>> parent of 57c7d50... Allow multiple enemies and proper spacing of them
 
 func _ready():
 	setup_nodes()

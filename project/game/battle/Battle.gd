@@ -12,7 +12,17 @@ onready var PlayerUI = $PlayerUI
 
 
 func setup(player: Player, battle_info: Dictionary):
-	pass
+	setup_nodes()
+
+	setup_player(player)
+
+	setup_enemy(battle_info)
+
+	# For reasons I don't completely understand, Grid needs some time to actually
+	# place the slots in the correct position. Without this, all reagents will go
+	# to the first slot position.
+	yield(get_tree().create_timer(1.0), "timeout")
+	new_player_turn()
 
 
 func setup_nodes():
@@ -24,7 +34,7 @@ func setup_nodes():
 	PassTurn.Battle = self
 
 
-func setup_player():
+func setup_player(player):
 	#Initial dummy bag
 	for _i in range(12):
 		var type = ReagentManager.random_type()
@@ -33,11 +43,16 @@ func setup_player():
 	disable_player()
 
 
-func setup_enemy():
+func setup_enemy(battle_info):
+	#Clean up dummy enemies
 	for child in $Enemies.get_children():
 		$Enemies.remove_child(child)
 		child.queue_free()
-
+	
+	for enemy in battle_info.enemies:
+		$Enemies.add_child(EnemyManager.create_object(enemy))
+	
+	#Enemy example, remove when battle_info works
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
 
@@ -49,17 +64,7 @@ func setup_enemy():
 
 
 func _ready():
-	setup_nodes()
-
-	setup_player()
-
-	setup_enemy()
-
-	# For reasons I don't completely understand, Grid needs some time to actually
-	# place the slots in the correct position. Without this, all reagents will go
-	# to the first slot position.
-	yield(get_tree().create_timer(1.0), "timeout")
-	new_player_turn()
+	pass
 
 
 func new_player_turn():

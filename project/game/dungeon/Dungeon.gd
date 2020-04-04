@@ -55,8 +55,8 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 func new_battle(battle_info: Dictionary):
 	assert(battle == null)
 	battle = BATTLE_SCENE.instance()
-	battle.setup(player, battle_info)
 	add_child(battle)
+	battle.setup(player, battle_info)
 	battle.Grid.connect("combination_made", self, "_on_Grid_combination_made")
 
 

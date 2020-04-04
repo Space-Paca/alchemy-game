@@ -1,19 +1,21 @@
 extends Node
 
+onready var player = $Player
+
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
+const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
+const FLOOR_SIZE := [10, 20, 30]
 
 var battle : Node
 var combinations := {}
+var current_floor : Floor
+var floor_level := 0
 
 
 func _ready():
 	randomize()
 	create_combinations()
-
-
-func _input(event):
-	if event is InputEventKey and event.pressed and event.scancode == KEY_B:
-		new_battle()
+	create_floor(0)
 
 
 func create_combinations():
@@ -24,6 +26,14 @@ func create_combinations():
 			(combinations[combination.grid_size] as Array).append(combination)
 		else:
 			combinations[combination.grid_size] = [combination]
+
+
+func create_floor(level: int):
+	current_floor = FLOOR_SCENE.instance()
+	current_floor.room_amount = FLOOR_SIZE[level]
+	if current_floor.connect("room_entered", self, "_on_room_entered") != OK:
+		print("Error")
+	add_child(current_floor)
 
 
 func check_combinations(grid_size: int, reagent_matrix: Array):
@@ -42,16 +52,18 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	return false
 
 
-func new_battle():
-	if not battle:
-		battle = BATTLE_SCENE.instance()
-		add_child(battle)
-		
-		battle.Grid.connect("combination_made", self, "_on_Grid_combination_made")
-	else:
-		battle.queue_free()
-		battle = null
-		new_battle()
+func new_battle(battle_info: Dictionary):
+	assert(battle == null)
+	battle = BATTLE_SCENE.instance()
+	battle.setup(player, battle_info)
+	add_child(battle)
+	battle.Grid.connect("combination_made", self, "_on_Grid_combination_made")
+
+
+func _on_room_entered(room: Room):
+	if room.type == Room.Type.MONSTER:
+		new_battle(room.info)
+		current_floor.hide()
 
 
 func _on_Grid_combination_made(reagent_matrix: Array):

@@ -11,6 +11,10 @@ onready var PassTurn = $PassTurnButton
 onready var PlayerUI = $PlayerUI
 
 
+func setup(player: Player, battle_info: Dictionary):
+	pass
+
+
 func setup_nodes():
 	DrawBag.Hand = Hand
 	DrawBag.Reagents = Reagents

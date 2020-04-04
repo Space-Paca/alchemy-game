@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/map/Floor.gd"
 }, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://game/dungeon/Player.gd"
+}, {
 "base": "Reference",
 "class": "ReagentDB",
 "language": "GDScript",
@@ -43,6 +48,7 @@ _global_script_class_icons={
 "Character": "",
 "Combination": "",
 "Floor": "",
+"Player": "",
 "ReagentDB": "",
 "Recipe": "",
 "Room": ""

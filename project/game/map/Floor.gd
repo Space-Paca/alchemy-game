@@ -1,6 +1,8 @@
 extends Control
 class_name Floor
 
+signal room_entered(room)
+
 onready var remaining_rooms := (room_amount as int)
 
 enum { N, W, E, S }
@@ -28,11 +30,6 @@ func _ready():
 	
 	if OS.is_debug_build():
 		assert(remaining_rooms == 0)
-
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		get_tree().reload_current_scene()
 
 
 func create_room(from : int, position : Vector2):
@@ -100,6 +97,8 @@ func assign_special_rooms():
 
 
 func _on_room_entered(room: Room):
+	emit_signal("room_entered", room)
+	
 	for dir in room.exits:
 		if room.exits[dir]:
 			rooms[room.position + OFFSETS[dir]].show()

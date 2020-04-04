@@ -18,6 +18,7 @@ var entrance : int
 var exits := {N: false, W:false, E:false, S:false}
 var position : Vector2
 var type : int
+var info := {}
 
 
 func _draw():
@@ -58,5 +59,5 @@ func set_type(new_type : int):
 
 
 func _on_Room_pressed():
-	set_type(Type.EMPTY)
 	emit_signal("entered", self)
+	set_type(Type.EMPTY)

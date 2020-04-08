@@ -1,25 +1,31 @@
 class_name ReagentDB
 
 const DB = {
-	"regular": {
+	"common": {
 		"image": "res://assets/images/reagents/regular.png",
 	},
-	"special": {
+	"uncommon": {
 		"image": "res://assets/images/reagents/special.png",
 	},
-	"harmless": {
+	"rare": {
 		"image": "res://assets/images/reagents/harmless.png",
 	},
-	"funky": {
+	"damaging": {
 		"image": "res://assets/images/reagents/funky.png"
 	},
-	"tasty": {
+	"defensive": {
 		"image": "res://assets/images/reagents/tasty.png"
 	},
-	"marvellous": {
+	"super_damaging": {
 		"image": "res://assets/images/reagents/marvellous.png"
 	},
-	"powerful": {
+	"super_defensive": {
+		"image": "res://assets/images/reagents/juicy.png"
+	},
+	"healing": {
+		"image": "res://assets/images/reagents/suspicious.png"
+	},
+	"catalyst": {
 		"image": "res://assets/images/reagents/powerful.png"
 	}
 }

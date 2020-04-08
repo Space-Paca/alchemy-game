@@ -47,9 +47,10 @@ func refill_hand():
 			start_drawing(reagents_to_be_drawn)
 			yield(self, "drew_given_reagents")
 			yield(get_tree().create_timer(.5), "timeout")
-			reshuffle()
-			yield(self, "reshuffled")
-			yield(get_tree().create_timer(.5), "timeout")
+			if not DiscardBag.is_empty():
+				reshuffle()
+				yield(self, "reshuffled")
+				yield(get_tree().create_timer(.5), "timeout")
 		
 		reagents_to_be_drawn.append(draw_reagent())
 	

@@ -19,6 +19,8 @@ func get_center():
 func update_counter():
 	counter.text = str(discarded_reagents.get_child_count())
 
+func is_empty():
+	return discarded_reagents.get_child_count()
 
 func discard(reagent):
 	reagent.slot = null

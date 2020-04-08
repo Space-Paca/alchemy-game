@@ -46,8 +46,10 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
-			# Make recipe have effect here
 			prints((combination as Combination).recipe_name, "found")
+			var recipe = (RecipeManager.get_from(combination) as Recipe)
+			battle.apply_effects(recipe.effects, recipe.effect_args)
+			
 			return true
 	return false
 
@@ -97,3 +99,4 @@ func _on_Grid_combination_made(reagent_matrix: Array):
 					return
 	
 	print("No combinations found!")
+	battle.combination_failure()

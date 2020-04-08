@@ -1,7 +1,6 @@
 extends Node
 
-const ENEMY_MARGIN = 10
-
+onready var effect_manager = $EffectManager
 onready var Hand = $Hand
 onready var Reagents = $Reagents
 onready var DrawBag = $DrawBag
@@ -10,6 +9,11 @@ onready var Grid = $Grid
 onready var PassTurn = $PassTurnButton
 onready var PlayerUI = $PlayerUI
 
+const ENEMY_MARGIN = 10
+
+var enemies
+var player
+
 
 func setup(player: Player, battle_info: Dictionary):
 	setup_nodes()
@@ -17,6 +21,8 @@ func setup(player: Player, battle_info: Dictionary):
 	setup_player(player)
 
 	setup_enemy(battle_info)
+	
+	effect_manager.setup(player, enemies)
 
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -35,6 +41,8 @@ func setup_nodes():
 
 
 func setup_player(_player):
+	player = _player
+	
 	#Initial dummy bag
 	for _i in range(12):
 		var type = ReagentManager.random_type()
@@ -55,6 +63,7 @@ func setup_enemy(battle_info):
 	#Enemy example, remove when battle_info works
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
 	$Enemies.add_child(EnemyManager.create_object("skeleton"))
+	enemies = $Enemies.get_children()
 
 	#Update enemies positions
 	var x = 0
@@ -65,10 +74,6 @@ func setup_enemy(battle_info):
 	#Update enemies intent
 	for enemy in $Enemies.get_children():
 		enemy.update_intent()
-
-
-func _ready():
-	pass
 
 
 func new_player_turn():
@@ -102,5 +107,23 @@ func enable_player():
 	Grid.enable()
 
 
+func apply_effects(effects: Array, effect_args: Array):
+	for i in range(effects.size()):
+		if effect_manager.has_method(effects[i]):
+			effect_manager.callv(effects[i], effect_args[i])
+		else:
+			print("Effect %s not found" % effects[i])
+			assert(false)
+
+
+func combination_failure():
+	pass
+
+
 func _on_DiscardBag_reagent_discarded(reagent):
 	Reagents.remove_child(reagent)
+
+
+func _on_EffectManager_target_required(function_state):# GDScriptFunctionState):
+	print(function_state)
+#	function_state.resume()

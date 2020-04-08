@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -8,9 +8,13 @@
 [ext_resource path="res://game/battle/Hand/DiscardBag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/battle/Hand/DrawBag.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/battle/PlayerUI/PlayerUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/battle/EffectManager.gd" type="Script" id=9]
 
 [node name="Battle" type="Node"]
 script = ExtResource( 5 )
+
+[node name="EffectManager" type="Node" parent="."]
+script = ExtResource( 9 )
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
 margin_left = 487.317

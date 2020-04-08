@@ -3,7 +3,7 @@ extends Character
 signal acted
 
 const HEALTH_BAR_MARGIN = 10
-const INTENT_MARGIN = 5
+const INTENT_MARGIN = 10
 const INTENT_W = 60
 const INTENT_H = 70
 
@@ -17,9 +17,9 @@ var logic_
 func act():
 	var state = logic_.get_current_state()
 	print("Going to "+state+"!")
-	$AnimationPlayer.play("attack")
-	yield($AnimationPlayer, "animation_finished")
-	$AnimationPlayer.play("idle")
+	$Sprite/AnimationPlayer.play("attack")
+	yield($Sprite/AnimationPlayer, "animation_finished")
+	$Sprite/AnimationPlayer.play("idle")
 	emit_signal("acted")
 	logic_.update_state()
 
@@ -57,17 +57,26 @@ func set_image(new_texture):
 
 func set_intent(intent):
 	assert(INTENTS.has(intent))
+	
 	var texture = INTENTS[intent]
 	$Intent.texture = texture
-	
-	#Fix scale	
 	var tw = texture.get_width()
 	var th = texture.get_height()
-	$Intent.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
+	
+	#Fix Pivot offset
+	$Intent.rect_pivot_offset = Vector2(tw/2.0, th/2.0)
 	
 	#Fix position
-	$Intent.rect_position.x = get_width()/2 - INTENT_W/2
-	$Intent.rect_position.y = -INTENT_H - INTENT_MARGIN
+
+	$Intent.rect_position.x = floor(get_width()/2.0) - tw/2.0
+	$Intent.rect_position.y = floor(-th/2.0) - INTENT_MARGIN
+	
+	#Fix scale
+	$Intent.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
+	
+	#Random position for idle animation
+	randomize()
+	$Intent/AnimationPlayer.seek(rand_range(0,1.5))
 
 func update_intent():
 	var state = logic_.get_current_state()

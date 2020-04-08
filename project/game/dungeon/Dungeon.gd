@@ -26,6 +26,8 @@ func create_combinations():
 			(combinations[combination.grid_size] as Array).append(combination)
 		else:
 			combinations[combination.grid_size] = [combination]
+		
+		print(combination.name, "\n", combination.matrix)
 
 
 func create_floor(level: int):

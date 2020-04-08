@@ -13,19 +13,19 @@ func get_target() -> Character:
 	return enemies[0]
 
 
-func damage(args: Array):
+func damage(amount: int):
 	var target = get_target()
-	target.take_damage(args[0])
+	target.take_damage(amount)
 
 
-func damage_all(args: Array):
+func damage_all(amount: int):
 	for enemy in enemies:
-		(enemy as Character).take_damage(args[0])
+		(enemy as Character).take_damage(amount)
 
 
-func shield(args: Array):
+func shield(amount: int):
 	pass
 
 
-func cure(args: Array):
+func cure(amount: int):
 	pass

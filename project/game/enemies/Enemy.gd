@@ -67,7 +67,7 @@ func set_intent(intent):
 	
 	#Fix position
 	$Intent.rect_position.x = get_width()/2 - INTENT_W/2
-	$Intent.rect_position.y = -INTENT_H - INTENT_MARGIN	
+	$Intent.rect_position.y = -INTENT_H - INTENT_MARGIN
 
 func update_intent():
 	var state = logic_.get_current_state()

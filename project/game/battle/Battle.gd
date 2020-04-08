@@ -15,14 +15,14 @@ var enemies
 var player
 
 
-func setup(player: Player, battle_info: Dictionary):
+func setup(_player: Player, battle_info: Dictionary):
 	setup_nodes()
 
-	setup_player(player)
+	setup_player(_player)
 
 	setup_enemy(battle_info)
 	
-	effect_manager.setup(player, enemies)
+	effect_manager.setup(_player, enemies)
 
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -44,9 +44,12 @@ func setup_player(_player):
 	player = _player
 	
 	#Initial dummy bag
-	for _i in range(12):
-		var type = ReagentManager.random_type()
-		DrawBag.add_reagent(ReagentManager.create_object(type))
+	for _i in range(3):
+		DrawBag.add_reagent(ReagentManager.create_object("common"))
+	for _i in range(2):
+		DrawBag.add_reagent(ReagentManager.create_object("damaging"))
+	for _i in range(2):
+		DrawBag.add_reagent(ReagentManager.create_object("defensive"))
 
 	disable_player()
 

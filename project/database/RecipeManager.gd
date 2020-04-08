@@ -22,7 +22,7 @@ func _ready():
 					push_error("RecipeManager: %s effect and arguments size mismatch" % str(path, file_name))
 					assert(false)
 				
-				recipes[file_name.rstrip(".tres")] = recipe
+				recipes[recipe.name] = recipe
 			file_name = dir.get_next()
 	else:
 		print("RecipeManager: An error occurred when trying to access the path.")

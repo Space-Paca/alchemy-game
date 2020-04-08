@@ -34,7 +34,7 @@ func setup_nodes():
 	PassTurn.Battle = self
 
 
-func setup_player(player):
+func setup_player(_player):
 	#Initial dummy bag
 	for _i in range(12):
 		var type = ReagentManager.random_type()
@@ -61,6 +61,10 @@ func setup_enemy(battle_info):
 	for enemy in $Enemies.get_children():
 		enemy.position.x = x
 		x += ENEMY_MARGIN + enemy.get_width()
+	
+	#Update enemies intent
+	for enemy in $Enemies.get_children():
+		enemy.update_intent()
 
 
 func _ready():

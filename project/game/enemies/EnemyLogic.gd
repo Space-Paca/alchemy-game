@@ -31,7 +31,6 @@ func update_state():
 	
 	randomize()
 	var rand_weight = randi()%(total_weight+1)
-	print(rand_weight)
 	for link in connections:
 		rand_weight -= link.weight
 		if rand_weight <= 0:

@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/dungeon/Combination.gd"
 }, {
+"base": "Reference",
+"class": "EnemyLogic",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyLogic.gd"
+}, {
 "base": "Control",
 "class": "Floor",
 "language": "GDScript",
@@ -47,6 +52,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Character": "",
 "Combination": "",
+"EnemyLogic": "",
 "Floor": "",
 "Player": "",
 "ReagentDB": "",

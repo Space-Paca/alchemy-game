@@ -4,7 +4,6 @@
 [ext_resource path="res://game/map/Room.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/map/slime.png" type="Texture" id=3]
 
-
 [node name="Room" type="TextureButton"]
 margin_right = 160.0
 margin_bottom = 90.0

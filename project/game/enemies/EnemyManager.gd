@@ -13,7 +13,11 @@ func create_object(enemy_type):
 	
 	var enemy = ENEMY.instance()
 	enemy.init(enemy_data.name, enemy_data.hp)
-	enemy.setup(load(enemy_data.image))
+	var logic = {"states":enemy_data.states,
+				 "connections": enemy_data.connections,
+				 "first_state": enemy_data.first_state,
+				}
+	enemy.setup(logic, load(enemy_data.image))
 	return enemy
 
 func get_data(enemy_type):

@@ -13,10 +13,9 @@ onready var recipe_button = $CreateRecipe
 var discard_bag = null # Set by parent
 var size : int
 
-
-func _ready():
-	set_grid(3)
-
+func get_width():
+	var slot = container.get_child(1)
+	return size*slot.rect_size.x
 
 func set_grid(_size: int):
 	assert(_size > 1)

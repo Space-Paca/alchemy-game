@@ -10,7 +10,7 @@
 [ext_resource path="res://game/battle/PlayerUI/PlayerUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/battle/EffectManager.gd" type="Script" id=9]
 
-[node name="Battle" type="Node"]
+[node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="EffectManager" type="Node" parent="."]

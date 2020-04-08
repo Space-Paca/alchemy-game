@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Atacão"
+grid_size = 2
+reagents = [ "common", "damaging", "damaging" ]
+effects = [ "damage", "damage" ]
+effect_args = [ [ 7 ], [ 7 ] ]

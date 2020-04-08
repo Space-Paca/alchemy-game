@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "bomb"
+name = "Dano"
 grid_size = 2
-reagents = [ "regular", "special" ]
+reagents = [ "common", "damaging" ]
+effects = [ "damage" ]
+effect_args = [ [ 10 ] ]

@@ -20,7 +20,7 @@ func update_counter():
 	counter.text = str(discarded_reagents.get_child_count())
 
 func is_empty():
-	return discarded_reagents.get_child_count()
+	return discarded_reagents.get_child_count() == 0
 
 func discard(reagent):
 	reagent.slot = null

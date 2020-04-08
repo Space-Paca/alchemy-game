@@ -44,14 +44,17 @@ func refill_hand():
 	var reagents_to_be_drawn = []
 	for _i in range(Hand.available_slot_count()):
 		if $DrawableReagents.get_child_count() == 0:
-			start_drawing(reagents_to_be_drawn)
-			yield(self, "drew_given_reagents")
+			if not reagents_to_be_drawn.empty():
+				start_drawing(reagents_to_be_drawn)
+				yield(self, "drew_given_reagents")
 			yield(get_tree().create_timer(.5), "timeout")
 			if not DiscardBag.is_empty():
 				reshuffle()
 				yield(self, "reshuffled")
 				yield(get_tree().create_timer(.5), "timeout")
-		
+			else:
+				break
+
 		reagents_to_be_drawn.append(draw_reagent())
 	
 	if not reagents_to_be_drawn.empty():

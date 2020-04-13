@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/enemies/intents/random.png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.5
 step = 0.05
@@ -23,14 +23,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -50, 30 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "idle"
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
@@ -64,16 +64,16 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "idle"
-anims/attack = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/attack = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = 68.0
 margin_top = 296.0
 margin_right = 188.0
 margin_bottom = 311.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 step = 1.0
 value = 50.0
 percent_visible = false

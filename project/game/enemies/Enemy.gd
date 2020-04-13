@@ -4,7 +4,7 @@ signal acted
 
 onready var animation = $Sprite/AnimationPlayer
 onready var health_bar = $HealthBar
-onready var intent = $Intent
+onready var intent_texture = $Intent
 onready var intent_animation = $Intent/AnimationPlayer
 onready var sprite = $Sprite
 
@@ -53,36 +53,36 @@ func set_logic(enemy_logic):
 
 
 func set_max_hp():
-	health_bar.max_value = max_hp
-	health_bar.value = max_hp
+	$HealthBar.max_value = max_hp
+	$HealthBar.value = max_hp
 
 
 func set_image(new_texture):
-	sprite.texture = new_texture
+	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
-	health_bar.rect_position.x = w/2 - health_bar.rect_size.x/2
-	health_bar.rect_position.y = h + HEALTH_BAR_MARGIN
+	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x/2
+	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
 
 
 func set_intent(intent):
 	assert(INTENTS.has(intent))
 	
 	var texture = INTENTS[intent]
-	intent.texture = texture
+	intent_texture.texture = texture
 	var tw = texture.get_width()
 	var th = texture.get_height()
 	
 	#Fix Pivot offset
-	intent.rect_pivot_offset = Vector2(tw/2.0, th/2.0)
+	intent_texture.rect_pivot_offset = Vector2(tw/2.0, th/2.0)
 	
 	#Fix position
 
-	intent.rect_position.x = floor(get_width()/2.0) - tw/2.0
-	intent.rect_position.y = floor(-th/2.0) - INTENT_MARGIN
+	intent_texture.rect_position.x = floor(get_width()/2.0) - tw/2.0
+	intent_texture.rect_position.y = floor(-th/2.0) - INTENT_MARGIN
 	
 	#Fix scale
-	intent.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
+	intent_texture.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
 	
 	#Random position for idle animation
 	randomize()

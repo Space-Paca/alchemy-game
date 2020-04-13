@@ -5,6 +5,7 @@ var grid_size : int
 var recipe_name : String
 var matrix : Array
 
+
 func _ready():
 	pass
 

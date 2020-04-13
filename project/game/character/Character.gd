@@ -6,6 +6,7 @@ var hp : int
 var shield : int
 var char_name: String 
 
+
 func init(_name: String, _max_hp: int):
 	char_name = _name
 	max_hp = _max_hp

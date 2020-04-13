@@ -4,7 +4,7 @@ extends Control
 signal cleaned
 signal combination_made
 
-const GRIDSLOT = preload("res://game/battle/Grid/GridSlot.tscn")
+const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const MARGIN = 30
 
 onready var container = $GridContainer
@@ -15,7 +15,7 @@ var size : int
 
 func get_width():
 	var slot = container.get_child(1)
-	return size*slot.rect_size.x
+	return size * slot.rect_size.x
 
 func set_grid(_size: int):
 	assert(_size > 1)
@@ -23,7 +23,7 @@ func set_grid(_size: int):
 	for child in container.get_children():
 		container.remove_child(child)
 	container.columns = size
-	for _i in range(size*size):
+	for _i in range(size * size):
 		container.add_child(GRIDSLOT.instance())
 	var slot = container.get_child(1)
 	

@@ -3,6 +3,7 @@ extends Node
 var enemies : Array
 var player : Player
 
+
 func setup(_player: Player, _enemies: Array):
 	player = _player
 	enemies = _enemies

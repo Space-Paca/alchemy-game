@@ -3,6 +3,7 @@ extends Node
 const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd"}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 
+
 func create_object(enemy_type):
 	
 	if not ENEMY_DB.has(enemy_type):
@@ -19,6 +20,7 @@ func create_object(enemy_type):
 				}
 	enemy.setup(logic, load(enemy_data.image))
 	return enemy
+
 
 func get_data(enemy_type):
 	if not ENEMY_DB.has(enemy_type):

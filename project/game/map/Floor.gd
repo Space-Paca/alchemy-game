@@ -21,6 +21,7 @@ var deadend_rooms := []
 var from_queue := []
 var pos_queue := []
 
+
 func _ready():
 	randomize()
 	create_room(INITIAL_ROOM, Vector2())

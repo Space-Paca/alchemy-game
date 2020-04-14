@@ -28,8 +28,6 @@ position = Vector2( 404.112, 476.26 )
 scale = Vector2( 0.557804, 0.567007 )
 size = 10
 
-[node name="Reagents" type="Node" parent="."]
-
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
 position = Vector2( -1.67017, 577.883 )
 scale = Vector2( 0.2, 0.2 )

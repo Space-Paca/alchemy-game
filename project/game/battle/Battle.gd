@@ -47,11 +47,17 @@ func setup_player(_player):
 	
 	#Initial dummy bag
 	for _i in range(3):
-		draw_bag.add_reagent(ReagentManager.create_object("common"))
+		var reagent = ReagentManager.create_object("common")
+		reagent.connect("started_dragging", self, "_on_reagent_drag")
+		draw_bag.add_reagent(reagent)
 	for _i in range(2):
-		draw_bag.add_reagent(ReagentManager.create_object("damaging"))
+		var reagent = ReagentManager.create_object("damaging")
+		reagent.connect("started_dragging", self, "_on_reagent_drag")
+		draw_bag.add_reagent(reagent)
 	for _i in range(2):
-		draw_bag.add_reagent(ReagentManager.create_object("defensive"))
+		var reagent = ReagentManager.create_object("defensive")
+		reagent.connect("started_dragging", self, "_on_reagent_drag")
+		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
 	hand.set_hand(4)
@@ -150,6 +156,9 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 	
 	grid.clean()
 	enable_player()
+
+func _on_reagent_drag(reagent):
+	reagents.move_child(reagent, reagents.get_child_count()-1)
 
 func _on_enemy_acted(action, args):
 	if action == "damage":

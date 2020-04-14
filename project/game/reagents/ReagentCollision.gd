@@ -11,6 +11,7 @@ func _input(event):
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
 					reagent.is_drag = true
 					reagent.drag_offset = -get_local_mouse_position()
+					reagent.start_dragging()
 		elif reagent.is_drag:
 			reagent.is_drag = false
 			var nearest_slot_area = null

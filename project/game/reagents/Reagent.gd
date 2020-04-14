@@ -1,6 +1,7 @@
 extends Control
 
 signal reached_target_pos
+signal started_dragging
 
 onready var texture_rect = $TextureRect
 
@@ -19,6 +20,10 @@ func _ready():
 func enable_dragging():
 	can_drag = true
 	disable_drag = false
+
+func start_dragging():
+	emit_signal("started_dragging", self)
+
 
 func disable_dragging():
 	can_drag = false

@@ -2,6 +2,10 @@ extends Reference
 
 signal acted
 
+export var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
+					  "defend": preload("res://assets/images/enemies/intents/defense.png"),
+					  "random": preload("res://assets/images/enemies/intents/random.png"),
+					 }
 export var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
 export var name = "Skelly"
 export var hp = 10
@@ -17,6 +21,8 @@ export var connections = [["random", "attack", 1],
 						 ]
 export var first_state = ["random", "random", "attack"]
 
+var next_value
+
 func get_damage():
 	randomize()
 	return randi()%(damage[1]-damage[0]+1)+damage[0]
@@ -27,10 +33,26 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", "damage", {"value": get_damage()})
+		emit_signal("acted", "damage", {"value": next_value})
 	elif state == "defend":
-		emit_signal("acted", "shield", {"value":get_defense()})
+		emit_signal("acted", "shield", {"value": next_value})
 	elif state == "random":
-		emit_signal("acted", "damage", {"value":get_damage() + 2})
+		randomize()
+		if randf() > .5:
+			emit_signal("acted", "damage", {"value": get_damage() + 2})
+		else:
+			emit_signal("acted", "shield", {"value": get_defense() + 2})
 
+func get_intent_data(state):
+	var data = {}
 
+	data.image = intents[state]
+	
+	next_value = null
+	if state == "attack":
+		next_value = get_damage()
+	elif state == "defend":
+		next_value = get_defense()
+	data.value = next_value
+	
+	return data

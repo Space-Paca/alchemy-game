@@ -6,16 +6,13 @@ onready var animation = $Sprite/AnimationPlayer
 onready var health_bar = $HealthBar
 onready var intent_texture = $Intent
 onready var intent_animation = $Intent/AnimationPlayer
+onready var intent_value = $Value
 onready var sprite = $Sprite
 
 const HEALTH_BAR_MARGIN = 10
 const INTENT_MARGIN = 10
 const INTENT_W = 60
 const INTENT_H = 70
-const INTENTS = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-				 "defend": preload("res://assets/images/enemies/intents/defense.png"),
-				 "random": preload("res://assets/images/enemies/intents/random.png"),
-				}
 
 var logic_
 var data
@@ -68,10 +65,7 @@ func set_image(new_texture):
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
 
 
-func set_intent(intent):
-	assert(INTENTS.has(intent))
-	
-	var texture = INTENTS[intent]
+func set_intent(texture, value):	
 	intent_texture.texture = texture
 	var tw = texture.get_width()
 	var th = texture.get_height()
@@ -80,12 +74,21 @@ func set_intent(intent):
 	intent_texture.rect_pivot_offset = Vector2(tw/2.0, th/2.0)
 	
 	#Fix position
-
 	intent_texture.rect_position.x = floor(get_width()/2.0) - tw/2.0
 	intent_texture.rect_position.y = floor(-th/2.0) - INTENT_MARGIN
 	
 	#Fix scale
 	intent_texture.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
+	
+	#Add value
+	if value:
+		intent_texture.rect_position.x -= 30
+		intent_value.text = str(value)
+	else:
+		intent_value.text = ""
+		intent_value.rect_position.y = - 50
+		intent_value.rect_position.x = intent_texture.rect_position.x + \
+									   INTENT_W * intent_texture.rect_scale.x
 	
 	#Random position for idle animation
 	randomize()
@@ -94,7 +97,8 @@ func set_intent(intent):
 
 func update_intent():
 	var state = logic_.get_current_state()
-	set_intent(state)
+	var intent_data = data.get_intent_data(state)
+	set_intent(intent_data.image, intent_data.value)
 
 
 func get_width():

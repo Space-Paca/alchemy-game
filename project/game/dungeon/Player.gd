@@ -4,7 +4,7 @@ class_name Player
 var hud
 
 func _ready():
-	init("player", 10)
+	init("player", 50)
 
 func set_hud(_hud):
 	hud = _hud

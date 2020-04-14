@@ -58,6 +58,7 @@ func setup_player(_player):
 	grid.set_grid(2)
 	
 	player.set_hud(player_ui)
+	player_ui.set_life(player.max_hp, player.hp)
 
 	disable_player()
 

@@ -18,11 +18,12 @@ const INTENTS = {"attack": preload("res://assets/images/enemies/intents/attack.p
 				}
 
 var logic_
+var data
 
 
 func act():
 	var state = logic_.get_current_state()
-	print("Going to "+state+"!")
+	data.act(state)
 	animation.play("attack")
 	yield(animation, "animation_finished")
 	animation.play("idle")
@@ -32,10 +33,12 @@ func act():
 	update_intent()
 
 
-func setup(enemy_logic, new_texture):
+func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_max_hp()
 	set_image(new_texture)
+
+	data = enemy_data
 
 
 func set_logic(enemy_logic):

@@ -8,6 +8,7 @@ onready var discard_bag = $DiscardBag
 onready var grid = $Grid
 onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
+onready var player_ui = $PlayerUI
 
 const ENEMY_MARGIN = 10
 
@@ -55,6 +56,8 @@ func setup_player(_player):
 	
 	#Setup player grid
 	grid.set_grid(2)
+	
+	player.set_hud(player_ui)
 
 	disable_player()
 
@@ -73,11 +76,15 @@ func setup_enemy(battle_info):
 		child.queue_free()
 	
 	for enemy in battle_info.enemies:
-		enemies_node.add_child(EnemyManager.create_object(enemy))
+		var enemy_node = EnemyManager.create_object(enemy)
+		enemies_node.add_child(enemy_node)
+		enemy_node.data.connect("acted", self, "_on_enemy_acted")
 	
 	#Enemy example, remove when battle_info works
-	enemies_node.add_child(EnemyManager.create_object("skeleton"))
-	enemies_node.add_child(EnemyManager.create_object("skeleton"))
+	for i in range(2):
+		var sk = EnemyManager.create_object("skeleton")
+		enemies_node.add_child(sk)
+		sk.data.connect("acted", self, "_on_enemy_acted")
 	
 	#Update enemies positions
 	var x = 0
@@ -129,10 +136,14 @@ func apply_effects(effects: Array, effect_args: Array):
 			print("Effect %s not found" % effects[i])
 			assert(false)
 
-
 func combination_failure():
 	pass
+	
 
+func _on_enemy_acted(action, args):
+	print("heyho ", action)
+	if action == "damage":
+		player.damage(args.value)
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)

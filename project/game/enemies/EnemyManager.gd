@@ -18,7 +18,7 @@ func create_object(enemy_type):
 				 "connections": enemy_data.connections,
 				 "first_state": enemy_data.first_state,
 				}
-	enemy.setup(logic, load(enemy_data.image))
+	enemy.setup(logic, load(enemy_data.image), enemy_data)
 	return enemy
 
 

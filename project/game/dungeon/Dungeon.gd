@@ -61,7 +61,7 @@ func new_battle(battle_info: Dictionary):
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
 	battle.setup(player, battle_info)
-	battle.grid.connect("combination_made", self, "_on_Grid_combination_made")
+	battle.connect("combination_made", self, "_on_Battle_combination_made")
 
 
 func _on_room_entered(room: Room):
@@ -70,7 +70,7 @@ func _on_room_entered(room: Room):
 		current_floor.hide()
 
 
-func _on_Grid_combination_made(reagent_matrix: Array):
+func _on_Battle_combination_made(reagent_matrix: Array):
 	print(reagent_matrix)
 	var grid_size = battle.grid.size
 	
@@ -101,4 +101,4 @@ func _on_Grid_combination_made(reagent_matrix: Array):
 					return
 	
 	print("No combinations found!")
-	battle.combination_failure()
+	battle.apply_effects(["combination_failure"])

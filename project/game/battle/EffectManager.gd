@@ -1,5 +1,8 @@
 extends Node
 
+signal effect_resolved
+signal target_required
+
 var enemies : Array
 var player : Player
 
@@ -10,13 +13,15 @@ func setup(_player: Player, _enemies: Array):
 
 
 func get_target() -> Character:
-	# Replace with target aquirement
 	return enemies[0]
 
 
+func combination_failure():
+	pass
+
+
 func damage(amount: int):
-	var target = get_target()
-	target.take_damage(amount)
+	pass
 
 
 func damage_all(amount: int):

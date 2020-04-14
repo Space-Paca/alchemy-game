@@ -2,13 +2,13 @@ tool
 extends Control
 
 signal cleaned
-signal combination_made
+signal create_pressed(reagent_matrix)
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const MARGIN = 30
 
 onready var container = $GridContainer
-onready var recipe_button = $CreateRecipe 
+onready var create_button = $CreateButton 
 
 var discard_bag = null # Set by parent
 var size : int
@@ -28,9 +28,9 @@ func set_grid(_size: int):
 	var slot = container.get_child(1)
 	
 	#Position button correctly
-	var scale = recipe_button.rect_scale.x
-	recipe_button.rect_position.y = slot.rect_size.y * size + MARGIN
-	recipe_button.rect_position.x = slot.rect_size.x*size/2 - recipe_button.rect_size.x*scale/2
+	var scale = create_button.rect_scale.x
+	create_button.rect_position.y = slot.rect_size.y * size + MARGIN
+	create_button.rect_position.x = slot.rect_size.x*size/2 - create_button.rect_size.x*scale/2
 
 
 func is_empty():
@@ -41,7 +41,7 @@ func is_empty():
 	return true
 
 
-func clean_grid():
+func clean():
 	var reagents_to_be_discarded = []
 	for slot in container.get_children():
 		var reagent = slot.get_reagent()
@@ -62,14 +62,14 @@ func clean_grid():
 
 
 func disable():
-	recipe_button.disabled = true
+	create_button.disabled = true
 
 
 func enable():
-	recipe_button.disabled = false
+	create_button.disabled = false
 
 
-func _on_CreateRecipe_pressed():
+func _on_CreateButton_pressed():
 	if is_empty():
 		return
 	
@@ -86,5 +86,4 @@ func _on_CreateRecipe_pressed():
 			child_index += 1
 		reagent_matrix.append(line)
 	
-	emit_signal("combination_made", reagent_matrix)
-	clean_grid()
+	emit_signal("create_pressed", reagent_matrix)

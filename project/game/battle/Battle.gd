@@ -1,5 +1,7 @@
 extends Node2D
 
+signal combination_made(reagent_matrix)
+
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
 onready var reagents = $Reagents
@@ -62,6 +64,7 @@ func setup_player(_player):
 
 	disable_player()
 
+
 func setup_player_ui():
 	#Centralize grid
 	grid.rect_position.x = get_viewport().size.x/2 - grid.get_width()*grid.rect_scale.x/2
@@ -69,6 +72,7 @@ func setup_player_ui():
 	hand.position.x = get_viewport().size.x/2 - hand.get_width()*hand.scale.x/2
 	#Fix pass-turn button position
 	pass_turn_button.rect_position.x = hand.global_position.x + hand.get_width()*hand.scale.x + 20
+
 
 func setup_enemy(battle_info):
 	#Clean up dummy enemies
@@ -109,7 +113,7 @@ func new_player_turn():
 func new_enemy_turn():
 	disable_player()
 	if not grid.is_empty():
-		grid.clean_grid()
+		grid.clean()
 		yield(grid, "cleaned")
 
 	for enemy in enemies_node.get_children():
@@ -129,21 +133,25 @@ func enable_player():
 	grid.enable()
 
 
-func apply_effects(effects: Array, effect_args: Array):
+func apply_effects(effects: Array, effect_args: Array = [[]]):
 	for i in range(effects.size()):
 		if effect_manager.has_method(effects[i]):
-			effect_manager.callv(effects[i], effect_args[i])
+			var function_state = (effect_manager.callv(effects[i],
+					effect_args[i]) as GDScriptFunctionState)
+			if function_state and function_state.is_valid():
+				yield(effect_manager, "effect_resolved")
 		else:
 			print("Effect %s not found" % effects[i])
 			assert(false)
-
-func combination_failure():
-	pass
 	
+	grid.clean()
+	enable_player()
+
 
 func _on_enemy_acted(action, args):
 	if action == "damage":
 		player.damage(args.value)
+
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)
@@ -151,3 +159,15 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 func _on_PassTurnButton_pressed():
 	new_enemy_turn()
+
+
+func _on_Grid_create_pressed(reagent_matrix):
+	disable_player()
+	emit_signal("combination_made", reagent_matrix)
+
+
+func _on_EffectManager_target_required(function_state: GDScriptFunctionState):
+#	disable_player()
+	print(function_state)
+	
+#	function_state.resume(enemies_node.get_child(0))

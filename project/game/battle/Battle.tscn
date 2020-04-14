@@ -54,5 +54,7 @@ position = Vector2( 140.295, -8.35089 )
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
 position = Vector2( 35.1618, 22.8551 )
 scale = Vector2( 0.4, 0.4 )
+[connection signal="target_required" from="EffectManager" to="." method="_on_EffectManager_target_required"]
+[connection signal="create_pressed" from="Grid" to="." method="_on_Grid_create_pressed"]
 [connection signal="reagent_discarded" from="DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
 [connection signal="pressed" from="PassTurnButton" to="." method="_on_PassTurnButton_pressed"]

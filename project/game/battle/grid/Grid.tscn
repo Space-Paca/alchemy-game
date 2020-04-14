@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/images/ui/button_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/button_pressed.png" type="Texture" id=5]
 
-
 [node name="Grid" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,7 +20,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreateRecipe" type="TextureButton" parent="."]
+[node name="CreateButton" type="TextureButton" parent="."]
 margin_left = 124.8
 margin_top = 519.0
 margin_right = 466.8
@@ -34,4 +33,4 @@ texture_disabled = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="CreateRecipe" to="." method="_on_CreateRecipe_pressed"]
+[connection signal="pressed" from="CreateButton" to="." method="_on_CreateButton_pressed"]

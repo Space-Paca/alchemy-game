@@ -72,6 +72,11 @@ autoplay = "idle"
 anims/attack = SubResource( 1 )
 anims/idle = SubResource( 2 )
 
+[node name="Button" type="Button" parent="Sprite"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = 68.0
 margin_top = 296.0
@@ -110,3 +115,4 @@ text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]

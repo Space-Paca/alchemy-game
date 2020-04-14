@@ -142,10 +142,8 @@ func enable_player():
 func apply_effects(effects: Array, effect_args: Array = [[]]):
 	for i in range(effects.size()):
 		if effect_manager.has_method(effects[i]):
-			var function_state = (effect_manager.callv(effects[i],
-					effect_args[i]) as GDScriptFunctionState)
-			if function_state and function_state.is_valid():
-				yield(effect_manager, "effect_resolved")
+			effect_manager.callv(effects[i], effect_args[i])
+			yield(effect_manager, "effect_resolved")
 		else:
 			print("Effect %s not found" % effects[i])
 			assert(false)
@@ -169,10 +167,3 @@ func _on_PassTurnButton_pressed():
 func _on_Grid_create_pressed(reagent_matrix):
 	disable_player()
 	emit_signal("combination_made", reagent_matrix)
-
-
-func _on_EffectManager_target_required(function_state: GDScriptFunctionState):
-#	disable_player()
-	print(function_state)
-	
-#	function_state.resume(enemies_node.get_child(0))

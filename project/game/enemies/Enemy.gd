@@ -1,8 +1,11 @@
 extends Character
+class_name Enemy
 
 signal acted
+signal selected
 
 onready var animation = $Sprite/AnimationPlayer
+onready var button = $Sprite/Button
 onready var health_bar = $HealthBar
 onready var intent_texture = $Intent
 onready var intent_animation = $Intent/AnimationPlayer
@@ -16,6 +19,10 @@ const INTENT_H = 70
 
 var logic_
 var data
+
+
+func _ready():
+	set_button_disabled(true)
 
 
 func act():
@@ -107,3 +114,12 @@ func get_width():
 
 func get_height():
 	return sprite.texture.get_height()
+
+
+func set_button_disabled(disable: bool):
+	button.visible = not disable
+	button.disabled = disable
+
+
+func _on_Button_pressed():
+	emit_signal("selected", self)

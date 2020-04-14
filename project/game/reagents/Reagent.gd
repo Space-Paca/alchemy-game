@@ -16,11 +16,11 @@ var image_path : String
 func _ready():
 	texture_rect.texture = load(image_path)
 
-func enable_drag():
+func enable_dragging():
 	can_drag = true
 	disable_drag = false
 
-func disable_drag():
+func disable_dragging():
 	can_drag = false
 	disable_drag = true
 

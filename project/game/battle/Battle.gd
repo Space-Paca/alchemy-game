@@ -128,7 +128,7 @@ func disable_player():
 	grid.disable()
 	
 	for reagent in reagents.get_children():
-		reagent.disable_drag()
+		reagent.disable_dragging()
 
 
 func enable_player():
@@ -136,7 +136,7 @@ func enable_player():
 	grid.enable()
 	
 	for reagent in reagents.get_children():
-		reagent.enable_drag()
+		reagent.enable_dragging()
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):

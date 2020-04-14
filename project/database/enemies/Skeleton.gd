@@ -26,7 +26,6 @@ func get_defense():
 	return randi()%(defense[1]-defense[0]+1)+defense[0]
 
 func act(state):
-	print(state)
 	if state == "attack":
 		emit_signal("acted", "damage", {"value": get_damage()})
 	elif state == "defend":

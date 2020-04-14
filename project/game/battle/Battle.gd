@@ -141,7 +141,6 @@ func combination_failure():
 	
 
 func _on_enemy_acted(action, args):
-	print("heyho ", action)
 	if action == "damage":
 		player.damage(args.value)
 

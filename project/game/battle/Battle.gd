@@ -126,11 +126,17 @@ func new_enemy_turn():
 func disable_player():
 	pass_turn_button.disabled = true
 	grid.disable()
+	
+	for reagent in reagents.get_children():
+		reagent.disable_drag()
 
 
 func enable_player():
 	pass_turn_button.disabled = false
 	grid.enable()
+	
+	for reagent in reagents.get_children():
+		reagent.enable_drag()
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
@@ -146,7 +152,6 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 	
 	grid.clean()
 	enable_player()
-
 
 func _on_enemy_acted(action, args):
 	if action == "damage":

@@ -93,13 +93,14 @@ func set_intent(texture, value):
 	
 	#Add value
 	if value:
-		intent_texture.rect_position.x -= 30
+		intent_texture.rect_position.x -= 10
 		intent_value.text = str(value)
+		intent_value.rect_position.y = - 40
+		intent_value.rect_position.x = floor(get_width()/2.0) + 20
+									   
 	else:
 		intent_value.text = ""
-		intent_value.rect_position.y = - 50
-		intent_value.rect_position.x = intent_texture.rect_position.x + \
-									   INTENT_W * intent_texture.rect_scale.x
+		
 	
 	#Random position for idle animation
 	randomize()

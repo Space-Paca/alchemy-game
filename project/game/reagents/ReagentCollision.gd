@@ -29,4 +29,13 @@ func _input(event):
 					slot.set_reagent(reagent)
 					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
 						reagent.can_drag = false
+				else:
+					#In case there alraedy was a reagent in that slot, switch places
+					var other_reagent = slot.get_reagent()
+					var previous_slot = reagent.slot
+					other_reagent.slot = null
+					slot.set_reagent(reagent)
+					previous_slot.set_reagent(other_reagent)
+					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
+						reagent.can_drag = false
 

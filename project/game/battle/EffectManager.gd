@@ -25,6 +25,10 @@ func resolve():
 
 
 func require_target():
+	if enemies.size() == 1:
+		target = enemies[0]
+		return
+	
 	for enemy in enemies:
 		enemy.set_button_disabled(false)
 	
@@ -34,12 +38,13 @@ func require_target():
 
 
 func combination_failure():
-	damage_all(5)
+	damage(10)
 
 
 func damage(amount: int):
-	require_target()
-	yield(self, "target_set")
+	var func_state = (require_target() as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(self, "target_set")
 	
 	target.take_damage(amount)
 	resolve()

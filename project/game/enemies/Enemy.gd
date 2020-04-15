@@ -25,6 +25,10 @@ func _ready():
 	set_button_disabled(true)
 
 
+func take_damage(damage):
+	.take_damage(damage)
+	health_bar.value = hp
+
 func act():
 	var state = logic_.get_current_state()
 	data.act(state)

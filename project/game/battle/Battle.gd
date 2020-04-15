@@ -60,10 +60,10 @@ func setup_player(_player):
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
-	hand.set_hand(4)
+	hand.set_hand(8)
 	
 	#Setup player grid
-	grid.set_grid(2)
+	grid.set_grid(3)
 	
 	player.set_hud(player_ui)
 	player_ui.set_life(player.max_hp, player.hp)

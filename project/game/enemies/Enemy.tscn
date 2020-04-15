@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/enemies/intents/random.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -26,9 +28,11 @@ tracks/0/keys = {
 resource_name = "idle"
 
 [sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
 [sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
 [sub_resource type="Animation" id=5]

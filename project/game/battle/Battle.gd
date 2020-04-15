@@ -90,12 +90,14 @@ func setup_enemy(battle_info):
 		var enemy_node = EnemyManager.create_object(enemy)
 		enemies_node.add_child(enemy_node)
 		enemy_node.data.connect("acted", self, "_on_enemy_acted")
+		enemy_node.connect("died", self, "_on_enemy_died")
 	
 	#Enemy example, remove when battle_info works
 	for i in range(2):
 		var sk = EnemyManager.create_object("skeleton")
 		enemies_node.add_child(sk)
 		sk.data.connect("acted", self, "_on_enemy_acted")
+		sk.connect("died", self, "_on_enemy_died")
 	
 	#Update enemies positions
 	var x = 0
@@ -164,6 +166,8 @@ func _on_enemy_acted(action, args):
 	if action == "damage":
 		player.damage(args.value)
 
+func _on_enemy_died(enemy):
+	enemies_node.remove_child(enemy)
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)

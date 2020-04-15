@@ -1,6 +1,8 @@
 extends Node
 class_name Character
 
+signal died
+
 var max_hp : int
 var hp : int
 var shield : int
@@ -22,3 +24,4 @@ func take_damage(damage):
 
 func die():
 	print(char_name, " dead")
+	emit_signal("died", self)

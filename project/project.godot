@@ -77,6 +77,7 @@ config/icon="res://assets/images/slime-icon.png"
 EnemyManager="*res://game/enemies/EnemyManager.gd"
 ReagentManager="*res://game/reagents/ReagentManager.gd"
 RecipeManager="*res://database/RecipeManager.gd"
+AudioManager="*res://game/audio/AudioManager.tscn"
 
 [display]
 

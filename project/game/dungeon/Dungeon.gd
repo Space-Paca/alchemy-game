@@ -16,6 +16,7 @@ func _ready():
 	randomize()
 	create_combinations()
 	create_floor(0)
+	AudioManager.play_bgm("map")
 
 
 func create_combinations():

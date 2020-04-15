@@ -27,6 +27,8 @@ func setup(_player: Player, battle_info: Dictionary):
 	setup_enemy(battle_info)
 	
 	effect_manager.setup(_player, enemies_node.get_children())
+	
+	setup_audio()
 
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -109,6 +111,8 @@ func setup_enemy(battle_info):
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
 
+func setup_audio():
+	AudioManager.play_bgm("battle", 3)
 
 func new_player_turn():
 	if hand.available_slot_count() > 0:

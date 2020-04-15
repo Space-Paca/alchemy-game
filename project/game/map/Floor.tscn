@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/map/Floor.gd" type="Script" id=1]
 
-[node name="Dungeon" type="Control"]
+[node name="Floor" type="Control"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -15,6 +15,10 @@ func setup(_player: Player, _enemies: Array):
 		enemy.connect("selected", self, "_on_enemy_selected")
 
 
+func remove_enemy(enemy: Enemy):
+	enemies.erase(enemy)
+
+
 func resolve():
 	yield(get_tree(), "physics_frame")
 	emit_signal("effect_resolved")

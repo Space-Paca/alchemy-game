@@ -159,15 +159,20 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 	grid.clean()
 	enable_player()
 
+
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
+
 
 func _on_enemy_acted(action, args):
 	if action == "damage":
 		player.damage(args.value)
 
+
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
+	effect_manager.remove_enemy(enemy)
+
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)

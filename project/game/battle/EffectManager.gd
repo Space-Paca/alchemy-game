@@ -16,6 +16,7 @@ func setup(_player: Player, _enemies: Array):
 
 
 func resolve():
+	yield(get_tree(), "physics_frame")
 	emit_signal("effect_resolved")
 
 
@@ -29,7 +30,7 @@ func require_target():
 
 
 func combination_failure():
-	damage(5)
+	damage_all(5)
 
 
 func damage(amount: int):

@@ -1,6 +1,8 @@
 extends Node
 
-
+const MUTE_DB = -100
+const NORMAL_DB = 0
+const MAX_LAYERS = 3
 const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 			  "battle-l2": preload("res://assets/audio/bgm/battle_layer_2.ogg"),
 			  "battle-l3": preload("res://assets/audio/bgm/battle_layer_3.ogg"),
@@ -27,12 +29,17 @@ func play_bgm(name, layers = false):
 		$BGMPlayer1.stream = BGMS[name]
 		$BGMPlayer1.play()
 	else:
-		for i in range(1, layers):
+		for i in range(1, layers + 1):
 			var player = get_node("BGMPlayer"+str(i))
 			player.stream = get_bgm_layer(name, i)
 			player.play()
-	
 
 func stop_bgm():
-	for i in range(1, 3):
+	for i in range(1, MAX_LAYERS + 1):
 		get_node("BGMPlayer"+str(i)).stop()
+
+func stop_bgm_layer(layer):
+	get_node("BGMPlayer"+str(layer)).volume_db = MUTE_DB
+
+func play_bgm_layer(layer):
+	get_node("BGMPlayer"+str(layer)).volume_db = NORMAL_DB

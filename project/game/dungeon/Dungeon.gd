@@ -4,7 +4,7 @@ onready var player = $Player
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
-const FLOOR_SIZE := [10, 20, 30]
+const FLOOR_SIZE := [4, 20, 30]
 
 var battle : Node
 var combinations := {}
@@ -67,7 +67,7 @@ func new_battle(encounter: Encounter):
 
 
 func _on_room_entered(room: Room):
-	if room.type == Room.Type.MONSTER:
+	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
 		new_battle(room.encounter)
 		current_floor.hide()
 

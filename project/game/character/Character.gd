@@ -18,10 +18,10 @@ func init(_name: String, _max_hp: int):
 
 func take_damage(damage):
 	#Block damage with shield
-	damage = max(damage - shield, 0)
+	var unblocked_damage = max(damage - shield, 0)
 	shield = max(shield - damage, 0)
 	
-	hp -= damage
+	hp -= unblocked_damage
 	if hp <= 0:
 		hp = 0
 		die()

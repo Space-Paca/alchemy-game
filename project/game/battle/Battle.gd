@@ -15,6 +15,7 @@ onready var player_ui = $PlayerUI
 const ENEMY_MARGIN = 10
 
 var player
+var ended = false
 
 
 func setup(_player: Player, encounter: Encounter):
@@ -110,6 +111,9 @@ func setup_audio():
 	AudioManager.play_bgm("battle", 3)
 
 func new_player_turn():
+	if ended:
+		return
+	
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
@@ -139,6 +143,9 @@ func disable_player():
 
 
 func enable_player():
+	if ended:
+		return
+	
 	pass_turn_button.disabled = false
 	grid.enable()
 	
@@ -174,8 +181,13 @@ func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
 
+
 func _on_player_died(_player):
 	print("GAME OVER")
+	ended = true
+	disable_player()
+	add_child(load("res://game/battle/screens/GameOver.tscn").instance())
+
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)

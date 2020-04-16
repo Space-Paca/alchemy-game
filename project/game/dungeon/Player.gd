@@ -24,12 +24,15 @@ func add_reagent(type):
 func set_hud(_hud):
 	hud = _hud
 
-func damage(value):
-	take_damage(value)
-	hud.take_damage(value)
+func take_damage(value):
+	.take_damage(value)
+	hud.update_life(self)
 	hud.update_status(self)
 
 func gain_shield(value):
 	.gain_shield(value)
 	hud.update_status(self)
 
+func reset_status():
+	shield = 0
+	hud.update_status(self)

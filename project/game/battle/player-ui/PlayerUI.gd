@@ -7,14 +7,8 @@ func set_life(max_hp, hp):
 	health_bar.max_value = max_hp
 	health_bar.value = hp
 
-func take_damage(value):
-	value = min(health_bar.value, value)
-	health_bar.value -= value
-	update_effects()
-
-func heal(value):
-	value = min(health_bar.max_value - health_bar.value, value)
-	health_bar.value += value
+func update_life(player):
+	$HealthBar.value = player.hp
 	update_effects()
 
 func update_effects():
@@ -23,6 +17,8 @@ func update_effects():
 func update_status(player):
 	if player.shield > 0:
 		$StatusBar.set_status("shield", player.shield)
+	else:
+		$StatusBar.remove_status("shield")
 
 func update_audio():
 	var percent = health_bar.value / float(health_bar.max_value)

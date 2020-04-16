@@ -112,6 +112,8 @@ func new_player_turn():
 	if ended:
 		return
 	
+	player.reset_status()
+	
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
@@ -178,7 +180,7 @@ func _on_reagent_drag(reagent):
 
 func _on_enemy_acted(action, args):
 	if action == "damage":
-		player.damage(args.value)
+		player.take_damage(args.value)
 	elif action == "shield":
 		args.target.gain_shield(args.value)
 

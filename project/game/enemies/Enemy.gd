@@ -32,12 +32,17 @@ func take_damage(damage):
 	update_status_bar()
 
 
-func shield(value):
-	.shield(value)
+func gain_shield(value):
+	.gain_shield(value)
 	update_status_bar()
 
+func reset_status():
+	shield = 0
+	update_status_bar()
 
 func act():
+	reset_status()
+	
 	var state = logic_.get_current_state()
 	data.act(state)
 	animation.play("attack")

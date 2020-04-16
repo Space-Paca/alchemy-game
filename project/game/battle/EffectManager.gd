@@ -51,7 +51,7 @@ func damage(amount: int):
 
 
 func damage_all(amount: int):
-	for enemy in enemies:
+	for enemy in enemies.duplicate():
 		(enemy as Enemy).take_damage(amount)
 	
 	resolve()

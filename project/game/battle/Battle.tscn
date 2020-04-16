@@ -26,6 +26,7 @@ rect_scale = Vector2( 0.7, 0.7 )
 [node name="Hand" parent="." instance=ExtResource( 4 )]
 position = Vector2( 404.112, 476.26 )
 scale = Vector2( 0.557804, 0.567007 )
+size = 10
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
 position = Vector2( -1.67017, 577.883 )

@@ -31,9 +31,11 @@ func take_damage(damage):
 	health_bar.value = hp
 	update_status_bar()
 
+
 func shield(value):
 	.shield(value)
 	update_status_bar()
+
 
 func act():
 	var state = logic_.get_current_state()
@@ -46,11 +48,13 @@ func act():
 	
 	update_intent()
 
+
 func update_status_bar():
 	if shield > 0:
 		$StatusBar.set_status("shield", shield)
 	else:
 		$StatusBar.remove_status("shield")
+
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)

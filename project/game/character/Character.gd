@@ -26,6 +26,7 @@ func take_damage(damage):
 		hp = 0
 		die()
 
+
 func shield(value):
 	shield += value
 	

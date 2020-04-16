@@ -95,7 +95,7 @@ func setup_enemy(battle_info):
 		enemy_node.connect("died", self, "_on_enemy_died")
 	
 	#Enemy example, remove when battle_info works
-	for i in range(2):
+	for _i in range(2):
 		var sk = EnemyManager.create_object("skeleton")
 		enemies_node.add_child(sk)
 		sk.data.connect("acted", self, "_on_enemy_acted")

@@ -1,6 +1,6 @@
 extends Resource
 class_name Encounter
 
-export(bool) var is_boss
+export(bool) var is_boss = false
 export(int, 1, 3) var level = 1
-export(Array, String, "skeleton") var enemies
+export(Array, String, "skeleton", "slime") var enemies

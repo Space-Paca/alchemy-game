@@ -4,7 +4,7 @@ onready var player = $Player
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
-const FLOOR_SIZE := [4, 20, 30]
+const FLOOR_SIZE := [10, 20, 30]
 
 var battle : Node
 var combinations := {}

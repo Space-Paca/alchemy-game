@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/character/StatusBar.gd" type="Script" id=1]
+
+[node name="StatusBar" type="HBoxContainer"]
+margin_left = 110.803
+margin_top = 325.412
+margin_right = 150.803
+margin_bottom = 365.412
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -12,6 +12,7 @@ onready var intent_animation = $Intent/AnimationPlayer
 onready var intent_value = $Value
 onready var sprite = $Sprite
 
+const STATUS_BAR_MARGIN = 40
 const HEALTH_BAR_MARGIN = 10
 const INTENT_MARGIN = 10
 const INTENT_W = 60
@@ -46,7 +47,10 @@ func act():
 	update_intent()
 
 func update_status_bar():
-	print("shield ", shield)
+	if shield > 0:
+		$StatusBar.set_status("shield", shield)
+	else:
+		$StatusBar.remove_status("shield")
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
@@ -79,9 +83,12 @@ func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
+	#Update health bar position
 	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x/2
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
-
+	#Update status bar position
+	$StatusBar.rect_position.x = w/2 - $StatusBar.rect_size.x/2
+	$StatusBar.rect_position.y = $HealthBar.rect_position.y + STATUS_BAR_MARGIN
 
 func set_intent(texture, value):	
 	intent_texture.texture = texture

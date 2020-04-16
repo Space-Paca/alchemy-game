@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/enemies/intents/random.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
+[ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -119,4 +120,6 @@ text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StatusBar" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]

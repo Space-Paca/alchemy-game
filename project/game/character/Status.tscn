@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/character/Status.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 67
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Status" type="HBoxContainer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="."]
+margin_right = 45.0
+margin_bottom = 45.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="."]
+margin_left = 49.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}

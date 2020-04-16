@@ -40,7 +40,9 @@ func get_random_encounter() -> Encounter:
 		encounter_pool.shuffle()
 		encounter_index = 0
 	
-	return encounter_pool[encounter_index]
+	var encounter = encounter_pool[encounter_index]
+	encounter_index += 1
+	return encounter
 
 
 func get_random_boss_encounter(level: int) -> Encounter:

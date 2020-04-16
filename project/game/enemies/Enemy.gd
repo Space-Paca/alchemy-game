@@ -28,6 +28,11 @@ func _ready():
 func take_damage(damage):
 	.take_damage(damage)
 	health_bar.value = hp
+	update_status_bar()
+
+func shield(value):
+	.shield(value)
+	update_status_bar()
 
 func act():
 	var state = logic_.get_current_state()
@@ -40,13 +45,15 @@ func act():
 	
 	update_intent()
 
+func update_status_bar():
+	print("shield ", shield)
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_max_hp()
 	set_image(new_texture)
 
-	data = enemy_data
+	data = enemy_data #Store enemy data
 
 
 func set_logic(enemy_logic):

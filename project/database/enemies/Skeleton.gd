@@ -1,4 +1,4 @@
-extends Reference
+extends SampleEnemyData
 
 signal acted
 
@@ -8,7 +8,7 @@ export var intents = {"attack": preload("res://assets/images/enemies/intents/att
 					 }
 export var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
 export var name = "Skelly"
-export var hp = 10
+export var hp = 30
 export var damage = [10, 12]
 export var defense = [4, 6]
 
@@ -35,13 +35,13 @@ func act(state):
 	if state == "attack":
 		emit_signal("acted", "damage", {"value": next_value})
 	elif state == "defend":
-		emit_signal("acted", "shield", {"value": next_value})
+		emit_signal("acted", "shield", {"value": next_value, "target": enemy_ref})
 	elif state == "random":
 		randomize()
 		if randf() > .5:
 			emit_signal("acted", "damage", {"value": get_damage() + 2})
 		else:
-			emit_signal("acted", "shield", {"value": get_defense() + 2})
+			emit_signal("acted", "shield", {"value": get_defense() + 2, "target": enemy_ref})
 
 func get_intent_data(state):
 	var data = {}

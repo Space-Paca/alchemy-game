@@ -59,8 +59,9 @@ func setup_player(_player):
 	#Setup player grid
 	grid.set_grid(player.grid_size)
 	
+	player.connect("died", self, "_on_player_died")
+	
 	player.set_hud(player_ui)
-	player_ui.set_life(player.max_hp, player.hp)
 
 	disable_player()
 
@@ -72,6 +73,8 @@ func setup_player_ui():
 	hand.position.x = get_viewport().size.x/2 - hand.get_width()*hand.scale.x/2
 	#Fix pass-turn button position
 	pass_turn_button.rect_position.x = hand.global_position.x + hand.get_width()*hand.scale.x + 20
+	
+	player_ui.set_life(player.max_hp, player.hp)
 
 
 func setup_enemy(battle_info):
@@ -169,6 +172,8 @@ func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
 
+func _on_player_died(_player):
+	print("GAME OVER")
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)

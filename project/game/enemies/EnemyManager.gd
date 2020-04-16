@@ -1,6 +1,9 @@
 extends Node
 
-const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd"}
+const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd",
+				  "robot": "res://database/enemies/Robot.gd",
+				  "wolf": "res://database/enemies/Wolf.gd",
+				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 
 

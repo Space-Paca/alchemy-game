@@ -63,13 +63,27 @@ func new_battle(encounter: Encounter):
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
 	battle.setup(player, encounter)
+# warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
+# warning-ignore:return_value_discarded
+	battle.connect("won", self, "_on_Battle_won")
 
 
 func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
 		new_battle(room.encounter)
 		current_floor.hide()
+
+
+func _on_Battle_won(is_boss):
+	battle = null
+	
+	if is_boss:
+		current_floor.queue_free()
+		floor_level += 1
+		create_floor(floor_level)
+	else:
+		current_floor.show()
 
 
 func _on_Battle_combination_made(reagent_matrix: Array):

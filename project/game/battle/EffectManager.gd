@@ -38,7 +38,7 @@ func require_target():
 
 
 func combination_failure():
-	damage(10)
+	damage_all(10)
 
 
 func damage(amount: int):

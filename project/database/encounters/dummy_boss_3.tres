@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 is_boss = true
 level = 3
-enemies = [ "", "", "" ]
+enemies = [ "skeleton", "skeleton", "skeleton" ]

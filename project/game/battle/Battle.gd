@@ -1,5 +1,6 @@
 extends Node2D
 
+signal won(is_boss)
 signal combination_made(reagent_matrix)
 
 onready var effect_manager = $EffectManager
@@ -14,8 +15,9 @@ onready var player_ui = $PlayerUI
 
 const ENEMY_MARGIN = 10
 
-var player
 var ended = false
+var is_boss
+var player
 
 
 func setup(_player: Player, encounter: Encounter):
@@ -79,6 +81,9 @@ func setup_player_ui():
 
 
 func setup_enemy(encounter: Encounter):
+	if encounter.is_boss:
+		is_boss = true
+	
 	#Clean up dummy enemies
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
@@ -89,13 +94,6 @@ func setup_enemy(encounter: Encounter):
 		enemies_node.add_child(enemy_node)
 		enemy_node.data.connect("acted", self, "_on_enemy_acted")
 		enemy_node.connect("died", self, "_on_enemy_died")
-	
-	#Enemy example, remove when battle_info works
-#	for i in range(2):
-#		var sk = EnemyManager.create_object("skeleton")
-#		enemies_node.add_child(sk)
-#		sk.data.connect("acted", self, "_on_enemy_acted")
-#		sk.connect("died", self, "_on_enemy_died")
 	
 	#Update enemies positions
 	var x = 0
@@ -166,6 +164,14 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 	enable_player()
 
 
+func win():
+	ended = true
+	disable_player()
+	var win_screen = load("res://game/battle/screens/Win.tscn").instance()
+	add_child(win_screen)
+	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
+
+
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
 
@@ -180,6 +186,9 @@ func _on_enemy_acted(action, args):
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
+	
+	if not enemies_node.get_child_count():
+		win()
 
 
 func _on_player_died(_player):
@@ -200,3 +209,9 @@ func _on_PassTurnButton_pressed():
 func _on_Grid_create_pressed(reagent_matrix):
 	disable_player()
 	emit_signal("combination_made", reagent_matrix)
+
+
+func _on_win_screen_continue_pressed():
+	AudioManager.play_bgm("map")
+	emit_signal("won", is_boss)
+	queue_free()

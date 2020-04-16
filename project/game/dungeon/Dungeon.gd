@@ -9,14 +9,13 @@ const FLOOR_SIZE := [10, 20, 30]
 var battle : Node
 var combinations := {}
 var current_floor : Floor
-var floor_level := 0
+var floor_level := 1
 
 
 func _ready():
 	randomize()
 	create_combinations()
-	create_floor(0)
-	
+	create_floor(1)
 	AudioManager.play_bgm("map")
 
 
@@ -34,9 +33,10 @@ func create_combinations():
 
 func create_floor(level: int):
 	current_floor = FLOOR_SCENE.instance()
-	current_floor.room_amount = FLOOR_SIZE[level]
+	current_floor.room_amount = FLOOR_SIZE[level - 1]
+	current_floor.level = floor_level
 	if current_floor.connect("room_entered", self, "_on_room_entered") != OK:
-		print("Error")
+		print("create_floor: Error")
 	add_child(current_floor)
 
 
@@ -58,17 +58,17 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	return false
 
 
-func new_battle(battle_info: Dictionary):
+func new_battle(encounter: Encounter):
 	assert(battle == null)
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
-	battle.setup(player, battle_info)
+	battle.setup(player, encounter)
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 
 
 func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER:
-		new_battle(room.info)
+		new_battle(room.encounter)
 		current_floor.hide()
 
 

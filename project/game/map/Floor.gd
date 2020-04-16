@@ -20,10 +20,14 @@ var rooms := {}
 var deadend_rooms := []
 var from_queue := []
 var pos_queue := []
+var level : int
 
 
 func _ready():
 	randomize()
+	
+	EncounterManager.set_random_encounter_pool(level)
+	
 	create_room(INITIAL_ROOM, Vector2())
 	create_next_room()
 	
@@ -47,6 +51,7 @@ func create_room(from : int, position : Vector2):
 		var previous_room = rooms[previous_pos]
 		previous_room.exits[OPPOSITE[from]] = true
 		room.set_type(Room.Type.MONSTER)
+		room.encounter = EncounterManager.get_random_encounter()
 		if previous_pos != Vector2():
 			room.hide()
 	else:
@@ -93,8 +98,11 @@ func assign_special_rooms():
 		assert(deadend_rooms.size() >= 2)
 	
 	deadend_rooms.shuffle()
-	(deadend_rooms.pop_front() as Room).set_type(Room.Type.BOSS)
+	
 	(deadend_rooms.pop_front() as Room).set_type(Room.Type.SHOP)
+	var boss_room = deadend_rooms.pop_front() as Room
+	boss_room.set_type(Room.Type.BOSS)
+	boss_room.encounter = EncounterManager.get_random_boss_encounter(level)
 
 
 func _on_room_entered(room: Room):

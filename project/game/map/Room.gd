@@ -18,7 +18,7 @@ var entrance : int
 var exits := {N: false, W:false, E:false, S:false}
 var position : Vector2
 var type : int
-var info := {"enemies": []}
+var encounter : Encounter
 
 
 func _draw():

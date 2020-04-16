@@ -17,14 +17,14 @@ const ENEMY_MARGIN = 10
 var player
 
 
-func setup(_player: Player, battle_info: Dictionary):
+func setup(_player: Player, encounter: Encounter):
 	setup_nodes()
 
 	setup_player(_player)
 	
 	setup_player_ui()
 
-	setup_enemy(battle_info)
+	setup_enemy(encounter)
 	
 	effect_manager.setup(_player, enemies_node.get_children())
 	
@@ -77,24 +77,24 @@ func setup_player_ui():
 	player_ui.set_life(player.max_hp, player.hp)
 
 
-func setup_enemy(battle_info):
+func setup_enemy(encounter: Encounter):
 	#Clean up dummy enemies
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
 		child.queue_free()
 	
-	for enemy in battle_info.enemies:
+	for enemy in encounter.enemies:
 		var enemy_node = EnemyManager.create_object(enemy)
 		enemies_node.add_child(enemy_node)
 		enemy_node.data.connect("acted", self, "_on_enemy_acted")
 		enemy_node.connect("died", self, "_on_enemy_died")
 	
 	#Enemy example, remove when battle_info works
-	for _i in range(2):
-		var sk = EnemyManager.create_object("skeleton")
-		enemies_node.add_child(sk)
-		sk.data.connect("acted", self, "_on_enemy_acted")
-		sk.connect("died", self, "_on_enemy_died")
+#	for i in range(2):
+#		var sk = EnemyManager.create_object("skeleton")
+#		enemies_node.add_child(sk)
+#		sk.data.connect("acted", self, "_on_enemy_acted")
+#		sk.connect("died", self, "_on_enemy_died")
 	
 	#Update enemies positions
 	var x = 0

@@ -47,25 +47,17 @@ func setup_nodes():
 func setup_player(_player):
 	player = _player
 	
-	#Initial dummy bag
-	for _i in range(3):
-		var reagent = ReagentManager.create_object("common")
-		reagent.connect("started_dragging", self, "_on_reagent_drag")
-		draw_bag.add_reagent(reagent)
-	for _i in range(2):
-		var reagent = ReagentManager.create_object("damaging")
-		reagent.connect("started_dragging", self, "_on_reagent_drag")
-		draw_bag.add_reagent(reagent)
-	for _i in range(2):
-		var reagent = ReagentManager.create_object("defensive")
+	#Setup player bag
+	for reagent_type in player.bag:
+		var reagent = ReagentManager.create_object(reagent_type)
 		reagent.connect("started_dragging", self, "_on_reagent_drag")
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
-	hand.set_hand(8)
+	hand.set_hand(player.hand_size)
 	
 	#Setup player grid
-	grid.set_grid(3)
+	grid.set_grid(player.grid_size)
 	
 	player.set_hud(player_ui)
 	player_ui.set_life(player.max_hp, player.hp)

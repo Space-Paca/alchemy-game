@@ -58,7 +58,7 @@ func damage_all(amount: int):
 
 
 func shield(amount: int):
-	pass
+	player.gain_shield(amount)
 
 
 func cure(amount: int):

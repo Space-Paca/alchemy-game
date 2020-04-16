@@ -27,7 +27,7 @@ func take_damage(damage):
 		die()
 
 
-func shield(value):
+func gain_shield(value):
 	shield += value
 	
 

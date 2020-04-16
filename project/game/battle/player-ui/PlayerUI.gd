@@ -18,8 +18,11 @@ func heal(value):
 	update_effects()
 
 func update_effects():
-	#Add more visual effects here later
 	update_audio()
+
+func update_status(player):
+	if player.shield > 0:
+		$StatusBar.set_status("shield", player.shield)
 
 func update_audio():
 	var percent = health_bar.value / float(health_bar.max_value)

@@ -27,4 +27,9 @@ func set_hud(_hud):
 func damage(value):
 	take_damage(value)
 	hud.take_damage(value)
+	hud.update_status(self)
+
+func gain_shield(value):
+	.gain_shield(value)
+	hud.update_status(self)
 

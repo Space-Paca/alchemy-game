@@ -15,18 +15,21 @@ func init(_name: String, _max_hp: int):
 	hp = max_hp
 	shield = 0
 
+func heal(amount):
+	hp = min(hp + amount, max_hp)
 
 func take_damage(damage):
-	print("damage preshield ",damage)
 	#Block damage with shield
 	var unblocked_damage = max(damage - shield, 0)
 	shield = max(shield - damage, 0)
-	print("damage aftershield ",unblocked_damage)
+	
 	hp -= unblocked_damage
 	if hp <= 0:
 		hp = 0
 		die()
 
+func update_status():
+	shield = 0
 
 func gain_shield(value):
 	shield += value

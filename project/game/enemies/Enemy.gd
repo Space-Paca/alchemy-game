@@ -25,6 +25,9 @@ var data
 func _ready():
 	set_button_disabled(true)
 
+func heal(amount : int):
+	.heal(amount)
+	health_bar.value = hp
 
 func take_damage(damage):
 	.take_damage(damage)
@@ -36,13 +39,11 @@ func gain_shield(value):
 	.gain_shield(value)
 	update_status_bar()
 
-func reset_status():
-	shield = 0
+func update_status():
+	.update_status()
 	update_status_bar()
 
 func act():
-	reset_status()
-	
 	var state = logic_.get_current_state()
 	data.act(state)
 	animation.play("attack")

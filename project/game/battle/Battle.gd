@@ -112,7 +112,7 @@ func new_player_turn():
 	if ended:
 		return
 	
-	player.reset_status()
+	player.update_status()
 	
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
@@ -128,6 +128,7 @@ func new_enemy_turn():
 		yield(grid, "cleaned")
 
 	for enemy in enemies_node.get_children():
+		enemy.update_status()
 		enemy.act()
 		yield(enemy, "acted")
 

@@ -14,7 +14,7 @@ func update_life(player):
 func update_effects():
 	update_audio()
 
-func update_status(player):
+func update_status_bar(player):
 	if player.shield > 0:
 		$StatusBar.set_status("shield", player.shield)
 	else:

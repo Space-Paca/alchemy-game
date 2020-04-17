@@ -63,8 +63,10 @@ func shield(amount: int):
 	resolve()
 
 
-func cure(amount: int):
-	pass
+func heal(amount: int):
+	player.heal(amount)
+	
+	resolve()
 
 
 func _on_enemy_selected(enemy: Enemy):

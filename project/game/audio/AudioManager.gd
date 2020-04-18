@@ -13,8 +13,8 @@ const EXTREME_DANGER_CUTOFF = 2000
 const MASTER_BUS = 0
 const BGM_BUS = 1
 #Fade
-const FADEOUT_SPEED = 30
-const FADEIN_SPEED = 30
+const FADEOUT_SPEED = 20
+const FADEIN_SPEED = 24
 #Volume
 const MUTE_DB = -60
 const NORMAL_DB = 0
@@ -26,6 +26,7 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 			  "battle-l3": preload("res://assets/audio/bgm/battle_layer_3.ogg"),
 			  "map": preload("res://assets/audio/bgm/map.ogg"),
 			 }
+var bgms_last_pos = {"battle": 0, "map":0}
 
 var cur_bgm = null
 
@@ -46,7 +47,7 @@ func play_bgm(name, layers = false):
 	if not layers:
 		$BGMPlayer1.stream = BGMS[name]
 		$BGMPlayer1.volume_db = MUTE_DB
-		$BGMPlayer1.play()
+		$BGMPlayer1.play(bgms_last_pos[name])
 		var duration = (NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED)
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
@@ -55,24 +56,27 @@ func play_bgm(name, layers = false):
 			var player = get_node("BGMPlayer"+str(i))
 			player.stream = get_bgm_layer(name, i)
 			player.volume_db = MUTE_DB
-			player.play()
+			player.play(bgms_last_pos[name])
 			var duration = (NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED)
 			$Tween.interpolate_property(player, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 
 func stop_bgm():
+	remove_bgm_effect()
 	for i in range(1, MAX_LAYERS + 1):
 		var fadein = get_node("BGMPlayer"+str(i))
-		var fadeout = get_node("FadeOutBGMPlayer"+str(i))
-		var pos = fadein.get_playback_position()
-		var vol = fadein.volume_db
-		fadein.stop()
-		fadeout.stop()
-		fadeout.volume_db = vol
-		fadeout.stream = fadein.stream
-		fadeout.play(pos)
-		var duration = (vol - MUTE_DB)/FADEOUT_SPEED
-		$Tween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+		if fadein.is_playing():
+			var fadeout = get_node("FadeOutBGMPlayer"+str(i))
+			var pos = fadein.get_playback_position()
+			bgms_last_pos[cur_bgm] = pos
+			var vol = fadein.volume_db
+			fadein.stop()
+			fadeout.stop()
+			fadeout.volume_db = vol
+			fadeout.stream = fadein.stream
+			fadeout.play(pos)
+			var duration = (vol - MUTE_DB)/FADEOUT_SPEED
+			$Tween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
 

@@ -19,7 +19,6 @@ var ended = false
 var is_boss
 var player
 
-
 func setup(_player: Player, encounter: Encounter):
 	setup_nodes()
 
@@ -79,7 +78,6 @@ func setup_player_ui():
 	
 	player_ui.set_life(player.max_hp, player.hp)
 
-
 func setup_enemy(encounter: Encounter):
 	if encounter.is_boss:
 		is_boss = true
@@ -107,6 +105,7 @@ func setup_enemy(encounter: Encounter):
 
 func setup_audio():
 	AudioManager.play_bgm("battle", 3)
+	player_ui.update_audio()
 
 func new_player_turn():
 	if ended:

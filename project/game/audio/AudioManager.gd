@@ -24,9 +24,14 @@ const MAX_LAYERS = 3
 const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 			  "battle-l2": preload("res://assets/audio/bgm/battle_layer_2.ogg"),
 			  "battle-l3": preload("res://assets/audio/bgm/battle_layer_3.ogg"),
+			  "boss1-l1": preload("res://assets/audio/bgm/boss_1_layer_1.ogg"),
+			  "boss1-l2": preload("res://assets/audio/bgm/boss_1_layer_2.ogg"),
+			  "boss1-l3": preload("res://assets/audio/bgm/boss_1_layer_3.ogg"),
+			  "heart-beat": preload("res://assets/audio/bgm/battle_heart_beat.ogg"),
 			  "map": preload("res://assets/audio/bgm/map.ogg"),
+			  "shop": preload("res://assets/audio/bgm/shop.ogg"),
 			 }
-var bgms_last_pos = {"battle": 0, "map":0}
+var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 
 var cur_bgm = null
 

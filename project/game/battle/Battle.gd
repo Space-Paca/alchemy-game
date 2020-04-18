@@ -30,7 +30,7 @@ func setup(_player: Player, encounter: Encounter):
 	
 	effect_manager.setup(_player, enemies_node.get_children())
 	
-	setup_audio()
+	setup_audio(encounter)
 
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -103,8 +103,11 @@ func setup_enemy(encounter: Encounter):
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
 
-func setup_audio():
-	AudioManager.play_bgm("battle", 3)
+func setup_audio(encounter : Encounter):
+	if encounter.is_boss:
+		AudioManager.play_bgm("boss1", 3)
+	else:
+		AudioManager.play_bgm("battle", 3)
 	player_ui.update_audio()
 
 func new_player_turn():

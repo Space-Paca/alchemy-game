@@ -9,3 +9,4 @@ grid_size = 2
 reagents = [ "common", "defensive" ]
 effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
+

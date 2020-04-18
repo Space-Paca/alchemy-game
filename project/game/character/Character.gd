@@ -15,8 +15,10 @@ func init(_name: String, _max_hp: int):
 	hp = max_hp
 	shield = 0
 
+
 func heal(amount):
 	hp = min(hp + amount, max_hp)
+
 
 func take_damage(damage):
 	#Block damage with shield
@@ -28,12 +30,15 @@ func take_damage(damage):
 		hp = 0
 		die()
 
+
 func update_status():
 	shield = 0
+
 
 func gain_shield(value):
 	shield += value
 	
+
 
 func die():
 	print(char_name, " dead")

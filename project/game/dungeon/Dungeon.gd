@@ -40,6 +40,40 @@ func create_floor(level: int):
 	add_child(current_floor)
 
 
+func search_grid_for_combinations(reagent_matrix: Array):
+	print(reagent_matrix)
+	var grid_size = battle.grid.size
+	
+	if check_combinations(grid_size, reagent_matrix):
+		return
+	
+	var new_grid_size = grid_size
+	while new_grid_size > 2:
+		new_grid_size -= 1
+		var new_matrix = []
+		for _i in range(new_grid_size):
+			var line = []
+			for _j in range(new_grid_size):
+				line.append(null)
+			new_matrix.append(line)
+		
+		for i_offset in range(grid_size - new_grid_size + 1):
+			for j_offset in range(grid_size - new_grid_size + 1):
+				printt(i_offset, j_offset)
+				
+				for i in range(new_grid_size):
+					for j in range(new_grid_size):
+						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
+				
+				if check_combinations(new_grid_size, new_matrix):
+					print("Combination found; size = %d; position = (%d, %d)" %
+							[new_grid_size, i_offset, j_offset])
+					return
+	
+	print("No combinations found!")
+	battle.apply_effects(["combination_failure"])
+
+
 func check_combinations(grid_size: int, reagent_matrix: Array):
 	print("check_combinations; grid_size: ", grid_size)
 	print("reagent_matrix: ", reagent_matrix)
@@ -53,7 +87,8 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 			prints((combination as Combination).recipe_name, "found")
 			var recipe = (RecipeManager.get_from(combination) as Recipe)
 			battle.apply_effects(recipe.effects, recipe.effect_args)
-			
+			if not player.known_recipes.has(recipe.name):
+				player.discover_combination(combination)
 			return true
 	return false
 
@@ -87,34 +122,4 @@ func _on_Battle_won(is_boss):
 
 
 func _on_Battle_combination_made(reagent_matrix: Array):
-	print(reagent_matrix)
-	var grid_size = battle.grid.size
-	
-	if check_combinations(grid_size, reagent_matrix):
-		return
-	
-	var new_grid_size = grid_size
-	while new_grid_size > 2:
-		new_grid_size -= 1
-		var new_matrix = []
-		for _i in range(new_grid_size):
-			var line = []
-			for _j in range(new_grid_size):
-				line.append(null)
-			new_matrix.append(line)
-		
-		for i_offset in range(grid_size - new_grid_size + 1):
-			for j_offset in range(grid_size - new_grid_size + 1):
-				printt(i_offset, j_offset)
-				
-				for i in range(new_grid_size):
-					for j in range(new_grid_size):
-						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
-				
-				if check_combinations(new_grid_size, new_matrix):
-					print("Combination found; size = %d; position = (%d, %d)" %
-							[new_grid_size, i_offset, j_offset])
-					return
-	
-	print("No combinations found!")
-	battle.apply_effects(["combination_failure"])
+	search_grid_for_combinations(reagent_matrix)

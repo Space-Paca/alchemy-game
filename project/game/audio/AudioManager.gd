@@ -34,6 +34,7 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 
 var cur_bgm = null
+var cur_aux_bgm = null
 
 func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
@@ -67,6 +68,7 @@ func play_bgm(name, layers = false):
 		$Tween.start()
 
 func stop_bgm():
+	stop_aux_bgm()
 	remove_bgm_effect()
 	for i in range(1, MAX_LAYERS + 1):
 		var fadein = get_node("BGMPlayer"+str(i))
@@ -141,4 +143,36 @@ func start_bgm_effect(type):
 		duration = abs(MAX_AMPLIFY - effect.volume_db)/AMPLIFY_SPEED
 		$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MAX_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
-		
+
+func play_aux_bgm(name):
+	if cur_aux_bgm == name:
+		return
+	
+	if cur_aux_bgm:
+		stop_aux_bgm()
+	
+	cur_aux_bgm = name
+	
+	var player = $AuxBGMPlayer
+	player.stream = BGMS[name]
+	player.volume_db = MUTE_DB
+	player.play()
+	var duration = abs(NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED*2)
+	$Tween.interpolate_property(player, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$Tween.start()	
+
+func stop_aux_bgm():
+	var fadein = $AuxBGMPlayer
+	if fadein.is_playing():
+		var fadeout =$FadeOutAuxBGMPlayer
+		var pos = fadein.get_playback_position()
+		var vol = fadein.volume_db
+		fadein.stop()
+		fadeout.stop()
+		fadeout.volume_db = vol
+		fadeout.stream = fadein.stream
+		fadeout.play(pos)
+		var duration = (vol - MUTE_DB)/FADEOUT_SPEED
+		$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+		$AuxTween.start()
+		cur_aux_bgm = null

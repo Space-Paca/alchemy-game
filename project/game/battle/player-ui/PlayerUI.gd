@@ -25,12 +25,15 @@ func update_audio():
 	if percent > .5:
 		AudioManager.play_bgm_layer(2)
 		AudioManager.play_bgm_layer(3)
+		AudioManager.stop_aux_bgm()
 		AudioManager.remove_bgm_effect()
 	elif  percent > .3:
 		AudioManager.play_bgm_layer(2)
 		AudioManager.stop_bgm_layer(3)
+		AudioManager.stop_aux_bgm()
 		AudioManager.start_bgm_effect("danger")
 	else:
 		AudioManager.stop_bgm_layer(2)
 		AudioManager.stop_bgm_layer(3)
+		AudioManager.play_aux_bgm("heart-beat")
 		AudioManager.start_bgm_effect("extreme-danger")

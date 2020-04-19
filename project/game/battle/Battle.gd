@@ -200,8 +200,8 @@ func win():
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
-	win_screen.connect("continue_pressed", self,
-		"_on_win_screen_continue_pressed")
+	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
+	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.set_loot(loot)
 
 
@@ -238,6 +238,7 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	new_enemy_turn()
 
+
 func _on_win_screen_continue_pressed():
 	AudioManager.play_bgm("map")
 	emit_signal("won", is_boss)
@@ -264,3 +265,6 @@ func _on_CreateRecipe_pressed():
 	disable_player()
 	emit_signal("combination_made", reagent_matrix)
 
+
+func _on_win_screen_reagent_looted(reagent: String):
+	player.add_reagent(reagent)

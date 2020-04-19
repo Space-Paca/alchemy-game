@@ -14,12 +14,12 @@ export(Array, float) var extra_loot_chance : Array
 
 func get_loot() -> Array:
 	var loot := []
-	var chance := 1
+	var chance = 1
 	var extra_chance := extra_loot_chance.duplicate()
 	var pool := []
 	
 	for reagent in loot_table:
-		for i in range(loot_table[reagent]):
+		for _i in range(loot_table[reagent]):
 			pool.append(reagent)
 	
 	while chance and chance >= randf():

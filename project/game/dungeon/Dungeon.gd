@@ -5,6 +5,7 @@ onready var player = $Player
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
 const FLOOR_SIZE := [10, 20, 30]
+const MAX_FLOOR = 3
 
 var battle : Node
 var combinations := {}
@@ -116,7 +117,8 @@ func _on_Battle_won(is_boss):
 	if is_boss:
 		current_floor.queue_free()
 		floor_level += 1
-		create_floor(floor_level)
+		if floor_level <= MAX_FLOOR:
+			create_floor(floor_level)
 	else:
 		current_floor.show()
 

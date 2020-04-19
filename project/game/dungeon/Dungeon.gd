@@ -42,7 +42,7 @@ func create_floor(level: int):
 
 func search_grid_for_combinations(reagent_matrix: Array):
 	print(reagent_matrix)
-	var grid_size = battle.grid.size
+	var grid_size = battle.grid.grid_size
 	
 	if check_combinations(grid_size, reagent_matrix):
 		return

@@ -9,26 +9,26 @@ const MARGIN = 380
 onready var container = $GridContainer
 
 var discard_bag = null # Set by parent
-var size : int
+var grid_size : int
 
 func _ready():
 	set_grid(4)
 
 func get_width():
 	var slot = container.get_child(1)
-	return size * slot.rect_size.x
+	return grid_size * slot.rect_size.x
 
 func get_height():
 	var slot = container.get_child(1)
-	return size * slot.rect_size.y
+	return grid_size * slot.rect_size.y
 
 func set_grid(_size: int):
 	assert(_size > 1)
-	size = _size
+	grid_size = _size
 	for child in container.get_children():
 		container.remove_child(child)
-	container.columns = size
-	for _i in range(size * size):
+	container.columns = grid_size
+	for _i in range(grid_size * grid_size):
 		container.add_child(GRIDSLOT.instance())
 	var slot = container.get_child(1)
 

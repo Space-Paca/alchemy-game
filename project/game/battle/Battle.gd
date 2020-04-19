@@ -55,6 +55,7 @@ func setup_player(_player):
 	#Setup player bag
 	for reagent_type in player.bag:
 		var reagent = ReagentManager.create_object(reagent_type)
+		reagent.rect_scale = Vector2(.8,.8)
 		reagent.connect("started_dragging", self, "_on_reagent_drag")
 		draw_bag.add_reagent(reagent)
 	
@@ -72,13 +73,17 @@ func setup_player(_player):
 
 
 func setup_player_ui():
+	var grid_side = grid.get_height()
 	var ui_center = 2*get_viewport().size.x/10
+	var grid_center = 4*get_viewport().size.y/11
+	
 	#Position grid
-	grid.rect_position.x = ui_center - grid.get_width()*grid.rect_scale.x/2
-	grid.rect_position.y = 2*get_viewport().size.x/9 - grid.get_height()*grid.rect_scale.y/2
+	grid.rect_position.x = ui_center - grid_side*grid.rect_scale.x/2
+	grid.rect_position.y = grid_center - grid_side*grid.rect_scale.y/2
 	#Position hand
+	var hand_margin = 20
 	hand.position.x = ui_center - hand.get_width()*hand.scale.x/2
-	hand.position.y = grid.rect_position.y + grid.get_height()*grid.rect_scale.y + 20
+	hand.position.y = grid.rect_position.y + grid_side*grid.rect_scale.y + hand_margin
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
 	#Position bags
@@ -235,9 +240,9 @@ func _on_CreateRecipe_pressed():
 	
 	var reagent_matrix := []
 	var child_index := 0
-	for _i in range(grid.size):
+	for _i in range(grid.grid_size):
 		var line = []
-		for _j in range(grid.size):
+		for _j in range(grid.grid_size):
 			var reagent = grid.container.get_child(child_index).current_reagent
 			if reagent:
 				line.append(reagent.type)

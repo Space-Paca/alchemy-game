@@ -21,14 +21,14 @@ script = ExtResource( 5 )
 script = ExtResource( 9 )
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 126.641
-margin_top = 174.576
-margin_right = 126.641
-margin_bottom = 174.576
-rect_scale = Vector2( 0.45, 0.45 )
+margin_left = 148.855
+margin_top = 160.295
+margin_right = 148.855
+margin_bottom = 160.295
+rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 201.397, 489.99 )
+position = Vector2( 198.224, 453.496 )
 scale = Vector2( 0.3, 0.3 )
 size = 10
 
@@ -45,7 +45,7 @@ margin_left = 573.721
 margin_top = 627.907
 margin_right = 741.721
 margin_bottom = 881.907
-rect_scale = Vector2( 0.4, 0.4 )
+rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="CreateRecipeButton" type="TextureButton" parent="."]
 margin_left = 217.047

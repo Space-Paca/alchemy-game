@@ -3,17 +3,13 @@
 [ext_resource path="res://game/battle/grid/Grid.gd" type="Script" id=2]
 
 [node name="Grid" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -1360.0
-margin_bottom = -768.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-columns = 3
+columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }

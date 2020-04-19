@@ -4,7 +4,6 @@
 [ext_resource path="res://game/battle/hand/DrawBag.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=3]
 
-
 [node name="DrawBag" type="Node2D"]
 script = ExtResource( 2 )
 

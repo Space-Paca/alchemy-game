@@ -1,3 +1,5 @@
+tool
+
 extends Node2D
 
 signal won(is_boss)
@@ -12,6 +14,7 @@ onready var grid = $Grid
 onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
+onready var create_recipe_button = $CreateRecipeButton
 
 const ENEMY_MARGIN = 10
 
@@ -69,12 +72,22 @@ func setup_player(_player):
 
 
 func setup_player_ui():
-	#Centralize grid
-	grid.rect_position.x = get_viewport().size.x/2 - grid.get_width()*grid.rect_scale.x/2
-	#Centralize hand
-	hand.position.x = get_viewport().size.x/2 - hand.get_width()*hand.scale.x/2
-	#Fix pass-turn button position
-	pass_turn_button.rect_position.x = hand.global_position.x + hand.get_width()*hand.scale.x + 20
+	var ui_center = 2*get_viewport().size.x/10
+	#Position grid
+	grid.rect_position.x = ui_center - grid.get_width()*grid.rect_scale.x/2
+	grid.rect_position.y = 2*get_viewport().size.x/9 - grid.get_height()*grid.rect_scale.y/2
+	#Position hand
+	hand.position.x = ui_center - hand.get_width()*hand.scale.x/2
+	hand.position.y = grid.rect_position.y + grid.get_height()*grid.rect_scale.y + 20
+	#Position create-recipe button
+	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
+	#Position bags
+	var bag_margin = 10
+	discard_bag.position.x = create_recipe_button.rect_position.x + create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x + bag_margin
+	draw_bag.position.x = create_recipe_button.rect_position.x - bag_margin - draw_bag.get_width()*draw_bag.scale.x
+	#Position pass-turn button
+	var button_margin = 15
+	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
 	
 	player_ui.set_life(player.max_hp, player.hp)
 
@@ -139,7 +152,7 @@ func new_enemy_turn():
 
 func disable_player():
 	pass_turn_button.disabled = true
-	grid.disable()
+	create_recipe_button.disabled = true
 	
 	for reagent in reagents.get_children():
 		reagent.disable_dragging()
@@ -150,7 +163,7 @@ func enable_player():
 		return
 	
 	pass_turn_button.disabled = false
-	grid.enable()
+	create_recipe_button.disabled = false
 	
 	for reagent in reagents.get_children():
 		reagent.enable_dragging()
@@ -210,13 +223,29 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	new_enemy_turn()
 
-
-func _on_Grid_create_pressed(reagent_matrix):
-	disable_player()
-	emit_signal("combination_made", reagent_matrix)
-
-
 func _on_win_screen_continue_pressed():
 	AudioManager.play_bgm("map")
 	emit_signal("won", is_boss)
 	queue_free()
+
+
+func _on_CreateRecipe_pressed():
+	if grid.is_empty():
+		return
+	
+	var reagent_matrix := []
+	var child_index := 0
+	for _i in range(grid.size):
+		var line = []
+		for _j in range(grid.size):
+			var reagent = grid.container.get_child(child_index).current_reagent
+			if reagent:
+				line.append(reagent.type)
+			else:
+				line.append(null)
+			child_index += 1
+		reagent_matrix.append(line)
+	
+	disable_player()
+	emit_signal("combination_made", reagent_matrix)
+

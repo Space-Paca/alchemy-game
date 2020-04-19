@@ -15,6 +15,11 @@ func _ready():
 func get_center():
 	return center.global_position
 
+func get_width():
+	return texture_rect.rect_size.x
+
+func get_height():
+	return texture_rect.rect_size.y
 
 func update_counter():
 	counter.text = str(discarded_reagents.get_child_count())

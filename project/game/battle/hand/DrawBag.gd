@@ -31,6 +31,11 @@ func add_reagent(reagent):
 	drawable_reagents.add_child(reagent)
 	update_counter()
 
+func get_width():
+	return $TextureRect.rect_size.x
+
+func get_height():
+	return $TextureRect.rect_size.y
 
 func start_drawing(_reagents):
 	while not _reagents.empty():

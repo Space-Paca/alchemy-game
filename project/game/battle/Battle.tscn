@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://game/battle/hand/DrawBag.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/battle/EffectManager.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/ui/button_disable.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/button_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/button.png" type="Texture" id=13]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
@@ -17,42 +21,57 @@ script = ExtResource( 5 )
 script = ExtResource( 9 )
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 487.317
-margin_top = 7.83838
-margin_right = 487.317
-margin_bottom = 7.8385
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 126.641
+margin_top = 174.576
+margin_right = 126.641
+margin_bottom = 174.576
+rect_scale = Vector2( 0.45, 0.45 )
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 404.112, 476.26 )
-scale = Vector2( 0.557804, 0.567007 )
+position = Vector2( 201.397, 489.99 )
+scale = Vector2( 0.3, 0.3 )
+size = 10
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
-position = Vector2( -1.67017, 577.883 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 41.1701, 625.483 )
+scale = Vector2( 0.15, 0.15 )
 
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1164.12, 584.564 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 359.897, 624.41 )
+scale = Vector2( 0.15, 0.15 )
 
 [node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
-margin_left = 953.674
-margin_top = 576.213
-margin_right = 1121.67
-margin_bottom = 830.213
+margin_left = 573.721
+margin_top = 627.907
+margin_right = 741.721
+margin_bottom = 881.907
 rect_scale = Vector2( 0.4, 0.4 )
 
+[node name="CreateRecipeButton" type="TextureButton" parent="."]
+margin_left = 217.047
+margin_top = 672.462
+margin_right = 559.047
+margin_bottom = 807.462
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2( 843.442, 101.881 )
+position = Vector2( 742.638, 125.143 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 140.295, -8.35089 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
-position = Vector2( 35.1618, 22.8551 )
+position = Vector2( 23.5306, 24.1475 )
 scale = Vector2( 0.4, 0.4 )
 
 [node name="Reagents" type="Node" parent="."]
-[connection signal="create_pressed" from="Grid" to="." method="_on_Grid_create_pressed"]
 [connection signal="reagent_discarded" from="DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
 [connection signal="pressed" from="PassTurnButton" to="." method="_on_PassTurnButton_pressed"]
+[connection signal="pressed" from="CreateRecipeButton" to="." method="_on_CreateRecipe_pressed"]

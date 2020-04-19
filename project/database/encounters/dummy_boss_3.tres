@@ -7,3 +7,15 @@ script = ExtResource( 1 )
 is_boss = true
 level = 3
 enemies = [ "skeleton", "skeleton", "skeleton" ]
+loot_table = {
+"catalyst": 0,
+"common": 1,
+"damaging": 0,
+"defensive": 0,
+"healing": 0,
+"rare": 0,
+"super_damaging": 0,
+"super_defensive": 0,
+"uncommon": 0
+}
+extra_loot_chance = [  ]

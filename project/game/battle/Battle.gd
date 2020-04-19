@@ -17,10 +17,14 @@ onready var player_ui = $PlayerUI
 onready var create_recipe_button = $CreateRecipeButton
 
 const ENEMY_MARGIN = 10
+const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
+const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 
-var ended = false
+var ended := false
 var is_boss
 var player
+var loot : Array
+
 
 func setup(_player: Player, encounter: Encounter):
 	setup_nodes()
@@ -34,6 +38,8 @@ func setup(_player: Player, encounter: Encounter):
 	effect_manager.setup(_player, enemies_node.get_children())
 	
 	setup_audio(encounter)
+	
+	loot = encounter.get_loot()
 
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -121,12 +127,14 @@ func setup_enemy(encounter: Encounter):
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
 
+
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
 		AudioManager.play_bgm("boss1", 3)
 	else:
 		AudioManager.play_bgm("battle", 3)
 	player_ui.update_audio()
+
 
 func new_player_turn():
 	if ended:
@@ -190,9 +198,11 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 func win():
 	ended = true
 	disable_player()
-	var win_screen = load("res://game/battle/screens/Win.tscn").instance()
+	var win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
-	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
+	win_screen.connect("continue_pressed", self,
+		"_on_win_screen_continue_pressed")
+	win_screen.set_loot(loot)
 
 
 func _on_reagent_drag(reagent):
@@ -218,7 +228,7 @@ func _on_player_died(_player):
 	print("GAME OVER")
 	ended = true
 	disable_player()
-	add_child(load("res://game/battle/screens/GameOver.tscn").instance())
+	add_child(GAMEOVER_SCENE.instance())
 
 
 func _on_DiscardBag_reagent_discarded(reagent):

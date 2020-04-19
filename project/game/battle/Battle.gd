@@ -81,9 +81,12 @@ func setup_player(_player):
 func setup_player_ui():
 	var grid_side = grid.get_height()
 	var ui_center = 2*get_viewport().size.x/10
-	var grid_center = 4*get_viewport().size.y/11
+	var grid_center = 5*get_viewport().size.y/12
 	
 	#Position grid
+	#NOTE: For some reason, moving the grid changes the scale of the gridslot y value,
+	#and that messes up grid height and width getters. Storing value above to avoid this
+	#but when we ahve time, should inspect if this is our problem or an engine's.
 	grid.rect_position.x = ui_center - grid_side*grid.rect_scale.x/2
 	grid.rect_position.y = grid_center - grid_side*grid.rect_scale.y/2
 	#Position hand
@@ -93,13 +96,14 @@ func setup_player_ui():
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
 	#Position bags
-	var bag_margin = 10
+	var bag_margin = 40
 	discard_bag.position.x = create_recipe_button.rect_position.x + create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x + bag_margin
 	draw_bag.position.x = create_recipe_button.rect_position.x - bag_margin - draw_bag.get_width()*draw_bag.scale.x
 	#Position pass-turn button
 	var button_margin = 15
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
-	
+	#Position player ui
+	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
 
 func setup_enemy(encounter: Encounter):

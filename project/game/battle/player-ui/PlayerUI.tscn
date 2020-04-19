@@ -48,10 +48,10 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 340.04
-margin_top = 129.197
-margin_right = 940.04
-margin_bottom = 179.197
+margin_left = 367.04
+margin_top = 41.197
+margin_right = 967.04
+margin_bottom = 91.197
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 value = 100.0
@@ -61,8 +61,8 @@ __meta__ = {
 }
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
-margin_left = 344.72
-margin_top = 214.269
-margin_right = 384.72
-margin_bottom = 254.269
+margin_left = 397.707
+margin_top = 117.342
+margin_right = 437.707
+margin_bottom = 157.342
 rect_scale = Vector2( 2, 2 )

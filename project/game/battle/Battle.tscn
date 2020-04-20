@@ -21,37 +21,37 @@ script = ExtResource( 5 )
 script = ExtResource( 9 )
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 148.855
-margin_top = 160.295
-margin_right = 148.855
-margin_bottom = 160.295
+margin_left = 142.38
+margin_top = 317.864
+margin_right = 142.38
+margin_bottom = 317.864
 rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 198.224, 453.496 )
+position = Vector2( 196.065, 654.234 )
 scale = Vector2( 0.3, 0.3 )
 size = 10
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
-position = Vector2( 41.1701, 625.483 )
+position = Vector2( 60.5964, 919.036 )
 scale = Vector2( 0.15, 0.15 )
 
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
-position = Vector2( 359.897, 624.41 )
+position = Vector2( 351.263, 922.279 )
 scale = Vector2( 0.15, 0.15 )
 
 [node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
-margin_left = 573.721
-margin_top = 627.907
-margin_right = 741.721
-margin_bottom = 881.907
+margin_left = 519.759
+margin_top = 958.154
+margin_right = 687.759
+margin_bottom = 1212.15
 rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="CreateRecipeButton" type="TextureButton" parent="."]
-margin_left = 217.047
-margin_top = 672.462
-margin_right = 559.047
-margin_bottom = 807.462
+margin_left = 208.413
+margin_top = 976.807
+margin_right = 550.413
+margin_bottom = 1111.81
 rect_scale = Vector2( 0.4, 0.4 )
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 12 )
@@ -64,33 +64,33 @@ __meta__ = {
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 924.113, 262.971 )
+position = Vector2( 1100.34, 393.883 )
 
 [node name="EnemiesPositions" type="Node" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 890, 290 )
+position = Vector2( 965, 350 )
 
 [node name="Pos2" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1250, 365 )
+position = Vector2( 1515, 465 )
 
 [node name="Pos3" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 890, 575 )
+position = Vector2( 965, 720 )
 
 [node name="Pos4" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1250, 650 )
+position = Vector2( 1515, 835 )
 
 [node name="Pos5" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1250, 400 )
+position = Vector2( 1515, 520 )
 
 [node name="Pos6" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 890, 350 )
+position = Vector2( 965, 390 )
 
 [node name="Pos7" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1250, 450 )
+position = Vector2( 1515, 650 )
 
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1070, 400 )
+position = Vector2( 1240, 535 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
 position = Vector2( 23.5306, 24.1475 )

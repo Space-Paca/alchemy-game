@@ -1,6 +1,8 @@
 extends Character
 class_name Player
 
+signal combination_discovered(combination, index)
+
 const INITIAL_HAND_SIZE = 4
 const INITIAL_GRID_SIZE = 2
 
@@ -63,5 +65,7 @@ func update_status():
 
 func discover_combination(combination: Combination):
 	var recipe_name = combination.recipe.name
+	var index = known_recipes.bsearch(recipe_name)
 	print("Discovered new recipe: ", recipe_name)
-	known_recipes.insert(known_recipes.bsearch(recipe_name), recipe_name)
+	known_recipes.insert(index, recipe_name)
+	emit_signal("combination_discovered", combination, index)

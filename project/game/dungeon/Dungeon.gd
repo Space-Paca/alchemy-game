@@ -1,6 +1,7 @@
 extends Node
 
 onready var player = $Player
+onready var recipe_book = $BookLayer/RecipeBook
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
@@ -20,6 +21,11 @@ func _ready():
 	AudioManager.play_bgm("map")
 
 
+func _input(event):
+	if event.is_action_pressed("show_recipe_book"):
+		recipe_book.visible = !recipe_book.visible
+
+
 func create_combinations():
 	for recipe in RecipeManager.recipes.values():
 		var combination = Combination.new()
@@ -28,6 +34,9 @@ func create_combinations():
 			(combinations[combination.grid_size] as Array).append(combination)
 		else:
 			combinations[combination.grid_size] = [combination]
+		
+		if player.known_recipes.has(recipe.name):
+			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name))
 		
 		print(combination.name, "\n", combination.matrix)
 
@@ -125,3 +134,7 @@ func _on_Battle_won(is_boss):
 
 func _on_Battle_combination_made(reagent_matrix: Array):
 	search_grid_for_combinations(reagent_matrix)
+
+
+func _on_Player_combination_discovered(combination, index):
+	recipe_book.add_combination(combination, index)

@@ -1,16 +1,61 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+outline_size = 9
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="RecipeBook" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -500.0
+margin_right = 730.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 730, 1000 )
+color = Color( 0.741176, 0.690196, 0.482353, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_right = 12.0
-margin_bottom = 12.0
-scroll_horizontal_enabled = false
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+margin_right = 730.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "LISTA DE RECEITAS"
+align = 1
+valign = 1
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/VBoxContainer"]
+margin_left = 365.0
+margin_top = 75.0
+margin_right = 365.0
+margin_bottom = 725.0
+rect_min_size = Vector2( 0, 650 )
+size_flags_horizontal = 6
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer/ScrollContainer"]
+size_flags_horizontal = 10
+custom_constants/vseparation = 10
+custom_constants/hseparation = 20
 columns = 2

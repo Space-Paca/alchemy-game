@@ -94,8 +94,8 @@ EncounterManager="*res://database/EncounterManager.gd"
 
 [display]
 
-window/size/width=1360
-window/size/height=768
+window/size/width=1920
+window/size/height=1080
 
 [rendering]
 

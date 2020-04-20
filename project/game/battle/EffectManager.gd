@@ -38,21 +38,21 @@ func require_target():
 
 
 func combination_failure():
-	damage_all(100)
+	damage_all(5, "phantom")
 
 
-func damage(amount: int):
+func damage(amount: int, type: String):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
 	
-	target.take_damage(amount)
+	target.take_damage(amount, type)
 	resolve()
 
 
-func damage_all(amount: int):
+func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
-		(enemy as Enemy).take_damage(amount)
+		(enemy as Enemy).take_damage(amount, type)
 	
 	resolve()
 

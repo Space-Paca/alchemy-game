@@ -20,12 +20,21 @@ func heal(amount):
 	hp = min(hp + amount, max_hp)
 
 
-func take_damage(damage):
-	#Block damage with shield
-	var unblocked_damage = max(damage - shield, 0)
-	shield = max(shield - damage, 0)
+func take_damage(damage: int, type: String):
 	
-	hp -= unblocked_damage
+	#Block damage with shield
+	if type == "regular":
+		var unblocked_damage = max(damage - shield, 0)
+		shield = max(shield - damage, 0)
+		hp -= unblocked_damage
+	#Damages both shield and health equally
+	elif type == "pierce":
+		shield = max(shield - damage, 0)
+		hp -= damage
+	#Ignores shield and only damages health
+	elif type == "phantom":
+		hp -= damage
+	
 	if hp <= 0:
 		hp = 0
 		die()

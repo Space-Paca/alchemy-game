@@ -237,7 +237,7 @@ func _on_reagent_drag(reagent):
 
 func _on_enemy_acted(action, args):
 	if action == "damage":
-		player.take_damage(args.value)
+		player.take_damage(args.value, args.type)
 	elif action == "shield":
 		args.target.gain_shield(args.value)
 

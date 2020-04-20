@@ -39,13 +39,13 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", "damage", {"value": next_value})
+		emit_signal("acted", "damage", {"value": next_value, "type": "phantom"})
 	elif state == "defend":
 		emit_signal("acted", "shield", {"value": next_value, "target": enemy_ref})
 	elif state == "random":
 		randomize()
 		if randf() > .5:
-			emit_signal("acted", "damage", {"value": get_damage() + 2})
+			emit_signal("acted", "damage", {"value": get_damage() + 2, "type": "phantom"})
 		else:
 			emit_signal("acted", "shield", {"value": get_defense() + 2, "target": enemy_ref})
 

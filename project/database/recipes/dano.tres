@@ -8,5 +8,4 @@ name = "Dano"
 grid_size = 2
 reagents = [ "common", "damaging" ]
 effects = [ "damage" ]
-effect_args = [ [ 10 ] ]
-
+effect_args = [ [ 10, "regular" ] ]

@@ -34,8 +34,8 @@ func heal(amount : int):
 	.heal(amount)
 	update_life()
 
-func take_damage(damage):
-	.take_damage(damage)
+func take_damage(damage: int, type: String):
+	.take_damage(damage, type)
 	update_life()
 	update_shield()
 	update_status_bar()

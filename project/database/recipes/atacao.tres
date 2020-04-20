@@ -8,5 +8,4 @@ name = "Atacão"
 grid_size = 2
 reagents = [ "common", "damaging", "damaging" ]
 effects = [ "damage", "damage" ]
-effect_args = [ [ 7 ], [ 7 ] ]
-
+effect_args = [ [ 7, "pierce" ], [ 7, "pierce" ] ]

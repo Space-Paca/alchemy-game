@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 const STATUS_IMAGES = {
-					   "shield": "res://assets/images/status/shield_status.png",
+					   "dodge": "res://assets/images/status/random_status.png",
 					  }
 
 var type : String

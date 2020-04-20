@@ -44,6 +44,14 @@ func gain_shield(value):
 	.gain_shield(value)
 	update_shield()
 
+func add_status(status: String, amount: int, positive: bool):
+	.add_status(status, amount, positive)
+	update_status_bar()
+
+func remove_status(status: String):
+	.remove_status(status)
+	update_status_bar()
+
 func update_status():
 	.update_status()
 	update_status_bar()

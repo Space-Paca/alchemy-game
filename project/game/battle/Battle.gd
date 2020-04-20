@@ -33,7 +33,7 @@ func setup(_player: Player, encounter: Encounter):
 	
 	setup_player_ui()
 	
-	setup_enemy(encounter)
+	setup_enemy(_player, encounter)
 	
 	effect_manager.setup(_player, enemies_node.get_children())
 	
@@ -107,7 +107,7 @@ func setup_player_ui():
 	player_ui.set_life(player.max_hp, player.hp)
 
 
-func setup_enemy(encounter: Encounter):
+func setup_enemy(_player: Player, encounter: Encounter):
 	if encounter.is_boss:
 		is_boss = true
 	
@@ -117,7 +117,7 @@ func setup_enemy(encounter: Encounter):
 		child.queue_free()
 	
 	for enemy in encounter.enemies:
-		var enemy_node = EnemyManager.create_object(enemy)
+		var enemy_node = EnemyManager.create_object(enemy, _player)
 		enemies_node.add_child(enemy_node)
 		enemy_node.data.connect("acted", self, "_on_enemy_acted")
 		enemy_node.connect("died", self, "_on_enemy_died")
@@ -240,6 +240,9 @@ func _on_enemy_acted(action, args):
 		player.take_damage(args.value, args.type)
 	elif action == "shield":
 		args.target.gain_shield(args.value)
+	elif action == "status":
+		args.target.add_status(args.status, args.amount, args.positive)
+		
 
 
 func _on_enemy_died(enemy):

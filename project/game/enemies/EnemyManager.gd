@@ -7,7 +7,7 @@ const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd",
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 
 
-func create_object(enemy_type):
+func create_object(enemy_type, player):
 	if not ENEMY_DB.has(enemy_type):
 		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)
@@ -20,7 +20,7 @@ func create_object(enemy_type):
 				 "connections": enemy_data.connections,
 				 "first_state": enemy_data.first_state,
 				}
-	enemy_data.set_enemy_reference(enemy)
+	enemy_data.set_node_references(enemy, player)
 	enemy.setup(logic, load(enemy_data.image), enemy_data)
 	return enemy
 

@@ -3,6 +3,7 @@ extends Reference
 signal acted
 
 var enemy_ref #Reference to enemy node
+var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
 					  "defend": preload("res://assets/images/enemies/intents/defense.png"),
@@ -26,8 +27,9 @@ var first_state = ["random", "random", "attack"]
 
 var next_value
 
-func set_enemy_reference(ref):
-	enemy_ref = ref
+func set_node_references(e_ref, p_ref):
+	enemy_ref = e_ref
+	player_ref = p_ref
 
 func get_damage():
 	randomize()

@@ -122,11 +122,25 @@ func setup_enemy(encounter: Encounter):
 		enemy_node.connect("died", self, "_on_enemy_died")
 	
 	#Update enemies positions
-	var x = 0
-	for enemy in enemies_node.get_children():
-		enemy.position.x = x
-		x += ENEMY_MARGIN + enemy.get_width()
-	
+	var enemy_count = enemies_node.get_child_count()
+	if enemy_count == 4:
+		set_enemy_pos(0, 1)
+		set_enemy_pos(1, 2)
+		set_enemy_pos(2, 3)
+		set_enemy_pos(3, 4)
+	elif enemy_count == 3:
+		set_enemy_pos(0, 1)
+		set_enemy_pos(1, 3)
+		set_enemy_pos(2, 5)
+	elif enemy_count == 2:
+		set_enemy_pos(0, 6)
+		set_enemy_pos(1, 7)
+	elif enemy_count == 1:
+		set_enemy_pos(0, 8)
+	else:
+		print(enemy_count, " is not a valid enemy number")
+		assert(false)
+		
 	#Update enemies intent
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
@@ -208,6 +222,12 @@ func win():
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.set_loot(loot)
 
+func set_enemy_pos(enemy_idx, pos_idx):
+	var enemy = enemies_node.get_child(enemy_idx)
+	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
+	print(target_pos.position)
+	enemy.global_position.x = target_pos.position.x - enemy.get_width() 
+	enemy.global_position.y = target_pos.position.y - enemy.get_height()
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

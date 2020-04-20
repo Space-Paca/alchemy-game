@@ -62,10 +62,35 @@ __meta__ = {
 }
 
 [node name="Enemies" type="Node2D" parent="."]
-position = Vector2( 742.638, 125.143 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 140.295, -8.35089 )
+position = Vector2( 924.113, 262.971 )
+
+[node name="EnemiesPositions" type="Node" parent="."]
+
+[node name="Pos1" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 890, 290 )
+
+[node name="Pos2" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 1250, 365 )
+
+[node name="Pos3" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 890, 575 )
+
+[node name="Pos4" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 1250, 650 )
+
+[node name="Pos5" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 1250, 400 )
+
+[node name="Pos6" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 890, 350 )
+
+[node name="Pos7" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 1250, 450 )
+
+[node name="Pos8" type="Position2D" parent="EnemiesPositions"]
+position = Vector2( 1070, 400 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
 position = Vector2( 23.5306, 24.1475 )

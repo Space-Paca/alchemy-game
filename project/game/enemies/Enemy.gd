@@ -14,9 +14,9 @@ onready var sprite = $Sprite
 
 const STATUS_BAR_MARGIN = 40
 const HEALTH_BAR_MARGIN = 10
-const INTENT_MARGIN = 10
-const INTENT_W = 60
-const INTENT_H = 70
+const INTENT_MARGIN = 20
+const INTENT_W = 50
+const INTENT_H = 60
 
 var logic_
 var data

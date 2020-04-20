@@ -8,9 +8,8 @@ const ENEMY = preload("res://game/enemies/Enemy.tscn")
 
 
 func create_object(enemy_type):
-	
 	if not ENEMY_DB.has(enemy_type):
-		push_error("Given type of enemy doesn't exist")
+		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)
 	
 	var enemy_data = load(ENEMY_DB[enemy_type]).new()
@@ -28,7 +27,7 @@ func create_object(enemy_type):
 
 func get_data(enemy_type):
 	if not ENEMY_DB.has(enemy_type):
-		push_error("Given type of enemy doesn't exist")
+		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)
 	
 	return load(ENEMY_DB[enemy_type])

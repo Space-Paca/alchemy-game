@@ -30,8 +30,6 @@ func set_grid(_size: int):
 	container.columns = grid_size
 	for _i in range(grid_size * grid_size):
 		container.add_child(GRIDSLOT.instance())
-	var slot = container.get_child(1)
-
 
 func is_empty():
 	for slot in container.get_children():

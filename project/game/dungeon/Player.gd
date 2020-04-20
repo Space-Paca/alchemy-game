@@ -62,6 +62,6 @@ func update_status():
 
 
 func discover_combination(combination: Combination):
-	var recipe_name = combination.recipe_name
+	var recipe_name = combination.recipe.name
 	print("Discovered new recipe: ", recipe_name)
 	known_recipes.insert(known_recipes.bsearch(recipe_name), recipe_name)

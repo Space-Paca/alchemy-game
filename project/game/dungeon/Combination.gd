@@ -2,13 +2,13 @@ extends Node
 class_name Combination
 
 var grid_size : int
-var recipe_name : String
+var recipe : Recipe
 var matrix : Array
 
 
-func create_from_recipe(recipe: Recipe):
+func create_from_recipe(_recipe: Recipe):
+	recipe = _recipe
 	grid_size = recipe.grid_size
-	recipe_name = recipe.name
 	var avaiable_positions := []
 	var elements := (recipe.reagents.duplicate() as Array)
 	elements.shuffle()

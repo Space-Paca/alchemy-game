@@ -8,7 +8,7 @@ onready var remaining_rooms := (room_amount as int)
 enum { N, W, E, S }
 
 const ROOM := preload("res://game/map/Room.tscn")
-const INITIAL_POS := Vector2(688, 384)
+const INITIAL_POS := Vector2(960, 540)
 const INITIAL_ROOM := -1
 const OFFSETS := [Vector2(0, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 1)]
 const OPPOSITE := [S, E, W, N]
@@ -20,7 +20,7 @@ var rooms := {}
 var deadend_rooms := []
 var from_queue := []
 var pos_queue := []
-var level : int
+var level := 1
 
 
 func _ready():

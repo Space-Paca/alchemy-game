@@ -26,7 +26,3 @@ func _ready():
 			file_name = dir.get_next()
 	else:
 		print("RecipeManager: An error occurred when trying to access the path.")
-
-
-func get_from(combination: Combination):
-	return recipes[combination.recipe_name]

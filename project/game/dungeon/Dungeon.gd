@@ -85,8 +85,8 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
-			prints((combination as Combination).recipe_name, "found")
-			var recipe = (RecipeManager.get_from(combination) as Recipe)
+			prints((combination as Combination).recipe.name, "found")
+			var recipe = (combination.recipe as Recipe)
 			battle.apply_effects(recipe.effects, recipe.effect_args)
 			if not player.known_recipes.has(recipe.name):
 				player.discover_combination(combination)

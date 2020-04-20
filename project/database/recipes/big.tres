@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Receita Grande"
+grid_size = 4
+reagents = [ "common", "defensive", "catalyst", "uncommon", "uncommon", "uncommon", "rare", "rare" ]
+effects = [ "shield" ]
+effect_args = [ [ 10 ] ]
+description = "Puta receita enorme meu, tem até descrição!"

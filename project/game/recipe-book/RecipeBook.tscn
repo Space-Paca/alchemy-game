@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="RecipeBook" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+columns = 2

@@ -4,10 +4,12 @@ const STATUS_IMAGES = {
 					   "shield": "res://assets/images/status/shield_status.png",
 					  }
 
-var type
+var type : String
+var positive : bool
 
-func init(_type, value):
+func init(_type, value, _positive):
 	type = _type
+	positive = _positive
 	
 	assert(STATUS_IMAGES.has(type))
 	$Image.texture = load(STATUS_IMAGES[type])

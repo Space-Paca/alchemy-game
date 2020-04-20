@@ -40,7 +40,6 @@ func take_damage(damage: int, type: String):
 	update_shield()
 	update_status_bar()
 
-
 func gain_shield(value):
 	.gain_shield(value)
 	update_shield()
@@ -72,12 +71,11 @@ func update_shield():
 		$HealthBar/Shield.hide()
 
 func update_status_bar():
-	#if shield > 0:
-	#	$StatusBar.set_status("shield", shield)
-	#else:
-	#	$StatusBar.remove_status("shield")
-	pass
-
+	$StatusBar.clean_removed_status(status_list)
+	var status_type = status_list.keys();
+	for type in status_type:
+		var status = status_list[type]
+		$StatusBar.set_status(type, status.amount, status.positive)
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)

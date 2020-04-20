@@ -26,7 +26,11 @@ func update_shield(player):
 		$HealthBar/Shield.hide()
 
 func update_status_bar(player):
-	pass
+	$StatusBar.clean_removed_status(player.status_list)
+	var status_type = player.status_list.keys();
+	for type in status_type:
+		var status = player.status_list[type]
+		$StatusBar.set_status(type, status.amount, status.positive)
 
 func update_audio():
 	var percent = health_bar.value / float(health_bar.max_value)

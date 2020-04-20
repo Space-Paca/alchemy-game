@@ -6,10 +6,6 @@ var recipe_name : String
 var matrix : Array
 
 
-func _ready():
-	pass
-
-
 func create_from_recipe(recipe: Recipe):
 	grid_size = recipe.grid_size
 	recipe_name = recipe.name

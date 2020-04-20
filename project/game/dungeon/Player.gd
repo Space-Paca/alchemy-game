@@ -21,6 +21,7 @@ func _ready():
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
+	known_recipes.sort()
 	
 	# Initial bag
 	for _i in range(3):
@@ -61,5 +62,6 @@ func update_status():
 
 
 func discover_combination(combination: Combination):
-	print("Discovered new recipe: ", combination.recipe_name)
-	known_recipes.append(combination.recipe_name)
+	var recipe_name = combination.recipe_name
+	print("Discovered new recipe: ", recipe_name)
+	known_recipes.insert(known_recipes.bsearch(recipe_name), recipe_name)

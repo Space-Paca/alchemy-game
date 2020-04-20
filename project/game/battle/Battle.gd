@@ -28,11 +28,11 @@ var loot : Array
 
 func setup(_player: Player, encounter: Encounter):
 	setup_nodes()
-
+	
 	setup_player(_player)
 	
 	setup_player_ui()
-
+	
 	setup_enemy(encounter)
 	
 	effect_manager.setup(_player, enemies_node.get_children())
@@ -40,7 +40,7 @@ func setup(_player: Player, encounter: Encounter):
 	setup_audio(encounter)
 	
 	loot = encounter.get_loot()
-
+	
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
 	# to the first slot position.
@@ -105,6 +105,7 @@ func setup_player_ui():
 	#Position player ui
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
+
 
 func setup_enemy(encounter: Encounter):
 	if encounter.is_boss:
@@ -222,11 +223,13 @@ func win():
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.set_loot(loot)
 
+
 func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
 	enemy.global_position.x = target_pos.position.x - enemy.get_width() 
 	enemy.global_position.y = target_pos.position.y - enemy.get_height()
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

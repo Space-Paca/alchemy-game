@@ -6,7 +6,7 @@ var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-				"dodge": preload("res://assets/images/enemies/intents/random.png"),
+				"dodge": preload("res://assets/images/enemies/intents/dodge.png"),
 			   }
 var image = "res://assets/images/enemies/wolf/wolfIDLE.png"
 var name = "Good Boy"

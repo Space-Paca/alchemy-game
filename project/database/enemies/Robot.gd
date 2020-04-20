@@ -2,28 +2,31 @@ extends Reference
 
 signal acted
 
+const TEMP_BUFF = 10
+const PERM_BUFF = 5
+
 var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-					  "defend": preload("res://assets/images/enemies/intents/defense.png"),
-					  "random": preload("res://assets/images/enemies/intents/random.png"),
-					 }
+			   "temp_buff": preload("res://assets/images/enemies/intents/temp_strength.png"),
+			   "perm_buff": preload("res://assets/images/enemies/intents/perm_strength.png"),
+			   }
 var image = "res://assets/images/enemies/robot/robotIDLE.png"
 var name = "BeepBoop"
 var hp = 50
 var size = "big"
-var damage = [10, 12]
-var defense = [4, 6]
+var damage = [3, 5]
+var temp_buff = 0
+var perm_buff = 0
 
-var states = ["attack", "defend", "random"]
-var connections = [["random", "attack", 1],
-						  ["random", "defend", 2],
-						  ["attack", "defend", 5],
-						  ["attack", "attack", 5],
-						  ["defend", "attack", 1]
+var states = ["temp_buff", "perm_buff", "attack"]
+var connections = [["temp_buff", "attack", 1],
+				   ["attack", "perm_buff", 1],
+				   ["perm_buff", "temp_buff", 1],
+				   ["perm_buff", "attack", 2],
 						 ]
-var first_state = ["random", "random", "attack"]
+var first_state = ["temp_buff"]
 
 var next_value
 
@@ -35,21 +38,13 @@ func get_damage():
 	randomize()
 	return randi()%(damage[1]-damage[0]+1)+damage[0]
 
-func get_defense():
-	randomize()
-	return randi()%(defense[1]-defense[0]+1)+defense[0]
-
 func act(state):
 	if state == "attack":
 		emit_signal("acted", "damage", {"value": next_value, "type": "regular"})
-	elif state == "defend":
-		emit_signal("acted", "shield", {"value": next_value, "target": enemy_ref})
-	elif state == "random":
-		randomize()
-		if randf() > .5:
-			emit_signal("acted", "damage", {"value": get_damage() + 2, "type": "regular"})
-		else:
-			emit_signal("acted", "shield", {"value": get_defense() + 2, "target": enemy_ref})
+	elif state == "temp_buff":
+		emit_signal("acted", "status", {"status": "temp_strength", "amount": TEMP_BUFF, "target": enemy_ref, "positive": true})
+	elif state == "perm_buff":
+		emit_signal("acted", "status", {"status": "perm_strength", "amount": PERM_BUFF, "target": enemy_ref, "positive": true})
 
 func get_intent_data(state):
 	var data = {}
@@ -59,8 +54,13 @@ func get_intent_data(state):
 	next_value = null
 	if state == "attack":
 		next_value = get_damage()
-	elif state == "defend":
-		next_value = get_defense()
-	data.value = next_value
+		data.value = next_value + temp_buff + perm_buff
+		temp_buff = 0
+	elif state == "temp_buff":
+		data.value = TEMP_BUFF
+		temp_buff = TEMP_BUFF
+	elif state == "perm_buff":
+		data.value = PERM_BUFF
+		perm_buff += PERM_BUFF
 	
 	return data

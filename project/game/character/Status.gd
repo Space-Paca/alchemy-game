@@ -2,6 +2,8 @@ extends HBoxContainer
 
 const STATUS_IMAGES = {
 					   "dodge": "res://assets/images/status/random_status.png",
+					   "perm_strength": "res://assets/images/status/perm_strength.png",
+					   "temp_strength": "res://assets/images/status/temp_strength.png",
 					  }
 
 var type : String

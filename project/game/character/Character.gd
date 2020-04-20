@@ -20,6 +20,10 @@ func init(_name: String, _max_hp: int):
 func heal(amount):
 	hp = min(hp + amount, max_hp)
 
+func get_status(type):
+	if status_list.has(type):
+		return status_list[type]
+
 func add_status(status: String, amount: int, positive: bool):
 	if status_list.has(status):
 		status_list[status].amount += amount
@@ -29,7 +33,19 @@ func add_status(status: String, amount: int, positive: bool):
 func remove_status(status: String):
 	var _err = status_list.erase(status)
 
+func clear_status():
+	status_list.clear()
+
+func get_damage_modifiers():
+	var mod = 0
+	if get_status("temp_strength"):
+		mod += get_status("temp_strength").amount
+	if get_status("perm_strength"):
+		mod += get_status("perm_strength").amount
+	return mod
+
 func take_damage(damage: int, type: String):
+	damage += get_damage_modifiers()
 	if status_list.has("dodge"):
 		status_list["dodge"].amount -= 1
 		if status_list["dodge"].amount <= 0:
@@ -56,10 +72,17 @@ func take_damage(damage: int, type: String):
 func update_status():
 	shield = 0
 	for status in status_list:
-		self.callv("update_"+status, [status])
+		var f_name = "update_"+ str(status)
+		if self.has_method(f_name):
+			self.callv(f_name, [status])
+
+#STATUS FUNCS
 
 func update_dodge(_args):
 	remove_status("dodge")
+
+func update_temp_strength(_args):
+	remove_status("temp_strength")
 
 func gain_shield(value):
 	shield += value

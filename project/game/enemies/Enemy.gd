@@ -28,6 +28,7 @@ var data
 
 func _ready():
 	set_button_disabled(true)
+	$HealthBar/Shield.hide()
 
 func heal(amount : int):
 	.heal(amount)
@@ -36,12 +37,13 @@ func heal(amount : int):
 func take_damage(damage):
 	.take_damage(damage)
 	update_life()
+	update_shield()
 	update_status_bar()
 
 
 func gain_shield(value):
 	.gain_shield(value)
-	update_status_bar()
+	update_shield()
 
 func update_status():
 	.update_status()
@@ -62,12 +64,19 @@ func act():
 	
 	update_intent()
 
+func update_shield():
+	if shield > 0:
+		$HealthBar/Shield.show()
+		$HealthBar/Shield/Label.text = str(shield)
+	else:
+		$HealthBar/Shield.hide()
 
 func update_status_bar():
-	if shield > 0:
-		$StatusBar.set_status("shield", shield)
-	else:
-		$StatusBar.remove_status("shield")
+	#if shield > 0:
+	#	$StatusBar.set_status("shield", shield)
+	#else:
+	#	$StatusBar.remove_status("shield")
+	pass
 
 
 func setup(enemy_logic, new_texture, enemy_data):

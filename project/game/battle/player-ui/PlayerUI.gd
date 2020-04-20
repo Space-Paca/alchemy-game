@@ -2,6 +2,8 @@ extends Node2D
 
 onready var health_bar = $HealthBar
 
+func _ready():
+	$HealthBar/Shield.hide()
 
 func set_life(max_hp, hp):
 	health_bar.max_value = max_hp
@@ -16,11 +18,15 @@ func update_life(player):
 func update_effects():
 	update_audio()
 
-func update_status_bar(player):
+func update_shield(player):
 	if player.shield > 0:
-		$StatusBar.set_status("shield", player.shield)
+		$HealthBar/Shield.show()
+		$HealthBar/Shield/Label.text = str(player.shield)
 	else:
-		$StatusBar.remove_status("shield")
+		$HealthBar/Shield.hide()
+
+func update_status_bar(player):
+	pass
 
 func update_audio():
 	var percent = health_bar.value / float(health_bar.max_value)

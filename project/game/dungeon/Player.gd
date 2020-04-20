@@ -47,12 +47,12 @@ func heal(amount : int):
 func take_damage(value):
 	.take_damage(value)
 	hud.update_life(self)
-	hud.update_status_bar(self)
+	hud.update_shield(self)
 
 
 func gain_shield(value):
 	.gain_shield(value)
-	hud.update_status_bar(self)
+	hud.update_shield(self)
 
 
 func update_status():

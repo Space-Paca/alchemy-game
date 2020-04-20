@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/images/enemies/intents/random.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/images/ui/shield_icon.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -35,6 +36,13 @@ region_rect = Rect2( 0, 0, 1121, 93 )
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -100,6 +108,25 @@ __meta__ = {
 margin_right = 120.0
 margin_bottom = 20.0
 text = "5/10"
+align = 1
+valign = 1
+
+[node name="Shield" type="TextureRect" parent="HealthBar"]
+margin_left = -28.5272
+margin_top = -12.605
+margin_right = 16.4728
+margin_bottom = 32.395
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HealthBar/Shield"]
+margin_left = 2.0
+margin_right = 45.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 7 )
+text = "10"
 align = 1
 valign = 1
 

@@ -225,7 +225,6 @@ func win():
 func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
-	print(target_pos.position)
 	enemy.global_position.x = target_pos.position.x - enemy.get_width() 
 	enemy.global_position.y = target_pos.position.y - enemy.get_height()
 

@@ -16,6 +16,7 @@ func _ready():
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
 				var encounter := load(str(path, file_name)) as Encounter
+				encounter.resource_name = file_name
 				if encounter.is_boss:
 					if not boss_encounters.has(encounter.level):
 						boss_encounters[encounter.level] = []

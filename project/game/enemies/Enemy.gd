@@ -12,8 +12,12 @@ onready var intent_animation = $Intent/AnimationPlayer
 onready var intent_value = $Value
 onready var sprite = $Sprite
 
+const SMALL_ENEMY_HEALTHBAR_SIZE = 120
+const MEDIUM_ENEMY_HEALTHBAR_SIZE = 180
+const BIG_ENEMY_HEALTHBAR_SIZE = 250
+
 const STATUS_BAR_MARGIN = 40
-const HEALTH_BAR_MARGIN = 10
+const HEALTH_BAR_MARGIN = 5
 const INTENT_MARGIN = 20
 const INTENT_W = 50
 const INTENT_H = 60
@@ -27,11 +31,11 @@ func _ready():
 
 func heal(amount : int):
 	.heal(amount)
-	health_bar.value = hp
+	update_life()
 
 func take_damage(damage):
 	.take_damage(damage)
-	health_bar.value = hp
+	update_life()
 	update_status_bar()
 
 
@@ -42,6 +46,10 @@ func gain_shield(value):
 func update_status():
 	.update_status()
 	update_status_bar()
+
+func update_life():
+	health_bar.value = hp
+	health_bar.get_node("Label").text = str(hp) + "/" + str(max_hp)
 
 func act():
 	var state = logic_.get_current_state()
@@ -64,7 +72,7 @@ func update_status_bar():
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
-	set_max_hp()
+	set_life(enemy_data)
 	set_image(new_texture)
 
 	data = enemy_data #Store enemy data
@@ -84,9 +92,23 @@ func set_logic(enemy_logic):
 	logic_.set_state(enemy_logic.first_state.front())
 
 
-func set_max_hp():
+func set_life(enemy_data):
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = max_hp
+	$HealthBar/Label.text = str(max_hp) + "/" + str(max_hp)
+	
+	if enemy_data.size == "small":
+		$HealthBar.rect_size.x = SMALL_ENEMY_HEALTHBAR_SIZE
+		$HealthBar/Label.rect_size.x = SMALL_ENEMY_HEALTHBAR_SIZE
+	elif enemy_data.size == "medium":
+		$HealthBar.rect_size.x = MEDIUM_ENEMY_HEALTHBAR_SIZE
+		$HealthBar/Label.rect_size.x = MEDIUM_ENEMY_HEALTHBAR_SIZE
+	elif enemy_data.size == "big":
+		$HealthBar.rect_size.x = BIG_ENEMY_HEALTHBAR_SIZE
+		$HealthBar/Label.rect_size.x = BIG_ENEMY_HEALTHBAR_SIZE
+	else:
+		push_error("Not a valid enemy size: " + str(enemy_data.enemy_size))
+		assert(false)
 
 
 func set_image(new_texture):

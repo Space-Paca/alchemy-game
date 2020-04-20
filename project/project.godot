@@ -63,11 +63,6 @@ _global_script_classes=[ {
 "class": "Room",
 "language": "GDScript",
 "path": "res://game/map/Room.gd"
-}, {
-"base": "Reference",
-"class": "SampleEnemyData",
-"language": "GDScript",
-"path": "res://database/enemies/SampleEnemyData.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -80,8 +75,7 @@ _global_script_class_icons={
 "PlayerClass": "",
 "ReagentDB": "",
 "Recipe": "",
-"Room": "",
-"SampleEnemyData": ""
+"Room": ""
 }
 
 [application]

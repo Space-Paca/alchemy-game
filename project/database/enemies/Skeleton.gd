@@ -1,27 +1,33 @@
-extends SampleEnemyData
+extends Reference
 
 signal acted
 
-export var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
+var enemy_ref #Reference to enemy node
+
+var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
 					  "defend": preload("res://assets/images/enemies/intents/defense.png"),
 					  "random": preload("res://assets/images/enemies/intents/random.png"),
 					 }
-export var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
-export var name = "Skelly"
-export var hp = 30
-export var damage = [10, 12]
-export var defense = [4, 6]
+var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
+var name = "Skelly"
+var hp = 30
+var size = "small"
+var damage = [10, 12]
+var defense = [4, 6]
 
-export var states = ["attack", "defend", "random"]
-export var connections = [["random", "attack", 1],
+var states = ["attack", "defend", "random"]
+var connections = [["random", "attack", 1],
 						  ["random", "defend", 2],
 						  ["attack", "defend", 5],
 						  ["attack", "attack", 5],
 						  ["defend", "attack", 1]
 						 ]
-export var first_state = ["random", "random", "attack"]
+var first_state = ["random", "random", "attack"]
 
 var next_value
+
+func set_enemy_reference(ref):
+	enemy_ref = ref
 
 func get_damage():
 	randomize()

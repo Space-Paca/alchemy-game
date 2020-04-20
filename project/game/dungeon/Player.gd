@@ -1,8 +1,8 @@
 extends Character
 class_name Player
 
-const INITIAL_HAND_SIZE = 10
-const INITIAL_GRID_SIZE = 4
+const INITIAL_HAND_SIZE = 4
+const INITIAL_GRID_SIZE = 2
 
 var hud
 var hand_size : int

@@ -6,9 +6,11 @@ onready var health_bar = $HealthBar
 func set_life(max_hp, hp):
 	health_bar.max_value = max_hp
 	health_bar.value = hp
+	$HealthBar/Label.text = str(hp) + "/" + str(max_hp)
 
 func update_life(player):
 	$HealthBar.value = player.hp
+	$HealthBar/Label.text = str(player.hp) + "/" + str(player.max_hp)
 	update_effects()
 
 func update_effects():

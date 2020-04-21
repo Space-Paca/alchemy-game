@@ -54,6 +54,7 @@ func remove_status(status: String):
 
 func update_status():
 	.update_status()
+	update_shield()
 	update_status_bar()
 
 func update_life():

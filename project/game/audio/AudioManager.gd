@@ -17,7 +17,7 @@ const FADEOUT_SPEED = 20
 const FADEIN_SPEED = 24
 #Volume
 const MUTE_DB = -60
-const NORMAL_DB = 0
+const NORMAL_DB = -15
 #Layer
 const MAX_LAYERS = 3
 #BGM

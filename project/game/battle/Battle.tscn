@@ -81,13 +81,13 @@ position = Vector2( 965, 720 )
 position = Vector2( 1515, 835 )
 
 [node name="Pos5" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1515, 520 )
+position = Vector2( 1515, 535 )
 
 [node name="Pos6" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 965, 390 )
 
 [node name="Pos7" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1515, 650 )
+position = Vector2( 1515, 680 )
 
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1240, 535 )

@@ -24,6 +24,7 @@ const INTENT_H = 60
 
 var logic_
 var data
+var tooltip_position = Vector2()
 
 
 func _ready():
@@ -176,7 +177,7 @@ func set_intent(texture, value):
 
 func set_pos(pos):
 	position = pos
-	$TooltipCollision.pos = Vector2(pos.x - TooltipLayer.get_width(), pos.y)
+	tooltip_position = Vector2(pos.x - TooltipLayer.get_width(), pos.y)
 
 func update_intent():
 	var state = logic_.get_current_state()
@@ -191,6 +192,8 @@ func get_width():
 func get_height():
 	return sprite.texture.get_height()
 
+func get_tooltips():
+	return [{"title": "Test1", "text": "blabla"}, {"title": "Test2", "text": "blablabla bla bla"}]
 
 func set_button_disabled(disable: bool):
 	button.visible = not disable
@@ -199,3 +202,13 @@ func set_button_disabled(disable: bool):
 
 func _on_Button_pressed():
 	emit_signal("selected", self)
+
+
+func _on_TooltipCollision_enable_tooltip():
+	for tooltip in get_tooltips():
+		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text)
+
+
+func _on_TooltipCollision_disable_tooltip():
+		for tooltip in get_tooltips():
+			TooltipLayer.remove_tooltip(tooltip.title)

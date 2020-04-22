@@ -163,3 +163,5 @@ __meta__ = {
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
 position = Vector2( 130, 130 )
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

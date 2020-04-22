@@ -9,14 +9,19 @@ func get_width():
 func add_tooltip(pos, title, text):
 	var tip = TOOLTIP.instance()
 	tip.setup(title, text)
-	$VBoxContainer.rect_position = pos
-	$VBoxContainer.add_child(tip)
-	
+	$Tooltips.position = pos
+	$Tooltips.add_child(tip)
+	update_tooltips_pos()
 
 func remove_tooltip(title):
-	for tip in $VBoxContainer.get_children():
+	for tip in $Tooltips.get_children():
 		if tip.get_title() == title:
-			$VBoxContainer.remove_child(tip)
+			$Tooltips.remove_child(tip)
 			return
 		
 
+func update_tooltips_pos():
+	var y = 0
+	for tip in $Tooltips.get_children():
+		tip.rect_position.y = y
+		y += tip.get_height()

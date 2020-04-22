@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Node2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://game/character/Character.gd"
@@ -91,6 +91,7 @@ ReagentManager="*res://game/reagents/ReagentManager.gd"
 RecipeManager="*res://database/RecipeManager.gd"
 AudioManager="*res://game/audio/AudioManager.tscn"
 EncounterManager="*res://database/EncounterManager.gd"
+TooltipLayer="*res://game/tooltip/TooltipLayer.tscn"
 
 [display]
 

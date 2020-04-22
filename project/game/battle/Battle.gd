@@ -227,8 +227,9 @@ func win():
 func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
-	enemy.global_position.x = target_pos.position.x - enemy.get_width() 
-	enemy.global_position.y = target_pos.position.y - enemy.get_height()
+	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(), \
+						  target_pos.position.y - enemy.get_height()))
+
 
 
 func _on_reagent_drag(reagent):

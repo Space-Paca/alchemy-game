@@ -2,5 +2,5 @@
 
 [ext_resource path="res://game/dungeon/Player.gd" type="Script" id=1]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node2D"]
 script = ExtResource( 1 )

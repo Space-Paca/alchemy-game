@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/ui/shield_icon.png" type="Texture" id=8]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -37,15 +38,14 @@ region_rect = Rect2( 0, 0, 1121, 93 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "values": [ 0.0, 9.0, 0.0, -9.0, 0.0 ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 100
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
@@ -89,6 +89,9 @@ anims/idle = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = 68.0
@@ -125,7 +128,7 @@ __meta__ = {
 margin_left = 2.0
 margin_right = 45.0
 margin_bottom = 38.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "10"
 align = 1
 valign = 1
@@ -142,18 +145,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intent"]
 autoplay = "idle"
-anims/idle = SubResource( 5 )
+anims/idle = SubResource( 6 )
 
 [node name="Value" type="Label" parent="."]
 margin_left = 186.616
 margin_top = -99.4468
 margin_right = 250.616
 margin_bottom = -15.4468
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
+position = Vector2( 130, 130 )
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]

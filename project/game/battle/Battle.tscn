@@ -69,16 +69,16 @@ position = Vector2( 1100.34, 393.883 )
 [node name="EnemiesPositions" type="Node" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 965, 350 )
+position = Vector2( 965, 330 )
 
 [node name="Pos2" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1515, 465 )
+position = Vector2( 1515, 455 )
 
 [node name="Pos3" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 965, 720 )
+position = Vector2( 965, 730 )
 
 [node name="Pos4" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1515, 835 )
+position = Vector2( 1515, 845 )
 
 [node name="Pos5" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1515, 535 )

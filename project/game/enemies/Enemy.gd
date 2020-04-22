@@ -90,7 +90,6 @@ func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
 	set_image(new_texture)
-
 	data = enemy_data #Store enemy data
 
 
@@ -137,8 +136,15 @@ func set_image(new_texture):
 	#Update status bar position
 	$StatusBar.rect_position.x = w/2 - $StatusBar.rect_size.x/2
 	$StatusBar.rect_position.y = $HealthBar.rect_position.y + STATUS_BAR_MARGIN
+	#Update tooltip collision
+	var t_w = w
+	var t_h = INTENT_H +  INTENT_MARGIN + h + \
+			  HEALTH_BAR_MARGIN + $HealthBar.rect_size.y + \
+			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
+	$TooltipCollision.position = Vector2(t_w/2, - INTENT_H - INTENT_MARGIN + t_h/2)
+	$TooltipCollision.set_shape(Vector2(t_w, t_h))
 
-func set_intent(texture, value):	
+func set_intent(texture, value):
 	intent_texture.texture = texture
 	var tw = texture.get_width()
 	var th = texture.get_height()
@@ -168,6 +174,9 @@ func set_intent(texture, value):
 	randomize()
 	intent_animation.seek(rand_range(0,1.5))
 
+func set_pos(pos):
+	position = pos
+	$TooltipCollision.pos = Vector2(pos.x - TooltipLayer.get_width(), pos.y)
 
 func update_intent():
 	var state = logic_.get_current_state()

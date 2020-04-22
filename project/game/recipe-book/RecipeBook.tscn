@@ -26,26 +26,42 @@ margin_right = 730.0
 margin_bottom = 500.0
 rect_min_size = Vector2( 730, 1000 )
 color = Color( 0.741176, 0.690196, 0.482353, 1 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
-margin_right = 730.0
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 10
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 700.0
+margin_bottom = 990.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+margin_right = 670.0
 margin_bottom = 71.0
 custom_fonts/font = SubResource( 1 )
 text = "LISTA DE RECEITAS"
 align = 1
 valign = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/VBoxContainer"]
-margin_left = 365.0
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+margin_left = 335.0
 margin_top = 75.0
-margin_right = 365.0
+margin_right = 335.0
 margin_bottom = 725.0
 rect_min_size = Vector2( 0, 650 )
 size_flags_horizontal = 6
@@ -54,8 +70,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
 size_flags_horizontal = 10
 custom_constants/vseparation = 10
 custom_constants/hseparation = 20
 columns = 2
+
+[node name="HandRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 729.0
+margin_right = 670.0
+margin_bottom = 969.0
+rect_min_size = Vector2( 0, 240 )
+color = Color( 0.392157, 0.333333, 0.211765, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/MarginContainer/VBoxContainer/HandRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/HandRect/CenterContainer"]
+margin_left = 335.0
+margin_top = 120.0
+margin_right = 335.0
+margin_bottom = 120.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10

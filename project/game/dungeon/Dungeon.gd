@@ -8,7 +8,7 @@ const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
 const FLOOR_SIZE := [10, 20, 30]
 const MAX_FLOOR = 3
 
-var battle : Node
+var battle
 var combinations := {}
 var current_floor : Floor
 var floor_level := 1
@@ -23,7 +23,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
-		recipe_book.visible = !recipe_book.visible
+		recipe_book.toggle(battle)
 
 
 func create_combinations():
@@ -112,6 +112,8 @@ func new_battle(encounter: Encounter):
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 # warning-ignore:return_value_discarded
 	battle.connect("won", self, "_on_Battle_won")
+	
+	recipe_book.create_hand(battle)
 
 
 func _on_room_entered(room: Room):
@@ -122,6 +124,7 @@ func _on_room_entered(room: Room):
 
 func _on_Battle_won(is_boss):
 	battle = null
+	recipe_book.remove_hand()
 	
 	if is_boss:
 		current_floor.queue_free()

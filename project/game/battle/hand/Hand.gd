@@ -62,3 +62,14 @@ func place_reagent(reagent):
 			return
 	push_error("Can't place reagent in hand, hand is full.")
 	assert(false)
+
+
+func get_reagent_names() -> Array:
+	var reagents := []
+	for slot in grid.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			reagents.append(reagent.type)
+		else:
+			reagents.append(null)
+	return reagents

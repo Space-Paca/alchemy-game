@@ -177,7 +177,8 @@ func set_intent(texture, value):
 
 func set_pos(pos):
 	position = pos
-	tooltip_position = Vector2(pos.x - TooltipLayer.get_width(), pos.y)
+	tooltip_position = Vector2(pos.x - TooltipLayer.get_width(), \
+							   pos.y - INTENT_MARGIN - INTENT_H)
 
 func update_intent():
 	var state = logic_.get_current_state()
@@ -193,7 +194,7 @@ func get_height():
 	return sprite.texture.get_height()
 
 func get_tooltips():
-	return [{"title": "Test1", "text": "blabla"}, {"title": "Test2", "text": "blablabla bla bla"}]
+	return [{"title": "Test1", "text": "blabla"}, {"title": "Test2", "text": "blablabla bla bla asd as asd asd aasd  ad as asd asd asd asd asd asd asd as das asd a"}]
 
 func set_button_disabled(disable: bool):
 	button.visible = not disable

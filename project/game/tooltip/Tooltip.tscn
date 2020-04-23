@@ -10,7 +10,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 34
+size = 45
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -34,10 +34,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 178.0
-margin_bottom = 44.0
+margin_left = 18.0
+margin_top = 15.0
+margin_right = 177.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 text = "Title"
 valign = 1
@@ -45,14 +45,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 43.0
-margin_right = 178.0
-margin_bottom = 112.0
-custom_fonts/font = SubResource( 2 )
-text = "This is a sample text lasjkdlasdjaslk alkdjsalkdjdsalk lkasjdsaldjss"
-autowrap = true
+[node name="Text" type="RichTextLabel" parent="."]
+margin_left = 18.0
+margin_top = 44.45
+margin_right = 177.0
+margin_bottom = 84.45
+rect_clip_content = false
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "asdasd a asd  aasd asd asd  asd 
+sd asd "
+text = "asdasd a asd  aasd asd asd  asd 
+sd asd "
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -4,6 +4,7 @@ extends Node2D
 
 signal won(is_boss)
 signal combination_made(reagent_matrix)
+signal current_reagents_updated(curr_reagents)
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -294,7 +295,28 @@ func _on_CreateRecipe_pressed():
 	
 	disable_player()
 	emit_signal("combination_made", reagent_matrix)
+	emit_signal("current_reagents_updated", hand.get_reagent_names())
 
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent)
+
+
+func _on_Hand_hand_slot_reagent_set():
+	var reagent_array = hand.get_reagent_names()
+	
+	if grid.is_empty():
+		emit_signal("current_reagents_updated", reagent_array)
+		return
+	
+	var grid_index = 0
+	for i in range(reagent_array.size()):
+		if not reagent_array[i]:
+			for j in range(grid_index, grid.grid_size * grid.grid_size):
+				var reagent = grid.container.get_child(j).current_reagent
+				if reagent:
+					grid_index = j + 1
+					reagent_array[i] = reagent.type
+					break
+	
+	emit_signal("current_reagents_updated", reagent_array)

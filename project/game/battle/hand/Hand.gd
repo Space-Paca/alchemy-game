@@ -2,6 +2,7 @@ tool
 extends Node2D
 
 signal reagent_placed
+signal hand_slot_reagent_set
 
 onready var grid = $GridContainer
 onready var bg = $TextureRect
@@ -40,7 +41,9 @@ func set_hand(slots):
 		grid.remove_child(child)
 	grid.columns = slots/2
 	for _i in range(slots):
-		grid.add_child(HANDSLOT.instance())
+		var hand_slot = HANDSLOT.instance()
+		hand_slot.connect("reagent_set", self, "_on_reagent_set")
+		grid.add_child(hand_slot)
 
 	bg.rect_size.x = get_width()
 	bg.rect_size.y = get_height()
@@ -73,3 +76,7 @@ func get_reagent_names() -> Array:
 		else:
 			reagents.append(null)
 	return reagents
+
+
+func _on_reagent_set():
+	emit_signal("hand_slot_reagent_set")

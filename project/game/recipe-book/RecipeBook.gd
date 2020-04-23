@@ -16,6 +16,7 @@ func add_combination(combination: Combination, position: int):
 
 
 func create_hand(battle):
+	battle.connect("current_reagents_updated", self, "update_hand")
 	hand_grid.columns = battle.hand.size / 2
 	for _i in range(battle.hand.size):
 		var reagent = REAGENT.instance()
@@ -32,13 +33,9 @@ func remove_hand():
 
 
 func toggle(battle = null):
-	if hand_rect.visible:
-		update_hand(battle)
-	
 	visible = !visible
 
 
-func update_hand(battle):
-	var reagents = battle.hand.get_reagent_names()
+func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_grid.get_child(i).set_reagent(reagents[i])

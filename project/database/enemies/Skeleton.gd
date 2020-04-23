@@ -16,12 +16,11 @@ var damage = [10, 12]
 var defense = [4, 6]
 
 var states = ["attack", "defend"]
-var connections = [["random", "attack", 1],
-						  ["random", "defend", 2],
-						  ["attack", "defend", 5],
-						  ["attack", "attack", 5],
-						  ["defend", "attack", 1]
-						 ]
+var connections = [
+					  ["attack", "defend", 5],
+					  ["attack", "attack", 5],
+					  ["defend", "attack", 1],
+				  ]
 var first_state = ["attack", "defend"]
 
 var next_value

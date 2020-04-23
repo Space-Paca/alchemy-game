@@ -1,6 +1,6 @@
 extends Control
 
-const MARGIN = 10
+const MARGIN = 20
 
 signal setted_up
 

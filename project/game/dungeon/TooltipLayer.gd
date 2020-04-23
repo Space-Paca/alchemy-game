@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 const TOOLTIP = preload("res://game/tooltip/Tooltip.tscn")
-const TOOLTIP_WIDTH = 200
+const TOOLTIP_WIDTH = 220
 
 func get_width():
 	return TOOLTIP_WIDTH

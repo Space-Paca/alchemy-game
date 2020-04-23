@@ -51,3 +51,15 @@ func get_intent_data(state):
 		data.value = 1
 	
 	return data
+
+func get_intent_tooltip(state):
+	var tooltip = {}
+	
+	if state == "attack":
+		tooltip.title = "Attacking"
+		tooltip.text = "This enemy is attacking next turn"
+	elif state == "dodge":
+		tooltip.title = "Dodging"
+		tooltip.text = "This enemy is getting dodge next turn"
+	
+	return tooltip

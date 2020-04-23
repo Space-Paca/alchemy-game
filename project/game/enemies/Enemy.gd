@@ -194,7 +194,14 @@ func get_height():
 	return sprite.texture.get_height()
 
 func get_tooltips():
-	return [{"title": "Test1", "text": "blabla"}, {"title": "Test2", "text": "blablabla bla bla asd as asd asd aasd  ad as asd asd asd asd asd asd asd as das asd a"}]
+	var tooltips = []
+	#Get intent tooltip
+	var state = logic_.get_current_state()
+	var intent_tooltip = data.get_intent_tooltip(state)
+	if intent_tooltip:
+		tooltips.append(intent_tooltip)
+	
+	return tooltips
 
 func set_button_disabled(disable: bool):
 	button.visible = not disable

@@ -6,9 +6,8 @@ var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-					  "defend": preload("res://assets/images/enemies/intents/defense.png"),
-					  "random": preload("res://assets/images/enemies/intents/random.png"),
-					 }
+			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
+			  }
 var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
 var name = "Skelly"
 var hp = 30
@@ -16,14 +15,14 @@ var size = "small"
 var damage = [10, 12]
 var defense = [4, 6]
 
-var states = ["attack", "defend", "random"]
+var states = ["attack", "defend"]
 var connections = [["random", "attack", 1],
 						  ["random", "defend", 2],
 						  ["attack", "defend", 5],
 						  ["attack", "attack", 5],
 						  ["defend", "attack", 1]
 						 ]
-var first_state = ["random", "random", "attack"]
+var first_state = ["attack", "defend"]
 
 var next_value
 
@@ -64,3 +63,15 @@ func get_intent_data(state):
 	data.value = next_value
 	
 	return data
+
+func get_intent_tooltip(state):
+	var tooltip = {}
+	
+	if state == "attack":
+		tooltip.title = "Attacking"
+		tooltip.text = "This enemy is attacking next turn"
+	elif state == "defend":
+		tooltip.title = "Defending"
+		tooltip.text = "This enemy is going to defend next turn"
+	
+	return tooltip

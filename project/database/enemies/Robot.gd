@@ -64,3 +64,18 @@ func get_intent_data(state):
 		perm_buff += PERM_BUFF
 	
 	return data
+
+func get_intent_tooltip(state):
+	var tooltip = {}
+	
+	if state == "attack":
+		tooltip.title = "Attacking"
+		tooltip.text = "This enemy is attacking next turn"
+	elif state == "temp_buff":
+		tooltip.title = "Temporary Buff"
+		tooltip.text = "This enemy is buffing his next attack"
+	elif state == "perm_buff":
+		tooltip.title = "Getting Strong"
+		tooltip.text = "This enemy is getting a permanent attack buff"
+	
+	return tooltip

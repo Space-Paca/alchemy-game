@@ -5,7 +5,9 @@
 [ext_resource path="res://assets/images/ui/tooltip_bg.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 47
+size = 62
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -38,9 +40,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 margin_left = 18.0
-margin_top = 15.0
+margin_top = 12.0
 margin_right = 177.0
-margin_bottom = 42.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 1 )
 text = "Title"
 valign = 1
@@ -50,17 +52,16 @@ __meta__ = {
 
 [node name="Text" type="RichTextLabel" parent="."]
 margin_left = 18.0
-margin_top = 44.45
+margin_top = 50.0
 margin_right = 177.0
-margin_bottom = 84.45
+margin_bottom = 84.0
 rect_clip_content = false
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 2 )
+custom_constants/line_separation = -4
 bbcode_enabled = true
-bbcode_text = "asdasd a asd  aasd asd asd  asd 
-sd asd "
-text = "asdasd a asd  aasd asd asd  asd 
-sd asd "
+bbcode_text = "This is a sample text and is just like this, a sample"
+text = "This is a sample text and is just like this, a sample"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

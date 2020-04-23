@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Tooltip.gd" type="Script" id=2]
+[ext_resource path="res://game/tooltip/Tooltip.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/tooltip_bg.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
@@ -24,11 +24,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
 margin_right = 200.0
 margin_bottom = 145.0
 texture = ExtResource( 3 )
-expand = true
+patch_margin_left = 35
+patch_margin_top = 35
+patch_margin_right = 35
+patch_margin_bottom = 35
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,3 +65,5 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]

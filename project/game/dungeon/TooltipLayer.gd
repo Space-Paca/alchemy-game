@@ -11,6 +11,7 @@ func add_tooltip(pos, title, text):
 	tip.setup(title, text)
 	$Tooltips.position = pos
 	$Tooltips.add_child(tip)
+	yield(tip, "setted_up")
 	update_tooltips_pos()
 
 func remove_tooltip(title):

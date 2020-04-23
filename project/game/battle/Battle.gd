@@ -237,9 +237,9 @@ func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
 
 
-func _on_enemy_acted(action, args):
+func _on_enemy_acted(enemy, action, args):
 	if action == "damage":
-		player.take_damage(args.value, args.type)
+		player.take_damage(enemy, args.value, args.type)
 	elif action == "shield":
 		args.target.gain_shield(args.value)
 	elif action == "status":

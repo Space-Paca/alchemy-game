@@ -39,15 +39,9 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", "damage", {"value": next_value, "type": "pierce"})
+		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "pierce"})
 	elif state == "defend":
-		emit_signal("acted", "shield", {"value": next_value, "target": enemy_ref})
-	elif state == "random":
-		randomize()
-		if randf() > .5:
-			emit_signal("acted", "damage", {"value": get_damage() + 2, "type": "pierce"})
-		else:
-			emit_signal("acted", "shield", {"value": get_defense() + 2, "target": enemy_ref})
+		emit_signal("acted", enemy_ref, "shield", {"value": next_value, "target": enemy_ref})
 
 func get_intent_data(state):
 	var data = {}

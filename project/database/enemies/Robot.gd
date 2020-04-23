@@ -40,11 +40,11 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", "damage", {"value": next_value, "type": "regular"})
+		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "regular"})
 	elif state == "temp_buff":
-		emit_signal("acted", "status", {"status": "temp_strength", "amount": TEMP_BUFF, "target": enemy_ref, "positive": true})
+		emit_signal("acted", enemy_ref, "status", {"status": "temp_strength", "amount": TEMP_BUFF, "target": enemy_ref, "positive": true})
 	elif state == "perm_buff":
-		emit_signal("acted", "status", {"status": "perm_strength", "amount": PERM_BUFF, "target": enemy_ref, "positive": true})
+		emit_signal("acted", enemy_ref, "status", {"status": "perm_strength", "amount": PERM_BUFF, "target": enemy_ref, "positive": true})
 
 func get_intent_data(state):
 	var data = {}

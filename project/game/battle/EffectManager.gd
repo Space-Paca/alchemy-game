@@ -38,7 +38,7 @@ func require_target():
 
 
 func combination_failure():
-	damage_all(5, "phantom")
+	damage_all(20, "regular")
 
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":
@@ -61,13 +61,13 @@ func damage(amount: int, type: String):
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
 	
-	target.take_damage(amount, type)
+	target.take_damage(player, amount, type)
 	resolve()
 
 
 func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
-		(enemy as Enemy).take_damage(amount, type)
+		(enemy as Enemy).take_damage(player, amount, type)
 	
 	resolve()
 

@@ -47,8 +47,8 @@ func heal(amount : int):
 	hud.update_life(self)
 
 
-func take_damage(value: int, type: String):
-	.take_damage(value, type)
+func take_damage(source: Character, value: int, type: String):
+	.take_damage(source, value, type)
 	hud.update_life(self)
 	hud.update_shield(self)
 

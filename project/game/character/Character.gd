@@ -20,9 +20,9 @@ func init(_name: String, _max_hp: int):
 func heal(amount):
 	hp = min(hp + amount, max_hp)
 
-func get_status(type):
-	if status_list.has(type):
-		return status_list[type]
+func get_status(status: String):
+	if status_list.has(status):
+		return status_list[status]
 
 func add_status(status: String, amount: int, positive: bool):
 	if status_list.has(status):
@@ -40,12 +40,13 @@ func get_damage_modifiers():
 	var mod = 0
 	if get_status("temp_strength"):
 		mod += get_status("temp_strength").amount
+		remove_status("temp_strength")
 	if get_status("perm_strength"):
 		mod += get_status("perm_strength").amount
 	return mod
 
-func take_damage(damage: int, type: String):
-	damage += get_damage_modifiers()
+func take_damage(source: Character, damage: int, type: String):
+	damage += source.get_damage_modifiers()
 	if status_list.has("dodge"):
 		status_list["dodge"].amount -= 1
 		if status_list["dodge"].amount <= 0:
@@ -81,12 +82,8 @@ func update_status():
 func update_dodge(_args):
 	remove_status("dodge")
 
-func update_temp_strength(_args):
-	remove_status("temp_strength")
-
 func gain_shield(value):
 	shield += value
 
 func die():
-	print(char_name, " dead")
 	emit_signal("died", self)

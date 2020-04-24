@@ -17,6 +17,7 @@ func set_loot(loot: Array):
 
 
 func _on_Button_pressed():
+	AudioManager.play_sfx("click")
 	emit_signal("continue_pressed")
 
 

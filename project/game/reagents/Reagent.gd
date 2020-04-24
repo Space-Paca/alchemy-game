@@ -21,9 +21,11 @@ func enable_dragging():
 	can_drag = true
 	disable_drag = false
 
+func hover_effect():
+	AudioManager.play_sfx("hover_reagent")
+
 func start_dragging():
 	emit_signal("started_dragging", self)
-
 
 func disable_dragging():
 	can_drag = false

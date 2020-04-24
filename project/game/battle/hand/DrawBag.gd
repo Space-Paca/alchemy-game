@@ -41,6 +41,7 @@ func start_drawing(_reagents):
 	while not _reagents.empty():
 		var reagent = _reagents.pop_back()
 		reagent.disable_dragging()
+		AudioManager.play_sfx("draw_reagent")
 		hand.place_reagent(reagent)
 		if not _reagents.empty():
 			randomize()

@@ -216,6 +216,11 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 
 
 func win():
+	if is_boss:
+		AudioManager.play_sfx("win_boss_battle")
+	else:
+		AudioManager.play_sfx("win_normal_battle")
+		
 	ended = true
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
@@ -256,7 +261,7 @@ func _on_enemy_died(enemy):
 
 
 func _on_player_died(_player):
-	print("GAME OVER")
+	AudioManager.play_sfx("game_over")
 	ended = true
 	disable_player()
 	add_child(GAMEOVER_SCENE.instance())
@@ -267,6 +272,7 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 
 func _on_PassTurnButton_pressed():
+	AudioManager.play_sfx("click")
 	new_enemy_turn()
 
 
@@ -277,9 +283,11 @@ func _on_win_screen_continue_pressed():
 
 
 func _on_CreateRecipe_pressed():
+	AudioManager.play_sfx("click")
 	if grid.is_empty():
 		return
 	
+	AudioManager.play_sfx("combine")
 	var reagent_matrix := []
 	var child_index := 0
 	for _i in range(grid.grid_size):

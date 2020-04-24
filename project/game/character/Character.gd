@@ -25,6 +25,11 @@ func get_status(status: String):
 		return status_list[status]
 
 func add_status(status: String, amount: int, positive: bool):
+	if positive:
+		AudioManager.play_sfx("buff")
+	else:
+		AudioManager.play_sfx("debuff")
+
 	if status_list.has(status):
 		status_list[status].amount += amount
 	else:
@@ -54,21 +59,43 @@ func take_damage(source: Character, damage: int, type: String):
 		return
 	#Block damage with shield
 	if type == "regular":
+		AudioManager.play_sfx("damage_regular")
+		var had_shield = shield > 0
+		
 		var unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
+		
+		if had_shield and shield > 0:
+			AudioManager.play_sfx("shield_hit")
+		elif had_shield:
+			AudioManager.play_sfx("shield_breaks")
 	#Damages both shield and health equally
 	elif type == "crushing":
+		AudioManager.play_sfx("damage_crushing")
+		var had_shield = shield > 0
+		
 		shield = max(shield - damage, 0)
 		hp -= damage
+		
+		if had_shield and shield > 0:
+			AudioManager.play_sfx("shield_hit")
+		elif had_shield:
+			AudioManager.play_sfx("shield_breaks")
 	#Ignores shield and only damages health
 	elif type == "phantom":
+		AudioManager.play_sfx("damage_phantom")
 		hp -= damage
 	
 	if hp <= 0:
 		hp = 0
 		die()
 
+func gain_shield(value):
+	AudioManager.play_sfx("shield_gain")
+	shield += value
+
+#STATUS FUNCS
 
 func update_status():
 	shield = 0
@@ -77,13 +104,8 @@ func update_status():
 		if self.has_method(f_name):
 			self.callv(f_name, [status])
 
-#STATUS FUNCS
-
 func update_dodge(_args):
 	remove_status("dodge")
-
-func gain_shield(value):
-	shield += value
 
 func die():
 	emit_signal("died", self)

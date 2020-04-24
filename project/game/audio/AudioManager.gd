@@ -32,15 +32,15 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 			  "shop": preload("res://assets/audio/bgm/shop.ogg"),
 			 }
 #SFX
-const MAX_SFXS = 8
+const MAX_SFXS = 10
 const SFXS = {
 			"buff": preload("res://assets/audio/sfx/buff_generic.wav"),
 			"buy": preload("res://assets/audio/sfx/buy.wav"),
 			"click": preload("res://assets/audio/sfx/click.wav"),
 			"combine": preload("res://assets/audio/sfx/combine.wav"),
 			"damage_crushing": preload("res://assets/audio/sfx/damage_crushing.wav"),
-			"damage_normal": preload("res://assets/audio/sfx/damage_normal.wav"),
 			"damage_phantom": preload("res://assets/audio/sfx/damage_phantom.wav"),
+			"damage_regular": preload("res://assets/audio/sfx/damage_normal.wav"),
 			"debuff": preload("res://assets/audio/sfx/debuff_generic.wav"),
 			"discard_reagent": preload("res://assets/audio/sfx/discard_reagent.wav"),
 			"draw_reagent": preload("res://assets/audio/sfx/draw_reagent.wav"),
@@ -111,14 +111,14 @@ func stop_bgm():
 	$Tween.start()
 
 
-func stop_bgm_layer(layer):
+func stop_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
 	var duration = (vol - MUTE_DB)/float(FADEOUT_SPEED)
 	$Tween.interpolate_property(player, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
-func play_bgm_layer(layer):
+func play_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
 	var duration = (NORMAL_DB - vol)/float(FADEIN_SPEED)
@@ -140,7 +140,7 @@ func remove_bgm_effect():
 	$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MIN_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$BusEffectTween.start()
 
-func start_bgm_effect(type):
+func start_bgm_effect(type: String):
 	if type == "danger":
 		#filter
 		var effect = AudioServer.get_bus_effect(BGM_BUS, 0)
@@ -168,7 +168,7 @@ func start_bgm_effect(type):
 		$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MAX_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 
-func play_aux_bgm(name):
+func play_aux_bgm(name: String):
 	if cur_aux_bgm == name:
 		return
 	
@@ -201,7 +201,7 @@ func stop_aux_bgm():
 		$AuxTween.start()
 		cur_aux_bgm = null
 
-func play_sfx(name):
+func play_sfx(name: String):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
@@ -210,4 +210,6 @@ func play_sfx(name):
 	player.stop()
 	player.stream = SFXS[name]
 	player.play()
+	
+	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
 	

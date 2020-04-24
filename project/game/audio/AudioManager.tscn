@@ -50,3 +50,7 @@ bus = "BGM"
 [node name="SFXPlayer7" type="AudioStreamPlayer" parent="SFXS"]
 
 [node name="SFXPlayer8" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer9" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer10" type="AudioStreamPlayer" parent="SFXS"]

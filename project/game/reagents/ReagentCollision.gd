@@ -3,16 +3,31 @@ extends Area2D
 onready var shape = $CollisionShape2D.shape
 onready var reagent = get_parent()
 
+var hovering = false
+
 func _input(event):
+	if event is InputEventMouseMotion:
+		var mouse_pos = get_local_mouse_position()
+		if hovering and not \
+		   (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
+			mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
+				hovering = false
+		elif not hovering and \
+			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
+			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
+				reagent.hover_effect()
+				hovering  = true
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed and reagent.can_drag:
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
+					AudioManager.play_sfx("pick_reagent")
 					reagent.is_drag = true
 					reagent.drag_offset = -get_local_mouse_position()
 					reagent.start_dragging()
-		elif reagent.is_drag:
+		elif not event.pressed and reagent.is_drag:
+			AudioManager.play_sfx("drop_reagent")
 			reagent.is_drag = false
 			var nearest_slot_area = null
 			for area in get_overlapping_areas():

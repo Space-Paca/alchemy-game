@@ -30,3 +30,5 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReagentCollision"]
 shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

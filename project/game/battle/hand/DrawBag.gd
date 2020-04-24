@@ -42,6 +42,8 @@ func start_drawing(_reagents):
 		var reagent = _reagents.pop_back()
 		reagent.disable_dragging()
 		AudioManager.play_sfx("draw_reagent")
+		reagent.grow()
+		reagent.rect_scale = Vector2(0,0)
 		hand.place_reagent(reagent)
 		if not _reagents.empty():
 			randomize()
@@ -113,5 +115,6 @@ func draw_reagent():
 	update_counter()
 	reagent.visible = true
 	reagent.rect_position = get_center()
+	reagent.rect_scale = Vector2(0,0)
 	reagents.add_child(reagent)
 	return reagent

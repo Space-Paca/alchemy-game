@@ -17,7 +17,8 @@ func init(_name: String, _max_hp: int):
 	shield = 0
 
 
-func heal(amount):
+func heal(amount: int):
+	# warning-ignore:narrowing_conversion
 	hp = min(hp + amount, max_hp)
 
 func get_status(status: String):
@@ -61,7 +62,7 @@ func take_damage(source: Character, damage: int, type: String):
 	if type == "regular":
 		AudioManager.play_sfx("damage_regular")
 		var had_shield = shield > 0
-		
+		# warning-ignore:narrowing_conversion
 		var unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
@@ -74,7 +75,7 @@ func take_damage(source: Character, damage: int, type: String):
 	elif type == "crushing":
 		AudioManager.play_sfx("damage_crushing")
 		var had_shield = shield > 0
-		
+		# warning-ignore:narrowing_conversion
 		shield = max(shield - damage, 0)
 		hp -= damage
 		

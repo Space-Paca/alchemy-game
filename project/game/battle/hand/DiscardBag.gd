@@ -29,6 +29,7 @@ func is_empty():
 
 func discard(reagent):
 	AudioManager.play_sfx("discard_reagent")
+	reagent.shrink()
 	reagent.slot = null
 	reagent.can_drag = false
 	reagent.target_position = get_center()

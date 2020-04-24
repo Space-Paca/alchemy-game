@@ -6,11 +6,12 @@ onready var reagent = get_parent()
 var hovering = false
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and reagent.can_drag:
 		var mouse_pos = get_local_mouse_position()
 		if hovering and not \
 		   (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
+				reagent.stop_hover_effect()
 				hovering = false
 		elif not hovering and \
 			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
@@ -22,12 +23,12 @@ func _input(event):
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
-					AudioManager.play_sfx("pick_reagent")
+					reagent.pick_effect()
 					reagent.is_drag = true
 					reagent.drag_offset = -get_local_mouse_position()
 					reagent.start_dragging()
 		elif not event.pressed and reagent.is_drag:
-			AudioManager.play_sfx("drop_reagent")
+			reagent.drop_effect()
 			reagent.is_drag = false
 			var nearest_slot_area = null
 			for area in get_overlapping_areas():

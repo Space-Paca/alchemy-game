@@ -14,6 +14,10 @@ func add_tooltip(pos, title, text):
 	yield(tip, "setted_up")
 	update_tooltips_pos()
 
+func clean_tooltips():
+	for tip in $Tooltips.get_children():
+		remove_tooltip(tip.get_title())
+
 func remove_tooltip(title):
 	for tip in $Tooltips.get_children():
 		if tip.get_title() == title:

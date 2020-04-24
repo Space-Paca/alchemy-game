@@ -5,11 +5,16 @@ const STATUS_IMAGES = {
 					   "perm_strength": "res://assets/images/status/perm_strength.png",
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
 					  }
+const STATUS_TOOLTIPS = {
+					   "dodge": {"title": "Dodge", "text": "This character will avoid the next attack"},
+					   "perm_strength": {"title": "Permanent Strength", "text": "Permanently increases this character attack damage"},
+					   "temp_strength": {"title": "Temporary Strength", "text": "Increases this character next attack damage"},
+					  }
 
 var type : String
 var positive : bool
 
-func init(_type, value, _positive):
+func init(_type: String, value, _positive: bool):
 	type = _type
 	positive = _positive
 	
@@ -22,3 +27,10 @@ func init(_type, value, _positive):
 
 func set_value(value):
 	$Value.text = str(value)
+
+func get_self_tooltip():
+	if STATUS_TOOLTIPS.has(type):
+		return STATUS_TOOLTIPS[type]
+	else:
+		push_error("Not a valid type of status: " + str(type))
+		assert(false)

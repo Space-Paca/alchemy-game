@@ -34,7 +34,7 @@ func remove_hand():
 	hand_rect.visible = false
 
 
-func toggle(battle = null):
+func toggle(_battle = null):
 	visible = !visible
 	
 	if not visible:

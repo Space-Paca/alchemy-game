@@ -200,7 +200,9 @@ func get_tooltips():
 	var intent_tooltip = data.get_intent_tooltip(state)
 	if intent_tooltip:
 		tooltips.append(intent_tooltip)
-	
+	#Get status tooltips
+	for tooltip in $StatusBar.get_status_tooltips():
+		tooltips.append(tooltip)
 	return tooltips
 
 func set_button_disabled(disable: bool):
@@ -218,5 +220,4 @@ func _on_TooltipCollision_enable_tooltip():
 
 
 func _on_TooltipCollision_disable_tooltip():
-		for tooltip in get_tooltips():
-			TooltipLayer.remove_tooltip(tooltip.title)
+	TooltipLayer.clean_tooltips()

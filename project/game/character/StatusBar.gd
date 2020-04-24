@@ -13,6 +13,12 @@ func get_status(type):
 		if status.type == type:
 			return status
 
+func get_status_tooltips():
+	var tooltips = []
+	for status in get_children():
+		tooltips.append(status.get_self_tooltip())
+	return tooltips
+
 func set_status(type, value, positive):
 	var status = get_status(type)
 	if status:

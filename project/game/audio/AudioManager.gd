@@ -34,26 +34,37 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_1_layer_1.ogg"
 #SFX
 const MAX_SFXS = 10
 const SFXS = {
+			"apply_favorite": preload("res://assets/audio/sfx/apply_favourite.wav"),
 			"buff": preload("res://assets/audio/sfx/buff_generic.wav"),
 			"buy": preload("res://assets/audio/sfx/buy.wav"),
 			"click": preload("res://assets/audio/sfx/click.wav"),
+			"close_recipe_book": preload("res://assets/audio/sfx/close_recipe_book.wav"),
 			"combine": preload("res://assets/audio/sfx/combine.wav"),
+			"combine_fail": preload("res://assets/audio/sfx/combine_fail.wav"),
+			"combine_success": preload("res://assets/audio/sfx/combine_success.wav"),
 			"damage_crushing": preload("res://assets/audio/sfx/damage_crushing.wav"),
 			"damage_phantom": preload("res://assets/audio/sfx/damage_phantom.wav"),
 			"damage_regular": preload("res://assets/audio/sfx/damage_normal.wav"),
 			"debuff": preload("res://assets/audio/sfx/debuff_generic.wav"),
 			"discard_reagent": preload("res://assets/audio/sfx/discard_reagent.wav"),
+			"discover_new_recipe": preload("res://assets/audio/sfx/discover_new_recipe.wav"),
+			"dodge": preload("res://assets/audio/sfx/dodge.wav"),
 			"draw_reagent": preload("res://assets/audio/sfx/draw_reagent.wav"),
 			"drop_reagent": preload("res://assets/audio/sfx/drop_reagent.wav"),
+			"error": preload("res://assets/audio/sfx/error.wav"),
 			"game_over": preload("res://assets/audio/sfx/game_over.wav"),
+			"hover_button": preload("res://assets/audio/sfx/hover_button.wav"),
 			"hover_reagent": preload("res://assets/audio/sfx/hover_reagent.wav"),
+			"open_recipe_book": preload("res://assets/audio/sfx/open_recipe_book.wav"),
 			"pick_reagent": preload("res://assets/audio/sfx/pick_reagent.wav"),
 			"shield_breaks": preload("res://assets/audio/sfx/shield_breaks.wav"),
 			"shield_gain": preload("res://assets/audio/sfx/shield_gain.wav"),
 			"shield_hit": preload("res://assets/audio/sfx/shield_hit.wav"),
+			"tooltip_appears": preload("res://assets/audio/sfx/tooltip_appears.wav"),
 			"win_boss_battle": preload("res://assets/audio/sfx/win_boss_battle.wav"),
 			"win_normal_battle": preload("res://assets/audio/sfx/win_normal_battle.wav"),
 			 }
+const LOC_PATH = "res://assets/audio/sfx/loc/"
 
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 var cur_bgm = null

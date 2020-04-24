@@ -7,6 +7,9 @@ onready var texture_rect = $TextureRect
 
 var reagent : String
 
+func _ready():
+	pass
+	
 
 func set_reagent(reagent_name: String):
 	reagent = reagent_name

@@ -17,18 +17,18 @@ const FADEOUT_SPEED = 20
 const FADEIN_SPEED = 24
 #Volume
 const MUTE_DB = -60
-const NORMAL_DB = -15
+const NORMAL_DB = 0
 #Layer
 const MAX_LAYERS = 3
 #BGM
-const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
-			  "battle-l2": preload("res://assets/audio/bgm/battle_layer_2.ogg"),
-			  "battle-l3": preload("res://assets/audio/bgm/battle_layer_3.ogg"),
+const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_1_layer_1.ogg"),
+			  "battle-l2": preload("res://assets/audio/bgm/battle_1_layer_2.ogg"),
+			  "battle-l3": preload("res://assets/audio/bgm/battle_1_layer_3.ogg"),
 			  "boss1-l1": preload("res://assets/audio/bgm/boss_1_layer_1.ogg"),
 			  "boss1-l2": preload("res://assets/audio/bgm/boss_1_layer_2.ogg"),
 			  "boss1-l3": preload("res://assets/audio/bgm/boss_1_layer_3.ogg"),
 			  "heart-beat": preload("res://assets/audio/bgm/battle_heart_beat.ogg"),
-			  "map": preload("res://assets/audio/bgm/map.ogg"),
+			  "map": preload("res://assets/audio/bgm/map_1.ogg"),
 			  "shop": preload("res://assets/audio/bgm/shop.ogg"),
 			 }
 #SFX

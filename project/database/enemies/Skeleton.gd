@@ -39,7 +39,7 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "pierce"})
+		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "crushing"})
 	elif state == "defend":
 		emit_signal("acted", enemy_ref, "shield", {"value": next_value, "target": enemy_ref})
 

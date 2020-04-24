@@ -58,7 +58,7 @@ func take_damage(source: Character, damage: int, type: String):
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
 	#Damages both shield and health equally
-	elif type == "pierce":
+	elif type == "crushing":
 		shield = max(shield - damage, 0)
 		hp -= damage
 	#Ignores shield and only damages health

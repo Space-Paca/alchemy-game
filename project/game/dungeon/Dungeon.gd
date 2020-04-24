@@ -12,6 +12,7 @@ var battle
 var combinations := {}
 var current_floor : Floor
 var floor_level := 1
+var times_recipe_made := {}
 
 
 func _ready():
@@ -97,9 +98,17 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 			prints((combination as Combination).recipe.name, "found")
 			var recipe = (combination.recipe as Recipe)
 			battle.apply_effects(recipe.effects, recipe.effect_args)
+			
 			if not player.known_recipes.has(recipe.name):
 				player.discover_combination(combination)
+			
+			if not times_recipe_made.has(recipe.name):
+				times_recipe_made[recipe.name] = 1
+			else:
+				times_recipe_made[recipe.name] += 1
+			
 			return true
+	
 	return false
 
 

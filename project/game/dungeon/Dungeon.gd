@@ -24,7 +24,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
-		recipe_book.toggle(battle)
+		recipe_book.toggle()
 
 
 func create_combinations():

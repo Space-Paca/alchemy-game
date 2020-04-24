@@ -5,9 +5,11 @@ signal recipe_pressed(combination)
 onready var hand_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/HandRect/CenterContainer/GridContainer
 onready var hand_rect : ColorRect = $ColorRect/MarginContainer/VBoxContainer/HandRect
 onready var recipe_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
+onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
+const RECT_COLOR = Color(0.392157, 0.333333, 0.211765)
 
 var recipe_displays := {}
 
@@ -40,7 +42,7 @@ func remove_hand():
 	hand_rect.visible = false
 
 
-func toggle(_battle = null):
+func toggle():
 	visible = !visible
 	
 	if not visible:
@@ -90,6 +92,9 @@ func _on_recipe_display_unhovered():
 
 
 func _on_recipe_display_pressed(combination: Combination):
+	if not hand_grid.get_child_count():
+		return
+	
 	var combination_reagents := []
 	
 	for line in combination.matrix:
@@ -108,3 +113,7 @@ func _on_recipe_display_pressed(combination: Combination):
 	
 	if combination_reagents.empty():
 		emit_signal("recipe_pressed", combination)
+	else:
+		tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
+				.5, Tween.TRANS_SINE, Tween.EASE_IN)
+		tween.start()

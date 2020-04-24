@@ -98,3 +98,5 @@ margin_right = 335.0
 margin_bottom = 120.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
+
+[node name="Tween" type="Tween" parent="."]

@@ -6,13 +6,14 @@ const TOOLTIP_WIDTH = 220
 func get_width():
 	return TOOLTIP_WIDTH
 
-func add_tooltip(pos, title, text):
+func add_tooltip(pos, title, text, play_sfx = false):
 	var tip = TOOLTIP.instance()
 	tip.setup(title, text)
 	$Tooltips.position = pos
 	$Tooltips.add_child(tip)
 	yield(tip, "setted_up")
-	AudioManager.play_sfx("tooltip_appears")
+	if play_sfx:
+		AudioManager.play_sfx("tooltip_appears")
 	update_tooltips_pos()
 
 func clean_tooltips():

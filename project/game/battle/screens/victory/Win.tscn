@@ -65,4 +65,6 @@ margin_right = 505.0
 margin_bottom = 92.0
 custom_fonts/font = SubResource( 2 )
 text = "Continue to map"
+[connection signal="button_down" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

@@ -12,6 +12,7 @@ func add_tooltip(pos, title, text):
 	$Tooltips.position = pos
 	$Tooltips.add_child(tip)
 	yield(tip, "setted_up")
+	AudioManager.play_sfx("tooltip_appears")
 	update_tooltips_pos()
 
 func clean_tooltips():

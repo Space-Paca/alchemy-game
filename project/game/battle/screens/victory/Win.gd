@@ -17,10 +17,17 @@ func set_loot(loot: Array):
 
 
 func _on_Button_pressed():
-	AudioManager.play_sfx("click")
 	emit_signal("continue_pressed")
 
 
 func _on_reagent_looted(reagent_loot):
 	reagents.remove_child(reagent_loot)
 	emit_signal("reagent_looted", reagent_loot.reagent)
+
+
+func _on_Button_button_down():
+	AudioManager.play_sfx("click")
+
+
+func _on_Button_mouse_entered():
+		AudioManager.play_sfx("hover_button")

@@ -41,7 +41,6 @@ func remove_hand():
 	
 	hand_rect.visible = false
 
-
 func toggle():
 	visible = !visible
 	
@@ -96,6 +95,7 @@ func _on_recipe_display_unhovered():
 
 func _on_recipe_display_pressed(combination: Combination):
 	if not hand_grid.get_child_count():
+		error_effect()
 		return
 	
 	var combination_reagents := []
@@ -117,6 +117,10 @@ func _on_recipe_display_pressed(combination: Combination):
 	if combination_reagents.empty():
 		emit_signal("recipe_pressed", combination)
 	else:
-		tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
-				.5, Tween.TRANS_SINE, Tween.EASE_IN)
-		tween.start()
+		error_effect()
+
+func error_effect():
+	AudioManager.play_sfx("error")
+	tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+	tween.start()

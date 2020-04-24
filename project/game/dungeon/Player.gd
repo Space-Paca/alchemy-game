@@ -75,4 +75,5 @@ func discover_combination(combination: Combination):
 	var index = known_recipes.bsearch(recipe_name)
 	print("Discovered new recipe: ", recipe_name)
 	known_recipes.insert(index, recipe_name)
+	AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)

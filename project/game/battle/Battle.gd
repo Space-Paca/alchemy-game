@@ -274,7 +274,6 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 
 func _on_PassTurnButton_pressed():
-	AudioManager.play_sfx("click")
 	new_enemy_turn()
 
 
@@ -285,9 +284,10 @@ func _on_win_screen_continue_pressed():
 
 
 func _on_CreateRecipe_pressed():
-	AudioManager.play_sfx("click")
 	if grid.is_empty():
+		AudioManager.play_sfx("error")
 		return
+		
 	
 	grid.clear_hint()
 	
@@ -332,3 +332,19 @@ func _on_Hand_hand_slot_reagent_set():
 					break
 	
 	emit_signal("current_reagents_updated", reagent_array)
+
+
+func _on_PassTurnButton_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_CreateRecipeButton_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_CreateRecipeButton_button_down():
+	AudioManager.play_sfx("click")
+
+
+func _on_PassTurnButton_button_down():
+	AudioManager.play_sfx("click")

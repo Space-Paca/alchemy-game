@@ -17,6 +17,13 @@ func set_reagent(reagent_name: String):
 
 
 func _on_Button_pressed():
-	AudioManager.play_sfx("click")
 	button.disabled = true
 	emit_signal("reagent_looted", self)
+
+
+func _on_Button_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_Button_button_down():
+	AudioManager.play_sfx("click")

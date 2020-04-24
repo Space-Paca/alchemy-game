@@ -30,7 +30,6 @@ rect_scale = Vector2( 0.4, 0.4 )
 [node name="Hand" parent="." instance=ExtResource( 4 )]
 position = Vector2( 196.065, 654.234 )
 scale = Vector2( 0.3, 0.3 )
-size = 10
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
 position = Vector2( 60.5964, 919.036 )
@@ -99,5 +98,9 @@ scale = Vector2( 0.4, 0.4 )
 [node name="Reagents" type="Node" parent="."]
 [connection signal="hand_slot_reagent_set" from="Hand" to="." method="_on_Hand_hand_slot_reagent_set"]
 [connection signal="reagent_discarded" from="DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
+[connection signal="button_down" from="PassTurnButton" to="." method="_on_PassTurnButton_button_down"]
+[connection signal="mouse_entered" from="PassTurnButton" to="." method="_on_PassTurnButton_mouse_entered"]
 [connection signal="pressed" from="PassTurnButton" to="." method="_on_PassTurnButton_pressed"]
+[connection signal="button_down" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_button_down"]
+[connection signal="mouse_entered" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_mouse_entered"]
 [connection signal="pressed" from="CreateRecipeButton" to="." method="_on_CreateRecipe_pressed"]

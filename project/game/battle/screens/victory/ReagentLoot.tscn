@@ -43,6 +43,8 @@ text = "GET!"
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 [editable path="TooltipCollision"]

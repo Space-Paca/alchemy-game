@@ -54,6 +54,7 @@ func get_damage_modifiers():
 func take_damage(source: Character, damage: int, type: String):
 	damage += source.get_damage_modifiers()
 	if status_list.has("dodge"):
+		AudioManager.play_sfx("dodge")
 		status_list["dodge"].amount -= 1
 		if status_list["dodge"].amount <= 0:
 			remove_status("dodge")

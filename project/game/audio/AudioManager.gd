@@ -31,10 +31,34 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_layer_1.ogg"),
 			  "map": preload("res://assets/audio/bgm/map.ogg"),
 			  "shop": preload("res://assets/audio/bgm/shop.ogg"),
 			 }
-var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
+#SFX
+const MAX_SFXS = 8
+const SFXS = {
+			"buff": preload("res://assets/audio/sfx/buff_generic.wav"),
+			"buy": preload("res://assets/audio/sfx/buy.wav"),
+			"click": preload("res://assets/audio/sfx/click.wav"),
+			"combine": preload("res://assets/audio/sfx/combine.wav"),
+			"damage_crushing": preload("res://assets/audio/sfx/damage_crushing.wav"),
+			"damage_normal": preload("res://assets/audio/sfx/damage_normal.wav"),
+			"damage_phantom": preload("res://assets/audio/sfx/damage_phantom.wav"),
+			"debuff": preload("res://assets/audio/sfx/debuff_generic.wav"),
+			"discard_reagent": preload("res://assets/audio/sfx/discard_reagent.wav"),
+			"draw_reagent": preload("res://assets/audio/sfx/draw_reagent.wav"),
+			"drop_reagent": preload("res://assets/audio/sfx/drop_reagent.wav"),
+			"game_over": preload("res://assets/audio/sfx/game_over.wav"),
+			"hover_reagent": preload("res://assets/audio/sfx/hover_reagent.wav"),
+			"pick_reagent": preload("res://assets/audio/sfx/pick_reagent.wav"),
+			"shield_breaks": preload("res://assets/audio/sfx/shield_breaks.wav"),
+			"shield_gain": preload("res://assets/audio/sfx/shield_gain.wav"),
+			"shield_hit": preload("res://assets/audio/sfx/shield_hit.wav"),
+			"win_boss_battle": preload("res://assets/audio/sfx/win_boss_battle.wav"),
+			"win_normal_battle": preload("res://assets/audio/sfx/win_normal_battle.wav"),
+			 }
 
+var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 var cur_bgm = null
 var cur_aux_bgm = null
+var cur_sfx_player = 1
 
 func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
@@ -176,3 +200,14 @@ func stop_aux_bgm():
 		$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$AuxTween.start()
 		cur_aux_bgm = null
+
+func play_sfx(name):
+	if not SFXS.has(name):
+		push_error("Not a valid sfx name: " + name)
+		assert(false)
+	
+	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))
+	player.stop()
+	player.stream = SFXS[name]
+	player.play()
+	

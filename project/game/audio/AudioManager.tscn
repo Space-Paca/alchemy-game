@@ -32,3 +32,21 @@ bus = "BGM"
 [node name="AuxTween" type="Tween" parent="."]
 
 [node name="BusEffectTween" type="Tween" parent="."]
+
+[node name="SFXS" type="Node" parent="."]
+
+[node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer2" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer3" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer4" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer5" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer6" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer7" type="AudioStreamPlayer" parent="SFXS"]
+
+[node name="SFXPlayer8" type="AudioStreamPlayer" parent="SFXS"]

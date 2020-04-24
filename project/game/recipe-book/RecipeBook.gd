@@ -45,7 +45,10 @@ func remove_hand():
 func toggle():
 	visible = !visible
 	
-	if not visible:
+	if visible:
+		AudioManager.play_sfx("open_recipe_book")
+	else:
+		AudioManager.play_sfx("close_recipe_book")
 		reset_hand_reagents_color()
 
 

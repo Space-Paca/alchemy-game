@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeDisplay.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.392157, 0.333333, 0.211765, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="RecipeDisplay" type="Control"]
 anchor_right = 1.0
@@ -17,6 +24,7 @@ __meta__ = {
 margin_right = 315.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 315, 250 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,6 +32,7 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 custom_constants/margin_right = 20
 custom_constants/margin_top = 10
 custom_constants/margin_left = 20
@@ -50,6 +59,7 @@ margin_top = 34.0
 margin_right = 275.0
 margin_bottom = 166.0
 rect_min_size = Vector2( 132, 132 )
+mouse_filter = 1
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/CenterContainer"]
 margin_left = 137.0
@@ -72,3 +82,5 @@ margin_right = 295.0
 margin_bottom = 240.0
 size_flags_vertical = 8
 autowrap = true
+[connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]

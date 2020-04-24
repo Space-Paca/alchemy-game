@@ -13,6 +13,8 @@ func add_combination(combination: Combination, position: int):
 	recipe_grid.add_child(recipe_display)
 	recipe_grid.move_child(recipe_display, position)
 	recipe_display.set_combination(combination)
+	recipe_display.connect("hovered", self, "_on_recipe_display_hovered")
+	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")
 
 
 func create_hand(battle):
@@ -34,8 +36,50 @@ func remove_hand():
 
 func toggle(battle = null):
 	visible = !visible
+	
+	if not visible:
+		reset_hand_reagents_color()
 
 
 func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_grid.get_child(i).set_reagent(reagents[i])
+
+
+func color_hand_reagents(reagent_array: Array):
+	if not hand_grid.get_child_count():
+		return
+	
+	var reagents := reagent_array.duplicate()
+	var correct_reagent_displays := []
+	var i = 0
+	
+	while (not reagents.empty()) and i < hand_grid.get_child_count():
+		var reagent = hand_grid.get_child(i).reagent_name
+		for other in reagents:
+			if reagent == other:
+				correct_reagent_displays.append(hand_grid.get_child(i))
+				reagents.erase(other)
+				break
+		
+		i += 1
+	
+	if reagents.empty():
+		for display in correct_reagent_displays:
+			display.self_modulate = Color.green
+
+
+func reset_hand_reagents_color():
+	if not hand_grid.get_child_count():
+		return
+	
+	for display in hand_grid.get_children():
+		display.self_modulate = Color.white
+
+
+func _on_recipe_display_hovered(reagent_array: Array):
+	color_hand_reagents(reagent_array)
+
+
+func _on_recipe_display_unhovered():
+	reset_hand_reagents_color()

@@ -54,6 +54,7 @@ func setup_nodes():
 	draw_bag.reagents = reagents
 	draw_bag.discard_bag = discard_bag
 	grid.discard_bag = discard_bag
+	grid.hand = hand
 
 
 func setup_player(_player):
@@ -172,8 +173,8 @@ func new_player_turn():
 func new_enemy_turn():
 	disable_player()
 	if not grid.is_empty():
-		grid.clean()
-		yield(grid, "cleaned")
+		grid.return_to_hand()
+		yield(grid, "returned_to_hand")
 
 	for enemy in enemies_node.get_children():
 		enemy.update_status()

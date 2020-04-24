@@ -2,6 +2,7 @@ tool
 extends Control
 
 signal cleaned
+signal returned_to_hand
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const MARGIN = 380
@@ -9,6 +10,7 @@ const MARGIN = 380
 onready var container = $GridContainer
 
 var discard_bag = null # Set by parent
+var hand = null # Set by parent
 var grid_size : int
 
 func _ready():
@@ -38,6 +40,24 @@ func is_empty():
 			return false
 	return true
 
+func return_to_hand():
+	var reagents_to_be_sent = []
+	for slot in container.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			slot.remove_reagent()
+			reagents_to_be_sent.append(reagent)
+	
+	while not reagents_to_be_sent.empty():
+		var reagent = reagents_to_be_sent.pop_back()
+		hand.place_reagent(reagent)
+		if not reagents_to_be_sent.empty():
+			randomize()
+			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
+		else:
+			yield(hand, "reagent_placed")
+	
+	emit_signal("returned_to_hand")
 
 func clean():
 	var reagents_to_be_discarded = []

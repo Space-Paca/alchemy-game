@@ -33,19 +33,21 @@ func setup(_player: Player, encounter: Encounter):
 	setup_player(_player)
 	
 	setup_player_ui()
-	
+
 	setup_enemy(_player, encounter)
-	
+
 	effect_manager.setup(_player, enemies_node.get_children())
-	
+
 	setup_audio(encounter)
-	
+
 	loot = encounter.get_loot()
+
 	
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
 	# to the first slot position.
 	yield(get_tree().create_timer(1.0), "timeout")
+
 	new_player_turn()
 
 
@@ -88,7 +90,7 @@ func setup_player_ui():
 	#Position grid
 	#NOTE: For some reason, moving the grid changes the scale of the gridslot y value,
 	#and that messes up grid height and width getters. Storing value above to avoid this
-	#but when we ahve time, should inspect if this is our problem or an engine's.
+	#but when we have time, should inspect if this is our problem or an engine's.
 	grid.rect_position.x = ui_center - grid_side*grid.rect_scale.x/2
 	grid.rect_position.y = grid_center - grid_side*grid.rect_scale.y/2
 	#Position hand
@@ -107,6 +109,7 @@ func setup_player_ui():
 	#Position player ui
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
+	player_ui.update_tooltip_pos()
 
 
 func setup_enemy(_player: Player, encounter: Encounter):
@@ -117,13 +120,12 @@ func setup_enemy(_player: Player, encounter: Encounter):
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
 		child.queue_free()
-	
+
 	for enemy in encounter.enemies:
 		var enemy_node = EnemyManager.create_object(enemy, _player)
 		enemies_node.add_child(enemy_node)
 		enemy_node.data.connect("acted", self, "_on_enemy_acted")
 		enemy_node.connect("died", self, "_on_enemy_died")
-	
 	#Update enemies positions
 	var enemy_count = enemies_node.get_child_count()
 	if enemy_count == 4:
@@ -143,11 +145,10 @@ func setup_enemy(_player: Player, encounter: Encounter):
 	else:
 		print(enemy_count, " is not a valid enemy number")
 		assert(false)
-		
+	
 	#Update enemies intent
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
-
 
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
@@ -177,7 +178,7 @@ func new_enemy_turn():
 		yield(grid, "returned_to_hand")
 
 	for enemy in enemies_node.get_children():
-		enemy.update_status()
+		enemy.new_turn()
 		enemy.act()
 		yield(enemy, "acted")
 

@@ -1,9 +1,19 @@
+tool
 extends Node2D
 
 onready var health_bar = $HealthBar
 
 func _ready():
 	$HealthBar/Shield.hide()
+
+func update_tooltip_pos():
+	#Setup tooltip collision
+	$TooltipCollision.position.x = (health_bar.rect_position.x + health_bar.rect_size.x)/2
+	$TooltipCollision.position.y = $PortraitFrame.rect_size.y/2
+	var w = health_bar.rect_position.x + health_bar.rect_size.x
+	var h = $PortraitFrame.rect_size.y
+	$TooltipCollision.set_collision_shape(Vector2(w, h))
+	
 
 func set_life(max_hp, hp):
 	health_bar.max_value = max_hp
@@ -49,3 +59,19 @@ func update_audio():
 		AudioManager.stop_bgm_layer(3)
 		AudioManager.play_aux_bgm("heart-beat")
 		AudioManager.start_bgm_effect("extreme-danger")
+
+func get_tooltips():
+	var tooltips = []
+	
+	#Get status tooltips
+	for tooltip in $StatusBar.get_status_tooltips():
+		tooltips.append(tooltip)
+
+	return tooltips
+
+func _on_TooltipCollision_disable_tooltip():
+	TooltipLayer.clean_tooltips()
+
+func _on_TooltipCollision_enable_tooltip():
+	for tooltip in get_tooltips():
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, tooltip.text)

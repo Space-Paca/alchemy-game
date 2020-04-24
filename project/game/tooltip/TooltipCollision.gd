@@ -8,7 +8,7 @@ signal disable_tooltip
 var timer = 0
 var entered = false
 
-func set_shape(size: Vector2):
+func set_collision_shape(size: Vector2):
 	$CollisionShape2D.shape.extents = size/2
 
 func _input(event):

@@ -53,9 +53,12 @@ func remove_status(status: String):
 	.remove_status(status)
 	update_status_bar()
 
+func new_turn():
+	update_status()
+	update_shield()
+
 func update_status():
 	.update_status()
-	update_shield()
 	update_status_bar()
 
 func update_life():
@@ -143,7 +146,7 @@ func set_image(new_texture):
 			  HEALTH_BAR_MARGIN + $HealthBar.rect_size.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
 	$TooltipCollision.position = Vector2(t_w/2, - INTENT_H - INTENT_MARGIN + t_h/2)
-	$TooltipCollision.set_shape(Vector2(t_w, t_h))
+	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 
 func set_intent(texture, value):
 	intent_texture.texture = texture

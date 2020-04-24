@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -68,6 +68,8 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=8]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -161,7 +163,12 @@ __meta__ = {
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
-position = Vector2( 130, 130 )
+position = Vector2( 133, 133.001 )
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 8 )
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

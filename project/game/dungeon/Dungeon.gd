@@ -70,7 +70,6 @@ func search_grid_for_combinations(reagent_matrix: Array):
 		
 		for i_offset in range(grid_size - new_grid_size + 1):
 			for j_offset in range(grid_size - new_grid_size + 1):
-				printt(i_offset, j_offset)
 				
 				for i in range(new_grid_size):
 					for j in range(new_grid_size):

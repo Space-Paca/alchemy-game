@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "Room",
 "language": "GDScript",
 "path": "res://game/map/Room.gd"
+}, {
+"base": "TextureRect",
+"class": "Slot",
+"language": "GDScript",
+"path": "res://game/battle/Slot.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "PlayerClass": "",
 "ReagentDB": "",
 "Recipe": "",
-"Room": ""
+"Room": "",
+"Slot": ""
 }
 
 [application]

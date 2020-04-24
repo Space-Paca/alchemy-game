@@ -1,4 +1,5 @@
 extends TextureRect
+class_name Slot
 
 signal reagent_set
 

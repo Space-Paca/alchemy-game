@@ -1,11 +1,15 @@
 extends Control
 
+signal recipe_pressed(combination)
+
 onready var hand_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/HandRect/CenterContainer/GridContainer
 onready var hand_rect : ColorRect = $ColorRect/MarginContainer/VBoxContainer/HandRect
 onready var recipe_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
+
+var recipe_displays := {}
 
 
 func add_combination(combination: Combination, position: int):
@@ -15,6 +19,8 @@ func add_combination(combination: Combination, position: int):
 	recipe_display.set_combination(combination)
 	recipe_display.connect("hovered", self, "_on_recipe_display_hovered")
 	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")
+	recipe_display.connect("pressed", self, "_on_recipe_display_pressed")
+	recipe_displays[combination.recipe.name] = recipe_display
 
 
 func create_hand(battle):
@@ -53,15 +59,13 @@ func color_hand_reagents(reagent_array: Array):
 	var reagents := reagent_array.duplicate()
 	var correct_reagent_displays := []
 	var i = 0
-	
-	while (not reagents.empty()) and i < hand_grid.get_child_count():
+	while not reagents.empty() and i < hand_grid.get_child_count():
 		var reagent = hand_grid.get_child(i).reagent_name
 		for other in reagents:
 			if reagent == other:
 				correct_reagent_displays.append(hand_grid.get_child(i))
 				reagents.erase(other)
 				break
-		
 		i += 1
 	
 	if reagents.empty():
@@ -83,3 +87,24 @@ func _on_recipe_display_hovered(reagent_array: Array):
 
 func _on_recipe_display_unhovered():
 	reset_hand_reagents_color()
+
+
+func _on_recipe_display_pressed(combination: Combination):
+	var combination_reagents := []
+	
+	for line in combination.matrix:
+		for reagent in line:
+			if reagent:
+				combination_reagents.append(reagent)
+	
+	var i = 0
+	while not combination_reagents.empty() and i < hand_grid.get_child_count():
+		var reagent = hand_grid.get_child(i).reagent_name
+		for other in combination_reagents:
+			if reagent == other:
+				combination_reagents.erase(other)
+				break
+		i += 1
+	
+	if combination_reagents.empty():
+		emit_signal("recipe_pressed", combination)

@@ -2,6 +2,7 @@ extends Control
 
 signal hovered(reagent_array)
 signal unhovered()
+signal pressed(combination)
 
 onready var description = $Panel/MarginContainer/Description
 onready var grid = $Panel/MarginContainer/VBoxContainer/CenterContainer/GridContainer
@@ -9,10 +10,12 @@ onready var title = $Panel/MarginContainer/VBoxContainer/Title
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 
+var combination : Combination
 var reagent_array := []
 
 
-func set_combination(combination: Combination):
+func set_combination(_combination: Combination):
+	combination = _combination
 	title.text = combination.recipe.name
 	description.text = combination.recipe.description
 	grid.columns = combination.grid_size
@@ -32,3 +35,7 @@ func _on_Panel_mouse_entered():
 
 func _on_Panel_mouse_exited():
 	emit_signal("unhovered")
+
+
+func _on_Button_pressed():
+	emit_signal("pressed", combination)

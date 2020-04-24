@@ -289,6 +289,8 @@ func _on_CreateRecipe_pressed():
 	if grid.is_empty():
 		return
 	
+	grid.clear_hint()
+	
 	AudioManager.play_sfx("combine")
 	var reagent_matrix := []
 	var child_index := 0

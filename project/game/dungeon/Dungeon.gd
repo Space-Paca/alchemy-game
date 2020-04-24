@@ -149,3 +149,8 @@ func _on_Battle_combination_made(reagent_matrix: Array):
 
 func _on_Player_combination_discovered(combination, index):
 	recipe_book.add_combination(combination, index)
+
+
+func _on_RecipeBook_recipe_pressed(combination):
+	recipe_book.toggle()
+	battle.grid.show_combination_hint(combination)

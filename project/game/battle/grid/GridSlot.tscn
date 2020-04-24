@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/images/ui/grid_slot.png" type="Texture" id=1]
-[ext_resource path="res://game/battle/Slot.gd" type="Script" id=2]
+[ext_resource path="res://game/battle/grid/GridSlot.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.7816, 68.2533 )
@@ -9,8 +9,8 @@ extents = Vector2( 69.7816, 68.2533 )
 [node name="GridSlot" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -861.0
-margin_bottom = -437.0
+margin_right = -1757.0
+margin_bottom = -917.0
 texture = ExtResource( 1 )
 stretch_mode = 3
 script = ExtResource( 2 )
@@ -25,3 +25,17 @@ position = Vector2( 81.1993, 82.4918 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentHint" type="TextureRect" parent="MarginContainer"]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+margin_right = 163.0
+margin_bottom = 163.0
+expand = true
+stretch_mode = 6

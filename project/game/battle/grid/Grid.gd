@@ -13,16 +13,20 @@ var discard_bag = null # Set by parent
 var hand = null # Set by parent
 var grid_size : int
 
+
 func _ready():
 	set_grid(4)
+
 
 func get_width():
 	var slot = container.get_child(1)
 	return grid_size * slot.rect_size.x
 
+
 func get_height():
 	var slot = container.get_child(1)
 	return grid_size * slot.rect_size.y
+
 
 func set_grid(_size: int):
 	assert(_size > 1)
@@ -33,12 +37,14 @@ func set_grid(_size: int):
 	for _i in range(grid_size * grid_size):
 		container.add_child(GRIDSLOT.instance())
 
+
 func is_empty():
 	for slot in container.get_children():
 		var reagent = slot.get_reagent()
 		if reagent:
 			return false
 	return true
+
 
 func return_to_hand():
 	var reagents_to_be_sent = []
@@ -59,6 +65,7 @@ func return_to_hand():
 	
 	emit_signal("returned_to_hand")
 
+
 func clean():
 	var reagents_to_be_discarded = []
 	for slot in container.get_children():
@@ -77,3 +84,15 @@ func clean():
 			yield(discard_bag, "reagent_discarded")
 
 	emit_signal("cleaned")
+
+
+func show_combination_hint(combination: Combination):
+	for i in range(combination.grid_size):
+		for j in range(combination.grid_size):
+			var slot = container.get_child(i * grid_size + j)
+			slot.set_hint(combination.matrix[i][j])
+
+
+func clear_hint():
+	for slot in container.get_children():
+		slot.set_hint(null)

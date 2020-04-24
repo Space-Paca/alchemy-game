@@ -57,6 +57,9 @@ func gain_shield(value):
 	.gain_shield(value)
 	hud.update_shield(self)
 
+func new_turn():
+	update_status()
+	hud.update_shield(self)
 
 func update_status():
 	.update_status()

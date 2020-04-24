@@ -161,7 +161,7 @@ func new_player_turn():
 	if ended:
 		return
 	
-	player.update_status()
+	player.new_turn()
 	
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()

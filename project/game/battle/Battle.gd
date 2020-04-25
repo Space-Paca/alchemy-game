@@ -291,7 +291,6 @@ func _on_CreateRecipe_pressed():
 	
 	grid.clear_hint()
 	
-	AudioManager.play_sfx("combine")
 	var reagent_matrix := []
 	var child_index := 0
 	for _i in range(grid.grid_size):

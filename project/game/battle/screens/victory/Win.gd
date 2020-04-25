@@ -21,6 +21,7 @@ func _on_Button_pressed():
 
 
 func _on_reagent_looted(reagent_loot):
+	AudioManager.play_sfx("get_loot")
 	reagents.remove_child(reagent_loot)
 	emit_signal("reagent_looted", reagent_loot.reagent)
 

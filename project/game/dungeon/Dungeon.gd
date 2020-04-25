@@ -96,6 +96,7 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 		if reagent_matrix == (combination as Combination).matrix:
 			prints((combination as Combination).recipe.name, "found")
 			var recipe = (combination.recipe as Recipe)
+			AudioManager.play_sfx("combine_success")
 			battle.apply_effects(recipe.effects, recipe.effect_args)
 			
 			if not player.known_recipes.has(recipe.name):

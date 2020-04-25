@@ -10,8 +10,8 @@ onready var bg = $TextureRect
 const HANDSLOT = preload("res://game/battle/hand/HandSlot.tscn")
 const H_MARGIN = 45
 const V_MARGIN = 25
-const SLOT_H_SEPARATOR = -8
-const SLOT_V_SEPARATOR = -8
+const SLOT_H_SEPARATOR = 0
+const SLOT_V_SEPARATOR = 0
 
 export var size = 10
 

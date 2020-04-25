@@ -20,8 +20,8 @@ margin_left = 45.0
 margin_top = 25.0
 margin_right = 489.0
 margin_bottom = 467.0
-custom_constants/vseparation = -8
-custom_constants/hseparation = -8
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false

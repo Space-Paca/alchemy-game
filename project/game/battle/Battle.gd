@@ -25,6 +25,7 @@ var ended := false
 var is_boss
 var player
 var loot : Array
+var is_dragging_reagent := false
 
 
 func setup(_player: Player, encounter: Encounter):
@@ -67,6 +68,7 @@ func setup_player(_player):
 		var reagent = ReagentManager.create_object(reagent_type)
 		reagent.rect_scale = Vector2(.8,.8)
 		reagent.connect("started_dragging", self, "_on_reagent_drag")
+		reagent.connect("stopped_dragging", self, "_on_reagent_stop_drag")
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
@@ -238,7 +240,6 @@ func set_enemy_pos(enemy_idx, pos_idx):
 	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(), \
 						  target_pos.position.y - enemy.get_height()))
 
-
 func autocomplete_grid(combination: Combination):
 	if not grid.is_empty():
 		grid.return_to_hand()
@@ -255,9 +256,12 @@ func autocomplete_grid(combination: Combination):
 								j).set_reagent(reagent)
 						break
 
-
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
+	is_dragging_reagent = true
+
+func _on_reagent_stop_drag(_reagent):
+	is_dragging_reagent = false
 
 
 func _on_enemy_acted(enemy, action, args):
@@ -267,8 +271,6 @@ func _on_enemy_acted(enemy, action, args):
 		args.target.gain_shield(args.value)
 	elif action == "status":
 		args.target.add_status(args.status, args.amount, args.positive)
-		
-
 
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
@@ -350,11 +352,13 @@ func _on_Hand_hand_slot_reagent_set():
 
 
 func _on_PassTurnButton_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	if not $PassTurnButton.disabled:
+		AudioManager.play_sfx("hover_button")
 
 
 func _on_CreateRecipeButton_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	if not $CreateRecipeButton.disabled:
+		AudioManager.play_sfx("hover_button")
 
 
 func _on_CreateRecipeButton_button_down():

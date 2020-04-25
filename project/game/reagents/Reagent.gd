@@ -2,6 +2,7 @@ extends Control
 
 signal reached_target_pos
 signal started_dragging
+signal stopped_dragging
 
 onready var texture_rect = $TextureRect
 
@@ -81,6 +82,8 @@ func shrink():
 func start_dragging():
 	emit_signal("started_dragging", self)
 
+func stop_dragging():
+	emit_signal("stopped_dragging", self)
 
 func disable_dragging():
 	can_drag = false

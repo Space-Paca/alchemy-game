@@ -125,6 +125,17 @@ func new_battle(encounter: Encounter):
 	recipe_book.create_hand(battle)
 
 
+func should_autocomplete(combination: Combination) -> bool:
+	return true
+	if not times_recipe_made.has(combination.recipe.name):
+		return false
+	
+	var threshold = min(10, 14 - combination.recipe.reagents.size())
+	threshold = max(threshold, 2)
+	
+	return times_recipe_made[combination.recipe.name] > threshold
+
+
 func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
 		new_battle(room.encounter)
@@ -154,4 +165,7 @@ func _on_Player_combination_discovered(combination, index):
 
 func _on_RecipeBook_recipe_pressed(combination):
 	recipe_book.toggle()
-	battle.grid.show_combination_hint(combination)
+	if should_autocomplete(combination):
+		battle.autocomplete_grid(combination)
+	else:
+		battle.grid.show_combination_hint(combination)

@@ -22,6 +22,7 @@ func _ready():
 	grid.add_constant_override("hseparation", SLOT_H_SEPARATOR)
 	grid.add_constant_override("vseparation", SLOT_V_SEPARATOR)
 
+
 func get_width():
 	assert(grid.get_child_count() > 0)
 	var slots_number = size
@@ -29,11 +30,13 @@ func get_width():
 	return (slot.rect_size.x*slot.rect_scale.x) * slots_number/2 + 2*H_MARGIN \
 			+ ((slots_number/2) - 1)*SLOT_H_SEPARATOR
 
+
 func get_height():
 	assert(grid.get_child_count() > 0)
 	var slot = grid.get_child(1)
 	return (slot.rect_size.y*slot.rect_scale.y) * 2 + 2*V_MARGIN \
 			+ SLOT_V_SEPARATOR
+
 
 func set_hand(slots):
 	size = slots
@@ -54,6 +57,7 @@ func available_slot_count():
 		if not slot.get_reagent():
 			count += 1
 	return count
+
 
 #Places a reagent in an empty position, throws error if unable
 func place_reagent(reagent):

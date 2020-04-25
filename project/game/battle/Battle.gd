@@ -239,6 +239,22 @@ func set_enemy_pos(enemy_idx, pos_idx):
 						  target_pos.position.y - enemy.get_height()))
 
 
+func autocomplete_grid(combination: Combination):
+	if not grid.is_empty():
+		grid.return_to_hand()
+		yield(grid, "returned_to_hand")
+	
+	for i in range(combination.grid_size):
+		for j in range(combination.grid_size):
+			if combination.matrix[i][j]:
+				for slot in hand.grid.get_children():
+					var reagent = slot.get_reagent()
+					if reagent and reagent.type == combination.matrix[i][j]:
+						slot.remove_reagent()
+						grid.container.get_child(i * grid.grid_size +\
+								j).set_reagent(reagent)
+						break
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

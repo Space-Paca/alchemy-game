@@ -218,8 +218,10 @@ func _on_Button_pressed():
 
 
 func _on_TooltipCollision_enable_tooltip():
+	var play_sfx = true
 	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text)
+		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text, play_sfx)
+		play_sfx = false
 
 
 func _on_TooltipCollision_disable_tooltip():

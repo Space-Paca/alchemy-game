@@ -94,6 +94,8 @@ func _on_recipe_display_unhovered():
 
 
 func _on_recipe_display_pressed(combination: Combination):
+	if not hand_rect.visible:
+		return
 	if not hand_grid.get_child_count():
 		error_effect()
 		return
@@ -119,10 +121,11 @@ func _on_recipe_display_pressed(combination: Combination):
 	else:
 		error_effect()
 
+
 func error_effect():
 	AudioManager.play_sfx("error")
-	# warning-ignore:return_value_discarded
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
 			.5, Tween.TRANS_SINE, Tween.EASE_IN)
-	# warning-ignore:return_value_discarded
+# warning-ignore:return_value_discarded
 	tween.start()

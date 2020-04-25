@@ -126,7 +126,6 @@ func new_battle(encounter: Encounter):
 
 
 func should_autocomplete(combination: Combination) -> bool:
-	return true
 	if not times_recipe_made.has(combination.recipe.name):
 		return false
 	
@@ -164,6 +163,7 @@ func _on_Player_combination_discovered(combination, index):
 
 
 func _on_RecipeBook_recipe_pressed(combination):
+	assert(battle.grid.grid_size >= combination.grid_size)
 	recipe_book.toggle()
 	if should_autocomplete(combination):
 		battle.autocomplete_grid(combination)

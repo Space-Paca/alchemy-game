@@ -8,16 +8,14 @@ var hovering = false
 func _input(event):
 	if event is InputEventMouseMotion and reagent.can_drag:
 		var mouse_pos = get_local_mouse_position()
-		if hovering and not \
+		if reagent.hovering and not \
 		   (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
-				reagent.stop_hover_effect()
-				hovering = false
-		elif not hovering and \
+				reagent.stop_hovering()
+		elif not reagent.hovering and \
 			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
-				reagent.hover_effect()
-				hovering  = true
+				reagent.hovering()
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed and reagent.can_drag:
 			var mouse_pos = get_local_mouse_position()
@@ -29,6 +27,7 @@ func _input(event):
 					reagent.start_dragging()
 		elif not event.pressed and reagent.is_drag:
 			reagent.drop_effect()
+			reagent.stop_dragging()
 			reagent.is_drag = false
 			var nearest_slot_area = null
 			for area in get_overlapping_areas():

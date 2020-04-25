@@ -53,6 +53,7 @@ const SFXS = {
 			"drop_reagent": preload("res://assets/audio/sfx/drop_reagent.wav"),
 			"error": preload("res://assets/audio/sfx/error.wav"),
 			"game_over": preload("res://assets/audio/sfx/game_over.wav"),
+			"get_coins": preload("res://assets/audio/sfx/get_coins.wav"),
 			"get_loot": preload("res://assets/audio/sfx/get_loot.wav"),
 			"hover_button": preload("res://assets/audio/sfx/hover_button.wav"),
 			"hover_reagent": preload("res://assets/audio/sfx/hover_reagent.wav"),

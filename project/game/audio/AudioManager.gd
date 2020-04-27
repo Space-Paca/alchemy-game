@@ -68,11 +68,34 @@ const SFXS = {
 			 }
 #LOCS
 const LOC_PATH = "res://assets/audio/sfx/loc/"
+onready var LOCS = {}
 
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 var cur_bgm = null
 var cur_aux_bgm = null
 var cur_sfx_player = 1
+
+func _ready():
+	setup_locs()
+
+func setup_locs():
+	var dir = Directory.new()
+	if dir.open(LOC_PATH) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir() and file_name != "." and file_name != "..":
+				#Found enemy loc directory, creating data on memory
+				LOCS[file_name] = {}
+				LOCS[file_name].dies = load(LOC_PATH + file_name + "/dies.wav")
+				for i in range(1, 4):
+					LOCS[file_name]["hit_var"+str(i)] = load(LOC_PATH + file_name + \
+													   "/hit_var" + str(i) +  ".wav")
+			file_name = dir.get_next()
+	else:
+		push_error("An error occurred when trying to access locutions path.")
+		assert(false)
+
 
 func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
@@ -235,24 +258,21 @@ func play_enemy_hit_sfx(enemy: String):
 	randomize()
 	var number = randi()%3 + 1
 	
-	var file_name = "res://assets/audio/sfx/loc/" + enemy +"/hit_var" \
-					+ str(number) + ".wav"
-	if not File.new().file_exists(file_name):
+	if not LOCS.has(enemy) or not LOCS[enemy].has("hit_var"+str(number)):
 		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
 	var player = get_sfx_player()
 	player.stop()
-	player.stream = load(file_name)
+	player.stream = LOCS[enemy]["hit_var"+str(number)]
 	player.play()
 	
 func play_enemy_dies_sfx(enemy):
-	var file_name = "res://assets/audio/sfx/loc/" + enemy +"/dies.wav"
-	if not File.new().file_exists(file_name):
+	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):
 		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
 	var player = get_sfx_player()
 	player.stop()
-	player.stream = load(file_name)
+	player.stream = LOCS[enemy].dies
 	player.play()

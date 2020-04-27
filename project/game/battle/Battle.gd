@@ -228,6 +228,7 @@ func win():
 		AudioManager.play_sfx("win_normal_battle")
 		
 	ended = true
+	TooltipLayer.clean_tooltips()
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
@@ -291,6 +292,7 @@ func _on_enemy_died(enemy):
 
 func _on_player_died(_player):
 	AudioManager.play_sfx("game_over")
+	TooltipLayer.clean_tooltips()
 	ended = true
 	disable_player()
 	add_child(GAMEOVER_SCENE.instance())

@@ -10,6 +10,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png
 			  }
 var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
 var name = "Skelly"
+var sfx = "enemy_1"
 var hp = 30
 var size = "small"
 var damage = [10, 12]

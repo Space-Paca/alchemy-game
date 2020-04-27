@@ -66,6 +66,7 @@ const SFXS = {
 			"win_boss_battle": preload("res://assets/audio/sfx/win_boss_battle.wav"),
 			"win_normal_battle": preload("res://assets/audio/sfx/win_normal_battle.wav"),
 			 }
+#LOCS
 const LOC_PATH = "res://assets/audio/sfx/loc/"
 
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
@@ -214,15 +215,44 @@ func stop_aux_bgm():
 		$AuxTween.start()
 		cur_aux_bgm = null
 
+func get_sfx_player():
+	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))
+	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
+	return player
+
 func play_sfx(name: String):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
 	
-	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))
+	var player = get_sfx_player()
 	player.stop()
 	player.stream = SFXS[name]
 	player.play()
+
+func play_enemy_hit_sfx(enemy: String):
+	#Get a random hit sfx
+	randomize()
+	var number = randi()%3 + 1
 	
-	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
+	var file_name = "res://assets/audio/sfx/loc/" + enemy +"/hit_var" \
+					+ str(number) + ".wav"
+	if not File.new().file_exists(file_name):
+		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
+		assert(false)
 	
+	var player = get_sfx_player()
+	player.stop()
+	player.stream = load(file_name)
+	player.play()
+	
+func play_enemy_dies_sfx(enemy):
+	var file_name = "res://assets/audio/sfx/loc/" + enemy +"/dies.wav"
+	if not File.new().file_exists(file_name):
+		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
+		assert(false)
+	
+	var player = get_sfx_player()
+	player.stop()
+	player.stream = load(file_name)
+	player.play()

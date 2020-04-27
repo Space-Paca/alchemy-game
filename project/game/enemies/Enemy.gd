@@ -35,8 +35,15 @@ func heal(amount : int):
 	.heal(amount)
 	update_life()
 
+func die():
+	AudioManager.play_enemy_dies_sfx(data.sfx)
+	.die()
+
 func take_damage(source: Character, damage: int, type: String):
-	.take_damage(source, damage, type)
+	var unblocked_dmg = .take_damage(source, damage, type)
+	if hp > 0 and unblocked_dmg > 0:
+		AudioManager.play_enemy_hit_sfx(data.sfx)
+		
 	update_life()
 	update_shield()
 	update_status_bar()

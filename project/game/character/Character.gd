@@ -52,19 +52,24 @@ func get_damage_modifiers():
 	return mod
 
 func take_damage(source: Character, damage: int, type: String):
+	var unblocked_damage
 	damage += source.get_damage_modifiers()
+	
+	#Check for dodge
 	if status_list.has("dodge"):
 		AudioManager.play_sfx("dodge")
 		status_list["dodge"].amount -= 1
+		unblocked_damage = 0
 		if status_list["dodge"].amount <= 0:
 			remove_status("dodge")
-		return
+		return unblocked_damage
+	
 	#Block damage with shield
 	if type == "regular":
 		AudioManager.play_sfx("damage_regular")
 		var had_shield = shield > 0
 		# warning-ignore:narrowing_conversion
-		var unblocked_damage = max(damage - shield, 0)
+		unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
 		
@@ -72,6 +77,7 @@ func take_damage(source: Character, damage: int, type: String):
 			AudioManager.play_sfx("shield_hit")
 		elif had_shield:
 			AudioManager.play_sfx("shield_breaks")
+			
 	#Damages both shield and health equally
 	elif type == "crushing":
 		AudioManager.play_sfx("damage_crushing")
@@ -79,19 +85,23 @@ func take_damage(source: Character, damage: int, type: String):
 		# warning-ignore:narrowing_conversion
 		shield = max(shield - damage, 0)
 		hp -= damage
+		unblocked_damage = damage
 		
 		if had_shield and shield > 0:
 			AudioManager.play_sfx("shield_hit")
 		elif had_shield:
 			AudioManager.play_sfx("shield_breaks")
+		
 	#Ignores shield and only damages health
 	elif type == "phantom":
 		AudioManager.play_sfx("damage_phantom")
 		hp -= damage
+		unblocked_damage = damage
 	
 	if hp <= 0:
 		hp = 0
 		die()
+	return unblocked_damage
 
 func gain_shield(value):
 	AudioManager.play_sfx("shield_gain")

@@ -14,6 +14,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png
 			   }
 var image = "res://assets/images/enemies/robot/robotIDLE.png"
 var name = "BeepBoop"
+var sfx = "boss_1"
 var hp = 50
 var size = "big"
 var damage = [3, 5]

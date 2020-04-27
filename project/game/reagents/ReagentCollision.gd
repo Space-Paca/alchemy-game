@@ -15,7 +15,7 @@ func _input(event):
 		elif not reagent.hovering and \
 			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
-				reagent.hovering()
+				reagent.start_hovering()
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed and reagent.can_drag:
 			var mouse_pos = get_local_mouse_position()

@@ -84,7 +84,7 @@ func start_dragging():
 func stop_dragging():
 	emit_signal("stopped_dragging", self)
 
-func hovering():
+func start_hovering():
 	emit_signal("hovering", self)
 
 func stop_hovering():

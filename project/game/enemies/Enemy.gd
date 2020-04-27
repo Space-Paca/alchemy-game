@@ -24,7 +24,8 @@ const INTENT_H = 60
 
 var logic_
 var data
-var tooltip_position = Vector2()
+var tooltip_position := Vector2()
+var tooltips_enabled := false
 
 
 func _ready():
@@ -36,8 +37,12 @@ func heal(amount : int):
 	update_life()
 
 func die():
-	AudioManager.play_enemy_dies_sfx(data.sfx)
 	.die()
+	
+	AudioManager.play_enemy_dies_sfx(data.sfx)
+	if tooltips_enabled:
+		disable_tooltips()
+
 
 func take_damage(source: Character, damage: int, type: String):
 	var unblocked_dmg = .take_damage(source, damage, type)
@@ -219,17 +224,20 @@ func set_button_disabled(disable: bool):
 	button.visible = not disable
 	button.disabled = disable
 
+func disable_tooltips():
+	tooltips_enabled = false
+	TooltipLayer.clean_tooltips()
 
 func _on_Button_pressed():
 	emit_signal("selected", self)
 
-
 func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true
+	tooltips_enabled = true
 	for tooltip in get_tooltips():
 		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text, play_sfx)
 		play_sfx = false
 
 
 func _on_TooltipCollision_disable_tooltip():
-	TooltipLayer.clean_tooltips()
+	disable_tooltips()

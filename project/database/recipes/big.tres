@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/whale.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -10,3 +11,4 @@ reagents = [ "common", "defensive", "catalyst", "uncommon", "uncommon", "uncommo
 effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
 description = "Puta receita enorme meu, tem até descrição!"
+fav_icon = ExtResource( 2 )

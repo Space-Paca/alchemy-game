@@ -7,10 +7,9 @@ signal selected
 onready var animation = $Sprite/AnimationPlayer
 onready var button = $Sprite/Button
 onready var health_bar = $HealthBar
-onready var intent_texture = $Intent
-onready var intent_animation = $Intent/AnimationPlayer
-onready var intent_value = $Value
 onready var sprite = $Sprite
+
+const INTENT = preload("res://game/enemies/Intent.tscn")
 
 const SMALL_ENEMY_HEALTHBAR_SIZE = 120
 const MEDIUM_ENEMY_HEALTHBAR_SIZE = 180
@@ -18,7 +17,7 @@ const BIG_ENEMY_HEALTHBAR_SIZE = 250
 
 const STATUS_BAR_MARGIN = 40
 const HEALTH_BAR_MARGIN = 5
-const INTENT_MARGIN = 20
+const INTENT_MARGIN = 5
 const INTENT_W = 50
 const INTENT_H = 60
 
@@ -31,6 +30,7 @@ var tooltips_enabled := false
 func _ready():
 	set_button_disabled(true)
 	$HealthBar/Shield.hide()
+	$Intents.rect_position.y = -INTENT_MARGIN - INTENT_H
 
 func heal(amount : int):
 	.heal(amount)
@@ -146,6 +146,9 @@ func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
+	#Update intent conteiner
+	$Intents.rect_size.x = w
+	$Intents.rect_size.y = INTENT_H
 	#Update health bar position
 	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x/2
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
@@ -160,35 +163,15 @@ func set_image(new_texture):
 	$TooltipCollision.position = Vector2(t_w/2, - INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 
-func set_intent(texture, value):
-	intent_texture.texture = texture
-	var tw = texture.get_width()
-	var th = texture.get_height()
+func clear_intents():
+	for intent in $Intents.get_children():
+		$Intents.remove_child(intent)
+
+func add_intent(texture, value):
+	var intent = INTENT.instance()
+	$Intents.add_child(intent)
 	
-	#Fix Pivot offset
-	intent_texture.rect_pivot_offset = Vector2(tw/2.0, th/2.0)
-	
-	#Fix position
-	intent_texture.rect_position.x = floor(get_width()/2.0) - tw/2.0
-	intent_texture.rect_position.y = floor(-th/2.0) - INTENT_MARGIN
-	
-	#Fix scale
-	intent_texture.rect_scale = Vector2(INTENT_W/float(tw), INTENT_H/float(th))
-	
-	#Add value
-	if value:
-		intent_texture.rect_position.x -= 10
-		intent_value.text = str(value)
-		intent_value.rect_position.y = - 40
-		intent_value.rect_position.x = floor(get_width()/2.0) + 20
-									   
-	else:
-		intent_value.text = ""
-		
-	
-	#Random position for idle animation
-	randomize()
-	intent_animation.seek(rand_range(0,1.5))
+	intent.setup(texture, value)
 
 func set_pos(pos):
 	position = pos
@@ -196,9 +179,11 @@ func set_pos(pos):
 							   pos.y - INTENT_MARGIN - INTENT_H)
 
 func update_intent():
+	clear_intents()
 	var state = logic_.get_current_state()
 	var intent_data = data.get_intent_data(state)
-	set_intent(intent_data.image, intent_data.value)
+	for intent in intent_data:
+		add_intent(intent.image, intent.value)
 
 
 func get_width():
@@ -212,8 +197,7 @@ func get_tooltips():
 	var tooltips = []
 	#Get intent tooltip
 	var state = logic_.get_current_state()
-	var intent_tooltip = data.get_intent_tooltip(state)
-	if intent_tooltip:
+	for intent_tooltip in data.get_intent_tooltips(state):
 		tooltips.append(intent_tooltip)
 	#Get status tooltips
 	for tooltip in $StatusBar.get_status_tooltips():

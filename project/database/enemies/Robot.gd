@@ -41,32 +41,34 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "regular"})
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "regular"}]])
 	elif state == "temp_buff":
-		emit_signal("acted", enemy_ref, "status", {"status": "temp_strength", "amount": TEMP_BUFF, "target": enemy_ref, "positive": true})
+		emit_signal("acted", enemy_ref, [["status", {"status": "temp_strength", "amount": TEMP_BUFF, "target": enemy_ref, "positive": true}]])
 	elif state == "perm_buff":
-		emit_signal("acted", enemy_ref, "status", {"status": "perm_strength", "amount": PERM_BUFF, "target": enemy_ref, "positive": true})
+		emit_signal("acted", enemy_ref, [["status", {"status": "perm_strength", "amount": PERM_BUFF, "target": enemy_ref, "positive": true}]])
 
 func get_intent_data(state):
-	var data = {}
+	var data = []
+	var intent = {}
 
-	data.image = intents[state]
+	intent.image = intents[state]
 	
-	next_value = null
 	if state == "attack":
 		next_value = get_damage()
-		data.value = next_value + temp_buff + perm_buff
+		intent.value = next_value + temp_buff + perm_buff
 		temp_buff = 0
 	elif state == "temp_buff":
-		data.value = TEMP_BUFF
+		intent.value = TEMP_BUFF
 		temp_buff = TEMP_BUFF
 	elif state == "perm_buff":
-		data.value = PERM_BUFF
+		intent.value = PERM_BUFF
 		perm_buff += PERM_BUFF
+	data.append(intent)
 	
 	return data
 
-func get_intent_tooltip(state):
+func get_intent_tooltips(state):
+	var tooltips = []
 	var tooltip = {}
 	
 	if state == "attack":
@@ -78,5 +80,7 @@ func get_intent_tooltip(state):
 	elif state == "perm_buff":
 		tooltip.title = "Getting Strong"
 		tooltip.text = "This enemy is getting a permanent attack buff"
+		
+	tooltips.append(tooltip)
 	
-	return tooltip
+	return tooltips

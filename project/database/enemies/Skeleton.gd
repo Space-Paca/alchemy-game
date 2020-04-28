@@ -24,7 +24,8 @@ var connections = [
 				  ]
 var first_state = ["attack", "defend"]
 
-var next_value
+var next_attack_value
+var next_defend_value
 
 func set_node_references(e_ref, p_ref):
 	enemy_ref = e_ref
@@ -40,32 +41,51 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "crushing"})
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "crushing"}]])
 	elif state == "defend":
-		emit_signal("acted", enemy_ref, "shield", {"value": next_value, "target": enemy_ref})
+		emit_signal("acted", enemy_ref, [["shield", {"value": next_defend_value}], \
+										 ["damage", {"value": next_attack_value, "type": "crushing"}]])
 
 func get_intent_data(state):
-	var data = {}
+	var data = []
 
-	data.image = intents[state]
-	
-	next_value = null
 	if state == "attack":
-		next_value = get_damage()
+		next_attack_value = get_damage()
+		var intent = {}
+		intent.image = intents.attack
+		intent.value = next_attack_value
+		data.append(intent)
 	elif state == "defend":
-		next_value = get_defense()
-	data.value = next_value
+		var intent1 = {}
+		next_defend_value = get_defense()
+		intent1.image = intents.defend
+		intent1.value = next_defend_value
+		data.append(intent1)
+		var intent2 = {}
+		next_attack_value = get_damage()
+		intent2.image = intents.attack
+		intent2.value = next_attack_value
+		data.append(intent2)
+
 	
 	return data
 
-func get_intent_tooltip(state):
-	var tooltip = {}
+func get_intent_tooltips(state):
+	var tooltips = []
 	
 	if state == "attack":
+		var tooltip = {}
 		tooltip.title = "Attacking"
 		tooltip.text = "This enemy is attacking next turn"
+		tooltips.append(tooltip)
 	elif state == "defend":
-		tooltip.title = "Defending"
-		tooltip.text = "This enemy is going to defend next turn"
+		var tooltip1 = {}
+		tooltip1.title = "Defending"
+		tooltip1.text = "This enemy is going to defend next turn"
+		tooltips.append(tooltip1)
+		var tooltip2 = {}
+		tooltip2.title = "Attacking"
+		tooltip2.text = "This enemy is attacking next turn"
+		tooltips.append(tooltip2)
 	
-	return tooltip
+	return tooltips

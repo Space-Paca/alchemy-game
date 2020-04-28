@@ -35,25 +35,27 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, "damage", {"value": next_value, "type": "phantom"})
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "phantom"}]])
 	elif state == "dodge":
-		emit_signal("acted", enemy_ref, "status", {"status": "dodge", "amount": 1, "target": enemy_ref, "positive": true})
+		emit_signal("acted", enemy_ref, [["status", {"status": "dodge", "amount": 1, "target": enemy_ref, "positive": true}]])
 
 func get_intent_data(state):
-	var data = {}
-
-	data.image = intents[state]
+	var data = []
+	var intent = {}
 	
-	next_value = null
+	intent.image = intents[state]
+	
 	if state == "attack":
 		next_value = get_damage()
-		data.value = next_value
+		intent.value = next_value
 	elif state == "dodge":
-		data.value = 1
+		intent.value = 1
+	data.append(intent)
 	
 	return data
 
-func get_intent_tooltip(state):
+func get_intent_tooltips(state):
+	var tooltips = []
 	var tooltip = {}
 	
 	if state == "attack":
@@ -62,5 +64,6 @@ func get_intent_tooltip(state):
 	elif state == "dodge":
 		tooltip.title = "Dodging"
 		tooltip.text = "This enemy is getting dodge next turn"
+	tooltips.append(tooltip)
 	
-	return tooltip
+	return tooltips

@@ -356,13 +356,19 @@ func _on_reagent_stop_hover(reagent):
 		reagent.stop_hover_effect()
 
 
-func _on_enemy_acted(enemy, action, args):
-	if action == "damage":
-		player.take_damage(enemy, args.value, args.type)
-	elif action == "shield":
-		args.target.gain_shield(args.value)
-	elif action == "status":
-		args.target.add_status(args.status, args.amount, args.positive)
+func _on_enemy_acted(enemy, actions):
+	for action in actions:
+		var name = action[0]
+		var args = action[1]
+		if name == "damage":
+			player.take_damage(enemy, args.value, args.type)
+		elif name == "shield":
+			enemy.gain_shield(args.value)
+		elif name == "status":
+			args.target.add_status(args.status, args.amount, args.positive)
+		
+		#Wait a bit before going to next action/enemy	
+		yield(get_tree().create_timer(.8), "timeout")
 
 
 func _on_enemy_died(enemy):

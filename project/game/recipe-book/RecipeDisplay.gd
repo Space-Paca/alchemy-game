@@ -16,6 +16,7 @@ var reagent_array := []
 
 func set_combination(_combination: Combination):
 	combination = _combination
+	reagent_array = combination.recipe.reagents
 	title.text = combination.recipe.name
 	description.text = combination.recipe.description
 	grid.columns = combination.grid_size
@@ -25,8 +26,6 @@ func set_combination(_combination: Combination):
 			var reagent = REAGENT.instance()
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.matrix[i][j])
-			if combination.matrix[i][j]:
-				reagent_array.append(combination.matrix[i][j])
 
 
 func _on_Panel_mouse_entered():

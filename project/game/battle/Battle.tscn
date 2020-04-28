@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/images/ui/button_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/ui/button_pressed.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/ui/button.png" type="Texture" id=13]
+[ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=14]
+[ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
@@ -60,6 +62,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Favorites" type="GridContainer" parent="."]
+margin_left = 56.0
+margin_top = 295.0
+margin_right = 504.0
+margin_bottom = 611.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 320
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FavoriteButton1" type="TextureButton" parent="Favorites"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton2" type="TextureButton" parent="Favorites"]
+margin_left = 384.0
+margin_right = 448.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton3" type="TextureButton" parent="Favorites"]
+margin_top = 84.0
+margin_right = 64.0
+margin_bottom = 148.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton4" type="TextureButton" parent="Favorites"]
+margin_left = 384.0
+margin_top = 84.0
+margin_right = 448.0
+margin_bottom = 148.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton5" type="TextureButton" parent="Favorites"]
+margin_top = 168.0
+margin_right = 64.0
+margin_bottom = 232.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton6" type="TextureButton" parent="Favorites"]
+margin_left = 384.0
+margin_top = 168.0
+margin_right = 448.0
+margin_bottom = 232.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton7" type="TextureButton" parent="Favorites"]
+margin_top = 252.0
+margin_right = 64.0
+margin_bottom = 316.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton8" type="TextureButton" parent="Favorites"]
+margin_left = 384.0
+margin_top = 252.0
+margin_right = 448.0
+margin_bottom = 316.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
@@ -104,3 +176,27 @@ scale = Vector2( 0.4, 0.4 )
 [connection signal="button_down" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_button_down"]
 [connection signal="mouse_entered" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_mouse_entered"]
 [connection signal="pressed" from="CreateRecipeButton" to="." method="_on_CreateRecipe_pressed"]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_pressed" binds= [ 0 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_pressed" binds= [ 1 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_pressed" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_pressed" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 4 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_pressed" binds= [ 4 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 5 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_pressed" binds= [ 5 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 6 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_pressed" binds= [ 6 ]]
+[connection signal="mouse_entered" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 7 ]]
+[connection signal="mouse_exited" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_pressed" binds= [ 7 ]]

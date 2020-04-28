@@ -123,6 +123,14 @@ func new_battle(encounter: Encounter):
 	battle.connect("won", self, "_on_Battle_won")
 	
 	recipe_book.create_hand(battle)
+	
+	
+	
+	##########################TEST
+	######################
+	######################
+	battle.set_combination_test(combinations[2][0], combinations[2][2])
+	
 
 
 func should_autocomplete(combination: Combination) -> bool:

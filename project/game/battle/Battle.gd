@@ -16,6 +16,7 @@ onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
 onready var create_recipe_button = $CreateRecipeButton
+onready var favorites = $Favorites
 
 const ENEMY_MARGIN = 10
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
@@ -154,6 +155,7 @@ func setup_enemy(_player: Player, encounter: Encounter):
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
 
+
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
 		AudioManager.play_bgm("boss1", 3)
@@ -195,6 +197,8 @@ func disable_player():
 	
 	for reagent in reagents.get_children():
 		reagent.disable_dragging()
+	
+	set_favorites_disabled(true)
 
 
 func enable_player():
@@ -206,6 +210,13 @@ func enable_player():
 	
 	for reagent in reagents.get_children():
 		reagent.enable_dragging()
+	
+	set_favorites_disabled(false)
+
+
+func set_favorites_disabled(disabled: bool):
+	for button in favorites.get_children():
+		button.disabled = disabled
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
@@ -243,36 +254,97 @@ func set_enemy_pos(enemy_idx, pos_idx):
 	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(), \
 						  target_pos.position.y - enemy.get_height()))
 
+
 func autocomplete_grid(combination: Combination):
-	if not grid.is_empty():
-		grid.return_to_hand()
-		yield(grid, "returned_to_hand")
+#	if not grid.is_empty():
+#		grid.return_to_hand()
+#		yield(grid, "returned_to_hand")
+#	
+#	for i in range(combination.grid_size):
+#		for j in range(combination.grid_size):
+#			if combination.matrix[i][j]:
+#				for slot in hand.grid.get_children():
+#					var reagent = slot.get_reagent()
+#					if reagent and reagent.type == combination.matrix[i][j]:
+#						slot.remove_reagent()
+#						grid.container.get_child(i * grid.grid_size +\
+#								j).set_reagent(reagent)
+#						break
+	
+	var added_reagents := []
+	var grid_reagents := []
+	
+	for slot in grid.container.get_children():
+		if slot.current_reagent:
+			grid_reagents.append(slot.current_reagent)
 	
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):
 			if combination.matrix[i][j]:
-				for slot in hand.grid.get_children():
-					var reagent = slot.get_reagent()
-					if reagent and reagent.type == combination.matrix[i][j]:
-						slot.remove_reagent()
+				for reagent in reagents.get_children():
+					if not added_reagents.has(reagent) and\
+							reagent.type == combination.matrix[i][j]:
+						if not reagent.slot:
+							push_error("reagent isn't in slot")
+							assert(false)
 						grid.container.get_child(i * grid.grid_size +\
 								j).set_reagent(reagent)
+						added_reagents.append(reagent)
 						break
+	
+	for reagent in grid_reagents:
+		if not added_reagents.has(reagent):
+			if reagent.slot.current_reagent != reagent:
+				reagent.slot = null
+			hand.place_reagent(reagent)
+#			for slot in hand.grid.get_children():
+#				if not slot.current_reagent:
+#					slot.set_reagent(reagent)
+#					break
+
+
+func unhighlight_reagents():
+	for reagent in reagents.get_children():
+		reagent.unhighlight()
+
+
+func has_reagents(reagent_array: Array, highlight: bool = false) -> bool:
+	var dup_array : Array = reagent_array.duplicate()
+	var selected_reagents := []
+	
+	for reagent in reagents.get_children():
+		for reagent_name in dup_array:
+			if reagent_name == reagent.type:
+				selected_reagents.append(reagent)
+				dup_array.erase(reagent_name)
+				break
+		if dup_array.empty():
+			if highlight:
+				for selected_reagent in selected_reagents:
+					selected_reagent.highlight()
+			return true
+	
+	return false
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
 	is_dragging_reagent = true
 
+
 func _on_reagent_stop_drag(_reagent):
 	is_dragging_reagent = false
+
 
 func _on_reagent_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.hover_effect()
 
+
 func _on_reagent_stop_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.stop_hover_effect()
+
 
 func _on_enemy_acted(enemy, action, args):
 	if action == "damage":
@@ -281,6 +353,7 @@ func _on_enemy_acted(enemy, action, args):
 		args.target.gain_shield(args.value)
 	elif action == "status":
 		args.target.add_status(args.status, args.amount, args.positive)
+
 
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
@@ -378,3 +451,25 @@ func _on_CreateRecipeButton_button_down():
 
 func _on_PassTurnButton_button_down():
 	AudioManager.play_sfx("click")
+
+
+func _on_FavoriteButton_pressed(index: int):
+	AudioManager.play_sfx("click")
+	
+	var button : FavoriteButton = favorites.get_child(index)
+	if has_reagents(button.reagent_array):
+		autocomplete_grid(button.combination)
+
+
+func _on_FavoriteButton_mouse_entered(index: int):
+	var button : FavoriteButton = favorites.get_child(index)
+	has_reagents(button.reagent_array, true)
+
+
+func _on_FavoriteButton_mouse_exited():
+	unhighlight_reagents()
+
+
+func set_combination_test(combination1: Combination, combination2: Combination):
+	$Favorites/FavoriteButton1.set_combination(combination1)
+	$Favorites/FavoriteButton2.set_combination(combination2)

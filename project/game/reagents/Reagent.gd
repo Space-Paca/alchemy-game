@@ -22,6 +22,7 @@ var image_path : String
 func _ready():
 	texture_rect.texture = load(image_path)
 
+
 func _process(_delta):
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
@@ -36,18 +37,22 @@ func _process(_delta):
 				rect_position = target_position
 				emit_signal("reached_target_pos")
 
+
 func enable_dragging():
 	can_drag = true
 	disable_drag = false
+
 
 func stop_hover_effect():
 	hovering = false
 	slight_shrink()
 
+
 func hover_effect():
 	hovering = true
 	AudioManager.play_sfx("hover_reagent")
 	slight_grow()
+
 
 func pick_effect():
 	AudioManager.play_sfx("pick_reagent")
@@ -78,17 +83,30 @@ func shrink():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .15, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
+
+func highlight():
+	modulate = Color.black
+
+
+func unhighlight():
+	modulate = Color.white
+
+
 func start_dragging():
 	emit_signal("started_dragging", self)
+
 
 func stop_dragging():
 	emit_signal("stopped_dragging", self)
 
+
 func start_hovering():
 	emit_signal("hovering", self)
 
+
 func stop_hovering():
 	emit_signal("stopped_hovering", self)
+
 
 func disable_dragging():
 	can_drag = false

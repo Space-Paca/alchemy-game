@@ -41,6 +41,7 @@ func remove_hand():
 	
 	hand_rect.visible = false
 
+
 func toggle():
 	visible = !visible
 	

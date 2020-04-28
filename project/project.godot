@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyLogic.gd"
 }, {
+"base": "TextureButton",
+"class": "FavoriteButton",
+"language": "GDScript",
+"path": "res://game/battle/FavoriteButton.gd"
+}, {
 "base": "Control",
 "class": "Floor",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_class_icons={
 "Encounter": "",
 "Enemy": "",
 "EnemyLogic": "",
+"FavoriteButton": "",
 "Floor": "",
 "Player": "",
 "PlayerClass": "",

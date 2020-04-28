@@ -6,6 +6,7 @@ onready var button = $Button
 onready var texture_rect = $TextureRect
 
 var reagent : String
+var tooltip_enabled := false
 
 func _ready():
 	pass
@@ -24,8 +25,14 @@ func get_tooltips():
 	
 	return tooltips
 
+func disable_tooltip():
+	tooltip_enabled = false
+	TooltipLayer.clean_tooltips()
+
 func _on_Button_pressed():
 	button.disabled = true
+	if tooltip_enabled:
+		disable_tooltip()
 	emit_signal("reagent_looted", self)
 
 func _on_Button_mouse_entered():
@@ -35,10 +42,11 @@ func _on_Button_button_down():
 	AudioManager.play_sfx("click")
 
 func _on_TooltipCollision_disable_tooltip():
-	TooltipLayer.clean_tooltips()
+	disable_tooltip()
 
 func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true
+	tooltip_enabled = true
 	for tooltip in get_tooltips():
 		TooltipLayer.add_tooltip($TooltipPosition.rect_global_position, tooltip.title, tooltip.text, play_sfx)
 		play_sfx = false

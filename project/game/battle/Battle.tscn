@@ -67,6 +67,7 @@ margin_left = 56.0
 margin_top = 295.0
 margin_right = 504.0
 margin_bottom = 611.0
+rect_min_size = Vector2( 448, 316 )
 custom_constants/vseparation = 20
 custom_constants/hseparation = 320
 columns = 2
@@ -75,60 +76,59 @@ __meta__ = {
 }
 
 [node name="FavoriteButton1" type="TextureButton" parent="Favorites"]
+visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
 [node name="FavoriteButton2" type="TextureButton" parent="Favorites"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton3" type="TextureButton" parent="Favorites"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton4" type="TextureButton" parent="Favorites"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton5" type="TextureButton" parent="Favorites"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 15 )
+script = ExtResource( 14 )
+
+[node name="FavoriteButton6" type="TextureButton" parent="Favorites"]
+visible = false
 margin_left = 384.0
 margin_right = 448.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
-[node name="FavoriteButton3" type="TextureButton" parent="Favorites"]
-margin_top = 84.0
-margin_right = 64.0
-margin_bottom = 148.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
-[node name="FavoriteButton4" type="TextureButton" parent="Favorites"]
-margin_left = 384.0
-margin_top = 84.0
-margin_right = 448.0
-margin_bottom = 148.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
-[node name="FavoriteButton5" type="TextureButton" parent="Favorites"]
-margin_top = 168.0
-margin_right = 64.0
-margin_bottom = 232.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
-[node name="FavoriteButton6" type="TextureButton" parent="Favorites"]
-margin_left = 384.0
-margin_top = 168.0
-margin_right = 448.0
-margin_bottom = 232.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
 [node name="FavoriteButton7" type="TextureButton" parent="Favorites"]
-margin_top = 252.0
+visible = false
 margin_right = 64.0
-margin_bottom = 316.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
 [node name="FavoriteButton8" type="TextureButton" parent="Favorites"]
-margin_left = 384.0
-margin_top = 252.0
-margin_right = 448.0
-margin_bottom = 316.0
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 

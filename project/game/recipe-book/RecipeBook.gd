@@ -1,6 +1,7 @@
 extends Control
 
-signal recipe_pressed(combination)
+signal recipe_pressed(combination, mastery_unlocked)
+signal favorite_toggled(combination, button_pressed)
 
 onready var hand_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/HandRect/CenterContainer/GridContainer
 onready var hand_rect : ColorRect = $ColorRect/MarginContainer/VBoxContainer/HandRect
@@ -22,6 +23,7 @@ func add_combination(combination: Combination, position: int):
 	recipe_display.connect("hovered", self, "_on_recipe_display_hovered")
 	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")
 	recipe_display.connect("pressed", self, "_on_recipe_display_pressed")
+	recipe_display.connect("favorite_toggled", self, "_on_recipe_display_favorite_toggled")
 	recipe_displays[combination.recipe.name] = recipe_display
 
 
@@ -42,7 +44,7 @@ func remove_hand():
 	hand_rect.visible = false
 
 
-func toggle():
+func toggle_visibility():
 	visible = !visible
 	
 	if visible:
@@ -50,6 +52,10 @@ func toggle():
 	else:
 		AudioManager.play_sfx("close_recipe_book")
 		reset_hand_reagents_color()
+
+
+func unlock_mastery(combination: Combination):
+	recipe_displays[combination.recipe.name].unlock_mastery()
 
 
 func update_hand(reagents: Array):
@@ -86,6 +92,19 @@ func reset_hand_reagents_color():
 		display.self_modulate = Color.white
 
 
+func favorite_error(combination: Combination):
+	recipe_displays[combination.recipe.name].favorite_error()
+
+
+func error_effect():
+	AudioManager.play_sfx("error")
+# warning-ignore:return_value_discarded
+	tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+# warning-ignore:return_value_discarded
+	tween.start()
+
+
 func _on_recipe_display_hovered(reagent_array: Array):
 	color_hand_reagents(reagent_array)
 
@@ -94,19 +113,14 @@ func _on_recipe_display_unhovered():
 	reset_hand_reagents_color()
 
 
-func _on_recipe_display_pressed(combination: Combination):
+func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool):
 	if not hand_rect.visible:
 		return
 	if not hand_grid.get_child_count():
 		error_effect()
 		return
 	
-	var combination_reagents := []
-	
-	for line in combination.matrix:
-		for reagent in line:
-			if reagent:
-				combination_reagents.append(reagent)
+	var combination_reagents : Array = combination.recipe.reagents.duplicate()
 	
 	var i = 0
 	while not combination_reagents.empty() and i < hand_grid.get_child_count():
@@ -118,15 +132,10 @@ func _on_recipe_display_pressed(combination: Combination):
 		i += 1
 	
 	if combination_reagents.empty():
-		emit_signal("recipe_pressed", combination)
+		emit_signal("recipe_pressed", combination, mastery_unlocked)
 	else:
 		error_effect()
 
 
-func error_effect():
-	AudioManager.play_sfx("error")
-# warning-ignore:return_value_discarded
-	tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
-			.5, Tween.TRANS_SINE, Tween.EASE_IN)
-# warning-ignore:return_value_discarded
-	tween.start()
+func _on_recipe_display_favorite_toggled(combination: Combination, button_pressed: bool):
+	emit_signal("favorite_toggled", combination, button_pressed)

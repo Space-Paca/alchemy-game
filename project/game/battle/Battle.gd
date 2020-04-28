@@ -17,33 +17,40 @@ onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
 onready var create_recipe_button = $CreateRecipeButton
 onready var favorites = $Favorites
+onready var available_favorites = [$Favorites/FavoriteButton1,
+	$Favorites/FavoriteButton2, $Favorites/FavoriteButton3,
+	$Favorites/FavoriteButton4, $Favorites/FavoriteButton5,
+	$Favorites/FavoriteButton6, $Favorites/FavoriteButton7,
+	$Favorites/FavoriteButton8]
 
 const ENEMY_MARGIN = 10
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 
 var ended := false
+var player_disabled := true
 var is_boss
 var player
 var loot : Array
 var is_dragging_reagent := false
 
 
-func setup(_player: Player, encounter: Encounter):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	setup_nodes()
 	
 	setup_player(_player)
 	
+	setup_favorites(favorite_combinations)
+	
 	setup_player_ui()
-
+	
 	setup_enemy(_player, encounter)
-
+	
 	effect_manager.setup(_player, enemies_node.get_children())
-
+	
 	setup_audio(encounter)
-
+	
 	loot = encounter.get_loot()
-
 	
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -87,6 +94,11 @@ func setup_player(_player):
 	disable_player()
 
 
+func setup_favorites(favorite_combinations: Array):
+	for combination in favorite_combinations:
+		add_favorite(combination)
+
+
 func setup_player_ui():
 	var grid_side = grid.get_height()
 	var ui_center = 2*get_viewport().size.x/10
@@ -115,6 +127,9 @@ func setup_player_ui():
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
 	player_ui.update_tooltip_pos()
+	#Position favorites
+	favorites.rect_position = Vector2(ui_center, grid_center)\
+			- favorites.rect_size / 2
 
 
 func setup_enemy(_player: Player, encounter: Encounter):
@@ -192,26 +207,26 @@ func new_enemy_turn():
 
 
 func disable_player():
+	player_disabled = true
 	pass_turn_button.disabled = true
 	create_recipe_button.disabled = true
+	set_favorites_disabled(true)
 	
 	for reagent in reagents.get_children():
 		reagent.disable_dragging()
-	
-	set_favorites_disabled(true)
 
 
 func enable_player():
 	if ended:
 		return
 	
+	player_disabled = false
 	pass_turn_button.disabled = false
 	create_recipe_button.disabled = false
+	set_favorites_disabled(false)
 	
 	for reagent in reagents.get_children():
 		reagent.enable_dragging()
-	
-	set_favorites_disabled(false)
 
 
 func set_favorites_disabled(disabled: bool):
@@ -256,21 +271,6 @@ func set_enemy_pos(enemy_idx, pos_idx):
 
 
 func autocomplete_grid(combination: Combination):
-#	if not grid.is_empty():
-#		grid.return_to_hand()
-#		yield(grid, "returned_to_hand")
-#	
-#	for i in range(combination.grid_size):
-#		for j in range(combination.grid_size):
-#			if combination.matrix[i][j]:
-#				for slot in hand.grid.get_children():
-#					var reagent = slot.get_reagent()
-#					if reagent and reagent.type == combination.matrix[i][j]:
-#						slot.remove_reagent()
-#						grid.container.get_child(i * grid.grid_size +\
-#								j).set_reagent(reagent)
-#						break
-	
 	var added_reagents := []
 	var grid_reagents := []
 	
@@ -297,10 +297,6 @@ func autocomplete_grid(combination: Combination):
 			if reagent.slot.current_reagent != reagent:
 				reagent.slot = null
 			hand.place_reagent(reagent)
-#			for slot in hand.grid.get_children():
-#				if not slot.current_reagent:
-#					slot.set_reagent(reagent)
-#					break
 
 
 func unhighlight_reagents():
@@ -325,6 +321,20 @@ func has_reagents(reagent_array: Array, highlight: bool = false) -> bool:
 			return true
 	
 	return false
+
+
+func add_favorite(combination: Combination):
+	var button : FavoriteButton = available_favorites.pop_front()
+	button.set_combination(combination)
+	button.visible = true
+
+
+func remove_favorite(combination: Combination):
+	for button in favorites.get_children():
+		if button.combination == combination:
+			button.set_combination(null)
+			button.visible = false
+			available_favorites.append(button)
 
 
 func _on_reagent_drag(reagent):
@@ -459,17 +469,15 @@ func _on_FavoriteButton_pressed(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
 	if has_reagents(button.reagent_array):
 		autocomplete_grid(button.combination)
+	else:
+		AudioManager.play_sfx("error")
 
 
 func _on_FavoriteButton_mouse_entered(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
+# warning-ignore:return_value_discarded
 	has_reagents(button.reagent_array, true)
 
 
 func _on_FavoriteButton_mouse_exited():
 	unhighlight_reagents()
-
-
-func set_combination_test(combination1: Combination, combination2: Combination):
-	$Favorites/FavoriteButton1.set_combination(combination1)
-	$Favorites/FavoriteButton2.set_combination(combination2)

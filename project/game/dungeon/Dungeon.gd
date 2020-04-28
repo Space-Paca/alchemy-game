@@ -13,6 +13,8 @@ var combinations := {}
 var current_floor : Floor
 var floor_level := 1
 var times_recipe_made := {}
+var favorite_combinations := []
+var max_favorites := 8
 
 
 func _ready():
@@ -24,7 +26,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
-		recipe_book.toggle()
+		recipe_book.toggle_visibility()
 
 
 func create_combinations():
@@ -94,46 +96,32 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
-			prints((combination as Combination).recipe.name, "found")
-			var recipe = (combination.recipe as Recipe)
-			AudioManager.play_sfx("combine_success")
-			battle.apply_effects(recipe.effects, recipe.effect_args)
-			
-			if not player.known_recipes.has(recipe.name):
-				player.discover_combination(combination)
-			
-			if not times_recipe_made.has(recipe.name):
-				times_recipe_made[recipe.name] = 1
-			else:
-				times_recipe_made[recipe.name] += 1
-			
+			make_combination(combination)
 			return true
 	
 	return false
 
 
-func new_battle(encounter: Encounter):
-	assert(battle == null)
-	battle = BATTLE_SCENE.instance()
-	add_child(battle)
-	battle.setup(player, encounter)
-# warning-ignore:return_value_discarded
-	battle.connect("combination_made", self, "_on_Battle_combination_made")
-# warning-ignore:return_value_discarded
-	battle.connect("won", self, "_on_Battle_won")
+func make_combination(combination: Combination):
+	AudioManager.play_sfx("combine_success")
 	
-	recipe_book.create_hand(battle)
+	var recipe := combination.recipe
+	battle.apply_effects(recipe.effects, recipe.effect_args)
 	
+	if not player.known_recipes.has(recipe.name):
+		player.discover_combination(combination)
 	
+	if not times_recipe_made.has(recipe.name):
+		times_recipe_made[recipe.name] = 1
+	else:
+		times_recipe_made[recipe.name] += 1
 	
-	##########################TEST
-	######################
-	######################
-	battle.set_combination_test(combinations[2][0], combinations[2][2])
+	if should_unlock_mastery(combination):
+		recipe_book.unlock_mastery(combination)
 	
 
 
-func should_autocomplete(combination: Combination) -> bool:
+func should_unlock_mastery(combination: Combination) -> bool:
 	if not times_recipe_made.has(combination.recipe.name):
 		return false
 	
@@ -141,6 +129,19 @@ func should_autocomplete(combination: Combination) -> bool:
 	threshold = max(threshold, 2)
 	
 	return times_recipe_made[combination.recipe.name] > threshold
+
+
+func new_battle(encounter: Encounter):
+	assert(battle == null)
+	battle = BATTLE_SCENE.instance()
+	add_child(battle)
+	battle.setup(player, encounter, favorite_combinations)
+# warning-ignore:return_value_discarded
+	battle.connect("combination_made", self, "_on_Battle_combination_made")
+# warning-ignore:return_value_discarded
+	battle.connect("won", self, "_on_Battle_won")
+	
+	recipe_book.create_hand(battle)
 
 
 func _on_room_entered(room: Room):
@@ -170,10 +171,24 @@ func _on_Player_combination_discovered(combination, index):
 	recipe_book.add_combination(combination, index)
 
 
-func _on_RecipeBook_recipe_pressed(combination):
+func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
-	recipe_book.toggle()
-	if should_autocomplete(combination):
+	recipe_book.toggle_visibility()
+	if mastery_unlocked:
 		battle.autocomplete_grid(combination)
 	else:
 		battle.grid.show_combination_hint(combination)
+
+
+func _on_RecipeBook_favorite_toggled(combination, button_pressed):
+	if button_pressed:
+		if favorite_combinations.size() >= max_favorites:
+			recipe_book.favorite_error(combination)
+		else:
+			favorite_combinations.append(combination)
+			if battle:
+				battle.add_favorite(combination)
+	else:
+		favorite_combinations.erase(combination)
+		if battle:
+			battle.remove_favorite(combination)

@@ -59,17 +59,17 @@ func create_room(from : int, position : Vector2):
 	
 	var directions = [N, W, E, S]
 	directions.shuffle()
-	var avaiable_directions = []
+	var available_directions = []
 	var deadend = true
 	
 	for dir in directions:
 		if dir == from:
 			room.exits[dir] = true
 		elif not rooms.has(position + OFFSETS[dir]):
-			avaiable_directions.append(dir)
+			available_directions.append(dir)
 			remaining_exits += 1
 	
-	for dir in avaiable_directions:
+	for dir in available_directions:
 		if remaining_rooms == 0:
 			break
 		if randf() < remaining_rooms / float(room_amount) or\

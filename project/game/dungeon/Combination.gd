@@ -9,7 +9,7 @@ var matrix : Array
 func create_from_recipe(_recipe: Recipe):
 	recipe = _recipe
 	grid_size = recipe.grid_size
-	var avaiable_positions := []
+	var available_positions := []
 	var elements := (recipe.reagents.duplicate() as Array)
 	elements.shuffle()
 	
@@ -17,7 +17,7 @@ func create_from_recipe(_recipe: Recipe):
 		var line = []
 		for j in range(grid_size):
 			line.append(null)
-			avaiable_positions.append([i, j])
+			available_positions.append([i, j])
 		matrix.append(line)
 	
 	# Placing the first two reagents that guarantee grid size consistency
@@ -31,11 +31,11 @@ func create_from_recipe(_recipe: Recipe):
 		pos2 = [randi() % grid_size, grid_size - 1]
 	matrix[pos1[0]][pos1[1]] = elements.pop_front()
 	matrix[pos2[0]][pos2[1]] = elements.pop_front()
-	avaiable_positions.erase(pos1)
-	avaiable_positions.erase(pos2)
+	available_positions.erase(pos1)
+	available_positions.erase(pos2)
 	
 	# Placing the rest
-	avaiable_positions.shuffle()
+	available_positions.shuffle()
 	while not elements.empty():
-		var pos = avaiable_positions.pop_front()
+		var pos = available_positions.pop_front()
 		matrix[pos[0]][pos[1]] = elements.pop_front()

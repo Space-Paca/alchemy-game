@@ -53,17 +53,21 @@ func take_damage(source: Character, value: int, type: String):
 	hud.update_shield(self)
 	hud.update_status_bar(self)
 
+
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
 	hud.update_status_bar(self)
+
 
 func gain_shield(value):
 	.gain_shield(value)
 	hud.update_shield(self)
 
+
 func new_turn():
 	update_status()
 	hud.update_shield(self)
+
 
 func update_status():
 	.update_status()

@@ -12,12 +12,12 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 174.011, 65.4574 )
 
 [node name="ReagentLoot" type="HBoxContainer"]
 margin_right = 478.0
 margin_bottom = 128.0
-custom_constants/separation = 150
-alignment = 1
+custom_constants/separation = 20
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,19 +32,27 @@ expand = true
 stretch_mode = 5
 
 [node name="Button" type="Button" parent="."]
-margin_left = 278.0
-margin_right = 478.0
+margin_left = 148.0
+margin_right = 348.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "GET!"
 
+[node name="TooltipPosition" type="Control" parent="."]
+margin_left = 368.0
+margin_right = 368.0
+margin_bottom = 128.0
+
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
+position = Vector2( 174.409, 64.2384 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 
 [editable path="TooltipCollision"]

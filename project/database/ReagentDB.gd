@@ -2,31 +2,49 @@ class_name ReagentDB
 
 const DB = {
 	"common": {
+		"name": "Reagente Comum",
 		"image": "res://assets/images/reagents/regular.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"uncommon": {
+		"name": "Reagente",
 		"image": "res://assets/images/reagents/special.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"rare": {
+		"name": "Reagente",
 		"image": "res://assets/images/reagents/harmless.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"damaging": {
-		"image": "res://assets/images/reagents/funky.png"
+		"name": "Reagente Dano",
+		"image": "res://assets/images/reagents/funky.png",
+		"tooltip" : "When this reagent doesn't react, does smthing",
 	},
 	"defensive": {
-		"image": "res://assets/images/reagents/tasty.png"
+		"name": "Reagente Defesa",
+		"image": "res://assets/images/reagents/tasty.png",
+		"tooltip" : "When this reagent doesn't react, does sssomething",
 	},
 	"super_damaging": {
-		"image": "res://assets/images/reagents/marvellous.png"
+		"name": "Reagente",
+		"image": "res://assets/images/reagents/marvellous.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"super_defensive": {
-		"image": "res://assets/images/reagents/juicy.png"
+		"name": "Reagente",
+		"image": "res://assets/images/reagents/juicy.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"healing": {
-		"image": "res://assets/images/reagents/suspicious.png"
+		"name": "Reagente",
+		"image": "res://assets/images/reagents/suspicious.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	},
 	"catalyst": {
-		"image": "res://assets/images/reagents/powerful.png"
+		"name": "Reagente",
+		"image": "res://assets/images/reagents/powerful.png",
+		"tooltip" : "When this reagent doesn't react, does something",
 	}
 }
 

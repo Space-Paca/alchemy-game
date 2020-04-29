@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-2.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Dano penetrante"
+grid_size = 2
+floor_sold_in = 1
+reagents = [ "damaging", "damaging" ]
+effects = [  ]
+effect_args = [  ]
+description = "I love cheese, especially bavarian bergkase stinking bishop. Cheese strings goat cheese on toast parmesan smelly cheese camembert de normandie squirty cheese caerphilly."
+fav_icon = ExtResource( 1 )
+

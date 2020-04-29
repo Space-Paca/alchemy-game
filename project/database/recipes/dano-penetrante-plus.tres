@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-15.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Dano penetrante+"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "super_damaging", "super_damaging", "super_damaging", "super_damaging", "super_damaging" ]
+effects = [  ]
+effect_args = [  ]
+description = "I love cheese, especially fromage frais lancashire. Croque monsieur airedale cottage cheese edam bocconcini manchego cut the cheese macaroni cheese."
+fav_icon = ExtResource( 1 )
+

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Dano-Escudo++"
+grid_size = 4
+floor_sold_in = 3
+reagents = [ "uncommon", "uncommon", "uncommon", "defensive", "defensive", "super_defensive", "super_defensive", "damaging", "damaging", "super_damaging", "super_damaging" ]
+effects = [  ]
+effect_args = [  ]
+description = ""
+

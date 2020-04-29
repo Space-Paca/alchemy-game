@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 
 [node name="RecipeBook" parent="BookLayer" instance=ExtResource( 3 )]
 visible = false
+
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]

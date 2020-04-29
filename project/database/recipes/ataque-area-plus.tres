@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Ataque em área+"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "common", "uncommon", "damaging", "super_damaging" ]
+effects = [  ]
+effect_args = [  ]
+description = "I love cheese, especially cheesy grin st. agur blue cheese. Gouda emmental who moved my cheese cottage cheese airedale swiss say cheese say cheese."
+fav_icon = ExtResource( 1 )
+

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-28.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Escudo+"
+grid_size = 2
+floor_sold_in = 1
+reagents = [ "common", "defensive", "defensive" ]
+effects = [ "shield" ]
+effect_args = [ [ 10 ] ]
+description = "I love cheese, especially lancashire squirty cheese. Cheese strings monterey jack say cheese monterey jack manchego pecorino camembert de normandie cheese on toast."
+fav_icon = ExtResource( 1 )
+

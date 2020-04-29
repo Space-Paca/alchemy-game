@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 initial_recipes = [ "Dano", "Escudo" ]
 initial_hp = 100
+

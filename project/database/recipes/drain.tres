@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-20.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Drain"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "damaging", "damaging", "damaging", "super_damaging", "super_damaging" ]
+effects = [  ]
+effect_args = [  ]
+description = "I love cheese, especially macaroni cheese when the cheese comes out everybody's happy. Cauliflower cheese macaroni cheese dolcelatte parmesan port-salut manchego cow babybel."
+fav_icon = ExtResource( 1 )
+

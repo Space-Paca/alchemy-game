@@ -1,14 +1,16 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/recipe-icons/icon-0.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/recipe-icons/icon-0.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 name = "Dano"
 grid_size = 2
+floor_sold_in = 1
 reagents = [ "common", "damaging" ]
 effects = [ "damage" ]
 effect_args = [ [ 10, "regular" ] ]
-description = ""
-fav_icon = ExtResource( 2 )
+description = "I love cheese, especially fromage frais gouda. Airedale cow cheesy feet goat pecorino feta port-salut boursin."
+fav_icon = ExtResource( 1 )
+

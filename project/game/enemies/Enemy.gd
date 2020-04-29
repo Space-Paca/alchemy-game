@@ -3,6 +3,8 @@ class_name Enemy
 
 signal acted
 signal selected
+signal action_resolved
+signal animation_finished
 
 onready var animation = $Sprite/AnimationPlayer
 onready var button = $Sprite/Button
@@ -80,13 +82,20 @@ func update_life():
 func act():
 	var state = logic_.get_current_state()
 	data.act(state)
-	animation.play("attack")
-	yield(animation, "animation_finished")
-	animation.play("idle")
+	yield(self, "action_resolved")
 	emit_signal("acted")
 	logic_.update_state()
 	
 	update_intent()
+
+func play_animation(name):
+	animation.play(name)
+	yield(animation, "animation_finished")
+	emit_signal("animation_finished")
+	animation.play("idle")
+
+func action_resolved():
+	emit_signal("action_resolved")
 
 func update_shield():
 	if shield > 0:
@@ -163,6 +172,14 @@ func set_image(new_texture):
 	$TooltipCollision.position = Vector2(t_w/2, - INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 
+#Removes first intent (the one in the left)
+func remove_intent():
+	if $Intents.get_child_count() > 0:
+		var intent = $Intents.get_child(0)
+		intent.vanish()
+		yield(intent, "vanished")
+		$Intents.remove_child(intent)
+
 func clear_intents():
 	for intent in $Intents.get_children():
 		$Intents.remove_child(intent)
@@ -185,10 +202,8 @@ func update_intent():
 	for intent in intent_data:
 		add_intent(intent.image, intent.value)
 
-
 func get_width():
 	return sprite.texture.get_width()
-
 
 func get_height():
 	return sprite.texture.get_height()

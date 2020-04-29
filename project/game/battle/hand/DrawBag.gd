@@ -84,7 +84,7 @@ func reshuffle():
 		var reagent = discarded_reagents.pop_back()
 		shuffle_reagent(reagent)
 		if not discarded_reagents.empty():
-			yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
+			yield(get_tree().create_timer(rand_range(.08, .15)), "timeout")
 		else:
 			yield(self, "reagent_shuffled")
 	emit_signal("reshuffled")
@@ -93,6 +93,7 @@ func reshuffle():
 func shuffle_reagent(reagent):
 	reagent.visible = true
 	reagents.add_child(reagent)
+	reagent.grow_and_shrink()
 	reagent.target_position = get_center()
 	yield(reagent, "reached_target_pos")
 	reagents.remove_child(reagent)

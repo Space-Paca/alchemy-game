@@ -73,6 +73,13 @@ func grow():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .5, Tween.TRANS_BACK, Tween.EASE_OUT)
 	$Tween.start()
 
+func grow_and_shrink():
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+
 
 func slight_shrink():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)

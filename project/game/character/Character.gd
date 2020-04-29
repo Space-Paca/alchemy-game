@@ -98,6 +98,10 @@ func take_damage(source: Character, damage: int, type: String):
 		hp -= damage
 		unblocked_damage = damage
 	
+	else:
+		push_error("Not a valid type of attack: " + str(type))
+		assert(false)
+	
 	if hp <= 0:
 		hp = 0
 		die()

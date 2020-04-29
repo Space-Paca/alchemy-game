@@ -40,8 +40,6 @@ func create_combinations():
 		
 		if player.known_recipes.has(recipe.name):
 			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name))
-		
-		print(combination.name, "\n", combination.matrix)
 
 
 func create_floor(level: int):
@@ -49,12 +47,12 @@ func create_floor(level: int):
 	current_floor.room_amount = FLOOR_SIZE[level - 1]
 	current_floor.level = floor_level
 	if current_floor.connect("room_entered", self, "_on_room_entered") != OK:
-		print("create_floor: Error")
+		push_error("create_floor: Error")
+		assert(false)
 	add_child(current_floor)
 
 
 func search_grid_for_combinations(reagent_matrix: Array):
-	print(reagent_matrix)
 	var grid_size = battle.grid.grid_size
 	
 	if check_combinations(grid_size, reagent_matrix):
@@ -78,18 +76,12 @@ func search_grid_for_combinations(reagent_matrix: Array):
 						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
 				
 				if check_combinations(new_grid_size, new_matrix):
-					print("Combination found; size = %d; position = (%d, %d)" %
-							[new_grid_size, i_offset, j_offset])
 					return
 	
-	print("No combinations found!")
 	battle.apply_effects(["combination_failure"])
 
 
-func check_combinations(grid_size: int, reagent_matrix: Array):
-	print("check_combinations; grid_size: ", grid_size)
-	print("reagent_matrix: ", reagent_matrix)
-	
+func check_combinations(grid_size: int, reagent_matrix: Array):	
 	if not combinations.has(grid_size):
 		print("No recipes exist for grid with size ", grid_size)
 		return false

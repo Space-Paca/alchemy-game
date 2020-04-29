@@ -13,4 +13,3 @@ effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
 description = "I love cheese, especially lancashire squirty cheese. Cheese strings monterey jack say cheese monterey jack manchego pecorino camembert de normandie cheese on toast."
 fav_icon = ExtResource( 1 )
-

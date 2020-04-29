@@ -69,6 +69,7 @@ func damage(amount: int, type: String):
 func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
 		(enemy as Enemy).take_damage(player, amount, type)
+		yield(get_tree().create_timer(.35),"timeout")
 	
 	resolve()
 

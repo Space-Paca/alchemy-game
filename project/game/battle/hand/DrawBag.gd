@@ -12,6 +12,7 @@ signal given_reagents_drawn
 var hand = null #Set by parent
 var discard_bag = null #Set by parent
 var reagents = null #Set by parent
+var tooltips_enabled := false
 
 
 func _ready():
@@ -119,3 +120,15 @@ func draw_reagent():
 	reagent.rect_scale = Vector2(0,0)
 	reagents.add_child(reagent)
 	return reagent
+
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func _on_TooltipCollision_disable_tooltip():
+	disable_tooltips()
+
+func _on_TooltipCollision_enable_tooltip():
+	tooltips_enabled = true
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, "Draw Bag", "You've got MAIL", true)

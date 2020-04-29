@@ -7,6 +7,7 @@ onready var counter = $Counter
 onready var discarded_reagents = $DiscardedReagents
 onready var texture_rect = $TextureRect
 
+var tooltips_enabled := false
 
 func _ready():
 	center.position = texture_rect.rect_size/2
@@ -48,3 +49,15 @@ func return_reagents():
 		all_reagents.append(reagent)
 	update_counter()
 	return all_reagents
+
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func _on_TooltipCollision_enable_tooltip():
+	tooltips_enabled = true
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, "Discard Bag", "You've got SADNESS", true)
+
+func _on_TooltipCollision_disable_tooltip():
+	disable_tooltips()

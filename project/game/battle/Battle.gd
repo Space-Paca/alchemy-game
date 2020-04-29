@@ -202,6 +202,8 @@ func new_enemy_turn():
 		enemy.new_turn()
 		enemy.act()
 		yield(enemy, "acted")
+		if ended:
+			return
 
 	new_player_turn()
 
@@ -358,6 +360,8 @@ func _on_reagent_stop_hover(reagent):
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:
+		if ended:
+			return
 		var name = action[0]
 		var args = action[1]
 		if name == "damage":
@@ -394,6 +398,8 @@ func _on_player_died(_player):
 	TooltipLayer.clean_tooltips()
 	ended = true
 	disable_player()
+	for enemy in enemies_node.get_children():
+		enemy.disable()
 	add_child(GAMEOVER_SCENE.instance())
 
 

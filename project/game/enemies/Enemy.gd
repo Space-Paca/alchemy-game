@@ -27,6 +27,7 @@ var logic_
 var data
 var tooltip_position := Vector2()
 var tooltips_enabled := false
+var block_tooltips := false
 
 
 func _ready():
@@ -42,8 +43,8 @@ func die():
 	.die()
 	
 	AudioManager.play_enemy_dies_sfx(data.sfx)
-	if tooltips_enabled:
-		disable_tooltips()
+
+	disable_tooltips()
 
 
 func take_damage(source: Character, damage: int, type: String):
@@ -150,6 +151,10 @@ func set_life(enemy_data):
 		push_error("Not a valid enemy size: " + str(enemy_data.enemy_size))
 		assert(false)
 
+#Called when player dies
+func disable():
+	block_tooltips = true
+	disable_tooltips()
 
 func set_image(new_texture):
 	$Sprite.texture = new_texture
@@ -224,19 +229,21 @@ func set_button_disabled(disable: bool):
 	button.disabled = disable
 
 func disable_tooltips():
-	tooltips_enabled = false
-	TooltipLayer.clean_tooltips()
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
 
 func _on_Button_pressed():
 	emit_signal("selected", self)
 
 func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
 	var play_sfx = true
 	tooltips_enabled = true
 	for tooltip in get_tooltips():
 		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text, play_sfx)
 		play_sfx = false
-
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()

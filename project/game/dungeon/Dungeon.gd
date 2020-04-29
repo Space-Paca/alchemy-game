@@ -16,6 +16,8 @@ var times_recipe_made := {}
 var favorite_combinations := []
 var max_favorites := 8
 
+var debug_recipes_unlock = false
+
 
 func _ready():
 	randomize()
@@ -27,6 +29,13 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		recipe_book.toggle_visibility()
+	elif event.is_action_pressed("ui_home"):
+		if not debug_recipes_unlock:
+			debug_recipes_unlock = true
+			for grid_size in [2, 3, 4]:
+				for combination in combinations[grid_size]:
+					recipe_book.add_combination(combination,\
+							player.known_recipes.find(combination.recipe.name))
 
 
 func create_combinations():

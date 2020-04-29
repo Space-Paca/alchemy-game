@@ -16,6 +16,10 @@ var recipe_displays := {}
 
 
 func add_combination(combination: Combination, position: int):
+	if recipe_displays.has(combination.recipe.name):
+		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.name)
+		return
+	
 	var recipe_display = RECIPE.instance()
 	recipe_grid.add_child(recipe_display)
 	recipe_grid.move_child(recipe_display, position)

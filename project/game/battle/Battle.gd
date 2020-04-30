@@ -128,8 +128,7 @@ func setup_player_ui():
 	player_ui.set_life(player.max_hp, player.hp)
 	player_ui.update_tooltip_pos()
 	#Position favorites
-	favorites.rect_position = Vector2(ui_center, grid_center)\
-			- favorites.rect_size / 2
+	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 
 
 func setup_enemy(_player: Player, encounter: Encounter):
@@ -272,7 +271,7 @@ func win():
 func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
-	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(), \
+	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(),
 						  target_pos.position.y - enemy.get_height()))
 
 

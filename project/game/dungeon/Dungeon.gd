@@ -34,8 +34,8 @@ func _input(event):
 			debug_recipes_unlock = true
 			for grid_size in [2, 3, 4]:
 				for combination in combinations[grid_size]:
-					recipe_book.add_combination(combination,\
-							player.known_recipes.find(combination.recipe.name))
+					recipe_book.add_combination(combination,
+							player.known_recipes.bsearch(combination.recipe.name))
 
 
 func create_combinations():

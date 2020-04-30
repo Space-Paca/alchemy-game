@@ -24,6 +24,7 @@ y_offset = 80.0
 animation_duration = 0.8
 
 [node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5

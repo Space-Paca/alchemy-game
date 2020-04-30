@@ -28,7 +28,8 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
-		recipe_book.toggle_visibility()
+		if not (battle and battle.player_disabled):
+			recipe_book.toggle_visibility()
 	elif event.is_action_pressed("ui_home"):
 		if not debug_recipes_unlock:
 			debug_recipes_unlock = true

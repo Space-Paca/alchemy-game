@@ -241,6 +241,7 @@ func set_favorites_disabled(disabled: bool):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
+	grid.clean()
 	for i in range(effects.size()):
 		if effect_manager.has_method(effects[i]):
 			effect_manager.callv(effects[i], effect_args[i])
@@ -248,8 +249,7 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 		else:
 			print("Effect %s not found" % effects[i])
 			assert(false)
-	
-	grid.clean()
+
 	enable_player()
 
 
@@ -431,11 +431,13 @@ func _on_CreateRecipe_pressed():
 	
 	var reagent_matrix := []
 	var child_index := 0
+	var reagent_list = []
 	for _i in range(grid.grid_size):
 		var line = []
 		for _j in range(grid.grid_size):
 			var reagent = grid.container.get_child(child_index).current_reagent
 			if reagent:
+				reagent_list.append(reagent)
 				line.append(reagent.type)
 			else:
 				line.append(null)
@@ -443,6 +445,14 @@ func _on_CreateRecipe_pressed():
 		reagent_matrix.append(line)
 	
 	disable_player()
+	
+	#Combination animation
+	AudioManager.play_sfx("combine")
+	var dur = AudioManager.get_sfx_duration("combine")
+	for reagent in reagent_list:
+		reagent.combine_animation(grid.get_center(), dur)
+	yield(get_tree().create_timer(dur), "timeout")
+	
 	emit_signal("combination_made", reagent_matrix)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 

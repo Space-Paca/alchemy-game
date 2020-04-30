@@ -1,5 +1,7 @@
 extends Control
 
+const SHAKE_DEGREE = 5
+
 signal reached_target_pos
 signal started_dragging
 signal stopped_dragging
@@ -17,13 +19,19 @@ var slot = null # current slot this reagent is in
 var target_position = rect_position
 var type = "none"
 var image_path : String
-
+var shake := 0.0
 
 func _ready():
 	texture_rect.texture = load(image_path)
 
 
 func _process(_delta):
+	if shake > 0:
+		randomize()
+		var shake_offset = Vector2(rand_range(-SHAKE_DEGREE, SHAKE_DEGREE), \
+								   rand_range(-SHAKE_DEGREE, SHAKE_DEGREE))
+		rect_position += shake_offset * shake
+
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
@@ -42,6 +50,13 @@ func enable_dragging():
 	can_drag = true
 	disable_drag = false
 
+func combine_animation(grid_center: Vector2, duration: float):
+	$Tween.interpolate_property(self, "rect_position", rect_position, grid_center + -rect_size/2, \
+								duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "shake", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	shake = 0.0
 
 func stop_hover_effect():
 	hovering = false

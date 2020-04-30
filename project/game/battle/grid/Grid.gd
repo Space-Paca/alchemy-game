@@ -17,6 +17,9 @@ var grid_size : int
 func _ready():
 	set_grid(4)
 
+func get_center():
+	return rect_global_position + Vector2(get_width()*rect_scale.x/2, \
+										  get_height()*rect_scale.y/2)
 
 func get_width():
 	var slot = container.get_child(1)
@@ -79,7 +82,7 @@ func clean():
 		discard_bag.discard(reagent)
 		if not reagents_to_be_discarded.empty():
 			randomize()
-			yield(get_tree().create_timer(rand_range(.1, .3)), "timeout")
+			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
 		else:
 			yield(discard_bag, "reagent_discarded")
 

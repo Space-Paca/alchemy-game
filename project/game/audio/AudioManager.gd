@@ -253,6 +253,12 @@ func play_sfx(name: String):
 	player.stream = SFXS[name]
 	player.play()
 
+func get_sfx_duration(name: String):
+	if not SFXS.has(name):
+		push_error("Not a valid sfx name: " + name)
+		assert(false)
+	return SFXS[name].get_length()
+
 func play_enemy_hit_sfx(enemy: String):
 	#Get a random hit sfx
 	randomize()

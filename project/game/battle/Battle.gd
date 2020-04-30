@@ -209,6 +209,8 @@ func new_enemy_turn():
 
 
 func disable_player():
+	draw_bag.disable()
+	discard_bag.disable()
 	player_disabled = true
 	pass_turn_button.disabled = true
 	create_recipe_button.disabled = true
@@ -221,6 +223,8 @@ func disable_player():
 func enable_player():
 	if ended:
 		return
+	draw_bag.enable()
+	discard_bag.enable()
 	
 	player_disabled = false
 	pass_turn_button.disabled = false

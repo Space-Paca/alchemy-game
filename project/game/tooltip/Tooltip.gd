@@ -10,6 +10,7 @@ func get_title():
 func setup(_title, _text):
 	modulate = Color(1,1,1,0)
 	$Title.rect_size.x = TooltipLayer.get_width() - 2*MARGIN
+	$Text.rect_size.x = TooltipLayer.get_width() - 2*MARGIN
 	$Title.text = _title
 	$Text.bbcode_text = _text
 	update_size()

@@ -42,7 +42,7 @@ position = Vector2( 512.488, 441.055 )
 shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 1014.48, 17.2678 )
+position = Vector2( 1025, -320 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

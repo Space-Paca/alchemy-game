@@ -4,6 +4,8 @@ onready var center = $Center
 onready var counter = $Counter
 onready var drawable_reagents = $DrawableReagents
 
+const TOOLTIP_LINE_HEIGHT = 31
+
 signal reshuffled
 signal reagent_shuffled
 signal hand_refilled
@@ -13,19 +15,24 @@ var hand = null #Set by parent
 var discard_bag = null #Set by parent
 var reagents = null #Set by parent
 var tooltips_enabled := false
+var block_tooltips := false
 
 
 func _ready():
 	center.position = $TextureRect.rect_size/2
 
+func disable():
+	disable_tooltips()
+	block_tooltips = true
+
+func enable():
+	block_tooltips = false
 
 func get_center():
 	return center.global_position
 
-
 func update_counter():
 	counter.text = str(drawable_reagents.get_child_count())
-
 
 func add_reagent(reagent):
 	reagent.visible = false
@@ -52,7 +59,6 @@ func start_drawing(_reagents):
 		else:
 			yield(hand, "reagent_placed")
 	emit_signal("given_reagents_drawn")
-
 
 func refill_hand():
 	var reagents_to_be_drawn = []
@@ -125,10 +131,37 @@ func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
+		
+func get_tooltip():
+	var tooltip = {}
+	tooltip.title = "Draw Bag"
+	tooltip.text = ""
+	var reagent_types = {}
+	for reagent in $DrawableReagents.get_children():
+		if not reagent_types.has(reagent.type):
+			reagent_types[reagent.type] = 0
+		reagent_types[reagent.type] += 1
+	var keys = reagent_types.keys()
+	keys.sort()
+	
+	#Get appropriate position for tooltip
+	tooltip.pos = $TooltipPosition.global_position - Vector2(0,keys.size()*TOOLTIP_LINE_HEIGHT)
+	
+	if keys.size() <= 0:
+		tooltip.text += "- empty - "
+	
+	for key in keys:
+		var path = ReagentDB.get_from_name(key).image
+		#For some reason \n just reases other images, so using gambiara to properly change lines
+		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x " + str(reagent_types[key]) + "           [/font]"
+	return tooltip
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()
 
 func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
 	tooltips_enabled = true
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, "Draw Bag", "You've got MAIL", true)
+	var tooltip = get_tooltip()
+	TooltipLayer.add_tooltip(tooltip.pos, tooltip.title, tooltip.text, true)

@@ -1,5 +1,7 @@
 extends Node2D
 
+const TOOLTIP_LINE_HEIGHT = 31
+
 signal reagent_discarded(reagent)
 
 onready var center = $Center
@@ -8,10 +10,17 @@ onready var discarded_reagents = $DiscardedReagents
 onready var texture_rect = $TextureRect
 
 var tooltips_enabled := false
+var block_tooltips := false
 
 func _ready():
 	center.position = texture_rect.rect_size/2
 
+func disable():
+	disable_tooltips()
+	block_tooltips = true
+
+func enable():
+	block_tooltips = false
 
 func get_center():
 	return center.global_position
@@ -55,9 +64,36 @@ func disable_tooltips():
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
 
+func get_tooltip():
+	var tooltip = {}
+	tooltip.title = "Discard Bag"
+	tooltip.text = ""
+	var reagent_types = {}
+	for reagent in $DiscardedReagents.get_children():
+		if not reagent_types.has(reagent.type):
+			reagent_types[reagent.type] = 0
+		reagent_types[reagent.type] += 1
+	var keys = reagent_types.keys()
+	keys.sort()
+	
+	#Get appropriate position for tooltip
+	tooltip.pos = $TooltipPosition.global_position - Vector2(0,keys.size()*TOOLTIP_LINE_HEIGHT)
+	
+	if keys.size() <= 0:
+		tooltip.text += "- empty - "
+	
+	for key in keys:
+		var path = ReagentDB.get_from_name(key).image
+		#For some reason \n just reases other images, so using gambiara to properly change lines
+		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x " + str(reagent_types[key]) + "           [/font]"
+	return tooltip
+
 func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
 	tooltips_enabled = true
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, "Discard Bag", "You've got SADNESS", true)
+	var tooltip = get_tooltip()
+	TooltipLayer.add_tooltip(tooltip.pos, tooltip.title, tooltip.text, true)
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()

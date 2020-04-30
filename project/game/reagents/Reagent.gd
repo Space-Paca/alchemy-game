@@ -59,13 +59,13 @@ func combine_animation(grid_center: Vector2, duration: float):
 	var center = grid_center + -rect_size/2
 	target_position = center
 	stop_auto_moving = true
-	$Tween.interpolate_property(self, "rect_position", rect_position, center, \
+	$CombineTween.interpolate_property(self, "rect_position", rect_position, center, \
 								duration, Tween.TRANS_BACK, Tween.EASE_IN)
-	$Tween.interpolate_method(self, "set_grayscale", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_IN) 
-	$Tween.interpolate_property(self, "shake", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$CombineTween.interpolate_method(self, "set_grayscale", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_IN) 
+	$CombineTween.interpolate_property(self, "shake", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 
-	$Tween.start()
-	yield($Tween, "tween_all_completed")
+	$CombineTween.start()
+	yield($CombineTween, "tween_all_completed")
 	stop_auto_moving = false
 	shake = 0.0
 	emit_signal("finished_combine_animation")

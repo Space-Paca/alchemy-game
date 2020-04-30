@@ -454,8 +454,9 @@ func _on_CreateRecipe_pressed():
 	var dur = AudioManager.get_sfx_duration("combine")
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur)
+
 	yield(reagent_list.back(), "finished_combine_animation")
-	
+
 	emit_signal("combination_made", reagent_matrix)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 

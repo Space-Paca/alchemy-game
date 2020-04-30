@@ -27,6 +27,7 @@ func _process(_delta):
 
 func add_message(text: String, duration: float = DEFAULT_DURATION):
 	var message : Message = MESSAGE.instance()
+# warning-ignore:return_value_discarded
 	message.connect(\"disappeared\", self, \"_on_message_disappeared\")
 	default_position.add_child(message)
 	message.set_text(text)

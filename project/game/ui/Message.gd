@@ -16,20 +16,25 @@ func set_text(text: String):
 
 func animate(shown_duration: float):
 	# POSITION IN
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(label, "rect_position:y",
 			label.rect_position.y + y_offset, label.rect_position.y,
 			animation_duration, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	# POSITION OUT
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(label, "rect_position:y", null,
 			label.rect_position.y - y_offset, animation_duration,
 			Tween.TRANS_CUBIC, Tween.EASE_IN, animation_duration + shown_duration)
 	# OPACITY IN
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(label, "modulate:a", 0, 1, animation_duration,
 			Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	# OPACITY OUT
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(label, "modulate:a", 1, 0, animation_duration,
 			Tween.TRANS_CUBIC, Tween.EASE_IN, animation_duration + shown_duration)
 	
+# warning-ignore:return_value_discarded
 	tween.start()
 	
 	yield(get_tree().create_timer(2 * animation_duration + shown_duration),

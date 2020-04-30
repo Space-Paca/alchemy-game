@@ -90,7 +90,7 @@ func search_grid_for_combinations(reagent_matrix: Array):
 	battle.apply_effects(["combination_failure"])
 
 
-func check_combinations(grid_size: int, reagent_matrix: Array):	
+func check_combinations(grid_size: int, reagent_matrix: Array):
 	if not combinations.has(grid_size):
 		print("No recipes exist for grid with size ", grid_size)
 		return false
@@ -98,6 +98,7 @@ func check_combinations(grid_size: int, reagent_matrix: Array):
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
 			make_combination(combination)
+			MessageLayer.add_message("Oh yeah! I made a potion of %s" % combination.recipe.name)
 			return true
 	
 	return false
@@ -110,6 +111,7 @@ func make_combination(combination: Combination):
 	battle.apply_effects(recipe.effects, recipe.effect_args)
 	
 	if not player.known_recipes.has(recipe.name):
+		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
 		player.discover_combination(combination)
 	
 	if not times_recipe_made.has(recipe.name):

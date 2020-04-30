@@ -62,7 +62,7 @@ func return_to_hand():
 		hand.place_reagent(reagent)
 		if not reagents_to_be_sent.empty():
 			randomize()
-			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
+			yield(get_tree().create_timer(rand_range(.05, .13)), "timeout")
 		else:
 			yield(hand, "reagent_placed")
 	
@@ -82,7 +82,7 @@ func clean():
 		discard_bag.discard(reagent)
 		if not reagents_to_be_discarded.empty():
 			randomize()
-			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
+			yield(get_tree().create_timer(rand_range(.01, .05)), "timeout")
 		else:
 			yield(discard_bag, "reagent_discarded")
 

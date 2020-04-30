@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/reagents/regular.png" type="Texture" id=1]
 [ext_resource path="res://game/reagents/ReagentCollision.gd" type="Script" id=2]
 [ext_resource path="res://game/reagents/Reagent.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/grayscale.shader" type="Shader" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/grayscale = null
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
 [node name="Reagent" type="Control"]
@@ -13,7 +18,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect" parent="."]
+material = SubResource( 3 )
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 224.0
@@ -29,6 +35,6 @@ priority = 6.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReagentCollision"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]

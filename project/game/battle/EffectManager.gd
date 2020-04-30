@@ -39,7 +39,7 @@ func require_target():
 
 func combination_failure():
 	AudioManager.play_sfx("combine_fail")
-	damage_all(20, "regular")
+	damage_all(10, "regular")
 
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":

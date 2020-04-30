@@ -240,7 +240,11 @@ func set_favorites_disabled(disabled: bool):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
+	#First discard reagents
 	grid.clean()
+	
+	#Just briefly after start effects
+	yield(get_tree().create_timer(.5), "timeout")
 	for i in range(effects.size()):
 		if effect_manager.has_method(effects[i]):
 			effect_manager.callv(effects[i], effect_args[i])
@@ -450,7 +454,7 @@ func _on_CreateRecipe_pressed():
 	var dur = AudioManager.get_sfx_duration("combine")
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur)
-	yield(get_tree().create_timer(dur), "timeout")
+	yield(reagent_list.back(), "finished_combine_animation")
 	
 	emit_signal("combination_made", reagent_matrix)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())

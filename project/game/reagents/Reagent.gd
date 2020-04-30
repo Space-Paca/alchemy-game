@@ -7,9 +7,11 @@ signal started_dragging
 signal stopped_dragging
 signal hovering
 signal stopped_hovering
+signal finished_combine_animation
 
-onready var texture_rect = $TextureRect
+onready var image = $Image
 
+var stop_auto_moving := false
 var hovering := false
 var is_drag = false
 var can_drag = true
@@ -22,7 +24,7 @@ var image_path : String
 var shake := 0.0
 
 func _ready():
-	texture_rect.texture = load(image_path)
+	image.texture = load(image_path)
 
 
 func _process(_delta):
@@ -36,7 +38,7 @@ func _process(_delta):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
 		rect_position = get_global_mouse_position() + drag_offset
-	elif not is_drag and target_position:
+	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
 			rect_position += (target_position - rect_position)*.3
 			if (target_position - rect_position).length() < 3:
@@ -50,13 +52,26 @@ func enable_dragging():
 	can_drag = true
 	disable_drag = false
 
+func clear_tweens():
+	$Tween.remove_all()
+
 func combine_animation(grid_center: Vector2, duration: float):
-	$Tween.interpolate_property(self, "rect_position", rect_position, grid_center + -rect_size/2, \
-								duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	var center = grid_center + -rect_size/2
+	target_position = center
+	stop_auto_moving = true
+	$Tween.interpolate_property(self, "rect_position", rect_position, center, \
+								duration, Tween.TRANS_BACK, Tween.EASE_IN)
+	$Tween.interpolate_method(self, "set_grayscale", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_IN) 
 	$Tween.interpolate_property(self, "shake", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+
 	$Tween.start()
-	yield($Tween, "tween_completed")
+	yield($Tween, "tween_all_completed")
+	stop_auto_moving = false
 	shake = 0.0
+	emit_signal("finished_combine_animation")
+
+func set_grayscale(value: float):
+	image.material.set_shader_param("grayscale", value)
 
 func stop_hover_effect():
 	hovering = false
@@ -89,6 +104,8 @@ func grow():
 	$Tween.start()
 
 func grow_and_shrink():
+	shake = 0.0
+	$Tween.interpolate_method(self, "set_grayscale", 1.0, 0.0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN) 
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")

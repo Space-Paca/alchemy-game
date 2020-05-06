@@ -23,8 +23,8 @@ var type = "none"
 var image_path : String
 var shake := 0.0
 
-func _ready():
-	image.texture = load(image_path)
+func set_image(text):
+	$Image.texture = text
 
 
 func _process(_delta):
@@ -41,7 +41,7 @@ func _process(_delta):
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
 			rect_position += (target_position - rect_position)*.3
-			if (target_position - rect_position).length() < 3:
+			if (target_position - rect_position).length() < 1:
 				if not disable_drag:
 					can_drag = true
 				rect_position = target_position

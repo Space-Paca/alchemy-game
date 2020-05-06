@@ -75,7 +75,9 @@ func clean():
 		if reagent:
 			slot.remove_reagent()
 			reagents_to_be_discarded.append(reagent)
-	
+
+	if not reagents_to_be_discarded.empty():
+		AudioManager.play_sfx("discard_reagent")
 	while not reagents_to_be_discarded.empty():
 		var reagent = reagents_to_be_discarded.pop_back()
 		discard_bag.discard(reagent)

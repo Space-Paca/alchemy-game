@@ -38,7 +38,6 @@ func is_empty():
 	return discarded_reagents.get_child_count() == 0
 
 func discard(reagent):
-	AudioManager.play_sfx("discard_reagent")
 	#reagent.clear_tweens()
 	reagent.shrink()
 	reagent.slot = null
@@ -84,7 +83,7 @@ func get_tooltip():
 		tooltip.text += "- empty - "
 	
 	for key in keys:
-		var path = ReagentDB.get_from_name(key).image
+		var path = ReagentDB.get_from_name(key).image.get_path()
 		#For some reason \n just reases other images, so using gambiara to properly change lines
 		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x " + str(reagent_types[key]) + "           [/font]"
 	return tooltip

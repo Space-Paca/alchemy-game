@@ -87,7 +87,8 @@ func search_grid_for_combinations(reagent_matrix: Array):
 				
 				if check_combinations(new_grid_size, new_matrix):
 					return
-	
+					
+	AudioManager.play_sfx("combine_fail")
 	battle.apply_effects(["combination_failure"])
 
 

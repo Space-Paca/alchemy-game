@@ -243,7 +243,7 @@ func get_sfx_player():
 	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
 	return player
 
-func play_sfx(name: String):
+func play_sfx(name: String, pitch_scale := 1):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
@@ -251,6 +251,7 @@ func play_sfx(name: String):
 	var player = get_sfx_player()
 	player.stop()
 	player.stream = SFXS[name]
+	player.pitch_scale = pitch_scale
 	player.play()
 
 func get_sfx_duration(name: String):

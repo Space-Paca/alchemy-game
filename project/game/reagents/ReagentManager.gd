@@ -19,7 +19,7 @@ func create_object(type: String):
 	reagent.get_node("Image").set_material(mat_override)
 	
 	reagent.type = type
-	reagent.image_path = reagent_data.image
+	reagent.set_image(reagent_data.image)
 	return reagent
 
 func get_data(type: String):

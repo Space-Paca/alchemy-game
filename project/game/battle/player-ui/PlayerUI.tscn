@@ -1,76 +1,55 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/Character portrait.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/circle.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/portrait_frame.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/images/ui/shield_icon.png" type="Texture" id=9]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
 
-[sub_resource type="CanvasItemMaterial" id=1]
-light_mode = 2
-
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 89
+[sub_resource type="DynamicFont" id=3]
+size = 144
 use_filter = true
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 50
-outline_size = 2
+[sub_resource type="DynamicFont" id=4]
+size = 70
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 8 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Portrait" type="TextureRect" parent="."]
-material = SubResource( 1 )
-margin_left = 1.75818
-margin_top = 5.27426
-margin_right = 257.758
-margin_bottom = 261.274
-rect_scale = Vector2( 1.2, 1.2 )
+margin_right = 165.0
+margin_bottom = 165.0
+rect_scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CircleCrop" type="Light2D" parent="."]
-position = Vector2( 156.47, 165.26 )
-texture = ExtResource( 4 )
-mode = 2
-
-[node name="PortraitFrame" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 367.04
-margin_top = 41.197
-margin_right = 967.04
-margin_bottom = 91.197
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+margin_left = 530.0
+margin_top = 60.0
+margin_right = 1730.0
+margin_bottom = 160.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 value = 100.0
 percent_visible = false
 __meta__ = {
@@ -78,48 +57,48 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="HealthBar"]
-margin_left = 1.22769
-margin_top = -2.45549
-margin_right = 601.228
-margin_bottom = 47.5445
-custom_fonts/font = SubResource( 4 )
+margin_top = -10.0
+margin_right = 1200.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 3 )
 text = "5/10"
-align = 1
-
-[node name="Shield" type="TextureRect" parent="HealthBar"]
-visible = false
-margin_left = -40.5154
-margin_top = -19.6438
-margin_right = 4.48459
-margin_bottom = 25.3562
-rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 9 )
-
-[node name="Label" type="Label" parent="HealthBar/Shield"]
-margin_left = 5.0
-margin_top = 4.0
-margin_right = 43.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
-text = "10"
 align = 1
 valign = 1
 
+[node name="Shield" type="TextureRect" parent="HealthBar"]
+margin_left = -51.1156
+margin_top = -35.544
+margin_right = 24.8844
+margin_bottom = 51.456
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="HealthBar/Shield"]
+margin_right = 76.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 4 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
-margin_left = 397.707
-margin_top = 117.342
-margin_right = 437.707
-margin_bottom = 157.342
+margin_left = 487.833
+margin_top = 218.283
+margin_right = 527.833
+margin_bottom = 258.283
 rect_scale = Vector2( 2, 2 )
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 10 )]
-position = Vector2( 483.52, 163 )
+position = Vector2( 894.495, 267.546 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 996.056, 25.0029 )
+position = Vector2( 1781.96, 50.2382 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

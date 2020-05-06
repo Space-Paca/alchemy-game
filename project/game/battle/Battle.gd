@@ -117,11 +117,11 @@ func setup_player_ui():
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
 	#Position bags
-	var bag_margin = 40
+	var bag_margin = 120
 	discard_bag.position.x = create_recipe_button.rect_position.x + create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x + bag_margin
 	draw_bag.position.x = create_recipe_button.rect_position.x - bag_margin - draw_bag.get_width()*draw_bag.scale.x
 	#Position pass-turn button
-	var button_margin = 15
+	var button_margin = 54
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
 	#Position player ui
 	player_ui.position.x = draw_bag.position.x

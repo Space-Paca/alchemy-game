@@ -9,9 +9,9 @@ func _ready():
 func update_tooltip_pos():
 	#Setup tooltip collision
 	$TooltipCollision.position.x = (health_bar.rect_position.x + health_bar.rect_size.x)/2
-	$TooltipCollision.position.y = $PortraitFrame.rect_size.y/2
+	$TooltipCollision.position.y = $Portrait.rect_size.y * $Portrait.rect_scale.y/2
 	var w = health_bar.rect_position.x + health_bar.rect_size.x
-	var h = $PortraitFrame.rect_size.y
+	var h = $Portrait.rect_size.y * $Portrait.rect_scale.y
 	$TooltipCollision.set_collision_shape(Vector2(w, h))
 	
 

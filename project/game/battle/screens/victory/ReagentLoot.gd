@@ -14,7 +14,7 @@ func _ready():
 
 func set_reagent(reagent_name: String):
 	reagent = reagent_name
-	texture_rect.texture = load(ReagentDB.DB[reagent]["image"])
+	texture_rect.texture = ReagentDB.DB[reagent].image
 
 func get_tooltips():
 	var tooltips = []

@@ -18,8 +18,7 @@ func _ready():
 	set_grid(4)
 
 func get_center():
-	return rect_global_position + Vector2(get_width()*rect_scale.x/2, \
-										  get_height()*rect_scale.y/2)
+	return rect_global_position + Vector2(get_width()/2, get_height()/2)
 
 func get_width():
 	var slot = container.get_child(1)

@@ -32,15 +32,13 @@ __meta__ = {
 }
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 249.168
-margin_top = 289.935
-margin_right = 249.168
-margin_bottom = 289.935
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = 222.51
+margin_top = 306.339
+margin_right = 222.51
+margin_bottom = 306.339
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 338.419, 690.9 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 256.397, 651.939 )
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
 position = Vector2( 38.5857, 867.664 )

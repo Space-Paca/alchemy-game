@@ -20,7 +20,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="." groups=[
 "gridslot",
 ]]
-position = Vector2( 41.2001, 41.6631 )
+position = Vector2( 41, 41 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

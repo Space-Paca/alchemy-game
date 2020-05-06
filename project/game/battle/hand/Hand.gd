@@ -5,7 +5,6 @@ signal reagent_placed
 signal hand_slot_reagent_set
 
 onready var grid = $GridContainer
-onready var bg = $TextureRect
 
 const HANDSLOT = preload("res://game/battle/hand/HandSlot.tscn")
 const H_MARGIN = 45
@@ -21,6 +20,7 @@ func _ready():
 	grid.rect_position = Vector2(H_MARGIN, V_MARGIN)
 	grid.add_constant_override("hseparation", SLOT_H_SEPARATOR)
 	grid.add_constant_override("vseparation", SLOT_V_SEPARATOR)
+	set_hand(4)
 
 
 func get_width():
@@ -47,9 +47,6 @@ func set_hand(slots):
 		var hand_slot = HANDSLOT.instance()
 		hand_slot.connect("reagent_set", self, "_on_reagent_set")
 		grid.add_child(hand_slot)
-
-	bg.rect_size.x = get_width()
-	bg.rect_size.y = get_height()
 
 func available_slot_count():
 	var count = 0

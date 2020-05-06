@@ -10,7 +10,6 @@ var tooltip_enabled := false
 
 func _ready():
 	pass
-	
 
 func set_reagent(reagent_name: String):
 	reagent = reagent_name

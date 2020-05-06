@@ -1,13 +1,20 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/Player Portrait.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=9]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
+
+[sub_resource type="DynamicFont" id=6]
+size = 71
+use_filter = true
+font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -29,6 +36,11 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 8 )
 
+[sub_resource type="DynamicFont" id=7]
+size = 22
+use_filter = true
+font_data = ExtResource( 5 )
+
 [sub_resource type="RectangleShape2D" id=5]
 
 [node name="PlayerUI" type="Node2D"]
@@ -43,11 +55,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Name" type="Label" parent="."]
+margin_left = 540.903
+margin_top = 15.4544
+margin_right = 1152.9
+margin_bottom = 97.4544
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pierce Hawthorne"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 530.0
-margin_top = 60.0
-margin_right = 1730.0
-margin_bottom = 160.0
+margin_left = 540.0
+margin_top = 110.0
+margin_right = 1740.0
+margin_bottom = 210.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 100.0
@@ -84,6 +108,26 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Gold" type="TextureRect" parent="."]
+margin_left = 1428.71
+margin_top = 11.8541
+margin_right = 1452.71
+margin_bottom = 35.8541
+rect_scale = Vector2( 3.5, 3.55 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Gold"]
+margin_left = 28.4242
+margin_top = -1.27381
+margin_right = 71.4242
+margin_bottom = 25.7262
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "420"
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = 487.833

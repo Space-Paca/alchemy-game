@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 class_name Slot
 

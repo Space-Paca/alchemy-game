@@ -154,8 +154,8 @@ func setup_enemy(_player: Player, encounter: Encounter):
 		set_enemy_pos(3, 4)
 	elif enemy_count == 3:
 		set_enemy_pos(0, 1)
-		set_enemy_pos(1, 3)
-		set_enemy_pos(2, 5)
+		set_enemy_pos(1, 5)
+		set_enemy_pos(2, 3)
 	elif enemy_count == 2:
 		set_enemy_pos(0, 6)
 		set_enemy_pos(1, 7)

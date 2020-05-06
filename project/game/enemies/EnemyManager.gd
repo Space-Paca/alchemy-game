@@ -1,6 +1,6 @@
 extends Node
 
-const ENEMY_DB = {"skeleton": "res://database/enemies/Skeleton.gd",
+const ENEMY_DB = {"skeleton": "res://database/enemies/Homunculus.gd",
 				  "robot": "res://database/enemies/Robot.gd",
 				  "wolf": "res://database/enemies/Wolf.gd",
 				}

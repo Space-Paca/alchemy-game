@@ -8,8 +8,8 @@ var player_ref #Reference to player node
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
 			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
 			  }
-var image = "res://assets/images/enemies/skeleton/skeletonIDLE.png"
-var name = "Skelly"
+var image = "res://assets/images/enemies/homunculus/idle.png"
+var name = "Zoudin"
 var sfx = "enemy_1"
 var hp = 30
 var size = "small"

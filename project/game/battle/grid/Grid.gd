@@ -76,14 +76,15 @@ func clean():
 			slot.remove_reagent()
 			reagents_to_be_discarded.append(reagent)
 
-	if not reagents_to_be_discarded.empty():
-		AudioManager.play_sfx("discard_reagent")
+	#if not reagents_to_be_discarded.empty():
+	#	AudioManager.play_sfx("discard_reagent")
 	while not reagents_to_be_discarded.empty():
 		var reagent = reagents_to_be_discarded.pop_back()
+		AudioManager.play_sfx("discard_reagent")
 		discard_bag.discard(reagent)
 		if not reagents_to_be_discarded.empty():
 			randomize()
-			yield(get_tree().create_timer(rand_range(.01, .05)), "timeout")
+			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
 		else:
 			yield(discard_bag, "reagent_discarded")
 

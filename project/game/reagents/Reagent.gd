@@ -22,6 +22,8 @@ var target_position = rect_position
 var type = "none"
 var image_path : String
 var shake := 0.0
+var speed_mod := 1.0
+var effect_mod := 1.0
 
 func set_image(text):
 	$Image.texture = text
@@ -40,7 +42,7 @@ func _process(_delta):
 		rect_position = get_global_mouse_position() + drag_offset
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
-			rect_position += (target_position - rect_position)*.3
+			rect_position += (target_position - rect_position)*.3*speed_mod
 			if (target_position - rect_position).length() < 1:
 				if not disable_drag:
 					can_drag = true
@@ -95,31 +97,31 @@ func drop_effect():
 
 
 func slight_grow():
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1.1,1.1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1.1,1.1), .05/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
 
 func grow():
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .5, Tween.TRANS_BACK, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .5/effect_mod, Tween.TRANS_BACK, Tween.EASE_OUT)
 	$Tween.start()
 
 func grow_and_shrink():
 	shake = 0.0
 	$Tween.interpolate_method(self, "set_grayscale", 1.0, 0.0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN) 
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .2/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 
 func slight_shrink():
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .05/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
 
 func shrink():
-	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .15, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0,0), .15/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 

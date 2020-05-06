@@ -39,12 +39,16 @@ func is_empty():
 
 func discard(reagent):
 	#reagent.clear_tweens()
-	reagent.shrink()
 	reagent.slot = null
 	reagent.can_drag = false
 	reagent.target_position = get_center()
+	reagent.speed_mod = .5
+	reagent.effect_mod = .4
+	reagent.shrink()
 	yield(reagent, "reached_target_pos")
 	
+	reagent.speed_mod = 1
+	reagent.effect_mod = 1
 	emit_signal("reagent_discarded", reagent)
 	reagent.visible = false
 	discarded_reagents.add_child(reagent)

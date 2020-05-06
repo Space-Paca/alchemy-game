@@ -7,7 +7,7 @@
 [ext_resource path="res://game/enemies/Intent.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/images/ui/shield_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=8]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
@@ -39,8 +39,8 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 40
-outline_size = 1
+size = 60
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
@@ -93,10 +93,11 @@ align = 1
 valign = 1
 
 [node name="Shield" type="TextureRect" parent="HealthBar"]
-margin_left = -28.5272
-margin_top = -12.605
-margin_right = 16.4728
-margin_bottom = 32.395
+margin_left = -32.1655
+margin_top = -19.2112
+margin_right = 43.8345
+margin_bottom = 67.7888
+rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,8 +105,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="HealthBar/Shield"]
 margin_left = 2.0
-margin_right = 45.0
-margin_bottom = 38.0
+margin_right = 76.0
+margin_bottom = 69.0
 custom_fonts/font = SubResource( 5 )
 text = "10"
 align = 1

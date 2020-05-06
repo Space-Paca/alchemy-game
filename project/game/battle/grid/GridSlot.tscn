@@ -17,16 +17,16 @@ script = ExtResource( 2 )
 
 [node name="FullImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 83.0
+margin_bottom = 83.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EmptyImage" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 83.0
+margin_bottom = 83.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

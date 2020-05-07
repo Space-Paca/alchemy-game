@@ -7,7 +7,6 @@ signal hand_slot_reagent_set
 onready var slots = $Slots
 
 const HANDSLOT = preload("res://game/battle/hand/HandSlot.tscn")
-const H_SEPARATION = 0
 const V_OFFSET = 20
 
 var size : int
@@ -23,7 +22,7 @@ func get_width():
 	var slot = slots.get_child(0)
 	# warning-ignore:integer_division
 	var n = size/2
-	return slot.rect_size.x*n + H_SEPARATION*(n-1)
+	return slot.rect_size.x*n
 
 
 func get_height():
@@ -43,8 +42,10 @@ func set_hand(number: int):
 	var temp_hand_slot = HANDSLOT.instance()
 	# warning-ignore:integer_division
 	var n = size/2
-	var x = -(temp_hand_slot.rect_size.x*n + H_SEPARATION*(n-1))/2
-	var y = (max(number - 4, 0)/4) * -V_OFFSET
+	var x = -(temp_hand_slot.rect_size.x*n)/2
+	var y = ceil((number/4.0)-1) * -V_OFFSET
+	print(y)
+	
 	
 	# warning-ignore:integer_division
 	for i in range(1, number/2 + 1):
@@ -62,10 +63,10 @@ func set_hand(number: int):
 		hand_slot.rect_position.y = y + hand_slot.rect_size.y
 		
 		#Update positions
-		x = x + hand_slot.rect_size.x + H_SEPARATION
+		x = x + hand_slot.rect_size.x
 
 		# warning-ignore:integer_division
-		if i < number/4:
+		if i < number/4.0:
 			y = y + V_OFFSET
 		# warning-ignore:integer_division
 		elif i > number/4:

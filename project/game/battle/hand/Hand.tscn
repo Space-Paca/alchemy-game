@@ -4,14 +4,5 @@
 
 [node name="Hand" type="Node2D"]
 script = ExtResource( 1 )
-size = 4
 
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_right = 206.0
-margin_bottom = 186.0
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
-columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Slots" type="Node2D" parent="."]

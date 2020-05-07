@@ -4,53 +4,77 @@ extends Node2D
 signal reagent_placed
 signal hand_slot_reagent_set
 
-onready var grid = $GridContainer
+onready var slots = $Slots
 
 const HANDSLOT = preload("res://game/battle/hand/HandSlot.tscn")
-const H_MARGIN = 45
-const V_MARGIN = 25
-const SLOT_H_SEPARATOR = 0
-const SLOT_V_SEPARATOR = 0
+const H_SEPARATION = 0
+const V_OFFSET = 20
 
-export var size = 10
+var size : int
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	grid.rect_position = Vector2(H_MARGIN, V_MARGIN)
-	grid.add_constant_override("hseparation", SLOT_H_SEPARATOR)
-	grid.add_constant_override("vseparation", SLOT_V_SEPARATOR)
-	set_hand(4)
+	set_hand(8)
 
 
 func get_width():
-	assert(grid.get_child_count() > 0)
-	var slots_number = size
-	var slot = grid.get_child(1)
-	return (slot.rect_size.x*slot.rect_scale.x) * slots_number/2 + 2*H_MARGIN \
-			+ ((slots_number/2) - 1)*SLOT_H_SEPARATOR
+	assert(slots.get_child_count() > 0)
+	var slot = slots.get_child(0)
+	# warning-ignore:integer_division
+	var n = size/2
+	return slot.rect_size.x*n + H_SEPARATION*(n-1)
 
 
 func get_height():
-	assert(grid.get_child_count() > 0)
-	var slot = grid.get_child(1)
-	return (slot.rect_size.y*slot.rect_scale.y) * 2 + 2*V_MARGIN \
-			+ SLOT_V_SEPARATOR
+	assert(slots.get_child_count() > 0)
+	var slot = slots.get_child(0)
+	return slot.rect_size.y * 2
 
 
-func set_hand(slots):
-	size = slots
-	for child in grid.get_children():
-		grid.remove_child(child)
-	grid.columns = slots/2
-	for _i in range(slots):
+func set_hand(number: int):
+	if number <= 0 or number%2 != 0:
+		push_error("Not a valid hand size: "+ str(slots))
+		assert(false)
+	size = number
+	for child in slots.get_children():
+		slots.remove_child(child)
+	
+	var temp_hand_slot = HANDSLOT.instance()
+	# warning-ignore:integer_division
+	var n = size/2
+	var x = -(temp_hand_slot.rect_size.x*n + H_SEPARATION*(n-1))/2
+	var y = (max(number - 4, 0)/4) * -V_OFFSET
+	
+	# warning-ignore:integer_division
+	for i in range(1, number/2 + 1):
+		#Add top slot
 		var hand_slot = HANDSLOT.instance()
 		hand_slot.connect("reagent_set", self, "_on_reagent_set")
-		grid.add_child(hand_slot)
+		slots.add_child(hand_slot)
+		hand_slot.rect_position.x = x
+		hand_slot.rect_position.y = y
+		#Add bottom slot
+		hand_slot = HANDSLOT.instance()
+		hand_slot.connect("reagent_set", self, "_on_reagent_set")
+		slots.add_child(hand_slot)
+		hand_slot.rect_position.x = x
+		hand_slot.rect_position.y = y + hand_slot.rect_size.y
+		
+		#Update positions
+		x = x + hand_slot.rect_size.x + H_SEPARATION
+
+		# warning-ignore:integer_division
+		if i < number/4:
+			y = y + V_OFFSET
+		# warning-ignore:integer_division
+		elif i > number/4:
+			y = y - V_OFFSET
+
 
 func available_slot_count():
 	var count = 0
-	for slot in grid.get_children():
+	for slot in slots.get_children():
 		if not slot.get_reagent():
 			count += 1
 	return count
@@ -58,7 +82,7 @@ func available_slot_count():
 
 #Places a reagent in an empty position, throws error if unable
 func place_reagent(reagent):
-	for slot in grid.get_children():
+	for slot in slots.get_children():
 		if not slot.get_reagent():
 			slot.set_reagent(reagent)
 			yield(slot, "reagent_set")
@@ -70,7 +94,7 @@ func place_reagent(reagent):
 
 func get_reagent_names() -> Array:
 	var reagents := []
-	for slot in grid.get_children():
+	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
 		if reagent:
 			reagents.append(reagent.type)

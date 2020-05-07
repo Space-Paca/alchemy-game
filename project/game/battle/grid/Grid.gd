@@ -21,13 +21,15 @@ func get_center():
 	return rect_global_position + Vector2(get_width()/2, get_height()/2)
 
 func get_width():
-	var slot = container.get_child(1)
-	return grid_size * slot.rect_size.x
+	assert(container.get_child_count() > 0)
+	var slot = container.get_child(0)
+	return grid_size * slot.rect_size.x + container.get_constant("hseparation") * (grid_size - 1)
 
 
 func get_height():
-	var slot = container.get_child(1)
-	return grid_size * slot.rect_size.y
+	assert(container.get_child_count() > 0)
+	var slot = container.get_child(0)
+	return grid_size * slot.rect_size.y + container.get_constant("vseparation") * (grid_size - 1)
 
 
 func set_grid(_size: int):

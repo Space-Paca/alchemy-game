@@ -100,7 +100,7 @@ func setup_favorites(favorite_combinations: Array):
 
 
 func setup_player_ui():
-	var grid_side = grid.get_height()
+	var grid_side = grid.get_width()
 	var ui_center = 2*get_viewport().size.x/10
 	var grid_center = 5*get_viewport().size.y/12
 	
@@ -111,8 +111,8 @@ func setup_player_ui():
 	grid.rect_position.x = ui_center - grid_side*grid.rect_scale.x/2
 	grid.rect_position.y = grid_center - grid_side*grid.rect_scale.y/2
 	#Position hand
-	var hand_margin = 20
-	hand.position.x = ui_center - hand.get_width()*hand.scale.x/2
+	var hand_margin = 24
+	hand.position.x = ui_center
 	hand.position.y = grid.rect_position.y + grid_side*grid.rect_scale.y + hand_margin
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2

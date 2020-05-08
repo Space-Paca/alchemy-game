@@ -1,15 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/images/ui/discard_icon.png" type="Texture" id=2]
 [ext_resource path="res://game/battle/hand/DiscardBag.gd" type="Script" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/images/ui/background_bags.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 78.8712, 94.2791 )
 
 [node name="DiscardBag" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -53.1808
+margin_top = -2.13103
+margin_right = 208.819
+margin_bottom = 217.869
+texture = ExtResource( 5 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0

@@ -11,6 +11,7 @@ onready var hand = $Hand
 onready var reagents = $Reagents
 onready var draw_bag = $DrawBag
 onready var discard_bag = $DiscardBag
+onready var name_holder = $NameHolder
 onready var grid = $Grid
 onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
@@ -127,6 +128,8 @@ func setup_player_ui():
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
 	player_ui.update_tooltip_pos()
+	#Position spell name holder
+	name_holder.rect_position.x = player_ui.position.x
 	#Position favorites
 	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 

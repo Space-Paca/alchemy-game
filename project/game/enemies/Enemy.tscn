@@ -10,23 +10,22 @@
 [ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=8]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "attack"
+[sub_resource type="Animation" id=4]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -42,8 +41,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -50, 30 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
 
@@ -55,8 +53,8 @@ margin_left = 68.0
 margin_top = 296.0
 margin_right = 188.0
 margin_bottom = 316.0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 step = 1.0
 value = 50.0
 percent_visible = false
@@ -86,7 +84,7 @@ __meta__ = {
 margin_left = 2.0
 margin_right = 76.0
 margin_bottom = 69.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "10"
 align = 1
 valign = 1
@@ -101,8 +99,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "idle"
-anims/attack = SubResource( 1 )
-anims/idle = SubResource( 2 )
+anims/attack = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="Button" type="Button" parent="Sprite"]
 anchor_right = 1.0
@@ -126,6 +124,11 @@ margin_left = 86.0
 margin_right = 164.0
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
+margin_left = 14.7369
+margin_top = 325.265
+margin_right = 14.7369
+margin_bottom = 325.265
+two_rows = false
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
 position = Vector2( 133, 133.001 )

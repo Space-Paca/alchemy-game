@@ -167,7 +167,7 @@ func set_image(new_texture):
 	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x/2
 	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
 	#Update status bar position
-	$StatusBar.rect_position.x = w/2 - $StatusBar.rect_size.x/2
+	$StatusBar.rect_position.x = $HealthBar.rect_position.x
 	$StatusBar.rect_position.y = $HealthBar.rect_position.y + STATUS_BAR_MARGIN
 	#Update tooltip collision
 	var t_w = w

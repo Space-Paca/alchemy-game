@@ -1,6 +1,6 @@
 extends Node2D
 
-const TOOLTIP_LINE_HEIGHT = 31
+const TOOLTIP_LINE_HEIGHT = 34
 
 signal reagent_discarded(reagent)
 
@@ -14,6 +14,7 @@ var block_tooltips := false
 
 func _ready():
 	center.position = texture_rect.rect_size/2
+	update_counter()
 
 func disable():
 	disable_tooltips()

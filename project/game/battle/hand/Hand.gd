@@ -43,9 +43,7 @@ func set_hand(number: int):
 	# warning-ignore:integer_division
 	var n = size/2
 	var x = -(temp_hand_slot.rect_size.x*n)/2
-	var y = ceil((number/4.0)-1) * -V_OFFSET
-	print(y)
-	
+	var y = ceil((number/4.0)-1) * -V_OFFSET	
 	
 	# warning-ignore:integer_division
 	for i in range(1, number/2 + 1):

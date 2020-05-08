@@ -4,7 +4,7 @@ onready var center = $Center
 onready var counter = $Counter
 onready var drawable_reagents = $DrawableReagents
 
-const TOOLTIP_LINE_HEIGHT = 31
+const TOOLTIP_LINE_HEIGHT = 34
 
 signal reshuffled
 signal reagent_shuffled
@@ -31,8 +31,9 @@ func enable():
 func get_center():
 	return center.global_position
 
-func update_counter():
-	counter.text = str(drawable_reagents.get_child_count())
+#Gets a fake amount to update counter with animation effect
+func update_counter(fake_amount := 0):
+	counter.text = str(drawable_reagents.get_child_count() + fake_amount)
 
 func add_reagent(reagent):
 	reagent.visible = false
@@ -53,6 +54,7 @@ func start_drawing(_reagents):
 		reagent.grow()
 		reagent.rect_scale = Vector2(0,0)
 		hand.place_reagent(reagent)
+		update_counter(_reagents.size())
 		if not _reagents.empty():
 			randomize()
 			yield(get_tree().create_timer(rand_range(.2, .25)), "timeout")

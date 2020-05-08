@@ -47,11 +47,9 @@ position = Vector2( 413.394, 668.641 )
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
 position = Vector2( 38.5857, 867.664 )
-scale = Vector2( 0.15, 0.15 )
 
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
-position = Vector2( 583.52, 860.654 )
-scale = Vector2( 0.15, 0.15 )
+position = Vector2( 583.52, 816.263 )
 
 [node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
 margin_left = 812.857

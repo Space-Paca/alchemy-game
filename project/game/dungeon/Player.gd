@@ -3,8 +3,8 @@ class_name Player
 
 signal combination_discovered(combination, index)
 
-const INITIAL_HAND_SIZE = 10
-const INITIAL_GRID_SIZE = 3
+const INITIAL_HAND_SIZE = 4
+const INITIAL_GRID_SIZE = 2
 
 var hud
 var hand_size : int

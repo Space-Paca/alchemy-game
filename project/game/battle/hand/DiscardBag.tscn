@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/images/ui/discard_bag.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/discard_icon.png" type="Texture" id=2]
 [ext_resource path="res://game/battle/hand/DiscardBag.gd" type="Script" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 471.203, 457.65 )
+extents = Vector2( 78.8712, 94.2791 )
 
 [node name="DiscardBag" type="Node2D"]
 script = ExtResource( 3 )
@@ -23,28 +23,29 @@ __meta__ = {
 [node name="DiscardedReagents" type="Node" parent="."]
 
 [node name="Center" type="Position2D" parent="."]
-position = Vector2( 532.788, 469.321 )
+position = Vector2( 79.7067, 141.199 )
 
 [node name="Counter" type="Label" parent="."]
-margin_left = 658.198
-margin_top = -37.8415
-margin_right = 930.198
-margin_bottom = 244.158
+margin_left = 86.635
+margin_top = 131.0
+margin_right = 116.635
+margin_bottom = 165.0
 custom_fonts/font = ExtResource( 1 )
-text = "0"
-align = 2
+text = "99"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
-position = Vector2( 528.825, 448.962 )
+position = Vector2( 78.0208, 110.048 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( -1425, -330 )
+position = Vector2( 0, -80 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

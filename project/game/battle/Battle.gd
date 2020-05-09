@@ -24,6 +24,8 @@ onready var available_favorites = [$Favorites/FavoriteButton1,
 	$Favorites/FavoriteButton6, $Favorites/FavoriteButton7,
 	$Favorites/FavoriteButton8]
 
+const WINDOW_W = 1920
+const WINDOW_H = 1080
 const ENEMY_MARGIN = 10
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
@@ -102,8 +104,10 @@ func setup_favorites(favorite_combinations: Array):
 
 func setup_player_ui():
 	var grid_side = grid.get_width()
-	var ui_center = 2*get_viewport().size.x/10
-	var grid_center = 5*get_viewport().size.y/12
+	# warning-ignore:integer_division
+	var ui_center = 2*WINDOW_W/10
+	# warning-ignore:integer_division
+	var grid_center = 5*WINDOW_H/12
 	
 	#Position grid
 	#NOTE: For some reason, moving the grid changes the scale of the gridslot y value,

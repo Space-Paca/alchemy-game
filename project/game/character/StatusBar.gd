@@ -17,14 +17,14 @@ func clean_removed_status(status_list):
 	if two_rows:
 		for status in $PositiveStatus.get_children():
 			if not status_list.has(status.type):
-				remove_child(status)
+				$PositiveStatus.remove_child(status)
 		for status in $NegativeStatus.get_children():
 			if not status_list.has(status.type):
-				remove_child(status)
+				$NegativeStatus.remove_child(status)
 	else:
 		for status in $Status.get_children():
 			if not status_list.has(status.type):
-				remove_child(status)
+				$Status.remove_child(status)
 
 func get_status(type):
 	if two_rows:
@@ -71,7 +71,26 @@ func set_status(type, value, positive):
 
 #Sort status by positive/negative and then alphabetically
 func sort_status():
-	pass
+	if two_rows:
+		sort_status_bar($PositiveStatus)
+		sort_status_bar($NegativeStatus)
+	else:
+		sort_status_bar($Status)
+
+#Insert sort using positive/negative then name as comparison
+func sort_status_bar(bar):
+	var status_pos = []
+	for status in bar.get_children():
+		var i = 0
+		while i < status_pos.size():
+			var status2 = status_pos[i]
+			if (status.positive and not status2.positive) or \
+			   (status.positive == status2.positive and status.type < status2.type):
+				break
+			i += 1
+		status_pos.insert(i, status)
+	for i in range(status_pos.size()):
+		bar.move_child(status_pos[i], i)
 
 func remove_status(type):
 	if two_rows:

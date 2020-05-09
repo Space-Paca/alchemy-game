@@ -37,9 +37,11 @@ func require_target():
 		enemy.set_button_disabled(true)
 
 
+
 func combination_failure():
 	damage_all(20, "regular")
 
+	
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":
 		player.add_status(status, amount, positive)
@@ -47,7 +49,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool):
 		var func_state = (require_target() as GDScriptFunctionState)
 		if func_state and func_state.is_valid():
 			yield(self, "target_set")
-			target.add_status(status, amount, positive)
+		target.add_status(status, amount, positive)
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)

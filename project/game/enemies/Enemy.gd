@@ -156,6 +156,11 @@ func disable():
 	block_tooltips = true
 	disable_tooltips()
 
+func update_tooltip_position():
+	var margin = 5
+	$TooltipPosition.position = Vector2(min($Sprite.rect_position.x, $HealthBar.rect_position.x) - TooltipLayer.get_width() - margin, \
+							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
+
 func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
@@ -197,8 +202,6 @@ func add_intent(texture, value):
 
 func set_pos(pos):
 	position = pos
-	tooltip_position = Vector2(pos.x - TooltipLayer.get_width(), \
-							   pos.y - INTENT_MARGIN - INTENT_H)
 
 func update_intent():
 	clear_intents()
@@ -242,7 +245,8 @@ func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true
 	tooltips_enabled = true
 	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip(tooltip_position, tooltip.title, tooltip.text, play_sfx)
+		update_tooltip_position()
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, tooltip.text, play_sfx)
 		play_sfx = false
 
 func _on_TooltipCollision_disable_tooltip():

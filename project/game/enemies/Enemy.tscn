@@ -10,11 +10,11 @@
 [ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=8]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
@@ -53,8 +53,8 @@ margin_left = 68.0
 margin_top = 296.0
 margin_right = 188.0
 margin_bottom = 316.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 step = 1.0
 value = 50.0
 percent_visible = false
@@ -135,6 +135,9 @@ position = Vector2( 133, 133.001 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 6 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( -100, 0 )
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

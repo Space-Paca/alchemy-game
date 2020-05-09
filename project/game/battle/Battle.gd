@@ -107,18 +107,18 @@ func setup_player_ui():
 	# warning-ignore:integer_division
 	var ui_center = 2*WINDOW_W/10
 	# warning-ignore:integer_division
-	var grid_center = 5*WINDOW_H/12
+	var grid_center = 11*WINDOW_H/25
 	
 	#Position grid
 	#NOTE: For some reason, moving the grid changes the scale of the gridslot y value,
 	#and that messes up grid height and width getters. Storing value above to avoid this
 	#but when we have time, should inspect if this is our problem or an engine's.
-	grid.rect_position.x = ui_center - grid_side*grid.rect_scale.x/2
-	grid.rect_position.y = grid_center - grid_side*grid.rect_scale.y/2
+	grid.rect_position.x = ui_center
+	grid.rect_position.y = grid_center
 	#Position hand
-	var hand_margin = 24
+	var hand_margin = 14
 	hand.position.x = ui_center
-	hand.position.y = grid.rect_position.y + grid_side*grid.rect_scale.y + hand_margin
+	hand.position.y = grid.rect_position.y + grid_side/2*grid.rect_scale.y + hand_margin
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
 	#Position bags
@@ -290,7 +290,7 @@ func autocomplete_grid(combination: Combination):
 	var added_reagents := []
 	var grid_reagents := []
 	
-	for slot in grid.container.get_children():
+	for slot in grid.slots.get_children():
 		if slot.current_reagent:
 			grid_reagents.append(slot.current_reagent)
 	
@@ -303,7 +303,7 @@ func autocomplete_grid(combination: Combination):
 						if not reagent.slot:
 							push_error("reagent isn't in slot")
 							assert(false)
-						grid.container.get_child(i * grid.grid_size +\
+						grid.slots.get_child(i * grid.grid_size +\
 								j).set_reagent(reagent)
 						added_reagents.append(reagent)
 						break
@@ -445,7 +445,7 @@ func _on_CreateRecipe_pressed():
 	for _i in range(grid.grid_size):
 		var line = []
 		for _j in range(grid.grid_size):
-			var reagent = grid.container.get_child(child_index).current_reagent
+			var reagent = grid.slots.get_child(child_index).current_reagent
 			if reagent:
 				reagent_list.append(reagent)
 				line.append(reagent.type)
@@ -484,7 +484,7 @@ func _on_Hand_hand_slot_reagent_set():
 	for i in range(reagent_array.size()):
 		if not reagent_array[i]:
 			for j in range(grid_index, grid.grid_size * grid.grid_size):
-				var reagent = grid.container.get_child(j).current_reagent
+				var reagent = grid.slots.get_child(j).current_reagent
 				if reagent:
 					grid_index = j + 1
 					reagent_array[i] = reagent.type

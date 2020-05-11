@@ -40,12 +40,19 @@ func heal(amount : int):
 	update_life()
 
 func die():
-	.die()
-	
 	AudioManager.play_enemy_dies_sfx(data.sfx)
-
 	disable_tooltips()
+	
+	#Death animation
+	$Tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+	
+	yield($Tween, "tween_all_completed")
+	emit_signal("died", self)
 
+func set_grayscale(value: float):
+	$Sprite.material.set_shader_param("grayscale", value)
 
 func take_damage(source: Character, damage: int, type: String):
 	var unblocked_dmg = .take_damage(source, damage, type)

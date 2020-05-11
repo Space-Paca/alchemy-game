@@ -15,6 +15,11 @@ func create_object(enemy_type, player):
 	var enemy_data = load(ENEMY_DB[enemy_type]).new()
 	
 	var enemy = ENEMY.instance()
+	
+	#Duplicate material so shader parameters only affect this object
+	var mat_override = enemy.get_node("Sprite").get_material().duplicate()
+	enemy.get_node("Sprite").set_material(mat_override)
+	
 	enemy.init(enemy_data.name, enemy_data.hp)
 	var logic = {"states":enemy_data.states,
 				 "connections": enemy_data.connections,

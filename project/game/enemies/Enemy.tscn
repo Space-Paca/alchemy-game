@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -10,11 +10,11 @@
 [ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=8]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1121, 93 )
 
@@ -25,7 +25,27 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform float grayscale : hint_range(0.0, 1.0);
+render_mode unshaded;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	
+	if (grayscale > 0.0) {
+	    vec3 grey = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
+		COLOR.rgb = COLOR.rgb + grayscale*(grey - COLOR.rgb)
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/grayscale = 0.0
+
+[sub_resource type="Animation" id=6]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -41,9 +61,9 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -50, 30 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,8 +73,8 @@ margin_left = 68.0
 margin_top = 296.0
 margin_right = 188.0
 margin_bottom = 316.0
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 8 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 step = 1.0
 value = 50.0
 percent_visible = false
@@ -90,6 +110,7 @@ align = 1
 valign = 1
 
 [node name="Sprite" type="TextureRect" parent="."]
+material = SubResource( 10 )
 margin_right = 256.0
 margin_bottom = 256.0
 texture = ExtResource( 3 )
@@ -99,8 +120,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "idle"
-anims/attack = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/attack = SubResource( 6 )
+anims/idle = SubResource( 7 )
 
 [node name="Button" type="Button" parent="Sprite"]
 anchor_right = 1.0
@@ -134,10 +155,12 @@ two_rows = false
 position = Vector2( 133, 133.001 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( -100, 0 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

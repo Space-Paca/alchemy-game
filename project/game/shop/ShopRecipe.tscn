@@ -1,0 +1,180 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/recipe-book/ReagentDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=2]
+[ext_resource path="res://game/shop/ShopRecipe.gd" type="Script" id=3]
+
+[node name="ShopRecipe" type="Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 600, 1000 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 50.0
+margin_top = 18.0
+margin_right = 550.0
+margin_bottom = 981.0
+rect_min_size = Vector2( 300, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecipeName" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 2 )
+text = "Recipe Name"
+align = 1
+valign = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 500.0
+margin_bottom = 449.0
+rect_min_size = Vector2( 500, 400 )
+
+[node name="RecipeGrid" type="GridContainer" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 78.0
+margin_top = 28.0
+margin_right = 422.0
+margin_bottom = 372.0
+columns = 4
+
+[node name="Reagent1" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_right = 83.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent2" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 87.0
+margin_right = 170.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent3" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 174.0
+margin_right = 257.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent4" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 261.0
+margin_right = 344.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent5" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_top = 87.0
+margin_right = 83.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent6" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 87.0
+margin_top = 87.0
+margin_right = 170.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent7" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 174.0
+margin_top = 87.0
+margin_right = 257.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent8" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 261.0
+margin_top = 87.0
+margin_right = 344.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent9" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_top = 174.0
+margin_right = 83.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent10" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 87.0
+margin_top = 174.0
+margin_right = 170.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent11" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 174.0
+margin_top = 174.0
+margin_right = 257.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent12" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 261.0
+margin_top = 174.0
+margin_right = 344.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent13" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_top = 261.0
+margin_right = 83.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent14" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 87.0
+margin_top = 261.0
+margin_right = 170.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent15" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 174.0
+margin_top = 261.0
+margin_right = 257.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="Reagent16" parent="CenterContainer/VBoxContainer/CenterContainer/RecipeGrid" instance=ExtResource( 1 )]
+margin_left = 261.0
+margin_top = 261.0
+margin_right = 344.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 83, 83 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 453.0
+margin_right = 500.0
+margin_bottom = 853.0
+rect_min_size = Vector2( 0, 400 )
+
+[node name="ReagentList" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer"]
+margin_right = 500.0
+margin_bottom = 400.0
+
+[node name="Buy" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 857.0
+margin_right = 500.0
+margin_bottom = 908.0
+custom_fonts/font = ExtResource( 2 )
+text = "Buy Recipe"
+
+[node name="Hint" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 912.0
+margin_right = 500.0
+margin_bottom = 963.0
+custom_fonts/font = ExtResource( 2 )
+text = "Buy Hint"

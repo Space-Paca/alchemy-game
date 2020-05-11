@@ -4,6 +4,7 @@ class_name Combination
 var grid_size : int
 var recipe : Recipe
 var matrix : Array
+var known_matrix : Array
 
 
 func create_from_recipe(_recipe: Recipe):
@@ -15,10 +16,13 @@ func create_from_recipe(_recipe: Recipe):
 	
 	for i in range(grid_size):
 		var line = []
+		var unknown_line = []
 		for j in range(grid_size):
 			line.append(null)
+			unknown_line.append("unknown")
 			available_positions.append([i, j])
 		matrix.append(line)
+		known_matrix.append(unknown_line)
 	
 	# Placing the first two reagents that guarantee grid size consistency
 	var pos1 : Array
@@ -39,3 +43,11 @@ func create_from_recipe(_recipe: Recipe):
 	while not elements.empty():
 		var pos = available_positions.pop_front()
 		matrix[pos[0]][pos[1]] = elements.pop_front()
+
+
+func discover_reagents(amount: int):
+	pass
+
+
+func discover_all():
+	known_matrix = matrix

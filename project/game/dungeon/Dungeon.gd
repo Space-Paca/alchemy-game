@@ -2,6 +2,7 @@ extends Node
 
 onready var player = $Player
 onready var recipe_book = $BookLayer/RecipeBook
+onready var shop = $Shop
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
@@ -60,6 +61,14 @@ func create_floor(level: int):
 		push_error("create_floor: Error")
 		assert(false)
 	add_child(current_floor)
+
+
+func setup_shop():
+	var possible_combinations = []
+	for grid_size in combinations:
+		for combination in combinations[grid_size]:
+			if combination.recipe.floor_sold_in == floor_level:
+				possible_combinations.append(combination)
 
 
 func search_grid_for_combinations(reagent_matrix: Array):
@@ -153,6 +162,9 @@ func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
 		new_battle(room.encounter)
 		current_floor.hide()
+	elif room.type == Room.Type.SHOP:
+		current_floor.hide()
+		shop.show()
 
 
 func _on_Battle_won(is_boss):
@@ -197,3 +209,8 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 		favorite_combinations.erase(combination)
 		if battle:
 			battle.remove_favorite(combination)
+
+
+func _on_Shop_closed():
+	shop.hide()
+	current_floor.show()

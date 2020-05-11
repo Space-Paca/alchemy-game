@@ -9,10 +9,8 @@ enum { N, W, E, S }
 enum Type { EMPTY, MONSTER, BOSS, SHOP }
 
 const SIZE := Vector2(160, 90)
-const IMAGES := [null,
-	preload("res://assets/images/map/slime.png"),
-	preload("res://assets/images/map/skull.png"),
-	preload("res://assets/images/map/coin.png")]
+
+export(Array, Texture) var icons = [null, null, null, null]
 
 var entrance : int
 var exits := {N: false, W:false, E:false, S:false}
@@ -54,10 +52,11 @@ func _draw():
 
 func set_type(new_type : int):
 	type = new_type
-	icon.texture = IMAGES[type]
+	icon.texture = icons[type]
 	disabled = (type == Type.EMPTY)
 
 
 func _on_Room_pressed():
 	emit_signal("entered", self)
-	set_type(Type.EMPTY)
+	if type == Type.MONSTER:
+		set_type(Type.EMPTY)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
+[ext_resource path="res://game/shop/ReagentAmount.gd" type="Script" id=2]
+[ext_resource path="res://game/recipe-book/ReagentDisplay.tscn" type="PackedScene" id=4]
+
+[node name="ReagentAmount" type="HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 60.0
+alignment = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentDisplay" parent="." instance=ExtResource( 4 )]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = null
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 7.0
+margin_right = 164.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "- 99"

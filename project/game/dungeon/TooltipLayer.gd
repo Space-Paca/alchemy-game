@@ -6,9 +6,9 @@ const TOOLTIP_WIDTH = 220
 func get_width():
 	return TOOLTIP_WIDTH
 
-func add_tooltip(pos, title, text, play_sfx = false):
+func add_tooltip(pos, title, text, title_image, play_sfx = false):
 	var tip = TOOLTIP.instance()
-	tip.setup(title, text)
+	tip.setup(title, text, title_image)
 	$Tooltips.position = pos
 	$Tooltips.add_child(tip)
 	yield(tip, "setted_up")

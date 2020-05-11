@@ -269,7 +269,8 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	for tooltip in get_tooltips():
 		update_tooltip_position()
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, tooltip.text, play_sfx)
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+								 tooltip.text, tooltip.title_image, play_sfx)
 		play_sfx = false
 
 func _on_TooltipCollision_disable_tooltip():

@@ -74,12 +74,15 @@ func get_intent_tooltips(state):
 	if state == "attack":
 		tooltip.title = "Attacking"
 		tooltip.text = "This enemy is attacking next turn"
+		tooltip.title_image = intents.attack.get_path()
 	elif state == "temp_buff":
 		tooltip.title = "Temporary Buff"
 		tooltip.text = "This enemy is buffing his next attack"
+		tooltip.title_image = intents.temp_buff.get_path()
 	elif state == "perm_buff":
 		tooltip.title = "Getting Strong"
 		tooltip.text = "This enemy is getting a permanent attack buff"
+		tooltip.title_image = intents.perm_buff.get_path()
 		
 	tooltips.append(tooltip)
 	

@@ -61,9 +61,11 @@ func get_intent_tooltips(state):
 	if state == "attack":
 		tooltip.title = "Attacking"
 		tooltip.text = "This enemy is attacking next turn"
+		tooltip.title_image = intents.attack.get_path()
 	elif state == "dodge":
 		tooltip.title = "Dodging"
 		tooltip.text = "This enemy is getting dodge next turn"
+		tooltip.title_image = intents.dodge.get_path()
 	tooltips.append(tooltip)
 	
 	return tooltips

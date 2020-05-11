@@ -98,7 +98,7 @@ func _on_TooltipCollision_enable_tooltip():
 		return
 	tooltips_enabled = true
 	var tooltip = get_tooltip()
-	TooltipLayer.add_tooltip(tooltip.pos, tooltip.title, tooltip.text, true)
+	TooltipLayer.add_tooltip(tooltip.pos, tooltip.title, tooltip.text, null, true)
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()

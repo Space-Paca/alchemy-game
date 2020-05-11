@@ -75,5 +75,6 @@ func _on_TooltipCollision_disable_tooltip():
 func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true
 	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, tooltip.text, play_sfx)
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+								 tooltip.text, tooltip.title_image, play_sfx)
 		play_sfx = false

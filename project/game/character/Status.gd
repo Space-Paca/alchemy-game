@@ -1,14 +1,23 @@
 extends HBoxContainer
 
 const STATUS_IMAGES = {
-					   "dodge": "res://assets/images/status/random_status.png",
+					   "dodge": "res://assets/images/status/dodge.png",
 					   "perm_strength": "res://assets/images/status/perm_strength.png",
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
 					  }
 const STATUS_TOOLTIPS = {
-					   "dodge": {"title": "Dodge", "text": "This character will avoid the next attack"},
-					   "perm_strength": {"title": "Permanent Strength", "text": "Permanently increases this character attack damage"},
-					   "temp_strength": {"title": "Temporary Strength", "text": "Increases this character next attack damage"},
+					   "dodge": {
+						"title": "Dodge",
+						"text": "This character will avoid the next attack",
+						"title_image": STATUS_IMAGES.dodge},
+					   "perm_strength": {
+						"title": "Permanent Strength",
+						"text": "Permanently increases this character attack damage",
+						"title_image": STATUS_IMAGES.perm_strength},
+					   "temp_strength": {
+						"title": "Temporary Strength",
+						"text": "Increases this character next attack damage",
+						"title_image": STATUS_IMAGES.temp_strength},
 					  }
 
 var type : String

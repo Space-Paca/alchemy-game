@@ -19,7 +19,8 @@ func get_tooltips():
 	var tooltips = []
 	if reagent:
 		var data = ReagentManager.get_data(reagent)
-		var tooltip = {"title": data.name, "text": data.tooltip}
+		var tooltip = {"title": data.name, "text": data.tooltip, \
+					   "title_image": data.image.get_path()}
 		tooltips.append(tooltip)
 	
 	return tooltips
@@ -47,5 +48,6 @@ func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true
 	tooltip_enabled = true
 	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip($TooltipPosition.rect_global_position, tooltip.title, tooltip.text, play_sfx)
+		TooltipLayer.add_tooltip($TooltipPosition.rect_global_position, tooltip.title, \
+								 tooltip.text, tooltip.title_image, play_sfx)
 		play_sfx = false

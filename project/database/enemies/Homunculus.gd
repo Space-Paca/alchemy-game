@@ -77,15 +77,18 @@ func get_intent_tooltips(state):
 		var tooltip = {}
 		tooltip.title = "Attacking"
 		tooltip.text = "This enemy is attacking next turn"
+		tooltip.title_image = intents.attack.get_path()
 		tooltips.append(tooltip)
 	elif state == "defend":
 		var tooltip1 = {}
 		tooltip1.title = "Defending"
 		tooltip1.text = "This enemy is going to defend next turn"
+		tooltip1.title_image = intents.defend.get_path()
 		tooltips.append(tooltip1)
 		var tooltip2 = {}
 		tooltip2.title = "Attacking"
 		tooltip2.text = "This enemy is attacking next turn"
+		tooltip2.title_image = intents.attack.get_path()
 		tooltips.append(tooltip2)
 	
 	return tooltips

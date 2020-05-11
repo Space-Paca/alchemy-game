@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/audio/AudioManager.gd" type="Script" id=1]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+random_pitch = 1.0
 
 [node name="AudioManager" type="Node"]
 script = ExtResource( 1 )
@@ -36,21 +39,31 @@ bus = "BGM"
 [node name="SFXS" type="Node" parent="."]
 
 [node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer2" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer3" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer4" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer5" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer6" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer7" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer8" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer9" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )
 
 [node name="SFXPlayer10" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 1 )

@@ -34,37 +34,192 @@ const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_1_layer_1.ogg"
 #SFX
 const MAX_SFXS = 10
 const SFXS = {
-			"apply_favorite": preload("res://assets/audio/sfx/apply_favourite.wav"),
-			"buff": preload("res://assets/audio/sfx/buff_generic.wav"),
-			"buy": preload("res://assets/audio/sfx/buy.wav"),
-			"click": preload("res://assets/audio/sfx/click.wav"),
-			"close_recipe_book": preload("res://assets/audio/sfx/close_recipe_book.wav"),
-			"combine": preload("res://assets/audio/sfx/combine.wav"),
-			"combine_fail": preload("res://assets/audio/sfx/combine_fail.wav"),
-			"combine_success": preload("res://assets/audio/sfx/combine_success.wav"),
-			"damage_crushing": preload("res://assets/audio/sfx/damage_crushing.wav"),
-			"damage_phantom": preload("res://assets/audio/sfx/damage_phantom.wav"),
-			"damage_regular": preload("res://assets/audio/sfx/damage_normal.wav"),
-			"debuff": preload("res://assets/audio/sfx/debuff_generic.wav"),
-			"discard_reagent": preload("res://assets/audio/sfx/discard_reagent.wav"),
-			"discover_new_recipe": preload("res://assets/audio/sfx/discover_new_recipe.wav"),
-			"dodge": preload("res://assets/audio/sfx/dodge.wav"),
-			"draw_reagent": preload("res://assets/audio/sfx/draw_reagent.wav"),
-			"drop_reagent": preload("res://assets/audio/sfx/drop_reagent.wav"),
-			"error": preload("res://assets/audio/sfx/error.wav"),
-			"game_over": preload("res://assets/audio/sfx/game_over.wav"),
-			"get_coins": preload("res://assets/audio/sfx/get_coins.wav"),
-			"get_loot": preload("res://assets/audio/sfx/get_loot.wav"),
-			"hover_button": preload("res://assets/audio/sfx/hover_button.wav"),
-			"hover_reagent": preload("res://assets/audio/sfx/hover_reagent.wav"),
-			"open_recipe_book": preload("res://assets/audio/sfx/open_recipe_book.wav"),
-			"pick_reagent": preload("res://assets/audio/sfx/pick_reagent.wav"),
-			"shield_breaks": preload("res://assets/audio/sfx/shield_breaks.wav"),
-			"shield_gain": preload("res://assets/audio/sfx/shield_gain.wav"),
-			"shield_hit": preload("res://assets/audio/sfx/shield_hit.wav"),
-			"tooltip_appears": preload("res://assets/audio/sfx/tooltip_appears.wav"),
-			"win_boss_battle": preload("res://assets/audio/sfx/win_boss_battle.wav"),
-			"win_normal_battle": preload("res://assets/audio/sfx/win_normal_battle.wav"),
+			"apply_favorite": {"asset" : preload("res://assets/audio/sfx/apply_favourite.wav"),
+							   "base_db" : 0,
+							   "random_db_var" : 0,
+							   "base_pitch" : 1,
+							   "random_pitch_var" : 0,
+							  },
+			"buff": {"asset" : preload("res://assets/audio/sfx/buff_generic.wav"),
+					 "base_db" : 0,
+					 "random_db_var" : 0,
+					 "base_pitch" : 1,
+					 "random_pitch_var" : 0,
+				  },
+			"buy": {"asset" : preload("res://assets/audio/sfx/buy.wav"),
+					"base_db" : 0,
+					"random_db_var" : 0,
+					"base_pitch" : 1,
+					"random_pitch_var" : 0,
+				   },
+			"click": {"asset" : preload("res://assets/audio/sfx/click.wav"),
+					  "base_db" : 0,
+					  "random_db_var" : 0,
+					  "base_pitch" : 1,
+					  "random_pitch_var" : 0,
+					 },
+			"close_recipe_book": {"asset" : preload("res://assets/audio/sfx/close_recipe_book.wav"),
+							   "base_db" : 0,
+							   "random_db_var" : 0,
+							   "base_pitch" : 1,
+							   "random_pitch_var" : 0,
+							  },
+			"combine": {"asset" : preload("res://assets/audio/sfx/combine.wav"),
+						"base_db" : 0,
+						"random_db_var" : 0,
+						"base_pitch" : 1,
+						"random_pitch_var" : 0,
+					   },
+			"combine_fail": {"asset" : preload("res://assets/audio/sfx/combine_fail.wav"),
+							 "base_db" : 0,
+							 "random_db_var" : 0,
+							 "base_pitch" : 1,
+							 "random_pitch_var" : 0,
+							 },
+			"combine_success": {"asset" : preload("res://assets/audio/sfx/combine_success.wav"),
+								"base_db" : 0,
+								"random_db_var" : 0,
+								"base_pitch" : 1,
+								"random_pitch_var" : 0,
+							   },
+			"damage_crushing": {"asset" : preload("res://assets/audio/sfx/damage_crushing.wav"),
+								"base_db" : 0,
+								"random_db_var" : 0,
+								"base_pitch" : 1,
+								"random_pitch_var" : 0,
+							   },
+			"damage_phantom": {"asset" : preload("res://assets/audio/sfx/damage_phantom.wav"),
+							   "base_db" : 0,
+							   "random_db_var" : 0,
+							   "base_pitch" : 1,
+							   "random_pitch_var" : 0,
+							  },
+			"damage_regular": {"asset" : preload("res://assets/audio/sfx/damage_normal.wav"),
+							   "base_db" : 0,
+							   "random_db_var" : 0,
+							   "base_pitch" : 1,
+							   "random_pitch_var" : 0,
+							  },
+			"debuff": {"asset" : preload("res://assets/audio/sfx/debuff_generic.wav"),
+					   "base_db" : 0,
+					   "random_db_var" : 0,
+					   "base_pitch" : 1,
+					   "random_pitch_var" : 0,
+					  },
+			"discard_reagent": {"asset" : preload("res://assets/audio/sfx/discard_reagent.wav"),
+								"base_db" : 0,
+								"random_db_var" : 0,
+								"base_pitch" : 1,
+								"random_pitch_var" : 0,
+							  },
+			"discover_new_recipe": {"asset" : preload("res://assets/audio/sfx/discover_new_recipe.wav"),
+									"base_db" : 0,
+									"random_db_var" : 0,
+									"base_pitch" : 1,
+									"random_pitch_var" : 0,
+									},
+			"dodge": {"asset" : preload("res://assets/audio/sfx/dodge.wav"),
+					  "base_db" : 0,
+					  "random_db_var" : 0,
+					  "base_pitch" : 1,
+					  "random_pitch_var" : 0,
+					  },
+			"draw_reagent": {"asset" : preload("res://assets/audio/sfx/draw_reagent.wav"),
+							 "base_db" : 0,
+							 "random_db_var" : 0,
+							 "base_pitch" : 1,
+							 "random_pitch_var" : 0,
+							},
+			"drop_reagent": {"asset" : preload("res://assets/audio/sfx/drop_reagent.wav"),
+							 "base_db" : 0,
+							 "random_db_var" : 0,
+							 "base_pitch" : 1,
+							 "random_pitch_var" : 0,
+							},
+			"error": {"asset" : preload("res://assets/audio/sfx/error.wav"),
+					  "base_db" : 0,
+					  "random_db_var" : 0,
+					  "base_pitch" : 1,
+					  "random_pitch_var" : 0,
+					 },
+			"game_over": {"asset" : preload("res://assets/audio/sfx/game_over.wav"),
+						  "base_db" : 0,
+						  "random_db_var" : 0,
+						  "base_pitch" : 1,
+						  "random_pitch_var" : 0,
+							  },
+			"get_coins": {"asset" : preload("res://assets/audio/sfx/get_coins.wav"),
+						  "base_db" : 0,
+						  "random_db_var" : 0,
+						  "base_pitch" : 1,
+						  "random_pitch_var" : 0,
+						 },
+			"get_loot": {"asset" : preload("res://assets/audio/sfx/get_loot.wav"),
+						 "base_db" : 0,
+						 "random_db_var" : 0,
+						 "base_pitch" : 1,
+						 "random_pitch_var" : 0,
+						},
+			"hover_button": {"asset" : preload("res://assets/audio/sfx/hover_button.wav"),
+							 "base_db" : 0,
+							 "random_db_var" : 0,
+							 "base_pitch" : 1,
+							 "random_pitch_var" : 0,
+							},
+			"hover_reagent": {"asset" : preload("res://assets/audio/sfx/hover_reagent.wav"),
+							  "base_db" : 0,
+							  "random_db_var" : 0,
+							  "base_pitch" : 1,
+							  "random_pitch_var" : 0,
+							  },
+			"open_recipe_book": {"asset" : preload("res://assets/audio/sfx/open_recipe_book.wav"),
+								 "base_db" : 0,
+								 "random_db_var" : 0,
+								 "base_pitch" : 1,
+								 "random_pitch_var" : 0,
+								},
+			"pick_reagent": {"asset" : preload("res://assets/audio/sfx/pick_reagent.wav"),
+							 "base_db" : 0,
+							 "random_db_var" : 0,
+							 "base_pitch" : 1,
+							 "random_pitch_var" : 0,
+							},
+			"shield_breaks": {"asset" : preload("res://assets/audio/sfx/shield_breaks.wav"),
+							  "base_db" : 0,
+							  "random_db_var" : 0,
+							  "base_pitch" : 1,
+							  "random_pitch_var" : 0,
+							 },
+			"shield_gain": {"asset" : preload("res://assets/audio/sfx/shield_gain.wav"),
+							"base_db" : 0,
+							"random_db_var" : 0,
+							"base_pitch" : 1,
+							"random_pitch_var" : 0,
+							},
+			"shield_hit": {"asset" : preload("res://assets/audio/sfx/shield_hit.wav"),
+						   "base_db" : 0,
+						   "random_db_var" : 0,
+						   "base_pitch" : 1,
+						   "random_pitch_var" : 0,
+						  },
+			"tooltip_appears": {"asset" : preload("res://assets/audio/sfx/tooltip_appears.wav"),
+								"base_db" : 0,
+								"random_db_var" : 0,
+								"base_pitch" : 1,
+								"random_pitch_var" : 0,
+							   },
+			"win_boss_battle": {"asset" : preload("res://assets/audio/sfx/win_boss_battle.wav"),
+								"base_db" : 0,
+								"random_db_var" : 0,
+								"base_pitch" : 1,
+								"random_pitch_var" : 0,
+							   },
+			"win_normal_battle": {"asset" : preload("res://assets/audio/sfx/win_normal_battle.wav"),
+								  "base_db" : 0,
+								  "random_db_var" : 0,
+								  "base_pitch" : 1,
+								  "random_pitch_var" : 0,
+								 },
 			 }
 #LOCS
 const LOC_PATH = "res://assets/audio/sfx/loc/"
@@ -243,22 +398,32 @@ func get_sfx_player():
 	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
 	return player
 
-func play_sfx(name: String, pitch_scale := 1):
+func play_sfx(name: String, override_pitch := 1):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
-	
+	var sfx = SFXS[name]
 	var player = get_sfx_player()
 	player.stop()
-	player.stream = SFXS[name]
-	player.pitch_scale = pitch_scale
+	
+	player.stream.audio_stream = sfx.asset
+	
+	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
+	player.volume_db = vol
+	
+	if override_pitch != 1:
+		player.pitch_scale = override_pitch
+	else:
+		player.pitch_scale = sfx.base_pitch
+	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	
 	player.play()
 
 func get_sfx_duration(name: String):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
-	return SFXS[name].get_length()
+	return SFXS[name].asset.get_length()
 
 func play_enemy_hit_sfx(enemy: String):
 	#Get a random hit sfx
@@ -268,10 +433,14 @@ func play_enemy_hit_sfx(enemy: String):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("hit_var"+str(number)):
 		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
 		assert(false)
-	
+		
+	var sfx = LOCS[enemy]
 	var player = get_sfx_player()
 	player.stop()
-	player.stream = LOCS[enemy]["hit_var"+str(number)]
+	player.volume_db = 0.0
+	player.pitch_scale = 1.0
+	player.stream.random_pitch = 1.0
+	player.stream.audio_stream = sfx["hit_var"+str(number)]
 	player.play()
 	
 func play_enemy_dies_sfx(enemy):
@@ -279,7 +448,11 @@ func play_enemy_dies_sfx(enemy):
 		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
+	var sfx = LOCS[enemy]
 	var player = get_sfx_player()
 	player.stop()
-	player.stream = LOCS[enemy].dies
+	player.volume_db = 0.0
+	player.pitch_scale = 1.0
+	player.stream.random_pitch = 1.0
+	player.stream.audio_stream = sfx.dies
 	player.play()

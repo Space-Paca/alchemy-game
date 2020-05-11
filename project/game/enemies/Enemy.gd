@@ -28,12 +28,21 @@ var data
 var tooltip_position := Vector2()
 var tooltips_enabled := false
 var block_tooltips := false
+var _playback_speed := 1.0
 
 
 func _ready():
 	set_button_disabled(true)
 	$HealthBar/Shield.hide()
 	$Intents.rect_position.y = -INTENT_MARGIN - INTENT_H
+	
+	#Settup idle animation
+	animation.play("idle")
+	randomize()
+	animation.seek(rand_range(0.0, 2.0))
+	randomize()
+	_playback_speed = rand_range(1.0, 1.3)
+	animation.playback_speed = _playback_speed
 
 func heal(amount : int):
 	.heal(amount)
@@ -101,6 +110,10 @@ func play_animation(name):
 	yield(animation, "animation_finished")
 	emit_signal("animation_finished")
 	animation.play("idle")
+	randomize()
+	animation.seek(rand_range(0.0, 2.0))
+	animation.playback_speed = _playback_speed
+
 
 func action_resolved():
 	emit_signal("action_resolved")
@@ -172,6 +185,9 @@ func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
+	#Update pivot
+	$Sprite.rect_pivot_offset.x = w/2
+	$Sprite.rect_pivot_offset.y = h/2
 	#Update intent conteiner
 	$Intents.rect_size.x = w
 	$Intents.rect_size.y = INTENT_H

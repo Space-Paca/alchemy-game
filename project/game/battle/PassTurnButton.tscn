@@ -1,17 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/ui/pass_turn.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/ui/pass_turn_pressed.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/pass_turn_hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/pass_turn_disable.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/end_turn.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BoldOblique.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 53
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="PassTurnButton" type="TextureButton"]
-margin_right = 168.0
-margin_bottom = 254.0
+margin_right = 325.0
+margin_bottom = 98.0
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
-texture_disabled = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 18.455
+margin_top = -6.15164
+margin_right = 288.455
+margin_bottom = 93.8484
+custom_fonts/font = SubResource( 1 )
+text = "End Turn"
+align = 1
+valign = 1

@@ -52,7 +52,7 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "heal":
 			heal(effect.type)
 		yield(self, "effect_resolved")
-		yield(get_tree().create_timer(.6), "timeout")
+		yield(get_tree().create_timer(.3), "timeout")
 	
 	emit_signal("failure_resolved")
 

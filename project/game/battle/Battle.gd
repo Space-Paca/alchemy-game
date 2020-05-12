@@ -247,9 +247,6 @@ func set_favorites_disabled(disabled: bool):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
-	#Just briefly after start effects
-	yield(get_tree().create_timer(.3), "timeout")
-	
 	if effects[0] == "combination_failure":
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")

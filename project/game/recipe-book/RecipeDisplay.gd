@@ -28,7 +28,14 @@ func set_combination(_combination: Combination):
 		for j in range(combination.grid_size):
 			var reagent = REAGENT.instance()
 			grid.add_child(reagent)
-			reagent.set_reagent(combination.matrix[i][j])
+			reagent.set_reagent(combination.known_matrix[i][j])
+
+
+func update_combination():
+	for i in range(combination.grid_size):
+		for j in range(combination.grid_size):
+			var reagent = grid.get_child(i*combination.grid_size + j)
+			reagent.set_reagent(combination.known_matrix[i][j])
 
 
 func unlock_mastery():
@@ -42,15 +49,18 @@ func favorite_error():
 
 
 func _on_Panel_mouse_entered():
-	emit_signal("hovered", reagent_array)
+	if combination.discovered:
+		emit_signal("hovered", reagent_array)
 
 
 func _on_Panel_mouse_exited():
-	emit_signal("unhovered")
+	if combination.discovered:
+		emit_signal("unhovered")
 
 
 func _on_Button_pressed():
-	emit_signal("pressed", combination, mastery_unlocked)
+	if combination.discovered:
+		emit_signal("pressed", combination, mastery_unlocked)
 
 
 func _on_FavoriteButton_toggled(button_pressed):

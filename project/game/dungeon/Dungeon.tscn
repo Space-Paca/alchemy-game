@@ -21,3 +21,5 @@ visible = false
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
 [connection signal="closed" from="Shop" to="." method="_on_Shop_closed"]
+[connection signal="combination_bought" from="Shop" to="." method="_on_Shop_combination_bought"]
+[connection signal="hint_bought" from="Shop" to="." method="_on_Shop_hint_bought"]

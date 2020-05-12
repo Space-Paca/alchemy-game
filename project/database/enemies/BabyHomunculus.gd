@@ -13,7 +13,7 @@ var name = "Baby Humunculus"
 var sfx = "enemy_1"
 var hp = 15
 var size = "small"
-var damage = [4, 5]
+var damage = [5, 7]
 
 var states = ["attack"]
 var connections = [

@@ -13,7 +13,7 @@ var name = "Humunculus"
 var sfx = "enemy_1"
 var hp = 50
 var size = "medium"
-var damage = [6, 8]
+var damage = [10, 15]
 var defense = [4, 6]
 
 var states = ["attack", "defend"]

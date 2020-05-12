@@ -5,6 +5,8 @@ var grid_size : int
 var recipe : Recipe
 var matrix : Array
 var known_matrix : Array
+var unknown_reagent_coords : Array
+var discovered : bool
 
 
 func create_from_recipe(_recipe: Recipe):
@@ -20,6 +22,7 @@ func create_from_recipe(_recipe: Recipe):
 		for j in range(grid_size):
 			line.append(null)
 			unknown_line.append("unknown")
+			unknown_reagent_coords.append([i, j])
 			available_positions.append([i, j])
 		matrix.append(line)
 		known_matrix.append(unknown_line)
@@ -46,8 +49,19 @@ func create_from_recipe(_recipe: Recipe):
 
 
 func discover_reagents(amount: int):
-	pass
+	assert(amount > 0)
+	if amount >= unknown_reagent_coords.size():
+		discover_all_reagents()
+		return
+	
+	unknown_reagent_coords.shuffle()
+	for _i in range(amount):
+		var coords = unknown_reagent_coords.pop_front()
+		known_matrix[coords[0]][coords[1]] = matrix[coords[0]][coords[1]]
 
 
-func discover_all():
-	known_matrix = matrix
+func discover_all_reagents():
+	if not discovered:
+		discovered = true
+		known_matrix = matrix
+		unknown_reagent_coords.clear()

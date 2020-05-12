@@ -3,7 +3,7 @@ class_name Encounter
 
 export(bool) var is_boss = false
 export(int, 1, 3) var level = 1
-export(Array, String, "skeleton", "wolf", "robot", "poison") var enemies
+export(Array, String, "humunculus", "baby_humunculus", "wolf", "robot", "poison") var enemies
 
 # Loot table
 export var gold_reward := 0

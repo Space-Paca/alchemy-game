@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-initial_recipes = [ "Dano", "Escudo" ]
+initial_recipes = [ "Dano", "Escudo", "Ataque Area" ]
 initial_hp = 100
-

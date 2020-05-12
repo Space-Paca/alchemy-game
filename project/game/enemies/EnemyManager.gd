@@ -1,6 +1,8 @@
 extends Node
 
-const ENEMY_DB = {"skeleton": "res://database/enemies/Homunculus.gd",
+const ENEMY_DB = {
+				  "humunculus": "res://database/enemies/Homunculus.gd",
+				  "baby_humunculus": "res://database/enemies/BabyHomunculus.gd",
 				  "robot": "res://database/enemies/Robot.gd",
 				  "wolf": "res://database/enemies/Wolf.gd",
 				  "poison": "res://database/enemies/Poisunculus.gd",

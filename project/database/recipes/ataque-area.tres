@@ -5,12 +5,12 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Ataque em área"
+name = "Ataque Area"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "common", "common", "damaging", "damaging" ]
-effects = [  ]
-effect_args = [  ]
-description = "I love cheese, especially who moved my cheese who moved my cheese. Camembert de normandie roquefort cheesecake cheesy grin blue castello cow manchego cheesy feet."
+effects = [ "damage_all" ]
+effect_args = [ [ 10 ] ]
+description = "Deals 10 regular damage to all enemies."
 fav_icon = ExtResource( 1 )
 shop_cost = 45

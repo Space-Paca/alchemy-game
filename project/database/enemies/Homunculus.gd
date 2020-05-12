@@ -9,11 +9,11 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png
 			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
-var name = "Zoudin"
+var name = "Humunculus"
 var sfx = "enemy_1"
-var hp = 30
-var size = "small"
-var damage = [10, 12]
+var hp = 50
+var size = "medium"
+var damage = [6, 8]
 var defense = [4, 6]
 
 var states = ["attack", "defend"]
@@ -92,3 +92,4 @@ func get_intent_tooltips(state):
 		tooltips.append(tooltip2)
 	
 	return tooltips
+

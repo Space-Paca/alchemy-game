@@ -6,8 +6,8 @@
 script = ExtResource( 1 )
 is_boss = true
 level = 1
-enemies = [ "skeleton" ]
-gold_reward = 654
+enemies = [ "humunculus" ]
+gold_reward = 10
 loot_table = {
 "catalyst": 1,
 "common": 0,

@@ -189,6 +189,7 @@ func _on_Battle_won(is_boss):
 		floor_level += 1
 		if floor_level <= MAX_FLOOR:
 			create_floor(floor_level)
+			$Player.level_up()
 	else:
 		current_floor.show()
 

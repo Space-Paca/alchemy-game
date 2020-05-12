@@ -3,23 +3,26 @@ class_name Player
 
 signal combination_discovered(combination, index)
 
-const INITIAL_HAND_SIZE = 4
-const INITIAL_GRID_SIZE = 2
+const HAND_SIZES = [4,8,12]
+const GRID_SIZES = [2,3,4]
+const MAX_LEVEL = 3
 
 var hud
 var hand_size : int
 var grid_size : int
 var bag := []
 var known_recipes : Array
+var cur_level : int
 
 
 func _ready():
 	# Only class we have right now
 	var player_class = load("res://database/player-classes/alchemist.tres") as PlayerClass
+	cur_level = 1
 	
 	init("player", player_class.initial_hp)
-	hand_size = INITIAL_HAND_SIZE
-	grid_size = INITIAL_GRID_SIZE
+	hand_size = HAND_SIZES[cur_level-1]
+	grid_size = GRID_SIZES[cur_level-1]
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
@@ -33,6 +36,11 @@ func _ready():
 	for _i in range(2):
 		add_reagent("defensive")
 
+func level_up():
+	cur_level += 1
+	if cur_level <= MAX_LEVEL:
+		hand_size = HAND_SIZES[cur_level-1]
+		grid_size = GRID_SIZES[cur_level-1]
 
 func add_reagent(type):
 	bag.append(type)

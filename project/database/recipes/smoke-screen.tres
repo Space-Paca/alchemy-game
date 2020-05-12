@@ -13,3 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially feta feta. Jarlsberg swiss cheese strings lancashire gouda halloumi cheeseburger everyone loves."
 fav_icon = ExtResource( 1 )
+shop_cost = 98

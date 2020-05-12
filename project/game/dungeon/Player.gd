@@ -7,6 +7,9 @@ const HAND_SIZES = [4,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 
+export var initial_currency := 100
+
+var currency : int
 var hud
 var hand_size : int
 var grid_size : int
@@ -23,6 +26,7 @@ func _ready():
 	init("player", player_class.initial_hp)
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
+	currency = initial_currency
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
@@ -41,6 +45,20 @@ func level_up():
 	if cur_level <= MAX_LEVEL:
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
+
+func add_currency(amount: int):
+	assert(amount > 0)
+	currency += amount
+
+
+func spend_currency(amount: int) -> bool:
+	assert(amount > 0)
+	if currency >= amount:
+		currency -= amount
+		return true
+	else:
+		return false
+
 
 func add_reagent(type):
 	bag.append(type)

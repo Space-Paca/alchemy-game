@@ -13,4 +13,4 @@ effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
 description = "I love cheese, especially fondue croque monsieur. Pepper jack fondue jarlsberg edam queso bavarian bergkase blue castello mascarpone."
 fav_icon = ExtResource( 1 )
-
+shop_cost = 58

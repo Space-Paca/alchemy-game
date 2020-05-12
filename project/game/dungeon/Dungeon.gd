@@ -177,6 +177,7 @@ func _on_room_entered(room: Room):
 		current_floor.hide()
 	elif room.type == Room.Type.SHOP:
 		current_floor.hide()
+		shop.update_currency()
 		shop.show()
 
 

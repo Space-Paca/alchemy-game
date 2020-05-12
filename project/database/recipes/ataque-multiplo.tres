@@ -13,3 +13,4 @@ effects = [ "damage", "damage" ]
 effect_args = [ [ 7, "crushing" ], [ 7, "crushing" ] ]
 description = "I love cheese, especially rubber cheese monterey jack. Emmental cheesy feet st. agur blue cheese st. agur blue cheese chalk and cheese queso airedale caerphilly."
 fav_icon = ExtResource( 1 )
+shop_cost = 49

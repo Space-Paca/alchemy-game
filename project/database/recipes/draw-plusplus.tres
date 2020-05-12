@@ -13,3 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially mozzarella cheese on toast. Cheeseburger ricotta queso pepper jack brie cheese on toast bocconcini pepper jack."
 fav_icon = ExtResource( 1 )
+shop_cost = 98

@@ -9,3 +9,4 @@ export(Array, String) var effects
 export(Array, Array) var effect_args
 export(String) var description
 export(Texture) var fav_icon
+export(int) var shop_cost

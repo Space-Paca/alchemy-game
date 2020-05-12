@@ -13,4 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially feta roquefort. Fondue cheese slices roquefort taleggio cottage cheese gouda boursin camembert de normandie."
 fav_icon = ExtResource( 1 )
-
+shop_cost = 74

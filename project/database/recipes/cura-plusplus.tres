@@ -13,4 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially cheese on toast gouda. Pepper jack cheddar emmental everyone loves hard cheese cow bavarian bergkase feta."
 fav_icon = ExtResource( 1 )
-
+shop_cost = 78

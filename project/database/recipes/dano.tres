@@ -13,3 +13,4 @@ effects = [ "damage" ]
 effect_args = [ [ 10, "regular" ] ]
 description = "I love cheese, especially fromage frais gouda. Airedale cow cheesy feet goat pecorino feta port-salut boursin."
 fav_icon = ExtResource( 1 )
+shop_cost = 852

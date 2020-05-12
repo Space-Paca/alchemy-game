@@ -13,3 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially macaroni cheese when the cheese comes out everybody's happy. Cauliflower cheese macaroni cheese dolcelatte parmesan port-salut manchego cow babybel."
 fav_icon = ExtResource( 1 )
+shop_cost = 52

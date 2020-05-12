@@ -13,4 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially goat cheese on toast. Bavarian bergkase ricotta croque monsieur babybel paneer mozzarella roquefort monterey jack."
 fav_icon = ExtResource( 1 )
-
+shop_cost = 648

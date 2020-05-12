@@ -13,3 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially fromage frais lancashire. Croque monsieur airedale cottage cheese edam bocconcini manchego cut the cheese macaroni cheese."
 fav_icon = ExtResource( 1 )
+shop_cost = 94

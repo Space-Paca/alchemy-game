@@ -13,4 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially parmesan jarlsberg. Gouda emmental cheese triangles cheesy grin mozzarella fromage frais cheese strings port-salut."
 fav_icon = ExtResource( 1 )
-
+shop_cost = 78

@@ -11,3 +11,4 @@ reagents = [ "uncommon", "uncommon", "uncommon", "defensive", "defensive", "supe
 effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially monterey jack say cheese. St. agur blue cheese cheeseburger lancashire fromage cheese strings cheesy grin blue castello squirty cheese."
+shop_cost = 123

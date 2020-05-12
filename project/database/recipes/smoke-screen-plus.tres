@@ -13,3 +13,4 @@ effects = [  ]
 effect_args = [  ]
 description = "I love cheese, especially paneer babybel. Cheesy grin macaroni cheese cheesecake macaroni cheese cheese and wine mozzarella blue castello dolcelatte."
 fav_icon = ExtResource( 1 )
+shop_cost = 54

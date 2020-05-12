@@ -4,6 +4,7 @@ const STATUS_IMAGES = {
 					   "dodge": "res://assets/images/status/dodge.png",
 					   "perm_strength": "res://assets/images/status/perm_strength.png",
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
+					   "poison": "res://assets/images/status/Debuff Poison.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -18,6 +19,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Temporary Strength",
 						"text": "Increases this character next attack damage",
 						"title_image": STATUS_IMAGES.temp_strength},
+					   "poison": {
+						"title": "Poison",
+						"text": "This character is taking damage each turn",
+						"title_image": STATUS_IMAGES.poison},
 					  }
 
 var type : String

@@ -3,7 +3,7 @@ class_name Encounter
 
 export(bool) var is_boss = false
 export(int, 1, 3) var level = 1
-export(Array, String, "skeleton", "wolf", "robot") var enemies
+export(Array, String, "skeleton", "wolf", "robot", "poison") var enemies
 
 # Loot table
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,

@@ -3,6 +3,7 @@ extends Node
 const ENEMY_DB = {"skeleton": "res://database/enemies/Homunculus.gd",
 				  "robot": "res://database/enemies/Robot.gd",
 				  "wolf": "res://database/enemies/Wolf.gd",
+				  "poison": "res://database/enemies/Poisunculus.gd",
 				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 

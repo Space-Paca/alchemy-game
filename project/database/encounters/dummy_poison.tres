@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Encounter.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+is_boss = false
+level = 1
+enemies = [ "poison" ]
+loot_table = {
+"catalyst": 0,
+"common": 1,
+"damaging": 0,
+"defensive": 0,
+"healing": 0,
+"rare": 0,
+"super_damaging": 0,
+"super_defensive": 0,
+"uncommon": 0
+}
+extra_loot_chance = [  ]

@@ -123,5 +123,13 @@ func update_status():
 func update_dodge(_args):
 	remove_status("dodge")
 
+func update_poison(_args):
+	var status = get_status("poison")
+	take_damage(self, status.amount, "phantom")
+	status.amount -= 1
+	if status.amount <= 0:
+		remove_status("poison")
+	
+
 func die():
 	emit_signal("died", self)

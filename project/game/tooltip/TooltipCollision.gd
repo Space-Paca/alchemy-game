@@ -1,6 +1,6 @@
 extends Area2D
 
-const TIMEOUT = .2
+export var TIMEOUT = .2
 
 signal enable_tooltip
 signal disable_tooltip

@@ -44,7 +44,7 @@ func _process(_delta):
 		rect_position = get_global_mouse_position() + drag_offset
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
-			rect_position += (target_position - rect_position)*.3*speed_mod
+			rect_position += (target_position - rect_position)*.35*speed_mod
 			if (target_position - rect_position).length() < 1:
 				if not disable_drag:
 					can_drag = true
@@ -171,7 +171,7 @@ func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips or (slot and slot.type != "hand"):
+	if block_tooltips or (slot and slot.type != "hand") or is_drag:
 		return
 	tooltips_enabled = true
 	var tooltip = get_tooltips()

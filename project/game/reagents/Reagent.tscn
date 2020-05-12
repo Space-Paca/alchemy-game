@@ -45,6 +45,7 @@ shape = SubResource( 2 )
 [node name="CombineTween" type="Tween" parent="."]
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 5 )]
+TIMEOUT = 0.6
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 3 )

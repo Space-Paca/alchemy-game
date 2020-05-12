@@ -57,7 +57,7 @@ func start_drawing(_reagents):
 		update_counter(_reagents.size())
 		if not _reagents.empty():
 			randomize()
-			yield(get_tree().create_timer(rand_range(.2, .25)), "timeout")
+			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
 		else:
 			yield(hand, "reagent_placed")
 	emit_signal("given_reagents_drawn")
@@ -69,11 +69,11 @@ func refill_hand():
 			if not reagents_to_be_drawn.empty():
 				start_drawing(reagents_to_be_drawn)
 				yield(self, "given_reagents_drawn")
-			yield(get_tree().create_timer(.5), "timeout")
+			yield(get_tree().create_timer(.25), "timeout")
 			if not discard_bag.is_empty():
 				reshuffle()
 				yield(self, "reshuffled")
-				yield(get_tree().create_timer(.5), "timeout")
+				yield(get_tree().create_timer(.25), "timeout")
 			else:
 				break
 
@@ -93,7 +93,7 @@ func reshuffle():
 		var reagent = discarded_reagents.pop_back()
 		shuffle_reagent(reagent)
 		if not discarded_reagents.empty():
-			yield(get_tree().create_timer(rand_range(.08, .15)), "timeout")
+			yield(get_tree().create_timer(rand_range(.01, .05)), "timeout")
 		else:
 			yield(self, "reagent_shuffled")
 	emit_signal("reshuffled")

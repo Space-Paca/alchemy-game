@@ -53,7 +53,7 @@ const SFXS = {
 					"random_pitch_var" : 0,
 				   },
 			"click": {"asset" : preload("res://assets/audio/sfx/click.wav"),
-					  "base_db" : 0,
+					  "base_db" : 2,
 					  "random_db_var" : 0.5,
 					  "base_pitch" : 1,
 					  "random_pitch_var" : 0.5,

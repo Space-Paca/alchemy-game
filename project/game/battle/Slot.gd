@@ -7,6 +7,7 @@ signal reagent_set
 onready var area = $Area2D
 
 var current_reagent = null
+var type = "hand"
 
 
 func get_reagent():

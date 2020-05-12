@@ -24,6 +24,8 @@ var image_path : String
 var shake := 0.0
 var speed_mod := 1.0
 var effect_mod := 1.0
+var tooltips_enabled := false
+var block_tooltips := false
 
 func set_image(text):
 	$Image.texture = text
@@ -134,6 +136,7 @@ func unhighlight():
 
 
 func start_dragging():
+	disable_tooltips()
 	emit_signal("started_dragging", self)
 
 
@@ -152,3 +155,25 @@ func stop_hovering():
 func disable_dragging():
 	can_drag = false
 	disable_drag = true
+
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func get_tooltips():
+	var data = ReagentManager.get_data(type)
+	var tooltip = {"title": data.name, "text": data.tooltip, \
+				   "title_image": data.image.get_path()}
+	return tooltip
+
+func _on_TooltipCollision_disable_tooltip():
+	disable_tooltips()
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips or (slot and slot.type != "hand"):
+		return
+	tooltips_enabled = true
+	var tooltip = get_tooltips()
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, true)

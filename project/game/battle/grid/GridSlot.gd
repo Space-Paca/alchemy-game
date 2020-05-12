@@ -4,6 +4,9 @@ const ALPHA_SPEED = 3
 
 onready var reagent_hint = $MarginContainer/ReagentHint
 
+func _ready():
+	type = "grid"
+
 func _process(delta):
 	if get_reagent():
 		$FullImage.modulate.a = min($FullImage.modulate.a + ALPHA_SPEED*delta, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/images/ui/SpellName Holder.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/ui/Combine Circle.png" type="Texture" id=11]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BoldOblique.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/images/background-map1.png" type="Texture" id=13]
 [ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=14]
 [ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=16]
@@ -28,6 +29,14 @@ script = ExtResource( 5 )
 
 [node name="EffectManager" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BookBG" type="TextureRect" parent="."]
 margin_right = 40.0

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 is_boss = false
-level = 1
+level = 2
 enemies = [ "baby_humunculus", "baby_humunculus", "baby_humunculus" ]
 gold_reward = 10
 loot_table = {

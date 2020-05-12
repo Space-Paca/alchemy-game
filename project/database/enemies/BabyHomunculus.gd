@@ -33,7 +33,7 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "crushing"}]])
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "regular"}]])
 	
 func get_intent_data(state):
 	var data = []

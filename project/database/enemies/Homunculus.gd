@@ -41,10 +41,10 @@ func get_defense():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "crushing"}]])
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "regular"}]])
 	elif state == "defend":
 		emit_signal("acted", enemy_ref, [["shield", {"value": next_defend_value}], \
-										 ["damage", {"value": next_attack_value, "type": "crushing"}]])
+										 ["damage", {"value": next_attack_value, "type": "regular"}]])
 
 func get_intent_data(state):
 	var data = []

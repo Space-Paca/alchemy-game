@@ -88,6 +88,9 @@ custom_fonts/font = SubResource( 4 )
 text = "5/10"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Shield" type="TextureRect" parent="HealthBar"]
 visible = false
@@ -125,6 +128,7 @@ margin_left = 28.4242
 margin_top = -1.27381
 margin_right = 71.4242
 margin_bottom = 25.7262
+rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "420"

@@ -6,6 +6,7 @@ export(int, 1, 3) var level = 1
 export(Array, String, "skeleton", "wolf", "robot", "poison") var enemies
 
 # Loot table
+export var gold_reward := 0
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"damaging": 0, "defensive": 0, "super_damaging": 0, "super_defensive": 0,
 	"healing": 0, "catalyst": 0}

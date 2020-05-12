@@ -3,15 +3,18 @@ extends CanvasLayer
 signal continue_pressed
 signal reagent_looted(reagent_name)
 
-onready var reagents = $BG/VBoxContainer/MarginContainer/VBoxContainer/Reagents
+onready var loot_list = $BG/VBoxContainer/MarginContainer/VBoxContainer/LootList
+onready var gold_label = $BG/VBoxContainer/MarginContainer/VBoxContainer/LootList/GoldReward/GoldLabel
 
 const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn")
 
 
-func set_loot(loot: Array):
+func set_loot(gold: int, loot: Array):
+	gold_label.text = str(gold)
+	
 	for reagent_name in loot:
 		var reagent_loot = REAGENT_LOOT.instance()
-		reagents.add_child(reagent_loot)
+		loot_list.add_child(reagent_loot)
 		reagent_loot.connect("reagent_looted", self, "_on_reagent_looted")
 		reagent_loot.set_reagent(reagent_name)
 
@@ -22,7 +25,7 @@ func _on_Button_pressed():
 
 func _on_reagent_looted(reagent_loot):
 	AudioManager.play_sfx("get_loot")
-	reagents.remove_child(reagent_loot)
+	loot_list.remove_child(reagent_loot)
 	emit_signal("reagent_looted", reagent_loot.reagent)
 
 

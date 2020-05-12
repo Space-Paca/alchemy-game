@@ -34,6 +34,7 @@ var ended := false
 var player_disabled := true
 var is_boss
 var player
+var gold_reward : int
 var loot : Array
 var is_dragging_reagent := false
 
@@ -54,6 +55,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	setup_audio(encounter)
 	
 	loot = encounter.get_loot()
+	gold_reward = encounter.gold_reward
 	
 	# For reasons I don't completely understand, Grid needs some time to actually
 	# place the slots in the correct position. Without this, all reagents will go
@@ -131,6 +133,7 @@ func setup_player_ui():
 	#Position player ui
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
+	player_ui.set_gold(player.currency)
 	player_ui.update_tooltip_pos()
 	#Position spell name holder
 	name_holder.rect_position.x = player_ui.position.x
@@ -271,15 +274,16 @@ func win():
 		AudioManager.play_sfx("win_boss_battle")
 	else:
 		AudioManager.play_sfx("win_normal_battle")
-		
+	
 	ended = true
+	player.add_currency(gold_reward)
 	TooltipLayer.clean_tooltips()
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
-	win_screen.set_loot(loot)
+	win_screen.set_loot(gold_reward, loot)
 
 
 func set_enemy_pos(enemy_idx, pos_idx):

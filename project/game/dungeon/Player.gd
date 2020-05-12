@@ -40,11 +40,13 @@ func _ready():
 	for _i in range(2):
 		add_reagent("defensive")
 
+
 func level_up():
 	cur_level += 1
 	if cur_level <= MAX_LEVEL:
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
+
 
 func add_currency(amount: int):
 	assert(amount > 0)

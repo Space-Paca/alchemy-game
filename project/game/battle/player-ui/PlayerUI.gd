@@ -2,6 +2,7 @@ tool
 extends Node2D
 
 onready var health_bar = $HealthBar
+onready var gold_label = $Gold/Label
 
 func _ready():
 	$HealthBar/Shield.hide()
@@ -19,6 +20,11 @@ func set_life(max_hp, hp):
 	health_bar.max_value = max_hp
 	health_bar.value = hp
 	$HealthBar/Label.text = str(hp) + "/" + str(max_hp)
+
+
+func set_gold(amount: int):
+	gold_label.text = str(amount)
+
 
 func update_life(player):
 	$HealthBar.value = player.hp

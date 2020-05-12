@@ -12,6 +12,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "BACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,19 +47,4 @@ margin_bottom = 1000.0
 margin_left = 1208.0
 margin_right = 1808.0
 margin_bottom = 1000.0
-
-[node name="BackButton" type="Button" parent="."]
-margin_right = 114.0
-margin_bottom = 51.0
-custom_fonts/font = ExtResource( 1 )
-text = "BACK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

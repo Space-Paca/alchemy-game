@@ -31,11 +31,6 @@ func add_combination(combination: Combination, position: int):
 	recipe_displays[combination.recipe.name] = recipe_display
 
 
-func update_combination(combination: Combination):
-	var display = recipe_displays[combination.recipe.name]
-	display.update_combination()
-
-
 func create_hand(battle):
 	battle.connect("current_reagents_updated", self, "update_hand")
 	hand_grid.columns = battle.hand.size / 2

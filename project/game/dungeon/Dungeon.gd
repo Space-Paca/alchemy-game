@@ -50,7 +50,6 @@ func create_combinations():
 			combinations[combination.grid_size] = [combination]
 		
 		if player.known_recipes.has(recipe.name):
-			combination.discover_all_reagents()
 			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name))
 
 
@@ -62,20 +61,14 @@ func create_floor(level: int):
 		push_error("create_floor: Error")
 		assert(false)
 	add_child(current_floor)
-	setup_shop()
 
 
 func setup_shop():
 	var possible_combinations = []
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
-			if combination.recipe.floor_sold_in == floor_level and not\
-					player.known_recipes.has(combination.recipe.name):
+			if combination.recipe.floor_sold_in == floor_level:
 				possible_combinations.append(combination)
-	
-	possible_combinations.shuffle()
-	shop.player = player
-	shop.set_combinations(possible_combinations.slice(0, shop.sold_amount - 1))
 
 
 func search_grid_for_combinations(reagent_matrix: Array):
@@ -130,13 +123,7 @@ func make_combination(combination: Combination):
 	
 	if not player.known_recipes.has(recipe.name):
 		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
-		combination.discover_all_reagents()
 		player.discover_combination(combination)
-		shop.update_combinations()
-	elif not combination.discovered:
-		combination.discover_all_reagents()
-		recipe_book.update_combination(combination)
-		shop.update_combinations()
 	
 	if not times_recipe_made.has(recipe.name):
 		times_recipe_made[recipe.name] = 1
@@ -227,14 +214,3 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 func _on_Shop_closed():
 	shop.hide()
 	current_floor.show()
-
-
-func _on_Shop_combination_bought(combination: Combination):
-	player.discover_combination(combination)
-
-
-func _on_Shop_hint_bought(combination: Combination):
-	if not player.known_recipes.has(combination.recipe.name):
-		player.discover_combination(combination)
-	else:
-		recipe_book.update_combination(combination)

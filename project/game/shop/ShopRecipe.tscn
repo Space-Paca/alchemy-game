@@ -178,5 +178,3 @@ margin_right = 500.0
 margin_bottom = 963.0
 custom_fonts/font = ExtResource( 2 )
 text = "Buy Hint"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Buy" to="." method="_on_Buy_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Hint" to="." method="_on_Hint_pressed"]

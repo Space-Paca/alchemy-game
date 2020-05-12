@@ -247,18 +247,24 @@ func set_favorites_disabled(disabled: bool):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]]):
-	#First discard reagents
-	grid.clean()
-	
 	#Just briefly after start effects
-	yield(get_tree().create_timer(.5), "timeout")
-	for i in range(effects.size()):
-		if effect_manager.has_method(effects[i]):
-			effect_manager.callv(effects[i], effect_args[i])
-			yield(effect_manager, "effect_resolved")
-		else:
-			print("Effect %s not found" % effects[i])
-			assert(false)
+	yield(get_tree().create_timer(.3), "timeout")
+	
+	if effects[0] == "combination_failure":
+		effect_manager.combination_failure(effect_args, grid)
+		yield(effect_manager, "failure_resolved")
+
+	else:
+		#First discard reagents
+		grid.clean()
+		
+		for i in range(effects.size()):
+			if effect_manager.has_method(effects[i]):
+				effect_manager.callv(effects[i], effect_args[i])
+				yield(effect_manager, "effect_resolved")
+			else:
+				print("Effect %s not found" % effects[i])
+				assert(false)
 
 	enable_player()
 
@@ -465,7 +471,7 @@ func _on_CreateRecipe_pressed():
 
 	yield(reagent_list.back(), "finished_combine_animation")
 
-	emit_signal("combination_made", reagent_matrix)
+	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 
 

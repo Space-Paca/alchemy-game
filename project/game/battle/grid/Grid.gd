@@ -112,8 +112,6 @@ func clean():
 			slot.remove_reagent()
 			reagents_to_be_discarded.append(reagent)
 
-	#if not reagents_to_be_discarded.empty():
-	#	AudioManager.play_sfx("discard_reagent")
 	while not reagents_to_be_discarded.empty():
 		var reagent = reagents_to_be_discarded.pop_back()
 		AudioManager.play_sfx("discard_reagent")
@@ -126,6 +124,13 @@ func clean():
 
 	emit_signal("cleaned")
 
+func remove_reagent(target_reagent):
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent == target_reagent:
+			slot.remove_reagent()
+			AudioManager.play_sfx("discard_reagent")
+			discard_bag.discard(reagent)
 
 func show_combination_hint(combination: Combination):
 	for i in range(combination.grid_size):

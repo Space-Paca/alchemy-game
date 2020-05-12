@@ -1,6 +1,7 @@
 extends Node
 
 signal effect_resolved
+signal failure_resolved
 signal target_set
 
 var enemies : Array
@@ -38,8 +39,22 @@ func require_target():
 
 
 
-func combination_failure():
-	damage_all(20, "regular")
+func combination_failure(reagent_list, grid):
+	for reagent in reagent_list:
+		grid.remove_reagent(reagent)
+		var effect = ReagentDB.get_from_name(reagent.type).effect
+		if effect.type == "damage":
+			damage_random(effect.value, "regular")
+		elif effect.type == "damage_all":
+			damage_all(effect.value, "regular")
+		elif effect.type == "shield":
+			shield(effect.value)
+		elif effect.type == "heal":
+			heal(effect.type)
+		yield(self, "effect_resolved")
+		yield(get_tree().create_timer(.6), "timeout")
+	
+	emit_signal("failure_resolved")
 
 
 func add_status(targeting: String, status: String, amount: int, positive: bool):
@@ -57,6 +72,14 @@ func add_status(targeting: String, status: String, amount: int, positive: bool):
 	
 	resolve()
 
+#Damage a random enemy
+func damage_random(amount: int, type: String):
+	var possible_enemies = enemies.duplicate()
+	randomize()
+	possible_enemies.shuffle()
+	(possible_enemies.front() as Enemy).take_damage(player, amount, type)
+
+	resolve()
 
 func damage(amount: int, type: String):
 	var func_state = (require_target() as GDScriptFunctionState)

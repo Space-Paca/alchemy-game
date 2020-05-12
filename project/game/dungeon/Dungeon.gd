@@ -78,7 +78,7 @@ func setup_shop():
 	shop.set_combinations(possible_combinations.slice(0, shop.sold_amount - 1))
 
 
-func search_grid_for_combinations(reagent_matrix: Array):
+func search_grid_for_combinations(reagent_matrix: Array, reagent_list: Array):
 	var grid_size = battle.grid.grid_size
 	
 	if check_combinations(grid_size, reagent_matrix):
@@ -105,7 +105,7 @@ func search_grid_for_combinations(reagent_matrix: Array):
 					return
 					
 	AudioManager.play_sfx("combine_fail")
-	battle.apply_effects(["combination_failure"])
+	battle.apply_effects(["combination_failure"], reagent_list)
 
 
 func check_combinations(grid_size: int, reagent_matrix: Array):
@@ -195,8 +195,8 @@ func _on_Battle_won(is_boss):
 		current_floor.show()
 
 
-func _on_Battle_combination_made(reagent_matrix: Array):
-	search_grid_for_combinations(reagent_matrix)
+func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
+	search_grid_for_combinations(reagent_matrix, reagent_list)
 
 
 func _on_Player_combination_discovered(combination, index):

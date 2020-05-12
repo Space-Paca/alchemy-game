@@ -32,7 +32,7 @@ func get_height():
 
 
 func set_hand(number: int):
-	if number <= 0 or number%2 != 0:
+	if number <= 0 or (number%2 == 1 and number < 5):
 		push_error("Not a valid hand size: "+ str(slots))
 		assert(false)
 	size = number
@@ -41,27 +41,36 @@ func set_hand(number: int):
 	
 	var temp_hand_slot = HANDSLOT.instance()
 	# warning-ignore:integer_division
-	var n = size/2
+	var n = ceil(size/2.0)
 	var x = -(temp_hand_slot.rect_size.x*n)/2
 	var y = ceil((number/4.0)-1) * -V_OFFSET	
 	
 	# warning-ignore:integer_division
-	for i in range(1, number/2 + 1):
-		#Add top slot
-		var hand_slot = HANDSLOT.instance()
-		hand_slot.connect("reagent_set", self, "_on_reagent_set")
-		slots.add_child(hand_slot)
-		hand_slot.rect_position.x = x
-		hand_slot.rect_position.y = y
-		#Add bottom slot
-		hand_slot = HANDSLOT.instance()
-		hand_slot.connect("reagent_set", self, "_on_reagent_set")
-		slots.add_child(hand_slot)
-		hand_slot.rect_position.x = x
-		hand_slot.rect_position.y = y + hand_slot.rect_size.y
-		
-		#Update positions
-		x = x + hand_slot.rect_size.x
+	for i in range(1, n+1):
+		if size%2 == 1 and i == ceil(n/2.0):
+			#Add middle slot
+			var hand_slot = HANDSLOT.instance()
+			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+			slots.add_child(hand_slot)
+			hand_slot.rect_position.x = x
+			hand_slot.rect_position.y = y + hand_slot.rect_size.y/2 -V_OFFSET
+			#Update positions
+			x = x + hand_slot.rect_size.x
+		else:
+			#Add top slot
+			var hand_slot = HANDSLOT.instance()
+			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+			slots.add_child(hand_slot)
+			hand_slot.rect_position.x = x
+			hand_slot.rect_position.y = y
+			#Add bottom slot
+			hand_slot = HANDSLOT.instance()
+			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+			slots.add_child(hand_slot)
+			hand_slot.rect_position.x = x
+			hand_slot.rect_position.y = y + hand_slot.rect_size.y
+			#Update positions
+			x = x + hand_slot.rect_size.x
 
 		# warning-ignore:integer_division
 		if i < number/4.0:

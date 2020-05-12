@@ -3,7 +3,7 @@ class_name Player
 
 signal combination_discovered(combination, index)
 
-const HAND_SIZES = [6,8,12]
+const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 
@@ -33,11 +33,11 @@ func _ready():
 	known_recipes.sort()
 	
 	# Initial bag
-	for _i in range(6):
+	for _i in range(5):
 		add_reagent("common")
-	for _i in range(4):
+	for _i in range(3):
 		add_reagent("damaging")
-	for _i in range(4):
+	for _i in range(3):
 		add_reagent("defensive")
 
 

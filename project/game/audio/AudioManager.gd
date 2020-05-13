@@ -1,23 +1,27 @@
 extends Node
 
 #Amplify
-const MAX_AMPLIFY = 6
-const MIN_AMPLIFY = 0
-const AMPLIFY_SPEED = 10
+const MAX_AMPLIFY = 6 #Amplify effect when player is in extreme danger
+const MIN_AMPLIFY = 0 #Value to remove effect
+const AMPLIFY_SPEED = 10 #Speed to increase or decrease amplify effect
 #Cutoff
-const CUTOFF_SPEED = 15000
-const MAX_CUTOFF = 20500
-const DANGER_CUTOFF = 10000
-const EXTREME_DANGER_CUTOFF = 2000
+const CUTOFF_SPEED = 15000 #Speed to change between cutoffs
+const MAX_CUTOFF = 20500 #Cutoff when player is > 50hp (aka no effect)
+const DANGER_CUTOFF = 10000 #Cutoff when player is < 50hp
+const EXTREME_DANGER_CUTOFF = 2000 #Cutoff when player is < 20hp
 #Bus
 const MASTER_BUS = 0
 const BGM_BUS = 1
 #Fade
-const FADEOUT_SPEED = 40
-const FADEIN_SPEED = 60
+const FADEOUT_SPEED = 40 #Speed bgms fadein
+const FADEIN_SPEED = 60 #Speed bgms fadeout
+const TRACK_FADEOUT_SPEED = 20 #Speed individual bgm tracks fadein
+const TRACK_FADEIN_SPEED = 30 #Speed individual bgm tracks fadeout
+const AUX_FADEOUT_SPEED = 40 #Speed aux bgm (heartbeat only for now) fadein
+const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
 #Volume
-const MUTE_DB = -60
-const NORMAL_DB = 0
+const MUTE_DB = -60 #Muted volume
+const NORMAL_DB = 0 #Regular volume
 #Layer
 const MAX_LAYERS = 3
 #BGM
@@ -306,14 +310,14 @@ func stop_bgm():
 func stop_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
-	var duration = (vol - MUTE_DB)/float(FADEOUT_SPEED)
+	var duration = (vol - MUTE_DB)/float(TRACK_FADEOUT_SPEED)
 	$Tween.interpolate_property(player, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
 func play_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
-	var duration = (NORMAL_DB - vol)/float(FADEIN_SPEED)
+	var duration = (NORMAL_DB - vol)/float(TRACK_FADEIN_SPEED)
 	$Tween.interpolate_property(player, "volume_db", vol, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
@@ -373,7 +377,7 @@ func play_aux_bgm(name: String):
 	player.stream = BGMS[name]
 	player.volume_db = MUTE_DB
 	player.play()
-	var duration = abs(NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED*2)
+	var duration = abs(NORMAL_DB - MUTE_DB)/float(AUX_FADEIN_SPEED*2)
 	$Tween.interpolate_property(player, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()	
 
@@ -388,7 +392,7 @@ func stop_aux_bgm():
 		fadeout.volume_db = vol
 		fadeout.stream = fadein.stream
 		fadeout.play(pos)
-		var duration = (vol - MUTE_DB)/FADEOUT_SPEED
+		var duration = (vol - MUTE_DB)/AUX_FADEOUT_SPEED
 		$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$AuxTween.start()
 		cur_aux_bgm = null

@@ -60,10 +60,15 @@ func update_audio():
 		AudioManager.stop_bgm_layer(3)
 		AudioManager.stop_aux_bgm()
 		AudioManager.start_bgm_effect("danger")
-	else:
+	elif percent > .0:
 		AudioManager.stop_bgm_layer(2)
 		AudioManager.stop_bgm_layer(3)
 		AudioManager.play_aux_bgm("heart-beat")
+		AudioManager.start_bgm_effect("extreme-danger")
+	else:
+		AudioManager.stop_bgm_layer(2)
+		AudioManager.stop_bgm_layer(3)
+		AudioManager.stop_aux_bgm()
 		AudioManager.start_bgm_effect("extreme-danger")
 
 func get_tooltips():

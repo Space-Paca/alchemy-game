@@ -282,6 +282,7 @@ func win():
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
+	AudioManager.lower_bgm_volume()
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.set_loot(gold_reward, loot)
@@ -423,6 +424,8 @@ func _on_player_died(_player):
 	for enemy in enemies_node.get_children():
 		enemy.disable()
 	add_child(GAMEOVER_SCENE.instance())
+	AudioManager.lower_bgm_volume()
+	AudioManager.stop_aux_bgm()
 
 
 func _on_DiscardBag_reagent_discarded(reagent):

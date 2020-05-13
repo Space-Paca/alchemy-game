@@ -22,6 +22,7 @@ const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
 #Volume
 const MUTE_DB = -60 #Muted volume
 const NORMAL_DB = 0 #Regular volume
+const LOWERED_DB = -20 #Lowered volume (used in victory or death screens)
 #Layer
 const MAX_LAYERS = 3
 #BGM
@@ -232,7 +233,8 @@ onready var LOCS = {}
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
 var cur_bgm = null
 var cur_aux_bgm = null
-var cur_sfx_player = 1
+var using_layers = false
+var cur_sfx_player := 1
 
 func _ready():
 	setup_locs()
@@ -259,6 +261,30 @@ func setup_locs():
 func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
 
+func lower_bgm_volume():
+	if not using_layers:
+		var duration = abs(LOWERED_DB - $BGMPlayer1.volume_db)/float(FADEOUT_SPEED)
+		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, LOWERED_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.start()
+	else:
+		for i in range(1, using_layers + 1):
+			var player = get_node("BGMPlayer"+str(i))
+			var duration = abs(LOWERED_DB - player.volume_db)/float(FADEOUT_SPEED)
+			$Tween.interpolate_property(player, "volume_db", player.volume_db, LOWERED_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.start()
+
+func resume_bgm_volume():
+	if not using_layers:
+		var duration = abs(NORMAL_DB - $BGMPlayer1.volume_db)/float(FADEIN_SPEED)
+		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.start()
+	else:
+		for i in range(1, using_layers + 1):
+			var player = get_node("BGMPlayer"+str(i))
+			var duration = abs(NORMAL_DB - player.volume_db)/float(FADEIN_SPEED)
+			$Tween.interpolate_property(player, "volume_db", player.volume_db, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.start()
+
 func play_bgm(name, layers = false):
 	if not layers:
 		assert(BGMS[name])
@@ -269,8 +295,9 @@ func play_bgm(name, layers = false):
 		stop_bgm()
 	
 	cur_bgm = name
+	using_layers = layers
 	
-	if not layers:
+	if not using_layers:
 		$BGMPlayer1.stream = BGMS[name]
 		$BGMPlayer1.volume_db = MUTE_DB
 		$BGMPlayer1.play(bgms_last_pos[name])

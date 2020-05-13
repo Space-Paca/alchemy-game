@@ -16,7 +16,13 @@ func _input(event):
 			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
 				reagent.start_hovering()
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
+		if event.pressed and reagent.can_drag:
+			var mouse_pos = get_local_mouse_position()
+			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
+			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
+				reagent.emit_signal("quick_place", self)
+	elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed and reagent.can_drag:
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \

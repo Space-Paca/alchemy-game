@@ -50,7 +50,7 @@ func get_intent_data(state):
 	var data = []
 
 	if state == "attack":
-		next_attack_value = get_damage()
+		next_attack_value = get_damage()/2
 		var intent = {}
 		intent.image = intents.attack
 		intent.value = next_attack_value
@@ -62,7 +62,7 @@ func get_intent_data(state):
 		intent1.value = next_defend_value
 		data.append(intent1)
 		var intent2 = {}
-		next_attack_value = get_damage()
+		next_attack_value = get_damage()/2
 		intent2.image = intents.attack
 		intent2.value = next_attack_value
 		data.append(intent2)

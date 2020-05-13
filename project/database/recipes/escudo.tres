@@ -13,4 +13,4 @@ effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
 description = "Gain 10 shield until end of turn."
 fav_icon = ExtResource( 1 )
-shop_cost = 58
+shop_cost = 10

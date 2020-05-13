@@ -84,6 +84,7 @@ func setup_player(_player):
 		reagent.connect("stopped_dragging", self, "_on_reagent_stop_drag")
 		reagent.connect("hovering", self, "_on_reagent_hover")
 		reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
+		reagent.connect("quick_place", self, "_on_reagent_quick_place")
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
@@ -368,16 +369,16 @@ func _on_reagent_drag(reagent):
 func _on_reagent_stop_drag(_reagent):
 	is_dragging_reagent = false
 
-
 func _on_reagent_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.hover_effect()
-
 
 func _on_reagent_stop_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.stop_hover_effect()
 
+func _on_reagent_quick_place(reagent):
+	print("clicked")
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:

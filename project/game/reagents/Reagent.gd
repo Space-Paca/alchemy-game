@@ -5,6 +5,7 @@ const SHAKE_DEGREE = 5
 signal reached_target_pos
 signal started_dragging
 signal stopped_dragging
+signal quick_place
 signal hovering
 signal stopped_hovering
 signal finished_combine_animation

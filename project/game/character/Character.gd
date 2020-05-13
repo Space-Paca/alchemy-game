@@ -107,6 +107,7 @@ func take_damage(source: Character, damage: int, type: String):
 		die()
 	return unblocked_damage
 
+
 func gain_shield(value):
 	AudioManager.play_sfx("shield_gain")
 	shield += value

@@ -1,8 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/audio/AudioManager.gd" type="Script" id=1]
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=4]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=5]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=6]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=7]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=8]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=9]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=10]
 random_pitch = 1.0
 
 [node name="AudioManager" type="Node"]
@@ -40,30 +67,40 @@ bus = "BGM"
 
 [node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFXS"]
 stream = SubResource( 1 )
+bus = "SFX"
 
 [node name="SFXPlayer2" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 2 )
+bus = "SFX"
 
 [node name="SFXPlayer3" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 3 )
+bus = "SFX"
 
 [node name="SFXPlayer4" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 4 )
+bus = "SFX"
 
 [node name="SFXPlayer5" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 5 )
+bus = "SFX"
 
 [node name="SFXPlayer6" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 6 )
+bus = "SFX"
 
 [node name="SFXPlayer7" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 7 )
+bus = "SFX"
 
 [node name="SFXPlayer8" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 8 )
+bus = "SFX"
 
 [node name="SFXPlayer9" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 9 )
+bus = "SFX"
 
 [node name="SFXPlayer10" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 1 )
+stream = SubResource( 10 )
+bus = "SFX"

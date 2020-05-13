@@ -379,7 +379,12 @@ func _on_reagent_stop_hover(reagent):
 		reagent.stop_hover_effect()
 
 func _on_reagent_quick_place(reagent):
-	print("clicked")
+	if reagent.slot:
+		if reagent.slot.type == "grid":
+			if hand.available_slot_count() > 0:
+				hand.place_reagent(reagent)
+		elif reagent.slot.type == "hand":
+			grid.quick_place(reagent)
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:

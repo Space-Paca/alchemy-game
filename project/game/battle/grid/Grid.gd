@@ -83,6 +83,19 @@ func is_empty():
 			return false
 	return true
 
+func quick_place(reagent):
+	#Search for available hint first
+	for slot in slots.get_children():
+		if not slot.get_reagent() and slot.get_hint() == reagent.type:
+			slot.set_reagent(reagent)
+			return
+	#Search for empty space after
+	for slot in slots.get_children():
+		if not slot.get_reagent():
+			slot.set_reagent(reagent)
+			return
+	#If got here, don't have an available space
+	AudioManager.play_sfx("error")
 
 func return_to_hand():
 	var reagents_to_be_sent = []

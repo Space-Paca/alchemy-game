@@ -52,6 +52,8 @@ func _process(_delta):
 				rect_position = target_position
 				emit_signal("reached_target_pos")
 
+func quick_place():
+	emit_signal("quick_place", self)
 
 func enable_dragging():
 	can_drag = true

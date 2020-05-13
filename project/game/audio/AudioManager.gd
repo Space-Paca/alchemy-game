@@ -14,7 +14,7 @@ const MASTER_BUS = 0
 const BGM_BUS = 1
 #Fade
 const FADEOUT_SPEED = 40
-const FADEIN_SPEED = 30
+const FADEIN_SPEED = 60
 #Volume
 const MUTE_DB = -60
 const NORMAL_DB = 0
@@ -41,7 +41,7 @@ const SFXS = {
 							   "random_pitch_var" : 0,
 							  },
 			"buff": {"asset" : preload("res://assets/audio/sfx/buff_generic.wav"),
-					 "base_db" : 0,
+					 "base_db" : -2,
 					 "random_db_var" : 0,
 					 "base_pitch" : 1,
 					 "random_pitch_var" : 0,
@@ -65,7 +65,7 @@ const SFXS = {
 							   "random_pitch_var" : 1,
 							  },
 			"combine": {"asset" : preload("res://assets/audio/sfx/combine.wav"),
-						"base_db" : 0,
+						"base_db" : 3	,
 						"random_db_var" : 0,
 						"base_pitch" : 1,
 						"random_pitch_var" : 0,
@@ -95,7 +95,7 @@ const SFXS = {
 							   "random_pitch_var" : 0,
 							  },
 			"damage_regular": {"asset" : preload("res://assets/audio/sfx/damage_normal.wav"),
-							   "base_db" : 0,
+							   "base_db" : 10,
 							   "random_db_var" : 0,
 							   "base_pitch" : 1,
 							   "random_pitch_var" : 0,
@@ -170,7 +170,7 @@ const SFXS = {
 							  "base_db" : -10,
 							  "random_db_var" : 1,
 							  "base_pitch" : 2,
-							  "random_pitch_var" : -1,
+							  "random_pitch_var" : 1,
 							  },
 			"open_recipe_book": {"asset" : preload("res://assets/audio/sfx/open_recipe_book.wav"),
 								 "base_db" : 0,
@@ -191,13 +191,13 @@ const SFXS = {
 							  "random_pitch_var" : 0,
 							 },
 			"shield_gain": {"asset" : preload("res://assets/audio/sfx/shield_gain.wav"),
-							"base_db" : 0,
+							"base_db" : -10,
 							"random_db_var" : 0,
 							"base_pitch" : 1,
 							"random_pitch_var" : 0,
 							},
 			"shield_hit": {"asset" : preload("res://assets/audio/sfx/shield_hit.wav"),
-						   "base_db" : 0,
+						   "base_db" : -10,
 						   "random_db_var" : 0,
 						   "base_pitch" : 1,
 						   "random_pitch_var" : 0,

@@ -230,7 +230,7 @@ const SFXS = {
 const LOC_PATH = "res://assets/audio/sfx/loc/"
 onready var LOCS = {}
 
-var bgms_last_pos = {"battle": 0, "map":0, "boss1":0}
+var bgms_last_pos = {"battle": 0, "map":0, "boss1":0, "shop":0}
 var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false

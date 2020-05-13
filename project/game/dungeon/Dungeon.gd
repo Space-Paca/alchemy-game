@@ -179,6 +179,7 @@ func _on_room_entered(room: Room):
 		current_floor.hide()
 		shop.update_currency()
 		shop.show()
+		AudioManager.play_bgm("shop")
 
 
 func _on_Battle_won(is_boss):
@@ -229,6 +230,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 func _on_Shop_closed():
 	shop.hide()
 	current_floor.show()
+	AudioManager.play_bgm("map")
 
 
 func _on_Shop_combination_bought(combination: Combination):

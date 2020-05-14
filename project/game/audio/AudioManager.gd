@@ -13,7 +13,7 @@ const EXTREME_DANGER_CUTOFF = 2000 #Cutoff when player is < 20hp
 const MASTER_BUS = 0
 const BGM_BUS = 1
 #Fade
-const FADEOUT_SPEED = 40 #Speed bgms fadein
+const FADEOUT_SPEED = 20 #Speed bgms fadein
 const FADEIN_SPEED = 60 #Speed bgms fadeout
 const TRACK_FADEOUT_SPEED = 20 #Speed individual bgm tracks fadein
 const TRACK_FADEIN_SPEED = 30 #Speed individual bgm tracks fadeout
@@ -76,13 +76,13 @@ const SFXS = {
 						"random_pitch_var" : 0,
 					   },
 			"combine_fail": {"asset" : preload("res://assets/audio/sfx/combine_fail.wav"),
-							 "base_db" : 0,
+							 "base_db" : -8,
 							 "random_db_var" : 0,
 							 "base_pitch" : 1,
 							 "random_pitch_var" : 0,
 							 },
 			"combine_success": {"asset" : preload("res://assets/audio/sfx/combine_success.wav"),
-								"base_db" : 0,
+								"base_db" : 6,
 								"random_db_var" : 0,
 								"base_pitch" : 1,
 								"random_pitch_var" : 0,
@@ -100,7 +100,7 @@ const SFXS = {
 							   "random_pitch_var" : 0,
 							  },
 			"damage_regular": {"asset" : preload("res://assets/audio/sfx/damage_normal.wav"),
-							   "base_db" : 10,
+							   "base_db" : 12,
 							   "random_db_var" : 0,
 							   "base_pitch" : 1,
 							   "random_pitch_var" : 0,
@@ -136,7 +136,7 @@ const SFXS = {
 							 "random_pitch_var" : 0,
 							},
 			"drop_reagent": {"asset" : preload("res://assets/audio/sfx/drop_reagent.wav"),
-							 "base_db" : -3,
+							 "base_db" : -0,
 							 "random_db_var" : 3,
 							 "base_pitch" : 3,
 							 "random_pitch_var" : 0.05,
@@ -190,13 +190,13 @@ const SFXS = {
 							 "random_pitch_var" : 0.5,
 							},
 			"shield_breaks": {"asset" : preload("res://assets/audio/sfx/shield_breaks.wav"),
-							  "base_db" : 0,
+							  "base_db" : -10,
 							  "random_db_var" : 0,
 							  "base_pitch" : 1,
 							  "random_pitch_var" : 0,
 							 },
 			"shield_gain": {"asset" : preload("res://assets/audio/sfx/shield_gain.wav"),
-							"base_db" : -10,
+							"base_db" : -4,
 							"random_db_var" : 0,
 							"base_pitch" : 1,
 							"random_pitch_var" : 0,

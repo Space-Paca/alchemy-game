@@ -25,7 +25,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 uniform float grayscale : hint_range(0.0, 1.0);
@@ -41,8 +41,8 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 shader_param/grayscale = 0.0
 
 [sub_resource type="Animation" id=6]
@@ -124,7 +124,7 @@ align = 1
 valign = 1
 
 [node name="Sprite" type="TextureRect" parent="."]
-material = SubResource( 10 )
+material = SubResource( 5 )
 margin_right = 256.0
 margin_bottom = 256.0
 rect_pivot_offset = Vector2( 128, 128 )

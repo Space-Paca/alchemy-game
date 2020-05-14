@@ -190,6 +190,9 @@ script = ExtResource( 14 )
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
 position = Vector2( 1303.34, 451.299 )
 
+[node name="EnemyStartPosition" type="Position2D" parent="."]
+position = Vector2( 2833.56, 534.412 )
+
 [node name="EnemiesPositions" type="Node" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]

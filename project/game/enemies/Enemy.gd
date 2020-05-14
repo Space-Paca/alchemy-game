@@ -223,15 +223,22 @@ func add_intent(texture, value):
 	
 	intent.setup(texture, value)
 
-func set_pos(pos):
-	position = pos
+func set_pos(target_pos):
+	randomize()
+	var speed = rand_range(2000, 2500)
+	var dur = (position - target_pos).length()/speed
+	$Tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
 
 func update_intent():
 	clear_intents()
 	var state = logic_.get_current_state()
 	var intent_data = data.get_intent_data(state)
 	for intent in intent_data:
-		add_intent(intent.image, intent.value)
+		if intent.has("value"):
+			add_intent(intent.image, intent.value)
+		else:
+			add_intent(intent.image, null)
 
 func get_width():
 	return sprite.texture.get_width()

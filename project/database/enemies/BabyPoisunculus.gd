@@ -66,8 +66,13 @@ func act(state):
 
 func get_intent_data(state):
 	var data = []
-
-	if state == "poison":
+	
+	if state == "init":
+		var intent = {}
+		intent.image = intents.defend
+		intent.value = start_shield
+		data.append(intent)
+	elif state == "poison":
 		next_poison_value = get_big_poison()
 		var intent = {}
 		intent.image = intents.poison
@@ -96,7 +101,13 @@ func get_intent_data(state):
 func get_intent_tooltips(state):
 	var tooltips = []
 	
-	if state == "poison" or state == "medium-poison":
+	if state == "init":
+		var tooltip = {}
+		tooltip.title = "Defending"
+		tooltip.text = "This enemy is going to defend next turn"
+		tooltip.title_image = intents.defend.get_path()
+		tooltips.append(tooltip)
+	elif state == "poison" or state == "medium-poison":
 		var tooltip = {}
 		tooltip.title = "Poisoning"
 		tooltip.text = "This enemy is spitting poison next turn"

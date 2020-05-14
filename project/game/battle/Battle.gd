@@ -5,6 +5,7 @@ extends Node2D
 signal won(is_boss)
 signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
+signal finished_enemies_init
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -26,7 +27,7 @@ onready var available_favorites = [$Favorites/FavoriteButton1,
 
 const WINDOW_W = 1920
 const WINDOW_H = 1080
-const ENEMY_MARGIN = 10
+const MAX_ENEMIES = 4
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 
@@ -44,25 +45,24 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	
 	setup_player(_player)
 	
+	effect_manager.setup(_player)
+	
 	setup_favorites(favorite_combinations)
 	
 	setup_player_ui()
 	
-	setup_enemy(_player, encounter)
-	
-	effect_manager.setup(_player, enemies_node.get_children())
+	setup_enemy(encounter)
 	
 	setup_audio(encounter)
 	
 	loot = encounter.get_loot()
 	gold_reward = encounter.gold_reward
 	
-	# For reasons I don't completely understand, Grid needs some time to actually
-	# place the slots in the correct position. Without this, all reagents will go
-	# to the first slot position.
+	#Wait sometime before starting battle
 	yield(get_tree().create_timer(1.0), "timeout")
 	
-	enemies_init()
+	if enemies_init():
+		yield(self, "finished_enemies_init")
 
 	new_player_turn()
 
@@ -108,22 +108,18 @@ func setup_favorites(favorite_combinations: Array):
 
 
 func setup_player_ui():
-	var grid_side = grid.get_width()
 	# warning-ignore:integer_division
 	var ui_center = 2*WINDOW_W/10
 	# warning-ignore:integer_division
 	var grid_center = 11*WINDOW_H/25
 	
 	#Position grid
-	#NOTE: For some reason, moving the grid changes the scale of the gridslot y value,
-	#and that messes up grid height and width getters. Storing value above to avoid this
-	#but when we have time, should inspect if this is our problem or an engine's.
 	grid.rect_position.x = ui_center
 	grid.rect_position.y = grid_center
 	#Position hand
 	var hand_margin = 14
 	hand.position.x = ui_center
-	hand.position.y = grid.rect_position.y + grid_side/2*grid.rect_scale.y + hand_margin
+	hand.position.y = grid.rect_position.y + grid.get_height()/2*grid.rect_scale.y + hand_margin
 	#Position create-recipe button
 	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
 	#Position bags
@@ -144,7 +140,7 @@ func setup_player_ui():
 	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 
 
-func setup_enemy(_player: Player, encounter: Encounter):
+func setup_enemy(encounter: Encounter):
 	if encounter.is_boss:
 		is_boss = true
 	
@@ -154,11 +150,46 @@ func setup_enemy(_player: Player, encounter: Encounter):
 		child.queue_free()
 
 	for enemy in encounter.enemies:
-		var enemy_node = EnemyManager.create_object(enemy, _player)
-		enemies_node.add_child(enemy_node)
-		enemy_node.data.connect("acted", self, "_on_enemy_acted")
-		enemy_node.connect("died", self, "_on_enemy_died")
-	#Update enemies positions
+		add_enemy(enemy)
+	
+	update_enemy_positions()
+
+func enemies_init():
+	var had_init = false
+	for enemy in enemies_node.get_children():
+		if enemy.data.battle_init:
+			had_init = true
+			enemy.act()
+			yield(enemy, "action_resolved")
+			#Wait a bit before next enemy/start player turn
+			yield(get_tree().create_timer(.3), "timeout")
+	
+	emit_signal("finished_enemies_init")
+	return had_init
+
+func setup_audio(encounter : Encounter):
+	if encounter.is_boss:
+		AudioManager.play_bgm("boss1", 3)
+	else:
+		AudioManager.play_bgm("battle", 3)
+	player_ui.update_audio()
+
+func add_enemy(enemy, initial_pos = false):
+	var enemy_node = EnemyManager.create_object(enemy, player)
+	enemies_node.add_child(enemy_node)
+	
+	if initial_pos:
+		enemy_node.position = initial_pos
+	else:
+		enemy_node.position = $EnemyStartPosition.position
+		
+	enemy_node.data.connect("acted", self, "_on_enemy_acted")
+	enemy_node.connect("died", self, "_on_enemy_died")
+	effect_manager.add_enemy(enemy_node)
+	
+	enemy_node.update_intent()
+
+func update_enemy_positions():
 	var enemy_count = enemies_node.get_child_count()
 	if enemy_count == 4:
 		set_enemy_pos(0, 1)
@@ -178,23 +209,6 @@ func setup_enemy(_player: Player, encounter: Encounter):
 		print(enemy_count, " is not a valid enemy number")
 		assert(false)
 	
-	#Update enemies intent
-	for enemy in enemies_node.get_children():
-		enemy.update_intent()
-
-func enemies_init():
-	for enemy in enemies_node.get_children():
-		if enemy.data.battle_init:
-			enemy.act()
-			yield(enemy, "action_resolved")
-
-func setup_audio(encounter : Encounter):
-	if encounter.is_boss:
-		AudioManager.play_bgm("boss1", 3)
-	else:
-		AudioManager.play_bgm("battle", 3)
-	player_ui.update_audio()
-
 
 func new_player_turn():
 	if ended:
@@ -412,6 +426,13 @@ func _on_enemy_acted(enemy, actions):
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "status":
 			args.target.add_status(args.status, args.amount, args.positive)
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.5), "timeout")
+		elif name == "spawn":
+			if enemies_node.get_child_count() < MAX_ENEMIES:
+				add_enemy(args.enemy, enemy.position)
+				update_enemy_positions()
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")

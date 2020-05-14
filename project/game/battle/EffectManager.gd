@@ -9,16 +9,17 @@ var player : Player
 var target : Enemy
 
 
-func setup(_player: Player, _enemies: Array):
+func setup(_player: Player):
 	player = _player
-	enemies = _enemies
-	for enemy in enemies:
-		enemy.connect("selected", self, "_on_enemy_selected")
-
+	enemies = []
+	
+func add_enemy(enemy : Enemy):
+	enemies.append(enemy)
+	# warning-ignore:return_value_discarded
+	enemy.connect("selected", self, "_on_enemy_selected")
 
 func remove_enemy(enemy: Enemy):
 	enemies.erase(enemy)
-
 
 func resolve():
 	yield(get_tree(), "physics_frame")

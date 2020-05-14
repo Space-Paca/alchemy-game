@@ -7,21 +7,26 @@ var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
 			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
+			   "spawn": preload("res://assets/images/enemies/intents/random.png"),
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Tanky"
 var sfx = "enemy_1"
-var hp = 30
+var hp = 25
 var battle_init = false
 var size = "medium"
 var damage = [5, 6]
 var small_defense = [4, 5]
 var defense = [8, 10]
 
-var states = ["attack", "defend"]
+var states = ["attack", "defend", "spawn"]
 var connections = [
-					  ["attack", "defend", 1],
-					  ["defend", "attack", 1],
+					  ["attack", "defend", 5],
+					  ["attack", "spawn", 5],
+					  ["defend", "attack", 5],
+					  ["defend", "spawn", 5],
+					  ["spawn", "attack", 1],
+					  ["spawn", "defend", 1],
 				  ]
 var first_state = ["attack", "defend"]
 
@@ -50,6 +55,8 @@ func act(state):
 							 			 ["damage", {"value": next_attack_value, "type": "regular"}]])
 	elif state == "defend":
 		emit_signal("acted", enemy_ref, [["shield", {"value": next_defend_value}]])
+	elif state == "spawn":
+		emit_signal("acted", enemy_ref, [["spawn", {"enemy": "baby_poison"}]])
 
 func get_intent_data(state):
 	var data = []
@@ -70,6 +77,10 @@ func get_intent_data(state):
 		next_defend_value = get_defense()
 		intent.image = intents.defend
 		intent.value = next_defend_value
+		data.append(intent)
+	elif state == "spawn":
+		var intent = {}
+		intent.image = intents.spawn
 		data.append(intent)
 
 	return data
@@ -94,6 +105,12 @@ func get_intent_tooltips(state):
 		tooltip2.text = "This enemy is attacking next turn"
 		tooltip2.title_image = intents.attack.get_path()
 		tooltips.append(tooltip2)
+	if state == "spawn":
+		var tooltip = {}
+		tooltip.title = "Spawning"
+		tooltip.text = "This enemy is going to spawn an enemy next turn"
+		tooltip.title_image = intents.spawn.get_path()
+		tooltips.append(tooltip)
 	
 	return tooltips
 

@@ -21,7 +21,7 @@ const AUX_FADEOUT_SPEED = 40 #Speed aux bgm (heartbeat only for now) fadein
 const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
 #Volume
 const MUTE_DB = -60 #Muted volume
-const NORMAL_DB = -60 #Regular volume
+const NORMAL_DB = 0 #Regular volume
 const LOWERED_DB = -20 #Lowered volume (used in victory or death screens)
 #Layer
 const MAX_LAYERS = 3

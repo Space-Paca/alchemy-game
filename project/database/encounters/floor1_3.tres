@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 1
-enemies = [ "baby_poison", "tank_humunculus", "baby_poison" ]
+enemies = [ "baby_poison", "spawner_humunculus", "baby_poison" ]
 gold_reward = 15
 loot_table = {
 "catalyst": 0,

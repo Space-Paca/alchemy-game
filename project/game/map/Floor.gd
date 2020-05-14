@@ -51,7 +51,7 @@ func create_room(from : int, position : Vector2):
 		var previous_room = rooms[previous_pos]
 		previous_room.exits[OPPOSITE[from]] = true
 		randomize()
-		if randf() > .3:
+		if randf() > .2:
 			room.set_type(Room.Type.MONSTER)
 			room.encounter = EncounterManager.get_random_encounter()
 		else:

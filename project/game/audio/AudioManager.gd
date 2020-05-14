@@ -21,26 +21,15 @@ const AUX_FADEOUT_SPEED = 40 #Speed aux bgm (heartbeat only for now) fadein
 const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
 #Volume
 const MUTE_DB = -60 #Muted volume
-const NORMAL_DB = 0 #Regular volume
-const LOWERED_DB = -20 #Lowered volume (used in victory or death screens)
 #Layer
 const MAX_LAYERS = 3
 #BGM
-const BGMS = {"battle-l1": preload("res://assets/audio/bgm/battle_1_layer_1.ogg"),
-			  "battle-l2": preload("res://assets/audio/bgm/battle_1_layer_2.ogg"),
-			  "battle-l3": preload("res://assets/audio/bgm/battle_1_layer_3.ogg"),
-			  "boss1-l1": preload("res://assets/audio/bgm/boss_1_layer_1.ogg"),
-			  "boss1-l2": preload("res://assets/audio/bgm/boss_1_layer_2.ogg"),
-			  "boss1-l3": preload("res://assets/audio/bgm/boss_1_layer_3.ogg"),
-			  "heart-beat": preload("res://assets/audio/bgm/battle_heart_beat.ogg"),
-			  "map": preload("res://assets/audio/bgm/map_1.ogg"),
-			  "shop": preload("res://assets/audio/bgm/shop.ogg"),
-			 }
+const BGM_PATH = "res://database/audio/bgms/"
+const BGMS = {}
 #SFX
 const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
 onready var SFXS = {}
-
 #LOCS
 const LOC_PATH = "res://assets/audio/sfx/loc/"
 onready var LOCS = {}
@@ -52,8 +41,24 @@ var using_layers = false
 var cur_sfx_player := 1
 
 func _ready():
+	setup_bgms()
 	setup_sfxs()
 	setup_locs()
+
+func setup_bgms():
+	var dir = Directory.new()
+	if dir.open(BGM_PATH) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name != "." and file_name != "..":
+				#Found enemy sfx file, creating data on memory
+				BGMS[file_name.replace(".tres", "")] = load(BGM_PATH + file_name)
+				
+			file_name = dir.get_next()
+	else:
+		push_error("An error occurred when trying to access bgms path.")
+		assert(false)
 
 func setup_sfxs():
 	var dir = Directory.new()
@@ -67,7 +72,7 @@ func setup_sfxs():
 				
 			file_name = dir.get_next()
 	else:
-		push_error("An error occurred when trying to access locutions path.")
+		push_error("An error occurred when trying to access sfxs path.")
 		assert(false)
 
 func setup_locs():
@@ -94,26 +99,30 @@ func get_bgm_layer(name, layer):
 
 func lower_bgm_volume():
 	if not using_layers:
-		var duration = abs(LOWERED_DB - $BGMPlayer1.volume_db)/float(FADEOUT_SPEED)
-		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, LOWERED_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		var db = BGMS[cur_bgm].lowered_db
+		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEOUT_SPEED)
+		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	else:
 		for i in range(1, using_layers + 1):
 			var player = get_node("BGMPlayer"+str(i))
-			var duration = abs(LOWERED_DB - player.volume_db)/float(FADEOUT_SPEED)
-			$Tween.interpolate_property(player, "volume_db", player.volume_db, LOWERED_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			var db = get_bgm_layer(cur_bgm, i).lowered_db
+			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
+			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 
 func resume_bgm_volume():
 	if not using_layers:
-		var duration = abs(NORMAL_DB - $BGMPlayer1.volume_db)/float(FADEIN_SPEED)
-		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		var db = BGMS[cur_bgm].base_db
+		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEIN_SPEED)
+		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	else:
 		for i in range(1, using_layers + 1):
 			var player = get_node("BGMPlayer"+str(i))
-			var duration = abs(NORMAL_DB - player.volume_db)/float(FADEIN_SPEED)
-			$Tween.interpolate_property(player, "volume_db", player.volume_db, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			var db = get_bgm_layer(cur_bgm, i).base_db
+			var duration = abs(db - player.volume_db)/float(FADEIN_SPEED)
+			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 
 func play_bgm(name, layers = false):
@@ -129,20 +138,21 @@ func play_bgm(name, layers = false):
 	using_layers = layers
 	
 	if not using_layers:
-		$BGMPlayer1.stream = BGMS[name]
+		$BGMPlayer1.stream = BGMS[name].asset
 		$BGMPlayer1.volume_db = MUTE_DB
 		$BGMPlayer1.play(bgms_last_pos[name])
-		var duration = (NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED)
-		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+		var duration = (BGMS[name].base_db - MUTE_DB)/float(FADEIN_SPEED)
+		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, BGMS[name].base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 	else:
 		for i in range(1, layers + 1):
 			var player = get_node("BGMPlayer"+str(i))
-			player.stream = get_bgm_layer(name, i)
+			var layer = get_bgm_layer(name, i)
+			player.stream = layer.asset
 			player.volume_db = MUTE_DB
 			player.play(bgms_last_pos[name])
-			var duration = (NORMAL_DB - MUTE_DB)/float(FADEIN_SPEED)
-			$Tween.interpolate_property(player, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+			var duration = (layer.base_db - MUTE_DB)/float(FADEIN_SPEED)
+			$Tween.interpolate_property(player, "volume_db", MUTE_DB, layer.base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 
 func stop_bgm():
@@ -175,8 +185,9 @@ func stop_bgm_layer(layer: int):
 func play_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
-	var duration = (NORMAL_DB - vol)/float(TRACK_FADEIN_SPEED)
-	$Tween.interpolate_property(player, "volume_db", vol, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	var db = get_bgm_layer(cur_bgm, layer).base_db
+	var duration = (db - vol)/float(TRACK_FADEIN_SPEED)
+	$Tween.interpolate_property(player, "volume_db", vol, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
 func remove_bgm_effect():
@@ -232,11 +243,12 @@ func play_aux_bgm(name: String):
 	cur_aux_bgm = name
 	
 	var player = $AuxBGMPlayer
-	player.stream = BGMS[name]
+	player.stream = BGMS[name].asset
 	player.volume_db = MUTE_DB
 	player.play()
-	var duration = abs(NORMAL_DB - MUTE_DB)/float(AUX_FADEIN_SPEED*2)
-	$Tween.interpolate_property(player, "volume_db", MUTE_DB, NORMAL_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	var db = BGMS[name].base_db
+	var duration = abs(db - MUTE_DB)/float(AUX_FADEIN_SPEED*2)
+	$Tween.interpolate_property(player, "volume_db", MUTE_DB, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()	
 
 func stop_aux_bgm():

@@ -7,6 +7,7 @@ var matrix : Array
 var known_matrix : Array
 var unknown_reagent_coords : Array
 var discovered : bool
+var reagent_amounts := {}
 
 
 func create_from_recipe(_recipe: Recipe):
@@ -14,8 +15,16 @@ func create_from_recipe(_recipe: Recipe):
 	grid_size = recipe.grid_size
 	var available_positions := []
 	var elements := (recipe.reagents.duplicate() as Array)
-	elements.shuffle()
 	
+	# Counting reagents
+	elements.sort()
+	for reagent in elements:
+		if reagent_amounts.has(reagent):
+			reagent_amounts[reagent] += 1
+		else:
+			reagent_amounts[reagent] = 1
+	
+	# Initializing matrices
 	for i in range(grid_size):
 		var line = []
 		var unknown_line = []
@@ -28,6 +37,7 @@ func create_from_recipe(_recipe: Recipe):
 		known_matrix.append(unknown_line)
 	
 	# Placing the first two reagents that guarantee grid size consistency
+	elements.shuffle()
 	var pos1 : Array
 	var pos2 : Array
 	if randf() < .5:

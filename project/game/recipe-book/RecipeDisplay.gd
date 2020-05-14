@@ -7,10 +7,12 @@ signal favorite_toggled(combination, button_pressed)
 
 onready var description = $Panel/MarginContainer/Description
 onready var favorite_button = $Panel/FavoriteButton
-onready var grid = $Panel/MarginContainer/VBoxContainer/CenterContainer/GridContainer
+onready var grid = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/GridContainer
 onready var title = $Panel/MarginContainer/VBoxContainer/Title
+onready var reagent_list = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/ReagentList
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
+const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
 
 var combination : Combination
 var reagent_array := []
@@ -29,6 +31,15 @@ func set_combination(_combination: Combination):
 			var reagent = REAGENT.instance()
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
+	
+	if combination.discovered:
+		reagent_list.queue_free()
+	else:
+		for reagent in combination.reagent_amounts:
+			var reagent_amount = REAGENT_AMOUNT.instance()
+			reagent_list.add_child(reagent_amount)
+			reagent_amount.set_reagent(reagent)
+			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 
 
 func update_combination():
@@ -36,6 +47,9 @@ func update_combination():
 		for j in range(combination.grid_size):
 			var reagent = grid.get_child(i*combination.grid_size + j)
 			reagent.set_reagent(combination.known_matrix[i][j])
+	
+	if combination.discovered:
+		reagent_list.queue_free()
 
 
 func unlock_mastery():

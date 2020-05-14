@@ -103,6 +103,9 @@ func update_status():
 
 
 func discover_combination(combination: Combination):
+	if (known_recipes.has(combination.recipe.name)):
+		return
+	
 	var recipe_name = combination.recipe.name
 	var index = known_recipes.bsearch(recipe_name)
 	known_recipes.insert(index, recipe_name)

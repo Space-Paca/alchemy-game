@@ -38,7 +38,7 @@ func update_combination(combination: Combination):
 
 func create_hand(battle):
 	battle.connect("current_reagents_updated", self, "update_hand")
-	hand_grid.columns = battle.hand.size / 2
+	hand_grid.columns = ceil(battle.hand.size / 2.0)
 	for _i in range(battle.hand.size):
 		var reagent = REAGENT.instance()
 		reagent.rect_min_size = Vector2(100, 100)

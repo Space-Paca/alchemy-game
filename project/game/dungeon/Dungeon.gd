@@ -171,15 +171,22 @@ func new_battle(encounter: Encounter):
 	recipe_book.create_hand(battle)
 
 
+func open_shop():
+	AudioManager.play_bgm("shop")
+	current_floor.hide()
+	shop.update_currency()
+	shop.show()
+	
+	for shop_recipe in shop.recipes:
+		player.discover_combination(shop_recipe.combination)
+
+
 func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS or room.type == Room.Type.ELITE:
 		new_battle(room.encounter)
 		current_floor.hide()
 	elif room.type == Room.Type.SHOP:
-		current_floor.hide()
-		shop.update_currency()
-		shop.show()
-		AudioManager.play_bgm("shop")
+		open_shop()
 
 
 func _on_Battle_won(is_boss):

@@ -1,9 +1,12 @@
 extends Node
 
 var boss_encounters := {}
+var elite_encounters := {}
 var encounters := {}
 var encounter_pool : Array
 var encounter_index : int
+var elite_encounter_pool : Array
+var elite_encounter_index : int
 
 
 func _ready():
@@ -21,6 +24,10 @@ func _ready():
 					if not boss_encounters.has(encounter.level):
 						boss_encounters[encounter.level] = []
 					boss_encounters[encounter.level].append(encounter)
+				elif encounter.is_elite:
+					if not elite_encounters.has(encounter.level):
+						elite_encounters[encounter.level] = []
+					elite_encounters[encounter.level].append(encounter)
 				else:
 					if not encounters.has(encounter.level):
 						encounters[encounter.level] = []
@@ -31,9 +38,15 @@ func _ready():
 
 
 func set_random_encounter_pool(level: int):
+	#Regular enemies
 	encounter_pool = encounters[level].duplicate()
 	encounter_index = 0
 	encounter_pool.shuffle()
+	
+	#Elite enemies
+	elite_encounter_pool = elite_encounters[level].duplicate()
+	elite_encounter_index = 0
+	elite_encounter_pool.shuffle()
 
 
 func get_random_encounter() -> Encounter:
@@ -45,6 +58,14 @@ func get_random_encounter() -> Encounter:
 	encounter_index += 1
 	return encounter
 
+func get_random_elite_encounter() -> Encounter:
+	if elite_encounter_index >= elite_encounter_pool.size():
+		elite_encounter_pool.shuffle()
+		elite_encounter_index = 0
+	
+	var encounter = elite_encounter_pool[elite_encounter_index]
+	elite_encounter_index += 1
+	return encounter
 
 func get_random_boss_encounter(level: int) -> Encounter:
 	var i = randi() % boss_encounters[level].size()

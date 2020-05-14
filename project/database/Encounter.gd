@@ -2,8 +2,10 @@ extends Resource
 class_name Encounter
 
 export(bool) var is_boss = false
+export(bool) var is_elite = false
 export(int, 1, 3) var level = 1
-export(Array, String, "humunculus", "baby_humunculus", "wolf", "robot", "poison") var enemies
+export(Array, String, "humunculus", "baby_humunculus", "wolf", "robot", "poison",
+					  "baby_poison", "tank_humunculus", "spawner_humunculus") var enemies
 
 # Loot table
 export var gold_reward := 0

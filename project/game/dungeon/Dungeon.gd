@@ -172,7 +172,7 @@ func new_battle(encounter: Encounter):
 
 
 func _on_room_entered(room: Room):
-	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
+	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS or room.type == Room.Type.ELITE:
 		new_battle(room.encounter)
 		current_floor.hide()
 	elif room.type == Room.Type.SHOP:

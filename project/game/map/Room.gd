@@ -6,7 +6,7 @@ signal entered(room)
 onready var icon = $Icon
 
 enum { N, W, E, S }
-enum Type { EMPTY, MONSTER, BOSS, SHOP }
+enum Type { EMPTY, MONSTER, BOSS, SHOP, ELITE }
 
 const SIZE := Vector2(160, 90)
 
@@ -58,5 +58,5 @@ func set_type(new_type : int):
 
 func _on_Room_pressed():
 	emit_signal("entered", self)
-	if type == Type.MONSTER:
+	if type == Type.MONSTER or type == Type.ELITE:
 		set_type(Type.EMPTY)

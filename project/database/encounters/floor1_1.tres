@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 is_boss = false
+is_elite = false
 level = 1
 enemies = [ "humunculus" ]
 gold_reward = 10

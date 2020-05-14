@@ -50,8 +50,13 @@ func create_room(from : int, position : Vector2):
 		var previous_pos = position + OFFSETS[from]
 		var previous_room = rooms[previous_pos]
 		previous_room.exits[OPPOSITE[from]] = true
-		room.set_type(Room.Type.MONSTER)
-		room.encounter = EncounterManager.get_random_encounter()
+		randomize()
+		if randf() > .3:
+			room.set_type(Room.Type.MONSTER)
+			room.encounter = EncounterManager.get_random_encounter()
+		else:
+			room.set_type(Room.Type.ELITE)
+			room.encounter = EncounterManager.get_random_elite_encounter()
 		if previous_pos != Vector2():
 			room.hide()
 	else:

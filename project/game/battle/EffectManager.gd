@@ -50,7 +50,7 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "shield":
 			shield(effect.value)
 		elif effect.type == "heal":
-			heal(effect.type)
+			heal(effect.value)
 		yield(self, "effect_resolved")
 		yield(get_tree().create_timer(.3), "timeout")
 	

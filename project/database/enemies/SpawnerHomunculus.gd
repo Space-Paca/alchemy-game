@@ -9,18 +9,18 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png
 			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
-var name = "Humunculus"
+var name = "Tanky"
 var sfx = "enemy_1"
-var hp = 50
+var hp = 30
 var battle_init = false
 var size = "medium"
-var damage = [10, 15]
-var defense = [4, 6]
+var damage = [5, 6]
+var small_defense = [4, 5]
+var defense = [8, 10]
 
 var states = ["attack", "defend"]
 var connections = [
-					  ["attack", "defend", 5],
-					  ["attack", "attack", 5],
+					  ["attack", "defend", 1],
 					  ["defend", "attack", 1],
 				  ]
 var first_state = ["attack", "defend"]
@@ -36,51 +36,54 @@ func get_damage():
 	randomize()
 	return randi()%(damage[1]-damage[0]+1)+damage[0]
 
+func get_small_defense():
+	randomize()
+	return randi()%(small_defense[1]-small_defense[0]+1)+small_defense[0]
+
 func get_defense():
 	randomize()
 	return randi()%(defense[1]-defense[0]+1)+defense[0]
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "regular"}]])
-	elif state == "defend":
 		emit_signal("acted", enemy_ref, [["shield", {"value": next_defend_value}], \
-										 ["damage", {"value": next_attack_value, "type": "regular"}]])
+							 			 ["damage", {"value": next_attack_value, "type": "regular"}]])
+	elif state == "defend":
+		emit_signal("acted", enemy_ref, [["shield", {"value": next_defend_value}]])
 
 func get_intent_data(state):
 	var data = []
 
 	if state == "attack":
-		next_attack_value = get_damage()/2
+		var intent1 = {}
+		next_defend_value = get_small_defense()
+		intent1.image = intents.defend
+		intent1.value = next_defend_value
+		data.append(intent1)
+		next_attack_value = get_damage()
 		var intent = {}
 		intent.image = intents.attack
 		intent.value = next_attack_value
 		data.append(intent)
 	elif state == "defend":
-		var intent1 = {}
+		var intent = {}
 		next_defend_value = get_defense()
-		intent1.image = intents.defend
-		intent1.value = next_defend_value
-		data.append(intent1)
-		var intent2 = {}
-		next_attack_value = get_damage()/2
-		intent2.image = intents.attack
-		intent2.value = next_attack_value
-		data.append(intent2)
+		intent.image = intents.defend
+		intent.value = next_defend_value
+		data.append(intent)
 
-	
 	return data
 
 func get_intent_tooltips(state):
 	var tooltips = []
 	
-	if state == "attack":
+	if state == "defend":
 		var tooltip = {}
-		tooltip.title = "Attacking"
-		tooltip.text = "This enemy is attacking next turn"
-		tooltip.title_image = intents.attack.get_path()
+		tooltip.title = "Defending"
+		tooltip.text = "This enemy is going to defend next turn"
+		tooltip.title_image = intents.defend.get_path()
 		tooltips.append(tooltip)
-	elif state == "defend":
+	elif state == "attack":
 		var tooltip1 = {}
 		tooltip1.title = "Defending"
 		tooltip1.text = "This enemy is going to defend next turn"

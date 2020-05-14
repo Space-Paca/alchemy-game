@@ -61,6 +61,8 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	# place the slots in the correct position. Without this, all reagents will go
 	# to the first slot position.
 	yield(get_tree().create_timer(1.0), "timeout")
+	
+	enemies_init()
 
 	new_player_turn()
 
@@ -180,6 +182,11 @@ func setup_enemy(_player: Player, encounter: Encounter):
 	for enemy in enemies_node.get_children():
 		enemy.update_intent()
 
+func enemies_init():
+	for enemy in enemies_node.get_children():
+		if enemy.data.battle_init:
+			enemy.act()
+			yield(enemy, "action_resolved")
 
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:

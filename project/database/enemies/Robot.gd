@@ -16,6 +16,7 @@ var image = "res://assets/images/enemies/robot/robotIDLE.png"
 var name = "BeepBoop"
 var sfx = "boss_1"
 var hp = 50
+var battle_init = false
 var size = "big"
 var damage = [3, 5]
 var temp_buff = 0

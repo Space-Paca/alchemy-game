@@ -16,7 +16,7 @@ const BGM_BUS = 1
 const FADEOUT_SPEED = 20 #Speed bgms fadein
 const FADEIN_SPEED = 60 #Speed bgms fadeout
 const TRACK_FADEOUT_SPEED = 20 #Speed individual bgm tracks fadein
-const TRACK_FADEIN_SPEED = 30 #Speed individual bgm tracks fadeout
+const TRACK_FADEIN_SPEED = 60 #Speed individual bgm tracks fadeout
 const AUX_FADEOUT_SPEED = 40 #Speed aux bgm (heartbeat only for now) fadein
 const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
 #Volume

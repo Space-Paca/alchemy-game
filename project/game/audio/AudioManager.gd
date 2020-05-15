@@ -25,7 +25,7 @@ const MUTE_DB = -60 #Muted volume
 const MAX_LAYERS = 3
 #BGM
 const BGM_PATH = "res://database/audio/bgms/"
-const BGMS = {}
+onready var BGMS = {}
 #SFX
 const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
@@ -308,7 +308,7 @@ func play_enemy_hit_sfx(enemy: String):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("hit_var"+str(number)):
 		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
 		assert(false)
-		
+	
 	var sfx = LOCS[enemy]
 	var player = get_sfx_player()
 	player.stop()

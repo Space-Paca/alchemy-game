@@ -5,7 +5,8 @@ signal bought(combination)
 
 onready var grid = $CenterContainer/VBoxContainer/CenterContainer/RecipeGrid
 onready var name_label = $CenterContainer/VBoxContainer/RecipeName
-onready var reagent_list = $CenterContainer/VBoxContainer/MarginContainer/ReagentList
+onready var description_label = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/DescriptionContainer/DescriptionLabel
+onready var reagent_list = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/ReagentContainer/ReagentList
 onready var buy_button = $CenterContainer/VBoxContainer/Buy
 onready var hint_button = $CenterContainer/VBoxContainer/Hint
 
@@ -25,6 +26,9 @@ func set_combination(_combination: Combination):
 	# NAME
 	name_label.text = combination.recipe.name
 	
+	# DESCRIPTION
+	description_label.text = combination.recipe.description
+	
 	# COST
 	buy_cost = combination.recipe.shop_cost
 	hint_cost = int(ceil(buy_cost * HINT_COST_RATIO))
@@ -42,17 +46,11 @@ func set_combination(_combination: Combination):
 	grid.columns = combination.grid_size
 	
 	# REAGENTS
-	var reagent_count = {}
-	for reagent in combination.recipe.reagents:
-		if reagent in reagent_count:
-			reagent_count[reagent] += 1
-		else:
-			reagent_count[reagent] = 1
-	for reagent in reagent_count:
+	for reagent in combination.reagent_amounts:
 		var reagent_amount_display = REAGENT_AMOUNT.instance()
 		reagent_list.add_child(reagent_amount_display)
 		reagent_amount_display.set_reagent(reagent)
-		reagent_amount_display.set_amount(reagent_count[reagent])
+		reagent_amount_display.set_amount(combination.reagent_amounts[reagent])
 
 
 func update_display():

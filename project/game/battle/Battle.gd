@@ -298,7 +298,7 @@ func win():
 		AudioManager.play_sfx("win_normal_battle")
 	
 	ended = true
-	player.add_currency(gold_reward)
+#	player.add_currency(gold_reward)
 	TooltipLayer.clean_tooltips()
 	disable_player()
 	var win_screen = VICTORY_SCENE.instance()
@@ -306,6 +306,7 @@ func win():
 	AudioManager.lower_bgm_volume()
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
+	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
 	win_screen.set_loot(gold_reward, loot)
 
 
@@ -517,6 +518,10 @@ func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent)
 
 
+func _on_win_screen_reagent_sold(gold_value: int):
+	player.add_currency(gold_value)
+
+
 func _on_Hand_hand_slot_reagent_set():
 	var reagent_array = hand.get_reagent_names()
 	
@@ -573,3 +578,7 @@ func _on_FavoriteButton_mouse_entered(index: int):
 
 func _on_FavoriteButton_mouse_exited():
 	unhighlight_reagents()
+
+
+func _on_Button_pressed():
+	win()

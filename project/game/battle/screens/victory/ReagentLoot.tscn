@@ -6,17 +6,17 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 128
+size = 64
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 174.011, 65.4574 )
+extents = Vector2( 302, 32 )
 
 [node name="ReagentLoot" type="HBoxContainer"]
-margin_right = 478.0
-margin_bottom = 128.0
+margin_right = 624.0
+margin_bottom = 64.0
 custom_constants/separation = 20
 script = ExtResource( 3 )
 __meta__ = {
@@ -24,34 +24,45 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="."]
-margin_left = 148.0
-margin_right = 348.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 200, 0 )
+[node name="GetButton" type="Button" parent="."]
+margin_left = 84.0
+margin_right = 184.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "GET!"
 
+[node name="SellButton" type="Button" parent="."]
+margin_left = 204.0
+margin_right = 604.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 400, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "TRANSMUTE (WW GOLD)"
+
 [node name="TooltipPosition" type="Control" parent="."]
-margin_left = 368.0
-margin_right = 368.0
-margin_bottom = 128.0
+margin_left = 624.0
+margin_right = 624.0
+margin_bottom = 64.0
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
-position = Vector2( 174.409, 64.2384 )
+position = Vector2( 302, 32 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )
-[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
-[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="button_down" from="GetButton" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="GetButton" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="GetButton" to="." method="_on_GetButton_pressed"]
+[connection signal="button_down" from="SellButton" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="SellButton" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="SellButton" to="." method="_on_SellButton_pressed"]
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

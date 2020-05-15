@@ -90,7 +90,7 @@ margin_right = 4.0
 
 [node name="Description" type="Label" parent="Panel/MarginContainer"]
 margin_left = 20.0
-margin_top = 476.0
+margin_top = 465.0
 margin_right = 295.0
 margin_bottom = 490.0
 size_flags_vertical = 8

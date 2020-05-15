@@ -181,6 +181,8 @@ func new_battle(encounter: Encounter):
 	battle.connect("won", self, "_on_Battle_won")
 # warning-ignore:return_value_discarded
 	battle.connect("finished", self, "_on_Battle_finished")
+# warning-ignore:return_value_discarded
+	battle.connect("combination_rewarded, self, _on_Battle_combination_rewarded")
 	
 	recipe_book.create_hand(battle)
 
@@ -235,6 +237,10 @@ func _on_Battle_finished(is_boss):
 			$Player.level_up()
 	else:
 		current_floor.show()
+
+
+func _on_Battle_combination_rewarded(combination):
+	recipe_book.update_combination(combination)
 
 
 func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):

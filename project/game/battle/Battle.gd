@@ -7,6 +7,7 @@ signal finished(is_boss)
 signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
+signal combination_rewarded(combination)
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -183,7 +184,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
-#	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
+	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
 	
 	win_screen.set_loot(encounter.gold_reward, encounter.get_loot())
 
@@ -540,8 +541,8 @@ func _on_win_screen_reagent_sold(gold_value: int):
 	player.add_currency(gold_value)
 
 
-#func _on_win_screen_combination_chosen(combination: Combination):
-#	pass
+func _on_win_screen_combination_chosen(combination: Combination):
+	emit_signal("combination_rewarded", combination)
 
 
 func _on_Hand_hand_slot_reagent_set():

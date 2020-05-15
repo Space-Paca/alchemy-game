@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal continue_pressed
-#signal combination_chosen(combination)
+signal combination_chosen(combination)
 signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
 
@@ -71,4 +71,4 @@ func _on_WinRecipe_chosen(chosen_recipe):
 	
 	rewards_container.show()
 	
-#	emit_signal("combination_chosen", chosen_recipe.combination)
+	emit_signal("combination_chosen", chosen_recipe.combination)

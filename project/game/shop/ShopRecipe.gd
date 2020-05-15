@@ -74,6 +74,7 @@ func update_display():
 
 func _on_Buy_pressed():
 	if player.spend_currency(buy_cost):
+		AudioManager.play_sfx("buy")
 		combination.discover_all_reagents()
 		update_display()
 		emit_signal("bought", combination)

@@ -8,6 +8,7 @@ const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
 const FLOOR_SIZE := [10, 20, 30]
 const MAX_FLOOR = 3
+const RECIPES_REWARDED_PER_BATTLE = 3
 
 var battle
 var combinations := {}
@@ -16,6 +17,7 @@ var floor_level := 1
 var times_recipe_made := {}
 var favorite_combinations := []
 var max_favorites := 8
+var possible_rewarded_combinations := []
 
 var debug_recipes_unlock = false
 
@@ -44,6 +46,8 @@ func create_combinations():
 	for recipe in RecipeManager.recipes.values():
 		var combination = Combination.new()
 		combination.create_from_recipe(recipe)
+		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")
+		
 		if combinations.has(combination.grid_size):
 			(combinations[combination.grid_size] as Array).append(combination)
 		else:
@@ -62,20 +66,27 @@ func create_floor(level: int):
 		push_error("create_floor: Error")
 		assert(false)
 	add_child(current_floor)
-	setup_shop()
-
-
-func setup_shop():
-	var possible_combinations = []
+	
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == floor_level and not\
 					player.known_recipes.has(combination.recipe.name):
-				possible_combinations.append(combination)
+				possible_rewarded_combinations.append(combination)
 	
-	possible_combinations.shuffle()
+	setup_shop()
+
+
+func setup_shop():
+	var shop_combinations = []
+	possible_rewarded_combinations.shuffle()
+	for i in range(shop.sold_amount):
+		if i < possible_rewarded_combinations.size():
+			shop_combinations.append(possible_rewarded_combinations[i])
+		else:
+			shop_combinations.append(null)
+	
 	shop.player = player
-	shop.set_combinations(possible_combinations.slice(0, shop.sold_amount - 1))
+	shop.set_combinations(shop_combinations)
 
 
 func search_grid_for_combinations(reagent_matrix: Array, reagent_list: Array):
@@ -162,11 +173,14 @@ func new_battle(encounter: Encounter):
 	assert(battle == null)
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
-	battle.setup(player, encounter, favorite_combinations)
+	
+	battle.setup(player, encounter, favorite_combinations, possible_rewarded_combinations)
 # warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 # warning-ignore:return_value_discarded
 	battle.connect("won", self, "_on_Battle_won")
+# warning-ignore:return_value_discarded
+	battle.connect("finished", self, "_on_Battle_finished")
 	
 	recipe_book.create_hand(battle)
 
@@ -181,6 +195,10 @@ func open_shop():
 		player.discover_combination(shop_recipe.combination)
 
 
+func _on_Combination_fully_discovered(combination: Combination):
+	possible_rewarded_combinations.erase(combination)
+
+
 func _on_room_entered(room: Room):
 	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS or room.type == Room.Type.ELITE:
 		new_battle(room.encounter)
@@ -189,7 +207,23 @@ func _on_room_entered(room: Room):
 		open_shop()
 
 
-func _on_Battle_won(is_boss):
+func _on_Battle_won():
+	var rewarded_combinations := []
+	possible_rewarded_combinations.shuffle()
+	for i in range(RECIPES_REWARDED_PER_BATTLE):
+		if i < possible_rewarded_combinations.size():
+			rewarded_combinations.append(possible_rewarded_combinations[i])
+		else:
+			rewarded_combinations.append(null)
+	
+	for combination in rewarded_combinations:
+		if combination:
+			player.discover_combination(combination)
+	
+	battle.show_victory_screen(rewarded_combinations)
+
+
+func _on_Battle_finished(is_boss):
 	battle = null
 	recipe_book.remove_hand()
 	

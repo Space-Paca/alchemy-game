@@ -1,6 +1,8 @@
 extends Node
 class_name Combination
 
+signal fully_discovered
+
 var grid_size : int
 var recipe : Recipe
 var matrix : Array
@@ -75,3 +77,4 @@ func discover_all_reagents():
 		discovered = true
 		known_matrix = matrix
 		unknown_reagent_coords.clear()
+		emit_signal("fully_discovered", self)

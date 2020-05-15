@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=4]
+[ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 256
+size = 128
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -21,6 +22,7 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="BG" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.752941 )
@@ -28,52 +30,73 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG"]
+[node name="Label" type="Label" parent="BG"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -552.5
-margin_right = 552.5
-margin_bottom = 283.0
-custom_constants/separation = 50
+margin_left = -276.5
+margin_right = 276.5
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "A winner is you"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BG/VBoxContainer"]
-margin_right = 1105.0
-margin_bottom = 141.0
-custom_fonts/font = SubResource( 1 )
-text = "This is the victory screen"
+[node name="CenterContainer" type="CenterContainer" parent="BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/VBoxContainer"]
-margin_top = 191.0
-margin_right = 1105.0
-margin_bottom = 283.0
-custom_constants/margin_right = 300
-custom_constants/margin_left = 300
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/CenterContainer"]
+margin_left = 56.0
+margin_top = 90.0
+margin_right = 1864.0
+margin_bottom = 990.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/VBoxContainer/MarginContainer"]
-margin_left = 300.0
-margin_right = 805.0
-margin_bottom = 92.0
+[node name="WinRecipe1" parent="BG/CenterContainer/HBoxContainer" instance=ExtResource( 5 )]
+
+[node name="WinRecipe2" parent="BG/CenterContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 604.0
+margin_right = 1204.0
+
+[node name="WinRecipe3" parent="BG/CenterContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 1208.0
+margin_right = 1808.0
+
+[node name="RewardsContainer" type="VBoxContainer" parent="BG/CenterContainer/HBoxContainer"]
+visible = false
+margin_left = 1812.0
+margin_right = 2118.0
+margin_bottom = 900.0
 custom_constants/separation = 50
 
-[node name="LootList" type="VBoxContainer" parent="BG/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 505.0
+[node name="Label" type="Label" parent="BG/CenterContainer/HBoxContainer/RewardsContainer"]
+margin_right = 306.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 3 )
+text = "Collect your rewards:"
 
-[node name="GoldReward" type="HBoxContainer" parent="BG/VBoxContainer/MarginContainer/VBoxContainer/LootList"]
+[node name="LootList" type="VBoxContainer" parent="BG/CenterContainer/HBoxContainer/RewardsContainer"]
+margin_top = 95.0
+margin_right = 306.0
+margin_bottom = 95.0
+
+[node name="GoldReward" type="HBoxContainer" parent="BG/CenterContainer/HBoxContainer/RewardsContainer/LootList"]
 visible = false
 margin_right = 505.0
 margin_bottom = 50.0
 
-[node name="TextureRect" type="TextureRect" parent="BG/VBoxContainer/MarginContainer/VBoxContainer/LootList/GoldReward"]
+[node name="TextureRect" type="TextureRect" parent="BG/CenterContainer/HBoxContainer/RewardsContainer/LootList/GoldReward"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 4 )
 expand = true
 
-[node name="GoldLabel" type="Label" parent="BG/VBoxContainer/MarginContainer/VBoxContainer/LootList/GoldReward"]
+[node name="GoldLabel" type="Label" parent="BG/CenterContainer/HBoxContainer/RewardsContainer/LootList/GoldReward"]
 margin_left = 54.0
 margin_top = 2.0
 margin_right = 119.0
@@ -81,12 +104,15 @@ margin_bottom = 47.0
 custom_fonts/font = ExtResource( 3 )
 text = "Gold"
 
-[node name="Button" type="Button" parent="BG/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 505.0
-margin_bottom = 92.0
+[node name="Button" type="Button" parent="BG/CenterContainer/HBoxContainer/RewardsContainer"]
+margin_top = 145.0
+margin_right = 306.0
+margin_bottom = 187.0
 custom_fonts/font = SubResource( 2 )
 text = "Continue to map"
-[connection signal="button_down" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
-[connection signal="mouse_entered" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
-[connection signal="pressed" from="BG/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="chosen" from="BG/CenterContainer/HBoxContainer/WinRecipe1" to="." method="_on_WinRecipe_chosen"]
+[connection signal="chosen" from="BG/CenterContainer/HBoxContainer/WinRecipe2" to="." method="_on_WinRecipe_chosen"]
+[connection signal="chosen" from="BG/CenterContainer/HBoxContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
+[connection signal="button_down" from="BG/CenterContainer/HBoxContainer/RewardsContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="BG/CenterContainer/HBoxContainer/RewardsContainer/Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="BG/CenterContainer/HBoxContainer/RewardsContainer/Button" to="." method="_on_Button_pressed"]

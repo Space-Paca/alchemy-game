@@ -2,7 +2,8 @@ tool
 
 extends Node2D
 
-signal won(is_boss)
+signal won
+signal finished(is_boss)
 signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
@@ -35,12 +36,12 @@ var ended := false
 var player_disabled := true
 var is_boss
 var player
-var gold_reward : int
-var loot : Array
+var win_screen
 var is_dragging_reagent := false
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array,
+		possible_combination_rewards: Array):
 	setup_nodes()
 	
 	setup_player(_player)
@@ -55,8 +56,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	
 	setup_audio(encounter)
 	
-	loot = encounter.get_loot()
-	gold_reward = encounter.gold_reward
+	setup_win_screen(encounter)
 	
 	#Wait sometime before starting battle
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -154,6 +154,7 @@ func setup_enemy(encounter: Encounter):
 	
 	update_enemy_positions()
 
+
 func enemies_init():
 	var had_init = false
 	for enemy in enemies_node.get_children():
@@ -167,12 +168,25 @@ func enemies_init():
 	emit_signal("finished_enemies_init")
 	return had_init
 
+
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
 		AudioManager.play_bgm("boss1", 3)
 	else:
 		AudioManager.play_bgm("battle", 3)
 	player_ui.update_audio()
+
+
+func setup_win_screen(encounter: Encounter):
+	win_screen = VICTORY_SCENE.instance()
+	add_child(win_screen)
+	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
+	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
+	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
+#	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
+	
+	win_screen.set_loot(encounter.gold_reward, encounter.get_loot())
+
 
 func add_enemy(enemy, initial_pos = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
@@ -188,6 +202,7 @@ func add_enemy(enemy, initial_pos = false):
 	effect_manager.add_enemy(enemy_node)
 	
 	enemy_node.update_intent()
+
 
 func update_enemy_positions():
 	var enemy_count = enemies_node.get_child_count()
@@ -301,13 +316,12 @@ func win():
 #	player.add_currency(gold_reward)
 	TooltipLayer.clean_tooltips()
 	disable_player()
-	var win_screen = VICTORY_SCENE.instance()
-	add_child(win_screen)
 	AudioManager.lower_bgm_volume()
-	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
-	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
-	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
-	win_screen.set_loot(gold_reward, loot)
+	emit_signal("won")
+
+
+func show_victory_screen(combinations: Array):
+	win_screen.show(combinations)
 
 
 func set_enemy_pos(enemy_idx, pos_idx):
@@ -392,13 +406,16 @@ func _on_reagent_drag(reagent):
 func _on_reagent_stop_drag(_reagent):
 	is_dragging_reagent = false
 
+
 func _on_reagent_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.hover_effect()
 
+
 func _on_reagent_stop_hover(reagent):
 	if not is_dragging_reagent:
 		reagent.stop_hover_effect()
+
 
 func _on_reagent_quick_place(reagent):
 	if reagent.slot:
@@ -407,6 +424,7 @@ func _on_reagent_quick_place(reagent):
 				hand.place_reagent(reagent)
 		elif reagent.slot.type == "hand":
 			grid.quick_place(reagent)
+
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:
@@ -472,7 +490,7 @@ func _on_PassTurnButton_pressed():
 
 func _on_win_screen_continue_pressed():
 	AudioManager.play_bgm("map")
-	emit_signal("won", is_boss)
+	emit_signal("finished", is_boss)
 	queue_free()
 
 
@@ -520,6 +538,10 @@ func _on_win_screen_reagent_looted(reagent: String):
 
 func _on_win_screen_reagent_sold(gold_value: int):
 	player.add_currency(gold_value)
+
+
+#func _on_win_screen_combination_chosen(combination: Combination):
+#	pass
 
 
 func _on_Hand_hand_slot_reagent_set():

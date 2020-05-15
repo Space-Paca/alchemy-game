@@ -12,10 +12,13 @@ var player : Player
 
 
 func set_combinations(combinations: Array):
-	assert(combinations.size() == recipes.size())
-	for i in range(combinations.size()):
-		recipes[i].set_combination(combinations[i])
-		recipes[i].player = player
+	for i in range(recipes.size()):
+		if i < combinations.size() and combinations[i]:
+			recipes[i].set_combination(combinations[i])
+			recipes[i].player = player
+		else:
+			print("Shop.gd: Not enough combinations to fill shop")
+			recipes[i].hide()
 
 
 func update_combinations():

@@ -57,9 +57,9 @@ __meta__ = {
 
 [node name="Name" type="Label" parent="."]
 margin_left = 540.903
-margin_top = 15.4544
-margin_right = 1152.9
-margin_bottom = 97.4544
+margin_top = 5.0
+margin_right = 1188.9
+margin_bottom = 92.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pierce Hawthorne"
@@ -69,9 +69,9 @@ __meta__ = {
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = 540.0
-margin_top = 110.0
+margin_top = 115.0
 margin_right = 1740.0
-margin_bottom = 210.0
+margin_bottom = 215.0
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 value = 100.0
@@ -135,9 +135,9 @@ text = "420"
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = 540.0
-margin_top = 218.283
+margin_top = 250.0
 margin_right = 580.0
-margin_bottom = 258.283
+margin_bottom = 290.0
 rect_scale = Vector2( 2, 2 )
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 10 )]

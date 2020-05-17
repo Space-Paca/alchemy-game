@@ -182,7 +182,7 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("finished", self, "_on_Battle_finished")
 # warning-ignore:return_value_discarded
-	battle.connect("combination_rewarded, self, _on_Battle_combination_rewarded")
+	battle.connect("combination_rewarded", self, "_on_Battle_combination_rewarded")
 	
 	recipe_book.create_hand(battle)
 

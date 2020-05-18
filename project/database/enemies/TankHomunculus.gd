@@ -5,8 +5,8 @@ signal acted
 var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
-var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-			   "defend": preload("res://assets/images/enemies/intents/defense.png"),
+var intents = {"attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
+			   "defend": preload("res://assets/images/enemies/intents/blocking.png"),
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Tanky"

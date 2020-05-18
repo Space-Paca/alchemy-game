@@ -10,10 +10,6 @@ func setup(texture, value):
 		$Value.text = str(value)
 	else:
 		$Value.text = ""
-	
-	#Random position for idle animation
-	randomize()
-	$AnimationPlayer.seek(rand_range(0,1.5))
 
 func vanish():
 	var dur = .2

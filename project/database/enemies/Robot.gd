@@ -8,9 +8,9 @@ const PERM_BUFF = 5
 var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
-var intents = {"attack": preload("res://assets/images/enemies/intents/attack.png"),
-			   "temp_buff": preload("res://assets/images/enemies/intents/temp_strength.png"),
-			   "perm_buff": preload("res://assets/images/enemies/intents/perm_strength.png"),
+var intents = {"attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
+			   "temp_buff": preload("res://assets/images/enemies/intents/buffing.png"),
+			   "perm_buff": preload("res://assets/images/enemies/intents/buffing.png"),
 			   }
 var image = "res://assets/images/enemies/robot/robotIDLE.png"
 var name = "BeepBoop"

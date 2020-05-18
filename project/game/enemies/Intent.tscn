@@ -1,46 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/images/enemies/intents/random.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/enemies/intents/attack_crush.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/enemies/Intent.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 60
+size = 75
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=2]
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Image:rect_rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 9.0, 0.0, -9.0, 0.0 ]
-}
-
 [node name="Intent" type="HBoxContainer"]
-margin_right = 78.0
+margin_right = 97.0
 margin_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = 3
+custom_constants/separation = -7
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Image" type="TextureRect" parent="."]
-margin_right = 50.0
+margin_right = 60.0
 margin_bottom = 60.0
 texture = ExtResource( 1 )
 __meta__ = {
@@ -49,17 +33,13 @@ __meta__ = {
 
 [node name="Value" type="Label" parent="."]
 margin_left = 53.0
-margin_top = 13.0
-margin_right = 78.0
-margin_bottom = 47.0
+margin_top = 8.0
+margin_right = 85.0
+margin_bottom = 51.0
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/idle = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]

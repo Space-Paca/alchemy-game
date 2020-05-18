@@ -31,6 +31,9 @@ func get_damage_modifiers():
 	return mod
 
 func take_damage(source: Character, damage: int, type: String):
+	if hp <= 0:
+		return
+	
 	var unblocked_damage
 	damage += source.get_damage_modifiers()
 	

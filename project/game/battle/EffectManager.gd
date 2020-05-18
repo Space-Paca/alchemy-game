@@ -70,7 +70,6 @@ func add_status(targeting: String, status: String, amount: int, positive: bool):
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)
 	
-	
 	resolve()
 
 #Damage a random enemy
@@ -78,7 +77,9 @@ func damage_random(amount: int, type: String):
 	var possible_enemies = enemies.duplicate()
 	randomize()
 	possible_enemies.shuffle()
-	(possible_enemies.front() as Enemy).take_damage(player, amount, type)
+	for enemy in possible_enemies:
+		if enemy.hp > 0:
+			enemy.take_damage(player, amount, type)
 
 	resolve()
 

@@ -88,7 +88,7 @@ func update_status():
 	update_status_bar()
 
 func update_life():
-	health_bar.update_life()
+	health_bar.update_life(hp)
 
 func act():
 	var state = logic_.get_current_state()

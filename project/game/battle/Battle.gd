@@ -308,6 +308,11 @@ func apply_effects(effects: Array, effect_args: Array = [[]]):
 
 
 func win():
+	for enemy in enemies_node.get_children():
+		enemy.disable() #In case of debugging
+	for reagent in reagents.get_children():
+		reagent.disable()
+	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")
 	else:
@@ -476,6 +481,8 @@ func _on_player_died(_player):
 	disable_player()
 	for enemy in enemies_node.get_children():
 		enemy.disable()
+	for reagent in reagents.get_children():
+		reagent.disable()
 	add_child(GAMEOVER_SCENE.instance())
 	AudioManager.lower_bgm_volume()
 	AudioManager.stop_aux_bgm()

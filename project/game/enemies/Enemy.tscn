@@ -103,8 +103,8 @@ __meta__ = {
 }
 
 [node name="Intent" parent="Intents" instance=ExtResource( 5 )]
-margin_left = 86.0
-margin_right = 164.0
+margin_left = 82.0
+margin_right = 167.0
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = 14.0

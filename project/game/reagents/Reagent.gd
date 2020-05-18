@@ -154,6 +154,12 @@ func start_hovering():
 func stop_hovering():
 	emit_signal("stopped_hovering", self)
 
+func disable():
+	disable_tooltips()
+	block_tooltips = true
+
+func enable():
+	block_tooltips = false
 
 func disable_dragging():
 	can_drag = false

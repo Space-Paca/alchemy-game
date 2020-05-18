@@ -1,31 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=4]
 [ext_resource path="res://game/enemies/Intent.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=8]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 1121, 93 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 1121, 93 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 60
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float grayscale : hint_range(0.0, 1.0);
@@ -41,11 +23,11 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/grayscale = 0.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -61,7 +43,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -50, 30 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -77,54 +59,13 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.06, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 68.0
-margin_top = 296.0
-margin_right = 188.0
-margin_bottom = 316.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-step = 1.0
-value = 50.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HealthBar"]
-margin_right = 120.0
-margin_bottom = 20.0
-text = "5/10"
-align = 1
-valign = 1
-
-[node name="Shield" type="TextureRect" parent="HealthBar"]
-margin_left = -32.1655
-margin_top = -19.2112
-margin_right = 43.8345
-margin_bottom = 67.7888
-rect_scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HealthBar/Shield"]
-margin_left = 2.0
-margin_right = 76.0
-margin_bottom = 69.0
-custom_fonts/font = SubResource( 3 )
-text = "10"
-align = 1
-valign = 1
-
 [node name="Sprite" type="TextureRect" parent="."]
-material = SubResource( 5 )
+material = SubResource( 2 )
 margin_right = 256.0
 margin_bottom = 256.0
 rect_pivot_offset = Vector2( 128, 128 )
@@ -135,8 +76,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "idle"
-anims/attack = SubResource( 6 )
-anims/idle = SubResource( 7 )
+anims/attack = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
 [node name="Button" type="Button" parent="Sprite"]
 anchor_right = 1.0
@@ -145,6 +86,12 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HealthBar" parent="." instance=ExtResource( 2 )]
+margin_left = -1.98407
+margin_top = 279.228
+margin_right = 498.016
+margin_bottom = 299.228
 
 [node name="Intents" type="HBoxContainer" parent="."]
 margin_top = -80.0
@@ -160,17 +107,17 @@ margin_left = 86.0
 margin_right = 164.0
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
-margin_left = 14.7369
-margin_top = 325.265
-margin_right = 14.7369
-margin_bottom = 325.265
+margin_left = 14.0
+margin_top = 325.0
+margin_right = 14.0
+margin_bottom = 325.0
 two_rows = false
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
 position = Vector2( 133, 133.001 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( -100, 0 )

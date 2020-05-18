@@ -1,13 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/images/ui/health_bar_fg.png" type="Texture" id=1]
+[ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/Player Portrait.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/health_bar_bg.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=9]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
 
@@ -16,32 +13,12 @@ size = 71
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 1121, 93 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 1121, 93 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 144
-use_filter = true
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 70
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 22
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
@@ -56,58 +33,13 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="."]
-margin_left = 540.903
+margin_left = 540.0
 margin_top = 5.0
-margin_right = 1188.9
+margin_right = 1188.0
 margin_bottom = 92.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pierce Hawthorne"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 540.0
-margin_top = 115.0
-margin_right = 1740.0
-margin_bottom = 215.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-value = 100.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HealthBar"]
-margin_top = -10.0
-margin_right = 1200.0
-margin_bottom = 90.0
-custom_fonts/font = SubResource( 4 )
-text = "5/10"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Shield" type="TextureRect" parent="HealthBar"]
-visible = false
-margin_left = -51.1156
-margin_top = -35.544
-margin_right = 24.8844
-margin_bottom = 51.456
-rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="HealthBar/Shield"]
-margin_right = 76.0
-margin_bottom = 77.0
-custom_fonts/font = SubResource( 5 )
-text = "10"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,7 +61,7 @@ margin_top = -1.27381
 margin_right = 71.4242
 margin_bottom = 25.7262
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "420"
 
@@ -144,10 +76,17 @@ rect_scale = Vector2( 2, 2 )
 position = Vector2( 894.495, 267.546 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( 1781.96, 50.2382 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 1 )]
+margin_left = 540.0
+margin_top = 125.0
+margin_right = 1440.0
+margin_bottom = 185.0
+rect_scale = Vector2( 1.3, 1.4 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

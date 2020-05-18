@@ -36,7 +36,7 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "phantom"}]])
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "pierce"}]])
 	elif state == "dodge":
 		emit_signal("acted", enemy_ref, [["status", {"status": "dodge", "amount": 1, "target": enemy_ref, "positive": true}]])
 

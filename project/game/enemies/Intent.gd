@@ -2,6 +2,11 @@ extends Control
 
 signal vanished
 
+func _ready():
+	modulate = Color(1,1,1,0)
+	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), .3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+	
 func setup(texture, value):
 	$Image.texture = texture
 	

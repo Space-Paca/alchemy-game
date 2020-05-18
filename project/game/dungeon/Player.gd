@@ -96,6 +96,9 @@ func new_turn():
 	update_status()
 	hud.update_shield(self)
 
+func clear_status():
+	.clear_status()
+	hud.update_status_bar(self)
 
 func update_status():
 	.update_status()

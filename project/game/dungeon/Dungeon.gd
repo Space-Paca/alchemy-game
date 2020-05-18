@@ -174,7 +174,7 @@ func new_battle(encounter: Encounter):
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
 	
-	battle.setup(player, encounter, favorite_combinations, possible_rewarded_combinations)
+	battle.setup(player, encounter, favorite_combinations)
 # warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 # warning-ignore:return_value_discarded

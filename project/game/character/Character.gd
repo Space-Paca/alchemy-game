@@ -21,27 +21,6 @@ func heal(amount: int):
 	# warning-ignore:narrowing_conversion
 	hp = min(hp + amount, max_hp)
 
-func get_status(status: String):
-	if status_list.has(status):
-		return status_list[status]
-
-func add_status(status: String, amount: int, positive: bool):
-	if positive:
-		AudioManager.play_sfx("buff")
-	else:
-		AudioManager.play_sfx("debuff")
-
-	if status_list.has(status):
-		status_list[status].amount += amount
-	else:
-		status_list[status] = {"amount": amount, "positive": positive}
-
-func remove_status(status: String):
-	var _err = status_list.erase(status)
-
-func clear_status():
-	status_list.clear()
-
 func get_damage_modifiers():
 	var mod = 0
 	if get_status("temp_strength"):
@@ -113,6 +92,27 @@ func gain_shield(value):
 	shield += value
 
 #STATUS FUNCS
+
+func get_status(status: String):
+	if status_list.has(status):
+		return status_list[status]
+
+func add_status(status: String, amount: int, positive: bool):
+	if positive:
+		AudioManager.play_sfx("buff")
+	else:
+		AudioManager.play_sfx("debuff")
+
+	if status_list.has(status):
+		status_list[status].amount += amount
+	else:
+		status_list[status] = {"amount": amount, "positive": positive}
+
+func remove_status(status: String):
+	var _err = status_list.erase(status)
+
+func clear_status():
+	status_list.clear()
 
 func update_status():
 	shield = 0

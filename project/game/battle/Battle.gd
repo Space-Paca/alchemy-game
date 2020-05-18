@@ -41,8 +41,7 @@ var win_screen
 var is_dragging_reagent := false
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array,
-		possible_combination_rewards: Array):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	setup_nodes()
 	
 	setup_player(_player)
@@ -322,6 +321,7 @@ func win():
 #	player.add_currency(gold_reward)
 	TooltipLayer.clean_tooltips()
 	disable_player()
+	player.clear_status()
 	AudioManager.lower_bgm_volume()
 	emit_signal("won")
 

@@ -34,7 +34,7 @@ const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
 onready var SFXS = {}
 #LOCS
-const LOC_PATH = "res://assets/audio/sfx/loc/"
+const LOC_PATH = "res://database/audio/locs/"
 onready var LOCS = {}
 
 var bgms_last_pos = {"battle": 0, "map":0, "boss1":0, "shop":0}
@@ -83,14 +83,29 @@ func setup_locs():
 	if dir.open(LOC_PATH) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		var regex = RegEx.new()
 		while file_name != "":
-			if dir.current_is_dir() and file_name != "." and file_name != "..":
-				#Found enemy loc directory, creating data on memory
-				LOCS[file_name] = {}
-				LOCS[file_name].dies = load(LOC_PATH + file_name + "/dies.wav")
-				for i in range(1, 4):
-					LOCS[file_name]["hit_var"+str(i)] = load(LOC_PATH + file_name + \
-													   "/hit_var" + str(i) +  ".wav")
+			if not dir.current_is_dir() and file_name != "." and file_name != "..":
+				#Found enemy loc, first parse name, then create data on memory
+				#Check for die sfx
+				regex.compile("(\\w+)_dies.tres")
+				var result = regex.search(file_name)
+				if result:
+					var name = result.get_string(1)
+					if not LOCS.has(name):
+						LOCS[name] = {} 
+					LOCS[name].dies = load(LOC_PATH + file_name)
+				#Check for hit
+				else:
+					regex.compile("(\\w+)_hit_var(\\d+).tres")
+					result = regex.search(file_name)
+					if result:
+						var name = result.get_string(1)
+						var number = result.get_string(2)
+						if not LOCS.has(name):
+							LOCS[name] = {} 
+						LOCS[name]["hit_var"+str(number)] = load(LOC_PATH + file_name)
+					
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access locutions path.")
@@ -366,13 +381,19 @@ func play_enemy_hit_sfx(enemy: String):
 		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
-	var sfx = LOCS[enemy]
+	var sfx = LOCS[enemy]["hit_var"+str(number)]
 	var player = get_sfx_player()
 	player.stop()
-	player.volume_db = 0.0
-	player.pitch_scale = 1.0
-	player.stream.random_pitch = 1.0
-	player.stream.audio_stream = sfx["hit_var"+str(number)]
+	
+	randomize()
+	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
+	player.volume_db = vol
+	
+	player.pitch_scale = sfx.base_pitch
+	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	
+	player.stream.audio_stream = sfx.asset
+	
 	player.play()
 	
 func play_enemy_dies_sfx(enemy):
@@ -380,11 +401,17 @@ func play_enemy_dies_sfx(enemy):
 		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
-	var sfx = LOCS[enemy]
+	var sfx = LOCS[enemy].dies
 	var player = get_sfx_player()
 	player.stop()
-	player.volume_db = 0.0
-	player.pitch_scale = 1.0
-	player.stream.random_pitch = 1.0
-	player.stream.audio_stream = sfx.dies
+	
+	randomize()
+	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
+	player.volume_db = vol
+	
+	player.pitch_scale = sfx.base_pitch
+	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	
+	player.stream.audio_stream = sfx.asset
+	
 	player.play()

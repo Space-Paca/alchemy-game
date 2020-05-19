@@ -50,6 +50,7 @@ func level_up():
 
 func add_currency(amount: int):
 	assert(amount > 0)
+	AudioManager.play_sfx("get_coins")
 	currency += amount
 
 

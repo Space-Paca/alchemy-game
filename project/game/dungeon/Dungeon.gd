@@ -265,6 +265,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 		if favorite_combinations.size() >= max_favorites:
 			recipe_book.favorite_error(combination)
 		else:
+			AudioManager.play_sfx("apply_favorite")
 			favorite_combinations.append(combination)
 			if battle:
 				battle.add_favorite(combination)

@@ -80,6 +80,7 @@ func damage_random(amount: int, type: String):
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
 			enemy.take_damage(player, amount, type)
+			break
 
 	resolve()
 

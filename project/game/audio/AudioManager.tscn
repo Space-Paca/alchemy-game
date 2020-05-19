@@ -44,7 +44,11 @@ bus = "BGM"
 [node name="BGMPlayer3" type="AudioStreamPlayer" parent="."]
 bus = "BGM"
 
-[node name="AuxBGMPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AuxBGMPlayer1" type="AudioStreamPlayer" parent="."]
+
+[node name="AuxBGMPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="AuxBGMPlayer3" type="AudioStreamPlayer" parent="."]
 
 [node name="FadeOutBGMPlayer1" type="AudioStreamPlayer" parent="."]
 bus = "BGM"
@@ -55,7 +59,11 @@ bus = "BGM"
 [node name="FadeOutBGMPlayer3" type="AudioStreamPlayer" parent="."]
 bus = "BGM"
 
-[node name="FadeOutAuxBGMPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FadeOutAuxBGMPlayer1" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeOutAuxBGMPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeOutAuxBGMPlayer3" type="AudioStreamPlayer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
 

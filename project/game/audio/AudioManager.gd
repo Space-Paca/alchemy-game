@@ -17,8 +17,8 @@ const FADEOUT_SPEED = 20 #Speed bgms fadein
 const FADEIN_SPEED = 60 #Speed bgms fadeout
 const TRACK_FADEOUT_SPEED = 20 #Speed individual bgm tracks fadein
 const TRACK_FADEIN_SPEED = 60 #Speed individual bgm tracks fadeout
-const AUX_FADEOUT_SPEED = 40 #Speed aux bgm (heartbeat only for now) fadein
-const AUX_FADEIN_SPEED = 60 #Speed aux bgm (heartbeat only for now) fadeout
+const AUX_FADEOUT_SPEED = 40 #Speed aux bgm fadein
+const AUX_FADEIN_SPEED = 60 #Speed aux bgm fadeout
 #Volume
 const MUTE_DB = -60 #Muted volume
 #Layer
@@ -26,6 +26,8 @@ const MAX_LAYERS = 3
 #BGM
 const BGM_PATH = "res://database/audio/bgms/"
 onready var BGMS = {}
+#AUX
+onready var AUX_BGMS = ["","",""]
 #SFX
 const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
@@ -66,7 +68,7 @@ func setup_sfxs():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name != "." and file_name != "..":
+			if not dir.current_is_dir() and file_name != "." and file_name != "..":
 				#Found enemy sfx file, creating data on memory
 				SFXS[file_name.replace(".tres", "")] = load(SFX_PATH + file_name)
 				
@@ -98,6 +100,7 @@ func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
 
 func lower_bgm_volume():
+	#Regular BGMs
 	if not using_layers:
 		var db = BGMS[cur_bgm].lowered_db
 		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEOUT_SPEED)
@@ -110,8 +113,21 @@ func lower_bgm_volume():
 			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
 			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
+	#Aux BGMs
+	var i = 1
+	for aux_bgm in AUX_BGMS:
+		if aux_bgm != "":
+			var db = BGMS[aux_bgm].lowered_db
+			var player = get_node("AuxBGMPlayer" + str(i))
+			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
+			$AuxTween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$AuxTween.start()
+			break
+		i += 1
+	
 
 func resume_bgm_volume():
+	#Regular BGMs
 	if not using_layers:
 		var db = BGMS[cur_bgm].base_db
 		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEIN_SPEED)
@@ -124,6 +140,17 @@ func resume_bgm_volume():
 			var duration = abs(db - player.volume_db)/float(FADEIN_SPEED)
 			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
+	#Aux BGMs
+	var i = 1
+	for aux_bgm in AUX_BGMS:
+		if aux_bgm != "":
+			var db = BGMS[aux_bgm].base_db
+			var player = get_node("AuxBGMPlayer" + str(i))
+			var duration = abs(db - player.volume_db)/float(FADEIN_SPEED)
+			$AuxTween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$AuxTween.start()
+			break
+		i += 1
 
 func play_bgm(name, layers = false):
 	if not layers:
@@ -156,7 +183,7 @@ func play_bgm(name, layers = false):
 		$Tween.start()
 
 func stop_bgm():
-	stop_aux_bgm()
+	stop_all_aux_bgm()
 	remove_bgm_effect()
 	for i in range(1, MAX_LAYERS + 1):
 		var fadein = get_node("BGMPlayer"+str(i))
@@ -234,15 +261,22 @@ func start_bgm_effect(type: String):
 		$BusEffectTween.start()
 
 func play_aux_bgm(name: String):
-	if cur_aux_bgm == name:
-		return
+	var free_slot = false
+	var i = 1
+	for aux_bgm in AUX_BGMS:
+		if aux_bgm == name:
+			return
+		if aux_bgm == "":
+			free_slot = i
+			break
+		i += 1
+	if not free_slot:
+		push_error("Don't have a free slot for aux bgm: " str(name))
+		assert(false)
 	
-	if cur_aux_bgm:
-		stop_aux_bgm()
+	AUX_BGMS[i-1] = name
 	
-	cur_aux_bgm = name
-	
-	var player = $AuxBGMPlayer
+	var player = get_node("AuxBGMPlayer" + str(i))
 	player.stream = BGMS[name].asset
 	player.volume_db = MUTE_DB
 	player.play()
@@ -251,21 +285,31 @@ func play_aux_bgm(name: String):
 	$Tween.interpolate_property(player, "volume_db", MUTE_DB, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()	
 
-func stop_aux_bgm():
-	var fadein = $AuxBGMPlayer
-	if fadein.is_playing():
-		var fadeout =$FadeOutAuxBGMPlayer
-		var pos = fadein.get_playback_position()
-		var vol = fadein.volume_db
-		fadein.stop()
-		fadeout.stop()
-		fadeout.volume_db = vol
-		fadeout.stream = fadein.stream
-		fadeout.play(pos)
-		var duration = (vol - MUTE_DB)/AUX_FADEOUT_SPEED
-		$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
-		$AuxTween.start()
-		cur_aux_bgm = null
+func stop_all_aux_bgm():
+	for aux_bgm in AUX_BGMS:
+		if aux_bgm != "":
+			stop_aux_bgm(aux_bgm)
+
+func stop_aux_bgm(name):
+	var i = 1
+	for aux_bgm in AUX_BGMS:
+		if aux_bgm == name:
+			var fadein = get_node("AuxBGMPlayer" + str(i))
+			if fadein.is_playing():
+				var fadeout = get_node("FadeOutAuxBGMPlayer" + str(i))
+				var pos = fadein.get_playback_position()
+				var vol = fadein.volume_db
+				fadein.stop()
+				fadeout.stop()
+				fadeout.volume_db = vol
+				fadeout.stream = fadein.stream
+				fadeout.play(pos)
+				var duration = (vol - MUTE_DB)/AUX_FADEOUT_SPEED
+				$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+				$AuxTween.start()
+				AUX_BGMS[i-1] = ""
+			break
+		i += 1
 
 func get_sfx_player():
 	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))

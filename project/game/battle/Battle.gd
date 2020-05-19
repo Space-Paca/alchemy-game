@@ -485,7 +485,7 @@ func _on_player_died(_player):
 		reagent.disable()
 	add_child(GAMEOVER_SCENE.instance())
 	AudioManager.lower_bgm_volume()
-	AudioManager.stop_aux_bgm()
+	AudioManager.stop_aux_bgm("heart-beat")
 
 
 func _on_DiscardBag_reagent_discarded(reagent):

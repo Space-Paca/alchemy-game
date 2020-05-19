@@ -189,7 +189,7 @@ script = ExtResource( 14 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 1303.34, 451.299 )
+position = Vector2( 1338.41, 437.938 )
 
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )
@@ -197,28 +197,28 @@ position = Vector2( 2833.56, 534.412 )
 [node name="EnemiesPositions" type="Node" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1165.95, 377.163 )
+position = Vector2( 1200, 377 )
 
 [node name="Pos2" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1715.95, 502.163 )
+position = Vector2( 1715, 502 )
 
 [node name="Pos3" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1165.95, 777.163 )
+position = Vector2( 1200, 777 )
 
 [node name="Pos4" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1715.95, 892.163 )
+position = Vector2( 1715, 892 )
 
 [node name="Pos5" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1715.95, 582.163 )
+position = Vector2( 1715, 582 )
 
 [node name="Pos6" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1165.95, 437.163 )
+position = Vector2( 1200, 437 )
 
 [node name="Pos7" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1715.95, 727.163 )
+position = Vector2( 1715, 727 )
 
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1440.95, 582.163 )
+position = Vector2( 1475, 582 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
 position = Vector2( 23.5306, 24.1475 )

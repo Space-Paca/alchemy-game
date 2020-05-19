@@ -11,7 +11,7 @@ var intents = {"poison": preload("res://assets/images/enemies/intents/debuffing.
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Venenin"
-var sfx = "enemy_1"
+var sfx = "enemy_slime"
 var hp = 60
 var battle_init = false
 var size = "big"

@@ -10,7 +10,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Baby Humunculus"
-var sfx = "enemy_1"
+var sfx = "enemy_slime"
 var hp = 15
 var battle_init = false
 var size = "small"

@@ -28,6 +28,7 @@ const BGM_PATH = "res://database/audio/bgms/"
 onready var BGMS = {}
 #AUX
 onready var AUX_BGMS = ["","",""]
+const AMBIENCE_VARIATIONS = 3
 #SFX
 const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
@@ -271,7 +272,7 @@ func play_aux_bgm(name: String):
 			break
 		i += 1
 	if not free_slot:
-		push_error("Don't have a free slot for aux bgm: " str(name))
+		push_error("Don't have a free slot for aux bgm: " + str(name))
 		assert(false)
 	
 	AUX_BGMS[i-1] = name
@@ -310,6 +311,18 @@ func stop_aux_bgm(name):
 				AUX_BGMS[i-1] = ""
 			break
 		i += 1
+
+func play_ambience(name: String):
+	#Get a random ambience variation
+	randomize()
+	var number = randi()%AMBIENCE_VARIATIONS + 1
+	
+	var source_name = name + "_ambience_" + str(number)
+	if not BGMS.has(source_name):
+		push_error("Not a valid ambience bgm: " + source_name)
+		assert(false)
+	
+	play_aux_bgm(source_name)
 
 func get_sfx_player():
 	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))

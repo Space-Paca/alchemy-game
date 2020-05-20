@@ -18,6 +18,7 @@ func init(_name: String, _max_hp: int):
 
 
 func heal(amount: int):
+	AudioManager.play_sfx("heal")
 	# warning-ignore:narrowing_conversion
 	hp = min(hp + amount, max_hp)
 

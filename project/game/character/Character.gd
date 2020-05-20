@@ -117,6 +117,12 @@ func add_status(status: String, amount: int, positive: bool):
 	else:
 		status_list[status] = {"amount": amount, "positive": positive}
 
+func reduce_status(status: String, amount: int):
+	if status_list.has(status):
+		status_list[status].amount -= amount
+		if status_list[status].amount <= 0:
+			remove_status(status)
+
 func remove_status(status: String):
 	var _err = status_list.erase(status)
 

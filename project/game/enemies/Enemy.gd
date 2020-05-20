@@ -82,6 +82,10 @@ func gain_shield(value):
 	.gain_shield(value)
 	update_shield()
 
+func reduce_status(status: String, amount: int):
+	.reduce_status(status, amount)
+	update_status_bar()
+
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
 	update_status_bar()

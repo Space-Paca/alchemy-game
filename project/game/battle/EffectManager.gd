@@ -38,8 +38,6 @@ func require_target():
 	for enemy in enemies:
 		enemy.set_button_disabled(true)
 
-
-
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
 		grid.remove_reagent(reagent)
@@ -69,6 +67,20 @@ func add_status_random(status: String, amount: int, positive: bool):
 			enemy.add_status(status, amount, positive)
 			break
 
+	resolve()
+
+func reduce_status(targeting: String, status: String, amount: int):
+	if targeting == "self":
+		player.reduce_status(status, amount)
+	elif targeting == "enemy":
+		var func_state = (require_target() as GDScriptFunctionState)
+		if func_state and func_state.is_valid():
+			yield(self, "target_set")
+		target.reduce_status(status, amount)
+	else:
+		push_error("Not a valid target: " + str(targeting))
+		assert(false)
+	
 	resolve()
 
 func add_status(targeting: String, status: String, amount: int, positive: bool):

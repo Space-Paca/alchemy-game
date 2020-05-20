@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/icon-4.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Cure Poison"
+grid_size = 2
+floor_sold_in = 1
+reagents = [ "defensive", "poison" ]
+effects = [ "reduce_status" ]
+effect_args = [ [ "self", "poison", 6 ] ]
+description = "Removes up to 6 poison"
+fav_icon = ExtResource( 1 )
+shop_cost = 30

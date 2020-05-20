@@ -80,6 +80,6 @@ static func get_types() -> Array:
 
 static func get_from_name(name: String) -> Dictionary:
 	if not DB.has(name):
-		push_error("Given type of reagent doesn't exist")
+		push_error("Given type of reagent doesn't exist: " + str(name))
 		assert(false)
 	return DB[name]

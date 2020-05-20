@@ -5,7 +5,7 @@ signal acted
 var enemy_ref #Reference to enemy node
 var player_ref #Reference to player node
 
-var intents = {"attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
+var intents = {"attack": preload("res://assets/images/enemies/intents/attack_piercing.png"),
 				"dodge": preload("res://assets/images/enemies/intents/buffing.png"),
 			   }
 var image = "res://assets/images/enemies/wolf/wolfIDLE.png"
@@ -37,7 +37,7 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "pierce"}]])
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_value, "type": "piercing"}]])
 	elif state == "dodge":
 		emit_signal("acted", enemy_ref, [["status", {"status": "dodge", "amount": 1, "target": enemy_ref, "positive": true}]])
 

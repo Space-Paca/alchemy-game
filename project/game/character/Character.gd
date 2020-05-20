@@ -76,8 +76,13 @@ func take_damage(source: Character, damage: int, type: String):
 			AudioManager.play_sfx("shield_breaks")
 		
 	#Ignores shield and only damages health
-	elif type == "pierce":
-		AudioManager.play_sfx("damage_pierce")
+	elif type == "piercing":
+		AudioManager.play_sfx("damage_piercing")
+		hp -= damage
+		unblocked_damage = damage
+	#Ignores shield and only damages health
+	elif type == "poison":
+		AudioManager.play_sfx("damage_poison")
 		hp -= damage
 		unblocked_damage = damage
 	
@@ -130,7 +135,7 @@ func update_dodge(_args):
 
 func update_poison(_args):
 	var status = get_status("poison")
-	take_damage(self, status.amount, "pierce")
+	take_damage(self, status.amount, "poison")
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")

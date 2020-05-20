@@ -1,8 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/audio/SFX.gd" type="Script" id=1]
-[ext_resource path="res://assets/audio/sfx/damage_pierce.wav" type="AudioStream" id=2]
-
+[ext_resource path="res://assets/audio/sfx/damage_piercing.wav" type="AudioStream" id=2]
 
 [resource]
 script = ExtResource( 1 )

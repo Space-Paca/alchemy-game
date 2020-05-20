@@ -45,6 +45,9 @@ func _on_ChooseButton_pressed():
 	var amount = int(ceil(combination.unknown_reagent_coords.size() / 2.0))
 	combination.discover_reagents(amount)
 	
+	if not combination.discovered:
+		AudioManager.play_sfx("discover_clue_recipe")
+	
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):
 			var display = grid.get_child(i* combination.grid_size + j)

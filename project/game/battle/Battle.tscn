@@ -20,13 +20,13 @@
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BookOblique.ttf" type="DynamicFontData" id=19]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 28
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 56
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -98,7 +98,7 @@ margin_top = -24.5
 margin_right = 229.5
 margin_bottom = 10.5
 rect_min_size = Vector2( 475, 30 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
@@ -128,7 +128,7 @@ margin_left = -47.5091
 margin_top = -2.31232
 margin_right = 197.491
 margin_bottom = 159.688
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/line_spacing = 0

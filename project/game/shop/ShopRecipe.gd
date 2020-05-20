@@ -88,6 +88,7 @@ func _on_Hint_pressed():
 		buy_cost /= 2
 		hint_cost /= 2
 		update_display()
+		AudioManager.play_sfx("discover_clue_recipe")
 		emit_signal("hint_bought", combination)
 	else:
 		AudioManager.play_sfx("error")

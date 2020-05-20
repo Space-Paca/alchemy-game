@@ -25,6 +25,7 @@ var tooltip_position := Vector2()
 var tooltips_enabled := false
 var block_tooltips := false
 var _playback_speed := 1.0
+var idle_player : AudioStreamPlayer
 
 
 func _ready():
@@ -44,7 +45,11 @@ func heal(amount : int):
 	update_life()
 
 func die():
+	#Audio
 	AudioManager.play_enemy_dies_sfx(data.sfx)
+	if idle_player:
+		idle_player.stop()
+	
 	disable_tooltips()
 	
 	#Death animation
@@ -126,6 +131,7 @@ func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
 	set_image(new_texture)
+	set_audio(enemy_data)
 	data = enemy_data #Store enemy data
 
 
@@ -146,6 +152,11 @@ func set_logic(enemy_logic):
 func set_life(enemy_data):
 	$HealthBar.set_life(max_hp, max_hp)
 	$HealthBar.set_enemy_type(enemy_data.size)
+
+func set_audio(enemy_data):
+	if enemy_data.use_idle_sfx:
+		idle_player = AudioManager.get_enemy_idle_sfx(enemy_data.sfx)
+		add_child(idle_player)
 
 #Called when player dies
 func disable():

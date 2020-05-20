@@ -105,7 +105,16 @@ func setup_locs():
 						if not LOCS.has(name):
 							LOCS[name] = {} 
 						LOCS[name]["hit_var"+str(number)] = load(LOC_PATH + file_name)
-					
+					#Check for idle
+					else:
+						regex.compile("(\\w+)_idle.tres")
+						result = regex.search(file_name)
+						if result:
+							var name = result.get_string(1)
+							if not LOCS.has(name):
+								LOCS[name] = {} 
+							LOCS[name]["idle"] = load(LOC_PATH + file_name)
+						
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access locutions path.")
@@ -396,13 +405,13 @@ func play_enemy_hit_sfx(enemy: String):
 	
 	player.play()
 
-func play_enemy_idle_sfx(enemy):
+func get_enemy_idle_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
 		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
 	var sfx = LOCS[enemy].idle
-	var player = get_sfx_player()
+	var player = $SFXS/SFXPlayer1.duplicate()
 	player.stop()
 	
 	randomize()
@@ -411,10 +420,16 @@ func play_enemy_idle_sfx(enemy):
 	
 	player.pitch_scale = sfx.base_pitch
 	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
-	
+
 	player.stream.audio_stream = sfx.asset
 	
+	randomize()
+	var pos = rand_range(0.0, sfx.asset.get_length())
+	player.seek(pos)
+	
 	player.play()
+	
+	return player
 
 func play_enemy_dies_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):

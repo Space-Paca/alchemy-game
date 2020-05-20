@@ -3,6 +3,7 @@ extends Control
 class_name Slot
 
 signal reagent_set
+signal reagent_removed
 
 onready var area = $Area2D
 
@@ -26,6 +27,7 @@ func set_reagent(reagent):
 
 func remove_reagent():
 	current_reagent = null
+	emit_signal("reagent_removed")
 
 
 func get_pos():

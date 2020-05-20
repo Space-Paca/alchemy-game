@@ -8,6 +8,7 @@ signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
 signal combination_rewarded(combination)
+signal grid_modified(reagent_matrix)
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -19,6 +20,7 @@ onready var grid = $Grid
 onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
+onready var recipe_banner = $NameHolder/RecipeBanner
 onready var create_recipe_button = $CreateRecipeButton
 onready var favorites = $Favorites
 onready var available_favorites = [$Favorites/FavoriteButton1,
@@ -422,6 +424,13 @@ func remove_favorite(combination: Combination):
 			available_favorites.append(button)
 
 
+func display_name_for_combination(combination: Combination):
+	if combination:
+		recipe_banner.text = combination.recipe.name
+	else:
+		recipe_banner.text = "???" 
+
+
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
 	is_dragging_reagent = true
@@ -630,3 +639,22 @@ func _on_FavoriteButton_mouse_exited():
 
 func _on_Button_pressed():
 	win()
+
+
+func _on_Grid_modified():
+	if grid.is_empty():
+		recipe_banner.text = ""
+		return
+	
+	var reagent_matrix := []
+	for i in range(grid.grid_size):
+		var line = []
+		for j in range(grid.grid_size):
+			var reagent = grid.slots.get_child(grid.grid_size * i + j).current_reagent
+			if reagent:
+				line.append(reagent.type)
+			else:
+				line.append(null)
+		reagent_matrix.append(line)
+	
+	emit_signal("grid_modified", reagent_matrix)

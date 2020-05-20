@@ -38,6 +38,7 @@ func _input(event):
 			debug_recipes_unlock = true
 			for grid_size in [2, 3, 4]:
 				for combination in combinations[grid_size]:
+					combination.discover_all_reagents()
 					recipe_book.add_combination(combination,
 							player.known_recipes.bsearch(combination.recipe.name))
 
@@ -89,11 +90,12 @@ func setup_shop():
 	shop.set_combinations(shop_combinations)
 
 
-func search_grid_for_combinations(reagent_matrix: Array, reagent_list: Array):
+func get_combination_in_grid(reagent_matrix: Array) -> Combination:
 	var grid_size = battle.grid.grid_size
+	var grid_combination = get_combination_in_matrix(grid_size, reagent_matrix)
 	
-	if check_combinations(grid_size, reagent_matrix):
-		return
+	if grid_combination:
+		return grid_combination
 	
 	var new_grid_size = grid_size
 	while new_grid_size > 2:
@@ -112,29 +114,27 @@ func search_grid_for_combinations(reagent_matrix: Array, reagent_list: Array):
 					for j in range(new_grid_size):
 						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
 				
-				if check_combinations(new_grid_size, new_matrix):
-					return
-					
-	AudioManager.play_sfx("combine_fail")
-	battle.apply_effects(["combination_failure"], reagent_list)
+				grid_combination = get_combination_in_matrix(new_grid_size, new_matrix)
+				if grid_combination:
+					return grid_combination
+	
+	return null
 
 
-func check_combinations(grid_size: int, reagent_matrix: Array):
+func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combination:
 	if not combinations.has(grid_size):
 		print("No recipes exist for grid with size ", grid_size)
-		return false
+		return null
 	
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
-			make_combination(combination)
-			MessageLayer.add_message("Oh yeah! I made a potion of %s" % combination.recipe.name)
-			return true
+			return combination
 	
-	return false
+	return null
 
 
 func make_combination(combination: Combination):
-	AudioManager.play_sfx("combine_success")
+	MessageLayer.add_message("Oh yeah! I made a potion of %s" % combination.recipe.name)
 	
 	var recipe := combination.recipe
 	battle.apply_effects(recipe.effects, recipe.effect_args)
@@ -183,6 +183,8 @@ func new_battle(encounter: Encounter):
 	battle.connect("finished", self, "_on_Battle_finished")
 # warning-ignore:return_value_discarded
 	battle.connect("combination_rewarded", self, "_on_Battle_combination_rewarded")
+# warning-ignore:return_value_discarded
+	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
 	
 	recipe_book.create_hand(battle)
 
@@ -244,7 +246,21 @@ func _on_Battle_combination_rewarded(combination):
 
 
 func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
-	search_grid_for_combinations(reagent_matrix, reagent_list)
+	var combination = get_combination_in_grid(reagent_matrix)
+	if combination:
+		AudioManager.play_sfx("combine_success")
+		make_combination(combination)
+	else:
+		AudioManager.play_sfx("combine_fail")
+		battle.apply_effects(["combination_failure"], reagent_list)
+
+
+func _on_Battle_grid_modified(reagent_matrix: Array):
+	var combination = get_combination_in_grid(reagent_matrix)
+	if combination and not player.known_recipes.has(combination.recipe.name):
+		combination = null
+	
+	battle.display_name_for_combination(combination)
 
 
 func _on_Player_combination_discovered(combination, index):

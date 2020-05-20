@@ -1,8 +1,8 @@
 extends Slot
 
-const ALPHA_SPEED = 3
-
 onready var reagent_hint = $MarginContainer/ReagentHint
+
+const ALPHA_SPEED = 3
 
 var reagent_hint_name = null
 
@@ -30,6 +30,7 @@ func set_hint(reagent_name):
 	else:
 		reagent_hint.texture = null
 		reagent_hint_name = null
+
 
 func get_hint():
 	return reagent_hint_name

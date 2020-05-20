@@ -2,6 +2,7 @@ tool
 extends Control
 
 signal cleaned
+signal modified
 signal returned_to_hand
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
@@ -17,13 +18,16 @@ var grid_size : int
 func _ready():
 	set_grid(4)
 
+
 func get_center():
 	return rect_global_position
+
 
 func get_width():
 	assert(slots.get_child_count() > 0)
 	var slot = slots.get_child(0)
 	return grid_size*slot.rect_size.x + (grid_size-1)*SEPARATION
+
 
 func get_height():
 	assert(slots.get_child_count() > 0)
@@ -72,6 +76,9 @@ func set_grid(_size: int):
 					slot.rect_position += Vector2(-v, -v)
 				
 			slots.add_child(slot)
+			slot.connect("reagent_set", self, "_on_slot_changed")
+			slot.connect("reagent_removed", self, "_on_slot_changed")
+			
 			x += sw + SEPARATION
 		y += sh + SEPARATION
 
@@ -82,6 +89,7 @@ func is_empty():
 		if reagent:
 			return false
 	return true
+
 
 func quick_place(reagent):
 	#Search for available hint first
@@ -96,6 +104,7 @@ func quick_place(reagent):
 			return
 	#If got here, don't have an available space
 	AudioManager.play_sfx("error")
+
 
 func return_to_hand():
 	var reagents_to_be_sent = []
@@ -137,6 +146,7 @@ func clean():
 
 	emit_signal("cleaned")
 
+
 func remove_reagent(target_reagent):
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
@@ -144,6 +154,7 @@ func remove_reagent(target_reagent):
 			slot.remove_reagent()
 			AudioManager.play_sfx("discard_reagent")
 			discard_bag.discard(reagent)
+
 
 func show_combination_hint(combination: Combination):
 	for i in range(combination.grid_size):
@@ -155,3 +166,7 @@ func show_combination_hint(combination: Combination):
 func clear_hint():
 	for slot in slots.get_children():
 		slot.set_hint(null)
+
+
+func _on_slot_changed():
+	emit_signal("modified")

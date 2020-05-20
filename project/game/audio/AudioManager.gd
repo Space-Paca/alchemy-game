@@ -395,7 +395,27 @@ func play_enemy_hit_sfx(enemy: String):
 	player.stream.audio_stream = sfx.asset
 	
 	player.play()
+
+func play_enemy_idle_sfx(enemy):
+	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
+		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
+		assert(false)
 	
+	var sfx = LOCS[enemy].idle
+	var player = get_sfx_player()
+	player.stop()
+	
+	randomize()
+	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
+	player.volume_db = vol
+	
+	player.pitch_scale = sfx.base_pitch
+	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	
+	player.stream.audio_stream = sfx.asset
+	
+	player.play()
+
 func play_enemy_dies_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):
 		push_error("There isn't a death sfx file for this enemy: " + str(enemy))

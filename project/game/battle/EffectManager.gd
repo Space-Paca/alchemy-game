@@ -52,11 +52,24 @@ func combination_failure(reagent_list, grid):
 			shield(effect.value)
 		elif effect.type == "heal":
 			heal(effect.value)
+		elif effect.type == "status":
+			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
 		yield(get_tree().create_timer(.3), "timeout")
 	
 	emit_signal("failure_resolved")
 
+#Gives a status to a random enemy
+func add_status_random(status: String, amount: int, positive: bool):
+	var possible_enemies = enemies.duplicate()
+	randomize()
+	possible_enemies.shuffle()
+	for enemy in possible_enemies:
+		if enemy.hp > 0:
+			enemy.add_status(status, amount, positive)
+			break
+
+	resolve()
 
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":

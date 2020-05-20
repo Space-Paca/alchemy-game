@@ -17,7 +17,7 @@ const DB = {
 	},
 	"rare": {
 		"name": "Reagente",
-		"image": preload("res://assets/images/reagents/harmless.png"),
+		"image": preload("res://assets/images/reagents/regular.png"),
 		"tooltip" : "If not used correctly, deals 5 damage to a random enemy",
 		"effect" : {"type": "damage", "value": 5},
 		"gold_value" : 10
@@ -62,6 +62,13 @@ const DB = {
 		"image": preload("res://assets/images/reagents/powerful.png"),
 		"tooltip" : "If not used correctly, deals 2 damage to a random enemy",
 		"effect" : {"type": "damage", "value": 2},
+		"gold_value" : 10
+	},
+	"poison": {
+		"name": "Reagente Poison",
+		"image": preload("res://assets/images/reagents/harmless.png"),
+		"tooltip" : "If not used correctly, gives 2 poison to a random enemy",
+		"effect" : {"type": "status", "status_type": "poison", "amount": 2, "positive": false},
 		"gold_value" : 10
 	}
 }

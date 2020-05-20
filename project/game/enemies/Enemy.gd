@@ -21,6 +21,7 @@ const INTENT_H = 60
 
 var logic_
 var data
+var just_spawned := false
 var tooltip_position := Vector2()
 var tooltips_enabled := false
 var block_tooltips := false

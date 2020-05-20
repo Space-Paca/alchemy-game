@@ -191,7 +191,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.set_loot(encounter.gold_reward, encounter.get_loot())
 
 
-func add_enemy(enemy, initial_pos = false, play_sfx = false):
+func add_enemy(enemy, initial_pos = false, just_spawned = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
 	
@@ -200,8 +200,9 @@ func add_enemy(enemy, initial_pos = false, play_sfx = false):
 	else:
 		enemy_node.position = $EnemyStartPosition.position
 	
-	if play_sfx:
+	if just_spawned:
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+		enemy_node.just_spawned = true
 	
 	enemy_node.data.connect("acted", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
@@ -251,11 +252,22 @@ func new_enemy_turn():
 		yield(grid, "returned_to_hand")
 
 	for enemy in enemies_node.get_children():
-		enemy.new_turn()
-		enemy.act()
-		yield(enemy, "acted")
+		if not enemy.just_spawned:
+			enemy.new_turn()
+			enemy.act()
+			yield(enemy, "acted")
 		if ended:
 			return
+	
+	#Resolve enemies spawned in enemy turn
+	for enemy in enemies_node.get_children():
+		if enemy.just_spawned:
+			enemy.just_spawned = false
+			if enemy.data.battle_init:
+				enemy.act()
+				yield(enemy, "action_resolved")
+				#Wait a bit before next enemy/start player turn
+				yield(get_tree().create_timer(.3), "timeout")
 
 	new_player_turn()
 

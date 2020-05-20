@@ -134,8 +134,6 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 
 
 func make_combination(combination: Combination):
-	MessageLayer.add_message("Oh yeah! I made a potion of %s" % combination.recipe.name)
-	
 	var recipe := combination.recipe
 	battle.apply_effects(recipe.effects, recipe.effect_args)
 	

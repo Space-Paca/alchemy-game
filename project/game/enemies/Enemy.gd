@@ -32,13 +32,18 @@ func _ready():
 	set_button_disabled(true)
 	$Intents.rect_position.y = -INTENT_MARGIN - INTENT_H
 	
-	#Settup idle animation
+	#Setup idle animation
 	animation.play("idle")
 	randomize()
 	animation.seek(rand_range(0.0, 2.0))
 	randomize()
 	_playback_speed = rand_range(1.0, 1.3)
 	animation.playback_speed = _playback_speed
+	
+	#Setup spawn animation
+	scale = Vector2(0,0)
+	$Tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2, Tween.TRANS_BACK, Tween.EASE_OUT)
+	$Tween.start()
 
 func heal(amount : int):
 	.heal(amount)
@@ -126,6 +131,9 @@ func update_status_bar():
 	for type in status_type:
 		var status = status_list[type]
 		$StatusBar.set_status(type, status.amount, status.positive)
+
+func get_center_position():
+	return $Sprite.rect_global_position + $Sprite.rect_size/2
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)

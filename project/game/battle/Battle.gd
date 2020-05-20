@@ -191,7 +191,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.set_loot(encounter.gold_reward, encounter.get_loot())
 
 
-func add_enemy(enemy, initial_pos = false):
+func add_enemy(enemy, initial_pos = false, play_sfx = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
 	
@@ -199,7 +199,10 @@ func add_enemy(enemy, initial_pos = false):
 		enemy_node.position = initial_pos
 	else:
 		enemy_node.position = $EnemyStartPosition.position
-		
+	
+	if play_sfx:
+		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+	
 	enemy_node.data.connect("acted", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
 	effect_manager.add_enemy(enemy_node)
@@ -459,7 +462,7 @@ func _on_enemy_acted(enemy, actions):
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
 			if enemies_node.get_child_count() < MAX_ENEMIES:
-				add_enemy(args.enemy, enemy.position)
+				add_enemy(args.enemy, enemy.get_center_position(), true)
 				update_enemy_positions()
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy

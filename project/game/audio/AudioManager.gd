@@ -114,6 +114,16 @@ func setup_locs():
 							if not LOCS.has(name):
 								LOCS[name] = {} 
 							LOCS[name]["idle"] = load(LOC_PATH + file_name)
+						#Check for spawn
+						else:
+							regex.compile("(\\w+)_spawn_var(\\d+).tres")
+							result = regex.search(file_name)
+							if result:
+								var name = result.get_string(1)
+								var number = result.get_string(2)
+								if not LOCS.has(name):
+									LOCS[name] = {} 
+								LOCS[name]["spawn_var"+str(number)] = load(LOC_PATH + file_name)
 						
 			file_name = dir.get_next()
 	else:
@@ -381,6 +391,26 @@ func get_sfx_duration(name: String):
 		assert(false)
 	return SFXS[name].asset.get_length()
 
+func play_enemy_sfx(sfx, given_player = null):
+	var player
+	if not given_player:
+		player= get_sfx_player()
+	else:
+		player = given_player
+	player.stop()
+	
+	randomize()
+	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
+	player.volume_db = vol
+	
+	player.pitch_scale = sfx.base_pitch
+	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	
+	player.stream.audio_stream = sfx.asset
+	
+	player.play()
+	return player
+
 func play_enemy_hit_sfx(enemy: String):
 	#Get a random hit sfx
 	randomize()
@@ -390,20 +420,18 @@ func play_enemy_hit_sfx(enemy: String):
 		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
-	var sfx = LOCS[enemy]["hit_var"+str(number)]
-	var player = get_sfx_player()
-	player.stop()
-	
+	play_enemy_sfx(LOCS[enemy]["hit_var"+str(number)])
+
+func play_enemy_spawn_sfx(enemy: String):
+	#Get a random hit sfx
 	randomize()
-	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
-	player.volume_db = vol
+	var number = randi()%3 + 1
 	
-	player.pitch_scale = sfx.base_pitch
-	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
+	if not LOCS.has(enemy) or not LOCS[enemy].has("spawn_var"+str(number)):
+		push_error("There isn't a spawn sfx file for this enemy: " + str(enemy))
+		assert(false)
 	
-	player.stream.audio_stream = sfx.asset
-	
-	player.play()
+	play_enemy_sfx(LOCS[enemy]["spawn_var"+str(number)])
 
 func get_enemy_idle_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
@@ -412,41 +440,17 @@ func get_enemy_idle_sfx(enemy):
 	
 	var sfx = LOCS[enemy].idle
 	var player = $SFXS/SFXPlayer1.duplicate()
-	player.stop()
 	
-	randomize()
-	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
-	player.volume_db = vol
-	
-	player.pitch_scale = sfx.base_pitch
-	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
-
-	player.stream.audio_stream = sfx.asset
-	
+	#Get random initial position
 	randomize()
 	var pos = rand_range(0.0, sfx.asset.get_length())
 	player.seek(pos)
 	
-	player.play()
-	
-	return player
+	return play_enemy_sfx(sfx, player)
 
 func play_enemy_dies_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):
 		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
-	var sfx = LOCS[enemy].dies
-	var player = get_sfx_player()
-	player.stop()
-	
-	randomize()
-	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
-	player.volume_db = vol
-	
-	player.pitch_scale = sfx.base_pitch
-	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
-	
-	player.stream.audio_stream = sfx.asset
-	
-	player.play()
+	play_enemy_sfx(LOCS[enemy].dies)

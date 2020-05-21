@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tooltip_appears.wav-7a51d5fc7c8154632e261e1f5ba6295d.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/tooltip_appears.wav"
+dest_files=[ "res://.import/tooltip_appears.wav-7a51d5fc7c8154632e261e1f5ba6295d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

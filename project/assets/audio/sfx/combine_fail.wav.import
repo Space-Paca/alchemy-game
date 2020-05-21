@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/combine_fail.wav-728e83855f1c9ddf76cc4833ec514ea6.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/combine_fail.wav"
+dest_files=[ "res://.import/combine_fail.wav-728e83855f1c9ddf76cc4833ec514ea6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

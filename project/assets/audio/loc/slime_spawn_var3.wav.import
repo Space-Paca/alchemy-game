@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slime_spawn_var3.wav-2d9867d59afa8f93de2ce0d662ba3418.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/slime_spawn_var3.wav"
+dest_files=[ "res://.import/slime_spawn_var3.wav-2d9867d59afa8f93de2ce0d662ba3418.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

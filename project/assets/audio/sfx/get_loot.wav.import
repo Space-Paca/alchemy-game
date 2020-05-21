@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/get_loot.wav-d0c64030c7baa679508d41a347de120c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/get_loot.wav"
+dest_files=[ "res://.import/get_loot.wav-d0c64030c7baa679508d41a347de120c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

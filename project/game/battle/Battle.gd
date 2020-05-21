@@ -190,7 +190,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
 	
-	win_screen.set_loot(encounter.gold_reward, encounter.get_loot())
+	win_screen.set_loot(encounter.get_loot())
 
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false):
@@ -338,7 +338,7 @@ func win():
 		AudioManager.play_sfx("win_normal_battle")
 	
 	ended = true
-#	player.add_currency(gold_reward)
+
 	TooltipLayer.clean_tooltips()
 	disable_player()
 	player.clear_status()

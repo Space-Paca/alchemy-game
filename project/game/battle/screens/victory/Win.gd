@@ -6,7 +6,6 @@ signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
 
 onready var loot_list = $BG/CenterContainer/HBoxContainer/RewardsContainer/LootList
-onready var gold_label = $BG/CenterContainer/HBoxContainer/RewardsContainer/LootList/GoldReward/GoldLabel
 onready var rewards_container = $BG/CenterContainer/HBoxContainer/RewardsContainer
 onready var recipe_displays = [$BG/CenterContainer/HBoxContainer/WinRecipe1, $BG/CenterContainer/HBoxContainer/WinRecipe2, $BG/CenterContainer/HBoxContainer/WinRecipe3]
 onready var bg = $BG
@@ -16,9 +15,7 @@ const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn
 var rewarded_combinations := []
 
 
-func set_loot(gold: int, loot: Array):
-	gold_label.text = str(gold)
-	
+func set_loot(loot: Array):
 	for reagent_name in loot:
 		var reagent_loot = REAGENT_LOOT.instance()
 		loot_list.add_child(reagent_loot)

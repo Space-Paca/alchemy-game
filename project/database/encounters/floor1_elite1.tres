@@ -8,7 +8,6 @@ is_boss = false
 is_elite = true
 level = 1
 enemies = [ "poison" ]
-gold_reward = 30
 loot_table = {
 "catalyst": 0,
 "common": 2,

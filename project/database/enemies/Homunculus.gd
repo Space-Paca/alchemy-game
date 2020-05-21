@@ -16,6 +16,7 @@ var hp = 50
 var battle_init = false
 var size = "medium"
 var damage = [10, 15]
+var small_damage = [5, 7]
 var defense = [4, 6]
 
 var states = ["attack", "defend"]
@@ -36,6 +37,10 @@ func set_node_references(e_ref, p_ref):
 func get_damage():
 	randomize()
 	return randi()%(damage[1]-damage[0]+1)+damage[0]
+
+func get_small_damage():
+	randomize()
+	return randi()%(small_damage[1]-small_damage[0]+1)+small_damage[0]
 
 func get_defense():
 	randomize()
@@ -64,7 +69,7 @@ func get_intent_data(state):
 		intent1.value = next_defend_value
 		data.append(intent1)
 		var intent2 = {}
-		next_attack_value = get_damage()/2
+		next_attack_value = get_small_damage()
 		intent2.image = intents.attack
 		intent2.value = next_attack_value
 		data.append(intent2)

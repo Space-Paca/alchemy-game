@@ -10,12 +10,12 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   "spawn": preload("res://assets/images/enemies/intents/summoning.png"),
 			  }
 var image = "res://assets/images/enemies/homunculus/idle.png"
-var name = "Tanky"
+var name = "Spawner"
 var sfx = "slime"
 var use_idle_sfx = true
 var hp = 25
 var battle_init = false
-var size = "medium"
+var size = "Small"
 var damage = [5, 6]
 var small_defense = [4, 5]
 var defense = [8, 10]

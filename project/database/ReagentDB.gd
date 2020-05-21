@@ -9,10 +9,10 @@ const DB = {
 		"gold_value" : 10
 	},
 	"uncommon": {
-		"name": "Reagente",
+		"name": "Reagente Incomum",
 		"image": preload("res://assets/images/reagents/special.png"),
-		"tooltip" : "If not used correctly, deals 4 damage to a random enemy",
-		"effect" : {"type": "damage", "value": 4},
+		"tooltip" : "If not used correctly, deals 5 damage to a random enemy",
+		"effect" : {"type": "damage", "value": 5},
 		"gold_value" : 10
 	},
 	"rare": {

@@ -8,7 +8,6 @@ is_boss = false
 is_elite = false
 level = 1
 enemies = [ "baby_humunculus", "baby_humunculus", "baby_humunculus" ]
-gold_reward = 10
 loot_table = {
 "catalyst": 0,
 "common": 1,

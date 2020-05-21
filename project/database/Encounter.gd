@@ -8,7 +8,6 @@ export(Array, String, "humunculus", "baby_humunculus", "wolf", "robot", "poison"
 					  "baby_poison", "tank_humunculus", "spawner_humunculus") var enemies
 
 # Loot table
-export var gold_reward := 0
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"damaging": 0, "defensive": 0, "super_damaging": 0, "super_defensive": 0,
 	"healing": 0, "catalyst": 0, "poison": 0}

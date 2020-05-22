@@ -3,8 +3,6 @@
 [ext_resource path="res://database/audio/LOC.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/loc/slime_dies.wav" type="AudioStream" id=2]
 
-
-
 [resource]
 script = ExtResource( 1 )
 asset = ExtResource( 2 )

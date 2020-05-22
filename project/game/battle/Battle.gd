@@ -467,6 +467,7 @@ func _on_reagent_quick_place(reagent):
 	if reagent.slot:
 		if reagent.slot.type == "grid":
 			if hand.available_slot_count() > 0:
+				AudioManager.play_sfx("quick_place_hand")
 				hand.place_reagent(reagent)
 		elif reagent.slot.type == "hand":
 			grid.quick_place(reagent)

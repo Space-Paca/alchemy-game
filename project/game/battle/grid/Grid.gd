@@ -96,11 +96,13 @@ func quick_place(reagent):
 	#Search for available hint first
 	for slot in slots.get_children():
 		if not slot.get_reagent() and slot.get_hint() == reagent.type:
+			AudioManager.play_sfx("quick_place_grid")
 			slot.set_reagent(reagent)
 			return
 	#Search for empty space after
 	for slot in slots.get_children():
 		if not slot.get_reagent():
+			AudioManager.play_sfx("quick_place_grid")
 			slot.set_reagent(reagent)
 			return
 	#If got here, don't have an available space

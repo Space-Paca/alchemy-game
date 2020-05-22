@@ -9,6 +9,7 @@ signal quick_place
 signal hovering
 signal stopped_hovering
 signal finished_combine_animation
+signal destroyed
 
 onready var image = $Image
 
@@ -62,6 +63,12 @@ func enable_dragging():
 func clear_tweens():
 	$Tween.remove_all()
 
+func start_shaking_and_destroy():
+	$Tween.interpolate_property(self, "shake", 0, 4, .9, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.start()
+	yield(get_tree().create_timer(.2), "timeout")
+	AudioManager.play_sfx("destroy_reagent")
+
 func combine_animation(grid_center: Vector2, duration: float):
 	var center = grid_center + -rect_size/2
 	target_position = center
@@ -84,6 +91,12 @@ func stop_hover_effect():
 	hovering = false
 	slight_shrink()
 
+func destroy():
+	start_shaking_and_destroy()
+	$AnimationPlayer.play("destroy")
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("destroyed", self)
+	queue_free()
 
 func hover_effect():
 	hovering = true

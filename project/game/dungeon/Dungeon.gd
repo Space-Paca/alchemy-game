@@ -135,7 +135,7 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 
 func make_combination(combination: Combination):
 	var recipe := combination.recipe
-	battle.apply_effects(recipe.effects, recipe.effect_args)
+	battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents)
 	
 	if not player.known_recipes.has(recipe.name):
 		MessageLayer.add_message("Oh yeah! I discovered a new recipe")

@@ -35,8 +35,8 @@ func _ready():
 	# Initial bag
 	for _i in range(5):
 		add_reagent("common")
-	for _i in range(3):
-		add_reagent("damaging")
+	for _i in range(5):
+		add_reagent("healing")
 	for _i in range(3):
 		add_reagent("defensive")
 
@@ -66,6 +66,10 @@ func spend_currency(amount: int) -> bool:
 func add_reagent(type):
 	bag.append(type)
 
+func remove_reagent(type):
+	var idx = bag.find(type)
+	if idx != -1:
+		bag.remove(idx)
 
 func set_hud(_hud):
 	hud = _hud

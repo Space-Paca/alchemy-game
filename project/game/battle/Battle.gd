@@ -91,6 +91,7 @@ func setup_player(_player):
 		reagent.connect("hovering", self, "_on_reagent_hover")
 		reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
 		reagent.connect("quick_place", self, "_on_reagent_quick_place")
+		reagent.connect("destroyed", self, "_on_reagent_destroyed")
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
@@ -306,13 +307,18 @@ func set_favorites_disabled(disabled: bool):
 		button.disabled = disabled
 
 
-func apply_effects(effects: Array, effect_args: Array = [[]]):
+func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: Array = []):
 	if effects[0] == "combination_failure":
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")
 
 	else:
-		#First discard reagents
+		#Destroy reagents if needed
+		for reagent in destroy_reagents:
+			if grid.destroy_reagent(reagent):
+				yield(grid, "reagent_destroyed")
+
+		#Discard reagents
 		grid.clean()
 		
 		for i in range(effects.size()):
@@ -458,6 +464,8 @@ func _on_reagent_quick_place(reagent):
 		elif reagent.slot.type == "hand":
 			grid.quick_place(reagent)
 
+func _on_reagent_destroyed(reagent):
+	player.remove_reagent(reagent.type)
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:

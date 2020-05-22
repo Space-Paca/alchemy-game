@@ -4,6 +4,7 @@ extends Control
 signal cleaned
 signal modified
 signal returned_to_hand
+signal reagent_destroyed
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const SEPARATION = 4
@@ -105,6 +106,17 @@ func quick_place(reagent):
 	#If got here, don't have an available space
 	AudioManager.play_sfx("error")
 
+func destroy_reagent(reagent_type):
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent and reagent.type == reagent_type:
+			slot.remove_reagent()
+			reagent.destroy()
+			yield(reagent, "destroyed")
+			emit_signal("reagent_destroyed")
+			return true
+
+	return false
 
 func return_to_hand():
 	var reagents_to_be_sent = []

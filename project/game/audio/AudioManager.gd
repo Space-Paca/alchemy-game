@@ -157,12 +157,11 @@ func lower_bgm_volume():
 			var db = BGMS[aux_bgm].lowered_db
 			var player = get_node("AuxBGMPlayer" + str(i))
 			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
-			$Tween.remove(player, "volume_db")
+			$AuxTween.remove(player, "volume_db")
 			$AuxTween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$AuxTween.start()
 			break
 		i += 1
-	
 
 func resume_bgm_volume():
 	#Regular BGMs

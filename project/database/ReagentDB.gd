@@ -2,8 +2,8 @@ class_name ReagentDB
 
 const DB = {
 	"common": {
-		"name": "Phoenix's Feather",
-		"image": preload("res://assets/images/reagents/Reagent 1.png"),
+		"name": "Comum",
+		"image": preload("res://assets/images/reagents/regular.png"),
 		"tooltip" : "If not used correctly, deals 3 damage to a random enemy",
 		"effect" : {"type": "damage", "value": 3},
 		"gold_value" : 10
@@ -17,14 +17,14 @@ const DB = {
 	},
 	"rare": {
 		"name": "Reagente",
-		"image": preload("res://assets/images/reagents/regular.png"),
+		"image": preload("res://assets/images/reagents/funky.png"),
 		"tooltip" : "If not used correctly, deals 5 damage to a random enemy",
 		"effect" : {"type": "damage", "value": 5},
 		"gold_value" : 10
 	},
 	"damaging": {
-		"name": "Reagente Dano",
-		"image": preload("res://assets/images/reagents/funky.png"),
+		"name": "Phoenix's Feather",
+		"image": preload("res://assets/images/reagents/feather.png"),
 		"tooltip" : "If not used correctly, deals 3 damage to all enemies",
 		"effect" : {"type": "damage_all", "value": 3},
 		"gold_value" : 10

@@ -3,8 +3,11 @@
 .import/
 export.cfg
 export_presets.cfg
+
+#Imports
 *.import
 *.*.import
+!slime_idle.wav.import
 
 # Mono-specific ignores
 .mono/

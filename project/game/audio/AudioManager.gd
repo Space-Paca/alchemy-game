@@ -139,6 +139,7 @@ func lower_bgm_volume():
 	if not using_layers:
 		var db = BGMS[cur_bgm].lowered_db
 		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEOUT_SPEED)
+		$Tween.remove($BGMPlayer1, "volume_db")
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	else:
@@ -146,6 +147,7 @@ func lower_bgm_volume():
 			var player = get_node("BGMPlayer"+str(i))
 			var db = get_bgm_layer(cur_bgm, i).lowered_db
 			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
+			$Tween.remove(player, "volume_db")
 			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	#Aux BGMs
@@ -155,6 +157,7 @@ func lower_bgm_volume():
 			var db = BGMS[aux_bgm].lowered_db
 			var player = get_node("AuxBGMPlayer" + str(i))
 			var duration = abs(db - player.volume_db)/float(FADEOUT_SPEED)
+			$Tween.remove(player, "volume_db")
 			$AuxTween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$AuxTween.start()
 			break
@@ -166,6 +169,7 @@ func resume_bgm_volume():
 	if not using_layers:
 		var db = BGMS[cur_bgm].base_db
 		var duration = abs(db - $BGMPlayer1.volume_db)/float(FADEIN_SPEED)
+		$Tween.remove($BGMPlayer1, "volume_db")
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", $BGMPlayer1.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	else:
@@ -173,6 +177,7 @@ func resume_bgm_volume():
 			var player = get_node("BGMPlayer"+str(i))
 			var db = get_bgm_layer(cur_bgm, i).base_db
 			var duration = abs(db - player.volume_db)/float(FADEIN_SPEED)
+			$Tween.remove(player, "volume_db")
 			$Tween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 	#Aux BGMs
@@ -182,6 +187,7 @@ func resume_bgm_volume():
 			var db = BGMS[aux_bgm].base_db
 			var player = get_node("AuxBGMPlayer" + str(i))
 			var duration = abs(db - player.volume_db)/float(FADEIN_SPEED)
+			$AuxTween.remove(player, "volume_db")
 			$AuxTween.interpolate_property(player, "volume_db", player.volume_db, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$AuxTween.start()
 			break
@@ -204,6 +210,7 @@ func play_bgm(name, layers = false):
 		$BGMPlayer1.volume_db = MUTE_DB
 		$BGMPlayer1.play(bgms_last_pos[name])
 		var duration = (BGMS[name].base_db - MUTE_DB)/float(FADEIN_SPEED)
+		$Tween.remove($BGMPlayer1, "volume_db")
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, BGMS[name].base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 	else:
@@ -214,6 +221,7 @@ func play_bgm(name, layers = false):
 			player.volume_db = MUTE_DB
 			player.play(bgms_last_pos[name])
 			var duration = (layer.base_db - MUTE_DB)/float(FADEIN_SPEED)
+			$Tween.remove(player, "volume_db")
 			$Tween.interpolate_property(player, "volume_db", MUTE_DB, layer.base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 
@@ -233,22 +241,32 @@ func stop_bgm():
 			fadeout.stream = fadein.stream
 			fadeout.play(pos)
 			var duration = (vol - MUTE_DB)/FADEOUT_SPEED
+			$Tween.remove(fadeout, "volume_db")
 			$Tween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
+func update_bgm_layers(layers_array: Array):
+	for idx in range(0, layers_array.size()):
+		if layers_array[idx]:
+			play_bgm_layer(idx + 1)
+		else:
+			stop_bgm_layer(idx + 1)
 
 func stop_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
 	var vol = player.volume_db
 	var duration = (vol - MUTE_DB)/float(TRACK_FADEOUT_SPEED)
+	$Tween.remove(player, "volume_db")
 	$Tween.interpolate_property(player, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
 func play_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
+	$Tween.remove(player, "volume_db")
 	var vol = player.volume_db
 	var db = get_bgm_layer(cur_bgm, layer).base_db
 	var duration = (db - vol)/float(TRACK_FADEIN_SPEED)
+	$Tween.remove(player, "volume_db")
 	$Tween.interpolate_property(player, "volume_db", vol, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
@@ -257,6 +275,7 @@ func remove_bgm_effect():
 	if AudioServer.is_bus_effect_enabled(BGM_BUS, 0):
 		var effect = AudioServer.get_bus_effect(BGM_BUS, 0)
 		var duration = abs(MAX_CUTOFF - effect.cutoff_hz)/CUTOFF_SPEED
+		$BusEffectTween.remove(effect, "cutoff_hz")
 		$BusEffectTween.interpolate_property(effect, "cutoff_hz", effect.cutoff_hz, MAX_CUTOFF, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 		yield($BusEffectTween, "tween_completed")
@@ -264,6 +283,7 @@ func remove_bgm_effect():
 	#remove amplify	
 	var effect = AudioServer.get_bus_effect(BGM_BUS, 1)
 	var duration = abs(MIN_AMPLIFY - effect.volume_db)/AMPLIFY_SPEED
+	$BusEffectTween.remove(effect, "volume_db")
 	$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MIN_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$BusEffectTween.start()
 
@@ -273,12 +293,14 @@ func start_bgm_effect(type: String):
 		var effect = AudioServer.get_bus_effect(BGM_BUS, 0)
 		var duration = abs(DANGER_CUTOFF - effect.cutoff_hz)/CUTOFF_SPEED
 		AudioServer.set_bus_effect_enabled(BGM_BUS, 0, true)
+		$BusEffectTween.remove(effect, "cutoff_hz")
 		$BusEffectTween.interpolate_property(effect, "cutoff_hz", effect.cutoff_hz, DANGER_CUTOFF, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 		
 		#remove amplify
 		effect = AudioServer.get_bus_effect(BGM_BUS, 1)
 		duration = abs(MIN_AMPLIFY - effect.volume_db)/AMPLIFY_SPEED
+		$BusEffectTween.remove(effect, "volume_db")
 		$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MIN_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 	if type == "extreme-danger":
@@ -286,12 +308,14 @@ func start_bgm_effect(type: String):
 		var effect = AudioServer.get_bus_effect(BGM_BUS, 0)
 		var duration = abs(EXTREME_DANGER_CUTOFF - effect.cutoff_hz)/CUTOFF_SPEED
 		AudioServer.set_bus_effect_enabled(BGM_BUS, 0, true)
+		$BusEffectTween.remove(effect, "cutoff_hz")
 		$BusEffectTween.interpolate_property(effect, "cutoff_hz", effect.cutoff_hz, EXTREME_DANGER_CUTOFF, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 		
 		#amplify
 		effect = AudioServer.get_bus_effect(BGM_BUS, 1)
 		duration = abs(MAX_AMPLIFY - effect.volume_db)/AMPLIFY_SPEED
+		$BusEffectTween.remove(effect, "volume_db")
 		$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MAX_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 
@@ -317,8 +341,9 @@ func play_aux_bgm(name: String):
 	player.play()
 	var db = BGMS[name].base_db
 	var duration = abs(db - MUTE_DB)/float(AUX_FADEIN_SPEED*2)
-	$Tween.interpolate_property(player, "volume_db", MUTE_DB, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
-	$Tween.start()	
+	$AuxTween.remove(player, "volume_db")
+	$AuxTween.interpolate_property(player, "volume_db", MUTE_DB, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$AuxTween.start()	
 
 func stop_all_aux_bgm():
 	for aux_bgm in AUX_BGMS:
@@ -340,6 +365,7 @@ func stop_aux_bgm(name):
 				fadeout.stream = fadein.stream
 				fadeout.play(pos)
 				var duration = (vol - MUTE_DB)/AUX_FADEOUT_SPEED
+				$AuxTween.remove(fadeout, "volume_db")
 				$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 				$AuxTween.start()
 				AUX_BGMS[i-1] = ""

@@ -37,7 +37,7 @@ onready var SFXS = {}
 const LOC_PATH = "res://database/audio/locs/"
 onready var LOCS = {}
 
-var bgms_last_pos = {"battle": 0, "map":0, "boss1":0, "shop":0, "gameover":0, "win_normal_battle":0, "win_boss_battle":0}
+var bgms_last_pos = {"battle": 0, "map":0, "boss1":0, "shop":0}
 var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false
@@ -192,7 +192,7 @@ func resume_bgm_volume():
 			break
 		i += 1
 
-func play_bgm(name, layers = false):
+func play_bgm(name, layers = false, start_from_beginning = false):
 	if not layers:
 		assert(BGMS[name])
 	else:
@@ -207,7 +207,10 @@ func play_bgm(name, layers = false):
 	if not using_layers:
 		$BGMPlayer1.stream = BGMS[name].asset
 		$BGMPlayer1.volume_db = MUTE_DB
-		$BGMPlayer1.play(bgms_last_pos[name])
+		if start_from_beginning:
+			$BGMPlayer1.play(0)
+		else:
+			$BGMPlayer1.play(bgms_last_pos[name])
 		var duration = (BGMS[name].base_db - MUTE_DB)/float(FADEIN_SPEED)
 		$Tween.remove($BGMPlayer1, "volume_db")
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, BGMS[name].base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
@@ -218,7 +221,10 @@ func play_bgm(name, layers = false):
 			var layer = get_bgm_layer(name, i)
 			player.stream = layer.asset
 			player.volume_db = MUTE_DB
-			player.play(bgms_last_pos[name])
+			if start_from_beginning:
+				player.play(0)
+			else:
+				player.play(bgms_last_pos[name])
 			var duration = (layer.base_db - MUTE_DB)/float(FADEIN_SPEED)
 			$Tween.remove(player, "volume_db")
 			$Tween.interpolate_property(player, "volume_db", MUTE_DB, layer.base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)

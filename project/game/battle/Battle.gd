@@ -354,9 +354,9 @@ func win():
 	#Wait a bit before starting win bgm
 	yield(get_tree().create_timer(.3), "timeout")
 	if is_boss:
-		AudioManager.play_bgm("win_boss_battle")
+		AudioManager.play_bgm("win_boss_battle", false, true)
 	else:
-		AudioManager.play_bgm("win_normal_battle")
+		AudioManager.play_bgm("win_normal_battle", false, true)
 
 
 func show_victory_screen(combinations: Array):
@@ -526,7 +526,7 @@ func _on_player_died(_player):
 	for reagent in reagents.get_children():
 		reagent.disable()
 	add_child(GAMEOVER_SCENE.instance())
-	AudioManager.play_bgm("gameover")
+	AudioManager.play_bgm("gameover", false, true)
 	AudioManager.stop_aux_bgm("heart-beat")
 
 

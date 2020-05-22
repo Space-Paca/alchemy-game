@@ -35,8 +35,8 @@ func _ready():
 	# Initial bag
 	for _i in range(5):
 		add_reagent("common")
-	for _i in range(5):
-		add_reagent("healing")
+	for _i in range(3):
+		add_reagent("damaging")
 	for _i in range(3):
 		add_reagent("defensive")
 

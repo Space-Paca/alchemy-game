@@ -33,6 +33,7 @@ const AMBIENCE_VARIATIONS = 3
 const MAX_SFXS = 10
 const SFX_PATH = "res://database/audio/sfxs/"
 onready var SFXS = {}
+onready var CUR_IDLE_SFX = {}
 #LOCS
 const LOC_PATH = "res://database/audio/locs/"
 onready var LOCS = {}
@@ -394,6 +395,13 @@ func get_sfx_player():
 	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
 	return player
 
+func get_idle_sfx_player():
+	for player in $IdleSFXs.get_children():
+		if not player.is_playing():
+			return player
+	push_error("Don't have a free idle sfx player")
+	assert(false)
+
 func play_sfx(name: String, override_pitch := 1):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
@@ -464,13 +472,19 @@ func play_enemy_spawn_sfx(enemy: String):
 	
 	play_enemy_sfx(LOCS[enemy]["spawn_var"+str(number)])
 
-func get_enemy_idle_sfx(enemy):
+func play_enemy_idle_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
 		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
 		assert(false)
 	
+	if CUR_IDLE_SFX.has(enemy):
+		#Already has this enemy sfx playing
+		return
+
+	
 	var sfx = LOCS[enemy].idle
-	var player = $SFXS/SFXPlayer1.duplicate()
+	var player = get_idle_sfx_player()
+	CUR_IDLE_SFX[enemy] = player
 	
 	#Get random initial position
 	randomize()
@@ -478,6 +492,15 @@ func get_enemy_idle_sfx(enemy):
 	player.seek(pos)
 	
 	return play_enemy_sfx(sfx, player)
+
+func stop_enemy_idle_sfx(enemy):
+	if CUR_IDLE_SFX.has(enemy):
+		CUR_IDLE_SFX[enemy].stop()
+		CUR_IDLE_SFX.erase(enemy)
+
+func stop_all_enemy_idle_sfx():
+	for name in CUR_IDLE_SFX.keys():
+		stop_enemy_idle_sfx(name)
 
 func play_enemy_dies_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):

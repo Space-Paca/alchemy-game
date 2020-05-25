@@ -207,6 +207,10 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false):
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 		enemy_node.just_spawned = true
 	
+	#Idle sfx
+	if enemy_node.data.use_idle_sfx:
+		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
+	
 	enemy_node.data.connect("acted", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
 	effect_manager.add_enemy(enemy_node)
@@ -343,6 +347,7 @@ func win():
 	else:
 		AudioManager.play_sfx("win_normal_battle")
 	AudioManager.stop_bgm()
+	AudioManager.stop_all_enemy_idle_sfx()
 	
 	ended = true
 
@@ -513,6 +518,16 @@ func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
 	
+	#Update idle sfx
+	if enemy.data.use_idle_sfx:
+		var remove_sfx = true
+		for other_enemy in enemies_node.get_children():
+			if other_enemy.data.use_idle_sfx and other_enemy.data.sfx == enemy.data.sfx:
+				remove_sfx = false
+				break
+		if remove_sfx:
+			AudioManager.stop_enemy_idle_sfx(enemy.data.sfx)
+	
 	if not enemies_node.get_child_count():
 		win()
 
@@ -529,6 +544,7 @@ func _on_player_died(_player):
 	add_child(GAMEOVER_SCENE.instance())
 	AudioManager.play_bgm("gameover", false, true)
 	AudioManager.stop_aux_bgm("heart-beat")
+	AudioManager.stop_all_enemy_idle_sfx()
 
 
 func _on_DiscardBag_reagent_discarded(reagent):

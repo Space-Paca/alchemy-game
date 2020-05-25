@@ -11,6 +11,7 @@ floor_sold_in = 1
 reagents = [ "common", "common", "damaging", "damaging" ]
 effects = [ "damage_all" ]
 effect_args = [ [ 14, "regular" ] ]
+destroy_reagents = [  ]
 description = "Deals 14 regular damage to all enemies."
 fav_icon = ExtResource( 1 )
 shop_cost = 20

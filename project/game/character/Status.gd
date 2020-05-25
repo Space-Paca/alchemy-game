@@ -9,7 +9,7 @@ const STATUS_IMAGES = {
 const STATUS_TOOLTIPS = {
 					   "dodge": {
 						"title": "Dodge",
-						"text": "This character will avoid the next attack",
+						"text": "This character will avoid the next attack. Last until end of turn.",
 						"title_image": STATUS_IMAGES.dodge},
 					   "perm_strength": {
 						"title": "Permanent Strength",
@@ -17,11 +17,11 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.perm_strength},
 					   "temp_strength": {
 						"title": "Temporary Strength",
-						"text": "Increases this character next attack damage",
+						"text": "Increases the damage of this character next attack",
 						"title_image": STATUS_IMAGES.temp_strength},
 					   "poison": {
 						"title": "Poison",
-						"text": "This character is taking damage each turn",
+						"text": "This character is taking poison damage each turn",
 						"title_image": STATUS_IMAGES.poison},
 					  }
 

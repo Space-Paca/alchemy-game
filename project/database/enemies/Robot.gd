@@ -14,20 +14,22 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   }
 var image = "res://assets/images/enemies/robot/robotIDLE.png"
 var name = "BeepBoop"
-var sfx = "boss_1"
+var sfx = "enemy_2"
 var use_idle_sfx = false
-var hp = 50
+var hp = 90
 var battle_init = false
-var size = "big"
+var size = "medium"
 var damage = [3, 5]
 var temp_buff = 0
 var perm_buff = 0
 
 var states = ["temp_buff", "perm_buff", "attack"]
-var connections = [["temp_buff", "attack", 1],
+var connections = [["temp_buff", "attack", 3],
+				   ["temp_buff", "temp_buff", 1],
 				   ["attack", "perm_buff", 1],
 				   ["perm_buff", "temp_buff", 1],
-				   ["perm_buff", "attack", 2],
+				   ["perm_buff", "attack", 3],
+				   ["perm_buff", "temp_buff", 1],
 						 ]
 var first_state = ["temp_buff"]
 
@@ -57,14 +59,11 @@ func get_intent_data(state):
 	
 	if state == "attack":
 		next_value = get_damage()
-		intent.value = next_value + temp_buff + perm_buff
-		temp_buff = 0
+		intent.value = next_value + enemy_ref.get_damage_modifiers(false)
 	elif state == "temp_buff":
 		intent.value = TEMP_BUFF
-		temp_buff = TEMP_BUFF
 	elif state == "perm_buff":
 		intent.value = PERM_BUFF
-		perm_buff += PERM_BUFF
 	data.append(intent)
 	
 	return data

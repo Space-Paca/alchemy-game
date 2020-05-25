@@ -189,11 +189,12 @@ func set_image(new_texture):
 	$StatusBar.rect_position.x = $HealthBar.rect_position.x
 	$StatusBar.rect_position.y = $HealthBar.rect_position.y + STATUS_BAR_MARGIN
 	#Update tooltip collision
-	var t_w = w
+	var t_w = max(w, $HealthBar.rect_size.x*$HealthBar.rect_scale.x)
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
 			  HEALTH_BAR_MARGIN + $HealthBar.rect_size.y*$HealthBar.rect_scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
-	$TooltipCollision.position = Vector2(t_w/2, - INTENT_H - INTENT_MARGIN + t_h/2)
+	$TooltipCollision.position = Vector2(min($HealthBar.rect_position.x, $Sprite.rect_position.x) + t_w/2, \
+										 -INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 
 #Removes first intent (the one in the left)

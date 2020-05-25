@@ -22,11 +22,12 @@ func heal(amount: int):
 	# warning-ignore:narrowing_conversion
 	hp = min(hp + amount, max_hp)
 
-func get_damage_modifiers():
+func get_damage_modifiers(update_status:= true):
 	var mod = 0
 	if get_status("temp_strength"):
 		mod += get_status("temp_strength").amount
-		remove_status("temp_strength")
+		if update_status:
+			remove_status("temp_strength")
 	if get_status("perm_strength"):
 		mod += get_status("perm_strength").amount
 	return mod

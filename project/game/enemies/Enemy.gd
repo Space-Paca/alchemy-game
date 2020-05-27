@@ -48,6 +48,9 @@ func _ready():
 func heal(amount : int):
 	.heal(amount)
 	update_life()
+	
+	#Animation
+	AnimationManager.play("heal", get_center_position())
 
 func die():
 	#Audio
@@ -74,10 +77,23 @@ func take_damage(source: Character, damage: int, type: String):
 	update_life()
 	update_shield()
 	update_status_bar()
+	
+	#Animations
+	if type == "regular":
+		AnimationManager.play("regular_attack", get_center_position())
+	elif type == "piercing":
+		AnimationManager.play("piercing_attack", get_center_position())
+	elif type == "crushing":
+		AnimationManager.play("crushing_attack", get_center_position())
+	elif type == "poison":
+		AnimationManager.play("poison", get_center_position())
 
 func gain_shield(value):
 	.gain_shield(value)
 	update_shield()
+	
+	#Animation
+	AnimationManager.play("shield", get_center_position())
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
@@ -86,6 +102,12 @@ func reduce_status(status: String, amount: int):
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
 	update_status_bar()
+	
+	#Animations
+	if positive:
+		AnimationManager.play("buff", get_center_position())
+	else:
+		AnimationManager.play("debuff", get_center_position())
 
 func remove_status(status: String):
 	.remove_status(status)
@@ -135,7 +157,7 @@ func update_status_bar():
 		$StatusBar.set_status(type, status.amount, status.positive)
 
 func get_center_position():
-	return $Sprite.rect_global_position + $Sprite.rect_size/2
+	return $Sprite.rect_global_position + $Sprite.rect_size*$Sprite.rect_scale/2
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)

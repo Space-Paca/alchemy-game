@@ -1,16 +1,29 @@
 extends Node
 
+onready var ANIM = {
+	"area_attack": $Animations/AreaAttack,
+	"regular_attack": $Animations/RegularAttack,
+	"piercing_attack": $Animations/PiercingAttack,
+	"crushing_attack": $Animations/CrushingAttack,
+	"poison": $Animations/Poison,
+	"heal": $Animations/Heal,
+	"buff": $Animations/Buff,
+	"debuff": $Animations/Debuff,
+	"summon": $Animations/Summon,
+	"shield": $Animations/Shield,
+}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func play(name: String, pos: Vector2):
+	if not ANIM.has(name):
+		push_error("Not a valid animation:" + str(name))
+		assert(false)
+	
+	var animation = ANIM[name].duplicate()
+	animation.position = pos
+	animation.show()
+	
+	$AnimationLayer.add_child(animation)
+	yield(animation.get_node("AnimationPlayer"), "animation_finished")
+	
+	animation.queue_free()

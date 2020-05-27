@@ -53,7 +53,7 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "status":
 			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
-		yield(get_tree().create_timer(.3), "timeout")
+		yield(get_tree().create_timer(.35), "timeout")
 	
 	emit_signal("failure_resolved")
 
@@ -121,7 +121,7 @@ func damage(amount: int, type: String):
 func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
 		(enemy as Enemy).take_damage(player, amount, type)
-		yield(get_tree().create_timer(.35),"timeout")
+		yield(get_tree().create_timer(.40),"timeout")
 	
 	resolve()
 

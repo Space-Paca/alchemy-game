@@ -58,6 +58,10 @@ func update_audio():
 		AudioManager.stop_aux_bgm("heart-beat")
 		AudioManager.start_bgm_effect("extreme-danger")
 
+#Returns the global position of the center of portrait
+func get_animation_position():
+	return $AnimationPosition.global_position
+
 func get_tooltips():
 	var tooltips = []
 	

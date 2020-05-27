@@ -87,6 +87,9 @@ margin_top = 125.0
 margin_right = 1440.0
 margin_bottom = 185.0
 rect_scale = Vector2( 1.3, 1.4 )
+
+[node name="AnimationPosition" type="Position2D" parent="."]
+position = Vector2( 239.166, 243.95 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

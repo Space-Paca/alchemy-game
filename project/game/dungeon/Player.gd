@@ -78,6 +78,9 @@ func set_hud(_hud):
 func heal(amount : int):
 	.heal(amount)
 	hud.update_life(self)
+	
+	#Animation
+	AnimationManager.play("heal", hud.get_animation_position())
 
 
 func take_damage(source: Character, value: int, type: String):
@@ -85,6 +88,16 @@ func take_damage(source: Character, value: int, type: String):
 	hud.update_life(self)
 	hud.update_shield(self)
 	hud.update_status_bar(self)
+	
+	#Animations
+	if type == "regular":
+		AnimationManager.play("regular_attack", hud.get_animation_position())
+	elif type == "piercing":
+		AnimationManager.play("piercing_attack", hud.get_animation_position())
+	elif type == "crushing":
+		AnimationManager.play("crushing_attack", hud.get_animation_position())
+	elif type == "poison":
+		AnimationManager.play("poison", hud.get_animation_position())
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
@@ -93,10 +106,19 @@ func reduce_status(status: String, amount: int):
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
 	hud.update_status_bar(self)
+	
+	#Animations
+	if positive:
+		AnimationManager.play("buff", hud.get_animation_position())
+	else:
+		AnimationManager.play("debuff", hud.get_animation_position())
 
 func gain_shield(value):
 	.gain_shield(value)
 	hud.update_shield(self)
+	
+	#Animation
+	AnimationManager.play("shield", hud.get_animation_position())
 
 
 func new_turn():

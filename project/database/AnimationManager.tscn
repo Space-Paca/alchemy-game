@@ -190,111 +190,120 @@ tracks/0/keys = {
 [node name="AnimationManager" type="Node"]
 script = ExtResource( 11 )
 
-[node name="Basic Attack" type="Sprite" parent="."]
+[node name="AnimationLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="RegularAttack" type="Sprite" parent="Animations"]
 visible = false
 position = Vector2( -10.1682, 0 )
 texture = ExtResource( 9 )
 vframes = 2
 hframes = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Basic Attack"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/RegularAttack"]
 autoplay = "Basic Attack Anim"
 "anims/Basic Attack Anim" = SubResource( 1 )
 
-[node name="Area attack" type="Sprite" parent="."]
+[node name="AreaAttack" type="Sprite" parent="Animations"]
 visible = false
 scale = Vector2( 1.49701, 1.49701 )
 texture = ExtResource( 3 )
 vframes = 6
 hframes = 5
+frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area attack"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/AreaAttack"]
 autoplay = "AreadmgAnim"
 anims/AreadmgAnim = SubResource( 2 )
 
-[node name="Pierce Attack" type="Sprite" parent="."]
+[node name="PiercingAttack" type="Sprite" parent="Animations"]
 visible = false
 rotation = -3.14159
 texture = ExtResource( 7 )
 vframes = 4
 hframes = 5
-frame = 3
+frame = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pierce Attack"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/PiercingAttack"]
 autoplay = "PierceAnim"
 anims/PierceAnim = SubResource( 3 )
 
-[node name="Crushing Attack" type="Sprite" parent="."]
+[node name="CrushingAttack" type="Sprite" parent="Animations"]
 visible = false
 texture = ExtResource( 8 )
 vframes = 3
 hframes = 5
+frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crushing Attack"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/CrushingAttack"]
 autoplay = "CrushattackAnim"
 anims/CrushattackAnim = SubResource( 4 )
 
-[node name="Poison" type="Sprite" parent="."]
+[node name="Poison" type="Sprite" parent="Animations"]
 visible = false
 scale = Vector2( 2.3204, 2.3204 )
 texture = ExtResource( 6 )
 hframes = 13
+frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Poison"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Poison"]
 autoplay = "Poison"
 anims/Poison = SubResource( 5 )
 
-[node name="Heal" type="Sprite" parent="."]
+[node name="Heal" type="Sprite" parent="Animations"]
 visible = false
 texture = ExtResource( 5 )
 vframes = 6
 hframes = 5
-frame = 29
+frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Heal"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Heal"]
 autoplay = "HealAnim"
 anims/HealAnim = SubResource( 6 )
 
-[node name="Buff" type="Sprite" parent="."]
+[node name="Buff" type="Sprite" parent="Animations"]
 visible = false
 position = Vector2( -1.16638, 2.3327 )
 texture = ExtResource( 10 )
 vframes = 4
 hframes = 4
-frame = 14
+frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Buff"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Buff"]
 autoplay = "BuffAnim"
 anims/BuffAnim = SubResource( 7 )
 
-[node name="Debuff" type="Sprite" parent="."]
+[node name="Debuff" type="Sprite" parent="Animations"]
 visible = false
 texture = ExtResource( 4 )
 vframes = 2
 hframes = 5
+frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Debuff"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Debuff"]
 autoplay = "DebuffAnim"
 anims/DebuffAnim = SubResource( 8 )
 
-[node name="Summon" type="Sprite" parent="."]
+[node name="Summon" type="Sprite" parent="Animations"]
 visible = false
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 5
+frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Summon"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Summon"]
 autoplay = "SummonAnim"
 anims/SummonAnim = SubResource( 9 )
 
-[node name="Shield" type="Sprite" parent="."]
+[node name="Shield" type="Sprite" parent="Animations"]
 visible = false
 rotation = 3.14159
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 15
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Shield"]
 autoplay = "shieldAnim"
 anims/shieldAnim = SubResource( 10 )

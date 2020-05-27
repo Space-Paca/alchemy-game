@@ -49,11 +49,12 @@ __meta__ = {
 }
 
 [node name="Shield" type="TextureRect" parent="."]
-margin_left = -49.0968
-margin_top = -13.6386
-margin_right = 26.9032
-margin_bottom = 73.3614
+margin_left = -27.6171
+margin_top = 0.681162
+margin_right = 48.3829
+margin_bottom = 87.6812
 rect_scale = Vector2( 1.4, 1.4 )
+rect_pivot_offset = Vector2( 38, 43 )
 texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

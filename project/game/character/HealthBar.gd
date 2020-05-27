@@ -51,11 +51,16 @@ func update_shield(value):
 		#Add rising number animation
 		AnimationManager.play_rising_number(diff, $Shield.rect_global_position)
 		
+		var dur = .4
 		#Check if got shield for the first time
 		if cur_shield <= 0:
-			$Tween.interpolate_property($Shield, "modulate", $Shield.modulate, Color(1,1,1,1), .4, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$Tween.interpolate_property(shield, "modulate", shield.modulate, Color(1,1,1,1), dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
-		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, .4, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		var prev_scale = shield.rect_scale
+		var target_scale = prev_scale * 1.3
+		$Tween.interpolate_property(shield, "rect_scale", prev_scale, target_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$Tween.interpolate_property(shield, "rect_scale", target_scale, prev_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN, dur/2)
+		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		$Tween.start()
 		return true
 	
@@ -113,8 +118,8 @@ func set_enemy_type(enemy_size):
 	$Label.rect_size = $Bar.rect_size
 	$Label.add_font_override("font", ENEMY_FONT)
 	$Shield.rect_scale = Vector2(.5,.5)
-	$Shield.rect_position.x += 20
-	$Shield.rect_position.y += 5
+	$Shield.rect_position.x -= 17
+	$Shield.rect_position.y -= 32
 
 func lose_health_effect(hp_lost, new_hp):
 	#Update progress bar with new size

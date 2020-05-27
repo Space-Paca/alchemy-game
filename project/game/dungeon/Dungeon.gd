@@ -255,7 +255,7 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 
 func _on_Battle_grid_modified(reagent_matrix: Array):
 	var combination = get_combination_in_grid(reagent_matrix)
-	if combination and not player.known_recipes.has(combination.recipe.name):
+	if combination and not combination.discovered:
 		combination = null
 	
 	battle.display_name_for_combination(combination)

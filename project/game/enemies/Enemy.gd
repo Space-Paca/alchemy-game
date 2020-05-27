@@ -191,7 +191,7 @@ func disable():
 
 func update_tooltip_position():
 	var margin = 5
-	$TooltipPosition.position = Vector2(min($Sprite.rect_position.x, $HealthBar.rect_position.x) - TooltipLayer.get_width() - margin, \
+	$TooltipPosition.position = Vector2(min($Sprite.rect_position.x, $HealthBar.position.x) - TooltipLayer.get_width() - margin, \
 							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
 
 func set_image(new_texture):
@@ -205,17 +205,17 @@ func set_image(new_texture):
 	$Intents.rect_size.x = w
 	$Intents.rect_size.y = INTENT_H
 	#Update health bar position
-	$HealthBar.rect_position.x = w/2 - $HealthBar.rect_size.x*$HealthBar.rect_scale.x/2
-	$HealthBar.rect_position.y = h + HEALTH_BAR_MARGIN
+	$HealthBar.position.x = w/2 - $HealthBar.get_width()*$HealthBar.scale.x/2
+	$HealthBar.position.y = h + HEALTH_BAR_MARGIN
 	#Update status bar position
-	$StatusBar.rect_position.x = $HealthBar.rect_position.x
-	$StatusBar.rect_position.y = $HealthBar.rect_position.y + STATUS_BAR_MARGIN
+	$StatusBar.rect_position.x = $HealthBar.position.x
+	$StatusBar.rect_position.y = $HealthBar.position.y + STATUS_BAR_MARGIN
 	#Update tooltip collision
-	var t_w = max(w, $HealthBar.rect_size.x*$HealthBar.rect_scale.x)
+	var t_w = max(w, $HealthBar.get_width()*$HealthBar.scale.x)
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
-			  HEALTH_BAR_MARGIN + $HealthBar.rect_size.y*$HealthBar.rect_scale.y + \
+			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
-	$TooltipCollision.position = Vector2(min($HealthBar.rect_position.x, $Sprite.rect_position.x) + t_w/2, \
+	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.rect_position.x) + t_w/2, \
 										 -INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 

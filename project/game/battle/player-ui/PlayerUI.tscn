@@ -82,11 +82,7 @@ shape = SubResource( 3 )
 position = Vector2( 1781.96, 50.2382 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
-margin_left = 540.0
-margin_top = 125.0
-margin_right = 1440.0
-margin_bottom = 185.0
-rect_scale = Vector2( 1.3, 1.4 )
+position = Vector2( 580, 130 )
 
 [node name="AnimationPosition" type="Position2D" parent="."]
 position = Vector2( 239.166, 243.95 )

@@ -6,9 +6,9 @@ onready var gold_label = $Gold/Label
 
 func update_tooltip_pos():
 	#Setup tooltip collision
-	$TooltipCollision.position.x = (health_bar.rect_position.x + health_bar.rect_size.x)/2
+	$TooltipCollision.position.x = (health_bar.position.x + health_bar.get_width())/2
 	$TooltipCollision.position.y = $Portrait.rect_size.y * $Portrait.rect_scale.y/2
-	var w = health_bar.rect_position.x + health_bar.rect_size.x
+	var w = health_bar.position.x + health_bar.get_width()
 	var h = $Portrait.rect_size.y * $Portrait.rect_scale.y
 	$TooltipCollision.set_collision_shape(Vector2(w, h))
 	

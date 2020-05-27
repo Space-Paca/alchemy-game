@@ -1,4 +1,4 @@
-extends TextureProgress
+extends Node2D
 
 const ENEMY_FONT = preload("res://game/character/EnemyHealthFont.tres")
 const ENEMY_SIZE = {
@@ -21,6 +21,12 @@ onready var label = $Label
 onready var shield = $Shield
 onready var shield_label = $Shield/Label
 
+func get_width():
+	return $Bar.rect_size.x
+
+func get_height():
+	return $Bar.rect_size.y
+
 func _ready():
 	shield.hide()
 
@@ -32,16 +38,16 @@ func update_shield(value):
 		shield.hide()
 
 func set_life(hp, max_hp):
-	max_value = max_hp
-	value = hp
+	$Bar.max_value = max_hp
+	$Bar.value = hp
 	$Label.text = str(hp) + "/" + str(max_hp)
 
 func update_life(new_hp):
-	value = new_hp
-	label.text = str(new_hp) + "/" + str(max_value)
+	$Bar.value = new_hp
+	label.text = str(new_hp) + "/" + str($Bar.max_value)
 
 func get_percent():
-	return value / float(max_value)
+	return $Bar.value / float($Bar.max_value)
 
 func set_enemy_type(enemy_size):
 	var prog_tex
@@ -53,11 +59,11 @@ func set_enemy_type(enemy_size):
 		push_error("Not a valid enemy size: " + str(enemy_size))
 		assert(false)
 	
-	texture_progress = prog_tex
-	texture_under = bg_tex
-	rect_size.x = ENEMY_SIZE[enemy_size]
-	rect_size.y = 20
-	$Label.rect_size = rect_size
+	$Bar.texture_progress = prog_tex
+	$Bar.texture_under = bg_tex
+	$Bar.rect_size.x = ENEMY_SIZE[enemy_size]
+	$Bar.rect_size.y = 20
+	$Label.rect_size = $Bar.rect_size
 	$Label.add_font_override("font", ENEMY_FONT)
 	$Shield.rect_scale = Vector2(.5,.5)
 	$Shield.rect_position.x += 20

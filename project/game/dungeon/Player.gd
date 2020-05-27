@@ -35,7 +35,7 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("common")
+		add_reagent("healing")
 	for _i in range(3):
 		add_reagent("damaging")
 	for _i in range(3):
@@ -78,12 +78,15 @@ func set_hud(_hud):
 
 func heal(amount : int):
 	if amount > 0:
-		.heal(amount)
+		var amount_healed = .heal(amount)
 		
 		#Animation
 		AnimationManager.play("heal", hud.get_animation_position())
 		
-		hud.update_visuals(self)
+		if amount_healed > 0:
+			hud.update_visuals(self)
+		else:
+			hud.dummy_rising_number()
 		yield(hud, "animation_completed")
 	
 	emit_signal("resolved")

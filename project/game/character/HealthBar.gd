@@ -2,8 +2,8 @@ extends Node2D
 
 signal animation_completed
 
-const HEAL_SPEED = 2 #Speed to increase health bar when healing
-const DAMAGE_SPEED = 2 #Speed to decrease health bar when taking damage
+const HEAL_TIME = 1 #TIME to increase health bar when healing
+const DAMAGE_TIME = .5 #Time to decrease health bar when taking damage
 const ENEMY_FONT = preload("res://game/character/EnemyHealthFont.tres")
 const ENEMY_SIZE = {
 	"small": 256,
@@ -34,6 +34,13 @@ func get_height():
 func _ready():
 	shield_label.text = str(0)
 	shield.modulate = Color(1,1,1,0)
+
+func dummy_rising_number():
+	#Add a 0 rising number animation
+	AnimationManager.play_rising_number(0, $Center.global_position)
+	
+	yield(get_tree().create_timer(.4), "timeout")
+	emit_signal('animation_completed')
 
 func update_visuals(new_hp, new_shield):
 	var updated_life = update_life(new_hp)
@@ -93,7 +100,8 @@ func update_life(new_hp):
 		lose_health_effect(abs(diff), new_hp)
 		return true
 	elif diff > 0:
-		return false
+		gain_health_effect(diff, new_hp)
+		return true
 	else:
 		return false
 
@@ -120,6 +128,7 @@ func set_enemy_type(enemy_size):
 	$Shield.rect_scale = Vector2(.5,.5)
 	$Shield.rect_position.x -= 17
 	$Shield.rect_position.y -= 32
+	$Center.position = $Bar.rect_size/2
 
 func lose_health_effect(hp_lost, new_hp):
 	#Update progress bar with new size
@@ -148,7 +157,7 @@ func lose_health_effect(hp_lost, new_hp):
 	#Start effect, compensating for pivot
 	var mod = 8
 	var delay = .3
-	var dur = lost_percent * DAMAGE_SPEED
+	var dur = DAMAGE_TIME
 	$Tween.interpolate_method(self, "set_health_text", old_hp, new_hp, delay, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($BarEffect, "modulate", Color(1,1,1,1), Color(mod,mod,mod,1), delay, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
@@ -157,3 +166,51 @@ func lose_health_effect(hp_lost, new_hp):
 	
 	#Add rising number animation
 	AnimationManager.play_rising_number(-hp_lost, $BarEffect.global_position)
+
+func gain_health_effect(hp_gain, new_hp):
+	#Update progress bar with new size
+	var old_hp = $Bar.value
+	
+	#Set proper scale so effect bar is the same size as progress bar
+	$BarEffect.scale.x = $Bar.rect_size.x/$BarEffect.texture.get_width()
+	$BarEffect.scale.y = $Bar.rect_size.y/$BarEffect.texture.get_height()
+	
+	var gain_percent = (hp_gain / float($Bar.max_value))
+	
+	#Calculate what region of the texture to cut
+	var w = gain_percent * $BarEffect.texture.get_width()
+	var h = $BarEffect.texture.get_height()
+	var x = get_percent() * $BarEffect.texture.get_width()
+	var init_rect = Rect2(x, 0, 0, h)
+	var target_rect = Rect2(x, 0, w, h)
+	var final_rect = Rect2($BarEffect.texture.get_width(), 0, 0, h)
+	$BarEffect.region_rect = init_rect
+	
+	#Since it is a sprite, position pivot is in the middle
+	var init_pos = Vector2(get_percent()*$Bar.rect_size.x, $Bar.rect_size.y/2)
+	var target_pos = Vector2((get_percent() + gain_percent/2)*$Bar.rect_size.x, $Bar.rect_size.y/2)
+	var final_pos = Vector2((get_percent() + gain_percent)*$Bar.rect_size.x, $Bar.rect_size.y/2)
+	$BarEffect.position = init_pos
+	
+	#Start effect, compensating for pivot
+	var mod = 8
+	var dur = HEAL_TIME/2.0
+	
+	#Stretch effect
+	$BarEffect.modulate = Color(mod,mod,mod,1)
+	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($BarEffect, "position", init_pos, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+	#Shrink effect
+	$Tween.interpolate_method(self, "set_health_text", old_hp, new_hp, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, dur)
+	$Tween.interpolate_property($BarEffect, "region_rect", target_rect, final_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, dur)
+	$Tween.interpolate_property($BarEffect, "position", target_pos, final_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, dur)
+	#Add rising number animation
+	AnimationManager.play_rising_number(hp_gain, $BarEffect.global_position)
+	$Tween.start()
+	
+	#Update progress bar value after first part of effect
+	yield(get_tree().create_timer(dur), "timeout")
+	$Bar.value = new_hp
+	
+	

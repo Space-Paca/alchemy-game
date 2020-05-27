@@ -52,7 +52,6 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "status":
 			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
-		yield(get_tree().create_timer(.15), "timeout")
 	
 	emit_signal("failure_resolved")
 

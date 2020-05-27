@@ -22,6 +22,11 @@ func set_life(max_hp, hp):
 func set_gold(amount: int):
 	gold_label.text = str(amount)
 
+func dummy_rising_number():
+	health_bar.dummy_rising_number()
+	yield(health_bar, "animation_completed")
+	emit_signal("animation_completed")
+
 func update_visuals(player):
 	health_bar.update_visuals(player.hp, player.shield)
 	update_audio()

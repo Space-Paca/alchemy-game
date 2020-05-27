@@ -39,7 +39,7 @@ region_enabled = true
 [node name="Label" type="Label" parent="."]
 margin_left = 1.05261
 margin_right = 901.053
-margin_bottom = 90.0
+margin_bottom = 105.0
 custom_fonts/font = ExtResource( 6 )
 text = "5/10"
 align = 1
@@ -72,3 +72,6 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Center" type="Position2D" parent="."]
+position = Vector2( 451.073, 41.5273 )

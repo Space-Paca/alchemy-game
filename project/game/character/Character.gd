@@ -19,8 +19,11 @@ func init(_name: String, _max_hp: int):
 
 func heal(amount: int):
 	AudioManager.play_sfx("heal")
+	var old_hp = hp
 	# warning-ignore:narrowing_conversion
 	hp = min(hp + amount, max_hp)
+	
+	return hp - old_hp
 
 func get_damage_modifiers(update_status:= true):
 	var mod = 0

@@ -43,8 +43,12 @@ func set_life(hp, max_hp):
 	$Label.text = str(hp) + "/" + str(max_hp)
 
 func update_life(new_hp):
+	var diff = new_hp - $Bar.value
 	$Bar.value = new_hp
 	label.text = str(new_hp) + "/" + str($Bar.max_value)
+	
+	if diff < 0:
+		lose_health_effect(abs(diff))
 
 func get_percent():
 	return $Bar.value / float($Bar.max_value)
@@ -60,6 +64,7 @@ func set_enemy_type(enemy_size):
 		assert(false)
 	
 	$Bar.texture_progress = prog_tex
+	$BarEffect.texture = prog_tex
 	$Bar.texture_under = bg_tex
 	$Bar.rect_size.x = ENEMY_SIZE[enemy_size]
 	$Bar.rect_size.y = 20
@@ -68,3 +73,31 @@ func set_enemy_type(enemy_size):
 	$Shield.rect_scale = Vector2(.5,.5)
 	$Shield.rect_position.x += 20
 	$Shield.rect_position.y += 5
+
+func lose_health_effect(hp_lost):
+	#Set proper scale so effect bar is the same size as progress bar
+	$BarEffect.scale.x = $Bar.rect_size.x/$BarEffect.texture.get_width()
+	$BarEffect.scale.y = $Bar.rect_size.y/$BarEffect.texture.get_height()
+	
+	var lost_percent = (hp_lost / float($Bar.max_value))
+	
+	#Calculate what region of the texture to cut
+	var w = lost_percent * $BarEffect.texture.get_width()
+	var h = $BarEffect.texture.get_height()
+	var x = get_percent() * $BarEffect.texture.get_width()
+	var init_rect = Rect2(x, 0, w, h)
+	var target_rect = Rect2(x, 0, 0, h)
+	$BarEffect.region_rect = init_rect
+	
+	#Since it is a sprite, position pivot is in the middle
+	$BarEffect.position.x = (get_percent() + lost_percent/2)*$Bar.rect_size.x
+	$BarEffect.position.y = $Bar.rect_size.y/2
+	var target_pos = Vector2(get_percent()*$Bar.rect_size.x, $BarEffect.position.y)
+	
+	#Start effect, compensating for pivot
+	var mod = 5
+	var delay = .4
+	$Tween.interpolate_property($BarEffect, "modulate", Color(1,1,1,1), Color(mod,mod,mod,1), delay, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, .5, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
+	$Tween.interpolate_property($BarEffect, "position", $BarEffect.position, target_pos, .5, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
+	$Tween.start()

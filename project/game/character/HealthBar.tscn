@@ -31,6 +31,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BarEffect" type="Sprite" parent="."]
+position = Vector2( 868, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+
 [node name="Label" type="Label" parent="."]
 margin_left = 1.05261
 margin_right = 901.053
@@ -65,3 +70,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]

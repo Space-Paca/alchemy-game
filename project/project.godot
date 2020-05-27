@@ -111,6 +111,7 @@ AudioManager="*res://game/audio/AudioManager.tscn"
 EncounterManager="*res://database/EncounterManager.gd"
 TooltipLayer="*res://game/tooltip/TooltipLayer.tscn"
 MessageLayer="*res://game/ui/MessageLayer.tscn"
+AnimationManager="*res://database/AnimationManager.tscn"
 
 [display]
 

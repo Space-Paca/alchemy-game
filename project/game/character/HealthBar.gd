@@ -1,5 +1,9 @@
 extends Node2D
 
+signal animation_completed
+
+const HEAL_SPEED = 2 #Speed to increase health bar when healing
+const DAMAGE_SPEED = 2 #Speed to decrease health bar when taking damage
 const ENEMY_FONT = preload("res://game/character/EnemyHealthFont.tres")
 const ENEMY_SIZE = {
 	"small": 256,
@@ -28,14 +32,49 @@ func get_height():
 	return $Bar.rect_size.y
 
 func _ready():
-	shield.hide()
+	shield_label.text = str(0)
+	shield.modulate = Color(1,1,1,0)
+
+func update_visuals(new_hp, new_shield):
+	var updated_life = update_life(new_hp)
+	var updated_shield = update_shield(new_shield)
+	if updated_life or updated_shield:
+		yield($Tween, "tween_all_completed")
+		emit_signal('animation_completed')
 
 func update_shield(value):
+	var cur_shield = int(shield_label.text)
+	var diff = value - cur_shield
+	
+	#Change shield value
 	if value > 0:
-		shield.show()
-		shield_label.text = str(value)
+		#Add rising number animation
+		AnimationManager.play_rising_number(diff, $Shield.rect_global_position)
+		
+		#Check if got shield for the first time
+		if cur_shield <= 0:
+			$Tween.interpolate_property($Shield, "modulate", $Shield.modulate, Color(1,1,1,1), .4, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		
+		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, .4, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		$Tween.start()
+		return true
+	
+	#Destroy shield
+	elif cur_shield > 0:
+		#Add rising number animation
+		AnimationManager.play_rising_number(diff, $Shield.rect_global_position)
+		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, .4, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		$Tween.interpolate_property($Shield, "modulate", $Shield.modulate, Color(1,1,1,0), .4, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.start()
+		return true
 	else:
-		shield.hide()
+		return false
+
+func set_health_text(value):
+	label.text = str(floor(value)) + "/" + str($Bar.max_value)
+
+func set_shield_text(value):
+	shield_label.text = str(floor(value))
 
 func set_life(hp, max_hp):
 	$Bar.max_value = max_hp
@@ -44,11 +83,14 @@ func set_life(hp, max_hp):
 
 func update_life(new_hp):
 	var diff = new_hp - $Bar.value
-	$Bar.value = new_hp
-	label.text = str(new_hp) + "/" + str($Bar.max_value)
 	
 	if diff < 0:
-		lose_health_effect(abs(diff))
+		lose_health_effect(abs(diff), new_hp)
+		return true
+	elif diff > 0:
+		return false
+	else:
+		return false
 
 func get_percent():
 	return $Bar.value / float($Bar.max_value)
@@ -74,7 +116,11 @@ func set_enemy_type(enemy_size):
 	$Shield.rect_position.x += 20
 	$Shield.rect_position.y += 5
 
-func lose_health_effect(hp_lost):
+func lose_health_effect(hp_lost, new_hp):
+	#Update progress bar with new size
+	var old_hp = $Bar.value
+	$Bar.value = new_hp
+	
 	#Set proper scale so effect bar is the same size as progress bar
 	$BarEffect.scale.x = $Bar.rect_size.x/$BarEffect.texture.get_width()
 	$BarEffect.scale.y = $Bar.rect_size.y/$BarEffect.texture.get_height()
@@ -95,9 +141,14 @@ func lose_health_effect(hp_lost):
 	var target_pos = Vector2(get_percent()*$Bar.rect_size.x, $BarEffect.position.y)
 	
 	#Start effect, compensating for pivot
-	var mod = 5
-	var delay = .4
+	var mod = 8
+	var delay = .3
+	var dur = lost_percent * DAMAGE_SPEED
+	$Tween.interpolate_method(self, "set_health_text", old_hp, new_hp, delay, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($BarEffect, "modulate", Color(1,1,1,1), Color(mod,mod,mod,1), delay, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, .5, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
-	$Tween.interpolate_property($BarEffect, "position", $BarEffect.position, target_pos, .5, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
+	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
+	$Tween.interpolate_property($BarEffect, "position", $BarEffect.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
 	$Tween.start()
+	
+	#Add rising number animation
+	AnimationManager.play_rising_number(-hp_lost, $BarEffect.global_position)

@@ -25,7 +25,6 @@ func resolve():
 	yield(get_tree(), "physics_frame")
 	emit_signal("effect_resolved")
 
-
 func require_target():
 	if enemies.size() == 1:
 		target = enemies[0]
@@ -53,7 +52,7 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "status":
 			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
-		yield(get_tree().create_timer(.35), "timeout")
+		yield(get_tree().create_timer(.15), "timeout")
 	
 	emit_signal("failure_resolved")
 
@@ -105,6 +104,7 @@ func damage_random(amount: int, type: String):
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
 			enemy.take_damage(player, amount, type)
+			yield(enemy, "resolved")
 			break
 
 	resolve()
@@ -115,25 +115,31 @@ func damage(amount: int, type: String):
 		yield(self, "target_set")
 	
 	target.take_damage(player, amount, type)
+	yield(target, "resolved")
+	
 	resolve()
 
 
 func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
 		(enemy as Enemy).take_damage(player, amount, type)
-		yield(get_tree().create_timer(.40),"timeout")
+		yield(enemy, "resolved")
 	
 	resolve()
 
 
 func shield(amount: int):
 	player.gain_shield(amount)
+	if amount > 0:
+		yield(player, "resolved")
 	
 	resolve()
 
 
 func heal(amount: int):
 	player.heal(amount)
+	if amount > 0:
+		yield(player, "resolved")
 	
 	resolve()
 

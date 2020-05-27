@@ -193,6 +193,9 @@ script = ExtResource( 11 )
 [node name="AnimationLayer" type="CanvasLayer" parent="."]
 layer = 2
 
+[node name="RisingNumberLayer" type="CanvasLayer" parent="."]
+layer = 2
+
 [node name="Animations" type="Node" parent="."]
 
 [node name="RegularAttack" type="Sprite" parent="Animations"]

@@ -1,5 +1,7 @@
 extends Node
 
+const RISING = preload("res://game/character/RisingNumber.tscn")
+
 onready var ANIM = {
 	"area_attack": $Animations/AreaAttack,
 	"regular_attack": $Animations/RegularAttack,
@@ -13,6 +15,11 @@ onready var ANIM = {
 	"shield": $Animations/Shield,
 }
 
+func play_rising_number(value, pos: Vector2):
+	var rising_number = RISING.instance()
+	$RisingNumberLayer.add_child(rising_number)
+	rising_number.position = pos
+	rising_number.setup(value)
 
 func play(name: String, pos: Vector2):
 	if not ANIM.has(name):

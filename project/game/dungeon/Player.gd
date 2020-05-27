@@ -2,6 +2,7 @@ extends Character
 class_name Player
 
 signal combination_discovered(combination, index)
+signal resolved
 
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
@@ -76,19 +77,22 @@ func set_hud(_hud):
 
 
 func heal(amount : int):
-	.heal(amount)
-	hud.update_life(self)
+	if amount > 0:
+		.heal(amount)
+		
+		#Animation
+		AnimationManager.play("heal", hud.get_animation_position())
+		
+		hud.update_visuals(self)
+		yield(hud, "animation_completed")
 	
-	#Animation
-	AnimationManager.play("heal", hud.get_animation_position())
+	emit_signal("resolved")
 
 
 func take_damage(source: Character, value: int, type: String):
-	.take_damage(source, value, type)
-	hud.update_life(self)
-	hud.update_shield(self)
-	hud.update_status_bar(self)
-	
+	var pre_shield = shield
+	var unblocked_dmg = .take_damage(source, value, type)
+
 	#Animations
 	if type == "regular":
 		AnimationManager.play("regular_attack", hud.get_animation_position())
@@ -98,6 +102,14 @@ func take_damage(source: Character, value: int, type: String):
 		AnimationManager.play("crushing_attack", hud.get_animation_position())
 	elif type == "poison":
 		AnimationManager.play("poison", hud.get_animation_position())
+	
+	hud.update_status_bar(self)
+	
+	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
+		hud.update_visuals(self)
+		yield(hud, "animation_completed")
+	
+	emit_signal("resolved")
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
@@ -113,17 +125,22 @@ func add_status(status: String, amount: int, positive: bool):
 	else:
 		AnimationManager.play("debuff", hud.get_animation_position())
 
-func gain_shield(value):
-	.gain_shield(value)
-	hud.update_shield(self)
+func gain_shield(amount: int):
+	if amount > 0:
+		.gain_shield(amount)
+		
+		#Animation
+		AnimationManager.play("shield", hud.get_animation_position())
+		
+		hud.update_visuals(self)
+		yield(hud, "animation_completed")
 	
-	#Animation
-	AnimationManager.play("shield", hud.get_animation_position())
+	emit_signal("resolved")
 
 
 func new_turn():
 	update_status()
-	hud.update_shield(self)
+	hud.update_visuals(self)
 
 func clear_status():
 	.clear_status()

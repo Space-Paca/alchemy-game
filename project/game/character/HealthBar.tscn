@@ -6,11 +6,11 @@
 [ext_resource path="res://game/character/HealthBar.gd" type="Script" id=5]
 [ext_resource path="res://game/character/PlayerHealthFont.tres" type="DynamicFont" id=6]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/Shield.png-7c02f745a5d0529809ea6851a28a8c78.stex"
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 70
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -49,13 +49,12 @@ __meta__ = {
 }
 
 [node name="Shield" type="TextureRect" parent="."]
-visible = false
 margin_left = -49.0968
 margin_top = -13.6386
 margin_right = 26.9032
 margin_bottom = 73.3614
 rect_scale = Vector2( 1.4, 1.4 )
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,7 +62,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Shield"]
 margin_right = 76.0
 margin_bottom = 77.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 1
 valign = 1

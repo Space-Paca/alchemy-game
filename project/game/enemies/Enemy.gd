@@ -5,6 +5,7 @@ signal acted
 signal selected
 signal action_resolved
 signal animation_finished
+signal resolved
 
 onready var animation = $Sprite/AnimationPlayer
 onready var button = $Sprite/Button
@@ -46,11 +47,16 @@ func _ready():
 	$Tween.start()
 
 func heal(amount : int):
-	.heal(amount)
-	update_life()
-	
-	#Animation
-	AnimationManager.play("heal", get_center_position())
+	if amount > 0:
+		.heal(amount)
+		
+		#Animation
+		AnimationManager.play("heal", get_center_position())
+		
+		health_bar.update_visuals(hp, shield)
+		yield(health_bar, "animation_completed")
+		
+	emit_signal("resolved")
 
 func die():
 	#Audio
@@ -70,13 +76,11 @@ func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
 
 func take_damage(source: Character, damage: int, type: String):
+	var pre_shield = shield
 	var unblocked_dmg = .take_damage(source, damage, type)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
-		
-	update_life()
-	update_shield()
-	update_status_bar()
+	
 	
 	#Animations
 	if type == "regular":
@@ -87,13 +91,26 @@ func take_damage(source: Character, damage: int, type: String):
 		AnimationManager.play("crushing_attack", get_center_position())
 	elif type == "poison":
 		AnimationManager.play("poison", get_center_position())
+	
+	update_status_bar()
+	
+	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
+		health_bar.update_visuals(hp, shield)
+		yield(health_bar, "animation_completed")
+	
+	emit_signal("resolved")
 
 func gain_shield(value):
-	.gain_shield(value)
-	update_shield()
+	if value > 0:
+		.gain_shield(value)
+		
+		#Animation
+		AnimationManager.play("shield", get_center_position())
+		
+		health_bar.update_visuals(hp, shield)
+		yield(health_bar, "animation_completed")
 	
-	#Animation
-	AnimationManager.play("shield", get_center_position())
+	emit_signal("resolved")
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
@@ -115,14 +132,11 @@ func remove_status(status: String):
 
 func new_turn():
 	update_status()
-	update_shield()
+	health_bar.update_visuals(hp, shield)
 
 func update_status():
 	.update_status()
 	update_status_bar()
-
-func update_life():
-	health_bar.update_life(hp)
 
 func act():
 	var state = logic_.get_current_state()
@@ -145,9 +159,6 @@ func play_animation(name):
 
 func action_resolved():
 	emit_signal("action_resolved")
-
-func update_shield():
-	health_bar.update_shield(shield)
 
 func update_status_bar():
 	$StatusBar.clean_removed_status(status_list)

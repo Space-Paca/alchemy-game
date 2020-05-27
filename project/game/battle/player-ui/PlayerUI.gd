@@ -1,6 +1,8 @@
 tool
 extends Node2D
 
+signal animation_completed
+
 onready var health_bar = $HealthBar
 onready var gold_label = $Gold/Label
 
@@ -20,16 +22,11 @@ func set_life(max_hp, hp):
 func set_gold(amount: int):
 	gold_label.text = str(amount)
 
-
-func update_life(player):
-	health_bar.update_life(player.hp)
-	update_effects()
-
-func update_effects():
+func update_visuals(player):
+	health_bar.update_visuals(player.hp, player.shield)
 	update_audio()
-
-func update_shield(player):
-	health_bar.update_shield(player.shield)
+	yield(health_bar, "animation_completed")
+	emit_signal("animation_completed")
 
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)

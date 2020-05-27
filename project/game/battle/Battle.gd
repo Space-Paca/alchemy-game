@@ -490,13 +490,13 @@ func _on_enemy_acted(enemy, actions):
 			enemy.play_animation("attack")
 			player.take_damage(enemy, args.value, args.type)
 			enemy.remove_intent()
-			#Wait a bit before going to next action/enemy	
-			yield(enemy, "animation_finished")
+			#Wait before going to next action/enemy	
+			yield(player, "resolved")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()
-			#Wait a bit before going to next action/enemy	
-			yield(get_tree().create_timer(.5), "timeout")
+			#Wait before going to next action/enemy	
+			yield(enemy, "resolved")
 		elif name == "status":
 			args.target.add_status(args.status, args.amount, args.positive)
 			enemy.remove_intent()

@@ -35,7 +35,7 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("healing")
+		add_reagent("common")
 	for _i in range(3):
 		add_reagent("damaging")
 	for _i in range(3):
@@ -145,7 +145,7 @@ func new_turn():
 	update_status()
 	if hud.need_to_update_visuals(self):
 		hud.update_visuals(self)
-		yield(hud, "animation_finished")
+		yield(hud, "animation_completed")
 
 func clear_status():
 	.clear_status()

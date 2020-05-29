@@ -502,8 +502,9 @@ func _on_enemy_acted(enemy, actions):
 		elif name == "status":
 			args.target.add_status(args.status, args.amount, args.positive)
 			enemy.remove_intent()
-			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.5), "timeout")
+			#Wait before going to next action/enemy	
+			yield(args.target, "resolved")
+			
 		elif name == "spawn":
 			if enemies_node.get_child_count() < MAX_ENEMIES:
 				AnimationManager.play("spawn", enemy.get_center_position())
@@ -514,8 +515,6 @@ func _on_enemy_acted(enemy, actions):
 			yield(get_tree().create_timer(.6), "timeout")
 	
 	enemy.action_resolved()
-
-
 
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)

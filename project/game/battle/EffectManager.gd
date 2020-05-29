@@ -63,18 +63,22 @@ func add_status_random(status: String, amount: int, positive: bool):
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
 			enemy.add_status(status, amount, positive)
-			break
+			yield(enemy, "resolved")
 
 	resolve()
 
 func reduce_status(targeting: String, status: String, amount: int):
 	if targeting == "self":
-		player.reduce_status(status, amount)
+		var func_state = (player.reduce_status(status, amount) as GDScriptFunctionState)
+		if func_state and func_state.is_valid():
+			yield(player, "resolved")
 	elif targeting == "enemy":
 		var func_state = (require_target() as GDScriptFunctionState)
 		if func_state and func_state.is_valid():
 			yield(self, "target_set")
-		target.reduce_status(status, amount)
+		func_state = (target.reduce_status(status, amount) as GDScriptFunctionState)
+		if func_state and func_state.is_valid():
+			yield(target, "resolved")
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)
@@ -84,11 +88,13 @@ func reduce_status(targeting: String, status: String, amount: int):
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":
 		player.add_status(status, amount, positive)
+		yield(player, "resolved")
 	elif targeting == "enemy":
 		var func_state = (require_target() as GDScriptFunctionState)
 		if func_state and func_state.is_valid():
 			yield(self, "target_set")
 		target.add_status(status, amount, positive)
+		yield(target, "resolved")
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)

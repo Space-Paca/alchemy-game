@@ -1,5 +1,9 @@
 extends Control
 
+signal status_deleted
+signal status_set
+signal cleaned_up
+
 const STATUS = preload("res://game/character/Status.tscn")
 
 export var two_rows := true
@@ -14,17 +18,33 @@ func _ready():
 
 #Remove all status that are not in the status list
 func clean_removed_status(status_list):
+	var deleted_something = false
 	if two_rows:
 		for status in $PositiveStatus.get_children():
 			if not status_list.has(status.type):
-				$PositiveStatus.remove_child(status)
+				deleted_something = true
+				delete_status($PositiveStatus, status)
+				yield(self, "status_deleted")
 		for status in $NegativeStatus.get_children():
 			if not status_list.has(status.type):
-				$NegativeStatus.remove_child(status)
+				deleted_something = true
+				delete_status($NegativeStatus, status)
+				yield(self, "status_deleted")
 	else:
 		for status in $Status.get_children():
 			if not status_list.has(status.type):
-				$Status.remove_child(status)
+				deleted_something = true
+				delete_status($Status, status)
+				yield(self, "status_deleted")
+	if deleted_something:
+		emit_signal("cleaned_up")
+
+func delete_status(row, status):
+	status.delete()
+	yield(status, "deleted")
+	row.remove_child(status)
+	status.queue_free()
+	emit_signal("status_deleted")
 
 func get_status(type):
 	if two_rows:
@@ -56,10 +76,11 @@ func get_status_tooltips():
 func set_status(type, value, positive):
 	var status = get_status(type)
 	if status:
-		status.set_value(value)
+		var func_state = (status.update_value(value) as GDScriptFunctionState)
+		if func_state and func_state.is_valid():
+			yield(status, "value_updated")
 	else:
 		status = STATUS.instance()
-		status.init(type, value, positive)
 		if two_rows:
 			if positive:
 				$PositiveStatus.add_child(status)
@@ -67,7 +88,10 @@ func set_status(type, value, positive):
 				$NegativeStatus.add_child(status)
 		else:
 			$Status.add_child(status)
+		status.init(type, value, positive)
 		sort_status()
+		yield(status, "status_ready")
+	emit_signal("status_set")
 
 #Sort status by positive/negative and then alphabetically
 func sort_status():

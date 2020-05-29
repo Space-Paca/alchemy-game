@@ -106,27 +106,38 @@ func take_damage(source: Character, value: int, type: String):
 	elif type == "poison":
 		AnimationManager.play("poison", hud.get_animation_position())
 	
-	hud.update_status_bar(self)
+	var func_state = (hud.update_status_bar(self) as GDScriptFunctionState)
 	
 	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
 		hud.update_visuals(self)
 		yield(hud, "animation_completed")
+	elif func_state and func_state.is_valid():
+		yield(hud, "updated_status_bar")
 
 	emit_signal("resolved")
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
-	hud.update_status_bar(self)
+	var func_state = (hud.update_status_bar(self) as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(hud, "updated_status_bar")
+	
+	emit_signal("resolved")
 
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
-	hud.update_status_bar(self)
 	
 	#Animations
 	if positive:
 		AnimationManager.play("buff", hud.get_animation_position())
 	else:
 		AnimationManager.play("debuff", hud.get_animation_position())
+
+	var func_state = (hud.update_status_bar(self) as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(hud, "updated_status_bar")
+	
+	emit_signal("resolved")
 
 func gain_shield(amount: int):
 	if amount > 0:
@@ -149,11 +160,15 @@ func new_turn():
 
 func clear_status():
 	.clear_status()
-	hud.update_status_bar(self)
+	var func_state = (hud.update_status_bar(self) as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(hud, "updated_status_bar")
 
 func update_status():
 	.update_status()
-	hud.update_status_bar(self)
+	var func_state = (hud.update_status_bar(self) as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(hud, "updated_status_bar")
 
 
 func discover_combination(combination: Combination):

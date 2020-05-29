@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=17]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BookOblique.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -30,6 +31,7 @@ font_data = ExtResource( 19 )
 size = 56
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 12 )
 
@@ -217,8 +219,6 @@ margin_bottom = 64.0
 texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
-[node name="Enemies" type="Node2D" parent="."]
-
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )
 
@@ -266,6 +266,10 @@ text = "WIN BATTLE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TargetingInterface" parent="." instance=ExtResource( 20 )]
+
+[node name="Enemies" type="Node2D" parent="."]
 [connection signal="button_down" from="RecipesButton" to="." method="_on_RecipesButton_button_down"]
 [connection signal="mouse_entered" from="RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
 [connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]

@@ -4,6 +4,8 @@ signal effect_resolved
 signal failure_resolved
 signal target_set
 
+const TARGETED_EFFECTS := ["reduce_status", "add_status", "damage"]
+
 var enemies : Array
 var player : Player
 var target : Enemy
@@ -12,18 +14,22 @@ var target : Enemy
 func setup(_player: Player):
 	player = _player
 	enemies = []
-	
+
+
 func add_enemy(enemy : Enemy):
 	enemies.append(enemy)
 	# warning-ignore:return_value_discarded
 	enemy.connect("selected", self, "_on_enemy_selected")
 
+
 func remove_enemy(enemy: Enemy):
 	enemies.erase(enemy)
+
 
 func resolve():
 	yield(get_tree(), "physics_frame")
 	emit_signal("effect_resolved")
+
 
 func require_target():
 	if enemies.size() == 1:
@@ -36,6 +42,7 @@ func require_target():
 	yield(self, "target_set")
 	for enemy in enemies:
 		enemy.set_button_disabled(true)
+
 
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
@@ -55,6 +62,7 @@ func combination_failure(reagent_list, grid):
 	
 	emit_signal("failure_resolved")
 
+
 #Gives a status to a random enemy
 func add_status_random(status: String, amount: int, positive: bool):
 	var possible_enemies = enemies.duplicate()
@@ -66,6 +74,7 @@ func add_status_random(status: String, amount: int, positive: bool):
 			yield(enemy, "resolved")
 
 	resolve()
+
 
 func reduce_status(targeting: String, status: String, amount: int):
 	if targeting == "self":
@@ -85,6 +94,7 @@ func reduce_status(targeting: String, status: String, amount: int):
 	
 	resolve()
 
+
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":
 		player.add_status(status, amount, positive)
@@ -101,6 +111,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool):
 	
 	resolve()
 
+
 #Damage a random enemy
 func damage_random(amount: int, type: String):
 	var possible_enemies = enemies.duplicate()
@@ -111,8 +122,9 @@ func damage_random(amount: int, type: String):
 			enemy.take_damage(player, amount, type)
 			yield(enemy, "resolved")
 			break
-
+	
 	resolve()
+
 
 func damage(amount: int, type: String):
 	var func_state = (require_target() as GDScriptFunctionState)

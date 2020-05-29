@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/ui/TargetingInterface.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+uniform sampler2D noise_texture;
+uniform float amount : hint_range(0, 1);
+
+void fragment() {
+	vec4 noise = texture(noise_texture, UV);
+	float alpha = smoothstep(0.0, noise.r, amount) * color.a;
+	COLOR = vec4(color.rgb, alpha);
+//	COLOR = noise;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 2
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=4]
+width = 1920
+height = 1080
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color = Color( 0, 0, 0, 0.784314 )
+shader_param/amount = 0.0
+shader_param/noise_texture = SubResource( 4 )
+
+[node name="TargetingInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 1000.0
+margin_top = 50.0
+margin_right = 1800.0
+margin_bottom = 137.0
+rect_min_size = Vector2( 800, 0 )
+custom_fonts/font = SubResource( 5 )
+text = "Choose target (1/3)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+material = SubResource( 2 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

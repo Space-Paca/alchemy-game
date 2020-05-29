@@ -30,6 +30,7 @@ onready var available_favorites = [$Favorites/FavoriteButton1,
 	$Favorites/FavoriteButton4, $Favorites/FavoriteButton5,
 	$Favorites/FavoriteButton6, $Favorites/FavoriteButton7,
 	$Favorites/FavoriteButton8]
+onready var targeting_interface = $TargetingInterface
 
 const WINDOW_W = 1920
 const WINDOW_H = 1080
@@ -319,23 +320,46 @@ func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: 
 		yield(effect_manager, "failure_resolved")
 
 	else:
-		#Destroy reagents if needed
+		# Destroy reagents if needed
 		for reagent in destroy_reagents:
 			if grid.destroy_reagent(reagent):
 				yield(grid, "reagent_destroyed")
-
-		#Discard reagents
+		
+		# Discard reagents
 		grid.clean()
+		
+		# Show targeting interface if needed
+		var total_targets = get_targeted_effect_total(effects)
+		if total_targets:
+			targeting_interface.begin(total_targets)
 		
 		for i in range(effects.size()):
 			if effect_manager.has_method(effects[i]):
 				effect_manager.callv(effects[i], effect_args[i])
 				yield(effect_manager, "effect_resolved")
+				# Next target
+				if total_targets and effects[i] in effect_manager.TARGETED_EFFECTS:
+					targeting_interface.next_target()
 			else:
 				print("Effect %s not found" % effects[i])
 				assert(false)
-
+		
+		if total_targets:
+			targeting_interface.end()
+	
 	enable_player()
+
+
+func get_targeted_effect_total(effects: Array) -> int:
+	if enemies_node.get_children().size() <= 1:
+		return 0
+	
+	var total := 0
+	for effect in effects:
+		if effect in effect_manager.TARGETED_EFFECTS:
+			total += 1
+	
+	return total
 
 
 func win():
@@ -698,3 +722,7 @@ func _on_Grid_modified():
 		reagent_matrix.append(line)
 	
 	emit_signal("grid_modified", reagent_matrix)
+
+
+func _on_EffectManager_target_set():
+	targeting_interface.next_target()

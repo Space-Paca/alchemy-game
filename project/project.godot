@@ -78,6 +78,11 @@ _global_script_classes=[ {
 "class": "Slot",
 "language": "GDScript",
 "path": "res://game/battle/Slot.gd"
+}, {
+"base": "Control",
+"class": "TargetingInterface",
+"language": "GDScript",
+"path": "res://game/ui/TargetingInterface.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -93,7 +98,8 @@ _global_script_class_icons={
 "ReagentDB": "",
 "Recipe": "",
 "Room": "",
-"Slot": ""
+"Slot": "",
+"TargetingInterface": ""
 }
 
 [application]

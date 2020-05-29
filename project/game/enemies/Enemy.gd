@@ -96,7 +96,10 @@ func take_damage(source: Character, damage: int, type: String):
 	
 	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
 		health_bar.update_visuals(hp, shield)
-		yield(health_bar, "animation_completed")
+		if hp > 0:
+			yield(health_bar, "animation_completed")
+		else:
+			yield(self, "died")
 	
 	emit_signal("resolved")
 

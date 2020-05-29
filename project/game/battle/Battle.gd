@@ -235,7 +235,7 @@ func update_enemy_positions():
 	elif enemy_count == 1:
 		set_enemy_pos(0, 8)
 	else:
-		print(enemy_count, " is not a valid enemy number")
+		push_error(str(enemy_count) + " is not a valid enemy number")
 		assert(false)
 	
 

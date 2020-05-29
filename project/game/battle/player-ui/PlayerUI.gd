@@ -27,11 +27,15 @@ func dummy_rising_number():
 	yield(health_bar, "animation_completed")
 	emit_signal("animation_completed")
 
-func update_visuals(player):
-	health_bar.update_visuals(player.hp, player.shield)
-	update_audio()
-	yield(health_bar, "animation_completed")
-	emit_signal("animation_completed")
+func need_to_update_visuals(player):
+	return health_bar.need_to_update(player.hp, player.shield)
+
+func update_visuals(player):	
+	if health_bar.need_to_update(player.hp, player.shield):
+		update_audio()
+		health_bar.update_visuals(player.hp, player.shield)
+		yield(health_bar, "animation_completed")
+		emit_signal("animation_completed")
 
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)

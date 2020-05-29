@@ -111,7 +111,7 @@ func take_damage(source: Character, value: int, type: String):
 	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
 		hud.update_visuals(self)
 		yield(hud, "animation_completed")
-	
+
 	emit_signal("resolved")
 
 func reduce_status(status: String, amount: int):
@@ -143,7 +143,9 @@ func gain_shield(amount: int):
 
 func new_turn():
 	update_status()
-	hud.update_visuals(self)
+	if hud.need_to_update_visuals(self):
+		hud.update_visuals(self)
+		yield(hud, "animation_finished")
 
 func clear_status():
 	.clear_status()

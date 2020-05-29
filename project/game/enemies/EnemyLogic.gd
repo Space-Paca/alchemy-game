@@ -41,7 +41,7 @@ func update_state():
 			set_state(link.state)
 			return link.state
 	
-	print("Something went wrong, shouldn't be here")
+	push_error("Something went wrong, shouldn't be here")
 	assert(false)
 
 

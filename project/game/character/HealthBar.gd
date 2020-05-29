@@ -42,10 +42,18 @@ func dummy_rising_number():
 	yield(get_tree().create_timer(.4), "timeout")
 	emit_signal('animation_completed')
 
+func need_to_update(new_hp, new_shield):
+	if (new_hp - $Bar.value == 0) and (new_shield - int(shield_label.text) == 0):
+		return false
+	return true
+	
+
 func update_visuals(new_hp, new_shield):
+	#$Tween.
 	var updated_life = update_life(new_hp)
 	var updated_shield = update_shield(new_shield)
 	if updated_life or updated_shield:
+		$Tween.start()
 		yield($Tween, "tween_all_completed")
 		emit_signal('animation_completed')
 
@@ -68,7 +76,6 @@ func update_shield(value):
 		$Tween.interpolate_property(shield, "rect_scale", prev_scale, target_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN)
 		$Tween.interpolate_property(shield, "rect_scale", target_scale, prev_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN, dur/2)
 		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		$Tween.start()
 		return true
 	
 	#Destroy shield
@@ -77,7 +84,6 @@ func update_shield(value):
 		AnimationManager.play_rising_number(diff, $Shield.rect_global_position)
 		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, .4, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		$Tween.interpolate_property($Shield, "modulate", $Shield.modulate, Color(1,1,1,0), .4, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$Tween.start()
 		return true
 	else:
 		return false
@@ -162,7 +168,6 @@ func lose_health_effect(hp_lost, new_hp):
 	$Tween.interpolate_property($BarEffect, "modulate", Color(1,1,1,1), Color(mod,mod,mod,1), delay, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.interpolate_property($BarEffect, "region_rect", init_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
 	$Tween.interpolate_property($BarEffect, "position", $BarEffect.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, delay)
-	$Tween.start()
 	
 	#Add rising number animation
 	AnimationManager.play_rising_number(-hp_lost, $BarEffect.global_position)
@@ -207,10 +212,7 @@ func gain_health_effect(hp_gain, new_hp):
 	$Tween.interpolate_property($BarEffect, "position", target_pos, final_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT, dur)
 	#Add rising number animation
 	AnimationManager.play_rising_number(hp_gain, $BarEffect.global_position)
-	$Tween.start()
 	
 	#Update progress bar value after first part of effect
 	yield(get_tree().create_timer(dur), "timeout")
 	$Bar.value = new_hp
-	
-	

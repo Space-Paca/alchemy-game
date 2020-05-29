@@ -509,7 +509,7 @@ func _on_enemy_acted(enemy, actions):
 				update_enemy_positions()
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.5), "timeout")
+			yield(get_tree().create_timer(.6), "timeout")
 	
 	enemy.action_resolved()
 

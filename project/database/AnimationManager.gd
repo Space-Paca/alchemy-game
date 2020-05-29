@@ -11,7 +11,7 @@ onready var ANIM = {
 	"heal": $Animations/Heal,
 	"buff": $Animations/Buff,
 	"debuff": $Animations/Debuff,
-	"summon": $Animations/Summon,
+	"spawn": $Animations/Summon,
 	"shield": $Animations/Shield,
 }
 

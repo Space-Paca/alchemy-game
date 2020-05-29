@@ -504,6 +504,7 @@ func _on_enemy_acted(enemy, actions):
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
 			if enemies_node.get_child_count() < MAX_ENEMIES:
+				AnimationManager.play("spawn", enemy.get_center_position())
 				add_enemy(args.enemy, enemy.get_center_position(), true)
 				update_enemy_positions()
 			enemy.remove_intent()

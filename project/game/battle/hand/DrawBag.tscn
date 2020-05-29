@@ -36,10 +36,10 @@ __meta__ = {
 position = Vector2( 82.5628, 75.6301 )
 
 [node name="Counter" type="Label" parent="."]
-margin_left = 98.0
-margin_top = 30.0
-margin_right = 138.0
-margin_bottom = 64.0
+margin_left = 95.8386
+margin_top = 32.1614
+margin_right = 135.839
+margin_bottom = 66.1614
 custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 1

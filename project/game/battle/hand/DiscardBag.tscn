@@ -27,7 +27,6 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
-flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,10 +37,10 @@ __meta__ = {
 position = Vector2( 79.7067, 141.199 )
 
 [node name="Counter" type="Label" parent="."]
-margin_left = 86.635
-margin_top = 131.0
-margin_right = 116.635
-margin_bottom = 165.0
+margin_left = 43.5141
+margin_top = 133.567
+margin_right = 75.5141
+margin_bottom = 167.567
 custom_fonts/font = ExtResource( 1 )
 text = "99"
 align = 1

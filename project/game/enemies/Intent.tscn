@@ -1,13 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/enemies/intents/attack_crushing.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/enemies/Intent.gd" type="Script" id=3]
 
-
 [sub_resource type="DynamicFont" id=1]
-size = 75
-outline_size = 3
+size = 31
+outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 1
@@ -18,7 +17,7 @@ margin_right = 97.0
 margin_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = -7
+custom_constants/separation = -4
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,17 +25,17 @@ __meta__ = {
 
 [node name="Image" type="TextureRect" parent="."]
 margin_right = 60.0
-margin_bottom = 60.0
+margin_bottom = 81.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="."]
-margin_left = 53.0
-margin_top = 8.0
-margin_right = 85.0
-margin_bottom = 51.0
+margin_left = 56.0
+margin_top = 23.0
+margin_right = 90.0
+margin_bottom = 57.0
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {

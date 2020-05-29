@@ -1,6 +1,5 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/battle/hand/Hand.tscn" type="PackedScene" id=4]
@@ -212,9 +211,6 @@ texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource( 1 )]
-position = Vector2( 1338.41, 437.938 )
 
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )

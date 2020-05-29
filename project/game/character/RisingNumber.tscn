@@ -5,12 +5,12 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
-outline_size = 4
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 resource_name = "decrease"
 length = 0.7
 tracks/0/type = "value"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -90, -90 ), Vector2( -200, 70 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -45, -65 ), Vector2( -130, 30 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Label:modulate")
@@ -52,7 +52,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "idle"
 length = 0.1
 tracks/0/type = "value"
@@ -80,9 +80,10 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 resource_name = "increase"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:rect_position")
 tracks/0/interp = 2
@@ -93,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -90 ), Vector2( 0, 60 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -65 ), Vector2( 0, 60 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Label:modulate")
@@ -102,7 +103,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.8 ),
+"times": PoolRealArray( 0, 0.4, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -136,6 +137,6 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/decrease = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/increase = SubResource( 4 )
+anims/decrease = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/increase = SubResource( 7 )

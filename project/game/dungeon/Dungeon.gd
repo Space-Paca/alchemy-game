@@ -183,6 +183,8 @@ func new_battle(encounter: Encounter):
 	battle.connect("combination_rewarded", self, "_on_Battle_combination_rewarded")
 # warning-ignore:return_value_discarded
 	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
+# warning-ignore:return_value_discarded
+	battle.connect("recipe_book_toggle", self, "_on_Battle_recipe_book_toggle")
 	
 	recipe_book.create_hand(battle)
 
@@ -260,6 +262,8 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	
 	battle.display_name_for_combination(combination)
 
+func _on_Battle_recipe_book_toggle():
+	recipe_book.toggle_visibility()
 
 func _on_Player_combination_discovered(combination, index):
 	recipe_book.add_combination(combination, index)

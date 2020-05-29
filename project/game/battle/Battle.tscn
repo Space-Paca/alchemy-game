@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
+[ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/battle/hand/Hand.tscn" type="PackedScene" id=4]
@@ -46,19 +47,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
-margin_left = 800.365
-margin_top = 920.895
-margin_right = 1125.36
-margin_bottom = 1018.9
-
 [node name="BookCover" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 820.0
+margin_bottom = 1064.0
 texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RecipesButton" parent="." instance=ExtResource( 1 )]
+margin_left = 774.941
+margin_top = 56.9307
+margin_right = 974.941
+margin_bottom = 126.931
+
+[node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
+margin_left = 781.91
+margin_top = 916.794
+margin_right = 1106.91
+margin_bottom = 1014.8
 
 [node name="BookBG" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -259,6 +266,9 @@ text = "WIN BATTLE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_down" from="RecipesButton" to="." method="_on_RecipesButton_button_down"]
+[connection signal="mouse_entered" from="RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
+[connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="button_down" from="PassTurnButton" to="." method="_on_PassTurnButton_button_down"]
 [connection signal="mouse_entered" from="PassTurnButton" to="." method="_on_PassTurnButton_mouse_entered"]
 [connection signal="pressed" from="PassTurnButton" to="." method="_on_PassTurnButton_pressed"]

@@ -9,6 +9,7 @@ signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
 signal combination_rewarded(combination)
 signal grid_modified(reagent_matrix)
+signal recipe_book_toggle
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -22,6 +23,7 @@ onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
 onready var recipe_banner = $NameHolder/RecipeBanner
 onready var create_recipe_button = $CreateRecipeButton
+onready var recipes_button = $RecipesButton
 onready var favorites = $Favorites
 onready var available_favorites = [$Favorites/FavoriteButton1,
 	$Favorites/FavoriteButton2, $Favorites/FavoriteButton3,
@@ -555,6 +557,8 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	new_enemy_turn()
 
+func _on_RecipesButton_pressed():
+	emit_signal("recipe_book_toggle")
 
 func _on_win_screen_continue_pressed():
 	AudioManager.play_bgm("map")
@@ -636,15 +640,19 @@ func _on_PassTurnButton_mouse_entered():
 	if not $PassTurnButton.disabled:
 		AudioManager.play_sfx("hover_button")
 
-
 func _on_CreateRecipeButton_mouse_entered():
 	if not $CreateRecipeButton.disabled:
 		AudioManager.play_sfx("hover_button")
 
+func _on_RecipesButton_mouse_entered():
+	if not $RecipesButton.disabled:
+		AudioManager.play_sfx("hover_button")
 
 func _on_CreateRecipeButton_button_down():
 	AudioManager.play_sfx("click")
 
+func _on_RecipesButton_button_down():
+	AudioManager.play_sfx("click")
 
 func _on_PassTurnButton_button_down():
 	AudioManager.play_sfx("click")

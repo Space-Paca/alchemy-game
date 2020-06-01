@@ -77,6 +77,7 @@ func add_status_random(status: String, amount: int, positive: bool):
 
 
 func reduce_status(targeting: String, status: String, amount: int):
+	AudioManager.play_sfx("debuff_denied")
 	if targeting == "self":
 		player.reduce_status(status, amount)
 	elif targeting == "enemy":

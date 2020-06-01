@@ -2,7 +2,6 @@ tool
 extends Node2D
 
 signal animation_completed
-signal updated_status_bar
 
 onready var health_bar = $HealthBar
 onready var gold_label = $Gold/Label
@@ -33,25 +32,17 @@ func need_to_update_visuals(player):
 
 func update_visuals(player):	
 	if health_bar.need_to_update(player.hp, player.shield):
-		if player.hp > 0:
-			update_audio()
+		update_audio()
 		health_bar.update_visuals(player.hp, player.shield)
 		yield(health_bar, "animation_completed")
 		emit_signal("animation_completed")
 
 func update_status_bar(player):
-	var func_state = ($StatusBar.clean_removed_status(player.status_list) as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield($StatusBar, "cleaned_up")
-	
-	var status_type = player.status_list.keys()
+	$StatusBar.clean_removed_status(player.status_list)
+	var status_type = player.status_list.keys();
 	for type in status_type:
 		var status = player.status_list[type]
-		func_state = ($StatusBar.set_status(type, status.amount, status.positive) as GDScriptFunctionState)
-		if func_state and func_state.is_valid():
-			yield($StatusBar, "status_set")
-			
-	emit_signal("updated_status_bar")
+		$StatusBar.set_status(type, status.amount, status.positive)
 
 func update_audio():
 	var percent = health_bar.get_percent()

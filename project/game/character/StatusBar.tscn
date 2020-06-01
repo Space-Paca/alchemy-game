@@ -6,9 +6,6 @@
 
 [node name="StatusBar" type="Control"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Status" type="HBoxContainer" parent="."]
 margin_right = 440.0

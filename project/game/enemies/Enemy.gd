@@ -6,7 +6,6 @@ signal selected
 signal action_resolved
 signal animation_finished
 signal resolved
-signal updated_status_bar
 
 onready var animation = $Sprite/AnimationPlayer
 onready var button = $Sprite/Button
@@ -93,7 +92,7 @@ func take_damage(source: Character, damage: int, type: String):
 	elif type == "poison":
 		AnimationManager.play("poison", get_center_position())
 	
-	var func_state = (update_status_bar() as GDScriptFunctionState)
+	update_status_bar()
 	
 	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
 		health_bar.update_visuals(hp, shield)
@@ -101,8 +100,6 @@ func take_damage(source: Character, damage: int, type: String):
 			yield(health_bar, "animation_completed")
 		else:
 			yield(self, "died")
-	elif func_state and func_state.is_valid():
-		yield(self, "updated_status_bar")
 	
 	emit_signal("resolved")
 
@@ -120,32 +117,21 @@ func gain_shield(value):
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
-	var func_state = (update_status_bar() as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield(self, "updated_status_bar")
-	
-	emit_signal("resolved")
+	update_status_bar()
 
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
-
+	update_status_bar()
+	
 	#Animations
 	if positive:
 		AnimationManager.play("buff", get_center_position())
 	else:
 		AnimationManager.play("debuff", get_center_position())
-	
-	var func_state = (update_status_bar() as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield(self, "updated_status_bar")
-	
-	emit_signal("resolved")
 
 func remove_status(status: String):
 	.remove_status(status)
-	var func_state = (update_status_bar() as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield(self, "updated_status_bar")
+	update_status_bar()
 
 func new_turn():
 	update_status()
@@ -153,9 +139,7 @@ func new_turn():
 
 func update_status():
 	.update_status()
-	var func_state = (update_status_bar() as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield(self, "updated_status_bar")
+	update_status_bar()
 
 func act():
 	var state = logic_.get_current_state()
@@ -180,18 +164,11 @@ func action_resolved():
 	emit_signal("action_resolved")
 
 func update_status_bar():
-	var func_state = ($StatusBar.clean_removed_status(status_list) as GDScriptFunctionState)
-	if func_state and func_state.is_valid():
-		yield($StatusBar, "cleaned_up")
-	
+	$StatusBar.clean_removed_status(status_list)
 	var status_type = status_list.keys();
 	for type in status_type:
 		var status = status_list[type]
-		func_state = ($StatusBar.set_status(type, status.amount, status.positive) as GDScriptFunctionState)
-		if func_state and func_state.is_valid():
-			yield($StatusBar, "status_set")
-			
-	emit_signal("updated_status_bar")
+		$StatusBar.set_status(type, status.amount, status.positive)
 
 func get_center_position():
 	return $Sprite.rect_global_position + $Sprite.rect_size*$Sprite.rect_scale/2

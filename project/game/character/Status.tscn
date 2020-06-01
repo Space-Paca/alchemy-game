@@ -2,15 +2,14 @@
 
 [ext_resource path="res://game/character/Status.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=2]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 67
 use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="Status" type="HBoxContainer"]
-custom_constants/separation = -2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,14 +24,12 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="."]
-margin_left = 43.0
-margin_top = 6.0
-margin_right = 75.0
-margin_bottom = 39.0
+margin_left = 49.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 41.0
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tween" type="Tween" parent="."]

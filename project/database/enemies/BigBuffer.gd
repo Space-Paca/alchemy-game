@@ -12,7 +12,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   "temp_buff": preload("res://assets/images/enemies/intents/buffing.png"),
 			   "perm_buff": preload("res://assets/images/enemies/intents/buffing.png"),
 			   }
-var image = "res://assets/images/enemies/robot/idle.png"
+var image = "res://assets/images/enemies/buffing big enemy/idle.png"
 var name = "BeepBoop"
 var sfx = "enemy_2"
 var use_idle_sfx = false

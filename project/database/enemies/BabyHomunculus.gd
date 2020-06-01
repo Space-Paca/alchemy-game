@@ -7,7 +7,7 @@ var player_ref #Reference to player node
 
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack_normal.png")}
 
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/small regular enemy/idle.png"
 var name = "Baby Humunculus"
 var sfx = "slime"
 var use_idle_sfx = true

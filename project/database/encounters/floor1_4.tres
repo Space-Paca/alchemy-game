@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 1
-enemies = [ "robot" ]
+enemies = [ "big_buffer" ]
 loot_table = {
 "catalyst": 0,
 "common": 1,

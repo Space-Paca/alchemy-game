@@ -8,7 +8,7 @@ var player_ref #Reference to player node
 var intents = {"attack": preload("res://assets/images/enemies/intents/attack_piercing.png"),
 				"dodge": preload("res://assets/images/enemies/intents/buffing.png"),
 			   }
-var image = "res://assets/images/enemies/wolf/wolfIDLE.png"
+var image = "res://assets/images/enemies/wolf/idle.png"
 var name = "Good Boy"
 var sfx = "enemy_2"
 var use_idle_sfx = false

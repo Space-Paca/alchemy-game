@@ -9,7 +9,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   "defend": preload("res://assets/images/enemies/intents/blocking.png"),
 			   "spawn": preload("res://assets/images/enemies/intents/summoning.png"),
 			  }
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/spawner poison enemy/idle.png"
 var name = "Spawner"
 var sfx = "slime"
 var use_idle_sfx = true

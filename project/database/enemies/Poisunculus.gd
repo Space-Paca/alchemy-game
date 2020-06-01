@@ -9,7 +9,7 @@ var intents = {"poison": preload("res://assets/images/enemies/intents/debuffing.
 			   "attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
 			   "defend": preload("res://assets/images/enemies/intents/blocking.png"),
 			  }
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/Big Poison Elite/idle.png"
 var name = "Venenin"
 var sfx = "slime"
 var use_idle_sfx = true

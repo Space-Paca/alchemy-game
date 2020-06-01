@@ -8,7 +8,7 @@ var player_ref #Reference to player node
 var intents = {"poison": preload("res://assets/images/enemies/intents/debuffing.png"),
 			   "defend": preload("res://assets/images/enemies/intents/blocking.png"),
 			  }
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/small poison enemy/idle.png"
 var name = "Venenin"
 var sfx = "slime"
 var use_idle_sfx = true

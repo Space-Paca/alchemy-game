@@ -183,7 +183,7 @@ func setup_audio(encounter : Encounter):
 	else:
 		AudioManager.play_bgm("battle", 3)
 	AudioManager.play_ambience("forest")
-	player_ui.update_audio()
+	player_ui.update_audio(player.hp, player.max_hp)
 
 
 func setup_win_screen(encounter: Encounter):

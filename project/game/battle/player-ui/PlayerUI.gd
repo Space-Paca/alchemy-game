@@ -32,7 +32,7 @@ func need_to_update_visuals(player):
 
 func update_visuals(player):	
 	if health_bar.need_to_update(player.hp, player.shield):
-		update_audio()
+		update_audio(player.hp, player.max_hp)
 		health_bar.update_visuals(player.hp, player.shield)
 		yield(health_bar, "animation_completed")
 		emit_signal("animation_completed")
@@ -44,8 +44,8 @@ func update_status_bar(player):
 		var status = player.status_list[type]
 		$StatusBar.set_status(type, status.amount, status.positive)
 
-func update_audio():
-	var percent = health_bar.get_percent()
+func update_audio(hp, max_hp):
+	var percent = hp / float(max_hp)
 	if percent > .5:
 		AudioManager.update_bgm_layers([true, true, true])
 		AudioManager.stop_aux_bgm("heart-beat")
@@ -59,10 +59,7 @@ func update_audio():
 		AudioManager.play_aux_bgm("heart-beat")
 		AudioManager.start_bgm_effect("extreme-danger")
 	else:
-		AudioManager.stop_bgm_layer(2)
-		AudioManager.stop_bgm_layer(3)
-		AudioManager.stop_aux_bgm("heart-beat")
-		AudioManager.start_bgm_effect("extreme-danger")
+		return
 
 #Returns the global position of the center of portrait
 func get_animation_position():

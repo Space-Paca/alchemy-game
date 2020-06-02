@@ -11,6 +11,7 @@ floor_sold_in = 2
 reagents = [ "common", "common", "defensive", "defensive", "damaging", "damaging" ]
 effects = [  ]
 effect_args = [  ]
+destroy_reagents = [  ]
 description = "I love cheese, especially brie jarlsberg. Cheese and biscuits cottage cheese say cheese swiss cut the cheese hard cheese who moved my cheese manchego."
 fav_icon = ExtResource( 1 )
 shop_cost = 94

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/Escudo.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Escudo Lixo"
+grid_size = 2
+floor_sold_in = 1
+reagents = [ "trash", "defensive" ]
+effects = [ "shield" ]
+effect_args = [ [ 5 ] ]
+destroy_reagents = [ "trash" ]
+description = "Gain 5 shield until end of turn. Destroys trash reagent in the process."
+fav_icon = ExtResource( 1 )
+shop_cost = 18

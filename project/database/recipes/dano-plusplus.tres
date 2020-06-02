@@ -11,6 +11,7 @@ floor_sold_in = 2
 reagents = [ "common", "damaging", "damaging", "super_damaging" ]
 effects = [  ]
 effect_args = [  ]
+destroy_reagents = [  ]
 description = "I love cheese, especially pecorino fondue. Fromage frais macaroni cheese melted cheese cream cheese danish fontina manchego cheddar jarlsberg."
 fav_icon = ExtResource( 1 )
 shop_cost = 64

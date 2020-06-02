@@ -46,12 +46,13 @@ func require_target():
 
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
-		grid.remove_reagent(reagent)
 		var effect = ReagentDB.get_from_name(reagent.type).effect
 		if effect.type == "damage":
 			damage_random(effect.value, "regular")
 		elif effect.type == "damage_all":
 			damage_all(effect.value, "regular")
+		elif effect.type == "damage_self":
+			damage_self(effect.value, "regular")
 		elif effect.type == "shield":
 			shield(effect.value)
 		elif effect.type == "heal":
@@ -59,6 +60,10 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "status":
 			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
+		if reagent.type == "trash":
+			grid.destroy_reagent(reagent.type)
+		else:
+			grid.remove_reagent(reagent)
 	
 	emit_signal("failure_resolved")
 
@@ -120,6 +125,11 @@ func damage_random(amount: int, type: String):
 	
 	resolve()
 
+func damage_self(amount: int, type: String):	
+	player.take_damage(player, amount, type)
+	yield(player, "resolved")
+	
+	resolve()
 
 func damage(amount: int, type: String):
 	var func_state = (require_target() as GDScriptFunctionState)

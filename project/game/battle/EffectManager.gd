@@ -47,6 +47,10 @@ func require_target():
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
 		var effect = ReagentDB.get_from_name(reagent.type).effect
+		
+		if reagent.type != "trash":
+			grid.remove_reagent(reagent)
+			
 		if effect.type == "damage":
 			damage_random(effect.value, "regular")
 		elif effect.type == "damage_all":
@@ -60,10 +64,11 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "status":
 			add_status_random(effect.status_type, effect.amount, effect.positive)
 		yield(self, "effect_resolved")
+		
 		if reagent.type == "trash":
 			grid.destroy_reagent(reagent.type)
-		else:
-			grid.remove_reagent(reagent)
+
+			
 	
 	emit_signal("failure_resolved")
 
@@ -76,6 +81,7 @@ func add_status_random(status: String, amount: int, positive: bool):
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
 			enemy.add_status(status, amount, positive)
+			yield(get_tree().create_timer(.5), "timeout")
 			break
 
 	resolve()
@@ -90,6 +96,7 @@ func reduce_status(targeting: String, status: String, amount: int):
 		if func_state and func_state.is_valid():
 			yield(self, "target_set")
 		target.reduce_status(status, amount)
+		yield(get_tree().create_timer(.5), "timeout")
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)
@@ -100,11 +107,13 @@ func reduce_status(targeting: String, status: String, amount: int):
 func add_status(targeting: String, status: String, amount: int, positive: bool):
 	if targeting == "self":
 		player.add_status(status, amount, positive)
+		yield(get_tree().create_timer(.5), "timeout")
 	elif targeting == "enemy":
 		var func_state = (require_target() as GDScriptFunctionState)
 		if func_state and func_state.is_valid():
 			yield(self, "target_set")
 		target.add_status(status, amount, positive)
+		yield(get_tree().create_timer(.5), "timeout")
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)
@@ -119,15 +128,21 @@ func damage_random(amount: int, type: String):
 	possible_enemies.shuffle()
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
-			enemy.take_damage(player, amount, type)
-			yield(enemy, "resolved")
+			var func_state = enemy.take_damage(player, amount, type)
+			if func_state and func_state.is_valid():
+				yield(enemy, "resolved")
+			else:
+				yield(get_tree().create_timer(.5), "timeout")
 			break
 	
 	resolve()
 
 func damage_self(amount: int, type: String):	
-	player.take_damage(player, amount, type)
-	yield(player, "resolved")
+	var func_state = player.take_damage(player, amount, type)
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
 	
 	resolve()
 
@@ -136,32 +151,42 @@ func damage(amount: int, type: String):
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
 	
-	target.take_damage(player, amount, type)
-	yield(target, "resolved")
+	func_state = target.take_damage(player, amount, type)
+	if func_state and func_state.is_valid():
+		yield(target, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
 	
 	resolve()
 
 
 func damage_all(amount: int, type: String):
 	for enemy in enemies.duplicate():
-		(enemy as Enemy).take_damage(player, amount, type)
-		yield(enemy, "resolved")
+		var func_state = (enemy as Enemy).take_damage(player, amount, type)
+		if func_state and func_state.is_valid():
+			yield(enemy, "resolved")
+		else:
+			yield(get_tree().create_timer(.5), "timeout")
 	
 	resolve()
 
 
 func shield(amount: int):
-	player.gain_shield(amount)
-	if amount > 0:
+	var func_state = player.gain_shield(amount)
+	if func_state and func_state.is_valid():
 		yield(player, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
 	
 	resolve()
 
 
 func heal(amount: int):
-	player.heal(amount)
-	if amount > 0:
+	var func_state = player.heal(amount)
+	if func_state and func_state.is_valid():
 		yield(player, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
 	
 	resolve()
 

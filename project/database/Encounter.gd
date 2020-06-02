@@ -4,7 +4,7 @@ class_name Encounter
 export(bool) var is_boss = false
 export(bool) var is_elite = false
 export(int, 1, 3) var level = 1
-export(Array, String, "humunculus", "baby_humunculus", "wolf", "big_buffer", "poison",
+export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", "poison",
 					  "baby_poison", "tank", "spawner_humunculus") var enemies
 
 # Loot table

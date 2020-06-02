@@ -6,7 +6,7 @@ const ENEMY_DB = {
 				  "tank": "res://database/enemies/TankHomunculus.gd",
 				  "baby_humunculus": "res://database/enemies/BabyHomunculus.gd",
 				  "big_buffer": "res://database/enemies/BigBuffer.gd",
-				  "wolf": "res://database/enemies/Wolf.gd",
+				  "dodge": "res://database/enemies/DodgeEnemy.gd",
 				  "poison": "res://database/enemies/Poisunculus.gd",
 				  "baby_poison": "res://database/enemies/BabyPoisunculus.gd",
 				}

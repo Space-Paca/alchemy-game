@@ -37,7 +37,8 @@ func get_damage_modifiers(update_status:= true):
 
 func take_damage(source: Character, damage: int, type: String):
 	if hp <= 0:
-		return
+		# FIX CRASHING IN Character.gd take_damage
+		return 0
 	
 	var unblocked_damage
 	damage += source.get_damage_modifiers()

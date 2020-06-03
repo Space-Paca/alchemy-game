@@ -45,6 +45,7 @@ func _ready():
 	$Tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2, Tween.TRANS_BACK, Tween.EASE_OUT)
 	$Tween.start()
 
+
 func heal(amount : int):
 	if amount > 0:
 		.heal(amount)
@@ -56,6 +57,7 @@ func heal(amount : int):
 		yield(health_bar, "animation_completed")
 		
 	emit_signal("resolved")
+
 
 func die():
 	#Audio
@@ -71,8 +73,10 @@ func die():
 	yield($Tween, "tween_all_completed")
 	emit_signal("died", self)
 
+
 func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
+
 
 func take_damage(source: Character, damage: int, type: String):
 	var pre_shield = shield
@@ -102,6 +106,7 @@ func take_damage(source: Character, damage: int, type: String):
 	
 	emit_signal("resolved")
 
+
 func gain_shield(value):
 	if value > 0:
 		.gain_shield(value)
@@ -114,9 +119,11 @@ func gain_shield(value):
 	
 	emit_signal("resolved")
 
+
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
 	update_status_bar()
+
 
 func add_status(status: String, amount: int, positive: bool):
 	.add_status(status, amount, positive)
@@ -128,17 +135,21 @@ func add_status(status: String, amount: int, positive: bool):
 	else:
 		AnimationManager.play("debuff", get_center_position())
 
+
 func remove_status(status: String):
 	.remove_status(status)
 	update_status_bar()
+
 
 func new_turn():
 	update_status()
 	health_bar.update_visuals(hp, shield)
 
+
 func update_status():
 	.update_status()
 	update_status_bar()
+
 
 func act():
 	var state = logic_.get_current_state()
@@ -148,6 +159,7 @@ func act():
 	logic_.update_state()
 	
 	update_intent()
+
 
 func play_animation(name):
 	animation.play(name)
@@ -162,6 +174,7 @@ func play_animation(name):
 func action_resolved():
 	emit_signal("action_resolved")
 
+
 func update_status_bar():
 	$StatusBar.clean_removed_status(status_list)
 	var status_type = status_list.keys();
@@ -169,13 +182,16 @@ func update_status_bar():
 		var status = status_list[type]
 		$StatusBar.set_status(type, status.amount, status.positive)
 
-func get_center_position():
-	return $Sprite.rect_global_position + $Sprite.texture.get_width()*$Sprite.rect_scale/2
 
-func setup(enemy_logic, new_texture, enemy_data):
+func get_center_position():
+#	return $Sprite.rect_global_position + $Sprite.texture.get_width()*$Sprite.rect_scale/2
+	return $Sprite.global_position #+ $Sprite.texture.get_width()*$Sprite.scale/2
+
+
+func setup(enemy_logic, new_texture, highlight_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
-	set_image(new_texture)
+	set_image(new_texture, highlight_texture)
 	data = enemy_data #Store enemy data
 
 
@@ -197,29 +213,39 @@ func set_life(enemy_data):
 	$HealthBar.set_life(max_hp, max_hp)
 	$HealthBar.set_enemy_type(enemy_data.size)
 
+
 #Called when player dies
 func disable():
 	block_tooltips = true
 	disable_tooltips()
 
+
 func update_tooltip_position():
 	var margin = 10
-	$TooltipPosition.position = Vector2($Sprite.rect_position.x + $Sprite.texture.get_width() + margin, \
-							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
+	$TooltipPosition.position = Vector2($Sprite.position.x + $Sprite.texture.get_width() + margin, \
+							   			$Sprite.position.y - $Sprite.texture.get_height()/2 -\
+										INTENT_MARGIN - INTENT_H)
+#	$TooltipPosition.position = Vector2($Sprite.rect_position.x + $Sprite.texture.get_width() + margin, \
+#							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
 
-func set_image(new_texture):
+
+func set_image(new_texture, highlight_texture):
 	$Sprite.texture = new_texture
+	$Sprite/Highlight.texture = highlight_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
 	#Sprite Position
-	$Sprite.rect_position.x = -w/2
-	$Sprite.rect_position.y = -h/2
+#	$Sprite.rect_position.x = -w/2
+#	$Sprite.rect_position.y = -h/2
+	$Sprite.position.x = 0#-w/2
+	$Sprite.position.y = 0#-h/2
 	#Update pivot
-	$Sprite.rect_pivot_offset.x = w/2
-	$Sprite.rect_pivot_offset.y = h/2
+#	$Sprite.rect_pivot_offset.x = w/2
+#	$Sprite.rect_pivot_offset.y = h/2
 	#Update health bar position
 	$HealthBar.position.x = -$HealthBar.get_width()*$HealthBar.scale.x/2
-	$HealthBar.position.y = $Sprite.rect_position.y + h + HEALTH_BAR_MARGIN
+#	$HealthBar.position.y = $Sprite.rect_position.y + h + HEALTH_BAR_MARGIN
+	$HealthBar.position.y = $Sprite.position.y + h + HEALTH_BAR_MARGIN - h/2
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
 	$StatusBar.rect_position.y = $HealthBar.position.y + STATUS_BAR_MARGIN
@@ -228,11 +254,18 @@ func set_image(new_texture):
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
 			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
-	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.rect_position.x) + t_w/2, \
-										 -INTENT_H - INTENT_MARGIN + t_h/2)
+	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.position.x) + t_w/2, \
+										 -INTENT_H - INTENT_MARGIN + t_h/2 - h/2)
+#	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.rect_position.x) + t_w/2, \
+#										 -INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 	#Update intents position
-	$Intents.position.y = $Sprite.rect_position.y -INTENT_MARGIN - INTENT_H
+#	$Intents.position.y = $Sprite.rect_position.y -INTENT_MARGIN - INTENT_H
+	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
+	
+	# Button
+	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
+
 
 #Removes first intent (the one in the left)
 func remove_intent():
@@ -243,9 +276,11 @@ func remove_intent():
 		$Intents.remove_child(intent)
 		update_intents_position()
 
+
 func clear_intents():
 	for intent in $Intents.get_children():
 		$Intents.remove_child(intent)
+
 
 func add_intent(texture, value, multiplier):
 	var intent = INTENT.instance()
@@ -254,17 +289,20 @@ func add_intent(texture, value, multiplier):
 	yield(intent, "setted_up")
 	update_intents_position()
 
+
 func update_intents_position():
 	var int_n = $Intents.get_child_count()
 	var separation = 2
 	var w = separation * (int_n - 1)
 	for intent in $Intents.get_children():
 		w += intent.get_width()
-	var x = $Sprite.rect_position.x - w
+	var x = $Sprite.position.x - 1.5 * w
+#	var x = $Sprite.rect_position.x - w
 	for intent in $Intents.get_children():
 		$Tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		x += intent.get_width() + separation
 	$Tween.start()
+
 
 func set_pos(target_pos):
 	randomize()
@@ -272,6 +310,7 @@ func set_pos(target_pos):
 	var dur = (position - target_pos).length()/speed
 	$Tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
+
 
 func update_intent():
 	clear_intents()
@@ -286,11 +325,14 @@ func update_intent():
 		else:
 			add_intent(intent.image, null, null)
 
+
 func get_width():
 	return sprite.texture.get_width()
 
+
 func get_height():
 	return sprite.texture.get_height()
+
 
 func get_tooltips():
 	var tooltips = []
@@ -303,17 +345,29 @@ func get_tooltips():
 		tooltips.append(tooltip)
 	return tooltips
 
+
 func set_button_disabled(disable: bool):
 	button.visible = not disable
 	button.disabled = disable
+
 
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
 
+
 func _on_Button_pressed():
 	emit_signal("selected", self)
+
+
+func _on_Button_mouse_entered():
+	$Sprite/Highlight.visible = true
+
+
+func _on_Button_mouse_exited():
+	$Sprite/Highlight.visible = false
+
 
 func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips:
@@ -325,6 +379,7 @@ func _on_TooltipCollision_enable_tooltip():
 		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 								 tooltip.text, tooltip.title_image, play_sfx)
 		play_sfx = false
+
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()

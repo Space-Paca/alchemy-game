@@ -29,13 +29,16 @@ func create_object(enemy_type, player):
 	var mat_override = enemy.get_node("Sprite").get_material().duplicate()
 	enemy.get_node("Sprite").set_material(mat_override)
 	
+	# Highlight texture
+	var highlight = load(enemy_data.image.replace("idle.png", "highlight.png"))
+	
 	enemy.init(enemy_data.name, enemy_data.hp)
 	var logic = {"states":enemy_data.states,
 				 "connections": enemy_data.connections,
 				 "first_state": enemy_data.first_state,
 				}
 	enemy_data.set_node_references(enemy, player)
-	enemy.setup(logic, load(enemy_data.image), enemy_data)
+	enemy.setup(logic, load(enemy_data.image), highlight, enemy_data)
 	return enemy
 
 

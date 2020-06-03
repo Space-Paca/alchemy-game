@@ -358,6 +358,7 @@ func disable_tooltips():
 
 
 func _on_Button_pressed():
+	$Sprite/Highlight.visible = false
 	emit_signal("selected", self)
 
 

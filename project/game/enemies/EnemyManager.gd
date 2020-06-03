@@ -10,6 +10,8 @@ const ENEMY_DB = {
 				  "dodge": "res://database/enemies/DodgeEnemy.gd",
 				  "poison": "res://database/enemies/Poisunculus.gd",
 				  "baby_poison": "res://database/enemies/BabyPoisunculus.gd",
+				  "baby_slasher": "res://database/enemies/BabySlasher.gd",
+				  "elite_dodger" : "res://database/enemies/EliteDodger.gd",
 				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 

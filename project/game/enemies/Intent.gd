@@ -30,7 +30,7 @@ func setup(texture, value, multiplier):
 	emit_signal("setted_up")
 
 func update_position():
-	var margin = -5
+	var margin = 1
 	$Value.rect_position.x = $Image.rect_size.x + margin
 	margin = -8
 	$X.rect_position.x = $Value.rect_position.x + $Value.rect_size.x + margin

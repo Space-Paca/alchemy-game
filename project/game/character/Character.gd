@@ -41,7 +41,8 @@ func take_damage(source: Character, damage: int, type: String):
 		return 0
 	
 	var unblocked_damage
-	damage += source.get_damage_modifiers()
+	if type != "poison":
+		damage += source.get_damage_modifiers()
 	
 	#Check for dodge
 	if status_list.has("dodge"):

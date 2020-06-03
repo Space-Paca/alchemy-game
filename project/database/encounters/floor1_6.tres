@@ -11,7 +11,7 @@ enemies = [ "baby_humunculus", "delayed_hitter", "baby_humunculus" ]
 loot_table = {
 "catalyst": 0,
 "common": 0,
-"damaging": 3,
+"damaging": 4,
 "defensive": 2,
 "healing": 1,
 "poison": 0,

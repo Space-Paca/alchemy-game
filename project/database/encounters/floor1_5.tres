@@ -10,7 +10,7 @@ level = 1
 enemies = [ "dodge", "dodge" ]
 loot_table = {
 "catalyst": 0,
-"common": 2,
+"common": 0,
 "damaging": 2,
 "defensive": 4,
 "healing": 1,

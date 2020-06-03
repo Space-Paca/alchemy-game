@@ -235,16 +235,11 @@ func set_image(new_texture, highlight_texture):
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
 	#Sprite Position
-#	$Sprite.rect_position.x = -w/2
-#	$Sprite.rect_position.y = -h/2
-	$Sprite.position.x = 0#-w/2
-	$Sprite.position.y = 0#-h/2
-	#Update pivot
-#	$Sprite.rect_pivot_offset.x = w/2
-#	$Sprite.rect_pivot_offset.y = h/2
+	$Sprite.position.x = 0
+	$Sprite.position.y = 0
+
 	#Update health bar position
 	$HealthBar.position.x = -$HealthBar.get_width()*$HealthBar.scale.x/2
-#	$HealthBar.position.y = $Sprite.rect_position.y + h + HEALTH_BAR_MARGIN
 	$HealthBar.position.y = $Sprite.position.y + h + HEALTH_BAR_MARGIN - h/2
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
@@ -296,8 +291,7 @@ func update_intents_position():
 	var w = separation * (int_n - 1)
 	for intent in $Intents.get_children():
 		w += intent.get_width()
-	var x = $Sprite.position.x - 1.5 * w
-#	var x = $Sprite.rect_position.x - w
+	var x = $Sprite.position.x - w - $Sprite.texture.get_width()/2
 	for intent in $Intents.get_children():
 		$Tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		x += intent.get_width() + separation

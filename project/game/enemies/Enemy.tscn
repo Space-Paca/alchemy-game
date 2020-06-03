@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/slime-icon.png" type="Texture" id=3]
-[ext_resource path="res://game/enemies/Intent.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
@@ -68,6 +67,7 @@ script = ExtResource( 1 )
 material = SubResource( 2 )
 margin_right = 256.0
 margin_bottom = 256.0
+rect_scale = Vector2( 1.006, 1 )
 rect_pivot_offset = Vector2( 128, 128 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -88,39 +88,23 @@ __meta__ = {
 }
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-margin_left = -1.98407
-margin_top = 279.228
-margin_right = 498.016
-margin_bottom = 299.228
+position = Vector2( -414.401, 136.992 )
 
-[node name="Intents" type="HBoxContainer" parent="."]
-margin_top = -80.0
-margin_right = 250.0
-margin_bottom = -20.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Intent" parent="Intents" instance=ExtResource( 5 )]
-margin_left = 82.0
-margin_right = 167.0
+[node name="Intents" type="Node2D" parent="."]
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
-margin_left = 14.0
-margin_top = 325.0
-margin_right = 14.0
-margin_bottom = 325.0
+margin_left = -218.886
+margin_top = 246.23
+margin_right = -218.886
+margin_bottom = 246.23
 two_rows = false
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
-position = Vector2( 133, 133.001 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 5 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( -100, 0 )
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]

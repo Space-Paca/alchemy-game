@@ -397,8 +397,7 @@ func show_victory_screen(combinations: Array):
 func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
-	enemy.set_pos(Vector2(target_pos.position.x - enemy.get_width(),
-						  target_pos.position.y - enemy.get_height()))
+	enemy.set_pos(target_pos.position)
 
 
 func autocomplete_grid(combination: Combination):
@@ -513,11 +512,14 @@ func _on_enemy_acted(enemy, actions):
 		var name = action[0]
 		var args = action[1]
 		if name == "damage":
-			enemy.play_animation("attack")
-			player.take_damage(enemy, args.value, args.type)
-			enemy.remove_intent()
-			#Wait before going to next action/enemy	
-			yield(player, "resolved")
+			var amount = 1 if not args.has("amount") else args.amount
+			for i in range(0, amount):
+				enemy.play_animation("attack")
+				player.take_damage(enemy, args.value, args.type)
+				if i == amount - 1:
+					enemy.remove_intent()
+				#Wait before going to next action/enemy	
+				yield(player, "resolved")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()
@@ -533,6 +535,10 @@ func _on_enemy_acted(enemy, actions):
 				AnimationManager.play("spawn", enemy.get_center_position())
 				add_enemy(args.enemy, enemy.get_center_position(), true)
 				update_enemy_positions()
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.6), "timeout")
+		elif name == "idle":
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")

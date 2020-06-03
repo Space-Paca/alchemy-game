@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/enemies/intents/attack_crushing.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -12,32 +12,54 @@ use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 2 )
 
-[node name="Intent" type="HBoxContainer"]
-margin_right = 97.0
-margin_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_constants/separation = -4
+[sub_resource type="DynamicFont" id=2]
+size = 23
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[node name="Intent" type="Node2D"]
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Image" type="TextureRect" parent="."]
 margin_right = 60.0
-margin_bottom = 81.0
+margin_bottom = 60.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="."]
-margin_left = 56.0
-margin_top = 23.0
-margin_right = 90.0
-margin_bottom = 57.0
+margin_left = 57.2294
+margin_top = 17.303
+margin_right = 91.2294
+margin_bottom = 51.303
 custom_fonts/font = SubResource( 1 )
 text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="."]
+margin_left = 99.3376
+margin_top = 26.8311
+margin_right = 108.338
+margin_bottom = 52.8311
+custom_fonts/font = SubResource( 2 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Multiplier" type="Label" parent="."]
+margin_left = 118.58
+margin_top = 16.9957
+margin_right = 136.58
+margin_bottom = 50.9957
+custom_fonts/font = SubResource( 1 )
+text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -31,7 +31,6 @@ var _playback_speed := 1.0
 
 func _ready():
 	set_button_disabled(true)
-	$Intents.rect_position.y = -INTENT_MARGIN - INTENT_H
 	
 	#Setup idle animation
 	animation.play("idle")
@@ -171,7 +170,7 @@ func update_status_bar():
 		$StatusBar.set_status(type, status.amount, status.positive)
 
 func get_center_position():
-	return $Sprite.rect_global_position + $Sprite.rect_size*$Sprite.rect_scale/2
+	return $Sprite.rect_global_position + $Sprite.texture.get_width()*$Sprite.rect_scale/2
 
 func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
@@ -204,23 +203,23 @@ func disable():
 	disable_tooltips()
 
 func update_tooltip_position():
-	var margin = 5
-	$TooltipPosition.position = Vector2(min($Sprite.rect_position.x, $HealthBar.position.x) - TooltipLayer.get_width() - margin, \
+	var margin = 10
+	$TooltipPosition.position = Vector2($Sprite.rect_position.x + $Sprite.texture.get_width() + margin, \
 							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
 
 func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
+	#Sprite Position
+	$Sprite.rect_position.x = -w/2
+	$Sprite.rect_position.y = -h/2
 	#Update pivot
 	$Sprite.rect_pivot_offset.x = w/2
 	$Sprite.rect_pivot_offset.y = h/2
-	#Update intent conteiner
-	$Intents.rect_size.x = w
-	$Intents.rect_size.y = INTENT_H
 	#Update health bar position
-	$HealthBar.position.x = w/2 - $HealthBar.get_width()*$HealthBar.scale.x/2
-	$HealthBar.position.y = h + HEALTH_BAR_MARGIN
+	$HealthBar.position.x = -$HealthBar.get_width()*$HealthBar.scale.x/2
+	$HealthBar.position.y = $Sprite.rect_position.y + h + HEALTH_BAR_MARGIN
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
 	$StatusBar.rect_position.y = $HealthBar.position.y + STATUS_BAR_MARGIN
@@ -232,6 +231,8 @@ func set_image(new_texture):
 	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.rect_position.x) + t_w/2, \
 										 -INTENT_H - INTENT_MARGIN + t_h/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
+	#Update intents position
+	$Intents.position.y = $Sprite.rect_position.y -INTENT_MARGIN - INTENT_H
 
 #Removes first intent (the one in the left)
 func remove_intent():
@@ -240,16 +241,30 @@ func remove_intent():
 		intent.vanish()
 		yield(intent, "vanished")
 		$Intents.remove_child(intent)
+		update_intents_position()
 
 func clear_intents():
 	for intent in $Intents.get_children():
 		$Intents.remove_child(intent)
 
-func add_intent(texture, value):
+func add_intent(texture, value, multiplier):
 	var intent = INTENT.instance()
 	$Intents.add_child(intent)
-	
-	intent.setup(texture, value)
+	intent.setup(texture, value, multiplier)
+	yield(intent, "setted_up")
+	update_intents_position()
+
+func update_intents_position():
+	var int_n = $Intents.get_child_count()
+	var separation = 2
+	var w = separation * (int_n - 1)
+	for intent in $Intents.get_children():
+		w += intent.get_width()
+	var x = $Sprite.rect_position.x - w
+	for intent in $Intents.get_children():
+		$Tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		x += intent.get_width() + separation
+	$Tween.start()
 
 func set_pos(target_pos):
 	randomize()
@@ -264,9 +279,12 @@ func update_intent():
 	var intent_data = data.get_intent_data(state)
 	for intent in intent_data:
 		if intent.has("value"):
-			add_intent(intent.image, intent.value)
+			if intent.has("multiplier"):
+				add_intent(intent.image, intent.value, intent.multiplier)
+			else:
+				add_intent(intent.image, intent.value, null)
 		else:
-			add_intent(intent.image, null)
+			add_intent(intent.image, null, null)
 
 func get_width():
 	return sprite.texture.get_width()

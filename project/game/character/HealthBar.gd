@@ -2,8 +2,8 @@ extends Node2D
 
 signal animation_completed
 
-const HEAL_TIME = 1 #TIME to increase health bar when healing
-const DAMAGE_TIME = .5 #Time to decrease health bar when taking damage
+const HEAL_TIME = .8 #TIME to increase health bar when healing
+const DAMAGE_TIME = .36 #Time to decrease health bar when taking damage
 const ENEMY_FONT = preload("res://game/character/EnemyHealthFont.tres")
 const ENEMY_SIZE = {
 	"small": 256,

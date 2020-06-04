@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/ui/Box Recipe Tips.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/ui/Choose Button.png" type="Texture" id=3]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.gd" type="Script" id=4]
 [ext_resource path="res://game/recipe-book/ReagentDisplay.tscn" type="PackedScene" id=5]
@@ -9,6 +8,18 @@
 [ext_resource path="res://assets/images/ui/SpellName Holder.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 80
 use_mipmaps = true
 use_filter = true
@@ -44,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 3.05176e-05
 margin_bottom = -8.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Recipe Name"
 align = 1
@@ -342,7 +353,7 @@ margin_top = 580.0
 margin_right = 175.0
 margin_bottom = 630.0
 rect_min_size = Vector2( 350, 50 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
@@ -365,7 +376,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="ChooseButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Choose"
 align = 1
 valign = 1

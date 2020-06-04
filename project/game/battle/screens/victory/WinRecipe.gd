@@ -1,12 +1,12 @@
-extends Panel
+extends TextureRect
 
 signal chosen
 
-onready var grid = $CenterContainer/VBoxContainer/CenterContainer/RecipeGrid
-onready var name_label = $CenterContainer/VBoxContainer/RecipeName
-onready var description_label = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/DescriptionContainer/DescriptionLabel
-onready var reagent_list = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/ReagentContainer/ReagentList
-onready var choose_button = $CenterContainer/VBoxContainer/ChooseButton
+onready var grid = $CenterContainer/RecipeGrid
+onready var name_label = $NameBanner/RecipeName
+onready var description_label = $DescriptionLabel
+onready var reagent_list = $ReagentContainer/ReagentList
+onready var choose_button = $ChooseButton
 
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
 
@@ -34,11 +34,15 @@ func set_combination(_combination: Combination):
 	grid.columns = combination.grid_size
 	
 	# REAGENTS
+	var i = 0
 	for reagent in combination.reagent_amounts:
-		var reagent_amount_display = REAGENT_AMOUNT.instance()
-		reagent_list.add_child(reagent_amount_display)
-		reagent_amount_display.set_reagent(reagent)
-		reagent_amount_display.set_amount(combination.reagent_amounts[reagent])
+#		var reagent_amount_display = REAGENT_AMOUNT.instance()
+#		reagent_list.add_child(reagent_amount_display)
+#		reagent_amount_display.set_reagent(reagent)
+#		reagent_amount_display.set_amount(combination.reagent_amounts[reagent])
+		for j in combination.reagent_amounts[reagent]:
+			reagent_list.get_child(i).texture = ReagentDB.get_from_name(reagent).image
+			i += 1
 
 
 func _on_ChooseButton_pressed():

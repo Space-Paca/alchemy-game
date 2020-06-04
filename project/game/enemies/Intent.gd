@@ -34,8 +34,10 @@ func update_position():
 	$Value.rect_position.x = $Image.rect_size.x + margin
 	margin = -8
 	$X.rect_position.x = $Value.rect_position.x + $Value.rect_size.x + margin
+	$X.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $X.rect_size.y
 	margin = 10
 	$Multiplier.rect_position.x = $X.rect_position.x + $X.rect_size.x + margin
+	$Multiplier.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $Multiplier.rect_size.y
 
 func get_width():
 	var w = $Image.rect_size.x

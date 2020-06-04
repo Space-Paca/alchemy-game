@@ -39,6 +39,7 @@ func take_damage(source: Character, damage: int, type: String):
 	if hp <= 0:
 		return 0
 	
+	var pre_shield = shield
 	var unblocked_damage
 	if type != "poison":
 		damage += source.get_damage_modifiers()
@@ -98,7 +99,8 @@ func take_damage(source: Character, damage: int, type: String):
 	if hp <= 0:
 		hp = 0
 		die()
-	elif status_list.has("guard_up"):
+	elif pre_shield <= 0 and status_list.has("guard_up"):
+		AudioManager.play_sfx("shield_gain")
 		shield += status_list.guard_up.amount
 	
 	return unblocked_damage

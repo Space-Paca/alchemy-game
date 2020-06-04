@@ -8,7 +8,7 @@ const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 
-export var initial_currency := 100
+export var initial_currency := 50
 
 var currency : int
 var hud

@@ -26,7 +26,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.poison},
 					   "guard_up": {
 						"title": "Guard Up",
-						"text": "Whenever this characters is attacked, it gains shield",
+						"text": "Whenever this characters is attacked, if it wasn't shielded, gains shield",
 						"title_image": STATUS_IMAGES.guard_up},
 					  }
 

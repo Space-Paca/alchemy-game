@@ -15,7 +15,7 @@ var use_idle_sfx = true
 var hp = 22
 var battle_init = false
 var size = "small"
-var damage = [5, 6]
+var damage = [16, 18]
 
 var states = ["attack", "preparing1", "preparing2", "preparing3"]
 var connections = [
@@ -38,7 +38,7 @@ func get_damage():
 
 func act(state):
 	if state == "attack":
-		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "regular", "amount": 3}]])
+		emit_signal("acted", enemy_ref, [["damage", {"value": next_attack_value, "type": "regular"}]])
 	elif state == "preparing1" or state == "preparing2" or state == "preparing3":
 		emit_signal("acted", enemy_ref, [["idle", {}]])
 	
@@ -50,7 +50,6 @@ func get_intent_data(state):
 		var intent = {}
 		intent.image = intents.attack
 		intent.value = next_attack_value
-		intent.multiplier = 3
 		data.append(intent)
 	elif state == "preparing1" or state == "preparing2" or state == "preparing3":
 		var intent = {}

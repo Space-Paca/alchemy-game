@@ -13,7 +13,7 @@ loot_table = {
 "common": 0,
 "damaging": 2,
 "defensive": 2,
-"healing": 3,
+"healing": 2,
 "rare": 0,
 "super_damaging": 1,
 "super_defensive": 1,

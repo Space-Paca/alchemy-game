@@ -79,7 +79,6 @@ func set_grayscale(value: float):
 
 
 func take_damage(source: Character, damage: int, type: String):
-	var pre_shield = shield
 	var unblocked_dmg = .take_damage(source, damage, type)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
@@ -97,8 +96,8 @@ func take_damage(source: Character, damage: int, type: String):
 	
 	update_status_bar()
 	
-	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
-		health_bar.update_visuals(hp, shield)
+	var func_state = health_bar.update_visuals(hp, shield)
+	if func_state and func_state.is_valid():
 		if hp > 0:
 			yield(health_bar, "animation_completed")
 		else:

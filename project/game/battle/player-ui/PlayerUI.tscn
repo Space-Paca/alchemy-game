@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/Player Portrait.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
@@ -9,9 +10,9 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 71
+size = 84
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 22
@@ -33,10 +34,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="."]
-margin_left = 540.0
-margin_top = 5.0
-margin_right = 1188.0
-margin_bottom = 92.0
+margin_left = 547.175
+margin_top = 19.35
+margin_right = 1195.17
+margin_bottom = 110.35
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pierce Hawthorne"

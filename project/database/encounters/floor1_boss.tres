@@ -5,18 +5,18 @@
 [resource]
 script = ExtResource( 1 )
 is_boss = true
+is_elite = false
 level = 1
-enemies = [ "humunculus" ]
-gold_reward = 10
+enemies = [ "boss_1" ]
 loot_table = {
-"catalyst": 1,
+"catalyst": 0,
 "common": 0,
-"damaging": 0,
-"defensive": 0,
-"healing": 1,
+"damaging": 2,
+"defensive": 2,
+"healing": 3,
 "rare": 0,
-"super_damaging": 0,
-"super_defensive": 0,
-"uncommon": 0
+"super_damaging": 1,
+"super_defensive": 1,
+"uncommon": 5
 }
-extra_loot_chance = [  ]
+extra_loot_chance = [ 1.0, 1.0, 1.0, 0.8, 0.5, 0.3, 0.1 ]

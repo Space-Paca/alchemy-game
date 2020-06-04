@@ -4,7 +4,8 @@ const STATUS_IMAGES = {
 					   "dodge": "res://assets/images/status/dodge.png",
 					   "perm_strength": "res://assets/images/status/perm_strength.png",
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
-					   "poison": "res://assets/images/status/Debuff Poison.png",
+					   "poison": "res://assets/images/status/poison.png",
+					   "guard_up": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -21,8 +22,12 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.temp_strength},
 					   "poison": {
 						"title": "Poison",
-						"text": "This character is taking poison damage each turn",
+						"text": "This character is dealt 1 poison damage per stack. Decreases every turn",
 						"title_image": STATUS_IMAGES.poison},
+					   "guard_up": {
+						"title": "Guard Up",
+						"text": "Whenever this characters is attacked, it gains shield",
+						"title_image": STATUS_IMAGES.guard_up},
 					  }
 
 var type : String

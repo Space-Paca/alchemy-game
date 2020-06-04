@@ -118,6 +118,9 @@ func slight_grow():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1.1,1.1), .05/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
+func super_grow():
+	$Tween.interpolate_property(self, "rect_scale", Vector2(0,0), Vector2(1.6,1.6), .15, Tween.TRANS_BACK, Tween.EASE_OUT)
+	$Tween.start()
 
 func grow():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .5/effect_mod, Tween.TRANS_BACK, Tween.EASE_OUT)

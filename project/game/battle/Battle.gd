@@ -87,14 +87,7 @@ func setup_player(_player):
 	
 	#Setup player bag
 	for reagent_type in player.bag:
-		var reagent = ReagentManager.create_object(reagent_type)
-		reagent.rect_scale = Vector2(.8,.8)
-		reagent.connect("started_dragging", self, "_on_reagent_drag")
-		reagent.connect("stopped_dragging", self, "_on_reagent_stop_drag")
-		reagent.connect("hovering", self, "_on_reagent_hover")
-		reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
-		reagent.connect("quick_place", self, "_on_reagent_quick_place")
-		reagent.connect("destroyed", self, "_on_reagent_destroyed")
+		var reagent = create_reagent(reagent_type)
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
@@ -196,6 +189,16 @@ func setup_win_screen(encounter: Encounter):
 	
 	win_screen.set_loot(encounter.get_loot())
 
+func create_reagent(type):
+	var reagent = ReagentManager.create_object(type)
+	reagent.rect_scale = Vector2(.8,.8)
+	reagent.connect("started_dragging", self, "_on_reagent_drag")
+	reagent.connect("stopped_dragging", self, "_on_reagent_stop_drag")
+	reagent.connect("hovering", self, "_on_reagent_hover")
+	reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
+	reagent.connect("quick_place", self, "_on_reagent_quick_place")
+	reagent.connect("destroyed", self, "_on_reagent_destroyed")
+	return reagent
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
@@ -535,6 +538,21 @@ func _on_enemy_acted(enemy, actions):
 				AnimationManager.play("spawn", enemy.get_center_position())
 				add_enemy(args.enemy, enemy.get_center_position(), true)
 				update_enemy_positions()
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.6), "timeout")
+		elif name == "add_reagent":
+			for _i in range(0, args.amount):
+				AudioManager.play_sfx("create_reagent")
+				var reagent = create_reagent(args.type)
+				reagents.add_child(reagent)
+				randomize()
+				var offset = Vector2(rand_range(-10, 10), rand_range(-10, 10))
+				reagent.rect_position = enemy.position + offset
+				reagent.super_grow()
+				yield(get_tree().create_timer(.2), "timeout")
+				discard_bag.discard(reagent)
+				yield(get_tree().create_timer(.3), "timeout")
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")

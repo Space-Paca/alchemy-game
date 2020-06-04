@@ -93,8 +93,7 @@ func heal(amount : int):
 
 
 func take_damage(source: Character, value: int, type: String):
-	var pre_shield = shield
-	var unblocked_dmg = .take_damage(source, value, type)
+	var _unblocked_dmg = .take_damage(source, value, type)
 
 	#Animations
 	if type == "regular":
@@ -107,9 +106,9 @@ func take_damage(source: Character, value: int, type: String):
 		AnimationManager.play("poison", hud.get_animation_position())
 	
 	hud.update_status_bar(self)
-	
-	if unblocked_dmg > 0 or abs(pre_shield - shield) > 0:
-		hud.update_visuals(self)
+
+	var func_state = hud.update_visuals(self)
+	if func_state and func_state.is_valid():
 		yield(hud, "animation_completed")
 
 	emit_signal("resolved")

@@ -37,7 +37,6 @@ func get_damage_modifiers(update_status:= true):
 
 func take_damage(source: Character, damage: int, type: String):
 	if hp <= 0:
-		# FIX CRASHING IN Character.gd take_damage
 		return 0
 	
 	var unblocked_damage
@@ -99,6 +98,9 @@ func take_damage(source: Character, damage: int, type: String):
 	if hp <= 0:
 		hp = 0
 		die()
+	elif status_list.has("guard_up"):
+		shield += status_list.guard_up.amount
+	
 	return unblocked_damage
 
 

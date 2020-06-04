@@ -8,8 +8,6 @@ onready var description_label = $DescriptionLabel
 onready var reagent_list = $ReagentContainer/ReagentList
 onready var choose_button = $ChooseButton
 
-const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-
 var combination : Combination
 
 

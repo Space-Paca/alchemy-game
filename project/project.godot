@@ -105,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Alchemy"
-run/main_scene="res://game/dungeon/Dungeon.tscn"
+run/main_scene="res://game/main-menu/MainMenu.tscn"
 config/icon="res://assets/images/slime-icon.png"
 
 [autoload]

@@ -29,6 +29,7 @@ var effect_mod := 1.0
 var tooltips_enabled := false
 var block_tooltips := false
 
+
 func set_image(text):
 	$Image.texture = text
 
@@ -53,21 +54,26 @@ func _process(_delta):
 				rect_position = target_position
 				emit_signal("reached_target_pos")
 
+
 func quick_place():
 	emit_signal("quick_place", self)
+
 
 func enable_dragging():
 	can_drag = true
 	disable_drag = false
 
+
 func clear_tweens():
 	$Tween.remove_all()
+
 
 func start_shaking_and_destroy():
 	$Tween.interpolate_property(self, "shake", 0, 4, .9, Tween.TRANS_QUAD, Tween.EASE_IN)
 	$Tween.start()
 	yield(get_tree().create_timer(.2), "timeout")
 	AudioManager.play_sfx("destroy_reagent")
+
 
 func combine_animation(grid_center: Vector2, duration: float):
 	var center = grid_center + -rect_size/2
@@ -84,12 +90,15 @@ func combine_animation(grid_center: Vector2, duration: float):
 	shake = 0.0
 	emit_signal("finished_combine_animation")
 
+
 func set_grayscale(value: float):
 	image.material.set_shader_param("grayscale", value)
+
 
 func stop_hover_effect():
 	hovering = false
 	slight_shrink()
+
 
 func destroy():
 	start_shaking_and_destroy()
@@ -97,6 +106,7 @@ func destroy():
 	yield($AnimationPlayer, "animation_finished")
 	emit_signal("destroyed", self)
 	queue_free()
+
 
 func hover_effect():
 	hovering = true
@@ -118,13 +128,16 @@ func slight_grow():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1.1,1.1), .05/effect_mod, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
+
 func super_grow():
 	$Tween.interpolate_property(self, "rect_scale", Vector2(0,0), Vector2(1.6,1.6), .15, Tween.TRANS_BACK, Tween.EASE_OUT)
 	$Tween.start()
 
+
 func grow():
 	$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(1,1), .5/effect_mod, Tween.TRANS_BACK, Tween.EASE_OUT)
 	$Tween.start()
+
 
 func grow_and_shrink():
 	shake = 0.0
@@ -147,7 +160,7 @@ func shrink():
 
 
 func highlight():
-	modulate = Color.black
+	modulate = Color(3, 3, 3)
 
 
 func unhighlight():
@@ -170,21 +183,26 @@ func start_hovering():
 func stop_hovering():
 	emit_signal("stopped_hovering", self)
 
+
 func disable():
 	disable_tooltips()
 	block_tooltips = true
 
+
 func enable():
 	block_tooltips = false
+
 
 func disable_dragging():
 	can_drag = false
 	disable_drag = true
 
+
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
+
 
 func get_tooltips():
 	var data = ReagentManager.get_data(type)
@@ -192,8 +210,10 @@ func get_tooltips():
 				   "title_image": data.image.get_path()}
 	return tooltip
 
+
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()
+
 
 func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips or (slot and slot.type != "hand") or is_drag:

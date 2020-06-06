@@ -694,19 +694,24 @@ func _on_PassTurnButton_mouse_entered():
 	if not $PassTurnButton.disabled:
 		AudioManager.play_sfx("hover_button")
 
+
 func _on_CreateRecipeButton_mouse_entered():
 	if not $CreateRecipeButton.disabled:
 		AudioManager.play_sfx("hover_button")
+
 
 func _on_RecipesButton_mouse_entered():
 	if not $RecipesButton.disabled:
 		AudioManager.play_sfx("hover_button")
 
+
 func _on_CreateRecipeButton_button_down():
 	AudioManager.play_sfx("click")
 
+
 func _on_RecipesButton_button_down():
 	AudioManager.play_sfx("click")
+
 
 func _on_PassTurnButton_button_down():
 	AudioManager.play_sfx("click")

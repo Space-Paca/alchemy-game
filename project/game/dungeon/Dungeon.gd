@@ -195,6 +195,11 @@ func open_shop():
 		player.discover_combination(shop_recipe.combination)
 
 
+func thanks_for_playing():
+	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
+	add_child(scene)
+
+
 func _on_Combination_fully_discovered(combination: Combination):
 	possible_rewarded_combinations.erase(combination)
 
@@ -228,6 +233,12 @@ func _on_Battle_finished(is_boss):
 	recipe_book.remove_hand()
 	
 	if is_boss:
+		# DEMO BUILD
+		current_floor.show()
+		thanks_for_playing()
+		return
+		
+		# NEXT FLOOR
 		current_floor.queue_free()
 		floor_level += 1
 		if floor_level <= MAX_FLOOR:
@@ -258,8 +269,10 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	
 	battle.display_name_for_combination(combination)
 
+
 func _on_Battle_recipe_book_toggle():
 	recipe_book.toggle_visibility()
+
 
 func _on_Player_combination_discovered(combination, index):
 	recipe_book.add_combination(combination, index)

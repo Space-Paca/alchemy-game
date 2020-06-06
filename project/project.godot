@@ -118,6 +118,7 @@ EncounterManager="*res://database/EncounterManager.gd"
 TooltipLayer="*res://game/tooltip/TooltipLayer.tscn"
 MessageLayer="*res://game/ui/MessageLayer.tscn"
 AnimationManager="*res://database/AnimationManager.tscn"
+Debug="*res://game/debug-menu/Debug.tscn"
 
 [display]
 
@@ -131,6 +132,11 @@ window/stretch/aspect="keep"
 show_recipe_book={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_debug={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":92,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -46,6 +46,12 @@ var win_screen
 var is_dragging_reagent := false
 
 
+func _ready():
+	# DEBUG
+# warning-ignore:return_value_discarded
+	Debug.connect("battle_won", self, "_on_Debug_battle_won")
+
+
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	setup_nodes()
 	
@@ -726,10 +732,6 @@ func _on_FavoriteButton_mouse_exited():
 	unhighlight_reagents()
 
 
-func _on_Button_pressed():
-	win()
-
-
 func _on_Grid_modified():
 	if grid.is_empty():
 		recipe_banner.text = ""
@@ -751,3 +753,7 @@ func _on_Grid_modified():
 
 func _on_EffectManager_target_set():
 	targeting_interface.next_target()
+
+
+func _on_Debug_battle_won():
+	win()

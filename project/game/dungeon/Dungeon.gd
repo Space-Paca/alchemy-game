@@ -23,6 +23,10 @@ var debug_recipes_unlock = false
 
 
 func _ready():
+	# DEBUG
+# warning-ignore:return_value_discarded
+	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
+	
 	randomize()
 	create_combinations()
 	create_floor(1)
@@ -33,14 +37,6 @@ func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled):
 			recipe_book.toggle_visibility()
-	elif event.is_action_pressed("ui_home"):
-		if not debug_recipes_unlock:
-			debug_recipes_unlock = true
-			for grid_size in [2, 3, 4]:
-				for combination in combinations[grid_size]:
-					combination.discover_all_reagents()
-					recipe_book.add_combination(combination,
-							player.known_recipes.bsearch(combination.recipe.name))
 
 
 func create_combinations():
@@ -308,3 +304,13 @@ func _on_Shop_hint_bought(combination: Combination):
 		player.discover_combination(combination)
 	else:
 		recipe_book.update_combination(combination)
+
+
+func _on_Debug_combinations_unlocked():
+	if not debug_recipes_unlock:
+		debug_recipes_unlock = true
+		for grid_size in [2, 3, 4]:
+			for combination in combinations[grid_size]:
+				combination.discover_all_reagents()
+				recipe_book.add_combination(combination,
+						player.known_recipes.bsearch(combination.recipe.name))

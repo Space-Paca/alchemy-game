@@ -100,11 +100,12 @@ func create_next_room():
 
 func assign_special_rooms():
 	if OS.is_debug_build():
-		assert(deadend_rooms.size() >= 2)
+		assert(deadend_rooms.size() >= 3)
 	
 	deadend_rooms.shuffle()
 	
 	(deadend_rooms.pop_front() as Room).set_type(Room.Type.SHOP)
+	(deadend_rooms.pop_front() as Room).set_type(Room.Type.REST)
 	var boss_room = deadend_rooms.pop_front() as Room
 	boss_room.set_type(Room.Type.BOSS)
 	boss_room.encounter = EncounterManager.get_random_boss_encounter(level)

@@ -3,6 +3,7 @@ extends Node
 onready var player = $Player
 onready var recipe_book = $BookLayer/RecipeBook
 onready var shop = $Shop
+onready var rest = $Rest
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
@@ -184,7 +185,6 @@ func new_battle(encounter: Encounter):
 	
 	recipe_book.create_hand(battle)
 
-
 func open_shop():
 	AudioManager.play_bgm("shop")
 	current_floor.hide()
@@ -193,6 +193,11 @@ func open_shop():
 	
 	for shop_recipe in shop.recipes:
 		player.discover_combination(shop_recipe.combination)
+
+func open_rest():
+	AudioManager.play_bgm("rest")
+	rest.show()
+	current_floor.hide()
 
 
 func thanks_for_playing():
@@ -210,6 +215,8 @@ func _on_room_entered(room: Room):
 		current_floor.hide()
 	elif room.type == Room.Type.SHOP:
 		open_shop()
+	elif room.type == Room.Type.REST:
+		open_rest()
 
 
 func _on_Battle_won():
@@ -327,3 +334,9 @@ func _on_Debug_combinations_unlocked():
 				combination.discover_all_reagents()
 				recipe_book.add_combination(combination,
 						player.known_recipes.bsearch(combination.recipe.name))
+
+
+func _on_Rest_closed():
+	rest.hide()
+	current_floor.show()
+	AudioManager.play_bgm("map")

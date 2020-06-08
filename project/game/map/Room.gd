@@ -6,11 +6,11 @@ signal entered(room)
 onready var icon = $Icon
 
 enum { N, W, E, S }
-enum Type { EMPTY, MONSTER, BOSS, SHOP, ELITE }
+enum Type { EMPTY, MONSTER, BOSS, SHOP, ELITE, REST}
 
 const SIZE := Vector2(160, 90)
 
-export(Array, Texture) var icons = [null, null, null, null]
+export(Array, Texture) var icons = [null, null, null, null, null]
 
 var entrance : int
 var exits := {N: false, W:false, E:false, S:false}
@@ -58,5 +58,5 @@ func set_type(new_type : int):
 
 func _on_Room_pressed():
 	emit_signal("entered", self)
-	if type == Type.MONSTER or type == Type.ELITE:
+	if type == Type.MONSTER or type == Type.ELITE or type == Type.REST:
 		set_type(Type.EMPTY)

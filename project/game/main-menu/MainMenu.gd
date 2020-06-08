@@ -1,7 +1,7 @@
 extends TextureRect
 
 func _ready():
-	pass
+	AudioManager.play_bgm("menu")
 
 
 func _on_NewGameButton_pressed():

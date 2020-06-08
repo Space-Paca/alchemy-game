@@ -49,6 +49,8 @@ func _draw():
 	else:
 		draw_line(Vector2(0, SIZE.y - w2), Vector2(SIZE.x, SIZE.y - w2), color, width)
 
+func reset():
+	set_type(Type.EMPTY)
 
 func set_type(new_type : int):
 	type = new_type
@@ -58,5 +60,5 @@ func set_type(new_type : int):
 
 func _on_Room_pressed():
 	emit_signal("entered", self)
-	if type == Type.MONSTER or type == Type.ELITE or type == Type.REST:
+	if type == Type.MONSTER or type == Type.ELITE:
 		set_type(Type.EMPTY)

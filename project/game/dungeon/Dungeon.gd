@@ -194,8 +194,9 @@ func open_shop():
 	for shop_recipe in shop.recipes:
 		player.discover_combination(shop_recipe.combination)
 
-func open_rest():
+func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
+	rest.setup(room, _player)
 	rest.show()
 	current_floor.hide()
 
@@ -216,7 +217,7 @@ func _on_room_entered(room: Room):
 	elif room.type == Room.Type.SHOP:
 		open_shop()
 	elif room.type == Room.Type.REST:
-		open_rest()
+		open_rest(room, player)
 
 
 func _on_Battle_won():

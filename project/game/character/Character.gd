@@ -117,10 +117,13 @@ func get_status(status: String):
 		return status_list[status]
 
 func add_status(status: String, amount: int, positive: bool):
-	if positive:
-		AudioManager.play_sfx("buff")
+	if AudioManager.has_sfx("status_"+status):
+		AudioManager.play_sfx("status_"+status)
 	else:
-		AudioManager.play_sfx("debuff")
+		if positive:
+			AudioManager.play_sfx("buff")
+		else:
+			AudioManager.play_sfx("debuff")
 
 	if status_list.has(status):
 		status_list[status].amount += amount

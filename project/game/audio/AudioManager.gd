@@ -402,6 +402,9 @@ func get_idle_sfx_player():
 	push_error("Don't have a free idle sfx player")
 	assert(false)
 
+func has_sfx(name: String):
+	return SFXS.has(name)
+
 func play_sfx(name: String, override_pitch := 1):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)

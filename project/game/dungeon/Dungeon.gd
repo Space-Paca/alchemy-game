@@ -28,6 +28,9 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
 	
+# warning-ignore:return_value_discarded
+	rest.connect("combination_rewarded", self, "_on_combination_rewarded")
+	
 	randomize()
 	create_combinations()
 	create_floor(1)
@@ -73,6 +76,14 @@ func create_floor(level: int):
 	
 	setup_shop()
 
+func get_incompleted_combinations():
+	var incomplete_combinations = []
+	for grid_size in combinations:
+		for combination in combinations[grid_size]:
+			if player.known_recipes.has(combination.recipe.name) and not combination.discovered:
+				incomplete_combinations.append(combination)
+	
+	return incomplete_combinations
 
 func setup_shop():
 	var shop_combinations = []
@@ -177,7 +188,7 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("finished", self, "_on_Battle_finished")
 # warning-ignore:return_value_discarded
-	battle.connect("combination_rewarded", self, "_on_Battle_combination_rewarded")
+	battle.connect("combination_rewarded", self, "_on_combination_rewarded")
 # warning-ignore:return_value_discarded
 	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
 # warning-ignore:return_value_discarded
@@ -196,7 +207,7 @@ func open_shop():
 
 func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
-	rest.setup(room, _player)
+	rest.setup(room, _player, get_incompleted_combinations())
 	rest.show()
 	current_floor.hide()
 
@@ -256,7 +267,7 @@ func _on_Battle_finished(is_boss):
 		current_floor.show()
 
 
-func _on_Battle_combination_rewarded(combination):
+func _on_combination_rewarded(combination):
 	recipe_book.update_combination(combination)
 
 

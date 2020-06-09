@@ -1,11 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=3]
 size = 35
 outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
@@ -27,6 +34,75 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Recipes" type="ScrollContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -840.0
+margin_top = -260.426
+margin_right = 840.0
+margin_bottom = 251.574
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="Recipes"]
+margin_right = 2040.0
+margin_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecipeDisplay" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 315.0
+margin_bottom = 500.0
+
+[node name="RecipeDisplay2" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 345.0
+margin_right = 660.0
+margin_bottom = 500.0
+
+[node name="RecipeDisplay5" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 690.0
+margin_right = 1005.0
+margin_bottom = 500.0
+
+[node name="RecipeDisplay6" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1035.0
+margin_right = 1350.0
+margin_bottom = 500.0
+
+[node name="RecipeDisplay3" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1380.0
+margin_right = 1695.0
+margin_bottom = 500.0
+
+[node name="RecipeDisplay4" parent="Recipes/HBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1725.0
+margin_right = 2040.0
+margin_bottom = 500.0
+
 [node name="BackButton" type="Button" parent="."]
 margin_left = 58.2214
 margin_top = 948.668
@@ -34,6 +110,17 @@ margin_right = 258.221
 margin_bottom = 1038.67
 custom_fonts/font = SubResource( 3 )
 text = "BACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="Button" parent="."]
+margin_left = 873.976
+margin_top = 862.522
+margin_right = 1093.98
+margin_bottom = 952.522
+custom_fonts/font = SubResource( 4 )
+text = "continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,13 +158,14 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 margin_left = 2.6499
-margin_top = 177.553
+margin_top = 50.8353
 margin_right = 2.6499
-margin_bottom = 279.553
+margin_bottom = 152.835
 custom_fonts/font = SubResource( 2 )
 text = "CHoose only one"
 align = 1
 valign = 1
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="HealButton" to="." method="_on_HealButton_pressed"]
 [connection signal="pressed" from="HintButton" to="." method="_on_HintButton_pressed"]

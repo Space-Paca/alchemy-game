@@ -33,6 +33,7 @@ func setup_recipes():
 
 func create_display(combination):
 	var recipe_display = RECIPE.instance()
+	recipe_display.discover_all = true
 	$Recipes/HBox.add_child(recipe_display)
 	recipe_display.set_combination(combination)
 	recipe_display.connect("chosen", self, "_on_recipe_chosen")

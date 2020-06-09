@@ -9,7 +9,7 @@ onready var reagent_list = $ReagentContainer/ReagentList
 onready var choose_button = $ChooseButton
 
 var combination : Combination
-
+var discover_all = false
 
 func set_combination(_combination: Combination):
 	var size = _combination.grid_size
@@ -44,11 +44,16 @@ func set_combination(_combination: Combination):
 
 
 func _on_ChooseButton_pressed():
-	var amount = int(ceil(combination.unknown_reagent_coords.size() / 2.0))
-	combination.discover_reagents(amount)
+	if not discover_all:
+		var amount = int(ceil(combination.unknown_reagent_coords.size() / 2.0))
+		combination.discover_reagents(amount)
+	else:
+		combination.discover_all_reagents()
 	
 	if not combination.discovered:
 		AudioManager.play_sfx("discover_clue_recipe")
+	else:
+		AudioManager.play_sfx("discover_new_recipe")
 	
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):

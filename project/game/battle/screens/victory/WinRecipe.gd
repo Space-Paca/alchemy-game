@@ -43,6 +43,14 @@ func set_combination(_combination: Combination):
 			i += 1
 
 
+func disable_button():
+	choose_button.disabled = true
+
+
+func enable_button():
+	choose_button.disabled = false
+
+
 func _on_ChooseButton_pressed():
 	if not discover_all:
 		var amount = int(ceil(combination.unknown_reagent_coords.size() / 2.0))

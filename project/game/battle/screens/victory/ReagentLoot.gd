@@ -39,6 +39,16 @@ func disable_tooltip():
 	TooltipLayer.clean_tooltips()
 
 
+func disable_buttons():
+	get_button.disabled = true
+	sell_button.disabled = true
+
+
+func enable_buttons():
+	get_button.disabled = false
+	sell_button.disabled = false
+
+
 func _on_GetButton_pressed():
 	get_button.disabled = true
 	sell_button.disabled = true

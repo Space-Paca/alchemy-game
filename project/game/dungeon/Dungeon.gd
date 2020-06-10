@@ -258,6 +258,7 @@ func _on_Battle_finished(is_boss):
 		return
 		
 		# NEXT FLOOR
+# warning-ignore:unreachable_code
 		current_floor.queue_free()
 		floor_level += 1
 		if floor_level <= MAX_FLOOR:

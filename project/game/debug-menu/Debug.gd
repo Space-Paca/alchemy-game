@@ -14,7 +14,9 @@ func _input(event):
 
 func _on_WinBtn_pressed():
 	emit_signal("battle_won")
+	bg.hide()
 
 
 func _on_UnlockCombBtn_pressed():
 	emit_signal("combinations_unlocked")
+	bg.hide()

@@ -12,13 +12,13 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 64
 use_mipmaps = true
 use_filter = true
@@ -98,7 +98,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="BG/MovingScreen/RecipesContainer/BackButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Back"
 align = 1
 valign = 1
@@ -125,14 +125,14 @@ margin_right = 624.0
 margin_top = 50.0
 margin_right = 624.0
 margin_bottom = 92.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Get recipe hint"
 
 [node name="ContinueButton" type="Button" parent="BG/MovingScreen/RewardsContainer"]
 margin_top = 142.0
 margin_right = 624.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Continue to map"
 
 [node name="Tween" type="Tween" parent="."]

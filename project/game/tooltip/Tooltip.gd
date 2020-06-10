@@ -17,7 +17,10 @@ func setup(_title, _text, _title_image):
 	if not _title_image:
 		$TitleImage.hide()
 	else:
-		$TitleImage.texture = load(_title_image)
+		if _title_image is String:
+			$TitleImage.texture = load(_title_image)
+		else:
+			$TitleImage.texture = _title_image
 	
 	update_size()
 

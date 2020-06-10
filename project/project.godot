@@ -110,6 +110,7 @@ config/icon="res://assets/images/slime-icon.png"
 
 [autoload]
 
+IntentManager="*res://game/enemies/IntentManager.gd"
 EnemyManager="*res://game/enemies/EnemyManager.gd"
 ReagentManager="*res://game/reagents/ReagentManager.gd"
 RecipeManager="*res://database/RecipeManager.gd"

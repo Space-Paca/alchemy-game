@@ -2,6 +2,7 @@ extends Character
 class_name Enemy
 
 signal acted
+signal action
 signal selected
 signal action_resolved
 signal animation_finished
@@ -20,8 +21,9 @@ const INTENT_MARGIN = 5
 const INTENT_W = 50
 const INTENT_H = 60
 
-var logic_
+var logic
 var data
+var cur_actions
 var just_spawned := false
 var tooltip_position := Vector2()
 var tooltips_enabled := false
@@ -151,14 +153,53 @@ func update_status():
 
 
 func act():
-	var state = logic_.get_current_state()
-	data.act(state)
+	run_action()
 	yield(self, "action_resolved")
+	
 	emit_signal("acted")
-	logic_.update_state()
+	
+	logic.update_state()
+	update_action()
+	
+
+
+func update_action():
+	var state = logic.get_current_state()
+
+	cur_actions = []
+	for action in data.actions[state]:
+		var act
+		if action.name == "damage":
+			var value = get_random_value(action.value) if action.value is Array else action.value
+			var amount = action.amount if action.has("amount") else 1
+			act = ["damage", {"value": value, "type": action.type, "amount": amount}]
+		elif action.name == "shield":
+			var value = get_random_value(action.value) if action.value is Array else action.value
+			act = ["shield", {"value": value}]
+		elif action.name == "status":
+			var value = get_random_value(action.value) if action.value is Array else action.value
+			act = ["status", {"status": action.status_name, "value": value, \
+							  "target": action.target, "positive": action.positive}]
+		elif action.name == "spawn":
+			act = ["spawn", {"enemy": action.enemy}]
+		elif action.name == "add_reagent":
+			act = ["add_reagent", {"type": action.type, "value": action.value}]
+		elif action.name == "idle":
+			act = ["idle", {}]
+		else:
+			push_error("Not a valid action:" + str(action.name))
+			assert(false)
+		cur_actions.append(act)
 	
 	update_intent()
 
+func run_action():
+	emit_signal("action", self, cur_actions)
+
+#Returns a random value given an interval array [min, max]
+func get_random_value(interval : Array):
+	randomize()
+	return randi()%(interval[1]-interval[0]+1) + interval[0]
 
 func play_animation(name):
 	animation.play(name)
@@ -195,17 +236,17 @@ func setup(enemy_logic, new_texture, highlight_texture, enemy_data):
 
 
 func set_logic(enemy_logic):
-	logic_ = load("res://game/enemies/EnemyLogic.gd").new()
+	logic = load("res://game/enemies/EnemyLogic.gd").new()
 	
 	for state in enemy_logic.states:
-		logic_.add_state(state)
+		logic.add_state(state)
 	for link in enemy_logic.connections:
-		logic_.add_connection(link[0], link[1], link[2])
+		logic.add_connection(link[0], link[1], link[2])
 	
 	#Get random first state
 	randomize()
 	enemy_logic.first_state.shuffle()
-	logic_.set_state(enemy_logic.first_state.front())
+	logic.set_state(enemy_logic.first_state.front())
 
 
 func set_life(enemy_data):
@@ -224,8 +265,6 @@ func update_tooltip_position():
 	$TooltipPosition.position = Vector2($Sprite.position.x + $Sprite.texture.get_width() + margin, \
 							   			$Sprite.position.y - $Sprite.texture.get_height()/2 -\
 										INTENT_MARGIN - INTENT_H)
-#	$TooltipPosition.position = Vector2($Sprite.rect_position.x + $Sprite.texture.get_width() + margin, \
-#							   			$Sprite.rect_position.y - INTENT_MARGIN - INTENT_H)
 
 
 func set_image(new_texture, highlight_texture):
@@ -304,12 +343,10 @@ func set_pos(target_pos):
 	$Tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 
-
 func update_intent():
 	clear_intents()
-	var state = logic_.get_current_state()
-	var intent_data = data.get_intent_data(state)
-	for intent in intent_data:
+	for action in cur_actions:
+		var intent = IntentManager.create_intent_data(action)
 		if intent.has("value"):
 			if intent.has("multiplier"):
 				add_intent(intent.image, intent.value, intent.multiplier)
@@ -317,7 +354,6 @@ func update_intent():
 				add_intent(intent.image, intent.value, null)
 		else:
 			add_intent(intent.image, null, null)
-
 
 func get_width():
 	return sprite.texture.get_width()
@@ -329,10 +365,10 @@ func get_height():
 
 func get_tooltips():
 	var tooltips = []
-	#Get intent tooltip
-	var state = logic_.get_current_state()
-	for intent_tooltip in data.get_intent_tooltips(state):
-		tooltips.append(intent_tooltip)
+
+	for action in cur_actions:
+		tooltips.append(IntentManager.get_intent_tooltip(action))
+	
 	#Get status tooltips
 	for tooltip in $StatusBar.get_status_tooltips():
 		tooltips.append(tooltip)

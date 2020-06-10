@@ -207,7 +207,7 @@ func create_reagent(type):
 	return reagent
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false):
-	var enemy_node = EnemyManager.create_object(enemy, player)
+	var enemy_node = EnemyManager.create_object(enemy)
 	enemies_node.add_child(enemy_node)
 	
 	if initial_pos:
@@ -223,11 +223,11 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false):
 	if enemy_node.data.use_idle_sfx:
 		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
 	
-	enemy_node.data.connect("acted", self, "_on_enemy_acted")
+	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
 	effect_manager.add_enemy(enemy_node)
 	
-	enemy_node.update_intent()
+	enemy_node.update_action()
 
 
 func update_enemy_positions():
@@ -521,11 +521,10 @@ func _on_enemy_acted(enemy, actions):
 		var name = action[0]
 		var args = action[1]
 		if name == "damage":
-			var amount = 1 if not args.has("amount") else args.amount
-			for i in range(0, amount):
+			for i in range(0, args.amount):
 				enemy.play_animation("attack")
 				player.take_damage(enemy, args.value, args.type)
-				if i == amount - 1:
+				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy	
 				yield(player, "resolved")
@@ -535,7 +534,13 @@ func _on_enemy_acted(enemy, actions):
 			#Wait before going to next action/enemy	
 			yield(enemy, "resolved")
 		elif name == "status":
-			args.target.add_status(args.status, args.amount, args.positive)
+			if args.target == "self":
+				enemy.add_status(args.status, args.value, args.positive)
+			elif args.target == "player":
+				player.add_status(args.status, args.value, args.positive)
+			else:
+				push_error("Not a valid target for status effect:" + str(args.target))
+				assert(false)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
@@ -548,7 +553,7 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
 		elif name == "add_reagent":
-			for _i in range(0, args.amount):
+			for _i in range(0, args.value):
 				AudioManager.play_sfx("create_reagent")
 				var reagent = create_reagent(args.type)
 				reagents.add_child(reagent)

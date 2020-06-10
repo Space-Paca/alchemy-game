@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/images/ui/recipe_hint_button.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/Continue to map Button.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
 
@@ -18,11 +19,11 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 64
+[sub_resource type="DynamicFont" id=4]
+size = 52
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 6 )
 
 [node name="Win" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -102,38 +103,68 @@ custom_fonts/font = SubResource( 2 )
 text = "Back"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RewardsContainer" type="VBoxContainer" parent="BG/MovingScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -450.0
-margin_right = 312.0
-margin_bottom = 450.0
-rect_min_size = Vector2( 624, 0 )
+margin_left = -360.5
+margin_top = -250.0
+margin_right = 360.5
+margin_bottom = 250.0
+rect_min_size = Vector2( 721, 0 )
 custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/RewardsContainer"]
-margin_right = 624.0
+margin_right = 721.0
 
-[node name="RecipesButton" type="Button" parent="BG/MovingScreen/RewardsContainer"]
+[node name="RecipesButton" type="TextureButton" parent="BG/MovingScreen/RewardsContainer"]
 margin_top = 50.0
-margin_right = 624.0
-margin_bottom = 92.0
-custom_fonts/font = SubResource( 3 )
-text = "Get recipe hint"
+margin_right = 721.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 1 )
 
-[node name="ContinueButton" type="Button" parent="BG/MovingScreen/RewardsContainer"]
-margin_top = 142.0
-margin_right = 624.0
-margin_bottom = 184.0
-custom_fonts/font = SubResource( 3 )
+[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/RecipesButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -10.9999
+margin_bottom = -5.99999
+custom_fonts/font = SubResource( 4 )
+text = "Get a recipe hint"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="TextureButton" parent="BG/MovingScreen/RewardsContainer"]
+margin_left = 154.0
+margin_top = 191.0
+margin_right = 566.0
+margin_bottom = 282.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/ContinueButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -12.0
+margin_bottom = -5.99999
+custom_fonts/font = SubResource( 4 )
 text = "Continue to map"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe1" to="." method="_on_WinRecipe_chosen"]

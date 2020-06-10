@@ -84,6 +84,7 @@ func disable_buttons():
 	
 	continue_button.disabled = true
 	back_button.disabled = true
+	recipes_button.disabled = true
 
 
 func enable_buttons():
@@ -92,6 +93,7 @@ func enable_buttons():
 			for loot in loot_list.get_children():
 				loot.enable_buttons()
 			continue_button.disabled = false
+			recipes_button.disabled = false
 		States.RECIPE:
 			for recipe in recipe_displays:
 				recipe.enable_button()
@@ -133,7 +135,7 @@ func _on_WinRecipe_chosen(chosen_recipe):
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(recipes_container, "rect_position:x", null, 0,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.interpolate_property(rewards_container, "rect_position:x", null, 500,
+	tween.interpolate_property(rewards_container, "rect_position:x", null, 400,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
 	change_state(States.LOOT)

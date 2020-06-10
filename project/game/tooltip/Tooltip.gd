@@ -42,7 +42,18 @@ func stylize_text(text):
 	#Color keywords
 	for keyword in VALID_KEYWORDS:
 		text = text.replace(keyword, "[color=lime]" + keyword + "[/color]")
-		
+	
+	#Color numbers
+	#This could/will probably not work properly if there is two equal nubmers on the text
+	#But we'll deal with this later (。・ω・。)
+	var regex = RegEx.new()
+	regex.compile("(\\d+)")
+	var result = regex.search(text)
+	if result:
+		for i in range(1, result.get_group_count() + 1):
+			var n = result.get_string(i)
+			text = text.replace(n, "[color=fuchsia]"+n+"[/color]")
+
 	return text
 
 func update_size():

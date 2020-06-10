@@ -16,7 +16,7 @@ const DB = {
 		"gold_value" : 25
 	},
 	"rare": {
-		"name": "Reagente",
+		"name": "Reagente Raro",
 		"image": preload("res://assets/images/reagents/funky.png"),
 		"tooltip" : "If not used correctly, deals 5 damage to a random enemy",
 		"effect" : {"type": "damage", "value": 5},

@@ -1,18 +1,19 @@
 extends Control
 
 const MARGIN_X = 35
-const MARGIN_Y = 32
-const SEPARATION_TITLE_TEXT = 16
+const MARGIN_Y = 34
+const SEPARATION_TITLE_TEXT = 12
 const TITLE_IMAGE_SIZE = 24
 const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
-					   "guard up"]
+					   "guard up", "piercing damage", "regular damage", "crushing damage",
+					   "shield"]
 
 signal setted_up
 
 func get_title():
 	return $Title.text
 
-func setup(_title, _text, _title_image):
+func setup(_title, _text, _title_image, expanded = false):
 	modulate = Color(1,1,1,0)
 	$Title.rect_size.x = 3*TooltipLayer.get_width()/4 - 2*MARGIN_X
 	$Title.rect_position.y = MARGIN_Y
@@ -20,7 +21,13 @@ func setup(_title, _text, _title_image):
 	$Text.rect_position.x = MARGIN_X
 	$Title.rect_position.x = MARGIN_X
 	$Title.text = _title
-	$Text.bbcode_text = _text
+	$Text.bbcode_text = stylize_text(_text)
+	
+	if expanded:
+		$BG.modulate = Color(.65,1,.65,1)
+	else:
+		$BG.modulate = Color(1,1,1,1)
+
 	if not _title_image:
 		$TitleImage.hide()
 	else:
@@ -31,12 +38,19 @@ func setup(_title, _text, _title_image):
 	
 	update_size()
 
+func stylize_text(text):
+	#Color keywords
+	for keyword in VALID_KEYWORDS:
+		text = text.replace(keyword, "[color=lime]" + keyword + "[/color]")
+		
+	return text
+
 func update_size():
 	$BG.rect_size.x = TooltipLayer.get_width()
 	
 	#Need to wait a frame so get_content_height gets the apropriate size
 	#and title rect has increased in size to accomodate new text
-	yield(TooltipLayer.get_tree(),"idle_frame")
+	yield(TooltipLayer.get_tree(),"idle_frame") 
 	
 	var text_h = $Text.get_content_height()
 	$BG.rect_size.y = $Text.rect_position.y + text_h + MARGIN_Y

@@ -36,11 +36,11 @@ var status_db = preload("res://game/character/Status.gd").new()
 func get_width():
 	return TOOLTIP_WIDTH
 
-func add_tooltip(pos, title, text, title_image, play_sfx = false):
+func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = false):
 	if has_tooltip(title):
 		return
 	var tip = TOOLTIP.instance()
-	tip.setup(title, text, title_image)
+	tip.setup(title, text, title_image, expanded)
 	$Tooltips.position.x = min(pos.x, get_viewport().size.x-TOOLTIP_WIDTH)
 	$Tooltips.position.y = pos.y
 	$Tooltips.add_child(tip)
@@ -53,10 +53,10 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false):
 		if KEYWORDS.has(keyword):
 			var tp_data = KEYWORDS[keyword]
 			if tp_data.type == "tooltip":
-				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image)
+				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image, false, true)
 			elif tp_data.type == "status":
 				tp_data = status_db.STATUS_TOOLTIPS[tp_data.name]
-				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image)
+				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image, false, true)
 
 func has_tooltip(title):
 	for tooltip in $Tooltips.get_children():

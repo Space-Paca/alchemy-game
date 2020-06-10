@@ -3,6 +3,7 @@ extends TextureRect
 func _ready():
 	AudioManager.play_bgm("menu")
 
+# (❁´◡`❁)
 
 func _on_NewGameButton_pressed():
 # warning-ignore:return_value_discarded

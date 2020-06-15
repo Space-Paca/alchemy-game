@@ -28,6 +28,7 @@ var speed_mod := 1.0
 var effect_mod := 1.0
 var tooltips_enabled := false
 var block_tooltips := false
+var upgraded := true
 
 
 func set_image(text):
@@ -206,7 +207,15 @@ func disable_tooltips():
 
 func get_tooltips():
 	var data = ReagentManager.get_data(type)
-	var tooltip = {"title": data.name, "text": data.tooltip, \
+
+	var text
+	if not upgraded:
+		text = data.tooltip % data.effect.value
+	else:
+		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
+			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
+
+	var tooltip = {"title": data.name, "text": text, \
 				   "title_image": data.image.get_path()}
 	return tooltip
 

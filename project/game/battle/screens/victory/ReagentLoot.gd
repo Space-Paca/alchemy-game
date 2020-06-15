@@ -11,6 +11,7 @@ onready var texture_rect = $TextureRect
 const TEXT = "Transmute (%d gold)"
 
 var reagent : String
+var upgraded := false
 var gold_value : int
 var tooltip_enabled := false
 
@@ -30,7 +31,15 @@ func get_tooltips():
 	var tooltips = []
 	if reagent:
 		var data = ReagentManager.get_data(reagent)
-		var tooltip = {"title": data.name, "text": data.tooltip,
+		
+		var text
+		if not upgraded:
+			text = data.tooltip % data.effect.value
+		else:
+			text = data.tooltip % data.effect.upgraded_value + " Boost " + \
+				   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
+			
+		var tooltip = {"title": data.name, "text": text,
 				"title_image": data.image.get_path()}
 		tooltips.append(tooltip)
 	

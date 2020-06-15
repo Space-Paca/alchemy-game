@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/reagents/feather.png" type="Texture" id=1]
 [ext_resource path="res://game/reagents/ReagentCollision.gd" type="Script" id=2]
 [ext_resource path="res://game/reagents/Reagent.gd" type="Script" id=3]
 [ext_resource path="res://assets/shaders/grayscale.shader" type="Shader" id=4]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -64,6 +65,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Upgraded" type="Label" parent="Image"]
+visible = false
+modulate = Color( 0.188235, 0.839216, 0.0784314, 1 )
+margin_left = 52.075
+margin_top = -13.5848
+margin_right = 66.075
+margin_bottom = 24.4152
+custom_fonts/font = ExtResource( 6 )
+text = "+"
+
 [node name="ReagentCollision" type="Area2D" parent="."]
 priority = 6.0
 script = ExtResource( 2 )
@@ -88,6 +99,13 @@ position = Vector2( 37.5267, -48.1825 )
 autoplay = "idle"
 anims/destroy = SubResource( 4 )
 anims/idle = SubResource( 5 )
+
+[node name="Upgraded" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

@@ -92,8 +92,10 @@ func setup_player(_player):
 	player = _player
 	
 	#Setup player bag
-	for reagent_type in player.bag:
-		var reagent = create_reagent(reagent_type)
+	for bag_reagent in player.bag:
+		var reagent = create_reagent(bag_reagent.type)
+		if bag_reagent.upgraded:
+			reagent.upgrade()
 		draw_bag.add_reagent(reagent)
 	
 	#Setup player hand
@@ -664,7 +666,7 @@ func _on_CreateRecipe_pressed():
 
 
 func _on_win_screen_reagent_looted(reagent: String):
-	player.add_reagent(reagent)
+	player.add_reagent(reagent, false)
 
 
 func _on_win_screen_reagent_sold(gold_value: int):

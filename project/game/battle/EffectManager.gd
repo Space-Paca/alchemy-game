@@ -47,22 +47,22 @@ func require_target():
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
 		var effect = ReagentDB.get_from_name(reagent.type).effect
-		
+		var value = effect.value if not reagent.upgraded else effect.upgraded_value
 		if reagent.type != "trash":
 			grid.remove_reagent(reagent)
 			
 		if effect.type == "damage":
-			damage_random(effect.value, "regular")
+			damage_random(value, "regular")
 		elif effect.type == "damage_all":
-			damage_all(effect.value, "regular")
+			damage_all(value, "regular")
 		elif effect.type == "damage_self":
-			damage_self(effect.value, "regular")
+			damage_self(value, "regular")
 		elif effect.type == "shield":
-			shield(effect.value)
+			shield(value)
 		elif effect.type == "heal":
-			heal(effect.value)
+			heal(value)
 		elif effect.type == "status":
-			add_status_random(effect.status_type, effect.amount, effect.positive)
+			add_status_random(effect.status_type, value, effect.positive)
 		yield(self, "effect_resolved")
 		
 		if reagent.type == "trash":

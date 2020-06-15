@@ -28,7 +28,7 @@ var speed_mod := 1.0
 var effect_mod := 1.0
 var tooltips_enabled := false
 var block_tooltips := false
-var upgraded := true
+var upgraded := false
 
 
 func set_image(text):
@@ -193,6 +193,16 @@ func disable():
 func enable():
 	block_tooltips = false
 
+func upgrade():
+	upgraded = true
+	$Image/Upgraded.show()
+
+func downgrade():
+	upgraded = false
+	$Image/Upgraded.hide()
+
+func is_upgraded():
+	return upgraded
 
 func disable_dragging():
 	can_drag = false

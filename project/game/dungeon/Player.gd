@@ -35,11 +35,11 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("common")
+		add_reagent("common", false)
 	for _i in range(3):
-		add_reagent("damaging")
+		add_reagent("damaging", true)
 	for _i in range(3):
-		add_reagent("defensive")
+		add_reagent("defensive", false)
 
 
 func level_up():
@@ -64,13 +64,14 @@ func spend_currency(amount: int) -> bool:
 		return false
 
 
-func add_reagent(type):
-	bag.append(type)
+func add_reagent(type, upgraded):
+	bag.append({"type": type, "upgraded": upgraded})
 
 func remove_reagent(type):
-	var idx = bag.find(type)
-	if idx != -1:
-		bag.remove(idx)
+	for i in bag.size():
+		var reagent = bag[i]
+		if reagent.type == type:
+			bag.remove(i)
 
 func set_hud(_hud):
 	hud = _hud

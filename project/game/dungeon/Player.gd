@@ -11,6 +11,7 @@ const MAX_LEVEL = 3
 export var initial_currency := 50
 
 var currency : int
+var gems : int
 var hud
 var hand_size : int
 var grid_size : int
@@ -28,6 +29,7 @@ func _ready():
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	currency = initial_currency
+	gems = 2
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()

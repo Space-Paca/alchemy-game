@@ -18,6 +18,7 @@ func setup(_room, _player):
 	$Arrow.hide()
 	$ReagentUpgraded.hide()
 	
+	$GemAmount.text = "x" + str(_player.gems)
 	state = "start"
 	room = _room
 	player = _player
@@ -74,5 +75,16 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name):
 
 
 func _on_ConfirmUpgrade_pressed():
-	player.upgrade_reagent(chosen_reagent)
-	emit_signal("closed")
+	if player.gems > 0:
+		AudioManager.play_sfx("upgrade_reagent")
+		player.gems -= 1
+		$GemAmount.text = "x" + str(player.gems)
+		player.upgrade_reagent(chosen_reagent)
+		$ConfirmUpgrade.hide()
+		$Arrow.hide()
+		$Reagent.hide()
+		$ReagentUpgraded.hide()
+		$Upgrade.show()
+		state = "start"
+	else:
+		AudioManager.play_sfx("error")

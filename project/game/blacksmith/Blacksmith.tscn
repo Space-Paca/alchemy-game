@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/reagents/feather.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/arrow.webp" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -16,6 +17,13 @@ font_data = ExtResource( 2 )
 size = 59
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -35,6 +43,11 @@ font_data = ExtResource( 2 )
 size = 78
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 58
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -86,6 +99,22 @@ text = "confirm upgrade"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="ConfirmUpgrade"]
+margin_left = 181.312
+margin_top = 101.448
+margin_right = 236.312
+margin_bottom = 153.448
+custom_fonts/font = SubResource( 6 )
+text = "-1 "
+
+[node name="TextureRect" type="TextureRect" parent="ConfirmUpgrade"]
+margin_left = 218.338
+margin_top = 93.8267
+margin_right = 526.338
+margin_bottom = 401.827
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -179,6 +208,22 @@ text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GemAmount" type="Label" parent="."]
+margin_left = 98.8293
+margin_top = 32.1651
+margin_right = 183.829
+margin_bottom = 95.1651
+custom_fonts/font = SubResource( 7 )
+text = "x10"
+
+[node name="GemIcon" type="TextureRect" parent="."]
+margin_left = 9.45744
+margin_top = 17.4076
+margin_right = 317.457
+margin_bottom = 325.408
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]

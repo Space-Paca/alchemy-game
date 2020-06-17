@@ -213,7 +213,7 @@ func open_rest(room, _player):
 	current_floor.hide()
 
 func open_smith(room, _player):
-	AudioManager.play_bgm("rest")
+	AudioManager.play_bgm("blacksmith")
 	smith.setup(room, _player)
 	smith.show()
 	current_floor.hide()

@@ -75,5 +75,4 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name):
 
 func _on_ConfirmUpgrade_pressed():
 	player.upgrade_reagent(chosen_reagent)
-	
 	emit_signal("closed")

@@ -37,7 +37,7 @@ func _ready():
 	for _i in range(5):
 		add_reagent("common", false)
 	for _i in range(3):
-		add_reagent("damaging", true)
+		add_reagent("damaging", false)
 	for _i in range(3):
 		add_reagent("defensive", false)
 

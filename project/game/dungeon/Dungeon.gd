@@ -141,9 +141,9 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 	return null
 
 
-func make_combination(combination: Combination):
+func make_combination(combination: Combination, boost_effects: Dictionary):
 	var recipe := combination.recipe
-	battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents)
+	battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 	
 	if not player.known_recipes.has(recipe.name):
 		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
@@ -212,6 +212,20 @@ func open_rest(room, _player):
 	current_floor.hide()
 
 
+func extract_boost_effects(reagents):
+	var effects = {
+		"all": 0,
+		"damage": 0,
+		"shield": 0,
+		"status": 0,
+		"heal": 0,
+	}
+	for reagent in reagents:
+		if reagent.is_upgraded():
+			var effect = ReagentDB.get_from_name(reagent.type).effect.upgraded_boost
+			effects[effect.type] += effect.value
+	return effects
+
 func thanks_for_playing():
 	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
 	add_child(scene)
@@ -276,7 +290,7 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 	var combination = get_combination_in_grid(reagent_matrix)
 	if combination:
 		AudioManager.play_sfx("combine_success")
-		make_combination(combination)
+		make_combination(combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")
 		battle.apply_effects(["combination_failure"], reagent_list)

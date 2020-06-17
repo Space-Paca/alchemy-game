@@ -325,7 +325,7 @@ func set_favorites_disabled(disabled: bool):
 		button.disabled = disabled
 
 
-func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: Array = []):
+func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")
@@ -346,7 +346,9 @@ func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: 
 		
 		for i in range(effects.size()):
 			if effect_manager.has_method(effects[i]):
-				effect_manager.callv(effects[i], effect_args[i])
+				var args = effect_args[i].duplicate()
+				args.append(boost_effects)
+				effect_manager.callv(effects[i], args)
 				yield(effect_manager, "effect_resolved")
 				# Next target
 				if total_targets and effects[i] in effect_manager.TARGETED_EFFECTS:

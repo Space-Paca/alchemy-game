@@ -20,10 +20,12 @@ var rooms := {}
 var deadend_rooms := []
 var from_queue := []
 var pos_queue := []
+var builded_smith
 var level := 1
 
 
 func _ready():
+	builded_smith = false
 	randomize()
 	
 	EncounterManager.set_random_encounter_pool(level)
@@ -51,7 +53,10 @@ func create_room(from : int, position : Vector2):
 		var previous_room = rooms[previous_pos]
 		previous_room.exits[OPPOSITE[from]] = true
 		randomize()
-		if randf() > .2:
+		if randf() > .5 and not builded_smith:
+			builded_smith = true
+			room.set_type(Room.Type.BLACKSMITH)
+		elif randf() > .2:
 			room.set_type(Room.Type.MONSTER)
 			room.encounter = EncounterManager.get_random_encounter()
 		else:

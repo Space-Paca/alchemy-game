@@ -6,11 +6,11 @@ signal entered(room)
 onready var icon = $Icon
 
 enum { N, W, E, S }
-enum Type { EMPTY, MONSTER, BOSS, SHOP, ELITE, REST}
+enum Type { EMPTY, MONSTER, BOSS, SHOP, ELITE, REST, BLACKSMITH}
 
 const SIZE := Vector2(160, 90)
 
-export(Array, Texture) var icons = [null, null, null, null, null]
+export(Array, Texture) var icons = [null, null, null, null, null, null, null]
 
 var entrance : int
 var exits := {N: false, W:false, E:false, S:false}

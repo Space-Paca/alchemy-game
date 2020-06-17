@@ -4,6 +4,7 @@ onready var player = $Player
 onready var recipe_book = $BookLayer/RecipeBook
 onready var shop = $Shop
 onready var rest = $Rest
+onready var smith = $Blacksmith
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
@@ -211,6 +212,12 @@ func open_rest(room, _player):
 	rest.show()
 	current_floor.hide()
 
+func open_smith(room, _player):
+	AudioManager.play_bgm("rest")
+	smith.setup(room, _player)
+	smith.show()
+	current_floor.hide()
+
 
 func extract_boost_effects(reagents):
 	var effects = {
@@ -243,6 +250,8 @@ func _on_room_entered(room: Room):
 		open_shop()
 	elif room.type == Room.Type.REST:
 		open_rest(room, player)
+	elif room.type == Room.Type.BLACKSMITH:
+		open_smith(room, player)
 
 
 func _on_Battle_won():
@@ -365,5 +374,11 @@ func _on_Debug_combinations_unlocked():
 
 func _on_Rest_closed():
 	rest.hide()
+	current_floor.show()
+	AudioManager.play_bgm("map")
+
+
+func _on_Blacksmith_closed():
+	smith.hide()
 	current_floor.show()
 	AudioManager.play_bgm("map")

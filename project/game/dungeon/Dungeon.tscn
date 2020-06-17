@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/dungeon/Dungeon.gd" type="Script" id=1]
 [ext_resource path="res://game/dungeon/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/recipe-book/RecipeBook.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/shop/Shop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/rest/Rest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/blacksmith/Blacksmith.tscn" type="PackedScene" id=6]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -21,6 +22,9 @@ visible = false
 
 [node name="Rest" parent="." instance=ExtResource( 5 )]
 visible = false
+
+[node name="Blacksmith" parent="." instance=ExtResource( 6 )]
+visible = false
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
@@ -28,3 +32,4 @@ visible = false
 [connection signal="combination_bought" from="Shop" to="." method="_on_Shop_combination_bought"]
 [connection signal="hint_bought" from="Shop" to="." method="_on_Shop_hint_bought"]
 [connection signal="closed" from="Rest" to="." method="_on_Rest_closed"]
+[connection signal="closed" from="Blacksmith" to="." method="_on_Blacksmith_closed"]

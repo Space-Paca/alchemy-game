@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/white_pixel.png" type="Texture" id=1]
 [ext_resource path="res://game/map/Room.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/images/map/coin.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/map/elite-slime.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/map/fire-zone.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/map/anvil-impact.png" type="Texture" id=8]
 
 [node name="Room" type="TextureButton"]
 margin_right = 160.0
@@ -18,7 +19,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-icons = [ null, ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+icons = [ null, ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
 
 [node name="Icon" type="TextureRect" parent="."]
 anchor_right = 1.0

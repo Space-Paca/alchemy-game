@@ -4,23 +4,23 @@
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 35
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 46
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
@@ -108,7 +108,7 @@ margin_left = 58.2214
 margin_top = 948.668
 margin_right = 258.221
 margin_bottom = 1038.67
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,7 +119,7 @@ margin_left = 873.976
 margin_top = 862.522
 margin_right = 1093.98
 margin_bottom = 952.522
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,7 +134,7 @@ margin_left = -175.0
 margin_top = -140.0
 margin_right = 175.0
 margin_bottom = -20.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "heal 70 hp"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,7 +149,7 @@ margin_left = -169.7
 margin_top = 20.6526
 margin_right = 180.3
 margin_bottom = 140.653
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "study recipes"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,10 +161,13 @@ margin_left = 2.6499
 margin_top = 50.8353
 margin_right = 2.6499
 margin_bottom = 152.835
-custom_fonts/font = SubResource( 2 )
-text = "CHoose only one"
+custom_fonts/font = SubResource( 4 )
+text = "Choose only one"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="HealButton" to="." method="_on_HealButton_pressed"]

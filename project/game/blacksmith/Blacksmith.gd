@@ -7,14 +7,17 @@ onready var reagent_list = $ClickableReagentList
 var player
 var room
 var state
+var chosen_reagent
 
 func setup(_room, _player):
 	$Upgrade.show()
+	reagent_list.clear()
 	reagent_list.hide()
 	$ConfirmUpgrade.hide()
 	$Reagent.hide()
 	$Arrow.hide()
 	$ReagentUpgraded.hide()
+	
 	state = "start"
 	room = _room
 	player = _player
@@ -36,6 +39,7 @@ func _on_BackButton_pressed():
 
 
 func _on_Upgrade_pressed():
+	state = "picking_reagent"
 	var reagents = []
 	for reagent in player.bag:
 		if not reagent.upgraded:
@@ -46,6 +50,7 @@ func _on_Upgrade_pressed():
 		return
 		
 	$Upgrade.hide()
+	reagent_list.clear()
 	reagent_list.populate(reagents)
 	reagent_list.show()
 
@@ -53,6 +58,8 @@ func _on_Upgrade_pressed():
 func _on_ClickableReagentList_reagent_pressed(reagent_name):
 	state = "confirm_reagent"
 	reagent_list.hide()
+	
+	chosen_reagent = reagent_name
 	
 	var data = ReagentDB.get_from_name(reagent_name)
 	$ConfirmUpgrade.show()
@@ -67,4 +74,6 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name):
 
 
 func _on_ConfirmUpgrade_pressed():
-	pass
+	player.upgrade_reagent(chosen_reagent)
+	
+	emit_signal("closed")

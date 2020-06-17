@@ -15,6 +15,9 @@ func populate(reagent_array: Array):
 		button.connect("pressed", self, "_on_reagent_pressed", [reagent_name])
 		grid.add_child(button)
 
+func clear():
+	for reagent in grid.get_children():
+		grid.remove_child(reagent)
 
 func _on_reagent_pressed(reagent_name: String):
 	emit_signal("reagent_pressed", reagent_name)

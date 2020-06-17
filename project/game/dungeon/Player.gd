@@ -63,6 +63,13 @@ func spend_currency(amount: int) -> bool:
 	else:
 		return false
 
+func upgrade_reagent(type):
+	for reagent in bag:
+		if reagent.type == type and not reagent.upgraded:
+			reagent.upgraded = true
+			return
+	push_error("Couldn't find given reagent to upgrade: " + str(type))
+	assert(false)
 
 func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})

@@ -65,22 +65,25 @@ func spend_currency(amount: int) -> bool:
 	else:
 		return false
 
-func upgrade_reagent(type):
-	for reagent in bag:
-		if reagent.type == type and not reagent.upgraded:
-			reagent.upgraded = true
-			return
-	push_error("Couldn't find given reagent to upgrade: " + str(type))
-	assert(false)
+
+func upgrade_reagent(index: int):
+	bag[index].upgraded = true
+
 
 func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})
 
-func remove_reagent(type):
+
+func remove_reagent(type: String):
 	for i in bag.size():
 		var reagent = bag[i]
 		if reagent.type == type:
 			bag.remove(i)
+
+
+func destroy_reagent(index: int):
+	bag.remove(index)
+
 
 func set_hud(_hud):
 	hud = _hud

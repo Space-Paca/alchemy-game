@@ -19,27 +19,27 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 48
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 38
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 78
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
@@ -105,7 +105,7 @@ margin_left = 181.312
 margin_top = 101.448
 margin_right = 236.312
 margin_bottom = 153.448
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "-1 "
 
 [node name="TextureRect" type="TextureRect" parent="ConfirmUpgrade"]
@@ -122,7 +122,7 @@ margin_left = 2.6499
 margin_top = 50.8353
 margin_right = 2.6499
 margin_bottom = 152.835
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Girotto's Smith & Grind"
 align = 1
 valign = 1
@@ -163,7 +163,7 @@ margin_top = 153.251
 margin_right = 327.322
 margin_bottom = 453.251
 rect_min_size = Vector2( 500, 300 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "asdsada"
 align = 1
 autowrap = true
@@ -189,7 +189,7 @@ margin_top = 157.568
 margin_right = 327.322
 margin_bottom = 457.568
 rect_min_size = Vector2( 500, 300 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "asdsada"
 align = 1
 autowrap = true
@@ -203,7 +203,7 @@ margin_left = 142.7
 margin_top = -33.3925
 margin_right = 182.7
 margin_bottom = 51.6075
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false

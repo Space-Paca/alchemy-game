@@ -26,7 +26,6 @@ __meta__ = {
 }
 
 [node name="ShopMenu" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -121,6 +120,7 @@ margin_left = 1208.0
 margin_right = 1808.0
 
 [node name="ReagentsMenu" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -134,6 +134,7 @@ margin_right = 340.0
 margin_bottom = 340.0
 
 [node name="ReagentDestroyLabel" type="Label" parent="ReagentsMenu"]
+visible = false
 margin_left = 750.0
 margin_top = 450.0
 margin_right = 1177.0

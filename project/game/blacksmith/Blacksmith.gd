@@ -7,7 +7,8 @@ onready var reagent_list = $ClickableReagentList
 var player
 var room
 var state
-var chosen_reagent
+var chosen_reagent_index
+
 
 func setup(_room, _player):
 	$Upgrade.show()
@@ -22,6 +23,7 @@ func setup(_room, _player):
 	state = "start"
 	room = _room
 	player = _player
+
 
 func _on_BackButton_pressed():
 	if state == "start":
@@ -56,11 +58,11 @@ func _on_Upgrade_pressed():
 	reagent_list.show()
 
 
-func _on_ClickableReagentList_reagent_pressed(reagent_name):
+func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_index: int):
 	state = "confirm_reagent"
 	reagent_list.hide()
 	
-	chosen_reagent = reagent_name
+	chosen_reagent_index = reagent_index
 	
 	var data = ReagentDB.get_from_name(reagent_name)
 	$ConfirmUpgrade.show()
@@ -79,7 +81,7 @@ func _on_ConfirmUpgrade_pressed():
 		AudioManager.play_sfx("upgrade_reagent")
 		player.gems -= 1
 		$GemAmount.text = "x" + str(player.gems)
-		player.upgrade_reagent(chosen_reagent)
+		player.upgrade_reagent(chosen_reagent_index)
 		$ConfirmUpgrade.hide()
 		$Arrow.hide()
 		$Reagent.hide()

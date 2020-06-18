@@ -41,6 +41,7 @@ const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tsc
 var ended := false
 var player_disabled := true
 var is_boss
+var is_elite
 var player
 var win_screen
 var is_dragging_reagent := false
@@ -152,6 +153,8 @@ func setup_player_ui():
 func setup_enemy(encounter: Encounter):
 	if encounter.is_boss:
 		is_boss = true
+	if encounter.is_elite:
+		is_elite = true
 	
 	#Clean up dummy enemies
 	for child in enemies_node.get_children():
@@ -380,6 +383,9 @@ func win():
 		enemy.disable() #In case of debugging
 	for reagent in reagents.get_children():
 		reagent.disable()
+	
+	if is_boss or is_elite:
+		player.gems += 1
 	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")

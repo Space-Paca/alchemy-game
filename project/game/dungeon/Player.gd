@@ -29,7 +29,7 @@ func _ready():
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	currency = initial_currency
-	gems = 2
+	gems = 0
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()

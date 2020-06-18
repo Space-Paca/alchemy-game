@@ -40,10 +40,10 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 	if has_tooltip(title):
 		return
 	var tip = TOOLTIP.instance()
+	$Tooltips.add_child(tip)
 	tip.setup(title, text, title_image, expanded)
 	$Tooltips.position.x = min(pos.x, get_viewport().size.x-TOOLTIP_WIDTH)
 	$Tooltips.position.y = pos.y
-	$Tooltips.add_child(tip)
 	yield(tip, "setted_up")
 	if play_sfx:
 		AudioManager.play_sfx("tooltip_appears")

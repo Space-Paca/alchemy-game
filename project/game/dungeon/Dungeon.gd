@@ -95,8 +95,7 @@ func setup_shop():
 		else:
 			shop_combinations.append(null)
 	
-	shop.player = player
-	shop.set_combinations(shop_combinations)
+	shop.setup(shop_combinations, player)
 
 
 func get_combination_in_grid(reagent_matrix: Array) -> Combination:

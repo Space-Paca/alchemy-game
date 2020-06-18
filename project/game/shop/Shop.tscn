@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://game/shop/ShopRecipe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/enemies/homunculus/idle.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="Shop" type="Control"]
 anchor_right = 1.0
@@ -12,28 +25,145 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="ShopMenu" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -460.0
+margin_top = -53.0
+margin_right = -346.0
+margin_bottom = 53.0
+
+[node name="RecipesButton" type="Button" parent="ShopMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -136.5
+margin_right = 136.5
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "Shop for recipes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentsButton" type="Button" parent="ShopMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -136.5
+margin_top = -51.0
+margin_right = 136.5
+custom_fonts/font = ExtResource( 1 )
+text = "Get rid of reagents"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shopkeeper" type="TextureRect" parent="ShopMenu"]
+margin_left = 700.0
+margin_top = 150.0
+margin_right = 955.0
+margin_bottom = 319.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="ShopMenu/Shopkeeper"]
+margin_left = -335.0
+margin_top = -440.0
+margin_right = 515.0
+margin_bottom = -140.0
+custom_fonts/italics_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
+
+I bet you also would like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
+text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... hmm so tasty
+
+I bet you also would like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
+scroll_active = false
+
+[node name="Polygon2D" type="Polygon2D" parent="ShopMenu/Shopkeeper"]
+show_behind_parent = true
+position = Vector2( -345, -440 )
+color = Color( 0.807843, 0.8, 0.698039, 1 )
+antialiased = true
+polygon = PoolVector2Array( -19.9775, -20.4361, 853.654, -24.3132, 858.824, 311.699, 335.42, 314.284, 379.36, 390.533, 259.171, 318.161, -12.2234, 310.407 )
+
+[node name="RecipeMenu" type="CenterContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RecipeMenu"]
 margin_left = 56.0
 margin_top = 90.0
 margin_right = 1864.0
 margin_bottom = 990.0
 
-[node name="ShopRecipe1" parent="CenterContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="ShopRecipe1" parent="RecipeMenu/HBoxContainer" instance=ExtResource( 3 )]
 
-[node name="ShopRecipe2" parent="CenterContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="ShopRecipe2" parent="RecipeMenu/HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 604.0
 margin_right = 1204.0
 
-[node name="ShopRecipe3" parent="CenterContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="ShopRecipe3" parent="RecipeMenu/HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 1208.0
 margin_right = 1808.0
+
+[node name="ReagentsMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickableReagentList" parent="ReagentsMenu" instance=ExtResource( 6 )]
+margin_left = 300.0
+margin_top = 300.0
+margin_right = 340.0
+margin_bottom = 340.0
+
+[node name="ReagentDestroyLabel" type="Label" parent="ReagentsMenu"]
+margin_left = 750.0
+margin_top = 450.0
+margin_right = 1177.0
+margin_bottom = 495.0
+custom_fonts/font = ExtResource( 1 )
+text = "Get rid of reagent for 50 gold?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReagentsMenu/ReagentDestroyLabel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 45.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
+margin_right = 68.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "Yes!"
+
+[node name="NoButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
+margin_left = 108.0
+margin_right = 404.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "On second thought..."
 
 [node name="BackButton" type="Button" parent="."]
 margin_right = 114.0
@@ -57,10 +187,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="CenterContainer/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="CenterContainer/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_hint_bought"]
+[connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
+[connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
+[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_bought"]
+[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_hint_bought"]
+[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_bought"]
+[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_hint_bought"]
+[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_bought"]
+[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_hint_bought"]
+[connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
+[connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

@@ -19,5 +19,10 @@ func clear():
 	for reagent in grid.get_children():
 		grid.remove_child(reagent)
 
+func reset():
+	for child in grid.get_children():
+		child.queue_free()
+
+
 func _on_reagent_pressed(reagent_name: String):
 	emit_signal("reagent_pressed", reagent_name)

@@ -36,12 +36,12 @@ var status_db = preload("res://game/character/Status.gd").new()
 func get_width():
 	return TOOLTIP_WIDTH
 
-func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = false):
+func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = false, stylize := true):
 	if has_tooltip(title):
 		return
 	var tip = TOOLTIP.instance()
 	$Tooltips.add_child(tip)
-	tip.setup(title, text, title_image, expanded)
+	tip.setup(title, text, title_image, expanded, stylize)
 	$Tooltips.position.x = min(pos.x, get_viewport().size.x-TOOLTIP_WIDTH)
 	$Tooltips.position.y = pos.y
 	yield(tip, "setted_up")

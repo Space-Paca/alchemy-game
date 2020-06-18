@@ -13,7 +13,7 @@ signal setted_up
 func get_title():
 	return $Title.text
 
-func setup(_title, _text, _title_image, expanded = false):
+func setup(_title, _text, _title_image, expanded = false, stylize = true):
 	modulate = Color(1,1,1,0)
 	$Title.rect_size.x = 3*TooltipLayer.get_width()/4 - 2*MARGIN_X
 	$Title.rect_position.y = MARGIN_Y
@@ -21,7 +21,12 @@ func setup(_title, _text, _title_image, expanded = false):
 	$Text.rect_position.x = MARGIN_X
 	$Title.rect_position.x = MARGIN_X
 	$Title.text = _title
-	$Text.bbcode_text = stylize_text(_text)
+	if stylize:
+		$Text.bbcode_text = stylize_text(_text)
+	else:
+		#Don't stylize in case of bags tooltips (have images that glitches style
+		#╬(▔皿▔)╯
+		$Text.bbcode_text = _text
 	
 	if expanded:
 		$BG.modulate = Color(.65,1,.65,1)

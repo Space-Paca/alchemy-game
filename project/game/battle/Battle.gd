@@ -522,7 +522,7 @@ func _on_reagent_quick_place(reagent):
 			grid.quick_place(reagent)
 
 func _on_reagent_destroyed(reagent):
-	player.remove_reagent(reagent.type)
+	player.remove_reagent(reagent.type, reagent.upgraded)
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:

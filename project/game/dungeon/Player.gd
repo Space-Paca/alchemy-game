@@ -74,13 +74,13 @@ func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})
 
 
-func remove_reagent(type: String):
-	for i in bag.size():
+func remove_reagent(type: String, upgraded: bool):
+	for i in range(0, bag.size()):
 		var reagent = bag[i]
-		if reagent.type == type:
+		if reagent.type == type and reagent.upgraded == upgraded:
 			bag.remove(i)
 
-
+#༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
 	bag.remove(index)
 

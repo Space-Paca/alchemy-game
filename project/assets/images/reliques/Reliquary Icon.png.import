@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Reliquary Icon.png-ebb89cad342a46f3cc4d4e5511429027.stex"
+path="res://.import/Reliquary icon.png-7fabc79356dbcccb0cc67be5776cea47.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/reliques/Reliquary Icon.png"
-dest_files=[ "res://.import/Reliquary Icon.png-ebb89cad342a46f3cc4d4e5511429027.stex" ]
+source_file="res://assets/images/reliques/Reliquary icon.png"
+dest_files=[ "res://.import/Reliquary icon.png-7fabc79356dbcccb0cc67be5776cea47.stex" ]
 
 [params]
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/icon-21.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Cycle"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "common", "common", "common", "common" ]
+effects = [ "draw" ]
+effect_args = [ [ 4 ] ]
+destroy_reagents = [  ]
+description = "Draw 4 reagents"
+fav_icon = ExtResource( 2 )
+shop_cost = 60

@@ -3,6 +3,8 @@ class_name Player
 
 signal combination_discovered(combination, index)
 signal resolved
+signal draw_reagent
+signal draw_resolve
 
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
@@ -39,10 +41,12 @@ func _ready():
 	for _i in range(5):
 		add_reagent("common", false)
 	for _i in range(3):
-		add_reagent("damaging", false)
+		add_reagent("uncommon", false)
 	for _i in range(3):
 		add_reagent("defensive", false)
 
+func draw_reagents_resolve():
+	emit_signal("draw_resolve")
 
 func level_up():
 	cur_level += 1
@@ -119,6 +123,13 @@ func heal(amount : int):
 	
 	emit_signal("resolved")
 
+func draw(amount:int):
+	emit_signal("draw_reagent", amount)
+	
+	yield(self, "draw_resolve")
+	
+	emit_signal("resolved")
+	
 
 func take_damage(source: Character, value: int, type: String):
 	var _unblocked_dmg = .take_damage(source, value, type)

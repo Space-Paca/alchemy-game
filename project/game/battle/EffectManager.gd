@@ -110,6 +110,12 @@ func reduce_status(targeting: String, status: String, amount: int, boost_effects
 	
 	resolve()
 
+func draw(amount:int, _boost_effects: Dictionary):
+	var func_state = player.draw(amount)
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+
+	resolve()
 
 func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects: Dictionary):
 	var boost = boost_effects.all + boost_effects.status

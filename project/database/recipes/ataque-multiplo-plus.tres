@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/icon-6.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Ataque múltiplo+"
+grid_size = 2
+floor_sold_in = 2
+reagents = [ "uncommon", "damaging", "damaging" ]
+effects = [ "damage", "damage", "damage", "damage", "damage" ]
+effect_args = [ [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ] ]
+destroy_reagents = [  ]
+description = "Deals 5 regular damage 5 times to any number of targets."
+fav_icon = ExtResource( 2 )
+shop_cost = 48

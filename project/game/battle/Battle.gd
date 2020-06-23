@@ -106,6 +106,7 @@ func setup_player(_player):
 	grid.set_grid(player.grid_size)
 	
 	player.connect("died", self, "_on_player_died")
+	player.connect("draw_reagent", self, "_on_player_draw_reagent")
 	
 	player.set_hud(player_ui)
 
@@ -615,6 +616,11 @@ func _on_player_died(_player):
 	AudioManager.play_bgm("gameover", false, true)
 	AudioManager.stop_aux_bgm("heart-beat")
 	AudioManager.stop_all_enemy_idle_sfx()
+
+func _on_player_draw_reagent(amount):
+	draw_bag.draw_reagents(amount)
+	yield(draw_bag, "drew_reagents")
+	player.draw_reagents_resolve()
 
 
 func _on_DiscardBag_reagent_discarded(reagent):

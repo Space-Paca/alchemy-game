@@ -11,6 +11,7 @@ floor_sold_in = 3
 reagents = [ "rare", "damaging", "super_damaging", "super_damaging", "super_damaging", "super_damaging" ]
 effects = [  ]
 effect_args = [  ]
+destroy_reagents = [  ]
 description = "I love cheese, especially cheese on toast squirty cheese. Cheese slices chalk and cheese stinking bishop cheesy grin parmesan macaroni cheese cheeseburger pecorino."
 fav_icon = ExtResource( 1 )
 shop_cost = 13

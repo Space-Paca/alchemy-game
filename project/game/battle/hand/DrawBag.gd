@@ -10,6 +10,7 @@ signal reshuffled
 signal reagent_shuffled
 signal hand_refilled
 signal given_reagents_drawn
+signal drew_reagents
 
 var hand = null #Set by parent
 var discard_bag = null #Set by parent
@@ -84,6 +85,33 @@ func refill_hand():
 		yield(self, "given_reagents_drawn")
 	
 	emit_signal("hand_refilled")
+
+func draw_reagents(amount: int):
+	var reagents_to_be_drawn = []
+# warning-ignore:narrowing_conversion
+	amount = min(amount, hand.available_slot_count())
+	if amount <= 0:
+		return
+	for _i in range(amount):
+		if drawable_reagents.get_child_count() == 0:
+			if not reagents_to_be_drawn.empty():
+				start_drawing(reagents_to_be_drawn)
+				yield(self, "given_reagents_drawn")
+			yield(get_tree().create_timer(.25), "timeout")
+			if not discard_bag.is_empty():
+				reshuffle()
+				yield(self, "reshuffled")
+				yield(get_tree().create_timer(.25), "timeout")
+			else:
+				break
+
+		reagents_to_be_drawn.append(draw_reagent())
+	
+	if not reagents_to_be_drawn.empty():
+		start_drawing(reagents_to_be_drawn)
+		yield(self, "given_reagents_drawn")
+	
+	emit_signal("drew_reagents")
 
 
 #Shuffle discarded reagents in draw bag

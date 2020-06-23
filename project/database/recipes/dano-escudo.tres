@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource( 2 )
 name = "Dano-Escudo"
-grid_size = 3
+grid_size = 2
 floor_sold_in = 2
-reagents = [ "common", "common", "defensive", "defensive", "damaging", "damaging" ]
-effects = [  ]
-effect_args = [  ]
+reagents = [ "defensive", "damaging" ]
+effects = [ "shield", "damage" ]
+effect_args = [ [ 5 ], [ 5, "regular" ] ]
 destroy_reagents = [  ]
-description = "I love cheese, especially brie jarlsberg. Cheese and biscuits cottage cheese say cheese swiss cut the cheese hard cheese who moved my cheese manchego."
+description = "Gain 5 shield until end of turn. Deals 5 regular damage to target enemy."
 fav_icon = ExtResource( 1 )
-shop_cost = 94
+shop_cost = 35

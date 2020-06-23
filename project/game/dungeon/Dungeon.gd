@@ -275,9 +275,9 @@ func _on_Battle_finished(is_boss):
 	
 	if is_boss:
 		# DEMO BUILD
-		current_floor.show()
-		thanks_for_playing()
-		return
+		#current_floor.show()
+		#thanks_for_playing()
+		#return
 		
 		# NEXT FLOOR
 # warning-ignore:unreachable_code

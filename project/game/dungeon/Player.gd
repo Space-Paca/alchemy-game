@@ -52,15 +52,30 @@ func level_up():
 
 
 func add_currency(amount: int):
-	assert(amount > 0)
+	assert(amount > 0, "Amount must be positive")
 	AudioManager.play_sfx("get_coins")
 	currency += amount
 
 
+func add_gems(amount: int):
+	assert(amount > 0, "Amount must be positive")
+	AudioManager.play_sfx("get_gem")
+	gems += amount
+
+
 func spend_currency(amount: int) -> bool:
-	assert(amount > 0)
+	assert(amount > 0, "Amount must be positive")
 	if currency >= amount:
 		currency -= amount
+		return true
+	else:
+		return false
+
+
+func spend_gems(amount: int) -> bool:
+	assert(amount > 0, "Amount must be positive")
+	if gems >= amount:
+		gems -= amount
 		return true
 	else:
 		return false

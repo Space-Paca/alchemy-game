@@ -4,8 +4,10 @@ signal continue_pressed
 signal combination_chosen(combination)
 signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
+signal gem_collected(quantity)
 
 onready var loot_list = $BG/MovingScreen/RewardsContainer/LootList
+onready var gem_container = $BG/MovingScreen/RewardsContainer/GemContainer
 onready var rewards_container = $BG/MovingScreen/RewardsContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
 onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
@@ -14,6 +16,7 @@ onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
 onready var back_button = $BG/MovingScreen/RecipesContainer/BackButton
 onready var recipes_button = $BG/MovingScreen/RewardsContainer/RecipesButton
 onready var continue_button = $BG/MovingScreen/RewardsContainer/ContinueButton
+onready var gem_label = $BG/MovingScreen/RewardsContainer/GemContainer/Label
 onready var moving_screen = $BG/MovingScreen
 onready var bg = $BG
 onready var tween = $Tween
@@ -26,15 +29,23 @@ const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn
 
 var curr_state : int = States.LOOT
 var rewarded_combinations := []
+var gem_amount := 0
 
 
 func set_loot(loot: Array):
-	for reagent_name in loot:
-		var reagent_loot = REAGENT_LOOT.instance()
-		loot_list.add_child(reagent_loot)
-		reagent_loot.connect("reagent_looted", self, "_on_reagent_looted")
-		reagent_loot.connect("reagent_sold", self, "_on_reagent_sold")
-		reagent_loot.set_reagent(reagent_name)
+	for loot_name in loot:
+		if loot_name in ReagentDB.get_types():
+			var reagent_loot = REAGENT_LOOT.instance()
+			loot_list.add_child(reagent_loot)
+			reagent_loot.connect("reagent_looted", self, "_on_reagent_looted")
+			reagent_loot.connect("reagent_sold", self, "_on_reagent_sold")
+			reagent_loot.set_reagent(loot_name)
+		elif loot_name == "gem":
+			gem_amount += 1
+	
+	if gem_amount:
+		gem_container.show()
+		gem_label.text = str("x ", gem_amount)
 	
 	disable_buttons()
 
@@ -113,6 +124,11 @@ func _on_reagent_looted(reagent_loot):
 func _on_reagent_sold(reagent_loot):
 	emit_signal("reagent_sold", reagent_loot.gold_value)
 	reagent_loot.queue_free()
+
+
+func _on_gem_collected():
+	emit_signal("gem_collected", gem_amount)
+	gem_container.hide()
 
 
 func _on_Button_button_down():

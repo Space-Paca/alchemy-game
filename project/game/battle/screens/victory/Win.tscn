@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/ui/recipe_hint_button.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/gem_button.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -19,7 +21,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 52
 use_mipmaps = true
 use_filter = true
@@ -122,6 +124,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GemContainer" type="HBoxContainer" parent="BG/MovingScreen/RewardsContainer"]
+visible = false
+margin_right = 721.0
+margin_bottom = 91.0
+
+[node name="Gem" type="TextureRect" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+margin_right = 80.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+margin_left = 84.0
+margin_top = 5.0
+margin_right = 234.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 150, 80 )
+custom_fonts/font = SubResource( 3 )
+text = "x 1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+margin_left = 238.0
+margin_right = 721.0
+margin_bottom = 91.0
+texture_normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/GemContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Collect gems"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/RewardsContainer"]
 margin_right = 721.0
 
@@ -136,7 +181,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -10.9999
 margin_bottom = -5.99999
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Get a recipe hint"
 align = 1
 valign = 1
@@ -158,7 +203,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -12.0
 margin_bottom = -5.99999
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Continue to map"
 align = 1
 valign = 1
@@ -172,6 +217,8 @@ __meta__ = {
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
 [connection signal="button_down" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="button_down" from="BG/MovingScreen/RewardsContainer/GemContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/RewardsContainer/GemContainer/Button" to="." method="_on_gem_collected"]
 [connection signal="button_down" from="BG/MovingScreen/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="button_down" from="BG/MovingScreen/RewardsContainer/ContinueButton" to="." method="_on_Button_button_down"]

@@ -197,6 +197,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
+	win_screen.connect("gem_collected", self, "_on_win_screen_gem_collected")
 	
 	win_screen.set_loot(encounter.get_loot())
 
@@ -383,9 +384,6 @@ func win():
 		enemy.disable() #In case of debugging
 	for reagent in reagents.get_children():
 		reagent.disable()
-	
-	if is_boss or is_elite:
-		player.gems += 1
 	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")
@@ -683,6 +681,10 @@ func _on_win_screen_reagent_sold(gold_value: int):
 
 func _on_win_screen_combination_chosen(combination: Combination):
 	emit_signal("combination_rewarded", combination)
+
+
+func _on_win_screen_gem_collected(quantity:int):
+	player.add_gems(quantity)
 
 
 func _on_Hand_hand_slot_reagent_set():

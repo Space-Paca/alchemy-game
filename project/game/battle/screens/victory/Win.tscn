@@ -109,27 +109,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RewardsContainer" type="VBoxContainer" parent="BG/MovingScreen"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/MovingScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -360.5
-margin_top = -250.0
-margin_right = 360.5
-margin_bottom = 250.0
+margin_left = -366.5
+margin_top = -300.0
+margin_right = 366.5
+margin_bottom = 300.0
+rect_min_size = Vector2( 733, 600 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RewardsContainer" type="VBoxContainer" parent="BG/MovingScreen/ScrollContainer"]
+margin_right = 721.0
+margin_bottom = 141.0
 rect_min_size = Vector2( 721, 0 )
 custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemContainer" type="HBoxContainer" parent="BG/MovingScreen/RewardsContainer"]
+[node name="GemContainer" type="HBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
 visible = false
 margin_right = 721.0
 margin_bottom = 91.0
 
-[node name="Gem" type="TextureRect" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+[node name="Gem" type="TextureRect" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
 margin_right = 80.0
 margin_bottom = 91.0
 rect_min_size = Vector2( 80, 80 )
@@ -137,7 +146,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
 margin_left = 84.0
 margin_top = 5.0
 margin_right = 234.0
@@ -150,13 +159,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="BG/MovingScreen/RewardsContainer/GemContainer"]
+[node name="Button" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
 margin_left = 238.0
 margin_right = 721.0
 margin_bottom = 91.0
 texture_normal = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/GemContainer/Button"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -167,16 +176,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/RewardsContainer"]
+[node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
 margin_right = 721.0
 
-[node name="RecipesButton" type="TextureButton" parent="BG/MovingScreen/RewardsContainer"]
+[node name="RecipesButton" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
 margin_top = 50.0
 margin_right = 721.0
 margin_bottom = 141.0
 texture_normal = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/RecipesButton"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -10.9999
@@ -189,16 +198,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueButton" type="TextureButton" parent="BG/MovingScreen/RewardsContainer"]
-margin_left = 154.0
-margin_top = 191.0
-margin_right = 566.0
-margin_bottom = 282.0
+[node name="ContinueButton" type="TextureButton" parent="BG/MovingScreen"]
+margin_left = 753.5
+margin_top = 870.0
+margin_right = 1165.5
+margin_bottom = 961.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="BG/MovingScreen/RewardsContainer/ContinueButton"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ContinueButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -12.0
@@ -217,10 +229,10 @@ __meta__ = {
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
 [connection signal="button_down" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="button_down" from="BG/MovingScreen/RewardsContainer/GemContainer/Button" to="." method="_on_Button_button_down"]
-[connection signal="pressed" from="BG/MovingScreen/RewardsContainer/GemContainer/Button" to="." method="_on_gem_collected"]
-[connection signal="button_down" from="BG/MovingScreen/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
-[connection signal="pressed" from="BG/MovingScreen/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
-[connection signal="button_down" from="BG/MovingScreen/RewardsContainer/ContinueButton" to="." method="_on_Button_button_down"]
-[connection signal="mouse_entered" from="BG/MovingScreen/RewardsContainer/ContinueButton" to="." method="_on_Button_mouse_entered"]
-[connection signal="pressed" from="BG/MovingScreen/RewardsContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button" to="." method="_on_gem_collected"]
+[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
+[connection signal="button_down" from="BG/MovingScreen/ContinueButton" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="BG/MovingScreen/ContinueButton" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="BG/MovingScreen/ContinueButton" to="." method="_on_ContinueButton_pressed"]

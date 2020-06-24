@@ -6,17 +6,17 @@ signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
 signal gem_collected(quantity)
 
-onready var loot_list = $BG/MovingScreen/RewardsContainer/LootList
-onready var gem_container = $BG/MovingScreen/RewardsContainer/GemContainer
-onready var rewards_container = $BG/MovingScreen/RewardsContainer
+onready var loot_list = $BG/MovingScreen/ScrollContainer/RewardsContainer/LootList
+onready var gem_container = $BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer
+onready var rewards_container = $BG/MovingScreen/ScrollContainer/RewardsContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
 onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
 		$BG/MovingScreen/RecipesContainer/WinRecipe2,
 		$BG/MovingScreen/RecipesContainer/WinRecipe3]
 onready var back_button = $BG/MovingScreen/RecipesContainer/BackButton
-onready var recipes_button = $BG/MovingScreen/RewardsContainer/RecipesButton
-onready var continue_button = $BG/MovingScreen/RewardsContainer/ContinueButton
-onready var gem_label = $BG/MovingScreen/RewardsContainer/GemContainer/Label
+onready var recipes_button = $BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton
+onready var continue_button = $BG/MovingScreen/ContinueButton
+onready var gem_label = $BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Label
 onready var moving_screen = $BG/MovingScreen
 onready var bg = $BG
 onready var tween = $Tween

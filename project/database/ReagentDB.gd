@@ -54,7 +54,7 @@ const DB = {
 		"name": "Reagente Cura",
 		"image": preload("res://assets/images/reagents/suspicious.png"),
 		"tooltip" : "If not used correctly, heals the user %s hp.",
-		"effect" : {"type": "heal", "value": 3, "upgraded_value": 4, "upgraded_boost": {"type": "heal", "value": 5}},
+		"effect" : {"type": "heal", "value": 1, "upgraded_value": 3, "upgraded_boost": {"type": "heal", "value": 5}},
 		"gold_value" : 40
 	},
 	"poison": {
@@ -68,7 +68,7 @@ const DB = {
 		"name": "Reagente Lixo",
 		"image": preload("res://assets/images/reagents/trash.png"),
 		"tooltip" : "If not used correctly, deals %s regular damage to the user.",
-		"effect" : {"type": "damage_self", "value": 2, "upgraded_value": 5, "upgraded_boost": {"type": "all", "value": 1}},
+		"effect" : {"type": "damage_self", "value": 2, "upgraded_value": 1, "upgraded_boost": {"type": "all", "value": 1}},
 		"gold_value" : 0
 	}
 }

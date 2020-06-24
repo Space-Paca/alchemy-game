@@ -11,6 +11,7 @@ floor_sold_in = 3
 reagents = [ "uncommon", "uncommon", "defensive", "super_defensive", "damaging", "super_damaging" ]
 effects = [  ]
 effect_args = [  ]
+destroy_reagents = [  ]
 description = "I love cheese, especially rubber cheese danish fontina. Jarlsberg blue castello squirty cheese cauliflower cheese gouda taleggio cut the cheese chalk and cheese."
 fav_icon = ExtResource( 1 )
 shop_cost = 564

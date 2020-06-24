@@ -61,6 +61,7 @@ func heal(amount : int):
 	emit_signal("resolved")
 
 
+
 func die():
 	#Audio
 	AudioManager.play_enemy_dies_sfx(data.sfx)
@@ -79,13 +80,35 @@ func die():
 func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
 
+func drain(source: Character, amount: int):
+	var unblocked_dmg = .take_damage(source, amount, "regular")
+	
+	if unblocked_dmg > 0:
+		source.heal(unblocked_dmg)
+	
+	if hp > 0 and unblocked_dmg > 0:
+		AudioManager.play_enemy_hit_sfx(data.sfx)
+	
+	#TODO: Change for a "drain" animation （￣︶￣）↗　
+	AnimationManager.play("regular_attack", get_center_position())
+	
+	update_status_bar()
+	
+	var func_state = health_bar.update_visuals(hp, shield)
+	if func_state and func_state.is_valid():
+		if hp > 0:
+			yield(health_bar, "animation_completed")
+		else:
+			yield(self, "died")
+	
+	emit_signal("resolved")
 
 func take_damage(source: Character, damage: int, type: String):
 	var unblocked_dmg = .take_damage(source, damage, type)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
 	
-	
+
 	#Animations
 	if type == "regular":
 		AnimationManager.play("regular_attack", get_center_position())

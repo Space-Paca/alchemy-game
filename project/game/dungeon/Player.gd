@@ -38,12 +38,12 @@ func _ready():
 	known_recipes.sort()
 	
 	# Initial bag
-	for _i in range(5):
-		add_reagent("common", false)
+	for _i in range(2):
+		add_reagent("super_damaging", false)
+	for _i in range(6):
+		add_reagent("damaging", false)
 	for _i in range(3):
-		add_reagent("uncommon", false)
-	for _i in range(3):
-		add_reagent("defensive", false)
+		add_reagent("healing", false)
 
 func draw_reagents_resolve():
 	emit_signal("draw_resolve")
@@ -98,6 +98,7 @@ func remove_reagent(type: String, upgraded: bool):
 		var reagent = bag[i]
 		if reagent.type == type and reagent.upgraded == upgraded:
 			bag.remove(i)
+			break
 
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
@@ -129,7 +130,23 @@ func draw(amount:int):
 	yield(self, "draw_resolve")
 	
 	emit_signal("resolved")
+
+func drain(source: Character, value):
+	var unblocked_dmg = .take_damage(source, value, "regular")
 	
+	if unblocked_dmg > 0:
+		source.heal(unblocked_dmg)
+
+	#Animations
+	AnimationManager.play("regular_attack", hud.get_animation_position())
+
+	hud.update_status_bar(self)
+
+	var func_state = hud.update_visuals(self)
+	if func_state and func_state.is_valid():
+		yield(hud, "animation_completed")
+
+	emit_signal("resolved")
 
 func take_damage(source: Character, value: int, type: String):
 	var _unblocked_dmg = .take_damage(source, value, type)

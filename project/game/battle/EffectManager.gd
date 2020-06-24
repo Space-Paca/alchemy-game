@@ -175,6 +175,18 @@ func damage(amount: int, type: String, boost_effects: Dictionary):
 	
 	resolve()
 
+func drain(amount: int, boost_effects: Dictionary):
+	var func_state = (require_target() as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(self, "target_set")
+	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all
+	func_state = target.drain(player, amount + boost)
+	if func_state and func_state.is_valid():
+		yield(target, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
+	
+	resolve()
 
 func damage_all(amount: int, type: String, boost_effects: Dictionary):
 	var boost = boost_effects.damage + boost_effects.all

@@ -15,6 +15,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "dodge"
 	},
+	"agile": {
+		"type": "status",
+		"name": "agile"
+	},
 	"temporary strength": {
 		"type": "status",
 		"name": "temp_strength"
@@ -27,6 +31,12 @@ const KEYWORDS = {
 		"type": "tooltip",
 		"title": "Piercing Damage",
 		"text": "Piercing damage ignores shield and deals damage directly to health.",
+		"title_image": preload("res://assets/images/enemies/intents/attack_piercing.png"),
+	},
+	"drain": {
+		"type": "tooltip",
+		"title": "Drain",
+		"text": "Deals regular damage and heals any unblocked damage.",
 		"title_image": preload("res://assets/images/enemies/intents/attack_piercing.png"),
 	},
 }

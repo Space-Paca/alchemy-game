@@ -6,7 +6,7 @@ const SEPARATION_TITLE_TEXT = 12
 const TITLE_IMAGE_SIZE = 24
 const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
 					   "guard up", "piercing damage", "regular damage", "crushing damage",
-					   "shield"]
+					   "shield", "agile", "drain"]
 
 signal setted_up
 
@@ -24,7 +24,7 @@ func setup(_title, _text, _title_image, expanded = false, stylize = true):
 	if stylize:
 		$Text.bbcode_text = stylize_text(_text)
 	else:
-		#Don't stylize in case of bags tooltips (have images that glitches style
+		#Don't stylize in case of bags tooltips ( ithave images that glitches style)
 		#╬(▔皿▔)╯
 		$Text.bbcode_text = _text
 	

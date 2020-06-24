@@ -532,11 +532,14 @@ func _on_enemy_acted(enemy, actions):
 		if name == "damage":
 			for i in range(0, args.amount):
 				enemy.play_animation("attack")
-				player.take_damage(enemy, args.value, args.type)
+				var func_state = player.take_damage(enemy, args.value, args.type)
 				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy	
-				yield(player, "resolved")
+				if func_state and func_state.is_valid():
+					yield(player, "resolved")
+				else:
+					yield(get_tree().create_timer(.5), "timeout")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()

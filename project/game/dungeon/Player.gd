@@ -38,12 +38,12 @@ func _ready():
 	known_recipes.sort()
 	
 	# Initial bag
-	for _i in range(4):
-		add_reagent("uncommon", false)
-	for _i in range(6):
+	for _i in range(5):
+		add_reagent("common", true)
+	for _i in range(3):
 		add_reagent("defensive", false)
-	for _i in range(2):
-		add_reagent("common", false)
+	for _i in range(3):
+		add_reagent("damaging", false)
 
 func draw_reagents_resolve():
 	emit_signal("draw_resolve")

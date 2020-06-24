@@ -6,7 +6,7 @@ const SEPARATION_TITLE_TEXT = 12
 const TITLE_IMAGE_SIZE = 24
 const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
 					   "guard up", "piercing damage", "regular damage", "crushing damage",
-					   "shield", "agile", "drain"]
+					   "shield", "agile", "drain", "Darrain"]
 
 signal setted_up
 
@@ -52,12 +52,16 @@ func stylize_text(text):
 	#This could/will probably not work properly if there is two equal nubmers on the text
 	#But we'll deal with this later (。・ω・。)
 	var regex = RegEx.new()
-	regex.compile("(\\d+)")
-	var result = regex.search(text)
-	if result:
-		for i in range(1, result.get_group_count() + 1):
-			var n = result.get_string(i)
+	regex.compile("(\\d+%*)")
+	var offset = 0
+	while offset < text.length():
+		var result = regex.search(text, offset)
+		if result:
+			var n = result.get_string(1)
 			text = text.replace(n, "[color=fuchsia]"+n+"[/color]")
+			offset = result.get_end(1) + "[color=fuchsia]".length()
+		else:
+			break
 
 	return text
 

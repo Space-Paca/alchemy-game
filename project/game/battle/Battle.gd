@@ -144,6 +144,7 @@ func setup_player_ui():
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
 	player_ui.set_gold(player.currency)
+	player_ui.set_gems(player.gems)
 	player_ui.update_tooltip_pos()
 	#Position spell name holder
 	name_holder.rect_position.x = player_ui.position.x
@@ -686,6 +687,7 @@ func _on_win_screen_reagent_looted(reagent: String):
 
 func _on_win_screen_reagent_sold(gold_value: int):
 	player.add_currency(gold_value)
+	player_ui.set_gold(player.currency)
 
 
 func _on_win_screen_combination_chosen(combination: Combination):
@@ -694,6 +696,7 @@ func _on_win_screen_combination_chosen(combination: Combination):
 
 func _on_win_screen_gem_collected(quantity:int):
 	player.add_gems(quantity)
+	player_ui.set_gems(player.gems)
 
 
 func _on_Hand_hand_slot_reagent_set():

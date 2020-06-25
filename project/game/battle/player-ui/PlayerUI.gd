@@ -5,6 +5,7 @@ signal animation_completed
 
 onready var health_bar = $HealthBar
 onready var gold_label = $Gold/Label
+onready var gem_label = $Gem/Label
 
 func update_tooltip_pos():
 	#Setup tooltip collision
@@ -22,13 +23,20 @@ func set_life(max_hp, hp):
 func set_gold(amount: int):
 	gold_label.text = str(amount)
 
+
+func set_gems(amount: int):
+	gem_label.text = str(amount)
+
+
 func dummy_rising_number():
 	health_bar.dummy_rising_number()
 	yield(health_bar, "animation_completed")
 	emit_signal("animation_completed")
 
+
 func need_to_update_visuals(player):
 	return health_bar.need_to_update(player.hp, player.shield)
+
 
 func update_visuals(player):	
 	if health_bar.need_to_update(player.hp, player.shield):
@@ -37,12 +45,14 @@ func update_visuals(player):
 		yield(health_bar, "animation_completed")
 		emit_signal("animation_completed")
 
+
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)
 	var status_type = player.status_list.keys();
 	for type in status_type:
 		var status = player.status_list[type]
 		$StatusBar.set_status(type, status.amount, status.positive)
+
 
 func update_audio(hp, max_hp):
 	var percent = hp / float(max_hp)
@@ -61,9 +71,11 @@ func update_audio(hp, max_hp):
 	else:
 		return
 
+
 #Returns the global position of the center of portrait
 func get_animation_position():
 	return $AnimationPosition.global_position
+
 
 func get_tooltips():
 	var tooltips = []
@@ -74,8 +86,10 @@ func get_tooltips():
 
 	return tooltips
 
+
 func _on_TooltipCollision_disable_tooltip():
 	TooltipLayer.clean_tooltips()
+
 
 func _on_TooltipCollision_enable_tooltip():
 	var play_sfx = true

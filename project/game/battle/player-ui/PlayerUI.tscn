@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/Player Portrait.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
@@ -19,7 +20,12 @@ size = 22
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="DynamicFont" id=3]
+size = 77
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=4]
 
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
@@ -46,10 +52,10 @@ __meta__ = {
 }
 
 [node name="Gold" type="TextureRect" parent="."]
-margin_left = 1428.71
-margin_top = 11.8541
-margin_right = 1452.71
-margin_bottom = 35.8541
+margin_left = 1200.0
+margin_top = 11.854
+margin_right = 1224.0
+margin_bottom = 35.854
 rect_scale = Vector2( 3.5, 3.55 )
 texture = ExtResource( 9 )
 __meta__ = {
@@ -65,6 +71,32 @@ rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "420"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gem" type="TextureRect" parent="."]
+margin_left = 1500.0
+margin_right = 1600.0
+margin_bottom = 100.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Gem"]
+margin_left = 100.0
+margin_right = 297.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "420"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = 540.0
@@ -77,7 +109,7 @@ rect_scale = Vector2( 2, 2 )
 position = Vector2( 894.495, 267.546 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( 1781.96, 50.2382 )

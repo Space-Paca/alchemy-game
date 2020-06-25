@@ -7,6 +7,7 @@ onready var health_bar = $HealthBar
 onready var gold_label = $Gold/Label
 onready var gem_label = $Gem/Label
 
+
 func update_tooltip_pos():
 	#Setup tooltip collision
 	$TooltipCollision.position.x = (health_bar.position.x + health_bar.get_width())/2
@@ -38,7 +39,7 @@ func need_to_update_visuals(player):
 	return health_bar.need_to_update(player.hp, player.shield)
 
 
-func update_visuals(player):	
+func update_visuals(player):
 	if health_bar.need_to_update(player.hp, player.shield):
 		update_audio(player.hp, player.max_hp)
 		health_bar.update_visuals(player.hp, player.shield)
@@ -83,7 +84,7 @@ func get_tooltips():
 	#Get status tooltips
 	for tooltip in $StatusBar.get_status_tooltips():
 		tooltips.append(tooltip)
-
+	
 	return tooltips
 
 

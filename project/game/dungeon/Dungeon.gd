@@ -21,20 +21,24 @@ var favorite_combinations := []
 var max_favorites := 8
 var possible_rewarded_combinations := []
 
-var debug_recipes_unlock = false
-
 
 func _ready():
 	# DEBUG
 # warning-ignore:return_value_discarded
 	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
+# warning-ignore:return_value_discarded
+	Debug.connect("floor_selected", self, "_on_Debug_floor_selected")
 	
 # warning-ignore:return_value_discarded
 	rest.connect("combination_rewarded", self, "_on_combination_rewarded")
 	
 	randomize()
 	create_combinations()
-	create_floor(1)
+	
+	if Debug.floor_to_go != -1:
+		floor_level = Debug.floor_to_go
+	create_floor(floor_level)
+	
 	AudioManager.play_bgm("map")
 
 
@@ -63,7 +67,7 @@ func create_combinations():
 func create_floor(level: int):
 	current_floor = FLOOR_SCENE.instance()
 	current_floor.room_amount = FLOOR_SIZE[level - 1]
-	current_floor.level = floor_level
+	current_floor.level = level
 	if current_floor.connect("room_entered", self, "_on_room_entered") != OK:
 		push_error("create_floor: Error")
 		assert(false)
@@ -71,7 +75,7 @@ func create_floor(level: int):
 	
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
-			if combination.recipe.floor_sold_in == floor_level and not\
+			if combination.recipe.floor_sold_in == level and not\
 					player.known_recipes.has(combination.recipe.name):
 				possible_rewarded_combinations.append(combination)
 	
@@ -196,6 +200,7 @@ func new_battle(encounter: Encounter):
 	
 	recipe_book.create_hand(battle)
 
+
 func open_shop():
 	AudioManager.play_bgm("shop")
 	current_floor.hide()
@@ -205,11 +210,13 @@ func open_shop():
 	for shop_recipe in shop.recipes:
 		player.discover_combination(shop_recipe.combination)
 
+
 func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
 	rest.setup(room, _player, get_incompleted_combinations())
 	rest.show()
 	current_floor.hide()
+
 
 func open_smith(room, _player):
 	AudioManager.play_bgm("blacksmith")
@@ -231,6 +238,7 @@ func extract_boost_effects(reagents):
 			var effect = ReagentDB.get_from_name(reagent.type).effect.upgraded_boost
 			effects[effect.type] += effect.value
 	return effects
+
 
 func thanks_for_playing():
 	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
@@ -274,18 +282,14 @@ func _on_Battle_finished(is_boss):
 	recipe_book.remove_hand()
 	
 	if is_boss:
-		# DEMO BUILD
-		#current_floor.show()
-		#thanks_for_playing()
-		#return
-		
-		# NEXT FLOOR
-# warning-ignore:unreachable_code
 		current_floor.queue_free()
 		floor_level += 1
-		if floor_level <= MAX_FLOOR:
+		if floor_level <= Debug.MAX_FLOOR:
 			create_floor(floor_level)
 			$Player.level_up()
+		else:
+			current_floor.show()
+			thanks_for_playing()
 	else:
 		current_floor.show()
 
@@ -362,13 +366,22 @@ func _on_Shop_hint_bought(combination: Combination):
 
 
 func _on_Debug_combinations_unlocked():
-	if not debug_recipes_unlock:
-		debug_recipes_unlock = true
+	if not Debug.recipes_unlocked:
+		Debug.recipes_unlocked = true
 		for grid_size in [2, 3, 4]:
 			for combination in combinations[grid_size]:
 				combination.discover_all_reagents()
 				recipe_book.add_combination(combination,
 						player.known_recipes.bsearch(combination.recipe.name))
+				recipe_book.update_combination(combination)
+
+
+func _on_Debug_floor_selected(floor_number: int):
+	if battle:
+		battle.queue_free()
+		battle = null
+	
+	create_floor(floor_number)
 
 
 func _on_Rest_closed():

@@ -10,8 +10,7 @@ const MAX_CUTOFF = 20500 #Cutoff when player is > 50hp (aka no effect)
 const DANGER_CUTOFF = 10000 #Cutoff when player is < 50hp
 const EXTREME_DANGER_CUTOFF = 2000 #Cutoff when player is < 20hp
 #Bus
-const MASTER_BUS = 0
-const BGM_BUS = 1
+enum {MASTER_BUS, BGM_BUS, SFX_BUS}
 #Fade
 const FADEOUT_SPEED = 20 #Speed bgms fadein
 const FADEIN_SPEED = 60 #Speed bgms fadeout
@@ -49,6 +48,7 @@ func _ready():
 	setup_sfxs()
 	setup_locs()
 
+
 func setup_bgms():
 	var dir = Directory.new()
 	if dir.open(BGM_PATH) == OK:
@@ -64,6 +64,7 @@ func setup_bgms():
 		push_error("An error occurred when trying to access bgms path.")
 		assert(false)
 
+
 func setup_sfxs():
 	var dir = Directory.new()
 	if dir.open(SFX_PATH) == OK:
@@ -78,6 +79,7 @@ func setup_sfxs():
 	else:
 		push_error("An error occurred when trying to access sfxs path.")
 		assert(false)
+
 
 func setup_locs():
 	var dir = Directory.new()
@@ -135,6 +137,7 @@ func setup_locs():
 func get_bgm_layer(name, layer):
 	return BGMS[name + "-l" + str(layer)]
 
+
 func lower_bgm_volume():
 	#Regular BGMs
 	if not using_layers:
@@ -164,6 +167,7 @@ func lower_bgm_volume():
 			break
 		i += 1
 
+
 func resume_bgm_volume():
 	#Regular BGMs
 	if not using_layers:
@@ -192,6 +196,7 @@ func resume_bgm_volume():
 			$AuxTween.start()
 			break
 		i += 1
+
 
 func play_bgm(name, layers = false, start_from_beginning = false):
 	if not layers:
@@ -231,6 +236,7 @@ func play_bgm(name, layers = false, start_from_beginning = false):
 			$Tween.interpolate_property(player, "volume_db", MUTE_DB, layer.base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$Tween.start()
 
+
 func stop_bgm():
 	stop_all_aux_bgm()
 	remove_bgm_effect()
@@ -251,12 +257,14 @@ func stop_bgm():
 			$Tween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
 
+
 func update_bgm_layers(layers_array: Array):
 	for idx in range(0, layers_array.size()):
 		if layers_array[idx]:
 			play_bgm_layer(idx + 1)
 		else:
 			stop_bgm_layer(idx + 1)
+
 
 func stop_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
@@ -265,6 +273,7 @@ func stop_bgm_layer(layer: int):
 	$Tween.remove(player, "volume_db")
 	$Tween.interpolate_property(player, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
+
 
 func play_bgm_layer(layer: int):
 	var player = get_node("BGMPlayer"+str(layer))
@@ -275,6 +284,7 @@ func play_bgm_layer(layer: int):
 	$Tween.remove(player, "volume_db")
 	$Tween.interpolate_property(player, "volume_db", vol, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()
+
 
 func remove_bgm_effect():
 	#remove filter
@@ -292,6 +302,7 @@ func remove_bgm_effect():
 	$BusEffectTween.remove(effect, "volume_db")
 	$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MIN_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$BusEffectTween.start()
+
 
 func start_bgm_effect(type: String):
 	if type == "danger":
@@ -325,6 +336,7 @@ func start_bgm_effect(type: String):
 		$BusEffectTween.interpolate_property(effect, "volume_db", effect.volume_db, MAX_AMPLIFY, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 		$BusEffectTween.start()
 
+
 func play_aux_bgm(name: String):
 	var free_slot = false
 	var i = 1
@@ -348,13 +360,16 @@ func play_aux_bgm(name: String):
 	var db = BGMS[name].base_db
 	var duration = abs(db - MUTE_DB)/float(AUX_FADEIN_SPEED*2)
 	$AuxTween.remove(player, "volume_db")
-	$AuxTween.interpolate_property(player, "volume_db", MUTE_DB, db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+	$AuxTween.interpolate_property(player, "volume_db", MUTE_DB, db, duration,
+			Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$AuxTween.start()	
+
 
 func stop_all_aux_bgm():
 	for aux_bgm in AUX_BGMS:
 		if aux_bgm != "":
 			stop_aux_bgm(aux_bgm)
+
 
 func stop_aux_bgm(name):
 	var i = 1
@@ -372,11 +387,13 @@ func stop_aux_bgm(name):
 				fadeout.play(pos)
 				var duration = (vol - MUTE_DB)/AUX_FADEOUT_SPEED
 				$AuxTween.remove(fadeout, "volume_db")
-				$AuxTween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+				$AuxTween.interpolate_property(fadeout, "volume_db", vol,
+						MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 				$AuxTween.start()
 				AUX_BGMS[i-1] = ""
 			break
 		i += 1
+
 
 func play_ambience(name: String):
 	#Get a random ambience variation
@@ -390,10 +407,12 @@ func play_ambience(name: String):
 	
 	play_aux_bgm(source_name)
 
+
 func get_sfx_player():
 	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))
 	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
 	return player
+
 
 func get_idle_sfx_player():
 	for player in $IdleSFXs.get_children():
@@ -402,8 +421,10 @@ func get_idle_sfx_player():
 	push_error("Don't have a free idle sfx player")
 	assert(false)
 
+
 func has_sfx(name: String):
 	return SFXS.has(name)
+
 
 func play_sfx(name: String, override_pitch := 1):
 	if not SFXS.has(name):
@@ -427,11 +448,13 @@ func play_sfx(name: String, override_pitch := 1):
 
 	player.play()
 
+
 func get_sfx_duration(name: String):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
 	return SFXS[name].asset.get_length()
+
 
 func play_enemy_sfx(sfx, given_player = null):
 	var player
@@ -453,6 +476,7 @@ func play_enemy_sfx(sfx, given_player = null):
 	player.play()
 	return player
 
+
 func play_enemy_hit_sfx(enemy: String):
 	#Get a random hit sfx
 	randomize()
@@ -463,6 +487,7 @@ func play_enemy_hit_sfx(enemy: String):
 		assert(false)
 	
 	play_enemy_sfx(LOCS[enemy]["hit_var"+str(number)])
+
 
 func play_enemy_spawn_sfx(enemy: String):
 	#Get a random hit sfx
@@ -475,6 +500,7 @@ func play_enemy_spawn_sfx(enemy: String):
 	
 	play_enemy_sfx(LOCS[enemy]["spawn_var"+str(number)])
 
+
 func play_enemy_idle_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
 		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
@@ -483,7 +509,6 @@ func play_enemy_idle_sfx(enemy):
 	if CUR_IDLE_SFX.has(enemy):
 		#Already has this enemy sfx playing
 		return
-
 	
 	var sfx = LOCS[enemy].idle
 	var player = get_idle_sfx_player()
@@ -496,14 +521,17 @@ func play_enemy_idle_sfx(enemy):
 	
 	return play_enemy_sfx(sfx, player)
 
+
 func stop_enemy_idle_sfx(enemy):
 	if CUR_IDLE_SFX.has(enemy):
 		CUR_IDLE_SFX[enemy].stop()
 		CUR_IDLE_SFX.erase(enemy)
 
+
 func stop_all_enemy_idle_sfx():
 	for name in CUR_IDLE_SFX.keys():
 		stop_enemy_idle_sfx(name)
+
 
 func play_enemy_dies_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):

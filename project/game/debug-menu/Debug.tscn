@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/debug-menu/Debug.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.501961 )
 
 [node name="Debug" type="CanvasLayer"]
 layer = 10
@@ -21,9 +24,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 886.0
-margin_top = 518.0
+margin_top = 440.0
 margin_right = 1034.0
-margin_bottom = 562.0
+margin_bottom = 640.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 148.0
@@ -35,5 +38,81 @@ margin_top = 24.0
 margin_right = 148.0
 margin_bottom = 44.0
 text = "Unlock Combinations"
+
+[node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 148.0
+margin_bottom = 68.0
+
+[node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 148.0
+margin_bottom = 112.0
+text = "Show FPS"
+
+[node name="MusicButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 148.0
+margin_bottom = 156.0
+pressed = true
+text = "Music"
+
+[node name="SFXButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 160.0
+margin_right = 148.0
+margin_bottom = 200.0
+pressed = true
+text = "SFX"
+
+[node name="Info" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="Info"]
+visible = false
+margin_left = 40.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 22.0
+size_flags_horizontal = 8
+
+[node name="Panel" type="Panel" parent="Info/FPS"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Version" type="Label" parent="Info"]
+margin_left = 40.0
+margin_top = 26.0
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 8
+
+[node name="Panel" type="Panel" parent="Info/Version"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/WinBtn" to="." method="_on_WinBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockCombBtn" to="." method="_on_UnlockCombBtn_pressed"]
+[connection signal="item_selected" from="Background/CenterContainer/VBoxContainer/FloorButton" to="." method="_on_FloorButton_item_selected"]
+[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/FPSButton" to="." method="_on_FPSButton_toggled"]
+[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
+[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/debug-menu/Debug.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+use_filter = true
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0.501961 )
+bg_color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Debug" type="CanvasLayer"]
 layer = 10
@@ -85,6 +91,7 @@ margin_top = 8.0
 margin_right = 40.0
 margin_bottom = 22.0
 size_flags_horizontal = 8
+custom_fonts/font = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="Info/FPS"]
 show_behind_parent = true
@@ -97,10 +104,11 @@ __meta__ = {
 
 [node name="Version" type="Label" parent="Info"]
 margin_left = 40.0
-margin_top = 26.0
+margin_top = 18.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 45.0
 size_flags_horizontal = 8
+custom_fonts/font = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="Info/Version"]
 show_behind_parent = true

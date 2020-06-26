@@ -48,7 +48,7 @@ func update_combination():
 			var reagent = grid.get_child(i*combination.grid_size + j)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
-	if combination.discovered:
+	if combination.discovered and reagent_list:
 		reagent_list.queue_free()
 
 

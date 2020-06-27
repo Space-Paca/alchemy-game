@@ -37,6 +37,7 @@ func _ready():
 	
 	if Debug.floor_to_go != -1:
 		floor_level = Debug.floor_to_go
+		player.set_level(floor_level)
 	create_floor(floor_level)
 	
 	AudioManager.play_bgm("map")
@@ -380,6 +381,8 @@ func _on_Debug_floor_selected(floor_number: int):
 	if battle:
 		battle.queue_free()
 		battle = null
+	if current_floor:
+		current_floor.queue_free()
 	
 	create_floor(floor_number)
 	player.set_level(floor_number)

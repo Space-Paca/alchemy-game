@@ -15,9 +15,9 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "dodge"
 	},
-	"agile": {
+	"evasion": {
 		"type": "status",
-		"name": "agile"
+		"name": "evasion"
 	},
 	"temporary strength": {
 		"type": "status",

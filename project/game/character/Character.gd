@@ -44,15 +44,15 @@ func take_damage(source: Character, damage: int, type: String):
 	if type != "poison":
 		damage += source.get_damage_modifiers()
 	
-	#Check for agile
-	if status_list.has("agile"):
+	#Check for evasion
+	if status_list.has("evasion"):
 		randomize()
 		if randf() >= .5:
 			AudioManager.play_sfx("dodge")
-			status_list["agile"].amount -= 1
+			status_list["evasion"].amount -= 1
 			unblocked_damage = 0
-			if status_list["agile"].amount <= 0:
-				remove_status("agile")
+			if status_list["evasion"].amount <= 0:
+				remove_status("evasion")
 			return unblocked_damage
 	
 	#Check for dodge
@@ -160,8 +160,8 @@ func update_status():
 		if self.has_method(f_name):
 			self.callv(f_name, [status])
 
-func update_agile(_args):
-	remove_status("agile")
+func update_evasion(_args):
+	remove_status("evasion")
 
 func update_dodge(_args):
 	remove_status("dodge")

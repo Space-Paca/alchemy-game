@@ -2,7 +2,7 @@ extends HBoxContainer
 
 const STATUS_IMAGES = {
 					   "dodge": "res://assets/images/status/dodge.png",
-					   "agile": "res://assets/images/status/dodge.png",
+					   "evasion": "res://assets/images/status/dodge.png",
 					   "perm_strength": "res://assets/images/status/perm_strength.png",
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
 					   "poison": "res://assets/images/status/poison.png",
@@ -13,10 +13,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Dodge",
 						"text": "This character will avoid the next attack. Last until end of turn.",
 						"title_image": STATUS_IMAGES.dodge},
-					   "agile": {
-						"title": "Agile",
+					   "evasion": {
+						"title": "Evasion",
 						"text": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn.",
-						"title_image": STATUS_IMAGES.agile},
+						"title_image": STATUS_IMAGES.evasion},
 					   "perm_strength": {
 						"title": "Permanent Strength",
 						"text": "Permanently increases this character attack damage",

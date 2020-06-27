@@ -4,7 +4,7 @@ signal effect_resolved
 signal failure_resolved
 signal target_set
 
-const TARGETED_EFFECTS := ["reduce_status", "add_status", "damage"]
+const TARGETED_EFFECTS := ["reduce_status", "add_status", "damage", "drain"]
 
 var enemies : Array
 var player : Player
@@ -115,6 +115,13 @@ func draw(amount:int, _boost_effects: Dictionary):
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")
 
+	resolve()
+
+func add_status_all(status: String, amount: int, positive: bool, boost_effects: Dictionary):
+	var boost = boost_effects.all + boost_effects.status
+	for enemy in enemies.duplicate():
+			enemy.add_status(status, amount + boost, positive)
+			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
 
 func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects: Dictionary):

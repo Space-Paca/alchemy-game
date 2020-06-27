@@ -264,12 +264,20 @@ func _on_room_entered(room: Room):
 
 func _on_Battle_won():
 	var rewarded_combinations := []
-	possible_rewarded_combinations.shuffle()
-	for i in range(RECIPES_REWARDED_PER_BATTLE):
-		if i < possible_rewarded_combinations.size():
-			rewarded_combinations.append(possible_rewarded_combinations[i])
-		else:
-			rewarded_combinations.append(null)
+	
+	if battle.is_boss:
+		var size = min(player.grid_size + 1, player.GRID_SIZES.back())
+		var indices = range(combinations[size].size())
+		indices.shuffle()
+		for i in RECIPES_REWARDED_PER_BATTLE:
+			rewarded_combinations.append(combinations[size][i])
+	else:
+		possible_rewarded_combinations.shuffle()
+		for i in RECIPES_REWARDED_PER_BATTLE:
+			if i < possible_rewarded_combinations.size():
+				rewarded_combinations.append(possible_rewarded_combinations[i])
+			else:
+				rewarded_combinations.append(null)
 	
 	for combination in rewarded_combinations:
 		if combination:

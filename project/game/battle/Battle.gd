@@ -395,7 +395,7 @@ func win():
 	AudioManager.stop_all_enemy_idle_sfx()
 	
 	ended = true
-
+	
 	TooltipLayer.clean_tooltips()
 	disable_player()
 	player.clear_status()
@@ -635,8 +635,10 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	new_enemy_turn()
 
+
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_book_toggle")
+
 
 func _on_win_screen_continue_pressed():
 	AudioManager.play_bgm("map")

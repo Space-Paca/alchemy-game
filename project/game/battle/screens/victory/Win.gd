@@ -50,7 +50,7 @@ func set_loot(loot: Array):
 	disable_buttons()
 
 
-func show(combinations: Array):
+func set_combinations(combinations: Array):
 	for i in range(recipe_displays.size()):
 		if i < combinations.size() and combinations[i]:
 			recipe_displays[i].set_combination(combinations[i])
@@ -61,6 +61,9 @@ func show(combinations: Array):
 			print("Win.gd: Not enough combinations to fill victory screen")
 			recipe_displays[i].hide()
 	
+
+
+func display():
 	bg.show()
 	enable_buttons()
 

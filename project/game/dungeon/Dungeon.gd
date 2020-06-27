@@ -382,6 +382,7 @@ func _on_Debug_floor_selected(floor_number: int):
 		battle = null
 	
 	create_floor(floor_number)
+	player.set_level(floor_number)
 
 
 func _on_Rest_closed():

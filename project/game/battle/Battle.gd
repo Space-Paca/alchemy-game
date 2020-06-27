@@ -410,7 +410,8 @@ func win():
 
 
 func show_victory_screen(combinations: Array):
-	win_screen.show(combinations)
+	win_screen.set_combinations(combinations)
+	win_screen.display()
 
 
 func set_enemy_pos(enemy_idx, pos_idx):

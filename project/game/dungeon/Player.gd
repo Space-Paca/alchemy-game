@@ -45,14 +45,23 @@ func _ready():
 	for _i in range(3):
 		add_reagent("damaging", false)
 
+
 func draw_reagents_resolve():
 	emit_signal("draw_resolve")
+
 
 func level_up():
 	cur_level += 1
 	if cur_level <= MAX_LEVEL:
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
+
+
+func set_level(level:int):
+	assert(level in [0, 1, 2], "Invalid level")
+	cur_level = level
+	hand_size = HAND_SIZES[cur_level-1]
+	grid_size = GRID_SIZES[cur_level-1]
 
 
 func add_currency(amount: int):

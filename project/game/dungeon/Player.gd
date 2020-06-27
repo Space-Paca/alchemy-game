@@ -58,7 +58,7 @@ func level_up():
 
 
 func set_level(level:int):
-	assert(level in [0, 1, 2], "Invalid level")
+	assert(level in [1, 2, 3], "Invalid level")
 	cur_level = level
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]

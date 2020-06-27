@@ -35,7 +35,7 @@ func get_damage_modifiers(update_status:= true):
 		mod += get_status("perm_strength").amount
 	return mod
 
-func take_damage(source: Character, damage: int, type: String):
+func take_damage(source: Character, damage: int, type: String, retaliate := true):
 	if hp <= 0:
 		return 0
 	
@@ -43,6 +43,10 @@ func take_damage(source: Character, damage: int, type: String):
 	var unblocked_damage
 	if type != "poison":
 		damage += source.get_damage_modifiers()
+	
+	#Check for retaliate
+	if retaliate and type != "poison" and source != self and status_list.has("retaliate"):
+		source.take_damage(self, status_list["retaliate"].amount, "regular", false)
 	
 	#Check for evasion
 	if status_list.has("evasion"):
@@ -162,6 +166,9 @@ func update_status():
 
 func update_evasion(_args):
 	remove_status("evasion")
+
+func update_retaliate(_args):
+	remove_status("retaliate")
 
 func update_dodge(_args):
 	remove_status("dodge")

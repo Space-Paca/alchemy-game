@@ -19,6 +19,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "evasion"
 	},
+	"retaliate": {
+		"type": "status",
+		"name": "retaliate"
+	},
 	"temporary strength": {
 		"type": "status",
 		"name": "temp_strength"

@@ -7,6 +7,7 @@ const STATUS_IMAGES = {
 					   "temp_strength": "res://assets/images/status/temp_strength.png",
 					   "poison": "res://assets/images/status/poison.png",
 					   "guard_up": "res://assets/images/status/random_status.png",
+					   "retaliate": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -17,6 +18,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Evasion",
 						"text": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn.",
 						"title_image": STATUS_IMAGES.evasion},
+					   "retaliate": {
+						"title": "Retaliate",
+						"text": "This character returns 1 regular damage per stack each time it is attacked. Lasts until end of turn",
+						"title_image": STATUS_IMAGES.retaliate},
 					   "perm_strength": {
 						"title": "Permanent Strength",
 						"text": "Permanently increases this character attack damage",

@@ -157,8 +157,8 @@ func drain(source: Character, value):
 
 	emit_signal("resolved")
 
-func take_damage(source: Character, value: int, type: String):
-	var _unblocked_dmg = .take_damage(source, value, type)
+func take_damage(source: Character, value: int, type: String, retaliate := true):
+	var _unblocked_dmg = .take_damage(source, value, type, retaliate)
 
 	#Animations
 	if type == "regular":

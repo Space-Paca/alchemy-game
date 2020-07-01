@@ -25,12 +25,10 @@ func heal(amount: int):
 	
 	return hp - old_hp
 
-func get_damage_modifiers(update_status:= true):
+func get_damage_modifiers():
 	var mod = 0
 	if get_status("temp_strength"):
 		mod += get_status("temp_strength").amount
-		if update_status:
-			remove_status("temp_strength")
 	if get_status("perm_strength"):
 		mod += get_status("perm_strength").amount
 	return mod
@@ -41,8 +39,6 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	var pre_shield = shield
 	var unblocked_damage
-	if type != "poison":
-		damage += source.get_damage_modifiers()
 	
 	#Check for retaliate
 	if retaliate and type != "poison" and source != self and status_list.has("retaliate"):

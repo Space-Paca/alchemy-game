@@ -350,8 +350,14 @@ func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: 
 		if total_targets:
 			targeting_interface.begin(total_targets)
 		
+		var used_temp_strength = false
 		for i in range(effects.size()):
 			if effect_manager.has_method(effects[i]):
+				if effects[i] == "damage" or \
+				   effects[i] == "damage_all" or \
+				   effects[i] == "damage_random" or \
+				   effects[i] == "drain":
+					used_temp_strength = true
 				var args = effect_args[i].duplicate()
 				args.append(boost_effects)
 				effect_manager.callv(effects[i], args)
@@ -363,6 +369,9 @@ func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: 
 				print("Effect %s not found" % effects[i])
 				assert(false)
 		
+		if used_temp_strength:
+			player.remove_status("temp_strength")
+
 		if total_targets:
 			targeting_interface.end()
 	
@@ -534,7 +543,9 @@ func _on_enemy_acted(enemy, actions):
 		if name == "damage":
 			for i in range(0, args.amount):
 				enemy.play_animation("attack")
-				var func_state = player.take_damage(enemy, args.value, args.type)
+				var func_state = player.take_damage(enemy, args.value + \
+													enemy.get_damage_modifiers(),\
+													args.type)
 				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy	
@@ -542,6 +553,7 @@ func _on_enemy_acted(enemy, actions):
 					yield(player, "resolved")
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
+			enemy.remove_status("temp_strength")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()

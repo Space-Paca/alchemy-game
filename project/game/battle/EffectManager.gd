@@ -60,8 +60,10 @@ func combination_failure(reagent_list, grid):
 			
 		if effect.type == "damage":
 			damage_random(value, "regular", boost)
+			player.remove_status("temp_strength")
 		elif effect.type == "damage_all":
 			damage_all(value, "regular", boost)
+			player.remove_status("temp_strength")
 		elif effect.type == "damage_self":
 			damage_self(value, "regular", boost)
 		elif effect.type == "shield":
@@ -148,7 +150,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool, 
 #Damage a random enemy
 func damage_random(amount: int, type: String, boost_effects: Dictionary):
 	var possible_enemies = enemies.duplicate()
-	var boost = boost_effects.all + boost_effects.damage
+	var boost = boost_effects.all + boost_effects.damage + player.get_damage_modifiers()
 	randomize()
 	possible_enemies.shuffle()
 	for enemy in possible_enemies:
@@ -176,7 +178,7 @@ func damage(amount: int, type: String, boost_effects: Dictionary):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
-	var boost = boost_effects.damage + boost_effects.all
+	var boost = boost_effects.damage + boost_effects.all + player.get_damage_modifiers()
 	func_state = target.take_damage(player, amount + boost, type)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
@@ -189,7 +191,7 @@ func drain(amount: int, boost_effects: Dictionary):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
-	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all
+	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all + player.get_damage_modifiers()
 	func_state = target.drain(player, amount + boost)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
@@ -199,7 +201,7 @@ func drain(amount: int, boost_effects: Dictionary):
 	resolve()
 
 func damage_all(amount: int, type: String, boost_effects: Dictionary):
-	var boost = boost_effects.damage + boost_effects.all
+	var boost = boost_effects.damage + boost_effects.all + player.get_damage_modifiers()
 	for enemy in enemies.duplicate():
 		var func_state = (enemy as Enemy).take_damage(player, amount + boost, type)
 		if func_state and func_state.is_valid():

@@ -39,7 +39,7 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("buff", false)
+		add_reagent("common", false)
 	for _i in range(3):
 		add_reagent("damaging", false)
 	for _i in range(3):

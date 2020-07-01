@@ -141,7 +141,7 @@ func draw(amount:int):
 	emit_signal("resolved")
 
 func drain(source: Character, value):
-	var unblocked_dmg = .take_damage(source, value, "regular")
+	var unblocked_dmg = .take_damage(source, value, "drain")
 	
 	if unblocked_dmg > 0:
 		source.heal(unblocked_dmg)

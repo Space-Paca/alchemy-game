@@ -81,7 +81,20 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			AudioManager.play_sfx("shield_hit")
 		elif had_shield:
 			AudioManager.play_sfx("shield_breaks")
-			
+	#Block damage with shield
+	elif type == "drain":
+		AudioManager.play_sfx("damage_drain")
+		var had_shield = shield > 0
+		# warning-ignore:narrowing_conversion
+		unblocked_damage = max(damage - shield, 0)
+		shield = max(shield - damage, 0)
+		hp -= unblocked_damage
+		
+		if had_shield and shield > 0:
+			AudioManager.play_sfx("shield_hit")
+		elif had_shield:
+			AudioManager.play_sfx("shield_breaks")
+
 	#Damages both shield and health equally
 	elif type == "crushing":
 		AudioManager.play_sfx("damage_crushing")

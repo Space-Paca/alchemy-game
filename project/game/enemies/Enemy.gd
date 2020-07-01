@@ -81,7 +81,7 @@ func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
 
 func drain(source: Character, amount: int):
-	var unblocked_dmg = .take_damage(source, amount, "regular")
+	var unblocked_dmg = .take_damage(source, amount, "drain")
 	
 	if unblocked_dmg > 0:
 		source.heal(unblocked_dmg)

@@ -6,10 +6,12 @@ const ENEMY_DB = {
 				  "baby_humunculus": preload("res://database/enemies/BabyHomunculus.gd"),
 				  "big_buffer": preload("res://database/enemies/BigBuffer.gd"),
 				  "delayed_hitter": preload("res://database/enemies/DelayedHitter.gd"),
+				  "delayed_hitter_plus": preload("res://database/enemies/DelayedHitterPlus.gd"),
 				  "dodge": preload("res://database/enemies/DodgeEnemy.gd"),
 				  "poison": preload("res://database/enemies/Poisunculus.gd"),
 				  "baby_poison": preload("res://database/enemies/BabyPoisunculus.gd"),
 				  "baby_slasher": preload("res://database/enemies/BabySlasher.gd"),
+				  "baby_retaliate": preload("res://database/enemies/BabyRetaliate.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
 				}

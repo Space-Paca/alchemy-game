@@ -9,7 +9,7 @@ is_elite = true
 level = 1
 enemies = [ "elite_dodger" ]
 loot_table = {
-"catalyst": 0,
+"buff": 0,
 "common": 2,
 "damaging": 4,
 "defensive": 0,

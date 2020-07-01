@@ -7,16 +7,17 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 2
-enemies = [ "humunculus" ]
+enemies = [ "baby_retaliate", "delayed_hitter_plus", "baby_retaliate" ]
 loot_table = {
-"catalyst": 0,
-"common": 1,
-"damaging": 2,
+"buffing": 2,
+"common": 0,
+"damaging": 0,
 "defensive": 1,
 "healing": 0,
+"poison": 0,
 "rare": 0,
 "super_damaging": 0,
-"super_defensive": 0,
-"uncommon": 0
+"super_defensive": 3,
+"uncommon": 1
 }
 extra_loot_chance = [ 0.1 ]

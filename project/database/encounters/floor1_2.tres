@@ -9,7 +9,7 @@ is_elite = false
 level = 1
 enemies = [ "baby_humunculus", "baby_humunculus", "baby_humunculus" ]
 loot_table = {
-"catalyst": 0,
+"buffing": 0,
 "common": 1,
 "damaging": 2,
 "defensive": 2,

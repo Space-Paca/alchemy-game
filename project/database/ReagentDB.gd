@@ -64,6 +64,13 @@ const DB = {
 		"effect" : {"type": "status", "status_type": "poison", "positive": false, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 20
 	},
+	"buff": {
+		"name": "Reagente Buff",
+		"image": preload("res://assets/images/reagents/funky.png"),
+		"tooltip" : "If not used correctly, applies %s temporary strength to user.",
+		"effect" : {"type": "status", "status_type": "temp_strength", "positive": true, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
+		"gold_value" : 25
+	},
 	"trash": {
 		"name": "Reagente Lixo",
 		"image": preload("res://assets/images/reagents/trash.png"),

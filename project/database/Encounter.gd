@@ -6,13 +6,13 @@ export(bool) var is_elite = false
 export(int, 1, 3) var level = 1
 export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", \
  					  "poison",  "baby_poison", "spawner_humunculus", \
-					  "delayed_hitter", "baby_slasher", "elite_dodger", 
-					  "boss_1") var enemies
+					  "delayed_hitter", "baby_slasher", "elite_dodger", "baby_retaliate", \
+					  "delayed_hitter_plus", "boss_1") var enemies
 
 # Loot table
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"damaging": 0, "defensive": 0, "super_damaging": 0, "super_defensive": 0,
-	"healing": 0, "catalyst": 0, "poison": 0}
+	"healing": 0, "buff": 0, "poison": 0}
 export(Array, float) var extra_loot_chance : Array
 
 

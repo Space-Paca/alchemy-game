@@ -39,7 +39,7 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("common", false)
+		add_reagent("buff", false)
 	for _i in range(3):
 		add_reagent("damaging", false)
 	for _i in range(3):
@@ -213,6 +213,10 @@ func new_turn():
 
 func clear_status():
 	.clear_status()
+	hud.update_status_bar(self)
+
+func remove_status(status: String):
+	.remove_status(status)
 	hud.update_status_bar(self)
 
 func update_status():

@@ -69,7 +69,10 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "heal":
 			heal(value, boost)
 		elif effect.type == "status":
-			add_status_random(effect.status_type, value, effect.positive, boost)
+			if effect.target == "random_enemy":
+				add_status_random(effect.status_type, value, effect.positive, boost)
+			elif effect.target == "self":
+				add_status("self", effect.status_type, value, effect.positive, boost)
 		yield(self, "effect_resolved")
 		
 		if reagent.type == "trash":

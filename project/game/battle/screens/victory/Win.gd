@@ -8,7 +8,7 @@ signal gem_collected(quantity)
 
 onready var loot_list = $BG/MovingScreen/ScrollContainer/RewardsContainer/LootList
 onready var gem_container = $BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer
-onready var rewards_container = $BG/MovingScreen/ScrollContainer/RewardsContainer
+onready var rewards_container = $BG/MovingScreen/ScrollContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
 onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
 		$BG/MovingScreen/RecipesContainer/WinRecipe2,

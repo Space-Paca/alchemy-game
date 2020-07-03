@@ -342,7 +342,7 @@ func add_intent(texture, value, multiplier):
 	var intent = INTENT.instance()
 	$Intents.add_child(intent)
 	intent.setup(texture, value, multiplier)
-	yield(intent, "setted_up")
+	yield(intent, "set_up")
 	update_intents_position()
 
 

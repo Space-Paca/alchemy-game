@@ -8,7 +8,7 @@ const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "po
 					   "guard up", "piercing damage", "regular damage", "crushing damage",
 					   "shield", "evasion", "drain", "Drain", "retaliate"]
 
-signal setted_up
+signal set_up
 
 func get_title():
 	return $Title.text
@@ -90,7 +90,7 @@ func update_size():
 	$Text.rect_position.y = $Title.rect_position.y + $Title.rect_size.y*scale + SEPARATION_TITLE_TEXT
 	$BG.rect_size.y = $Text.rect_position.y + text_h + MARGIN_Y
 	
-	emit_signal("setted_up")
+	emit_signal("set_up")
 
 func get_width():
 	return $BG.rect_size.x

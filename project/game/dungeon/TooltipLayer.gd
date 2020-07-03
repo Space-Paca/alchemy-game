@@ -58,7 +58,7 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 	tip.setup(title, text, title_image, expanded, stylize)
 	$Tooltips.position.x = min(pos.x, get_viewport().size.x-TOOLTIP_WIDTH)
 	$Tooltips.position.y = pos.y
-	yield(tip, "setted_up")
+	yield(tip, "set_up")
 	if play_sfx:
 		AudioManager.play_sfx("tooltip_appears")
 	update_tooltips_pos()

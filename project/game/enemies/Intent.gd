@@ -1,7 +1,7 @@
 extends Node2D
 
 signal vanished
-signal setted_up
+signal set_up
 
 func _ready():
 	modulate = Color(1,1,1,0)
@@ -27,7 +27,7 @@ func setup(texture, value, multiplier):
 	
 	yield(get_tree(), "idle_frame")
 	update_position()
-	emit_signal("setted_up")
+	emit_signal("set_up")
 
 func update_position():
 	var margin = 1

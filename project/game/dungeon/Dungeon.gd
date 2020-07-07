@@ -153,7 +153,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary):
 	if not player.known_recipes.has(recipe.name):
 		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
 		combination.discover_all_reagents()
-		player.discover_combination(combination)
+		player.discover_combination(combination, true)
 		shop.update_combinations()
 	elif not combination.discovered:
 		combination.discover_all_reagents()
@@ -364,14 +364,11 @@ func _on_Shop_closed():
 
 
 func _on_Shop_combination_bought(combination: Combination):
-	player.discover_combination(combination)
+	recipe_book.update_combination(combination)
 
 
 func _on_Shop_hint_bought(combination: Combination):
-	if not player.known_recipes.has(combination.recipe.name):
-		player.discover_combination(combination)
-	else:
-		recipe_book.update_combination(combination)
+	recipe_book.update_combination(combination)
 
 
 func _on_Debug_combinations_unlocked():

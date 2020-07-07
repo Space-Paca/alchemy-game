@@ -224,12 +224,13 @@ func update_status():
 	hud.update_status_bar(self)
 
 
-func discover_combination(combination: Combination):
+func discover_combination(combination: Combination, play_sfx := false):
 	if (known_recipes.has(combination.recipe.name)):
 		return
 	
 	var recipe_name = combination.recipe.name
 	var index = known_recipes.bsearch(recipe_name)
 	known_recipes.insert(index, recipe_name)
-	AudioManager.play_sfx("discover_new_recipe")
+	if play_sfx:
+		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)

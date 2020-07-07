@@ -30,6 +30,7 @@ visible = false
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
 [connection signal="closed" from="Shop" to="." method="_on_Shop_closed"]
 [connection signal="combination_bought" from="Shop" to="." method="_on_Shop_combination_bought"]
+[connection signal="combinations_seen" from="Shop" to="." method="_on_new_combinations_seen"]
 [connection signal="hint_bought" from="Shop" to="." method="_on_Shop_hint_bought"]
 [connection signal="closed" from="Rest" to="." method="_on_Rest_closed"]
 [connection signal="closed" from="Blacksmith" to="." method="_on_Blacksmith_closed"]

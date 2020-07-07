@@ -1,6 +1,7 @@
 extends Control
 
 signal closed
+signal combinations_seen(combinations)
 signal combination_bought(combination)
 signal hint_bought(combination)
 
@@ -22,6 +23,7 @@ const DESTROY_TEXT := "Are you sure you want to destroy %s reagent for %d gold?"
 var chosen_reagent_index : int
 var player : Player
 var curr_state = States.MENU
+var shown_combinations := []
 
 
 func setup(combinations: Array, _player: Player):
@@ -32,6 +34,7 @@ func setup(combinations: Array, _player: Player):
 		if i < combinations.size() and combinations[i]:
 			recipes[i].set_combination(combinations[i])
 			recipes[i].player = player
+			shown_combinations.append(combinations[i])
 		else:
 			print("Shop.gd: Not enough combinations to fill shop")
 			recipes[i].hide()
@@ -72,6 +75,7 @@ func _on_RecipesButton_pressed():
 	curr_state = States.RECIPES
 	shop_menu.hide()
 	recipe_menu.show()
+	emit_signal("combinations_seen", shown_combinations)
 
 
 func _on_ReagentsButton_pressed():

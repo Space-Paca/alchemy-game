@@ -8,6 +8,7 @@ signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
 signal combination_rewarded(combination)
+signal rewarded_combinations_seen(combinations)
 signal grid_modified(reagent_matrix)
 signal recipe_book_toggle
 
@@ -198,6 +199,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
+	win_screen.connect("combinations_seen", self, "_on_win_screen_combinations_seen")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
 	win_screen.connect("gem_collected", self, "_on_win_screen_gem_collected")
 	
@@ -703,6 +705,10 @@ func _on_win_screen_reagent_looted(reagent: String):
 func _on_win_screen_reagent_sold(gold_value: int):
 	player.add_currency(gold_value)
 	player_ui.set_gold(player.currency)
+
+
+func _on_win_screen_combinations_seen(rewarded_combinations: Array):
+	emit_signal("rewarded_combinations_seen", rewarded_combinations)
 
 
 func _on_win_screen_combination_chosen(combination: Combination):

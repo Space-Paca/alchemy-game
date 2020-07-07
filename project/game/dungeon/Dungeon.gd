@@ -193,6 +193,8 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("finished", self, "_on_Battle_finished")
 # warning-ignore:return_value_discarded
+	battle.connect("rewarded_combinations_seen", self, "_on_new_combinations_seen")
+# warning-ignore:return_value_discarded
 	battle.connect("combination_rewarded", self, "_on_combination_rewarded")
 # warning-ignore:return_value_discarded
 	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
@@ -207,9 +209,6 @@ func open_shop():
 	current_floor.hide()
 	shop.update_currency()
 	shop.show()
-	
-	for shop_recipe in shop.recipes:
-		player.discover_combination(shop_recipe.combination)
 
 
 func open_rest(room, _player):
@@ -279,10 +278,6 @@ func _on_Battle_won():
 			else:
 				rewarded_combinations.append(null)
 	
-	for combination in rewarded_combinations:
-		if combination:
-			player.discover_combination(combination)
-	
 	battle.show_victory_screen(rewarded_combinations)
 
 
@@ -301,6 +296,12 @@ func _on_Battle_finished(is_boss):
 			thanks_for_playing()
 	else:
 		current_floor.show()
+
+
+func _on_new_combinations_seen(new_combinations: Array):
+	for combination in new_combinations:
+		if combination:
+			player.discover_combination(combination)
 
 
 func _on_combination_rewarded(combination):

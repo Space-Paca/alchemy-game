@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal continue_pressed
+signal combinations_seen(combinations)
 signal combination_chosen(combination)
 signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
@@ -139,7 +140,7 @@ func _on_Button_button_down():
 
 
 func _on_Button_mouse_entered():
-		AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_button")
 
 
 func _on_WinRecipe_chosen(chosen_recipe):
@@ -168,3 +169,4 @@ func _on_BackButton_pressed():
 
 func _on_RecipesButton_pressed():
 	change_state(States.RECIPE)
+	emit_signal("combinations_seen", rewarded_combinations)

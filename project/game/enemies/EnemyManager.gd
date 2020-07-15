@@ -17,6 +17,7 @@ const ENEMY_DB = {
 				  "small_divider" : preload("res://database/enemies/SmallDivider.gd"),
 				  "revenger" : preload("res://database/enemies/Revenger.gd"),
 				  "rager" : preload("res://database/enemies/Rager.gd"),
+				  "curser" : preload("res://database/enemies/Curser.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
 				}

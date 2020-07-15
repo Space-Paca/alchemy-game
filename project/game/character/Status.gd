@@ -11,6 +11,7 @@ const STATUS_IMAGES = {
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
+					   "curse": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -37,6 +38,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Poison",
 						"text": "This character is dealt 1 poison damage per stack. Decreases every turn",
 						"title_image": STATUS_IMAGES.poison},
+					   "curse": {
+						"title": "Curse",
+						"text": "You can only create 1 recipe per stack of curse each turn.",
+						"title_image": STATUS_IMAGES.curse},
 					   "guard_up": {
 						"title": "Guard Up",
 						"text": "Whenever this characters is attacked, if it wasn't shielded, gains shield",

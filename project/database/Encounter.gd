@@ -8,7 +8,7 @@ export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", \
  					  "poison",  "baby_poison", "spawner_humunculus", \
 					  "delayed_hitter", "baby_slasher", "elite_dodger", "baby_retaliate", \
 					  "delayed_hitter_plus", "boss_1", "big_divider", "medium_divider", \
-					  "small_divider", "revenger", "rager") var enemies
+					  "small_divider", "revenger", "rager", "curser") var enemies
 
 # Loot table
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,

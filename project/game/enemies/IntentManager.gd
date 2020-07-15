@@ -92,20 +92,23 @@ func get_intent_tooltip(action):
 			tooltip.title = "Evading"
 			tooltip.text += "evasion"
 		elif args.status == "retaliate":
-			tooltip.title = "Retaliate"
+			tooltip.title = "Retaliating"
 			tooltip.text += "retaliate"
 		elif args.status == "divider":
-			tooltip.title = "Divider"
+			tooltip.title = "Dividing"
 			tooltip.text += "divider"
 		elif args.status == "guard_up":
 			tooltip.title = "Guarding Up"
 			tooltip.text += "guard up"
 		elif args.status == "revenge":
-			tooltip.title = "Revenge"
+			tooltip.title = "Revenging"
 			tooltip.text += "revenge"
 		elif args.status == "rage":
-			tooltip.title = "Rage"
+			tooltip.title = "Raging"
 			tooltip.text += "rage"
+		elif args.status == "curse":
+			tooltip.title = "Cursing"
+			tooltip.text += "curse"
 		elif args.status == "perm_strength":
 			tooltip.title = "Getting Strong"
 			tooltip.text += "permanent strength"

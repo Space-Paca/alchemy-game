@@ -7,7 +7,7 @@ const TITLE_IMAGE_SIZE = 24
 const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
 					   "guard up", "piercing damage", "regular damage", "crushing damage",
 					   "shield", "evasion", "drain", "Drain", "retaliate", "divider",
-					   "revenge", "rage"]
+					   "revenge", "rage", "curse"]
 
 signal set_up
 

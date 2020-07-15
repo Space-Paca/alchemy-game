@@ -43,6 +43,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "rage"
 	},
+	"curse": {
+		"type": "status",
+		"name": "curse"
+	},
 	"piercing damage": {
 		"type": "tooltip",
 		"title": "Piercing Damage",

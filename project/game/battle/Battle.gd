@@ -46,6 +46,7 @@ var is_elite
 var player
 var win_screen
 var is_dragging_reagent := false
+var recipes_created
 
 
 func _ready():
@@ -267,6 +268,7 @@ func new_player_turn():
 	if ended:
 		return
 	
+	recipes_created = 0
 	player.new_turn()
 	
 	if hand.available_slot_count() > 0:
@@ -323,7 +325,11 @@ func enable_player():
 	
 	player_disabled = false
 	pass_turn_button.disabled = false
-	create_recipe_button.disabled = false
+	#Check curse
+	var curse = player.get_status("curse")
+	if not curse or curse.amount > recipes_created:
+		create_recipe_button.disabled = false
+	
 	set_favorites_disabled(false)
 	
 	for reagent in reagents.get_children():
@@ -723,7 +729,8 @@ func _on_CreateRecipe_pressed():
 
 	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
-
+	
+	recipes_created += 1
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)

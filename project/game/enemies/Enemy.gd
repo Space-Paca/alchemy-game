@@ -81,6 +81,9 @@ func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
 
 func drain(source: Character, amount: int):
+	#Check for weak status
+	amount = int(ceil(2*amount/3.0)) if source.get_status("weak") else amount
+	
 	var unblocked_dmg = .take_damage(source, amount, "drain")
 	
 	if unblocked_dmg > 0:
@@ -104,6 +107,9 @@ func drain(source: Character, amount: int):
 	emit_signal("resolved")
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
+	#Check for weak status
+	damage = int(ceil(2*damage/3.0)) if source.get_status("weak") else damage
+	
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
@@ -195,6 +201,10 @@ func update_action():
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var amount = action.amount if action.has("amount") else 1
 			act = ["damage", {"value": value, "type": action.type, "amount": amount}]
+		elif action.name == "drain":
+			var value = get_random_value(action.value) if action.value is Array else action.value
+			var amount = action.amount if action.has("amount") else 1
+			act = ["drain", {"value": value, "amount": amount}]
 		elif action.name == "shield":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			act = ["shield", {"value": value}]

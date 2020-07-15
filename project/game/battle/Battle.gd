@@ -280,6 +280,7 @@ func new_player_turn():
 
 func new_enemy_turn():
 	disable_player()
+	
 	if not grid.is_empty():
 		grid.return_to_hand()
 		yield(grid, "returned_to_hand")
@@ -293,6 +294,7 @@ func new_enemy_turn():
 			return
 	
 	#Resolve enemies spawned in enemy turn
+	#and trigger end turn status
 	for enemy in enemies_node.get_children():
 		if enemy.just_spawned:
 			enemy.just_spawned = false
@@ -301,7 +303,8 @@ func new_enemy_turn():
 				yield(enemy, "action_resolved")
 				#Wait a bit before next enemy/start player turn
 				yield(get_tree().create_timer(.3), "timeout")
-
+		enemy.update_status("end_turn")
+	
 	new_player_turn()
 
 
@@ -529,7 +532,8 @@ func spawn_new_enemy(origin: Enemy, new_enemy: String):
 		update_enemy_positions()
 
 func damage_player(enemy, value, type):
-	player.take_damage(enemy, value + enemy.get_damage_modifiers(), type)
+	var amount = value + enemy.get_damage_modifiers()
+	player.take_damage(enemy, amount, type)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -574,6 +578,19 @@ func _on_enemy_acted(enemy, actions):
 				var func_state = player.take_damage(enemy, args.value + \
 													enemy.get_damage_modifiers(),\
 													args.type)
+				if i == args.amount - 1:
+					enemy.remove_intent()
+				#Wait before going to next action/enemy	
+				if func_state and func_state.is_valid():
+					yield(player, "resolved")
+				else:
+					yield(get_tree().create_timer(.5), "timeout")
+			enemy.remove_status("temp_strength")
+		if name == "drain":
+			for i in range(0, args.amount):
+				enemy.play_animation("drain")
+				var func_state = player.drain(enemy, args.value + \
+											  enemy.get_damage_modifiers())
 				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy	
@@ -680,6 +697,8 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 
 func _on_PassTurnButton_pressed():
+	player.update_status("end_turn")
+	
 	new_enemy_turn()
 
 

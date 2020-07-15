@@ -214,9 +214,15 @@ func start_turn_retaliate(_args):
 func start_turn_dodge(_args):
 	remove_status("dodge")
 
-func start_turn_poison(_args):
+func end_turn_poison(_args):
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")
+
+func end_turn_weak(_args):
+	var status = get_status("weak")
+	status.amount -= 1
+	if status.amount <= 0:
+		remove_status("weak")

@@ -4,6 +4,7 @@ const IMAGES = {
 	"regular_attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
 	"piercing_attack": preload("res://assets/images/enemies/intents/attack_piercing.png"),
 	"crushing_attack": preload("res://assets/images/enemies/intents/attack_crushing.png"),
+	"drain": preload("res://assets/images/enemies/intents/attack_crushing.png"),
 	"shield": preload("res://assets/images/enemies/intents/blocking.png"),
 	"buff": preload("res://assets/images/enemies/intents/buffing.png"),
 	"debuff": preload("res://assets/images/enemies/intents/debuffing.png"),
@@ -24,6 +25,11 @@ func create_intent_data(action):
 			intent.image = IMAGES.piercing_attack
 		elif args.type == "crushing":
 			intent.image = IMAGES.crushing_attack
+		intent.value = args.value
+		if args.amount > 1:
+			intent.multiplier = args.amount
+	elif name == "drain":
+		intent.image = IMAGES.drain
 		intent.value = args.value
 		if args.amount > 1:
 			intent.multiplier = args.amount
@@ -106,6 +112,12 @@ func get_intent_tooltip(action):
 		elif args.status == "rage":
 			tooltip.title = "Raging"
 			tooltip.text += "rage"
+		elif args.status == "parasite":
+			tooltip.title = "Parasating"
+			tooltip.text += "parasite"
+		elif args.status == "weak":
+			tooltip.title = "Weakening"
+			tooltip.text += "weak"
 		elif args.status == "curse":
 			tooltip.title = "Cursing"
 			tooltip.text += "curse"

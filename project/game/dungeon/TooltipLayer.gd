@@ -47,6 +47,14 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "curse"
 	},
+	"parasite": {
+		"type": "status",
+		"name": "parasite"
+	},
+	"weak": {
+		"type": "status",
+		"name": "weak"
+	},
 	"piercing damage": {
 		"type": "tooltip",
 		"title": "Piercing Damage",

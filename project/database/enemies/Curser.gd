@@ -23,9 +23,10 @@ var actions = {
 		{"name": "status", "status_name": "curse", "value": 2, "target": "player", "positive": false}
 	],
 	"attack": [
-		{"name": "damage", "value": [7, 10], "type": "regular"}
+		{"name": "damage", "value": [10, 12], "type": "regular"}
 	],
 	"debuff": [
-		{"name": "damage", "value": [2, 3], "type": "regular"}
+		{"name": "shield", "value": [5, 8]},
+		{"name": "status", "status_name": "weak", "value": 1, "target": "player", "positive": false}
 	],
 }

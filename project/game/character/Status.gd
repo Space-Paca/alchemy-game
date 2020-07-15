@@ -12,6 +12,8 @@ const STATUS_IMAGES = {
 					   "revenge": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
 					   "curse": "res://assets/images/status/random_status.png",
+					   "parasite": "res://assets/images/status/random_status.png",
+					   "weak": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -20,7 +22,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.dodge},
 					   "evasion": {
 						"title": "Evasion",
-						"text": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn.",
+						"text": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn",
 						"title_image": STATUS_IMAGES.evasion},
 					   "retaliate": {
 						"title": "Retaliate",
@@ -34,13 +36,21 @@ const STATUS_TOOLTIPS = {
 						"title": "Temporary Strength",
 						"text": "Increases the damage of this character next attack",
 						"title_image": STATUS_IMAGES.temp_strength},
+					   "weak": {
+						"title": "Weak",
+						"text": "This character deals 1/3 less attack damage. Decreases every turn",
+						"title_image": STATUS_IMAGES.weak},
 					   "poison": {
 						"title": "Poison",
 						"text": "This character is dealt 1 poison damage per stack. Decreases every turn",
 						"title_image": STATUS_IMAGES.poison},
+					   "parasite": {
+						"title": "Parasite",
+						"text": "This character gains permanent strength each time you misuse a reagent",
+						"title_image": STATUS_IMAGES.parasite},
 					   "curse": {
 						"title": "Curse",
-						"text": "You can only create 1 recipe per stack of curse each turn.",
+						"text": "Limits the number of recipes you can create each turn",
 						"title_image": STATUS_IMAGES.curse},
 					   "guard_up": {
 						"title": "Guard Up",

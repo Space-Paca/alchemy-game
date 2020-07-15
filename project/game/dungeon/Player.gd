@@ -140,7 +140,10 @@ func draw(amount:int):
 	
 	emit_signal("resolved")
 
-func drain(source: Character, value):
+func drain(source: Character, value: int):
+	#Check for weak status
+	value = int(ceil(2*value/3.0)) if source.get_status("weak") else value
+	
 	var unblocked_dmg = .take_damage(source, value, "drain")
 	
 	if unblocked_dmg > 0:
@@ -158,6 +161,9 @@ func drain(source: Character, value):
 	emit_signal("resolved")
 
 func take_damage(source: Character, value: int, type: String, retaliate := true):
+	#Check for weak status
+	value = int(ceil(2*value/3.0)) if source.get_status("weak") else value
+	
 	var _unblocked_dmg = .take_damage(source, value, type, retaliate)
 
 	#Animations

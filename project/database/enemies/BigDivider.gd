@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Big Divider"
 var sfx = "slime"
 var use_idle_sfx = true
-var hp = 4
+var hp = 40
 var battle_init = true
 var size = "medium"
 

@@ -19,6 +19,7 @@ const ENEMY_DB = {
 				  "rager" : preload("res://database/enemies/Rager.gd"),
 				  "curser" : preload("res://database/enemies/Curser.gd"),
 				  "parasiter" : preload("res://database/enemies/Parasiter.gd"),
+				  "timing_bomber" : preload("res://database/enemies/TimingBomber.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
 				}

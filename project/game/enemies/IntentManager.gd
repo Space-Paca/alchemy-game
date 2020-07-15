@@ -112,6 +112,12 @@ func get_intent_tooltip(action):
 		elif args.status == "rage":
 			tooltip.title = "Raging"
 			tooltip.text += "rage"
+		elif args.status == "time_bomb":
+			tooltip.title = "Time Bombing"
+			tooltip.text += "time bomb"
+		elif args.status == "freeze":
+			tooltip.title = "Freezing"
+			tooltip.text += "freeze"
 		elif args.status == "parasite":
 			tooltip.title = "Parasating"
 			tooltip.text += "parasite"

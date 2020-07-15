@@ -6,7 +6,8 @@ const SEPARATION_TITLE_TEXT = 12
 const TITLE_IMAGE_SIZE = 24
 const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
 					   "guard up", "piercing damage", "regular damage", "crushing damage",
-					   "shield", "evasion", "drain", "Drain", "retaliate", "divider"]
+					   "shield", "evasion", "drain", "Drain", "retaliate", "divider",
+					   "revenge", "rage"]
 
 signal set_up
 

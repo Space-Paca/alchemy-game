@@ -236,6 +236,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false):
 	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
 	enemy_node.connect("spawn_new_enemy", self, "spawn_new_enemy")
+	enemy_node.connect("damage_player", self, "damage_player")
 	effect_manager.add_enemy(enemy_node)
 	
 	enemy_node.update_action()
@@ -520,6 +521,9 @@ func spawn_new_enemy(origin: Enemy, new_enemy: String):
 		AnimationManager.play("spawn", origin.get_center_position())
 		add_enemy(new_enemy, origin.get_center_position(), true)
 		update_enemy_positions()
+
+func damage_player(enemy, value, type):
+	player.take_damage(enemy, value + enemy.get_damage_modifiers(), type)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

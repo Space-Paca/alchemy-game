@@ -107,7 +107,6 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
-	
 
 	#Animations
 	if type == "regular":

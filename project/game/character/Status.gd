@@ -9,6 +9,8 @@ const STATUS_IMAGES = {
 					   "guard_up": "res://assets/images/status/random_status.png",
 					   "retaliate": "res://assets/images/status/random_status.png",
 					   "divider": "res://assets/images/status/random_status.png",
+					   "revenge": "res://assets/images/status/random_status.png",
+					   "rage": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -43,6 +45,14 @@ const STATUS_TOOLTIPS = {
 						"title": "Divider",
 						"text": "When this character dies, it will divide into two",
 						"title_image": STATUS_IMAGES.divider},
+					   "revenge": {
+						"title": "Revenge",
+						"text": "When this character dies, it will deal 1 regular damage per stack to you",
+						"title_image": STATUS_IMAGES.revenge},
+					   "rage": {
+						"title": "Rage",
+						"text": "Whenever this character takes damage, it gets 1 permanent strength per stack",
+						"title_image": STATUS_IMAGES.rage},
 					  }
 
 var type : String

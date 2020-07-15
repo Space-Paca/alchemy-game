@@ -35,6 +35,14 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "divider"
 	},
+	"revenge": {
+		"type": "status",
+		"name": "revenge"
+	},
+	"rage": {
+		"type": "status",
+		"name": "rage"
+	},
 	"piercing damage": {
 		"type": "tooltip",
 		"title": "Piercing Damage",

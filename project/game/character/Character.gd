@@ -3,6 +3,7 @@ class_name Character
 
 signal died
 signal spawn_new_enemy
+signal damage_player
 
 var max_hp : int
 var hp : int
@@ -127,6 +128,8 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	elif pre_shield <= 0 and status_list.has("guard_up"):
 		AudioManager.play_sfx("shield_gain")
 		shield += status_list.guard_up.amount
+	elif unblocked_damage > 0 and status_list.has("rage"):
+		add_status("perm_strength", status_list.rage.amount, true, {})
 	
 	return unblocked_damage
 
@@ -194,6 +197,10 @@ func on_death_divider(_args):
 	var status = get_status("divider")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
+
+func on_death_revenge(_args):
+	var status = get_status("revenge")
+	emit_signal("damage_player", self, status.amount, "regular")
 
 func start_turn_shield():
 	shield = 0

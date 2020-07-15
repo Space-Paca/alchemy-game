@@ -8,6 +8,7 @@ const STATUS_IMAGES = {
 					   "poison": "res://assets/images/status/poison.png",
 					   "guard_up": "res://assets/images/status/random_status.png",
 					   "retaliate": "res://assets/images/status/random_status.png",
+					   "divider": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -38,6 +39,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Guard Up",
 						"text": "Whenever this characters is attacked, if it wasn't shielded, gains shield",
 						"title_image": STATUS_IMAGES.guard_up},
+					   "divider": {
+						"title": "Divider",
+						"text": "When this character dies, it will divide into two",
+						"title_image": STATUS_IMAGES.divider},
 					  }
 
 var type : String

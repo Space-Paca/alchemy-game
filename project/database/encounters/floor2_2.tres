@@ -6,18 +6,18 @@
 script = ExtResource( 1 )
 is_boss = false
 is_elite = false
-level = 1
-enemies = [ "baby_retaliate", "delayed_hitter_plus", "baby_retaliate" ]
+level = 2
+enemies = [ "big_divider" ]
 loot_table = {
-"buffing": 2,
+"buffing": 0,
 "common": 0,
 "damaging": 0,
-"defensive": 1,
+"defensive": 0,
 "healing": 0,
-"poison": 0,
+"poison": 3,
 "rare": 0,
 "super_damaging": 0,
-"super_defensive": 3,
-"uncommon": 1
+"super_defensive": 1,
+"uncommon": 2
 }
-extra_loot_chance = [ 0.1 ]
+extra_loot_chance = [ 0.5, 0.1 ]

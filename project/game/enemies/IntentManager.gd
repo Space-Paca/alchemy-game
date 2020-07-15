@@ -94,6 +94,9 @@ func get_intent_tooltip(action):
 		elif args.status == "retaliate":
 			tooltip.title = "Retaliate"
 			tooltip.text += "retaliate"
+		elif args.status == "divider":
+			tooltip.title = "Divider"
+			tooltip.text += "divider"
 		elif args.status == "guard_up":
 			tooltip.title = "Guarding Up"
 			tooltip.text += "guard up"

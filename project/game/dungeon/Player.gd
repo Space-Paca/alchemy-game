@@ -182,8 +182,8 @@ func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
 	hud.update_status_bar(self)
 
-func add_status(status: String, amount: int, positive: bool):
-	.add_status(status, amount, positive)
+func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
+	.add_status(status, amount, positive, extra_args)
 	hud.update_status_bar(self)
 	
 	#Animations
@@ -206,7 +206,7 @@ func gain_shield(amount: int):
 
 
 func new_turn():
-	update_status()
+	update_status("start_turn")
 	if hud.need_to_update_visuals(self):
 		hud.update_visuals(self)
 		yield(hud, "animation_completed")
@@ -219,8 +219,8 @@ func remove_status(status: String):
 	.remove_status(status)
 	hud.update_status_bar(self)
 
-func update_status():
-	.update_status()
+func update_status(type: String):
+	.update_status(type)
 	hud.update_status_bar(self)
 
 

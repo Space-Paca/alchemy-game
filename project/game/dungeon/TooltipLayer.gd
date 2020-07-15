@@ -31,6 +31,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "perm_strength"
 	},
+	"divider": {
+		"type": "status",
+		"name": "divider"
+	},
 	"piercing damage": {
 		"type": "tooltip",
 		"title": "Piercing Damage",

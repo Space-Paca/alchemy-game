@@ -235,6 +235,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false):
 	
 	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
+	enemy_node.connect("spawn_new_enemy", self, "spawn_new_enemy")
 	effect_manager.add_enemy(enemy_node)
 	
 	enemy_node.update_action()
@@ -377,6 +378,16 @@ func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: 
 		if total_targets:
 			targeting_interface.end()
 	
+	#Resolve enemies spawned in player turn
+	for enemy in enemies_node.get_children():
+		if enemy.just_spawned:
+			enemy.just_spawned = false
+			if enemy.data.battle_init:
+				enemy.act()
+				yield(enemy, "action_resolved")
+				#Wait a bit before next enemy/start player turn
+				yield(get_tree().create_timer(.3), "timeout")
+	
 	enable_player()
 
 
@@ -504,6 +515,11 @@ func display_name_for_combination(combination: Combination):
 	else:
 		recipe_banner.text = "???" 
 
+func spawn_new_enemy(origin: Enemy, new_enemy: String):
+	if enemies_node.get_child_count()  < MAX_ENEMIES:
+		AnimationManager.play("spawn", origin.get_center_position())
+		add_enemy(new_enemy, origin.get_center_position(), true)
+		update_enemy_positions()
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -562,10 +578,12 @@ func _on_enemy_acted(enemy, actions):
 			#Wait before going to next action/enemy	
 			yield(enemy, "resolved")
 		elif name == "status":
+			var value = args.value if args.value else 1
+			var extra_args = args.extra_args if args.has("extra_args") else {}
 			if args.target == "self":
-				enemy.add_status(args.status, args.value, args.positive)
+				enemy.add_status(args.status, value, args.positive, extra_args)
 			elif args.target == "player":
-				player.add_status(args.status, args.value, args.positive)
+				player.add_status(args.status, value, args.positive, extra_args)
 			else:
 				push_error("Not a valid target for status effect:" + str(args.target))
 				assert(false)
@@ -573,10 +591,7 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
-			if enemies_node.get_child_count() < MAX_ENEMIES:
-				AnimationManager.play("spawn", enemy.get_center_position())
-				add_enemy(args.enemy, enemy.get_center_position(), true)
-				update_enemy_positions()
+			spawn_new_enemy(enemy, args.enemy)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
@@ -607,6 +622,14 @@ func _on_enemy_acted(enemy, actions):
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
+	#Temporoary store enemy
+	$EnemyToBeRemoved.add_child(enemy)
+	
+	var func_state = enemy.update_status("on_death")
+	if func_state and func_state.is_valid():
+		yield(enemy, "finished_updating_status")
+	
+	$EnemyToBeRemoved.remove_child(enemy)
 	
 	#Update idle sfx
 	if enemy.data.use_idle_sfx:

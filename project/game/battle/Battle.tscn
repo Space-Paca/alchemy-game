@@ -256,6 +256,8 @@ scale = Vector2( 0.4, 0.4 )
 [node name="TargetingInterface" parent="." instance=ExtResource( 20 )]
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyToBeRemoved" type="Node2D" parent="."]
 [connection signal="button_down" from="RecipesButton" to="." method="_on_RecipesButton_button_down"]
 [connection signal="mouse_entered" from="RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
 [connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]

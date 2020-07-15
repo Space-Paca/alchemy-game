@@ -2,6 +2,7 @@ extends Node2D
 class_name Character
 
 signal died
+signal spawn_new_enemy
 
 var max_hp : int
 var hp : int
@@ -129,10 +130,12 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	return unblocked_damage
 
-
 func gain_shield(value):
 	AudioManager.play_sfx("shield_gain")
 	shield += value
+
+func die():
+	emit_signal("died", self)
 
 #STATUS FUNCS
 
@@ -140,7 +143,7 @@ func get_status(status: String):
 	if status_list.has(status):
 		return status_list[status]
 
-func add_status(status: String, amount: int, positive: bool):
+func add_status(status: String, amount: int, positive: bool, extra_args: Dictionary):
 	if AudioManager.has_sfx("status_"+status):
 		AudioManager.play_sfx("status_"+status)
 	else:
@@ -152,7 +155,7 @@ func add_status(status: String, amount: int, positive: bool):
 	if status_list.has(status):
 		status_list[status].amount += amount
 	else:
-		status_list[status] = {"amount": amount, "positive": positive}
+		status_list[status] = {"amount": amount, "positive": positive, "extra_args": extra_args}
 
 func reduce_status(status: String, amount: int):
 	if status_list.has(status):
@@ -166,29 +169,47 @@ func remove_status(status: String):
 func clear_status():
 	status_list.clear()
 
-func update_status():
-	shield = 0
+func update_status(type: String):
+	var emit = false
+	
+	#Shield methods
+	var f_name = type + "_shield"
+	if self.has_method(f_name):
+		self.callv(f_name, [])
+		
+	#Other status methods
 	for status in status_list:
-		var f_name = "update_"+ str(status)
+		f_name = type + "_"+ str(status)
 		if self.has_method(f_name):
-			self.callv(f_name, [status])
+			var func_state = self.callv(f_name, [status])
+			if func_state and func_state.is_valid():
+				emit = true
+				yield(self, "status_effect_completed")
+	if emit:
+		emit_signal("finished_updating_status")
 
-func update_evasion(_args):
+#STATUS METHODS
+
+func on_death_divider(_args):
+	var status = get_status("divider")
+	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
+	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
+
+func start_turn_shield():
+	shield = 0
+
+func start_turn_evasion(_args):
 	remove_status("evasion")
 
-func update_retaliate(_args):
+func start_turn_retaliate(_args):
 	remove_status("retaliate")
 
-func update_dodge(_args):
+func start_turn_dodge(_args):
 	remove_status("dodge")
 
-func update_poison(_args):
+func start_turn_poison(_args):
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")
-	
-
-func die():
-	emit_signal("died", self)

@@ -149,8 +149,8 @@ func reduce_status(status: String, amount: int):
 	update_status_bar()
 
 
-func add_status(status: String, amount: int, positive: bool):
-	.add_status(status, amount, positive)
+func add_status(status: String, amount, positive: bool, extra_args:= {}):
+	.add_status(status, amount, positive, extra_args)
 	update_status_bar()
 	
 	#Animations
@@ -166,12 +166,12 @@ func remove_status(status: String):
 
 
 func new_turn():
-	update_status()
+	update_status("start_turn")
 	health_bar.update_visuals(hp, shield)
 
 
-func update_status():
-	.update_status()
+func update_status(type: String):
+	.update_status(type)
 	update_status_bar()
 
 
@@ -201,8 +201,10 @@ func update_action():
 			act = ["shield", {"value": value}]
 		elif action.name == "status":
 			var value = get_random_value(action.value) if action.value is Array else action.value
+			var extra_args = action.extra_args if action.has("extra_args") else {}
 			act = ["status", {"status": action.status_name, "value": value, \
-							  "target": action.target, "positive": action.positive}]
+							  "target": action.target, "positive": action.positive, \
+							  "extra_args": extra_args}]
 		elif action.name == "spawn":
 			act = ["spawn", {"enemy": action.enemy}]
 		elif action.name == "add_reagent":
@@ -247,8 +249,7 @@ func update_status_bar():
 
 
 func get_center_position():
-#	return $Sprite.rect_global_position + $Sprite.texture.get_width()*$Sprite.rect_scale/2
-	return $Sprite.global_position #+ $Sprite.texture.get_width()*$Sprite.scale/2
+	return $Sprite.global_position
 
 
 func setup(enemy_logic, new_texture, highlight_texture, enemy_data):

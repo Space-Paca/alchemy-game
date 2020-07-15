@@ -12,6 +12,9 @@ const ENEMY_DB = {
 				  "baby_poison": preload("res://database/enemies/BabyPoisunculus.gd"),
 				  "baby_slasher": preload("res://database/enemies/BabySlasher.gd"),
 				  "baby_retaliate": preload("res://database/enemies/BabyRetaliate.gd"),
+				  "big_divider" : preload("res://database/enemies/BigDivider.gd"),
+				  "medium_divider" : preload("res://database/enemies/MediumDivider.gd"),
+				  "small_divider" : preload("res://database/enemies/SmallDivider.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
 				}

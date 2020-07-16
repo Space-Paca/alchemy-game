@@ -15,6 +15,7 @@ signal drew_reagents
 var hand = null #Set by parent
 var discard_bag = null #Set by parent
 var reagents = null #Set by parent
+var player = null #Set by parent
 var tooltips_enabled := false
 var block_tooltips := false
 
@@ -64,6 +65,9 @@ func start_drawing(_reagents):
 	emit_signal("given_reagents_drawn")
 
 func refill_hand():
+	var status = player.get_status("time_bomb")
+	var unstable_n = 0 if not status else status.amount
+
 	var reagents_to_be_drawn = []
 	for _i in range(hand.available_slot_count()):
 		if drawable_reagents.get_child_count() == 0:
@@ -77,8 +81,13 @@ func refill_hand():
 				yield(get_tree().create_timer(.25), "timeout")
 			else:
 				break
+		
+		var reagent = draw_reagent()
+		if unstable_n > 0:
+			unstable_n -= 1
+			reagent.toggle_unstable()
 
-		reagents_to_be_drawn.append(draw_reagent())
+		reagents_to_be_drawn.append(reagent)
 	
 	if not reagents_to_be_drawn.empty():
 		start_drawing(reagents_to_be_drawn)

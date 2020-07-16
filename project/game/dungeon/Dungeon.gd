@@ -312,6 +312,10 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 	var combination = get_combination_in_grid(reagent_matrix)
 	if combination:
 		AudioManager.play_sfx("combine_success")
+		#Fix unstable reagents
+		for reagent in reagent_list:
+			if reagent.unstable:
+				reagent.toggle_unstable()
 		make_combination(combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")

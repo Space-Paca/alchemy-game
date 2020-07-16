@@ -56,7 +56,7 @@ func _ready():
 
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
-	setup_nodes()
+	setup_nodes(_player)
 	
 	setup_player(_player)
 	
@@ -83,10 +83,13 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	new_player_turn()
 
 
-func setup_nodes():
+func setup_nodes(_player):
+	draw_bag.player = _player
 	draw_bag.hand = hand
 	draw_bag.reagents = reagents
 	draw_bag.discard_bag = discard_bag
+	discard_bag.player = _player
+	discard_bag.connect("reagent_exploded", self, "damage_player")
 	grid.discard_bag = discard_bag
 	grid.hand = hand
 
@@ -279,8 +282,6 @@ func new_player_turn():
 
 
 func new_enemy_turn():
-	disable_player()
-	
 	if not grid.is_empty():
 		grid.return_to_hand()
 		yield(grid, "returned_to_hand")
@@ -531,9 +532,10 @@ func spawn_new_enemy(origin: Enemy, new_enemy: String):
 		add_enemy(new_enemy, origin.get_center_position(), true)
 		update_enemy_positions()
 
-func damage_player(enemy, value, type):
-	var amount = value + enemy.get_damage_modifiers()
-	player.take_damage(enemy, amount, type)
+func damage_player(source, value, type, use_modifiers:= true):
+	var mod = source.get_damage_modifiers() if use_modifiers else 0
+	var amount = value + mod
+	player.take_damage(source, amount, type)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -698,6 +700,15 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 func _on_PassTurnButton_pressed():
 	player.update_status("end_turn")
+	
+	disable_player()
+	
+	#Check for unstable reagents
+	for reagent in $Reagents.get_children():
+		if reagent.unstable:
+			reagent.slot.remove_reagent()
+			discard_bag.discard(reagent)
+			yield(get_tree().create_timer(.5), "timeout")
 	
 	new_enemy_turn()
 

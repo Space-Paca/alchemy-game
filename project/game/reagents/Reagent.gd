@@ -10,6 +10,7 @@ signal hovering
 signal stopped_hovering
 signal finished_combine_animation
 signal destroyed
+signal exploded
 
 onready var image = $Image
 
@@ -29,6 +30,7 @@ var effect_mod := 1.0
 var tooltips_enabled := false
 var block_tooltips := false
 var upgraded := false
+var unstable := false
 
 
 func set_image(text):
@@ -193,6 +195,24 @@ func disable():
 func enable():
 	block_tooltips = false
 
+func toggle_unstable():
+	unstable = not unstable
+	if unstable:
+		$AnimationPlayer.play("unstable")
+		randomize()
+		$AnimationPlayer.seek(rand_range(0,1.5))
+	else:
+		$AnimationPlayer.play("idle")
+
+func explode():
+	$AnimationPlayer.play("explode")
+
+func explode_end():
+	AudioManager.play_sfx("reagent_explosion")
+	$AnimationPlayer.play("idle")
+	emit_signal("exploded")
+	
+
 func upgrade():
 	upgraded = true
 	$Image/Upgraded.show()
@@ -224,6 +244,8 @@ func get_tooltips():
 	else:
 		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
 			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
+	if unstable:
+		text += " It's unstable."
 
 	var tooltip = {"title": data.name, "text": text, \
 				   "title_image": data.image.get_path()}

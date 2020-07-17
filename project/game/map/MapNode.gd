@@ -3,7 +3,7 @@ class_name MapNode
 
 onready var button = $Button
 
-enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH}
+enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT}
 
 const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/slime.png"),
@@ -11,10 +11,12 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/skull.png"),
 		preload("res://assets/images/map/coin.png"),
 		preload("res://assets/images/map/fire-zone.png"),
+		preload("res://assets/images/map/anvil-impact.png"),
 		preload("res://assets/images/map/anvil-impact.png")]
 
 var is_leaf := true
 var type := EMPTY
+var map_tree_children := []
 
 
 func _ready():

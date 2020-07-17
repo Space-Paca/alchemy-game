@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/map/MapNode.gd"
 }, {
+"base": "Node2D",
+"class": "MapPosition",
+"language": "GDScript",
+"path": "res://game/map/MapPosition.gd"
+}, {
 "base": "Control",
 "class": "Message",
 "language": "GDScript",
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "FavoriteButton": "",
 "Floor": "",
 "MapNode": "",
+"MapPosition": "",
 "Message": "",
 "Player": "",
 "PlayerClass": "",

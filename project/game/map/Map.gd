@@ -1,7 +1,9 @@
 extends Control
 
 onready var bg = $Background
+onready var center_position = $FixedPositions/Center
 onready var nodes = $Nodes
+onready var positions = $FixedPositions
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const NODE_DIST = 200
@@ -11,50 +13,129 @@ const NODE_DIST_RAND = 50
 func _ready():
 	randomize()
 	create_map(2, 2)
+	
+	pass
 
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
 
-func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
-		rests:int=1, smiths:int=1):
-	var total_nodes := normal_encounters+elite_encounters+shops+rests+smiths+1 # +1 for boss
-	var count_by_type := [0, normal_encounters, elite_encounters, 0, shops, rests, smiths]
+func shift_positions():
+	if randf() > .5:
+		positions.rect_scale.x = -1
+	if randf() > .5:
+		positions.rect_rotation = 180
 	
-	var initial_node = MAP_NODE_SCENE.instance()
+	positions.rect_rotation += 15 * (randf() * 2 - 1)
+
+
+func validate_map(total_nodes:int, normal_enemies:int):
+	var total_positions = positions.get_child_count() - 1 # -1 for initial node
+	var unplaced_normal : int
+	
+	# Allocate initial position children as normal enemy nodes
+	if center_position.children.size() > normal_enemies:
+		unplaced_normal = 0
+	else:
+		unplaced_normal = normal_enemies - center_position.children.size()
+	
+	total_positions -= center_position.children.size()
+	total_nodes = total_nodes - normal_enemies + unplaced_normal
+	
+	assert(total_positions >= total_nodes, "Map doesn't have enough positions")
+
+
+func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
+		rests:int=1, smiths:int=1, events:int=0):
+	
+	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
+			smiths + events + 1 # +1 for boss
+	
+	validate_map(total_nodes, normal_encounters)
+	
+	shift_positions()
+	
+	var initial_node : MapNode = MAP_NODE_SCENE.instance()
 	nodes.add_child(initial_node)
+	center_position.node = initial_node
+	var available_starting_positions : Array = [center_position]
+	var used_positions : Array = [center_position]
+	var untyped_nodes := []
 	
 	while total_nodes:
-		var origin_node : MapNode = nodes.get_child(randi() % nodes.get_child_count())
-		var position_offset
-		var new_node = MAP_NODE_SCENE.instance()
+		var starting_pos : MapPosition
+		var new_pos : MapPosition
+		
+		# Draw a random starting position from the pool and a new position from
+		# its children.
+		prints("Total nodes:", total_nodes)
+		print(available_starting_positions.size())
+		print()
+		starting_pos = available_starting_positions[\
+				randi() % available_starting_positions.size()]
+		starting_pos.children.shuffle()
+		new_pos = starting_pos.get_node(starting_pos.children.pop_front())
+		
+		# Remove the starting position from the available ones if it has no more
+		# children.
+		if not starting_pos.children.size():
+			available_starting_positions.erase(starting_pos)
+		
+		# If the new position was already used (possible because positions can
+		# be reached from more than one path) make another draw.
+		if new_pos in used_positions:
+			continue
+		
+		# Also make another draw if the starting position is the overall initial
+		# position and there are no more normal encounters to allocate.
+		if starting_pos == center_position and normal_encounters == 0:
+			continue
+		
+		used_positions.append(new_pos)
+		
+		if new_pos.children.size():
+			available_starting_positions.append(new_pos)
+		
+		### NODE CREATION ###
+		var new_node : MapNode = MAP_NODE_SCENE.instance()
 		nodes.add_child(new_node)
-		origin_node.is_leaf = false
+		new_node.rect_global_position = new_pos.global_position
+		new_pos.node = new_node
+		starting_pos.node.is_leaf = false
 		
-		position_offset = Vector2(NODE_DIST+rand_range(-1, 1)*NODE_DIST_RAND, 0)
-		new_node.rect_position = origin_node.rect_position + position_offset.rotated(randf()*2*PI)
+		# Set new node type as enemy if it originated from the initial node
+		if starting_pos == center_position:
+			new_node.set_type(MapNode.ENEMY)
+			normal_encounters -= 1
+		else:
+			untyped_nodes.append(new_node)
 		
+		### DEBUG LINE ###
 		var line = Line2D.new()
-		line.add_point(origin_node.rect_global_position)
-		line.add_point(new_node.rect_global_position)
+		line.add_point(starting_pos.global_position)
+		line.add_point(new_pos.global_position)
 		bg.add_child(line)
 		
 		total_nodes -= 1
 	
-	var all_nodes = nodes.get_children()
-	all_nodes.erase(initial_node)
-	all_nodes.shuffle()
+	### TYPING NODES ###
+	untyped_nodes.shuffle()
 	
-	for node in all_nodes:
-		if node.is_leaf:
-			node.set_type(MapNode.BOSS)
-			all_nodes.erase(node)
+	for node in untyped_nodes:
+		var map_node : MapNode = node
+		if map_node.is_leaf:
+			map_node.set_type(MapNode.BOSS)
+			untyped_nodes.erase(map_node)
 			break
+	
+	var count_by_type := [0, normal_encounters, elite_encounters, 0, shops,
+			rests, smiths, events]
 	
 	for type in count_by_type.size():
 		while count_by_type[type]:
-			var map_node : MapNode = all_nodes.pop_front()
+			var map_node : MapNode = untyped_nodes.pop_front()
 			map_node.set_type(type)
 			count_by_type[type] -= 1

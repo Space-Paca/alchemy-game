@@ -39,6 +39,7 @@ const MAX_ENEMIES = 4
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 
+var floor_level
 var ended := false
 var player_disabled := true
 var is_boss
@@ -55,7 +56,9 @@ func _ready():
 	Debug.connect("battle_won", self, "_on_Debug_battle_won")
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
+	floor_level = _floor_level
+	
 	setup_nodes(_player)
 	
 	setup_player(_player)
@@ -192,7 +195,7 @@ func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
 		AudioManager.play_bgm("boss1", 3)
 	else:
-		AudioManager.play_bgm("battle", 3)
+		AudioManager.play_bgm("battle" + str(floor_level), 3)
 	AudioManager.play_ambience("forest")
 	player_ui.update_audio(player.hp, player.max_hp)
 
@@ -718,7 +721,7 @@ func _on_RecipesButton_pressed():
 
 
 func _on_win_screen_continue_pressed():
-	AudioManager.play_bgm("map")
+	AudioManager.play_bgm("map" + str(floor_level))
 	emit_signal("finished", is_boss)
 	queue_free()
 

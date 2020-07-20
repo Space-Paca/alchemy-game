@@ -2,7 +2,7 @@ extends Reference
 
 var image = "res://assets/images/enemies/dodge enemy/idle.png"
 var name = "Rager"
-var sfx = "slime"
+var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 60
 var battle_init = true

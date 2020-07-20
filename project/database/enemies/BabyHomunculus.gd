@@ -1,9 +1,9 @@
 extends Reference
 
 var image = "res://assets/images/enemies/small regular enemy/idle.png"
-var name = "Baby Humunculus"
-var sfx = "slime"
-var use_idle_sfx = true
+var name = "Wolftopus"
+var sfx = "wolftopus"
+var use_idle_sfx = false
 var hp = 15
 var battle_init = false
 var size = "small"

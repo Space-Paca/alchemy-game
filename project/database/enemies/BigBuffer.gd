@@ -1,8 +1,8 @@
 extends Reference
 
 var image = "res://assets/images/enemies/buffing big enemy/idle.png"
-var name = "BeepBoop"
-var sfx = "enemy_2"
+var name = "Goblintaur"
+var sfx = "goblintaur"
 var use_idle_sfx = false
 var hp = 90
 var battle_init = false

@@ -1,8 +1,8 @@
 extends Reference
 
-var image = "res://assets/images/enemies/Big Poison Elite/idle.png"
-var name = "Venenin"
-var sfx = "slime"
+var image = "res://assets/images/enemies/poison elite/idle.png"
+var name = "Monstrão"
+var sfx = "fat_monster"
 var use_idle_sfx = true
 var hp = 60
 var battle_init = false

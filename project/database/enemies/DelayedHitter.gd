@@ -1,9 +1,9 @@
 extends Reference
 
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/delayed hitter/idle.png"
 var name = "Delayed hitter"
-var sfx = "slime"
-var use_idle_sfx = true
+var sfx = "stone_golem"
+var use_idle_sfx = false
 var hp = 22
 var battle_init = false
 var size = "small"

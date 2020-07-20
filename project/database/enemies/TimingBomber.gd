@@ -2,7 +2,7 @@ extends Reference
 
 var image = "res://assets/images/enemies/dodge enemy/idle.png"
 var name = "Timing Bomber"
-var sfx = "slime"
+var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 120
 var battle_init = true

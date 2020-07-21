@@ -13,6 +13,7 @@ var connections = [
 					  ["init", "attack1", 1],
 					  ["attack1", "attack2", 1],
 					  ["attack2", "attack3", 1],
+					  ["attack3", "attack1", 1],
 				  ]
 var first_state = ["init"]
 

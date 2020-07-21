@@ -4,6 +4,7 @@ const ENEMY_DB = {
 				  "humunculus": preload("res://database/enemies/Homunculus.gd"),
 				  "spawner_humunculus": preload("res://database/enemies/SpawnerHomunculus.gd"),
 				  "baby_humunculus": preload("res://database/enemies/BabyHomunculus.gd"),
+				  "baby_humunculus_plus": preload("res://database/enemies/BabyHomunculusPlus.gd"),
 				  "big_buffer": preload("res://database/enemies/BigBuffer.gd"),
 				  "delayed_hitter": preload("res://database/enemies/DelayedHitter.gd"),
 				  "delayed_hitter_plus": preload("res://database/enemies/DelayedHitterPlus.gd"),

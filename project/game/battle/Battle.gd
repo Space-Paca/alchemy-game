@@ -48,6 +48,7 @@ var player
 var win_screen
 var is_dragging_reagent := false
 var recipes_created
+var current_encounter
 
 
 func _ready():
@@ -58,6 +59,7 @@ func _ready():
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
 	floor_level = _floor_level
+	current_encounter = encounter
 	
 	setup_nodes(_player)
 	
@@ -429,6 +431,8 @@ func win():
 		AudioManager.play_sfx("win_normal_battle")
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
+	
+	setup_win_screen(current_encounter)
 	
 	ended = true
 	

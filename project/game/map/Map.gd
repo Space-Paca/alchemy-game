@@ -12,7 +12,7 @@ const NODE_DIST_RAND = 50
 
 func _ready():
 	randomize()
-	create_map(2, 2)
+	create_map(4, 2)
 	
 	pass
 
@@ -29,7 +29,7 @@ func shift_positions():
 	if randf() > .5:
 		positions.rect_rotation = 180
 	
-	positions.rect_rotation += 15 * (randf() * 2 - 1)
+	positions.rect_rotation += 10 * (randf() * 2 - 1)
 
 
 func validate_map(total_nodes:int, normal_enemies:int):

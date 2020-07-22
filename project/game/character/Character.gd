@@ -204,7 +204,8 @@ func on_death_revenge(_args):
 	emit_signal("damage_player", self, status.amount, "regular")
 
 func start_turn_shield():
-	shield = 0
+	if not get_status("tough"):
+		shield = 0
 
 func start_turn_freeze():
 	var status = get_status("freeze")

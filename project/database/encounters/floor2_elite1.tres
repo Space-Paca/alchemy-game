@@ -17,7 +17,7 @@ loot_table = {
 "poison": 0,
 "rare": 0,
 "super_damaging": 3,
-"super_defensive": 3,
+"super_defensive": 0,
 "uncommon": 3
 }
 extra_loot_chance = [ 1.0, 0.5, 0.1 ]

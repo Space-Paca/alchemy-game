@@ -1,4 +1,7 @@
 extends Control
+class_name Map
+
+signal map_node_pressed(node)
 
 onready var bg = $Background
 onready var center_position = $FixedPositions/Center
@@ -13,20 +16,11 @@ const NODE_DIST_RAND = 50
 
 var active_paths := 0
 var initial_node : MapNode
+var current_level : int
 
 
-func _ready():
-	randomize()
-	create_map(4, 2)
-	reveal_paths(initial_node)
-	
-	pass
-
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+func set_disabled(toggle:bool):
+	click_block.visible = toggle
 
 
 func shift_positions():
@@ -56,8 +50,8 @@ func validate_map(total_nodes:int, normal_enemies:int):
 	assert(total_positions >= total_nodes, "Map doesn't have enough positions")
 
 
-func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
-		rests:int=1, smiths:int=1, events:int=0):
+func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
+		rests:int=1, shops:int=1, events:int=0):
 	
 	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
 			smiths + events + 1 # +1 for boss
@@ -150,17 +144,13 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 			count_by_type[type] -= 1
 	
 	positions.queue_free()
-
-
-func test(node:MapNode):
-	for i in node.map_tree_children.size():
-		var line : MapLine = node.map_lines[i]
-# warning-ignore:return_value_discarded
-		line.connect("filled", self, "test", [node.map_tree_children[i]])
-		line.begin_fill()
+	reveal_paths(initial_node)
 
 
 func reveal_paths(node:MapNode):
+	if node.paths_revealed:
+		return
+	
 	for i in node.map_tree_children.size():
 		var line : MapLine = node.map_lines[i]
 		var child_node : MapNode = node.map_tree_children[i]
@@ -169,12 +159,10 @@ func reveal_paths(node:MapNode):
 		line.begin_fill()
 		active_paths += 1
 	
+	node.paths_revealed = true
+	
 	if active_paths:
 		set_disabled(true)
-
-
-func set_disabled(toggle:bool):
-	click_block.visible = toggle
 
 
 func _on_path_reached(node:MapNode):
@@ -190,5 +178,4 @@ func _on_path_reached(node:MapNode):
 
 
 func _on_map_node_clicked(node:MapNode):
-	#TEST
-	reveal_paths(node)
+	emit_signal("map_node_pressed", node)

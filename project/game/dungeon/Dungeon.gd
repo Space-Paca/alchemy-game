@@ -7,19 +7,19 @@ onready var rest = $Rest
 onready var smith = $Blacksmith
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
-const FLOOR_SCENE = preload("res://game/map/Floor.tscn")
-const FLOOR_SIZE := [10, 20, 30]
+const MAP_SCENE = preload("res://game/map/Map.tscn")
 const MAX_FLOOR = 3
 const RECIPES_REWARDED_PER_BATTLE = 3
 
 var battle
 var combinations := {}
-var current_floor : Floor
 var floor_level := 1
 var times_recipe_made := {}
 var favorite_combinations := []
 var max_favorites := 8
 var possible_rewarded_combinations := []
+var map : Map
+var current_node : MapNode
 
 
 func _ready():
@@ -38,7 +38,8 @@ func _ready():
 	if Debug.floor_to_go != -1:
 		floor_level = Debug.floor_to_go
 		player.set_level(floor_level)
-	create_floor(floor_level)
+	
+	create_level(floor_level)
 	
 	AudioManager.play_bgm("map")
 
@@ -65,15 +66,24 @@ func create_combinations():
 			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name))
 
 
-func create_floor(level: int):
-	current_floor = FLOOR_SCENE.instance()
-	current_floor.room_amount = FLOOR_SIZE[level - 1]
-	current_floor.level = level
-	if current_floor.connect("room_entered", self, "_on_room_entered") != OK:
-		push_error("create_floor: Error")
-		assert(false)
-	add_child(current_floor)
+func create_level(level: int):
+	EncounterManager.set_random_encounter_pool(level)
 	
+	# MAP
+	map = MAP_SCENE.instance()
+	add_child(map)
+	match level:
+		1:
+			map.create_map(4, 2, 0)
+		2:
+			map.create_map(6, 3, 0)
+		3:
+			map.create_map(8, 4, 0)
+		var invalid:
+			assert(false, str("Invalid level: ", invalid))
+	map.connect("map_node_pressed", self, "_on_map_node_selected")
+	
+	# SHOP
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
@@ -82,7 +92,8 @@ func create_floor(level: int):
 	
 	setup_shop()
 
-func get_incompleted_combinations():
+
+func get_incomplete_combinations():
 	var incomplete_combinations = []
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
@@ -90,6 +101,7 @@ func get_incompleted_combinations():
 				incomplete_combinations.append(combination)
 	
 	return incomplete_combinations
+
 
 func setup_shop():
 	var shop_combinations = []
@@ -206,23 +218,23 @@ func new_battle(encounter: Encounter):
 
 func open_shop():
 	AudioManager.play_bgm("shop")
-	current_floor.hide()
+	map.hide()
 	shop.update_currency()
 	shop.show()
 
 
 func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
-	rest.setup(room, _player, get_incompleted_combinations())
+	rest.setup(room, _player, get_incomplete_combinations())
 	rest.show()
-	current_floor.hide()
+	map.hide()
 
 
 func open_smith(room, _player):
 	AudioManager.play_bgm("blacksmith")
 	smith.setup(room, _player)
 	smith.show()
-	current_floor.hide()
+	map.hide()
 
 
 func extract_boost_effects(reagents):
@@ -249,16 +261,18 @@ func _on_Combination_fully_discovered(combination: Combination):
 	possible_rewarded_combinations.erase(combination)
 
 
-func _on_room_entered(room: Room):
-	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS or room.type == Room.Type.ELITE:
-		new_battle(room.encounter)
-		current_floor.hide()
-	elif room.type == Room.Type.SHOP:
+func _on_map_node_selected(node:MapNode):
+	if node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS]:
+		current_node = node
+		new_battle(node.encounter)
+		map.hide()
+		node.set_type(MapNode.EMPTY)
+	elif node.type == MapNode.SHOP:
 		open_shop()
-	elif room.type == Room.Type.REST:
-		open_rest(room, player)
-	elif room.type == Room.Type.BLACKSMITH:
-		open_smith(room, player)
+	elif node.type == MapNode.REST:
+		open_rest(node, player)
+	elif node.type == MapNode.SMITH:
+		open_smith(node, player)
 
 
 func _on_Battle_won():
@@ -286,16 +300,17 @@ func _on_Battle_finished(is_boss):
 	recipe_book.remove_hand()
 	
 	if is_boss:
-		current_floor.queue_free()
+		map.queue_free()
 		floor_level += 1
 		if floor_level <= Debug.MAX_FLOOR:
-			create_floor(floor_level)
+			create_level(floor_level)
 			$Player.level_up()
 		else:
-			current_floor.show()
+			map.show()
 			thanks_for_playing()
 	else:
-		current_floor.show()
+		map.show()
+		map.reveal_paths(current_node)
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -360,7 +375,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 
 func _on_Shop_closed():
 	shop.hide()
-	current_floor.show()
+	map.show()
 	AudioManager.play_bgm("map")
 
 
@@ -387,20 +402,20 @@ func _on_Debug_floor_selected(floor_number: int):
 	if battle:
 		battle.queue_free()
 		battle = null
-	if current_floor:
-		current_floor.queue_free()
+	if map:
+		map.queue_free()
 	
-	create_floor(floor_number)
+	create_level(floor_number)
 	player.set_level(floor_number)
 
 
 func _on_Rest_closed():
 	rest.hide()
-	current_floor.show()
+	map.show()
 	AudioManager.play_bgm("map")
 
 
 func _on_Blacksmith_closed():
 	smith.hide()
-	current_floor.show()
+	map.show()
 	AudioManager.play_bgm("map")

@@ -45,9 +45,9 @@ _global_script_classes=[ {
 "path": "res://game/battle/FavoriteButton.gd"
 }, {
 "base": "Control",
-"class": "Floor",
+"class": "Map",
 "language": "GDScript",
-"path": "res://game/map/Floor.gd"
+"path": "res://game/map/Map.gd"
 }, {
 "base": "Node2D",
 "class": "MapLine",
@@ -89,11 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://database/Recipe.gd"
 }, {
-"base": "TextureButton",
-"class": "Room",
-"language": "GDScript",
-"path": "res://game/map/Room.gd"
-}, {
 "base": "Control",
 "class": "Slot",
 "language": "GDScript",
@@ -112,7 +107,7 @@ _global_script_class_icons={
 "Enemy": "",
 "EnemyLogic": "",
 "FavoriteButton": "",
-"Floor": "",
+"Map": "",
 "MapLine": "",
 "MapNode": "",
 "MapPosition": "",
@@ -121,7 +116,6 @@ _global_script_class_icons={
 "PlayerClass": "",
 "ReagentDB": "",
 "Recipe": "",
-"Room": "",
 "Slot": "",
 "TargetingInterface": ""
 }

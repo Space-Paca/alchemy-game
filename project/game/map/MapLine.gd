@@ -8,6 +8,7 @@ const BALL_DIST = 30
 const BALL_RADIUS = 5
 const MAP_NODE_SIZE = 64
 const PATH_FILL_TIME = 1
+const WAIT_TIMER = .1
 
 var ball_amount : int
 var line_vector : Vector2
@@ -35,6 +36,7 @@ func _process(delta):
 	update()
 	if time >= PATH_FILL_TIME:
 		set_process(false)
+		yield(get_tree().create_timer(WAIT_TIMER), "timeout")
 		emit_signal("filled")
 
 

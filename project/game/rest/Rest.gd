@@ -6,12 +6,13 @@ signal combination_rewarded
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
 const REST_HEAL = 70
 
-var room
+var map_node : MapNode
 var player
 var combinations
 
-func setup(_room, _player, _combinations):
-	room = _room
+
+func setup(node, _player, _combinations):
+	map_node = node
 	player = _player
 	combinations = _combinations
 	
@@ -21,8 +22,10 @@ func setup(_room, _player, _combinations):
 	$Recipes.hide()
 	$ContinueButton.hide()
 
+
 func reset_room():
-	room.reset()
+	map_node.set_type(MapNode.EMPTY)
+
 
 func setup_recipes():
 	for child in $Recipes/HBox.get_children():
@@ -30,6 +33,7 @@ func setup_recipes():
 	
 	for combination in combinations:
 		create_display(combination)
+
 
 func create_display(combination):
 	var recipe_display = RECIPE.instance()
@@ -61,9 +65,11 @@ func _on_ContinueButton_pressed():
 	reset_room()
 	emit_signal("closed")
 
+
 func _on_BackButton_pressed():
 	emit_signal("closed")
-	
+
+
 func _on_recipe_chosen(chosen_recipe):
 	for recipe_display in $Recipes/HBox.get_children():
 		if recipe_display != chosen_recipe:
@@ -71,5 +77,3 @@ func _on_recipe_chosen(chosen_recipe):
 
 	emit_signal("combination_rewarded", chosen_recipe.combination)
 	$ContinueButton.show()
-
-

@@ -8,7 +8,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   "spawn": preload("res://assets/images/enemies/intents/summoning.png"),
 			   "special": preload("res://assets/images/enemies/intents/random.png"),
 			  }
-var image = "res://assets/images/enemies/Big Poison Elite/idle.png"
+var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Boss1"
 var sfx = "boss_1"
 var use_idle_sfx = false

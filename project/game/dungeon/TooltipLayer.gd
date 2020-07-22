@@ -43,6 +43,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "rage"
 	},
+	"tough": {
+		"type": "status",
+		"name": "tough"
+	},
 	"freeze": {
 		"type": "status",
 		"name": "freeze"

@@ -11,6 +11,7 @@ const STATUS_IMAGES = {
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
+					   "tough": "res://assets/images/status/random_status.png",
 					   "time_bomb": "res://assets/images/status/random_status.png",
 					   "freeze": "res://assets/images/status/random_status.png",
 					   "curse": "res://assets/images/status/random_status.png",
@@ -44,8 +45,12 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.time_bomb},
 					   "freeze": {
 						"title": "Freeze",
-						"text": "Freezes player hand slots until end of turn.",
+						"text": "Freezes player hand slots until end of turn",
 						"title_image": STATUS_IMAGES.freeze},
+					   "tough": {
+						"title": "Tough",
+						"text": "Shield isn't removed at the end of turn",
+						"title_image": STATUS_IMAGES.tough},
 					   "weak": {
 						"title": "Weak",
 						"text": "This character deals 1/3 less attack damage. Decreases every turn",

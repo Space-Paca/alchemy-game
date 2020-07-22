@@ -608,6 +608,24 @@ func _on_enemy_acted(enemy, actions):
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
 			enemy.remove_status("temp_strength")
+		if name == "self_destruct":
+			#enemy.play_animation("self_destruct")
+			enemy.take_damage(enemy, enemy.hp, "piercing")
+			yield(get_tree().create_timer(.1), "timeout")
+			
+			var func_state = player.take_damage(enemy, args.value + \
+													enemy.get_damage_modifiers(),\
+													"piercing")
+
+			#Wait before going to next action/enemy	
+			if func_state and func_state.is_valid():
+				yield(player, "resolved")
+			else:
+				yield(get_tree().create_timer(.5), "timeout")
+			
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()

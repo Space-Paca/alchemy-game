@@ -22,7 +22,10 @@ const ENEMY_DB = {
 				  "parasiter" : preload("res://database/enemies/Parasiter.gd"),
 				  "timing_bomber" : preload("res://database/enemies/TimingBomber.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
+				  "freezer" : preload("res://database/enemies/Freezer.gd"),
+				  "self_destructor" : preload("res://database/enemies/SelfDestructor.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
+				  "boss_2" : preload("res://database/enemies/Boss2.gd"),
 				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 

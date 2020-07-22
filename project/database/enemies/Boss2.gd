@@ -45,4 +45,3 @@ var actions = {
 		{"name": "add_reagent", "type": "trash", "value": 5}
 	]
 }
-

@@ -6,6 +6,7 @@ onready var nodes = $Nodes
 onready var positions = $FixedPositions
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
+const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const NODE_DIST = 200
 const NODE_DIST_RAND = 50
 
@@ -34,9 +35,11 @@ func shift_positions():
 
 func validate_map(total_nodes:int, normal_enemies:int):
 	var total_positions = positions.get_child_count() - 1 # -1 for initial node
-	var unplaced_normal : int
+	
+	assert(total_positions >= total_nodes, "Map doesn't have enough positions")
 	
 	# Allocate initial position children as normal enemy nodes
+	var unplaced_normal : int
 	if center_position.children.size() > normal_enemies:
 		unplaced_normal = 0
 	else:
@@ -114,11 +117,17 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 			untyped_nodes.append(new_node)
 		
 		### DEBUG LINE ###
-		var line = Line2D.new()
-		line.add_point(starting_pos.global_position)
-		line.add_point(new_pos.global_position)
-		bg.add_child(line)
+#		var line = Line2D.new()
+#		line.add_point(starting_pos.global_position)
+#		line.add_point(new_pos.global_position)
+#		bg.add_child(line)
 		
+		var map_line := MapLine.new()
+		map_line.set_line(starting_pos.global_position, new_pos.global_position)
+		bg.add_child(map_line)
+		
+		
+		starting_pos.node.map_tree_children.append(new_node)
 		total_nodes -= 1
 	
 	### TYPING NODES ###

@@ -1,6 +1,8 @@
 extends Control
 class_name MapNode
 
+signal pressed
+
 onready var button = $Button
 
 enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT}
@@ -17,10 +19,7 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 var is_leaf := true
 var type := EMPTY
 var map_tree_children := []
-
-
-func _ready():
-	pass
+var map_lines := []
 
 
 func set_type(new_type:int):
@@ -30,3 +29,11 @@ func set_type(new_type:int):
 	type = new_type
 	button.texture_normal = IMAGES[type]
 	button.disabled = type == EMPTY
+
+
+func should_autoreveal() -> bool:
+	return type == EMPTY or type == SHOP or type == REST or type == SMITH
+
+
+func _on_Button_pressed():
+	emit_signal("pressed")

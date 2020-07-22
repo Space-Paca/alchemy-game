@@ -2,6 +2,7 @@ extends Control
 
 onready var bg = $Background
 onready var center_position = $FixedPositions/Center
+onready var click_block = $ClickBlock
 onready var nodes = $Nodes
 onready var positions = $FixedPositions
 
@@ -10,10 +11,14 @@ const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const NODE_DIST = 200
 const NODE_DIST_RAND = 50
 
+var active_paths := 0
+var initial_node : MapNode
+
 
 func _ready():
 	randomize()
 	create_map(4, 2)
+	reveal_paths(initial_node)
 	
 	pass
 
@@ -61,7 +66,7 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 	
 	shift_positions()
 	
-	var initial_node : MapNode = MAP_NODE_SCENE.instance()
+	initial_node = MAP_NODE_SCENE.instance()
 	nodes.add_child(initial_node)
 	center_position.node = initial_node
 	var available_starting_positions : Array = [center_position]
@@ -74,9 +79,6 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 		
 		# Draw a random starting position from the pool and a new position from
 		# its children.
-		prints("Total nodes:", total_nodes)
-		print(available_starting_positions.size())
-		print()
 		starting_pos = available_starting_positions[\
 				randi() % available_starting_positions.size()]
 		starting_pos.children.shuffle()
@@ -104,10 +106,14 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 		
 		### NODE CREATION ###
 		var new_node : MapNode = MAP_NODE_SCENE.instance()
+		new_node.visible = false
 		nodes.add_child(new_node)
 		new_node.rect_global_position = new_pos.global_position
 		new_pos.node = new_node
 		starting_pos.node.is_leaf = false
+		starting_pos.node.map_tree_children.append(new_node)
+# warning-ignore:return_value_discarded
+		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
 		
 		# Set new node type as enemy if it originated from the initial node
 		if starting_pos == center_position:
@@ -116,18 +122,12 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 		else:
 			untyped_nodes.append(new_node)
 		
-		### DEBUG LINE ###
-#		var line = Line2D.new()
-#		line.add_point(starting_pos.global_position)
-#		line.add_point(new_pos.global_position)
-#		bg.add_child(line)
-		
+		# Add map line
 		var map_line := MapLine.new()
 		map_line.set_line(starting_pos.global_position, new_pos.global_position)
 		bg.add_child(map_line)
+		starting_pos.node.map_lines.append(map_line)
 		
-		
-		starting_pos.node.map_tree_children.append(new_node)
 		total_nodes -= 1
 	
 	### TYPING NODES ###
@@ -148,3 +148,47 @@ func create_map(normal_encounters:int, elite_encounters:int, shops:int=1,
 			var map_node : MapNode = untyped_nodes.pop_front()
 			map_node.set_type(type)
 			count_by_type[type] -= 1
+	
+	positions.queue_free()
+
+
+func test(node:MapNode):
+	for i in node.map_tree_children.size():
+		var line : MapLine = node.map_lines[i]
+# warning-ignore:return_value_discarded
+		line.connect("filled", self, "test", [node.map_tree_children[i]])
+		line.begin_fill()
+
+
+func reveal_paths(node:MapNode):
+	for i in node.map_tree_children.size():
+		var line : MapLine = node.map_lines[i]
+		var child_node : MapNode = node.map_tree_children[i]
+# warning-ignore:return_value_discarded
+		line.connect("filled", self, "_on_path_reached", [child_node])
+		line.begin_fill()
+		active_paths += 1
+	
+	if active_paths:
+		set_disabled(true)
+
+
+func set_disabled(toggle:bool):
+	click_block.visible = toggle
+
+
+func _on_path_reached(node:MapNode):
+	node.visible = true
+	
+	if node.should_autoreveal():
+		reveal_paths(node)
+	
+	active_paths -= 1
+	
+	if not active_paths:
+		set_disabled(false)
+
+
+func _on_map_node_clicked(node:MapNode):
+	#TEST
+	reveal_paths(node)

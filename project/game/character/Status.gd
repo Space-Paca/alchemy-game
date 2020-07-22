@@ -45,7 +45,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.time_bomb},
 					   "freeze": {
 						"title": "Freeze",
-						"text": "Freezes player hand slots until end of turn",
+						"text": "At start of turn, will freezes player's hand slots until end of turn",
 						"title_image": STATUS_IMAGES.freeze},
 					   "tough": {
 						"title": "Tough",

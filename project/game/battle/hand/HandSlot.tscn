@@ -1,16 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://game/battle/Slot.gd" type="Script" id=1]
+[ext_resource path="res://game/battle/hand/HandSlot.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/Reagent Holder.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/Reagent Holder Frozen.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.2764, 41.2469 )
 
-[node name="HandSlot" type="TextureRect"]
+[node name="HandSlot" type="Control"]
 margin_right = 103.0
 margin_bottom = 93.0
-texture = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RegularImage" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FrozenImage" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

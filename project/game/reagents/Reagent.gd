@@ -1,6 +1,7 @@
 extends Control
 
 const SHAKE_DEGREE = 5
+const FREEZE_SPEED = 3
 
 signal reached_target_pos
 signal started_dragging
@@ -31,19 +32,27 @@ var tooltips_enabled := false
 var block_tooltips := false
 var upgraded := false
 var unstable := false
+var freezed := false
 
 
 func set_image(text):
 	$Image.texture = text
 
 
-func _process(_delta):
+func _process(delta):
+	#Shake effect
 	if shake > 0:
 		randomize()
 		var shake_offset = Vector2(rand_range(-SHAKE_DEGREE, SHAKE_DEGREE), \
 								   rand_range(-SHAKE_DEGREE, SHAKE_DEGREE))
 		rect_position += shake_offset * shake
-
+	
+	#Freeze effect
+	if not is_frozen():
+		$Image.modulate.r = min($Image.modulate.r + FREEZE_SPEED*delta, 1)
+	else:
+		$Image.modulate.r = max($Image.modulate.r - FREEZE_SPEED*delta, 0)
+	
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
@@ -61,6 +70,14 @@ func _process(_delta):
 func quick_place():
 	emit_signal("quick_place", self)
 
+func is_frozen():
+	return freezed
+
+func freeze():
+	freezed = true
+
+func unfreeze():
+	freezed = false
 
 func enable_dragging():
 	can_drag = true

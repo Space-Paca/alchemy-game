@@ -117,6 +117,7 @@ func setup_player(_player):
 	
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
+	player.connect("freeze_hand", self, "_on_player_freeze_hand")
 	
 	player.set_hud(player_ui)
 
@@ -718,6 +719,8 @@ func _on_player_draw_reagent(amount):
 	yield(draw_bag, "drew_reagents")
 	player.draw_reagents_resolve()
 
+func _on_player_freeze_hand(amount: int):
+	$Hand.freeze_slots(amount)
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)
@@ -734,6 +737,9 @@ func _on_PassTurnButton_pressed():
 			reagent.slot.remove_reagent()
 			discard_bag.discard(reagent)
 			yield(get_tree().create_timer(.5), "timeout")
+	
+	#Unfreeze hand
+	$Hand.unfreeze_all_slots()
 	
 	new_enemy_turn()
 

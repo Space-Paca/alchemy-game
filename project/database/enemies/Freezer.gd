@@ -8,9 +8,9 @@ var hp = 30
 var battle_init = true
 var size = "medium"
 
-var states = ["init", "freeze_init", "attack", "attack2", "freeze", "spawn", "buff"]
-var connections = [   ["init", "freeze_init", 1],
-					  ["freeze_init", "attack", 1],
+var states = ["init", "attack", "attack2", "freeze", "spawn", "buff"]
+var connections = [   
+					  ["init", "attack", 1],
 					  ["attack", "spawn", 4],
 					  ["attack", "attack2", 2],
 					  ["attack", "freeze", 3],
@@ -21,14 +21,12 @@ var connections = [   ["init", "freeze_init", 1],
 					  ["freeze", "attack", 3],
 					  ["freeze", "buff", 1],
 				  ]
-var first_state = ["freeze_init"]
+var first_state = ["init"]
 
 var actions = {
 	"init": [
 		{"name": "shield", "value": 80},
-		{"name": "status", "status_name": "tough", "value": 0, "target": "self", "positive": true}
-	],
-	"freeze_init": [
+		{"name": "status", "status_name": "tough", "value": 0, "target": "self", "positive": true},
 		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false},
 	],
 	"attack": [

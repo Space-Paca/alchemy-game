@@ -45,7 +45,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "explode"
 length = 0.5
 tracks/0/type = "value"
@@ -99,8 +99,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Image:modulate")
@@ -139,8 +138,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "unstable"
+[sub_resource type="Animation" id=7]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -207,9 +205,9 @@ position = Vector2( 37.5267, -48.1825 )
 autoplay = "idle"
 playback_process_mode = 0
 anims/destroy = SubResource( 4 )
-anims/explode = SubResource( 7 )
-anims/idle = SubResource( 5 )
-anims/unstable = SubResource( 6 )
+anims/explode = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/unstable = SubResource( 7 )
 
 [node name="Upgraded" type="TextureRect" parent="."]
 margin_right = 40.0

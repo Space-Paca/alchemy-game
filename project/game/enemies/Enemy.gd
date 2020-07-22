@@ -186,8 +186,9 @@ func act():
 	
 	emit_signal("acted")
 	
-	logic.update_state()
-	update_action()
+	if hp > 0:
+		logic.update_state()
+		update_action()
 	
 
 

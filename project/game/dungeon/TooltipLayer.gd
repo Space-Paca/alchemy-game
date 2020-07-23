@@ -43,6 +43,18 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "rage"
 	},
+	"tough": {
+		"type": "status",
+		"name": "tough"
+	},
+	"freeze": {
+		"type": "status",
+		"name": "freeze"
+	},
+	"time bomb": {
+		"type": "status",
+		"name": "time_bomb"
+	},
 	"curse": {
 		"type": "status",
 		"name": "curse"
@@ -65,7 +77,13 @@ const KEYWORDS = {
 		"type": "tooltip",
 		"title": "Drain",
 		"text": "Deals regular damage and heals any unblocked damage.",
-		"title_image": preload("res://assets/images/enemies/intents/attack_piercing.png"),
+		"title_image": preload("res://assets/images/enemies/intents/attack_crushing.png"),
+	},
+	"unstable": {
+		"type": "tooltip",
+		"title": "Unstable",
+		"text": "An unstable reagent, if not used properly or until end of turn, explodes dealing 3 regular damage.",
+		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
 }
 

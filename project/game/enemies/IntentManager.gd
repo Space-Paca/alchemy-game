@@ -5,6 +5,7 @@ const IMAGES = {
 	"piercing_attack": preload("res://assets/images/enemies/intents/attack_piercing.png"),
 	"crushing_attack": preload("res://assets/images/enemies/intents/attack_crushing.png"),
 	"drain": preload("res://assets/images/enemies/intents/attack_crushing.png"),
+	"self_destruct": preload("res://assets/images/enemies/intents/self_destruct.png"),
 	"shield": preload("res://assets/images/enemies/intents/blocking.png"),
 	"buff": preload("res://assets/images/enemies/intents/buffing.png"),
 	"debuff": preload("res://assets/images/enemies/intents/debuffing.png"),
@@ -33,6 +34,9 @@ func create_intent_data(action):
 		intent.value = args.value
 		if args.amount > 1:
 			intent.multiplier = args.amount
+	elif name == "self_destruct":
+		intent.image = IMAGES.self_destruct
+		intent.value = args.value
 	elif name == "shield":
 		intent.image = IMAGES.shield
 		intent.value = args.value
@@ -77,6 +81,10 @@ func get_intent_tooltip(action):
 		tooltip.title = "Defending"
 		tooltip.text = "This enemy is getting " + str(args.value) + " shield next turn."
 		tooltip.title_image = IMAGES.shield
+	elif name == "self_destruct":
+		tooltip.title = "Self Destructing"
+		tooltip.text = "This enemy will destroy itself next turn, dealing " + str(args.value) + " piercing damage to the player as result."
+		tooltip.title_image = IMAGES.self_destruct
 	elif name == "status":
 		if args.positive:
 			tooltip.title_image = IMAGES.buff
@@ -112,6 +120,15 @@ func get_intent_tooltip(action):
 		elif args.status == "rage":
 			tooltip.title = "Raging"
 			tooltip.text += "rage"
+		elif args.status == "tough":
+			tooltip.title = "Getting Tough"
+			tooltip.text += "tough"
+		elif args.status == "time_bomb":
+			tooltip.title = "Time Bombing"
+			tooltip.text += "time bomb"
+		elif args.status == "freeze":
+			tooltip.title = "Freezing"
+			tooltip.text += "freeze"
 		elif args.status == "parasite":
 			tooltip.title = "Parasating"
 			tooltip.text += "parasite"

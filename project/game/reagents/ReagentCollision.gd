@@ -6,7 +6,7 @@ onready var reagent = get_parent()
 var hovering = false
 
 func _input(event):
-	if event is InputEventMouseMotion and reagent.can_drag:
+	if event is InputEventMouseMotion and reagent.can_drag and not reagent.is_frozen():
 		var mouse_pos = get_local_mouse_position()
 		if reagent.hovering and not \
 		   (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
@@ -17,13 +17,13 @@ func _input(event):
 			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
 				reagent.start_hovering()
 	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
-		if event.pressed and reagent.can_drag:
+		if event.pressed and reagent.can_drag and not reagent.is_frozen():
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
 				reagent.quick_place()
 	elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-		if event.pressed and reagent.can_drag:
+		if event.pressed and reagent.can_drag and not reagent.is_frozen():
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
@@ -46,12 +46,12 @@ func _input(event):
 							nearest_slot_area = area
 			if nearest_slot_area:
 				var slot = nearest_slot_area.get_parent()
-				if not slot.get_reagent():
+				if not slot.get_reagent() and not (slot.type == "hand" and slot.is_frozen()):
 					slot.set_reagent(reagent)
 					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
 						reagent.can_drag = false
-				else:
-					#In case there alraedy was a reagent in that slot, switch places
+				elif not slot.type == "hand" or not slot.is_frozen():
+					#In case there alraedy was a reagent in that slot (and isn't frozen), switch places
 					var other_reagent = slot.get_reagent()
 					var previous_slot = reagent.slot
 					other_reagent.slot = null
@@ -59,4 +59,6 @@ func _input(event):
 					previous_slot.set_reagent(other_reagent)
 					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
 						reagent.can_drag = false
+				else:
+					AudioManager.play_sfx("error")
 

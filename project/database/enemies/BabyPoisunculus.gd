@@ -2,8 +2,8 @@ extends Reference
 
 var image = "res://assets/images/enemies/small poison enemy/idle.png"
 var name = "Venenin"
-var sfx = "slime"
-var use_idle_sfx = true
+var sfx = "toxic_slime_minion"
+var use_idle_sfx = false
 var hp = 6
 var battle_init = true
 var size = "small"

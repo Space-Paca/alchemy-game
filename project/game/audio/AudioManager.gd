@@ -37,7 +37,7 @@ onready var CUR_IDLE_SFX = {}
 const LOC_PATH = "res://database/audio/locs/"
 onready var LOCS = {}
 
-var bgms_last_pos = {"battle": 0, "map":0, "boss1":0, "shop":0, "menu":0, "rest":0, "blacksmith":0}
+var bgms_last_pos = {}
 var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false
@@ -48,6 +48,13 @@ func _ready():
 	setup_sfxs()
 	setup_locs()
 
+func get_bgm_last_pos(name):
+	if not bgms_last_pos.has(name):
+		bgms_last_pos[name] = 0
+	return bgms_last_pos[name]
+
+func set_bgm_last_pos(name, pos):
+	bgms_last_pos[name] = pos
 
 func setup_bgms():
 	var dir = Directory.new()
@@ -216,7 +223,7 @@ func play_bgm(name, layers = false, start_from_beginning = false):
 		if start_from_beginning:
 			$BGMPlayer1.play(0)
 		else:
-			$BGMPlayer1.play(bgms_last_pos[name])
+			$BGMPlayer1.play(get_bgm_last_pos(name))
 		var duration = (BGMS[name].base_db - MUTE_DB)/float(FADEIN_SPEED)
 		$Tween.remove($BGMPlayer1, "volume_db")
 		$Tween.interpolate_property($BGMPlayer1, "volume_db", MUTE_DB, BGMS[name].base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
@@ -230,7 +237,7 @@ func play_bgm(name, layers = false, start_from_beginning = false):
 			if start_from_beginning:
 				player.play(0)
 			else:
-				player.play(bgms_last_pos[name])
+				player.play(get_bgm_last_pos(name))
 			var duration = (layer.base_db - MUTE_DB)/float(FADEIN_SPEED)
 			$Tween.remove(player, "volume_db")
 			$Tween.interpolate_property(player, "volume_db", MUTE_DB, layer.base_db, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
@@ -245,7 +252,7 @@ func stop_bgm():
 		if fadein.is_playing():
 			var fadeout = get_node("FadeOutBGMPlayer"+str(i))
 			var pos = fadein.get_playback_position()
-			bgms_last_pos[cur_bgm] = pos
+			set_bgm_last_pos(cur_bgm, pos)
 			var vol = fadein.volume_db
 			fadein.stop()
 			fadeout.stop()

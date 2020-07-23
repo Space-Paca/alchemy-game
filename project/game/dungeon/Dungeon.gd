@@ -41,14 +41,15 @@ func _ready():
 	
 	create_level(floor_level)
 	
-	AudioManager.play_bgm("map")
-
+	play_map_bgm()
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled):
 			recipe_book.toggle_visibility()
 
+func play_map_bgm():
+	AudioManager.play_bgm("map" + str(floor_level))
 
 func create_combinations():
 	for recipe in RecipeManager.recipes.values():
@@ -197,7 +198,7 @@ func new_battle(encounter: Encounter):
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
 	
-	battle.setup(player, encounter, favorite_combinations)
+	battle.setup(player, encounter, favorite_combinations, floor_level)
 # warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 # warning-ignore:return_value_discarded
@@ -327,6 +328,10 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 	var combination = get_combination_in_grid(reagent_matrix)
 	if combination:
 		AudioManager.play_sfx("combine_success")
+		#Fix unstable reagents
+		for reagent in reagent_list:
+			if reagent.unstable:
+				reagent.toggle_unstable()
 		make_combination(combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")
@@ -376,7 +381,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 func _on_Shop_closed():
 	shop.hide()
 	map.show()
-	AudioManager.play_bgm("map")
+	play_map_bgm()
 
 
 func _on_Shop_combination_bought(combination: Combination):
@@ -410,12 +415,12 @@ func _on_Debug_floor_selected(floor_number: int):
 
 
 func _on_Rest_closed():
-	rest.hide()
+	rest.hide(
 	map.show()
-	AudioManager.play_bgm("map")
+	play_map_bgm()
 
 
 func _on_Blacksmith_closed():
 	smith.hide()
 	map.show()
-	AudioManager.play_bgm("map")
+	play_map_bgm()

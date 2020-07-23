@@ -8,8 +8,7 @@ signal reagent_removed
 onready var area = $Area2D
 
 var current_reagent = null
-var type = "hand"
-
+var type = null
 
 func get_reagent():
 	return current_reagent

@@ -39,6 +39,7 @@ const MAX_ENEMIES = 4
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 
+var floor_level
 var ended := false
 var player_disabled := true
 var is_boss
@@ -47,6 +48,7 @@ var player
 var win_screen
 var is_dragging_reagent := false
 var recipes_created
+var current_encounter
 
 
 func _ready():
@@ -55,8 +57,11 @@ func _ready():
 	Debug.connect("battle_won", self, "_on_Debug_battle_won")
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
-	setup_nodes()
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
+	floor_level = _floor_level
+	current_encounter = encounter
+	
+	setup_nodes(_player)
 	
 	setup_player(_player)
 	
@@ -83,10 +88,13 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array):
 	new_player_turn()
 
 
-func setup_nodes():
+func setup_nodes(_player):
+	draw_bag.player = _player
 	draw_bag.hand = hand
 	draw_bag.reagents = reagents
 	draw_bag.discard_bag = discard_bag
+	discard_bag.player = _player
+	discard_bag.connect("reagent_exploded", self, "damage_player")
 	grid.discard_bag = discard_bag
 	grid.hand = hand
 
@@ -109,6 +117,7 @@ func setup_player(_player):
 	
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
+	player.connect("freeze_hand", self, "_on_player_freeze_hand")
 	
 	player.set_hud(player_ui)
 
@@ -189,7 +198,7 @@ func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
 		AudioManager.play_bgm("boss1", 3)
 	else:
-		AudioManager.play_bgm("battle", 3)
+		AudioManager.play_bgm("battle" + str(floor_level), 3)
 	AudioManager.play_ambience("forest")
 	player_ui.update_audio(player.hp, player.max_hp)
 
@@ -279,8 +288,6 @@ func new_player_turn():
 
 
 func new_enemy_turn():
-	disable_player()
-	
 	if not grid.is_empty():
 		grid.return_to_hand()
 		yield(grid, "returned_to_hand")
@@ -426,6 +433,8 @@ func win():
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
 	
+	setup_win_screen(current_encounter)
+	
 	ended = true
 	
 	TooltipLayer.clean_tooltips()
@@ -531,9 +540,10 @@ func spawn_new_enemy(origin: Enemy, new_enemy: String):
 		add_enemy(new_enemy, origin.get_center_position(), true)
 		update_enemy_positions()
 
-func damage_player(enemy, value, type):
-	var amount = value + enemy.get_damage_modifiers()
-	player.take_damage(enemy, amount, type)
+func damage_player(source, value, type, use_modifiers:= true):
+	var mod = source.get_damage_modifiers() if use_modifiers else 0
+	var amount = value + mod
+	player.take_damage(source, amount, type)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -599,6 +609,24 @@ func _on_enemy_acted(enemy, actions):
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
 			enemy.remove_status("temp_strength")
+		if name == "self_destruct":
+			#enemy.play_animation("self_destruct")
+			enemy.take_damage(enemy, enemy.hp, "piercing")
+			yield(get_tree().create_timer(.1), "timeout")
+			
+			var func_state = player.take_damage(enemy, args.value + \
+													enemy.get_damage_modifiers(),\
+													"piercing")
+
+			#Wait before going to next action/enemy	
+			if func_state and func_state.is_valid():
+				yield(player, "resolved")
+			else:
+				yield(get_tree().create_timer(.5), "timeout")
+			
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()
@@ -691,6 +719,8 @@ func _on_player_draw_reagent(amount):
 	yield(draw_bag, "drew_reagents")
 	player.draw_reagents_resolve()
 
+func _on_player_freeze_hand(amount: int):
+	$Hand.freeze_slots(amount)
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)
@@ -698,6 +728,18 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 func _on_PassTurnButton_pressed():
 	player.update_status("end_turn")
+	
+	disable_player()
+	
+	#Check for unstable reagents
+	for reagent in $Reagents.get_children():
+		if reagent.unstable:
+			reagent.slot.remove_reagent()
+			discard_bag.discard(reagent)
+			yield(get_tree().create_timer(.5), "timeout")
+	
+	#Unfreeze hand
+	$Hand.unfreeze_all_slots()
 	
 	new_enemy_turn()
 
@@ -707,7 +749,7 @@ func _on_RecipesButton_pressed():
 
 
 func _on_win_screen_continue_pressed():
-	AudioManager.play_bgm("map")
+	AudioManager.play_bgm("map" + str(floor_level))
 	emit_signal("finished", is_boss)
 	queue_free()
 

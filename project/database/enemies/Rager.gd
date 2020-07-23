@@ -2,9 +2,9 @@ extends Reference
 
 var image = "res://assets/images/enemies/dodge enemy/idle.png"
 var name = "Rager"
-var sfx = "slime"
+var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 60
+var hp = 80
 var battle_init = true
 var size = "medium"
 
@@ -13,6 +13,7 @@ var connections = [
 					  ["init", "attack1", 1],
 					  ["attack1", "attack2", 1],
 					  ["attack2", "attack3", 1],
+					  ["attack3", "attack1", 1],
 				  ]
 var first_state = ["init"]
 

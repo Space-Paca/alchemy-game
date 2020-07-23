@@ -2,7 +2,7 @@ extends Reference
 
 var image = "res://assets/images/enemies/homunculus/idle.png"
 var name = "Big Divider"
-var sfx = "slime"
+var sfx = "toxic_slime"
 var use_idle_sfx = true
 var hp = 40
 var battle_init = true

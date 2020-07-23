@@ -3,12 +3,14 @@ extends Node2D
 const TOOLTIP_LINE_HEIGHT = 34
 
 signal reagent_discarded(reagent)
+signal reagent_exploded
 
 onready var center = $Center
 onready var counter = $Counter
 onready var discarded_reagents = $DiscardedReagents
 onready var texture_rect = $TextureRect
 
+var player = null #Setted by parent
 var tooltips_enabled := false
 var block_tooltips := false
 
@@ -39,6 +41,11 @@ func is_empty():
 	return discarded_reagents.get_child_count() == 0
 
 func discard(reagent):
+	if reagent.unstable:
+		reagent.toggle_unstable()
+		reagent.explode()
+		yield(reagent, "exploded")
+		emit_signal("reagent_exploded", player, 3, "regular", false)
 	reagent.slot = null
 	reagent.can_drag = false
 	reagent.target_position = get_center()

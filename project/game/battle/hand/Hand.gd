@@ -79,11 +79,24 @@ func set_hand(number: int):
 		elif i > number/4:
 			y = y - V_OFFSET
 
+func freeze_slots(amount: int):
+	for slot in slots.get_children():
+		if not slot.is_frozen():
+			amount -= 1
+			slot.freeze()
+			AudioManager.play_sfx("freeze_slot")
+			if amount <= 0:
+				break
+
+func unfreeze_all_slots():
+	for slot in slots.get_children():
+		if slot.is_frozen():
+			slot.unfreeze()
 
 func available_slot_count():
 	var count = 0
 	for slot in slots.get_children():
-		if not slot.get_reagent():
+		if not slot.get_reagent() and not slot.is_frozen():
 			count += 1
 	return count
 
@@ -91,7 +104,7 @@ func available_slot_count():
 #Places a reagent in an empty position, throws error if unable
 func place_reagent(reagent):
 	for slot in slots.get_children():
-		if not slot.get_reagent():
+		if not slot.get_reagent() and not slot.is_frozen():
 			slot.set_reagent(reagent)
 			yield(slot, "reagent_set")
 			emit_signal("reagent_placed")

@@ -8,7 +8,7 @@ var intents = {"attack": preload("res://assets/images/enemies/intents/attack_nor
 			   "spawn": preload("res://assets/images/enemies/intents/summoning.png"),
 			   "special": preload("res://assets/images/enemies/intents/random.png"),
 			  }
-var image = "res://assets/images/enemies/Big Poison Elite/idle.png"
+var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Boss1"
 var sfx = "boss_1"
 var use_idle_sfx = false
@@ -45,40 +45,4 @@ var actions = {
 		{"name": "add_reagent", "type": "trash", "value": 5}
 	]
 }
-
-func get_intent_tooltips(state):
-	var tooltips = []
-	
-	if state == "attack1" or state == "attack2":
-		var tooltip = {}
-		tooltip.title = "Attacking"
-		tooltip.text = "This enemy is attacking next turn"
-		tooltip.title_image = intents.attack.get_path()
-		tooltips.append(tooltip)
-	elif state == "init":
-		var tooltip = {}
-		tooltip.title = "Buffing"
-		tooltip.text = "This enemy is buffing"
-		tooltip.title_image = intents.buff.get_path()
-		tooltips.append(tooltip)
-	elif state == "start":
-		var tooltip = {}
-		tooltip.title = "Contaminating"
-		tooltip.text = "This enemy is making a special attack"
-		tooltip.title_image = intents.debuff.get_path()
-		tooltips.append(tooltip)
-	elif state == "buff_reagent":
-		var tooltip1 = {}
-		tooltip1.title = "Buffing"
-		tooltip1.text = "This enemy is getting stronger"
-		tooltip1.title_image = intents.buff.get_path()
-		tooltips.append(tooltip1)
-		var tooltip2 = {}
-		tooltip2.title = "Contaminating"
-		tooltip2.text = "This enemy is making a special attack"
-		tooltip2.title_image = intents.debuff.get_path()
-		tooltips.append(tooltip2)
-	
-	
-	return tooltips
 

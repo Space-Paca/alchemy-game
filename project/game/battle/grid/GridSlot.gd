@@ -31,6 +31,5 @@ func set_hint(reagent_name):
 		reagent_hint.texture = null
 		reagent_hint_name = null
 
-
 func get_hint():
 	return reagent_hint_name

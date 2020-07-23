@@ -11,6 +11,9 @@ const STATUS_IMAGES = {
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
+					   "tough": "res://assets/images/status/random_status.png",
+					   "time_bomb": "res://assets/images/status/random_status.png",
+					   "freeze": "res://assets/images/status/random_status.png",
 					   "curse": "res://assets/images/status/random_status.png",
 					   "parasite": "res://assets/images/status/random_status.png",
 					   "weak": "res://assets/images/status/random_status.png",
@@ -36,6 +39,18 @@ const STATUS_TOOLTIPS = {
 						"title": "Temporary Strength",
 						"text": "Increases the damage of this character next attack",
 						"title_image": STATUS_IMAGES.temp_strength},
+					   "time_bomb": {
+						"title": "Time Bomb",
+						"text": "Player will draw unstable reagents",
+						"title_image": STATUS_IMAGES.time_bomb},
+					   "freeze": {
+						"title": "Freeze",
+						"text": "At start of turn, will freezes player's hand slots until end of turn",
+						"title_image": STATUS_IMAGES.freeze},
+					   "tough": {
+						"title": "Tough",
+						"text": "Shield isn't removed at the end of turn",
+						"title_image": STATUS_IMAGES.tough},
 					   "weak": {
 						"title": "Weak",
 						"text": "This character deals 1/3 less attack damage. Decreases every turn",

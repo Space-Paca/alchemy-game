@@ -1,8 +1,8 @@
 extends Reference
 
-var image = "res://assets/images/enemies/spawner poison enemy/idle.png"
+var image = "res://assets/images/enemies/elite dodger/idle.png"
 var name = "Elite Dodger"
-var sfx = "slime"
+var sfx = "eye_crab"
 var use_idle_sfx = true
 var hp = 45
 var battle_init = true

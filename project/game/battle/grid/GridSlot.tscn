@@ -14,6 +14,9 @@ margin_right = -1837.0
 margin_bottom = -997.0
 rect_min_size = Vector2( 83, 83 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FullImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )

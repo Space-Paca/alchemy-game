@@ -1,6 +1,7 @@
 extends Control
 
 const SHAKE_DEGREE = 5
+const FREEZE_SPEED = 3
 
 signal reached_target_pos
 signal started_dragging
@@ -10,6 +11,7 @@ signal hovering
 signal stopped_hovering
 signal finished_combine_animation
 signal destroyed
+signal exploded
 
 onready var image = $Image
 
@@ -29,19 +31,28 @@ var effect_mod := 1.0
 var tooltips_enabled := false
 var block_tooltips := false
 var upgraded := false
+var unstable := false
+var freezed := false
 
 
 func set_image(text):
 	$Image.texture = text
 
 
-func _process(_delta):
+func _process(delta):
+	#Shake effect
 	if shake > 0:
 		randomize()
 		var shake_offset = Vector2(rand_range(-SHAKE_DEGREE, SHAKE_DEGREE), \
 								   rand_range(-SHAKE_DEGREE, SHAKE_DEGREE))
 		rect_position += shake_offset * shake
-
+	
+	#Freeze effect
+	if not is_frozen():
+		$Image.modulate.r = min($Image.modulate.r + FREEZE_SPEED*delta, 1)
+	else:
+		$Image.modulate.r = max($Image.modulate.r - FREEZE_SPEED*delta, 0)
+	
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
@@ -59,6 +70,14 @@ func _process(_delta):
 func quick_place():
 	emit_signal("quick_place", self)
 
+func is_frozen():
+	return freezed
+
+func freeze():
+	freezed = true
+
+func unfreeze():
+	freezed = false
 
 func enable_dragging():
 	can_drag = true
@@ -193,6 +212,24 @@ func disable():
 func enable():
 	block_tooltips = false
 
+func toggle_unstable():
+	unstable = not unstable
+	if unstable:
+		$AnimationPlayer.play("unstable")
+		randomize()
+		$AnimationPlayer.seek(rand_range(0,1.5))
+	else:
+		$AnimationPlayer.play("idle")
+
+func explode():
+	$AnimationPlayer.play("explode")
+
+func explode_end():
+	AudioManager.play_sfx("reagent_explosion")
+	$AnimationPlayer.play("idle")
+	emit_signal("exploded")
+	
+
 func upgrade():
 	upgraded = true
 	$Image/Upgraded.show()
@@ -224,6 +261,8 @@ func get_tooltips():
 	else:
 		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
 			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
+	if unstable:
+		text += " It's unstable."
 
 	var tooltip = {"title": data.name, "text": text, \
 				   "title_image": data.image.get_path()}

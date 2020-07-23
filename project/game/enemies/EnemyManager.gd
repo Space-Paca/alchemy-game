@@ -4,6 +4,7 @@ const ENEMY_DB = {
 				  "humunculus": preload("res://database/enemies/Homunculus.gd"),
 				  "spawner_humunculus": preload("res://database/enemies/SpawnerHomunculus.gd"),
 				  "baby_humunculus": preload("res://database/enemies/BabyHomunculus.gd"),
+				  "baby_humunculus_plus": preload("res://database/enemies/BabyHomunculusPlus.gd"),
 				  "big_buffer": preload("res://database/enemies/BigBuffer.gd"),
 				  "delayed_hitter": preload("res://database/enemies/DelayedHitter.gd"),
 				  "delayed_hitter_plus": preload("res://database/enemies/DelayedHitterPlus.gd"),
@@ -19,8 +20,12 @@ const ENEMY_DB = {
 				  "rager" : preload("res://database/enemies/Rager.gd"),
 				  "curser" : preload("res://database/enemies/Curser.gd"),
 				  "parasiter" : preload("res://database/enemies/Parasiter.gd"),
+				  "timing_bomber" : preload("res://database/enemies/TimingBomber.gd"),
 				  "elite_dodger" : preload("res://database/enemies/EliteDodger.gd"),
+				  "freezer" : preload("res://database/enemies/Freezer.gd"),
+				  "self_destructor" : preload("res://database/enemies/SelfDestructor.gd"),
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
+				  "boss_2" : preload("res://database/enemies/Boss2.gd"),
 				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 

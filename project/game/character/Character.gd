@@ -4,6 +4,7 @@ class_name Character
 signal died
 signal spawn_new_enemy
 signal damage_player
+signal freeze_hand
 
 var max_hp : int
 var hp : int
@@ -184,7 +185,7 @@ func update_status(type: String):
 	for status in status_list:
 		f_name = type + "_"+ str(status)
 		if self.has_method(f_name):
-			var func_state = self.callv(f_name, [status])
+			var func_state = self.callv(f_name, [])
 			if func_state and func_state.is_valid():
 				emit = true
 				yield(self, "status_effect_completed")
@@ -193,7 +194,7 @@ func update_status(type: String):
 
 #STATUS METHODS
 
-func on_death_divider(_args):
+func on_death_divider():
 	var status = get_status("divider")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
@@ -203,26 +204,35 @@ func on_death_revenge(_args):
 	emit_signal("damage_player", self, status.amount, "regular")
 
 func start_turn_shield():
-	shield = 0
+	if not get_status("tough"):
+		shield = 0
 
-func start_turn_evasion(_args):
+func start_turn_freeze():
+	var status = get_status("freeze")
+	emit_signal("freeze_hand", status.amount)
+	remove_status("freeze")
+
+func start_turn_evasion():
 	remove_status("evasion")
 
-func start_turn_retaliate(_args):
+func start_turn_retaliate():
 	remove_status("retaliate")
 
-func start_turn_dodge(_args):
+func start_turn_dodge():
 	remove_status("dodge")
 
-func end_turn_poison(_args):
+func end_turn_poison():
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")
 
-func end_turn_weak(_args):
+func end_turn_weak():
 	var status = get_status("weak")
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("weak")
+
+func end_turn_time_bomb():
+	remove_status("time_bomb")

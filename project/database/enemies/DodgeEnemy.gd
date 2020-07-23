@@ -1,8 +1,8 @@
 extends Reference
 
-var image = "res://assets/images/enemies/homunculus/idle.png"
+var image = "res://assets/images/enemies/dodge enemy/idle.png"
 var name = "Dodge Enemy"
-var sfx = "enemy_2"
+var sfx = "rhyno_bird"
 var use_idle_sfx = false
 var hp = 28
 var battle_init = true

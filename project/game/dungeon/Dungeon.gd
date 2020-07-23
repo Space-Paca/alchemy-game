@@ -418,7 +418,7 @@ func _on_Debug_floor_selected(floor_number: int):
 
 
 func _on_Rest_closed():
-	rest.hide(
+	rest.hide()
 	map.show()
 	play_map_bgm()
 

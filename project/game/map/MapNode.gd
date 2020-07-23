@@ -8,13 +8,13 @@ onready var button = $Button
 enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT}
 
 const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
-		preload("res://assets/images/map/slime.png"),
-		preload("res://assets/images/map/elite-slime.png"),
-		preload("res://assets/images/map/skull.png"),
-		preload("res://assets/images/map/coin.png"),
-		preload("res://assets/images/map/fire-zone.png"),
-		preload("res://assets/images/map/anvil-impact.png"),
-		preload("res://assets/images/map/anvil-impact.png")]
+		preload("res://assets/images/map/enemy.png"),
+		preload("res://assets/images/map/elite.png"),
+		preload("res://assets/images/map/boss-open2.png"),
+		preload("res://assets/images/map/shop.png"),
+		preload("res://assets/images/map/descanso.png"),
+		preload("res://assets/images/map/reagents.png"),
+		preload("res://assets/images/map/eventos.png")]
 
 var encounter : Encounter
 var is_leaf := true

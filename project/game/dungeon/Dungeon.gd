@@ -75,6 +75,9 @@ func create_level(level: int):
 	add_child(map)
 	match level:
 		1:
+			# ( *∀*)y─┛
+			#  ______________
+			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
 			map.create_map(4, 2, 0)
 		2:
 			map.create_map(6, 3, 0)

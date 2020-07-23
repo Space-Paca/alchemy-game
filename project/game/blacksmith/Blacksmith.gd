@@ -5,12 +5,12 @@ signal closed
 onready var reagent_list = $ClickableReagentList
 
 var player
-var room
+var map_node : MapNode
 var state
 var chosen_reagent_index
 
 
-func setup(_room, _player):
+func setup(node, _player):
 	$Upgrade.show()
 	reagent_list.clear()
 	reagent_list.hide()
@@ -21,7 +21,7 @@ func setup(_room, _player):
 	
 	$GemAmount.text = "x" + str(_player.gems)
 	state = "start"
-	room = _room
+	map_node = node
 	player = _player
 
 

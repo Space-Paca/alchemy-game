@@ -1,7 +1,8 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/audio/LOC.gd" type="Script" id=1]
-[ext_resource path="res://assets/audio/loc/final/eye_crab_hit_var3.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/loc/eye_crab/eye_crab_hit_var3.wav" type="AudioStream" id=2]
+
 
 [resource]
 script = ExtResource( 1 )

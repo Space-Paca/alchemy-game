@@ -1,7 +1,10 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/audio/LOC.gd" type="Script" id=1]
-[ext_resource path="res://assets/audio/loc/final/rhyno_bird_hit_var2.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/loc/rhyno_bird/rhyno_bird_hit_var2.wav" type="AudioStream" id=2]
+
+
+
 
 [resource]
 script = ExtResource( 1 )

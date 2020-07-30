@@ -118,6 +118,7 @@ func setup_player(_player):
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
 	player.connect("freeze_hand", self, "_on_player_freeze_hand")
+	player.connect("restrict", self, "_on_player_restrict")
 	
 	player.set_hud(player_ui)
 
@@ -737,6 +738,9 @@ func _on_player_draw_reagent(amount):
 func _on_player_freeze_hand(amount: int):
 	$Hand.freeze_slots(amount)
 
+func _on_player_restrict(amount: int, type: String):
+	$Grid.restrict(amount, type)
+
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)
 
@@ -755,6 +759,8 @@ func _on_PassTurnButton_pressed():
 	
 	#Unfreeze hand
 	$Hand.unfreeze_all_slots()
+	#Unrestrict grid
+	$Grid.unrestrict_all_slots()
 	
 	new_enemy_turn()
 

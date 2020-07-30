@@ -46,12 +46,15 @@ func _input(event):
 							nearest_slot_area = area
 			if nearest_slot_area:
 				var slot = nearest_slot_area.get_parent()
-				if not slot.get_reagent() and not (slot.type == "hand" and slot.is_frozen()):
+				if not slot.get_reagent() and \
+				   not (slot.type == "hand" and slot.is_frozen()) and \
+				   not (slot.type == "grid" and slot.is_restricted()):
 					slot.set_reagent(reagent)
 					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
 						reagent.can_drag = false
-				elif not slot.type == "hand" or not slot.is_frozen():
-					#In case there alraedy was a reagent in that slot (and isn't frozen), switch places
+				elif not (slot.type == "hand" and slot.is_frozen()) and \
+					 not (slot.type == "grid" and slot.is_restricted()):
+					#In case there already was a reagent in that slot (and isn't frozen), switch places
 					var other_reagent = slot.get_reagent()
 					var previous_slot = reagent.slot
 					other_reagent.slot = null

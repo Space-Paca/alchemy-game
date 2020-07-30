@@ -5,6 +5,7 @@ signal died
 signal spawn_new_enemy
 signal damage_player
 signal freeze_hand
+signal restrict
 
 var max_hp : int
 var hp : int
@@ -210,7 +211,14 @@ func start_turn_shield():
 func start_turn_freeze():
 	var status = get_status("freeze")
 	emit_signal("freeze_hand", status.amount)
-	remove_status("freeze")
+
+func start_turn_restrict_minor():
+	var status = get_status("restrict_minor")
+	emit_signal("restrict", status.amount, "minor")
+
+func start_turn_restrict_major():
+	var status = get_status("restrict_major")
+	emit_signal("restrict", status.amount, "major")
 
 func start_turn_evasion():
 	remove_status("evasion")
@@ -227,6 +235,15 @@ func end_turn_poison():
 	status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")
+
+func end_turn_freeze():
+	remove_status("freeze")
+
+func end_turn_restrict_minor():
+	remove_status("restrict_minor")
+
+func end_turn_restrict_major():
+	remove_status("restrict_major")
 
 func end_turn_weak():
 	var status = get_status("weak")

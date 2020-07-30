@@ -12,7 +12,7 @@ var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Boss2"
 var sfx = "boss_1"
 var use_idle_sfx = false
-var hp = 1#20
+var hp = 120
 var battle_init = true
 var size = "big"
 
@@ -20,7 +20,7 @@ var states = ["start", "attack1", "attack2", "attack3", "attack4", "attack5", \
 			  "restrict_buff", "spawn1", "spawn2", "spawn3"]
 var connections = [
 					  ["start", "attack1", 1],
-					  ["attack1", "spawn1", 1],
+					  ["attack1", "attack2", 1],
 					  ["attack2", "attack3", 1],
 					  ["attack3", "attack4", 1],
 					  ["attack4", "attack5", 1],

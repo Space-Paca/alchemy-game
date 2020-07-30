@@ -181,6 +181,42 @@ func clear_hint():
 	for slot in slots.get_children():
 		slot.set_hint(null)
 
+func restrict(amount: int, type: String):
+	var unrestricted_slots = []
+	
+	#Get only edge slots
+	if type == "minor":
+		for i in range(0,grid_size):
+			for j in range(0,grid_size):
+				if i == 0 or i == grid_size -1 or \
+				   j == 0 or j == grid_size -1:
+					var slot = $Slots.get_child(i + j*grid_size)
+					if not slot.is_restricted():
+						unrestricted_slots.append(slot)
+	#Get only central slots
+	elif type == "major":
+		for i in range(0,grid_size):
+			for j in range(0,grid_size):
+				if i != 0 and i != grid_size -1 and \
+				   j != 0 and j != grid_size -1:
+					var slot = $Slots.get_child(i + j*grid_size)
+					if not slot.is_restricted():
+						unrestricted_slots.append(slot)
+	else:
+		assert(false, "Not a valid type of restriction: " + str(type))
+	
+	while amount > 0 and unrestricted_slots.size() > 0:
+			randomize()
+			unrestricted_slots.shuffle()
+			var slot = unrestricted_slots.pop_front()
+			slot.restrict()
+			AudioManager.play_sfx("restrict_slot")
+			amount -= 1
+
+func unrestrict_all_slots():
+	for slot in slots.get_children():
+		if slot.is_restricted():
+			slot.unrestrict()
 
 func _on_slot_changed():
 	emit_signal("modified")

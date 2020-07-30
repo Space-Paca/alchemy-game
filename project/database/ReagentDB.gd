@@ -71,6 +71,13 @@ const DB = {
 		"effect" : {"type": "status", "status_type": "temp_strength", "target": "self", "positive": true, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 25
 	},
+	"debuff": {
+		"name": "Reagente Debuff",
+		"image": preload("res://assets/images/reagents/debuff.png"),
+		"tooltip" : "If not used correctly, applies %s weak to a random enemy.",
+		"effect" : {"type": "status", "status_type": "weak", "target": "random_enemy", "positive": false, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
+		"gold_value" : 25
+	},
 	"trash": {
 		"name": "Reagente Lixo",
 		"image": preload("res://assets/images/reagents/trash.png"),

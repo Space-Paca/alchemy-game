@@ -9,7 +9,7 @@ is_elite = true
 level = 2
 enemies = [ "freezer" ]
 loot_table = {
-"buff": 3,
+"buff": 2,
 "common": 0,
 "damaging": 0,
 "defensive": 0,

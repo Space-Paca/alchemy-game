@@ -9,9 +9,10 @@ is_elite = true
 level = 2
 enemies = [ "timing_bomber" ]
 loot_table = {
-"buff": 3,
+"buff": 0,
 "common": 0,
 "damaging": 0,
+"debuff": 2,
 "defensive": 0,
 "healing": 1,
 "poison": 0,

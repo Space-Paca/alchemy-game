@@ -9,9 +9,10 @@ is_elite = false
 level = 2
 enemies = [ "parasiter" ]
 loot_table = {
-"buffing": 2,
+"buff": 1,
 "common": 0,
 "damaging": 0,
+"debuff": 1,
 "defensive": 0,
 "healing": 1,
 "poison": 0,

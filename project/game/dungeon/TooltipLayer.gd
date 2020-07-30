@@ -43,6 +43,18 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "rage"
 	},
+	"minor restriction": {
+		"type": "status",
+		"name": "restrict_minor"
+	},
+	"major restriction": {
+		"type": "status",
+		"name": "restrict_major"
+	},
+	"minion": {
+		"type": "status",
+		"name": "minion"
+	},
 	"tough": {
 		"type": "status",
 		"name": "tough"

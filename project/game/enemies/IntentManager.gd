@@ -120,6 +120,15 @@ func get_intent_tooltip(action):
 		elif args.status == "rage":
 			tooltip.title = "Raging"
 			tooltip.text += "rage"
+		elif args.status == "restrict_minor":
+			tooltip.title = "Minor Restriction"
+			tooltip.text += "minor restriction"
+		elif args.status == "restrict_major":
+			tooltip.title = "Major Restriction"
+			tooltip.text += "major restriction"
+		elif args.status == "minion":
+			tooltip.title = "Minion"
+			tooltip.text += "minion"
 		elif args.status == "tough":
 			tooltip.title = "Getting Tough"
 			tooltip.text += "tough"

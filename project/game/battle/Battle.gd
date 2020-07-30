@@ -226,9 +226,12 @@ func create_reagent(type):
 	reagent.connect("destroyed", self, "_on_reagent_destroyed")
 	return reagent
 
-func add_enemy(enemy, initial_pos = false, just_spawned = false):
+func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
 	var enemy_node = EnemyManager.create_object(enemy)
 	enemies_node.add_child(enemy_node)
+	
+	if is_minion:
+		enemy_node.add_status("minion", 1, false)
 	
 	if initial_pos:
 		enemy_node.position = initial_pos
@@ -534,10 +537,10 @@ func display_name_for_combination(combination: Combination):
 	else:
 		recipe_banner.text = "???" 
 
-func spawn_new_enemy(origin: Enemy, new_enemy: String):
+func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):
 	if enemies_node.get_child_count()  < MAX_ENEMIES:
 		AnimationManager.play("spawn", origin.get_center_position())
-		add_enemy(new_enemy, origin.get_center_position(), true)
+		add_enemy(new_enemy, origin.get_center_position(), true, is_minion)
 		update_enemy_positions()
 
 func damage_player(source, value, type, use_modifiers:= true):
@@ -646,7 +649,8 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
-			spawn_new_enemy(enemy, args.enemy)
+			var minion = args.has("minion")
+			spawn_new_enemy(enemy, args.enemy, minion)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
@@ -677,7 +681,7 @@ func _on_enemy_acted(enemy, actions):
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
-	#Temporoary store enemy
+	#Temporary store enemy
 	$EnemyToBeRemoved.add_child(enemy)
 	
 	var func_state = enemy.update_status("on_death")
@@ -698,7 +702,18 @@ func _on_enemy_died(enemy):
 	
 	if not enemies_node.get_child_count():
 		win()
-
+		return
+	
+	#Check for minion enemies and kill if they are the only ones left
+	var all_minions = true
+	for enemy in enemies_node.get_children():
+		if not enemy.get_status("minion"):
+			all_minions = false
+			break
+	if all_minions:
+		for enemy in enemies_node.get_children():
+			if enemy.get_status("minion"):
+				enemy.die()
 
 func _on_player_died(_player):
 	AudioManager.play_sfx("game_over")

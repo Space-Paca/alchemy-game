@@ -29,7 +29,7 @@ func get_loot() -> Array:
 		for _i in range(loot_table[reagent]):
 			pool.append(reagent)
 	
-	while chance and chance >= randf():
+	while chance and chance >= randf() and pool.size() > 0:
 		pool.shuffle()
 		loot.append(pool.front())
 		chance = extra_chance.pop_front()

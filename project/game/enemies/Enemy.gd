@@ -219,7 +219,7 @@ func update_action():
 							  "target": action.target, "positive": action.positive, \
 							  "extra_args": extra_args}]
 		elif action.name == "spawn":
-			act = ["spawn", {"enemy": action.enemy}]
+			act = ["spawn", {"enemy": action.enemy, "minion": action.has("minion")}]
 		elif action.name == "add_reagent":
 			act = ["add_reagent", {"type": action.type, "value": action.value}]
 		elif action.name == "idle":

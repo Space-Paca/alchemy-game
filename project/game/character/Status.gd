@@ -17,6 +17,9 @@ const STATUS_IMAGES = {
 					   "curse": "res://assets/images/status/random_status.png",
 					   "parasite": "res://assets/images/status/random_status.png",
 					   "weak": "res://assets/images/status/random_status.png",
+					   "restrict_minor": "res://assets/images/status/random_status.png",
+					   "restrict_major": "res://assets/images/status/random_status.png",
+					   "minion": "res://assets/images/status/random_status.png",
 					  }
 const STATUS_TOOLTIPS = {
 					   "dodge": {
@@ -55,6 +58,18 @@ const STATUS_TOOLTIPS = {
 						"title": "Weak",
 						"text": "This character deals 1/3 less attack damage. Decreases every turn",
 						"title_image": STATUS_IMAGES.weak},
+					   "restrict_minor": {
+						"title": "Minor Restriction",
+						"text": "Blocks a number of grid slots until end of turn",
+						"title_image": STATUS_IMAGES.restrict_minor},
+					   "restrict_major": {
+						"title": "Major Restriction",
+						"text": "Blocks a number of grid slots until end of turn",
+						"title_image": STATUS_IMAGES.restrict_major},
+					   "minion": {	
+						"title": "Minion",
+						"text": "This enemy will disappear if his summoner dies",
+						"title_image": STATUS_IMAGES.minion},
 					   "poison": {
 						"title": "Poison",
 						"text": "This character is dealt 1 poison damage per stack. Decreases every turn",

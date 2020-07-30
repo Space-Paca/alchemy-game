@@ -223,7 +223,8 @@ func update_action():
 		elif action.name == "add_reagent":
 			act = ["add_reagent", {"type": action.type, "value": action.value}]
 		elif action.name == "idle":
-			act = ["idle", {}]
+			var sfx = {"sfx": action.sfx} if action.has("sfx") else {}
+			act = ["idle", sfx]
 		else:
 			push_error("Not a valid action:" + str(action.name))
 			assert(false)

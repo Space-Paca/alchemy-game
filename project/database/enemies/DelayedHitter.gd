@@ -19,13 +19,13 @@ var first_state = ["preparing1"]
 
 var actions = {
 	"preparing1": [
-		{"name": "idle"}
+		{"name": "idle", "sfx": "charge"}
 	],
 	"preparing2": [
-		{"name": "idle"}
+		{"name": "idle", "sfx": "charge"}
 	],
 	"preparing3": [
-		{"name": "idle"}
+		{"name": "idle", "sfx": "charge"}
 	],
 	"attack": [
 		{"name": "damage", "value": [16, 18], "type": "regular"},

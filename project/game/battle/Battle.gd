@@ -671,6 +671,9 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
 		elif name == "idle":
+			if args.has("sfx"):
+				AudioManager.play_sfx(args.sfx)
+			
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")

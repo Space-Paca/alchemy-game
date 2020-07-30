@@ -242,6 +242,10 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	if just_spawned:
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 		enemy_node.just_spawned = true
+	else:
+		randomize()
+		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
+		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 	
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:

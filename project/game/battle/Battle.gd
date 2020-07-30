@@ -594,8 +594,10 @@ func _on_enemy_acted(enemy, actions):
 													args.type)
 				if i == args.amount - 1:
 					enemy.remove_intent()
-				#Wait before going to next action/enemy	
-				if func_state and func_state.is_valid():
+				#Wait before going to next action/enemy
+				if args.amount > 1 and i != args.amount - 1:
+					yield(get_tree().create_timer(.8/args.amount), "timeout")
+				elif func_state and func_state.is_valid():
 					yield(player, "resolved")
 				else:
 					yield(get_tree().create_timer(.5), "timeout")

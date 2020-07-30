@@ -17,7 +17,7 @@ const INTENT = preload("res://game/enemies/Intent.tscn")
 
 const STATUS_BAR_MARGIN = 40
 const HEALTH_BAR_MARGIN = 10
-const INTENT_MARGIN = 5
+const INTENT_MARGIN = 10
 const INTENT_W = 50
 const INTENT_H = 60
 
@@ -367,7 +367,7 @@ func update_intents_position():
 	var w = separation * (int_n - 1)
 	for intent in $Intents.get_children():
 		w += intent.get_width()
-	var x = $Sprite.position.x - w - $Sprite.texture.get_width()/2
+	var x = $Sprite.position.x - w/2
 	for intent in $Intents.get_children():
 		$Tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		x += intent.get_width() + separation

@@ -601,6 +601,7 @@ func _on_enemy_acted(enemy, actions):
 					yield(player, "resolved")
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
+		
 			enemy.remove_status("temp_strength")
 		if name == "drain":
 			for i in range(0, args.amount):

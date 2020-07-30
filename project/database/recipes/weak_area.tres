@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/Poison.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Weak Area"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "uncommon", "debuff" ]
+effects = [ "add_status_all" ]
+effect_args = [ [ "weak", 3, false ] ]
+destroy_reagents = [  ]
+description = "Applies 2 weak to all enemies."
+fav_icon = ExtResource( 2 )
+shop_cost = 30

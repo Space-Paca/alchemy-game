@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -17,8 +17,18 @@
 [ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/background/04_cave.jpg" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BookOblique.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/images/background/08 florest.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/background/06_dungeon.jpg" type="Texture" id=22]
+[ext_resource path="res://assets/images/background/03_fire FG.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/background/05_village_FG.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/background/08 florest_FG.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/background/05_village air.jpg" type="Texture" id=26]
+[ext_resource path="res://assets/images/background/03_fire.jpg" type="Texture" id=27]
+[ext_resource path="res://assets/images/background/04_FG_cave.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/background/06_FG_dungeon.png" type="Texture" id=29]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -36,6 +46,8 @@ font_data = ExtResource( 12 )
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
+backgrounds = [ ExtResource( 21 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 27 ) ]
+foregrounds = [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 23 ) ]
 
 [node name="EffectManager" type="Node" parent="."]
 script = ExtResource( 9 )
@@ -44,6 +56,15 @@ script = ExtResource( 9 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FG" type="TextureRect" parent="BG"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

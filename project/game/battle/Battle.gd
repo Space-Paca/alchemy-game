@@ -33,6 +33,9 @@ onready var available_favorites = [$Favorites/FavoriteButton1,
 	$Favorites/FavoriteButton8]
 onready var targeting_interface = $TargetingInterface
 
+export(Array, Texture) var backgrounds
+export(Array, Texture) var foregrounds
+
 const WINDOW_W = 1920
 const WINDOW_H = 1080
 const MAX_ENEMIES = 4
@@ -60,6 +63,9 @@ func _ready():
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
 	floor_level = _floor_level
 	current_encounter = encounter
+	
+	$BG.texture = backgrounds[floor_level-1]
+	$BG/FG.texture = foregrounds[floor_level-1]
 	
 	setup_nodes(_player)
 	

@@ -12,6 +12,7 @@ onready var animation = $Sprite/AnimationPlayer
 onready var button = $Sprite/Button
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
+onready var tween = $Tween
 
 const INTENT = preload("res://game/enemies/Intent.tscn")
 
@@ -20,6 +21,12 @@ const HEALTH_BAR_MARGIN = 10
 const INTENT_MARGIN = 10
 const INTENT_W = 50
 const INTENT_H = 60
+
+# Highlight constants
+const HL_SPEED = 100
+const HL_MAX_THICKNESS = 15
+const HL_MIN_THICKNESS = 2
+const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
 
 var logic
 var data
@@ -44,8 +51,11 @@ func _ready():
 	
 	#Setup spawn animation
 	scale = Vector2(0,0)
-	$Tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2, Tween.TRANS_BACK, Tween.EASE_OUT)
-	$Tween.start()
+	tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2,
+			Tween.TRANS_BACK, Tween.EASE_OUT)
+	tween.interpolate_property(sprite, "modulate", Color.black, Color.white,
+			.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
+	tween.start()
 
 
 func heal(amount : int):
@@ -69,16 +79,17 @@ func die():
 	disable_tooltips()
 	
 	#Death animation
-	$Tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
-	$Tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
+	tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
+	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 	
-	yield($Tween, "tween_all_completed")
+	yield(tween, "tween_all_completed")
 	emit_signal("died", self)
 
 
 func set_grayscale(value: float):
 	$Sprite.material.set_shader_param("grayscale", value)
+
 
 func drain(source: Character, amount: int):
 	#Check for weak status
@@ -105,6 +116,7 @@ func drain(source: Character, amount: int):
 			yield(self, "died")
 	
 	emit_signal("resolved")
+
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
 	#Check for weak status
@@ -232,13 +244,16 @@ func update_action():
 	
 	update_intent()
 
+
 func run_action():
 	emit_signal("action", self, cur_actions)
+
 
 #Returns a random value given an interval array [min, max]
 func get_random_value(interval : Array):
 	randomize()
 	return randi()%(interval[1]-interval[0]+1) + interval[0]
+
 
 func play_animation(name):
 	animation.play(name)
@@ -266,10 +281,10 @@ func get_center_position():
 	return $Sprite.global_position
 
 
-func setup(enemy_logic, new_texture, highlight_texture, enemy_data):
+func setup(enemy_logic, new_texture, enemy_data):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
-	set_image(new_texture, highlight_texture)
+	set_image(new_texture)
 	data = enemy_data #Store enemy data
 
 
@@ -305,9 +320,8 @@ func update_tooltip_position():
 										INTENT_MARGIN - INTENT_H)
 
 
-func set_image(new_texture, highlight_texture):
+func set_image(new_texture):
 	$Sprite.texture = new_texture
-	$Sprite/Highlight.texture = highlight_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
 	#Sprite Position
@@ -369,17 +383,17 @@ func update_intents_position():
 		w += intent.get_width()
 	var x = $Sprite.position.x - w/2
 	for intent in $Intents.get_children():
-		$Tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.interpolate_property(intent, "position", intent.position, Vector2(x, 0), .2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		x += intent.get_width() + separation
-	$Tween.start()
+	tween.start()
 
 
 func set_pos(target_pos):
 	randomize()
 	var speed = rand_range(2000, 2500)
 	var dur = (position - target_pos).length()/speed
-	$Tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.start()
+	tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.start()
 
 func update_intent():
 	clear_intents()
@@ -392,6 +406,7 @@ func update_intent():
 				add_intent(intent.image, intent.value, null)
 		else:
 			add_intent(intent.image, null, null)
+
 
 func get_width():
 	return sprite.texture.get_width()
@@ -416,6 +431,10 @@ func get_tooltips():
 func set_button_disabled(disable: bool):
 	button.visible = not disable
 	button.disabled = disable
+	
+	var color := HL_COLOR
+	color.a = 0 if disable else 1
+	sprite.material.set_shader_param("highlight_color", color)
 
 
 func disable_tooltips():
@@ -425,16 +444,29 @@ func disable_tooltips():
 
 
 func _on_Button_pressed():
-	$Sprite/Highlight.visible = false
+	tween.stop(sprite.material)
+	sprite.material.set_shader_param("highlight_thickness", HL_MIN_THICKNESS)
 	emit_signal("selected", self)
 
 
 func _on_Button_mouse_entered():
-	$Sprite/Highlight.visible = true
+	var duration = (-sprite.material.get_shader_param("highlight_thickness") +\
+			HL_MAX_THICKNESS) / HL_SPEED
+	tween.stop(sprite.material)
+	tween.interpolate_property(sprite.material,
+			"shader_param/highlight_thickness", null, HL_MAX_THICKNESS,
+			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 
 
 func _on_Button_mouse_exited():
-	$Sprite/Highlight.visible = false
+	var duration = (sprite.material.get_shader_param("highlight_thickness") -\
+			HL_MIN_THICKNESS) / HL_SPEED
+	tween.stop(sprite.material)
+	tween.interpolate_property(sprite.material,
+			"shader_param/highlight_thickness", null, HL_MIN_THICKNESS,
+			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 
 
 func _on_TooltipCollision_enable_tooltip():

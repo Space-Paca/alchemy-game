@@ -10,7 +10,7 @@ signal combinations_unlocked
 signal battle_won
 signal floor_selected(floor_number)
 
-const VERSION := "v.0.0.4-UNRELEASED"
+const VERSION := "v.0.0.4"
 const MAX_FLOOR := 2
 
 var floor_to_go := -1

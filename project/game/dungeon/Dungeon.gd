@@ -8,7 +8,6 @@ onready var smith = $Blacksmith
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
-const MAX_FLOOR = 3
 const RECIPES_REWARDED_PER_BATTLE = 3
 
 var battle

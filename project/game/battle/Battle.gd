@@ -81,8 +81,6 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	
 	setup_audio(encounter)
 	
-	setup_win_screen(encounter)
-	
 	AudioManager.play_sfx("start_battle")
 	
 	#Wait sometime before starting battle

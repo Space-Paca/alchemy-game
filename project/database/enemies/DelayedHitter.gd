@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/delayed hitter/idle.png"
 var name = "Delayed hitter"
 var sfx = "stone_golem"
 var use_idle_sfx = false
-var hp = 22
+var hp = 25
 var battle_init = false
 var size = "small"
 

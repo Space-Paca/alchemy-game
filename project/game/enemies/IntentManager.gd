@@ -58,18 +58,21 @@ func create_intent_data(action):
 	
 	return intent
 
-func get_intent_tooltip(action):
+func get_intent_tooltip(action, enemy):
 	var tooltip = {}
 	var name = action[0]
 	var args = action[1]
 	if name == "damage":
+		var value = args.value
+		value += enemy.get_damage_modifiers()
+		value = int(ceil(2*value/3.0)) if enemy.get_status("weak") else value
 		tooltip.title = "Attacking"
 		var amount_text
 		if args.amount > 1:
 			amount_text = " " + str(args.amount) + " times"
 		else:
 			amount_text = ""
-		tooltip.text = "This enemy is going to deal " + str(args.value) + " " + \
+		tooltip.text = "This enemy is going to deal " + str(value) + " " + \
 					   args.type + " damage" + amount_text +  " next turn."
 		if args.type == "regular":
 			tooltip.title_image = IMAGES.regular_attack
@@ -78,13 +81,16 @@ func get_intent_tooltip(action):
 		elif args.type == "crushing":
 			tooltip.title_image = IMAGES.crushing_attack
 	elif name == "drain":
+		var value = args.value
+		value += enemy.get_damage_modifiers()
+		value = int(ceil(2*value/3.0)) if enemy.get_status("weak") else value
 		tooltip.title = "Draining"
 		var amount_text
 		if args.amount > 1:
 			amount_text = " " + str(args.amount) + " times"
 		else:
 			amount_text = ""
-		tooltip.text = "This enemy is going to drain " + str(args.value) + \
+		tooltip.text = "This enemy is going to drain " + str(value) + \
 					   amount_text +  " next turn."
 		tooltip.title_image = IMAGES.drain
 	elif name == "shield":

@@ -433,7 +433,7 @@ func get_tooltips():
 	var tooltips = []
 
 	for action in cur_actions:
-		tooltips.append(IntentManager.get_intent_tooltip(action))
+		tooltips.append(IntentManager.get_intent_tooltip(action, self))
 	
 	#Get status tooltips
 	for tooltip in $StatusBar.get_status_tooltips():

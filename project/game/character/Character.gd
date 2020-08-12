@@ -1,6 +1,9 @@
 extends Node2D
 class_name Character
 
+const WEAK_THRESHOLD = 10
+const STRONG_THRESHOLD = 20
+
 signal died
 signal spawn_new_enemy
 signal damage_player
@@ -37,6 +40,15 @@ func get_damage_modifiers():
 		mod += get_status("perm_strength").amount
 	return mod
 
+func damage_strength(damage):
+	if damage < WEAK_THRESHOLD:
+		return "weak"
+	elif damage < STRONG_THRESHOLD:
+		return "strong"
+	else:
+		return "stronger"
+	
+
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
 	if hp <= 0:
 		return 0
@@ -70,12 +82,12 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	#Block damage with shield
 	if type == "regular":
-		AudioManager.play_sfx("damage_regular")
 		var had_shield = shield > 0
 		# warning-ignore:narrowing_conversion
 		unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
+		AudioManager.play_sfx("damage_regular_" + damage_strength(unblocked_damage))
 		
 		if had_shield and shield > 0:
 			AudioManager.play_sfx("shield_hit")
@@ -97,12 +109,12 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 
 	#Damages both shield and health equally
 	elif type == "crushing":
-		AudioManager.play_sfx("damage_crushing")
 		var had_shield = shield > 0
 		# warning-ignore:narrowing_conversion
 		shield = max(shield - damage, 0)
 		hp -= damage
 		unblocked_damage = damage
+		AudioManager.play_sfx("damage_crushing_" + damage_strength(unblocked_damage))
 		
 		if had_shield and shield > 0:
 			AudioManager.play_sfx("shield_hit")
@@ -111,9 +123,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		
 	#Ignores shield and only damages health
 	elif type == "piercing":
-		AudioManager.play_sfx("damage_piercing")
 		hp -= damage
 		unblocked_damage = damage
+		AudioManager.play_sfx("damage_piercing_" + damage_strength(unblocked_damage))
+		
 	#Ignores shield and only damages health
 	elif type == "poison":
 		AudioManager.play_sfx("damage_poison")

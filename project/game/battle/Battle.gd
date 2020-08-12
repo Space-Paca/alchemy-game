@@ -668,7 +668,7 @@ func _on_enemy_acted(enemy, actions):
 			yield(get_tree().create_timer(.6), "timeout")
 		elif name == "add_reagent":
 			for _i in range(0, args.value):
-				AudioManager.play_sfx("create_reagent")
+				AudioManager.play_sfx("create_trash_reagent")
 				var reagent = create_reagent(args.type)
 				reagents.add_child(reagent)
 				randomize()

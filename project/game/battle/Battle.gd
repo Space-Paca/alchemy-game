@@ -220,6 +220,7 @@ func setup_win_screen(encounter: Encounter):
 	
 	win_screen.set_loot(encounter.get_loot())
 
+
 func create_reagent(type):
 	var reagent = ReagentManager.create_object(type)
 	reagent.rect_scale = Vector2(.8,.8)
@@ -230,6 +231,7 @@ func create_reagent(type):
 	reagent.connect("quick_place", self, "_on_reagent_quick_place")
 	reagent.connect("destroyed", self, "_on_reagent_destroyed")
 	return reagent
+
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
 	var enemy_node = EnemyManager.create_object(enemy)
@@ -283,7 +285,7 @@ func update_enemy_positions():
 	else:
 		push_error(str(enemy_count) + " is not a valid enemy number")
 		assert(false)
-	
+
 
 func new_player_turn():
 	if ended:
@@ -363,7 +365,8 @@ func set_favorites_disabled(disabled: bool):
 		button.disabled = disabled
 
 
-func apply_effects(effects: Array, effect_args: Array = [[]], destroy_reagents: Array = [], boost_effects: Dictionary = {}):
+func apply_effects(effects: Array, effect_args: Array = [[]],
+		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")
@@ -546,16 +549,19 @@ func display_name_for_combination(combination: Combination):
 	else:
 		recipe_banner.text = "???" 
 
+
 func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):
 	if enemies_node.get_child_count()  < MAX_ENEMIES:
 		AnimationManager.play("spawn", origin.get_center_position())
 		add_enemy(new_enemy, origin.get_center_position(), true, is_minion)
 		update_enemy_positions()
 
+
 func damage_player(source, value, type, use_modifiers:= true):
 	var mod = source.get_damage_modifiers() if use_modifiers else 0
 	var amount = value + mod
 	player.take_damage(source, amount, type)
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -585,8 +591,10 @@ func _on_reagent_quick_place(reagent):
 		elif reagent.slot.type == "hand":
 			grid.quick_place(reagent)
 
+
 func _on_reagent_destroyed(reagent):
 	player.remove_reagent(reagent.type, reagent.upgraded)
+
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:
@@ -629,11 +637,9 @@ func _on_enemy_acted(enemy, actions):
 			enemy.take_damage(enemy, enemy.hp, "piercing")
 			yield(get_tree().create_timer(.1), "timeout")
 			
-			var func_state = player.take_damage(enemy, args.value + \
-													enemy.get_damage_modifiers(),\
-													"piercing")
-
-			#Wait before going to next action/enemy	
+			var func_state = player.take_damage(enemy, args.value +\
+					enemy.get_damage_modifiers(), "piercing")
+			#Wait before going to next action/enemy
 			if func_state and func_state.is_valid():
 				yield(player, "resolved")
 			else:
@@ -692,7 +698,6 @@ func _on_enemy_acted(enemy, actions):
 	enemy.action_resolved()
 
 
-
 func _on_enemy_died(enemy):
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
@@ -730,6 +735,7 @@ func _on_enemy_died(enemy):
 			if enemy.get_status("minion"):
 				enemy.die()
 
+
 func _on_player_died(_player):
 	AudioManager.play_sfx("game_over")
 	TooltipLayer.clean_tooltips()
@@ -744,16 +750,20 @@ func _on_player_died(_player):
 	AudioManager.stop_aux_bgm("heart-beat")
 	AudioManager.stop_all_enemy_idle_sfx()
 
+
 func _on_player_draw_reagent(amount):
 	draw_bag.draw_reagents(amount)
 	yield(draw_bag, "drew_reagents")
 	player.draw_reagents_resolve()
 
+
 func _on_player_freeze_hand(amount: int):
 	$Hand.freeze_slots(amount)
 
+
 func _on_player_restrict(amount: int, type: String):
 	$Grid.restrict(amount, type)
+
 
 func _on_DiscardBag_reagent_discarded(reagent):
 	reagents.remove_child(reagent)
@@ -827,6 +837,7 @@ func _on_CreateRecipe_pressed():
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 	
 	recipes_created += 1
+
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)

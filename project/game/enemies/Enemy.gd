@@ -350,7 +350,6 @@ func set_image(new_texture):
 			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.get_height()
 	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + 3*margin/2)
-#	
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 	
 	# Button
@@ -405,10 +404,15 @@ func update_intent():
 	for action in cur_actions:
 		var intent = IntentManager.create_intent_data(action)
 		if intent.has("value"):
+			var value = intent.value
+			var name = action[0]
+			if name == "damage" or name == "drain":
+				value += get_damage_modifiers()
+				value = int(ceil(2*value/3.0)) if get_status("weak") else value
 			if intent.has("multiplier"):
-				add_intent(intent.image, intent.value, intent.multiplier)
+				add_intent(intent.image, value, intent.multiplier)
 			else:
-				add_intent(intent.image, intent.value, null)
+				add_intent(intent.image, value, null)
 		else:
 			add_intent(intent.image, null, null)
 

@@ -57,6 +57,7 @@ func level_up():
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
 		set_max_hp(player_class.max_hps[cur_level-1])
+		full_heal()
 
 
 func set_level(level:int):
@@ -65,6 +66,7 @@ func set_level(level:int):
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	set_max_hp(player_class.max_hps[cur_level-1])
+	full_heal()
 
 
 func add_currency(amount: int):

@@ -10,6 +10,7 @@ const STATUS_IMAGES = {
 					   "retaliate": "res://assets/images/status/random_status.png",
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
+					   "martyr": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
 					   "tough": "res://assets/images/status/random_status.png",
 					   "time_bomb": "res://assets/images/status/random_status.png",
@@ -94,6 +95,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Revenge",
 						"text": "When this character dies, it will deal 1 regular damage per stack to you",
 						"title_image": STATUS_IMAGES.revenge},
+					   "martyr": {
+						"title": "Martyr",
+						"text": "When this character dies, it will deal 1 regular damage per stack to you",
+						"title_image": STATUS_IMAGES.martyr},
 					   "rage": {
 						"title": "Rage",
 						"text": "Whenever this character takes damage, it gets 1 permanent strength per stack",

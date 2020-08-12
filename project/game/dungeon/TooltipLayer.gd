@@ -39,6 +39,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "revenge"
 	},
+	"martyr": {
+		"type": "status",
+		"name": "martyr"
+	},
 	"rage": {
 		"type": "status",
 		"name": "rage"

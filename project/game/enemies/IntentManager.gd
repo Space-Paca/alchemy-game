@@ -77,6 +77,16 @@ func get_intent_tooltip(action):
 			tooltip.title_image = IMAGES.piercing_attack
 		elif args.type == "crushing":
 			tooltip.title_image = IMAGES.crushing_attack
+	elif name == "drain":
+		tooltip.title = "Draining"
+		var amount_text
+		if args.amount > 1:
+			amount_text = " " + str(args.amount) + " times"
+		else:
+			amount_text = ""
+		tooltip.text = "This enemy is going to drain " + str(args.value) + \
+					   amount_text +  " next turn."
+		tooltip.title_image = IMAGES.drain
 	elif name == "shield":
 		tooltip.title = "Defending"
 		tooltip.text = "This enemy is getting " + str(args.value) + " shield next turn."

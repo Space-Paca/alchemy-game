@@ -23,6 +23,11 @@ func init(_name: String, _max_hp: int):
 	hp = max_hp
 	shield = 0
 
+func set_max_hp(value):
+	max_hp = value
+
+func full_heal():
+	hp = max_hp
 
 func heal(amount: int):
 	AudioManager.play_sfx("heal")

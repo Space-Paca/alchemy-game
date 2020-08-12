@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 initial_recipes = [ "Dano", "Escudo", "Ataque Area" ]
-initial_hp = 100
+max_hps = [ 100, 140, 180 ]

@@ -2,4 +2,4 @@ extends Resource
 class_name PlayerClass
 
 export(Array, String) var initial_recipes
-export(int) var initial_hp = 100
+export(Array, int) var max_hps = [100, 140, 180]

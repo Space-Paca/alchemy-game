@@ -20,14 +20,15 @@ var grid_size : int
 var bag := []
 var known_recipes : Array
 var cur_level : int
+var player_class : PlayerClass
 
 
 func _ready():
 	# Only class we have right now
-	var player_class = load("res://database/player-classes/alchemist.tres") as PlayerClass
+	player_class = load("res://database/player-classes/alchemist.tres") as PlayerClass
 	cur_level = 1
 	
-	init("player", player_class.initial_hp)
+	init("player", player_class.max_hps[cur_level-1])
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	currency = initial_currency
@@ -55,6 +56,7 @@ func level_up():
 	if cur_level <= MAX_LEVEL:
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
+		set_max_hp(player_class.max_hps[cur_level-1])
 
 
 func set_level(level:int):
@@ -62,6 +64,7 @@ func set_level(level:int):
 	cur_level = level
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
+	set_max_hp(player_class.max_hps[cur_level-1])
 
 
 func add_currency(amount: int):

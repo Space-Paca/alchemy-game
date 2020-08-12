@@ -223,6 +223,7 @@ func open_shop():
 	AudioManager.play_bgm("shop")
 	map.hide()
 	shop.update_currency()
+	shop.update_reagents()
 	shop.show()
 
 

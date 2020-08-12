@@ -1,6 +1,6 @@
 extends Reference
 
-var image = "res://assets/images/enemies/small regular enemy/idle.png"
+var image = "res://assets/images/enemies/small regular enemy plus/idle.png"
 var name = "Wolftopus+"
 var sfx = "wolftopus"
 var use_idle_sfx = false

@@ -324,6 +324,8 @@ func set_image(new_texture):
 	$Sprite.texture = new_texture
 	var w = new_texture.get_width()
 	var h = new_texture.get_height()
+	printt(w,h)
+
 	#Sprite Position
 	$Sprite.position.x = 0
 	$Sprite.position.y = 0
@@ -331,22 +333,23 @@ func set_image(new_texture):
 	#Update health bar position
 	$HealthBar.position.x = -$HealthBar.get_width()*$HealthBar.scale.x/2
 	$HealthBar.position.y = $Sprite.position.y + h + HEALTH_BAR_MARGIN - h/2
+	
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
 	$StatusBar.rect_position.y = $HealthBar.position.y + STATUS_BAR_MARGIN
+	
+	#Update intents position
+	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
+	
 	#Update tooltip collision
-	var t_w = max(w, $HealthBar.get_width()*$HealthBar.scale.x)
+	var margin = 40
+	var t_w = w
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
 			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
-	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.position.x) + t_w/2, \
-										 -INTENT_H - INTENT_MARGIN + t_h/2 - h/2)
-#	$TooltipCollision.position = Vector2(min($HealthBar.position.x, $Sprite.rect_position.x) + t_w/2, \
-#										 -INTENT_H - INTENT_MARGIN + t_h/2)
-	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
-	#Update intents position
-#	$Intents.position.y = $Sprite.rect_position.y -INTENT_MARGIN - INTENT_H
-	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
+	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + margin)
+#	
+	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h - margin))
 	
 	# Button
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)

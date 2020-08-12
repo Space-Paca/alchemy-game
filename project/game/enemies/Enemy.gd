@@ -167,8 +167,12 @@ func reduce_status(status: String, amount: int):
 
 
 func add_status(status: String, amount, positive: bool, extra_args:= {}):
+	var has_weak = get_status("weak")
+	var damage_mod = get_damage_modifiers()
 	.add_status(status, amount, positive, extra_args)
 	update_status_bar()
+	if has_weak != get_status("weak") or damage_mod != get_damage_modifiers():
+		update_intent()
 	
 	#Animations
 	if positive:

@@ -321,10 +321,12 @@ func update_tooltip_position():
 
 
 func set_image(new_texture):
-	$Sprite.texture = new_texture
+	var margin = 40
 	var w = new_texture.get_width()
-	var h = new_texture.get_height()
-	printt(w,h)
+	var h = new_texture.get_height() - margin
+	
+	#Update texture
+	$Sprite.texture = new_texture
 
 	#Sprite Position
 	$Sprite.position.x = 0
@@ -342,14 +344,13 @@ func set_image(new_texture):
 	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
 	
 	#Update tooltip collision
-	var margin = 40
 	var t_w = w
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
 			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
 			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
-	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + margin)
+	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + 3*margin/2)
 #	
-	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h - margin))
+	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 	
 	# Button
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)

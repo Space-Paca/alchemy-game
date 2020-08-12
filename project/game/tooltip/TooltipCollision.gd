@@ -9,7 +9,9 @@ var timer = 0
 var entered = false
 
 func set_collision_shape(size: Vector2):
-	$CollisionShape2D.shape.extents = size/2
+	var shape = RectangleShape2D.new()
+	shape.extents = size/2
+	$CollisionShape2D.shape = shape
 
 func _input(event):
 	var shape = $CollisionShape2D.shape

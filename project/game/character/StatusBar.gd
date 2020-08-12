@@ -4,6 +4,9 @@ const STATUS = preload("res://game/character/Status.tscn")
 
 export var two_rows := true
 
+func setup(width):
+		$Status.rect_size.x = width
+
 func _ready():
 	if two_rows:
 		$PositiveBG.show()
@@ -11,6 +14,12 @@ func _ready():
 	else:
 		$PositiveBG.hide()
 		$NegativeBG.hide()
+
+func get_height():
+	if two_rows:
+		return $NegativeStatus.rect_position.y + $NegativeStatus.rect_size.y
+	else:
+		return $Status.rect_size.y
 
 #Remove all status that are not in the status list
 func clean_removed_status(status_list):

@@ -339,6 +339,7 @@ func set_image(new_texture):
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
 	$StatusBar.rect_position.y = $HealthBar.position.y + STATUS_BAR_MARGIN
+	$StatusBar.setup($HealthBar.get_width()*$HealthBar.scale.x)
 	
 	#Update intents position
 	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
@@ -347,7 +348,7 @@ func set_image(new_texture):
 	var t_w = w
 	var t_h = INTENT_H +  INTENT_MARGIN + h + \
 			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
-			  STATUS_BAR_MARGIN + $StatusBar.rect_size.y
+			  STATUS_BAR_MARGIN + $StatusBar.get_height()
 	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + 3*margin/2)
 #	
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))

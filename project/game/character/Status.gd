@@ -11,6 +11,8 @@ const STATUS_IMAGES = {
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
 					   "martyr": "res://assets/images/status/random_status.png",
+					   "poison_immunity": "res://assets/images/status/random_status.png",
+					   "wounded": "res://assets/images/status/random_status.png",
 					   "rage": "res://assets/images/status/random_status.png",
 					   "tough": "res://assets/images/status/random_status.png",
 					   "time_bomb": "res://assets/images/status/random_status.png",
@@ -59,6 +61,14 @@ const STATUS_TOOLTIPS = {
 						"title": "Weak",
 						"text": "This character deals 1/3 less attack damage. Decreases every turn",
 						"title_image": STATUS_IMAGES.weak},
+					   "wounded": {
+						"title": "Wounded",
+						"text": "This character can't heal",
+						"title_image": STATUS_IMAGES.wounded},
+					   "poison_immunity": {
+						"title": "Poison Immunity",
+						"text": "This character can't receive poison",
+						"title_image": STATUS_IMAGES.poison_immunity},
 					   "restrict_minor": {
 						"title": "Minor Restriction",
 						"text": "Blocks a number of grid slots until end of turn",

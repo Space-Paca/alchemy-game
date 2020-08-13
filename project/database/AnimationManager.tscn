@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/animations/Shield Up.png" type="Texture" id=1]
 [ext_resource path="res://assets/animations/Summoning.png" type="Texture" id=2]
@@ -155,7 +155,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-resource_name = "SummonAnim"
+resource_name = "DebuffAnim"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=10]
 length = 1.5
 step = 0.06
 tracks/0/type = "value"
@@ -171,8 +186,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "shieldAnim"
+[sub_resource type="Animation" id=11]
 length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -289,6 +303,17 @@ frame = 3
 autoplay = "DebuffAnim"
 anims/DebuffAnim = SubResource( 8 )
 
+[node name="Drain" type="Sprite" parent="Animations"]
+visible = false
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 5
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Drain"]
+autoplay = "DebuffAnim"
+anims/DebuffAnim = SubResource( 9 )
+
 [node name="Summon" type="Sprite" parent="Animations"]
 visible = false
 texture = ExtResource( 2 )
@@ -298,7 +323,7 @@ frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Summon"]
 autoplay = "SummonAnim"
-anims/SummonAnim = SubResource( 9 )
+anims/SummonAnim = SubResource( 10 )
 
 [node name="Shield" type="Sprite" parent="Animations"]
 visible = false
@@ -309,4 +334,4 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animations/Shield"]
 autoplay = "shieldAnim"
-anims/shieldAnim = SubResource( 10 )
+anims/shieldAnim = SubResource( 11 )

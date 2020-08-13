@@ -43,6 +43,14 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "martyr"
 	},
+	"poison immunity": {
+		"type": "status",
+		"name": "poison_immunity"
+	},
+	"wounded": {
+		"type": "status",
+		"name": "wounded"
+	},
 	"rage": {
 		"type": "status",
 		"name": "rage"

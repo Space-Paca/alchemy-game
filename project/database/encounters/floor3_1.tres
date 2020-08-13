@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 3
-enemies = [ "baby_retaliate", "delayed_hitter_plus", "baby_retaliate", "" ]
+enemies = [ "martyr", "martyr", "martyr" ]
 loot_table = {
 "buffing": 3,
 "common": 0,

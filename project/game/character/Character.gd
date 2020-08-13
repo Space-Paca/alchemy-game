@@ -6,6 +6,7 @@ const STRONG_THRESHOLD = 20
 
 signal died
 signal spawn_new_enemy
+signal add_status_all_enemies
 signal damage_player
 signal freeze_hand
 signal restrict
@@ -217,6 +218,10 @@ func on_death_divider():
 	var status = get_status("divider")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
+
+func on_death_martyr():
+	var status = get_status("martyr")
+	emit_signal("add_status_all_enemies", "perm_strength", status.amount, true)
 
 func on_death_revenge(_args):
 	var status = get_status("revenge")

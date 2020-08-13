@@ -261,6 +261,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	enemy_node.connect("died", self, "_on_enemy_died")
 	enemy_node.connect("spawn_new_enemy", self, "spawn_new_enemy")
 	enemy_node.connect("damage_player", self, "damage_player")
+	enemy_node.connect("add_status_all_enemies", self, "add_status_all_enemies")
 	effect_manager.add_enemy(enemy_node)
 	
 	enemy_node.update_action()
@@ -562,6 +563,9 @@ func damage_player(source, value, type, use_modifiers:= true):
 	var amount = value + mod
 	player.take_damage(source, amount, type)
 
+func add_status_all_enemies(status, amount, positive, extra_args = {}):
+	for enemy in enemies_node.get_children():
+		enemy.add_status(status, amount, positive, extra_args)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

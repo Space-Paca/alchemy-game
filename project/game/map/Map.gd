@@ -54,7 +54,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=1, shops:int=1, events:int=0):
 	
 	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
-			smiths + events + 1 # +1 for boss
+			smiths + events + 1
 	
 	validate_map(total_nodes, normal_encounters)
 	

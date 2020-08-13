@@ -97,7 +97,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.revenge},
 					   "martyr": {
 						"title": "Martyr",
-						"text": "When this character dies, it will deal 1 regular damage per stack to you",
+						"text": "When this character dies, it apply 1 permanent strength per stack to each other enemy",
 						"title_image": STATUS_IMAGES.martyr},
 					   "rage": {
 						"title": "Rage",

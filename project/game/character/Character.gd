@@ -31,6 +31,8 @@ func full_heal():
 	hp = max_hp
 
 func heal(amount: int):
+	if get_status("wounded"):
+		return 0
 	AudioManager.play_sfx("heal")
 	var old_hp = hp
 	# warning-ignore:narrowing_conversion
@@ -175,7 +177,10 @@ func add_status(status: String, amount: int, positive: bool, extra_args: Diction
 			AudioManager.play_sfx("buff")
 		else:
 			AudioManager.play_sfx("debuff")
-
+	
+	if status == "poison" and get_status("poison_immunity"):
+		return
+	
 	if status_list.has(status):
 		status_list[status].amount += amount
 	else:

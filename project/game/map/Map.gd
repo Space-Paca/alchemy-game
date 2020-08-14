@@ -16,11 +16,16 @@ const NODE_DIST_RAND = 50
 
 var active_paths := 0
 var initial_node : MapNode
-var current_level : int
+var current_level : int setget set_level
 
 
 func set_disabled(toggle:bool):
 	click_block.visible = toggle
+
+
+func set_level(level:int):
+	current_level = level
+	$FloorLabel.text = str("Floor ", current_level)
 
 
 func shift_positions():

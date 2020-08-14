@@ -84,6 +84,7 @@ func create_level(level: int):
 			map.create_map(8, 4, 0)
 		var invalid:
 			assert(false, str("Invalid level: ", invalid))
+	map.set_level(level)
 	map.connect("map_node_pressed", self, "_on_map_node_selected")
 	
 	# SHOP

@@ -73,7 +73,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.poison_immunity},
 					   "overkill": {
 						"title": "Overkill",
-						"text": "When this character dies, any damage dealt that exceeded his life will return doubled as regular damage",
+						"text": "When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage",
 						"title_image": STATUS_IMAGES.overkill},
 					   "doomsday": {
 						"title": "Doomsday",

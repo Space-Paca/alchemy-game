@@ -120,11 +120,18 @@ func drain(source: Character, amount: int):
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
 	#Check for weak status
+	var prev_hp = hp
 	damage = int(ceil(2*damage/3.0)) if source.get_status("weak") else damage
 	
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
+	
+	if hp <= 0 and get_status("overkill"):
+		remove_status("overkill")
+		var overdamage = abs(prev_hp - unblocked_dmg)
+		if overdamage > 0:
+			source.take_damage(self, 4*overdamage, "regular", false)
 
 	#Animations
 	if type == "regular":

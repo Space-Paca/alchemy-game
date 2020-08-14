@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/self destructor/idle.png"
 var name = "Overkiller"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 20
+var hp = 28
 var battle_init = true
 var size = "small"
 
@@ -43,7 +43,7 @@ var actions = {
 		{"name": "damage", "value": [2, 8], "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [6, 12]},
+		{"name": "shield", "value": [2, 10]},
 	],
 	"buff": [
 		{"name": "status", "status_name": "temp_strength", "value": 5, "target": "self", "positive": true}

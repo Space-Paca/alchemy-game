@@ -8,6 +8,7 @@ const IMAGES = {
 	"self_destruct": preload("res://assets/images/enemies/intents/self_destruct.png"),
 	"shield": preload("res://assets/images/enemies/intents/blocking.png"),
 	"buff": preload("res://assets/images/enemies/intents/buffing.png"),
+	"heal": preload("res://assets/images/enemies/intents/buffing.png"),
 	"debuff": preload("res://assets/images/enemies/intents/debuffing.png"),
 	"spawn": preload("res://assets/images/enemies/intents/summoning.png"),
 	"random": preload("res://assets/images/enemies/intents/random.png"),
@@ -39,6 +40,9 @@ func create_intent_data(action):
 		intent.value = args.value
 	elif name == "shield":
 		intent.image = IMAGES.shield
+		intent.value = args.value
+	elif name == "heal":
+		intent.image = IMAGES.heal
 		intent.value = args.value
 	elif name == "status":
 		if args.positive:
@@ -73,7 +77,7 @@ func get_intent_tooltip(action, enemy):
 		else:
 			amount_text = ""
 		tooltip.text = "This enemy is going to deal " + str(value) + " " + \
-					   args.type + " damage" + amount_text +  " next turn."
+					   args.type + " damage" + amount_text +  " next turn"
 		if args.type == "regular":
 			tooltip.title_image = IMAGES.regular_attack
 		elif args.type == "piercing":
@@ -91,15 +95,23 @@ func get_intent_tooltip(action, enemy):
 		else:
 			amount_text = ""
 		tooltip.text = "This enemy is going to drain " + str(value) + \
-					   amount_text +  " next turn."
+					   amount_text +  " next turn"
 		tooltip.title_image = IMAGES.drain
 	elif name == "shield":
 		tooltip.title = "Defending"
-		tooltip.text = "This enemy is getting " + str(args.value) + " shield next turn."
+		tooltip.text = "This enemy is getting " + str(args.value) + " shield next turn"
 		tooltip.title_image = IMAGES.shield
+	elif name == "heal":
+		tooltip.title_image = IMAGES.heal
+		if args.target == "self":
+			tooltip.title = "Healing"
+			tooltip.text = "This enemy is healing " + str(args.value) + " next turn"
+		elif args.target == "all_enemies":
+			tooltip.title = "Healing all Enemies"
+			tooltip.text = "This enemy is healing all enemies by " + str(args.value) + " next turn"
 	elif name == "self_destruct":
 		tooltip.title = "Self Destructing"
-		tooltip.text = "This enemy will destroy itself next turn, dealing " + str(args.value) + " piercing damage to the player as result."
+		tooltip.text = "This enemy will destroy itself next turn, dealing " + str(args.value) + " piercing damage to the player as result"
 		tooltip.title_image = IMAGES.self_destruct
 	elif name == "status":
 		if args.positive:
@@ -187,14 +199,14 @@ func get_intent_tooltip(action, enemy):
 		else:
 			push_error("Not a known status:" + str(args.status_name))
 		
-		tooltip.text += " next turn."
+		tooltip.text += " next turn"
 	elif name == "spawn":
 		tooltip.title = "Spawning"
-		tooltip.text = "This enemy is spawning another enemy next turn."
+		tooltip.text = "This enemy is spawning another enemy next turn"
 		tooltip.title_image = IMAGES.spawn
 	elif name == "add_reagent":
 		tooltip.title = "Adding reagent"
-		tooltip.text = "This enemy is going to add a reagent to your bag next turn."
+		tooltip.text = "This enemy is going to add a reagent to your bag next turn"
 		tooltip.title_image = IMAGES.random
 	elif name == "idle":
 		tooltip.title = "Preparing"

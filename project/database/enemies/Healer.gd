@@ -5,7 +5,7 @@ var name = "Healer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 35
-var battle_init = true
+var battle_init = false
 var size = "small"
 
 var states = ["attack", "defend", "heal"]
@@ -27,7 +27,7 @@ var actions = {
 		{"name": "damage", "value": [3,5], "type": "regular"}
 	],
 	"defend": [
-		{"name": "defend", "value": [5, 6]}
+		{"name": "shield", "value": [5, 6]}
 	],
 	"heal": [
 		{"name": "heal", "value": [5,12], "target": "all_enemies"}

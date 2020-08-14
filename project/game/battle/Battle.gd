@@ -670,6 +670,24 @@ func _on_enemy_acted(enemy, actions):
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
+		elif name == "heal":
+			var value = args.value
+			if args.target == "self":
+				var func_state = enemy.heal(value)
+				if func_state and func_state.is_valid():
+					yield(enemy, "resolved")
+				else:
+					yield(get_tree().create_timer(.5), "timeout")
+			elif args.target == "all_enemies":
+				for e in enemies_node.get_children():
+					e.heal(value)
+					yield(get_tree().create_timer(.5), "timeout")
+			else:
+				push_error("Not a valid target for heal effect:" + str(args.target))
+				assert(false)
+			enemy.remove_intent()
+			#Wait a bit before going to next action/enemy
+			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
 			var minion = args.has("minion")
 			spawn_new_enemy(enemy, args.enemy, minion)

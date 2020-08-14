@@ -18,7 +18,7 @@ const ENEMY_DB = {
 				  "small_divider" : preload("res://database/enemies/SmallDivider.gd"),
 				  "revenger" : preload("res://database/enemies/Revenger.gd"),
 				  "overkiller" : preload("res://database/enemies/Overkiller.gd"),
-				  "healer" : preload("res://database/enemies/Overkiller.gd"),
+				  "healer" : preload("res://database/enemies/Healer.gd"),
 				  "doomsday" : preload("res://database/enemies/Doomsday.gd"),
 				  "martyr" : preload("res://database/enemies/Martyr.gd"),
 				  "necromancer": preload("res://database/enemies/Necromancer.gd"),

@@ -228,6 +228,9 @@ func update_action():
 		elif action.name == "shield":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			act = ["shield", {"value": value}]
+		elif action.name == "heal":
+			var value = get_random_value(action.value) if action.value is Array else action.value
+			act = ["heal", {"value": value, "target": action.target}]
 		elif action.name == "status":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var extra_args = action.extra_args if action.has("extra_args") else {}

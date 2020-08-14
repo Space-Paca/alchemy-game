@@ -181,6 +181,7 @@ func setup_enemy(encounter: Encounter):
 
 	for enemy in encounter.enemies:
 		add_enemy(enemy)
+		print(enemy)
 	
 	update_enemy_positions()
 
@@ -246,12 +247,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 		enemy_node.position = $EnemyStartPosition.position
 	
 	if just_spawned:
-		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 		enemy_node.just_spawned = true
-	else:
-		randomize()
-		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
-		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 	
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
@@ -263,6 +259,13 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	enemy_node.connect("damage_player", self, "damage_player")
 	enemy_node.connect("add_status_all_enemies", self, "add_status_all_enemies")
 	effect_manager.add_enemy(enemy_node)
+	
+	if just_spawned:
+		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+	else:
+		randomize()
+		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
+		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 	
 	enemy_node.update_action()
 

@@ -12,6 +12,6 @@ reagents = [ "common", "common", "healing" ]
 effects = [ "heal" ]
 effect_args = [ [ 25 ] ]
 destroy_reagents = [ "healing" ]
-description = "Heals 25 H.P. Destroys the healing reagent in the process."
+description = "Heals 25 HP. Destroys the healing reagent in the process."
 fav_icon = ExtResource( 1 )
 shop_cost = 40

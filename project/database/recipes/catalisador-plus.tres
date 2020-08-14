@@ -11,6 +11,7 @@ floor_sold_in = 3
 reagents = [ "common", "common", "common", "uncommon", "uncommon", "uncommon", "uncommon" ]
 effects = [  ]
 effect_args = [  ]
+destroy_reagents = [  ]
 description = "I love cheese, especially chalk and cheese queso. Bavarian bergkase hard cheese red leicester dolcelatte cheese and wine emmental red leicester pepper jack."
 fav_icon = ExtResource( 1 )
 shop_cost = 789

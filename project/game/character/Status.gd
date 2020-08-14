@@ -10,6 +10,8 @@ const STATUS_IMAGES = {
 					   "retaliate": "res://assets/images/status/random_status.png",
 					   "divider": "res://assets/images/status/random_status.png",
 					   "revenge": "res://assets/images/status/random_status.png",
+					   "overkill": "res://assets/images/status/random_status.png",
+					   "doomsday": "res://assets/images/status/random_status.png",
 					   "martyr": "res://assets/images/status/random_status.png",
 					   "poison_immunity": "res://assets/images/status/random_status.png",
 					   "wounded": "res://assets/images/status/random_status.png",
@@ -69,6 +71,14 @@ const STATUS_TOOLTIPS = {
 						"title": "Poison Immunity",
 						"text": "This character can't receive poison",
 						"title_image": STATUS_IMAGES.poison_immunity},
+					   "overkill": {
+						"title": "Overkill",
+						"text": "When this character dies, any damage dealt that exceeded his life will return doubled as regular damage",
+						"title_image": STATUS_IMAGES.overkill},
+					   "doomsday": {
+						"title": "Doomsday",
+						"text": "When this counter reaches 0, this character will receive 999 permanent strength",
+						"title_image": STATUS_IMAGES.doomsday},
 					   "restrict_minor": {
 						"title": "Minor Restriction",
 						"text": "Blocks a number of grid slots until end of turn",

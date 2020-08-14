@@ -39,6 +39,14 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "revenge"
 	},
+	"doomsday": {
+		"type": "status",
+		"name": "doomsday"
+	},
+	"overkill": {
+		"type": "status",
+		"name": "overkill"
+	},
 	"martyr": {
 		"type": "status",
 		"name": "martyr"

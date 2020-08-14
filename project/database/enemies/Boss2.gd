@@ -14,7 +14,7 @@ var sfx = "boss_1"
 var use_idle_sfx = false
 var hp = 120
 var battle_init = true
-var size = "big"
+var size = "medium"
 
 var states = ["start", "attack1", "attack2", "attack3", "attack4", "attack5", \
 			  "restrict_buff", "spawn1", "spawn2", "spawn3"]

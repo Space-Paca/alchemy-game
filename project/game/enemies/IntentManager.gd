@@ -133,6 +133,12 @@ func get_intent_tooltip(action, enemy):
 		elif args.status == "revenge":
 			tooltip.title = "Revenging"
 			tooltip.text += "revenge"
+		elif args.status == "overkill":
+			tooltip.title = "Overkill"
+			tooltip.text += "overkill"
+		elif args.status == "doomsday":
+			tooltip.title = "Doomsday"
+			tooltip.text += "doomsday"
 		elif args.status == "martyr":
 			tooltip.title = "Martyr"
 			tooltip.text += "martyr"

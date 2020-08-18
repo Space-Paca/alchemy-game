@@ -9,16 +9,16 @@ is_elite = false
 level = 3
 enemies = [ "doomsday" ]
 loot_table = {
-"buff": 0,
+"buff": 4,
 "common": 0,
 "damaging": 0,
-"debuff": 4,
+"debuff": 0,
 "defensive": 0,
 "healing": 0,
 "poison": 0,
-"rare": 2,
-"super_damaging": 0,
+"rare": 3,
+"super_damaging": 4,
 "super_defensive": 0,
-"uncommon": 3
+"uncommon": 2
 }
 extra_loot_chance = [ 0.1, 0.5 ]

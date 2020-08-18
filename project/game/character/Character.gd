@@ -193,6 +193,10 @@ func reduce_status(status: String, amount: int):
 			remove_status(status)
 
 func remove_status(status: String):
+	if get_status(status):
+		var f_name = "on_remove_" + status
+		if self.has_method(f_name):
+			self.callv(f_name, [])
 	var _err = status_list.erase(status)
 
 func clear_status():
@@ -231,6 +235,9 @@ func on_death_martyr():
 func on_death_revenge(_args):
 	var status = get_status("revenge")
 	emit_signal("damage_player", self, status.amount, "regular")
+
+func on_remove_doomsday():
+	add_status("perm_strength", 999, true, {})
 
 func start_turn_shield():
 	if not get_status("tough"):

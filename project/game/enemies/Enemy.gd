@@ -240,10 +240,11 @@ func update_action():
 			act = ["heal", {"value": value, "target": action.target}]
 		elif action.name == "status":
 			var value = get_random_value(action.value) if action.value is Array else action.value
+			var reduce = action.reduce if action.has("reduce") else false
 			var extra_args = action.extra_args if action.has("extra_args") else {}
 			act = ["status", {"status": action.status_name, "value": value, \
 							  "target": action.target, "positive": action.positive, \
-							  "extra_args": extra_args}]
+							  "reduce": reduce, "extra_args": extra_args}]
 		elif action.name == "spawn":
 			act = ["spawn", {"enemy": action.enemy, "minion": action.has("minion")}]
 		elif action.name == "add_reagent":

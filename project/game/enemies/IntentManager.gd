@@ -49,7 +49,10 @@ func create_intent_data(action):
 			intent.image = IMAGES.buff
 		else:
 			intent.image = IMAGES.debuff
-		intent.value = args.value
+		if args.has("reduce") and args.reduce:
+			intent.value = -args.value
+		else:
+			intent.value = args.value
 	elif name == "spawn":
 		intent.image = IMAGES.spawn
 	elif name == "add_reagent":
@@ -114,13 +117,19 @@ func get_intent_tooltip(action, enemy):
 		tooltip.text = "This enemy will destroy itself next turn, dealing " + str(args.value) + " piercing damage to the player as result"
 		tooltip.title_image = IMAGES.self_destruct
 	elif name == "status":
+		var verb
 		if args.positive:
 			tooltip.title_image = IMAGES.buff
-			tooltip.text = "This character is getting "
+			verb = "getting"
 		else:
 			tooltip.title_image = IMAGES.debuff
-			tooltip.text = "This character is applying "
+			verb = "applying"
+		
+		if args.has("reduce") and args.reduce:
+			verb = "removing"
 
+		tooltip.text = "This character is " + verb + " "
+		
 		if args.value > 1:
 			tooltip.text += str(args.value) + " "
 		

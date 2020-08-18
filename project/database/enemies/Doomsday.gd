@@ -4,17 +4,26 @@ var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Doomsday"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 55
+var hp = 220
 var battle_init = true
 var size = "big"
 
-var states = ["init", "attack", "debuff"]
+var states = ["init", "attack1", "attack2", "doom", "dodge"]
 var connections = [
-					  ["init", "attack", 1],
-					  ["init", "debuff", 1],
-					  ["attack", "attack", 2],
-					  ["attack", "debuff", 1],
-					  ["debuff", "attack", 1],
+					  ["init", "attack1", 1],
+					  ["init", "attack2", 1],
+					  ["attack1", "attack2", 3],
+					  ["attack1", "doom", 2],
+					  ["attack1", "dodge", 2],
+					  ["attack2", "attack1", 3],
+					  ["attack2", "doom", 2],
+					  ["attack2", "dodge", 2],
+					  ["doom", "attack1", 2],
+					  ["doom", "attack2", 2],
+					  ["doom", "dodge", 1],
+					  ["dodge", "attack1", 2],
+					  ["dodge", "attack2", 2],
+					  ["dodge", "doom", 1],
 				  ]
 var first_state = ["init"]
 
@@ -22,11 +31,19 @@ var actions = {
 	"init": [
 		{"name": "status", "status_name": "doomsday", "value": 99, "target": "self", "positive": true}
 	],
-	"attack": [
-		{"name": "damage", "value": [10, 12], "type": "regular"}
+	"attack1": [
+		{"name": "damage", "value": [10, 12], "type": "regular"},
+		{"name": "status", "status_name": "doomsday", "value": [2,3], "target": "self", "positive": true, "reduce": true}
 	],
-	"debuff": [
-		{"name": "shield", "value": [5, 8]},
-		{"name": "status", "status_name": "weak", "value": 1, "target": "player", "positive": false}
+	"attack2": [
+		{"name": "damage", "value": [3, 5], "amount": 3, "type": "regular"},
+		{"name": "status", "status_name": "doomsday", "value": [2,3], "target": "self", "positive": true, "reduce": true}
+	],
+	"doom": [
+		{"name": "status", "status_name": "doomsday", "value": [15,20], "target": "self", "positive": true, "reduce": true}
+	],
+	"dodge": [
+		{"name": "status", "status_name": "doomsday", "value": [8,12], "target": "self", "positive": true, "reduce": true},
+		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true}
 	],
 }

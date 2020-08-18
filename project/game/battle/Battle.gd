@@ -661,12 +661,21 @@ func _on_enemy_acted(enemy, actions):
 			#Wait before going to next action/enemy	
 			yield(enemy, "resolved")
 		elif name == "status":
-			var value = args.value if args.value else 1
+			var value = args.value if args.has("value") else 1
+			var reduce = args.reduce if args.has("reduce") else false
 			var extra_args = args.extra_args if args.has("extra_args") else {}
 			if args.target == "self":
-				enemy.add_status(args.status, value, args.positive, extra_args)
+				if not reduce:
+					enemy.add_status(args.status, value, args.positive, extra_args)
+				else:
+					enemy.reduce_status(args.status, value)
+					AudioManager.play_sfx("debuff_denied")
 			elif args.target == "player":
-				player.add_status(args.status, value, args.positive, extra_args)
+				if not reduce:
+					player.add_status(args.status, value, args.positive, extra_args)
+				else:
+					player.reduce_status(args.status, value)
+					AudioManager.play_sfx("debuff_denied")
 			else:
 				push_error("Not a valid target for status effect:" + str(args.target))
 				assert(false)

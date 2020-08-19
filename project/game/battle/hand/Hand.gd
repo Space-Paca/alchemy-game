@@ -93,6 +93,27 @@ func unfreeze_all_slots():
 		if slot.is_frozen():
 			slot.unfreeze()
 
+func burn_reagents(amount : int):
+	var reagents = []
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent and not reagent.is_burned():
+			reagents.append(reagent)
+	
+# warning-ignore:narrowing_conversion
+	amount = min(amount, reagents.size())
+	randomize()
+	reagents.shuffle()
+	for i in range(0, amount):
+		yield(get_tree().create_timer(rand_range(.04,.1)), "timeout")
+		reagents[i].burn()
+
+func unburn_reagents():
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent and reagent.is_burned():
+			reagent.unburn()
+
 func available_slot_count():
 	var count = 0
 	for slot in slots.get_children():

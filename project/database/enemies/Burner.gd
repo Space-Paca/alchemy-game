@@ -8,25 +8,40 @@ var hp = 65
 var battle_init = false
 var size = "medium"
 
-var states = ["attack", "debuff"]
+var states = ["attack1", "attack2", "defend", "burn"]
 var connections = [
-					  ["init", "attack", 1],
-					  ["init", "debuff", 1],
-					  ["attack", "attack", 2],
-					  ["attack", "debuff", 1],
-					  ["debuff", "attack", 1],
+					  ["attack1", "attack1", 2],
+					  ["attack1", "attack2", 2],
+					  ["attack1", "defend", 2],
+					  ["attack1", "burn", 2],
+					  ["defend", "attack1", 5],
+					  ["defend", "attack2", 5],
+					  ["defend", "defend", 3],
+					  ["defend", "burn", 4],
+					  ["burn", "burn", 1],
+					  ["burn", "attack1", 2],
+					  ["burn", "attack2", 2],
+					  ["burn", "defend", 2],
+					  ["attack2", "attack2", 2],
+					  ["attack2", "attack1", 2],
+					  ["attack2", "defend", 2],
+					  ["attack2", "burn", 2],
 				  ]
-var first_state = ["init"]
+var first_state = ["attack1", "defend", "burn"]
 
 var actions = {
-	"init": [
-		{"name": "status", "status_name": "curse", "value": 2, "target": "player", "positive": false}
+	"burn": [
+		{"name": "status", "status_name": "burn", "value": 6, "target": "player", "positive": false}
 	],
-	"attack": [
-		{"name": "damage", "value": [10, 12], "type": "regular"}
+	"attack1": [
+		{"name": "damage", "value": [5, 20], "type": "regular"}
 	],
-	"debuff": [
-		{"name": "shield", "value": [5, 8]},
-		{"name": "status", "status_name": "weak", "value": 1, "target": "player", "positive": false}
+	"attack2": [
+		{"name": "damage", "value": [4, 12], "type": "regular"},
+		{"name": "status", "status_name": "burn", "value": 2, "target": "player", "positive": false}
+	],
+	"defend": [
+		{"name": "shield", "value": [5, 12]},
+		{"name": "status", "status_name": "burn", "value": 3, "target": "player", "positive": false}
 	],
 }

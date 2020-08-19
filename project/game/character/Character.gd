@@ -232,7 +232,7 @@ func on_death_martyr():
 	var status = get_status("martyr")
 	emit_signal("add_status_all_enemies", "perm_strength", status.amount, true)
 
-func on_death_revenge(_args):
+func on_death_revenge():
 	var status = get_status("revenge")
 	emit_signal("damage_player", self, status.amount, "regular")
 
@@ -288,3 +288,6 @@ func end_turn_weak():
 
 func end_turn_time_bomb():
 	remove_status("time_bomb")
+
+func end_turn_burn():
+	remove_status("burn")

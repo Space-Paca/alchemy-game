@@ -302,6 +302,9 @@ func new_player_turn():
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
 	
+	if player.get_status("burn"):
+		$Hand.burn_reagents(player.get_status("burn").amount)
+	
 	enable_player()
 
 
@@ -573,6 +576,10 @@ func add_status_all_enemies(status, amount, positive, extra_args = {}):
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
 	is_dragging_reagent = true
+	if reagent.is_burned():
+		reagent.unburn()
+		AudioManager.play_sfx("fire_reagent")
+		player.take_damage(player, 4, "regular", false)
 
 
 func _on_reagent_stop_drag(_reagent):
@@ -819,6 +826,8 @@ func _on_PassTurnButton_pressed():
 	$Hand.unfreeze_all_slots()
 	#Unrestrict grid
 	$Grid.unrestrict_all_slots()
+	#Unburn reagents
+	$Hand.unburn_reagents()
 	
 	new_enemy_turn()
 

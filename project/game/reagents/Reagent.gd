@@ -33,6 +33,7 @@ var block_tooltips := false
 var upgraded := false
 var unstable := false
 var freezed := false
+var burned := false
 
 
 func set_image(text):
@@ -78,6 +79,18 @@ func freeze():
 
 func unfreeze():
 	freezed = false
+
+func is_burned():
+	return burned
+
+func burn():
+	AudioManager.play_sfx("burn_reagent")
+	burned = true
+	$Burned.show()
+
+func unburn():
+	burned = false
+	$Burned.hide()
 
 func enable_dragging():
 	can_drag = true
@@ -263,6 +276,9 @@ func get_tooltips():
 			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
 	if unstable:
 		text += " It's unstable."
+	
+	if burned:
+		text += " It's on fire."
 
 	var tooltip = {"title": data.name, "text": text, \
 				   "title_image": data.image.get_path()}

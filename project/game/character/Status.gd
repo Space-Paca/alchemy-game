@@ -58,7 +58,7 @@ const STATUS_TOOLTIPS = {
 						"title_image": STATUS_IMAGES.freeze},
 					   "burn": {
 						"title": "Burn",
-						"text": "Burns reagents until end of turn",
+						"text": "At start of turn, will randomly burn player's reagents until end of turn",
 						"title_image": STATUS_IMAGES.burn},
 					   "tough": {
 						"title": "Tough",

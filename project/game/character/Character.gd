@@ -95,6 +95,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
+		
 		AudioManager.play_sfx("damage_regular_" + damage_strength(unblocked_damage))
 		
 		if had_shield and shield > 0:
@@ -103,12 +104,14 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			AudioManager.play_sfx("shield_breaks")
 	#Block damage with shield
 	elif type == "drain":
-		AudioManager.play_sfx("damage_drain")
 		var had_shield = shield > 0
 		# warning-ignore:narrowing_conversion
 		unblocked_damage = max(damage - shield, 0)
 		shield = max(shield - damage, 0)
 		hp -= unblocked_damage
+		
+		if unblocked_damage > 0:
+			AudioManager.play_sfx("damage_drain")
 		
 		if had_shield and shield > 0:
 			AudioManager.play_sfx("shield_hit")
@@ -134,7 +137,23 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		hp -= damage
 		unblocked_damage = damage
 		AudioManager.play_sfx("damage_piercing_" + damage_strength(unblocked_damage))
+	
+	#Regular damage, but unblocked damage turns into poison
+	elif type == "venom":
+		var had_shield = shield > 0
+		# warning-ignore:narrowing_conversion
+		unblocked_damage = max(damage - shield, 0)
+		shield = max(shield - damage, 0)
 		
+		if unblocked_damage > 0:
+			self.add_status("poison", unblocked_damage, false, {})
+			AudioManager.play_sfx("damage_poison")
+		
+		if had_shield and shield > 0:
+			AudioManager.play_sfx("shield_hit")
+		elif had_shield:
+			AudioManager.play_sfx("shield_breaks")
+	
 	#Ignores shield and only damages health
 	elif type == "poison":
 		AudioManager.play_sfx("damage_poison")

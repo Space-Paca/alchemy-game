@@ -1,13 +1,5 @@
 extends Reference
 
-var intents = {"attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
-			   "crushing": preload("res://assets/images/enemies/intents/attack_normal.png"),
-			   "buff": preload("res://assets/images/enemies/intents/buffing.png"),
-			   "debuff": preload("res://assets/images/enemies/intents/debuffing.png"),
-			   "dodge": preload("res://assets/images/enemies/intents/buffing.png"),
-			   "spawn": preload("res://assets/images/enemies/intents/summoning.png"),
-			   "special": preload("res://assets/images/enemies/intents/random.png"),
-			  }
 var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Boss1"
 var sfx = "boss_1"

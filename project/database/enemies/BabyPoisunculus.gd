@@ -23,13 +23,14 @@ var actions = {
 		{"name": "shield", "value": 6}
 	],
 	"poison": [
-		{"name": "status", "status_name": "poison", "value": [3,4], "target": "player", "positive": false}
+		{"name": "damage", "value": [5,8], "type": "venom"}
 	],
 	"medium-poison": [
-		{"name": "status", "status_name": "poison", "value": [2,3], "target": "player", "positive": false}
+		{"name": "damage", "value": [3,6], "type": "venom"}
+		
 	],
 	"defend-poison": [
 		{"name": "shield", "value": [7,9]},
-		{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false}
+		{"name": "damage", "value": [2,4], "type": "venom"}
 	]
 }

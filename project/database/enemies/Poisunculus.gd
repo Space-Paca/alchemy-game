@@ -12,21 +12,27 @@ var states = ["poison", "defend-poison", "attack-poison"]
 var connections = [
 					  ["poison", "defend-poison", 5],
 					  ["poison", "attack-poison", 3],
+					  ["poison", "poison-attack", 3],
 					  ["defend-poison", "poison", 1],
 					  ["attack-poison", "poison", 1],
+					  ["poison-attack", "poison", 1],
 				  ]
 var first_state = ["poison"]
 
 var actions = {
 	"poison": [
-		{"name": "status", "status_name": "poison", "value": [5, 7], "target": "player", "positive": false}
+		{"name": "damage", "value": [8, 15], "type": "venom"},
 	],
 	"attack-poison": [
-		{"name": "damage", "value": [4,6], "type": "regular"},
-		{"name": "status", "status_name": "poison", "value": [1, 2], "target": "player", "positive": false}
+		{"name": "damage", "value": [3,8], "type": "regular"},
+		{"name": "damage", "value": [5,6], "type": "venom"},
+	],
+	"poison-attack": [
+		{"name": "damage", "value": [5,6], "type": "venom"},
+		{"name": "damage", "value": [10,12], "type": "regular"},
 	],
 	"defend-poison": [
 		{"name": "shield", "value": [13,15]},
-		{"name": "status", "status_name": "poison", "value": [1, 2], "target": "player", "positive": false}
+		{"name": "damage", "value": [5, 10], "type": "venom"},
 	]
 }

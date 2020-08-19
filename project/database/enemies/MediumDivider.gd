@@ -31,6 +31,6 @@ var actions = {
 		{"name": "damage", "value": [6, 8], "type": "regular"}
 	],
 	"poison": [
-		{"name": "status", "status_name": "poison", "value": [4,5], "target": "player", "positive": false}
+		{"name": "damage", "value": [8, 12], "type": "venom"},
 	],
 }

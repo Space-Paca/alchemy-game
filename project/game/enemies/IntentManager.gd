@@ -1,17 +1,18 @@
 extends Node
 
 const IMAGES = {
-	"regular_attack": preload("res://assets/images/enemies/intents/attack_normal.png"),
-	"piercing_attack": preload("res://assets/images/enemies/intents/attack_piercing.png"),
-	"crushing_attack": preload("res://assets/images/enemies/intents/attack_crushing.png"),
-	"drain": preload("res://assets/images/enemies/intents/attack_crushing.png"),
-	"self_destruct": preload("res://assets/images/enemies/intents/self_destruct.png"),
-	"shield": preload("res://assets/images/enemies/intents/blocking.png"),
-	"buff": preload("res://assets/images/enemies/intents/buffing.png"),
-	"heal": preload("res://assets/images/enemies/intents/buffing.png"),
-	"debuff": preload("res://assets/images/enemies/intents/debuffing.png"),
-	"spawn": preload("res://assets/images/enemies/intents/summoning.png"),
-	"random": preload("res://assets/images/enemies/intents/random.png"),
+	"regular_attack": preload("res://assets/images/intents/attack_normal.png"),
+	"piercing_attack": preload("res://assets/images/intents/attack_piercing.png"),
+	"crushing_attack": preload("res://assets/images/intents/attack_crushing.png"),
+	"venom_attack": preload("res://assets/images/intents/attack_venom.png"),
+	"drain": preload("res://assets/images/intents/attack_drain.png"),
+	"self_destruct": preload("res://assets/images/intents/self_destruct.png"),
+	"shield": preload("res://assets/images/intents/blocking.png"),
+	"buff": preload("res://assets/images/intents/buffing.png"),
+	"heal": preload("res://assets/images/intents/buffing.png"),
+	"debuff": preload("res://assets/images/intents/debuffing.png"),
+	"spawn": preload("res://assets/images/intents/summoning.png"),
+	"random": preload("res://assets/images/intents/random.png"),
 }
 
 
@@ -27,6 +28,8 @@ func create_intent_data(action):
 			intent.image = IMAGES.piercing_attack
 		elif args.type == "crushing":
 			intent.image = IMAGES.crushing_attack
+		elif args.type == "venom":
+			intent.image = IMAGES.venom_attack
 		intent.value = args.value
 		if args.amount > 1:
 			intent.multiplier = args.amount
@@ -87,6 +90,8 @@ func get_intent_tooltip(action, enemy):
 			tooltip.title_image = IMAGES.piercing_attack
 		elif args.type == "crushing":
 			tooltip.title_image = IMAGES.crushing_attack
+		elif args.type == "venom":
+			tooltip.title_image = IMAGES.venom_attack
 	elif name == "drain":
 		var value = args.value
 		value += enemy.get_damage_modifiers()

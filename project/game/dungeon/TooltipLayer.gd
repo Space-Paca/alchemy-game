@@ -107,13 +107,19 @@ const KEYWORDS = {
 		"type": "tooltip",
 		"title": "Piercing Damage",
 		"text": "Piercing damage ignores shield and deals damage directly to health.",
-		"title_image": preload("res://assets/images/enemies/intents/attack_piercing.png"),
+		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
+	},
+	"venom damage": {
+		"type": "tooltip",
+		"title": "Venom Damage",
+		"text": "Unblocked venom damage applies poison to enemy instead of damage.",
+		"title_image": preload("res://assets/images/intents/attack_venom.png"),
 	},
 	"drain": {
 		"type": "tooltip",
 		"title": "Drain",
 		"text": "Deals regular damage and heals any unblocked damage.",
-		"title_image": preload("res://assets/images/enemies/intents/attack_crushing.png"),
+		"title_image": preload("res://assets/images/intents/attack_crushing.png"),
 	},
 	"unstable": {
 		"type": "tooltip",

@@ -140,6 +140,8 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		AnimationManager.play("piercing_attack", get_center_position())
 	elif type == "crushing":
 		AnimationManager.play("crushing_attack", get_center_position())
+	elif type == "venom":
+		AnimationManager.play("venom_attack", get_center_position())
 	elif type == "poison":
 		AnimationManager.play("poison", get_center_position())
 	

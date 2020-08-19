@@ -7,6 +7,7 @@ onready var ANIM = {
 	"regular_attack": $Animations/RegularAttack,
 	"piercing_attack": $Animations/PiercingAttack,
 	"crushing_attack": $Animations/CrushingAttack,
+	"venom_attack": $Animations/Poison,
 	"poison": $Animations/Poison,
 	"heal": $Animations/Heal,
 	"buff": $Animations/Buff,

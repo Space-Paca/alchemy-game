@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Doomsday"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 220
+var hp = 200
 var battle_init = true
 var size = "big"
 

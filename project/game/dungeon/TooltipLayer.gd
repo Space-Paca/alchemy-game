@@ -91,6 +91,10 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "curse"
 	},
+	"burn": {
+		"type": "status",
+		"name": "burn"
+	},
 	"parasite": {
 		"type": "status",
 		"name": "parasite"

@@ -20,6 +20,7 @@ const STATUS_IMAGES = {
 					   "time_bomb": "res://assets/images/status/random_status.png",
 					   "freeze": "res://assets/images/status/random_status.png",
 					   "curse": "res://assets/images/status/random_status.png",
+					   "burn": "res://assets/images/status/random_status.png",
 					   "parasite": "res://assets/images/status/random_status.png",
 					   "weak": "res://assets/images/status/random_status.png",
 					   "restrict_minor": "res://assets/images/status/random_status.png",
@@ -55,6 +56,10 @@ const STATUS_TOOLTIPS = {
 						"title": "Freeze",
 						"text": "At start of turn, will freezes player's hand slots until end of turn",
 						"title_image": STATUS_IMAGES.freeze},
+					   "burn": {
+						"title": "Burn",
+						"text": "Burns reagents until end of turn",
+						"title_image": STATUS_IMAGES.burn},
 					   "tough": {
 						"title": "Tough",
 						"text": "Shield isn't removed at the end of turn",

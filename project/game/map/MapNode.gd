@@ -32,7 +32,7 @@ var type := EMPTY
 var mouse_over = false
 
 func _process(dt):
-	if mouse_over:
+	if mouse_over and type != EMPTY:
 		$Legend.modulate.a = min($Legend.modulate.a + ALPHA_SPEED*dt, 1)
 		$Button.rect_scale.x = min($Button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
 		$Button.rect_scale.y = min($Button.rect_scale.y + SCALE_SPEED*dt, TARGET_SCALE)

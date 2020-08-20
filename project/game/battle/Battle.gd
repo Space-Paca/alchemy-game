@@ -181,7 +181,6 @@ func setup_enemy(encounter: Encounter):
 
 	for enemy in encounter.enemies:
 		add_enemy(enemy)
-		print(enemy)
 	
 	update_enemy_positions()
 

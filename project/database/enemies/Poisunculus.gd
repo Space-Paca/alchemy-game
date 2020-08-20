@@ -8,7 +8,7 @@ var hp = 60
 var battle_init = false
 var size = "big"
 
-var states = ["poison", "defend-poison", "attack-poison"]
+var states = ["poison", "defend-poison", "attack-poison", "poison-attack"]
 var connections = [
 					  ["poison", "defend-poison", 5],
 					  ["poison", "attack-poison", 3],

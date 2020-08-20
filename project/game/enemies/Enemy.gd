@@ -83,7 +83,7 @@ func die():
 	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 	
-	yield(tween, "tween_all_completed")
+	yield(get_tree().create_timer(.5), "timeout")
 	emit_signal("died", self)
 
 

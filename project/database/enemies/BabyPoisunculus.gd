@@ -23,7 +23,7 @@ var actions = {
 		{"name": "shield", "value": 6}
 	],
 	"poison": [
-		{"name": "damage", "value": [5,8], "type": "venom"}
+		{"name": "damage", "value": [5,7], "type": "venom"}
 	],
 	"medium-poison": [
 		{"name": "damage", "value": [3,6], "type": "venom"}

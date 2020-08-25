@@ -24,3 +24,10 @@ func create_object(type: String):
 
 func get_data(type: String):
 	return ReagentDB.get_from_name(type)
+
+func randomize_reagent(reagent):
+	var type = random_type()
+	var reagent_data = ReagentDB.get_from_name(type)
+	reagent.type = type
+	reagent.set_image(reagent_data.image)
+	

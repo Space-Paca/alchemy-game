@@ -304,6 +304,11 @@ func new_player_turn():
 	if player.get_status("burn"):
 		$Hand.burn_reagents(player.get_status("burn").amount)
 	
+	if player.get_status("confused"):
+		var func_state = $Hand.randomize_reagents()
+		if func_state and func_state.is_valid():
+			yield($Hand, "reagents_randomized")
+	
 	enable_player()
 
 

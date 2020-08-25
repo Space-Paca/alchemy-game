@@ -204,6 +204,12 @@ func get_intent_tooltip(action, enemy):
 		elif args.status == "curse":
 			tooltip.title = "Cursing"
 			tooltip.text += "curse"
+		elif args.status == "confused":
+			tooltip.title = "Confusing"
+			tooltip.text += "confused"
+		elif args.status == "restrained":
+			tooltip.title = "Restraining"
+			tooltip.text += "restrained"
 		elif args.status == "burn":
 			tooltip.title = "Burning"
 			tooltip.text += "burn"

@@ -7,17 +7,17 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = true
 level = 3
-enemies = [ "timing_bomber" ]
+enemies = [ "baby_poison_plus", "confuser", "baby_poison_plus" ]
 loot_table = {
 "buff": 0,
 "common": 0,
 "damaging": 0,
-"debuff": 2,
+"debuff": 0,
 "defensive": 0,
-"healing": 1,
-"poison": 0,
-"rare": 0,
-"super_damaging": 3,
+"healing": 2,
+"poison": 4,
+"rare": 3,
+"super_damaging": 0,
 "super_defensive": 0,
 "uncommon": 3
 }

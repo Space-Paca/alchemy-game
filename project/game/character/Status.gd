@@ -20,6 +20,8 @@ const STATUS_IMAGES = {
 					   "time_bomb": "res://assets/images/status/random_status.png",
 					   "freeze": "res://assets/images/status/random_status.png",
 					   "curse": "res://assets/images/status/random_status.png",
+					   "confused": "res://assets/images/status/random_status.png",
+					   "restrained": "res://assets/images/status/random_status.png",
 					   "burn": "res://assets/images/status/random_status.png",
 					   "parasite": "res://assets/images/status/random_status.png",
 					   "weak": "res://assets/images/status/random_status.png",
@@ -108,6 +110,14 @@ const STATUS_TOOLTIPS = {
 						"title": "Curse",
 						"text": "Limits the number of recipes you can create each turn",
 						"title_image": STATUS_IMAGES.curse},
+					   "confused": {
+						"title": "Confused",
+						"text": "Transforms reagents randomly at the start of every turn",
+						"title_image": STATUS_IMAGES.confused},
+					   "restrained": {
+						"title": "Restrained",
+						"text": "Locks grid slots randomly until end of turn. You can spend reagents to unlock them",
+						"title_image": STATUS_IMAGES.restrained},
 					   "guard_up": {
 						"title": "Guard Up",
 						"text": "Whenever this characters is attacked, if it wasn't shielded, gains shield",

@@ -91,6 +91,14 @@ const KEYWORDS = {
 		"type": "status",
 		"name": "curse"
 	},
+	"confused": {
+		"type": "status",
+		"name": "confused"
+	},
+	"restrained": {
+		"type": "status",
+		"name": "restrained"
+	},
 	"burn": {
 		"type": "status",
 		"name": "burn"

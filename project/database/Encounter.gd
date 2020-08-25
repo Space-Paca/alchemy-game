@@ -11,7 +11,7 @@ export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", \
 					  "small_divider", "revenger", "rager", "curser", "parasiter", \
 					  "timing_bomber", "baby_humunculus_plus", "freezer", "boss_2", \
 					  "self_destructor", "martyr", "necromancer", "zombie", "doomsday", \
-					  "healer", "overkiller", "burner") var enemies
+					  "healer", "overkiller", "burner", "confuser", "baby_poison_plus") var enemies
 
 # Loot table
 export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,

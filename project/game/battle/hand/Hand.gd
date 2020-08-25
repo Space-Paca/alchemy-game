@@ -3,6 +3,7 @@ extends Node2D
 
 signal reagent_placed
 signal hand_slot_reagent_set
+signal reagents_randomized
 
 onready var slots = $Slots
 
@@ -113,6 +114,19 @@ func unburn_reagents():
 		var reagent = slot.get_reagent()
 		if reagent and reagent.is_burned():
 			reagent.unburn()
+
+func randomize_reagents():
+	randomize()
+	var should_emit = false
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			should_emit = true
+			AudioManager.play_sfx("randomize_reagent")
+			ReagentManager.randomize_reagent(reagent)
+			yield(get_tree().create_timer(rand_range(.05,.07)), "timeout")
+	if should_emit:
+		emit_signal("reagents_randomized")
 
 func available_slot_count():
 	var count = 0

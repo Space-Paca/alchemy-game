@@ -10,7 +10,8 @@ const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "po
 					   "revenge", "rage", "curse", "parasite", "weak", "freeze",
 					   "time bomb", "unstable", "tough", "minion", "major restriction",
 					   "minor restriction", "martyr", "poison immunity", "wounded",
-					   "overkill", "doomsday", "healing", "heal", "on fire", "burn"]
+					   "overkill", "doomsday", "healing", "heal", "on fire", "burn",
+					   "confused", "restrained"]
 
 signal set_up
 

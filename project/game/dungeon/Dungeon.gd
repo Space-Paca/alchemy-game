@@ -347,6 +347,8 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 
 
 func _on_Battle_grid_modified(reagent_matrix: Array):
+	if battle.player_disabled:
+		return
 	var combination = get_combination_in_grid(reagent_matrix)
 	if combination and not combination.discovered:
 		combination = null

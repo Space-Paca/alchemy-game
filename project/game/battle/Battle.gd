@@ -560,9 +560,12 @@ func remove_favorite(combination: Combination):
 			available_favorites.append(button)
 
 
-func display_name_for_combination(combination: Combination):
+func display_name_for_combination(combination):
 	if combination:
-		recipe_banner.text = combination.recipe.name
+		if combination is String and combination == "failure":
+			recipe_banner.text = "Miscombination"
+		else:
+			recipe_banner.text = combination.recipe.name
 	else:
 		recipe_banner.text = "???" 
 

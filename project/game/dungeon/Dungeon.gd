@@ -12,6 +12,7 @@ const RECIPES_REWARDED_PER_BATTLE = 3
 
 var battle
 var combinations := {}
+var failed_combinations := []
 var floor_level := 1
 var times_recipe_made := {}
 var favorite_combinations := []
@@ -341,11 +342,16 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 		AudioManager.play_sfx("combine_fail")
 		battle.apply_effects(["combination_failure"], reagent_list)
 
+		if not failed_combinations.has(reagent_matrix):
+			failed_combinations.append(reagent_matrix)
+
 
 func _on_Battle_grid_modified(reagent_matrix: Array):
 	var combination = get_combination_in_grid(reagent_matrix)
 	if combination and not combination.discovered:
 		combination = null
+	elif not combination and failed_combinations.has(reagent_matrix):
+		combination = "failure"
 	
 	battle.display_name_for_combination(combination)
 

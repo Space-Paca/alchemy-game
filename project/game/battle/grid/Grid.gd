@@ -5,6 +5,7 @@ signal cleaned
 signal modified
 signal returned_to_hand
 signal reagent_destroyed
+signal restrained
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const SEPARATION = 4
@@ -210,13 +211,36 @@ func restrict(amount: int, type: String):
 			unrestricted_slots.shuffle()
 			var slot = unrestricted_slots.pop_front()
 			slot.restrict()
-			AudioManager.play_sfx("restrict_slot")
 			amount -= 1
 
 func unrestrict_all_slots():
 	for slot in slots.get_children():
 		if slot.is_restricted():
 			slot.unrestrict()
+
+func restrain(amount : int):
+	var restrain_slots = []
+	for slot in slots.get_children():
+		if not slot.is_restrained():
+			restrain_slots.append(slot)
+	
+	var emit = amount > 0 and not restrain_slots.empty()
+	
+	randomize()
+	restrain_slots.shuffle()
+	while amount > 0 and not restrain_slots.empty():
+		var slot = restrain_slots.pop_front()
+		slot.restrain()
+		amount -= 1
+		yield(get_tree().create_timer(.1), "timeout")
+	
+	if emit:
+		emit_signal("restrained")
+
+func unrestrain_all_slots():
+	for slot in slots.get_children():
+		if slot.is_restrained():
+			slot.unrestrain()
 
 func _on_slot_changed():
 	emit_signal("modified")

@@ -293,6 +293,9 @@ func end_turn_poison():
 func end_turn_freeze():
 	remove_status("freeze")
 
+func end_turn_restrained():
+	remove_status("restrained")
+
 func end_turn_restrict_minor():
 	remove_status("restrict_minor")
 

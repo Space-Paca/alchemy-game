@@ -27,6 +27,7 @@ const ENEMY_DB = {
 				  "zombie": preload("res://database/enemies/Zombie.gd"),
 				  "rager" : preload("res://database/enemies/Rager.gd"),
 				  "curser" : preload("res://database/enemies/Curser.gd"),
+				  "restrainer" : preload("res://database/enemies/Restrainer.gd"),
 				  "confuser" : preload("res://database/enemies/Confuser.gd"),
 				  "parasiter" : preload("res://database/enemies/Parasiter.gd"),
 				  "timing_bomber" : preload("res://database/enemies/TimingBomber.gd"),

@@ -230,6 +230,7 @@ func create_reagent(type):
 	reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
 	reagent.connect("quick_place", self, "_on_reagent_quick_place")
 	reagent.connect("destroyed", self, "_on_reagent_destroyed")
+	reagent.connect("unrestrained_slot", self, "_on_reagent_unrestrained_slot")
 	return reagent
 
 
@@ -308,6 +309,11 @@ func new_player_turn():
 		var func_state = $Hand.randomize_reagents()
 		if func_state and func_state.is_valid():
 			yield($Hand, "reagents_randomized")
+	
+	if player.get_status("restrained"):
+		var func_state = $Grid.restrain(player.get_status("restrained").amount)
+		if func_state and func_state.is_valid():
+			yield($Grid, "restrained")
 	
 	enable_player()
 
@@ -613,6 +619,9 @@ func _on_reagent_quick_place(reagent):
 func _on_reagent_destroyed(reagent):
 	player.remove_reagent(reagent.type, reagent.upgraded)
 
+func _on_reagent_unrestrained_slot(reagent, slot):
+	slot.unrestrain()
+	discard_bag.discard(reagent)
 
 func _on_enemy_acted(enemy, actions):
 	for action in actions:
@@ -830,6 +839,8 @@ func _on_PassTurnButton_pressed():
 	$Hand.unfreeze_all_slots()
 	#Unrestrict grid
 	$Grid.unrestrict_all_slots()
+	#Unrestrain grid
+	$Grid.unrestrain_all_slots()
 	#Unburn reagents
 	$Hand.unburn_reagents()
 	

@@ -46,7 +46,9 @@ func _input(event):
 							nearest_slot_area = area
 			if nearest_slot_area:
 				var slot = nearest_slot_area.get_parent()
-				if not slot.get_reagent() and \
+				if slot.is_restrained():
+					reagent.unrestrain_slot(slot)
+				elif not slot.get_reagent() and \
 				   not (slot.type == "hand" and slot.is_frozen()) and \
 				   not (slot.type == "grid" and slot.is_restricted()):
 					slot.set_reagent(reagent)

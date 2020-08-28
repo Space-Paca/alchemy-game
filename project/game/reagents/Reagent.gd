@@ -10,6 +10,7 @@ signal quick_place
 signal hovering
 signal stopped_hovering
 signal finished_combine_animation
+signal unrestrained_slot
 signal destroyed
 signal exploded
 
@@ -258,6 +259,8 @@ func disable_dragging():
 	can_drag = false
 	disable_drag = true
 
+func unrestrain_slot(target_slot):
+	emit_signal("unrestrained_slot", self, target_slot)
 
 func disable_tooltips():
 	if tooltips_enabled:

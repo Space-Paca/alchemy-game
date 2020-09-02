@@ -57,6 +57,9 @@ func combination_failure(reagent_list, grid):
 		}
 		if reagent.type != "trash":
 			grid.remove_reagent(reagent)
+		
+		if reagent.type == "trash" and player.has_artifact("trash_heal"):
+			effect.type = "heal"
 			
 		if effect.type == "damage":
 			damage_random(value, "regular", boost)
@@ -93,6 +96,8 @@ func combination_failure(reagent_list, grid):
 #Gives a status to a random enemy
 func add_status_random(status: String, amount: int, positive: bool, boost_effects: Dictionary):
 	var boost = boost_effects.all + boost_effects.status
+	if status == "poison" and player.has_artifact("buff_poison"):
+		boost += 1
 	var possible_enemies = enemies.duplicate()
 	randomize()
 	possible_enemies.shuffle()
@@ -131,6 +136,8 @@ func draw(amount:int, _boost_effects: Dictionary):
 
 func add_status_all(status: String, amount: int, positive: bool, boost_effects: Dictionary):
 	var boost = boost_effects.all + boost_effects.status
+	if status == "poison" and player.has_artifact("buff_poison"):
+		boost += 1
 	for enemy in enemies.duplicate():
 			enemy.add_status(status, amount + boost, positive)
 			yield(get_tree().create_timer(.3), "timeout")
@@ -138,6 +145,8 @@ func add_status_all(status: String, amount: int, positive: bool, boost_effects: 
 
 func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects: Dictionary):
 	var boost = boost_effects.all + boost_effects.status
+	if status == "poison" and player.has_artifact("buff_poison"):
+		boost += 1
 	if targeting == "self":
 		player.add_status(status, amount + boost, positive)
 		yield(get_tree().create_timer(.5), "timeout")

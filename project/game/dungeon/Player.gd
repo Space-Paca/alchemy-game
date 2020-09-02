@@ -18,6 +18,7 @@ var hud
 var hand_size : int
 var grid_size : int
 var bag := []
+var artifacts := []
 var known_recipes : Array
 var cur_level : int
 var player_class : PlayerClass
@@ -124,6 +125,9 @@ func set_hud(_hud):
 
 
 func heal(amount : int):
+	if has_artifact("buff_heal"):
+# warning-ignore:narrowing_conversion
+		amount = ceil(float(amount) * 1.5)
 	if amount > 0:
 		var amount_healed = .heal(amount)
 		
@@ -247,3 +251,23 @@ func discover_combination(combination: Combination, play_sfx := false):
 	if play_sfx:
 		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)
+
+func call_artifacts(func_name : String, args := {}):
+	for artifact in artifacts:
+		ArtifactManager.call("call_on_" + func_name, artifact, args)
+
+func has_artifact(name : String):
+	return artifacts.has(name)
+
+func add_artifact(name : String):
+	if not has_artifact(name):
+		artifacts.append(name)
+		ArtifactManager.call_on_add(name, {"player": self})
+	else:
+		assert(false, "Player already has artifact: " + str(name))
+
+func remove_artifact(name : String):
+	if has_artifact(name):
+		artifacts.remove(artifacts.find(name))
+	else:
+		assert(false, "Player doesn't have artifact: " + str(name))

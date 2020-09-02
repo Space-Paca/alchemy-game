@@ -88,7 +88,9 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	
 	if enemies_init():
 		yield(self, "finished_enemies_init")
-
+	
+	player.call_artifacts("battle_start", {"player": player})
+	
 	new_player_turn()
 
 

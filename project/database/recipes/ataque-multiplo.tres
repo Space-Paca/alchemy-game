@@ -13,5 +13,6 @@ effects = [ "damage", "damage", "damage" ]
 effect_args = [ [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ] ]
 destroy_reagents = [  ]
 description = "Deals 5 regular damage 3 times to any number of targets."
+filters = [ "" ]
 fav_icon = ExtResource( 1 )
 shop_cost = 26

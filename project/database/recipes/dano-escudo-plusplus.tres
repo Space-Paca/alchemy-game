@@ -13,5 +13,6 @@ effects = [ "shield", "damage" ]
 effect_args = [ [ 30 ], [ 30, "regular" ] ]
 destroy_reagents = [  ]
 description = "Gain 30 shield until end of turn. Deals 30 regular damage to target enemy."
+filters = [ "", "defense" ]
 fav_icon = ExtResource( 1 )
 shop_cost = 564

@@ -13,5 +13,6 @@ effects = [ "add_status" ]
 effect_args = [ [ "enemy", "poison", 6, false ] ]
 destroy_reagents = [  ]
 description = "Gives 6 poison to target enemy."
+filters = [ "debuff" ]
 fav_icon = ExtResource( 1 )
 shop_cost = 28

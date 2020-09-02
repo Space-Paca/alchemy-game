@@ -13,5 +13,6 @@ effects = [ "add_status" ]
 effect_args = [ [ "self", "evasion", 1, true ] ]
 destroy_reagents = [  ]
 description = "Gain 1 evasion until end of turn."
+filters = [ "buff" ]
 fav_icon = ExtResource( 1 )
 shop_cost = 45

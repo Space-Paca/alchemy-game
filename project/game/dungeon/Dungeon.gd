@@ -46,6 +46,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled):
+# warning-ignore:return_value_discarded
 			recipe_book.toggle_visibility()
 
 func play_map_bgm():
@@ -359,7 +360,9 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 
 
 func _on_Battle_recipe_book_toggle():
-	recipe_book.toggle_visibility()
+	var visible = recipe_book.toggle_visibility()
+	if visible:
+		recipe_book.update_player_bag(player.bag)
 
 
 func _on_Player_combination_discovered(combination, index):
@@ -368,6 +371,7 @@ func _on_Player_combination_discovered(combination, index):
 
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
+# warning-ignore:return_value_discarded
 	recipe_book.toggle_visibility()
 	if mastery_unlocked:
 		battle.autocomplete_grid(combination)

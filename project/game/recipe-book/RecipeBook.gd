@@ -13,6 +13,7 @@ const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const RECT_COLOR = Color(0.392157, 0.333333, 0.211765)
 
 var recipe_displays := {}
+var player_bag := []
 
 
 func add_combination(combination: Combination, position: int):
@@ -62,6 +63,8 @@ func toggle_visibility():
 	else:
 		AudioManager.play_sfx("close_recipe_book")
 		reset_hand_reagents_color()
+	
+	return visible
 
 
 func unlock_mastery(combination: Combination):
@@ -71,6 +74,11 @@ func unlock_mastery(combination: Combination):
 func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_grid.get_child(i).set_reagent(reagents[i])
+
+
+func update_player_bag(bag : Array):
+	for reagent in bag:
+		bag.append(reagent.type)
 
 
 func color_hand_reagents(reagent_array: Array):
@@ -114,6 +122,40 @@ func error_effect():
 # warning-ignore:return_value_discarded
 	tween.start()
 
+
+func get_hand_reagents():
+	var available_reagents = []
+	for reagent in hand_grid.get_children():
+		available_reagents.append(reagent.reagent_name)
+	
+	return available_reagents
+
+
+func get_player_reagents():
+	var available_reagents = get_hand_reagents()
+	for reagent in player_bag:
+		available_reagents.append(reagent)
+	
+	return available_reagents
+
+
+#Given an array of combinations and and array of reagents, returns all combinations
+#from the list that can be made with given reagents
+func get_valid_combinations(combinations : Array, available_reagents : Array):
+	var valid_combinations = []
+	for combination in combinations:
+		var reagents = available_reagents.duplicate()
+		var valid_combination = true
+		for comb_reagent in combination.reagent_array:
+			if reagents.find(comb_reagent) != -1:
+				reagents.remove(reagents.find(comb_reagent))
+			else:
+				valid_combination = false
+				break
+		if valid_combination:
+			valid_combinations.append(combination)
+	
+	return valid_combinations
 
 func _on_recipe_display_hovered(reagent_array: Array):
 	color_hand_reagents(reagent_array)

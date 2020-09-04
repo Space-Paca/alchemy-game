@@ -46,8 +46,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled):
-# warning-ignore:return_value_discarded
-			recipe_book.toggle_visibility()
+			recipe_book_toggle()
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
@@ -217,7 +216,7 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
 # warning-ignore:return_value_discarded
-	battle.connect("recipe_book_toggle", self, "_on_Battle_recipe_book_toggle")
+	battle.connect("recipe_book_toggle", self, "recipe_book_toggle")
 	
 	recipe_book.create_hand(battle)
 
@@ -258,6 +257,10 @@ func extract_boost_effects(reagents):
 			effects[effect.type] += effect.value
 	return effects
 
+func recipe_book_toggle():
+	var visible = recipe_book.toggle_visibility()
+	if visible:
+		recipe_book.update_player_bag(player.bag)
 
 func thanks_for_playing():
 	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
@@ -359,11 +362,6 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	battle.display_name_for_combination(combination)
 
 
-func _on_Battle_recipe_book_toggle():
-	var visible = recipe_book.toggle_visibility()
-	if visible:
-		recipe_book.update_player_bag(player.bag)
-
 
 func _on_Player_combination_discovered(combination, index):
 	recipe_book.add_combination(combination, index)
@@ -371,8 +369,7 @@ func _on_Player_combination_discovered(combination, index):
 
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
-# warning-ignore:return_value_discarded
-	recipe_book.toggle_visibility()
+	recipe_book_toggle()
 	if mastery_unlocked:
 		battle.autocomplete_grid(combination)
 	else:

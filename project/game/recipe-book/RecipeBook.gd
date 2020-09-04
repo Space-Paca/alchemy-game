@@ -15,20 +15,6 @@ const RECT_COLOR = Color(0.392157, 0.333333, 0.211765)
 var recipe_displays := {}
 var player_bag := []
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		var combinations = []
-		for recipe in recipe_grid.get_children():
-			combinations.append(recipe.combination)
-			print("*",recipe.combination.recipe.name)
-		print("hand:")
-		for combination in get_valid_combinations(combinations, get_hand_reagents()):
-			print("-",combination.recipe.name)
-		print("deck:")
-		for combination in get_valid_combinations(combinations, get_player_reagents()):
-			print("-",combination.recipe.name)
-		print("------------")
-
 func add_combination(combination: Combination, position: int):
 	if recipe_displays.has(combination.recipe.name):
 		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.name)
@@ -90,8 +76,9 @@ func update_hand(reagents: Array):
 
 
 func update_player_bag(bag : Array):
+	player_bag = []
 	for reagent in bag:
-		bag.append(reagent.type)
+		player_bag.append(reagent.type)
 
 
 func color_hand_reagents(reagent_array: Array):

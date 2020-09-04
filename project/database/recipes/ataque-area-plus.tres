@@ -13,6 +13,6 @@ effects = [ "damage_all" ]
 effect_args = [ [ 28, "regular" ] ]
 destroy_reagents = [  ]
 description = "Deals 28 regular damage to all enemies."
-filters = [ "" ]
+filters = [ "", "area" ]
 fav_icon = ExtResource( 1 )
 shop_cost = 55

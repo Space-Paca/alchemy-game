@@ -49,6 +49,8 @@ show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.121569, 0.121569, 0.121569, 0.784314 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

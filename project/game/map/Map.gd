@@ -105,7 +105,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		
 		### NODE CREATION ###
 		var new_node : MapNode = MAP_NODE_SCENE.instance()
-		new_node.visible = false
+		new_node.modulate.a = 0
 		nodes.add_child(new_node)
 		new_node.rect_global_position = new_pos.global_position
 		new_pos.node = new_node
@@ -171,7 +171,7 @@ func reveal_paths(node:MapNode):
 
 
 func _on_path_reached(node:MapNode):
-	node.visible = true
+	node.fade_in()
 	
 	if node.should_autoreveal():
 		reveal_paths(node)

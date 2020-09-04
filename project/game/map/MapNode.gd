@@ -42,6 +42,11 @@ func _process(dt):
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
 		
 
+func fade_in():
+	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
+								.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+
 func set_type(new_type:int):
 	if new_type == type:
 		return

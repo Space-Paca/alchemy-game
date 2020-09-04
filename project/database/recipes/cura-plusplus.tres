@@ -13,6 +13,6 @@ effects = [ "healing" ]
 effect_args = [ [ 100 ] ]
 destroy_reagents = [ "healing", "healing" ]
 description = "Heals 100 HP. Destroys the healing reagents in the process."
-filters = [ "heal" ]
+filters = [ 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 78

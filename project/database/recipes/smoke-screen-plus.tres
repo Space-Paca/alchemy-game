@@ -13,6 +13,6 @@ effects = [ "add_status" ]
 effect_args = [ [ "self", "dodge", 1, true ] ]
 destroy_reagents = [  ]
 description = "Gain 1 dodge until end of turn."
-filters = [ "buff" ]
+filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 55

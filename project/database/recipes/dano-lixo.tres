@@ -13,6 +13,6 @@ effects = [ "damage" ]
 effect_args = [ [ 4, "regular" ] ]
 destroy_reagents = [ "trash" ]
 description = "Deals 4 regular damage to target enemy. Destroys trash reagent in the process."
-filters = [ "" ]
+filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 18

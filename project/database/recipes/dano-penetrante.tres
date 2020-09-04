@@ -13,6 +13,6 @@ effects = [ "damage" ]
 effect_args = [ [ 8, "piercing" ] ]
 destroy_reagents = [  ]
 description = "Deals 8 piercing damage to target enemy."
-filters = [ "" ]
+filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 20

@@ -13,6 +13,6 @@ effects = [ "drain" ]
 effect_args = [ [ 30 ] ]
 destroy_reagents = [ "healing" ]
 description = "Drain 30 life from target enemy. Destroys healing reagent in the process."
-filters = [ "", "heal" ]
+filters = [ 0, 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 65

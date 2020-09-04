@@ -13,6 +13,6 @@ effects = [ "add_status" ]
 effect_args = [ [ "self", "retaliate", 6, true ] ]
 destroy_reagents = [  ]
 description = "Gain 6 retaliate."
-filters = [ "buff" ]
+filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 50

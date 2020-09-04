@@ -13,6 +13,6 @@ effects = [ "draw" ]
 effect_args = [ [ 3 ] ]
 destroy_reagents = [  ]
 description = "Draw 3 reagents"
-filters = [ "misc" ]
+filters = [ 6 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 60

@@ -139,6 +139,18 @@ func get_player_reagents():
 	return available_reagents
 
 
+func filter_combinations(combinations : Array, filters : Array):
+	var filtered_combinations = []
+	
+	for combination in combinations:
+		for recipe_filter in combination.recipe.filters:
+			for filter in filters:
+				if filter == recipe_filter:
+					filtered_combinations.append(combination)
+					break
+	
+	return filtered_combinations
+
 #Given an array of combinations and and array of reagents, returns all combinations
 #from the list that can be made with given reagents
 func get_valid_combinations(combinations : Array, available_reagents : Array):

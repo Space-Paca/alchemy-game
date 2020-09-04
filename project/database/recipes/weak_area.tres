@@ -13,6 +13,6 @@ effects = [ "add_status_all" ]
 effect_args = [ [ "weak", 3, false ] ]
 destroy_reagents = [  ]
 description = "Applies 2 weak to all enemies."
-filters = [ "debuff", "area" ]
+filters = [ 4, 2 ]
 fav_icon = ExtResource( 2 )
 shop_cost = 30

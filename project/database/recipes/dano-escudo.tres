@@ -13,6 +13,6 @@ effects = [ "shield", "damage" ]
 effect_args = [ [ 5 ], [ 5, "regular" ] ]
 destroy_reagents = [  ]
 description = "Gain 5 shield until end of turn. Deals 5 regular damage to target enemy."
-filters = [ "", "defense" ]
+filters = [ 0, 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 35

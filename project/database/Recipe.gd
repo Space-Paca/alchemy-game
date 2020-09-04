@@ -1,6 +1,8 @@
 extends Resource
 class_name Recipe
 
+enum FILTERS {ATTACK, DEFENSE, AREA, BUFF, DEBUFF, HEAL, MISC}
+
 export(String) var name
 export(int) var grid_size
 export(int) var floor_sold_in
@@ -9,6 +11,6 @@ export(Array, String) var effects
 export(Array, Array) var effect_args
 export(Array, String) var destroy_reagents
 export(String) var description
-export(Array, String, "attack", "defense", "area", "buff", "debuff", "heal", "misc") var filters
+export(Array, FILTERS) var filters = [FILTERS.ATTACK]
 export(Texture) var fav_icon
 export(int) var shop_cost

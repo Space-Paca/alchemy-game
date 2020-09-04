@@ -13,6 +13,6 @@ effects = [ "add_status" ]
 effect_args = [ [ "self", "temp_strength", 5, true ] ]
 destroy_reagents = [  ]
 description = "Gain 5 temporary strength."
-filters = [ "buff" ]
+filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 45

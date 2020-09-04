@@ -13,6 +13,6 @@ effects = [ "shield" ]
 effect_args = [ [ 10 ] ]
 destroy_reagents = [  ]
 description = "Gain 10 shield until end of turn."
-filters = [ "defense" ]
+filters = [ 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 10

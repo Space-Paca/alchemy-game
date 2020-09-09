@@ -115,6 +115,7 @@ func remove_reagent(type: String, upgraded: bool):
 			bag.remove(i)
 			break
 
+
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
 	bag.remove(index)

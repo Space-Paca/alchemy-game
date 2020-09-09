@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/ui/DragableReagentList.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -9,11 +13,11 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 95
-outline_size = 9
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="DynamicFont" id=2]
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -24,27 +28,62 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="."]
-margin_left = 58.2214
-margin_top = 948.668
-margin_right = 258.221
-margin_bottom = 1038.67
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -99.9998
+margin_top = -160.558
+margin_right = 99.9998
+margin_bottom = -70.5555
 custom_fonts/font = SubResource( 1 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 2.6499
-margin_top = 50.8353
-margin_right = 2.6499
-margin_bottom = 152.835
-custom_fonts/font = SubResource( 4 )
-text = "Choose only one"
+[node name="Counter" type="Node2D" parent="."]
+position = Vector2( 849.187, 251.984 )
+
+[node name="BG" type="ColorRect" parent="Counter"]
+margin_right = 300.0
+margin_bottom = 300.0
+
+[node name="Label" type="Label" parent="Counter"]
+margin_right = 300.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4/10"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Book" type="Node2D" parent="."]
+
+[node name="BBG" type="TextureRect" parent="Book"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="Book"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragableReagentList" parent="Book" instance=ExtResource( 3 )]
+margin_left = 161.27
+margin_top = 335.139
+margin_right = 201.27
+margin_bottom = 375.139
+
+[node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

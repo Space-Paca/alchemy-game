@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/ui/DragableReagentList.gd" type="Script" id=1]
+
+[node name="DragableReagentList" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 200.0
+rect_min_size = Vector2( 0, 600 )
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
+custom_constants/vseparation = 120
+custom_constants/hseparation = 150
+columns = 3

@@ -72,6 +72,7 @@ func should_autoreveal() -> bool:
 
 
 func _on_Button_pressed():
+	mouse_over = false
 	emit_signal("pressed")
 
 

@@ -4,6 +4,7 @@ onready var player = $Player
 onready var recipe_book = $BookLayer/RecipeBook
 onready var shop = $Shop
 onready var rest = $Rest
+onready var lab = $Laboratory
 onready var smith = $Blacksmith
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
@@ -242,6 +243,12 @@ func open_smith(room, _player):
 	smith.show()
 	map.hide()
 
+func open_lab(room, _player):
+	AudioManager.play_bgm("laboratory")
+	lab.setup(room, _player)
+	lab.show()
+	map.hide()
+
 
 func extract_boost_effects(reagents):
 	var effects = {
@@ -283,6 +290,8 @@ func _on_map_node_selected(node:MapNode):
 		open_rest(node, player)
 	elif node.type == MapNode.SMITH:
 		open_smith(node, player)
+	elif node.type == MapNode.LABORATORY:
+		open_lab(node, player)
 
 
 func _on_Battle_won():
@@ -435,5 +444,11 @@ func _on_Rest_closed():
 
 func _on_Blacksmith_closed():
 	smith.hide()
+	map.show()
+	play_map_bgm()
+
+
+func _on_Laboratory_closed():
+	lab.hide()
 	map.show()
 	play_map_bgm()

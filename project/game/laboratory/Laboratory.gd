@@ -7,6 +7,8 @@ const REST_HEAL = 70
 
 onready var reagent_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
+onready var grid = $Grid
+onready var counter = $Counter
 
 var map_node : MapNode
 var player
@@ -16,9 +18,10 @@ func setup(node, _player):
 	map_node = node
 	player = _player
 	reagent_list.populate(player.bag)
+	grid.set_grid(player.grid_size)
 
 func create_reagent(dispenser, type, quick_place):
-	if dispenser.get_quantity() > 0:
+	if dispenser.get_quantity() > 0 and (not quick_place or not grid.is_full()):
 		dispenser.set_quantity(dispenser.get_quantity() - 1)
 	else:
 		AudioManager.play_sfx("error")
@@ -38,13 +41,13 @@ func create_reagent(dispenser, type, quick_place):
 		reagent.start_dragging()
 		reagent.target_position = dispenser.get_pos()
 	else:
-		place_reagent_in_grid(reagent)
+		grid.quick_place(reagent)
 
-func place_reagent_in_dispenser(reagent):
-	pass
-
-func place_reagent_in_grid(reagent):
-	pass
+func return_reagent_to_dispenser(reagent):
+	reagent.disable_dragging()
+	yield(reagent, "reached_target_pos")
+	reagent.queue_free()
+	reagent.dispenser.set_quantity(reagent.dispenser.get_quantity() + 1)
 
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
@@ -65,10 +68,7 @@ func _on_reagent_drag(reagent):
 func _on_reagent_stop_drag(reagent):
 	is_dragging_reagent = false
 	if not reagent.slot:
-		reagent.disable_dragging()
-		yield(reagent, "reached_target_pos")
-		reagent.queue_free()
-		reagent.dispenser.set_quantity(reagent.dispenser.get_quantity() + 1)
+		return_reagent_to_dispenser(reagent)
 
 
 func _on_reagent_hover(reagent):
@@ -85,9 +85,20 @@ func _on_reagent_quick_place(reagent):
 	if reagent.slot:
 		AudioManager.play_sfx("quick_place_hand")
 		if reagent.slot.type == "grid":
-			place_reagent_in_dispenser(reagent)
+				if reagent.slot:
+					reagent.slot.remove_reagent()
+				reagent.slot = null
+				reagent.target_position = reagent.dispenser.get_pos()
+				return_reagent_to_dispenser(reagent)
 
 
 
 func _on_DispenserReagentList_dispenser_pressed(dispenser, reagent, quick_place):
 	create_reagent(dispenser, reagent, quick_place)
+
+
+func _on_Combine_pressed():
+	if counter.get_attempts() > 0 and not grid.is_empty():
+		pass
+	else:
+		AudioManager.play_sfx("error")

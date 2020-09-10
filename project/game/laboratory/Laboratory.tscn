@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -43,21 +45,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Counter" type="Node2D" parent="."]
-position = Vector2( 849.187, 251.984 )
-
-[node name="BG" type="ColorRect" parent="Counter"]
-margin_right = 300.0
-margin_bottom = 300.0
-
-[node name="Label" type="Label" parent="Counter"]
-margin_right = 300.0
-margin_bottom = 300.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "4/10"
-align = 1
-valign = 1
+[node name="Combine" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 445.0
+margin_top = -320.0
+margin_right = 705.0
+margin_bottom = -220.0
+custom_fonts/font = SubResource( 1 )
+text = "COMBINE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -86,6 +84,37 @@ margin_top = 330.926
 margin_right = 167.279
 margin_bottom = 370.926
 
+[node name="Counter" type="Node2D" parent="."]
+position = Vector2( 849.187, 251.984 )
+script = ExtResource( 8 )
+
+[node name="BG" type="ColorRect" parent="Counter"]
+margin_right = 300.0
+margin_bottom = 300.0
+
+[node name="Label" type="Label" parent="Counter"]
+margin_right = 300.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" parent="." instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 565.0
+margin_top = -110.0
+margin_right = 565.0
+margin_bottom = -110.0
+
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]
 [connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]

@@ -92,6 +92,13 @@ func is_empty():
 			return false
 	return true
 
+func is_full():
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if not reagent:
+			return false
+	return true
+
 
 func quick_place(reagent):
 	#Search for available hint first

@@ -27,6 +27,7 @@ __meta__ = {
 [node name="BGButton" type="TextureButton" parent="."]
 margin_right = 280.0
 margin_bottom = 90.0
+button_mask = 3
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 5 )
 expand = true

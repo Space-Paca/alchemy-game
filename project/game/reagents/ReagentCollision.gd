@@ -29,9 +29,6 @@ func _input(event):
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
 					reagent.start_dragging()
 		elif not event.pressed and reagent.is_drag:
-			reagent.drop_effect()
-			reagent.stop_dragging()
-			reagent.is_drag = false
 			var nearest_slot_area = null
 			for area in get_overlapping_areas():
 				if area.is_in_group("gridslot") or area.is_in_group("handslot"):
@@ -63,4 +60,7 @@ func _input(event):
 						reagent.can_drag = false
 				else:
 					AudioManager.play_sfx("error")
+			reagent.drop_effect()
+			reagent.stop_dragging()
+			reagent.is_drag = false
 

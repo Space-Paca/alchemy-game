@@ -7,7 +7,7 @@ signal draw_reagent
 signal draw_resolve
 
 const HAND_SIZES = [5,8,12]
-const GRID_SIZES = [2,3,4]
+const GRID_SIZES = [4,3,4]
 const MAX_LEVEL = 3
 
 export var initial_currency := 50
@@ -40,7 +40,7 @@ func _ready():
 	known_recipes.sort()
 	
 	# Initial bag
-	for _i in range(50):
+	for _i in range(5):
 		add_reagent("common", false)
 	for _i in range(3):
 		add_reagent("damaging", false)

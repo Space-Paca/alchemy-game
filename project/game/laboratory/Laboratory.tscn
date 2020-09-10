@@ -16,7 +16,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 380, 400 )
+extents = Vector2( 570, 520 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 100
@@ -82,18 +82,18 @@ __meta__ = {
 }
 
 [node name="DispenserReagentList" parent="Book" instance=ExtResource( 3 )]
-margin_left = 127.279
+margin_left = 76.3673
 margin_top = 330.926
-margin_right = 167.279
+margin_right = 116.367
 margin_bottom = 370.926
 
 [node name="ReagentDropZone" type="Area2D" parent="Book" groups=[
 "reagent_drop_zone",
 ]]
-position = Vector2( 305.47, 619.426 )
+position = Vector2( 438.407, 526.088 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
-position = Vector2( 65.0539, 8.48529 )
+position = Vector2( 130.108, 8.48529 )
 shape = SubResource( 3 )
 
 [node name="Counter" type="Node2D" parent="."]

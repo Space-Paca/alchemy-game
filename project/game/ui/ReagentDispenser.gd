@@ -3,7 +3,8 @@ extends Control
 signal dispenser_pressed
 
 onready var image = $HBoxContainer/Image
-onready var label = $HBoxContainer/Label
+onready var quantity_label = $HBoxContainer/Quantity
+onready var name_label = $HBoxContainer/Name
 
 var reagent_type
 var quantity = 0
@@ -14,6 +15,7 @@ func setup(reagent, amount):
 	var reagent_data = ReagentDB.get_from_name(reagent_type)
 	
 	image.texture = reagent_data.image
+	name_label = reagent_data.name
 	quantity = amount
 	max_quantity = amount
 	update_text()
@@ -32,7 +34,7 @@ func get_max_quantity():
 	return max_quantity
 
 func update_text():
-	label.text = str(quantity) + "/" + str(max_quantity)
+	quantity_label.text = str(quantity) + "/" + str(max_quantity)
 
 func _on_BGButton_button_down():
 	AudioManager.play_sfx("click")

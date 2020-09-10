@@ -31,7 +31,8 @@ func _input(event):
 		elif not event.pressed and reagent.is_drag:
 			var nearest_slot_area = null
 			for area in get_overlapping_areas():
-				if area.is_in_group("gridslot") or area.is_in_group("handslot"):
+				if area.is_in_group("gridslot") or area.is_in_group("handslot") or \
+				   area.is_in_group("reagent_drop_zone"):
 					if not nearest_slot_area:
 						nearest_slot_area = area
 					else:
@@ -39,27 +40,34 @@ func _input(event):
 						   self.global_position.distance_to(area.global_position):
 							nearest_slot_area = area
 			if nearest_slot_area:
-				var slot = nearest_slot_area.get_parent()
-				if slot.type == "grid" and slot.is_restrained():
-					reagent.unrestrain_slot(slot)
-				elif not slot.get_reagent() and \
-				   not (slot.type == "hand" and slot.is_frozen()) and \
-				   not (slot.type == "grid" and slot.is_restricted()):
-					slot.set_reagent(reagent)
-					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
-						reagent.can_drag = false
-				elif not (slot.type == "hand" and slot.is_frozen()) and \
-					 not (slot.type == "grid" and slot.is_restricted()):
-					#In case there already was a reagent in that slot (and isn't frozen), switch places
-					var other_reagent = slot.get_reagent()
-					var previous_slot = reagent.slot
-					other_reagent.slot = null
-					slot.set_reagent(reagent)
-					previous_slot.set_reagent(other_reagent)
-					if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
-						reagent.can_drag = false
+				if nearest_slot_area.is_in_group("reagent_drop_zone"):
+					reagent.return_to_dispenser()
 				else:
-					AudioManager.play_sfx("error")
+					var slot = nearest_slot_area.get_parent()
+					if slot.type == "grid" and slot.is_restrained():
+						reagent.unrestrain_slot(slot)
+					elif not slot.get_reagent() and \
+					   not (slot.type == "hand" and slot.is_frozen()) and \
+					   not (slot.type == "grid" and slot.is_restricted()):
+						slot.set_reagent(reagent)
+						if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
+							reagent.can_drag = false
+					elif not (slot.type == "hand" and slot.is_frozen()) and \
+						 not (slot.type == "grid" and slot.is_restricted()):
+						#In case there already was a reagent in that slot (and isn't frozen), switch places
+						var other_reagent = slot.get_reagent()
+						var previous_slot = reagent.slot
+						other_reagent.slot = null
+						slot.set_reagent(reagent)
+						if previous_slot:
+							previous_slot.set_reagent(other_reagent)
+						else:
+							#Came from dispenser (if not, God is dead probably)
+							other_reagent.return_to_dispenser()
+						if self.global_position.distance_to(nearest_slot_area.global_position) > 0:
+							reagent.can_drag = false
+					else:
+						AudioManager.play_sfx("error")
 			reagent.drop_effect()
 			reagent.stop_dragging()
 			reagent.is_drag = false

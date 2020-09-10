@@ -28,6 +28,7 @@ var type = "none"
 var image_path : String
 var shake := 0.0
 var dispenser = null
+var returning_to_dispenser := false
 var speed_mod := 1.0
 var effect_mod := 1.0
 var tooltips_enabled := false
@@ -200,6 +201,24 @@ func highlight():
 
 func unhighlight():
 	modulate = Color.white
+
+
+func return_to_dispenser():
+	assert(dispenser, "Reagent doesn't have a dispenser")
+	if returning_to_dispenser:
+		return
+	
+	returning_to_dispenser = true
+	
+	if slot:
+		slot.remove_reagent()
+	slot = null
+	target_position = dispenser.get_pos()
+	
+	disable_dragging()
+	yield(self, "reached_target_pos")
+	dispenser.set_quantity(dispenser.get_quantity() + 1)
+	queue_free()
 
 
 func start_dragging():

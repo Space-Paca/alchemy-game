@@ -36,18 +36,13 @@ func create_reagent(dispenser, type, quick_place):
 	reagent.dispenser = dispenser
 	reagents.add_child(reagent)
 	reagent.rect_global_position = get_viewport().get_mouse_position()
+	reagent.disable() #Blocks tooltips
 	
 	if not quick_place:
 		reagent.start_dragging()
 		reagent.target_position = dispenser.get_pos()
 	else:
 		grid.quick_place(reagent)
-
-func return_reagent_to_dispenser(reagent):
-	reagent.disable_dragging()
-	yield(reagent, "reached_target_pos")
-	reagent.queue_free()
-	reagent.dispenser.set_quantity(reagent.dispenser.get_quantity() + 1)
 
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
@@ -68,7 +63,7 @@ func _on_reagent_drag(reagent):
 func _on_reagent_stop_drag(reagent):
 	is_dragging_reagent = false
 	if not reagent.slot:
-		return_reagent_to_dispenser(reagent)
+		reagent.return_to_dispenser()
 
 
 func _on_reagent_hover(reagent):
@@ -85,11 +80,7 @@ func _on_reagent_quick_place(reagent):
 	if reagent.slot:
 		AudioManager.play_sfx("quick_place_hand")
 		if reagent.slot.type == "grid":
-				if reagent.slot:
-					reagent.slot.remove_reagent()
-				reagent.slot = null
-				reagent.target_position = reagent.dispenser.get_pos()
-				return_reagent_to_dispenser(reagent)
+			reagent.return_to_dispenser()
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,9 @@ size = 35
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 380, 400 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 100
@@ -83,6 +86,15 @@ margin_left = 127.279
 margin_top = 330.926
 margin_right = 167.279
 margin_bottom = 370.926
+
+[node name="ReagentDropZone" type="Area2D" parent="Book" groups=[
+"reagent_drop_zone",
+]]
+position = Vector2( 305.47, 619.426 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
+position = Vector2( 65.0539, 8.48529 )
+shape = SubResource( 3 )
 
 [node name="Counter" type="Node2D" parent="."]
 position = Vector2( 849.187, 251.984 )

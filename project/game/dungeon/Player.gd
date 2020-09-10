@@ -40,7 +40,7 @@ func _ready():
 	known_recipes.sort()
 	
 	# Initial bag
-	for _i in range(5):
+	for _i in range(50):
 		add_reagent("common", false)
 	for _i in range(3):
 		add_reagent("damaging", false)

@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://game/ui/DragableReagentList.gd" type="Script" id=1]
+[ext_resource path="res://game/ui/DispenserReagentList.gd" type="Script" id=1]
 
-[node name="DragableReagentList" type="Control"]
+[node name="DispenserReagentList" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -13,16 +14,11 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_right = 200.0
 rect_min_size = Vector2( 0, 600 )
+mouse_filter = 1
 follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-margin_right = 400.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 400, 400 )
-custom_constants/vseparation = 120
-custom_constants/hseparation = 150
-columns = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]

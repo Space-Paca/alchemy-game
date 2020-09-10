@@ -27,6 +27,7 @@ var target_position = rect_position
 var type = "none"
 var image_path : String
 var shake := 0.0
+var dispenser = null
 var speed_mod := 1.0
 var effect_mod := 1.0
 var tooltips_enabled := false
@@ -37,8 +38,8 @@ var freezed := false
 var burned := false
 
 
-func set_image(text):
-	$Image.texture = text
+func set_image(texture):
+	$Image.texture = texture
 
 
 func _process(delta):
@@ -202,6 +203,9 @@ func unhighlight():
 
 
 func start_dragging():
+	pick_effect()
+	is_drag = true
+	drag_offset = -get_local_mouse_position()
 	disable_tooltips()
 	emit_signal("started_dragging", self)
 

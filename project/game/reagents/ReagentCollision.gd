@@ -27,9 +27,6 @@ func _input(event):
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
-					reagent.pick_effect()
-					reagent.is_drag = true
-					reagent.drag_offset = -get_local_mouse_position()
 					reagent.start_dragging()
 		elif not event.pressed and reagent.is_drag:
 			reagent.drop_effect()

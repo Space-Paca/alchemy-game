@@ -5,43 +5,42 @@ signal closed
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
 const REST_HEAL = 70
 
-onready var reagent_list = $Book/DragableReagentList
+onready var reagent_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
 
 var map_node : MapNode
 var player
 var is_dragging_reagent := false
 
-
 func setup(node, _player):
 	map_node = node
 	player = _player
 	reagent_list.populate(player.bag)
-	#Wait a bit so slots are properly positioned in the grid, so we can teleport reagents to slot
-	yield(get_tree(), "idle_frame")
-	populate_reagents()
 
-func populate_reagents():
-	for i in range(0, player.bag.size()):
-		var reagent = create_reagent(player.bag[i].type, player.bag[i].upgraded)
-		reagents.add_child(reagent)
-		var slot = reagent_list.get_slot(i)
-		slot.set_reagent(reagent)
-		reagents.get_child(i).rect_global_position = slot.get_pos()
-
-func create_reagent(type, upgraded):
+func create_reagent(dispenser, type, quick_place):
+	if dispenser.get_quantity() > 0:
+		dispenser.set_quantity(dispenser.get_quantity() - 1)
+	else:
+		AudioManager.play_sfx("error")
+		return
+	
 	var reagent = ReagentManager.create_object(type)
 	reagent.connect("started_dragging", self, "_on_reagent_drag")
 	reagent.connect("stopped_dragging", self, "_on_reagent_stop_drag")
 	reagent.connect("hovering", self, "_on_reagent_hover")
 	reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
 	reagent.connect("quick_place", self, "_on_reagent_quick_place")
-	if upgraded:
-		reagent.upgrade()
-		
-	return reagent
+	reagent.dispenser = dispenser
+	reagents.add_child(reagent)
+	reagent.rect_global_position = get_viewport().get_mouse_position()
+	
+	if not quick_place:
+		reagent.start_dragging()
+		reagent.target_position = dispenser.get_pos()
+	else:
+		place_reagent_in_grid(reagent)
 
-func place_reagent_in_book(reagent):
+func place_reagent_in_dispenser(reagent):
 	pass
 
 func place_reagent_in_grid(reagent):
@@ -63,8 +62,13 @@ func _on_reagent_drag(reagent):
 	is_dragging_reagent = true
 
 
-func _on_reagent_stop_drag(_reagent):
+func _on_reagent_stop_drag(reagent):
 	is_dragging_reagent = false
+	if not reagent.slot:
+		reagent.disable_dragging()
+		yield(reagent, "reached_target_pos")
+		reagent.queue_free()
+		reagent.dispenser.set_quantity(reagent.dispenser.get_quantity() + 1)
 
 
 func _on_reagent_hover(reagent):
@@ -81,8 +85,9 @@ func _on_reagent_quick_place(reagent):
 	if reagent.slot:
 		AudioManager.play_sfx("quick_place_hand")
 		if reagent.slot.type == "grid":
-				place_reagent_in_book(reagent)
-		elif reagent.slot.type == "hand":
-			AudioManager.play_sfx("quick_place_grid")
-			place_reagent_in_grid(reagent)
+			place_reagent_in_dispenser(reagent)
 
+
+
+func _on_DispenserReagentList_dispenser_pressed(dispenser, reagent, quick_place):
+	create_reagent(dispenser, reagent, quick_place)

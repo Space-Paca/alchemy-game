@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://game/ui/DragableReagentList.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
@@ -22,6 +22,7 @@ font_data = ExtResource( 6 )
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,11 +80,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DragableReagentList" parent="Book" instance=ExtResource( 3 )]
-margin_left = 161.27
-margin_top = 335.139
-margin_right = 201.27
-margin_bottom = 375.139
+[node name="DispenserReagentList" parent="Book" instance=ExtResource( 3 )]
+margin_left = 127.279
+margin_top = 330.926
+margin_right = 167.279
+margin_bottom = 370.926
 
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]

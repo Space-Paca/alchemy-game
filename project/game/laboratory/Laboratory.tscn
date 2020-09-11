@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -25,6 +25,24 @@ size = 100
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "blink_red"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -128,6 +146,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Counter"]
+autoplay = "idle"
+anims/blink_red = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="Grid" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5

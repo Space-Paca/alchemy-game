@@ -12,6 +12,9 @@ func decrease_attempts():
 	attempts -= 1
 	update_text()
 
+func blink_red():
+	$AnimationPlayer.play("blink_red")
+
 func get_attempts():
 	return attempts
 

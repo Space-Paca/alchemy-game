@@ -126,6 +126,8 @@ func _on_DispenserReagentList_dispenser_pressed(dispenser, reagent, quick_place)
 func _on_Combine_pressed():
 	if counter.get_attempts() <= 0 or grid.is_empty():
 		AudioManager.play_sfx("error")
+		if counter.get_attempts() <= 0:
+			counter.blink_red()
 		return
 	
 	grid.clear_hint()

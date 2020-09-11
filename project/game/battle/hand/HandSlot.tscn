@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/battle/hand/HandSlot.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/Reagent Holder.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/slot quad-80-px.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/Reagent Holder Frozen.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]

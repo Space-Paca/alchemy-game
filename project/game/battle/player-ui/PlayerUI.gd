@@ -4,29 +4,10 @@ extends Node2D
 signal animation_completed
 
 onready var health_bar = $HealthBar
-onready var gold_label = $Gold/Label
-onready var gem_label = $Gem/Label
 
-
-func update_tooltip_pos():
-	#Setup tooltip collision
-	$TooltipCollision.position.x = (health_bar.position.x + health_bar.get_width())/2
-	$TooltipCollision.position.y = $Portrait.rect_size.y * $Portrait.rect_scale.y/2
-	var w = health_bar.position.x + health_bar.get_width()
-	var h = $Portrait.rect_size.y * $Portrait.rect_scale.y
-	$TooltipCollision.set_collision_shape(Vector2(w, h))
-	
 
 func set_life(max_hp, hp):
 	health_bar.set_life(hp, max_hp)
-
-
-func set_gold(amount: int):
-	gold_label.text = str(amount)
-
-
-func set_gems(amount: int):
-	gem_label.text = str(amount)
 
 
 func dummy_rising_number():

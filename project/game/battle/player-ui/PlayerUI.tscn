@@ -1,124 +1,49 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/images/Player Portrait.png" type="Texture" id=2]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/images/ui/book/char portrait animation.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=3]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=9]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
 
-[sub_resource type="DynamicFont" id=1]
-size = 84
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 22
-use_filter = true
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 77
-use_filter = true
-font_data = ExtResource( 5 )
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 230, 70 )
 
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="Portrait" type="TextureRect" parent="."]
-margin_right = 165.0
-margin_bottom = 165.0
-rect_scale = Vector2( 2.8, 2.8 )
+[node name="Portrait" type="Sprite" parent="."]
+position = Vector2( 140, 140 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+vframes = 3
+hframes = 4
 
-[node name="Name" type="Label" parent="."]
-margin_left = 547.175
-margin_top = 19.35
-margin_right = 1195.17
-margin_bottom = 110.35
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Pierce Hawthorne"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gold" type="TextureRect" parent="."]
-margin_left = 1200.0
-margin_top = 11.854
-margin_right = 1224.0
-margin_bottom = 35.854
-rect_scale = Vector2( 3.5, 3.55 )
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Gold"]
-margin_left = 28.4242
-margin_top = -1.27381
-margin_right = 71.4242
-margin_bottom = 25.7262
-rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "420"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gem" type="TextureRect" parent="."]
-margin_left = 1500.0
-margin_right = 1600.0
-margin_bottom = 100.0
-texture = ExtResource( 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Gem"]
-margin_left = 100.0
-margin_right = 297.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 200, 100 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "420"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Divider" type="Sprite" parent="."]
+position = Vector2( 350, 280 )
+texture = ExtResource( 3 )
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
-margin_left = 540.0
-margin_top = 250.0
-margin_right = 580.0
-margin_bottom = 290.0
-rect_scale = Vector2( 2, 2 )
+margin_left = 230.0
+margin_top = 190.0
+margin_right = 270.0
+margin_bottom = 230.0
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 10 )]
-position = Vector2( 894.495, 267.546 )
+position = Vector2( 465, 175 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 1781.96, 50.2382 )
+position = Vector2( 700, 80 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 580, 130 )
+position = Vector2( 240, 115 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPosition" type="Position2D" parent="."]
-position = Vector2( 239.166, 243.95 )
+position = Vector2( 100, 140 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

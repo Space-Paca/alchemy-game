@@ -109,7 +109,6 @@ margin_left = -218.886
 margin_top = 246.23
 margin_right = -218.886
 margin_bottom = 246.23
-two_rows = false
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 9 )]
 

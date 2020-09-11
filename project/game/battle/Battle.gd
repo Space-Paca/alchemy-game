@@ -17,12 +17,11 @@ onready var hand = $Hand
 onready var reagents = $Reagents
 onready var draw_bag = $DrawBag
 onready var discard_bag = $DiscardBag
-onready var name_holder = $NameHolder
 onready var grid = $Grid
 onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
-onready var recipe_banner = $NameHolder/RecipeBanner
+onready var recipe_name_display = $RecipeNameDisplay
 onready var create_recipe_button = $CreateRecipeButton
 onready var recipes_button = $RecipesButton
 onready var favorites = $Favorites
@@ -161,11 +160,6 @@ func setup_player_ui():
 	#Position player ui
 	player_ui.position.x = draw_bag.position.x
 	player_ui.set_life(player.max_hp, player.hp)
-	player_ui.set_gold(player.currency)
-	player_ui.set_gems(player.gems)
-	player_ui.update_tooltip_pos()
-	#Position spell name holder
-	name_holder.rect_position.x = player_ui.position.x
 	#Position favorites
 	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 
@@ -563,13 +557,7 @@ func remove_favorite(combination: Combination):
 
 
 func display_name_for_combination(combination):
-	if combination:
-		if combination is String and combination == "failure":
-			recipe_banner.text = "Miscombination"
-		else:
-			recipe_banner.text = combination.recipe.name
-	else:
-		recipe_banner.text = "???" 
+	recipe_name_display.display_name_for_combination(combination)
 
 
 func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):
@@ -993,7 +981,7 @@ func _on_FavoriteButton_mouse_exited():
 
 func _on_Grid_modified():
 	if grid.is_empty():
-		recipe_banner.text = ""
+		recipe_name_display.reset()
 		return
 	
 	var reagent_matrix := []

@@ -1,44 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://game/character/StatusBar.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/Positive Effects.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/Negative Effects.png" type="Texture" id=3]
 
 [node name="StatusBar" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Status" type="HBoxContainer" parent="."]
 margin_right = 440.0
 margin_bottom = 25.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PositiveBG" type="TextureRect" parent="."]
-margin_right = 484.0
-margin_bottom = 68.0
-texture = ExtResource( 2 )
-
-[node name="PositiveStatus" type="HBoxContainer" parent="."]
-margin_left = 25.0
-margin_right = 465.0
-margin_bottom = 25.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NegativeBG" type="TextureRect" parent="."]
-margin_top = 50.0
-margin_right = 481.0
-margin_bottom = 118.0
-texture = ExtResource( 3 )
-
-[node name="NegativeStatus" type="HBoxContainer" parent="."]
-margin_left = 25.0
-margin_top = 48.0
-margin_right = 465.0
-margin_bottom = 73.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

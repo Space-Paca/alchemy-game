@@ -179,7 +179,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 		battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 	
 	if not player.known_recipes.has(recipe.name):
-		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
+		MessageLayer.add_message("New recipe discovered: " + str(recipe.name) + "!")
 		combination.discover_all_reagents()
 		player.discover_combination(combination, true)
 		shop.update_combinations()

@@ -28,7 +28,7 @@
 [ext_resource path="res://assets/images/background/04_FG_cave.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/background/06_FG_dungeon.png" type="Texture" id=29]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 56
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -119,7 +119,7 @@ margin_left = -47.5091
 margin_top = -2.31232
 margin_right = 197.491
 margin_bottom = 159.688
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/line_spacing = 0

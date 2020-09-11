@@ -5,6 +5,7 @@ signal dispenser_pressed
 onready var image = $HBoxContainer/Image
 onready var quantity_label = $HBoxContainer/Quantity
 onready var name_label = $HBoxContainer/Name
+onready var button = $BGButton
 
 var reagent_type
 var quantity = 0
@@ -35,6 +36,12 @@ func get_max_quantity():
 
 func update_text():
 	quantity_label.text = str(quantity) + "/" + str(max_quantity)
+
+func enable():
+	button.disabled = false
+
+func disable():
+	button.disabled = true
 
 func _on_BGButton_button_down():
 	AudioManager.play_sfx("click")

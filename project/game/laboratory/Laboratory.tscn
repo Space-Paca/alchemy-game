@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -54,12 +55,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 445.0
-margin_top = -320.0
-margin_right = 705.0
-margin_bottom = -220.0
+margin_left = 435.0
+margin_top = -420.0
+margin_right = 695.0
+margin_bottom = -320.0
 custom_fonts/font = SubResource( 1 )
 text = "COMBINE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 976.825
+margin_top = 23.3082
+margin_right = 1671.82
+margin_bottom = 125.308
+custom_fonts/font = ExtResource( 10 )
+text = "Study some recipes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,15 +135,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 565.0
-margin_top = -110.0
+margin_top = -70.0
 margin_right = 565.0
-margin_bottom = -110.0
+margin_bottom = -70.0
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 9 )]
-margin_left = 1292.59
-margin_top = 118.794
-margin_right = 1836.59
-margin_bottom = 215.794
+margin_left = 1253.0
+margin_top = 220.0
+margin_right = 1797.0
+margin_bottom = 317.0
 
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

@@ -386,11 +386,14 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 	if combination:
 		AudioManager.play_sfx("combine_success")
 		make_combination(combination, {}, false)
+		lab.combination_success()
 	else:
 		AudioManager.play_sfx("combine_fail")
 
 		if not failed_combinations.has(reagent_matrix):
 			failed_combinations.append(reagent_matrix)
+		lab.combination_failed()
+	
 
 func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 	var combination = get_combination_in_grid(reagent_matrix, grid_size)

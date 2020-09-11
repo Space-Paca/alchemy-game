@@ -6,13 +6,13 @@
 [ext_resource path="res://assets/images/ui/reagent_dispenser_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/reagent_dispenser_normal.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 28
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 50
 use_mipmaps = true
 use_filter = true
@@ -64,7 +64,7 @@ margin_left = 96.0
 margin_top = 13.0
 margin_right = 354.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Big Reagent Name"
 
@@ -72,7 +72,7 @@ text = "Big Reagent Name"
 margin_left = 374.0
 margin_right = 520.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10/10"
 [connection signal="button_down" from="BGButton" to="." method="_on_BGButton_button_down"]

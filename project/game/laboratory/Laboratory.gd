@@ -57,18 +57,38 @@ func reset_room():
 func disable_player():
 	$Combine.disabled = true
 	$BackButton.disabled = true
+	dispenser_list.disable()
 
 func enable_player():
 	$Combine.disabled = false
 	$BackButton.disabled = false
+	dispenser_list.enable()
 
 func display_name_for_combination(combination):
 	recipe_name_display.display_name_for_combination(combination)
+
+func combination_success():
+	var func_state = grid.dispense_reagents()
+	if func_state and func_state.is_valid():
+		yield(grid, "dispensed_reagents")
+	
+	enable_player()
+
+func combination_failed():
+	var func_state = grid.reposition_reagents()
+	if func_state and func_state.is_valid():
+		yield(grid, "repositioned_reagents")
+	
+	enable_player()
 
 func _on_BackButton_pressed():
 	dispenser_list.clear()
 	for reagent in reagents.get_children():
 		reagents.remove_child(reagent)
+	
+	#Reset room
+	if get_attempts() <= 0:
+		map_node.set_type(MapNode.EMPTY)
 	
 	emit_signal("closed")
 
@@ -139,14 +159,6 @@ func _on_Combine_pressed():
 	yield(reagent_list.back(), "finished_combine_animation")
 
 	emit_signal("combination_made", reagent_matrix, grid.grid_size)
-	
-	yield(get_tree().create_timer(.2), "timeout")
-	
-	var func_state = grid.dispense_reagents()
-	if func_state and func_state.is_valid():
-		yield(grid, "dispensed_reagents")
-	
-	enable_player()
 
 func _on_Grid_modified():
 	if grid.is_empty():

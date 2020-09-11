@@ -7,6 +7,8 @@ const DISPENSER = preload("res://game/ui/ReagentDispenser.tscn")
 onready var list = $ScrollContainer/VBoxContainer
 
 func populate(reagent_bag: Array):
+	clear()
+	
 	var reagents = {}
 	
 	for bag_reagent in reagent_bag:
@@ -32,6 +34,13 @@ func clear():
 	for disp in list.get_children():
 		list.remove_child(disp)
 
+func enable():
+	for disp in list.get_children():
+		disp.enable()
+
+func disable():
+	for disp in list.get_children():
+		disp.disable()
 
 func _on_dispenser_pressed(dispenser, reagent, quick_place):
 	emit_signal("dispenser_pressed", dispenser, reagent, quick_place)

@@ -6,6 +6,7 @@ signal modified
 signal returned_to_hand
 signal reagent_destroyed
 signal dispensed_reagents
+signal repositioned_reagents
 signal restrained
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
@@ -164,6 +165,16 @@ func dispense_reagents():
 		yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
 
 	emit_signal("dispensed_reagents")
+
+func reposition_reagents():
+	randomize()
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			reagent.reset_to_gridslot(slot)
+			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
+
+	emit_signal("repositioned_reagents")
 
 func clean():
 	var reagents_to_be_discarded = []

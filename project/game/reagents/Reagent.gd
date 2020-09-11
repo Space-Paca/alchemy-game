@@ -126,6 +126,10 @@ func combine_animation(grid_center: Vector2, duration: float):
 	shake = 0.0
 	emit_signal("finished_combine_animation")
 
+func reset_to_gridslot(gridslot):
+	gridslot.set_reagent(self)
+	$CombineTween.interpolate_method(self, "set_grayscale", 1, 0, .15, Tween.TRANS_QUAD, Tween.EASE_IN) 
+	$CombineTween.start()
 
 func set_grayscale(value: float):
 	image.material.set_shader_param("grayscale", value)

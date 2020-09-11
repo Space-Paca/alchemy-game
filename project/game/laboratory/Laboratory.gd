@@ -1,11 +1,13 @@
 extends Control
 
 signal closed
+signal grid_modified(reagent_matrix)
+signal combination_made(reagent_matrix)
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
 const REST_HEAL = 70
 
-onready var reagent_list = $Book/DispenserReagentList
+onready var dispenser_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
 onready var grid = $Grid
 onready var counter = $Counter
@@ -14,11 +16,12 @@ var map_node : MapNode
 var player
 var is_dragging_reagent := false
 
-func setup(node, _player):
+func setup(node, _player, attempts):
 	map_node = node
 	player = _player
-	reagent_list.populate(player.bag)
+	dispenser_list.populate(player.bag)
 	grid.set_grid(player.grid_size)
+	counter.set_attempts(attempts)
 
 func create_reagent(dispenser, type, quick_place):
 	if dispenser.get_quantity() > 0 and (not quick_place or not grid.is_full()):
@@ -44,12 +47,22 @@ func create_reagent(dispenser, type, quick_place):
 	else:
 		grid.quick_place(reagent)
 
+func get_attempts():
+	return counter.get_attempts()
+
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
 
+func disable_player():
+	$Combine.disabled = true
+	$BackButton.disabled = true
+
+func enable_player():
+	$Combine.disabled = false
+	$BackButton.disabled = false
 
 func _on_BackButton_pressed():
-	reagent_list.clear()
+	dispenser_list.clear()
 	for reagent in reagents.get_children():
 		reagents.remove_child(reagent)
 	
@@ -89,7 +102,50 @@ func _on_DispenserReagentList_dispenser_pressed(dispenser, reagent, quick_place)
 
 
 func _on_Combine_pressed():
-	if counter.get_attempts() > 0 and not grid.is_empty():
-		pass
-	else:
+	if counter.get_attempts() <= 0 or grid.is_empty():
 		AudioManager.play_sfx("error")
+		return
+	
+	grid.clear_hint()
+	
+	counter.decrease_attempts()
+	
+	var reagent_matrix := []
+	var child_index := 0
+	var reagent_list = []
+	for _i in range(grid.grid_size):
+		var line = []
+		for _j in range(grid.grid_size):
+			var reagent = grid.slots.get_child(child_index).current_reagent
+			if reagent:
+				reagent_list.append(reagent)
+				line.append(reagent.type)
+			else:
+				line.append(null)
+			child_index += 1
+		reagent_matrix.append(line)
+	
+	disable_player()
+	
+	#Combination animation
+	var sfx_dur = AudioManager.get_sfx_duration("combine")
+	var dur = reagent_list.size()*.3
+	AudioManager.play_sfx("combine", sfx_dur/dur)
+	for reagent in reagent_list:
+		reagent.combine_animation(grid.get_center(), dur)
+
+	yield(reagent_list.back(), "finished_combine_animation")
+
+	emit_signal("combination_made", reagent_matrix, grid.grid_size)
+	
+	yield(get_tree().create_timer(.2), "timeout")
+	
+	var func_state = grid.dispense_reagents()
+	if func_state and func_state.is_valid():
+		yield(grid, "dispensed_reagents")
+	
+	enable_player()
+	
+
+	
+	

@@ -21,6 +21,8 @@ var max_favorites := 8
 var possible_rewarded_combinations := []
 var map : Map
 var current_node : MapNode
+var laboratory_attempts = [6,8,10]
+var cur_lab_attempts
 
 
 func _ready():
@@ -32,6 +34,11 @@ func _ready():
 	
 # warning-ignore:return_value_discarded
 	rest.connect("combination_rewarded", self, "_on_combination_rewarded")
+
+# warning-ignore:return_value_discarded
+	lab.connect("combination_made", self, "_on_Laboratory_combination_made")
+# warning-ignore:return_value_discarded
+	lab.connect("grid_modified", self, "_on_Laboratory_grid_modified")
 	
 	randomize()
 	create_combinations()
@@ -97,7 +104,9 @@ func create_level(level: int):
 				possible_rewarded_combinations.append(combination)
 	
 	setup_shop()
-
+	
+	#LAB
+	cur_lab_attempts = laboratory_attempts[level - 1]
 
 func get_incomplete_combinations():
 	var incomplete_combinations = []
@@ -121,8 +130,7 @@ func setup_shop():
 	shop.setup(shop_combinations, player)
 
 
-func get_combination_in_grid(reagent_matrix: Array) -> Combination:
-	var grid_size = battle.grid.grid_size
+func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combination:
 	var grid_combination = get_combination_in_matrix(grid_size, reagent_matrix)
 	
 	if grid_combination:
@@ -164,9 +172,11 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 	return null
 
 
-func make_combination(combination: Combination, boost_effects: Dictionary):
+func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe
-	battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
+	
+	if apply_effects:
+		battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 	
 	if not player.known_recipes.has(recipe.name):
 		MessageLayer.add_message("Oh yeah! I discovered a new recipe")
@@ -245,7 +255,7 @@ func open_smith(room, _player):
 
 func open_lab(room, _player):
 	AudioManager.play_bgm("laboratory")
-	lab.setup(room, _player)
+	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
 	map.hide()
 
@@ -343,7 +353,7 @@ func _on_combination_rewarded(combination):
 
 
 func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
-	var combination = get_combination_in_grid(reagent_matrix)
+	var combination = get_combination_in_grid(reagent_matrix, battle.grid.grid_size)
 	if combination:
 		AudioManager.play_sfx("combine_success")
 		#Fix unstable reagents
@@ -362,7 +372,7 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 func _on_Battle_grid_modified(reagent_matrix: Array):
 	if battle.player_disabled:
 		return
-	var combination = get_combination_in_grid(reagent_matrix)
+	var combination = get_combination_in_grid(reagent_matrix, battle.grid.grid_size)
 	if combination and not combination.discovered:
 		combination = null
 	elif not combination and failed_combinations.has(reagent_matrix):
@@ -370,6 +380,26 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	
 	battle.display_name_for_combination(combination)
 
+
+func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
+	var combination = get_combination_in_grid(reagent_matrix, grid_size)
+	if combination:
+		AudioManager.play_sfx("combine_success")
+		make_combination(combination, {}, false)
+	else:
+		AudioManager.play_sfx("combine_fail")
+
+		if not failed_combinations.has(reagent_matrix):
+			failed_combinations.append(reagent_matrix)
+
+func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
+	var combination = get_combination_in_grid(reagent_matrix, grid_size)
+	if combination and not combination.discovered:
+		combination = null
+	elif not combination and failed_combinations.has(reagent_matrix):
+		combination = "failure"
+	
+	lab.display_name_for_combination(combination)
 
 
 func _on_Player_combination_discovered(combination, index):
@@ -450,5 +480,6 @@ func _on_Blacksmith_closed():
 
 func _on_Laboratory_closed():
 	lab.hide()
+	cur_lab_attempts = lab.get_attempts()
 	map.show()
 	play_map_bgm()

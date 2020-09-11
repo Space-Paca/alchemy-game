@@ -5,6 +5,7 @@ signal cleaned
 signal modified
 signal returned_to_hand
 signal reagent_destroyed
+signal dispensed_reagents
 signal restrained
 
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
@@ -147,6 +148,22 @@ func return_to_hand():
 	
 	emit_signal("returned_to_hand")
 
+func dispense_reagents():
+	var reagents_to_be_dispensed = []
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent:
+			slot.remove_reagent()
+			reagents_to_be_dispensed.append(reagent)
+	
+	randomize()
+	while not reagents_to_be_dispensed.empty():
+		var reagent = reagents_to_be_dispensed.pop_back()
+		AudioManager.play_sfx("discard_reagent")
+		reagent.return_to_dispenser()
+		yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
+
+	emit_signal("dispensed_reagents")
 
 func clean():
 	var reagents_to_be_discarded = []
@@ -156,12 +173,12 @@ func clean():
 			slot.remove_reagent()
 			reagents_to_be_discarded.append(reagent)
 
+	randomize()
 	while not reagents_to_be_discarded.empty():
 		var reagent = reagents_to_be_discarded.pop_back()
 		AudioManager.play_sfx("discard_reagent")
 		discard_bag.discard(reagent)
 		if not reagents_to_be_discarded.empty():
-			randomize()
 			yield(get_tree().create_timer(rand_range(.05, .1)), "timeout")
 		else:
 			yield(discard_bag, "reagent_discarded")

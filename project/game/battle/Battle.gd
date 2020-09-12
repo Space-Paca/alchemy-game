@@ -141,6 +141,8 @@ func setup_player_ui():
 	# warning-ignore:integer_division
 	var grid_center = 11*WINDOW_H/25
 	
+	player_ui.set_life(player.max_hp, player.hp)
+	
 	#Position grid
 	grid.rect_position.x = ui_center
 	grid.rect_position.y = grid_center
@@ -148,18 +150,9 @@ func setup_player_ui():
 	var hand_margin = 14
 	hand.position.x = ui_center
 	hand.position.y = grid.rect_position.y + grid.get_height()/2*grid.rect_scale.y + hand_margin
-	#Position create-recipe button
-	create_recipe_button.rect_position.x = ui_center - create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x/2
-	#Position bags
-	var bag_margin = 120
-	discard_bag.position.x = create_recipe_button.rect_position.x + create_recipe_button.rect_size.x*create_recipe_button.rect_scale.x + bag_margin
-	draw_bag.position.x = create_recipe_button.rect_position.x - bag_margin - draw_bag.get_width()*draw_bag.scale.x
 	#Position pass-turn button
 	var button_margin = 54
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
-	#Position player ui
-	player_ui.position.x = draw_bag.position.x
-	player_ui.set_life(player.max_hp, player.hp)
 	#Position favorites
 	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 

@@ -6,7 +6,7 @@ signal reagent_discarded(reagent)
 signal reagent_exploded
 
 onready var center = $Center
-onready var counter = $Counter
+onready var counter = $TextureRect/Counter
 onready var discarded_reagents = $DiscardedReagents
 onready var texture_rect = $TextureRect
 

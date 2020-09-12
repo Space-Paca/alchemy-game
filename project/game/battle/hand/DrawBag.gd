@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var center = $Center
-onready var counter = $Counter
+onready var counter = $TextureRect/Counter
 onready var drawable_reagents = $DrawableReagents
 
 const TOOLTIP_LINE_HEIGHT = 34

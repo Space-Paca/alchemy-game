@@ -7,26 +7,53 @@
 [ext_resource path="res://assets/images/ui/background_bags.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 78.8712, 94.2791 )
+extents = Vector2( 48, 52 )
 
 [node name="DiscardBag" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Background" type="TextureRect" parent="."]
-margin_left = -53.1808
-margin_top = -2.13103
-margin_right = 208.819
-margin_bottom = 217.869
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -15.0
+margin_right = 96.0
+margin_bottom = 115.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="TextureRect"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -75.0
+margin_right = 75.0
+margin_bottom = 75.0
 texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
 flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 2 )
+[node name="Counter" type="Label" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -23.0
+margin_right = 23.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 1 )
+text = "99"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,21 +63,8 @@ __meta__ = {
 [node name="Center" type="Position2D" parent="."]
 position = Vector2( 79.7067, 141.199 )
 
-[node name="Counter" type="Label" parent="."]
-margin_left = 43.5141
-margin_top = 133.567
-margin_right = 75.5141
-margin_bottom = 167.567
-custom_fonts/font = ExtResource( 1 )
-text = "99"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
-position = Vector2( 78.0208, 110.048 )
+position = Vector2( 48, 52 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )

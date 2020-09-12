@@ -5,7 +5,6 @@ signal grid_modified(reagent_matrix)
 signal combination_made(reagent_matrix)
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
-const REST_HEAL = 70
 
 onready var dispenser_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
@@ -18,6 +17,7 @@ var player
 var is_dragging_reagent := false
 
 func setup(node, _player, attempts):
+	$Book/ReagentDropZone.monitorable = true
 	map_node = node
 	player = _player
 	dispenser_list.populate(player.bag)
@@ -82,6 +82,7 @@ func combination_failed():
 	enable_player()
 
 func _on_BackButton_pressed():
+	$Book/ReagentDropZone.monitorable = false
 	dispenser_list.clear()
 	for reagent in reagents.get_children():
 		reagents.remove_child(reagent)

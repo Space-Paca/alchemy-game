@@ -329,6 +329,11 @@ func disable():
 	block_tooltips = true
 	disable_tooltips()
 
+#Called when player dies
+func enable():
+	block_tooltips = false
+	tooltips_enabled = true
+
 
 func update_tooltip_position():
 	var margin = 10

@@ -447,12 +447,20 @@ func get_targeted_effect_total(effects: Array) -> int:
 	
 	return total
 
-
-func win():
+func disable_elements():
 	for enemy in enemies_node.get_children():
-		enemy.disable() #In case of debugging
+		enemy.disable()
 	for reagent in reagents.get_children():
 		reagent.disable()
+
+func enable_elements():
+	for enemy in enemies_node.get_children():
+		enemy.enable()
+	for reagent in reagents.get_children():
+		reagent.enable()
+
+func win():
+	disable_elements()
 	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")

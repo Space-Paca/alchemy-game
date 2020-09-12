@@ -175,18 +175,20 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe
 	
-	if apply_effects:
-		battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
-	
-	if not player.known_recipes.has(recipe.name):
-		MessageLayer.add_message("New recipe discovered: " + str(recipe.name) + "!")
+	if not player.known_recipes.has(recipe.name) or not combination.discovered:
 		combination.discover_all_reagents()
 		player.discover_combination(combination, true)
 		shop.update_combinations()
-	elif not combination.discovered:
-		combination.discover_all_reagents()
-		recipe_book.update_combination(combination)
-		shop.update_combinations()
+		MessageLayer.new_recipe_discovered(combination)
+		
+		if battle:
+			battle.disable_elements()
+		yield(MessageLayer, "continued")
+		if battle:
+			battle.enable_elements()
+	
+	if apply_effects:
+		battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 	
 	if not times_recipe_made.has(recipe.name):
 		times_recipe_made[recipe.name] = 1

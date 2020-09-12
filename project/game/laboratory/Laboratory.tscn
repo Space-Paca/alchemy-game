@@ -122,6 +122,7 @@ margin_bottom = 370.926
 "reagent_drop_zone",
 ]]
 position = Vector2( 438.407, 526.088 )
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
 position = Vector2( 130.108, 8.48529 )

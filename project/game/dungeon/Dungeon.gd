@@ -197,14 +197,13 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 	
 	if should_unlock_mastery(combination):
 		recipe_book.unlock_mastery(combination)
-	
 
 
 func should_unlock_mastery(combination: Combination) -> bool:
 	if not times_recipe_made.has(combination.recipe.name):
 		return false
 	
-	var threshold = min(10, 14 - combination.recipe.reagents.size())
+	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
 	
 	return times_recipe_made[combination.recipe.name] > threshold

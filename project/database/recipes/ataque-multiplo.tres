@@ -16,3 +16,7 @@ description = "Deals 5 regular damage 3 times to any number of targets."
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 26
+master_effects = [ "damage", "damage", "damage", "damage" ]
+master_effect_args = [ [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ] ]
+master_destroy_reagents = [  ]
+master_description = "Deals 5 regular damage 4 times to any number of targets."

@@ -16,3 +16,7 @@ description = "Heals 50 HP. Destroys the healing reagent in the process."
 filters = [ 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 78
+master_effects = [ "heal" ]
+master_effect_args = [ [ 60 ] ]
+master_destroy_reagents = [ "healing" ]
+master_description = "Heals 60 HP. Destroys the healing reagent in the process."

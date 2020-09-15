@@ -16,3 +16,7 @@ description = "Draw 4 reagents"
 filters = [ 6 ]
 fav_icon = ExtResource( 2 )
 shop_cost = 60
+master_effects = [ "draw", "damage_all" ]
+master_effect_args = [ [ 4 ], [ 5, "regular" ] ]
+master_destroy_reagents = [  ]
+master_description = "Draw 4 reagents. Deals 5 regular damage to all enemies."

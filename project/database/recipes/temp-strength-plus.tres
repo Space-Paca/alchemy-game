@@ -16,3 +16,7 @@ description = "Gain 8 temporary strength."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 50
+master_effects = [ "add_status" ]
+master_effect_args = [ [ "self", "temp_strength", 10, true ] ]
+master_destroy_reagents = [  ]
+master_description = "Gain 10 temporary strength."

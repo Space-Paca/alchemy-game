@@ -16,3 +16,7 @@ description = "Deals 4 regular damage to target enemy. Destroys trash reagent in
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 18
+master_effects = [ "damage" ]
+master_effect_args = [ [ 10, "regular" ] ]
+master_destroy_reagents = [ "trash" ]
+master_description = "Deals 10 regular damage to target enemy. Destroys trash reagent in the process."

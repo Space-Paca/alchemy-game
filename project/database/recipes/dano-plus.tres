@@ -16,3 +16,7 @@ description = "Deals 20 regular damage to target enemy."
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 30
+master_effects = [ "damage" ]
+master_effect_args = [ [ 25, "regular" ] ]
+master_destroy_reagents = [  ]
+master_description = "Deals 25 regular damage to target enemy."

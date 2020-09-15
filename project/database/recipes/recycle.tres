@@ -16,3 +16,7 @@ description = "Heals 5 H.P. Destroys all trash reagents in the process."
 filters = [ 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 40
+master_effects = [ "heal" ]
+master_effect_args = [ [ 10 ] ]
+master_destroy_reagents = [ "trash", "trash", "trash" ]
+master_description = "Heals 10 H.P. Destroys all trash reagents in the process."

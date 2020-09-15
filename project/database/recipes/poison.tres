@@ -16,3 +16,7 @@ description = "Gives 6 poison to target enemy."
 filters = [ 4 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 28
+master_effects = [ "add_status" ]
+master_effect_args = [ [ "enemy", "poison", 9, false ] ]
+master_destroy_reagents = [  ]
+master_description = "Gives 9 poison to target enemy."

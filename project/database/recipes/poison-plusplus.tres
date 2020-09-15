@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Poison+"
+name = "Poison++"
 grid_size = 3
-floor_sold_in = 2
-reagents = [ "poison", "damaging", "damaging" ]
+floor_sold_in = 3
+reagents = [ "poison", "damaging", "super_damaging" ]
 effects = [ "add_status" ]
-effect_args = [ [ "enemy", "poison", 12, false ] ]
+effect_args = [ [ "enemy", "poison", 18, false ] ]
 destroy_reagents = [  ]
-description = "Gives 12 poison to target enemy."
+description = "Gives 18 poison to target enemy."
 filters = [ 4 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 40
 master_effects = [ "add_status" ]
-master_effect_args = [ [ "enemy", "poison", 16, false ] ]
+master_effect_args = [ [ "enemy", "poison", 25, false ] ]
 master_destroy_reagents = [  ]
-master_description = "Gives 16 poison to target enemy."
+master_description = "Gives 25 poison to target enemy."

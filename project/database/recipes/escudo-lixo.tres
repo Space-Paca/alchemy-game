@@ -16,3 +16,7 @@ description = "Gain 4 shield until end of turn. Destroys trash reagent in the pr
 filters = [ 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 18
+master_effects = [ "shield" ]
+master_effect_args = [ [ 12 ] ]
+master_destroy_reagents = [ "trash" ]
+master_description = "Gain 12 shield until end of turn. Destroys trash reagent in the process."

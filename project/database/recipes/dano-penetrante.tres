@@ -16,3 +16,7 @@ description = "Deals 8 piercing damage to target enemy."
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 20
+master_effects = [ "damage" ]
+master_effect_args = [ [ 12, "piercing" ] ]
+master_destroy_reagents = [  ]
+master_description = "Deals 12 piercing damage to target enemy."

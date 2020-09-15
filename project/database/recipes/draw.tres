@@ -16,3 +16,7 @@ description = "Draw 3 reagents"
 filters = [ 6 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 60
+master_effects = [ "draw", "shield" ]
+master_effect_args = [ [ 3 ], [ "3" ] ]
+master_destroy_reagents = [  ]
+master_description = "Draw 3 reagents. Gain 3 shield until end of turn."

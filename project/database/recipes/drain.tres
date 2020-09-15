@@ -16,3 +16,7 @@ description = "Drain 30 life from target enemy. Destroys healing reagent in the 
 filters = [ 0, 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 65
+master_effects = [ "drain" ]
+master_effect_args = [ [ 35 ] ]
+master_destroy_reagents = [ "healing" ]
+master_description = "Drain 35 life from target enemy. Destroys healing reagent in the process."

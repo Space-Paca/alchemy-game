@@ -16,3 +16,7 @@ description = "Gain 5 shield until end of turn. Deals 5 regular damage to target
 filters = [ 0, 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 35
+master_effects = [ "shield", "damage" ]
+master_effect_args = [ [ 8 ], [ 8, "regular" ] ]
+master_destroy_reagents = [  ]
+master_description = "Gain 5 shield until end of turn. Deals 8 regular damage to target enemy."

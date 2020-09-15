@@ -16,3 +16,7 @@ description = "Gain 1 evasion until end of turn."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 45
+master_effects = [ "add_status" ]
+master_effect_args = [ [ "self", "evasion", 2, true ] ]
+master_destroy_reagents = [  ]
+master_description = "Gain 2 evasion until end of turn."

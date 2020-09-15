@@ -16,3 +16,7 @@ description = "Gain 6 retaliate."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 50
+master_effects = [ "add_status" ]
+master_effect_args = [ [ "self", "retaliate", 10, true ] ]
+master_destroy_reagents = [  ]
+master_description = "Gain 10 retaliate."

@@ -51,10 +51,14 @@ func update_combination():
 	if combination.discovered and reagent_list:
 		reagent_list.queue_free()
 
+func is_mastered():
+	return mastery_unlocked
 
 func unlock_mastery():
-	mastery_unlocked = true
-	favorite_button.visible = true
+	if not mastery_unlocked:
+		mastery_unlocked = true
+		favorite_button.visible = true
+		MessageLayer.recipe_mastered(combination)
 
 
 func favorite_error():

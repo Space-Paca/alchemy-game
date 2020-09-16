@@ -65,6 +65,9 @@ func toggle_visibility():
 	
 	return visible
 
+func is_mastered(combination : Combination):
+	return recipe_displays[combination.recipe.name].is_mastered()
+	
 
 func unlock_mastery(combination: Combination):
 	recipe_displays[combination.recipe.name].unlock_mastery()

@@ -21,7 +21,7 @@ var max_favorites := 8
 var possible_rewarded_combinations := []
 var map : Map
 var current_node : MapNode
-var laboratory_attempts = [6,8,10]
+var laboratory_attempts = [60,8,10]
 var cur_lab_attempts
 
 
@@ -187,16 +187,24 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 		if battle:
 			battle.enable_elements()
 	
-	if apply_effects:
-		battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
-	
 	if not times_recipe_made.has(recipe.name):
 		times_recipe_made[recipe.name] = 1
 	else:
 		times_recipe_made[recipe.name] += 1
 	
-	if should_unlock_mastery(combination):
+	if not recipe_book.is_mastered(combination) and should_unlock_mastery(combination):
 		recipe_book.unlock_mastery(combination)
+		if battle:
+			battle.disable_elements()
+		yield(MessageLayer, "continued")
+		if battle:
+			battle.enable_elements()
+	
+	if apply_effects:
+		if recipe_book.is_mastered(combination):
+			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)
+		else:
+			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 
 
 func should_unlock_mastery(combination: Combination) -> bool:

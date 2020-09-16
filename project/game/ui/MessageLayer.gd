@@ -27,6 +27,16 @@ func _process(_delta):
 		message_stack[i].rect_position.y = lerp(message_stack[i].rect_position.y,
 				message_height * i, .1)
 
+func recipe_mastered(combination: Combination):
+	AudioManager.play_sfx("recipe_mastered")
+	$Control.show()
+
+	var display = RECIPE_DISPLAY.instance()
+	$Control/Recipes.add_child(display)
+	display.set_combination(combination)
+	
+	title.text = "Mastered Recipe!"
+
 func new_recipe_discovered(combination: Combination):
 	$Control.show()
 

@@ -22,15 +22,15 @@ const COMMON = {
 const UNCOMMON = {
 	"buff_kit": {
 		"name": "Buff Kit",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
 	},
 	"debuff_kit": {
 		"name": "Debuff Kit",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
 	},
 	"trash_heal": {
 		"name": "Trash Heal",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
 	},
 
 }
@@ -38,13 +38,24 @@ const UNCOMMON = {
 const RARE = {
 	"buff_heal": {
 		"name": "Buff Heal",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/raro.png"),
 	},
 	"midas": {
 		"name": "Midas",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/raro.png"),
 	},
 }
+
+static func get_artifacts_data(rarity : String) -> Dictionary:
+	if rarity == "common":
+		return COMMON.duplicate()
+	elif rarity == "uncommon":
+		return UNCOMMON.duplicate()
+	elif rarity == "rare":
+		return RARE.duplicate()
+	else:
+		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
+		return {}
 
 static func get_artifacts(rarity : String) -> Array:
 	if rarity == "common":

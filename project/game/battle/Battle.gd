@@ -146,10 +146,6 @@ func setup_player_ui():
 	#Position grid
 	grid.rect_position.x = ui_center
 	grid.rect_position.y = grid_center
-	#Position hand
-	var hand_margin = 14
-	hand.position.x = ui_center
-	hand.position.y = grid.rect_position.y + grid.get_height()/2*grid.rect_scale.y + hand_margin
 	#Position pass-turn button
 	var button_margin = 54
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin

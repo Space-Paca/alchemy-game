@@ -89,7 +89,7 @@ margin_right = 215.746
 margin_bottom = 304.603
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 390.838, 689.146 )
+position = Vector2( 125, 720 )
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 10 )]
 margin_left = 110.0

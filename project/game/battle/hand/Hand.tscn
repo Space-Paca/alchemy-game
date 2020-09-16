@@ -5,4 +5,32 @@
 [node name="Hand" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Slots" type="Node2D" parent="."]
+[node name="Slots" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 160 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpperSlots" type="HBoxContainer" parent="Slots"]
+margin_right = 480.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 480, 80 )
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LowerSlots" type="HBoxContainer" parent="Slots"]
+margin_top = 80.0
+margin_right = 480.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 480, 80 )
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

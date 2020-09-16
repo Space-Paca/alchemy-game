@@ -2,14 +2,13 @@
 
 [ext_resource path="res://game/battle/hand/HandSlot.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/slot quad-80-px.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/Reagent Holder Frozen.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/book/slot-frozen.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.2764, 41.2469 )
 
 [node name="HandSlot" type="Control"]
-margin_right = 103.0
-margin_bottom = 93.0
+rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,8 +30,8 @@ __meta__ = {
 
 [node name="FrozenImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 80.0
+margin_bottom = 80.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,7 +40,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="." groups=[
 "handslot",
 ]]
-position = Vector2( 50.4521, 46.0449 )
+position = Vector2( 40, 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

@@ -6,82 +6,96 @@ signal hand_slot_reagent_set
 signal reagents_randomized
 
 onready var slots = $Slots
+onready var upper_slots = $Slots/UpperSlots
+onready var lower_slots = $Slots/LowerSlots
 
 const HANDSLOT = preload("res://game/battle/hand/HandSlot.tscn")
-const V_OFFSET = 20
 
 var size : int
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_hand(8)
+func _draw():
+	if Engine.editor_hint:
+		draw_rect(Rect2(slots.rect_position, slots.rect_size), Color.red, false)
 
 
 func get_width():
-	assert(slots.get_child_count() > 0)
-	var slot = slots.get_child(0)
-	# warning-ignore:integer_division
-	var n = size/2
-	return slot.rect_size.x*n
+	return slots.rect_size.x
 
 
 func get_height():
-	assert(slots.get_child_count() > 0)
-	var slot = slots.get_child(0)
-	return slot.rect_size.y * 2
+	return slots.rect_size.y
+
+
+func get_slots():
+	return upper_slots.get_children() + lower_slots.get_children()
 
 
 func set_hand(number: int):
-	if number <= 0 or (number%2 == 1 and number < 5):
-		push_error("Not a valid hand size: "+ str(slots))
-		assert(false)
+	print("set_hand:", number)
 	size = number
-	for child in slots.get_children():
-		slots.remove_child(child)
 	
-	var temp_hand_slot = HANDSLOT.instance()
-	# warning-ignore:integer_division
-	var n = ceil(size/2.0)
-	var x = -(temp_hand_slot.rect_size.x*n)/2
-	var y = ceil((number/4.0)-1) * -V_OFFSET	
+	for slot in get_slots():
+		slot.queue_free()
 	
-	# warning-ignore:integer_division
-	for i in range(1, n+1):
-		if size%2 == 1 and i == ceil(n/2.0):
-			#Add middle slot
-			var hand_slot = HANDSLOT.instance()
-			hand_slot.connect("reagent_set", self, "_on_reagent_set")
-			slots.add_child(hand_slot)
-			hand_slot.rect_position.x = x
-			hand_slot.rect_position.y = y + hand_slot.rect_size.y/2 -V_OFFSET
-			#Update positions
-			x = x + hand_slot.rect_size.x
+	for i in size:
+		var handslot = HANDSLOT.instance()
+		handslot.connect("reagent_set", self, "_on_reagent_set")
+		# warning-ignore:integer_division
+		if i < (number + 1) / 2:
+			upper_slots.add_child(handslot)
 		else:
-			#Add top slot
-			var hand_slot = HANDSLOT.instance()
-			hand_slot.connect("reagent_set", self, "_on_reagent_set")
-			slots.add_child(hand_slot)
-			hand_slot.rect_position.x = x
-			hand_slot.rect_position.y = y
-			#Add bottom slot
-			hand_slot = HANDSLOT.instance()
-			hand_slot.connect("reagent_set", self, "_on_reagent_set")
-			slots.add_child(hand_slot)
-			hand_slot.rect_position.x = x
-			hand_slot.rect_position.y = y + hand_slot.rect_size.y
-			#Update positions
-			x = x + hand_slot.rect_size.x
-
-		# warning-ignore:integer_division
-		if i < number/4.0:
-			y = y + V_OFFSET
-		# warning-ignore:integer_division
-		elif i > number/4:
-			y = y - V_OFFSET
+			lower_slots.add_child(handslot)
+		
+#	if number <= 0 or (number%2 == 1 and number < 5):
+#		push_error("Not a valid hand size: "+ str(number))
+#		assert(false)
+#	size = number
+#	for child in slots.get_children():
+#		slots.remove_child(child)
+#
+#	var temp_hand_slot = HANDSLOT.instance()
+#	# warning-ignore:integer_division
+#	var n = ceil(size/2.0)
+#	var x = -(temp_hand_slot.rect_size.x*n)/2
+#	var y = ceil((number/4.0)-1) * -V_OFFSET
+#
+#	# warning-ignore:integer_division
+#	for i in range(1, n+1):
+#		if size%2 == 1 and i == ceil(n/2.0):
+#			#Add middle slot
+#			var hand_slot = HANDSLOT.instance()
+#			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+#			slots.add_child(hand_slot)
+#			hand_slot.rect_position.x = x
+#			hand_slot.rect_position.y = y + hand_slot.rect_size.y/2 -V_OFFSET
+#			#Update positions
+#			x = x + hand_slot.rect_size.x
+#		else:
+#			#Add top slot
+#			var hand_slot = HANDSLOT.instance()
+#			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+#			slots.add_child(hand_slot)
+#			hand_slot.rect_position.x = x
+#			hand_slot.rect_position.y = y
+#			#Add bottom slot
+#			hand_slot = HANDSLOT.instance()
+#			hand_slot.connect("reagent_set", self, "_on_reagent_set")
+#			slots.add_child(hand_slot)
+#			hand_slot.rect_position.x = x
+#			hand_slot.rect_position.y = y + hand_slot.rect_size.y
+#			#Update positions
+#			x = x + hand_slot.rect_size.x
+#
+#		# warning-ignore:integer_division
+#		if i < number/4.0:
+#			y = y + V_OFFSET
+#		# warning-ignore:integer_division
+#		elif i > number/4:
+#			y = y - V_OFFSET
 
 func freeze_slots(amount: int):
-	for slot in slots.get_children():
+	for slot in get_slots():
 		if not slot.is_frozen():
 			amount -= 1
 			slot.freeze()
@@ -90,13 +104,13 @@ func freeze_slots(amount: int):
 				break
 
 func unfreeze_all_slots():
-	for slot in slots.get_children():
+	for slot in get_slots():
 		if slot.is_frozen():
 			slot.unfreeze()
 
 func burn_reagents(amount : int):
 	var reagents = []
-	for slot in slots.get_children():
+	for slot in get_slots():
 		var reagent = slot.get_reagent()
 		if reagent and not reagent.is_burned():
 			reagents.append(reagent)
@@ -110,7 +124,7 @@ func burn_reagents(amount : int):
 		reagents[i].burn()
 
 func unburn_reagents():
-	for slot in slots.get_children():
+	for slot in get_slots():
 		var reagent = slot.get_reagent()
 		if reagent and reagent.is_burned():
 			reagent.unburn()
@@ -118,7 +132,7 @@ func unburn_reagents():
 func randomize_reagents():
 	randomize()
 	var should_emit = false
-	for slot in slots.get_children():
+	for slot in get_slots():
 		var reagent = slot.get_reagent()
 		if reagent:
 			should_emit = true
@@ -128,9 +142,10 @@ func randomize_reagents():
 	if should_emit:
 		emit_signal("reagents_randomized")
 
+
 func available_slot_count():
 	var count = 0
-	for slot in slots.get_children():
+	for slot in get_slots():
 		if not slot.get_reagent() and not slot.is_frozen():
 			count += 1
 	return count
@@ -138,7 +153,7 @@ func available_slot_count():
 
 #Places a reagent in an empty position, throws error if unable
 func place_reagent(reagent):
-	for slot in slots.get_children():
+	for slot in get_slots():
 		if not slot.get_reagent() and not slot.is_frozen():
 			slot.set_reagent(reagent)
 			yield(slot, "reagent_set")
@@ -150,7 +165,7 @@ func place_reagent(reagent):
 
 func get_reagent_names() -> Array:
 	var reagents := []
-	for slot in slots.get_children():
+	for slot in get_slots():
 		var reagent = slot.get_reagent()
 		if reagent:
 			reagents.append(reagent.type)

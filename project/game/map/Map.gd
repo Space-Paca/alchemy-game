@@ -56,10 +56,10 @@ func validate_map(total_nodes:int, normal_enemies:int):
 
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
-		rests:int=1, shops:int=1, events:int=0, labs:int=1):
+		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
 	
 	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
-			smiths + events + labs + 1
+			smiths + events + labs + treasures + 1
 	
 	validate_map(total_nodes, normal_encounters)
 	
@@ -140,7 +140,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 			break
 	
 	var count_by_type := [0, normal_encounters, elite_encounters, 0, shops,
-			rests, smiths, events, labs]
+			rests, smiths, events, labs, treasures]
 	
 	for type in count_by_type.size():
 		while count_by_type[type]:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/images/ui/cauldron.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/slot_numbers.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -22,6 +24,8 @@ extents = Vector2( 570, 520 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 100
+outline_size = 9
+outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
@@ -129,18 +133,36 @@ position = Vector2( 130.108, 8.48529 )
 shape = SubResource( 2 )
 
 [node name="Counter" type="Node2D" parent="."]
-position = Vector2( 849.187, 251.984 )
+position = Vector2( 840.711, 268.935 )
 script = ExtResource( 8 )
 
-[node name="BG" type="ColorRect" parent="Counter"]
+[node name="BG" type="TextureRect" parent="Counter"]
 margin_right = 300.0
 margin_bottom = 300.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG2" type="TextureRect" parent="Counter"]
+margin_left = 50.8543
+margin_top = 135.611
+margin_right = 561.854
+margin_bottom = 489.611
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Counter"]
-margin_right = 300.0
-margin_bottom = 300.0
+margin_left = 103.828
+margin_top = 161.038
+margin_right = 303.828
+margin_bottom = 282.038
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "10"
 align = 1
 valign = 1

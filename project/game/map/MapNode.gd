@@ -6,7 +6,7 @@ signal pressed
 onready var button = $Button
 onready var legend = $Legend
 
-enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY}
+enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 
 const ALPHA_SPEED = 6
 const SCALE_SPEED = 3
@@ -18,11 +18,12 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/boss-open2.png"),
 		preload("res://assets/images/map/shop.png"),
 		preload("res://assets/images/map/descanso.png"),
-		preload("res://assets/images/map/reagents.png"),
+		preload("res://assets/images/map/smith.png"),
 		preload("res://assets/images/map/eventos.png"),
-		preload("res://assets/images/map/laboratory.png")]
+		preload("res://assets/images/map/laboratory.png"),
+		preload("res://assets/images/map/treasure.png")]
 const LEGEND = ["", "Enemy encounter", "Elite encounter", "Boss encounter",
-		"Shop", "Rest area", "Reagent smith", "Event", "Laboratory"]
+		"Shop", "Rest area", "Reagent smith", "Event", "Laboratory", "Treasure"]
 
 var encounter : Encounter
 var is_leaf := true
@@ -68,7 +69,7 @@ func set_type(new_type:int):
 
 func should_autoreveal() -> bool:
 	return type == EMPTY or type == SHOP or type == REST or type == SMITH or \
-		   type == LABORATORY
+		   type == LABORATORY or type == TREASURE
 
 
 func _on_Button_pressed():

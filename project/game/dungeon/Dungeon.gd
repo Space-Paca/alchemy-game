@@ -6,6 +6,7 @@ onready var shop = $Shop
 onready var rest = $Rest
 onready var lab = $Laboratory
 onready var smith = $Blacksmith
+onready var treasure = $Treasure
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
@@ -187,24 +188,27 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 		if battle:
 			battle.enable_elements()
 	
-	if not times_recipe_made.has(recipe.name):
-		times_recipe_made[recipe.name] = 1
-	else:
-		times_recipe_made[recipe.name] += 1
-	
-	if not recipe_book.is_mastered(combination) and should_unlock_mastery(combination):
-		recipe_book.unlock_mastery(combination)
-		if battle:
-			battle.disable_elements()
-		yield(MessageLayer, "continued")
-		if battle:
-			battle.enable_elements()
-	
 	if apply_effects:
+		if not times_recipe_made.has(recipe.name):
+			times_recipe_made[recipe.name] = 1
+		else:
+			times_recipe_made[recipe.name] += 1
+		
+		if not recipe_book.is_mastered(combination) and should_unlock_mastery(combination):
+			recipe_book.unlock_mastery(combination)
+			if battle:
+				battle.disable_elements()
+			yield(MessageLayer, "continued")
+			if battle:
+				battle.enable_elements()
+	
 		if recipe_book.is_mastered(combination):
 			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)
 		else:
 			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
+		
+	elif not times_recipe_made.has(recipe.name):
+		times_recipe_made[recipe.name] = 0
 
 
 func should_unlock_mastery(combination: Combination) -> bool:
@@ -268,6 +272,12 @@ func open_lab(room, _player):
 	lab.show()
 	map.hide()
 
+func open_treasure(room, _player):
+	AudioManager.play_bgm("treasure")
+	treasure.setup(room, _player, floor_level)
+	treasure.show()
+	map.hide()
+
 
 func extract_boost_effects(reagents):
 	var effects = {
@@ -311,6 +321,8 @@ func _on_map_node_selected(node:MapNode):
 		open_smith(node, player)
 	elif node.type == MapNode.LABORATORY:
 		open_lab(node, player)
+	elif node.type == MapNode.TREASURE:
+		open_treasure(node, player)
 
 
 func _on_Battle_won():
@@ -493,5 +505,11 @@ func _on_Blacksmith_closed():
 func _on_Laboratory_closed():
 	lab.hide()
 	cur_lab_attempts = lab.get_attempts()
+	map.show()
+	play_map_bgm()
+
+
+func _on_Treasure_closed():
+	treasure.hide()
 	map.show()
 	play_map_bgm()

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/background/08 florest.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://game/treasure/Treasure.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Treasure" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.51984
+margin_right = 2.51978
+mouse_filter = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.0037
+margin_top = -198.356
+margin_right = 162.996
+margin_bottom = -108.353
+custom_fonts/font = SubResource( 1 )
+text = "IGNORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -334.898
+margin_top = 27.7183
+margin_right = 360.097
+margin_bottom = 129.718
+custom_fonts/font = ExtResource( 3 )
+text = "Choose One"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Artifacts" type="HBoxContainer" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

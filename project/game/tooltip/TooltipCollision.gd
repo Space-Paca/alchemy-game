@@ -13,6 +13,12 @@ func set_collision_shape(size: Vector2):
 	shape.extents = size/2
 	$CollisionShape2D.shape = shape
 
+func set_collision_width(w : float):
+	$CollisionShape2D.shape.extents.x = w/2
+
+func set_collision_height(h : float):
+	$CollisionShape2D.shape.extents.y = h/2
+
 func _input(event):
 	var shape = $CollisionShape2D.shape
 	if event is InputEventMouseMotion:

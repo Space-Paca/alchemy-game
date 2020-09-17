@@ -10,6 +10,13 @@ func setup(width):
 func get_height():
 	return $Status.rect_size.y
 
+func disable():
+	for status in $Status.get_children():
+		status.disable()
+
+func enable():
+	for status in $Status.get_children():
+		status.enable()
 
 #Remove all status that are not in the status list
 func clean_removed_status(status_list):

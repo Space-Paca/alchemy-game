@@ -20,6 +20,11 @@ func get_artifact_tooltip():
 	
 	return tooltip
 
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
 func _on_Button_pressed():
 	emit_signal("pressed", artifact)
 
@@ -32,6 +37,4 @@ func _on_TooltipCollision_enable_tooltip():
 
 
 func _on_TooltipCollision_disable_tooltip():
-	if tooltips_enabled:
-		tooltips_enabled = false
-		TooltipLayer.clean_tooltips()
+	disable_tooltips()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/character/Status.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 31
@@ -10,6 +11,8 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="Status" type="HBoxContainer"]
 custom_constants/separation = -2
@@ -20,7 +23,7 @@ __meta__ = {
 
 [node name="Image" type="TextureRect" parent="."]
 margin_right = 45.0
-margin_bottom = 73.0
+margin_bottom = 45.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -28,11 +31,24 @@ __meta__ = {
 
 [node name="Value" type="Label" parent="."]
 margin_left = 43.0
-margin_top = 19.0
+margin_top = 5.0
 margin_right = 76.0
-margin_bottom = 53.0
+margin_bottom = 39.0
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
+position = Vector2( 36, 22 )
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 2 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( 101.17, -24.8639 )
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

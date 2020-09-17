@@ -327,20 +327,20 @@ func set_life(enemy_data):
 #Called when player dies
 func disable():
 	block_tooltips = true
+	$StatusBar.disable()
 	disable_tooltips()
 
 #Called when player dies
 func enable():
+	$StatusBar.enable()
 	block_tooltips = false
 	tooltips_enabled = true
-
 
 func update_tooltip_position():
 	var margin = 10
 	$TooltipPosition.position = Vector2($Sprite.position.x + $Sprite.texture.get_width() + margin, \
 							   			$Sprite.position.y - $Sprite.texture.get_height()/2 -\
 										INTENT_MARGIN - INTENT_H)
-
 
 func set_image(new_texture):
 	var margin = 40
@@ -368,9 +368,7 @@ func set_image(new_texture):
 	
 	#Update tooltip collision
 	var t_w = w
-	var t_h = INTENT_H +  INTENT_MARGIN + h + \
-			  HEALTH_BAR_MARGIN + $HealthBar.get_height()*$HealthBar.scale.y + \
-			  STATUS_BAR_MARGIN + $StatusBar.get_height()
+	var t_h = INTENT_H +  INTENT_MARGIN + h
 	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + 3*margin/2)
 	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
 	
@@ -449,13 +447,9 @@ func get_height():
 
 func get_tooltips():
 	var tooltips = []
-
 	for action in cur_actions:
 		tooltips.append(IntentManager.get_intent_tooltip(action, self))
 	
-	#Get status tooltips
-	for tooltip in $StatusBar.get_status_tooltips():
-		tooltips.append(tooltip)
 	return tooltips
 
 

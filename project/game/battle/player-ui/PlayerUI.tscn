@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/ui/book/char portrait animation.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=3]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 230, 70 )
 
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
@@ -29,22 +25,9 @@ margin_top = 190.0
 margin_right = 270.0
 margin_bottom = 230.0
 
-[node name="TooltipCollision" parent="." instance=ExtResource( 10 )]
-position = Vector2( 465, 175 )
-
-[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 1 )
-
-[node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 700, 80 )
-
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 240, 115 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPosition" type="Position2D" parent="."]
 position = Vector2( 100, 140 )
-[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
-[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
-
-[editable path="TooltipCollision"]

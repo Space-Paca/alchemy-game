@@ -57,25 +57,3 @@ func update_audio(hp, max_hp):
 #Returns the global position of the center of portrait
 func get_animation_position():
 	return $AnimationPosition.global_position
-
-
-func get_tooltips():
-	var tooltips = []
-	
-	#Get status tooltips
-	for tooltip in $StatusBar.get_status_tooltips():
-		tooltips.append(tooltip)
-	
-	return tooltips
-
-
-func _on_TooltipCollision_disable_tooltip():
-	TooltipLayer.clean_tooltips()
-
-
-func _on_TooltipCollision_enable_tooltip():
-	var play_sfx = true
-	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-								 tooltip.text, tooltip.title_image, play_sfx)
-		play_sfx = false

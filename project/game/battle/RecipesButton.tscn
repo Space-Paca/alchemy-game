@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/images/ui/end_turn.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -20,10 +20,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 47.3187
-margin_top = 16.0957
-margin_right = 154.319
-margin_bottom = 58.0957
+margin_left = 30.0
+margin_top = 12.0
+margin_right = 137.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 1 )
 text = "Recipes"
 align = 1

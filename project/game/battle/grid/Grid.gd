@@ -12,15 +12,23 @@ signal restrained
 const GRIDSLOT = preload("res://game/battle/grid/GridSlot.tscn")
 const SEPARATION = 4
 
-onready var slots = $Slots
+onready var container = $CenterContainer
+onready var slots = $CenterContainer/GridContainer
 
 var discard_bag = null # Set by parent
 var hand = null # Set by parent
 var grid_size : int
 
 
-func _ready():
-	set_grid(4)
+func _draw():
+	if not Engine.editor_hint:
+		return
+	
+	draw_rect(Rect2(Vector2.ZERO, container.rect_size), Color.green, false)
+	draw_line(Vector2(container.rect_size.x/2, -10),
+			Vector2(container.rect_size.x/2, container.rect_size.y+10), Color.green)
+	draw_line(Vector2(-10, container.rect_size.y/2),
+			Vector2(container.rect_size.x+10, container.rect_size.y/2), Color.green)
 
 
 func get_center():
@@ -45,46 +53,14 @@ func set_grid(_size: int):
 	for child in slots.get_children():
 		slots.remove_child(child)
 	
-	var temp_slot = GRIDSLOT.instance()
-	var sw = temp_slot.get_width()
-	var sh = temp_slot.get_height()
-	var y = -(grid_size * sh + (grid_size-1)*SEPARATION)/2
-	for i in range(grid_size):
-		var x = -(grid_size * sw + (grid_size-1)*SEPARATION)/2
-		for j in range(grid_size):
+	slots.columns = grid_size
+	
+	for _i in grid_size:
+		for _j in grid_size:
 			var slot = GRIDSLOT.instance()
-			slot.rect_position.x = x
-			slot.rect_position.y = y
-			
-			if grid_size > 2:
-				#Top-left slot
-				var v = SEPARATION - 1
-				if i == 0 and j == 0:
-					# warning-ignore:integer_division
-					# warning-ignore:integer_division
-					slot.rect_position += Vector2(v, v)
-				#Top-right slot
-				elif i == 0 and j == grid_size-1:
-					# warning-ignore:integer_division
-					# warning-ignore:integer_division
-					slot.rect_position += Vector2(-v, v)
-				#Bottom-left slot
-				elif i == grid_size-1 and j == 0:
-					# warning-ignore:integer_division
-					# warning-ignore:integer_division
-					slot.rect_position += Vector2(v, -v)
-				#Bottom-right slot
-				elif i == grid_size-1 and j == grid_size-1:
-					# warning-ignore:integer_division
-					# warning-ignore:integer_division
-					slot.rect_position += Vector2(-v, -v)
-				
 			slots.add_child(slot)
 			slot.connect("reagent_set", self, "_on_slot_changed")
 			slot.connect("reagent_removed", self, "_on_slot_changed")
-			
-			x += sw + SEPARATION
-		y += sh + SEPARATION
 
 
 func is_empty():

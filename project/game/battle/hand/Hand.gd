@@ -15,8 +15,14 @@ var size : int
 
 
 func _draw():
-	if Engine.editor_hint:
-		draw_rect(Rect2(slots.rect_position, slots.rect_size), Color.red, false)
+	if not Engine.editor_hint:
+		return
+	
+	draw_rect(Rect2(slots.rect_position, slots.rect_size), Color.red, false)
+	draw_line(Vector2(slots.rect_size.x / 2, -10),
+			Vector2(slots.rect_size.x / 2, slots.rect_size.y + 10), Color.red)
+	draw_line(Vector2(-10, slots.rect_size.y / 2),
+			Vector2(slots.rect_size.x + 10, slots.rect_size.y / 2), Color.red)
 
 
 func get_width():

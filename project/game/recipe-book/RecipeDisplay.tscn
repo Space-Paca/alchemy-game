@@ -1,16 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/ui/star_off.png" type="Texture" id=1]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/star_on.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/images/ui/book/recipe.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.392157, 0.333333, 0.211765, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="DynamicFont" id=3]
+size = 48
+use_filter = true
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 43
@@ -19,82 +19,96 @@ font_data = ExtResource( 4 )
 [node name="RecipeDisplay" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1605.0
-margin_bottom = -580.0
-rect_min_size = Vector2( 315, 500 )
+margin_right = -1920.0
+margin_bottom = -1080.0
+rect_min_size = Vector2( 307, 385 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 315, 250 )
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = -8.0
+margin_bottom = -115.0
+texture = ExtResource( 5 )
+stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 custom_constants/margin_right = 20
-custom_constants/margin_top = 10
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 10
+custom_constants/margin_top = 30
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 45
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 295.0
-margin_bottom = 490.0
+margin_left = 15.0
+margin_top = 30.0
+margin_right = 287.0
+margin_bottom = 340.0
 custom_constants/separation = 20
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
-margin_right = 275.0
-margin_bottom = 14.0
+margin_right = 272.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "RECIPE NAME"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer/VBoxContainer"]
-margin_top = 34.0
-margin_right = 275.0
-margin_bottom = 334.0
-rect_min_size = Vector2( 132, 300 )
+margin_top = 47.0
+margin_right = 272.0
+margin_bottom = 247.0
+rect_min_size = Vector2( 132, 200 )
 mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 135.0
-margin_top = 150.0
-margin_right = 139.0
-margin_bottom = 150.0
+margin_left = 119.0
+margin_top = 75.0
+margin_right = 152.0
+margin_bottom = 125.0
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_top = 25.0
+margin_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReagentList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Arrow" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 4.0
+margin_right = 29.0
+margin_bottom = 50.0
+texture = ExtResource( 6 )
+
+[node name="ReagentList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 33.0
+margin_right = 33.0
+margin_bottom = 50.0
 
 [node name="Description" type="Label" parent="Panel/MarginContainer"]
-margin_left = 20.0
-margin_top = 465.0
-margin_right = 295.0
-margin_bottom = 490.0
+margin_left = 15.0
+margin_top = 315.0
+margin_right = 287.0
+margin_bottom = 340.0
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
 autowrap = true
 
 [node name="Button" type="Button" parent="Panel"]

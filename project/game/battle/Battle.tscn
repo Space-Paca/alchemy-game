@@ -61,6 +61,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BookBG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1, 0.89 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RecipesButton" parent="." instance=ExtResource( 1 )]
 margin_left = 774.941
 margin_top = 56.9307
@@ -73,28 +82,19 @@ margin_top = 916.794
 margin_right = 1106.91
 margin_bottom = 1014.8
 
-[node name="BookBG" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_scale = Vector2( 1, 0.89 )
-texture = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 215.746
-margin_top = 304.603
-margin_right = 215.746
-margin_bottom = 304.603
+margin_left = 195.0
+margin_top = 395.0
+margin_right = 195.0
+margin_bottom = 395.0
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 125, 720 )
+position = Vector2( 115, 720 )
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 10 )]
-margin_left = 110.0
+margin_left = 90.0
 margin_top = 330.0
-margin_right = 654.0
+margin_right = 634.0
 margin_bottom = 427.0
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
@@ -104,11 +104,10 @@ position = Vector2( 27, 913 )
 position = Vector2( 605, 905 )
 
 [node name="CreateRecipeButton" type="TextureButton" parent="."]
-margin_left = 300.0
+margin_left = 290.0
 margin_top = 896.0
-margin_right = 430.0
+margin_right = 420.0
 margin_bottom = 1026.0
-rect_scale = Vector2( 0.9, 0.9 )
 texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 5
@@ -238,7 +237,7 @@ position = Vector2( 1578.07, 632.143 )
 position = Vector2( 1374.17, 492.804 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
-position = Vector2( 23.5306, 24.1475 )
+position = Vector2( 20, 15 )
 
 [node name="Reagents" type="Node" parent="."]
 

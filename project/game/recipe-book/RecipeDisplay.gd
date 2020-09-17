@@ -5,6 +5,7 @@ signal unhovered()
 signal pressed(combination, mastery_unlocked)
 signal favorite_toggled(combination, button_pressed)
 
+onready var arrow = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Arrow
 onready var description = $Panel/MarginContainer/Description
 onready var favorite_button = $Panel/FavoriteButton
 onready var grid = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/GridContainer
@@ -34,6 +35,7 @@ func set_combination(_combination: Combination):
 	
 	if combination.discovered:
 		reagent_list.queue_free()
+		arrow.queue_free()
 	else:
 		for reagent in combination.reagent_amounts:
 			var reagent_amount = REAGENT_AMOUNT.instance()
@@ -51,8 +53,10 @@ func update_combination():
 	if combination.discovered and reagent_list:
 		reagent_list.queue_free()
 
+
 func is_mastered():
 	return mastery_unlocked
+
 
 func unlock_mastery():
 	if not mastery_unlocked:

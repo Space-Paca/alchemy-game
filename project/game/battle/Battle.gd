@@ -143,9 +143,6 @@ func setup_player_ui():
 	
 	player_ui.set_life(player.max_hp, player.hp)
 	
-	#Position grid
-	grid.rect_position.x = ui_center
-	grid.rect_position.y = grid_center
 	#Position pass-turn button
 	var button_margin = 54
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin

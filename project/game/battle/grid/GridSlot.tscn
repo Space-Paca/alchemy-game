@@ -1,19 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/ui/book/slot quad-80-px.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/grid/GridSlot.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/ui/Holder Grid Restricted.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/Holder Grid Restrained.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/book/slot-full.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/book/slot-restrained.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/book/slot-restrict.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 39, 39 )
+extents = Vector2( 40, 40 )
 
 [node name="GridSlot" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1837.0
-margin_bottom = -997.0
-rect_min_size = Vector2( 83, 83 )
+margin_right = -1920.0
+margin_bottom = -1080.0
+rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,34 +22,34 @@ __meta__ = {
 
 [node name="FullImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 83.0
-margin_bottom = 83.0
-texture = ExtResource( 1 )
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EmptyImage" type="TextureRect" parent="."]
-margin_right = 83.0
-margin_bottom = 83.0
+margin_right = 80.0
+margin_bottom = 80.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RestrictImage" type="TextureRect" parent="."]
-margin_right = 83.0
-margin_bottom = 83.0
-texture = ExtResource( 4 )
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RestrainedImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 83.0
-margin_bottom = 83.0
-texture = ExtResource( 5 )
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,7 +57,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="." groups=[
 "gridslot",
 ]]
-position = Vector2( 41, 41 )
+position = Vector2( 40, 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
@@ -70,7 +71,7 @@ __meta__ = {
 
 [node name="ReagentHint" type="TextureRect" parent="MarginContainer"]
 self_modulate = Color( 1, 1, 1, 0.25098 )
-margin_right = 83.0
-margin_bottom = 83.0
+margin_right = 80.0
+margin_bottom = 80.0
 expand = true
 stretch_mode = 6

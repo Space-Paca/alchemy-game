@@ -5,7 +5,7 @@ onready var reagent_display = $ReagentDisplay
 
 
 func set_amount(amount: int):
-	label.text = str("- ", amount)
+	label.text = str("x ", amount)
 
 
 func set_reagent(reagent_name: String):

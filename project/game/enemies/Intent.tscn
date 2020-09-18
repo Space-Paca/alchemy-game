@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/images/intents/attack_crushing.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/enemies/Intent.gd" type="Script" id=3]
-
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 31
@@ -74,3 +74,11 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
+position = Vector2( 72.7488, 30.7013 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( 150.169, -14.0158 )
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

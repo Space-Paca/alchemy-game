@@ -32,9 +32,6 @@ var logic
 var data
 var cur_actions
 var just_spawned := false
-var tooltip_position := Vector2()
-var tooltips_enabled := false
-var block_tooltips := false
 var _playback_speed := 1.0
 
 
@@ -75,8 +72,7 @@ func heal(amount : int):
 func die():
 	#Audio
 	AudioManager.play_enemy_dies_sfx(data.sfx)
-	
-	disable_tooltips()
+	disable()
 	
 	#Death animation
 	tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
@@ -326,21 +322,15 @@ func set_life(enemy_data):
 
 #Called when player dies
 func disable():
-	block_tooltips = true
 	$StatusBar.disable()
-	disable_tooltips()
+	for intent in $Intents.get_children():
+		intent.disable()
 
 #Called when player dies
 func enable():
 	$StatusBar.enable()
-	block_tooltips = false
-	tooltips_enabled = true
-
-func update_tooltip_position():
-	var margin = 10
-	$TooltipPosition.position = Vector2($Sprite.position.x + $Sprite.texture.get_width() + margin, \
-							   			$Sprite.position.y - $Sprite.texture.get_height()/2 -\
-										INTENT_MARGIN - INTENT_H)
+	for intent in $Intents.get_children():
+		intent.enable()
 
 func set_image(new_texture):
 	var margin = 40
@@ -366,12 +356,6 @@ func set_image(new_texture):
 	#Update intents position
 	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
 	
-	#Update tooltip collision
-	var t_w = w
-	var t_h = INTENT_H +  INTENT_MARGIN + h
-	$TooltipCollision.position = Vector2(0, $Intents.position.y + h/2 + 3*margin/2)
-	$TooltipCollision.set_collision_shape(Vector2(t_w, t_h))
-	
 	# Button
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
 
@@ -391,10 +375,10 @@ func clear_intents():
 		$Intents.remove_child(intent)
 
 
-func add_intent(texture, value, multiplier):
+func add_intent(action, texture, value, multiplier):
 	var intent = INTENT.instance()
 	$Intents.add_child(intent)
-	intent.setup(texture, value, multiplier)
+	intent.setup(self, action, texture, value, multiplier)
 	yield(intent, "set_up")
 	update_intents_position()
 
@@ -430,11 +414,11 @@ func update_intent():
 				value += get_damage_modifiers()
 				value = int(ceil(2*value/3.0)) if get_status("weak") else value
 			if intent.has("multiplier"):
-				add_intent(intent.image, value, intent.multiplier)
+				add_intent(intent.action, intent.image, value, intent.multiplier)
 			else:
-				add_intent(intent.image, value, null)
+				add_intent(intent.action, intent.image, value, null)
 		else:
-			add_intent(intent.image, null, null)
+			add_intent(intent.action, intent.image, null, null)
 
 
 func get_width():
@@ -444,15 +428,6 @@ func get_width():
 func get_height():
 	return sprite.texture.get_height()
 
-
-func get_tooltips():
-	var tooltips = []
-	for action in cur_actions:
-		tooltips.append(IntentManager.get_intent_tooltip(action, self))
-	
-	return tooltips
-
-
 func set_button_disabled(disable: bool):
 	button.visible = not disable
 	button.disabled = disable
@@ -460,13 +435,6 @@ func set_button_disabled(disable: bool):
 	var color := HL_COLOR
 	color.a = 0 if disable else 1
 	sprite.material.set_shader_param("highlight_color", color)
-
-
-func disable_tooltips():
-	if tooltips_enabled:
-		tooltips_enabled = false
-		TooltipLayer.clean_tooltips()
-
 
 func _on_Button_pressed():
 	tween.stop(sprite.material)
@@ -492,19 +460,3 @@ func _on_Button_mouse_exited():
 			"shader_param/highlight_thickness", null, HL_MIN_THICKNESS,
 			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
-
-
-func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips:
-		return
-	var play_sfx = true
-	tooltips_enabled = true
-	for tooltip in get_tooltips():
-		update_tooltip_position()
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-								 tooltip.text, tooltip.title_image, play_sfx)
-		play_sfx = false
-
-
-func _on_TooltipCollision_disable_tooltip():
-	disable_tooltips()

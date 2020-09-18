@@ -19,6 +19,7 @@ const IMAGES = {
 #Creates an intent based on an action
 func create_intent_data(action):
 	var intent = {}
+	intent.action = action
 	var name = action[0]
 	var args = action[1]
 	if name == "damage":

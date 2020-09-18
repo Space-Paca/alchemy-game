@@ -3,12 +3,19 @@ extends Node2D
 signal vanished
 signal set_up
 
+var block_tooltips := false
+var tooltips_enabled := false
+var enemy = null
+var action = null
+
 func _ready():
 	modulate = Color(1,1,1,0)
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), .3, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 	
-func setup(texture, value, multiplier):
+func setup(_enemy, _action, texture, value, multiplier):
+	enemy = _enemy
+	action = _action
 	$Image.texture = texture
 	
 	#Add value
@@ -38,6 +45,18 @@ func update_position():
 	margin = 10
 	$Multiplier.rect_position.x = $X.rect_position.x + $X.rect_size.x + margin
 	$Multiplier.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $Multiplier.rect_size.y
+	
+	#Update tooltip info
+	var w
+	if $Multiplier.text == "":
+		w = $Value.rect_position.x + $Value.rect_size.x
+	else:
+		w = $Multiplier.rect_position.x + $Multiplier.rect_size.x
+	var h = $Image.rect_size.y
+	$TooltipCollision.position.x = w/2
+	$TooltipCollision.position.y = h/2
+	$TooltipCollision.set_collision_shape(Vector2(w,h))
+	$TooltipPosition.position = Vector2(w + 5, -10)
 
 func get_width():
 	var w = $Image.rect_size.x
@@ -48,6 +67,7 @@ func get_width():
 	return w
 
 func vanish():
+	disable()
 	var dur = .2
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), dur/2, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.interpolate_property(self, "scale", Vector2(1,1), Vector2(0,1), dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -55,3 +75,29 @@ func vanish():
 	$Tween.start()
 	yield($Tween, "tween_all_completed")
 	emit_signal("vanished")
+
+func get_self_tooltip():
+	return IntentManager.get_intent_tooltip(action, enemy)
+
+func disable():
+	block_tooltips = true
+	disable_tooltips()
+
+func enable():
+	block_tooltips = false
+
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func _on_TooltipCollision_disable_tooltip():
+	disable_tooltips()
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
+	tooltips_enabled = true
+	var tooltip = get_self_tooltip()
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, true)

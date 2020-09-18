@@ -139,89 +139,9 @@ func get_intent_tooltip(action, enemy):
 		if args.value > 1:
 			tooltip.text += str(args.value) + " "
 		
-		if args.status == "poison":
-			tooltip.title = "Poisoning"
-			tooltip.text += "poison"
-		elif args.status == "dodge":
-			tooltip.title = "Dodging"
-			tooltip.text += "dodge"
-		elif args.status == "evasion":
-			tooltip.title = "Evading"
-			tooltip.text += "evasion"
-		elif args.status == "retaliate":
-			tooltip.title = "Retaliating"
-			tooltip.text += "retaliate"
-		elif args.status == "divider":
-			tooltip.title = "Dividing"
-			tooltip.text += "divider"
-		elif args.status == "guard_up":
-			tooltip.title = "Guarding Up"
-			tooltip.text += "guard up"
-		elif args.status == "revenge":
-			tooltip.title = "Revenging"
-			tooltip.text += "revenge"
-		elif args.status == "overkill":
-			tooltip.title = "Overkill"
-			tooltip.text += "overkill"
-		elif args.status == "doomsday":
-			tooltip.title = "Doomsday"
-			tooltip.text += "doomsday"
-		elif args.status == "martyr":
-			tooltip.title = "Martyr"
-			tooltip.text += "martyr"
-		elif args.status == "poison_immunity":
-			tooltip.title = "Poison Immunity"
-			tooltip.text += "poison immunity"
-		elif args.status == "wounded":
-			tooltip.title = "Wounded"
-			tooltip.text += "wounded"
-		elif args.status == "rage":
-			tooltip.title = "Raging"
-			tooltip.text += "rage"
-		elif args.status == "restrict_minor":
-			tooltip.title = "Minor Restriction"
-			tooltip.text += "minor restriction"
-		elif args.status == "restrict_major":
-			tooltip.title = "Major Restriction"
-			tooltip.text += "major restriction"
-		elif args.status == "minion":
-			tooltip.title = "Minion"
-			tooltip.text += "minion"
-		elif args.status == "tough":
-			tooltip.title = "Getting Tough"
-			tooltip.text += "tough"
-		elif args.status == "time_bomb":
-			tooltip.title = "Time Bombing"
-			tooltip.text += "time bomb"
-		elif args.status == "freeze":
-			tooltip.title = "Freezing"
-			tooltip.text += "freeze"
-		elif args.status == "parasite":
-			tooltip.title = "Parasating"
-			tooltip.text += "parasite"
-		elif args.status == "weak":
-			tooltip.title = "Weakening"
-			tooltip.text += "weak"
-		elif args.status == "curse":
-			tooltip.title = "Cursing"
-			tooltip.text += "curse"
-		elif args.status == "confused":
-			tooltip.title = "Confusing"
-			tooltip.text += "confused"
-		elif args.status == "restrained":
-			tooltip.title = "Restraining"
-			tooltip.text += "restrained"
-		elif args.status == "burn":
-			tooltip.title = "Burning"
-			tooltip.text += "burn"
-		elif args.status == "perm_strength":
-			tooltip.title = "Getting Strong"
-			tooltip.text += "permanent strength"
-		elif args.status == "temp_strength":
-			tooltip.title = "Temporary Buff"
-			tooltip.text += "temporary strength"
-		else:
-			push_error("Not a known status:" + str(args.status_name))
+		var status_data = StatusDB.get_from_name(args.status)
+		tooltip.title = status_data.intent_title
+		tooltip.text += status_data["in-text_name"]
 		
 		tooltip.text += " next turn"
 	elif name == "spawn":

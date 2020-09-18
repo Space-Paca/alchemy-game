@@ -3,120 +3,31 @@ extends CanvasLayer
 const TOOLTIP = preload("res://game/tooltip/Tooltip.tscn")
 const SCREEN_MARGIN = 10
 const TOOLTIP_WIDTH = 250
-const KEYWORDS = {
-	"guard up": {
-		"type": "status",
-		"name": "guard_up"
-	},
-	"poison": {
-		"type": "status",
-		"name": "poison"
-	},
-	"dodge": {
-		"type": "status",
-		"name": "dodge"
-	},
-	"evasion": {
-		"type": "status",
-		"name": "evasion"
-	},
-	"retaliate": {
-		"type": "status",
-		"name": "retaliate"
-	},
-	"temporary strength": {
-		"type": "status",
-		"name": "temp_strength"
-	},
-	"permanent strength": {
-		"type": "status",
-		"name": "perm_strength"
-	},
-	"divider": {
-		"type": "status",
-		"name": "divider"
-	},
-	"revenge": {
-		"type": "status",
-		"name": "revenge"
-	},
-	"doomsday": {
-		"type": "status",
-		"name": "doomsday"
-	},
-	"overkill": {
-		"type": "status",
-		"name": "overkill"
-	},
-	"martyr": {
-		"type": "status",
-		"name": "martyr"
-	},
-	"poison immunity": {
-		"type": "status",
-		"name": "poison_immunity"
-	},
-	"wounded": {
-		"type": "status",
-		"name": "wounded"
-	},
-	"rage": {
-		"type": "status",
-		"name": "rage"
-	},
-	"minor restriction": {
-		"type": "status",
-		"name": "restrict_minor"
-	},
-	"major restriction": {
-		"type": "status",
-		"name": "restrict_major"
-	},
-	"minion": {
-		"type": "status",
-		"name": "minion"
-	},
-	"tough": {
-		"type": "status",
-		"name": "tough"
-	},
-	"freeze": {
-		"type": "status",
-		"name": "freeze"
-	},
-	"time bomb": {
-		"type": "status",
-		"name": "time_bomb"
-	},
-	"curse": {
-		"type": "status",
-		"name": "curse"
-	},
-	"confused": {
-		"type": "status",
-		"name": "confused"
-	},
-	"restrained": {
-		"type": "status",
-		"name": "restrained"
-	},
-	"burn": {
-		"type": "status",
-		"name": "burn"
-	},
-	"parasite": {
-		"type": "status",
-		"name": "parasite"
-	},
-	"weak": {
-		"type": "status",
-		"name": "weak"
-	},
+
+var keywords = {
 	"piercing damage": {
 		"type": "tooltip",
 		"title": "Piercing Damage",
 		"text": "Piercing damage ignores shield and deals damage directly to health.",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
+	},
+	"crushing damage": {
+		"type": "tooltip",
+		"title": "Crushing Damage",
+		"text": "Crushing damage deals damage both to shield and health directly.",
+		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
+	},
+	"regular damage": {
+		"type": "no_tooltip",
+	},
+	"healing": {
+		"type": "no_tooltip",
+	},
+	"heal": {
+		"type": "no_tooltip",
+	},
+	"shield damage": {
+		"type": "no_tooltip",
 	},
 	"venom damage": {
 		"type": "tooltip",
@@ -135,7 +46,6 @@ const KEYWORDS = {
 		"title": "Unstable",
 		"text": "An unstable reagent, if not used properly or until end of turn, explodes dealing 3 regular damage.",
 		"title_image": preload("res://assets/images/status/random_status.png"),
-	
 	},
 	"on fire": {
 		"type": "tooltip",
@@ -145,7 +55,20 @@ const KEYWORDS = {
 	}
 }
 
-var status_db = preload("res://game/character/Status.gd").new()
+func _ready():
+	import_status_keywords()
+
+func import_status_keywords():
+	var all_status = StatusDB.get_all_status()
+	for status_name in all_status.keys():
+		var status = all_status[status_name]
+		keywords[status["in-text_name"]] = {
+			"type": "status",
+			"name": status_name
+		}
+
+func get_keywords():
+	return keywords
 
 func get_width():
 	return TOOLTIP_WIDTH
@@ -165,13 +88,13 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 	update_tooltips_pos()
 	
 	for keyword in tip.get_keywords():
-		if KEYWORDS.has(keyword):
-			var tp_data = KEYWORDS[keyword]
+		if keywords.has(keyword):
+			var tp_data = keywords[keyword]
 			if tp_data.type == "tooltip":
 				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image, false, true)
 			elif tp_data.type == "status":
-				tp_data = status_db.STATUS_TOOLTIPS[tp_data.name]
-				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image, false, true)
+				var data = StatusDB.get_from_name(tp_data.name)
+				add_tooltip(pos, data.title_name, data.description, data.image, false, true)
 
 func has_tooltip(title):
 	for tooltip in $Tooltips.get_children():

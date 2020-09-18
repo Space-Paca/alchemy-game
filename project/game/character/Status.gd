@@ -1,145 +1,5 @@
 extends HBoxContainer
 
-const STATUS_IMAGES = {
-					   "dodge": "res://assets/images/status/dodge.png",
-					   "evasion": "res://assets/images/status/dodge.png",
-					   "perm_strength": "res://assets/images/status/perm_strength.png",
-					   "temp_strength": "res://assets/images/status/temp_strength.png",
-					   "poison": "res://assets/images/status/poison.png",
-					   "guard_up": "res://assets/images/status/random_status.png",
-					   "retaliate": "res://assets/images/status/random_status.png",
-					   "divider": "res://assets/images/status/random_status.png",
-					   "revenge": "res://assets/images/status/random_status.png",
-					   "overkill": "res://assets/images/status/random_status.png",
-					   "doomsday": "res://assets/images/status/random_status.png",
-					   "martyr": "res://assets/images/status/random_status.png",
-					   "poison_immunity": "res://assets/images/status/random_status.png",
-					   "wounded": "res://assets/images/status/random_status.png",
-					   "rage": "res://assets/images/status/random_status.png",
-					   "tough": "res://assets/images/status/random_status.png",
-					   "time_bomb": "res://assets/images/status/random_status.png",
-					   "freeze": "res://assets/images/status/random_status.png",
-					   "curse": "res://assets/images/status/random_status.png",
-					   "confused": "res://assets/images/status/random_status.png",
-					   "restrained": "res://assets/images/status/random_status.png",
-					   "burn": "res://assets/images/status/random_status.png",
-					   "parasite": "res://assets/images/status/random_status.png",
-					   "weak": "res://assets/images/status/random_status.png",
-					   "restrict_minor": "res://assets/images/status/random_status.png",
-					   "restrict_major": "res://assets/images/status/random_status.png",
-					   "minion": "res://assets/images/status/random_status.png",
-					  }
-const STATUS_TOOLTIPS = {
-					   "dodge": {
-						"title": "Dodge",
-						"text": "This character will avoid the next attack. Last until end of turn.",
-						"title_image": STATUS_IMAGES.dodge},
-					   "evasion": {
-						"title": "Evasion",
-						"text": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn",
-						"title_image": STATUS_IMAGES.evasion},
-					   "retaliate": {
-						"title": "Retaliate",
-						"text": "This character returns 1 regular damage per stack each time it is attacked. Lasts until end of turn",
-						"title_image": STATUS_IMAGES.retaliate},
-					   "perm_strength": {
-						"title": "Permanent Strength",
-						"text": "Permanently increases this character attack damage",
-						"title_image": STATUS_IMAGES.perm_strength},
-					   "temp_strength": {
-						"title": "Temporary Strength",
-						"text": "Increases the damage of this character next attack",
-						"title_image": STATUS_IMAGES.temp_strength},
-					   "time_bomb": {
-						"title": "Time Bomb",
-						"text": "Player will draw unstable reagents",
-						"title_image": STATUS_IMAGES.time_bomb},
-					   "freeze": {
-						"title": "Freeze",
-						"text": "At start of turn, will freezes player's hand slots until end of turn",
-						"title_image": STATUS_IMAGES.freeze},
-					   "burn": {
-						"title": "Burn",
-						"text": "At start of turn, will randomly burn player's reagents until end of turn",
-						"title_image": STATUS_IMAGES.burn},
-					   "tough": {
-						"title": "Tough",
-						"text": "Shield isn't removed at the end of turn",
-						"title_image": STATUS_IMAGES.tough},
-					   "weak": {
-						"title": "Weak",
-						"text": "This character deals 1/3 less attack damage. Decreases every turn",
-						"title_image": STATUS_IMAGES.weak},
-					   "wounded": {
-						"title": "Wounded",
-						"text": "This character can't heal",
-						"title_image": STATUS_IMAGES.wounded},
-					   "poison_immunity": {
-						"title": "Poison Immunity",
-						"text": "This character can't receive poison",
-						"title_image": STATUS_IMAGES.poison_immunity},
-					   "overkill": {
-						"title": "Overkill",
-						"text": "When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage",
-						"title_image": STATUS_IMAGES.overkill},
-					   "doomsday": {
-						"title": "Doomsday",
-						"text": "When this counter reaches 0, this character will receive 999 permanent strength",
-						"title_image": STATUS_IMAGES.doomsday},
-					   "restrict_minor": {
-						"title": "Minor Restriction",
-						"text": "Blocks a number of grid slots until end of turn",
-						"title_image": STATUS_IMAGES.restrict_minor},
-					   "restrict_major": {
-						"title": "Major Restriction",
-						"text": "Blocks a number of grid slots until end of turn",
-						"title_image": STATUS_IMAGES.restrict_major},
-					   "minion": {	
-						"title": "Minion",
-						"text": "This enemy will disappear if his summoner dies",
-						"title_image": STATUS_IMAGES.minion},
-					   "poison": {
-						"title": "Poison",
-						"text": "This character is dealt 1 poison damage per stack. Decreases every turn",
-						"title_image": STATUS_IMAGES.poison},
-					   "parasite": {
-						"title": "Parasite",
-						"text": "This character gains permanent strength each time you misuse a reagent",
-						"title_image": STATUS_IMAGES.parasite},
-					   "curse": {
-						"title": "Curse",
-						"text": "Limits the number of recipes you can create each turn",
-						"title_image": STATUS_IMAGES.curse},
-					   "confused": {
-						"title": "Confused",
-						"text": "Transforms reagents randomly at the start of every turn",
-						"title_image": STATUS_IMAGES.confused},
-					   "restrained": {
-						"title": "Restrained",
-						"text": "Locks grid slots randomly until end of turn. You can spend reagents to unlock them",
-						"title_image": STATUS_IMAGES.restrained},
-					   "guard_up": {
-						"title": "Guard Up",
-						"text": "Whenever this characters is attacked, if it wasn't shielded, gains shield",
-						"title_image": STATUS_IMAGES.guard_up},
-					   "divider": {
-						"title": "Divider",
-						"text": "When this character dies, it will divide into two",
-						"title_image": STATUS_IMAGES.divider},
-					   "revenge": {
-						"title": "Revenge",
-						"text": "When this character dies, it will deal 1 regular damage per stack to you",
-						"title_image": STATUS_IMAGES.revenge},
-					   "martyr": {
-						"title": "Martyr",
-						"text": "When this character dies, it apply 1 permanent strength per stack to each other enemy",
-						"title_image": STATUS_IMAGES.martyr},
-					   "rage": {
-						"title": "Rage",
-						"text": "Whenever this character takes damage, it gets 1 permanent strength per stack",
-						"title_image": STATUS_IMAGES.rage},
-					  }
-
 var type : String
 var positive : bool
 var tooltips_enabled := false
@@ -149,8 +9,8 @@ func init(_type: String, value, _positive: bool):
 	type = _type
 	positive = _positive
 	
-	assert(STATUS_IMAGES.has(type))
-	$Image.texture = load(STATUS_IMAGES[type])
+	var status_data = StatusDB.get_from_name(type)
+	$Image.texture = status_data.image
 	if value:
 		set_value(value)
 	else:
@@ -174,11 +34,13 @@ func enable():
 	block_tooltips = false
 
 func get_self_tooltip():
-	if STATUS_TOOLTIPS.has(type):
-		return STATUS_TOOLTIPS[type]
-	else:
-		push_error("Not a valid type of status: " + str(type))
-		assert(false)
+	var tooltip = {}
+	var status_data = StatusDB.get_from_name(type)
+	tooltip.title = status_data.title_name
+	tooltip.text = status_data.description
+	tooltip.title_image = status_data.image
+	
+	return tooltip
 
 func disable_tooltips():
 	if tooltips_enabled:
@@ -187,7 +49,6 @@ func disable_tooltips():
 
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()
-
 
 func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips:

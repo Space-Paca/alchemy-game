@@ -4,14 +4,6 @@ const MARGIN_X = 35
 const MARGIN_Y = 34
 const SEPARATION_TITLE_TEXT = 12
 const TITLE_IMAGE_SIZE = 24
-const VALID_KEYWORDS = ["dodge", "permanent strength", "temporary strength", "poison",
-					   "guard up", "piercing damage", "regular damage", "crushing damage",
-					   "venom damage", "shield", "evasion", "drain", "retaliate", "divider",
-					   "revenge", "rage", "curse", "parasite", "weak", "freeze",
-					   "time bomb", "unstable", "tough", "minion", "major restriction",
-					   "minor restriction", "martyr", "poison immunity", "wounded",
-					   "overkill", "doomsday", "healing", "heal", "on fire", "burn",
-					   "confused", "restrained"]
 
 signal set_up
 
@@ -54,7 +46,7 @@ func setup(_title, _text, _title_image, expanded = false, stylize = true):
 
 func stylize_text(text):
 	#Color keywords
-	for keyword in VALID_KEYWORDS:
+	for keyword in TooltipLayer.get_keywords():
 		text = text.replace(keyword, "[color=lime]" + keyword + "[/color]")
 	
 	#Color numbers
@@ -107,7 +99,7 @@ func get_height():
 
 func get_keywords():
 	var keywords = []
-	for keyword in VALID_KEYWORDS:
+	for keyword in TooltipLayer.get_keywords():
 		if $Text.bbcode_text.find(keyword) != -1:
 			keywords.append(keyword)
 	return keywords

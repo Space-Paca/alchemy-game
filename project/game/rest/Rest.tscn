@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -24,12 +25,22 @@ font_data = ExtResource( 2 )
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="Rest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,8 +63,8 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="Recipes"]
-margin_right = 2040.0
-margin_bottom = 500.0
+margin_right = 1992.0
+margin_bottom = 385.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 30

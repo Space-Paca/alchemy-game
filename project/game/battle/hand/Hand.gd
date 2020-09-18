@@ -38,7 +38,6 @@ func get_slots():
 
 
 func set_hand(number: int):
-	print("set_hand:", number)
 	size = number
 	
 	for slot in get_slots():

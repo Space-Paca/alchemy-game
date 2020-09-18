@@ -49,7 +49,10 @@ func update_position():
 	#Update tooltip info
 	var w
 	if $Multiplier.text == "":
-		w = $Value.rect_position.x + $Value.rect_size.x
+		if $Value.text == "":
+			w = $Image.rect_position.x + $Image.rect_size.x
+		else:
+			w = $Value.rect_position.x + $Value.rect_size.x
 	else:
 		w = $Multiplier.rect_position.x + $Multiplier.rect_size.x
 	var h = $Image.rect_size.y

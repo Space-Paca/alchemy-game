@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const TOOLTIP = preload("res://game/tooltip/Tooltip.tscn")
+const SCREEN_MARGIN = 10
 const TOOLTIP_WIDTH = 250
 const KEYWORDS = {
 	"guard up": {
@@ -155,7 +156,7 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 	var tip = TOOLTIP.instance()
 	$Tooltips.add_child(tip)
 	tip.setup(title, text, title_image, expanded, stylize)
-	$Tooltips.position.x = min(pos.x, get_viewport().size.x-TOOLTIP_WIDTH)
+	$Tooltips.position.x = min(pos.x + TOOLTIP_WIDTH, get_viewport().size.x-SCREEN_MARGIN) - TOOLTIP_WIDTH
 	$Tooltips.position.y = pos.y
 	yield(tip, "set_up")
 	if play_sfx:
@@ -190,6 +191,11 @@ func remove_tooltip(title):
 
 func update_tooltips_pos():
 	var y = 0
+	var total_height = 0
 	for tip in $Tooltips.get_children():
 		tip.rect_position.y = y
-		y += tip.get_height()
+		var h = tip.get_height()
+		y += h
+		total_height += h
+	$Tooltips.position.y = min($Tooltips.position.y + total_height,
+							   get_viewport().size.y-SCREEN_MARGIN) - total_height

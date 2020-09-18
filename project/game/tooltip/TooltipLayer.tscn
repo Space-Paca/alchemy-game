@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://game/dungeon/TooltipLayer.gd" type="Script" id=1]
+[ext_resource path="res://game/tooltip/TooltipLayer.gd" type="Script" id=1]
 
 [node name="TooltipLayer" type="CanvasLayer"]
 layer = 3

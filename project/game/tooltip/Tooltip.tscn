@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/images/ui/tooltip_bg.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/intents/attack_normal.png" type="Texture" id=4]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 62
 outline_size = 3

@@ -18,6 +18,10 @@ signal set_up
 func get_title():
 	return $Title.text
 
+func fade_in():
+	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+
 func setup(_title, _text, _title_image, expanded = false, stylize = true):
 	modulate = Color(1,1,1,0)
 	$Title.rect_size.x = 3*TooltipLayer.get_width()/4 - 2*MARGIN_X
@@ -79,8 +83,6 @@ func update_size():
 	
 	var text_h = $Text.get_content_height()
 	$BG.rect_size.y = $Text.rect_position.y + text_h + MARGIN_Y
-	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
 	
 	#Update title size to fit textbox
 	var scale = (3*TooltipLayer.get_width()/4 - 2*MARGIN_X)/$Title.rect_size.x

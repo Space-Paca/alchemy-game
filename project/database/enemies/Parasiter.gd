@@ -22,7 +22,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "parasite", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "hex", "value": 2, "target": "self", "positive": true}
 	],
 	"drain": [
 		{"name": "drain", "value": [8, 10]}

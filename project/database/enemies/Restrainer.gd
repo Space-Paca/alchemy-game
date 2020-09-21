@@ -35,11 +35,11 @@ var first_state = ["attack1", "attack2"]
 
 var actions = {
 	"attack1": [
-		{"name": "status", "status_name": "restrained", "value": 4, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrain", "value": 4, "target": "player", "positive": false},
 		{"name": "damage", "value": [15, 25], "type": "regular"}
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrained", "value": 5, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrain", "value": 5, "target": "player", "positive": false},
 		{"name": "damage", "value": [12, 20], "type": "regular"}
 	],
 	"attack3": [
@@ -49,9 +49,9 @@ var actions = {
 		{"name": "idle", "sfx": "charge"}
 	],
 	"big_restrain": [
-		{"name": "status", "status_name": "restrained", "value": 16, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false},
 	],
 	"medium_restrain": [
-		{"name": "status", "status_name": "restrained", "value": 8, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false},
 	],
 }

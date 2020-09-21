@@ -27,6 +27,6 @@ var actions = {
 	],
 	"debuff": [
 		{"name": "shield", "value": [5, 8]},
-		{"name": "status", "status_name": "weak", "value": 1, "target": "player", "positive": false}
+		{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false}
 	],
 }

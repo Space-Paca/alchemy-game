@@ -21,7 +21,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "guard_up", "value": 5, "target": "self", "positive": true}
+		{"name": "status", "status_name": "arcane_aegis", "value": 5, "target": "self", "positive": true}
 	],
 	"start": [
 		{"name": "add_reagent", "type": "trash", "value": 5}

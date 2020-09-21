@@ -83,9 +83,9 @@ func combination_failure(reagent_list, grid):
 		if reagent.type == "trash":
 			grid.destroy_reagent(reagent.type)
 		
-		#Check for parasite status
+		#Check for hex status
 		for enemy in enemies.duplicate():
-			var status = enemy.get_status("parasite")
+			var status = enemy.get_status("hex")
 			if status:
 				enemy.add_status("perm_strength", status.amount, true)
 				yield(get_tree().create_timer(.5), "timeout")

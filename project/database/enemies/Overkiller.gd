@@ -34,7 +34,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "overkill", "value": 1, "target": "self", "positive": true}
+		{"name": "status", "status_name": "soul_link", "value": 1, "target": "self", "positive": true}
 	],
 	"attack1": [
 		{"name": "damage", "value": [4, 5], "type": "regular"}

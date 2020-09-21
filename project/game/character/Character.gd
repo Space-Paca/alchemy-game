@@ -31,7 +31,7 @@ func full_heal():
 	hp = max_hp
 
 func heal(amount: int):
-	if get_status("wounded"):
+	if get_status("deep_wound"):
 		return 0
 	AudioManager.play_sfx("heal")
 	var old_hp = hp
@@ -167,11 +167,11 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	if hp <= 0:
 		hp = 0
 		die()
-	elif pre_shield <= 0 and status_list.has("guard_up"):
+	elif pre_shield <= 0 and status_list.has("arcane_aegis"):
 		AudioManager.play_sfx("shield_gain")
-		shield += status_list.guard_up.amount
-	elif unblocked_damage > 0 and status_list.has("rage"):
-		add_status("perm_strength", status_list.rage.amount, true, {})
+		shield += status_list.arcane_aegis.amount
+	elif unblocked_damage > 0 and status_list.has("enrage"):
+		add_status("perm_strength", status_list.enrage.amount, true, {})
 	
 	return unblocked_damage
 
@@ -242,8 +242,8 @@ func update_status(type: String):
 
 #STATUS METHODS
 
-func on_death_divider():
-	var status = get_status("divider")
+func on_death_splitting():
+	var status = get_status("splitting")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 
@@ -294,7 +294,7 @@ func end_turn_freeze():
 	remove_status("freeze")
 
 func end_turn_restrained():
-	remove_status("restrained")
+	remove_status("restrain")
 
 func end_turn_restrict_minor():
 	remove_status("restrict_minor")
@@ -303,13 +303,13 @@ func end_turn_restrict_major():
 	remove_status("restrict_major")
 
 func end_turn_weak():
-	var status = get_status("weak")
+	var status = get_status("weakness")
 	status.amount -= 1
 	if status.amount <= 0:
-		remove_status("weak")
+		remove_status("weakness")
 
 func end_turn_time_bomb():
 	remove_status("time_bomb")
 
 func end_turn_burn():
-	remove_status("burn")
+	remove_status("burning")

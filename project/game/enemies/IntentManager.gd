@@ -76,7 +76,7 @@ func get_intent_tooltip(action, enemy):
 	if name == "damage":
 		var value = args.value
 		value += enemy.get_damage_modifiers()
-		value = int(ceil(2*value/3.0)) if enemy.get_status("weak") else value
+		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
 		tooltip.title = "Attacking"
 		var amount_text
 		if args.amount > 1:
@@ -96,7 +96,7 @@ func get_intent_tooltip(action, enemy):
 	elif name == "drain":
 		var value = args.value
 		value += enemy.get_damage_modifiers()
-		value = int(ceil(2*value/3.0)) if enemy.get_status("weak") else value
+		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
 		tooltip.title = "Draining"
 		var amount_text
 		if args.amount > 1:

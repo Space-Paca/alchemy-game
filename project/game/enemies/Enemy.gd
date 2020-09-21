@@ -88,8 +88,8 @@ func set_grayscale(value: float):
 
 
 func drain(source: Character, amount: int):
-	#Check for weak status
-	amount = int(ceil(2*amount/3.0)) if source.get_status("weak") else amount
+	#Check for weakness status
+	amount = int(ceil(2*amount/3.0)) if source.get_status("weakness") else amount
 	
 	var unblocked_dmg = .take_damage(source, amount, "drain")
 	
@@ -115,16 +115,16 @@ func drain(source: Character, amount: int):
 
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
-	#Check for weak status
+	#Check for weakness status
 	var prev_hp = hp
-	damage = int(ceil(2*damage/3.0)) if source.get_status("weak") else damage
+	damage = int(ceil(2*damage/3.0)) if source.get_status("weakness") else damage
 	
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
 	
-	if hp <= 0 and get_status("overkill"):
-		remove_status("overkill")
+	if hp <= 0 and get_status("soul_link"):
+		remove_status("soul_link")
 		var overdamage = abs(prev_hp - unblocked_dmg)
 		if overdamage > 0:
 			source.take_damage(self, 4*overdamage, "regular", false)
@@ -172,11 +172,11 @@ func reduce_status(status: String, amount: int):
 
 
 func add_status(status: String, amount, positive: bool, extra_args:= {}):
-	var has_weak = get_status("weak")
+	var has_weak = get_status("weakness")
 	var damage_mod = get_damage_modifiers()
 	.add_status(status, amount, positive, extra_args)
 	update_status_bar()
-	if has_weak != get_status("weak") or damage_mod != get_damage_modifiers():
+	if has_weak != get_status("weakness") or damage_mod != get_damage_modifiers():
 		update_intent()
 	
 	#Animations
@@ -412,7 +412,7 @@ func update_intent():
 			var name = action[0]
 			if name == "damage" or name == "drain":
 				value += get_damage_modifiers()
-				value = int(ceil(2*value/3.0)) if get_status("weak") else value
+				value = int(ceil(2*value/3.0)) if get_status("weakness") else value
 			if intent.has("multiplier"):
 				add_intent(intent.action, intent.image, value, intent.multiplier)
 			else:

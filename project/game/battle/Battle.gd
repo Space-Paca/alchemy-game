@@ -284,16 +284,16 @@ func new_player_turn():
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
 	
-	if player.get_status("burn"):
-		$Hand.burn_reagents(player.get_status("burn").amount)
+	if player.get_status("burning"):
+		$Hand.burn_reagents(player.get_status("burning").amount)
 	
-	if player.get_status("confused"):
+	if player.get_status("confusion"):
 		var func_state = $Hand.randomize_reagents()
 		if func_state and func_state.is_valid():
 			yield($Hand, "reagents_randomized")
 	
-	if player.get_status("restrained"):
-		var func_state = $Grid.restrain(player.get_status("restrained").amount)
+	if player.get_status("restrain"):
+		var func_state = $Grid.restrain(player.get_status("restrain").amount)
 		if func_state and func_state.is_valid():
 			yield($Grid, "restrained")
 	

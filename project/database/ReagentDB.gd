@@ -74,8 +74,8 @@ const DB = {
 	"debuff": {
 		"name": "Reagente Debuff",
 		"image": preload("res://assets/images/reagents/debuff.png"),
-		"tooltip" : "If not used correctly, applies %s weak to a random enemy.",
-		"effect" : {"type": "status", "status_type": "weak", "target": "random_enemy", "positive": false, "value": 1, "upgraded_value": 2, "upgraded_boost": {"type": "status", "value": 2}},
+		"tooltip" : "If not used correctly, applies %s weakness to a random enemy.",
+		"effect" : {"type": "status", "status_type": "weakness", "target": "random_enemy", "positive": false, "value": 1, "upgraded_value": 2, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 25
 	},
 	"trash": {

@@ -29,21 +29,21 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "doomsday", "value": 99, "target": "self", "positive": true}
+		{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true}
 	],
 	"attack1": [
 		{"name": "damage", "value": [10, 12], "type": "regular"},
-		{"name": "status", "status_name": "doomsday", "value": [2,3], "target": "self", "positive": true, "reduce": true}
+		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
 	],
 	"attack2": [
 		{"name": "damage", "value": [3, 5], "amount": 3, "type": "regular"},
-		{"name": "status", "status_name": "doomsday", "value": [2,3], "target": "self", "positive": true, "reduce": true}
+		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
 	],
 	"doom": [
-		{"name": "status", "status_name": "doomsday", "value": [15,20], "target": "self", "positive": true, "reduce": true}
+		{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true}
 	],
 	"dodge": [
-		{"name": "status", "status_name": "doomsday", "value": [8,12], "target": "self", "positive": true, "reduce": true},
+		{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true},
 		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true}
 	],
 }

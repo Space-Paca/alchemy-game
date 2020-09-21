@@ -24,7 +24,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "wounded", "value": 1, "target": "player", "positive": false}
+		{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false}
 	],
 	"attack1": [
 		{"name": "damage", "value": [2, 8], "type": "regular"}
@@ -36,7 +36,7 @@ var actions = {
 		{"name": "shield", "value": [5, 15]}
 	],
 	"debuff": [
-		{"name": "status", "status_name": "weak", "value": 2, "target": "player", "positive": false}
+		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false}
 	],
 	"spawn": [
 		{"name": "shield", "value": [5, 10]},

@@ -31,17 +31,17 @@ var first_state = ["attack1", "defend", "burn"]
 
 var actions = {
 	"burn": [
-		{"name": "status", "status_name": "burn", "value": 6, "target": "player", "positive": false}
+		{"name": "status", "status_name": "burning", "value": 6, "target": "player", "positive": false}
 	],
 	"attack1": [
 		{"name": "damage", "value": [5, 20], "type": "regular"}
 	],
 	"attack2": [
 		{"name": "damage", "value": [4, 12], "type": "regular"},
-		{"name": "status", "status_name": "burn", "value": 2, "target": "player", "positive": false}
+		{"name": "status", "status_name": "burning", "value": 2, "target": "player", "positive": false}
 	],
 	"defend": [
 		{"name": "shield", "value": [5, 12]},
-		{"name": "status", "status_name": "burn", "value": 3, "target": "player", "positive": false}
+		{"name": "status", "status_name": "burning", "value": 3, "target": "player", "positive": false}
 	],
 }

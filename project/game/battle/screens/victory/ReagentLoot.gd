@@ -30,19 +30,8 @@ func set_reagent(reagent_name: String):
 func get_tooltips():
 	var tooltips = []
 	if reagent:
-		var data = ReagentManager.get_data(reagent)
-		
-		var text
-		if not upgraded:
-			text = data.tooltip % data.effect.value
-		else:
-			text = data.tooltip % data.effect.upgraded_value + " Boost " + \
-				   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
-			
-		var tooltip = {"title": data.name, "text": text,
-				"title_image": data.image.get_path()}
-		tooltips.append(tooltip)
-	
+		tooltips.append(ReagentManager.get_tooltip(reagent, upgraded))
+
 	return tooltips
 
 

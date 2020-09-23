@@ -296,23 +296,7 @@ func disable_tooltips():
 
 
 func get_tooltips():
-	var data = ReagentManager.get_data(type)
-
-	var text
-	if not upgraded:
-		text = data.tooltip % data.effect.value
-	else:
-		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
-			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
-	if unstable:
-		text += " It's unstable."
-	
-	if burned:
-		text += " It's on fire."
-
-	var tooltip = {"title": data.name, "text": text, \
-				   "title_image": data.image.get_path()}
-	return tooltip
+	return ReagentManager.get_tooltip(type, upgraded, unstable, burned)
 
 
 func _on_TooltipCollision_disable_tooltip():

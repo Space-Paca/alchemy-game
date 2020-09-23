@@ -174,7 +174,7 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 		if combination:
 			return combination
 		for new_matrix in downgrade_matrix(matrix):
-			if not contain_matrix(viewed_matrices,new_matrix):
+			if viewed_matrices.find(new_matrix) == -1:
 				viewed_matrices.append(new_matrix)
 				to_try_matrices.append(new_matrix)
 
@@ -196,22 +196,11 @@ func downgrade_matrix(matrix):
 			if reagent:
 				var reagent_data = ReagentManager.get_data(reagent)
 				for sub_reagent in reagent_data.substitute:
-					var new_matrix = matrix.duplicate()
+					var new_matrix = matrix.duplicate(true)
 					new_matrix[i][j] = sub_reagent
 					downgraded_matrices.append(new_matrix)
 	
 	return downgraded_matrices
-
-func contain_matrix(array_matrix, given_matrix):
-	for matrix in array_matrix:
-		var equal = true
-		for i in range(0, matrix.size()):
-			if matrix[i] != given_matrix[i]:
-				equal = false
-				break
-		if equal:
-			return true
-	return false
 
 func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe

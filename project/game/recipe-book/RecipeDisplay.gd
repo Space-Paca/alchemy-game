@@ -5,15 +5,19 @@ signal unhovered()
 signal pressed(combination, mastery_unlocked)
 signal favorite_toggled(combination, button_pressed)
 
-onready var arrow = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Arrow
+onready var middle_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Middle
+onready var right_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right
 onready var description = $Panel/MarginContainer/Description
 onready var favorite_button = $Panel/FavoriteButton
-onready var grid = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/GridContainer
+onready var grid = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
 onready var title = $Panel/MarginContainer/VBoxContainer/Title
-onready var reagent_list = $Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/ReagentList
+onready var reagent_list = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList
+onready var left_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
+onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
+const MAX_REAGENT_COLUMN = 6
 
 var combination : Combination
 var reagent_array := []
@@ -34,14 +38,17 @@ func set_combination(_combination: Combination):
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
 	if combination.discovered:
-		reagent_list.queue_free()
-		arrow.queue_free()
+		right_container.queue_free()
+		middle_container.queue_free()
 	else:
+		var columns := [left_column, right_column]
+		var i := 0
 		for reagent in combination.reagent_amounts:
 			var reagent_amount = REAGENT_AMOUNT.instance()
-			reagent_list.add_child(reagent_amount)
+			columns[i / MAX_REAGENT_COLUMN].add_child(reagent_amount)
 			reagent_amount.set_reagent(reagent)
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
+			i += 1
 
 
 func update_combination():
@@ -50,8 +57,8 @@ func update_combination():
 			var reagent = grid.get_child(i*combination.grid_size + j)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
-	if combination.discovered and reagent_list:
-		reagent_list.queue_free()
+	if combination.discovered and right_container:
+		right_container.queue_free()
 
 
 func is_mastered():

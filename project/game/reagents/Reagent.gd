@@ -294,11 +294,6 @@ func disable_tooltips():
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
 
-
-func get_tooltips():
-	return ReagentManager.get_tooltip(type, upgraded, unstable, burned)
-
-
 func _on_TooltipCollision_disable_tooltip():
 	disable_tooltips()
 
@@ -307,6 +302,10 @@ func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips or (slot and slot.type != "hand") or is_drag:
 		return
 	tooltips_enabled = true
-	var tooltip = get_tooltips()
+	var tooltip = ReagentManager.get_tooltip(type, upgraded, unstable, burned)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 							 tooltip.text, tooltip.title_image, true)
+	tooltip = ReagentManager.get_substitution_tooltip(type)
+	if tooltip:
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, false, true, false)

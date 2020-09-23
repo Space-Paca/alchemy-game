@@ -23,7 +23,7 @@ const DB = {
 		"tooltip" : "If not used correctly, deals %s regular damage to a random enemy.",
 		"effect" : {"type": "damage", "value": 8, "upgraded_value": 10, "upgraded_boost": {"type": "all", "value": 3}},
 		"gold_value" : 50,
-		"substitute" : ["common, uncommon"],
+		"substitute" : ["common", "uncommon"],
 	},
 	"damaging": {
 		"name": "Phoenix's Feather",

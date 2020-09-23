@@ -34,7 +34,6 @@ func randomize_reagent(reagent):
 func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= false):
 	var data = get_data(type)
 	var text
-	
 	if not upgraded:
 		text = data.tooltip % data.effect.value
 	else:
@@ -44,7 +43,31 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 		text += " It's unstable."
 	if burned:
 		text += " It's on fire."
+	
 	var tooltip = {"title": data.name, "text": text, \
+				   "title_image": data.image.get_path()}
+
+	return tooltip
+
+func get_substitution_tooltip(type):
+	var data = get_data(type)
+	if data.substitute.size() <= 0:
+		return null
+	
+	var text = "This reagent can serve as substitute for "
+	if data.substitute.size() == 1:
+		text += "this "
+	else:
+		text += "these "
+	text += "reagents:"
+	#For some reason \n just erases other images, so using gambiara to properly change lines
+	text += "                      "
+	for sub_reagent in data.substitute:
+		var sub_data = get_data(sub_reagent)
+		var path = sub_data.image.get_path()
+		text += "[img=48x48]"+path+"[/img]  "
+		print(text)
+	var tooltip = {"title": "Substitutes", "text": text, \
 				   "title_image": data.image.get_path()}
 	
 	return tooltip

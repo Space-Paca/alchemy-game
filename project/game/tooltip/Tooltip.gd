@@ -25,7 +25,7 @@ func setup(_title, _text, _title_image, expanded = false, stylize = true):
 	if stylize:
 		$Text.bbcode_text = stylize_text(_text)
 	else:
-		#Don't stylize in case of bags tooltips ( ithave images that glitches style)
+		#Don't stylize in case of bags tooltips (it have images that glitches style)
 		#╬(▔皿▔)╯
 		$Text.bbcode_text = _text
 	

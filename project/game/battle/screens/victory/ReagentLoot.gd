@@ -15,25 +15,14 @@ var upgraded := false
 var gold_value : int
 var tooltip_enabled := false
 
-
 func _ready():
 	pass
-
 
 func set_reagent(reagent_name: String):
 	reagent = reagent_name
 	gold_value = ReagentDB.get_from_name(reagent).gold_value
 	texture_rect.texture = ReagentDB.DB[reagent].image
 	sell_label.text = TEXT % gold_value
-
-
-func get_tooltips():
-	var tooltips = []
-	if reagent:
-		tooltips.append(ReagentManager.get_tooltip(reagent, upgraded))
-
-	return tooltips
-
 
 func disable_tooltip():
 	tooltip_enabled = false
@@ -78,9 +67,12 @@ func _on_TooltipCollision_disable_tooltip():
 
 
 func _on_TooltipCollision_enable_tooltip():
-	var play_sfx = true
-	tooltip_enabled = true
-	for tooltip in get_tooltips():
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title,
-				tooltip.text, tooltip.title_image, play_sfx)
-		play_sfx = false
+	if reagent:
+		tooltip_enabled = true
+		var tooltip = ReagentManager.get_tooltip(reagent, upgraded)
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+								 tooltip.text, tooltip.title_image, true)
+		tooltip = ReagentManager.get_substitution_tooltip(reagent)
+		if tooltip:
+			TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+								 tooltip.text, tooltip.title_image, false, true, false)

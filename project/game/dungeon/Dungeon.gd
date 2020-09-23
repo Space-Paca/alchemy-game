@@ -166,12 +166,52 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 		print("No recipes exist for grid with size ", grid_size)
 		return null
 	
+	var viewed_matrices = [reagent_matrix]
+	var to_try_matrices = [reagent_matrix]
+	while(not to_try_matrices.empty()):
+		var matrix = to_try_matrices.pop_front()
+		var combination = try_matrix(grid_size, matrix)
+		if combination:
+			return combination
+		for new_matrix in downgrade_matrix(matrix):
+			if not contain_matrix(viewed_matrices,new_matrix):
+				viewed_matrices.append(new_matrix)
+				to_try_matrices.append(new_matrix)
+
+	return null
+
+func try_matrix(grid_size: int, reagent_matrix: Array):
 	for combination in combinations[grid_size]:
 		if reagent_matrix == (combination as Combination).matrix:
 			return combination
 	
 	return null
 
+#Return an array of all possible combinations of given reagent_matrix downgrading just one reagent
+func downgrade_matrix(matrix):
+	var downgraded_matrices = []
+	for i in range(0, matrix.size()):
+		for j in range(0, matrix[i].size()):
+			var reagent = matrix[i][j]
+			if reagent:
+				var reagent_data = ReagentManager.get_data(reagent)
+				for sub_reagent in reagent_data.substitute:
+					var new_matrix = matrix.duplicate()
+					new_matrix[i][j] = sub_reagent
+					downgraded_matrices.append(new_matrix)
+	
+	return downgraded_matrices
+
+func contain_matrix(array_matrix, given_matrix):
+	for matrix in array_matrix:
+		var equal = true
+		for i in range(0, matrix.size()):
+			if matrix[i] != given_matrix[i]:
+				equal = false
+				break
+		if equal:
+			return true
+	return false
 
 func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss2/idle.png"
 var name = "Boss2"
 var sfx = "boss_1"
 var use_idle_sfx = false
-var hp = 120
+var hp = 150
 var battle_init = true
 var size = "medium"
 

@@ -77,7 +77,6 @@ func is_full():
 			return false
 	return true
 
-
 func quick_place(reagent):
 	#Search for available hint first
 	for slot in slots.get_children():
@@ -85,7 +84,17 @@ func quick_place(reagent):
 			AudioManager.play_sfx("quick_place_grid")
 			slot.set_reagent(reagent)
 			return
-	#Search for empty space after
+
+	#Then search for substitutes the reagent may have
+	var data = ReagentManager.get_data(reagent.type)
+	for sub_reagent in data.substitute:
+		for slot in slots.get_children():
+			if not slot.get_reagent() and slot.get_hint() == sub_reagent:
+				AudioManager.play_sfx("quick_place_grid")
+				slot.set_reagent(reagent)
+				return
+
+	#Finally search for empty space after
 	for slot in slots.get_children():
 		if not slot.get_reagent():
 			AudioManager.play_sfx("quick_place_grid")

@@ -63,7 +63,7 @@ func play_map_bgm():
 func create_combinations():
 	for recipe in RecipeManager.recipes.values():
 		var combination = Combination.new()
-		combination.create_from_recipe(recipe)
+		combination.create_from_recipe(recipe, combinations)
 		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")
 		
 		if combinations.has(combination.grid_size):

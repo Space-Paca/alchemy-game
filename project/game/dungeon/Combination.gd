@@ -12,7 +12,7 @@ var discovered : bool
 var reagent_amounts := {}
 
 
-func create_from_recipe(_recipe: Recipe):
+func create_from_recipe(_recipe: Recipe, combinations: Dictionary):
 	recipe = _recipe
 	grid_size = recipe.grid_size
 	var available_positions := []
@@ -37,28 +37,73 @@ func create_from_recipe(_recipe: Recipe):
 			available_positions.append([i, j])
 		matrix.append(line)
 		known_matrix.append(unknown_line)
-	
-	# Placing the first two reagents that guarantee grid size consistency
-	elements.shuffle()
-	var pos1 : Array
-	var pos2 : Array
-	if randf() < .5:
-		pos1 = [0, randi() % grid_size]
-		pos2 = [grid_size - 1, randi() % grid_size]
-	else:
-		pos1 = [randi() % grid_size, 0]
-		pos2 = [randi() % grid_size, grid_size - 1]
-	matrix[pos1[0]][pos1[1]] = elements.pop_front()
-	matrix[pos2[0]][pos2[1]] = elements.pop_front()
-	available_positions.erase(pos1)
-	available_positions.erase(pos2)
-	
-	# Placing the rest
-	available_positions.shuffle()
-	while not elements.empty():
-		var pos = available_positions.pop_front()
-		matrix[pos[0]][pos[1]] = elements.pop_front()
 
+	while(true):
+		var temp_matrix = matrix.duplicate(true)
+		var temp_available_pos = available_positions.duplicate(true)
+		var temp_elements = elements.duplicate(true)
+		
+		# Placing the first two reagents that guarantee grid size consistency
+		temp_elements.shuffle()
+		var pos1 : Array
+		var pos2 : Array
+		if randf() < .5:
+			pos1 = [0, randi() % grid_size]
+			pos2 = [grid_size - 1, randi() % grid_size]
+		else:
+			pos1 = [randi() % grid_size, 0]
+			pos2 = [randi() % grid_size, grid_size - 1]
+		temp_matrix[pos1[0]][pos1[1]] = temp_elements.pop_front()
+		temp_matrix[pos2[0]][pos2[1]] = temp_elements.pop_front()
+		temp_available_pos.erase(pos1)
+		temp_available_pos.erase(pos2)
+		
+		# Placing the rest
+		temp_available_pos.shuffle()
+		while not temp_elements.empty():
+			var pos = temp_available_pos.pop_front()
+			temp_matrix[pos[0]][pos[1]] = temp_elements.pop_front()
+		
+		#Check if there isn't another recipe with the same layout,
+		#but with reagents that can substitute into the exact recipe
+		if check_if_unique(temp_matrix, combinations):
+			matrix = temp_matrix
+			break
+
+func check_if_unique(test_matrix: Array, combinations: Dictionary):
+	if not combinations.has(grid_size):
+		return true
+	for comb in combinations[grid_size]:
+		if comb.reagent_amounts == reagent_amounts and\
+		   (is_downgraded_version_of(comb.matrix, test_matrix) or\
+			is_downgraded_version_of(test_matrix, comb.matrix)):
+			return false
+	return true
+
+#Checks if matrix1 can be downgraded into matrix2 via reagents substitutes
+func is_downgraded_version_of(matrix1:Array, matrix2:Array):
+	for i in range(grid_size):
+		for j in range(grid_size):
+			#Same reagents, continue comparison
+			if matrix1[i][j] == matrix2[i][j]:
+				continue
+			#Check if reagent isn't nil
+			if matrix1[i][j]:
+				var equal = false
+				var data = ReagentManager.get_data(matrix1[i][j])
+				#Check for equality for each substitute the reagent can have
+				for reagent in data.substitute:
+					if reagent == matrix2[i][j]:
+						equal = true
+						break
+				if equal:
+					continue
+				else:
+					return false
+			#Check if matrix1 reagent is nil, cant downgrade into matrix2
+			else:
+				return false
+	return true
 
 func discover_reagents(amount: int):
 	assert(amount > 0)

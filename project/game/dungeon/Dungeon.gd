@@ -1,7 +1,7 @@
 extends Node
 
 onready var player = $Player
-onready var recipe_book = $BookLayer/RecipeBook
+onready var recipe_book : RecipeBook = $BookLayer/RecipeBook
 onready var shop = $Shop
 onready var rest = $Rest
 onready var lab = $Laboratory
@@ -271,6 +271,7 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("recipe_book_toggle", self, "recipe_book_toggle")
 	
+	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
 
 
@@ -376,7 +377,7 @@ func _on_Battle_won():
 
 func _on_Battle_finished(is_boss):
 	battle = null
-	recipe_book.remove_hand()
+	recipe_book.change_state(RecipeBook.States.MAP)
 	
 	if is_boss:
 		map.queue_free()

@@ -62,10 +62,11 @@ __meta__ = {
 }
 
 [node name="BookBG" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_scale = Vector2( 1, 0.89 )
+margin_right = 818.0
+margin_bottom = 1080.0
 texture = ExtResource( 16 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

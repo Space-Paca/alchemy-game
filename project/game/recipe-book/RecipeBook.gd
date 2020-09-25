@@ -1,19 +1,44 @@
 extends Control
+class_name RecipeBook
 
 signal recipe_pressed(combination, mastery_unlocked)
 signal favorite_toggled(combination, button_pressed)
 
-onready var hand_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/HandRect/CenterContainer/GridContainer
-onready var hand_rect : ColorRect = $ColorRect/MarginContainer/VBoxContainer/HandRect
-onready var recipe_grid : GridContainer = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
+onready var hand_grid : GridContainer = $Background/HandRect/CenterContainer/HandGrid
+onready var hand_rect : ColorRect = $Background/HandRect
+onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
+onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const RECT_COLOR = Color(0.392157, 0.333333, 0.211765)
 
+enum States {BATTLE, MAP, LAB}
+
 var recipe_displays := {}
 var player_bag := []
+var state : int = States.MAP
+
+
+
+func change_state(new_state: int):
+	if new_state == state:
+		return
+	
+	match new_state:
+		States.BATTLE:
+			hand_rect.visible = true
+			scroll.rect_size.y -= hand_rect.rect_size.y
+		States.MAP:
+			if state == States.BATTLE:
+				remove_hand()
+				scroll.rect_size.y += hand_rect.rect_size.y
+		States.LAB:
+			pass
+	
+	state = new_state
+
 
 func add_combination(combination: Combination, position: int):
 	if recipe_displays.has(combination.recipe.name):
@@ -32,7 +57,7 @@ func add_combination(combination: Combination, position: int):
 
 
 func update_combination(combination: Combination):
-	assert(recipe_displays.has(combination.recipe.name), "RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.name)
+	assert(recipe_displays.has(combination.recipe.name),"RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.name)
 	var display = recipe_displays[combination.recipe.name]
 	display.update_combination()
 
@@ -44,7 +69,6 @@ func create_hand(battle):
 		var reagent = REAGENT.instance()
 		reagent.rect_min_size = Vector2(100, 100)
 		hand_grid.add_child(reagent)
-	hand_rect.visible = true
 
 
 func remove_hand():
@@ -61,7 +85,7 @@ func toggle_visibility():
 		AudioManager.play_sfx("open_recipe_book")
 	else:
 		AudioManager.play_sfx("close_recipe_book")
-		reset_hand_reagents_color()
+		_on_recipe_display_unhovered()
 	
 	return visible
 
@@ -85,9 +109,6 @@ func update_player_bag(bag : Array):
 
 
 func color_hand_reagents(reagent_array: Array):
-	if not hand_grid.get_child_count():
-		return
-	
 	var reagents := reagent_array.duplicate()
 	var correct_reagent_displays := []
 	var i = 0
@@ -106,9 +127,6 @@ func color_hand_reagents(reagent_array: Array):
 
 
 func reset_hand_reagents_color():
-	if not hand_grid.get_child_count():
-		return
-	
 	for display in hand_grid.get_children():
 		display.self_modulate = Color.white
 
@@ -172,17 +190,21 @@ func get_valid_combinations(combinations : Array, available_reagents : Array):
 	
 	return valid_combinations
 
+
 func _on_recipe_display_hovered(reagent_array: Array):
-	color_hand_reagents(reagent_array)
+	if state == States.BATTLE:
+		color_hand_reagents(reagent_array)
 
 
 func _on_recipe_display_unhovered():
-	reset_hand_reagents_color()
+	if state == States.BATTLE:
+		reset_hand_reagents_color()
 
 
 func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool):
-	if not hand_rect.visible:
+	if state != States.BATTLE:
 		return
+	
 	if not hand_grid.get_child_count():
 		error_effect()
 		return

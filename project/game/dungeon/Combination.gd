@@ -37,7 +37,7 @@ func create_from_recipe(_recipe: Recipe, combinations: Dictionary):
 			available_positions.append([i, j])
 		matrix.append(line)
 		known_matrix.append(unknown_line)
-
+	
 	while(true):
 		var temp_matrix = matrix.duplicate(true)
 		var temp_available_pos = available_positions.duplicate(true)
@@ -74,9 +74,8 @@ func check_if_unique(test_matrix: Array, combinations: Dictionary):
 	if not combinations.has(grid_size):
 		return true
 	for comb in combinations[grid_size]:
-		if comb.reagent_amounts == reagent_amounts and\
-		   (is_downgraded_version_of(comb.matrix, test_matrix) or\
-			is_downgraded_version_of(test_matrix, comb.matrix)):
+		if is_downgraded_version_of(comb.matrix, test_matrix) or\
+		   is_downgraded_version_of(test_matrix, comb.matrix):
 			return false
 	return true
 

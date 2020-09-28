@@ -32,7 +32,7 @@ func _draw():
 
 
 func get_center():
-	return rect_global_position
+	return container.rect_global_position + container.rect_size/2
 
 
 func get_width():

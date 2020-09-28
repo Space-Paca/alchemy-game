@@ -5,6 +5,7 @@ signal continued
 onready var default_position = $DefaultPosition
 onready var title = $Control/Title
 onready var recipes = $Control/Recipes
+onready var arrow = $Control/Arrow
 
 const DEFAULT_DURATION = 1
 const MESSAGE = preload("res://game/ui/Message.tscn")
@@ -31,9 +32,16 @@ func recipe_mastered(combination: Combination):
 	AudioManager.play_sfx("recipe_mastered")
 	$Control.show()
 
-	var display = RECIPE_DISPLAY.instance()
-	$Control/Recipes.add_child(display)
-	display.set_combination(combination)
+	var display_normal = RECIPE_DISPLAY.instance()
+	$Control/Recipes.add_child(display_normal)
+	display_normal.set_combination(combination)
+	display_normal.preview_mode(false)
+	var display_mastered = RECIPE_DISPLAY.instance()
+	$Control/Recipes.add_child(display_mastered)
+	display_mastered.set_combination(combination)
+	display_mastered.preview_mode(true)
+	
+	arrow.show()
 	
 	title.text = "Mastered Recipe!"
 
@@ -43,6 +51,7 @@ func new_recipe_discovered(combination: Combination):
 	var display = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display)
 	display.set_combination(combination)
+	display.preview_mode(false)
 	
 	title.text = "Discovered New Recipe!"
 
@@ -67,6 +76,7 @@ func _on_message_disappeared(message: Message):
 
 func _on_Continue_pressed():
 	$Control.hide()
+	arrow.hide()
 	for display in $Control/Recipes.get_children():
 		$Control/Recipes.remove_child(display)
 	

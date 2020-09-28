@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/ui/MessageLayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/ui/pass_turn_hover.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -57,8 +58,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Recipes" type="Node2D" parent="Control"]
-position = Vector2( 719.123, 242.099 )
+[node name="Recipes" type="HBoxContainer" parent="Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -200.0
+margin_bottom = -200.0
+custom_constants/separation = 130
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Continue" type="Button" parent="Control"]
 margin_left = 881.002
@@ -67,6 +77,22 @@ margin_right = 1070.0
 margin_bottom = 888.275
 custom_fonts/font = SubResource( 2 )
 text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -60.0
+margin_right = 50.0
+margin_bottom = 60.0
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

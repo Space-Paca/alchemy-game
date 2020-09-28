@@ -47,11 +47,11 @@ func set_combination(_combination: Combination):
 		var i := 0
 		for reagent in combination.reagent_amounts:
 			var reagent_amount = REAGENT_AMOUNT.instance()
+# warning-ignore:integer_division
 			columns[i / MAX_REAGENT_COLUMN].add_child(reagent_amount)
 			reagent_amount.set_reagent(reagent)
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
-
 
 func update_combination():
 	for i in range(combination.grid_size):
@@ -61,6 +61,12 @@ func update_combination():
 	
 	if combination.discovered and right_container:
 		right_container.queue_free()
+
+func preview_mode(is_mastered: bool):
+	mastery_label.hide()
+	mastery_progress.hide()
+	if is_mastered:
+		description.text = combination.recipe.master_description
 
 func update_mastery(new_value: int, threshold: int):
 	mastery_label.text = "Mastery " + str(new_value) + "/" + str(threshold)
@@ -73,6 +79,7 @@ func is_mastered():
 
 func unlock_mastery():
 	if not mastery_unlocked:
+		description.text = combination.recipe.master_description
 		mastery_unlocked = true
 		favorite_button.visible = true
 		mastery_progress.visible = false

@@ -7,8 +7,10 @@ signal favorite_toggled(combination, button_pressed)
 
 onready var middle_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Middle
 onready var right_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right
-onready var description = $Panel/MarginContainer/Description
+onready var description = $Panel/MarginContainer/VBoxContainer/Description
 onready var favorite_button = $Panel/FavoriteButton
+onready var mastery_progress = $Panel/MasteryProgress
+onready var mastery_label = $Panel/MasteryLabel
 onready var grid = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
 onready var title = $Panel/MarginContainer/VBoxContainer/Title
 onready var reagent_list = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList
@@ -60,6 +62,10 @@ func update_combination():
 	if combination.discovered and right_container:
 		right_container.queue_free()
 
+func update_mastery(new_value: int, threshold: int):
+	mastery_label.text = "Mastery " + str(new_value) + "/" + str(threshold)
+	mastery_progress.max_value = threshold
+	mastery_progress.value = new_value
 
 func is_mastered():
 	return mastery_unlocked
@@ -69,6 +75,8 @@ func unlock_mastery():
 	if not mastery_unlocked:
 		mastery_unlocked = true
 		favorite_button.visible = true
+		mastery_progress.visible = false
+		mastery_label.text = "Mastered"
 		MessageLayer.recipe_mastered(combination)
 
 

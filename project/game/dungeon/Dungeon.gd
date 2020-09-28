@@ -73,7 +73,8 @@ func create_combinations():
 		
 		if player.known_recipes.has(recipe.name):
 			combination.discover_all_reagents()
-			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name))
+			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name),\
+										mastery_threshold(combination))
 
 
 func create_level(level: int):
@@ -230,6 +231,9 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 			yield(MessageLayer, "continued")
 			if battle:
 				battle.enable_elements()
+		else:
+			recipe_book.update_mastery(combination, times_recipe_made[recipe.name],\
+									   mastery_threshold(combination))
 	
 		if recipe_book.is_mastered(combination):
 			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)
@@ -239,15 +243,16 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 	elif not times_recipe_made.has(recipe.name):
 		times_recipe_made[recipe.name] = 0
 
-
+func mastery_threshold(combination: Combination) -> int:
+	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
+	threshold = max(threshold, 2)
+	return threshold
+	
 func should_unlock_mastery(combination: Combination) -> bool:
 	if not times_recipe_made.has(combination.recipe.name):
 		return false
 	
-	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
-	threshold = max(threshold, 2)
-	
-	return times_recipe_made[combination.recipe.name] > threshold
+	return times_recipe_made[combination.recipe.name] >= mastery_threshold(combination)
 
 
 func new_battle(encounter: Encounter):
@@ -457,7 +462,7 @@ func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 
 
 func _on_Player_combination_discovered(combination, index):
-	recipe_book.add_combination(combination, index)
+	recipe_book.add_combination(combination, index, mastery_threshold(combination))
 
 
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
@@ -505,7 +510,8 @@ func _on_Debug_combinations_unlocked():
 			for combination in combinations[grid_size]:
 				combination.discover_all_reagents()
 				recipe_book.add_combination(combination,
-						player.known_recipes.bsearch(combination.recipe.name))
+						player.known_recipes.bsearch(combination.recipe.name),
+						mastery_threshold(combination))
 				recipe_book.update_combination(combination)
 
 

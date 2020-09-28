@@ -40,7 +40,7 @@ func change_state(new_state: int):
 	state = new_state
 
 
-func add_combination(combination: Combination, position: int):
+func add_combination(combination: Combination, position: int, threshold: int):
 	if recipe_displays.has(combination.recipe.name):
 		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.name)
 		return
@@ -54,6 +54,8 @@ func add_combination(combination: Combination, position: int):
 	recipe_display.connect("pressed", self, "_on_recipe_display_pressed")
 	recipe_display.connect("favorite_toggled", self, "_on_recipe_display_favorite_toggled")
 	recipe_displays[combination.recipe.name] = recipe_display
+	
+	recipe_display.update_mastery(0, threshold)
 
 
 func update_combination(combination: Combination):
@@ -96,6 +98,8 @@ func is_mastered(combination : Combination):
 func unlock_mastery(combination: Combination):
 	recipe_displays[combination.recipe.name].unlock_mastery()
 
+func update_mastery(combination: Combination, current_value: int, threshold: int):
+	recipe_displays[combination.recipe.name].update_mastery(current_value, threshold)
 
 func update_hand(reagents: Array):
 	for i in reagents.size():

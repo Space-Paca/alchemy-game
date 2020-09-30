@@ -3,13 +3,17 @@ extends Control
 signal pressed
 
 var artifact = null
+var artifact_id = null
 var tooltips_enabled := false
+var block_tooltips := false
 
 func setup(_artifact):
 	artifact = _artifact
 	$Image.texture = artifact.image
 
 func disable():
+	disable_tooltips()
+	block_tooltips = true
 	$Button.disabled = true
 
 func get_artifact_tooltip():
@@ -30,6 +34,8 @@ func _on_Button_pressed():
 
 
 func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
 	tooltips_enabled = true
 	var tooltip = get_artifact_tooltip()
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \

@@ -255,7 +255,7 @@ func discover_combination(combination: Combination, play_sfx := false):
 
 func call_artifacts(func_name : String, args := {}):
 	for artifact in artifacts:
-		ArtifactManager.call("call_on_" + func_name, artifact, args)
+		ArtifactCallbacks.call("call_on_" + func_name, artifact, args)
 
 func has_artifact(name : String):
 	return artifacts.has(name)
@@ -263,7 +263,7 @@ func has_artifact(name : String):
 func add_artifact(name : String):
 	if not has_artifact(name):
 		artifacts.append(name)
-		ArtifactManager.call_on_add(name, {"player": self})
+		ArtifactCallbacks.call_on_add(name, {"player": self})
 	else:
 		assert(false, "Player already has artifact: " + str(name))
 

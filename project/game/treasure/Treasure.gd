@@ -51,14 +51,14 @@ func get_rarity_by_level(level):
 
 func filter_player_artifacts(_player, pool):
 	var filtered = []
-	for index in pool:
-		var artifact = pool[index]
-		if not _player.has_artifact(artifact.name):
+	for artifact in pool:
+		if not _player.has_artifact(artifact.id):
 			filtered.append(artifact)
 	
 	return filtered
 
 func reset_room():
+	reset()
 	map_node.set_type(MapNode.EMPTY)
 
 func reset():
@@ -73,7 +73,7 @@ func _on_BackButton_pressed():
 
 func _on_loot_pressed(artifact):
 	AudioManager.play_sfx("get_artifact")
-	player.add_artifact(artifact.name)
+	player.add_artifact(artifact.id)
 	for art in $Artifacts.get_children():
 		art.disable()
 	

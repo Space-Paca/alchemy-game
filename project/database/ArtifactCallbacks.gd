@@ -50,4 +50,7 @@ func on_add_midas(args):
 func on_battle_start_strength(args):
 	args.player.add_status("perm_strength", 1, true)
 
+func on_battle_start_temp_strength(args):
+	args.player.add_status("temp_strength", 5, true)
+
 

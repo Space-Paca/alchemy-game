@@ -4,7 +4,7 @@ signal closed
 signal combination_rewarded
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
-const REST_HEAL = 70
+const REST_HEAL_PERCENTAGE = 70
 
 var map_node : MapNode
 var player
@@ -16,16 +16,26 @@ func setup(node, _player, _combinations):
 	player = _player
 	combinations = _combinations
 	
+	update_heal_button()
+	
 	$BackButton.show()
 	$HealButton.show()
 	$HintButton.show()
 	$Recipes.hide()
 	$ContinueButton.hide()
 
+func get_heal_value():
+	if player.has_artifact("full_rest"):
+		return player.max_hp
+	else:
+		return REST_HEAL_PERCENTAGE/100.0 * player.max_hp
+
+func update_heal_button():
+
+	$HealButton.text = "heal " + str(get_heal_value()) + " hp" 
 
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
-
 
 func setup_recipes():
 	for child in $Recipes/HBox.get_children():
@@ -45,7 +55,8 @@ func create_display(combination):
 
 func _on_HealButton_pressed():
 	AudioManager.play_sfx("heal")
-	player.hp = min(player.hp + REST_HEAL, player.max_hp)
+	print("heal", get_heal_value())
+	player.hp = min(player.hp + get_heal_value(), player.max_hp)
 	reset_room()
 	emit_signal("closed")
 

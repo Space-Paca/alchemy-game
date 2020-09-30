@@ -156,7 +156,7 @@ TooltipLayer="*res://game/tooltip/TooltipLayer.tscn"
 MessageLayer="*res://game/ui/MessageLayer.tscn"
 AnimationManager="*res://database/AnimationManager.tscn"
 Debug="*res://game/debug-menu/Debug.tscn"
-ArtifactManager="*res://database/ArtifactManager.gd"
+ArtifactCallbacks="*res://database/ArtifactCallbacks.gd"
 
 [display]
 

@@ -185,6 +185,7 @@ func setup_audio(encounter : Encounter):
 func setup_win_screen(encounter: Encounter):
 	win_screen = VICTORY_SCENE.instance()
 	add_child(win_screen)
+	win_screen.setup(player)
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")

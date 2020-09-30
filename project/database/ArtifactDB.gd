@@ -37,6 +37,18 @@ const COMMON = [
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "When resting, you heal completely",
 	},
+	{
+		"id": "money_bag",
+		"name": "Money Bag",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "When acquired, gain 30 gold",
+	},
+	{
+		"id": "elite_drop",
+		"name": "Elite Rewards",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "Whenever you defeat an elite encounter, gain 1 extra gem",
+	},
 ]
 
 const UNCOMMON = [
@@ -57,6 +69,24 @@ const UNCOMMON = [
 		"name": "Trash Heal",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 4 trash-reagents to your bag. Misused trash reagents will heal you instead of harm you",
+	},
+	{
+		"id": "strength_plus",
+		"name": "Strength+",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "Start each battle with 2 permanent strength",
+	},
+	{
+		"id": "temp_strength_plus",
+		"name": "First Hit+",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "Start each battle with 10 temporary strength",
+	},
+	{
+		"id": "random_kit",
+		"name": "Caixa Surpresa",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "When acquired, add 4 random reagents to your bag",
 	},
 ]
 

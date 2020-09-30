@@ -32,6 +32,11 @@ func on_add_debuff_kit(args):
 	for _i in range(0,3):
 		args.player.add_reagent("debuff", false)
 
+func on_add_random_kit(args):
+	AudioManager.play_sfx("get_loot")
+	for _i in 4:
+		args.player.add_reagent(ReagentManager.random_type(), false)
+
 func on_add_trash_heal(args):
 	AudioManager.play_sfx("debuff")
 	for _i in range(0,4):
@@ -46,11 +51,21 @@ func on_add_midas(args):
 	AudioManager.play_sfx("get_coins")
 	args.player.currency *= 3
 
+func on_add_money_bag(args):
+	AudioManager.play_sfx("get_coins")
+	args.player.currency += 30
+
 #On battle start methods
 func on_battle_start_strength(args):
 	args.player.add_status("perm_strength", 1, true)
 
+func on_battle_start_strength_plus(args):
+	args.player.add_status("perm_strength", 2, true)
+
 func on_battle_start_temp_strength(args):
 	args.player.add_status("temp_strength", 5, true)
+
+func on_battle_start_temp_strength_plus(args):
+	args.player.add_status("temp_strength", 10, true)
 
 

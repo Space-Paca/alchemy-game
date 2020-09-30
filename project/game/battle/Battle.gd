@@ -28,8 +28,7 @@ onready var favorites = $Favorites
 onready var available_favorites = [$Favorites/FavoriteButton1,
 	$Favorites/FavoriteButton2, $Favorites/FavoriteButton3,
 	$Favorites/FavoriteButton4, $Favorites/FavoriteButton5,
-	$Favorites/FavoriteButton6, $Favorites/FavoriteButton7,
-	$Favorites/FavoriteButton8]
+	$Favorites/FavoriteButton6]
 onready var targeting_interface = $TargetingInterface
 
 export(Array, Texture) var backgrounds
@@ -136,18 +135,11 @@ func setup_favorites(favorite_combinations: Array):
 
 
 func setup_player_ui():
-	# warning-ignore:integer_division
-	var ui_center = 2*WINDOW_W/10
-	# warning-ignore:integer_division
-	var grid_center = 11*WINDOW_H/25
-	
 	player_ui.set_life(player.max_hp, player.hp)
 	
 	#Position pass-turn button
 	var button_margin = 54
 	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
-	#Position favorites
-	favorites.rect_position = Vector2(ui_center, grid_center) - favorites.rect_size / 2
 
 
 func setup_enemy(encounter: Encounter):

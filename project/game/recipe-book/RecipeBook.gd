@@ -13,7 +13,7 @@ onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
-const RECT_COLOR = Color(0.392157, 0.333333, 0.211765)
+const RECT_COLOR = Color.white#Color(0.392157, 0.333333, 0.211765)
 
 enum States {BATTLE, MAP, LAB}
 
@@ -149,7 +149,7 @@ func favorite_error(combination: Combination):
 func error_effect():
 	AudioManager.play_sfx("error")
 	# warning-ignore:return_value_discarded
-	tween.interpolate_property(hand_rect, "color", Color.red, RECT_COLOR,
+	tween.interpolate_property(hand_rect, "modulate", Color.red, RECT_COLOR,
 			.5, Tween.TRANS_SINE, Tween.EASE_IN)
 	# warning-ignore:return_value_discarded
 	tween.start()

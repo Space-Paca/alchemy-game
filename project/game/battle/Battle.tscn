@@ -139,13 +139,13 @@ __meta__ = {
 }
 
 [node name="Favorites" type="GridContainer" parent="."]
-margin_left = 162.788
-margin_top = 260.919
-margin_right = 610.788
-margin_bottom = 576.919
+margin_left = 95.0797
+margin_top = 444.444
+margin_right = 623.08
+margin_bottom = 760.444
 rect_min_size = Vector2( 448, 316 )
 custom_constants/vseparation = 20
-custom_constants/hseparation = 320
+custom_constants/hseparation = 400
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -187,21 +187,6 @@ texture_normal = ExtResource( 15 )
 script = ExtResource( 14 )
 
 [node name="FavoriteButton6" type="TextureButton" parent="Favorites"]
-visible = false
-margin_left = 384.0
-margin_right = 448.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
-[node name="FavoriteButton7" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
-
-[node name="FavoriteButton8" type="TextureButton" parent="Favorites"]
 visible = false
 margin_right = 64.0
 margin_bottom = 64.0
@@ -277,9 +262,3 @@ position = Vector2( 20, 15 )
 [connection signal="mouse_entered" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 5 ]]
 [connection signal="mouse_exited" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_exited"]
 [connection signal="pressed" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_pressed" binds= [ 5 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 6 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton7" to="." method="_on_FavoriteButton_pressed" binds= [ 6 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 7 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton8" to="." method="_on_FavoriteButton_pressed" binds= [ 7 ]]

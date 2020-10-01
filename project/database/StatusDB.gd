@@ -73,12 +73,12 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Minion",
 	"in-text_name": "minion"},
-   "soul_link": {
-	"title_name": "Soul Link",
+   "soulbind": {
+	"title_name": "Soulbind",
 	"description": "When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage",
 	"image": preload("res://assets/images/status/random_status.png"),
-	"intent_title": "Linking soul",
-	"in-text_name": "soul link"},
+	"intent_title": "Binding soul",
+	"in-text_name": "soulbind"},
    "perm_strength": {
 	"title_name": "Permanent Strength",
 	"description": "Permanently increases this character attack damage",

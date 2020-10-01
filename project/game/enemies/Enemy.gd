@@ -123,8 +123,8 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
 	
-	if hp <= 0 and get_status("soul_link"):
-		remove_status("soul_link")
+	if hp <= 0 and get_status("soulbind"):
+		remove_status("soulbind")
 		var overdamage = abs(prev_hp - unblocked_dmg)
 		if overdamage > 0:
 			source.take_damage(self, 4*overdamage, "regular", false)

@@ -100,9 +100,9 @@ __meta__ = {
 
 [node name="HandReagents" type="VBoxContainer" parent="Background/HandRect/CenterContainer"]
 margin_left = 350.0
-margin_top = 98.0
+margin_top = 100.0
 margin_right = 350.0
-margin_bottom = 102.0
+margin_bottom = 100.0
 custom_constants/separation = 0
 
 [node name="Upper" type="HBoxContainer" parent="Background/HandRect/CenterContainer/HandReagents"]

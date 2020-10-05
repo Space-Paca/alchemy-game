@@ -25,6 +25,15 @@ func disable():
 func enable():
 	block_tooltips = false
 
+func copy_bag(other_bag):
+	for c in discarded_reagents.get_children():
+		discarded_reagents.remove_child(c)
+	
+	for reagent in other_bag.discarded_reagents.get_children():
+		discarded_reagents.add_child(ReagentManager.create_object(reagent.type))
+	
+	update_counter()
+
 func get_center():
 	return center.global_position
 

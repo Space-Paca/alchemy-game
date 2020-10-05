@@ -356,9 +356,18 @@ func recipe_book_toggled(visible: bool):
 	if visible:
 		recipes_button.hide()
 		pass_turn_button.hide()
+		TooltipLayer.clean_tooltips()
+		for reagent in reagents.get_children():
+			reagent.disable()
+		draw_bag.disable()
+		discard_bag.disable()
 	else:
 		recipes_button.show()
 		pass_turn_button.show()
+		for reagent in reagents.get_children():
+			reagent.enable()
+		draw_bag.enable()
+		discard_bag.disable()
 
 
 func set_favorites_disabled(disabled: bool):
@@ -435,17 +444,20 @@ func get_targeted_effect_total(effects: Array) -> int:
 	
 	return total
 
+
 func disable_elements():
 	for enemy in enemies_node.get_children():
 		enemy.disable()
 	for reagent in reagents.get_children():
 		reagent.disable()
 
+
 func enable_elements():
 	for enemy in enemies_node.get_children():
 		enemy.enable()
 	for reagent in reagents.get_children():
 		reagent.enable()
+
 
 func win():
 	disable_elements()

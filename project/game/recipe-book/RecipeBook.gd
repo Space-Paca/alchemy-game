@@ -7,6 +7,8 @@ signal favorite_toggled(combination, button_pressed)
 onready var hand_rect : Control = $Background/HandRect
 onready var upper_hand = $Background/HandRect/CenterContainer/HandReagents/Upper
 onready var lower_hand = $Background/HandRect/CenterContainer/HandReagents/Lower
+onready var draw_bag = $Background/HandRect/DrawBag
+onready var discard_bag = $Background/HandRect/DiscardBag
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var tween : Tween = $Tween
@@ -21,7 +23,8 @@ var recipe_displays := {}
 var player_bag := []
 var hand_reagents : Array
 var state : int = States.MAP
-
+var battle_draw_bag
+var battle_discard_bag
 
 
 func change_state(new_state: int):
@@ -32,6 +35,8 @@ func change_state(new_state: int):
 		States.BATTLE:
 			hand_rect.visible = true
 			scroll.rect_size.y -= hand_rect.rect_size.y
+			draw_bag.disable()
+			discard_bag.disable()
 		States.MAP:
 			if state == States.BATTLE:
 				remove_hand()
@@ -69,6 +74,8 @@ func update_combination(combination: Combination):
 func create_hand(battle):
 	var rows = [upper_hand, lower_hand]
 	hand_reagents = []
+	battle_draw_bag = battle.draw_bag
+	battle_discard_bag = battle.discard_bag
 	battle.connect("current_reagents_updated", self, "update_hand")
 	for i in range(battle.hand.size):
 		var reagent = REAGENT_DISPLAY.instance()
@@ -96,6 +103,15 @@ func toggle_visibility():
 		AudioManager.play_sfx("close_recipe_book")
 		_on_recipe_display_unhovered()
 	
+	if state == States.BATTLE:
+		if visible:
+			update_bags()
+			draw_bag.enable()
+			discard_bag.enable()
+		else:
+			draw_bag.disable()
+			discard_bag.disable()
+	
 	return visible
 
 func is_mastered(combination : Combination):
@@ -105,8 +121,10 @@ func is_mastered(combination : Combination):
 func unlock_mastery(combination: Combination):
 	recipe_displays[combination.recipe.name].unlock_mastery()
 
+
 func update_mastery(combination: Combination, current_value: int, threshold: int):
 	recipe_displays[combination.recipe.name].update_mastery(current_value, threshold)
+
 
 func update_hand(reagents: Array):
 	for i in reagents.size():
@@ -117,6 +135,11 @@ func update_player_bag(bag : Array):
 	player_bag = []
 	for reagent in bag:
 		player_bag.append(reagent.type)
+
+
+func update_bags():
+	draw_bag.copy_bag(battle_draw_bag)
+	discard_bag.copy_bag(battle_discard_bag)
 
 
 func color_hand_reagents(reagent_array: Array):

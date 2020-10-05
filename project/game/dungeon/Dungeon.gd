@@ -52,13 +52,16 @@ func _ready():
 	
 	play_map_bgm()
 
+
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled):
 			recipe_book_toggle()
 
+
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
+
 
 func create_combinations():
 	for recipe in RecipeManager.recipes.values():
@@ -109,6 +112,7 @@ func create_level(level: int):
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
+
 
 func get_incomplete_combinations():
 	var incomplete_combinations = []
@@ -178,8 +182,8 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combina
 			if viewed_matrices.find(new_matrix) == -1:
 				viewed_matrices.append(new_matrix)
 				to_try_matrices.append(new_matrix)
-
 	return null
+
 
 func try_matrix(grid_size: int, reagent_matrix: Array):
 	for combination in combinations[grid_size]:
@@ -187,6 +191,7 @@ func try_matrix(grid_size: int, reagent_matrix: Array):
 			return combination
 	
 	return null
+
 
 #Return an array of all possible combinations of given reagent_matrix downgrading just one reagent
 func downgrade_matrix(matrix):
@@ -202,6 +207,7 @@ func downgrade_matrix(matrix):
 					downgraded_matrices.append(new_matrix)
 	
 	return downgraded_matrices
+
 
 func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe
@@ -243,11 +249,13 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 	elif not times_recipe_made.has(recipe.name):
 		times_recipe_made[recipe.name] = 0
 
+
 func mastery_threshold(combination: Combination) -> int:
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
 	return threshold
-	
+
+
 func should_unlock_mastery(combination: Combination) -> bool:
 	if not times_recipe_made.has(combination.recipe.name):
 		return false
@@ -301,11 +309,13 @@ func open_smith(room, _player):
 	smith.show()
 	map.hide()
 
+
 func open_lab(room, _player):
 	AudioManager.play_bgm("laboratory")
 	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
 	map.hide()
+
 
 func open_treasure(room, _player):
 	AudioManager.play_bgm("treasure")
@@ -328,10 +338,14 @@ func extract_boost_effects(reagents):
 			effects[effect.type] += effect.value
 	return effects
 
+
 func recipe_book_toggle():
 	var visible = recipe_book.toggle_visibility()
 	if visible:
 		recipe_book.update_player_bag(player.bag)
+	if battle:
+		battle.recipe_book_toggled(visible)
+
 
 func thanks_for_playing():
 	var scene = load("res://game/ui/ThanksScreen.tscn").instance()

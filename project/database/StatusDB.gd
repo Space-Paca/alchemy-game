@@ -25,6 +25,12 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Cursing",
 	"in-text_name": "curse"},
+   "deep_wound": {
+	"title_name": "Deep Wound",
+	"description": "This character can't heal",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Wounding",
+	"in-text_name": "deep wound"},
    "dodge": {
 	"title_name": "Dodge",
 	"description": "This character will avoid the next attack. Last until end of turn.",
@@ -133,6 +139,12 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Mitosis",
 	"in-text_name": "splitting"},
+   "stagger": {
+	"title_name": "Stagger",
+	"description": "If this character takes enough damage, it will be stunned",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Staggering",
+	"in-text_name": "stagger"},
    "temp_strength": {
 	"title_name": "Temporary Strength",
 	"description": "Increases the damage of this character next attack",
@@ -157,12 +169,6 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Weakening",
 	"in-text_name": "weakness"},
-   "deep_wound": {
-	"title_name": "Deep Wound",
-	"description": "This character can't heal",
-	"image": preload("res://assets/images/status/random_status.png"),
-	"intent_title": "Wounding",
-	"in-text_name": "deep wound"},
 }
 
 static func get_all_status() -> Dictionary:

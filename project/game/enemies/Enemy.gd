@@ -53,7 +53,9 @@ func _ready():
 	tween.interpolate_property(sprite, "modulate", Color.black, Color.white,
 			.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	tween.start()
-
+	
+# warning-ignore:return_value_discarded
+	self.connect("stun", self, "stun")
 
 func heal(amount : int):
 	if amount > 0:
@@ -200,6 +202,9 @@ func update_status(type: String):
 	.update_status(type)
 	update_status_bar()
 
+func stun():
+	cur_actions = [["idle", {}]]
+	update_intent()
 
 func act():
 	run_action()

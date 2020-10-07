@@ -5,6 +5,11 @@ signal animation_completed
 
 onready var health_bar = $HealthBar
 
+func enable_tooltips():
+	$StatusBar.enable()
+
+func disable_tooltips():
+	$StatusBar.disable()
 
 func set_life(max_hp, hp):
 	health_bar.set_life(hp, max_hp)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/ui/Artifact.gd" type="Script" id=1]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Artifact" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Image" type="TextureRect" parent="."]
+margin_right = 45.0
+margin_bottom = 45.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 22 )
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 2 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( 101.17, -24.8639 )
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

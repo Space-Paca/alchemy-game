@@ -3,17 +3,22 @@ extends Node2D
 
 signal animation_completed
 
+const ARTIFACT = preload("res://game/ui/Artifact.tscn")
+
 onready var health_bar = $HealthBar
 
 func enable_tooltips():
 	$StatusBar.enable()
+	for artifact in $Artifacts.get_children():
+		artifact.enable()
 
 func disable_tooltips():
 	$StatusBar.disable()
+	for artifact in $Artifacts.get_children():
+		artifact.disable()
 
 func set_life(max_hp, hp):
 	health_bar.set_life(hp, max_hp)
-
 
 func dummy_rising_number():
 	health_bar.dummy_rising_number()
@@ -32,6 +37,14 @@ func update_visuals(player):
 		yield(health_bar, "animation_completed")
 		emit_signal("animation_completed")
 
+func update_artifacts(player):
+	for artifact in $Artifacts.get_children():
+		$Artifacts.remove_child(artifact)
+	
+	for artifact_name in player.get_artifacts():
+		var artifact = ARTIFACT.instance()
+		artifact.init(artifact_name)
+		$Artifacts.add_child(artifact)
 
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)

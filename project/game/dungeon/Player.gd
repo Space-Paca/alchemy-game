@@ -253,6 +253,9 @@ func discover_combination(combination: Combination, play_sfx := false):
 		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)
 
+func get_artifacts():
+	return artifacts
+
 func call_artifacts(func_name : String, args := {}):
 	for artifact in artifacts:
 		ArtifactCallbacks.call("call_on_" + func_name, artifact, args)

@@ -126,9 +126,12 @@ func get_intent_tooltip(action, enemy):
 		var verb
 		if args.positive:
 			tooltip.title_image = IMAGES.buff
-			verb = "getting"
 		else:
 			tooltip.title_image = IMAGES.debuff
+			
+		if args.target == "self":
+			verb = "getting"
+		else:
 			verb = "applying"
 		
 		if args.has("reduce") and args.reduce:

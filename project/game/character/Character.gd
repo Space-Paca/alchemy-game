@@ -5,6 +5,7 @@ const WEAK_THRESHOLD = 10
 const STRONG_THRESHOLD = 20
 
 signal died
+signal stun
 signal spawn_new_enemy
 signal add_status_all_enemies
 signal damage_player
@@ -167,11 +168,16 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	if hp <= 0:
 		hp = 0
 		die()
-	elif pre_shield <= 0 and status_list.has("arcane_aegis"):
-		AudioManager.play_sfx("shield_gain")
-		shield += status_list.arcane_aegis.amount
-	elif unblocked_damage > 0 and status_list.has("enrage"):
-		add_status("perm_strength", status_list.enrage.amount, true, {})
+	else:
+		if pre_shield <= 0 and damage > 0 and status_list.has("arcane_aegis"):
+			AudioManager.play_sfx("shield_gain")
+			shield += status_list.arcane_aegis.amount
+		if unblocked_damage > 0 and status_list.has("enrage"):
+			add_status("perm_strength", status_list.enrage.amount, true, {})
+		if unblocked_damage > 0 and status_list.has("stagger"):
+			reduce_status("stagger", unblocked_damage)
+			if not status_list.has("stagger"):
+				emit_signal("stun")
 	
 	return unblocked_damage
 
@@ -283,6 +289,9 @@ func start_turn_retaliate():
 func start_turn_dodge():
 	remove_status("dodge")
 
+func start_turn_stagger():
+	remove_status("stagger")
+
 func end_turn_poison():
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
@@ -292,6 +301,7 @@ func end_turn_poison():
 
 func end_turn_freeze():
 	remove_status("freeze")
+
 
 func end_turn_restrained():
 	remove_status("restrain")

@@ -769,6 +769,11 @@ func _on_enemy_died(enemy):
 	if func_state and func_state.is_valid():
 		yield(enemy, "finished_updating_status")
 	
+	if enemy.data.change_phase:
+		yield(get_tree().create_timer(1.5), "timeout")
+		#TODO: Add more cool effects here, like screen shaking
+		spawn_new_enemy(enemy, enemy.data.change_phase, false)
+	
 	$EnemyToBeRemoved.remove_child(enemy)
 	
 	#Update idle sfx

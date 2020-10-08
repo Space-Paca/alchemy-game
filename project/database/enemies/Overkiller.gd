@@ -7,6 +7,7 @@ var use_idle_sfx = false
 var hp = 28
 var battle_init = true
 var size = "small"
+var change_phase = null
 
 var states = ["init", "attack1", "defend", "attack2", "buff"]
 var connections = [

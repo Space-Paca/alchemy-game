@@ -7,6 +7,7 @@ var use_idle_sfx = false
 var hp = 150
 var battle_init = true
 var size = "medium"
+var change_phase = null
 
 var states = ["start", "attack1", "attack2", "attack3", "attack4", "attack5", \
 			  "restrict_buff", "spawn1", "spawn2", "spawn3"]

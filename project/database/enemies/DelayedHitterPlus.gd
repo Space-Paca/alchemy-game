@@ -7,6 +7,7 @@ var use_idle_sfx = false
 var hp = 42
 var battle_init = false
 var size = "small"
+var change_phase = null
 
 var states = ["attack", "preparing1", "preparing2", "preparing3", "preparing4"]
 var connections = [

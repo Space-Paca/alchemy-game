@@ -56,6 +56,8 @@ func _ready():
 	
 # warning-ignore:return_value_discarded
 	self.connect("stun", self, "stun")
+# warning-ignore:return_value_discarded
+	self.connect("remove_attack", self, "remove_attack")
 
 func heal(amount : int):
 	if amount > 0:
@@ -205,6 +207,15 @@ func update_status(type: String):
 func stun():
 	cur_actions = [["idle", {}]]
 	update_intent()
+
+#Remove all current damage actions from enemy. If there isn't any other action left,
+#Stuns enemy
+func remove_attack():
+	for index in range(cur_actions.size()-1, -1, -1):
+		if cur_actions[index][0] == "damage":
+			cur_actions.remove(index)
+	if cur_actions.size() <= 0:
+		stun()
 
 func act():
 	run_action()

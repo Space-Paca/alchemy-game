@@ -13,6 +13,12 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Immolate",
 	"in-text_name": "burning"},
+   "concentration": {
+	"title_name": "Concentration",
+	"description": "If this character takes enough damage, it will lose focus and stop attacking",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Concentrating",
+	"in-text_name": "concentration"},
    "confusion": {
 	"title_name": "Confusion",
 	"description": "Transforms reagents randomly at the start of every turn",
@@ -139,12 +145,6 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Mitosis",
 	"in-text_name": "splitting"},
-   "stagger": {
-	"title_name": "Stagger",
-	"description": "If this character takes enough damage, it will be stunned",
-	"image": preload("res://assets/images/status/random_status.png"),
-	"intent_title": "Staggering",
-	"in-text_name": "stagger"},
    "temp_strength": {
 	"title_name": "Temporary Strength",
 	"description": "Increases the damage of this character next attack",

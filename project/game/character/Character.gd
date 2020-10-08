@@ -6,6 +6,7 @@ const STRONG_THRESHOLD = 20
 
 signal died
 signal stun
+signal remove_attack
 signal spawn_new_enemy
 signal add_status_all_enemies
 signal damage_player
@@ -174,10 +175,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			shield += status_list.arcane_aegis.amount
 		if unblocked_damage > 0 and status_list.has("enrage"):
 			add_status("perm_strength", status_list.enrage.amount, true, {})
-		if unblocked_damage > 0 and status_list.has("stagger"):
-			reduce_status("stagger", unblocked_damage)
-			if not status_list.has("stagger"):
-				emit_signal("stun")
+		if unblocked_damage > 0 and status_list.has("concentration"):
+			reduce_status("concentration", unblocked_damage)
+			if not status_list.has("concentration"):
+				emit_signal("remove_attack")
 	
 	return unblocked_damage
 
@@ -289,8 +290,8 @@ func start_turn_retaliate():
 func start_turn_dodge():
 	remove_status("dodge")
 
-func start_turn_stagger():
-	remove_status("stagger")
+func start_turn_concentration():
+	remove_status("concentration")
 
 func end_turn_poison():
 	var status = get_status("poison")

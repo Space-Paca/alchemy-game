@@ -37,6 +37,18 @@ const STATUSES = {
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Wounding",
 	"in-text_name": "deep wound"},
+   "deviation": {
+	"title_name": "Deviation",
+	"description": "This character can't repeat recipes on the same turn",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Deviating",
+	"in-text_name": "deviation"},
+   "divine_protection": {
+	"title_name": "Divine Protection",
+	"description": "This character can't take more than 50 damage per turn",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Favor from the Gods",
+	"in-text_name": "Divine protection"},
    "dodge": {
 	"title_name": "Dodge",
 	"description": "This character will avoid the next attack. Last until end of turn.",

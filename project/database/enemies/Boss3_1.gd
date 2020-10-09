@@ -7,7 +7,7 @@ var use_idle_sfx = false
 var hp = 300
 var battle_init = false
 var size = "big"
-var change_phase = "baby_humunculus"
+var change_phase = "boss_3_2"
 
 var states = ["start", "attack1", "attack2", "attack3", "attack4", "attack5-1", \
 			  "attack5-2", "buff1", "buff2", "buff3", "buff3", "buff4", "buff5"]
@@ -32,7 +32,7 @@ var first_state = ["start"]
 
 var actions = {
 	"start": [
-		{"name": "damage", "value": 50, "type": "regular"},
+		{"name": "damage", "value": 40, "type": "regular"},
 		{"name": "shield", "value": [40,50], "type": "regular"},
 	],
 	"buff1": [

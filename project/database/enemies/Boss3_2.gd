@@ -9,7 +9,7 @@ var battle_init = true
 var size = "big"
 var change_phase = null
 
-var states = ["init", "start", "attack1", "attack2", "attack3", "attack4", \
+var states = ["start", "attack1", "attack2", "attack3", "attack4", \
 			  "debuff1", "debuff2", "debuff3", "debuff3", "debuff4", "debuff5"]
 var connections = [
 					  ["init", "start", 1],  
@@ -66,12 +66,9 @@ var connections = [
 					  ["debuff5", "attack3", 1],
 					  ["debuff5", "attack4", 1],
 				  ]
-var first_state = ["init"]
+var first_state = ["start"]
 
 var actions = {
-	"init": [
-		{"name": "shield", "value": 100, "type": "regular"},
-	],
 	"start": [
 		{"name": "status", "status_name": "deviation", "value": 1, "target": "player", "positive": false},
 		{"name": "status", "status_name": "divine_protection", "value": 60, "target": "self", "positive": true, "extra_args": {"value": 60}},

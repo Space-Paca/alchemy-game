@@ -47,6 +47,7 @@ var is_boss
 var is_elite
 var player
 var win_screen
+var deviated_recipes
 var is_dragging_reagent := false
 var recipes_created
 var current_encounter
@@ -271,6 +272,7 @@ func new_player_turn():
 		return
 	
 	recipes_created = 0
+	deviated_recipes = []
 	player.new_turn()
 	
 	if hand.available_slot_count() > 0:

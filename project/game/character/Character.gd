@@ -5,6 +5,7 @@ const WEAK_THRESHOLD = 10
 const STRONG_THRESHOLD = 20
 
 signal died
+# warning-ignore:unused_signal
 signal stun
 signal remove_attack
 signal spawn_new_enemy
@@ -89,6 +90,15 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		if status_list["dodge"].amount <= 0:
 			remove_status("dodge")
 		return unblocked_damage
+	
+	#Check for divine protection
+	if status_list.has("divine_protection"):
+		var status = status_list["divine_protection"]
+		if damage > status.amount:
+			AudioManager.play_sfx("divine_protected")
+# warning-ignore:narrowing_conversion
+		damage = min(status.amount, damage)
+		status.amount -= damage
 	
 	#Block damage with shield
 	if type == "regular":
@@ -292,6 +302,11 @@ func start_turn_dodge():
 
 func start_turn_concentration():
 	remove_status("concentration")
+
+func start_turn_divine_protection():
+	var status = get_status("divine_protection")
+	#Resets each turn
+	status.amount = status.extra_args.value
 
 func end_turn_poison():
 	var status = get_status("poison")

@@ -45,7 +45,7 @@ const STATUSES = {
 	"in-text_name": "deviation"},
    "divine_protection": {
 	"title_name": "Divine Protection",
-	"description": "This character can't take more than 50 damage per turn",
+	"description": "Every turn, this character becomes invincible after taking enough damage",
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Favor from the Gods",
 	"in-text_name": "Divine protection"},

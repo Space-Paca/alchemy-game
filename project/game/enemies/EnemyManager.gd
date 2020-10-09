@@ -37,7 +37,7 @@ const ENEMY_DB = {
 				  "boss_1" : preload("res://database/enemies/Boss1.gd"),
 				  "boss_2" : preload("res://database/enemies/Boss2.gd"),
 				  "boss_3_1" : preload("res://database/enemies/Boss3_1.gd"),
-				  "boss_3_2" : preload("res://database/enemies/Boss3_1.gd"),
+				  "boss_3_2" : preload("res://database/enemies/Boss3_2.gd"),
 				}
 const ENEMY = preload("res://game/enemies/Enemy.tscn")
 

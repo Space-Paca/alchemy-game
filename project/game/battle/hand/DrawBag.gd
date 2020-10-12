@@ -46,6 +46,14 @@ func get_center():
 func update_counter(fake_amount := 0):
 	counter.text = str(drawable_reagents.get_child_count() + fake_amount)
 
+
+func get_reagent_names() -> Array:
+	var names := []
+	for reagent in drawable_reagents.get_children():
+		names.append(reagent.type)
+	return names
+
+
 func add_reagent(reagent):
 	reagent.visible = false
 	drawable_reagents.add_child(reagent)

@@ -24,6 +24,8 @@ const MAX_REAGENT_COLUMN = 6
 var combination : Combination
 var reagent_array := []
 var mastery_unlocked := false
+var tagged := true
+var filtered := true
 
 
 func set_combination(_combination: Combination):

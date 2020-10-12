@@ -12,6 +12,7 @@ onready var discard_bag = $Background/HandRect/DiscardBag
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var hand_tag_button = $Background/TagButtons/HandBtn
+onready var filter_menu = $Background/FilterMenu
 onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
@@ -39,13 +40,13 @@ func change_state(new_state: int):
 			draw_bag.disable()
 			discard_bag.disable()
 			hand_tag_button.show()
-			show_all_combinations()
+			reset_recipe_visibility()
 		States.MAP:
 			if state == States.BATTLE:
 				remove_hand()
 				scroll.rect_size.y += hand_rect.rect_size.y
 				hand_tag_button.hide()
-				show_all_combinations()
+				reset_recipe_visibility()
 		States.LAB:
 			pass
 	
@@ -248,28 +249,43 @@ func get_combination_completion(combinations: Array, complete: bool):
 	return ret_combinations
 
 
-func filter_shown_recipes(tag: int):
+func filter_by_tag(tag: int):
 	var all_combinations := get_combinations()
-	var to_show := []
+	var to_tag := []
 	match tag:
 		DECK:
-			to_show = get_valid_combinations(all_combinations, get_player_reagents())
+			to_tag = get_valid_combinations(all_combinations, get_player_reagents())
 		HAND:
-			to_show = get_valid_combinations(all_combinations, get_hand_reagents())
+			to_tag = get_valid_combinations(all_combinations, get_hand_reagents())
 		INCOMPLETE:
-			to_show = get_combination_completion(all_combinations, false)
+			to_tag = get_combination_completion(all_combinations, false)
 		COMPLETE:
-			to_show = get_combination_completion(all_combinations, true)
+			to_tag = get_combination_completion(all_combinations, true)
 		ALL:
-			show_all_combinations()
+			tag_all_combinations()
+			update_recipes_shown()
 			return
 	
 	for recipe_display in recipe_displays.values():
-		recipe_display.visible = to_show.has(recipe_display.combination)
+		recipe_display.tagged = to_tag.has(recipe_display.combination)
+	
+	update_recipes_shown()
 
 
-func show_all_combinations():
+func tag_all_combinations():
 	for recipe_display in recipe_displays.values():
+		recipe_display.tagged = true
+
+
+func update_recipes_shown():
+	for recipe_display in recipe_displays.values():
+		recipe_display.visible = recipe_display.tagged and recipe_display.filtered
+
+
+func reset_recipe_visibility():
+	for recipe_display in recipe_displays.values():
+		recipe_display.tagged = true
+		recipe_display.filtered = true
 		recipe_display.show()
 
 
@@ -313,4 +329,8 @@ func _on_recipe_display_favorite_toggled(combination: Combination, button_presse
 
 
 func _on_Tag_pressed(tag: int):
-	filter_shown_recipes(tag)
+	filter_by_tag(tag)
+
+
+func _on_FilterMenu_filters_updated(values):
+	pass # Replace with function body.

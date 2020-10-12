@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://game/battle/hand/DrawBag.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=9]
+[ext_resource path="res://game/recipe-book/FilterMenu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -123,15 +124,14 @@ alignment = 1
 custom_constants/separation = 0
 alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Background"]
-margin_right = 40.0
-margin_bottom = 40.0
-
 [node name="TagButtons" type="VBoxContainer" parent="Background"]
 margin_left = 760.0
 margin_top = 150.0
 margin_right = 998.0
 margin_bottom = 621.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DeckBtn" type="TextureButton" parent="Background/TagButtons"]
 margin_right = 238.0
@@ -248,9 +248,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
+margin_left = 420.0
+margin_top = 55.0
+margin_right = -398.0
+margin_bottom = -1025.0
+
 [node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="Background/TagButtons/IncompleteBtn" to="." method="_on_Tag_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Background/TagButtons/CompleteBtn" to="." method="_on_Tag_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
+[connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]

@@ -46,6 +46,14 @@ func get_height():
 func update_counter():
 	counter.text = str(discarded_reagents.get_child_count())
 
+
+func get_reagent_names() -> Array:
+	var names := []
+	for reagent in discarded_reagents.get_children():
+		names.append(reagent.type)
+	return names
+
+
 func is_empty():
 	return discarded_reagents.get_child_count() == 0
 

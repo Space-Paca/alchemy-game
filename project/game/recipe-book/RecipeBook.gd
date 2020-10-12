@@ -11,20 +11,21 @@ onready var draw_bag = $Background/HandRect/DrawBag
 onready var discard_bag = $Background/HandRect/DiscardBag
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
+onready var hand_tag_button = $Background/TagButtons/HandBtn
 onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
-const RECT_COLOR = Color.white#Color(0.392157, 0.333333, 0.211765)
 
 enum States {BATTLE, MAP, LAB}
+enum {DECK, HAND, INCOMPLETE, COMPLETE, ALL}
 
 var recipe_displays := {}
-var player_bag := []
 var hand_reagents : Array
 var state : int = States.MAP
 var battle_draw_bag
 var battle_discard_bag
+var player : Player
 
 
 func change_state(new_state: int):
@@ -37,10 +38,14 @@ func change_state(new_state: int):
 			scroll.rect_size.y -= hand_rect.rect_size.y
 			draw_bag.disable()
 			discard_bag.disable()
+			hand_tag_button.show()
+			show_all_combinations()
 		States.MAP:
 			if state == States.BATTLE:
 				remove_hand()
 				scroll.rect_size.y += hand_rect.rect_size.y
+				hand_tag_button.hide()
+				show_all_combinations()
 		States.LAB:
 			pass
 	
@@ -114,6 +119,7 @@ func toggle_visibility():
 	
 	return visible
 
+
 func is_mastered(combination : Combination):
 	return recipe_displays[combination.recipe.name].is_mastered()
 	
@@ -129,12 +135,6 @@ func update_mastery(combination: Combination, current_value: int, threshold: int
 func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_reagents[i].set_reagent(reagents[i])
-
-
-func update_player_bag(bag : Array):
-	player_bag = []
-	for reagent in bag:
-		player_bag.append(reagent.type)
 
 
 func update_bags():
@@ -172,10 +172,18 @@ func favorite_error(combination: Combination):
 func error_effect():
 	AudioManager.play_sfx("error")
 	# warning-ignore:return_value_discarded
-	tween.interpolate_property(hand_rect, "modulate", Color.red, RECT_COLOR,
+	tween.interpolate_property(hand_rect, "modulate", Color.red, Color.white,
 			.5, Tween.TRANS_SINE, Tween.EASE_IN)
 	# warning-ignore:return_value_discarded
 	tween.start()
+
+
+func get_combinations() -> Array:
+	var combinations := []
+	for recipe_display in recipe_displays.values():
+		combinations.append(recipe_display.combination)
+	
+	return combinations
 
 
 func get_hand_reagents():
@@ -187,9 +195,14 @@ func get_hand_reagents():
 
 
 func get_player_reagents():
-	var available_reagents = get_hand_reagents()
-	for reagent in player_bag:
-		available_reagents.append(reagent)
+	var available_reagents = []
+	if state == States.BATTLE:
+		available_reagents += get_hand_reagents()
+		available_reagents += draw_bag.get_reagent_names()
+		available_reagents += discard_bag.get_reagent_names()
+	else:
+		for reagent in player.bag:
+			available_reagents.append(reagent.type)
 	
 	return available_reagents
 
@@ -224,6 +237,40 @@ func get_valid_combinations(combinations : Array, available_reagents : Array):
 			valid_combinations.append(combination)
 	
 	return valid_combinations
+
+
+func get_combination_completion(combinations: Array, complete: bool):
+	var ret_combinations := []
+	for combination in combinations:
+		if combination.discovered == complete:
+			ret_combinations.append(combination)
+	
+	return ret_combinations
+
+
+func filter_shown_recipes(tag: int):
+	var all_combinations := get_combinations()
+	var to_show := []
+	match tag:
+		DECK:
+			to_show = get_valid_combinations(all_combinations, get_player_reagents())
+		HAND:
+			to_show = get_valid_combinations(all_combinations, get_hand_reagents())
+		INCOMPLETE:
+			to_show = get_combination_completion(all_combinations, false)
+		COMPLETE:
+			to_show = get_combination_completion(all_combinations, true)
+		ALL:
+			show_all_combinations()
+			return
+	
+	for recipe_display in recipe_displays.values():
+		recipe_display.visible = to_show.has(recipe_display.combination)
+
+
+func show_all_combinations():
+	for recipe_display in recipe_displays.values():
+		recipe_display.show()
 
 
 func _on_recipe_display_hovered(reagent_array: Array):
@@ -263,3 +310,7 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 
 func _on_recipe_display_favorite_toggled(combination: Combination, button_pressed: bool):
 	emit_signal("favorite_toggled", combination, button_pressed)
+
+
+func _on_Tag_pressed(tag: int):
+	filter_shown_recipes(tag)

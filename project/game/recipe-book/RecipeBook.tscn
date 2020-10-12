@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=5]
 [ext_resource path="res://game/battle/hand/DiscardBag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/battle/hand/DrawBag.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -125,4 +127,130 @@ alignment = 1
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="TagButtons" type="VBoxContainer" parent="Background"]
+margin_left = 760.0
+margin_top = 150.0
+margin_right = 998.0
+margin_bottom = 621.0
+
+[node name="DeckBtn" type="TextureButton" parent="Background/TagButtons"]
+margin_right = 238.0
+margin_bottom = 91.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/DeckBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -23.0
+margin_right = 32.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "deck"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HandBtn" type="TextureButton" parent="Background/TagButtons"]
+visible = false
+margin_top = 95.0
+margin_right = 238.0
+margin_bottom = 186.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/HandBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.5
+margin_top = -23.0
+margin_right = 34.5
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "hand"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IncompleteBtn" type="TextureButton" parent="Background/TagButtons"]
+margin_top = 95.0
+margin_right = 238.0
+margin_bottom = 186.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/IncompleteBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -23.0
+margin_right = 76.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "incomplete"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompleteBtn" type="TextureButton" parent="Background/TagButtons"]
+margin_top = 190.0
+margin_right = 238.0
+margin_bottom = 281.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/CompleteBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.0
+margin_top = -23.0
+margin_right = 62.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "complete"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AllBtn" type="TextureButton" parent="Background/TagButtons"]
+margin_top = 285.0
+margin_right = 238.0
+margin_bottom = 376.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/AllBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -23.0
+margin_right = 16.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "all"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tween" type="Tween" parent="."]
+[connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Background/TagButtons/IncompleteBtn" to="." method="_on_Tag_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Background/TagButtons/CompleteBtn" to="." method="_on_Tag_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]

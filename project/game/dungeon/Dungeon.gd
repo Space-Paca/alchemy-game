@@ -51,6 +51,8 @@ func _ready():
 	create_level(floor_level)
 	
 	play_map_bgm()
+	
+	recipe_book.player = player
 
 
 func _input(event):

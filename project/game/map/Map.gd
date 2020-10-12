@@ -8,16 +8,37 @@ onready var center_position = $FixedPositions/Center
 onready var click_block = $ClickBlock
 onready var nodes = $Nodes
 onready var positions = $FixedPositions
+onready var floor_label = $CanvasLayer/FloorLabel
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const NODE_DIST = 200
 const NODE_DIST_RAND = 50
+const CAMERA_SPEED = .1
+const EPSLON = 1
 
 var active_paths := 0
 var initial_node : MapNode
 var current_level : int setget set_level
 
+func _process(dt):
+	
+	#Get camera target pos
+	var target_pos = Vector2(0,0)
+	var count = 0
+	for node in $Nodes.get_children():
+		if node.get_alpha() > 0:
+			count += 1
+			target_pos += node.rect_position
+	
+	if count > 0:
+		target_pos = target_pos/float(count)
+		target_pos += get_screen_center()
+		
+		#Move camera
+		$Camera.position += (target_pos - $Camera.position)*CAMERA_SPEED 
+		if (target_pos - $Camera.position).length() <= EPSLON:
+			$Camera.position = target_pos
 
 func set_disabled(toggle:bool):
 	click_block.visible = toggle
@@ -25,7 +46,7 @@ func set_disabled(toggle:bool):
 
 func set_level(level:int):
 	current_level = level
-	$FloorLabel.text = str("Floor ", current_level)
+	floor_label.text = str("Floor ", current_level)
 
 
 func shift_positions():
@@ -54,9 +75,16 @@ func validate_map(total_nodes:int, normal_enemies:int):
 	
 	assert(total_positions >= total_nodes, "Map doesn't have enough positions")
 
+func get_screen_center():
+	return Vector2(1920/2, 1080/2)
+
+func reset_camera():
+	$Camera.position = get_screen_center()
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
+	
+	reset_camera()
 	
 	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
 			smiths + events + labs + treasures + 1

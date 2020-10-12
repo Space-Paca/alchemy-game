@@ -208,17 +208,16 @@ func get_player_reagents():
 	return available_reagents
 
 
-func filter_combinations(combinations : Array, filters : Array):
-	var filtered_combinations = []
+func filter_combinations(filters: Array):
+	for recipe_display in recipe_displays.values():
+		var filtered = true
+		for filter in filters:
+			if not filter in recipe_display.combination.recipe.filters:
+				filtered = false
+				break
+		recipe_display.filtered = filtered
 	
-	for combination in combinations:
-		for recipe_filter in combination.recipe.filters:
-			for filter in filters:
-				if filter == recipe_filter:
-					filtered_combinations.append(combination)
-					break
-	
-	return filtered_combinations
+	update_recipes_shown()
 
 
 #Given an array of combinations and and array of reagents, returns all combinations
@@ -283,6 +282,8 @@ func update_recipes_shown():
 
 
 func reset_recipe_visibility():
+	filter_menu.clear_filters()
+	
 	for recipe_display in recipe_displays.values():
 		recipe_display.tagged = true
 		recipe_display.filtered = true
@@ -332,5 +333,5 @@ func _on_Tag_pressed(tag: int):
 	filter_by_tag(tag)
 
 
-func _on_FilterMenu_filters_updated(values):
-	pass # Replace with function body.
+func _on_FilterMenu_filters_updated(filters: Array):
+	filter_combinations(filters)

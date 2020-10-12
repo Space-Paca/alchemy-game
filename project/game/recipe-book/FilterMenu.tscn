@@ -133,3 +133,9 @@ enabled_focus_mode = 1
 text = "Misc"
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox1" to="." method="_on_Filter_toggled" binds= [ 0 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox2" to="." method="_on_Filter_toggled" binds= [ 1 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox3" to="." method="_on_Filter_toggled" binds= [ 2 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox4" to="." method="_on_Filter_toggled" binds= [ 3 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox5" to="." method="_on_Filter_toggled" binds= [ 4 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox6" to="." method="_on_Filter_toggled" binds= [ 5 ]]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox7" to="." method="_on_Filter_toggled" binds= [ 6 ]]

@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/recipe-book/FilterMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/book/filter-menu.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=4]
+
+[node name="FilterMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="."]
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="Button"]
+margin_left = 160.0
+margin_top = 20.0
+margin_right = 185.0
+margin_bottom = 42.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = -22.5
+margin_right = 100.0
+margin_bottom = 22.5
+custom_fonts/font = ExtResource( 4 )
+text = "Filters"
+
+[node name="Filters" type="NinePatchRect" parent="."]
+visible = false
+margin_top = 65.0
+margin_right = 203.0
+margin_bottom = 485.0
+mouse_filter = 0
+texture = ExtResource( 2 )
+patch_margin_left = 50
+patch_margin_top = 9
+patch_margin_right = 44
+patch_margin_bottom = 37
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Filters"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -197.5
+margin_right = 162.0
+margin_bottom = 197.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 53.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Attack"
+
+[node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 57.0
+margin_right = 142.0
+margin_bottom = 110.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Defense"
+
+[node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 114.0
+margin_right = 142.0
+margin_bottom = 167.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Area"
+
+[node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 171.0
+margin_right = 142.0
+margin_bottom = 224.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Buff"
+
+[node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 228.0
+margin_right = 142.0
+margin_bottom = 281.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Debuff"
+
+[node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 285.0
+margin_right = 142.0
+margin_bottom = 338.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Heal"
+
+[node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 342.0
+margin_right = 142.0
+margin_bottom = 395.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 1
+text = "Misc"
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
+[connection signal="toggled" from="Filters/VBoxContainer/CheckBox1" to="." method="_on_Filter_toggled" binds= [ 0 ]]

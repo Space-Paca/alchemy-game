@@ -923,7 +923,6 @@ func _on_win_screen_reagent_looted(reagent: String):
 
 func _on_win_screen_reagent_sold(gold_value: int):
 	player.add_currency(gold_value)
-	player_ui.set_gold(player.currency)
 
 
 func _on_win_screen_combinations_seen(rewarded_combinations: Array):
@@ -936,7 +935,6 @@ func _on_win_screen_combination_chosen(combination: Combination):
 
 func _on_win_screen_gem_collected(quantity:int):
 	player.add_gems(quantity)
-	player_ui.set_gems(player.gems)
 
 
 func _on_Hand_hand_slot_reagent_set():

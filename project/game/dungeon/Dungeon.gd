@@ -225,6 +225,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 			battle.enable_elements()
 	
 	if apply_effects:
+		battle.add_recipe_deviation(recipe.name)
 		if not times_recipe_made.has(recipe.name):
 			times_recipe_made[recipe.name] = 1
 		else:

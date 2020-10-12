@@ -379,6 +379,11 @@ func set_favorites_disabled(disabled: bool):
 		button.disabled = disabled
 
 
+func add_recipe_deviation(name):
+	if player.get_status("deviation"):
+		deviated_recipes.append(name)
+
+
 func apply_effects(effects: Array, effect_args: Array = [[]],
 		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
@@ -873,7 +878,10 @@ func _on_CreateRecipe_pressed():
 	if grid.is_empty():
 		AudioManager.play_sfx("error")
 		return
-		
+	
+	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
+		AudioManager.play_sfx("error")
+		return
 	
 	grid.clear_hint()
 	

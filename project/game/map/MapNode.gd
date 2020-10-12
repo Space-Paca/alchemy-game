@@ -42,7 +42,9 @@ func _process(dt):
 		$Legend.modulate.a = max($Legend.modulate.a - ALPHA_SPEED*dt, 0)
 		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
-		
+
+func get_alpha():
+	return modulate.a
 
 func fade_in():
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),

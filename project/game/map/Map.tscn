@@ -231,7 +231,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FloorLabel" type="Label" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 960, 540 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FloorLabel" type="Label" parent="CanvasLayer"]
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 304.0

@@ -12,7 +12,6 @@ var change_phase = null
 var states = ["start", "attack1", "attack2", "attack3", "attack4", \
 			  "debuff1", "debuff2", "debuff3", "debuff3", "debuff4", "debuff5"]
 var connections = [
-					  ["init", "start", 1],  
 					  ["start", "attack1", 1],
 					  ["start", "attack2", 1],
 					  ["start", "attack3", 1],

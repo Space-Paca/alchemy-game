@@ -12,6 +12,8 @@ func display_name_for_combination(combination):
 	else:
 		label.text = "???"
 
+func get_name():
+	return label.text
 
 func reset():
 	label.text = ""

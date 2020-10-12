@@ -84,6 +84,7 @@ func die():
 	tween.start()
 	
 	yield(get_tree().create_timer(.5), "timeout")
+	modulate = Color(1,1,1,0)
 	emit_signal("died", self)
 
 

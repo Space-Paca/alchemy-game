@@ -4,44 +4,72 @@ class_name Map
 signal map_node_pressed(node)
 
 onready var bg = $Background
+onready var lines = $Lines
+onready var camera = $Camera
 onready var center_position = $FixedPositions/Center
 onready var click_block = $ClickBlock
 onready var nodes = $Nodes
 onready var positions = $FixedPositions
 onready var floor_label = $CanvasLayer/FloorLabel
+onready var compass = $CanvasLayer/Compass
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const NODE_DIST = 200
 const NODE_DIST_RAND = 50
-const CAMERA_SPEED = .1
+const CAMERA_LINEAR_SPEED = 60
+const CAMERA_EXPONENTIAL_SPEED = .1
 const EPSLON = 1
 
 var active_paths := 0
+var active_nodes := []
 var initial_node : MapNode
 var current_level : int setget set_level
+var update_camera := true
+var camera_last_pos = false
 
 func _process(dt):
-	
-	#Get camera target pos
-	var target_pos = Vector2(0,0)
-	var count = 0
-	for node in $Nodes.get_children():
-		if node.get_alpha() > 0:
+	if update_camera:
+		#Get camera target pos
+		var target_pos = Vector2(0,0)
+		var count = 0
+		for node in active_nodes:
 			count += 1
 			target_pos += node.rect_position
-	
-	if count > 0:
-		target_pos = target_pos/float(count)
-		target_pos += get_screen_center()
 		
-		#Move camera
-		$Camera.position += (target_pos - $Camera.position)*CAMERA_SPEED 
-		if (target_pos - $Camera.position).length() <= EPSLON:
-			$Camera.position = target_pos
+		if count > 0:
+			target_pos = target_pos/float(count)
+			target_pos += get_screen_center()
+			
+			#Move camera linearly
+			var dist = (target_pos - $Camera.position)
+			if CAMERA_LINEAR_SPEED*dt < 3*dist.length():
+				$Camera.position += dist.normalized()*CAMERA_LINEAR_SPEED*dt
+			else:
+				$Camera.position += dist*CAMERA_EXPONENTIAL_SPEED*dt
+			
+			if (target_pos - $Camera.position).length() <= EPSLON:
+				$Camera.position = target_pos
 
 func set_disabled(toggle:bool):
 	click_block.visible = toggle
+	
+
+func enable():
+	show()
+	floor_label.show()
+	compass.show()
+	update_camera = true
+	if camera_last_pos:
+		camera.position = camera_last_pos
+
+func disable():
+	hide()
+	floor_label.hide()
+	compass.hide()
+	update_camera = false
+	camera_last_pos = camera.position
+	reset_camera()
 
 
 func set_level(level:int):
@@ -85,6 +113,8 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
 	
 	reset_camera()
+	active_nodes = []
+	camera_last_pos = false
 	
 	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
 			smiths + events + labs + treasures + 1
@@ -95,6 +125,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	
 	initial_node = MAP_NODE_SCENE.instance()
 	nodes.add_child(initial_node)
+	active_nodes.append(initial_node)
 	center_position.node = initial_node
 	var available_starting_positions : Array = [center_position]
 	var used_positions : Array = [center_position]
@@ -152,7 +183,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		# Add map line
 		var map_line := MapLine.new()
 		map_line.set_line(starting_pos.global_position, new_pos.global_position)
-		bg.add_child(map_line)
+		lines.add_child(map_line)
 		starting_pos.node.map_lines.append(map_line)
 		
 		total_nodes -= 1
@@ -187,6 +218,7 @@ func reveal_paths(node:MapNode):
 	for i in node.map_tree_children.size():
 		var line : MapLine = node.map_lines[i]
 		var child_node : MapNode = node.map_tree_children[i]
+		active_nodes.append(child_node)
 # warning-ignore:return_value_discarded
 		line.connect("filled", self, "_on_path_reached", [child_node])
 		line.begin_fill()

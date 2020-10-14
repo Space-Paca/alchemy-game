@@ -24,6 +24,10 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -749.634
+margin_top = -515.709
+margin_right = 610.366
+margin_bottom = 658.291
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -31,15 +35,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compass" type="TextureRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0.54902 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -156.0
-margin_bottom = 156.0
-rect_min_size = Vector2( 156, 156 )
-texture = ExtResource( 2 )
-stretch_mode = 4
+[node name="Lines" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -245,6 +243,21 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.121569, 0.121569, 0.121569, 1 )
 text = "Floor W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compass" type="TextureRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.54902 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -158.203
+margin_top = 1.92203
+margin_right = -2.20313
+margin_bottom = 157.922
+rect_min_size = Vector2( 156, 156 )
+texture = ExtResource( 2 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }

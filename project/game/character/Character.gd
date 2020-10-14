@@ -259,6 +259,10 @@ func update_status(type: String):
 
 #STATUS METHODS
 
+func on_ally_died_avenge():
+	var status = get_status("avenge")
+	add_status("perm_strength", status.amount, true, {})
+
 func on_death_splitting():
 	var status = get_status("splitting")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)

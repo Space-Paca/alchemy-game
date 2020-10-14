@@ -1,6 +1,12 @@
 class_name StatusDB
 
 const STATUSES = {
+   "avenge": {
+	"title_name": "Avenge",
+	"description": "When an ally dies, this character gains permanent strength",
+	"image": preload("res://assets/images/status/random_status.png"),
+	"intent_title": "Avenging",
+	"in-text_name": "avenge"},
    "arcane_aegis": {
 	"title_name": "Arcane Aegis",
 	"description": "Whenever this characters is attacked, if it wasn't shielded, gains shield",

@@ -776,6 +776,11 @@ func _on_enemy_died(enemy):
 	if func_state and func_state.is_valid():
 		yield(enemy, "finished_updating_status")
 	
+	for ally_enemy in enemies_node.get_children():
+		func_state = ally_enemy.update_status("on_ally_died")
+		if func_state and func_state.is_valid():
+			yield(ally_enemy, "finished_updating_status")
+	
 	if enemy.data.change_phase:
 		yield(get_tree().create_timer(1.5), "timeout")
 		#TODO: Add more cool effects here, like screen shaking

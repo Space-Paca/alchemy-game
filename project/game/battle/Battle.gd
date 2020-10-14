@@ -480,7 +480,7 @@ func win():
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
 	
-	if not is_boss or floor_level <= Debug.MAX_FLOOR:
+	if not is_boss or floor_level < Debug.MAX_FLOOR:
 		setup_win_screen(current_encounter)
 	
 		ended = true

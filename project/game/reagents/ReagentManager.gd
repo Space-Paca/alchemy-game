@@ -66,7 +66,6 @@ func get_substitution_tooltip(type):
 		var sub_data = get_data(sub_reagent)
 		var path = sub_data.image.get_path()
 		text += "[img=48x48]"+path+"[/img]  "
-		print(text)
 	var tooltip = {"title": "Substitutes", "text": text, \
 				   "title_image": data.image.get_path()}
 	

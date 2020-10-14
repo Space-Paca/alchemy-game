@@ -211,7 +211,7 @@ func restrict(amount: int, type: String):
 			for j in range(0,grid_size):
 				if i == 0 or i == grid_size -1 or \
 				   j == 0 or j == grid_size -1:
-					var slot = $Slots.get_child(i + j*grid_size)
+					var slot = slots.get_child(i + j*grid_size)
 					if not slot.is_restricted():
 						unrestricted_slots.append(slot)
 	#Get only central slots
@@ -220,7 +220,7 @@ func restrict(amount: int, type: String):
 			for j in range(0,grid_size):
 				if i != 0 and i != grid_size -1 and \
 				   j != 0 and j != grid_size -1:
-					var slot = $Slots.get_child(i + j*grid_size)
+					var slot = slots.get_child(i + j*grid_size)
 					if not slot.is_restricted():
 						unrestricted_slots.append(slot)
 	else:

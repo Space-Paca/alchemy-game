@@ -480,21 +480,24 @@ func win():
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
 	
-	setup_win_screen(current_encounter)
+	if not is_boss or floor_level <= Debug.MAX_FLOOR:
+		setup_win_screen(current_encounter)
 	
-	ended = true
-	
-	TooltipLayer.clean_tooltips()
-	disable_player()
-	player.clear_status()
-	emit_signal("won")
-	
-	#Wait a bit before starting win bgm
-	yield(get_tree().create_timer(.3), "timeout")
-	if is_boss:
-		AudioManager.play_bgm("win_boss_battle", false, true)
+		ended = true
+		
+		TooltipLayer.clean_tooltips()
+		disable_player()
+		player.clear_status()
+		emit_signal("won")
+		
+		#Wait a bit before starting win bgm
+		yield(get_tree().create_timer(.3), "timeout")
+		if is_boss:
+			AudioManager.play_bgm("win_boss_battle", false, true)
+		else:
+			AudioManager.play_bgm("win_normal_battle", false, true)
 	else:
-		AudioManager.play_bgm("win_normal_battle", false, true)
+		_on_win_screen_continue_pressed()
 
 
 func show_victory_screen(combinations: Array):

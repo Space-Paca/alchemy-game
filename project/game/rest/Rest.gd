@@ -55,7 +55,6 @@ func create_display(combination):
 
 func _on_HealButton_pressed():
 	AudioManager.play_sfx("heal")
-	print("heal", get_heal_value())
 	player.hp = min(player.hp + get_heal_value(), player.max_hp)
 	reset_room()
 	emit_signal("closed")

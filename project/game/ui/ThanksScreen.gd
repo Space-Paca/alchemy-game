@@ -1,16 +1,34 @@
 extends CanvasLayer
 
-const FADE_DURATION = 1.5
-const WAIT_TIME = 2
-
 onready var tween = $Tween
 
 func _ready():
-	tween.interpolate_property($ColorRect, "modulate:a", 0, 1, 1.5)
-	tween.start()
+	$BG.modulate.a = 0
+	$Thanks.modulate.a = 0
+	$CheckBack.modulate.a = 0
 	
+	tween.interpolate_property($BG, "modulate:a", 0, 1, 1.5)
+	tween.start()
 	yield(tween, "tween_completed")
-	yield(get_tree().create_timer(WAIT_TIME), "timeout")
+	
+	yield(get_tree().create_timer(1.5), "timeout")
+	
+	tween.interpolate_property($Thanks, "modulate:a", 0, 1, 1.5)
+	tween.start()
+	yield(tween, "tween_completed")
+	
+	yield(get_tree().create_timer(3.5), "timeout")
+	
+	tween.interpolate_property($CheckBack, "modulate:a", 0, 1, 1.5)
+	tween.start()
+	yield(tween, "tween_completed")
+	
+	
+	yield(get_tree().create_timer(8.5), "timeout")
+	
+	tween.interpolate_property($FadeOut, "modulate:a", 0, 1, 2)
+	tween.start()
+	yield(tween, "tween_completed")
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://game/main-menu/MainMenu.tscn")

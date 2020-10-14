@@ -11,7 +11,7 @@ signal battle_won
 signal floor_selected(floor_number)
 
 const VERSION := "v.0.0.6"
-const MAX_FLOOR := 2
+const MAX_FLOOR := 3
 
 var floor_to_go := -1
 var recipes_unlocked := false

@@ -293,7 +293,7 @@ func new_battle(encounter: Encounter):
 
 func open_shop():
 	AudioManager.play_bgm("shop")
-	map.hide()
+	map.disable()
 	shop.update_currency()
 	shop.update_reagents()
 	shop.show()
@@ -303,28 +303,28 @@ func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
 	rest.setup(room, _player, get_incomplete_combinations())
 	rest.show()
-	map.hide()
+	map.disable()
 
 
 func open_smith(room, _player):
 	AudioManager.play_bgm("blacksmith")
 	smith.setup(room, _player)
 	smith.show()
-	map.hide()
+	map.disable()
 
 
 func open_lab(room, _player):
 	AudioManager.play_bgm("laboratory")
 	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
-	map.hide()
+	map.disable()
 
 
 func open_treasure(room, _player):
 	AudioManager.play_bgm("treasure")
 	treasure.setup(room, _player, floor_level)
 	treasure.show()
-	map.hide()
+	map.disable()
 
 
 func extract_boost_effects(reagents):
@@ -361,7 +361,7 @@ func _on_map_node_selected(node:MapNode):
 	if node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS]:
 		current_node = node
 		new_battle(node.encounter)
-		map.hide()
+		map.disable()
 		node.set_type(MapNode.EMPTY)
 	elif node.type == MapNode.SHOP:
 		open_shop()
@@ -406,10 +406,10 @@ func _on_Battle_finished(is_boss):
 			create_level(floor_level)
 			$Player.level_up()
 		else:
-			map.show()
+			map.enable()
 			thanks_for_playing()
 	else:
-		map.show()
+		map.enable()
 		map.reveal_paths(current_node)
 
 
@@ -506,7 +506,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 
 func _on_Shop_closed():
 	shop.hide()
-	map.show()
+	map.enable()
 	play_map_bgm()
 
 
@@ -543,24 +543,24 @@ func _on_Debug_floor_selected(floor_number: int):
 
 func _on_Rest_closed():
 	rest.hide()
-	map.show()
+	map.enable()
 	play_map_bgm()
 
 
 func _on_Blacksmith_closed():
 	smith.hide()
-	map.show()
+	map.enable()
 	play_map_bgm()
 
 
 func _on_Laboratory_closed():
 	lab.hide()
 	cur_lab_attempts = lab.get_attempts()
-	map.show()
+	map.enable()
 	play_map_bgm()
 
 
 func _on_Treasure_closed():
 	treasure.hide()
-	map.show()
+	map.enable()
 	play_map_bgm()

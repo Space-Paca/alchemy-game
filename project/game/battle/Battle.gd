@@ -364,6 +364,7 @@ func recipe_book_toggled(visible: bool):
 		TooltipLayer.clean_tooltips()
 		for reagent in reagents.get_children():
 			reagent.disable()
+			reagent.disable_dragging()
 		draw_bag.disable()
 		discard_bag.disable()
 	else:
@@ -372,6 +373,7 @@ func recipe_book_toggled(visible: bool):
 		pass_turn_button.show()
 		for reagent in reagents.get_children():
 			reagent.enable()
+			reagent.enable_dragging()
 		draw_bag.enable()
 		discard_bag.disable()
 

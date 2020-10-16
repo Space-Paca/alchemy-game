@@ -344,6 +344,7 @@ func extract_boost_effects(reagents):
 
 func recipe_book_toggle():
 	var visible = recipe_book.toggle_visibility()
+	map.recipe_toogle(visible)
 	if battle:
 		battle.recipe_book_toggled(visible)
 

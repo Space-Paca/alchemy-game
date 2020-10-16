@@ -71,6 +71,13 @@ func disable():
 	camera_last_pos = camera.position
 	reset_camera()
 
+func recipe_toogle(active : bool):
+	if not visible:
+		return
+	if active:
+		floor_label.hide()
+	else:
+		floor_label.show()
 
 func set_level(level:int):
 	current_level = level

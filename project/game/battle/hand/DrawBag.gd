@@ -35,7 +35,8 @@ func copy_bag(other_bag):
 		drawable_reagents.remove_child(c)
 	
 	for reagent in other_bag.drawable_reagents.get_children():
-		drawable_reagents.add_child(ReagentManager.create_object(reagent.type))
+		var reagent_object = ReagentManager.create_object(reagent.type)
+		add_reagent(reagent_object, false)
 	
 	update_counter()
 
@@ -54,10 +55,13 @@ func get_reagent_names() -> Array:
 	return names
 
 
-func add_reagent(reagent):
+func add_reagent(reagent, should_update_counter: = true):
+	reagent.disable()
+	reagent.disable_dragging()
 	reagent.visible = false
 	drawable_reagents.add_child(reagent)
-	update_counter()
+	if should_update_counter:
+		update_counter()
 
 func get_width():
 	return $TextureRect.rect_size.x

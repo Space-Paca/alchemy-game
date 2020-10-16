@@ -30,7 +30,8 @@ func copy_bag(other_bag):
 		discarded_reagents.remove_child(c)
 	
 	for reagent in other_bag.discarded_reagents.get_children():
-		discarded_reagents.add_child(ReagentManager.create_object(reagent.type))
+		var reagent_object = ReagentManager.create_object(reagent.type)
+		add_reagent(reagent_object, false)
 	
 	update_counter()
 
@@ -74,10 +75,15 @@ func discard(reagent):
 	reagent.speed_mod = 1
 	reagent.effect_mod = 1
 	emit_signal("reagent_discarded", reagent)
+	add_reagent(reagent)
+
+func add_reagent(reagent, should_update_counter: = true):
+	reagent.disable()
+	reagent.disable_dragging()
 	reagent.visible = false
 	discarded_reagents.add_child(reagent)
-	update_counter()
-
+	if should_update_counter:
+		update_counter()
 
 func return_reagents():
 	var all_reagents = []

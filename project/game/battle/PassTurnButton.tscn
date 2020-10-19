@@ -20,10 +20,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = -5.0
-margin_top = -5.0
-margin_right = 265.0
-margin_bottom = 95.0
+margin_left = 13.05
+margin_top = 13.0501
+margin_right = 283.05
+margin_bottom = 93.0501
 custom_fonts/font = SubResource( 1 )
 text = "End Turn"
 align = 1

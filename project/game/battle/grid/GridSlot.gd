@@ -1,6 +1,7 @@
 extends Slot
 
 onready var reagent_hint = $MarginContainer/ReagentHint
+onready var restrict_chain = $CanvasLayer/RestrictChain
 
 const ALPHA_SPEED = 3
 
@@ -14,25 +15,24 @@ func _ready():
 
 func _process(delta):
 	if is_restrained():
-		$FullImage.modulate.a = max($FullImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$EmptyImage.modulate.a = max($EmptyImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$RestrictImage.modulate.a = max($RestrainedImage.modulate.a - ALPHA_SPEED*delta, 0)
 		$RestrainedImage.modulate.a = min($RestrainedImage.modulate.a + ALPHA_SPEED*delta, 1)
-	elif is_restricted():
-		$FullImage.modulate.a = max($FullImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$EmptyImage.modulate.a = max($EmptyImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$RestrictImage.modulate.a = min($RestrictImage.modulate.a + ALPHA_SPEED*delta, 1)
+	else:
 		$RestrainedImage.modulate.a = max($RestrainedImage.modulate.a - ALPHA_SPEED*delta, 0)
-	elif get_reagent():
+		
+	if is_restricted():
+		$RestrictImage.modulate.a = min($RestrictImage.modulate.a + ALPHA_SPEED*delta, 1)
+		restrict_chain.modulate.a = min(restrict_chain.modulate.a + ALPHA_SPEED*delta, 1)
+	else:
+		$RestrictImage.modulate.a = max($RestrictImage.modulate.a - ALPHA_SPEED*delta, 0)
+		restrict_chain.modulate.a = max(restrict_chain.modulate.a - ALPHA_SPEED*delta, 0)
+	
+	if get_reagent():
 		$FullImage.modulate.a = min($FullImage.modulate.a + ALPHA_SPEED*delta, 1)
 		$EmptyImage.modulate.a = max($EmptyImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$RestrictImage.modulate.a = max($RestrictImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$RestrainedImage.modulate.a = max($RestrainedImage.modulate.a - ALPHA_SPEED*delta, 0)
 	else:
 		$FullImage.modulate.a = max($FullImage.modulate.a - ALPHA_SPEED*delta, 0)
 		$EmptyImage.modulate.a = min($EmptyImage.modulate.a + ALPHA_SPEED*delta, 1)
-		$RestrictImage.modulate.a = max($RestrictImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$RestrainedImage.modulate.a = max($RestrainedImage.modulate.a - ALPHA_SPEED*delta, 0)
+		
 
 func get_width():
 	return $FullImage.rect_size.x
@@ -57,6 +57,9 @@ func is_restricted():
 func restrict():
 	AudioManager.play_sfx("restrict_slot")
 	restricted = true
+	randomize()
+	restrict_chain.rect_rotation = rand_range(0, 360)
+	$CanvasLayer.offset = rect_global_position
 
 func unrestrict():
 	restricted = false

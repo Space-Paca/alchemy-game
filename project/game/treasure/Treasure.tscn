@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/images/background/08 florest.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/background/bg_muro.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://game/treasure/Treasure.gd" type="Script" id=4]

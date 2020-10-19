@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/images/background-map1.png" type="Texture" id=13]
 [ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=14]
 [ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/ui/book/bg_book.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/background/04_cave.jpg" type="Texture" id=18]
 [ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/images/background/08 florest.png" type="Texture" id=21]
@@ -62,6 +62,7 @@ __meta__ = {
 }
 
 [node name="BookBG" type="TextureRect" parent="."]
+margin_left = -818.0
 margin_right = 818.0
 margin_bottom = 1080.0
 texture = ExtResource( 16 )
@@ -72,43 +73,43 @@ __meta__ = {
 }
 
 [node name="RecipesButton" parent="." instance=ExtResource( 1 )]
-margin_left = 774.941
-margin_top = 56.9307
-margin_right = 974.941
-margin_bottom = 126.931
+margin_left = 766.666
+margin_top = 65.8007
+margin_right = 966.666
+margin_bottom = 135.801
 
 [node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
-margin_left = 781.91
-margin_top = 916.794
-margin_right = 1106.91
-margin_bottom = 1014.8
+margin_left = 757.86
+margin_top = 898.748
+margin_right = 1082.86
+margin_bottom = 996.754
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 195.0
-margin_top = 395.0
-margin_right = 195.0
-margin_bottom = 395.0
+margin_left = 230.0
+margin_top = 380.0
+margin_right = 230.0
+margin_bottom = 380.0
 
 [node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 115, 720 )
+position = Vector2( 150, 710 )
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 10 )]
-margin_left = 90.0
-margin_top = 330.0
-margin_right = 634.0
-margin_bottom = 427.0
+margin_left = 114.606
+margin_top = 301.611
+margin_right = 114.606
+margin_bottom = 301.611
 
 [node name="DrawBag" parent="." instance=ExtResource( 7 )]
-position = Vector2( 27, 913 )
+position = Vector2( 82.0674, 915.512 )
 
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
-position = Vector2( 605, 905 )
+position = Vector2( 605, 911.735 )
 
 [node name="CreateRecipeButton" type="TextureButton" parent="."]
-margin_left = 290.0
-margin_top = 896.0
-margin_right = 420.0
-margin_bottom = 1026.0
+margin_left = 326.999
+margin_top = 877.5
+margin_right = 456.999
+margin_bottom = 1007.5
 texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 5
@@ -223,7 +224,7 @@ position = Vector2( 1622.61, 637.488 )
 position = Vector2( 1418.72, 498.149 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 8 )]
-position = Vector2( 20, 15 )
+position = Vector2( 29.5137, 5.48633 )
 
 [node name="Reagents" type="Node" parent="."]
 

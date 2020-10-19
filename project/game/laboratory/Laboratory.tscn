@@ -3,8 +3,8 @@
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/ui/Book.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/book_back_cover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/background/06_dungeon.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
@@ -57,6 +57,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BackButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -100,18 +108,12 @@ __meta__ = {
 
 [node name="Book" type="Node2D" parent="."]
 
-[node name="BBG" type="TextureRect" parent="Book"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BG" type="TextureRect" parent="Book"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -820.0
+margin_right = 820.0
+margin_bottom = 1064.0
 texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -146,21 +148,21 @@ __meta__ = {
 }
 
 [node name="BG2" type="TextureRect" parent="Counter"]
-margin_left = 50.8543
-margin_top = 135.611
-margin_right = 561.854
-margin_bottom = 489.611
-rect_scale = Vector2( 0.6, 0.6 )
+margin_left = 82.6381
+margin_top = 116.541
+margin_right = 688.638
+margin_bottom = 593.541
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Counter"]
-margin_left = 103.828
-margin_top = 161.038
-margin_right = 303.828
-margin_bottom = 282.038
+margin_left = 137.846
+margin_top = 144.659
+margin_right = 337.846
+margin_bottom = 265.659
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "10"
@@ -180,16 +182,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 565.0
-margin_top = -70.0
-margin_right = 565.0
-margin_bottom = -70.0
+margin_left = 399.724
+margin_top = -231.038
+margin_right = 399.724
+margin_bottom = -231.038
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 9 )]
-margin_left = 1253.0
-margin_top = 220.0
-margin_right = 1797.0
-margin_bottom = 317.0
+margin_left = 1260.55
+margin_top = 225.663
+margin_right = 1260.55
+margin_bottom = 225.663
 
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

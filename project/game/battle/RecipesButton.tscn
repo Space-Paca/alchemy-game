@@ -20,10 +20,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 30.0
-margin_top = 12.0
-margin_right = 137.0
-margin_bottom = 54.0
+margin_left = 41.3445
+margin_top = 16.4118
+margin_right = 148.345
+margin_bottom = 58.4118
 custom_fonts/font = SubResource( 1 )
 text = "Recipes"
 align = 1

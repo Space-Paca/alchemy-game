@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 onready var label = $Label
 

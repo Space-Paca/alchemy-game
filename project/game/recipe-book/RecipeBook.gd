@@ -17,6 +17,10 @@ onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
+const LONG_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn.png")
+const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short.png")
+const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
+const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
 
 enum States {BATTLE, MAP, LAB}
 enum {DECK, HAND, INCOMPLETE, COMPLETE, ALL}
@@ -289,6 +293,15 @@ func reset_recipe_visibility():
 		recipe_display.filtered = true
 		recipe_display.show()
 
+func update_tag_buttons(tag):
+	for idx in range($Background/TagButtons.get_child_count()):
+		var button = $Background/TagButtons.get_child(idx)
+		if idx == tag:
+			button.texture_normal = LONG_TAG_TEXTURE
+			button.texture_hover = LONG_TAG_HOVER_TEXTURE
+		else:
+			button.texture_normal = SHORT_TAG_TEXTURE
+			button.texture_hover = SHORT_TAG_HOVER_TEXTURE
 
 func _on_recipe_display_hovered(reagent_array: Array):
 	if state == States.BATTLE:
@@ -330,8 +343,14 @@ func _on_recipe_display_favorite_toggled(combination: Combination, button_presse
 
 
 func _on_Tag_pressed(tag: int):
+	AudioManager.play_sfx("open_recipe_book")
 	filter_by_tag(tag)
+	update_tag_buttons(tag)
 
 
 func _on_FilterMenu_filters_updated(filters: Array):
 	filter_combinations(filters)
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

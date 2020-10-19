@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/images/ui/book/bg_book.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/book/recipe_page.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=5]
 [ext_resource path="res://game/battle/hand/DiscardBag.tscn" type="PackedScene" id=6]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=9]
 [ext_resource path="res://game/recipe-book/FilterMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn_short.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn_hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn_short_hover.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -42,9 +45,10 @@ __meta__ = {
 
 [node name="Divider" type="TextureRect" parent="Background"]
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_top = 100.0
-margin_right = 733.0
-margin_bottom = 160.0
+margin_left = 41.5304
+margin_top = 169.847
+margin_right = 774.53
+margin_bottom = 229.847
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -52,28 +56,28 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="Background"]
-margin_left = 5.0
-margin_top = 50.0
-margin_right = 93.0
-margin_bottom = 117.0
+margin_left = 67.2957
+margin_top = 100.969
+margin_right = 155.296
+margin_bottom = 167.969
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Background"]
-margin_left = 100.0
-margin_top = 50.0
-margin_right = 350.0
-margin_bottom = 121.0
+margin_left = 188.724
+margin_top = 116.071
+margin_right = 438.724
+margin_bottom = 187.071
 custom_fonts/font = SubResource( 1 )
 text = "Recipe List"
 align = 1
 valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background"]
-margin_left = 20.0
-margin_top = 160.0
-margin_right = 720.0
-margin_bottom = 1010.0
-rect_min_size = Vector2( 700, 650 )
+margin_left = 43.1633
+margin_top = 217.017
+margin_right = 743.163
+margin_bottom = 717.018
+rect_min_size = Vector2( 700, 580 )
 size_flags_horizontal = 6
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -125,28 +129,29 @@ custom_constants/separation = 0
 alignment = 1
 
 [node name="TagButtons" type="VBoxContainer" parent="Background"]
-margin_left = 760.0
-margin_top = 150.0
-margin_right = 998.0
-margin_bottom = 621.0
+margin_left = 772.473
+margin_top = 249.781
+margin_right = 1119.47
+margin_bottom = 720.781
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DeckBtn" type="TextureButton" parent="Background/TagButtons"]
-margin_right = 238.0
-margin_bottom = 91.0
+margin_right = 347.0
+margin_bottom = 98.0
 texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="Background/TagButtons/DeckBtn"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -23.0
-margin_right = 32.0
-margin_bottom = 23.0
+margin_left = -79.0902
+margin_top = -17.9546
+margin_right = -15.0902
+margin_bottom = 28.0454
 custom_fonts/font = ExtResource( 8 )
 text = "deck"
 align = 1
@@ -157,20 +162,21 @@ __meta__ = {
 
 [node name="HandBtn" type="TextureButton" parent="Background/TagButtons"]
 visible = false
-margin_top = 95.0
-margin_right = 238.0
-margin_bottom = 186.0
-texture_normal = ExtResource( 9 )
+margin_top = 102.0
+margin_right = 347.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="Background/TagButtons/HandBtn"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.5
-margin_top = -23.0
-margin_right = 34.5
-margin_bottom = 23.0
+margin_left = -79.9084
+margin_top = -19.6364
+margin_right = -10.9084
+margin_bottom = 26.3636
 custom_fonts/font = ExtResource( 8 )
 text = "hand"
 align = 1
@@ -180,20 +186,21 @@ __meta__ = {
 }
 
 [node name="IncompleteBtn" type="TextureButton" parent="Background/TagButtons"]
-margin_top = 95.0
-margin_right = 238.0
-margin_bottom = 186.0
-texture_normal = ExtResource( 9 )
+margin_top = 102.0
+margin_right = 347.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="Background/TagButtons/IncompleteBtn"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -76.0
-margin_top = -23.0
-margin_right = 76.0
-margin_bottom = 23.0
+margin_left = -114.681
+margin_top = -19.6365
+margin_right = 37.3187
+margin_bottom = 26.3635
 custom_fonts/font = ExtResource( 8 )
 text = "incomplete"
 align = 1
@@ -203,20 +210,21 @@ __meta__ = {
 }
 
 [node name="CompleteBtn" type="TextureButton" parent="Background/TagButtons"]
-margin_top = 190.0
-margin_right = 238.0
-margin_bottom = 281.0
-texture_normal = ExtResource( 9 )
+margin_top = 204.0
+margin_right = 347.0
+margin_bottom = 302.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="Background/TagButtons/CompleteBtn"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -62.0
-margin_top = -23.0
-margin_right = 62.0
-margin_bottom = 23.0
+margin_left = -97.3176
+margin_top = -19.6364
+margin_right = 26.6824
+margin_bottom = 26.3636
 custom_fonts/font = ExtResource( 8 )
 text = "complete"
 align = 1
@@ -226,20 +234,21 @@ __meta__ = {
 }
 
 [node name="AllBtn" type="TextureButton" parent="Background/TagButtons"]
-margin_top = 285.0
-margin_right = 238.0
-margin_bottom = 376.0
-texture_normal = ExtResource( 9 )
+margin_top = 306.0
+margin_right = 347.0
+margin_bottom = 404.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="Background/TagButtons/AllBtn"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -23.0
-margin_right = 16.0
-margin_bottom = 23.0
+margin_left = -54.6813
+margin_top = -19.6364
+margin_right = -22.6813
+margin_bottom = 26.3636
 custom_fonts/font = ExtResource( 8 )
 text = "all"
 align = 1
@@ -249,15 +258,20 @@ __meta__ = {
 }
 
 [node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
-margin_left = 420.0
-margin_top = 55.0
-margin_right = -398.0
-margin_bottom = -1025.0
+margin_left = 508.724
+margin_top = 119.183
+margin_right = -309.276
+margin_bottom = -960.817
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
+[connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
+[connection signal="mouse_entered" from="Background/TagButtons/IncompleteBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/IncompleteBtn" to="." method="_on_Tag_pressed" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Background/TagButtons/CompleteBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/CompleteBtn" to="." method="_on_Tag_pressed" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]

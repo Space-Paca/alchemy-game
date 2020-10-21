@@ -6,10 +6,8 @@ signal map_node_pressed(node)
 onready var bg = $Background
 onready var lines = $Lines
 onready var camera = $Camera
-onready var center_position = $FixedPositions/Center
 onready var click_block = $ClickBlock
 onready var nodes = $Nodes
-onready var positions = $FixedPositions
 onready var floor_label = $CanvasLayer/FloorLabel
 onready var compass = $CanvasLayer/Compass
 
@@ -27,6 +25,12 @@ var initial_node : MapNode
 var current_level : int setget set_level
 var update_camera := true
 var camera_last_pos = false
+var stored_map_positions = null
+var positions = null
+var center_position = null
+
+func _ready():
+	stored_map_positions = $FixedPositions.duplicate(7)
 
 func _process(dt):
 	if update_camera:
@@ -118,6 +122,16 @@ func reset_camera():
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
+	
+	#Reset Stored Positions
+	var old_positions = get_node("FixedPositions")
+	if old_positions:
+		remove_child(old_positions)
+		old_positions.queue_free()
+	positions = stored_map_positions.duplicate(7)
+	print(positions.name)
+	center_position = positions.get_node("Center")
+	add_child_below_node(nodes, positions)
 	
 	reset_camera()
 	active_nodes = []

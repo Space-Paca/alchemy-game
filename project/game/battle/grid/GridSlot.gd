@@ -27,11 +27,11 @@ func _process(delta):
 		restrict_chain.modulate.a = max(restrict_chain.modulate.a - ALPHA_SPEED*delta, 0)
 	
 	if get_reagent():
-		$FullImage.modulate.a = min($FullImage.modulate.a + ALPHA_SPEED*delta, 1)
+		$FullImage.modulate.a = min($FullImage.modulate.a + 2*ALPHA_SPEED*delta, 1)
 		$EmptyImage.modulate.a = max($EmptyImage.modulate.a - ALPHA_SPEED*delta, 0)
 	else:
 		$FullImage.modulate.a = max($FullImage.modulate.a - ALPHA_SPEED*delta, 0)
-		$EmptyImage.modulate.a = min($EmptyImage.modulate.a + ALPHA_SPEED*delta, 1)
+		$EmptyImage.modulate.a = min($EmptyImage.modulate.a + 2*ALPHA_SPEED*delta, 1)
 		
 
 func get_width():

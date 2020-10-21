@@ -84,6 +84,7 @@ stretch_mode = 6
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RestrictChain" type="TextureRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = -14.0158
 margin_top = 20.0226
 margin_right = 93.9842

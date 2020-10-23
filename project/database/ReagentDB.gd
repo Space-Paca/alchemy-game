@@ -63,7 +63,7 @@ const DB = {
 		"tooltip" : "If not used correctly, gives %s shield to user.",
 		"effect" : {"type": "shield", "value": 2, "upgraded_value": 2, "upgraded_boost": {"type": "shield", "value": 1}},
 		"gold_value" : 15,
-		"substitute" : [],
+		"substitute" : ["defensive"],
 	},
 	"defensive": {
 		"name": "Shell Shard",

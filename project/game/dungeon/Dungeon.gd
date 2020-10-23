@@ -43,6 +43,7 @@ func _ready():
 	
 	randomize()
 	create_combinations()
+	EventManager.reset_events()
 	
 	if Debug.floor_to_go != -1:
 		floor_level = Debug.floor_to_go

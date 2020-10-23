@@ -41,11 +41,11 @@ func _ready():
 	
 	# Initial bag
 	for _i in range(5):
-		add_reagent("common", false)
+		add_reagent("faint", false)
 	for _i in range(3):
-		add_reagent("damaging", false)
+		add_reagent("weak_damaging", false)
 	for _i in range(3):
-		add_reagent("defensive", false)
+		add_reagent("weak_defensive", false)
 
 
 func draw_reagents_resolve():

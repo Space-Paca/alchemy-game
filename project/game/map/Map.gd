@@ -129,7 +129,6 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		remove_child(old_positions)
 		old_positions.queue_free()
 	positions = stored_map_positions.duplicate(7)
-	print(positions.name)
 	center_position = positions.get_node("Center")
 	add_child_below_node(nodes, positions)
 	

@@ -1,5 +1,7 @@
 extends Node
 
+signal leave
+
 var current_quest : Event = null
 var events := {}
 var event_list := []
@@ -36,6 +38,8 @@ func get_random_event(current_floor: int) -> Event:
 	if current_quest:
 		event = current_quest
 		current_quest = null
+	else:
+		assert(event_list.size(), "Event list is empty")
 	
 	while not event:
 		event = event_list.pop_front()
@@ -44,3 +48,22 @@ func get_random_event(current_floor: int) -> Event:
 			event = null
 	
 	return event
+
+
+####### EVENT CALLBACKS #######
+
+func none(_event_display):
+	assert(false, "No callback set for this option")
+
+
+func leave(_event_display):
+	print("leave")
+	emit_signal("leave")
+
+
+func load_new_event(event_display, new_event_id: int):
+	event_display.load_event(events[new_event_id])
+
+
+func push_luck():
+	pass

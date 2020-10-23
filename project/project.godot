@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://database/Event.gd"
 }, {
+"base": "Resource",
+"class": "EventOption",
+"language": "GDScript",
+"path": "res://database/EventOption.gd"
+}, {
 "base": "TextureButton",
 "class": "FavoriteButton",
 "language": "GDScript",
@@ -128,6 +133,7 @@ _global_script_class_icons={
 "Enemy": "",
 "EnemyLogic": "",
 "Event": "",
+"EventOption": "",
 "FavoriteButton": "",
 "Map": "",
 "MapLine": "",

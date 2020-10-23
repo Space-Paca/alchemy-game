@@ -294,6 +294,7 @@ func new_player_turn():
 		if func_state and func_state.is_valid():
 			yield($Grid, "restrained")
 	
+	
 	enable_player()
 
 

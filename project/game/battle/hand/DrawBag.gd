@@ -77,6 +77,7 @@ func start_drawing(_reagents):
 		reagent.grow()
 		reagent.rect_scale = Vector2(0,0)
 		hand.place_reagent(reagent)
+		reagent.enable()
 		update_counter(_reagents.size())
 		if not _reagents.empty():
 			randomize()

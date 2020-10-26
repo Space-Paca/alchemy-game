@@ -73,3 +73,48 @@ func get_substitution_tooltip(type):
 				   "title_image": data.image.get_path()}
 	
 	return tooltip
+
+#Given an array of reagents for a recipe, and and array of given reagentes, 
+#checks if you can create the recipe with the given reagents, taking into
+#consideration substitutions. If possible, will return an array of indexes
+#for which reagents to use in the given_reagents array
+func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
+	var reagent_arrays_to_check = [given_reagents]
+	var reagent_arrays_viewed = []
+	var correct_reagents
+	while not reagent_arrays_to_check.empty():
+		var cur_reagents_array = reagent_arrays_to_check.pop_front()
+		correct_reagents = try_reagents(recipe_array, cur_reagents_array)
+		if correct_reagents:
+			return correct_reagents
+		else:
+			#Previous hand isn't valid, will add all possible 1-substitution available from it
+			for i in cur_reagents_array.size():
+				var reagent = cur_reagents_array[i]
+				if reagent:
+					var reagent_data = ReagentManager.get_data(reagent)
+					for sub_reagent in reagent_data.substitute:
+						var new_array = cur_reagents_array.duplicate(true)
+						new_array[i] = sub_reagent
+						if reagent_arrays_viewed.find(new_array) == -1:
+							reagent_arrays_to_check.append(new_array)
+							reagent_arrays_viewed.append(new_array)
+	return false
+
+#Checks if the given hand reagents contains all reagents needed for reagent array
+func try_reagents(reagent_array, hand_reagents_array):
+	var comparing_reagents = reagent_array.duplicate() 
+	var correct_reagent_displays := []
+	var i = 0
+	while not comparing_reagents.empty() and i < hand_reagents_array.size():
+		var reagent = hand_reagents_array[i]
+		for other in comparing_reagents:
+			if reagent == other:
+				correct_reagent_displays.append(i)
+				comparing_reagents.erase(other)
+				break
+		i += 1
+	if comparing_reagents.empty():
+		return correct_reagent_displays
+	else:
+		return null

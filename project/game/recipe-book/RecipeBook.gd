@@ -146,53 +146,15 @@ func update_bags():
 	draw_bag.copy_bag(battle_draw_bag)
 	discard_bag.copy_bag(battle_discard_bag)
 
-
 func color_hand_reagents(reagent_array: Array):
-	var initial_hand_array = []
+	var hand_array = []
 	for reagent_display in hand_reagents:
-		initial_hand_array.append(reagent_display.reagent_name)
-	var hand_arrays_to_check = [initial_hand_array]
-	var hand_arrays_viewed = []
-	var correct_reagent_displays
-	while not hand_arrays_to_check.empty():
-		var hand_reagents_array = hand_arrays_to_check.pop_front()
-		correct_reagent_displays = try_reagents(reagent_array, hand_reagents_array)
-		if correct_reagent_displays:
-			break
-		else:
-			#Previous hand isn't valid, will add all possible 1-substitution available from it
-			for i in hand_reagents_array.size():
-				var reagent = hand_reagents_array[i]
-				var reagent_data = ReagentManager.get_data(reagent)
-				for sub_reagent in reagent_data.substitute:
-					var new_array = hand_reagents_array.duplicate(true)
-					new_array[i] = sub_reagent
-					if hand_arrays_viewed.find(new_array) == -1:
-						hand_arrays_to_check.append(new_array)
-						hand_arrays_viewed.append(new_array)
-	
-	if correct_reagent_displays:
-		for index in correct_reagent_displays:
+		hand_array.append(reagent_display.reagent_name)
+	var correct_reagents = ReagentManager.get_reagents_to_use(reagent_array, hand_array)
+	if correct_reagents:
+		for index in correct_reagents:
 			var display = hand_reagents[index]
 			display.self_modulate = Color.green
-
-#Checks if the given hand reagents contains all reagents needed for reagent array
-func try_reagents(reagent_array, hand_reagents_array):
-	var comparing_reagents = reagent_array.duplicate() 
-	var correct_reagent_displays := []
-	var i = 0
-	while not comparing_reagents.empty() and i < hand_reagents_array.size():
-		var reagent = hand_reagents_array[i]
-		for other in comparing_reagents:
-			if reagent == other:
-				correct_reagent_displays.append(i)
-				comparing_reagents.erase(other)
-				break
-		i += 1
-	if comparing_reagents.empty():
-		return correct_reagent_displays
-	else:
-		return null
 
 func reset_hand_reagents_color():
 	for display in hand_reagents:
@@ -350,18 +312,13 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 		error_effect()
 		return
 	
-	var combination_reagents : Array = combination.recipe.reagents.duplicate()
+	var combination_reagents = combination.recipe.reagents.duplicate()
+	var hand_array = []
+	for reagent_display in hand_reagents:
+		hand_array.append(reagent_display.reagent_name)
+	var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
 	
-	var i = 0
-	while not combination_reagents.empty() and i < hand_reagents.size():
-		var reagent = hand_reagents[i].reagent_name
-		for other in combination_reagents:
-			if reagent == other:
-				combination_reagents.erase(other)
-				break
-		i += 1
-	
-	if combination_reagents.empty():
+	if valid_reagents:
 		emit_signal("recipe_pressed", combination, mastery_unlocked)
 	else:
 		error_effect()

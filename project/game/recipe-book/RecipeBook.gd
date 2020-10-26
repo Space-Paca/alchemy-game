@@ -317,8 +317,10 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 	for reagent_display in hand_reagents:
 		hand_array.append(reagent_display.reagent_name)
 	var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
-	
 	if valid_reagents:
+		var selected_reagents = []
+		for idx in valid_reagents:
+			selected_reagents.append(hand_array[idx])
 		emit_signal("recipe_pressed", combination, mastery_unlocked)
 	else:
 		error_effect()

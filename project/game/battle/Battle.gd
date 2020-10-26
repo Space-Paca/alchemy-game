@@ -515,32 +515,30 @@ func set_enemy_pos(enemy_idx, pos_idx):
 
 
 func autocomplete_grid(combination: Combination):
-	var added_reagents := []
-	var grid_reagents := []
-	
 	for slot in grid.slots.get_children():
 		if slot.current_reagent:
-			grid_reagents.append(slot.current_reagent)
+			hand.place_reagent(slot.current_reagent)
+
+	var recipe_reagents = combination.recipe.reagents.duplicate()
+	var available_reagents := []
+	for reagent in reagents.get_children():
+		available_reagents.append(reagent.type)
+	var selected_reagents = ReagentManager.get_reagents_to_use(recipe_reagents, available_reagents)
 	
-	for i in range(combination.grid_size):
-		for j in range(combination.grid_size):
-			if combination.matrix[i][j]:
-				for reagent in reagents.get_children():
-					if not added_reagents.has(reagent) and\
-							reagent.type == combination.matrix[i][j]:
-						if not reagent.slot:
-							push_error("reagent isn't in slot")
-							assert(false)
-						grid.slots.get_child(i * grid.grid_size +\
-								j).set_reagent(reagent)
-						added_reagents.append(reagent)
-						break
-	
-	for reagent in grid_reagents:
-		if not added_reagents.has(reagent):
-			if reagent.slot.current_reagent != reagent:
-				reagent.slot = null
-			hand.place_reagent(reagent)
+	if selected_reagents:
+		for i in range(combination.grid_size):
+			for j in range(combination.grid_size):
+				if combination.matrix[i][j]:
+					for idx in recipe_reagents.size():
+						if recipe_reagents[idx] and recipe_reagents[idx] == combination.matrix[i][j]:
+							recipe_reagents[idx] = false
+							var reagent = reagents.get_child(selected_reagents[idx])
+							if not reagent.slot:
+								push_error("reagent isn't in slot")
+								assert(false)
+							grid.slots.get_child(i * grid.grid_size +\
+									j).set_reagent(reagent)
+							break
 
 
 func unhighlight_reagents():
@@ -548,21 +546,16 @@ func unhighlight_reagents():
 		reagent.unhighlight()
 
 
-func has_reagents(reagent_array: Array, highlight: bool = false) -> bool:
-	var dup_array : Array = reagent_array.duplicate()
-	var selected_reagents := []
-	
+func has_reagents(reagent_array: Array):
+	var available_reagents := []
 	for reagent in reagents.get_children():
-		for reagent_name in dup_array:
-			if reagent_name == reagent.type:
-				selected_reagents.append(reagent)
-				dup_array.erase(reagent_name)
-				break
-		if dup_array.empty():
-			if highlight:
-				for selected_reagent in selected_reagents:
-					selected_reagent.highlight()
-			return true
+		available_reagents.append(reagent.type)
+	var valid_reagents = ReagentManager.get_reagents_to_use(reagent_array, available_reagents)
+	if valid_reagents:
+		var selected_reagents := []
+		for idx in valid_reagents:
+			selected_reagents.append(reagents.get_child(idx))
+		return selected_reagents
 	
 	return false
 
@@ -1001,7 +994,8 @@ func _on_FavoriteButton_pressed(index: int):
 	AudioManager.play_sfx("click")
 	
 	var button : FavoriteButton = favorites.get_child(index)
-	if has_reagents(button.reagent_array):
+	var selected_reagents = has_reagents(button.reagent_array)
+	if selected_reagents:
 		autocomplete_grid(button.combination)
 	else:
 		AudioManager.play_sfx("error")
@@ -1010,7 +1004,10 @@ func _on_FavoriteButton_pressed(index: int):
 func _on_FavoriteButton_mouse_entered(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
 # warning-ignore:return_value_discarded
-	has_reagents(button.reagent_array, true)
+	var selected_reagents = has_reagents(button.reagent_array)
+	if selected_reagents:
+		for selected_reagent in selected_reagents:
+			selected_reagent.highlight()
 
 
 func _on_FavoriteButton_mouse_exited():

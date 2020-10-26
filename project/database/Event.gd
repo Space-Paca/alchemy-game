@@ -8,7 +8,7 @@ export(int) var id = 0
 export(String) var title = ""
 export(String) var text = ""
 export(Type) var type = Type.LUCK
-export(Dictionary) var floor_appearance = {1: true, 2: true, 3: true}
+export(Dictionary) var floor_appearance = {1: false, 2: false, 3: false}
 export(Array, Dictionary) var options = [
 		{"button_text": "", "callback": "none", "args": []},
 		{"button_text": "", "callback": "none", "args": []},

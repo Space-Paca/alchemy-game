@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 2
+title = "Walter McWishing Well"
+text = "Throw coins?"
+type = 0
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ 5 ],
+"button_text": "Throw 5 coins.",
+"callback": "well"
+}, {
+"args": [ 10 ],
+"button_text": "Throw 10 coins.",
+"callback": "well"
+}, {
+"args": [ 30 ],
+"button_text": "Throw 30 coins.",
+"callback": "well"
+}, {
+"args": [ 50 ],
+"button_text": "Throw 50 coins.",
+"callback": "well"
+}, {
+"args": [  ],
+"button_text": "Leave.",
+"callback": "leave"
+} ]

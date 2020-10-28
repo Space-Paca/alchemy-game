@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://game/battle/player-ui/PlayerUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/battle/EffectManager.gd" type="Script" id=9]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/images/ui/Combine Circle.png" type="Texture" id=11]
-[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BoldOblique.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://game/battle/player-ui/CombineButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/images/background-map1.png" type="Texture" id=13]
 [ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=14]
 [ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
@@ -27,14 +26,6 @@
 [ext_resource path="res://assets/images/background/03_fire.jpg" type="Texture" id=27]
 [ext_resource path="res://assets/images/background/04_FG_cave.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/background/06_FG_dungeon.png" type="Texture" id=29]
-
-[sub_resource type="DynamicFont" id=1]
-size = 56
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 12 )
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
@@ -105,39 +96,11 @@ position = Vector2( 82.0674, 915.512 )
 [node name="DiscardBag" parent="." instance=ExtResource( 6 )]
 position = Vector2( 605, 911.735 )
 
-[node name="CreateRecipeButton" type="TextureButton" parent="."]
-margin_left = 326.999
-margin_top = 877.5
-margin_right = 456.999
-margin_bottom = 1007.5
-texture_normal = ExtResource( 11 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="CreateRecipeButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -122.5
-margin_top = -81.0002
-margin_right = 122.5
-margin_bottom = 81.0002
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 3
-custom_constants/line_spacing = 0
-custom_constants/shadow_offset_y = 3
-custom_constants/shadow_as_outline = 0
-text = "Combine"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CombineButton" parent="." instance=ExtResource( 11 )]
+margin_left = 337.0
+margin_top = 877.0
+margin_right = 467.0
+margin_bottom = 1007.0
 
 [node name="Favorites" type="GridContainer" parent="."]
 margin_left = 95.0797
@@ -242,9 +205,7 @@ position = Vector2( 29.5137, 5.48633 )
 [connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]
 [connection signal="hand_slot_reagent_set" from="Hand" to="." method="_on_Hand_hand_slot_reagent_set"]
 [connection signal="reagent_discarded" from="DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
-[connection signal="button_down" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_button_down"]
-[connection signal="mouse_entered" from="CreateRecipeButton" to="." method="_on_CreateRecipeButton_mouse_entered"]
-[connection signal="pressed" from="CreateRecipeButton" to="." method="_on_CreateRecipe_pressed"]
+[connection signal="pressed" from="CombineButton" to="." method="_on_CombineButton_pressed"]
 [connection signal="mouse_entered" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 0 ]]
 [connection signal="mouse_exited" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_exited"]
 [connection signal="pressed" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_pressed" binds= [ 0 ]]

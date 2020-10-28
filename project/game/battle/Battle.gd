@@ -22,7 +22,7 @@ onready var pass_turn_button = $PassTurnButton
 onready var enemies_node = $Enemies
 onready var player_ui = $PlayerUI
 onready var recipe_name_display = $RecipeNameDisplay
-onready var create_recipe_button = $CreateRecipeButton
+onready var combine_button = $CombineButton
 onready var recipes_button = $RecipesButton
 onready var favorites = $Favorites
 onready var available_favorites = [$Favorites/FavoriteButton1,
@@ -331,7 +331,7 @@ func disable_player():
 	discard_bag.disable()
 	player_disabled = true
 	pass_turn_button.disabled = true
-	create_recipe_button.disabled = true
+	combine_button.disabled = true
 	set_favorites_disabled(true)
 	
 	for reagent in reagents.get_children():
@@ -349,7 +349,7 @@ func enable_player():
 	#Check curse
 	var curse = player.get_status("curse")
 	if not curse or curse.amount > recipes_created:
-		create_recipe_button.disabled = false
+		combine_button.disabled = false
 	
 	set_favorites_disabled(false)
 	
@@ -879,50 +879,6 @@ func _on_win_screen_continue_pressed():
 	emit_signal("finished", is_boss)
 	queue_free()
 
-
-func _on_CreateRecipe_pressed():
-	if grid.is_empty():
-		AudioManager.play_sfx("error")
-		return
-	
-	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
-		AudioManager.play_sfx("error")
-		return
-	
-	grid.clear_hint()
-	
-	var reagent_matrix := []
-	var child_index := 0
-	var reagent_list = []
-	for _i in range(grid.grid_size):
-		var line = []
-		for _j in range(grid.grid_size):
-			var reagent = grid.slots.get_child(child_index).current_reagent
-			if reagent:
-				reagent_list.append(reagent)
-				line.append(reagent.type)
-			else:
-				line.append(null)
-			child_index += 1
-		reagent_matrix.append(line)
-	
-	disable_player()
-	
-	#Combination animation
-	var sfx_dur = AudioManager.get_sfx_duration("combine")
-	var dur = reagent_list.size()*.3
-	AudioManager.play_sfx("combine", sfx_dur/dur)
-	for reagent in reagent_list:
-		reagent.combine_animation(grid.get_center(), dur)
-
-	yield(reagent_list.back(), "finished_combine_animation")
-
-	emit_signal("combination_made", reagent_matrix, reagent_list)
-	emit_signal("current_reagents_updated", hand.get_reagent_names())
-	
-	recipes_created += 1
-
-
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)
 
@@ -967,20 +923,9 @@ func _on_PassTurnButton_mouse_entered():
 	if not $PassTurnButton.disabled:
 		AudioManager.play_sfx("hover_button")
 
-
-func _on_CreateRecipeButton_mouse_entered():
-	if not $CreateRecipeButton.disabled:
-		AudioManager.play_sfx("hover_button")
-
-
 func _on_RecipesButton_mouse_entered():
 	if not $RecipesButton.disabled:
 		AudioManager.play_sfx("hover_button")
-
-
-func _on_CreateRecipeButton_button_down():
-	AudioManager.play_sfx("click")
-
 
 func _on_RecipesButton_button_down():
 	AudioManager.play_sfx("click")
@@ -1039,3 +984,45 @@ func _on_EffectManager_target_set():
 
 func _on_Debug_battle_won():
 	win()
+
+func _on_CombineButton_pressed():
+	if grid.is_empty():
+		AudioManager.play_sfx("error")
+		return
+	
+	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
+		AudioManager.play_sfx("error")
+		return
+	
+	grid.clear_hint()
+	
+	var reagent_matrix := []
+	var child_index := 0
+	var reagent_list = []
+	for _i in range(grid.grid_size):
+		var line = []
+		for _j in range(grid.grid_size):
+			var reagent = grid.slots.get_child(child_index).current_reagent
+			if reagent:
+				reagent_list.append(reagent)
+				line.append(reagent.type)
+			else:
+				line.append(null)
+			child_index += 1
+		reagent_matrix.append(line)
+	
+	disable_player()
+	
+	#Combination animation
+	var sfx_dur = AudioManager.get_sfx_duration("combine")
+	var dur = reagent_list.size()*.3
+	AudioManager.play_sfx("combine", sfx_dur/dur)
+	for reagent in reagent_list:
+		reagent.combine_animation(grid.get_center(), dur)
+
+	yield(reagent_list.back(), "finished_combine_animation")
+
+	emit_signal("combination_made", reagent_matrix, reagent_list)
+	emit_signal("current_reagents_updated", hand.get_reagent_names())
+	
+	recipes_created += 1

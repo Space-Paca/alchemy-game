@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/dungeon/Dungeon.gd" type="Script" id=1]
 [ext_resource path="res://game/dungeon/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://game/blacksmith/Blacksmith.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/laboratory/Laboratory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/treasure/Treasure.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/event/EventDisplay.tscn" type="PackedScene" id=9]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -33,6 +34,9 @@ visible = false
 
 [node name="Treasure" parent="." instance=ExtResource( 8 )]
 visible = false
+
+[node name="EventDisplay" parent="." instance=ExtResource( 9 )]
+visible = false
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
@@ -44,3 +48,4 @@ visible = false
 [connection signal="closed" from="Blacksmith" to="." method="_on_Blacksmith_closed"]
 [connection signal="closed" from="Laboratory" to="." method="_on_Laboratory_closed"]
 [connection signal="closed" from="Treasure" to="." method="_on_Treasure_closed"]
+[connection signal="closed" from="EventDisplay" to="." method="_on_EventDisplay_closed"]

@@ -143,12 +143,14 @@ func heal(amount : int):
 	
 	emit_signal("resolved")
 
+
 func draw(amount:int):
 	emit_signal("draw_reagent", amount)
 	
 	yield(self, "draw_resolve")
 	
 	emit_signal("resolved")
+
 
 func drain(source: Character, value: int):
 	#Check for weakness status
@@ -169,6 +171,7 @@ func drain(source: Character, value: int):
 		yield(hud, "animation_completed")
 
 	emit_signal("resolved")
+
 
 func take_damage(source: Character, value: int, type: String, retaliate := true):
 	#Check for weakness status
@@ -196,9 +199,11 @@ func take_damage(source: Character, value: int, type: String, retaliate := true)
 
 	emit_signal("resolved")
 
+
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
 	hud.update_status_bar(self)
+
 
 func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
 	.add_status(status, amount, positive, extra_args)
@@ -209,6 +214,7 @@ func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
 		AnimationManager.play("buff", hud.get_animation_position())
 	else:
 		AnimationManager.play("debuff", hud.get_animation_position())
+
 
 func gain_shield(amount: int):
 	if amount > 0:
@@ -229,13 +235,16 @@ func new_turn():
 		hud.update_visuals(self)
 		yield(hud, "animation_completed")
 
+
 func clear_status():
 	.clear_status()
 	hud.update_status_bar(self)
 
+
 func remove_status(status: String):
 	.remove_status(status)
 	hud.update_status_bar(self)
+
 
 func update_status(type: String):
 	.update_status(type)
@@ -253,15 +262,19 @@ func discover_combination(combination: Combination, play_sfx := false):
 		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)
 
+
 func get_artifacts():
 	return artifacts
+
 
 func call_artifacts(func_name : String, args := {}):
 	for artifact in artifacts:
 		ArtifactCallbacks.call("call_on_" + func_name, artifact, args)
 
+
 func has_artifact(name : String):
 	return artifacts.has(name)
+
 
 func add_artifact(name : String):
 	if not has_artifact(name):
@@ -269,6 +282,7 @@ func add_artifact(name : String):
 		ArtifactCallbacks.call_on_add(name, {"player": self})
 	else:
 		assert(false, "Player already has artifact: " + str(name))
+
 
 func remove_artifact(name : String):
 	if has_artifact(name):

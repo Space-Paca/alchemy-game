@@ -7,9 +7,11 @@ onready var rest = $Rest
 onready var lab = $Laboratory
 onready var smith = $Blacksmith
 onready var treasure = $Treasure
+onready var event_display = $EventDisplay
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
+const EVENT_SCENE = preload("res://game/event/EventDisplay.tscn")
 const RECIPES_REWARDED_PER_BATTLE = 3
 
 var battle
@@ -328,6 +330,13 @@ func open_treasure(room, _player):
 	map.disable()
 
 
+func open_event(map_node: MapNode):
+	event_display.load_event(EventManager.get_random_event(floor_level), player)
+	event_display.show()
+	map_node.set_type(MapNode.EMPTY)
+	map.disable()
+
+
 func extract_boost_effects(reagents):
 	var effects = {
 		"all": 0,
@@ -359,7 +368,7 @@ func _on_Combination_fully_discovered(combination: Combination):
 	possible_rewarded_combinations.erase(combination)
 
 
-func _on_map_node_selected(node:MapNode):
+func _on_map_node_selected(node: MapNode):
 	if node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS]:
 		current_node = node
 		new_battle(node.encounter)
@@ -375,6 +384,9 @@ func _on_map_node_selected(node:MapNode):
 		open_lab(node, player)
 	elif node.type == MapNode.TREASURE:
 		open_treasure(node, player)
+	elif node.type == MapNode.EVENT:
+		current_node = node
+		open_event(node)
 
 
 func _on_Battle_won():
@@ -520,29 +532,6 @@ func _on_Shop_hint_bought(combination: Combination):
 	recipe_book.update_combination(combination)
 
 
-func _on_Debug_combinations_unlocked():
-	if not Debug.recipes_unlocked:
-		Debug.recipes_unlocked = true
-		for grid_size in [2, 3, 4]:
-			for combination in combinations[grid_size]:
-				combination.discover_all_reagents()
-				recipe_book.add_combination(combination,
-						player.known_recipes.bsearch(combination.recipe.name),
-						mastery_threshold(combination))
-				recipe_book.update_combination(combination)
-
-
-func _on_Debug_floor_selected(floor_number: int):
-	if battle:
-		battle.queue_free()
-		battle = null
-	if map:
-		map.queue_free()
-	
-	create_level(floor_number)
-	player.set_level(floor_number)
-
-
 func _on_Rest_closed():
 	rest.hide()
 	map.enable()
@@ -566,3 +555,32 @@ func _on_Treasure_closed():
 	treasure.hide()
 	map.enable()
 	play_map_bgm()
+
+
+func _on_EventDisplay_closed():
+	event_display.hide()
+	map.enable()
+	map.reveal_paths(current_node)
+
+
+func _on_Debug_combinations_unlocked():
+	if not Debug.recipes_unlocked:
+		Debug.recipes_unlocked = true
+		for grid_size in [2, 3, 4]:
+			for combination in combinations[grid_size]:
+				combination.discover_all_reagents()
+				recipe_book.add_combination(combination,
+						player.known_recipes.bsearch(combination.recipe.name),
+						mastery_threshold(combination))
+				recipe_book.update_combination(combination)
+
+
+func _on_Debug_floor_selected(floor_number: int):
+	if battle:
+		battle.queue_free()
+		battle = null
+	if map:
+		map.queue_free()
+	
+	create_level(floor_number)
+	player.set_level(floor_number)

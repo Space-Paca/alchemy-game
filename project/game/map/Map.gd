@@ -29,8 +29,10 @@ var stored_map_positions = null
 var positions = null
 var center_position = null
 
+
 func _ready():
 	stored_map_positions = $FixedPositions.duplicate(7)
+
 
 func _process(dt):
 	if update_camera:
@@ -55,9 +57,10 @@ func _process(dt):
 			if (target_pos - $Camera.position).length() <= EPSLON:
 				$Camera.position = target_pos
 
+
 func set_disabled(toggle:bool):
 	click_block.visible = toggle
-	
+
 
 func enable():
 	show()
@@ -67,6 +70,7 @@ func enable():
 	if camera_last_pos:
 		camera.position = camera_last_pos
 
+
 func disable():
 	hide()
 	floor_label.hide()
@@ -75,6 +79,7 @@ func disable():
 	camera_last_pos = camera.position
 	reset_camera()
 
+
 func recipe_toogle(active : bool):
 	if not visible:
 		return
@@ -82,6 +87,7 @@ func recipe_toogle(active : bool):
 		floor_label.hide()
 	else:
 		floor_label.show()
+
 
 func set_level(level:int):
 	current_level = level
@@ -114,14 +120,17 @@ func validate_map(total_nodes:int, normal_enemies:int):
 	
 	assert(total_positions >= total_nodes, "Map doesn't have enough positions")
 
+
 func get_screen_center():
 	return Vector2(1920/2, 1080/2)
+
 
 func reset_camera():
 	$Camera.position = get_screen_center()
 
+
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
-		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
+		rests:int=1, shops:int=1, events:int=1, labs:int=1, treasures:int=1):
 	
 	#Reset Stored Positions
 	var old_positions = get_node("FixedPositions")

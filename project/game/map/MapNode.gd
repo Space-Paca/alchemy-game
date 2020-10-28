@@ -33,6 +33,7 @@ var paths_revealed := false
 var type := EMPTY
 var mouse_over = false
 
+
 func _process(dt):
 	if mouse_over and type != EMPTY:
 		$Legend.modulate.a = min($Legend.modulate.a + ALPHA_SPEED*dt, 1)
@@ -43,13 +44,16 @@ func _process(dt):
 		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
 
+
 func get_alpha():
 	return modulate.a
+
 
 func fade_in():
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
 								.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
+
 
 func set_type(new_type:int):
 	if new_type == type:
@@ -70,8 +74,7 @@ func set_type(new_type:int):
 
 
 func should_autoreveal() -> bool:
-	return type == EMPTY or type == SHOP or type == REST or type == SMITH or \
-		   type == LABORATORY or type == TREASURE
+	return type in [EMPTY, SHOP, REST, SMITH, LABORATORY, TREASURE]
 
 
 func _on_Button_pressed():

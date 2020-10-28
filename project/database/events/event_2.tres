@@ -9,9 +9,9 @@ title = "Walter McWishing Well"
 text = "Throw coins?"
 type = 0
 floor_appearance = {
-1: false,
-2: false,
-3: false
+1: true,
+2: true,
+3: true
 }
 options = [ {
 "args": [ 5 ],

@@ -1,5 +1,7 @@
 extends Control
 
+signal closed
+
 onready var title_label = $Title
 onready var text_label = $VBox/TextRect/TextContainer/Text
 onready var vbox = $VBox
@@ -15,11 +17,11 @@ var event : Event
 
 
 func _ready():
-	EventManager.reset_events()
-	load_event(EventManager.get_random_event(1))
+# warning-ignore:return_value_discarded
+	EventManager.connect("left", self, "_on_event_left")
 
 
-func load_event(new_event: Event):
+func load_event(new_event: Event, player: Player):
 	event = new_event
 	title_label.text = event.title
 	text_label.text = event.text
@@ -34,5 +36,9 @@ func load_event(new_event: Event):
 		vbox.add_child(button)
 		button.text = option.button_text
 		button.align = Button.ALIGN_LEFT
-		button.connect("pressed", EventManager, option.callback, [self] + option.args)
+		button.connect("pressed", EventManager, option.callback,
+				[self, player] + option.args)
 
+
+func _on_event_left():
+	emit_signal("closed")

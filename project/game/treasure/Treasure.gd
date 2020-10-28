@@ -37,6 +37,8 @@ func setup(node, _player, level):
 			$Artifacts.add_child(loot)
 			loot.setup(artifact)
 			loot.connect("pressed", self, "_on_loot_pressed")
+	
+	AudioManager.play_sfx("enter_treasure_room")
 
 func get_rarity_by_level(level):
 	match level:

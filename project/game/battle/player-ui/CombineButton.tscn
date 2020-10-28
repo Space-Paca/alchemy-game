@@ -49,6 +49,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="." to="." method="_on_CombineButton_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_CombineButton_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_CombineButton_mouse_exited"]

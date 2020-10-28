@@ -994,6 +994,8 @@ func _on_CombineButton_pressed():
 		AudioManager.play_sfx("error")
 		return
 	
+	AudioManager.play_sfx("combine_button_click")
+	
 	grid.clear_hint()
 	
 	var reagent_matrix := []

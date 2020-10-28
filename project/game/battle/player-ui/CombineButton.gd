@@ -26,13 +26,10 @@ func disable():
 	mouse_over = false
 	disabled = true
 
-func _on_CombineButton_button_down():
-	AudioManager.play_sfx("click")
-
 func _on_CombineButton_mouse_entered():
 	if not disabled:
 		mouse_over = true
-		AudioManager.play_sfx("hover_button")
+		AudioManager.play_sfx("hover_combine_button")
 
 func _on_CombineButton_mouse_exited():
 	mouse_over = false

@@ -145,6 +145,13 @@ func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combinat
 	if grid_combination:
 		return grid_combination
 	
+	#Get total number of reagents in grid
+	var total_reagents = 0
+	for i in range(grid_size):
+		for j in range(grid_size):
+			if reagent_matrix[i][j]:
+				total_reagents += 1
+
 	var new_grid_size = grid_size
 	while new_grid_size > 2:
 		new_grid_size -= 1
@@ -158,13 +165,18 @@ func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combinat
 		for i_offset in range(grid_size - new_grid_size + 1):
 			for j_offset in range(grid_size - new_grid_size + 1):
 				
+				var new_matrix_reagents = 0
 				for i in range(new_grid_size):
 					for j in range(new_grid_size):
 						new_matrix[i][j] = reagent_matrix[i+i_offset][j+j_offset]
+						if new_matrix[i][j]:
+							new_matrix_reagents += 1
 				
-				grid_combination = get_combination_in_matrix(new_grid_size, new_matrix)
-				if grid_combination:
-					return grid_combination
+				#Makes sure there are no reagents outside this submatrix
+				if new_matrix_reagents == total_reagents:
+					grid_combination = get_combination_in_matrix(new_grid_size, new_matrix)
+					if grid_combination:
+						return grid_combination
 	
 	return null
 

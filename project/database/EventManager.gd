@@ -1,8 +1,6 @@
 extends Node
 
 signal left
-signal gold_lost(amount)
-signal gold_won(amount)
 
 const FLOORS = [1, 2, 3]
 
@@ -45,43 +43,60 @@ func reset_events():
 
 
 func get_random_event(current_floor: int) -> Event:
+	## For testing purposes
+	if not events_by_floor[current_floor].size():
+		dummy_leave_event.title = "No event to show"
+		dummy_leave_event.text = str("Not enough events for floor ", current_floor)
+		return dummy_leave_event
+	
 	assert(events_by_floor[current_floor].size())
 	current_event = events_by_floor[current_floor].pop_front()
+	
+	for f in FLOORS:
+		events_by_floor[f].erase(current_event)
+	
 	return current_event
 
 
 ####### EVENT CALLBACKS #######
 
-func none(_event_display):
+func none(_event_display, _player):
 	assert(false, "No callback set for this option")
 
 
-func leave(_event_display):
-	print("leave")
+func leave(_event_display, _player):
 	emit_signal("left")
 
 
-func load_leave_event(event_display, text: String, title := "", type := -1):
+func load_leave_event(event_display, player, text: String, title := "", type := -1):
 	dummy_leave_event.text = text
 	dummy_leave_event.title = current_event.title if title == "" else title
 	dummy_leave_event.type = current_event.type if type == -1 else type
-	load_new_event(event_display, dummy_leave_event.id)
+	load_new_event(event_display, player, dummy_leave_event.id)
 
 
-func load_new_event(event_display, new_event_id: int):
-	event_display.load_event(events_by_id[new_event_id])
+func load_new_event(event_display, player, new_event_id: int):
+	event_display.load_event(events_by_id[new_event_id], player)
 
 
-func bet(event_display, amount: int):
+func bet(event_display, player, amount: int):
+	if not player.spend_currency(amount):
+		AudioManager.play_sfx("error")
+		return
+	
 	if randf() > .5:
-		emit_signal("gold_won", amount)
-		load_leave_event(event_display, "Congratulations, you won %d gold!" % amount)
+		player.add_currency(2 * amount)
+		load_leave_event(event_display, player,
+				"Congratulations, you won %d gold!" % amount)
 	else:
-		emit_signal("gold_lost", amount)
-		load_leave_event(event_display, "Too bad, you lost!")
+		load_leave_event(event_display, player, "Too bad, you lost!")
 
 
-func well(event_display, amount: int):
+func well(event_display, player, amount: int):
+	if not player.spend_currency(amount):
+		AudioManager.play_sfx("error")
+		return
+	
 	var won = false
 	if amount == 50:
 		var rand = randf()
@@ -89,15 +104,17 @@ func well(event_display, amount: int):
 			won = true
 		elif rand < .9:
 			## DAR ARTEFATO INCOMUM
-			load_leave_event(event_display, "The well rewarded you with an uncommon artifact!")
+			load_leave_event(event_display, player,
+					"The well rewarded you with an uncommon artifact!")
 			return
 	else:
 		var chance = {5: .1, 10: .25, 30: .8}
 		won = randf() < chance[amount]
 	
 	if won:
-		emit_signal("gold_won", 100 - amount)
-		load_leave_event(event_display, "The well rewarded you with 100 gold!")
+		player.add_currency(100)
+		load_leave_event(event_display, player,
+				"The well rewarded you with 100 gold!")
 	else:
-		emit_signal("gold_lost", amount)
-		load_leave_event(event_display, "Nothing happened.")
+		load_leave_event(event_display, player,
+				"Nothing happened.")

@@ -331,7 +331,7 @@ func disable_player():
 	discard_bag.disable()
 	player_disabled = true
 	pass_turn_button.disabled = true
-	combine_button.disabled = true
+	combine_button.disable()
 	set_favorites_disabled(true)
 	
 	for reagent in reagents.get_children():
@@ -349,7 +349,7 @@ func enable_player():
 	#Check curse
 	var curse = player.get_status("curse")
 	if not curse or curse.amount > recipes_created:
-		combine_button.disabled = false
+		combine_button.enable()
 	
 	set_favorites_disabled(false)
 	

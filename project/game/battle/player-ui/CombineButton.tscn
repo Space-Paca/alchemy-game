@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/ui/Combine Circle.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BoldOblique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/battle/player-ui/CombineButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/ui/Combine Circle Disabled.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/Combine Circle Hover.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 56
@@ -16,6 +18,8 @@ font_data = ExtResource( 2 )
 margin_right = 130.0
 margin_bottom = 130.0
 texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 3 )
@@ -32,6 +36,7 @@ margin_left = -122.5
 margin_top = -81.0002
 margin_right = 122.5
 margin_bottom = 81.0002
+rect_pivot_offset = Vector2( 122, 81 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
@@ -46,3 +51,4 @@ __meta__ = {
 }
 [connection signal="button_down" from="." to="." method="_on_CombineButton_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_CombineButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_CombineButton_mouse_exited"]

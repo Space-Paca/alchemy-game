@@ -19,7 +19,7 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/shop.png"),
 		preload("res://assets/images/map/descanso.png"),
 		preload("res://assets/images/map/smith.png"),
-		preload("res://assets/images/map/eventos.png"),
+		preload("res://assets/images/map/event.png"),
 		preload("res://assets/images/map/laboratory.png"),
 		preload("res://assets/images/map/treasure.png")]
 const LEGEND = ["", "Enemy encounter", "Elite encounter", "Boss encounter",

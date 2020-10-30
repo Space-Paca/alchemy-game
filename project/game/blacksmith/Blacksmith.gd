@@ -14,11 +14,7 @@ func setup(node, _player):
 	$Upgrade.show()
 	reagent_list.clear()
 	reagent_list.hide()
-	$ConfirmUpgrade.hide()
-	$Reagent.hide()
-	$Arrow.hide()
-	$ReagentUpgraded.hide()
-	
+	$UpgradingReagent.hide()
 	$GemAmount.text = "x" + str(_player.gems)
 	state = "start"
 	map_node = node
@@ -31,14 +27,14 @@ func _on_BackButton_pressed():
 	elif state == "picking_reagent":
 		state = "start"
 		$Upgrade.show()
+		reagent_list.deactivate_reagents()
 		reagent_list.hide()
 	elif state == "confirm_reagent":
-		state = "picking_reagent"
-		reagent_list.show()
-		$Reagent.hide()
-		$ReagentUpgraded.hide()
-		$ConfirmUpgrade.hide()
-		$Arrow.hide()
+		state = "start"
+		$Upgrade.show()
+		reagent_list.hide()
+		reagent_list.deactivate_reagents()
+		$UpgradingReagent.hide()
 
 
 func _on_Upgrade_pressed():
@@ -60,19 +56,16 @@ func _on_Upgrade_pressed():
 
 func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_index: int):
 	state = "confirm_reagent"
-	reagent_list.hide()
+	reagent_list.activate_reagent(reagent_index)
 	
 	chosen_reagent_index = reagent_index
 	
 	var data = ReagentDB.get_from_name(reagent_name)
-	$ConfirmUpgrade.show()
-	$Arrow.show()
-	$Reagent.show()
-	$ReagentUpgraded.show()
-	$Reagent/Image.texture = data.image
-	$ReagentUpgraded/Image.texture = data.image
-	$Reagent/Label.text = data.tooltip % data.effect.value
-	$ReagentUpgraded/Label.text = data.tooltip % data.effect.upgraded_value + " Boost " + \
+	$UpgradingReagent.show()
+	$UpgradingReagent/Reagent/Image.texture = data.image
+	$UpgradingReagent/ReagentUpgraded/Image.texture = data.image
+	$UpgradingReagent/Reagent/Label.text = data.tooltip % data.effect.value
+	$UpgradingReagent/ReagentUpgraded/Label.text = data.tooltip % data.effect.upgraded_value + " Boost " + \
 								  data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
 
 
@@ -81,10 +74,8 @@ func _on_ConfirmUpgrade_pressed():
 		AudioManager.play_sfx("upgrade_reagent")
 		$GemAmount.text = "x" + str(player.gems)
 		player.upgrade_reagent(chosen_reagent_index)
-		$ConfirmUpgrade.hide()
-		$Arrow.hide()
-		$Reagent.hide()
-		$ReagentUpgraded.hide()
+		reagent_list.deactivate_reagents()
+		$UpgradingReagent.hide()
 		$Upgrade.show()
 		state = "start"
 	else:

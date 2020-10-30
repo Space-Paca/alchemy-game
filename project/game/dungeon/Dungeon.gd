@@ -98,9 +98,9 @@ func create_level(level: int):
 			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
 			map.create_map(4, 2, 0)
 		2:
-			map.create_map(6, 3, 0)
+			map.create_map(6, 3, 1)
 		3:
-			map.create_map(8, 4, 0)
+			map.create_map(8, 4, 1)
 		var invalid:
 			assert(false, str("Invalid level: ", invalid))
 	map.set_level(level)

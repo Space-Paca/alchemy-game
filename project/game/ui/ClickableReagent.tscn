@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ClickableReagent.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/reagent_list/slot.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/reagents/faint.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/reagent_list/slot_selection test.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/reagent_list/slot_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/reagent_list/slot_disabled.png" type="Texture" id=6]
+
+[node name="ClickableReagent" type="TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 1
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 6 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Active" type="TextureRect" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reagent" type="TextureRect" parent="."]
+margin_left = 1.8409
+margin_top = 2.2701
+margin_right = 61.8409
+margin_bottom = 62.2701
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

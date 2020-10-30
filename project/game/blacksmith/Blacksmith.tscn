@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -6,31 +6,25 @@
 [ext_resource path="res://assets/images/reagents/feather.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/arrow.webp" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 35
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+[ext_resource path="res://assets/images/background/reagent smith.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
 
 [sub_resource type="DynamicFont" id=2]
 size = 59
-outline_size = 5
+outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 48
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 95
-outline_size = 9
+[sub_resource type="DynamicFont" id=3]
+size = 150
+outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+use_filter = true
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 38
@@ -46,6 +40,12 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 95
+outline_size = 9
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=7]
 size = 58
 use_filter = true
@@ -54,7 +54,16 @@ font_data = ExtResource( 2 )
 [node name="Blacksmith" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 10 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +73,6 @@ margin_left = 58.2214
 margin_top = 948.668
 margin_right = 258.221
 margin_bottom = 1038.67
-custom_fonts/font = SubResource( 1 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -85,36 +93,112 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ConfirmUpgrade" type="Button" parent="."]
+[node name="UpgradingReagent" type="NinePatchRect" parent="."]
+margin_left = 565.972
+margin_top = 120.136
+margin_right = 1865.97
+margin_bottom = 1020.14
+texture = ExtResource( 8 )
+patch_margin_left = 276
+patch_margin_top = 191
+patch_margin_right = 245
+patch_margin_bottom = 147
+
+[node name="ConfirmUpgrade" type="Button" parent="UpgradingReagent"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -216.147
-margin_top = 302.628
-margin_right = 288.853
-margin_bottom = 392.628
+margin_left = -270.167
+margin_top = 377.756
+margin_right = 234.833
+margin_bottom = 467.756
 custom_fonts/font = SubResource( 2 )
-text = "confirm upgrade"
+text = "confirm upgrade (    )"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ConfirmUpgrade"]
-margin_left = 181.312
-margin_top = 101.448
-margin_right = 236.312
-margin_bottom = 153.448
+[node name="Label" type="Label" parent="UpgradingReagent/ConfirmUpgrade"]
+margin_left = 434.121
+margin_top = 10.9012
+margin_right = 500.121
+margin_bottom = 94.9012
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-1 "
 
-[node name="TextureRect" type="TextureRect" parent="ConfirmUpgrade"]
-margin_left = 218.338
-margin_top = 93.8267
-margin_right = 526.338
-margin_bottom = 401.827
+[node name="TextureRect" type="TextureRect" parent="UpgradingReagent/ConfirmUpgrade"]
+margin_left = 488.355
+margin_top = 27.28
+margin_right = 796.355
+margin_bottom = 335.28
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
+
+[node name="Reagent" type="Node2D" parent="UpgradingReagent"]
+position = Vector2( 550.864, 148.31 )
+
+[node name="Image" type="TextureRect" parent="UpgradingReagent/Reagent"]
+margin_right = 150.0
+margin_bottom = 150.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UpgradingReagent/Reagent"]
+margin_left = -217.618
+margin_top = 150.516
+margin_right = 382.382
+margin_bottom = 270.516
+rect_min_size = Vector2( 600, 150 )
+custom_fonts/font = SubResource( 5 )
+text = "asdsada"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentUpgraded" type="Node2D" parent="UpgradingReagent"]
+position = Vector2( 562.757, 516.037 )
+
+[node name="Image" type="TextureRect" parent="UpgradingReagent/ReagentUpgraded"]
+margin_right = 150.0
+margin_bottom = 150.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UpgradingReagent/ReagentUpgraded"]
+margin_left = -318.884
+margin_top = 150.588
+margin_right = 481.117
+margin_bottom = 300.588
+rect_min_size = Vector2( 800, 150 )
+custom_fonts/font = SubResource( 5 )
+text = "asdsada"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="+" type="Label" parent="UpgradingReagent/ReagentUpgraded"]
+modulate = Color( 0.0470588, 1, 0, 1 )
+margin_left = 142.7
+margin_top = -33.3925
+margin_right = 182.7
+margin_bottom = 51.6075
+custom_fonts/font = SubResource( 6 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -126,85 +210,19 @@ custom_fonts/font = SubResource( 4 )
 text = "Girotto's Smith & Grind"
 align = 1
 valign = 1
-
-[node name="ClickableReagentList" parent="." instance=ExtResource( 3 )]
-margin_left = 663.229
-margin_top = 277.668
-margin_right = 703.229
-margin_bottom = 317.668
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Arrow" type="TextureRect" parent="."]
-margin_left = 858.844
-margin_top = 306.73
-margin_right = 1370.84
-margin_bottom = 818.73
+margin_left = 1714.84
+margin_top = 424.73
+margin_right = 2226.84
+margin_bottom = 936.73
+rect_rotation = 90.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 flip_h = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Reagent" type="Node2D" parent="."]
-position = Vector2( 492.131, 343.197 )
-
-[node name="Image" type="TextureRect" parent="Reagent"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Reagent"]
-margin_left = -172.678
-margin_top = 153.251
-margin_right = 327.322
-margin_bottom = 453.251
-rect_min_size = Vector2( 500, 300 )
-custom_fonts/font = SubResource( 5 )
-text = "asdsada"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReagentUpgraded" type="Node2D" parent="."]
-position = Vector2( 1318.83, 349.672 )
-
-[node name="Image" type="TextureRect" parent="ReagentUpgraded"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ReagentUpgraded"]
-margin_left = -172.678
-margin_top = 157.568
-margin_right = 327.322
-margin_bottom = 457.568
-rect_min_size = Vector2( 500, 300 )
-custom_fonts/font = SubResource( 5 )
-text = "asdsada"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="+" type="Label" parent="ReagentUpgraded"]
-modulate = Color( 0.0470588, 1, 0, 1 )
-margin_left = 142.7
-margin_top = -33.3925
-margin_right = 182.7
-margin_bottom = 51.6075
-custom_fonts/font = SubResource( 6 )
-text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,7 +242,13 @@ margin_right = 317.457
 margin_bottom = 325.408
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
+
+[node name="ClickableReagentList" parent="." instance=ExtResource( 3 )]
+margin_left = 46.5328
+margin_top = 154.863
+margin_right = 546.533
+margin_bottom = 754.863
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
-[connection signal="pressed" from="ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]
+[connection signal="pressed" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]
 [connection signal="reagent_pressed" from="ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]

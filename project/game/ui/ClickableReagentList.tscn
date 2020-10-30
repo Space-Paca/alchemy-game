@@ -1,18 +1,34 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/ui/ClickableReagentList.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/reagent_list/bg paper.png" type="Texture" id=2]
 
 [node name="ClickableReagentList" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 500, 600 )
+mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 500.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_right = 200.0
-rect_min_size = Vector2( 0, 500 )
+margin_left = 109.112
+margin_top = 119.296
+margin_right = 409.112
+margin_bottom = 569.296
+rect_min_size = Vector2( 300, 450 )
+mouse_filter = 1
 follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -24,4 +40,4 @@ margin_right = 200.0
 rect_min_size = Vector2( 200, 0 )
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
-columns = 3
+columns = 4

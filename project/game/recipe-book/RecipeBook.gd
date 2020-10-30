@@ -276,6 +276,7 @@ func reset_recipe_visibility():
 		recipe_display.filtered = true
 		recipe_display.show()
 
+
 func update_tag_buttons(tag):
 	for idx in range($Background/TagButtons.get_child_count()):
 		var button = $Background/TagButtons.get_child(idx)

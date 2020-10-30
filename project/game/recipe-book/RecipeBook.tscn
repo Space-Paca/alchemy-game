@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/images/ui/book/book_tag_btn_short.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/ui/book/book_tag_btn_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/ui/book/book_tag_btn_short_hover.png" type="Texture" id=13]
-[ext_resource path="res://assets/themes/general_theme.tres" type="Theme" id=14]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128

@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://game/shop/ShopRecipe.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/enemies/homunculus/idle.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/background/shop.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=14]
 size = 40
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=15]
 size = 80
 use_filter = true
 font_data = ExtResource( 5 )
@@ -21,6 +22,18 @@ font_data = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_left = 0.000736618
+anchor_top = 0.00130946
+anchor_right = 0.979903
+anchor_bottom = 0.964272
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,10 +51,11 @@ margin_bottom = 53.0
 [node name="RecipesButton" type="Button" parent="ShopMenu"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -136.5
-margin_right = 136.5
-margin_bottom = 51.0
-custom_fonts/font = ExtResource( 1 )
+margin_left = 408.157
+margin_top = 447.142
+margin_right = 743.157
+margin_bottom = 561.142
+theme = ExtResource( 7 )
 text = "Shop for recipes"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,32 +66,26 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -136.5
-margin_top = -51.0
-margin_right = 136.5
-custom_fonts/font = ExtResource( 1 )
+margin_left = 782.002
+margin_top = 336.582
+margin_right = 1163.0
+margin_bottom = 457.582
+theme = ExtResource( 7 )
 text = "Get rid of reagents"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Shopkeeper" type="TextureRect" parent="ShopMenu"]
-margin_left = 700.0
-margin_top = 150.0
-margin_right = 955.0
-margin_bottom = 319.0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ShopkeeperDialogue" type="Node2D" parent="ShopMenu"]
+position = Vector2( 821.111, 523.802 )
 
-[node name="Label" type="RichTextLabel" parent="ShopMenu/Shopkeeper"]
-margin_left = -335.0
-margin_top = -440.0
-margin_right = 515.0
-margin_bottom = -140.0
-custom_fonts/italics_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+[node name="Label" type="RichTextLabel" parent="ShopMenu/ShopkeeperDialogue"]
+margin_left = -352.173
+margin_top = -413.838
+margin_right = 497.827
+margin_bottom = -113.838
+custom_fonts/italics_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 15 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
@@ -87,13 +95,16 @@ text = "Hey there traveller, stop by and take a look at my wares. I collected al
 
 I bet you also would like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Polygon2D" type="Polygon2D" parent="ShopMenu/Shopkeeper"]
+[node name="Polygon2D" type="Polygon2D" parent="ShopMenu/ShopkeeperDialogue"]
 show_behind_parent = true
-position = Vector2( -345, -440 )
+position = Vector2( -347.828, -413.13 )
 color = Color( 0.807843, 0.8, 0.698039, 1 )
 antialiased = true
-polygon = PoolVector2Array( -19.9775, -20.4361, 853.654, -24.3132, 858.824, 311.699, 335.42, 314.284, 379.36, 390.533, 259.171, 318.161, -12.2234, 310.407 )
+polygon = PoolVector2Array( -19.9775, -20.4361, 451, -22.5262, 453.817, -88.7837, 554.223, -22.9843, 853.654, -24.3132, 858.824, 311.699, -12.2234, 310.407 )
 
 [node name="RecipeMenu" type="CenterContainer" parent="."]
 visible = false
@@ -169,7 +180,7 @@ text = "On second thought..."
 [node name="BackButton" type="Button" parent="."]
 margin_right = 114.0
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 7 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false

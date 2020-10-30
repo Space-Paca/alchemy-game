@@ -1,0 +1,40 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://assets/images/ui/book/scroller.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/book/scroller_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/book/scroll_bg.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 34.9905
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 28.4318
+margin_bottom = 27.1395
+
+[resource]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 1 )
+VScrollBar/styles/grabber_highlight = SubResource( 2 )
+VScrollBar/styles/grabber_pressed = SubResource( 3 )
+VScrollBar/styles/scroll = SubResource( 4 )
+VScrollBar/styles/scroll_focus = null

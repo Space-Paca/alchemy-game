@@ -220,15 +220,7 @@ func filter_combinations(filters: Array):
 func get_valid_combinations(combinations : Array, available_reagents : Array):
 	var valid_combinations = []
 	for combination in combinations:
-		var reagents = available_reagents.duplicate()
-		var valid_combination = true
-		for comb_reagent in combination.recipe.reagents:
-			if reagents.find(comb_reagent) != -1:
-				reagents.remove(reagents.find(comb_reagent))
-			else:
-				valid_combination = false
-				break
-		if valid_combination:
+		if ReagentManager.get_reagents_to_use(combination.recipe.reagents, available_reagents):
 			valid_combinations.append(combination)
 	
 	return valid_combinations

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
+[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -37,17 +38,6 @@ font_data = ExtResource( 2 )
 size = 78
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 95
-outline_size = 9
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 58
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -94,10 +84,10 @@ __meta__ = {
 }
 
 [node name="UpgradingReagent" type="NinePatchRect" parent="."]
-margin_left = 565.972
-margin_top = 120.136
-margin_right = 1865.97
-margin_bottom = 1020.14
+margin_left = 515.248
+margin_top = 205.566
+margin_right = 1905.25
+margin_bottom = 985.566
 texture = ExtResource( 8 )
 patch_margin_left = 276
 patch_margin_top = 191
@@ -109,10 +99,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -270.167
-margin_top = 377.756
-margin_right = 234.833
-margin_bottom = 467.756
+margin_left = -278.176
+margin_top = 324.362
+margin_right = 311.824
+margin_bottom = 444.362
 custom_fonts/font = SubResource( 1 )
 text = "confirm upgrade (    )"
 __meta__ = {
@@ -137,7 +127,7 @@ rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
 [node name="Reagent" type="Node2D" parent="UpgradingReagent"]
-position = Vector2( 550.864, 148.31 )
+position = Vector2( 283.896, 156.319 )
 
 [node name="Image" type="TextureRect" parent="UpgradingReagent/Reagent"]
 margin_right = 150.0
@@ -149,21 +139,20 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="UpgradingReagent/Reagent"]
-margin_left = -217.618
-margin_top = 150.516
-margin_right = 382.382
-margin_bottom = 270.516
-rect_min_size = Vector2( 600, 150 )
+margin_left = 175.0
+margin_right = 775.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 680, 150 )
 custom_fonts/font = SubResource( 3 )
 text = "asdsada"
-align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ReagentUpgraded" type="Node2D" parent="UpgradingReagent"]
-position = Vector2( 562.757, 516.037 )
+position = Vector2( 285.111, 484.001 )
 
 [node name="Image" type="TextureRect" parent="UpgradingReagent/ReagentUpgraded"]
 margin_right = 150.0
@@ -175,14 +164,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="UpgradingReagent/ReagentUpgraded"]
-margin_left = -318.884
-margin_top = 150.588
-margin_right = 481.117
-margin_bottom = 300.588
-rect_min_size = Vector2( 800, 150 )
+margin_left = 175.0
+margin_right = 855.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 680, 150 )
 custom_fonts/font = SubResource( 3 )
 text = "asdsada"
-align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,54 +188,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 2.6499
-margin_top = 50.8353
-margin_right = 2.6499
-margin_bottom = 152.835
-custom_fonts/font = SubResource( 5 )
-text = "Girotto's Smith & Grind"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Arrow" type="TextureRect" parent="."]
-margin_left = 1714.84
-margin_top = 424.73
-margin_right = 2226.84
-margin_bottom = 936.73
+[node name="Arrow" type="TextureRect" parent="UpgradingReagent"]
+margin_left = 436.064
+margin_top = 309.933
+margin_right = 948.064
+margin_bottom = 821.933
 rect_rotation = 90.0
-rect_scale = Vector2( 0.5, 0.5 )
+rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
 flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemAmount" type="Label" parent="."]
-margin_left = 98.8293
-margin_top = 32.1651
-margin_right = 183.829
-margin_bottom = 95.1651
-custom_fonts/font = SubResource( 6 )
-text = "x10"
-
-[node name="GemIcon" type="TextureRect" parent="."]
-margin_left = 9.45744
-margin_top = 17.4076
-margin_right = 317.457
-margin_bottom = 325.408
-rect_scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
 [node name="ClickableReagentList" parent="." instance=ExtResource( 3 )]
 margin_left = 46.5328
 margin_top = 154.863
 margin_right = 546.533
 margin_bottom = 754.863
+
+[node name="PlayerInfo" parent="." instance=ExtResource( 11 )]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]

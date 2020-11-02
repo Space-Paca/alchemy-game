@@ -8,6 +8,7 @@ var player
 var map_node : MapNode
 var state
 var chosen_reagent_index
+var index_map = []
 
 
 func setup(node, _player):
@@ -15,13 +16,32 @@ func setup(node, _player):
 	reagent_list.clear()
 	reagent_list.hide()
 	$UpgradingReagent.hide()
-	$GemAmount.text = "x" + str(_player.gems)
+	player = _player
+	$PlayerInfo.update_gems(player.gems)
 	state = "start"
 	map_node = node
-	player = _player
+
+func update_reagent_list():
+	index_map = []
+	var reagents = []
+	var index = 0
+	for reagent in player.bag:
+		if not reagent.upgraded:
+			reagents.append(reagent.type)
+			index_map.append(index)
+		index += 1
+	
+	if reagents.size() == 0:
+		AudioManager.play_sfx("error")
+		return false
+		
+	reagent_list.clear()
+	reagent_list.populate(reagents)
+	
+	return true
 
 
-func _on_BackButton_pressed():
+func back():
 	if state == "start":
 		emit_signal("closed")
 	elif state == "picking_reagent":
@@ -37,20 +57,15 @@ func _on_BackButton_pressed():
 		$UpgradingReagent.hide()
 
 
+func _on_BackButton_pressed():
+	back()
+
+
 func _on_Upgrade_pressed():
-	state = "picking_reagent"
-	var reagents = []
-	for reagent in player.bag:
-		if not reagent.upgraded:
-			reagents.append(reagent.type)
-	
-	if reagents.size() == 0:
-		AudioManager.play_sfx("error")
+	if not update_reagent_list():
 		return
-		
+	state = "picking_reagent"
 	$Upgrade.hide()
-	reagent_list.clear()
-	reagent_list.populate(reagents)
 	reagent_list.show()
 
 
@@ -58,7 +73,7 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 	state = "confirm_reagent"
 	reagent_list.activate_reagent(reagent_index)
 	
-	chosen_reagent_index = reagent_index
+	chosen_reagent_index = index_map[reagent_index]
 	
 	var data = ReagentDB.get_from_name(reagent_name)
 	$UpgradingReagent.show()
@@ -72,11 +87,12 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 func _on_ConfirmUpgrade_pressed():
 	if player.spend_gems(1):
 		AudioManager.play_sfx("upgrade_reagent")
-		$GemAmount.text = "x" + str(player.gems)
+		$PlayerInfo.update_gems(player.gems)
 		player.upgrade_reagent(chosen_reagent_index)
 		reagent_list.deactivate_reagents()
 		$UpgradingReagent.hide()
-		$Upgrade.show()
-		state = "start"
+		state = "picking_reagent"
+		if not update_reagent_list():
+			back()
 	else:
 		AudioManager.play_sfx("error")

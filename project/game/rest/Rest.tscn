@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
+[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -76,43 +77,43 @@ __meta__ = {
 [node name="RecipeDisplay" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 315.0
-margin_bottom = 500.0
+margin_right = 307.0
+margin_bottom = 385.0
 
 [node name="RecipeDisplay2" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 345.0
-margin_right = 660.0
-margin_bottom = 500.0
+margin_left = 337.0
+margin_right = 644.0
+margin_bottom = 385.0
 
 [node name="RecipeDisplay5" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 690.0
-margin_right = 1005.0
-margin_bottom = 500.0
+margin_left = 674.0
+margin_right = 981.0
+margin_bottom = 385.0
 
 [node name="RecipeDisplay6" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1035.0
-margin_right = 1350.0
-margin_bottom = 500.0
+margin_left = 1011.0
+margin_right = 1318.0
+margin_bottom = 385.0
 
 [node name="RecipeDisplay3" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1380.0
-margin_right = 1695.0
-margin_bottom = 500.0
+margin_left = 1348.0
+margin_right = 1655.0
+margin_bottom = 385.0
 
 [node name="RecipeDisplay4" parent="Recipes/HBox" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1725.0
-margin_right = 2040.0
-margin_bottom = 500.0
+margin_left = 1685.0
+margin_right = 1992.0
+margin_bottom = 385.0
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 58.2214
@@ -168,10 +169,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 2.6499
-margin_top = 50.8353
-margin_right = 2.6499
-margin_bottom = 152.835
+margin_top = 250.0
+margin_bottom = 352.0
 custom_fonts/font = SubResource( 4 )
 text = "Choose only one"
 align = 1
@@ -179,6 +178,8 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlayerInfo" parent="." instance=ExtResource( 5 )]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="HealButton" to="." method="_on_HealButton_pressed"]

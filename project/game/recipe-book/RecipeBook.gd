@@ -21,6 +21,8 @@ const LONG_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn.png")
 const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short.png")
 const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
 const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
+const BATTLE_POS = Vector2.ZERO
+const MAP_POS = Vector2(820, 0)
 
 enum States {BATTLE, MAP, LAB}
 enum {DECK, HAND, INCOMPLETE, COMPLETE, ALL}
@@ -39,6 +41,7 @@ func change_state(new_state: int):
 	
 	match new_state:
 		States.BATTLE:
+			rect_position = BATTLE_POS
 			hand_rect.visible = true
 			scroll.rect_size.y -= hand_rect.rect_size.y
 			draw_bag.disable()
@@ -47,6 +50,7 @@ func change_state(new_state: int):
 			reset_recipe_visibility()
 		States.MAP:
 			if state == States.BATTLE:
+				rect_position = MAP_POS
 				remove_hand()
 				scroll.rect_size.y += hand_rect.rect_size.y
 				hand_tag_button.hide()

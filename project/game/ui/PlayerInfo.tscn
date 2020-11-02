@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/images/ui/player-info/bg paper.png" type="Texture" id=1]
+[ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/ui/book/char portrait animation.png" type="Texture" id=3]
+[ext_resource path="res://game/ui/PlayerInfo.gd" type="Script" id=4]
+[ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/player-info/down_arrow.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="InputEventKey" id=2]
+pressed = true
+scancode = 16777218
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[node name="PlayerInfo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -300.0
+margin_top = -400.0
+margin_right = 300.0
+margin_bottom = 227.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="BG"]
+position = Vector2( 132, 472 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 4
+
+[node name="HealthBar" parent="BG" instance=ExtResource( 2 )]
+position = Vector2( 229.031, 458.822 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Artifacts" type="HBoxContainer" parent="BG"]
+margin_left = 215.0
+margin_top = 405.0
+margin_right = 500.0
+margin_bottom = 445.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrencyContainer" type="HBoxContainer" parent="BG"]
+margin_left = 215.0
+margin_top = 495.0
+margin_right = 500.0
+margin_bottom = 535.0
+custom_constants/separation = 70
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="HBoxContainer" parent="BG/CurrencyContainer"]
+margin_right = 114.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Gold"]
+margin_right = 40.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="BG/CurrencyContainer/Gold"]
+margin_left = 44.0
+margin_right = 114.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 70, 40 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
+valign = 1
+
+[node name="Gems" type="HBoxContainer" parent="BG/CurrencyContainer"]
+margin_left = 184.0
+margin_right = 298.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_stretch_ratio = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Gems"]
+margin_right = 40.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="BG/CurrencyContainer/Gems"]
+margin_left = 44.0
+margin_right = 114.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 70, 40 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
+valign = 1
+
+[node name="DownButton" type="TextureButton" parent="BG"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -50.0
+margin_right = 38.0
+shortcut = SubResource( 3 )
+texture_normal = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="pressed" from="BG/DownButton" to="." method="_on_DownButton_pressed"]

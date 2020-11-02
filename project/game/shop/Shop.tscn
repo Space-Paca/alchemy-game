@@ -8,12 +8,12 @@
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=1]
 size = 40
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=2]
 size = 80
 use_filter = true
 font_data = ExtResource( 5 )
@@ -84,8 +84,8 @@ margin_left = -352.173
 margin_top = -413.838
 margin_right = 497.827
 margin_bottom = -113.838
-custom_fonts/italics_font = SubResource( 14 )
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/italics_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]

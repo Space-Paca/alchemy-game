@@ -4,10 +4,13 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Artifact" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Image" type="TextureRect" parent="."]
 margin_right = 45.0
@@ -22,7 +25,7 @@ __meta__ = {
 position = Vector2( 36, 22 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( 101.17, -24.8639 )

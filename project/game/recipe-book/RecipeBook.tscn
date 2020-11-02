@@ -25,6 +25,8 @@ font_data = ExtResource( 2 )
 [node name="RecipeBook" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 820.0
+margin_right = 820.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {

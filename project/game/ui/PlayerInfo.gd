@@ -19,7 +19,7 @@ func _ready():
 	pass
 
 
-func set_hp(hp: int, max_hp: int):
+func update_hp(hp: int, max_hp: int):
 	healthbar.set_life(hp, max_hp)
 
 

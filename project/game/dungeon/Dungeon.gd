@@ -117,6 +117,14 @@ func create_level(level: int):
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
+	
+	update_player_display()
+
+
+func update_player_display():
+	get_tree().call_group("gem_display", "update_gems", player.gems)
+	get_tree().call_group("gold_display", "update_gold", player.currency)
+	get_tree().call_group("hp_display", "update_hp", player.hp, player.max_hp)
 
 
 func get_incomplete_combinations():
@@ -364,6 +372,11 @@ func extract_boost_effects(reagents):
 	return effects
 
 
+func enable_map():
+	map.enable()
+	update_player_display()
+
+
 func recipe_book_toggle():
 	var visible = recipe_book.toggle_visibility()
 	map.recipe_toogle(visible)
@@ -432,11 +445,12 @@ func _on_Battle_finished(is_boss):
 			create_level(floor_level)
 			$Player.level_up()
 		else:
-			map.enable()
+			enable_map()
 			thanks_for_playing()
 	else:
-		map.enable()
+		enable_map()
 		map.reveal_paths(current_node)
+		update_player_display()
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -532,7 +546,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 
 func _on_Shop_closed():
 	shop.hide()
-	map.enable()
+	enable_map()
 	play_map_bgm()
 
 
@@ -546,32 +560,32 @@ func _on_Shop_hint_bought(combination: Combination):
 
 func _on_Rest_closed():
 	rest.hide()
-	map.enable()
+	enable_map()
 	play_map_bgm()
 
 
 func _on_Blacksmith_closed():
 	smith.hide()
-	map.enable()
+	enable_map()
 	play_map_bgm()
 
 
 func _on_Laboratory_closed():
 	lab.hide()
 	cur_lab_attempts = lab.get_attempts()
-	map.enable()
+	enable_map()
 	play_map_bgm()
 
 
 func _on_Treasure_closed():
 	treasure.hide()
-	map.enable()
+	enable_map()
 	play_map_bgm()
 
 
 func _on_EventDisplay_closed():
 	event_display.hide()
-	map.enable()
+	enable_map()
 	map.reveal_paths(current_node)
 
 

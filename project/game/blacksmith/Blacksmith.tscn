@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 59
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
@@ -19,34 +19,34 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 150
 outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 38
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 size = 78
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 58
 use_filter = true
 font_data = ExtResource( 2 )
@@ -87,7 +87,7 @@ margin_left = -252.5
 margin_top = -45.0
 margin_right = 252.5
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "upgrade reagent"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,7 +113,7 @@ margin_left = -270.167
 margin_top = 377.756
 margin_right = 234.833
 margin_bottom = 467.756
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "confirm upgrade (    )"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,7 +124,7 @@ margin_left = 434.121
 margin_top = 10.9012
 margin_right = 500.121
 margin_bottom = 94.9012
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-1 "
 
@@ -154,7 +154,7 @@ margin_top = 150.516
 margin_right = 382.382
 margin_bottom = 270.516
 rect_min_size = Vector2( 600, 150 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "asdsada"
 align = 1
 autowrap = true
@@ -180,7 +180,7 @@ margin_top = 150.588
 margin_right = 481.117
 margin_bottom = 300.588
 rect_min_size = Vector2( 800, 150 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "asdsada"
 align = 1
 autowrap = true
@@ -194,7 +194,7 @@ margin_left = 142.7
 margin_top = -33.3925
 margin_right = 182.7
 margin_bottom = 51.6075
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -206,7 +206,7 @@ margin_left = 2.6499
 margin_top = 50.8353
 margin_right = 2.6499
 margin_bottom = 152.835
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Girotto's Smith & Grind"
 align = 1
 valign = 1
@@ -232,7 +232,7 @@ margin_left = 98.8293
 margin_top = 32.1651
 margin_right = 183.829
 margin_bottom = 95.1651
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "x10"
 
 [node name="GemIcon" type="TextureRect" parent="."]

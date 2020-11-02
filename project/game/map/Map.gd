@@ -9,7 +9,7 @@ onready var camera = $Camera
 onready var click_block = $ClickBlock
 onready var nodes = $Nodes
 onready var floor_label = $CanvasLayer/FloorLabel
-onready var compass = $CanvasLayer/Compass
+onready var player_info = $CanvasLayer/PlayerInfo
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
@@ -65,7 +65,7 @@ func set_disabled(toggle:bool):
 func enable():
 	show()
 	floor_label.show()
-	compass.show()
+	player_info.show()
 	update_camera = true
 	if camera_last_pos:
 		camera.position = camera_last_pos
@@ -74,7 +74,7 @@ func enable():
 func disable():
 	hide()
 	floor_label.hide()
-	compass.hide()
+	player_info.hide()
 	update_camera = false
 	camera_last_pos = camera.position
 	reset_camera()
@@ -85,8 +85,10 @@ func recipe_toogle(active : bool):
 		return
 	if active:
 		floor_label.hide()
+		player_info.hide()
 	else:
 		floor_label.show()
+		player_info.show()
 
 
 func set_level(level:int):

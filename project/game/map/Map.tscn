@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/map/parchmentAncient.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/map/compass.png" type="Texture" id=2]
 [ext_resource path="res://game/map/Map.gd" type="Script" id=3]
 [ext_resource path="res://game/map/MapPosition.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -247,17 +247,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compass" type="TextureRect" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0.54902 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -158.203
-margin_top = 1.92203
-margin_right = -2.20313
-margin_bottom = 157.922
-rect_min_size = Vector2( 156, 156 )
-texture = ExtResource( 2 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayerInfo" parent="CanvasLayer" instance=ExtResource( 6 )]

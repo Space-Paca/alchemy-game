@@ -7,9 +7,9 @@ signal hint_bought(combination)
 
 onready var recipes = $RecipeMenu/HBoxContainer.get_children()
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
-onready var currency_label = $CurrencyLabel
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
 onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroyLabel
+onready var player_info = $PlayerInfo
 # MENUS
 onready var shop_menu = $ShopMenu
 onready var reagents_menu = $ReagentsMenu
@@ -54,7 +54,7 @@ func update_reagents():
 
 
 func update_currency():
-	currency_label.text = "Player Gold: %d" % player.currency
+	player_info.update_gold(player.currency)
 
 
 func _on_BackButton_pressed():

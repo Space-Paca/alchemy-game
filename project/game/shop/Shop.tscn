@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
+[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -186,19 +187,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrencyLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -250.0
-margin_right = 250.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 500, 0 )
-custom_fonts/font = ExtResource( 1 )
-text = "Player Gold: X"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayerInfo" parent="." instance=ExtResource( 8 )]
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
 [connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_bought"]

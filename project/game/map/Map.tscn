@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/images/map/parchmentAncient.png" type="Texture" id=1]
+[ext_resource path="res://game/map/Camera.gd" type="Script" id=2]
 [ext_resource path="res://game/map/Map.gd" type="Script" id=3]
 [ext_resource path="res://game/map/MapPosition.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=5]
@@ -148,7 +149,7 @@ script = ExtResource( 4 )
 children = [ NodePath("../MapPosition16"), NodePath("../MapPosition18"), NodePath("../MapPosition5"), NodePath("../MapPosition28"), NodePath("../MapPosition29") ]
 
 [node name="MapPosition18" type="Node2D" parent="FixedPositions"]
-position = Vector2( 790.355, 305.079 )
+position = Vector2( 793.533, 330.506 )
 script = ExtResource( 4 )
 children = [ NodePath("../MapPosition17"), NodePath("../MapPosition19"), NodePath("../MapPosition5"), NodePath("../MapPosition6"), NodePath("../MapPosition27") ]
 
@@ -158,7 +159,7 @@ script = ExtResource( 4 )
 children = [ NodePath("../MapPosition18"), NodePath("../MapPosition20"), NodePath("../MapPosition6"), NodePath("../MapPosition27") ]
 
 [node name="MapPosition20" type="Node2D" parent="FixedPositions"]
-position = Vector2( 1054.36, 276.696 )
+position = Vector2( 1057.54, 315.896 )
 script = ExtResource( 4 )
 children = [ NodePath("../MapPosition19"), NodePath("../MapPosition7"), NodePath("../MapPosition6"), NodePath("../MapPosition21") ]
 
@@ -233,6 +234,7 @@ __meta__ = {
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
 current = true
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }

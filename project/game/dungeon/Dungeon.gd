@@ -412,6 +412,9 @@ func _on_map_node_selected(node: MapNode):
 	elif node.type == MapNode.EVENT:
 		current_node = node
 		open_event(node)
+	else:
+		return
+	TooltipLayer.clean_tooltips()
 
 
 func _on_Battle_won():

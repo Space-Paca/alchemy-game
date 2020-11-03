@@ -33,6 +33,7 @@ var type := EMPTY
 var mouse_over = false
 var tooltips_enabled := false
 var block_tooltips := false
+var camera = null
 
 func _process(dt):
 	if mouse_over and type != EMPTY:
@@ -51,6 +52,10 @@ func fade_in():
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
 								.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
+
+
+func set_camera(cam):
+	camera = cam
 
 
 func set_type(new_type:int):
@@ -105,8 +110,8 @@ func _on_TooltipCollision_enable_tooltip():
 	
 	tooltips_enabled = true
 	var tooltip = get_node_tooltip()
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, true)
+	TooltipLayer.add_tooltip($TooltipPosition.global_position - camera.get_offset(), \
+							tooltip.title, tooltip.text, tooltip.title_image, true)
 
 
 func _on_TooltipCollision_disable_tooltip():

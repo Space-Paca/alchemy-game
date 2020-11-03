@@ -161,6 +161,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	shift_positions()
 	
 	initial_node = MAP_NODE_SCENE.instance()
+	initial_node.set_camera($Camera)
 	nodes.add_child(initial_node)
 	active_nodes.append(initial_node)
 	center_position.node = initial_node
@@ -202,6 +203,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		### NODE CREATION ###
 		var new_node : MapNode = MAP_NODE_SCENE.instance()
 		new_node.modulate.a = 0
+		new_node.set_camera($Camera)
 		nodes.add_child(new_node)
 		new_node.rect_global_position = new_pos.global_position
 		new_pos.node = new_node

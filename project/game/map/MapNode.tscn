@@ -34,7 +34,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( -42.7631, -60.5811 )
+position = Vector2( -107.799, -161.253 )
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

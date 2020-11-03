@@ -73,7 +73,7 @@ func update_size():
 	#and title rect has increased in size to accomodate new text
 	yield(TooltipLayer.get_tree(),"idle_frame") 
 	
-	var text_h = $Text.get_content_height()
+	var text_h = $Text.get_content_height() if $Text.bbcode_text != "" else 0
 	$BG.rect_size.y = $Text.rect_position.y + text_h + MARGIN_Y
 	
 	#Update title size to fit textbox

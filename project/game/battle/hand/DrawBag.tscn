@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/images/ui/deck_icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/hand/DrawBag.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
@@ -44,10 +44,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -15.0
-margin_top = -23.0
-margin_right = 15.0
-margin_bottom = 23.0
+margin_left = -10.1368
+margin_top = -17.5964
+margin_right = 19.8632
+margin_bottom = 28.4036
 custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/images/ui/discard_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/discard_bag.png" type="Texture" id=2]
 [ext_resource path="res://game/battle/hand/DiscardBag.gd" type="Script" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/ui/background_bags.png" type="Texture" id=5]
@@ -13,9 +13,8 @@ extents = Vector2( 48, 52 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_top = -15.0
-margin_right = 96.0
-margin_bottom = 115.0
+margin_right = 100.0
+margin_bottom = 100.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6

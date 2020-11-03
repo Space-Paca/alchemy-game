@@ -51,6 +51,14 @@ func set_hint(reagent_name):
 func get_hint():
 	return reagent_hint_name
 
+
+func hide_effects():
+	restrict_chain.hide()
+
+func show_effects():
+	restrict_chain.show()
+
+
 func is_restricted():
 	return restricted
 

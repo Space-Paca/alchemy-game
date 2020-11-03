@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/battle/hand/HandSlot.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/book/slot quad-80-px.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/ui/book/slot-frozen.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/book/slot_hand.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/slot_freeze.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.2764, 41.2469 )
@@ -24,15 +24,23 @@ margin_top = -40.0
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FrozenImage" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 80.0
-margin_bottom = 80.0
-texture = ExtResource( 3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,3 +52,17 @@ position = Vector2( 40, 40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FrozenEffect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -0.353561
+margin_top = 3.53553
+margin_right = 79.6464
+margin_bottom = 83.5355
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

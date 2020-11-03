@@ -2,18 +2,28 @@ extends Slot
 
 const ALPHA_SPEED = 3
 
+onready var frozen_effect = $CanvasLayer/FrozenEffect
 var frozen = false
 
 func _ready():
 	type = "hand"
 
 func _process(delta):
-	if not is_frozen():
-		$RegularImage.modulate.a = min($RegularImage.modulate.a + ALPHA_SPEED*delta, 1)
-		$FrozenImage.modulate.a = max($FrozenImage.modulate.a - ALPHA_SPEED*delta, 0)
-	else:
+	if is_frozen():
 		$FrozenImage.modulate.a = min($FrozenImage.modulate.a + ALPHA_SPEED*delta, 1)
-		$RegularImage.modulate.a = max($RegularImage.modulate.a - ALPHA_SPEED*delta, 0)
+		frozen_effect.modulate.a = min(frozen_effect.modulate.a + ALPHA_SPEED*delta, 1)
+	else:
+		$FrozenImage.modulate.a = max($FrozenImage.modulate.a - ALPHA_SPEED*delta, 0)
+		frozen_effect.modulate.a = max(frozen_effect.modulate.a - ALPHA_SPEED*delta, 0)
+
+
+func hide_effects():
+	frozen_effect.hide()
+
+
+func show_effects():
+	frozen_effect.show()
+
 
 func is_frozen():
 	return frozen
@@ -23,6 +33,7 @@ func freeze():
 	var reagent = get_reagent()
 	if reagent:
 		reagent.freeze()
+	$CanvasLayer.offset = rect_global_position
 
 func unfreeze():
 	frozen = false

@@ -73,6 +73,11 @@ func set_level(level:int):
 	full_heal()
 
 
+func full_heal():
+	.full_heal()
+	emit_signal("hp_updated", hp, max_hp)
+
+
 func add_gold(amount: int):
 	assert(amount > 0, "Amount must be positive")
 	AudioManager.play_sfx("get_coins")

@@ -2,8 +2,6 @@ extends Control
 
 signal closed
 
-onready var playerinfo = $PlayerInfo
-
 const ARTIFACTS_NUMBER = 2
 const ARTIFACT_LOOT = preload("res://game/treasure/ArtifactLoot.tscn")
 

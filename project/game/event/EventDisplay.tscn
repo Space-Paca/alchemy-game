@@ -54,8 +54,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 margin_left = 100.0
+margin_top = 200.0
 margin_right = 1000.0
-margin_bottom = 240.0
+margin_bottom = 440.0
 custom_fonts/font = SubResource( 1 )
 text = "Title"
 valign = 1
@@ -65,9 +66,9 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 100.0
-margin_top = 240.0
+margin_top = 440.0
 margin_right = 1000.0
-margin_bottom = 840.0
+margin_bottom = 1040.0
 rect_min_size = Vector2( 900, 600 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,9 +112,9 @@ __meta__ = {
 
 [node name="Image" type="TextureRect" parent="."]
 margin_left = 1080.0
-margin_top = 240.0
+margin_top = 440.0
 margin_right = 1680.0
-margin_bottom = 840.0
+margin_bottom = 1040.0
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

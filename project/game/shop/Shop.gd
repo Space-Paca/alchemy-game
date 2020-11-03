@@ -9,7 +9,6 @@ onready var recipes = $RecipeMenu/HBoxContainer.get_children()
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
 onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroyLabel
-onready var player_info = $PlayerInfo
 # MENUS
 onready var shop_menu = $ShopMenu
 onready var reagents_menu = $ReagentsMenu
@@ -53,10 +52,6 @@ func update_reagents():
 	reagent_list.populate(reagent_array)
 
 
-func update_gold():
-	player_info.update_gold(player.gold)
-
-
 func _on_BackButton_pressed():
 	match curr_state:
 		States.MENU:
@@ -85,12 +80,10 @@ func _on_ReagentsButton_pressed():
 
 
 func _on_ShopRecipe_bought(combination: Combination):
-	update_gold()
 	emit_signal("combination_bought", combination)
 
 
 func _on_ShopRecipe_hint_bought(combination: Combination):
-	update_gold()
 	emit_signal("hint_bought", combination)
 
 
@@ -105,7 +98,6 @@ func _on_YesButton_pressed():
 	if player.spend_gold(DESTROY_COST):
 		player.destroy_reagent(chosen_reagent_index)
 		update_reagents()
-		update_gold()
 		reagent_destroy_label.hide()
 	else:
 		AudioManager.play_sfx("error")

@@ -5,7 +5,6 @@
 [ext_resource path="res://game/map/Map.gd" type="Script" id=3]
 [ext_resource path="res://game/map/MapPosition.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -252,5 +251,3 @@ text = "Floor W"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="PlayerInfo" parent="CanvasLayer" instance=ExtResource( 6 )]

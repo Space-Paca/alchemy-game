@@ -2,6 +2,7 @@ extends Node
 
 onready var player = $Player
 onready var recipe_book : RecipeBook = $BookLayer/RecipeBook
+onready var player_info = $BookLayer/PlayerInfo
 onready var shop = $Shop
 onready var rest = $Rest
 onready var lab = $Laboratory
@@ -56,6 +57,7 @@ func _ready():
 	play_map_bgm()
 	
 	recipe_book.player = player
+	player_info.set_player(player)
 
 
 func _input(event):
@@ -118,14 +120,6 @@ func create_level(level: int):
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
-	
-	update_player_display()
-
-
-func update_player_display():
-	get_tree().call_group("gem_display", "update_gems", player.gems)
-	get_tree().call_group("gold_display", "update_gold", player.gold)
-	get_tree().call_group("hp_display", "update_hp", player.hp, player.max_hp)
 
 
 func get_incomplete_combinations():
@@ -295,6 +289,8 @@ func new_battle(encounter: Encounter):
 	battle = BATTLE_SCENE.instance()
 	add_child(battle)
 	
+	player_info.hide()
+	
 	battle.setup(player, encounter, favorite_combinations, floor_level)
 # warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
@@ -318,7 +314,6 @@ func new_battle(encounter: Encounter):
 func open_shop():
 	AudioManager.play_bgm("shop")
 	map.disable()
-	shop.update_gold()
 	shop.update_reagents()
 	shop.show()
 
@@ -342,6 +337,7 @@ func open_lab(room, _player):
 	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
 	map.disable()
+	player_info.hide()
 
 
 func open_treasure(room, _player):
@@ -375,14 +371,17 @@ func extract_boost_effects(reagents):
 
 func enable_map():
 	map.enable()
-	update_player_display()
+	player_info.update_values(player)
+	player_info.show()
 
 
 func recipe_book_toggle():
-	var visible = recipe_book.toggle_visibility()
-	map.recipe_toogle(visible)
+	var book_visible = recipe_book.toggle_visibility()
+	map.recipe_toogle(book_visible)
 	if battle:
-		battle.recipe_book_toggled(visible)
+		battle.recipe_book_toggled(book_visible)
+	elif not lab.visible:
+		player_info.visible = !book_visible
 
 
 func thanks_for_playing():
@@ -454,7 +453,6 @@ func _on_Battle_finished(is_boss):
 	else:
 		enable_map()
 		map.reveal_paths(current_node)
-		update_player_display()
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -614,3 +612,7 @@ func _on_Debug_floor_selected(floor_number: int):
 	
 	create_level(floor_number)
 	player.set_level(floor_number)
+
+
+func _on_PlayerInfo_button_pressed():
+	pass # Replace with function body.

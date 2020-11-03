@@ -16,8 +16,11 @@ const SHOWING_POSITION = Vector2(660, -400)
 
 
 func set_player(player: Player):
+	# warning-ignore:return_value_discarded
 	player.connect("hp_updated", self, "update_hp")
+	# warning-ignore:return_value_discarded
 	player.connect("gold_updated", self, "update_gold")
+	# warning-ignore:return_value_discarded
 	player.connect("gems_updated", self, "update_gems")
 	
 	update_values(player)

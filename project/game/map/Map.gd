@@ -228,13 +228,25 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	### TYPING NODES ###
 	untyped_nodes.shuffle()
 	
+	#Setting up boss and elite encounters
+	var boss_placed = false
+	var to_erase = []
 	for node in untyped_nodes:
 		var map_node : MapNode = node
-		if map_node.is_leaf:
+		if map_node.is_leaf and not boss_placed:
 			map_node.set_type(MapNode.BOSS)
-			untyped_nodes.erase(map_node)
-			break
+			to_erase.append(map_node)
+			boss_placed = true
+		elif map_node.is_leaf and elite_encounters > 0:
+			map_node.set_type(MapNode.ELITE)
+			to_erase.append(map_node)
+			elite_encounters -= 1
+			if elite_encounters <= 0:
+				break
 	
+	for map_node in to_erase:
+		untyped_nodes.erase(map_node)
+
 	var count_by_type := [0, normal_encounters, elite_encounters, 0, shops,
 			rests, smiths, events, labs, treasures]
 	

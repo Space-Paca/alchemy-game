@@ -18,6 +18,7 @@ const NODE_DIST_RAND = 50
 const CAMERA_LINEAR_SPEED = 60
 const CAMERA_EXPONENTIAL_SPEED = .1
 const EPSLON = 1
+const CENTRAL_NODE_CHILDREN_SIZE = 2
 
 var active_paths := 0
 var active_nodes := []
@@ -141,6 +142,11 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		old_positions.queue_free()
 	positions = stored_map_positions.duplicate(7)
 	center_position = positions.get_node("Center")
+	#Reduce randomly number of childs center node has
+	center_position.children.shuffle()
+	while center_position.children.size() > CENTRAL_NODE_CHILDREN_SIZE:
+		center_position.children.remove(1)
+	
 	add_child_below_node(nodes, positions)
 	
 	reset_camera()

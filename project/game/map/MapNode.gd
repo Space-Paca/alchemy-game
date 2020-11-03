@@ -44,6 +44,15 @@ func _process(dt):
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
 
 
+func disable():
+	disable_tooltips()
+	block_tooltips = true
+
+
+func enable():
+	block_tooltips = false
+
+
 func get_alpha():
 	return modulate.a
 

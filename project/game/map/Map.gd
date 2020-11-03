@@ -126,7 +126,7 @@ func reset_camera():
 
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
-		rests:int=1, shops:int=1, events:int=1, labs:int=1, treasures:int=1):
+		rests:int=1, shops:int=1, events:int=0, labs:int=1, treasures:int=1):
 	
 	#Reset Stored Positions
 	var old_positions = get_node("FixedPositions")

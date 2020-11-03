@@ -5,14 +5,17 @@ signal combination_discovered(combination, index)
 signal resolved
 signal draw_reagent
 signal draw_resolve
+signal hp_updated(hp, max_hp)
+signal gold_updated(gold)
+signal gems_updated(gem)
 
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 
-export var initial_currency := 50
+export var initial_gold := 50
 
-var currency : int
+var gold : int
 var gems : int
 var hud
 var hand_size : int
@@ -32,7 +35,7 @@ func _ready():
 	init("player", player_class.max_hps[cur_level-1])
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
-	currency = initial_currency
+	gold = initial_gold
 	gems = 0
 	
 	# Initial recipes
@@ -70,22 +73,25 @@ func set_level(level:int):
 	full_heal()
 
 
-func add_currency(amount: int):
+func add_gold(amount: int):
 	assert(amount > 0, "Amount must be positive")
 	AudioManager.play_sfx("get_coins")
-	currency += amount
+	gold += amount
+	emit_signal("gold_updated", gold)
 
 
 func add_gems(amount: int):
 	assert(amount > 0, "Amount must be positive")
 	AudioManager.play_sfx("get_gem")
 	gems += amount
+	emit_signal("gems_updated", gems)
 
 
-func spend_currency(amount: int) -> bool:
+func spend_gold(amount: int) -> bool:
 	assert(amount > 0, "Amount must be positive")
-	if currency >= amount:
-		currency -= amount
+	if gold >= amount:
+		gold -= amount
+		emit_signal("gold_updated", gold)
 		return true
 	else:
 		return false
@@ -95,6 +101,7 @@ func spend_gems(amount: int) -> bool:
 	assert(amount > 0, "Amount must be positive")
 	if gems >= amount:
 		gems -= amount
+		emit_signal("gems_updated", gems)
 		return true
 	else:
 		return false

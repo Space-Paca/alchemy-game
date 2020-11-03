@@ -884,7 +884,7 @@ func _on_win_screen_reagent_looted(reagent: String):
 
 
 func _on_win_screen_reagent_sold(gold_value: int):
-	player.add_currency(gold_value)
+	player.add_gold(gold_value)
 
 
 func _on_win_screen_combinations_seen(rewarded_combinations: Array):

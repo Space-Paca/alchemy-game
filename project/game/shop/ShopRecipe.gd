@@ -71,7 +71,7 @@ func update_display():
 
 
 func _on_Buy_pressed():
-	if player.spend_currency(buy_cost):
+	if player.spend_gold(buy_cost):
 		AudioManager.play_sfx("buy")
 		combination.discover_all_reagents()
 		update_display()
@@ -81,7 +81,7 @@ func _on_Buy_pressed():
 
 
 func _on_Hint_pressed():
-	if player.spend_currency(hint_cost):
+	if player.spend_gold(hint_cost):
 # warning-ignore:integer_division
 		var amount = combination.unknown_reagent_coords.size() / 2
 		combination.discover_reagents(amount)

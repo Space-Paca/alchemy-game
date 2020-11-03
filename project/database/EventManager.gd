@@ -80,12 +80,12 @@ func load_new_event(event_display, player, new_event_id: int):
 
 
 func bet(event_display, player, amount: int):
-	if not player.spend_currency(amount):
+	if not player.spend_gold(amount):
 		AudioManager.play_sfx("error")
 		return
 	
 	if randf() > .5:
-		player.add_currency(2 * amount)
+		player.add_gold(2 * amount)
 		load_leave_event(event_display, player,
 				"Congratulations, you won %d gold!" % amount)
 	else:
@@ -93,7 +93,7 @@ func bet(event_display, player, amount: int):
 
 
 func well(event_display, player, amount: int):
-	if not player.spend_currency(amount):
+	if not player.spend_gold(amount):
 		AudioManager.play_sfx("error")
 		return
 	
@@ -112,7 +112,7 @@ func well(event_display, player, amount: int):
 		won = randf() < chance[amount]
 	
 	if won:
-		player.add_currency(100)
+		player.add_gold(100)
 		load_leave_event(event_display, player,
 				"The well rewarded you with 100 gold!")
 	else:

@@ -15,7 +15,7 @@ func call_on_turn_start(name : String, args : Dictionary):
 #On add methods
 func on_add_coin_bag(args):
 	AudioManager.play_sfx("get_coins")
-	args.player.currency += 30
+	args.player.gold += 30
 
 func on_add_poison_kit(args):
 	AudioManager.play_sfx("status_poison")
@@ -49,11 +49,11 @@ func on_add_max_hp(args):
 
 func on_add_midas(args):
 	AudioManager.play_sfx("get_coins")
-	args.player.currency *= 3
+	args.player.gold *= 3
 
 func on_add_money_bag(args):
 	AudioManager.play_sfx("get_coins")
-	args.player.currency += 30
+	args.player.gold += 30
 
 #On battle start methods
 func on_battle_start_strength(args):

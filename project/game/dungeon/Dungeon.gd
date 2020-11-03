@@ -123,7 +123,7 @@ func create_level(level: int):
 
 func update_player_display():
 	get_tree().call_group("gem_display", "update_gems", player.gems)
-	get_tree().call_group("gold_display", "update_gold", player.currency)
+	get_tree().call_group("gold_display", "update_gold", player.gold)
 	get_tree().call_group("hp_display", "update_hp", player.hp, player.max_hp)
 
 
@@ -317,7 +317,7 @@ func new_battle(encounter: Encounter):
 func open_shop():
 	AudioManager.play_bgm("shop")
 	map.disable()
-	shop.update_currency()
+	shop.update_gold()
 	shop.update_reagents()
 	shop.show()
 

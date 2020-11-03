@@ -27,11 +27,14 @@ func init(_name: String, _max_hp: int):
 	hp = max_hp
 	shield = 0
 
+
 func set_max_hp(value):
 	max_hp = value
 
+
 func full_heal():
 	hp = max_hp
+
 
 func heal(amount: int):
 	if get_status("deep_wound"):
@@ -43,6 +46,7 @@ func heal(amount: int):
 	
 	return hp - old_hp
 
+
 func get_damage_modifiers():
 	var mod = 0
 	if get_status("temp_strength"):
@@ -50,6 +54,7 @@ func get_damage_modifiers():
 	if get_status("perm_strength"):
 		mod += get_status("perm_strength").amount
 	return mod
+
 
 func damage_strength(damage):
 	if damage < WEAK_THRESHOLD:

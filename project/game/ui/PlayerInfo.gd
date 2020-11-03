@@ -15,8 +15,18 @@ const HIDDEN_POSITION = Vector2(660, -627)
 const SHOWING_POSITION = Vector2(660, -400)
 
 
-func _ready():
-	pass
+func set_player(player: Player):
+	player.connect("hp_updated", self, "update_hp")
+	player.connect("gold_updated", self, "update_gold")
+	player.connect("gems_updated", self, "update_gems")
+	
+	update_values(player)
+
+
+func update_values(player: Player):
+	update_hp(player.hp, player.max_hp)
+	update_gold(player.gold)
+	update_gems(player.gems)
 
 
 func update_hp(hp: int, max_hp: int):

@@ -4,7 +4,6 @@ class_name MapNode
 signal pressed
 
 onready var button = $Button
-onready var legend = $Legend
 
 enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 
@@ -22,8 +21,8 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/event.png"),
 		preload("res://assets/images/map/laboratory.png"),
 		preload("res://assets/images/map/treasure.png")]
-const LEGEND = ["", "Enemy encounter", "Elite encounter", "Boss encounter",
-		"Shop", "Rest area", "Reagent smith", "Event", "Laboratory", "Treasure"]
+const LEGEND = ["", "Enemy", "Elite", "Boss",
+		"Shop", "Rest", "Reagent Smith", "Event", "Laboratory", "Treasure"]
 
 var encounter : Encounter
 var is_leaf := true
@@ -32,15 +31,14 @@ var map_lines := []
 var paths_revealed := false
 var type := EMPTY
 var mouse_over = false
-
+var tooltips_enabled := false
+var block_tooltips := false
 
 func _process(dt):
 	if mouse_over and type != EMPTY:
-		$Legend.modulate.a = min($Legend.modulate.a + ALPHA_SPEED*dt, 1)
 		$Button.rect_scale.x = min($Button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
 		$Button.rect_scale.y = min($Button.rect_scale.y + SCALE_SPEED*dt, TARGET_SCALE)
 	else:
-		$Legend.modulate.a = max($Legend.modulate.a - ALPHA_SPEED*dt, 0)
 		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
 
@@ -69,12 +67,23 @@ func set_type(new_type:int):
 		encounter = EncounterManager.get_random_elite_encounter()
 	elif type == BOSS:
 		encounter = EncounterManager.get_random_boss_encounter()
-	
-	legend.text = LEGEND[type]
 
 
 func should_autoreveal() -> bool:
 	return type in [EMPTY, SHOP, REST, SMITH, LABORATORY, TREASURE]
+
+
+func disable_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+
+func get_node_tooltip():
+	var tooltip = {}
+	tooltip = {"title": LEGEND[type], "text": "", \
+			   "title_image": IMAGES[type]}
+	return tooltip
 
 
 func _on_Button_pressed():
@@ -88,3 +97,17 @@ func _on_Button_mouse_entered():
 
 func _on_Button_mouse_exited():
 	mouse_over = false
+
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips or type == EMPTY:
+		return
+	
+	tooltips_enabled = true
+	var tooltip = get_node_tooltip()
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, true)
+
+
+func _on_TooltipCollision_disable_tooltip():
+	disable_tooltips()

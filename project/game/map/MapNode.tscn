@@ -2,13 +2,10 @@
 
 [ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=1]
 [ext_resource path="res://game/map/MapNode.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 30 )
 
 [node name="MapNode" type="Control"]
 script = ExtResource( 2 )
@@ -29,28 +26,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Legend" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_top = -80.0
-margin_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-align = 1
-
-[node name="ColorRect" type="ColorRect" parent="Legend"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.121569, 0.121569, 0.121569, 0.784314 )
-
 [node name="Tween" type="Tween" parent="."]
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 1 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( -42.7631, -60.5811 )
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

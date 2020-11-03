@@ -63,6 +63,16 @@ func set_grid(_size: int):
 			slot.connect("reagent_removed", self, "_on_slot_changed")
 
 
+func hide_effects():
+	for slot in slots.get_children():
+		slot.hide_effects()
+
+
+func show_effects():
+	for slot in slots.get_children():
+		slot.show_effects()
+
+
 func is_empty():
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()

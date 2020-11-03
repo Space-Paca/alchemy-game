@@ -122,6 +122,16 @@ func place_reagent(reagent):
 	assert(false)
 
 
+func hide_effects():
+	for slot in get_slots():
+		slot.hide_effects()
+
+
+func show_effects():
+	for slot in get_slots():
+		slot.show_effects()
+
+
 func get_reagent_names() -> Array:
 	var reagents := []
 	for slot in get_slots():

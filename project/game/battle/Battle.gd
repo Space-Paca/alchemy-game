@@ -368,6 +368,8 @@ func recipe_book_toggled(visible: bool):
 			reagent.disable_dragging()
 		draw_bag.disable()
 		discard_bag.disable()
+		grid.hide_effects()
+		hand.hide_effects()
 	else:
 		player_ui.enable_tooltips()
 		recipes_button.show()
@@ -377,6 +379,8 @@ func recipe_book_toggled(visible: bool):
 			reagent.enable_dragging()
 		draw_bag.enable()
 		discard_bag.disable()
+		grid.show_effects()
+		hand.show_effects()
 
 
 func set_favorites_disabled(disabled: bool):

@@ -525,6 +525,7 @@ func _on_Player_combination_discovered(combination, index):
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
 	recipe_book_toggle()
+	battle.grid.clear_hint()
 	if mastery_unlocked:
 		battle.autocomplete_grid(combination)
 	else:

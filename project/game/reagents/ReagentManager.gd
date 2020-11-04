@@ -105,12 +105,14 @@ func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
 func try_reagents(reagent_array, hand_reagents_array):
 	var comparing_reagents = reagent_array.duplicate() 
 	var correct_reagent_displays := []
+	for i in hand_reagents_array.size():
+		correct_reagent_displays.append(false)
 	var i = 0
 	while not comparing_reagents.empty() and i < hand_reagents_array.size():
 		var reagent = hand_reagents_array[i]
 		for other in comparing_reagents:
 			if reagent == other:
-				correct_reagent_displays.append(i)
+				correct_reagent_displays[i] = reagent
 				comparing_reagents.erase(other)
 				break
 		i += 1

@@ -156,9 +156,10 @@ func color_hand_reagents(reagent_array: Array):
 		hand_array.append(reagent_display.reagent_name)
 	var correct_reagents = ReagentManager.get_reagents_to_use(reagent_array, hand_array)
 	if correct_reagents:
-		for index in correct_reagents:
-			var display = hand_reagents[index]
-			display.self_modulate = Color.green
+		for index in correct_reagents.size():
+			if correct_reagents[index]:
+				var display = hand_reagents[index]
+				display.self_modulate = Color.green
 
 func reset_hand_reagents_color():
 	for display in hand_reagents:
@@ -315,9 +316,6 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 		hand_array.append(reagent_display.reagent_name)
 	var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
 	if valid_reagents:
-		var selected_reagents = []
-		for idx in valid_reagents:
-			selected_reagents.append(hand_array[idx])
 		emit_signal("recipe_pressed", combination, mastery_unlocked)
 	else:
 		error_effect()

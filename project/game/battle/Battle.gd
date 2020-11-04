@@ -533,10 +533,10 @@ func autocomplete_grid(combination: Combination):
 		for i in range(combination.grid_size):
 			for j in range(combination.grid_size):
 				if combination.matrix[i][j]:
-					for idx in recipe_reagents.size():
-						if recipe_reagents[idx] and recipe_reagents[idx] == combination.matrix[i][j]:
-							recipe_reagents[idx] = false
-							var reagent = reagents.get_child(selected_reagents[idx])
+					for idx in selected_reagents.size():
+						if selected_reagents[idx] and selected_reagents[idx] == combination.matrix[i][j]:
+							selected_reagents[idx] = false
+							var reagent = reagents.get_child(idx)
 							if not reagent.slot:
 								push_error("reagent isn't in slot")
 								assert(false)
@@ -557,8 +557,9 @@ func has_reagents(reagent_array: Array):
 	var valid_reagents = ReagentManager.get_reagents_to_use(reagent_array, available_reagents)
 	if valid_reagents:
 		var selected_reagents := []
-		for idx in valid_reagents:
-			selected_reagents.append(reagents.get_child(idx))
+		for idx in valid_reagents.size():
+			if valid_reagents[idx]:
+				selected_reagents.append(reagents.get_child(idx))
 		return selected_reagents
 	
 	return false

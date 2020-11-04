@@ -11,6 +11,7 @@ signal combination_rewarded(combination)
 signal rewarded_combinations_seen(combinations)
 signal grid_modified(reagent_matrix)
 signal recipe_book_toggle
+signal hand_set
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -51,6 +52,7 @@ var deviated_recipes
 var is_dragging_reagent := false
 var recipes_created
 var current_encounter
+var first_turn = true
 
 
 func _ready():
@@ -296,6 +298,10 @@ func new_player_turn():
 	
 	
 	enable_player()
+	
+	if (first_turn):
+		first_turn = false
+		emit_signal("hand_set")
 
 
 func new_enemy_turn():

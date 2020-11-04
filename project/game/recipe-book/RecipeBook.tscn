@@ -150,6 +150,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HandBtn" type="TextureButton" parent="Background/TagButtons"]
+visible = false
+margin_right = 347.0
+margin_bottom = 98.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Background/TagButtons/HandBtn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.9084
+margin_top = -19.6364
+margin_right = -10.9084
+margin_bottom = 26.3636
+custom_fonts/font = ExtResource( 8 )
+text = "hand"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DeckBtn" type="TextureButton" parent="Background/TagButtons"]
 margin_right = 347.0
 margin_bottom = 98.0
@@ -167,31 +191,6 @@ margin_right = -15.0902
 margin_bottom = 28.0454
 custom_fonts/font = ExtResource( 8 )
 text = "deck"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HandBtn" type="TextureButton" parent="Background/TagButtons"]
-visible = false
-margin_top = 102.0
-margin_right = 347.0
-margin_bottom = 200.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 13 )
-
-[node name="Label" type="Label" parent="Background/TagButtons/HandBtn"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.9084
-margin_top = -19.6364
-margin_right = -10.9084
-margin_bottom = 26.3636
-custom_fonts/font = ExtResource( 8 )
-text = "hand"
 align = 1
 valign = 1
 __meta__ = {
@@ -277,10 +276,10 @@ margin_right = -309.276
 margin_bottom = -960.817
 
 [node name="Tween" type="Tween" parent="."]
-[connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
 [connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
+[connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
 [connection signal="mouse_entered" from="Background/TagButtons/IncompleteBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/IncompleteBtn" to="." method="_on_Tag_pressed" binds= [ 2 ]]
 [connection signal="mouse_entered" from="Background/TagButtons/CompleteBtn" to="." method="_on_button_mouse_entered"]

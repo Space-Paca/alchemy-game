@@ -25,7 +25,7 @@ const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
 
 enum States {BATTLE, MAP, LAB}
-enum {DECK, HAND, INCOMPLETE, COMPLETE, ALL}
+enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
 
 var recipe_displays := {}
 var hand_reagents : Array
@@ -55,6 +55,8 @@ func change_state(new_state: int):
 				scroll.rect_size.y += hand_rect.rect_size.y
 				hand_tag_button.hide()
 				reset_recipe_visibility()
+				filter_by_tag(DECK)
+				update_tag_buttons(DECK)
 		States.LAB:
 			pass
 	
@@ -91,6 +93,7 @@ func create_hand(battle):
 	battle_draw_bag = battle.draw_bag
 	battle_discard_bag = battle.discard_bag
 	battle.connect("current_reagents_updated", self, "update_hand")
+	battle.connect("hand_set", self, "_on_battle_hand_set")
 	for i in range(battle.hand.size):
 		var reagent = REAGENT_DISPLAY.instance()
 		var row = 0 if i < ceil(battle.hand.size / 2.0) else 1
@@ -160,6 +163,7 @@ func color_hand_reagents(reagent_array: Array):
 			if correct_reagents[index]:
 				var display = hand_reagents[index]
 				display.self_modulate = Color.green
+
 
 func reset_hand_reagents_color():
 	for display in hand_reagents:
@@ -283,6 +287,7 @@ func reset_recipe_visibility():
 
 
 func update_tag_buttons(tag):
+	print($Background/TagButtons.get_child_count())
 	for idx in range($Background/TagButtons.get_child_count()):
 		var button = $Background/TagButtons.get_child(idx)
 		if idx == tag:
@@ -291,6 +296,7 @@ func update_tag_buttons(tag):
 		else:
 			button.texture_normal = SHORT_TAG_TEXTURE
 			button.texture_hover = SHORT_TAG_HOVER_TEXTURE
+
 
 func _on_recipe_display_hovered(reagent_array: Array):
 	if state == States.BATTLE:
@@ -323,6 +329,11 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 
 func _on_recipe_display_favorite_toggled(combination: Combination, button_pressed: bool):
 	emit_signal("favorite_toggled", combination, button_pressed)
+
+
+func _on_battle_hand_set():
+	filter_by_tag(HAND)
+	update_tag_buttons(HAND)
 
 
 func _on_Tag_pressed(tag: int):

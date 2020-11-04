@@ -71,9 +71,14 @@ func preview_mode(is_mastered: bool):
 		description.text = combination.recipe.master_description
 
 func update_mastery(new_value: int, threshold: int):
-	mastery_label.text = "Mastery " + str(new_value) + "/" + str(threshold)
-	mastery_progress.max_value = threshold
-	mastery_progress.value = new_value
+	if new_value < threshold :
+		mastery_label.text = "Mastery " + str(new_value) + "/" + str(threshold)
+		mastery_progress.max_value = threshold
+		mastery_progress.value = new_value
+	else:
+		mastery_label.text = "Mastered"
+		favorite_button.visible = true
+		mastery_progress.visible = false
 
 func is_mastered():
 	return mastery_unlocked

@@ -44,7 +44,7 @@ var keywords = {
 	"unstable": {
 		"type": "tooltip",
 		"title": "Unstable",
-		"text": "An unstable reagent, if not used properly or until end of turn, explodes dealing 3 regular damage.",
+		"text": "An unstable reagent, if not used in a recipe until end of turn, explodes dealing 3 regular damage.",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
 	"on fire": {

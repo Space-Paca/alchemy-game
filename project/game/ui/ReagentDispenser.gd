@@ -16,7 +16,7 @@ func setup(reagent, amount):
 	var reagent_data = ReagentDB.get_from_name(reagent_type)
 	
 	image.texture = reagent_data.image
-	name_label = reagent_data.name
+	name_label.text = reagent_data.name
 	quantity = amount
 	max_quantity = amount
 	update_text()

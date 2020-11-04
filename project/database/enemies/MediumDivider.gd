@@ -9,9 +9,10 @@ var battle_init = true
 var size = "medium"
 var change_phase = null
 
-var states = ["init", "attack", "defend", "poison"]
+var states = ["init", "attack", "defend", "poison", "first"]
 var connections = [
-					  ["init", "poison", 1],
+					  ["init", "first", 1],
+					  ["first", "poison", 1],
 					  ["attack", "poison", 1],
 					  ["defend", "poison", 1],
 					  ["poison", "attack", 1],
@@ -33,5 +34,8 @@ var actions = {
 	],
 	"poison": [
 		{"name": "damage", "value": [8, 12], "type": "venom"},
+	],
+	"first": [
+		{"name": "damage", "value": [2,3], "type": "venom"},
 	],
 }

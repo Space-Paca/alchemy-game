@@ -144,6 +144,17 @@ func setup_shop():
 	shop.setup(shop_combinations, player)
 
 
+func is_single_reagent(reagent_matrix):
+	var count = 0
+	for i in reagent_matrix.size():
+		for j in reagent_matrix[i].size():
+			if reagent_matrix[i][j]:
+				count += 1
+				if count > 1:
+					return false
+	return true
+
+
 func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combination:
 	var grid_combination = get_combination_in_matrix(grid_size, reagent_matrix)
 	
@@ -488,7 +499,7 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	var combination = get_combination_in_grid(reagent_matrix, battle.grid.grid_size)
 	if combination and not combination.discovered:
 		combination = null
-	elif not combination and failed_combinations.has(reagent_matrix):
+	elif not combination and (failed_combinations.has(reagent_matrix) or is_single_reagent(reagent_matrix)):
 		combination = "failure"
 	
 	battle.display_name_for_combination(combination)
@@ -512,7 +523,7 @@ func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 	var combination = get_combination_in_grid(reagent_matrix, grid_size)
 	if combination and not combination.discovered:
 		combination = null
-	elif not combination and failed_combinations.has(reagent_matrix):
+	elif not combination and (failed_combinations.has(reagent_matrix) or is_single_reagent(reagent_matrix)):
 		combination = "failure"
 	
 	lab.display_name_for_combination(combination)

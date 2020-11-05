@@ -628,3 +628,7 @@ func _on_Debug_floor_selected(floor_number: int):
 
 func _on_PlayerInfo_button_pressed():
 	pass # Replace with function body.
+
+
+func _on_RecipeBook_close():
+	recipe_book_toggle()

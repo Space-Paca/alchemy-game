@@ -96,10 +96,12 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 				add_tooltip(pos, data.title_name, data.description, data.image, false, true)
 
 func fade_tooltip(tip, play_sfx):
-	tip.fade_in()
-	if play_sfx:
-		AudioManager.play_sfx("tooltip_appears")
-	update_tooltips_pos()
+	#Check if tip wasn't freed (trying to fix annoying tween not added error)
+	if $Tooltips.is_a_parent_of(tip):
+		tip.fade_in()
+		if play_sfx:
+			AudioManager.play_sfx("tooltip_appears")
+		update_tooltips_pos()
 
 func has_tooltip(title):
 	for tooltip in $Tooltips.get_children():

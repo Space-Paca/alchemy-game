@@ -3,6 +3,7 @@ class_name RecipeBook
 
 signal recipe_pressed(combination, mastery_unlocked)
 signal favorite_toggled(combination, button_pressed)
+signal close
 
 onready var hand_rect : Control = $Background/HandRect
 onready var upper_hand = $Background/HandRect/CenterContainer/HandReagents/Upper
@@ -352,3 +353,6 @@ func _on_FilterMenu_filters_updated(filters: Array):
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+func _on_CloseButton_pressed():
+	emit_signal("close")

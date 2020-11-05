@@ -41,6 +41,7 @@ visible = false
 [node name="EventDisplay" parent="." instance=ExtResource( 9 )]
 visible = false
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
+[connection signal="close" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_close"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
 [connection signal="button_pressed" from="BookLayer/PlayerInfo" to="." method="_on_PlayerInfo_button_pressed"]

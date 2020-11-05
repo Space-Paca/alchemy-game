@@ -275,6 +275,33 @@ margin_top = 119.183
 margin_right = -309.276
 margin_bottom = -960.817
 
+[node name="CloseButton" type="TextureButton" parent="Background"]
+margin_left = 783.991
+margin_top = 65.9265
+margin_right = 933.991
+margin_bottom = 163.927
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/CloseButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.1531
+margin_top = -17.9944
+margin_right = 35.8469
+margin_bottom = 28.0056
+custom_fonts/font = ExtResource( 8 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tween" type="Tween" parent="."]
 [connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
@@ -287,3 +314,5 @@ margin_bottom = -960.817
 [connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
+[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]

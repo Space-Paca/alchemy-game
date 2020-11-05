@@ -64,10 +64,10 @@ __meta__ = {
 }
 
 [node name="RecipesButton" parent="." instance=ExtResource( 1 )]
-margin_left = 766.666
-margin_top = 65.8007
-margin_right = 966.666
-margin_bottom = 135.801
+margin_left = 755.959
+margin_top = 812.487
+margin_right = 955.959
+margin_bottom = 882.487
 
 [node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
 margin_left = 757.86

@@ -83,11 +83,8 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 	$Tooltips.position.y = pos.y
 
 	yield(tip, "set_up")
-
-	tip.fade_in()
-	if play_sfx:
-		AudioManager.play_sfx("tooltip_appears")
-	update_tooltips_pos()
+	
+	call_deferred("fade_tooltip", tip, play_sfx)
 	
 	for keyword in tip.get_keywords():
 		if keywords.has(keyword):
@@ -97,6 +94,12 @@ func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = fal
 			elif tp_data.type == "status":
 				var data = StatusDB.get_from_name(tp_data.name)
 				add_tooltip(pos, data.title_name, data.description, data.image, false, true)
+
+func fade_tooltip(tip, play_sfx):
+	tip.fade_in()
+	if play_sfx:
+		AudioManager.play_sfx("tooltip_appears")
+	update_tooltips_pos()
 
 func has_tooltip(title):
 	for tooltip in $Tooltips.get_children():

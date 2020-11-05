@@ -632,3 +632,7 @@ func _on_PlayerInfo_button_pressed():
 
 func _on_RecipeBook_close():
 	recipe_book_toggle()
+
+
+func _on_Laboratory_recipe_toggle():
+	recipe_book_toggle()

@@ -52,5 +52,6 @@ visible = false
 [connection signal="closed" from="Rest" to="." method="_on_Rest_closed"]
 [connection signal="closed" from="Blacksmith" to="." method="_on_Blacksmith_closed"]
 [connection signal="closed" from="Laboratory" to="." method="_on_Laboratory_closed"]
+[connection signal="recipe_toggle" from="Laboratory" to="." method="_on_Laboratory_recipe_toggle"]
 [connection signal="closed" from="Treasure" to="." method="_on_Treasure_closed"]
 [connection signal="closed" from="EventDisplay" to="." method="_on_EventDisplay_closed"]

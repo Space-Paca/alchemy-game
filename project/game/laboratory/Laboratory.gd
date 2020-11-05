@@ -1,6 +1,7 @@
 extends Control
 
 signal closed
+signal recipe_toggle
 signal grid_modified(reagent_matrix)
 signal combination_made(reagent_matrix)
 
@@ -181,3 +182,7 @@ func _on_Grid_modified():
 	
 	emit_signal("grid_modified", reagent_matrix, grid.grid_size)
 
+
+
+func _on_RecipesButton_pressed():
+	emit_signal("recipe_toggle")

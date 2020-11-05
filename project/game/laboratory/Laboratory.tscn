@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/background/06_dungeon.jpg" type="Texture" id=5]
@@ -12,17 +12,13 @@
 [ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/images/ui/cauldron.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/ui/slot_numbers.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/book/book_tag_btn_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
 
-[sub_resource type="DynamicFont" id=1]
-size = 35
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 570, 520 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
@@ -30,7 +26,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "blink_red"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:custom_colors/font_color")
@@ -45,8 +41,16 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -74,7 +78,7 @@ margin_left = -99.9998
 margin_top = -160.558
 margin_right = 99.9998
 margin_bottom = -70.5555
-custom_fonts/font = SubResource( 1 )
+theme = ExtResource( 14 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -85,11 +89,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 435.0
-margin_top = -420.0
-margin_right = 695.0
-margin_bottom = -320.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 511.367
+margin_top = -321.005
+margin_right = 771.367
+margin_bottom = -207.005
+theme = ExtResource( 14 )
 text = "COMBINE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -132,10 +136,10 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
 position = Vector2( 130.108, 8.48529 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Counter" type="Node2D" parent="."]
-position = Vector2( 840.711, 268.935 )
+position = Vector2( 857.682, 407.528 )
 script = ExtResource( 8 )
 
 [node name="BG" type="TextureRect" parent="Counter"]
@@ -163,8 +167,7 @@ margin_left = 137.846
 margin_top = 144.659
 margin_right = 337.846
 margin_bottom = 265.659
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 1
 valign = 1
@@ -174,27 +177,53 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Counter"]
 autoplay = "idle"
-anims/blink_red = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/blink_red = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="RecipesButton" type="TextureButton" parent="."]
+margin_left = 766.342
+margin_top = 207.985
+margin_right = 1066.34
+margin_bottom = 337.985
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RecipesButton"]
+margin_left = 24.4467
+margin_top = 6.22935
+margin_right = 256.447
+margin_bottom = 127.229
+custom_fonts/font = SubResource( 5 )
+text = "Recipes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Grid" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 399.724
-margin_top = -231.038
-margin_right = 399.724
-margin_bottom = -231.038
+margin_left = 476.092
+margin_top = -132.043
+margin_right = 476.092
+margin_bottom = -132.043
 
 [node name="RecipeNameDisplay" parent="." instance=ExtResource( 9 )]
-margin_left = 1260.55
-margin_top = 225.663
-margin_right = 1260.55
-margin_bottom = 225.663
+margin_left = 1336.92
+margin_top = 324.658
+margin_right = 1336.92
+margin_bottom = 324.658
 
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]
 [connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]
+[connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]

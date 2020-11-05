@@ -3,7 +3,7 @@ extends Control
 const MARGIN_X = 35
 const MARGIN_Y = 34
 const SEPARATION_TITLE_TEXT = 12
-const TITLE_IMAGE_SIZE = 24
+const TITLE_IMAGE_SIZE = 32
 
 signal set_up
 

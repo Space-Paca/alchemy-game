@@ -18,6 +18,7 @@ const CAMERA_LINEAR_SPEED = 60
 const CAMERA_EXPONENTIAL_SPEED = .1
 const EPSLON = 1
 const CENTRAL_NODE_CHILDREN_SIZE = 2
+const PLAYER_UI_HEIGHT = 250
 
 var active_paths := 0
 var active_nodes := []
@@ -46,6 +47,8 @@ func _process(dt):
 		if count > 0:
 			target_pos = target_pos/float(count)
 			target_pos += get_screen_center()
+# warning-ignore:integer_division
+			target_pos.y -= PLAYER_UI_HEIGHT/2
 			
 			#Move camera linearly
 			var dist = (target_pos - $Camera.position)
@@ -121,8 +124,11 @@ func get_screen_center():
 	return Vector2(1920/2, 1080/2)
 
 
-func reset_camera():
-	$Camera.position = get_screen_center()
+func reset_camera(is_map := false):
+	$Camera.position = get_screen_center() 
+	if is_map:
+# warning-ignore:integer_division
+		$Camera.position -= Vector2(0, PLAYER_UI_HEIGHT/2)
 
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
@@ -142,7 +148,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	
 	add_child_below_node(nodes, positions)
 	
-	reset_camera()
+	reset_camera(true)
 	active_nodes = []
 	camera_last_pos = false
 	

@@ -17,7 +17,6 @@ func setup(node, _player):
 	reagent_list.hide()
 	$UpgradingReagent.hide()
 	player = _player
-	$PlayerInfo.update_gems(player.gems)
 	state = "start"
 	map_node = node
 
@@ -87,7 +86,6 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 func _on_ConfirmUpgrade_pressed():
 	if player.spend_gems(1):
 		AudioManager.play_sfx("upgrade_reagent")
-		$PlayerInfo.update_gems(player.gems)
 		player.upgrade_reagent(chosen_reagent_index)
 		reagent_list.deactivate_reagents()
 		$UpgradingReagent.hide()

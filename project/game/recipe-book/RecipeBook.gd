@@ -34,6 +34,9 @@ var battle_draw_bag
 var battle_discard_bag
 var player : Player
 
+func _ready():
+	discard_bag.disable()
+	draw_bag.disable()
 
 func change_state(new_state: int):
 	if new_state == state:
@@ -108,6 +111,8 @@ func remove_hand():
 	for child in lower_hand.get_children():
 		lower_hand.remove_child(child)
 	
+	draw_bag.disable()
+	discard_bag.disable()
 	hand_rect.visible = false
 
 

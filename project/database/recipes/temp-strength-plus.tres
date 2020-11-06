@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Retaliate"
+name = "Greater Strength Tonic"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "defensive", "defensive", "buff" ]
 effects = [ "add_status" ]
 effect_args = [ [ "self", "temp_strength", 8, true ] ]
 destroy_reagents = [  ]
-description = "Gain 8 temporary strength."
+description = "Gain 20 temporary strength."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 50
 master_effects = [ "add_status" ]
 master_effect_args = [ [ "self", "temp_strength", 10, true ] ]
 master_destroy_reagents = [  ]
-master_description = "Gain 10 temporary strength."
+master_description = "Gain 25 temporary strength."

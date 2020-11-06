@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Poison+"
+name = "Noxious Vial"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "poison", "damaging", "damaging" ]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Weak Area"
+name = "Feebleness Gas"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "uncommon", "debuff" ]

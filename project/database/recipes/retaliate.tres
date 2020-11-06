@@ -5,14 +5,14 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Retaliate"
+name = "Thornskin Tonic"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "defensive", "defensive", "buff" ]
 effects = [ "add_status" ]
-effect_args = [ [ "self", "retaliate", 6, true ] ]
+effect_args = [ [ "self", "retaliate", 8, true ] ]
 destroy_reagents = [  ]
-description = "Gain 6 retaliate."
+description = "Gain 8 retaliate."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 50

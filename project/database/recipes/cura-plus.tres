@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Cura+"
+name = "Healing Elixir"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "common", "common", "uncommon", "uncommon", "healing" ]
 effects = [ "heal" ]
-effect_args = [ [ 50 ] ]
+effect_args = [ [ 60 ] ]
 destroy_reagents = [ "healing" ]
-description = "Heals 50 HP. Destroys the healing reagent in the process."
+description = "Heals 60 HP. Destroys the healing reagent in the process."
 filters = [ 5 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 78
 master_effects = [ "heal" ]
-master_effect_args = [ [ 60 ] ]
+master_effect_args = [ [ 70 ] ]
 master_destroy_reagents = [ "healing" ]
-master_description = "Heals 60 HP. Destroys the healing reagent in the process."
+master_description = "Heals 70 HP. Destroys the healing reagent in the process."

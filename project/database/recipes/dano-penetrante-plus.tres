@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Dano penetrante+"
+name = "Alchemist's Conflagration"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "damaging", "damaging", "damaging", "damaging" ]
 effects = [ "damage" ]
-effect_args = [ [ 22, "piercing" ] ]
+effect_args = [ [ 26, "piercing" ] ]
 destroy_reagents = [  ]
-description = "Deals 22 piercing damage to target enemy."
+description = "Deals 26 piercing damage to target enemy."
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 42
 master_effects = [ "damage" ]
-master_effect_args = [ [ 28, "piercing" ] ]
+master_effect_args = [ [ 32, "piercing" ] ]
 master_destroy_reagents = [  ]
-master_description = "Deals 28 piercing damage to target enemy."
+master_description = "Deals 32 piercing damage to target enemy."

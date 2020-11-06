@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Area Poison"
+name = "Toxic Gas"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "poison", "poison", "damaging", "damaging" ]
 effects = [ "add_status_all" ]
-effect_args = [ [ "poison", 8, false ] ]
+effect_args = [ [ "poison", 10, false ] ]
 destroy_reagents = [  ]
-description = "Gives 8 poison to all enemies."
+description = "Gives 10 poison to all enemies."
 filters = [ 4, 2 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 40
 master_effects = [ "add_status_all" ]
-master_effect_args = [ [ "poison", 10, false ] ]
+master_effect_args = [ [ "poison", 14, false ] ]
 master_destroy_reagents = [  ]
-master_description = "Gives 10 poison to all enemies."
+master_description = "Gives 14 poison to all enemies."

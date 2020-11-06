@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Escudo++"
+name = "Greater Stoneskin Potion"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "common", "defensive", "super_defensive" ]
 effects = [ "shield" ]
-effect_args = [ [ 0 ] ]
+effect_args = [ [ 40 ] ]
 destroy_reagents = [  ]
-description = "Gain 30 shield until end of turn."
+description = "Gain 40 shield until end of turn."
 filters = [ 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 55
 master_effects = [ "shield" ]
-master_effect_args = [ [ 38 ] ]
+master_effect_args = [ [ 48 ] ]
 master_destroy_reagents = [  ]
-master_description = "Gain 38 shield until end of turn."
+master_description = "Gain 48 shield until end of turn."

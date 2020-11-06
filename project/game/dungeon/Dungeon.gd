@@ -458,6 +458,8 @@ func _on_Battle_finished(is_boss):
 		if floor_level <= Debug.MAX_FLOOR:
 			create_level(floor_level)
 			$Player.level_up()
+			player_info.update_values(player)
+			player_info.show()
 		else:
 			enable_map()
 			thanks_for_playing()

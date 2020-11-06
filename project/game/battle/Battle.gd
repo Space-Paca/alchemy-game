@@ -546,6 +546,10 @@ func autocomplete_grid(combination: Combination):
 							if not reagent.slot:
 								push_error("reagent isn't in slot")
 								assert(false)
+							if reagent.is_burned():
+								reagent.unburn()
+								AudioManager.play_sfx("fire_reagent")
+								player.take_damage(player, 4, "regular", false)
 							grid.slots.get_child(i * grid.grid_size +\
 									j).set_reagent(reagent)
 							break

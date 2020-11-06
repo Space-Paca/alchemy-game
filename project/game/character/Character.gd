@@ -346,5 +346,5 @@ func end_turn_weak():
 func end_turn_time_bomb():
 	remove_status("time_bomb")
 
-func end_turn_burn():
+func end_turn_burning():
 	remove_status("burning")

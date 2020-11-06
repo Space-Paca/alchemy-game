@@ -10,6 +10,7 @@ var known_matrix : Array
 var unknown_reagent_coords : Array
 var discovered : bool
 var reagent_amounts := {}
+var hints := 0
 
 
 func create_from_recipe(_recipe: Recipe, combinations: Dictionary):
@@ -70,6 +71,7 @@ func create_from_recipe(_recipe: Recipe, combinations: Dictionary):
 			matrix = temp_matrix
 			break
 
+
 func check_if_unique(test_matrix: Array, combinations: Dictionary):
 	if not combinations.has(grid_size):
 		return true
@@ -78,6 +80,7 @@ func check_if_unique(test_matrix: Array, combinations: Dictionary):
 		   is_downgraded_version_of(test_matrix, comb.matrix):
 			return false
 	return true
+
 
 #Checks if matrix1 can be downgraded into matrix2 via reagents substitutes
 func is_downgraded_version_of(matrix1:Array, matrix2:Array):
@@ -104,7 +107,76 @@ func is_downgraded_version_of(matrix1:Array, matrix2:Array):
 				return false
 	return true
 
-func discover_reagents(amount: int):
+
+func get_hint(which := 0):
+	if not which:
+		hints += 1
+	elif hints > which or discovered:
+		return
+	else:
+		hints = which
+	
+	match hints:
+		1:
+			_first_hint()
+		2:
+			_second_hint()
+		_:
+			discover_all_reagents()
+
+
+func _first_hint():
+	# discover empty spaces
+	for i in grid_size:
+		for j in grid_size:
+			if not matrix[i][j]:
+				known_matrix[i][j] = null
+				unknown_reagent_coords.erase([i, j])
+	
+	# discover more if half of the spaces haven't been discovered
+	var half_amount = grid_size * grid_size / 2
+	if unknown_reagent_coords.size() > half_amount:
+		_discover_reagents(unknown_reagent_coords.size() - half_amount)
+	
+	if unknown_reagent_coords.size() == 2:
+		hints = 2
+
+
+func _second_hint():
+	if unknown_reagent_coords.size() <= 2:
+		discover_all_reagents()
+		return
+	
+	unknown_reagent_coords.shuffle()
+	
+	# discover all but two reagents (preferably different ones)
+	var first = {"reagent": null, "coords": null}
+	var second = {"reagent": null, "coords": null}
+	
+	for coords in unknown_reagent_coords:
+		var reagent = matrix[coords[0]][coords[1]]
+		if not reagent:
+			continue
+		
+		if not first.reagent:
+			first.reagent = reagent
+			first.coords = coords
+		elif reagent != first.reagent:
+			second.reagent = reagent
+			second.coords = coords
+			break
+		else:
+			second.reagent = reagent
+			second.coords = coords
+	
+	for coords in unknown_reagent_coords:
+		if coords != first.coords and coords != second.coords:
+			known_matrix[coords[0]][coords[1]] = matrix[coords[0]][coords[1]]
+	
+	unknown_reagent_coords = [first.coords, second.coords]
+
+
+func _discover_reagents(amount: int):
 	assert(amount > 0)
 	if amount >= unknown_reagent_coords.size():
 		discover_all_reagents()

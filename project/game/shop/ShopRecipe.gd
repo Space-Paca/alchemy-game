@@ -11,7 +11,7 @@ onready var buy_button = $CenterContainer/VBoxContainer/Buy
 onready var hint_button = $CenterContainer/VBoxContainer/Hint
 
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-const HINT_COST_RATIO = .7
+const HINT_COST_RATIO = .6
 
 var combination : Combination
 var player : Player
@@ -65,7 +65,7 @@ func update_display():
 	if combination.discovered:
 		buy_button.visible = false
 		hint_button.visible = false
-	elif combination.unknown_reagent_coords.size() <= 1:
+	elif combination.hints >= 2:
 		hint_button.disabled = true
 		hint_button.text = "Buy Hint"
 
@@ -82,9 +82,7 @@ func _on_Buy_pressed():
 
 func _on_Hint_pressed():
 	if player.spend_gold(hint_cost):
-# warning-ignore:integer_division
-		var amount = combination.unknown_reagent_coords.size() / 2
-		combination.discover_reagents(amount)
+		combination.get_hint()
 		buy_cost /= 2
 		hint_cost /= 2
 		update_display()

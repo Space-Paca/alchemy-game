@@ -171,6 +171,10 @@ Debug="*res://game/debug-menu/Debug.tscn"
 ArtifactCallbacks="*res://database/ArtifactCallbacks.gd"
 EventManager="*res://database/EventManager.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=false
+
 [display]
 
 window/size/width=1920

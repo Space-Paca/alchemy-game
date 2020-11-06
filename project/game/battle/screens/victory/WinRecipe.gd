@@ -7,9 +7,11 @@ onready var name_label = $NameBanner/RecipeName
 onready var description_label = $DescriptionLabel
 onready var reagent_list = $ReagentContainer/ReagentList
 onready var choose_button = $ChooseButton
+onready var hint_label = $ChooseButton/Label
 
 var combination : Combination
 var discover_all = false
+
 
 func set_combination(_combination: Combination):
 	var size = _combination.grid_size
@@ -20,6 +22,10 @@ func set_combination(_combination: Combination):
 	
 	# DESCRIPTION
 	description_label.text = combination.recipe.description
+	
+	# BUTTON TEXT
+	if discover_all or combination.hints >= 2:
+		hint_label.text = "Learn"
 	
 	# GRID
 	for i in range(size * size, grid.get_child_count()):
@@ -53,8 +59,7 @@ func enable_button():
 
 func _on_ChooseButton_pressed():
 	if not discover_all:
-		var amount = int(ceil(combination.unknown_reagent_coords.size() / 2.0))
-		combination.discover_reagents(amount)
+		combination.get_hint(2)
 	else:
 		combination.discover_all_reagents()
 	

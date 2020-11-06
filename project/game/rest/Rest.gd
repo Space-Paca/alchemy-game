@@ -24,18 +24,21 @@ func setup(node, _player, _combinations):
 	$Recipes.hide()
 	$ContinueButton.hide()
 
+
 func get_heal_value():
 	if player.has_artifact("full_rest"):
 		return player.max_hp
 	else:
 		return REST_HEAL_PERCENTAGE/100.0 * player.max_hp
 
-func update_heal_button():
 
+func update_heal_button():
 	$HealButton.text = "heal " + str(get_heal_value()) + " hp" 
+
 
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
+
 
 func setup_recipes():
 	for child in $Recipes/HBox.get_children():

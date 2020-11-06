@@ -536,23 +536,44 @@ func autocomplete_grid(combination: Combination):
 	var selected_reagents = ReagentManager.get_reagents_to_use(recipe_reagents, available_reagents)
 	
 	if selected_reagents:
-		for i in range(combination.grid_size):
-			for j in range(combination.grid_size):
-				if combination.matrix[i][j]:
-					for idx in selected_reagents.size():
-						if selected_reagents[idx] and selected_reagents[idx] == combination.matrix[i][j]:
-							selected_reagents[idx] = false
-							var reagent = reagents.get_child(idx)
-							if not reagent.slot:
-								push_error("reagent isn't in slot")
-								assert(false)
-							if reagent.is_burned():
-								reagent.unburn()
-								AudioManager.play_sfx("fire_reagent")
-								player.take_damage(player, 4, "regular", false)
-							grid.slots.get_child(i * grid.grid_size +\
-									j).set_reagent(reagent)
-							break
+		for off_i in range(0, grid.grid_size - combination.grid_size + 1):
+			for off_j in range(0, grid.grid_size - combination.grid_size + 1):
+			
+				var valid_hint = true
+				for i in range(combination.grid_size):
+					for j in range(combination.grid_size):
+						if combination.matrix[i][j]:
+							var slot = grid.slots.get_child((i+off_i) * grid.grid_size + (j+off_j))
+							if slot.is_restrained() or slot.is_restricted():
+								valid_hint = false
+								#Return already placed reagents to hand
+								for gridslot in grid.slots.get_children():
+									if gridslot.current_reagent:
+										hand.place_reagent(gridslot.current_reagent)
+								break
+					if not valid_hint:
+						break
+				#Found valid offset
+				if valid_hint:
+					for i in range(combination.grid_size):
+						for j in range(combination.grid_size):
+							if combination.matrix[i][j]:
+								var slot = grid.slots.get_child((i+off_i) * grid.grid_size + (j+off_j))
+								for idx in selected_reagents.size():
+									if selected_reagents[idx] and selected_reagents[idx] == combination.matrix[i][j]:
+										selected_reagents[idx] = false
+										var reagent = reagents.get_child(idx)
+										if not reagent.slot:
+											push_error("reagent isn't in slot")
+											assert(false)
+										if reagent.is_burned():
+											reagent.unburn()
+											AudioManager.play_sfx("fire_reagent")
+											player.take_damage(player, 4, "regular", false)
+										slot.set_reagent(reagent)
+										break
+					return true
+	return false
 
 
 func unhighlight_reagents():
@@ -877,6 +898,8 @@ func _on_PassTurnButton_pressed():
 			discard_bag.discard(reagent)
 			yield(get_tree().create_timer(.5), "timeout")
 	
+	#clear hints
+	$Grid.clear_hints()
 	#Unfreeze hand
 	$Hand.unfreeze_all_slots()
 	#Unrestrict grid
@@ -960,7 +983,9 @@ func _on_FavoriteButton_pressed(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
 	var selected_reagents = has_reagents(button.reagent_array)
 	if selected_reagents:
-		autocomplete_grid(button.combination)
+		if not autocomplete_grid(button.combination):
+			AudioManager.play_sfx("error")
+			#TODO: Blink restrain/restricted slots
 	else:
 		AudioManager.play_sfx("error")
 
@@ -1015,7 +1040,7 @@ func _on_CombineButton_pressed():
 	
 	AudioManager.play_sfx("combine_button_click")
 	
-	grid.clear_hint()
+	grid.clear_hints()
 	
 	var reagent_matrix := []
 	var child_index := 0

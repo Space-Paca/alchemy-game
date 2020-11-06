@@ -285,7 +285,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 func mastery_threshold(combination: Combination) -> int:
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
-	return threshold
+	return 2#threshold
 
 
 func should_unlock_mastery(combination: Combination) -> bool:
@@ -536,11 +536,15 @@ func _on_Player_combination_discovered(combination, index):
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
 	recipe_book_toggle()
-	battle.grid.clear_hint()
+	battle.grid.clear_hints()
 	if mastery_unlocked:
-		battle.autocomplete_grid(combination)
+		if not battle.autocomplete_grid(combination):
+			AudioManager.play_sfx("error")
+			#TODO: Blink restrain/restricted slots
 	else:
-		battle.grid.show_combination_hint(combination)
+		if not battle.grid.show_combination_hint(combination):
+			AudioManager.play_sfx("error")
+			#TODO: Blink restrain/restricted slots
 
 
 func _on_RecipeBook_favorite_toggled(combination, button_pressed):

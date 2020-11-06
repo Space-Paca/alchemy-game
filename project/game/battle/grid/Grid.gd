@@ -202,13 +202,27 @@ func remove_reagent(target_reagent):
 
 
 func show_combination_hint(combination: Combination):
-	for i in range(combination.grid_size):
-		for j in range(combination.grid_size):
-			var slot = slots.get_child(i * grid_size + j)
-			slot.set_hint(combination.matrix[i][j])
+	for off_i in range(0, grid_size - combination.grid_size + 1):
+		for off_j in range(0, grid_size - combination.grid_size + 1):
+			
+			var valid_hint = true
+			for i in range(combination.grid_size):
+				for j in range(combination.grid_size):
+					var slot = slots.get_child((i+off_i) * grid_size + (j+off_j))
+					if combination.matrix[i][j] and (slot.is_restrained() or slot.is_restricted()):
+						valid_hint = false
+						clear_hints()
+						break
+					else:
+						slot.set_hint(combination.matrix[i][j])
+				if not valid_hint:
+					break
+			if valid_hint:
+				return true
+	return false
 
 
-func clear_hint():
+func clear_hints():
 	for slot in slots.get_children():
 		slot.set_hint(null)
 

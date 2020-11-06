@@ -132,7 +132,7 @@ func _on_Combine_pressed():
 			counter.blink_red()
 		return
 	
-	grid.clear_hint()
+	grid.clear_hints()
 	
 	counter.decrease_attempts()
 	

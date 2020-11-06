@@ -133,7 +133,7 @@ script = ExtResource( 4 )
 children = [ NodePath("../MapPosition13"), NodePath("../MapPosition15"), NodePath("../MapPosition4"), NodePath("../MapPosition31"), NodePath("../MapPosition32") ]
 
 [node name="MapPosition15" type="Node2D" parent="FixedPositions"]
-position = Vector2( 495.466, 781.655 )
+position = Vector2( 499.466, 743.655 )
 script = ExtResource( 4 )
 children = [ NodePath("../MapPosition14"), NodePath("../MapPosition16"), NodePath("../MapPosition4"), NodePath("../MapPosition30"), NodePath("../MapPosition31") ]
 

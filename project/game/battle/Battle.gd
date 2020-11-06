@@ -632,6 +632,10 @@ func _on_reagent_stop_hover(reagent):
 
 func _on_reagent_quick_place(reagent):
 	if reagent.slot:
+		if reagent.is_burned():
+			reagent.unburn()
+			AudioManager.play_sfx("fire_reagent")
+			player.take_damage(player, 4, "regular", false)
 		if reagent.slot.type == "grid":
 			if hand.available_slot_count() > 0:
 				AudioManager.play_sfx("quick_place_hand")

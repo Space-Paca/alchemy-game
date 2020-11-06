@@ -106,7 +106,7 @@ func quick_place(reagent):
 
 	#Finally search for empty space after
 	for slot in slots.get_children():
-		if not slot.get_reagent():
+		if not slot.get_reagent() and not slot.is_restrained() and not slot.is_restricted():
 			AudioManager.play_sfx("quick_place_grid")
 			slot.set_reagent(reagent)
 			return

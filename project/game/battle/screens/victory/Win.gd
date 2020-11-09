@@ -45,12 +45,11 @@ func set_loot(loot: Array):
 			reagent_loot.connect("reagent_sold", self, "_on_reagent_sold")
 			reagent_loot.set_reagent(loot_name)
 		elif loot_name == "gem":
-			if player.has_artifact("elite_drop"):
-				gem_amount += 2
-			else:
 				gem_amount += 1
 	
 	if gem_amount:
+		if player.has_artifact("elite_drop"):
+			gem_amount += 1
 		gem_container.show()
 		gem_label.text = str("x ", gem_amount)
 	

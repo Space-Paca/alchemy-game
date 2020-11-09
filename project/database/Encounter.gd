@@ -38,5 +38,6 @@ func get_loot() -> Array:
 	
 	if is_boss or is_elite:
 		loot.append("gem")
+		loot.append("gem")
 	
 	return loot

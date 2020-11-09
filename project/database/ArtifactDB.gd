@@ -47,7 +47,7 @@ const COMMON = [
 		"id": "elite_drop",
 		"name": "Elite Rewards",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Whenever you defeat an elite encounter, gain 1 extra gem",
+		"description": "Whenever you defeat an elite or boss encounter, gain 1 extra gem",
 	},
 ]
 

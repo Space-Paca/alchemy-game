@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/small piercing/idle.png"
 var name = "Retaliate"
 var sfx = "wolftopus"
 var use_idle_sfx = false
-var hp = 20
+var hp = 28
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -22,6 +22,6 @@ var actions = {
 	],
 	"attack": [
 		{"name": "status", "status_name": "retaliate", "value": 3, "target": "self", "positive": true},
-		{"name": "damage", "value": [5,8], "type": "regular"}
+		{"name": "damage", "value": [7,8], "type": "regular"}
 	]
 }

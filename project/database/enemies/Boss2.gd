@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss2/idle.png"
 var name = "Boss2"
 var sfx = "boss_1"
 var use_idle_sfx = false
-var hp = 150
+var hp = 200
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -51,7 +51,7 @@ var actions = {
 	],
 	"restrict_buff": [
 		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 1, "target": "self", "positive": true},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true},
 	],
 	"spawn1": [
 		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},

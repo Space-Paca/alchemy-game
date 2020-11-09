@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/freezer/idle.png"
 var name = "Freezer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 30
+var hp = 40
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -21,12 +21,14 @@ var connections = [
 					  ["spawn", "buff", 1],
 					  ["freeze", "attack", 3],
 					  ["freeze", "buff", 1],
+					  ["buff", "attack", 1],
+					  ["buff", "attack2", 2],
 				  ]
 var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 80},
+		{"name": "shield", "value": 100},
 		{"name": "status", "status_name": "tough", "value": 0, "target": "self", "positive": true},
 		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false},
 	],
@@ -45,6 +47,6 @@ var actions = {
 	],
 	"buff": [
 		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true},
+		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true},
 	],
 }

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/revenger/idle.png"
 var name = "Revenger"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 25
+var hp = 28
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -27,6 +27,6 @@ var actions = {
 		{"name": "damage", "value": [9, 10], "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [6, 8]},
+		{"name": "shield", "value": [10, 12]},
 	],
 }

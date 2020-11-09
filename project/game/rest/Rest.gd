@@ -4,7 +4,8 @@ signal closed
 signal combination_rewarded
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
-const REST_HEAL_PERCENTAGE = 70
+const REST_HEAL_PERCENTAGE = 35
+const GREAT_REST_HEAL_PERCENTAGE = 70
 
 var map_node : MapNode
 var player
@@ -24,16 +25,26 @@ func setup(node, _player, _combinations):
 	$Recipes.hide()
 	$ContinueButton.hide()
 
+func get_percent_heal():
+	if player.has_artifact("full_rest"):
+		return 100
+	elif player.has_artifact("great_rest"):
+		return GREAT_REST_HEAL_PERCENTAGE
+	else:
+		return REST_HEAL_PERCENTAGE
+
 
 func get_heal_value():
 	if player.has_artifact("full_rest"):
 		return player.max_hp
+	elif player.has_artifact("great_rest"):
+		return GREAT_REST_HEAL_PERCENTAGE/100.0 * player.max_hp
 	else:
 		return REST_HEAL_PERCENTAGE/100.0 * player.max_hp
 
 
 func update_heal_button():
-	$HealButton.text = "heal " + str(get_heal_value()) + " hp" 
+	$HealButton.text = "heal " + str(get_heal_value()) + " hp ("+get_percent_heal()+"%)" 
 
 
 func reset_room():

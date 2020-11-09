@@ -32,10 +32,10 @@ const COMMON = [
 		"description": "Increase your H.P. by 15",
 	},
 	{
-		"id": "full_rest",
-		"name": "Resting Place 1",
+		"id": "great_rest",
+		"name": "Warm Blanket",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When resting, you heal completely",
+		"description": "When resting, you heal 70% of you max health",
 	},
 	{
 		"id": "money_bag",
@@ -52,6 +52,12 @@ const COMMON = [
 ]
 
 const UNCOMMON = [
+	{
+		"id": "full_rest",
+		"name": "Soothing Teapot",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "When resting, you heal completely",
+	},
 	{
 		"id": "buff_kit",
 		"name": "Buff Kit",

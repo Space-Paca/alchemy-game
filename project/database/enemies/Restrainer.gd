@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/buffing big enemy/idle.png"
 var name = "Restrainer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 160
+var hp = 200
 var battle_init = false
 var size = "big"
 var change_phase = null
@@ -51,8 +51,10 @@ var actions = {
 	],
 	"big_restrain": [
 		{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false},
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
 	],
 	"medium_restrain": [
 		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false},
+		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true},
 	],
 }

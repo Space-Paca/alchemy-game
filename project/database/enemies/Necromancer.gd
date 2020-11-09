@@ -28,19 +28,19 @@ var actions = {
 		{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false}
 	],
 	"attack1": [
-		{"name": "damage", "value": [2, 8], "type": "regular"}
+		{"name": "damage", "value": [10, 20], "type": "regular"}
 	],
 	"attack2": [
-		{"name": "damage", "value": [2, 8], "type": "regular"}
+		{"name": "damage", "value": [10, 20], "type": "regular"}
 	],
 	"defense": [
-		{"name": "shield", "value": [5, 15]}
+		{"name": "shield", "value": [7, 15]}
 	],
 	"debuff": [
 		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false}
 	],
 	"spawn": [
-		{"name": "shield", "value": [5, 10]},
+		{"name": "shield", "value": [9, 10]},
 		{"name": "spawn", "enemy": "zombie", "minion": true},
 	],
 }

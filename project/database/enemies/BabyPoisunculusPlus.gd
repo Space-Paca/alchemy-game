@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/small poison enemy/idle.png"
 var name = "Venenin Plus"
 var sfx = "toxic_slime_minion"
 var use_idle_sfx = false
-var hp = 25
+var hp = 30
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -21,7 +21,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 10}
+		{"name": "shield", "value": 20}
 	],
 	"poison": [
 		{"name": "damage", "value": [10,15], "type": "venom"}

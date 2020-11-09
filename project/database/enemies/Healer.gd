@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/small divider/idle.png"
 var name = "Healer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 35
+var hp = 45
 var battle_init = false
 var size = "small"
 var change_phase = null
@@ -25,12 +25,12 @@ var first_state = ["attack", "defend"]
 
 var actions = {
 	"attack": [
-		{"name": "damage", "value": [3,5], "type": "regular"}
+		{"name": "damage", "value": 5, "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [5, 6]}
+		{"name": "shield", "value": [5, 25]}
 	],
 	"heal": [
-		{"name": "heal", "value": [5,12], "target": "all_enemies"}
+		{"name": "heal", "value": [8,12], "target": "all_enemies"}
 	],
 }

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/curser/idle.png"
 var name = "Burner"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 65
+var hp = 80
 var battle_init = false
 var size = "medium"
 var change_phase = null
@@ -35,14 +35,14 @@ var actions = {
 		{"name": "status", "status_name": "burning", "value": 6, "target": "player", "positive": false}
 	],
 	"attack1": [
-		{"name": "damage", "value": [5, 20], "type": "regular"}
+		{"name": "damage", "value": [10, 25], "type": "regular"}
 	],
 	"attack2": [
-		{"name": "damage", "value": [4, 12], "type": "regular"},
+		{"name": "damage", "value": [6, 15], "type": "regular"},
 		{"name": "status", "status_name": "burning", "value": 2, "target": "player", "positive": false}
 	],
 	"defend": [
-		{"name": "shield", "value": [5, 12]},
+		{"name": "shield", "value": [5, 20]},
 		{"name": "status", "status_name": "burning", "value": 3, "target": "player", "positive": false}
 	],
 }

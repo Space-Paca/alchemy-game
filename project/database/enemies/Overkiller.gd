@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/self destructor/idle.png"
 var name = "Overkiller"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 28
+var hp = 32
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -38,15 +38,15 @@ var actions = {
 		{"name": "status", "status_name": "soulbind", "value": 1, "target": "self", "positive": true}
 	],
 	"attack1": [
-		{"name": "damage", "value": [4, 5], "type": "regular"}
+		{"name": "damage", "value": [13, 15], "type": "regular"}
 	],
 	"attack2": [
-		{"name": "damage", "value": [2, 8], "type": "regular"}
+		{"name": "damage", "value": [10, 20], "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [2, 10]},
+		{"name": "shield", "value": [8, 10]},
 	],
 	"buff": [
-		{"name": "status", "status_name": "temp_strength", "value": 5, "target": "self", "positive": true}
+		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true}
 	],
 }

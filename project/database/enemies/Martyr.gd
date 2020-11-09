@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/revenger/idle.png"
 var name = "Martyr"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 35
+var hp = 50
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -27,10 +27,10 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "avenge", "value": 5, "target": "self", "positive": true}
+		{"name": "status", "status_name": "avenge", "value": 12, "target": "self", "positive": true}
 	],
 	"attack1": [
-		{"name": "damage", "value": [8, 15], "type": "regular"}
+		{"name": "damage", "value": [10, 15], "type": "regular"}
 	],
 	"attack2": [
 		{"name": "damage", "value": [5, 8], "amount": 2, "type": "regular"}

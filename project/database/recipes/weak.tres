@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Weak"
+name = "Feebleness Oil"
 grid_size = 2
 floor_sold_in = 2
 reagents = [ "common", "debuff" ]
@@ -15,7 +15,7 @@ destroy_reagents = [  ]
 description = "Applies 2 weak to target enemy."
 filters = [ 4 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 23
+shop_cost = 28
 master_effects = [ "add_status" ]
 master_effect_args = [ [ "enemy", "weak", 3, false ] ]
 master_destroy_reagents = [  ]

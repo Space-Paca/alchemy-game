@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Dano penetrante++"
+name = "Alchemist's Inferno"
 grid_size = 3
 floor_sold_in = 3
 reagents = [ "damaging", "damaging", "damaging", "damaging", "super_damaging" ]
 effects = [ "damage" ]
-effect_args = [ [ 30, "piercing" ] ]
+effect_args = [ [ 50, "piercing" ] ]
 destroy_reagents = [  ]
-description = "Deals 30 piercing damage to target enemy."
+description = "Deals 50 piercing damage to target enemy."
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 60
+shop_cost = 80
 master_effects = [ "damage" ]
-master_effect_args = [ [ 38, "piercing" ] ]
+master_effect_args = [ [ 60, "piercing" ] ]
 master_destroy_reagents = [  ]
-master_description = "Deals 38 piercing damage to target enemy."
+master_description = "Deals 60 piercing damage to target enemy."

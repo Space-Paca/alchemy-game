@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Dano Lixo"
+name = "Beetle Bomb"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "trash", "damaging" ]

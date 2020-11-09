@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Cure Poison"
-grid_size = 2
-floor_sold_in = 1
-reagents = [ "defensive", "poison" ]
+name = "Strong Antivenom"
+grid_size = 3
+floor_sold_in = 2
+reagents = [ "defensive", "poison", "defensive" ]
 effects = [ "reduce_status" ]
-effect_args = [ [ "self", "poison", 6 ] ]
+effect_args = [ [ "self", "poison", 15 ] ]
 destroy_reagents = [  ]
 description = "Removes up to 6 poison"
 filters = [ 4, 5 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 30
+shop_cost = 36
 master_effects = [ "reduce_status" ]
-master_effect_args = [ [ "self", "poison", 10 ] ]
+master_effect_args = [ [ "self", "poison", 20 ] ]
 master_destroy_reagents = [  ]
-master_description = "Removes up to 10 poison"
+master_description = "Removes up to 20 poison"

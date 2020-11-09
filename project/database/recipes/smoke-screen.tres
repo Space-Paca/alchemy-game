@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Smoke screen"
+name = "Lesser Smokescreen Tonic"
 grid_size = 2
 floor_sold_in = 2
 reagents = [ "buff", "defensive", "defensive" ]
@@ -15,7 +15,7 @@ destroy_reagents = [  ]
 description = "Gain 1 evasion until end of turn."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 45
+shop_cost = 40
 master_effects = [ "add_status" ]
 master_effect_args = [ [ "self", "evasion", 2, true ] ]
 master_destroy_reagents = [  ]

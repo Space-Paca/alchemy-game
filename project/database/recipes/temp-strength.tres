@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Temporary Strength+"
+name = "Lesser Strength Tonic"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "buff", "uncommon" ]
 effects = [ "add_status" ]
-effect_args = [ [ "self", "temp_strength", 5, true ] ]
+effect_args = [ [ "self", "temp_strength", 10, true ] ]
 destroy_reagents = [  ]
-description = "Gain 5 temporary strength."
+description = "Gain 10 temporary strength."
 filters = [ 3 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 45
 master_effects = [ "add_status" ]
-master_effect_args = [ [ "self", "temp_strength", 7, true ] ]
+master_effect_args = [ [ "self", "temp_strength", 12, true ] ]
 master_destroy_reagents = [  ]
-master_description = "Gain 7 temporary strength."
+master_description = "Gain 12 temporary strength."

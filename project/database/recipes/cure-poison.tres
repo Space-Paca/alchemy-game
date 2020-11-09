@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/Cure Poison.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Antivenom"
+grid_size = 2
+floor_sold_in = 1
+reagents = [ "defensive", "poison" ]
+effects = [ "reduce_status" ]
+effect_args = [ [ "self", "poison", 6 ] ]
+destroy_reagents = [  ]
+description = "Removes up to 6 poison"
+filters = [ 4, 5 ]
+fav_icon = ExtResource( 1 )
+shop_cost = 20
+master_effects = [ "reduce_status" ]
+master_effect_args = [ [ "self", "poison", 10 ] ]
+master_destroy_reagents = [  ]
+master_description = "Removes up to 10 poison"

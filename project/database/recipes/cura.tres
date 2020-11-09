@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Cura"
+name = "Healing Salve"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "common", "common", "healing" ]

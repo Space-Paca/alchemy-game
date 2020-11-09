@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Poison"
+name = "Poison Vial"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "poison", "damaging" ]
@@ -15,7 +15,7 @@ destroy_reagents = [  ]
 description = "Gives 6 poison to target enemy."
 filters = [ 4 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 28
+shop_cost = 30
 master_effects = [ "add_status" ]
 master_effect_args = [ [ "enemy", "poison", 9, false ] ]
 master_destroy_reagents = [  ]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Dano penetrante"
+name = "Alchemist's Fire"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "damaging", "damaging" ]

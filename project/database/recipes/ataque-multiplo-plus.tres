@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Ataque múltiplo+"
+name = "Cluster Bomb"
 grid_size = 2
 floor_sold_in = 2
 reagents = [ "uncommon", "damaging", "damaging" ]
@@ -15,7 +15,7 @@ destroy_reagents = [  ]
 description = "Deals 5 regular damage 5 times to any number of targets."
 filters = [ 0 ]
 fav_icon = ExtResource( 2 )
-shop_cost = 48
+shop_cost = 50
 master_effects = [ "damage", "damage", "damage", "damage", "damage", "damage", "damage" ]
 master_effect_args = [ [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ], [ 5, "regular" ] ]
 master_destroy_reagents = [  ]

@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Drain++"
+name = "Vampiric Quintessence"
 grid_size = 4
 floor_sold_in = 3
 reagents = [ "rare", "damaging", "super_damaging", "super_damaging", "super_damaging", "healing" ]
 effects = [ "drain" ]
-effect_args = [ [ 60 ] ]
+effect_args = [ [ 80 ] ]
 destroy_reagents = [ "healing" ]
-description = "Drain 60 life from target enemy. Destroys healing reagent in the process."
+description = "Drain 80 life from target enemy. Destroys healing reagent in the process."
 filters = [ 0, 5 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 130
+shop_cost = 100
 master_effects = [ "drain" ]
-master_effect_args = [ [ 70 ] ]
+master_effect_args = [ [ 90 ] ]
 master_destroy_reagents = [ "healing" ]
-master_description = "Drain 70 life from target enemy. Destroys healing reagent in the process."
+master_description = "Drain 90 life from target enemy. Destroys healing reagent in the process."

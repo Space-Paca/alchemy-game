@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Recycle"
+name = "Bug Compound"
 grid_size = 2
 floor_sold_in = 1
 reagents = [ "trash", "trash", "trash" ]
@@ -15,7 +15,7 @@ destroy_reagents = [ "trash", "trash", "trash" ]
 description = "Heals 5 H.P. Destroys all trash reagents in the process."
 filters = [ 5 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 40
+shop_cost = 25
 master_effects = [ "heal" ]
 master_effect_args = [ [ 10 ] ]
 master_destroy_reagents = [ "trash", "trash", "trash" ]

@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Dano-Escudo"
+name = "Explorer's Mixture"
 grid_size = 3
 floor_sold_in = 2
 reagents = [ "common", "common", "defensive", "defensive", "damaging", "damaging" ]
 effects = [ "shield", "damage" ]
-effect_args = [ [ 18 ], [ 18, "regular" ] ]
+effect_args = [ [ 28 ], [ 28, "regular" ] ]
 destroy_reagents = [  ]
-description = "Gain 18 shield until end of turn. Deals 18 regular damage to target enemy."
+description = "Gain 28 shield until end of turn. Deals 18 regular damage to target enemy."
 filters = [ 0, 1 ]
 fav_icon = ExtResource( 1 )
 shop_cost = 55
 master_effects = [ "shield", "damage" ]
-master_effect_args = [ [ 25 ], [ 25, "regular" ] ]
+master_effect_args = [ [ 35 ], [ 35, "regular" ] ]
 master_destroy_reagents = [  ]
-master_description = "Gain 25 shield until end of turn. Deals 25 regular damage to target enemy."
+master_description = "Gain 35 shield until end of turn. Deals 25 regular damage to target enemy."

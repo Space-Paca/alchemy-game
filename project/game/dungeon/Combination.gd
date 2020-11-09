@@ -126,18 +126,47 @@ func get_hint(which := 0):
 
 
 func _first_hint():
-	# discover empty spaces
-	for i in grid_size:
-		for j in grid_size:
-			if not matrix[i][j]:
-				known_matrix[i][j] = null
-				unknown_reagent_coords.erase([i, j])
+	unknown_reagent_coords.shuffle()
 	
-	# discover more if half of the spaces haven't been discovered
-	var half_amount = grid_size * grid_size / 2
-	if unknown_reagent_coords.size() > half_amount:
-		_discover_reagents(unknown_reagent_coords.size() - half_amount)
+	# check if recipe would be obvious after discovering empty spaces
+	if reagent_amounts.keys().size() == 1:
+		var reagent = reagent_amounts.keys()[0]
+		var n = reagent_amounts[reagent]
+		var last_kept = "(￢‿￢)"
+		var kept_coords = []
+		if n > (grid_size * grid_size) / 2:
+			n = (grid_size * grid_size) / 2
+		while n:
+			var i = n
+			for coords in unknown_reagent_coords:
+				if matrix[coords[0]][coords[1]] != last_kept:
+					last_kept = matrix[coords[0]][coords[1]]
+					kept_coords.append(coords)
+					n -= 1
+					break
+			if i == n:
+				var coords = unknown_reagent_coords.front()
+				last_kept = matrix[coords[0]][coords[1]]
+				kept_coords.append(coords)
+				n -= 1
+		for coords in unknown_reagent_coords:
+			if coords in kept_coords:
+				continue
+			known_matrix[coords[0]][coords[1]] = matrix[coords[0]][coords[1]]
+		unknown_reagent_coords = kept_coords
+	else:
+		# discover empty spaces
+		for i in grid_size:
+			for j in grid_size:
+				if not matrix[i][j]:
+					known_matrix[i][j] = null
+					unknown_reagent_coords.erase([i, j])
+		# discover more if half of the spaces haven't been discovered
+		var half_amount = grid_size * grid_size / 2
+		if unknown_reagent_coords.size() > half_amount:
+			_discover_reagents(unknown_reagent_coords.size() - half_amount)
 	
+	# check if it was equivalent to the second hint
 	if unknown_reagent_coords.size() == 2:
 		hints = 2
 
@@ -165,9 +194,15 @@ func _second_hint():
 			second.reagent = reagent
 			second.coords = coords
 			break
-		else:
-			second.reagent = reagent
-			second.coords = coords
+	
+	# make the result not obvious
+	if not second.coords:
+		for coords in unknown_reagent_coords:
+			var reagent = matrix[coords[0]][coords[1]]
+			if reagent != first.reagent:
+				second.reagent = reagent
+				second.coords = coords
+				break
 	
 	for coords in unknown_reagent_coords:
 		if coords != first.coords and coords != second.coords:

@@ -17,19 +17,19 @@ const COMMON = [
 		"id": "strength",
 		"name": "Strength",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 1 permanent strength",
+		"description": "Start each battle with 3 permanent strength",
 	},
 	{
 		"id": "temp_strength",
 		"name": "First Hit",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 5 temporary strength",
+		"description": "Start each battle with 10 temporary strength",
 	},
 	{
 		"id": "max_hp",
 		"name": "Max HP",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Increase your H.P. by 15",
+		"description": "Increase your H.P. by 20",
 	},
 	{
 		"id": "great_rest",
@@ -41,7 +41,7 @@ const COMMON = [
 		"id": "money_bag",
 		"name": "Money Bag",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When acquired, gain 30 gold",
+		"description": "When acquired, gain 40 gold",
 	},
 	{
 		"id": "elite_drop",
@@ -80,13 +80,13 @@ const UNCOMMON = [
 		"id": "strength_plus",
 		"name": "Strength+",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 2 permanent strength",
+		"description": "Start each battle with 8 permanent strength",
 	},
 	{
 		"id": "temp_strength_plus",
 		"name": "First Hit+",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 10 temporary strength",
+		"description": "Start each battle with 30 temporary strength",
 	},
 	{
 		"id": "random_kit",

@@ -15,7 +15,7 @@ func call_on_turn_start(name : String, args : Dictionary):
 #On add methods
 func on_add_coin_bag(args):
 	AudioManager.play_sfx("get_coins")
-	args.player.gold += 30
+	args.player.gold += 40
 
 func on_add_poison_kit(args):
 	AudioManager.play_sfx("status_poison")
@@ -44,8 +44,8 @@ func on_add_trash_heal(args):
 
 func on_add_max_hp(args):
 	AudioManager.play_sfx("heal")
-	args.player.max_hp += 15
-	args.player.hp += 15
+	args.player.max_hp += 20
+	args.player.hp += 20
 
 func on_add_midas(args):
 	AudioManager.play_sfx("get_coins")
@@ -57,15 +57,15 @@ func on_add_money_bag(args):
 
 #On battle start methods
 func on_battle_start_strength(args):
-	args.player.add_status("perm_strength", 1, true)
+	args.player.add_status("perm_strength", 3, true)
 
 func on_battle_start_strength_plus(args):
-	args.player.add_status("perm_strength", 2, true)
+	args.player.add_status("perm_strength", 8, true)
 
 func on_battle_start_temp_strength(args):
-	args.player.add_status("temp_strength", 5, true)
+	args.player.add_status("temp_strength", 10, true)
 
 func on_battle_start_temp_strength_plus(args):
-	args.player.add_status("temp_strength", 10, true)
+	args.player.add_status("temp_strength", 30, true)
 
 

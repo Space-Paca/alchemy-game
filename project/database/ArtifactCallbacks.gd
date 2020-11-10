@@ -66,6 +66,6 @@ func on_battle_start_temp_strength(args):
 	args.player.add_status("temp_strength", 10, true)
 
 func on_battle_start_temp_strength_plus(args):
-	args.player.add_status("temp_strength", 30, true)
+	args.player.add_status("temp_strength", 20, true)
 
 

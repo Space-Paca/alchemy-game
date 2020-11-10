@@ -3,33 +3,33 @@ class_name ArtifactDB
 const COMMON = [
    {
 		"id": "poison_kit",
-		"name": "Poison Kit",
+		"name": "Slimy Satchel",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "When acquired, add 3 poison-reagents to your bag",
 	},
    {
 		"id": "buff_poison",
-		"name": "Buff Poison",
+		"name": "Poisoner's Thesis",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "Whenever you apply poison, apply 1 extra poison",
 	},
 	{
 		"id": "strength",
-		"name": "Strength",
+		"name": "Powerstone",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "Start each battle with 3 permanent strength",
 	},
 	{
-		"id": "temp_strength",
-		"name": "First Hit",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 10 temporary strength",
-	},
-	{
 		"id": "max_hp",
-		"name": "Max HP",
+		"name": "Chalice of Life",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "Increase your H.P. by 20",
+	},
+	{
+		"id": "temp_strength",
+		"name": "Morhk Nosering",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "Start each battle with 10 temporary strength",
 	},
 	{
 		"id": "great_rest",
@@ -39,7 +39,7 @@ const COMMON = [
 	},
 	{
 		"id": "money_bag",
-		"name": "Money Bag",
+		"name": "Coin Pouch",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "When acquired, gain 40 gold",
 	},
@@ -60,37 +60,37 @@ const UNCOMMON = [
 	},
 	{
 		"id": "buff_kit",
-		"name": "Buff Kit",
+		"name": "Powerful Satchel",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 3 buff-reagents to your bag",
 	},
 	{
 		"id": "debuff_kit",
-		"name": "Debuff Kit",
+		"name": "Wicked Satchel",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 3 debuff-reagents to your bag",
 	},
 	{
 		"id": "trash_heal",
-		"name": "Trash Heal",
+		"name": "Mortar and Pestle",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 4 trash-reagents to your bag. Misused trash reagents will heal you instead of harm you",
 	},
 	{
 		"id": "strength_plus",
-		"name": "Strength+",
+		"name": "Mightstone",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "Start each battle with 8 permanent strength",
 	},
 	{
 		"id": "temp_strength_plus",
-		"name": "First Hit+",
+		"name": "Morhk Chain",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 30 temporary strength",
+		"description": "Start each battle with 20 temporary strength",
 	},
 	{
 		"id": "random_kit",
-		"name": "Caixa Surpresa",
+		"name": "Unpredictable Satchel",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 4 random reagents to your bag",
 	},
@@ -99,13 +99,13 @@ const UNCOMMON = [
 const RARE = [
 	{
 		"id": "buff_heal",
-		"name": "Buff Heal",
+		"name": "Ivory Cup",
 		"image": preload("res://assets/images/reagents/raro.png"),
 		"description": "Whenever you heal yourself during battle, heal 50% more",
 	},
 	{
 		"id": "midas",
-		"name": "Midas",
+		"name": "Midas' Finger",
 		"image": preload("res://assets/images/reagents/raro.png"),
 		"description": "When acquired, triple your current gold",
 	},

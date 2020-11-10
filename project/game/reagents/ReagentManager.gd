@@ -96,10 +96,28 @@ func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
 					for sub_reagent in reagent_data.substitute:
 						var new_array = cur_reagents_array.duplicate(true)
 						new_array[i] = sub_reagent
-						if reagent_arrays_viewed.find(new_array) == -1:
+						var unique = true
+						for array_viewed in reagent_arrays_viewed:
+							if is_same_reagent_array(array_viewed, new_array):
+								unique = false
+								break
+						if unique:
 							reagent_arrays_to_check.append(new_array)
 							reagent_arrays_viewed.append(new_array)
 	return false
+
+func is_same_reagent_array(array1, array2):
+	var a1 = array1.duplicate()
+	for reagent in array2:
+		var i = a1.find_last(reagent) 
+		if i == -1:
+			return false
+		a1.remove(i)
+	if a1.empty():
+		return true
+	return false
+	
+	
 
 #Checks if the given hand reagents contains all reagents needed for reagent array
 func try_reagents(reagent_array, hand_reagents_array):

@@ -55,14 +55,17 @@ func set_combination(_combination: Combination):
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
 
+
 func update_combination():
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):
 			var reagent = grid.get_child(i*combination.grid_size + j)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
-	if combination.discovered and right_container:
+	if combination.discovered:
 		right_container.queue_free()
+		middle_container.queue_free()
+
 
 func preview_mode(is_mastered: bool):
 	mastery_label.hide()

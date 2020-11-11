@@ -44,7 +44,7 @@ func get_heal_value():
 
 
 func update_heal_button():
-	$HealButton.text = "heal " + str(get_heal_value()) + " hp ("+get_percent_heal()+"%)" 
+	$HealButton.text = "HEAL " + str(get_heal_value()) + " HP ("+str(get_percent_heal())+"% max hp)" 
 
 
 func reset_room():

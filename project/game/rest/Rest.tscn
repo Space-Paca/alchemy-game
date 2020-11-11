@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -12,16 +13,6 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
-outline_size = 8
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 46
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
@@ -32,6 +23,7 @@ font_data = ExtResource( 2 )
 [node name="Rest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,7 +122,6 @@ margin_left = 873.976
 margin_top = 862.522
 margin_right = 1093.98
 margin_bottom = 952.522
-custom_fonts/font = SubResource( 2 )
 text = "continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -141,12 +132,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = -140.0
-margin_right = 175.0
-margin_bottom = -20.0
-custom_fonts/font = SubResource( 3 )
-text = "heal 70 max hp"
+margin_left = -280.511
+margin_top = -135.51
+margin_right = 308.489
+margin_bottom = -15.5102
+text = "HEAL 70 HP (70% max hp)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,8 +150,7 @@ margin_left = -169.7
 margin_top = 20.6526
 margin_right = 180.3
 margin_bottom = 140.653
-custom_fonts/font = SubResource( 3 )
-text = "study recipes"
+text = "STUDY RECIPES"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -170,7 +159,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 250.0
 margin_bottom = 352.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Choose only one"
 align = 1
 valign = 1

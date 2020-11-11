@@ -29,6 +29,7 @@ var is_leaf := true
 var map_tree_children := []
 var map_lines := []
 var paths_revealed := false
+var is_revealed := false
 var type := EMPTY
 var mouse_over = false
 var tooltips_enabled := false
@@ -61,6 +62,7 @@ func fade_in():
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
 								.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
+	is_revealed = true
 
 
 func set_camera(cam):

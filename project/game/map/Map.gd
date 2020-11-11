@@ -67,6 +67,9 @@ func set_disabled(toggle:bool):
 
 func enable():
 	show()
+	for node in $Nodes.get_children():
+		if node.is_revealed:
+			node.enable()
 	floor_label.show()
 	update_camera = true
 	if camera_last_pos:
@@ -75,6 +78,9 @@ func enable():
 
 func disable():
 	hide()
+	for node in $Nodes.get_children():
+		if node.is_revealed:
+			node.disable()
 	floor_label.hide()
 	update_camera = false
 	camera_last_pos = camera.position

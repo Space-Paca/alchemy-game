@@ -235,11 +235,19 @@ func filter_combinations(filters: Array):
 func get_valid_combinations(combinations : Array, available_reagents : Array):
 	var valid_combinations = []
 	for combination in combinations:
-		if ReagentManager.get_reagents_to_use(combination.recipe.reagents, available_reagents):
-			valid_combinations.append(combination)
+		for possible_reagent_combination in combination.recipe.reagent_combinations:
+			if has_necessary_reagents(possible_reagent_combination, available_reagents):
+				valid_combinations.append(combination)
+				break
 	
 	return valid_combinations
 
+
+func has_necessary_reagents(reagent_array, available_reagents):
+	var array = reagent_array.duplicate()
+	for reagent in available_reagents:
+		array.erase(reagent)
+	return array.empty()
 
 func get_combination_completion(combinations: Array, complete: bool):
 	var ret_combinations := []

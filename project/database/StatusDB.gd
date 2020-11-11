@@ -33,7 +33,7 @@ const STATUSES = {
 	"in-text_name": "confusion"},
    "curse": {
 	"title_name": "Curse",
-	"description": "Limits the number of recipes you can create each turn",
+	"description": "Limits the number of recipes you can try to create each turn",
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Cursing",
 	"in-text_name": "curse"},

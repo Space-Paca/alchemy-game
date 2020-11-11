@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/ui/Combine Circle.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-BoldOblique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/battle/player-ui/CombineButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/ui/Combine Circle Disabled.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/Combine Circle Hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 56
@@ -13,6 +14,13 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 3
+outline_color = Color( 0.0941176, 0.0235294, 0.384314, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="CombineButton" type="TextureButton"]
 margin_right = 130.0
@@ -46,6 +54,18 @@ custom_constants/shadow_as_outline = 0
 text = "Combine"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CursedText" type="Label" parent="."]
+margin_left = 11.5681
+margin_top = 126.975
+margin_right = 113.568
+margin_bottom = 144.975
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.882353, 0.882353, 0.882353, 1 )
+text = "CURSED 0/3"
 __meta__ = {
 "_edit_use_anchors_": false
 }

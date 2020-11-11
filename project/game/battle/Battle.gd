@@ -352,10 +352,20 @@ func enable_player():
 	
 	player_disabled = false
 	pass_turn_button.disabled = false
+	
 	#Check curse
 	var curse = player.get_status("curse")
+	if curse:
+		combine_button.enable_curse()
+		combine_button.set_curse(recipes_created, curse.amount)
+	else:
+		combine_button.disable_curse()
+
 	if not curse or curse.amount > recipes_created:
 		combine_button.enable()
+	
+
+		
 	
 	set_favorites_disabled(false)
 	
@@ -1072,3 +1082,7 @@ func _on_CombineButton_pressed():
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 	
 	recipes_created += 1
+	#Check curse
+	var curse = player.get_status("curse")
+	if curse:
+		combine_button.set_curse(recipes_created, curse.amount)

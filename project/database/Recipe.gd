@@ -18,3 +18,4 @@ export(Array, String) var master_effects
 export(Array, Array) var master_effect_args
 export(Array, String) var master_destroy_reagents
 export(String) var master_description
+export(Array, String) var reagent_combinations

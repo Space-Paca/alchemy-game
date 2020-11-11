@@ -70,6 +70,10 @@ margin_bottom = 200.0
 pressed = true
 text = "SFX"
 
+[node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -124,3 +128,4 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/FPSButton" to="." method="_on_FPSButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UpdateRecipesButton" to="." method="_on_UpdateRecipesButton_pressed"]

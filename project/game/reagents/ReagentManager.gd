@@ -25,6 +25,16 @@ func create_object(type: String):
 func get_data(type: String):
 	return ReagentDB.get_from_name(type)
 
+#Given a base reagent, returns all reagents it can substitute into
+func substitute_into(base_reagent):
+	var upgrade_list = []
+	var all_reagents = ReagentDB.get_reagents()
+	for reagent_type in all_reagents:
+		for substitute_reagent in all_reagents[reagent_type].substitute:
+			if substitute_reagent == base_reagent:
+				upgrade_list.append(base_reagent)
+				break
+
 func randomize_reagent(reagent):
 	var type = random_type()
 	var reagent_data = ReagentDB.get_from_name(type)
@@ -116,8 +126,19 @@ func is_same_reagent_array(array1, array2):
 	if a1.empty():
 		return true
 	return false
+
+#Returns an array containing all possible one-reagent upgrade from a given array
+#(upgrade means that another reagent can substitute intp one of its reagents)
+func upgraded_arrays(reagent_array):
+	var upgraded_array_list = []
+	for i in reagent_array.size():
+		var reagent = reagent_array[i]
+		for substitute_reagent in substitute_into(reagent):
+			var new_array = reagent_array.duplicate()
+			new_array[i] = substitute_reagent
+			upgraded_array_list.append(new_array)
 	
-	
+	return upgraded_array_list
 
 #Checks if the given hand reagents contains all reagents needed for reagent array
 func try_reagents(reagent_array, hand_reagents_array):

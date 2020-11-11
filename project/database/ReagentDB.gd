@@ -127,6 +127,8 @@ const DB = {
 static func get_types() -> Array:
 	return DB.keys()
 
+static func get_reagents() -> Dictionary:
+	return DB
 
 static func get_from_name(name: String) -> Dictionary:
 	if not DB.has(name):

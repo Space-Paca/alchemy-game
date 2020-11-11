@@ -69,3 +69,7 @@ func _on_FloorButton_item_selected(id):
 		floor_to_go = id - 1
 		emit_signal("floor_selected", floor_to_go)
 		bg.hide()
+
+
+func _on_UpdateRecipesButton_pressed():
+	RecipeManager.update_recipes_reagent_combinations()

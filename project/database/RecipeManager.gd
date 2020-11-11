@@ -26,3 +26,25 @@ func _ready():
 			file_name = dir.get_next()
 	else:
 		print("RecipeManager: An error occurred when trying to access the path.")
+
+
+func update_recipes_reagent_combinations():
+	for recipe in recipes.value():
+		recipe.reagent_combinations = []
+		var reagent_arrays_to_check = [recipe.reagents.duplicate()]
+		var reagent_arrays_viewed = []
+		while not reagent_arrays_to_check.empty():
+			var cur_reagents_array = reagent_arrays_to_check.pop_front()
+			recipe.reagent_combinations.append(cur_reagents_array)
+			for upgraded_array in ReagentManager.upgraded_arrays(cur_reagents_array):
+				var unique = true
+				for array_viewed in reagent_arrays_viewed:
+					if ReagentManager.is_same_reagent_array(array_viewed, upgraded_array):
+						unique = false
+						break
+				if unique:
+					reagent_arrays_to_check.append(upgraded_array)
+					reagent_arrays_viewed.append(upgraded_array)
+		#ResourceSaver.save(recipe.resource_path, recipe)
+		
+

@@ -38,6 +38,7 @@ func set_combination(_combination: Combination):
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):
 			var reagent = REAGENT.instance()
+			reagent.set_mode("grid")
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	

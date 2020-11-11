@@ -10,3 +10,4 @@ func set_amount(amount: int):
 
 func set_reagent(reagent_name: String):
 	reagent_display.set_reagent(reagent_name)
+	reagent_display.set_mode("blank")

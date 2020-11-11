@@ -102,8 +102,8 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
+custom_constants/vseparation = 1
+custom_constants/hseparation = 1
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false

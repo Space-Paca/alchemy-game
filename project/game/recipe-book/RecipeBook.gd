@@ -100,6 +100,7 @@ func create_hand(battle):
 	battle.connect("hand_set", self, "_on_battle_hand_set")
 	for i in range(battle.hand.size):
 		var reagent = REAGENT_DISPLAY.instance()
+		reagent.set_mode("hand")
 		var row = 0 if i < ceil(battle.hand.size / 2.0) else 1
 		reagent.rect_min_size = Vector2(80, 80)
 		hand_reagents.append(reagent)

@@ -12,6 +12,10 @@ onready var hint_label = $ChooseButton/Label
 var combination : Combination
 var discover_all = false
 
+func _ready():
+	for reagent in grid.get_children():
+		reagent.set_mode("grid")
+
 
 func set_combination(_combination: Combination):
 	var size = _combination.grid_size

@@ -26,6 +26,7 @@ func set_combination(_combination: Combination):
 	# BUTTON TEXT
 	if discover_all or combination.hints >= 2:
 		hint_label.text = "Learn"
+		discover_all = true
 	
 	# GRID
 	for i in range(size * size, grid.get_child_count()):
@@ -40,10 +41,6 @@ func set_combination(_combination: Combination):
 	# REAGENTS
 	var i = 0
 	for reagent in combination.reagent_amounts:
-#		var reagent_amount_display = REAGENT_AMOUNT.instance()
-#		reagent_list.add_child(reagent_amount_display)
-#		reagent_amount_display.set_reagent(reagent)
-#		reagent_amount_display.set_amount(combination.reagent_amounts[reagent])
 		for j in combination.reagent_amounts[reagent]:
 			reagent_list.get_child(i).texture = ReagentDB.get_from_name(reagent).image
 			i += 1

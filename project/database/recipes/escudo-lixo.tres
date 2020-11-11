@@ -20,3 +20,4 @@ master_effects = [ "shield" ]
 master_effect_args = [ [ 12 ] ]
 master_destroy_reagents = [ "trash" ]
 master_description = "Gain 12 shield until end of turn. Destroys trash reagent in the process."
+reagent_combinations = [ [ "trash", "defensive" ], [ "trash", "weak_defensive" ], [ "trash", "super_defensive" ] ]

@@ -20,3 +20,4 @@ master_effects = [ "heal" ]
 master_effect_args = [ [ 250 ] ]
 master_destroy_reagents = [ "healing" ]
 master_description = "Heals 250 HP. Destroys the healing reagents in the process."
+reagent_combinations = [ [ "rare", "uncommon", "uncommon", "uncommon", "healing", "healing" ], [ "rare", "rare", "uncommon", "uncommon", "healing", "healing" ], [ "rare", "rare", "rare", "uncommon", "healing", "healing" ], [ "rare", "rare", "rare", "rare", "healing", "healing" ] ]

@@ -32,8 +32,9 @@ func substitute_into(base_reagent):
 	for reagent_type in all_reagents:
 		for substitute_reagent in all_reagents[reagent_type].substitute:
 			if substitute_reagent == base_reagent:
-				upgrade_list.append(base_reagent)
+				upgrade_list.append(reagent_type)
 				break
+	return upgrade_list
 
 func randomize_reagent(reagent):
 	var type = random_type()

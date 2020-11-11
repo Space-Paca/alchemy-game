@@ -20,3 +20,4 @@ master_effects = [ "add_status" ]
 master_effect_args = [ [ "self", "temp_strength", 12, true ] ]
 master_destroy_reagents = [  ]
 master_description = "Gain 12 temporary strength."
+reagent_combinations = [ [ "buff", "uncommon" ], [ "buff", "rare" ] ]

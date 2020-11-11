@@ -20,3 +20,4 @@ master_effects = [ "draw", "shield" ]
 master_effect_args = [ [ 3 ], [ "3" ] ]
 master_destroy_reagents = [  ]
 master_description = "Draw 3 reagents. Gain 3 shield until end of turn."
+reagent_combinations = [ [ "common", "uncommon" ], [ "faint", "uncommon" ], [ "uncommon", "uncommon" ], [ "rare", "uncommon" ], [ "common", "rare" ], [ "faint", "rare" ], [ "rare", "rare" ] ]

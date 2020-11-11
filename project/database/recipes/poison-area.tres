@@ -20,3 +20,4 @@ master_effects = [ "add_status_all" ]
 master_effect_args = [ [ "poison", 14, false ] ]
 master_destroy_reagents = [  ]
 master_description = "Gives 14 poison to all enemies."
+reagent_combinations = [ [ "poison", "poison", "damaging", "damaging" ], [ "poison", "poison", "weak_damaging", "damaging" ], [ "poison", "poison", "super_damaging", "damaging" ], [ "poison", "poison", "weak_damaging", "weak_damaging" ], [ "poison", "poison", "weak_damaging", "super_damaging" ], [ "poison", "poison", "super_damaging", "super_damaging" ] ]

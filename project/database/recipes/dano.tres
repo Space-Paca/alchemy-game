@@ -20,3 +20,4 @@ master_effects = [ "damage" ]
 master_effect_args = [ [ 11, "regular" ] ]
 master_destroy_reagents = [  ]
 master_description = "Deals 11 regular damage to target enemy."
+reagent_combinations = [ [ "common", "damaging" ], [ "faint", "damaging" ], [ "uncommon", "damaging" ], [ "rare", "damaging" ], [ "common", "weak_damaging" ], [ "common", "super_damaging" ], [ "faint", "weak_damaging" ], [ "faint", "super_damaging" ], [ "uncommon", "weak_damaging" ], [ "uncommon", "super_damaging" ], [ "rare", "weak_damaging" ], [ "rare", "super_damaging" ] ]

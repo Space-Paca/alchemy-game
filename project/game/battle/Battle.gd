@@ -806,6 +806,7 @@ func _on_enemy_acted(enemy, actions):
 				discard_bag.discard(reagent)
 				yield(get_tree().create_timer(.3), "timeout")
 			enemy.remove_intent()
+			emit_signal("update_recipes_display")
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
 		elif name == "idle":

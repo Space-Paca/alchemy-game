@@ -8,6 +8,10 @@ onready var filters = $Filters/VBoxContainer.get_children()
 var filter_values := []
 
 
+func reapply_filters():
+	emit_signal("filters_updated", filter_values)
+
+
 func clear_filters():
 	for filter in filters:
 		filter.pressed = false

@@ -12,6 +12,7 @@ signal rewarded_combinations_seen(combinations)
 signal grid_modified(reagent_matrix)
 signal recipe_book_toggle
 signal hand_set
+signal update_recipes_display
 
 onready var effect_manager = $EffectManager
 onready var hand = $Hand
@@ -282,6 +283,7 @@ func new_player_turn():
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
+		emit_signal("update_recipes_display")
 	
 	if player.get_status("burning"):
 		$Hand.burn_reagents(player.get_status("burning").amount)
@@ -886,6 +888,7 @@ func _on_player_draw_reagent(amount):
 	draw_bag.draw_reagents(amount)
 	yield(draw_bag, "drew_reagents")
 	player.draw_reagents_resolve()
+	emit_signal("update_recipes_display")
 
 
 func _on_player_freeze_hand(amount: int):

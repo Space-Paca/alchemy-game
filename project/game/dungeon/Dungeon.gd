@@ -317,6 +317,8 @@ func new_battle(encounter: Encounter):
 	battle.connect("grid_modified", self, "_on_Battle_grid_modified")
 # warning-ignore:return_value_discarded
 	battle.connect("recipe_book_toggle", self, "recipe_book_toggle")
+# warning-ignore:return_value_discarded
+	battle.connect("update_recipes_display", self, "_on_Battle_update_recipes_display")
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
@@ -630,6 +632,10 @@ func _on_Debug_floor_selected(floor_number: int):
 	
 	create_level(floor_number)
 	player.set_level(floor_number)
+
+
+func _on_Battle_update_recipes_display():
+	recipe_book.reapply_tag_and_filters()
 
 
 func _on_PlayerInfo_button_pressed():

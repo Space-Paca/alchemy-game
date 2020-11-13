@@ -30,6 +30,7 @@ enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
 
 var recipe_displays := {}
 var hand_reagents : Array
+var current_tag := HAND
 var state : int = States.MAP
 var battle_draw_bag
 var battle_discard_bag
@@ -65,6 +66,11 @@ func change_state(new_state: int):
 			pass
 	
 	state = new_state
+
+
+func reapply_tag_and_filters():
+	filter_by_tag(current_tag)
+	filter_menu.reapply_filters()
 
 
 func add_combination(combination: Combination, position: int, threshold: int):
@@ -154,6 +160,7 @@ func update_mastery(combination: Combination, current_value: int, threshold: int
 func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_reagents[i].set_reagent(reagents[i])
+	reapply_tag_and_filters()
 
 
 func update_bags():
@@ -260,6 +267,7 @@ func get_combination_completion(combinations: Array, complete: bool):
 
 
 func filter_by_tag(tag: int):
+	current_tag = tag
 	var all_combinations := get_combinations()
 	var to_tag := []
 	match tag:

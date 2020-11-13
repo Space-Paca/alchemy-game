@@ -64,8 +64,10 @@ func update_combination():
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
 	if combination.discovered:
-		right_container.queue_free()
-		middle_container.queue_free()
+		if right_container:
+			right_container.queue_free()
+		if middle_container:
+			middle_container.queue_free()
 
 
 func preview_mode(is_mastered: bool):

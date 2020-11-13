@@ -157,7 +157,7 @@ func setup_shop():
 	for i in shop.sold_amount:
 		for array in [unknown, incomplete, complete]:
 			if array.size():
-				shop_combinations.append(array.pop_front)
+				shop_combinations.append(array.pop_front())
 				break
 		if shop_combinations.size() == i:
 			shop_combinations.append(null)

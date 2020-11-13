@@ -31,6 +31,11 @@ func set_combination(_combination: Combination):
 	# DESCRIPTION
 	description_label.text = combination.recipe.description
 	
+	# BUTTONS
+	buy_button.visible = false
+	hint_button.visible = false
+	hint_button.disabled = false
+	
 	# COST
 	buy_cost = combination.recipe.shop_cost
 	hint_cost = int(ceil(buy_cost * HINT_COST_RATIO))

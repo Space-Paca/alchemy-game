@@ -6,12 +6,14 @@ signal favorite_toggled(combination, button_pressed)
 signal close
 
 onready var hand_rect : Control = $Background/HandRect
+onready var hand_container : Control = $Background/HandRect/CenterContainer
 onready var upper_hand = $Background/HandRect/CenterContainer/HandReagents/Upper
 onready var lower_hand = $Background/HandRect/CenterContainer/HandReagents/Lower
 onready var draw_bag = $Background/HandRect/DrawBag
 onready var discard_bag = $Background/HandRect/DiscardBag
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
+onready var lower_divider = $Background/LowerDivider
 onready var hand_tag_button = $Background/TagButtons/HandBtn
 onready var filter_menu = $Background/FilterMenu
 onready var tween : Tween = $Tween
@@ -49,6 +51,7 @@ func change_state(new_state: int):
 			rect_position = BATTLE_POS
 			hand_rect.visible = true
 			scroll.rect_size.y -= hand_rect.rect_size.y
+			lower_divider.show()
 			draw_bag.disable()
 			discard_bag.disable()
 			hand_tag_button.show()
@@ -57,6 +60,7 @@ func change_state(new_state: int):
 			if state == States.BATTLE:
 				rect_position = MAP_POS
 				remove_hand()
+				lower_divider.hide()
 				scroll.rect_size.y += hand_rect.rect_size.y
 				hand_tag_button.hide()
 				reset_recipe_visibility()
@@ -111,6 +115,15 @@ func create_hand(battle):
 		reagent.rect_min_size = Vector2(80, 80)
 		hand_reagents.append(reagent)
 		rows[row].add_child(reagent)
+	if battle.hand.size > 10:
+		if hand_container.rect_scale == Vector2(1, 1):
+			hand_container.rect_scale = Vector2(.8, .8)
+			hand_container.rect_position += (hand_container.rect_size*.2)/2
+	else:
+		if hand_container.rect_scale == Vector2(.8, .8):
+			hand_container.rect_scale = Vector2(1, 1)
+			hand_container.rect_position -= (hand_container.rect_size*.2)/2
+	
 
 
 func remove_hand():

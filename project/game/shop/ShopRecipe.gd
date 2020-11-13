@@ -17,6 +17,8 @@ var combination : Combination
 var player : Player
 var buy_cost : int
 var hint_cost : int
+var current_buy_cost : int
+var current_hint_cost : int
 
 
 func set_combination(_combination: Combination):
@@ -32,32 +34,36 @@ func set_combination(_combination: Combination):
 	# COST
 	buy_cost = combination.recipe.shop_cost
 	hint_cost = int(ceil(buy_cost * HINT_COST_RATIO))
-	buy_button.text = "Buy Recipe (%d)" % buy_cost
-	hint_button.text = "Buy Hint (%d)" % hint_cost
 	
 	# GRID
-	for i in range(size * size, grid.get_child_count()):
-		grid.get_child(i).visible = false
-	for i in range(size):
-		for j in range(size):
-			var display = grid.get_child(i*size + j)
-			display.set_reagent(combination.known_matrix[i][j])
-			display.visible = true
+	for i in grid.get_child_count():
+		grid.get_child(i).visible = i < size * size
 	grid.columns = combination.grid_size
 	
 	# REAGENTS
+	for child in reagent_list.get_children():
+		reagent_list.remove_child(child)
+	
 	for reagent in combination.reagent_amounts:
 		var reagent_amount_display = REAGENT_AMOUNT.instance()
 		reagent_list.add_child(reagent_amount_display)
 		reagent_amount_display.set_reagent(reagent)
 		reagent_amount_display.set_amount(combination.reagent_amounts[reagent])
+	
+	update_display()
 
 
 func update_display():
-	for i in range(combination.grid_size):
-		for j in range(combination.grid_size):
+	for i in combination.grid_size:
+		for j in combination.grid_size:
 			var display = grid.get_child(i* combination.grid_size + j)
 			display.set_reagent(combination.known_matrix[i][j])
+	
+	current_buy_cost = buy_cost
+	current_hint_cost = hint_cost
+	for i in combination.hints:
+		current_buy_cost /= 2
+		current_hint_cost /= 2
 	
 	buy_button.text = "Buy Recipe (%d)" % buy_cost
 	hint_button.text = "Buy Hint (%d)" % hint_cost
@@ -83,8 +89,6 @@ func _on_Buy_pressed():
 func _on_Hint_pressed():
 	if player.spend_gold(hint_cost):
 		combination.get_hint()
-		buy_cost /= 2
-		hint_cost /= 2
 		update_display()
 		AudioManager.play_sfx("discover_clue_recipe")
 		emit_signal("hint_bought", combination)

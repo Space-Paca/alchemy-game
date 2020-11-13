@@ -267,7 +267,6 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 	if not player.known_recipes.has(recipe.name) or not combination.discovered:
 		combination.discover_all_reagents()
 		player.discover_combination(combination, true)
-		shop.update_combinations()
 		MessageLayer.new_recipe_discovered(combination)
 		
 		if battle:

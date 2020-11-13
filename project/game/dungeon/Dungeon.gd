@@ -27,6 +27,7 @@ var map : Map
 var current_node : MapNode
 var laboratory_attempts = [6,8,10]
 var cur_lab_attempts
+var first_shop_visit = true
 
 
 func _ready():
@@ -109,14 +110,14 @@ func create_level(level: int):
 	map.set_level(level)
 	map.connect("map_node_pressed", self, "_on_map_node_selected")
 	
-	# SHOP
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
 					player.known_recipes.has(combination.recipe.name):
 				possible_rewarded_combinations.append(combination)
 	
-	setup_shop()
+	# SHOP
+	first_shop_visit = true
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
@@ -134,11 +135,31 @@ func get_incomplete_combinations():
 
 func setup_shop():
 	var shop_combinations = []
-	possible_rewarded_combinations.shuffle()
-	for i in range(shop.sold_amount):
-		if i < possible_rewarded_combinations.size():
-			shop_combinations.append(possible_rewarded_combinations[i])
-		else:
+	var unknown = []
+	var incomplete = []
+	var complete = []
+	
+	for grid_size in combinations:
+		for combination in combinations[grid_size]:
+			if combination.recipe.floor_sold_in != floor_level:
+				continue
+			
+			if not player.known_recipes.has(combination.recipe.name):
+				unknown.append(combination)
+			elif not combination.discovered:
+				incomplete.append(combination)
+			else:
+				complete.append(combination)
+	
+	for array in [unknown, incomplete, complete]:
+		array.shuffle()
+	
+	for i in shop.sold_amount:
+		for array in [unknown, incomplete, complete]:
+			if array.size():
+				shop_combinations.append(array.pop_front)
+				break
+		if shop_combinations.size() == i:
 			shop_combinations.append(null)
 	
 	shop.setup(shop_combinations, player)
@@ -327,6 +348,12 @@ func new_battle(encounter: Encounter):
 func open_shop():
 	AudioManager.play_bgm("shop")
 	map.disable()
+	
+	if first_shop_visit:
+		first_shop_visit = false
+		setup_shop()
+	
+	shop.update_combinations()
 	shop.update_reagents()
 	shop.show()
 
@@ -437,8 +464,9 @@ func _on_Battle_won():
 		var size = min(player.grid_size + 1, player.GRID_SIZES.back())
 		var indices = range(combinations[size].size())
 		indices.shuffle()
-		for i in RECIPES_REWARDED_PER_BATTLE:
-			rewarded_combinations.append(combinations[size][i])
+		for _i in RECIPES_REWARDED_PER_BATTLE:
+			var index = indices.pop_front()
+			rewarded_combinations.append(combinations[size][index])
 	else:
 		possible_rewarded_combinations.shuffle()
 		for i in RECIPES_REWARDED_PER_BATTLE:

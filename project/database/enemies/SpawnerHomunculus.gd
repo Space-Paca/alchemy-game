@@ -5,12 +5,14 @@ var name = "Spawner"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
 var hp = 25
-var battle_init = false
+var battle_init = true
 var size = "small"
 var change_phase = null
 
-var states = ["attack", "defend", "spawn", "poison"]
+var states = ["init", "attack", "defend", "spawn", "poison"]
 var connections = [
+					  ["init", "attack", 1],
+					  ["init", "defend", 1],
 					  ["attack", "defend", 5],
 					  ["attack", "spawn", 5],
 					  ["attack", "poison", 2],
@@ -24,9 +26,13 @@ var connections = [
 					  ["poison", "defend", 1],
 					  ["poison", "spawn", 1],
 				  ]
-var first_state = ["attack", "defend"]
+var first_state = ["init"]
 
 var actions = {
+	"init": [
+		{"name": "spawn", "enemy": "baby_poison"},
+		{"name": "spawn", "enemy": "baby_poison"},
+	],
 	"attack": [
 		{"name": "shield", "value": [4,5]},
 		{"name": "damage", "value": [5,6], "type": "regular"},

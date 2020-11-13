@@ -494,6 +494,10 @@ func enable_elements():
 
 
 func win():
+	if ended:
+		return
+	
+	ended = true
 	disable_elements()
 	
 	if is_boss:
@@ -505,8 +509,6 @@ func win():
 	
 	if not is_boss or floor_level < Debug.MAX_FLOOR:
 		setup_win_screen(current_encounter)
-	
-		ended = true
 		
 		TooltipLayer.clean_tooltips()
 		disable_player()
@@ -816,6 +818,8 @@ func _on_enemy_acted(enemy, actions):
 
 
 func _on_enemy_died(enemy):
+	if ended:
+		return
 	enemies_node.remove_child(enemy)
 	effect_manager.remove_enemy(enemy)
 	#Temporary store enemy

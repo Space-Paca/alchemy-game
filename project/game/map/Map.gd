@@ -12,8 +12,6 @@ onready var floor_label = $CanvasLayer/FloorLabel
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
-const NODE_DIST = 200
-const NODE_DIST_RAND = 50
 const CAMERA_LINEAR_SPEED = 60
 const CAMERA_EXPONENTIAL_SPEED = .1
 const EPSLON = 1
@@ -105,7 +103,7 @@ func shift_positions():
 	if randf() > .5:
 		positions.rect_rotation = 180
 	
-	positions.rect_rotation += 10 * (randf() * 2 - 1)
+	positions.rect_rotation += 5 * (randf() * 2 - 1)
 
 
 func validate_map(total_nodes:int, normal_enemies:int):
@@ -189,6 +187,12 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		# children.
 		if not starting_pos.children.size():
 			available_starting_positions.erase(starting_pos)
+		else:
+			# Remove all remaining children except one, so we can only use at max 2 or 3 children
+			# from this node
+			var max_children = 1 if randf() > .7 else 2	
+			while starting_pos.children.size() > max_children:
+				starting_pos.children.remove(0)
 		
 		# If the new position was already used (possible because positions can
 		# be reached from more than one path) make another draw.

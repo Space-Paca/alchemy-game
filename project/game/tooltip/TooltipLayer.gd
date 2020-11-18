@@ -23,6 +23,9 @@ var keywords = {
 	"healing": {
 		"type": "no_tooltip",
 	},
+	"health": {
+		"type": "no_tooltip",
+	},
 	"heal": {
 		"type": "no_tooltip",
 	},

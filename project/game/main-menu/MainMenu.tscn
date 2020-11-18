@@ -175,5 +175,36 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 0.825
+anchor_bottom = 0.126
+margin_left = 66.8511
+margin_top = 573.089
+margin_right = -917.149
+margin_bottom = 687.009
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="Label" parent="ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 7 )
+text = "USEFUL SHORTCUT KEYS:
+
+ESC: Exit the game/Return to main menu
+TAB: Toggle your recipe book
+Right Mouse Click/Shift Click: Quick place reagents
+F4: Toggle fullscreen"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

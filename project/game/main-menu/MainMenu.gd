@@ -10,6 +10,9 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
+	elif event.is_action_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
+		OS.window_borderless = OS.window_fullscreen
 
 
 func _on_NewGameButton_pressed():

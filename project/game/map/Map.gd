@@ -36,27 +36,40 @@ func _ready():
 func _process(dt):
 	if update_camera:
 		#Get camera target pos
-		var target_pos = Vector2(0,0)
-		var count = 0
-		for node in active_nodes:
-			count += 1
-			target_pos += node.rect_position
-		
-		if count > 0:
-			target_pos = target_pos/float(count)
+		var target_pos = get_screen_center()
+		if active_nodes.size() > 0:
+			var margin = 20
+			var left = 9999
+			var right = -9999
+			var top = 9999
+			var bottom = -9999
+			for node in active_nodes:
+				if node.rect_position.x < left:
+					left = node.rect_position.x
+				if node.rect_position.x > right:
+					right = node.rect_position.x
+				if node.rect_position.y < top:
+					top = node.rect_position.y
+				if node.rect_position.y > bottom:
+					bottom = node.rect_position.y
+			left -= margin
+			right += margin
+			top -= margin
+			bottom += margin
+			target_pos = Vector2(left+(right-left)/2, top+(bottom-top)/2)
 			target_pos += get_screen_center()
 # warning-ignore:integer_division
-			target_pos.y -= PLAYER_UI_HEIGHT/2
-			
-			#Move camera linearly
-			var dist = (target_pos - $Camera.position)
-			if CAMERA_LINEAR_SPEED*dt < 3*dist.length():
-				$Camera.position += dist.normalized()*CAMERA_LINEAR_SPEED*dt
-			else:
-				$Camera.position += dist*CAMERA_EXPONENTIAL_SPEED*dt
-			
-			if (target_pos - $Camera.position).length() <= EPSLON:
-				$Camera.position = target_pos
+		target_pos.y -= PLAYER_UI_HEIGHT/2
+
+		#Move camera linearly
+		var dist = (target_pos - $Camera.position)
+		if CAMERA_LINEAR_SPEED*dt < 3*dist.length():
+			$Camera.position += dist.normalized()*CAMERA_LINEAR_SPEED*dt
+		else:
+			$Camera.position += dist*CAMERA_EXPONENTIAL_SPEED*dt
+		
+		if (target_pos - $Camera.position).length() <= EPSLON:
+			$Camera.position = target_pos
 
 
 func set_disabled(toggle:bool):

@@ -6,6 +6,12 @@ func _ready():
 
 # (❁´◡`❁)
 
+
+func _input(event):
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
+
+
 func _on_NewGameButton_pressed():
 #	Debug.set_version_visible(false)
 # warning-ignore:return_value_discarded

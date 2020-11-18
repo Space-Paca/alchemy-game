@@ -171,7 +171,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	var available_starting_positions : Array = [center_position]
 	var used_positions : Array = [center_position]
 	var untyped_nodes := []
-	
+	var node_distance = {initial_node: 0}
 	while total_nodes:
 		var starting_pos : MapPosition
 		var new_pos : MapPosition
@@ -222,6 +222,9 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 # warning-ignore:return_value_discarded
 		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
 		
+		#Update distance to this new position
+		node_distance[new_node] = node_distance[starting_pos.node] + 1
+		
 		# Set new node type as enemy if it originated from the initial node
 		if starting_pos == center_position:
 			new_node.set_type(MapNode.ENEMY)
@@ -240,16 +243,21 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	### TYPING NODES ###
 	untyped_nodes.shuffle()
 	
-	#Setting up boss and elite encounters
-	var boss_placed = false
+	#Setting up boss, on the farthest node from center
+	var farthest_node = null
+	var distance = -1
+	for node in untyped_nodes:
+		if node_distance[node] > distance:
+			distance = node_distance[node]
+			farthest_node = node
+	farthest_node.set_type(MapNode.BOSS)
+	untyped_nodes.erase(farthest_node)
+	
+	#Setting up elite encounters
 	var to_erase = []
 	for node in untyped_nodes:
 		var map_node : MapNode = node
-		if map_node.is_leaf and not boss_placed:
-			map_node.set_type(MapNode.BOSS)
-			to_erase.append(map_node)
-			boss_placed = true
-		elif map_node.is_leaf and elite_encounters > 0:
+		if map_node.is_leaf and elite_encounters > 0:
 			map_node.set_type(MapNode.ELITE)
 			to_erase.append(map_node)
 			elite_encounters -= 1

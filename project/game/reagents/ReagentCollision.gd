@@ -16,7 +16,9 @@ func _input(event):
 			 (mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 			  mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y):
 				reagent.start_hovering()
-	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
+	if event is InputEventMouseButton and \
+		(event.button_index == BUTTON_RIGHT or \
+		(event.button_index == BUTTON_LEFT and Input.is_key_pressed(KEY_SHIFT))):
 		if event.pressed and reagent.can_drag and not reagent.is_frozen():
 			var mouse_pos = get_local_mouse_position()
 			if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \

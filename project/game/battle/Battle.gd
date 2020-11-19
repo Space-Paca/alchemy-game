@@ -27,10 +27,6 @@ onready var recipe_name_display = $RecipeNameDisplay
 onready var combine_button = $CombineButton
 onready var recipes_button = $RecipesButton
 onready var favorites = $Favorites
-onready var available_favorites = [$Favorites/FavoriteButton1,
-	$Favorites/FavoriteButton2, $Favorites/FavoriteButton3,
-	$Favorites/FavoriteButton4, $Favorites/FavoriteButton5,
-	$Favorites/FavoriteButton6]
 onready var targeting_interface = $TargetingInterface
 
 export(Array, Texture) var backgrounds
@@ -614,9 +610,11 @@ func has_reagents(reagent_array: Array):
 
 
 func add_favorite(combination: Combination):
-	var button : FavoriteButton = available_favorites.pop_front()
-	button.set_combination(combination)
-	button.show_button()
+	for button in favorites.get_children():
+		if not button.combination:
+			button.set_combination(combination)
+			button.show_button()
+			break
 
 
 func remove_favorite(combination: Combination):
@@ -624,7 +622,6 @@ func remove_favorite(combination: Combination):
 		if button.combination == combination:
 			button.set_combination(null)
 			button.hide_button()
-			available_favorites.append(button)
 
 
 func display_name_for_combination(combination):

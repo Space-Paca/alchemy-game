@@ -100,6 +100,11 @@ func unlock_mastery():
 		MessageLayer.recipe_mastered(combination)
 
 
+func set_favorite_button(status):
+	if mastery_unlocked:
+		favorite_button.pressed = status
+
+
 func favorite_error():
 	AudioManager.play_sfx("error")
 	favorite_button.pressed = false

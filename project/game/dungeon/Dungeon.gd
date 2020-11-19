@@ -690,4 +690,4 @@ func _on_Laboratory_recipe_toggle():
 
 
 func _on_MessageLayer_favorite_recipe(combination):
-	favorite_combination(combination, true)
+	recipe_book.set_favorite_button(combination, true)

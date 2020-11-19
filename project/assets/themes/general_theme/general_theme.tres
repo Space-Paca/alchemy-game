@@ -17,7 +17,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 89, 96 )
 margin_left = 23.0
@@ -25,7 +25,7 @@ margin_right = 23.0
 margin_top = 28.0
 margin_bottom = 28.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 89, 96 )
 margin_left = 23.327
@@ -33,7 +33,7 @@ margin_right = 23.327
 margin_top = 27.9924
 margin_bottom = 27.9924
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 89, 96 )
 margin_left = 23.0
@@ -41,7 +41,7 @@ margin_right = 23.0
 margin_top = 28.0
 margin_bottom = 28.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 89, 96 )
 margin_left = 23.0
@@ -49,16 +49,10 @@ margin_right = 23.0
 margin_top = 28.0
 margin_bottom = 28.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 29, 164 )
 margin_top = 34.9905
-margin_bottom = 35.0
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 29, 164 )
-margin_top = 35.0
 margin_bottom = 35.0
 
 [sub_resource type="StyleBoxTexture" id=7]
@@ -68,6 +62,12 @@ margin_top = 35.0
 margin_bottom = 35.0
 
 [sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 29, 164 )
 margin_top = 28.4318
@@ -80,17 +80,17 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = SubResource( 1 )
-Button/styles/disabled = SubResource( 9 )
+Button/styles/disabled = SubResource( 2 )
 Button/styles/focus = null
-Button/styles/hover = SubResource( 2 )
-Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = SubResource( 4 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 5 )
-VScrollBar/styles/grabber_highlight = SubResource( 6 )
-VScrollBar/styles/grabber_pressed = SubResource( 7 )
-VScrollBar/styles/scroll = SubResource( 8 )
+VScrollBar/styles/grabber = SubResource( 6 )
+VScrollBar/styles/grabber_highlight = SubResource( 7 )
+VScrollBar/styles/grabber_pressed = SubResource( 8 )
+VScrollBar/styles/scroll = SubResource( 9 )
 VScrollBar/styles/scroll_focus = null

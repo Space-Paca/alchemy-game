@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://database/EventOption.gd"
 }, {
-"base": "TextureButton",
+"base": "Control",
 "class": "FavoriteButton",
 "language": "GDScript",
 "path": "res://game/battle/FavoriteButton.gd"

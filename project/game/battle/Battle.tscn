@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -11,9 +11,8 @@
 [ext_resource path="res://game/battle/EffectManager.gd" type="Script" id=9]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/battle/player-ui/CombineButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/battle/FavoriteButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/images/background-map1.png" type="Texture" id=13]
-[ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=14]
-[ext_resource path="res://assets/images/recipe-icons/icon-17.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/background/04_cave.jpg" type="Texture" id=18]
 [ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
@@ -105,10 +104,10 @@ margin_right = 467.0
 margin_bottom = 1007.0
 
 [node name="Favorites" type="GridContainer" parent="."]
-margin_left = 95.0797
-margin_top = 444.444
-margin_right = 623.08
-margin_bottom = 760.444
+margin_left = 103.565
+margin_top = 397.775
+margin_right = 665.565
+margin_bottom = 713.775
 rect_min_size = Vector2( 448, 316 )
 custom_constants/vseparation = 20
 custom_constants/hseparation = 400
@@ -117,47 +116,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FavoriteButton1" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton1" parent="Favorites" instance=ExtResource( 12 )]
+margin_right = 81.0
+margin_bottom = 81.0
 
-[node name="FavoriteButton2" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton2" parent="Favorites" instance=ExtResource( 12 )]
+margin_left = 481.0
+margin_right = 562.0
+margin_bottom = 81.0
 
-[node name="FavoriteButton3" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton3" parent="Favorites" instance=ExtResource( 12 )]
+margin_top = 101.0
+margin_right = 81.0
+margin_bottom = 182.0
 
-[node name="FavoriteButton4" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton4" parent="Favorites" instance=ExtResource( 12 )]
+margin_left = 481.0
+margin_top = 101.0
+margin_right = 562.0
+margin_bottom = 182.0
 
-[node name="FavoriteButton5" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton5" parent="Favorites" instance=ExtResource( 12 )]
+margin_top = 202.0
+margin_right = 81.0
+margin_bottom = 283.0
 
-[node name="FavoriteButton6" type="TextureButton" parent="Favorites"]
-visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 15 )
-script = ExtResource( 14 )
+[node name="FavoriteButton6" parent="Favorites" instance=ExtResource( 12 )]
+margin_left = 481.0
+margin_top = 202.0
+margin_right = 562.0
+margin_bottom = 283.0
 
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )

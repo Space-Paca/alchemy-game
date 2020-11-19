@@ -403,7 +403,10 @@ func recipe_book_toggled(visible: bool):
 
 func set_favorites_disabled(disabled: bool):
 	for button in favorites.get_children():
-		button.disabled = disabled
+		if disabled:
+			button.disable()
+		else:
+			button.enable()
 
 
 func add_recipe_deviation(name):
@@ -613,14 +616,14 @@ func has_reagents(reagent_array: Array):
 func add_favorite(combination: Combination):
 	var button : FavoriteButton = available_favorites.pop_front()
 	button.set_combination(combination)
-	button.visible = true
+	button.show_button()
 
 
 func remove_favorite(combination: Combination):
 	for button in favorites.get_children():
 		if button.combination == combination:
 			button.set_combination(null)
-			button.visible = false
+			button.hide_button()
 			available_favorites.append(button)
 
 

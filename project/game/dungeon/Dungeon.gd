@@ -36,14 +36,16 @@ func _ready():
 	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
 # warning-ignore:return_value_discarded
 	Debug.connect("floor_selected", self, "_on_Debug_floor_selected")
-	
+
+
 # warning-ignore:return_value_discarded
 	rest.connect("combination_rewarded", self, "_on_combination_rewarded")
-
 # warning-ignore:return_value_discarded
 	lab.connect("combination_made", self, "_on_Laboratory_combination_made")
 # warning-ignore:return_value_discarded
 	lab.connect("grid_modified", self, "_on_Laboratory_grid_modified")
+# warning-ignore:return_value_discarded
+	MessageLayer.connect("favorite_recipe", self, "_on_MessageLayer_favorite_recipe")
 	
 	randomize()
 	create_combinations()
@@ -310,7 +312,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 func mastery_threshold(combination: Combination) -> int:
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
-	return threshold
+	return 2#threshold
 
 
 func should_unlock_mastery(combination: Combination) -> bool:
@@ -426,6 +428,22 @@ func recipe_book_toggle():
 		battle.recipe_book_toggled(book_visible)
 	elif not lab.visible:
 		player_info.visible = !book_visible
+
+
+func favorite_combination(combination, active):
+	if active:
+		if favorite_combinations.size() >= max_favorites:
+			recipe_book.favorite_error(combination)
+			MessageLayer.favorite_error()
+		else:
+			AudioManager.play_sfx("apply_favorite")
+			favorite_combinations.append(combination)
+			if battle:
+				battle.add_favorite(combination)
+	else:
+		favorite_combinations.erase(combination)
+		if battle:
+			battle.remove_favorite(combination)
 
 
 func thanks_for_playing():
@@ -584,18 +602,7 @@ func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: b
 
 
 func _on_RecipeBook_favorite_toggled(combination, button_pressed):
-	if button_pressed:
-		if favorite_combinations.size() >= max_favorites:
-			recipe_book.favorite_error(combination)
-		else:
-			AudioManager.play_sfx("apply_favorite")
-			favorite_combinations.append(combination)
-			if battle:
-				battle.add_favorite(combination)
-	else:
-		favorite_combinations.erase(combination)
-		if battle:
-			battle.remove_favorite(combination)
+	favorite_combination(combination, button_pressed)
 
 
 func _on_Shop_closed():
@@ -680,3 +687,7 @@ func _on_RecipeBook_close():
 
 func _on_Laboratory_recipe_toggle():
 	recipe_book_toggle()
+
+
+func _on_MessageLayer_favorite_recipe(combination):
+	favorite_combination(combination, true)

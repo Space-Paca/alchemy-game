@@ -193,7 +193,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
 	win_screen.connect("combinations_seen", self, "_on_win_screen_combinations_seen")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
-	win_screen.connect("gem_collected", self, "_on_win_screen_gem_collected")
+	win_screen.connect("pearl_collected", self, "_on_win_screen_pearl_collected")
 	
 	win_screen.set_loot(encounter.get_loot())
 
@@ -514,6 +514,9 @@ func win():
 		TooltipLayer.clean_tooltips()
 		disable_player()
 		player.clear_status()
+		
+		player.call_artifacts("battle_finish", {"player": player})
+		
 		emit_signal("won")
 		
 		#Wait a bit before starting win bgm
@@ -522,6 +525,7 @@ func win():
 			AudioManager.play_bgm("win_boss_battle", false, true)
 		else:
 			AudioManager.play_bgm("win_normal_battle", false, true)
+	
 	else:
 		_on_win_screen_continue_pressed()
 
@@ -955,8 +959,8 @@ func _on_win_screen_combination_chosen(combination: Combination):
 	emit_signal("combination_rewarded", combination)
 
 
-func _on_win_screen_gem_collected(quantity:int):
-	player.add_gems(quantity)
+func _on_win_screen_pearl_collected(quantity:int):
+	player.add_pearls(quantity)
 
 
 func _on_Hand_hand_slot_reagent_set():

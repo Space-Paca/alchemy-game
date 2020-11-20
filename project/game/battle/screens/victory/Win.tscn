@@ -7,7 +7,7 @@
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/ui/gem_button.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/pearl_button.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -133,12 +133,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemContainer" type="HBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
+[node name="PearlContainer" type="HBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
 visible = false
 margin_right = 721.0
 margin_bottom = 91.0
 
-[node name="Gem" type="TextureRect" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
+[node name="Pearl" type="TextureRect" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
 margin_right = 80.0
 margin_bottom = 91.0
 rect_min_size = Vector2( 80, 80 )
@@ -146,7 +146,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
 margin_left = 84.0
 margin_top = 5.0
 margin_right = 234.0
@@ -159,17 +159,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer"]
+[node name="Button" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
 margin_left = 238.0
 margin_right = 721.0
 margin_bottom = 91.0
 texture_normal = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button"]
+[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
-text = "Collect gems"
+text = "Collect Pearls"
 align = 1
 valign = 1
 __meta__ = {
@@ -229,8 +229,8 @@ __meta__ = {
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
 [connection signal="button_down" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button" to="." method="_on_Button_button_down"]
-[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Button" to="." method="_on_gem_collected"]
+[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_pearl_collected"]
 [connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="button_down" from="BG/MovingScreen/ContinueButton" to="." method="_on_Button_button_down"]

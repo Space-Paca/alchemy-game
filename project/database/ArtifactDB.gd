@@ -1,53 +1,59 @@
 class_name ArtifactDB
 
 const COMMON = [
-   {
-		"id": "poison_kit",
-		"name": "Slimy Satchel",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When acquired, add 3 poison-reagents to your bag",
-	},
-   {
-		"id": "buff_poison",
-		"name": "Poisoner's Thesis",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Whenever you apply poison, apply 1 extra poison",
-	},
+#   {
+#		"id": "poison_kit",
+#		"name": "Slimy Satchel",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "When acquired, add 3 poison-reagents to your bag",
+#	},
+#   {
+#		"id": "buff_poison",
+#		"name": "Poisoner's Thesis",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "Whenever you apply poison, apply 1 extra poison",
+#	},
+#	{
+#		"id": "strength",
+#		"name": "Powerstone",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "Start each battle with 3 permanent strength",
+#	},
+#	{
+#		"id": "max_hp",
+#		"name": "Chalice of Life",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "Increase your H.P. by 20",
+#	},
+#	{
+#		"id": "temp_strength",
+#		"name": "Morhk Nosering",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "Start each battle with 10 temporary strength",
+#	},
+#	{
+#		"id": "great_rest",
+#		"name": "Warm Blanket",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "When resting, you heal 70% of you max health",
+#	},
+#	{
+#		"id": "money_bag",
+#		"name": "Coin Pouch",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "When acquired, gain 40 gold",
+#	},
+#	{
+#		"id": "blue_oyster",
+#		"name": "Elite Rewards",
+#		"image": preload("res://assets/images/reagents/comum.png"),
+#		"description": "Whenever you defeat an elite or boss encounter, gain 1 extra pearl",
+#	},
 	{
-		"id": "strength",
-		"name": "Powerstone",
+		"id": "mender_belt",
+		"name": "Mender's Belt",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 3 permanent strength",
-	},
-	{
-		"id": "max_hp",
-		"name": "Chalice of Life",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Increase your H.P. by 20",
-	},
-	{
-		"id": "temp_strength",
-		"name": "Morhk Nosering",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 10 temporary strength",
-	},
-	{
-		"id": "great_rest",
-		"name": "Warm Blanket",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When resting, you heal 70% of you max health",
-	},
-	{
-		"id": "money_bag",
-		"name": "Coin Pouch",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When acquired, gain 40 gold",
-	},
-	{
-		"id": "elite_drop",
-		"name": "Elite Rewards",
-		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Whenever you defeat an elite or boss encounter, gain 1 extra gem",
+		"description": "Whenever you finish a battle encounter, heal 8.",
 	},
 ]
 

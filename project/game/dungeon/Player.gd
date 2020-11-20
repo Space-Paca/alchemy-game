@@ -7,7 +7,7 @@ signal draw_reagent
 signal draw_resolve
 signal hp_updated(hp, max_hp)
 signal gold_updated(gold)
-signal gems_updated(gem)
+signal pearls_updated(pearl)
 
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
@@ -16,7 +16,7 @@ const MAX_LEVEL = 3
 export var initial_gold := 50
 
 var gold : int
-var gems : int
+var pearls : int
 var hud
 var hand_size : int
 var grid_size : int
@@ -36,7 +36,7 @@ func _ready():
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	gold = initial_gold
-	gems = 0
+	pearls = 0
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
@@ -85,11 +85,11 @@ func add_gold(amount: int):
 	emit_signal("gold_updated", gold)
 
 
-func add_gems(amount: int):
+func add_pearls(amount: int):
 	assert(amount > 0, "Amount must be positive")
-	AudioManager.play_sfx("get_gem")
-	gems += amount
-	emit_signal("gems_updated", gems)
+	AudioManager.play_sfx("get_pearl")
+	pearls += amount
+	emit_signal("pearls_updated", pearls)
 
 
 func spend_gold(amount: int) -> bool:
@@ -102,11 +102,11 @@ func spend_gold(amount: int) -> bool:
 		return false
 
 
-func spend_gems(amount: int) -> bool:
+func spend_pearls(amount: int) -> bool:
 	assert(amount > 0, "Amount must be positive")
-	if gems >= amount:
-		gems -= amount
-		emit_signal("gems_updated", gems)
+	if pearls >= amount:
+		pearls -= amount
+		emit_signal("pearls_updated", pearls)
 		return true
 	else:
 		return false

@@ -84,7 +84,7 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 
 
 func _on_ConfirmUpgrade_pressed():
-	if player.spend_gems(1):
+	if player.spend_pearls(1):
 		AudioManager.play_sfx("upgrade_reagent")
 		player.upgrade_reagent(chosen_reagent_index)
 		reagent_list.deactivate_reagents()

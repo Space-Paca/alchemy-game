@@ -5,7 +5,7 @@ signal button_pressed
 onready var bg = $BG
 onready var button = $BG/DownButton
 onready var gold_label = $BG/CurrencyContainer/Gold/Label
-onready var gems_label = $BG/CurrencyContainer/Gems/Label
+onready var pearls_label = $BG/CurrencyContainer/Pearls/Label
 onready var healthbar = $BG/HealthBar
 onready var artifacts = $BG/Artifacts
 onready var tween = $Tween
@@ -21,7 +21,7 @@ func set_player(player: Player):
 	# warning-ignore:return_value_discarded
 	player.connect("gold_updated", self, "update_gold")
 	# warning-ignore:return_value_discarded
-	player.connect("gems_updated", self, "update_gems")
+	player.connect("pearls_updated", self, "update_pearls")
 	
 	update_values(player)
 
@@ -29,7 +29,7 @@ func set_player(player: Player):
 func update_values(player: Player):
 	update_hp(player.hp, player.max_hp)
 	update_gold(player.gold)
-	update_gems(player.gems)
+	update_pearls(player.pearls)
 
 
 func update_hp(hp: int, max_hp: int):
@@ -40,8 +40,8 @@ func update_gold(value: int):
 	gold_label.text = str(value)
 
 
-func update_gems(value: int):
-	gems_label.text = str(value)
+func update_pearls(value: int):
+	pearls_label.text = str(value)
 
 
 func animation_hide():

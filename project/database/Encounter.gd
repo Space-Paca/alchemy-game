@@ -37,7 +37,7 @@ func get_loot() -> Array:
 		chance = extra_chance.pop_front()
 	
 	if is_boss or is_elite:
-		loot.append("gem")
-		loot.append("gem")
+		loot.append("pearl")
+		loot.append("pearl")
 	
 	return loot

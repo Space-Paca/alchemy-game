@@ -312,7 +312,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 func mastery_threshold(combination: Combination) -> int:
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
-	return 2#threshold
+	return threshold
 
 
 func should_unlock_mastery(combination: Combination) -> bool:

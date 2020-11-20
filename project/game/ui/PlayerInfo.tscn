@@ -99,7 +99,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "100"
 valign = 1
 
-[node name="Gems" type="HBoxContainer" parent="BG/CurrencyContainer"]
+[node name="Pearls" type="HBoxContainer" parent="BG/CurrencyContainer"]
 margin_left = 184.0
 margin_right = 298.0
 margin_bottom = 45.0
@@ -109,7 +109,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Gems"]
+[node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Pearls"]
 margin_right = 40.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 40, 40 )
@@ -117,7 +117,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="BG/CurrencyContainer/Gems"]
+[node name="Label" type="Label" parent="BG/CurrencyContainer/Pearls"]
 margin_left = 44.0
 margin_right = 114.0
 margin_bottom = 45.0

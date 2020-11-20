@@ -8,6 +8,10 @@ func call_on_battle_start(name : String, args : Dictionary):
 	if has_method("on_battle_start_" + name):
 		call("on_battle_start_" + name, args)
 
+func call_on_battle_finish(name : String, args : Dictionary):
+	if has_method("on_battle_finish_" + name):
+		call("on_battle_finish_" + name, args)
+
 func call_on_turn_start(name : String, args : Dictionary):
 	if has_method("on_turn_start_" + name):
 		call("on_turn_start_" + name, args)
@@ -67,5 +71,9 @@ func on_battle_start_temp_strength(args):
 
 func on_battle_start_temp_strength_plus(args):
 	args.player.add_status("temp_strength", 20, true)
+
+#On battle finish methods
+func on_battle_finish_mender_belt(args):
+	args.player.heal(8)
 
 

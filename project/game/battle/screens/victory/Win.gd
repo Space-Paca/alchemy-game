@@ -5,10 +5,10 @@ signal combinations_seen(combinations)
 signal combination_chosen(combination)
 signal reagent_looted(reagent_name)
 signal reagent_sold(gold_value)
-signal gem_collected(quantity)
+signal pearl_collected(quantity)
 
 onready var loot_list = $BG/MovingScreen/ScrollContainer/RewardsContainer/LootList
-onready var gem_container = $BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer
+onready var pearl_container = $BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer
 onready var rewards_container = $BG/MovingScreen/ScrollContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
 onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
@@ -17,7 +17,7 @@ onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
 onready var back_button = $BG/MovingScreen/RecipesContainer/BackButton
 onready var recipes_button = $BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton
 onready var continue_button = $BG/MovingScreen/ContinueButton
-onready var gem_label = $BG/MovingScreen/ScrollContainer/RewardsContainer/GemContainer/Label
+onready var pearl_label = $BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Label
 onready var moving_screen = $BG/MovingScreen
 onready var bg = $BG
 onready var tween = $Tween
@@ -30,7 +30,7 @@ const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn
 
 var curr_state : int = States.LOOT
 var rewarded_combinations := []
-var gem_amount := 0
+var pearl_amount := 0
 var player = null
 
 func setup(_player):
@@ -44,14 +44,14 @@ func set_loot(loot: Array):
 			reagent_loot.connect("reagent_looted", self, "_on_reagent_looted")
 			reagent_loot.connect("reagent_sold", self, "_on_reagent_sold")
 			reagent_loot.set_reagent(loot_name)
-		elif loot_name == "gem":
-				gem_amount += 1
+		elif loot_name == "pearl":
+				pearl_amount += 1
 	
-	if gem_amount:
-		if player.has_artifact("elite_drop"):
-			gem_amount += 1
-		gem_container.show()
-		gem_label.text = str("x ", gem_amount)
+	if pearl_amount:
+		if player.has_artifact("blue_oyster"):
+			pearl_amount += 1
+		pearl_container.show()
+		pearl_label.text = str("x ", pearl_amount)
 	
 	disable_buttons()
 
@@ -135,9 +135,9 @@ func _on_reagent_sold(reagent_loot):
 	reagent_loot.queue_free()
 
 
-func _on_gem_collected():
-	emit_signal("gem_collected", gem_amount)
-	gem_container.hide()
+func _on_pearl_collected():
+	emit_signal("pearl_collected", pearl_amount)
+	pearl_container.hide()
 
 
 func _on_Button_button_down():

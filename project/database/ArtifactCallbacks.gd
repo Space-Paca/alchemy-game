@@ -60,6 +60,9 @@ func on_add_money_bag(args):
 	args.player.gold += 30
 
 #On battle start methods
+func on_battle_start_carapa_buckler(args):
+	args.player.gain_shield(10)
+
 func on_battle_start_strength(args):
 	args.player.add_status("perm_strength", 3, true)
 

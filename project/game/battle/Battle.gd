@@ -88,6 +88,8 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 		yield(self, "finished_enemies_init")
 	
 	player.call_artifacts("battle_start", {"player": player})
+	if encounter.is_elite and player.has_artifact("vulture_mask"):
+		player.add_status("perm_strength", 5, true)
 	
 	new_player_turn()
 

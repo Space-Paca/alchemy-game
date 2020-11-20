@@ -18,9 +18,16 @@ var tooltip_enabled := false
 func _ready():
 	pass
 
-func set_reagent(reagent_name: String):
+func set_reagent(reagent_name: String, player: Player):
 	reagent = reagent_name
 	gold_value = ReagentDB.get_from_name(reagent).gold_value
+	
+	if player.has_artifact("cursed_pearls"):
+		gold_value = gold_value/2
+		sell_label.modulate = Color(.45,0,0)
+	else:
+		sell_label.modulate = Color(1,1,1)
+	
 	texture_rect.texture = ReagentDB.DB[reagent].image
 	sell_label.text = TEXT % gold_value
 

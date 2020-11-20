@@ -43,7 +43,7 @@ func set_loot(loot: Array):
 			loot_list.add_child(reagent_loot)
 			reagent_loot.connect("reagent_looted", self, "_on_reagent_looted")
 			reagent_loot.connect("reagent_sold", self, "_on_reagent_sold")
-			reagent_loot.set_reagent(loot_name)
+			reagent_loot.set_reagent(loot_name, player)
 		elif loot_name == "pearl":
 				pearl_amount += 1
 	

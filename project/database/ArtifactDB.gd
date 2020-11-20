@@ -129,6 +129,15 @@ const RARE = [
 	},
 ]
 
+const EVENT = [
+	{
+		"id": "cursed_pearls",
+		"name": "Cursed Pearls",
+		"image": preload("res://assets/images/reagents/comum.png"),
+		"description": "When transmuting reagents for gold, you get half the original value.",
+	},
+]
+
 static func get_artifacts_data(rarity : String) -> Array:
 	if rarity == "common":
 		return COMMON.duplicate()
@@ -136,6 +145,8 @@ static func get_artifacts_data(rarity : String) -> Array:
 		return UNCOMMON.duplicate()
 	elif rarity == "rare":
 		return RARE.duplicate()
+	elif rarity == "event":
+		return EVENT.duplicate()
 	else:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
 		return []
@@ -151,12 +162,18 @@ static func get_artifacts(rarity : String) -> Array:
 	elif rarity == "rare":
 		for artifact in RARE:
 			artifacts.append(artifact.id)
+	elif rarity == "event":
+		for artifact in EVENT:
+			artifacts.append(artifact.id)
 	else:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
 		return []
 	return artifacts
 
 static func get_from_name(name: String) -> Dictionary:
+	for artifact in EVENT:
+		if artifact.id == name:
+			return artifact
 	for artifact in COMMON:
 			if artifact.id == name:
 				return artifact

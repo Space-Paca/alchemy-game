@@ -45,7 +45,7 @@ const COMMON = [
 	},
 	{
 		"id": "blue_oyster",
-		"name": "Elite Rewards",
+		"name": "Blue Oyster",
 		"image": preload("res://assets/images/reagents/comum.png"),
 		"description": "Whenever you defeat an elite or boss encounter, gain 1 extra pearl",
 	},
@@ -111,6 +111,12 @@ const UNCOMMON = [
 		"name": "Unpredictable Satchel",
 		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When acquired, add 4 random reagents to your bag",
+	},
+	{
+		"id": "poisoned_dagger",
+		"name": "Poisoned Dagger",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it.",
 	},
 ]
 

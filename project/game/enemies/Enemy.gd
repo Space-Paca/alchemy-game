@@ -31,6 +31,7 @@ const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
 var logic
 var data
 var cur_actions
+var player
 var just_spawned := false
 var _playback_speed := 1.0
 
@@ -127,6 +128,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
+		
 	
 	if hp <= 0 and get_status("soulbind"):
 		remove_status("soulbind")
@@ -154,6 +156,11 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			yield(health_bar, "animation_completed")
 		else:
 			yield(self, "died")
+	
+	if hp > 0 and unblocked_dmg > 0 and source == player and\
+	   player.has_artifact("poisoned_dagger"):
+		add_status("poison", 1, false)
+		
 	
 	emit_signal("resolved")
 
@@ -311,12 +318,12 @@ func get_center_position():
 	return $Sprite.global_position
 
 
-func setup(enemy_logic, new_texture, enemy_data):
+func setup(enemy_logic, new_texture, enemy_data, _player):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
 	set_image(new_texture)
 	data = enemy_data #Store enemy data
-
+	player = _player
 
 func set_logic(enemy_logic):
 	logic = load("res://game/enemies/EnemyLogic.gd").new()

@@ -214,7 +214,7 @@ func create_reagent(type):
 
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
-	var enemy_node = EnemyManager.create_object(enemy)
+	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
 	
 	if is_minion:

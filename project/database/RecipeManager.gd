@@ -46,6 +46,4 @@ func update_recipes_reagent_combinations():
 					reagent_arrays_to_check.append(upgraded_array)
 					reagent_arrays_viewed.append(upgraded_array)
 		var err = ResourceSaver.save(recipe.resource_path, recipe)
-		assert(err, "Something went wrong trying to save recipe resource: " + str(recipe.name))
-		
-
+		assert(not err, "Something went wrong trying to save recipe resource: " + str(recipe.name) + " Error:" + str(err))

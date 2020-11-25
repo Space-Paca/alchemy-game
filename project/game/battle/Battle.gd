@@ -15,28 +15,36 @@ signal hand_set
 signal update_recipes_display
 
 onready var effect_manager = $EffectManager
-onready var hand = $Hand
+onready var book = $Book
+onready var hand = $Book/Hand
 onready var reagents = $Reagents
-onready var draw_bag = $DrawBag
-onready var discard_bag = $DiscardBag
-onready var grid = $Grid
-onready var pass_turn_button = $PassTurnButton
+onready var draw_bag = $Book/DrawBag
+onready var discard_bag = $Book/DiscardBag
+onready var grid = $Book/Grid
+onready var pass_turn_button = $Book/PassTurnButton
 onready var enemies_node = $Enemies
-onready var player_ui = $PlayerUI
-onready var recipe_name_display = $RecipeNameDisplay
-onready var combine_button = $CombineButton
-onready var recipes_button = $RecipesButton
-onready var favorites = $Favorites
+onready var player_ui = $Book/PlayerUI
+onready var recipe_name_display = $Book/RecipeNameDisplay
+onready var combine_button = $Book/CombineButton
+onready var recipes_button = $Book/RecipesButton
+onready var favorites = $Book/Favorites
 onready var targeting_interface = $TargetingInterface
 
 export(Array, Texture) var backgrounds
 export(Array, Texture) var foregrounds
+export(Array, Texture) var boss_backgrounds
+export(Array, Texture) var boss_foregrounds
 
 const WINDOW_W = 1920
 const WINDOW_H = 1080
 const MAX_ENEMIES = 4
 const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
+const BG_ENTER_DUR = .7
+const FG_ENTER_DUR = 1.0
+const BOOK_ENTER_DUR = 1.0
+const BOOK_START_X = -1920
+const BOOK_TARGET_X = -812 
 
 var floor_level
 var ended := false
@@ -62,8 +70,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	floor_level = _floor_level
 	current_encounter = encounter
 	
-	$BG.texture = backgrounds[floor_level-1]
-	$BG/FG.texture = foregrounds[floor_level-1]
+	setup_bg()
 	
 	setup_nodes(_player)
 	
@@ -81,8 +88,13 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	
 	AudioManager.play_sfx("start_battle")
 	
-	#Wait sometime before starting battle
-	yield(get_tree().create_timer(1.0), "timeout")
+	#Wait sometime before showing book and starting battle
+	yield(get_tree().create_timer(BG_ENTER_DUR + 1.0), "timeout")
+	
+	$BGTween.interpolate_property(book, "rect_position:x", BOOK_START_X, BOOK_TARGET_X, BOOK_ENTER_DUR, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$BGTween.start()
+	
+	yield($BGTween, "tween_completed")
 	
 	if enemies_init():
 		yield(self, "finished_enemies_init")
@@ -93,6 +105,22 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	
 	new_player_turn()
 
+
+func setup_bg():
+	book.rect_position.x = BOOK_START_X
+	
+	if current_encounter.is_boss:
+		if floor_level == 3:
+			$FinalBossBG.show()
+		$BG.texture = boss_backgrounds[floor_level-1]
+		$FG.texture = boss_foregrounds[floor_level-1]
+	else:
+		$BG.texture = backgrounds[floor_level-1]
+		$FG.texture = foregrounds[floor_level-1]
+	
+	$BGTween.interpolate_property($BG, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$BGTween.interpolate_property($FG, "rect_position:x", 150, -499, FG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$BGTween.start()
 
 func setup_nodes(_player):
 	draw_bag.player = _player
@@ -142,11 +170,6 @@ func setup_player_ui():
 	player_ui.update_portrait(player.hp, player.max_hp)
 	
 	player_ui.update_artifacts(player)
-	
-	#Position pass-turn button
-	var button_margin = 54
-	pass_turn_button.rect_position.x = discard_bag.global_position.x + discard_bag.get_width()*discard_bag.scale.x + button_margin
-
 
 func setup_enemy(encounter: Encounter):
 	if encounter.is_boss:
@@ -158,7 +181,9 @@ func setup_enemy(encounter: Encounter):
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
 		child.queue_free()
-
+	
+	#Wait for BG to start placing enemies
+	yield($BGTween, "tween_completed")
 	for enemy in encounter.enemies:
 		add_enemy(enemy)
 	
@@ -286,17 +311,17 @@ func new_player_turn():
 		emit_signal("update_recipes_display")
 	
 	if player.get_status("burning"):
-		$Hand.burn_reagents(player.get_status("burning").amount)
+		hand.burn_reagents(player.get_status("burning").amount)
 	
 	if player.get_status("confusion"):
-		var func_state = $Hand.randomize_reagents()
+		var func_state = hand.randomize_reagents()
 		if func_state and func_state.is_valid():
-			yield($Hand, "reagents_randomized")
+			yield(hand, "reagents_randomized")
 	
 	if player.get_status("restrain"):
-		var func_state = $Grid.restrain(player.get_status("restrain").amount)
+		var func_state = grid.restrain(player.get_status("restrain").amount)
 		if func_state and func_state.is_valid():
-			yield($Grid, "restrained")
+			yield(grid, "restrained")
 	
 	
 	enable_player()
@@ -901,11 +926,11 @@ func _on_player_draw_reagent(amount):
 
 
 func _on_player_freeze_hand(amount: int):
-	$Hand.freeze_slots(amount)
+	hand.freeze_slots(amount)
 
 
 func _on_player_restrict(amount: int, type: String):
-	$Grid.restrict(amount, type)
+	grid.restrict(amount, type)
 
 
 func _on_DiscardBag_reagent_discarded(reagent):
@@ -918,22 +943,22 @@ func _on_PassTurnButton_pressed():
 	disable_player()
 	
 	#Check for unstable reagents
-	for reagent in $Reagents.get_children():
+	for reagent in reagents.get_children():
 		if reagent.unstable:
 			reagent.slot.remove_reagent()
 			discard_bag.discard(reagent)
 			yield(get_tree().create_timer(.5), "timeout")
 	
 	#clear hints
-	$Grid.clear_hints()
+	grid.clear_hints()
 	#Unfreeze hand
-	$Hand.unfreeze_all_slots()
+	hand.unfreeze_all_slots()
 	#Unrestrict grid
-	$Grid.unrestrict_all_slots()
+	grid.unrestrict_all_slots()
 	#Unrestrain grid
-	$Grid.unrestrain_all_slots()
+	grid.unrestrain_all_slots()
 	#Unburn reagents
-	$Hand.unburn_reagents()
+	hand.unburn_reagents()
 	
 	new_enemy_turn()
 
@@ -988,11 +1013,11 @@ func _on_Hand_hand_slot_reagent_set():
 
 
 func _on_PassTurnButton_mouse_entered():
-	if not $PassTurnButton.disabled:
+	if not pass_turn_button.disabled:
 		AudioManager.play_sfx("hover_button")
 
 func _on_RecipesButton_mouse_entered():
-	if not $RecipesButton.disabled:
+	if not recipes_button.disabled:
 		AudioManager.play_sfx("hover_button")
 
 func _on_RecipesButton_button_down():

@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/book/book_tag_btn.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/background/06_dungeon.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/images/background/dungeon.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
@@ -12,7 +12,7 @@
 [ext_resource path="res://game/rest/ScreenTitle.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/images/ui/cauldron.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/ui/slot_numbers.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/ui/book/book_tag_btn_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/book/bookmark_btn_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -62,9 +62,12 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -334.978
+margin_top = -57.0176
+margin_right = 2161.02
+margin_bottom = 1132.98
 texture = ExtResource( 5 )
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

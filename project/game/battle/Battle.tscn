@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -12,46 +12,91 @@
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/battle/player-ui/CombineButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/battle/FavoriteButton.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/images/background-map1.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/background/forest.jpg" type="Texture" id=14]
+[ext_resource path="res://assets/images/background/forest_fg.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/background/04_cave.jpg" type="Texture" id=18]
+[ext_resource path="res://assets/images/background/cave_fg.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/background/temple.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/background/village.jpg" type="Texture" id=19]
 [ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/images/background/08 florest.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/background/06_dungeon.jpg" type="Texture" id=22]
-[ext_resource path="res://assets/images/background/03_fire FG.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/background/05_village_FG.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/background/08 florest_FG.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/background/05_village air.jpg" type="Texture" id=26]
-[ext_resource path="res://assets/images/background/03_fire.jpg" type="Texture" id=27]
-[ext_resource path="res://assets/images/background/04_FG_cave.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/background/06_FG_dungeon.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/background/cave.jpg" type="Texture" id=21]
+[ext_resource path="res://assets/images/background/dungeon_fg.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/background/dungeon.jpg" type="Texture" id=23]
+[ext_resource path="res://assets/images/background/fire.jpg" type="Texture" id=24]
+[ext_resource path="res://assets/images/background/fire_fg.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/background/temple_bg.jpg" type="Texture" id=26]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rotating"
+length = 30.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
-backgrounds = [ ExtResource( 21 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 27 ) ]
-foregrounds = [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 23 ) ]
+backgrounds = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 23 ) ]
+foregrounds = [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 22 ) ]
+boss_backgrounds = [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 18 ) ]
+boss_foregrounds = [ null, ExtResource( 25 ), null ]
 
 [node name="EffectManager" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[node name="BG" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 13 )
+[node name="FinalBossBG" type="TextureRect" parent="."]
+visible = false
+margin_left = -342.24
+margin_top = -124.451
+margin_right = 2153.76
+margin_bottom = 1137.55
+rect_rotation = 245.176
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 1248, 631 )
+texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FG" type="TextureRect" parent="BG"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FinalBossBG"]
+autoplay = "rotating"
+anims/rotating = SubResource( 1 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_left = -499.0
+margin_top = -59.0
+margin_right = 1997.0
+margin_bottom = 1131.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FG" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 829.0
+margin_right = 2496.0
+margin_bottom = 1131.0
 grow_vertical = 0
+texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BookBG" type="TextureRect" parent="."]
+[node name="BGTween" type="Tween" parent="."]
+
+[node name="Book" type="TextureRect" parent="."]
 margin_left = -818.0
 margin_right = 818.0
 margin_bottom = 1080.0
@@ -62,51 +107,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RecipesButton" parent="." instance=ExtResource( 1 )]
-margin_left = 755.959
+[node name="RecipesButton" parent="Book" instance=ExtResource( 1 )]
+margin_left = 1573.96
 margin_top = 812.487
-margin_right = 955.959
+margin_right = 1773.96
 margin_bottom = 882.487
 
-[node name="PassTurnButton" parent="." instance=ExtResource( 2 )]
-margin_left = 757.86
-margin_top = 898.748
-margin_right = 1082.86
-margin_bottom = 996.754
+[node name="PassTurnButton" parent="Book" instance=ExtResource( 2 )]
+margin_left = 1570.62
+margin_top = 897.25
+margin_right = 1895.62
+margin_bottom = 995.256
 
-[node name="Grid" parent="." instance=ExtResource( 3 )]
-margin_left = 230.0
+[node name="Grid" parent="Book" instance=ExtResource( 3 )]
+margin_left = 1048.0
 margin_top = 380.0
-margin_right = 230.0
+margin_right = 1048.0
 margin_bottom = 380.0
 
-[node name="Hand" parent="." instance=ExtResource( 4 )]
-position = Vector2( 150, 720 )
+[node name="Hand" parent="Book" instance=ExtResource( 4 )]
+position = Vector2( 968, 720 )
 
-[node name="RecipeNameDisplay" parent="." instance=ExtResource( 10 )]
-margin_left = 114.606
+[node name="RecipeNameDisplay" parent="Book" instance=ExtResource( 10 )]
+margin_left = 932.606
 margin_top = 301.611
-margin_right = 114.606
+margin_right = 932.606
 margin_bottom = 301.611
 
-[node name="DrawBag" parent="." instance=ExtResource( 7 )]
-position = Vector2( 91.5811, 889.349 )
+[node name="DrawBag" parent="Book" instance=ExtResource( 7 )]
+position = Vector2( 909.581, 889.349 )
 scale = Vector2( 1.3, 1.3 )
 
-[node name="DiscardBag" parent="." instance=ExtResource( 6 )]
-position = Vector2( 576.459, 890.329 )
+[node name="DiscardBag" parent="Book" instance=ExtResource( 6 )]
+position = Vector2( 1394.46, 890.329 )
 scale = Vector2( 1.3, 1.3 )
 
-[node name="CombineButton" parent="." instance=ExtResource( 11 )]
-margin_left = 337.0
+[node name="CombineButton" parent="Book" instance=ExtResource( 11 )]
+margin_left = 1155.0
 margin_top = 877.0
-margin_right = 467.0
+margin_right = 1285.0
 margin_bottom = 1007.0
 
-[node name="Favorites" type="GridContainer" parent="."]
-margin_left = 103.565
+[node name="Favorites" type="GridContainer" parent="Book"]
+margin_left = 921.565
 margin_top = 397.775
-margin_right = 665.565
+margin_right = 1501.56
 margin_bottom = 713.775
 rect_min_size = Vector2( 448, 316 )
 custom_constants/vseparation = 20
@@ -116,36 +161,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FavoriteButton1" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton1" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_right = 90.0
 margin_bottom = 90.0
 
-[node name="FavoriteButton2" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton2" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_left = 490.0
 margin_right = 580.0
 margin_bottom = 90.0
 
-[node name="FavoriteButton3" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton3" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_top = 110.0
 margin_right = 90.0
 margin_bottom = 200.0
 
-[node name="FavoriteButton4" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton4" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_left = 490.0
 margin_top = 110.0
 margin_right = 580.0
 margin_bottom = 200.0
 
-[node name="FavoriteButton5" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton5" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_top = 220.0
 margin_right = 90.0
 margin_bottom = 310.0
 
-[node name="FavoriteButton6" parent="Favorites" instance=ExtResource( 12 )]
+[node name="FavoriteButton6" parent="Book/Favorites" instance=ExtResource( 12 )]
 margin_left = 490.0
 margin_top = 220.0
 margin_right = 580.0
 margin_bottom = 310.0
+
+[node name="PlayerUI" parent="Book" instance=ExtResource( 8 )]
+position = Vector2( 847.514, 5.48633 )
 
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )
@@ -153,7 +201,7 @@ position = Vector2( 2833.56, 534.412 )
 [node name="EnemiesPositions" type="Node2D" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1160.82, 293.086 )
+position = Vector2( 1160.82, 343.086 )
 
 [node name="Pos2" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1622.61, 412.488 )
@@ -168,16 +216,13 @@ position = Vector2( 1622.61, 802.488 )
 position = Vector2( 1622.61, 492.488 )
 
 [node name="Pos6" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1160.82, 353.086 )
+position = Vector2( 1160.82, 393.086 )
 
 [node name="Pos7" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1622.61, 637.488 )
 
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1418.72, 498.149 )
-
-[node name="PlayerUI" parent="." instance=ExtResource( 8 )]
-position = Vector2( 29.5137, 5.48633 )
 
 [node name="Reagents" type="Node" parent="."]
 
@@ -186,31 +231,31 @@ position = Vector2( 29.5137, 5.48633 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyToBeRemoved" type="Node2D" parent="."]
-[connection signal="button_down" from="RecipesButton" to="." method="_on_RecipesButton_button_down"]
-[connection signal="mouse_entered" from="RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
-[connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]
-[connection signal="button_down" from="PassTurnButton" to="." method="_on_PassTurnButton_button_down"]
-[connection signal="mouse_entered" from="PassTurnButton" to="." method="_on_PassTurnButton_mouse_entered"]
-[connection signal="pressed" from="PassTurnButton" to="." method="_on_PassTurnButton_pressed"]
-[connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]
-[connection signal="hand_slot_reagent_set" from="Hand" to="." method="_on_Hand_hand_slot_reagent_set"]
-[connection signal="reagent_discarded" from="DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
-[connection signal="pressed" from="CombineButton" to="." method="_on_CombineButton_pressed"]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 0 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_pressed" binds= [ 0 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 1 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_pressed" binds= [ 1 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 2 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_pressed" binds= [ 2 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 3 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_pressed" binds= [ 3 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 4 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_pressed" binds= [ 4 ]]
-[connection signal="mouse_entered" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 5 ]]
-[connection signal="mouse_exited" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_exited"]
-[connection signal="pressed" from="Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_pressed" binds= [ 5 ]]
+[connection signal="button_down" from="Book/RecipesButton" to="." method="_on_RecipesButton_button_down"]
+[connection signal="mouse_entered" from="Book/RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
+[connection signal="pressed" from="Book/RecipesButton" to="." method="_on_RecipesButton_pressed"]
+[connection signal="button_down" from="Book/PassTurnButton" to="." method="_on_PassTurnButton_button_down"]
+[connection signal="mouse_entered" from="Book/PassTurnButton" to="." method="_on_PassTurnButton_mouse_entered"]
+[connection signal="pressed" from="Book/PassTurnButton" to="." method="_on_PassTurnButton_pressed"]
+[connection signal="modified" from="Book/Grid" to="." method="_on_Grid_modified"]
+[connection signal="hand_slot_reagent_set" from="Book/Hand" to="." method="_on_Hand_hand_slot_reagent_set"]
+[connection signal="reagent_discarded" from="Book/DiscardBag" to="." method="_on_DiscardBag_reagent_discarded"]
+[connection signal="pressed" from="Book/CombineButton" to="." method="_on_CombineButton_pressed"]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton1" to="." method="_on_FavoriteButton_pressed" binds= [ 0 ]]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton2" to="." method="_on_FavoriteButton_pressed" binds= [ 1 ]]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton3" to="." method="_on_FavoriteButton_pressed" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton4" to="." method="_on_FavoriteButton_pressed" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 4 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton5" to="." method="_on_FavoriteButton_pressed" binds= [ 4 ]]
+[connection signal="mouse_entered" from="Book/Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_entered" binds= [ 5 ]]
+[connection signal="mouse_exited" from="Book/Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_mouse_exited"]
+[connection signal="pressed" from="Book/Favorites/FavoriteButton6" to="." method="_on_FavoriteButton_pressed" binds= [ 5 ]]

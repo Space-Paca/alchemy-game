@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://assets/images/ui/book/book_tag_btn_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/ui/book/book_tag_btn_short_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
+[ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/ui/book/bookmark_btn_hover.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -178,10 +180,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -79.9084
-margin_top = -19.6364
-margin_right = -10.9084
-margin_bottom = 26.3636
+margin_left = -120.5
+margin_top = -19.0
+margin_right = 31.5
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 8 )
 text = "hand"
 align = 1
@@ -201,10 +203,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -79.0902
-margin_top = -17.9546
-margin_right = -15.0902
-margin_bottom = 28.0454
+margin_left = -120.5
+margin_top = -19.0
+margin_right = 31.5
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 8 )
 text = "deck"
 align = 1
@@ -225,10 +227,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -114.681
-margin_top = -19.6365
-margin_right = 37.3187
-margin_bottom = 26.3635
+margin_left = -120.5
+margin_top = -19.0
+margin_right = 31.5
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 8 )
 text = "incomplete"
 align = 1
@@ -249,10 +251,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -97.3176
-margin_top = -19.6364
-margin_right = 26.6824
-margin_bottom = 26.3636
+margin_left = -120.5
+margin_top = -19.0
+margin_right = 31.5
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 8 )
 text = "complete"
 align = 1
@@ -273,10 +275,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -54.6813
-margin_top = -19.6364
-margin_right = -22.6813
-margin_bottom = 26.3636
+margin_left = -120.5
+margin_top = -19.0
+margin_right = 31.5
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 8 )
 text = "all"
 align = 1
@@ -296,8 +298,8 @@ margin_left = 783.991
 margin_top = 65.9265
 margin_right = 933.991
 margin_bottom = 163.927
-texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 12 )
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

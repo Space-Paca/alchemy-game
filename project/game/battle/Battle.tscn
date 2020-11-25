@@ -117,35 +117,35 @@ __meta__ = {
 }
 
 [node name="FavoriteButton1" parent="Favorites" instance=ExtResource( 12 )]
-margin_right = 81.0
-margin_bottom = 81.0
+margin_right = 90.0
+margin_bottom = 90.0
 
 [node name="FavoriteButton2" parent="Favorites" instance=ExtResource( 12 )]
-margin_left = 481.0
-margin_right = 562.0
-margin_bottom = 81.0
+margin_left = 490.0
+margin_right = 580.0
+margin_bottom = 90.0
 
 [node name="FavoriteButton3" parent="Favorites" instance=ExtResource( 12 )]
-margin_top = 101.0
-margin_right = 81.0
-margin_bottom = 182.0
+margin_top = 110.0
+margin_right = 90.0
+margin_bottom = 200.0
 
 [node name="FavoriteButton4" parent="Favorites" instance=ExtResource( 12 )]
-margin_left = 481.0
-margin_top = 101.0
-margin_right = 562.0
-margin_bottom = 182.0
+margin_left = 490.0
+margin_top = 110.0
+margin_right = 580.0
+margin_bottom = 200.0
 
 [node name="FavoriteButton5" parent="Favorites" instance=ExtResource( 12 )]
-margin_top = 202.0
-margin_right = 81.0
-margin_bottom = 283.0
+margin_top = 220.0
+margin_right = 90.0
+margin_bottom = 310.0
 
 [node name="FavoriteButton6" parent="Favorites" instance=ExtResource( 12 )]
-margin_left = 481.0
-margin_top = 202.0
-margin_right = 562.0
-margin_bottom = 283.0
+margin_left = 490.0
+margin_top = 220.0
+margin_right = 580.0
+margin_bottom = 310.0
 
 [node name="EnemyStartPosition" type="Position2D" parent="."]
 position = Vector2( 2833.56, 534.412 )

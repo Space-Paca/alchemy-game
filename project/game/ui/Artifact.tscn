@@ -22,7 +22,7 @@ __meta__ = {
 }
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 2 )]
-position = Vector2( 36, 22 )
+position = Vector2( 24.8541, 20.2852 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )

@@ -18,6 +18,7 @@ func update_size(scale: float):
 	var w = BASE_WIDTH*scale
 	var h = BASE_HEIGHT*scale
 	$Image.rect_size = Vector2(w,h)
+	rect_min_size = Vector2(w,h)
 	$TooltipCollision.position.x = w/2
 	$TooltipCollision.position.y = h/2
 	$TooltipCollision.set_collision_width(w)

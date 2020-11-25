@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/images/ui/book/portrait_life.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/book/player portrait.png" type="Texture" id=2]
+[ext_resource path="res://game/ui/PlayerPortrait.gd" type="Script" id=3]
+
+[node name="Portrait" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 64.602, 112.36 )
+texture = ExtResource( 2 )

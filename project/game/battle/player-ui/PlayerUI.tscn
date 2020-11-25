@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/images/ui/book/char portrait animation.png" type="Texture" id=2]
+[ext_resource path="res://game/ui/PlayerPortrait.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=3]
 [ext_resource path="res://game/battle/player-ui/PlayerUI.gd" type="Script" id=6]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
@@ -9,11 +9,8 @@
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="Portrait" type="Sprite" parent="."]
-position = Vector2( 140, 140 )
-texture = ExtResource( 2 )
-vframes = 3
-hframes = 4
+[node name="Portrait" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11.7725, 28.5905 )
 
 [node name="Divider" type="Sprite" parent="."]
 position = Vector2( 350, 280 )

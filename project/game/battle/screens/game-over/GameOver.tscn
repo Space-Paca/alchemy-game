@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/battle/screens/game-over/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/background/game_over.png" type="Texture" id=3]
-
-[sub_resource type="DynamicFont" id=2]
-size = 64
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=4]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -16,7 +10,11 @@ script = ExtResource( 2 )
 [node name="BG" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BG"]
 anchor_left = 0.5
@@ -34,10 +32,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="BG/VBoxContainer"]
-margin_top = 95.0
+margin_top = 59.0
 margin_right = 512.0
-margin_bottom = 137.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 173.0
 text = "RESTART"
 [connection signal="button_down" from="BG/VBoxContainer/Button" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]

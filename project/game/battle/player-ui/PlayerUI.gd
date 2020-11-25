@@ -6,6 +6,7 @@ signal animation_completed
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 
 onready var health_bar = $HealthBar
+onready var portrait = $Portrait
 
 func enable_tooltips():
 	$StatusBar.enable()
@@ -33,6 +34,7 @@ func need_to_update_visuals(player):
 func update_visuals(player):
 	if health_bar.need_to_update(player.hp, player.shield):
 		update_audio(player.hp, player.max_hp)
+		update_portrait(player.hp, player.max_hp)
 		health_bar.update_visuals(player.hp, player.shield)
 		yield(health_bar, "animation_completed")
 		emit_signal("animation_completed")
@@ -71,6 +73,8 @@ func update_audio(hp, max_hp):
 	else:
 		return
 
+func update_portrait(hp, max_hp):
+	portrait.update_visuals(hp, max_hp)
 
 #Returns the global position of the center of portrait
 func get_animation_position():

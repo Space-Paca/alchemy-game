@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/ui/player-info/bg paper.png" type="Texture" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/images/ui/book/char portrait animation.png" type="Texture" id=3]
+[ext_resource path="res://game/ui/PlayerPortrait.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/ui/PlayerInfo.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=6]
@@ -43,12 +43,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="BG"]
-position = Vector2( 132, 472 )
+[node name="Portrait" parent="BG" instance=ExtResource( 3 )]
+position = Vector2( 82.7198, 421.595 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 4
 
 [node name="HealthBar" parent="BG" instance=ExtResource( 2 )]
 position = Vector2( 229.031, 458.822 )

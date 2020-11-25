@@ -7,6 +7,7 @@ onready var button = $BG/DownButton
 onready var gold_label = $BG/CurrencyContainer/Gold/Label
 onready var pearls_label = $BG/CurrencyContainer/Pearls/Label
 onready var healthbar = $BG/HealthBar
+onready var portrait = $BG/Portrait
 onready var artifacts = $BG/Artifacts
 onready var tween = $Tween
 
@@ -34,6 +35,7 @@ func update_values(player: Player):
 
 func update_hp(hp: int, max_hp: int):
 	healthbar.set_life(hp, max_hp)
+	portrait.update_visuals(hp, max_hp)
 
 
 func update_gold(value: int):

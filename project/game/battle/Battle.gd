@@ -139,6 +139,8 @@ func setup_favorites(favorite_combinations: Array):
 func setup_player_ui():
 	player_ui.set_life(player.max_hp, player.hp)
 	
+	player_ui.update_portrait(player.hp, player.max_hp)
+	
 	player_ui.update_artifacts(player)
 	
 	#Position pass-turn button

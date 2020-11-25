@@ -5,7 +5,7 @@ const COMMON = [
 		"id": "poison_kit",
 		"name": "Slimy Satchel",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "When acquired, add 3 poison-reagents to your bag",
+		"description": "When acquired, add 3 poison reagents to your bag",
 	},
    {
 		"id": "buff_poison",

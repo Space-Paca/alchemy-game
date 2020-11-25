@@ -59,12 +59,12 @@ __meta__ = {
 }
 
 [node name="Subtitle" type="Label" parent="."]
-margin_left = 34.7019
-margin_top = 59.046
-margin_right = 88.7019
-margin_bottom = 94.046
+margin_left = 32.4966
+margin_top = 52.4302
+margin_right = 58.4966
+margin_bottom = 87.4302
 custom_fonts/font = SubResource( 3 )
-text = "Subtitle with a name"
+text = "Sub"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

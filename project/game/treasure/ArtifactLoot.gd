@@ -21,6 +21,7 @@ func get_artifact_tooltip():
 	tooltip.title = artifact.name
 	tooltip.title_image = artifact.image
 	tooltip.text = artifact.description
+	tooltip.subtitle = ArtifactDB.get_rarity_from_name(artifact.id) + " Artifact"
 	
 	return tooltip
 
@@ -39,7 +40,7 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = get_artifact_tooltip()
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, true)
+							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 
 
 func _on_TooltipCollision_disable_tooltip():

@@ -55,8 +55,10 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 	if burned:
 		text += " It's on fire."
 	
+	var subtitle = data.rarity + " Reagent"
+	
 	var tooltip = {"title": data.name, "text": text, \
-				   "title_image": data.image.get_path()}
+				   "title_image": data.image.get_path(), "subtitle": subtitle}
 
 	return tooltip
 

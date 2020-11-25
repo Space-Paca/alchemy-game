@@ -78,8 +78,8 @@ func _on_TooltipCollision_enable_tooltip():
 		tooltip_enabled = true
 		var tooltip = ReagentManager.get_tooltip(reagent, upgraded)
 		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-								 tooltip.text, tooltip.title_image, true)
+								 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 		tooltip = ReagentManager.get_substitution_tooltip(reagent)
 		if tooltip:
 			TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-								 tooltip.text, tooltip.title_image, false, true, false)
+								 tooltip.text, tooltip.title_image, null, false, true, false)

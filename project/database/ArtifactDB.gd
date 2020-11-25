@@ -192,3 +192,21 @@ static func get_from_name(name: String) -> Dictionary:
 	
 	assert(false, "Given type of artifact doesn't exist: " + str(name))
 	return {}
+
+static func get_rarity_from_name(name: String) -> String:
+	for artifact in EVENT:
+		if artifact.id == name:
+			return "Event"
+	for artifact in COMMON:
+			if artifact.id == name:
+				return "Common"
+	for artifact in UNCOMMON:
+		if artifact.id == name:
+			return "Uncommon"
+	for artifact in RARE:
+		if artifact.id == name:
+			return "Rare"
+	
+	assert(false, "Given type of artifact doesn't exist: " + str(name))
+	return ""
+

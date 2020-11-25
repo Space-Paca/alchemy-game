@@ -103,4 +103,4 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = get_self_tooltip()
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, true)
+							 tooltip.text, tooltip.title_image, null, true)

@@ -76,12 +76,12 @@ func get_keywords():
 func get_width():
 	return TOOLTIP_WIDTH
 
-func add_tooltip(pos, title, text, title_image, play_sfx = false, expanded = false, stylize := true):
+func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = false, expanded = false, stylize := true):
 	if has_tooltip(title):
 		return
 	var tip = TOOLTIP.instance()
 	$Tooltips.add_child(tip)
-	tip.setup(title, text, title_image, expanded, stylize)
+	tip.setup(title, text, title_image, subtitle, expanded, stylize)
 	$Tooltips.position.x = min(pos.x + TOOLTIP_WIDTH, get_viewport().size.x-SCREEN_MARGIN) - TOOLTIP_WIDTH
 	$Tooltips.position.y = pos.y
 

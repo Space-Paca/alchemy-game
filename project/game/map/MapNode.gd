@@ -98,7 +98,7 @@ func disable_tooltips():
 func get_node_tooltip():
 	var tooltip = {}
 	tooltip = {"title": LEGEND[type], "text": "", \
-			   "title_image": IMAGES[type]}
+			   "title_image": IMAGES[type], "subtitle": "Location"}
 	return tooltip
 
 
@@ -122,7 +122,7 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = get_node_tooltip()
 	TooltipLayer.add_tooltip($TooltipPosition.global_position - camera.get_offset(), \
-							tooltip.title, tooltip.text, tooltip.title_image, true)
+							tooltip.title, tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 
 
 func _on_TooltipCollision_disable_tooltip():

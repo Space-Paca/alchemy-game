@@ -39,6 +39,7 @@ func get_self_tooltip():
 	tooltip.title = status_data.title_name
 	tooltip.text = status_data.description
 	tooltip.title_image = status_data.image
+	tooltip.subtitle = "Status"
 	
 	return tooltip
 
@@ -56,4 +57,4 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = get_self_tooltip()
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, true)
+							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)

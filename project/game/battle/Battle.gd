@@ -42,7 +42,7 @@ const VICTORY_SCENE = preload("res://game/battle/screens/victory/Win.tscn")
 const GAMEOVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
 const BG_ENTER_DUR = .7
 const FG_ENTER_DUR = 1.0
-const BOOK_ENTER_DUR = 1.0
+const BOOK_ENTER_DUR = .4
 const BOOK_START_X = -1920
 const BOOK_TARGET_X = -812 
 

@@ -129,7 +129,7 @@ const DB = {
 	},
 	"trash": {
 		"name": "Putrid Beetle",
-		"rarity": "Common",
+		"rarity": "Putrid",
 		"image": preload("res://assets/images/reagents/trash.png"),
 		"tooltip" : "If used in a miscombination, deals %s regular damage to the user.",
 		"effect" : {"type": "damage_self", "value": 2, "upgraded_value": 1, "upgraded_boost": {"type": "all", "value": 1}},

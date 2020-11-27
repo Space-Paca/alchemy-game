@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/icon-6.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Blockbuster Bomb"
+grid_size = 3
+floor_sold_in = 3
+reagents = [ "rare", "damaging", "damaging", "damaging" ]
+effects = [ "damage", "damage", "damage", "damage", "damage" ]
+effect_args = [ [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ] ]
+destroy_reagents = [  ]
+description = "Deals 9 regular damage 5 times to any number of targets."
+filters = [ 0 ]
+fav_icon = ExtResource( 2 )
+shop_cost = 50
+master_effects = [ "damage", "damage", "damage", "damage", "damage", "damage" ]
+master_effect_args = [ [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ], [ 9, "regular" ] ]
+master_destroy_reagents = [  ]
+master_description = "Deals 9 regular damage 6 times to any number of targets."
+reagent_combinations = [ [ "rare", "damaging", "damaging", "damaging" ], [ "rare", "weak_damaging", "damaging", "damaging" ], [ "rare", "super_damaging", "damaging", "damaging" ], [ "rare", "weak_damaging", "weak_damaging", "damaging" ], [ "rare", "weak_damaging", "super_damaging", "damaging" ], [ "rare", "super_damaging", "super_damaging", "damaging" ], [ "rare", "weak_damaging", "weak_damaging", "weak_damaging" ], [ "rare", "weak_damaging", "weak_damaging", "super_damaging" ], [ "rare", "weak_damaging", "super_damaging", "super_damaging" ], [ "rare", "super_damaging", "super_damaging", "super_damaging" ] ]

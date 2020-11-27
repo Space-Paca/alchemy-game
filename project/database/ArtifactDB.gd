@@ -73,8 +73,14 @@ const UNCOMMON = [
 	{
 		"id": "full_rest",
 		"name": "Soothing Teapot",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "When resting, you heal completely",
+	},
+	{
+		"id": "reveal_map",
+		"name": "Silver Sextant",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "All maps are revealed",
 	},
 	{
 		"id": "buff_kit",
@@ -97,13 +103,54 @@ const UNCOMMON = [
 	{
 		"id": "strength_plus",
 		"name": "Mightstone",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "Start each battle with 8 permanent strength",
 	},
 	{
 		"id": "temp_strength_plus",
 		"name": "Morhk Chain",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "Start each battle with 20 temporary strength",
+	},
+	{
+		"id": "random_kit",
+		"name": "Unpredictable Satchel",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "When acquired, add 4 random reagents to your bag",
+	},
+	{
+		"id": "poisoned_dagger",
+		"name": "Poisoned Dagger",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it.",
+	},	{
+		"id": "buff_kit",
+		"name": "Powerful Satchel",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "When acquired, add 3 buff-reagents to your bag",
+	},
+	{
+		"id": "debuff_kit",
+		"name": "Wicked Satchel",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "When acquired, add 3 debuff-reagents to your bag",
+	},
+	{
+		"id": "trash_heal",
+		"name": "Mortar and Pestle",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "When acquired, add 4 trash-reagents to your bag. Misused trash reagents will heal you instead of harm you",
+	},
+	{
+		"id": "strength_plus",
+		"name": "Mightstone",
+		"image": preload("res://assets/images/reagents/incomum.png"),
+		"description": "Start each battle with 8 permanent strength",
+	},
+	{
+		"id": "temp_strength_plus",
+		"name": "Morhk Chain",
+		"image": preload("res://assets/images/reagents/incomum.png"),
 		"description": "Start each battle with 20 temporary strength",
 	},
 	{
@@ -139,7 +186,7 @@ const EVENT = [
 	{
 		"id": "cursed_pearls",
 		"name": "Cursed Pearls",
-		"image": preload("res://assets/images/reagents/comum.png"),
+		"image": preload("res://assets/images/reagents/raro.png"),
 		"description": "When transmuting reagents for gold, you get half the original value.",
 	},
 ]

@@ -59,6 +59,9 @@ func on_add_money_bag(args):
 	AudioManager.play_sfx("get_coins")
 	args.player.gold += 30
 
+func on_add_reveal_map(args):
+	args.player.reveal_map()
+
 #On battle start methods
 func on_battle_start_carapa_buckler(args):
 	args.player.gain_shield(10)

@@ -8,6 +8,7 @@ signal draw_resolve
 signal hp_updated(hp, max_hp)
 signal gold_updated(gold)
 signal pearls_updated(pearl)
+signal reveal_map
 
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
@@ -301,3 +302,7 @@ func remove_artifact(name : String):
 		artifacts.remove(artifacts.find(name))
 	else:
 		assert(false, "Player doesn't have artifact: " + str(name))
+
+
+func reveal_map():
+	emit_signal("reveal_map")

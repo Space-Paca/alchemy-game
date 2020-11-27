@@ -27,6 +27,7 @@ var camera_last_pos = false
 var stored_map_positions = null
 var positions = null
 var center_position = null
+var player = null
 
 
 func _ready():
@@ -146,6 +147,10 @@ func reset_camera(is_map := false):
 	if is_map:
 # warning-ignore:integer_division
 		$Camera.position -= Vector2(0, PLAYER_UI_HEIGHT/2)
+
+
+func set_player(_player):
+	player = _player
 
 
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
@@ -293,6 +298,11 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	reveal_paths(initial_node)
 
 
+func reveal_all_paths():
+	for node in active_nodes:
+		reveal_paths(node)
+
+
 func reveal_paths(node:MapNode):
 	if node.paths_revealed:
 		return
@@ -315,7 +325,8 @@ func reveal_paths(node:MapNode):
 func _on_path_reached(node:MapNode):
 	node.fade_in()
 	node.enable()
-	if node.should_autoreveal():
+	if node.should_autoreveal() or\
+	   (player and player.has_artifact("reveal_map")):
 		reveal_paths(node)
 	
 	active_paths -= 1

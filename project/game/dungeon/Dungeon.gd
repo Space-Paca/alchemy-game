@@ -46,6 +46,9 @@ func _ready():
 	lab.connect("grid_modified", self, "_on_Laboratory_grid_modified")
 # warning-ignore:return_value_discarded
 	MessageLayer.connect("favorite_recipe", self, "_on_MessageLayer_favorite_recipe")
+
+# warning-ignore:return_value_discarded
+	player.connect("reveal_map", self, "_on_player_reveal_map")
 	
 	randomize()
 	create_combinations()
@@ -101,6 +104,7 @@ func create_level(level: int):
 	
 	# MAP
 	map = MAP_SCENE.instance()
+	map.set_player(player)
 	add_child(map)
 	match level:
 		1:
@@ -691,3 +695,7 @@ func _on_Laboratory_recipe_toggle():
 
 func _on_MessageLayer_favorite_recipe(combination):
 	recipe_book.set_favorite_button(combination, true)
+
+
+func _on_player_reveal_map():
+	map.reveal_all_paths()

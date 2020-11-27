@@ -326,6 +326,7 @@ func _on_path_reached(node:MapNode):
 	node.fade_in()
 	node.enable()
 	if node.should_autoreveal() or\
+	   Debug.reveal_map or\
 	   (player and player.has_artifact("reveal_map")):
 		reveal_paths(node)
 	

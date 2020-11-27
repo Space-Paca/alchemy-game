@@ -15,6 +15,7 @@ const MAX_FLOOR := 3
 
 var floor_to_go := -1
 var recipes_unlocked := false
+var reveal_map := false
 
 
 func _ready():
@@ -73,3 +74,7 @@ func _on_FloorButton_item_selected(id):
 
 func _on_UpdateRecipesButton_pressed():
 	RecipeManager.update_recipes_reagent_combinations()
+
+
+func _on_RevealMap_toggled(button_pressed):
+	reveal_map = button_pressed

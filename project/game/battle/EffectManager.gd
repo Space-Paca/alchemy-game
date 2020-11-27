@@ -94,7 +94,7 @@ func combination_failure(reagent_list, grid):
 
 
 #Gives a status to a random enemy
-func add_status_random(status: String, amount: int, positive: bool, boost_effects: Dictionary):
+func add_status_random(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
 	var boost = boost_effects.all + boost_effects.status
 	if status == "poison" and player.has_artifact("buff_poison"):
 		boost += 1
@@ -110,7 +110,7 @@ func add_status_random(status: String, amount: int, positive: bool, boost_effect
 	resolve()
 
 
-func reduce_status(targeting: String, status: String, amount: int, boost_effects: Dictionary):
+func reduce_status(targeting: String, status: String, amount: int, boost_effects:= {"all":0, "status":0}):
 	var boost = boost_effects.all + boost_effects.status
 	AudioManager.play_sfx("debuff_denied")
 	if targeting == "self":
@@ -134,7 +134,7 @@ func draw(amount:int, _boost_effects: Dictionary):
 
 	resolve()
 
-func add_status_all(status: String, amount: int, positive: bool, boost_effects: Dictionary):
+func add_status_all(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
 	var boost = boost_effects.all + boost_effects.status
 	if status == "poison" and player.has_artifact("buff_poison"):
 		boost += 1
@@ -143,7 +143,7 @@ func add_status_all(status: String, amount: int, positive: bool, boost_effects: 
 			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
 
-func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects: Dictionary):
+func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
 	var boost = boost_effects.all + boost_effects.status
 	if status == "poison" and player.has_artifact("buff_poison"):
 		boost += 1
@@ -164,7 +164,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool, 
 
 
 #Damage a random enemy
-func damage_random(amount: int, type: String, boost_effects: Dictionary):
+func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
 	var possible_enemies = enemies.duplicate()
 	var boost = boost_effects.all + boost_effects.damage + player.get_damage_modifiers()
 	randomize()
@@ -180,7 +180,7 @@ func damage_random(amount: int, type: String, boost_effects: Dictionary):
 	
 	resolve()
 
-func damage_self(amount: int, type: String, boost_effects: Dictionary):
+func damage_self(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
 	var boost = boost_effects.all + boost_effects.damage
 	var func_state = player.take_damage(player, amount + boost, type)
 	if func_state and func_state.is_valid():
@@ -190,7 +190,7 @@ func damage_self(amount: int, type: String, boost_effects: Dictionary):
 	
 	resolve()
 
-func damage(amount: int, type: String, boost_effects: Dictionary):
+func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
@@ -203,7 +203,7 @@ func damage(amount: int, type: String, boost_effects: Dictionary):
 	
 	resolve()
 
-func drain(amount: int, boost_effects: Dictionary):
+func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
@@ -216,7 +216,7 @@ func drain(amount: int, boost_effects: Dictionary):
 	
 	resolve()
 
-func damage_all(amount: int, type: String, boost_effects: Dictionary):
+func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
 	var boost = boost_effects.damage + boost_effects.all + player.get_damage_modifiers()
 	for enemy in enemies.duplicate():
 		var func_state = (enemy as Enemy).take_damage(player, amount + boost, type)
@@ -228,7 +228,7 @@ func damage_all(amount: int, type: String, boost_effects: Dictionary):
 	resolve()
 
 
-func shield(amount: int, boost_effects: Dictionary):
+func shield(amount: int, boost_effects:= {"all":0, "shield":0}):
 	var boost = boost_effects.all + boost_effects.shield
 	var func_state = player.gain_shield(amount + boost)
 	if func_state and func_state.is_valid():
@@ -239,7 +239,7 @@ func shield(amount: int, boost_effects: Dictionary):
 	resolve()
 
 
-func heal(amount: int, boost_effects: Dictionary):
+func heal(amount: int, boost_effects:= {"all":0, "heal":0}):
 	var boost = boost_effects.all + boost_effects.heal
 	var func_state = player.heal(amount+ boost)
 	if func_state and func_state.is_valid():

@@ -58,6 +58,7 @@ var is_dragging_reagent := false
 var recipes_created
 var current_encounter
 var first_turn = true
+var used_all_reagents_in_recipes = false
 
 
 func _ready():
@@ -304,6 +305,7 @@ func new_player_turn():
 	
 	recipes_created = 0
 	deviated_recipes = []
+	used_all_reagents_in_recipes = true
 	player.new_turn()
 	
 	if hand.available_slot_count() > 0:
@@ -443,6 +445,7 @@ func add_recipe_deviation(name):
 func apply_effects(effects: Array, effect_args: Array = [[]],
 		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
+		used_all_reagents_in_recipes = false
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")
 
@@ -942,6 +945,22 @@ func _on_PassTurnButton_pressed():
 	player.update_status("end_turn")
 	
 	disable_player()
+	
+	#Check for artifacts effects
+	if player.has_artifact("heal_leftover"):
+		for reagent in reagents.get_children():
+			effect_manager.heal(2)
+			yield(get_tree().create_timer(.3), "timeout")
+	if reagents.get_children().size() <= 0 and used_all_reagents_in_recipes:
+		if player.has_artifact("damage_optimize"):
+			effect_manager.damage_all(30, "regular")
+			yield(effect_manager, "effect_resolved")
+		if player.has_artifact("heal_optimize"):
+			effect_manager.heal(30)
+			yield(effect_manager, "effect_resolved")
+		if player.has_artifact("strength_optimize"):
+			effect_manager.add_status("self", "perm_strength", 10, true)
+			yield(effect_manager, "effect_resolved")
 	
 	#Check for unstable reagents
 	for reagent in reagents.get_children():

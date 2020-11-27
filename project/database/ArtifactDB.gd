@@ -53,19 +53,19 @@ const COMMON = [
 		"id": "mender_belt",
 		"name": "Mender's Belt",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Whenever you finish a battle, heal 8.",
+		"description": "Whenever you finish a battle, heal 8",
 	},
 	{
 		"id": "carapa_buckler",
 		"name": "Carapa Buckler",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 10 shield.",
+		"description": "Start each battle with 10 shield",
 	},
 	{
 		"id": "vulture_mask",
 		"name": "Vulture Mask",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle against an elite with 5 permanent strength.",
+		"description": "Start each battle against an elite with 5 permanent strength",
 	},
 ]
 
@@ -122,7 +122,7 @@ const UNCOMMON = [
 		"id": "poisoned_dagger",
 		"name": "Poisoned Dagger",
 		"image": preload("res://assets/images/reagents/incomum.png"),
-		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it.",
+		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it",
 	},	{
 		"id": "buff_kit",
 		"name": "Powerful Satchel",
@@ -163,7 +163,7 @@ const UNCOMMON = [
 		"id": "poisoned_dagger",
 		"name": "Poisoned Dagger",
 		"image": preload("res://assets/images/reagents/incomum.png"),
-		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it.",
+		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it",
 	},
 ]
 
@@ -180,6 +180,30 @@ const RARE = [
 		"image": preload("res://assets/images/reagents/raro.png"),
 		"description": "When acquired, triple your current gold",
 	},
+	{
+		"id": "heal_leftover",
+		"name": "Sprig of Misteltoe",
+		"image": preload("res://assets/images/reagents/raro.png"),
+		"description": "Whenever you end your turn, heal 2 for every reagent left in your hand",
+	},
+	{
+		"id": "damage_optimize",
+		"name": "Seal of Swords",
+		"image": preload("res://assets/images/reagents/raro.png"),
+		"description": "Whenever you end your turn, if you used all your reagents in recipes, deal 30 damage to all enemies",
+	},
+	{
+		"id": "heal_optimize",
+		"name": "Seal of Respite",
+		"image": preload("res://assets/images/reagents/raro.png"),
+		"description": "Whenever you end your turn, if you used all your reagents in recipes, you heal 30",
+	},
+	{
+		"id": "strength_optimize",
+		"name": "Seal of Might",
+		"image": preload("res://assets/images/reagents/raro.png"),
+		"description": "Whenever you end your turn, if you used all your reagents in recipes, you gain 10 permanent strength",
+	},
 ]
 
 const EVENT = [
@@ -187,7 +211,7 @@ const EVENT = [
 		"id": "cursed_pearls",
 		"name": "Cursed Pearls",
 		"image": preload("res://assets/images/reagents/raro.png"),
-		"description": "When transmuting reagents for gold, you get half the original value.",
+		"description": "When transmuting reagents for gold, you get half the original value",
 	},
 ]
 

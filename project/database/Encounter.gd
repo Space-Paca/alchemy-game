@@ -39,5 +39,14 @@ func get_loot() -> Array:
 	if is_boss or is_elite:
 		loot.append("pearl")
 		loot.append("pearl")
+		var artifact_rarity = level if not is_boss else level + 1
+		artifact_rarity = min(artifact_rarity, 3)
+		match artifact_rarity:
+			1:
+				loot.append("artifact_common")
+			2:
+				loot.append("artifact_uncommon")
+			3:
+				loot.append("artifact_rare")
 	
 	return loot

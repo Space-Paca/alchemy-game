@@ -219,6 +219,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.setup(player)
 	win_screen.connect("continue_pressed", self, "_on_win_screen_continue_pressed")
 	win_screen.connect("reagent_looted", self, "_on_win_screen_reagent_looted")
+	win_screen.connect("artifact_looted", self, "_on_win_screen_artifact_looted")
 	win_screen.connect("reagent_sold", self, "_on_win_screen_reagent_sold")
 	win_screen.connect("combinations_seen", self, "_on_win_screen_combinations_seen")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
@@ -974,6 +975,10 @@ func _on_win_screen_continue_pressed():
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)
+
+
+func _on_win_screen_artifact_looted(artifact: String):
+	player.add_artifact(artifact)
 
 
 func _on_win_screen_reagent_sold(gold_value: int):

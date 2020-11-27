@@ -193,6 +193,18 @@ static func get_from_name(name: String) -> Dictionary:
 	assert(false, "Given type of artifact doesn't exist: " + str(name))
 	return {}
 
+
+static func get_tooltip(name: String) -> Dictionary:
+	var artifact = get_from_name(name)
+	var tooltip = {}
+	tooltip.title = artifact.name
+	tooltip.title_image = artifact.image
+	tooltip.text = artifact.description
+	tooltip.subtitle = get_rarity_from_name(artifact.id) + " Artifact"
+	
+	return tooltip
+
+
 static func get_rarity_from_name(name: String) -> String:
 	for artifact in EVENT:
 		if artifact.id == name:

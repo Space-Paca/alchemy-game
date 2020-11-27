@@ -16,14 +16,6 @@ func disable():
 	block_tooltips = true
 	$Button.disabled = true
 
-func get_artifact_tooltip():
-	var tooltip = {}
-	tooltip.title = artifact.name
-	tooltip.title_image = artifact.image
-	tooltip.text = artifact.description
-	tooltip.subtitle = ArtifactDB.get_rarity_from_name(artifact.id) + " Artifact"
-	
-	return tooltip
 
 func disable_tooltips():
 	if tooltips_enabled:
@@ -33,12 +25,11 @@ func disable_tooltips():
 func _on_Button_pressed():
 	emit_signal("pressed", artifact)
 
-
 func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips:
 		return
 	tooltips_enabled = true
-	var tooltip = get_artifact_tooltip()
+	var tooltip = ArtifactDB.get_tooltip(artifact.id)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 

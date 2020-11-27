@@ -4,6 +4,7 @@ signal continue_pressed
 signal combinations_seen(combinations)
 signal combination_chosen(combination)
 signal reagent_looted(reagent_name)
+signal artifact_looted(artifact_name)
 signal reagent_sold(gold_value)
 signal pearl_collected(quantity)
 
@@ -27,6 +28,7 @@ enum States {LOOT, RECIPE}
 const MOVE_DURATION = .5
 const MOVE_POS = [0, -1920]
 const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn")
+const ARTIFACT_LOOT = preload("res://game/battle/screens/victory/ArtifactLoot.tscn")
 
 var curr_state : int = States.LOOT
 var rewarded_combinations := []
@@ -46,6 +48,12 @@ func set_loot(loot: Array):
 			reagent_loot.set_reagent(loot_name, player)
 		elif loot_name == "pearl":
 				pearl_amount += 1
+		elif loot_name.left(8) == "artifact":
+			var artifact_loot = ARTIFACT_LOOT.instance()
+			loot_list.add_child(artifact_loot)
+			artifact_loot.connect("artifact_looted", self, "_on_artifact_looted")
+			var rarity = loot_name.replace("artifact_", "")
+			artifact_loot.set_artifact(rarity, player)
 	
 	if pearl_amount:
 		if player.has_artifact("blue_oyster"):
@@ -133,6 +141,12 @@ func _on_reagent_looted(reagent_loot):
 func _on_reagent_sold(reagent_loot):
 	emit_signal("reagent_sold", reagent_loot.gold_value)
 	reagent_loot.queue_free()
+
+
+func _on_artifact_looted(artifact_loot):
+	AudioManager.play_sfx("get_artifact")
+	emit_signal("artifact_looted", artifact_loot.artifact)
+	artifact_loot.queue_free()
 
 
 func _on_pearl_collected():

@@ -201,28 +201,28 @@ position = Vector2( 2833.56, 534.412 )
 [node name="EnemiesPositions" type="Node2D" parent="."]
 
 [node name="Pos1" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1160.82, 343.086 )
+position = Vector2( 1160, 345 )
 
 [node name="Pos2" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1622.61, 412.488 )
+position = Vector2( 1620, 412 )
 
 [node name="Pos3" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1159.03, 678.831 )
+position = Vector2( 1200, 720 )
 
 [node name="Pos4" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1622.61, 802.488 )
+position = Vector2( 1620, 800 )
 
 [node name="Pos5" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1622.61, 492.488 )
+position = Vector2( 1620, 495 )
 
 [node name="Pos6" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1160.82, 393.086 )
+position = Vector2( 1160, 395 )
 
 [node name="Pos7" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1622.61, 637.488 )
+position = Vector2( 1620, 640 )
 
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
-position = Vector2( 1418.72, 498.149 )
+position = Vector2( 1420, 500 )
 
 [node name="Reagents" type="Node" parent="."]
 

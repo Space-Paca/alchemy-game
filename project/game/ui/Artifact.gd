@@ -33,16 +33,6 @@ func disable():
 func enable():
 	block_tooltips = false
 
-func get_self_tooltip():
-	var tooltip = {}
-	var data = ArtifactDB.get_from_name(type)
-	tooltip.title = data.name
-	tooltip.text = data.description
-	tooltip.title_image = data.image
-	tooltip.subtitle = ArtifactDB.get_rarity_from_name(data.id) + " Artifact"
-	
-	return tooltip
-
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
@@ -55,6 +45,6 @@ func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips:
 		return
 	tooltips_enabled = true
-	var tooltip = get_self_tooltip()
+	var tooltip = ArtifactDB.get_tooltip(type)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)

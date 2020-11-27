@@ -82,7 +82,7 @@ func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = fal
 	var tip = TOOLTIP.instance()
 	$Tooltips.add_child(tip)
 	tip.setup(title, text, title_image, subtitle, expanded, stylize)
-	$Tooltips.position.x = min(pos.x + TOOLTIP_WIDTH, get_viewport().size.x-SCREEN_MARGIN) - TOOLTIP_WIDTH
+	$Tooltips.position.x = pos.x
 	$Tooltips.position.y = pos.y
 
 	yield(tip, "set_up")
@@ -126,10 +126,14 @@ func remove_tooltip(title):
 func update_tooltips_pos():
 	var y = 0
 	var total_height = 0
+	var max_width = 0
 	for tip in $Tooltips.get_children():
+		max_width = tip.rect_position.y if tip.rect_position.y > max_width else max_width
 		tip.rect_position.y = y
 		var h = tip.get_height()
 		y += h
 		total_height += h
 	$Tooltips.position.y = min($Tooltips.position.y + total_height,
 							   get_viewport().size.y-SCREEN_MARGIN) - total_height
+	$Tooltips.position.x = min($Tooltips.position.x + max_width,
+							   get_viewport().size.x-SCREEN_MARGIN) - max_width

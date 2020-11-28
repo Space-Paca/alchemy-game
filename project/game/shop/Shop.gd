@@ -5,7 +5,7 @@ signal combinations_seen(combinations)
 signal combination_bought(combination)
 signal hint_bought(combination)
 
-onready var recipes = $RecipeMenu/HBoxContainer.get_children()
+onready var recipes = $RecipeMenu/HBoxContainer
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
 onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroyLabel
@@ -18,6 +18,7 @@ enum States {MENU, RECIPES, REAGENTS}
 
 const DESTROY_COST := 30
 const DESTROY_TEXT := "Are you sure you want to destroy %s reagent for %d gold?"
+const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 
 var chosen_reagent_index : int
 var player : Player
@@ -29,18 +30,23 @@ func setup(combinations: Array, _player: Player):
 	player = _player
 	update_reagents()
 	
-	for i in range(recipes.size()):
+	for child in recipes.get_children():
+		recipes.remove_child(child)
+	
+	for i in 3:
+		var recipe = SHOP_RECIPE.instance()
+		recipes.add_child(recipe)
 		if i < combinations.size() and combinations[i]:
-			recipes[i].set_combination(combinations[i])
-			recipes[i].player = player
+			recipe.set_combination(combinations[i])
+			recipe.player = player
 			shown_combinations.append(combinations[i])
 		else:
 			print("Shop.gd: Not enough combinations to fill shop")
-			recipes[i].hide()
+			recipe.hide()
 
 
 func update_combinations():
-	for recipe in recipes:
+	for recipe in recipes.get_children():
 		recipe.update_display()
 
 

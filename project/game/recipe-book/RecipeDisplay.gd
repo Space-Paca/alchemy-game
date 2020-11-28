@@ -19,7 +19,7 @@ onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Ri
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-const MAX_REAGENT_COLUMN = 6
+const MAX_REAGENT_COLUMN = 4
 
 var combination : Combination
 var reagent_array := []

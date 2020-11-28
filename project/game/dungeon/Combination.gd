@@ -126,28 +126,37 @@ func get_hint(which := 0):
 
 
 func reveal_all_but(amount: int):
-	var i := 0
 	var kept := []
+	var different_reagents = 0
 	
-	for _i in amount:
-		kept.append(null)
-
-	unknown_reagent_coords.shuffle()
-
 	for coords in unknown_reagent_coords:
 		var reagent = matrix[coords[0]][coords[1]]
-		if not reagent in kept:
-			kept[i] = reagent
-			i += 1
-			if i >= amount:
-				break
+		if reagent and not kept.has(reagent):
+			different_reagents += 1
+		kept.append(reagent)
 	
-	for coords in unknown_reagent_coords:
+	while kept.size() > amount:
+		if (different_reagents >= amount and kept.has(null)) or kept.count(null) > 1:
+			kept.erase(null)
+		else:
+			var removed = false
+			for i in kept.size():
+				if kept.count(kept[i]) > 1:
+					kept.remove(i)
+					removed = true
+					break
+			if not removed:
+				kept.remove(0)
+	
+	unknown_reagent_coords.shuffle()
+	
+	for coords in unknown_reagent_coords.duplicate():
 		var reagent = matrix[coords[0]][coords[1]]
 		if reagent in kept:
 			kept.erase(reagent)
 		else:
 			known_matrix[coords[0]][coords[1]] = reagent
+			unknown_reagent_coords.erase(coords)
 
 
 func discover_all_reagents():

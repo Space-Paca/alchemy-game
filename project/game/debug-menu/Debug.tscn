@@ -45,6 +45,12 @@ margin_right = 201.0
 margin_bottom = 44.0
 text = "Unlock Combinations"
 
+[node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 201.0
+margin_bottom = 224.0
+text = "Update Recipe Dependencies"
+
 [node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 201.0
@@ -69,12 +75,6 @@ margin_right = 201.0
 margin_bottom = 200.0
 pressed = true
 text = "SFX"
-
-[node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 204.0
-margin_right = 201.0
-margin_bottom = 224.0
-text = "Update Recipe Dependencies"
 
 [node name="RevealMap" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 228.0
@@ -135,9 +135,9 @@ __meta__ = {
 }
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/WinBtn" to="." method="_on_WinBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockCombBtn" to="." method="_on_UnlockCombBtn_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UpdateRecipesButton" to="." method="_on_UpdateRecipesButton_pressed"]
 [connection signal="item_selected" from="Background/CenterContainer/VBoxContainer/FloorButton" to="." method="_on_FloorButton_item_selected"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/FPSButton" to="." method="_on_FPSButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
-[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UpdateRecipesButton" to="." method="_on_UpdateRecipesButton_pressed"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]

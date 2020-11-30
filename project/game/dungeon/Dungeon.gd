@@ -36,6 +36,8 @@ func _ready():
 	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
 # warning-ignore:return_value_discarded
 	Debug.connect("floor_selected", self, "_on_Debug_floor_selected")
+# warning-ignore:return_value_discarded
+	Debug.connect("test_map_creation", self, "_on_Debug_test_map_creation")
 
 
 # warning-ignore:return_value_discarded
@@ -99,7 +101,10 @@ func create_combinations():
 										mastery_threshold(combination))
 
 
-func create_level(level: int):
+func create_level(level: int, debug := false, debug_index := 0):
+	if debug:
+		print("Creating map: " + str(debug_index))
+		
 	EncounterManager.set_random_encounter_pool(level)
 	
 	# MAP
@@ -132,6 +137,10 @@ func create_level(level: int):
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
+	
+	if debug:
+		map.queue_free()
+		print("Created map: " + str(debug_index))
 
 
 func get_incomplete_combinations():
@@ -675,6 +684,11 @@ func _on_Debug_floor_selected(floor_number: int):
 	
 	create_level(floor_number)
 	player.set_level(floor_number)
+
+
+func _on_Debug_test_map_creation():
+	for i in 100:
+		create_level(3, true, i)
 
 
 func _on_Battle_update_recipes_display():

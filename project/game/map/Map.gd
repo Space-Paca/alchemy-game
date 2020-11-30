@@ -31,6 +31,10 @@ var player = null
 
 
 func _ready():
+	duplicate_stored_positions()
+
+
+func duplicate_stored_positions():
 	stored_map_positions = $FixedPositions.duplicate(7)
 
 
@@ -161,102 +165,121 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	if old_positions:
 		remove_child(old_positions)
 		old_positions.queue_free()
-	positions = stored_map_positions.duplicate(7)
-	center_position = positions.get_node("Center")
-	#Reduce randomly number of childs center node has
-	center_position.children.shuffle()
-	while center_position.children.size() > CENTRAL_NODE_CHILDREN_SIZE:
-		center_position.children.remove(1)
-	
-	add_child_below_node(nodes, positions)
 	
 	reset_camera(true)
-	active_nodes = []
 	camera_last_pos = false
 	
-	var total_nodes := normal_encounters + elite_encounters + shops + rests +\
-			smiths + events + labs + treasures + 1
-	
-	validate_map(total_nodes, normal_encounters)
-	
-	shift_positions()
-	
-	initial_node = MAP_NODE_SCENE.instance()
-	initial_node.set_camera($Camera)
-	nodes.add_child(initial_node)
-	active_nodes.append(initial_node)
-	center_position.node = initial_node
-	var available_starting_positions : Array = [center_position]
-	var used_positions : Array = [center_position]
-	var untyped_nodes := []
-	var node_distance = {initial_node: 0}
-	while total_nodes:
-		var starting_pos : MapPosition
-		var new_pos : MapPosition
+	var untyped_nodes : Array
+	var node_distance : Dictionary
+	while true:
+		var map_valid = true
 		
-		# Draw a random starting position from the pool and a new position from
-		# its children.
-		starting_pos = available_starting_positions[\
-				randi() % available_starting_positions.size()]
-		starting_pos.children.shuffle()
-		new_pos = starting_pos.get_node(starting_pos.children.pop_front())
+		randomize()
+		positions = stored_map_positions.duplicate(7)
+		center_position = positions.get_node("Center")
+		#Reduce randomly number of childs center node has
+		center_position.children.shuffle()
+		while center_position.children.size() > CENTRAL_NODE_CHILDREN_SIZE:
+			center_position.children.remove(1)
 		
-		# Remove the starting position from the available ones if it has no more
-		# children.
-		if not starting_pos.children.size():
-			available_starting_positions.erase(starting_pos)
+		add_child_below_node(nodes, positions)
+		
+		active_nodes = []
+		
+		var total_nodes := normal_encounters + elite_encounters + shops + rests +\
+				smiths + events + labs + treasures + 1
+		
+		validate_map(total_nodes, normal_encounters)
+		
+		shift_positions()
+		
+		initial_node = MAP_NODE_SCENE.instance()
+		initial_node.set_camera($Camera)
+		nodes.add_child(initial_node)
+		active_nodes.append(initial_node)
+		center_position.node = initial_node
+		var available_starting_positions : Array = [center_position]
+		var used_positions : Array = [center_position]
+		untyped_nodes = []
+		node_distance = {initial_node: 0}
+		while total_nodes:
+			if available_starting_positions.empty():
+				map_valid = false
+				break
+			
+			var starting_pos : MapPosition
+			var new_pos : MapPosition
+			
+			# Draw a random starting position from the pool and a new position from
+			# its children.
+			starting_pos = available_starting_positions[\
+					randi() % available_starting_positions.size()]
+			starting_pos.children.shuffle()
+			new_pos = starting_pos.get_node(starting_pos.children.pop_front())
+			
+			# Remove the starting position from the available ones if it has no more
+			# children.
+			if not starting_pos.children.size():
+				available_starting_positions.erase(starting_pos)
+			else:
+				# Remove all remaining children except one, so we can only use at max 2 or 3 children
+				# from this node
+				var max_children = 1 if randf() > .7 else 2	
+				while starting_pos.children.size() > max_children:
+					starting_pos.children.remove(0)
+			
+			# If the new position was already used (possible because positions can
+			# be reached from more than one path) make another draw.
+			if new_pos in used_positions:
+				continue
+			
+			# Also make another draw if the starting position is the overall initial
+			# position and there are no more normal encounters to allocate.
+			if starting_pos == center_position and normal_encounters == 0:
+				continue
+			
+			used_positions.append(new_pos)
+			
+			if new_pos.children.size():
+				available_starting_positions.append(new_pos)
+			
+			### NODE CREATION ###
+			var new_node : MapNode = MAP_NODE_SCENE.instance()
+			new_node.disable()
+			new_node.modulate.a = 0
+			new_node.set_camera($Camera)
+			nodes.add_child(new_node)
+			new_node.rect_global_position = new_pos.global_position
+			new_pos.node = new_node
+			starting_pos.node.is_leaf = false
+			starting_pos.node.map_tree_children.append(new_node)
+	# warning-ignore:return_value_discarded
+			new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
+			
+			#Update distance to this new position
+			node_distance[new_node] = node_distance[starting_pos.node] + 1
+			
+			# Set new node type as enemy if it originated from the initial node
+			if starting_pos == center_position:
+				new_node.set_type(MapNode.ENEMY)
+				normal_encounters -= 1
+			else:
+				untyped_nodes.append(new_node)
+			
+			# Add map line
+			var map_line := MapLine.new()
+			map_line.set_line(starting_pos.global_position, new_pos.global_position)
+			lines.add_child(map_line)
+			starting_pos.node.map_lines.append(map_line)
+			
+			total_nodes -= 1
+		if map_valid:
+			break
 		else:
-			# Remove all remaining children except one, so we can only use at max 2 or 3 children
-			# from this node
-			var max_children = 1 if randf() > .7 else 2	
-			while starting_pos.children.size() > max_children:
-				starting_pos.children.remove(0)
-		
-		# If the new position was already used (possible because positions can
-		# be reached from more than one path) make another draw.
-		if new_pos in used_positions:
+			print("Couldn't create a valid map. Trying again...")
 			continue
-		
-		# Also make another draw if the starting position is the overall initial
-		# position and there are no more normal encounters to allocate.
-		if starting_pos == center_position and normal_encounters == 0:
-			continue
-		
-		used_positions.append(new_pos)
-		
-		if new_pos.children.size():
-			available_starting_positions.append(new_pos)
-		
-		### NODE CREATION ###
-		var new_node : MapNode = MAP_NODE_SCENE.instance()
-		new_node.disable()
-		new_node.modulate.a = 0
-		new_node.set_camera($Camera)
-		nodes.add_child(new_node)
-		new_node.rect_global_position = new_pos.global_position
-		new_pos.node = new_node
-		starting_pos.node.is_leaf = false
-		starting_pos.node.map_tree_children.append(new_node)
-# warning-ignore:return_value_discarded
-		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
-		
-		#Update distance to this new position
-		node_distance[new_node] = node_distance[starting_pos.node] + 1
-		
-		# Set new node type as enemy if it originated from the initial node
-		if starting_pos == center_position:
-			new_node.set_type(MapNode.ENEMY)
-			normal_encounters -= 1
-		else:
-			untyped_nodes.append(new_node)
-		
-		# Add map line
-		var map_line := MapLine.new()
-		map_line.set_line(starting_pos.global_position, new_pos.global_position)
-		lines.add_child(map_line)
-		starting_pos.node.map_lines.append(map_line)
-		
-		total_nodes -= 1
+	
+	#If reached here, properly selected one node for every room needed
 	
 	### TYPING NODES ###
 	untyped_nodes.shuffle()

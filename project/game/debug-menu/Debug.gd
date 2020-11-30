@@ -9,6 +9,7 @@ onready var version_label = $Info/Version
 signal combinations_unlocked
 signal battle_won
 signal floor_selected(floor_number)
+signal test_map_creation
 
 const VERSION := "v0.1.2"
 const MAX_FLOOR := 3
@@ -78,3 +79,7 @@ func _on_UpdateRecipesButton_pressed():
 
 func _on_RevealMap_toggled(button_pressed):
 	reveal_map = button_pressed
+
+
+func _on_Test_Map_Creation_pressed():
+	emit_signal("test_map_creation")

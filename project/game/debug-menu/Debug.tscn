@@ -30,9 +30,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 859.0
-margin_top = 406.0
+margin_top = 394.0
 margin_right = 1060.0
-margin_bottom = 674.0
+margin_bottom = 686.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 201.0
@@ -46,33 +46,33 @@ margin_bottom = 44.0
 text = "Unlock Combinations"
 
 [node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 204.0
-margin_right = 201.0
-margin_bottom = 224.0
-text = "Update Recipe Dependencies"
-
-[node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 201.0
 margin_bottom = 68.0
+text = "Update Recipe Dependencies"
 
-[node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+[node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 72.0
 margin_right = 201.0
-margin_bottom = 112.0
+margin_bottom = 92.0
+
+[node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 201.0
+margin_bottom = 136.0
 text = "Show FPS"
 
 [node name="MusicButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 116.0
+margin_top = 140.0
 margin_right = 201.0
-margin_bottom = 156.0
+margin_bottom = 180.0
 pressed = true
 text = "Music"
 
 [node name="SFXButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 160.0
+margin_top = 184.0
 margin_right = 201.0
-margin_bottom = 200.0
+margin_bottom = 224.0
 pressed = true
 text = "SFX"
 
@@ -84,6 +84,12 @@ text = "Auto Reveal Maps"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TestMapCreation" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 272.0
+margin_right = 201.0
+margin_bottom = 292.0
+text = "Test Map Creation"
 
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -141,3 +147,4 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]

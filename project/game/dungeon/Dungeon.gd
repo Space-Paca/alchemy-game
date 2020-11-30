@@ -101,10 +101,7 @@ func create_combinations():
 										mastery_threshold(combination))
 
 
-func create_level(level: int, debug := false, debug_index := 0):
-	if debug:
-		print("Creating map: " + str(debug_index))
-		
+func create_level(level: int, debug := false):
 	EncounterManager.set_random_encounter_pool(level)
 	
 	# MAP
@@ -140,7 +137,6 @@ func create_level(level: int, debug := false, debug_index := 0):
 	
 	if debug:
 		map.queue_free()
-		print("Created map: " + str(debug_index))
 
 
 func get_incomplete_combinations():
@@ -687,8 +683,18 @@ func _on_Debug_floor_selected(floor_number: int):
 
 
 func _on_Debug_test_map_creation():
-	for i in 100:
-		create_level(3, true, i)
+	var total_time = 0
+	var n = 100
+	for i in n:
+		var time = OS.get_ticks_msec()
+		print("Creating map: " + str(i))
+		create_level(3, true)
+		var new_time = OS.get_ticks_msec()
+		var elapsed_time = new_time - time
+		print("Created map: " + str(i) + ". Time elapsed: " + str(elapsed_time) + "ms")
+		total_time += elapsed_time
+	print("Finished " + str(n) + " map creations in " + str(total_time) + "ms")
+	print("Average time per map: " + str(float(total_time)/n) + "ms")
 
 
 func _on_Battle_update_recipes_display():

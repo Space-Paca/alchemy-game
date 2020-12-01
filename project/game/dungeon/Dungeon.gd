@@ -693,6 +693,9 @@ func _on_Debug_test_map_creation():
 		var elapsed_time = new_time - time
 		print("Created map: " + str(i) + ". Time elapsed: " + str(elapsed_time) + "ms")
 		total_time += elapsed_time
+		
+		#Allows Godot to free memory allocated to measure time more accurately
+		yield(get_tree(), "idle_frame")
 	print("Finished " + str(n) + " map creations in " + str(total_time) + "ms")
 	print("Average time per map: " + str(float(total_time)/n) + "ms")
 

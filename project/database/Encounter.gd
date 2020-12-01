@@ -27,15 +27,7 @@ func get_loot() -> Array:
 	var extra_chance := extra_loot_chance.duplicate()
 	var pool := []
 	
-	for reagent in loot_table:
-		for _i in range(loot_table[reagent]):
-			pool.append(reagent)
-	
-	while chance and chance >= randf() and pool.size() > 0:
-		pool.shuffle()
-		loot.append(pool.front())
-		chance = extra_chance.pop_front()
-	
+	#Add pearl and artiifact loot for special encounters
 	if is_boss or is_elite:
 		loot.append("pearl")
 		loot.append("pearl")
@@ -48,5 +40,14 @@ func get_loot() -> Array:
 				loot.append("artifact_uncommon")
 			3:
 				loot.append("artifact_rare")
+	
+	#Add reagent loot
+	for reagent in loot_table:
+		for _i in range(loot_table[reagent]):
+			pool.append(reagent)
+	while chance and chance >= randf() and pool.size() > 0:
+		pool.shuffle()
+		loot.append(pool.front())
+		chance = extra_chance.pop_front()
 	
 	return loot

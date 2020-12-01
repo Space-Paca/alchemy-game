@@ -20,4 +20,4 @@ master_effects = [ "add_status" ]
 master_effect_args = [ [ "self", "evasion", 2, true ] ]
 master_destroy_reagents = [  ]
 master_description = "Gain 2 evasion until end of turn."
-reagent_combinations = [ [ "buff", "defensive", "defensive" ], [ "buff", "weak_defensive", "defensive" ], [ "buff", "super_defensive", "defensive" ], [ "buff", "weak_defensive", "weak_defensive" ], [ "buff", "weak_defensive", "super_defensive" ], [ "buff", "super_defensive", "super_defensive" ] ]
+reagent_combinations = [ [ "buff", "defensive", "defensive" ], [ "buff", "defensive", "weak_defensive" ], [ "buff", "defensive", "super_defensive" ], [ "buff", "weak_defensive", "weak_defensive" ], [ "buff", "super_defensive", "weak_defensive" ], [ "buff", "super_defensive", "super_defensive" ] ]

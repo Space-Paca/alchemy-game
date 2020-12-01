@@ -193,7 +193,8 @@ func is_single_reagent(reagent_matrix):
 
 
 func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combination:
-	var grid_combination = get_combination_in_matrix(grid_size, reagent_matrix)
+	var possible_combinations = get_possible_combinations(reagent_matrix, grid_size)
+	var grid_combination = get_combination_in_matrix(grid_size, reagent_matrix, possible_combinations)
 	
 	if grid_combination:
 		return grid_combination
@@ -208,6 +209,7 @@ func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combinat
 	var new_grid_size = grid_size
 	while new_grid_size > 2:
 		new_grid_size -= 1
+		possible_combinations = get_possible_combinations(reagent_matrix, grid_size)
 		var new_matrix = []
 		for _i in range(new_grid_size):
 			var line = []
@@ -227,55 +229,40 @@ func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combinat
 				
 				#Makes sure there are no reagents outside this submatrix
 				if new_matrix_reagents == total_reagents:
-					grid_combination = get_combination_in_matrix(new_grid_size, new_matrix)
+					grid_combination = get_combination_in_matrix(new_grid_size, new_matrix, possible_combinations)
 					if grid_combination:
 						return grid_combination
 	
 	return null
 
+#Given a reagent matrix and grid size, return an array containing all possible combinations it could solve
+#based on the pre-constructed reagent combinations for each recipe
+func get_possible_combinations(reagent_matrix : Array, grid_size : int):
+	var possible_combinations = []
+	var reagent_array = []
+	for i in reagent_matrix.size():
+		for j in reagent_matrix[i].size():
+			if reagent_matrix[i][j]:
+				reagent_array.append(reagent_matrix[i][j])
+	#Since the pre-constructed reagent combinations arrays are sorted, we must
+	#sort our array for easy comparison
+	reagent_array.sort()
+	for combination in combinations[grid_size]:
+		if combination.recipe.reagent_combinations.has(reagent_array):
+			possible_combinations.append(combination)
+	
+	return possible_combinations
 
-func get_combination_in_matrix(grid_size: int, reagent_matrix: Array) -> Combination:
+
+func get_combination_in_matrix(grid_size: int, reagent_matrix: Array, possible_combinations : Array) -> Combination:
 	if not combinations.has(grid_size):
 		print("No recipes exist for grid with size ", grid_size)
 		return null
-	
-	var viewed_matrices = [reagent_matrix]
-	var to_try_matrices = [reagent_matrix]
-	while(not to_try_matrices.empty()):
-		var matrix = to_try_matrices.pop_front()
-		var combination = try_matrix(grid_size, matrix)
-		if combination:
-			return combination
-		for new_matrix in downgrade_matrix(matrix):
-			if viewed_matrices.find(new_matrix) == -1:
-				viewed_matrices.append(new_matrix)
-				to_try_matrices.append(new_matrix)
-	return null
-
-
-func try_matrix(grid_size: int, reagent_matrix: Array):
-	for combination in combinations[grid_size]:
+	for combination in possible_combinations:
 		if reagent_matrix == (combination as Combination).matrix:
 			return combination
 	
 	return null
-
-
-#Return an array of all possible combinations of given reagent_matrix downgrading just one reagent
-func downgrade_matrix(matrix):
-	var downgraded_matrices = []
-	for i in range(0, matrix.size()):
-		for j in range(0, matrix[i].size()):
-			var reagent = matrix[i][j]
-			if reagent:
-				var reagent_data = ReagentManager.get_data(reagent)
-				for sub_reagent in reagent_data.substitute:
-					var new_matrix = matrix.duplicate(true)
-					new_matrix[i][j] = sub_reagent
-					downgraded_matrices.append(new_matrix)
-	
-	return downgraded_matrices
-
 
 func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe

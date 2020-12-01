@@ -20,4 +20,4 @@ master_effects = [ "add_status" ]
 master_effect_args = [ [ "self", "retaliate", 10, true ] ]
 master_destroy_reagents = [  ]
 master_description = "Gain 10 retaliate."
-reagent_combinations = [ [ "defensive", "defensive", "buff" ], [ "weak_defensive", "defensive", "buff" ], [ "super_defensive", "defensive", "buff" ], [ "weak_defensive", "weak_defensive", "buff" ], [ "weak_defensive", "super_defensive", "buff" ], [ "super_defensive", "super_defensive", "buff" ] ]
+reagent_combinations = [ [ "buff", "defensive", "defensive" ], [ "buff", "defensive", "weak_defensive" ], [ "buff", "defensive", "super_defensive" ], [ "buff", "weak_defensive", "weak_defensive" ], [ "buff", "super_defensive", "weak_defensive" ], [ "buff", "super_defensive", "super_defensive" ] ]

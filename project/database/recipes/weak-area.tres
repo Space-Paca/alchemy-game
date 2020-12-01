@@ -20,4 +20,4 @@ master_effects = [ "add_status_all" ]
 master_effect_args = [ [ "weak", 3, false ] ]
 master_destroy_reagents = [  ]
 master_description = "Applies 3 weak to all enemies."
-reagent_combinations = [ [ "uncommon", "debuff" ], [ "rare", "debuff" ] ]
+reagent_combinations = [ [ "debuff", "uncommon" ], [ "debuff", "rare" ] ]

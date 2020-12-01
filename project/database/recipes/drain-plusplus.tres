@@ -20,4 +20,4 @@ master_effects = [ "drain" ]
 master_effect_args = [ [ 90 ] ]
 master_destroy_reagents = [ "healing" ]
 master_description = "Drain 90 life from target enemy. Destroys healing reagent in the process."
-reagent_combinations = [ [ "rare", "damaging", "super_damaging", "super_damaging", "super_damaging", "healing" ], [ "rare", "weak_damaging", "super_damaging", "super_damaging", "super_damaging", "healing" ], [ "rare", "super_damaging", "super_damaging", "super_damaging", "super_damaging", "healing" ] ]
+reagent_combinations = [ [ "damaging", "healing", "rare", "super_damaging", "super_damaging", "super_damaging" ], [ "healing", "rare", "super_damaging", "super_damaging", "super_damaging", "weak_damaging" ], [ "healing", "rare", "super_damaging", "super_damaging", "super_damaging", "super_damaging" ] ]

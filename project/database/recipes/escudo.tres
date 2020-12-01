@@ -20,4 +20,4 @@ master_effects = [ "shield" ]
 master_effect_args = [ [ 12 ] ]
 master_destroy_reagents = [  ]
 master_description = "Gain 12 shield until end of turn."
-reagent_combinations = [ [ "common", "defensive" ], [ "faint", "defensive" ], [ "uncommon", "defensive" ], [ "rare", "defensive" ], [ "common", "weak_defensive" ], [ "common", "super_defensive" ], [ "faint", "weak_defensive" ], [ "faint", "super_defensive" ], [ "uncommon", "weak_defensive" ], [ "uncommon", "super_defensive" ], [ "rare", "weak_defensive" ], [ "rare", "super_defensive" ] ]
+reagent_combinations = [ [ "common", "defensive" ], [ "defensive", "faint" ], [ "defensive", "uncommon" ], [ "defensive", "rare" ], [ "common", "weak_defensive" ], [ "common", "super_defensive" ], [ "faint", "weak_defensive" ], [ "faint", "super_defensive" ], [ "uncommon", "weak_defensive" ], [ "super_defensive", "uncommon" ], [ "rare", "weak_defensive" ], [ "rare", "super_defensive" ] ]

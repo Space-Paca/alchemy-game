@@ -20,4 +20,4 @@ master_effects = [ "heal" ]
 master_effect_args = [ [ 30 ] ]
 master_destroy_reagents = [ "healing" ]
 master_description = "Heals 30 HP. Destroys the healing reagent in the process."
-reagent_combinations = [ [ "common", "common", "healing" ], [ "faint", "common", "healing" ], [ "uncommon", "common", "healing" ], [ "rare", "common", "healing" ], [ "faint", "faint", "healing" ], [ "faint", "uncommon", "healing" ], [ "faint", "rare", "healing" ], [ "uncommon", "uncommon", "healing" ], [ "uncommon", "rare", "healing" ], [ "rare", "rare", "healing" ] ]
+reagent_combinations = [ [ "common", "common", "healing" ], [ "common", "faint", "healing" ], [ "common", "healing", "uncommon" ], [ "common", "healing", "rare" ], [ "faint", "faint", "healing" ], [ "faint", "healing", "uncommon" ], [ "faint", "healing", "rare" ], [ "healing", "uncommon", "uncommon" ], [ "healing", "rare", "uncommon" ], [ "healing", "rare", "rare" ] ]

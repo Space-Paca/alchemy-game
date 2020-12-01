@@ -20,4 +20,4 @@ master_effects = [ "shield", "damage" ]
 master_effect_args = [ [ 8 ], [ 8, "regular" ] ]
 master_destroy_reagents = [  ]
 master_description = "Gain 5 shield until end of turn. Deals 8 regular damage to target enemy."
-reagent_combinations = [ [ "defensive", "damaging" ], [ "weak_defensive", "damaging" ], [ "super_defensive", "damaging" ], [ "defensive", "weak_damaging" ], [ "defensive", "super_damaging" ], [ "weak_defensive", "weak_damaging" ], [ "weak_defensive", "super_damaging" ], [ "super_defensive", "weak_damaging" ], [ "super_defensive", "super_damaging" ] ]
+reagent_combinations = [ [ "damaging", "defensive" ], [ "defensive", "weak_damaging" ], [ "defensive", "super_damaging" ], [ "damaging", "weak_defensive" ], [ "damaging", "super_defensive" ], [ "weak_damaging", "weak_defensive" ], [ "super_defensive", "weak_damaging" ], [ "super_damaging", "weak_defensive" ], [ "super_damaging", "super_defensive" ] ]

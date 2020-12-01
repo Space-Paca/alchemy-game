@@ -35,6 +35,7 @@ func update_recipes_reagent_combinations():
 		var reagent_arrays_viewed = [recipe.reagents.duplicate()]
 		while not reagent_arrays_to_check.empty():
 			var cur_reagents_array = reagent_arrays_to_check.pop_front()
+			cur_reagents_array.sort()
 			recipe.reagent_combinations.append(cur_reagents_array)
 			for upgraded_array in ReagentManager.upgraded_arrays(cur_reagents_array):
 				var unique = true

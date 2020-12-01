@@ -433,7 +433,7 @@ func has_sfx(name: String):
 	return SFXS.has(name)
 
 
-func play_sfx(name: String, override_pitch := 1):
+func play_sfx(name: String, override_pitch = false):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
@@ -447,7 +447,8 @@ func play_sfx(name: String, override_pitch := 1):
 	var vol = sfx.base_db + rand_range(-sfx.random_db_var, sfx.random_db_var)
 	player.volume_db = vol
 	
-	if override_pitch != 1:
+	if override_pitch:
+		override_pitch = max(override_pitch, 0.001)
 		player.pitch_scale = override_pitch
 	else:
 		player.pitch_scale = sfx.base_pitch

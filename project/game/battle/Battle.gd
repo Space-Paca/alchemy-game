@@ -1137,7 +1137,7 @@ func _on_CombineButton_pressed():
 	#Combination animation
 	var sfx_dur = AudioManager.get_sfx_duration("combine")
 	var dur = reagent_list.size()*.3
-	AudioManager.play_sfx("combine", sfx_dur/dur)
+	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur)
 

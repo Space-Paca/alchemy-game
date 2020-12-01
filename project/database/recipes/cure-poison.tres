@@ -20,4 +20,4 @@ master_effects = [ "reduce_status" ]
 master_effect_args = [ [ "self", "poison", 10 ] ]
 master_destroy_reagents = [  ]
 master_description = "Removes up to 10 poison"
-reagent_combinations = [ [ "defensive", "poison" ], [ "weak_defensive", "poison" ], [ "super_defensive", "poison" ] ]
+reagent_combinations = [ [ "defensive", "poison" ], [ "poison", "weak_defensive" ], [ "poison", "super_defensive" ] ]

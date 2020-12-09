@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
@@ -21,6 +21,13 @@
 size = 128
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 103
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -83,6 +90,17 @@ margin_right = 438.724
 margin_bottom = 187.071
 custom_fonts/font = SubResource( 1 )
 text = "Recipe List"
+align = 1
+valign = 1
+
+[node name="NothingFound" type="Label" parent="Background"]
+margin_left = 169.124
+margin_top = 262.178
+margin_right = 626.124
+margin_bottom = 333.178
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No recipes found..."
 align = 1
 valign = 1
 

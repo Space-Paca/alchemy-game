@@ -16,6 +16,7 @@ onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var lower_divider = $Background/LowerDivider
 onready var hand_tag_button = $Background/TagButtons/HandBtn
 onready var filter_menu = $Background/FilterMenu
+onready var no_recipes_label = $Background/NothingFound
 onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
@@ -28,6 +29,7 @@ const ACTIVE_TAG_LABEL_POS = 110
 const INACTIVE_TAG_LABEL_POS = 53
 const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
+const NOTHING_FOUND_LABEL_SPEED = 3
 
 enum States {BATTLE, MAP, LAB}
 enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
@@ -43,6 +45,15 @@ var player : Player
 func _ready():
 	discard_bag.disable()
 	draw_bag.disable()
+	no_recipes_label.modulate.a = 0
+
+
+func _process(dt):
+	if no_recipes_found():
+		no_recipes_label.modulate.a = min(no_recipes_label.modulate.a + NOTHING_FOUND_LABEL_SPEED*dt, 1)
+	else:
+		no_recipes_label.modulate.a = 0
+
 
 func change_state(new_state: int):
 	if new_state == state:
@@ -308,6 +319,13 @@ func filter_by_tag(tag: int):
 		recipe_display.tagged = to_tag.has(recipe_display.combination)
 	
 	update_recipes_shown()
+
+
+func no_recipes_found():
+	for recipe_display in recipe_displays.values():
+		if recipe_display.visible:
+			return false
+	return true
 
 
 func tag_all_combinations():

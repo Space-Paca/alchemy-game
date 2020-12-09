@@ -259,7 +259,17 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array, possible_c
 		print("No recipes exist for grid with size ", grid_size)
 		return null
 	for combination in possible_combinations:
-		if reagent_matrix == (combination as Combination).matrix:
+		var equal = true
+		for i in grid_size:
+			for j in grid_size:
+				if reagent_matrix[i][j] != combination.matrix[i][j] and \
+				   not (reagent_matrix[i][j] and combination.matrix[i][j] and \
+				   ReagentManager.substitute_into(combination.matrix[i][j]).has(reagent_matrix[i][j])):
+					equal = false
+					break
+			if not equal:
+				break
+		if equal:
 			return combination
 	
 	return null
@@ -271,7 +281,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 		combination.discover_all_reagents()
 		player.discover_combination(combination, true)
 		MessageLayer.new_recipe_discovered(combination)
-		
+		recipe_book.update_combination(combination)
 		if battle:
 			battle.disable_elements()
 		yield(MessageLayer, "continued")
@@ -306,6 +316,8 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 
 
 func mastery_threshold(combination: Combination) -> int:
+	if Debug.lower_threshold:
+		return 2
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
 	return threshold

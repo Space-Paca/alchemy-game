@@ -29,56 +29,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
-margin_left = 859.0
-margin_top = 394.0
-margin_right = 1060.0
-margin_bottom = 686.0
+margin_left = 840.0
+margin_top = 372.0
+margin_right = 1079.0
+margin_bottom = 708.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 20.0
 text = "Win Battle"
 
 [node name="UnlockCombBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 44.0
 text = "Unlock Combinations"
 
 [node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 48.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 68.0
 text = "Update Recipe Dependencies"
 
 [node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 72.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 92.0
 
 [node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 96.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 136.0
 text = "Show FPS"
 
 [node name="MusicButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 140.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 180.0
 pressed = true
 text = "Music"
 
 [node name="SFXButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 184.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 224.0
 pressed = true
 text = "SFX"
 
 [node name="RevealMap" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 228.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 268.0
 text = "Auto Reveal Maps"
 __meta__ = {
@@ -87,9 +87,15 @@ __meta__ = {
 
 [node name="TestMapCreation" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 272.0
-margin_right = 201.0
+margin_right = 239.0
 margin_bottom = 292.0
 text = "Test Map Creation"
+
+[node name="RecipeThreshold" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 296.0
+margin_right = 239.0
+margin_bottom = 336.0
+text = "Lower Recipes Threshold"
 
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -148,3 +154,4 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]
+[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]

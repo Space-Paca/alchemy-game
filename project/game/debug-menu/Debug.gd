@@ -17,6 +17,7 @@ const MAX_FLOOR := 3
 var floor_to_go := -1
 var recipes_unlocked := false
 var reveal_map := false
+var lower_threshold := false
 
 
 func _ready():
@@ -83,3 +84,7 @@ func _on_RevealMap_toggled(button_pressed):
 
 func _on_Test_Map_Creation_pressed():
 	emit_signal("test_map_creation")
+
+
+func _on_RecipeThreshold_toggled(button_pressed):
+	lower_threshold = button_pressed

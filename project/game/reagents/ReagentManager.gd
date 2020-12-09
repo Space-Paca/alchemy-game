@@ -25,7 +25,7 @@ func create_object(type: String):
 func get_data(type: String):
 	return ReagentDB.get_from_name(type)
 
-#Given a base reagent, returns all reagents it can substitute into
+#Given a base reagent, returns all reagents that can substitute into it
 func substitute_into(base_reagent):
 	var upgrade_list = []
 	var all_reagents = ReagentDB.get_reagents()

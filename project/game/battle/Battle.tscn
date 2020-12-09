@@ -66,6 +66,7 @@ boss_foregrounds = [ ExtResource( 19 ), ExtResource( 25 ), null ]
 script = ExtResource( 9 )
 
 [node name="FinalBossBG" type="TextureRect" parent="."]
+visible = false
 margin_left = 162.064
 margin_top = -272.776
 margin_right = 2658.06

@@ -47,6 +47,12 @@ func get_height():
 	return grid_size * slot.rect_size.y + (grid_size-1)*SEPARATION
 
 
+func highlight_blocked_slots():
+	for slot in slots.get_children():
+		if slot.is_restrained() or slot.is_restricted():
+			slot.block_highlight_effect()
+
+
 func set_grid(_size: int):
 	assert(_size > 1)
 	grid_size = _size

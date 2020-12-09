@@ -44,7 +44,9 @@ position = Vector2( 1.18921, -2.37842 )
 shape = SubResource( 1 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 105.839, -14.2705 )
+position = Vector2( 118.92, -90.3798 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

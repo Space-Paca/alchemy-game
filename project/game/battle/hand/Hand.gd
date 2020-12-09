@@ -53,6 +53,11 @@ func set_hand(number: int):
 			lower_slots.add_child(handslot)
 
 
+func error_effect():
+	for slot in get_slots():
+		slot.error_effect()
+
+
 func freeze_slots(amount: int):
 	for slot in get_slots():
 		if not slot.is_frozen():

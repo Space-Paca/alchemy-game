@@ -1060,9 +1060,11 @@ func _on_FavoriteButton_pressed(index: int):
 	if selected_reagents:
 		if not autocomplete_grid(button.combination):
 			AudioManager.play_sfx("error")
-			#TODO: Blink restrain/restricted slots
+			grid.highlight_blocked_slots()
 	else:
 		AudioManager.play_sfx("error")
+		for reagent in reagents.get_children():
+			reagent.error_effect()
 
 
 func _on_FavoriteButton_mouse_entered(index: int):

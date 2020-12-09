@@ -32,7 +32,17 @@ func _process(delta):
 	else:
 		$FullImage.modulate.a = max($FullImage.modulate.a - ALPHA_SPEED*delta, 0)
 		$EmptyImage.modulate.a = min($EmptyImage.modulate.a + 2*ALPHA_SPEED*delta, 1)
-		
+
+
+func block_highlight_effect():
+	# warning-ignore:return_value_discarded
+	$Tween.interpolate_property($RestrictImage, "modulate", Color.red, Color.white,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property($RestrainedImage, "modulate", Color.red, Color.white,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+	# warning-ignore:return_value_discarded
+	$Tween.start()
+
 
 func get_width():
 	return $FullImage.rect_size.x

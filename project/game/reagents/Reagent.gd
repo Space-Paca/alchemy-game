@@ -2,6 +2,8 @@ extends Control
 
 const SHAKE_DEGREE = 5
 const FREEZE_SPEED = 3
+const HIGHLIGHT_SPEED = 5
+const HIGHLIGHT_TARGET = 1.6
 
 signal reached_target_pos
 signal started_dragging
@@ -37,6 +39,7 @@ var upgraded := false
 var unstable := false
 var freezed := false
 var burned := false
+var highlighted := false
 
 
 func set_image(texture):
@@ -57,6 +60,16 @@ func _process(delta):
 	else:
 		$Image.modulate.r = max($Image.modulate.r - FREEZE_SPEED*delta, 0)
 	
+	#Highlight effect
+	if highlighted:
+		modulate.r = min(modulate.r + HIGHLIGHT_SPEED*delta, HIGHLIGHT_TARGET)
+		modulate.g = min(modulate.g + HIGHLIGHT_SPEED*delta, HIGHLIGHT_TARGET)
+		modulate.b = min(modulate.b + HIGHLIGHT_SPEED*delta, HIGHLIGHT_TARGET)
+	else:
+		modulate.r = max(modulate.r - HIGHLIGHT_SPEED*delta, 1)
+		modulate.g = max(modulate.g - HIGHLIGHT_SPEED*delta, 1)
+		modulate.b = max(modulate.b - HIGHLIGHT_SPEED*delta, 1)
+	
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
@@ -71,29 +84,44 @@ func _process(delta):
 				emit_signal("reached_target_pos")
 
 
+func error_effect():
+	# warning-ignore:return_value_discarded
+	$Tween.interpolate_property($Image, "modulate", Color.red, Color.white,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+	# warning-ignore:return_value_discarded
+	$Tween.start()
+
+
 func quick_place():
 	emit_signal("quick_place", self)
+
 
 func is_frozen():
 	return freezed
 
+
 func freeze():
 	freezed = true
+
 
 func unfreeze():
 	freezed = false
 
+
 func is_burned():
 	return burned
+
 
 func burn():
 	AudioManager.play_sfx("burn_reagent")
 	burned = true
 	$Burned.show()
 
+
 func unburn():
 	burned = false
 	$Burned.hide()
+
 
 func enable_dragging():
 	can_drag = true
@@ -112,6 +140,7 @@ func start_shaking_and_destroy():
 
 
 func combine_animation(grid_center: Vector2, duration: float):
+	unhighlight()
 	var center = grid_center + -rect_size/2
 	target_position = center
 	stop_auto_moving = true
@@ -200,11 +229,16 @@ func shrink():
 
 
 func highlight():
-	modulate = Color(3, 3, 3)
+	highlighted = true
+	if slot and slot.type == "hand":
+		slot.highlight()
+	
 
 
 func unhighlight():
-	modulate = Color.white
+	highlighted = false
+	if slot and slot.type == "hand":
+		slot.unhighlight()
 
 
 func return_to_dispenser():

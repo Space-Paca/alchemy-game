@@ -50,6 +50,14 @@ func show_button():
 	button.visible = true
 
 
+func error_effect():
+	# warning-ignore:return_value_discarded
+	$Tween.interpolate_property(button, "modulate", Color.red, Color.white,
+			.5, Tween.TRANS_SINE, Tween.EASE_IN)
+	# warning-ignore:return_value_discarded
+	$Tween.start()
+
+
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=1]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/ui/background_favorites.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 40 )
 
 [node name="FavoriteButton" type="Control"]
 rect_min_size = Vector2( 90, 90 )
@@ -24,8 +28,27 @@ expand = true
 margin_right = 81.0
 margin_bottom = 81.0
 rect_min_size = Vector2( 81, 81 )
+rect_pivot_offset = Vector2( 40, 40 )
 mouse_filter = 1
+disabled = true
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 2 )]
+position = Vector2( 42.8115, 46.3791 )
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+position = Vector2( 1.18921, -2.37842 )
+shape = SubResource( 1 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( 105.839, -14.2705 )
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

@@ -48,3 +48,17 @@ func update_recipes_reagent_combinations():
 					reagent_arrays_viewed.append(upgraded_array)
 		var err = ResourceSaver.save(recipe.resource_path, recipe)
 		assert(not err, "Something went wrong trying to save recipe resource: " + str(recipe.name) + " Error:" + str(err))
+
+
+func get_tooltip(recipe, mastered):
+	var tooltip = {}
+	tooltip.title = recipe.name
+	tooltip.title_image = recipe.fav_icon
+	if mastered:
+		tooltip.subtitle = "Mastered Recipe"
+		tooltip.text = recipe.master_description
+	else:
+		tooltip.subtitle = "Recipe"
+		tooltip.text = recipe.description
+	return tooltip
+

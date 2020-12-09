@@ -209,7 +209,7 @@ func get_combination_in_grid(reagent_matrix: Array, grid_size : int) -> Combinat
 	var new_grid_size = grid_size
 	while new_grid_size > 2:
 		new_grid_size -= 1
-		possible_combinations = get_possible_combinations(reagent_matrix, grid_size)
+		possible_combinations = get_possible_combinations(reagent_matrix, new_grid_size)
 		var new_matrix = []
 		for _i in range(new_grid_size):
 			var line = []

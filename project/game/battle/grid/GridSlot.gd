@@ -35,12 +35,21 @@ func _process(delta):
 
 
 func block_highlight_effect():
-	# warning-ignore:return_value_discarded
-	$Tween.interpolate_property($RestrictImage, "modulate", Color.red, Color.white,
-			.5, Tween.TRANS_SINE, Tween.EASE_IN)
-	$Tween.interpolate_property($RestrainedImage, "modulate", Color.red, Color.white,
-			.5, Tween.TRANS_SINE, Tween.EASE_IN)
-	# warning-ignore:return_value_discarded
+	var dur = .5
+	$Tween.interpolate_property(restrict_chain, "modulate:r", Color.red.r, Color.white.r,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property(restrict_chain, "modulate:g", Color.red.g, Color.white.g,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property(restrict_chain, "modulate:b", Color.red.b, Color.white.b,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+			
+	$Tween.interpolate_property($RestrainedImage, "modulate:r", Color.red.r, Color.white.r,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property($RestrainedImage, "modulate:g", Color.red.g, Color.white.g,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property($RestrainedImage, "modulate:b", Color.red.b, Color.white.b,
+			dur, Tween.TRANS_SINE, Tween.EASE_IN)
+
 	$Tween.start()
 
 

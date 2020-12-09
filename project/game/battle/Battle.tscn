@@ -42,26 +42,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 15.1, 30 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2.6, 2.6 ), Vector2( 1, 1 ) ]
+}
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
 backgrounds = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 23 ) ]
 foregrounds = [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 22 ) ]
 boss_backgrounds = [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 18 ) ]
-boss_foregrounds = [ null, ExtResource( 25 ), null ]
+boss_foregrounds = [ ExtResource( 19 ), ExtResource( 25 ), null ]
 
 [node name="EffectManager" type="Node" parent="."]
 script = ExtResource( 9 )
 
 [node name="FinalBossBG" type="TextureRect" parent="."]
-visible = false
-margin_left = -342.24
-margin_top = -124.451
-margin_right = 2153.76
-margin_bottom = 1137.55
-rect_rotation = 238.653
-rect_scale = Vector2( 2, 2 )
-rect_pivot_offset = Vector2( 1248, 631 )
+margin_left = 162.064
+margin_top = -272.776
+margin_right = 2658.06
+margin_bottom = 989.225
+rect_pivot_offset = Vector2( 1050, 530 )
 texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,6 +78,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FinalBossBG"]
 autoplay = "rotating"
+playback_speed = 0.2
 anims/rotating = SubResource( 1 )
 
 [node name="BG" type="TextureRect" parent="."]
@@ -76,7 +86,7 @@ margin_left = -499.0
 margin_top = -59.0
 margin_right = 1997.0
 margin_bottom = 1131.0
-texture = ExtResource( 14 )
+texture = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

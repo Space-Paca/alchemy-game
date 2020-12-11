@@ -29,7 +29,7 @@ const COMMON = [
 		"id": "temp_strength",
 		"name": "Morhk Nosering",
 		"image": preload("res://assets/images/reagents/comum.png"),
-		"description": "Start each battle with 10 temporary strength",
+		"description": "Start each battle with 6 temporary strength",
 	},
 	{
 		"id": "great_rest",
@@ -110,7 +110,7 @@ const UNCOMMON = [
 		"id": "temp_strength_plus",
 		"name": "Morhk Chain",
 		"image": preload("res://assets/images/reagents/incomum.png"),
-		"description": "Start each battle with 20 temporary strength",
+		"description": "Start each battle with 12 temporary strength",
 	},
 	{
 		"id": "random_kit",

@@ -1,10 +1,10 @@
 extends Reference
 
 var image = "res://assets/images/enemies/small divider/idle.png"
-var name = "Zombie"
+var name = "Reanimated Corpse"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 30
+var hp = 45
 var battle_init = true
 var size = "small"
 var change_phase = null

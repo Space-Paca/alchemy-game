@@ -1,10 +1,10 @@
 extends Reference
 
 var image = "res://assets/images/enemies/revenger/idle.png"
-var name = "Martyr"
+var name = "Carapa Vindicator"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 50
+var hp = 85
 var battle_init = true
 var size = "small"
 var change_phase = null

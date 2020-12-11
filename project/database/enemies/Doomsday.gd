@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "Doomsday"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 250
+var hp = 320
 var battle_init = true
 var size = "big"
 var change_phase = null
@@ -33,11 +33,11 @@ var actions = {
 		{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true}
 	],
 	"attack1": [
-		{"name": "damage", "value": [10, 20], "type": "regular"},
+		{"name": "damage", "value": [20, 30], "type": "regular"},
 		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
 	],
 	"attack2": [
-		{"name": "damage", "value": [3, 5], "amount": 4, "type": "regular"},
+		{"name": "damage", "value": [4, 5], "amount": 6, "type": "regular"},
 		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
 	],
 	"doom": [

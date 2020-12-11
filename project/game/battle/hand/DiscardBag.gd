@@ -63,7 +63,7 @@ func discard(reagent):
 		reagent.toggle_unstable()
 		reagent.explode()
 		yield(reagent, "exploded")
-		emit_signal("reagent_exploded", player, 3, "regular", false)
+		emit_signal("reagent_exploded", player, 7, "regular", false)
 	reagent.slot = null
 	reagent.can_drag = false
 	reagent.target_position = get_center()

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/self destructor/idle.png"
 var name = "Overkiller"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 32
+var hp = 60
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -35,18 +35,21 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "soulbind", "value": 1, "target": "self", "positive": true}
+		{"name": "status", "status_name": "soulbind", "value": 1, "target": "self", "positive": true},
+		{"name": "shield", "value": [5, 10]},
 	],
 	"attack1": [
-		{"name": "damage", "value": [13, 15], "type": "regular"}
-	],
-	"attack2": [
-		{"name": "damage", "value": [10, 20], "type": "regular"}
-	],
-	"defend": [
+		{"name": "damage", "value": [13, 15], "type": "regular"},
 		{"name": "shield", "value": [8, 10]},
 	],
+	"attack2": [
+		{"name": "damage", "value": [10, 18], "type": "regular"},
+		{"name": "shield", "value": [8, 10]},
+	],
+	"defend": [
+		{"name": "shield", "value": [12, 30]},
+	],
 	"buff": [
-		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true}
+		{"name": "status", "status_name": "perm_strength", "value": 9, "target": "self", "positive": true}
 	],
 }

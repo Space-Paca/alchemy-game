@@ -24,6 +24,8 @@ func setup(node, _player, attempts):
 	dispenser_list.populate(player.bag)
 	grid.set_grid(player.grid_size)
 	counter.set_attempts(attempts)
+	$Counter/AnimationPlayer.play("default")
+	recipe_name_display.reset()
 
 func create_reagent(dispenser, type, quick_place):
 	if dispenser.get_quantity() > 0 and (not quick_place or not grid.is_full()):

@@ -35,14 +35,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "idle"
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=5]
 size = 60
@@ -171,6 +184,7 @@ margin_top = 144.659
 margin_right = 337.846
 margin_bottom = 265.659
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "10"
 align = 1
 valign = 1
@@ -179,9 +193,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Counter"]
-autoplay = "idle"
+autoplay = "default"
 anims/blink_red = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/default = SubResource( 4 )
 
 [node name="RecipesButton" type="TextureButton" parent="."]
 margin_left = 766.342

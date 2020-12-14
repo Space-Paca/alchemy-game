@@ -116,9 +116,8 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RecipeMenu"]
 margin_left = 56.0
-margin_top = 90.0
 margin_right = 1864.0
-margin_bottom = 990.0
+margin_bottom = 1080.0
 
 [node name="ShopRecipe1" parent="RecipeMenu/HBoxContainer" instance=ExtResource( 3 )]
 
@@ -187,12 +186,6 @@ __meta__ = {
 }
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
-[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe1" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe2" to="." method="_on_ShopRecipe_hint_bought"]
-[connection signal="bought" from="RecipeMenu/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_bought"]
-[connection signal="hint_bought" from="RecipeMenu/HBoxContainer/ShopRecipe3" to="." method="_on_ShopRecipe_hint_bought"]
 [connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]

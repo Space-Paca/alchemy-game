@@ -115,8 +115,7 @@ func add_combination(combination: Combination, position: int, threshold: int):
 
 func update_combination(combination: Combination):
 	assert(recipe_displays.has(combination.recipe.name),"RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.name)
-	var display = recipe_displays[combination.recipe.name]
-	display.update_combination()
+	recipe_displays[combination.recipe.name].update_combination()
 
 
 func create_hand(battle):

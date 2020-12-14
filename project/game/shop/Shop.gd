@@ -36,6 +36,8 @@ func setup(combinations: Array, _player: Player):
 	for i in 3:
 		var recipe = SHOP_RECIPE.instance()
 		recipes.add_child(recipe)
+		recipe.connect("bought", self, "_on_ShopRecipe_bought")
+		recipe.connect("hint_bought", self, "_on_ShopRecipe_hint_bought")
 		if i < combinations.size() and combinations[i]:
 			recipe.set_combination(combinations[i])
 			recipe.player = player

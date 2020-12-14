@@ -25,7 +25,7 @@ func set_combination(_combination: Combination):
 	name_label.text = combination.recipe.name
 	
 	# DESCRIPTION
-	description_label.text = combination.recipe.description
+	description_label.text = RecipeManager.get_description(combination.recipe)
 	
 	# BUTTON TEXT
 	if discover_all or combination.hints >= 2:

@@ -10,12 +10,12 @@ export(Array, String) var reagents
 export(Array, String) var effects
 export(Array, Array) var effect_args
 export(Array, String) var destroy_reagents
-export(String) var description
+export(String) var override_description
 export(Array, FILTERS) var filters = [FILTERS.ATTACK]
 export(Texture) var fav_icon
 export(int) var shop_cost
 export(Array, String) var master_effects
 export(Array, Array) var master_effect_args
 export(Array, String) var master_destroy_reagents
-export(String) var master_description
+export(String) var override_master_description
 export(Array, String) var reagent_combinations

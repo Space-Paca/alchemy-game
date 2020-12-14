@@ -90,7 +90,7 @@ const STATUSES = {
 	"description": "When this counter reaches 0, this character will receive 999 permanent strength",
 	"image": preload("res://assets/images/status/random_status.png"),
 	"intent_title": "Dooming",
-	"in-text_name": "impending_doom"},
+	"in-text_name": "impending doom"},
    "martyr": {
 	"title_name": "Martyr",
 	"description": "When this character dies, it apply 1 permanent strength per stack to each other enemy",
@@ -164,7 +164,7 @@ const STATUSES = {
 	"intent_title": "Mitosis",
 	"in-text_name": "splitting"},
    "temp_strength": {
-	"title_name": "Temporary Strength",
+	"title_name": "Temporary Buff",
 	"description": "Increases the damage of this character next attack",
 	"image": preload("res://assets/images/status/temp_strength.png"),
 	"intent_title": "Focusing strength",

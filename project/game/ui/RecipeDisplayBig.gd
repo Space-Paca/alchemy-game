@@ -20,7 +20,7 @@ var combination : Combination
 func set_combination(_combination: Combination):
 	combination = _combination
 	title.text = combination.recipe.name
-	description.text = combination.recipe.description
+	description.text = RecipeManager.get_description(combination.recipe)
 	grid.columns = combination.grid_size
 	
 	for i in range(combination.grid_size):

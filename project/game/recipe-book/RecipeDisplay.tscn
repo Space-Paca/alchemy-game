@@ -151,9 +151,9 @@ autowrap = true
 
 [node name="MasteryLabel" type="Label" parent="Panel"]
 margin_left = 15.0
-margin_top = 270.0
+margin_top = 275.0
 margin_right = 287.0
-margin_bottom = 303.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 272, 33 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

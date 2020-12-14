@@ -32,7 +32,7 @@ func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents
 	title.text = combination.recipe.name
-	description.text = combination.recipe.description
+	description.text = RecipeManager.get_description(combination.recipe)
 	grid.columns = combination.grid_size
 	
 	for i in range(combination.grid_size):
@@ -74,7 +74,7 @@ func preview_mode(is_mastered: bool):
 	mastery_label.hide()
 	mastery_progress.hide()
 	if is_mastered:
-		description.text = combination.recipe.master_description
+		description.text = RecipeManager.get_description(combination.recipe, true)
 
 func update_mastery(new_value: int, threshold: int):
 	if new_value < threshold :
@@ -92,7 +92,7 @@ func is_mastered():
 
 func unlock_mastery():
 	if not mastery_unlocked:
-		description.text = combination.recipe.master_description
+		description.text = RecipeManager.get_description(combination.recipe, true)
 		mastery_unlocked = true
 		favorite_button.visible = true
 		mastery_progress.visible = false

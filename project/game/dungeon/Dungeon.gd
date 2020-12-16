@@ -317,7 +317,7 @@ func make_combination(combination: Combination, boost_effects: Dictionary, apply
 
 func mastery_threshold(combination: Combination) -> int:
 	if Debug.lower_threshold:
-		return 2
+		return 1
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
 	threshold = max(threshold, 2)
 	return threshold
@@ -564,7 +564,8 @@ func _on_Battle_grid_modified(reagent_matrix: Array):
 	elif not combination and (failed_combinations.has(reagent_matrix) or is_single_reagent(reagent_matrix)):
 		combination = "failure"
 	
-	battle.display_name_for_combination(combination)
+	var mastered = false if not combination or (combination is String and combination == "failure") else recipe_book.is_mastered(combination)
+	battle.display_name_for_combination(combination, mastered)
 
 
 func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
@@ -588,7 +589,7 @@ func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 	elif not combination and (failed_combinations.has(reagent_matrix) or is_single_reagent(reagent_matrix)):
 		combination = "failure"
 	
-	lab.display_name_for_combination(combination)
+	lab.display_name_for_combination(combination, false)
 
 
 func _on_Player_combination_discovered(combination, index):

@@ -237,6 +237,7 @@ margin_left = 1336.92
 margin_top = 324.658
 margin_right = 1336.92
 margin_bottom = 324.658
+hide_description = true
 
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

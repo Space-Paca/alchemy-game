@@ -9,12 +9,12 @@
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource( 6 )
 
+[node name="Divider" type="Sprite" parent="."]
+position = Vector2( 350, 240 )
+texture = ExtResource( 3 )
+
 [node name="Portrait" parent="." instance=ExtResource( 2 )]
 position = Vector2( 11.7725, 28.5905 )
-
-[node name="Divider" type="Sprite" parent="."]
-position = Vector2( 350, 280 )
-texture = ExtResource( 3 )
 
 [node name="Artifacts" type="HBoxContainer" parent="."]
 margin_left = 216.951
@@ -28,9 +28,9 @@ __meta__ = {
 
 [node name="StatusBar" parent="." instance=ExtResource( 7 )]
 margin_left = 230.0
-margin_top = 190.0
+margin_top = 185.0
 margin_right = 270.0
-margin_bottom = 230.0
+margin_bottom = 225.0
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 240, 115 )

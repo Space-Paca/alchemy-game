@@ -68,7 +68,7 @@ func enable_player():
 	dispenser_list.enable()
 
 func display_name_for_combination(combination):
-	recipe_name_display.display_name_for_combination(combination)
+	recipe_name_display.display_name_for_combination(combination, false)
 
 func combination_success():
 	var func_state = grid.dispense_reagents()

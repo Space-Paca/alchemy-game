@@ -661,8 +661,8 @@ func remove_favorite(combination: Combination):
 			button.hide_button()
 
 
-func display_name_for_combination(combination):
-	recipe_name_display.display_name_for_combination(combination)
+func display_name_for_combination(combination, mastered):
+	recipe_name_display.display_name_for_combination(combination, true, mastered)
 
 
 func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):

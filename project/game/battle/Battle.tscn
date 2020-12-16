@@ -140,10 +140,10 @@ margin_bottom = 380.0
 position = Vector2( 968, 720 )
 
 [node name="RecipeNameDisplay" parent="Book" instance=ExtResource( 10 )]
-margin_left = 932.606
-margin_top = 301.611
-margin_right = 932.606
-margin_bottom = 301.611
+margin_left = 932.0
+margin_top = 265.0
+margin_right = 932.0
+margin_bottom = 265.0
 
 [node name="DrawBag" parent="Book" instance=ExtResource( 7 )]
 position = Vector2( 909.581, 889.349 )

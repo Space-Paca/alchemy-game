@@ -1,0 +1,7 @@
+[gd_resource type="AudioEffectNotchFilter" format=2]
+
+[resource]
+resource_name = "NotchFilter"
+cutoff_hz = 1200.0
+resonance = 0.05
+gain = 0.1

@@ -45,6 +45,7 @@ random_pitch = 1.0
 random_pitch = 1.0
 
 [node name="AudioManager" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="BGMPlayer1" type="AudioStreamPlayer" parent="."]

@@ -5,6 +5,7 @@ signal unhovered()
 signal pressed(combination, mastery_unlocked)
 signal favorite_toggled(combination, button_pressed)
 
+onready var bg = $Panel
 onready var middle_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Middle
 onready var right_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right
 onready var description = $Panel/MarginContainer/VBoxContainer/Description
@@ -19,6 +20,8 @@ onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Ri
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
+const RECIPE_BG = preload("res://assets/images/ui/book/recipe_page.png")
+const RECIPE_MASTERED_BG = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const MAX_REAGENT_COLUMN = 4
 
 var combination : Combination
@@ -75,6 +78,9 @@ func preview_mode(is_mastered: bool):
 	mastery_progress.hide()
 	if is_mastered:
 		description.text = RecipeManager.get_description(combination.recipe, true)
+		bg.texture = RECIPE_MASTERED_BG
+		title.text = title.text + "+"
+		
 
 func update_mastery(new_value: int, threshold: int):
 	if new_value < threshold :
@@ -97,6 +103,8 @@ func unlock_mastery():
 		favorite_button.visible = true
 		mastery_progress.visible = false
 		mastery_label.text = "Mastered"
+		bg.texture = RECIPE_MASTERED_BG
+		title.text = title.text + "+"
 		MessageLayer.recipe_mastered(combination)
 
 

@@ -25,7 +25,7 @@ var max_favorites := 8
 var possible_rewarded_combinations := []
 var map : Map
 var current_node : MapNode
-var laboratory_attempts = [6,8,10]
+var laboratory_attempts = [6,7,8]
 var cur_lab_attempts
 var first_shop_visit = true
 

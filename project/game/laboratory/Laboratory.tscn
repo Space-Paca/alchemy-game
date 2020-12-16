@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/images/ui/slot_numbers.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
+[ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 570, 520 )
@@ -139,10 +140,30 @@ __meta__ = {
 }
 
 [node name="DispenserReagentList" parent="Book" instance=ExtResource( 3 )]
-margin_left = 76.3673
-margin_top = 330.926
-margin_right = 116.367
-margin_bottom = 370.926
+margin_left = 75.0
+margin_top = 230.0
+margin_right = 115.0
+margin_bottom = 270.0
+
+[node name="SeparatorTop" type="TextureRect" parent="Book"]
+margin_left = 5.0
+margin_top = 195.0
+margin_right = 738.0
+margin_bottom = 251.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SeparatorBottom" type="TextureRect" parent="Book"]
+margin_left = 5.0
+margin_top = 800.0
+margin_right = 738.0
+margin_bottom = 856.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ReagentDropZone" type="Area2D" parent="Book" groups=[
 "reagent_drop_zone",

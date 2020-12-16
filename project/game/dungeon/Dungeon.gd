@@ -73,8 +73,6 @@ func _input(event):
 		if not (battle and battle.player_disabled):
 			recipe_book_toggle()
 			TooltipLayer.clean_tooltips()
-	elif event.is_action_pressed("quit"):
-		get_tree().change_scene("res://game/main-menu/MainMenu.tscn")
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen

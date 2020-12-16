@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/dungeon/Dungeon.gd" type="Script" id=1]
 [ext_resource path="res://game/dungeon/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://game/treasure/Treasure.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/event/EventDisplay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=11]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -40,6 +41,8 @@ visible = false
 
 [node name="EventDisplay" parent="." instance=ExtResource( 9 )]
 visible = false
+
+[node name="PauseScreen" parent="." instance=ExtResource( 11 )]
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
 [connection signal="close" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_close"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]

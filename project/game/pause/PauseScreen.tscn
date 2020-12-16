@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+outline_size = 5
+outline_color = Color( 0, 0, 0, 0.501961 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="PauseScreen" type="CanvasLayer"]
+pause_mode = 2
+layer = 4
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -328.5
+margin_top = -325.5
+margin_right = 328.5
+margin_bottom = 325.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/Menu"]
+margin_right = 657.0
+margin_bottom = 279.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Paused
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="Background/Menu"]
+margin_left = 103.0
+margin_top = 282.0
+margin_right = 553.0
+margin_bottom = 402.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"
+
+[node name="Return" type="Button" parent="Background/Menu"]
+margin_left = 103.0
+margin_top = 406.0
+margin_right = 553.0
+margin_bottom = 526.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Return to Main Menu"
+
+[node name="Exit" type="Button" parent="Background/Menu"]
+margin_left = 103.0
+margin_top = 530.0
+margin_right = 553.0
+margin_bottom = 650.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit to Desktop"
+[connection signal="pressed" from="Background/Menu/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Background/Menu/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]

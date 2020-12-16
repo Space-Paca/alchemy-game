@@ -26,6 +26,8 @@ func display_name_for_combination(combination, update_description : bool, master
 			set_label_color(RED, OUTLINE_FONT)
 		else:
 			recipe_name_label.text = combination.recipe.name
+			if mastered:
+				recipe_name_label.text += "+"
 			if update_description:
 				recipe_description_label.text = RecipeManager.get_short_description(combination.recipe, mastered)
 			else:

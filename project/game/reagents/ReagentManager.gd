@@ -45,9 +45,12 @@ func randomize_reagent(reagent):
 func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= false):
 	var data = get_data(type)
 	var text
+	var title
 	if not upgraded:
+		title = data.name
 		text = data.tooltip % data.effect.value
 	else:
+		title = data.name + "+"
 		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
 			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
 	if unstable:
@@ -57,7 +60,7 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 	
 	var subtitle = data.rarity + " Reagent"
 	
-	var tooltip = {"title": data.name, "text": text, \
+	var tooltip = {"title": title, "text": text, \
 				   "title_image": data.image.get_path(), "subtitle": subtitle}
 
 	return tooltip

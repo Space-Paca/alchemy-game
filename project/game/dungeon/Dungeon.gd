@@ -589,7 +589,7 @@ func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 	elif not combination and (failed_combinations.has(reagent_matrix) or is_single_reagent(reagent_matrix)):
 		combination = "failure"
 	
-	lab.display_name_for_combination(combination, false)
+	lab.display_name_for_combination(combination)
 
 
 func _on_Player_combination_discovered(combination, index):

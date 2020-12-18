@@ -3,7 +3,7 @@
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/reagents/feather.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/arrow.webp" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/background/reagent smith.jpg" type="Texture" id=7]

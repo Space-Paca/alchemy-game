@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ClickableReagent.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/reagent_list/slot.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/reagents/faint.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/reagents/invigorating_root.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_selection test.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_disabled.png" type="Texture" id=6]
@@ -24,6 +24,7 @@ __meta__ = {
 }
 
 [node name="Active" type="TextureRect" parent="."]
+visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 4 )
@@ -33,11 +34,13 @@ __meta__ = {
 }
 
 [node name="Reagent" type="TextureRect" parent="."]
-margin_left = 1.8409
-margin_top = 2.2701
-margin_right = 61.8409
-margin_bottom = 62.2701
+margin_left = 4.77136
+margin_top = 4.41482
+margin_right = 59.7714
+margin_bottom = 59.4148
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

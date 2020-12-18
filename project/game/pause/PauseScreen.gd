@@ -1,15 +1,24 @@
 extends CanvasLayer
 
 onready var bg = $Background
+onready var menu = $Background/Menu
+onready var confirm = $Background/ConfirmMenu
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 
 var paused := false
 
 
+func _ready():
+	bg.hide()
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
-		toggle_pause()
+		if confirm.visible:
+			no_quit()
+		else:
+			toggle_pause()
 
 
 func toggle_pause():
@@ -26,6 +35,11 @@ func set_pause(p: bool):
 		AudioServer.remove_bus_effect(0, 0)
 
 
+func no_quit():
+	confirm.hide()
+	menu.show()
+
+
 func _on_Resume_pressed():
 	toggle_pause()
 
@@ -37,4 +51,13 @@ func _on_Return_pressed():
 
 
 func _on_Exit_pressed():
+	menu.hide()
+	confirm.show()
+
+
+func _on_Yes_pressed():
 	get_tree().quit()
+
+
+func _on_No_pressed():
+	no_quit()

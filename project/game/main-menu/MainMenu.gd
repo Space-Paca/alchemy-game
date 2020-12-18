@@ -9,7 +9,9 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("quit"):
-		get_tree().quit()
+		$QuitConfirm.show()
+		$ColorRect.hide()
+		$ColorRect2.hide()
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
@@ -23,3 +25,13 @@ func _on_NewGameButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_Yes_pressed():
+	get_tree().quit()
+
+
+func _on_No_pressed():
+	$QuitConfirm.hide()
+	$ColorRect.show()
+	$ColorRect2.show()

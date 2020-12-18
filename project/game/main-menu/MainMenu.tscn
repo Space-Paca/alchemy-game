@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/background.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 256
@@ -80,6 +81,13 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=7]
 size = 62
 use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 128
+outline_size = 8
+outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 4 )
 
@@ -206,5 +214,58 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="QuitConfirm" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitConfirm"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -458.5
+margin_top = -145.5
+margin_right = 458.5
+margin_bottom = 145.5
+custom_constants/separation = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="QuitConfirm/VBoxContainer"]
+margin_right = 917.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 8 )
+text = "Are you sure you want to exit the game?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]
+margin_top = 171.0
+margin_right = 917.0
+margin_bottom = 291.0
+theme = ExtResource( 5 )
+custom_constants/separation = 50
+alignment = 1
+
+[node name="Yes" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
+margin_left = 233.0
+margin_right = 433.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 200, 120 )
+text = "Yes"
+
+[node name="No" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
+margin_left = 483.0
+margin_right = 683.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 200, 120 )
+text = "No"
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/No" to="." method="_on_No_pressed"]

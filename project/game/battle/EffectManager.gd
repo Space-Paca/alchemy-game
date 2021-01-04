@@ -138,7 +138,8 @@ func add_status_all(status: String, amount: int, positive: bool, boost_effects:=
 	var boost = boost_effects.all + boost_effects.status
 	if status == "poison" and player.has_artifact("buff_poison"):
 		boost += 1
-	for enemy in enemies.duplicate():
+	var temp_enemies = enemies.duplicate()
+	for enemy in temp_enemies:
 			enemy.add_status(status, amount + boost, positive)
 			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
@@ -218,7 +219,8 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}):
 
 func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
 	var boost = boost_effects.damage + boost_effects.all + player.get_damage_modifiers()
-	for enemy in enemies.duplicate():
+	var temp_enemies = enemies.duplicate()
+	for enemy in temp_enemies:
 		var func_state = (enemy as Enemy).take_damage(player, amount + boost, type)
 		if func_state and func_state.is_valid():
 			yield(enemy, "resolved")

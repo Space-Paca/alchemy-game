@@ -72,15 +72,18 @@ func get_substitution_tooltip(type):
 	
 	var text = "This reagent can serve as substitute for "
 	var plural
+	var filler
 	if data.substitute.size() == 1:
 		text += "this "
 		plural = ""
+		filler = "                   "
 	else:
 		text += "these "
 		plural = "s"
+		filler = "              "
 	text += "reagent"+plural+":"
 	#For some reason \n just erases other images, so using gambiara to properly change lines
-	text += "                      "
+	text += filler
 	for sub_reagent in data.substitute:
 		var sub_data = get_data(sub_reagent)
 		var path = sub_data.image.get_path()

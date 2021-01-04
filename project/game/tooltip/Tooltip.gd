@@ -88,7 +88,7 @@ func update_size():
 	$TitleImage.rect_scale = Vector2(scale_x,scale_y)
 	
 	
-	$BG.rect_size.x = $TitleImage.rect_position.x + $TitleImage.rect_size.x + MARGIN_X
+	$BG.rect_size.x = $TitleImage.rect_position.x + $TitleImage.rect_size.x * scale_x + MARGIN_X
 	$Text.rect_size.x = $BG.rect_size.x - 2*MARGIN_X
 	
 	#Update subtitle

@@ -12,14 +12,14 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 41
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 45
 use_filter = true
 font_data = ExtResource( 1 )
@@ -63,7 +63,7 @@ margin_left = 32.4966
 margin_top = 52.4302
 margin_right = 58.4966
 margin_bottom = 87.4302
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Sub"
 valign = 1
 __meta__ = {
@@ -88,7 +88,7 @@ margin_right = 189.0
 margin_bottom = 126.708
 rect_clip_content = false
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_constants/line_separation = -4
 bbcode_enabled = true
 bbcode_text = "This is a sample text and is just like this, a sample"

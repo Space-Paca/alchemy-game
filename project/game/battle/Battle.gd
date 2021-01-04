@@ -97,7 +97,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	
 	yield($BGTween, "tween_completed")
 	
-	if enemies_init():
+	while enemies_init():
 		yield(self, "finished_enemies_init")
 	
 	player.call_artifacts("battle_start", {"player": player})
@@ -194,14 +194,16 @@ func setup_enemy(encounter: Encounter):
 func enemies_init():
 	var had_init = false
 	for enemy in enemies_node.get_children():
-		if enemy.data.battle_init:
+		if enemy.data.battle_init and not enemy.already_inited:
+			enemy.already_inited = true
 			had_init = true
 			enemy.act()
 			yield(enemy, "action_resolved")
 			#Wait a bit before next enemy/start player turn
 			yield(get_tree().create_timer(.3), "timeout")
 	
-	emit_signal("finished_enemies_init")
+	if had_init:
+		emit_signal("finished_enemies_init")
 	return had_init
 
 

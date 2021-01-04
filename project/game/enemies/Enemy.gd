@@ -34,6 +34,7 @@ var cur_actions
 var player
 var just_spawned := false
 var _playback_speed := 1.0
+var already_inited = false
 
 
 func _ready():

@@ -1,6 +1,6 @@
 extends TextureButton
 
-const SPEED = 3.5
+const SPEED = 7
 
 var active = false
 
@@ -23,5 +23,9 @@ func deactivate():
 	disabled = false
 
 
-func setup(reagent_texture):
+func setup(reagent_texture, upgraded):
 	$Reagent.texture = reagent_texture
+	if upgraded:
+		$Upgraded.show()
+	else:
+		$Upgraded.hide()

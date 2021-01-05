@@ -9,6 +9,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 2, "upgraded_value": 2, "upgraded_boost": {"type": "all", "value": 1}},
 		"gold_value" : 1,
 		"substitute" : ["common"],
+		"transmutations" : ["common", "weak_damaging", "weak_defensive"],
 	},
 	"common": {
 		"name": "Common Elementium",
@@ -18,6 +19,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 3, "upgraded_value": 4, "upgraded_boost": {"type": "all", "value": 1}},
 		"gold_value" : 10,
 		"substitute" : [],
+		"transmutations" : ["uncommon"],
 	},
 	"uncommon": {
 		"name": "Uncommon Elementium",
@@ -27,6 +29,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 5, "upgraded_value": 6, "upgraded_boost": {"type": "all", "value": 2}},
 		"gold_value" : 25,
 		"substitute" : ["common"],
+		"transmutations" : ["rare"],
 	},
 	"rare": {
 		"name": "Rare Elementium",
@@ -36,6 +39,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 8, "upgraded_value": 10, "upgraded_boost": {"type": "all", "value": 3}},
 		"gold_value" : 50,
 		"substitute" : ["uncommon", "common"],
+		"transmutations" : [],
 	},
 	"weak_damaging": {
 		"name": "Black Salt",
@@ -45,6 +49,7 @@ const DB = {
 		"effect" : {"type": "damage_all", "value": 2, "upgraded_value": 2, "upgraded_boost": {"type": "damage", "value": 1}},
 		"gold_value" : 1,
 		"substitute" : ["damaging"],
+		"transmutations" : ["damaging"],
 	},
 	"damaging": {
 		"name": "Black Powder",
@@ -54,6 +59,7 @@ const DB = {
 		"effect" : {"type": "damage_all", "value": 3, "upgraded_value": 5, "upgraded_boost": {"type": "damage", "value": 2}},
 		"gold_value" : 15,
 		"substitute" : [],
+		"transmutations" : ["super_damaging"],
 	},
 	"super_damaging": {
 		"name": "Black Quartz",
@@ -63,6 +69,7 @@ const DB = {
 		"effect" : {"type": "damage_all", "value": 5, "upgraded_value": 7, "upgraded_boost": {"type": "damage", "value": 3}},
 		"gold_value" : 35,
 		"substitute" : ["damaging"],
+		"transmutations" : [],
 	},
 	"weak_defensive": {
 		"name": "Scale Shard",
@@ -72,6 +79,7 @@ const DB = {
 		"effect" : {"type": "shield", "value": 2, "upgraded_value": 2, "upgraded_boost": {"type": "shield", "value": 1}},
 		"gold_value" : 15,
 		"substitute" : ["defensive"],
+		"transmutations" : ["defensive"],
 	},
 	"defensive": {
 		"name": "Shell Shard",
@@ -81,6 +89,7 @@ const DB = {
 		"effect" : {"type": "shield", "value": 3, "upgraded_value": 5, "upgraded_boost": {"type": "shield", "value": 2}},
 		"gold_value" : 15,
 		"substitute" : [],
+		"transmutations" : ["super_defensive"],
 	},
 	"super_defensive": {
 		"name": "Rune Shard",
@@ -90,6 +99,7 @@ const DB = {
 		"effect" : {"type": "shield", "value": 5, "upgraded_value": 7, "upgraded_boost": {"type": "shield", "value": 3}},
 		"gold_value" : 35,
 		"substitute" : ["defensive"],
+		"transmutations" : [],
 	},
 	"healing": {
 		"name": "Invigorating Root",
@@ -99,6 +109,7 @@ const DB = {
 		"effect" : {"type": "heal", "value": 1, "upgraded_value": 3, "upgraded_boost": {"type": "heal", "value": 5}},
 		"gold_value" : 40,
 		"substitute" : [],
+		"transmutations" : [],
 	},
 	"poison": {
 		"name": "Noxious Essence",
@@ -108,6 +119,7 @@ const DB = {
 		"effect" : {"type": "status", "status_type": "poison", "target": "random_enemy", "positive": false, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 20,
 		"substitute" : [],
+		"transmutations" : [],
 	},
 	"buff": {
 		"name": "Horn Fragment",
@@ -117,6 +129,7 @@ const DB = {
 		"effect" : {"type": "status", "status_type": "temp_strength", "target": "self", "positive": true, "value": 2, "upgraded_value": 4, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 25,
 		"substitute" : [],
+		"transmutations" : ["debuff"],
 	},
 	"debuff": {
 		"name": "Cracked Skull",
@@ -126,6 +139,7 @@ const DB = {
 		"effect" : {"type": "status", "status_type": "weakness", "target": "random_enemy", "positive": false, "value": 1, "upgraded_value": 2, "upgraded_boost": {"type": "status", "value": 2}},
 		"gold_value" : 25,
 		"substitute" : [],
+		"transmutations" : ["buff"],
 	},
 	"trash": {
 		"name": "Putrid Beetle",

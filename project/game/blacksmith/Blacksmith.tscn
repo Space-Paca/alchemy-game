@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
+[ext_resource path="res://game/blacksmith/ReagentTransmuted.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -67,22 +68,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Upgrade" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -252.5
-margin_top = -45.0
-margin_right = 252.5
-margin_bottom = 45.0
+[node name="MainButtons" type="VBoxContainer" parent="."]
+margin_left = 493.889
+margin_top = 395.615
+margin_right = 919.89
+margin_bottom = 695.615
+custom_constants/separation = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrade" type="Button" parent="MainButtons"]
+margin_right = 426.0
+margin_bottom = 120.0
 custom_fonts/font = SubResource( 1 )
 text = "upgrade reagent"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Transmute" type="Button" parent="MainButtons"]
+margin_top = 180.0
+margin_right = 426.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 1 )
+text = "transmute reagent"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="UpgradingReagent" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 515.248
 margin_top = 205.566
 margin_right = 1905.25
@@ -177,10 +193,10 @@ __meta__ = {
 
 [node name="+" type="Label" parent="UpgradingReagent/ReagentUpgraded"]
 modulate = Color( 0.0470588, 1, 0, 1 )
-margin_left = 142.7
-margin_top = -33.3925
-margin_right = 182.7
-margin_bottom = 51.6075
+margin_left = 130.227
+margin_top = -29.8289
+margin_right = 170.227
+margin_bottom = 55.1711
 custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
@@ -200,12 +216,114 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TransmutingReagent" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 515.248
+margin_top = 205.566
+margin_right = 1905.25
+margin_bottom = 985.566
+texture = ExtResource( 8 )
+patch_margin_left = 276
+patch_margin_top = 191
+patch_margin_right = 245
+patch_margin_bottom = 147
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmUpgrade" type="Button" parent="TransmutingReagent"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -278.176
+margin_top = 324.362
+margin_right = 311.824
+margin_bottom = 444.362
+custom_fonts/font = SubResource( 1 )
+text = "confirm upgrade (    )"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade"]
+margin_left = 434.121
+margin_top = 10.9012
+margin_right = 500.121
+margin_bottom = 94.9012
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "-2 "
+
+[node name="TextureRect" type="TextureRect" parent="TransmutingReagent/ConfirmUpgrade"]
+margin_left = 508.514
+margin_top = 32.3196
+margin_right = 816.514
+margin_bottom = 340.32
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
+
+[node name="Reagent" type="Node2D" parent="TransmutingReagent"]
+position = Vector2( 623.263, 152.934 )
+
+[node name="Image" type="TextureRect" parent="TransmutingReagent/Reagent"]
+margin_right = 150.0
+margin_bottom = 150.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgraded" type="Label" parent="TransmutingReagent/Reagent"]
+modulate = Color( 0.0470588, 1, 0, 1 )
+margin_left = 151.475
+margin_top = -10.6116
+margin_right = 191.475
+margin_bottom = 74.3884
+custom_fonts/font = SubResource( 4 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PossibleTransmutations" type="HBoxContainer" parent="TransmutingReagent"]
+margin_left = 247.989
+margin_top = 505.445
+margin_right = 1147.99
+margin_bottom = 685.445
+rect_min_size = Vector2( 900, 180 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentTransmuted" parent="TransmutingReagent/PossibleTransmutations" instance=ExtResource( 11 )]
+margin_left = 450.0
+margin_right = 450.0
+
+[node name="Arrow" type="TextureRect" parent="TransmutingReagent"]
+margin_left = 770.241
+margin_top = 304.011
+margin_right = 1282.24
+margin_bottom = 816.011
+rect_rotation = 90.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ClickableReagentList" parent="." instance=ExtResource( 3 )]
+visible = false
 margin_left = 46.5328
 margin_top = 154.863
 margin_right = 546.533
 margin_bottom = 754.863
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="MainButtons/Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="MainButtons/Transmute" to="." method="_on_Transmute_pressed"]
 [connection signal="pressed" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]
+[connection signal="pressed" from="TransmutingReagent/ConfirmUpgrade" to="." method="_on_TransmuteConfirmUpgrade_pressed"]
 [connection signal="reagent_pressed" from="ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]

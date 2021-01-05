@@ -9,14 +9,14 @@ onready var grid = $ScrollContainer/GridContainer
 
 
 func populate(reagent_array: Array):
-	for reagent_name in reagent_array:
-		var texture = ReagentDB.get_from_name(reagent_name).image
+	for reagent in reagent_array:
+		var texture = ReagentDB.get_from_name(reagent.type).image
 		var button = CLICKABLE_REAGENT.instance()
 		
 		grid.add_child(button)
-		button.setup(texture)
-		button.connect("pressed", self, "_on_reagent_pressed", [reagent_name,
-				button.get_index()])
+		button.setup(texture, reagent.upgraded)
+		button.connect("pressed", self, "_on_reagent_pressed", [reagent.type,
+				button.get_index(), reagent.upgraded])
 
 
 func clear():
@@ -34,5 +34,5 @@ func activate_reagent(index):
 		else:
 			reagent.deactivate()
 
-func _on_reagent_pressed(reagent_name: String, reagent_index: int):
-	emit_signal("reagent_pressed", reagent_name, reagent_index)
+func _on_reagent_pressed(reagent_name: String, reagent_index: int, upgraded: bool):
+	emit_signal("reagent_pressed", reagent_name, reagent_index, upgraded)

@@ -116,6 +116,8 @@ func spend_pearls(amount: int) -> bool:
 func upgrade_reagent(index: int):
 	bag[index].upgraded = true
 
+func transmute_reagent(index: int, transmute_into: String):
+	bag[index].type = transmute_into
 
 func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})

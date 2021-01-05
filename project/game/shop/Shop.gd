@@ -56,7 +56,7 @@ func update_reagents():
 	var reagent_array = []
 	reagent_list.clear()
 	for reagent in player.bag:
-		reagent_array.append(reagent.type)
+		reagent_array.append({"type":reagent.type, "upgraded": reagent.upgraded})
 	reagent_list.populate(reagent_array)
 
 

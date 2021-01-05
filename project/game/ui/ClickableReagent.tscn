@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://ClickableReagent.gd" type="Script" id=1]
+[ext_resource path="res://game/ui/ClickableReagent.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/reagent_list/slot.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/reagents/invigorating_root.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_selection test.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_disabled.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="ClickableReagent" type="TextureButton"]
 anchor_right = 1.0
@@ -24,7 +33,6 @@ __meta__ = {
 }
 
 [node name="Active" type="TextureRect" parent="."]
-visible = false
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 4 )
@@ -44,3 +52,12 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Upgraded" type="Label" parent="."]
+margin_left = 48.8455
+margin_top = -4.24744
+margin_right = 59.8455
+margin_bottom = 27.7526
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.356863, 1, 0, 1 )
+text = "+"

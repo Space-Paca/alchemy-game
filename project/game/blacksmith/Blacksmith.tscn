@@ -264,7 +264,7 @@ rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
 [node name="Reagent" type="Node2D" parent="TransmutingReagent"]
-position = Vector2( 623.263, 152.934 )
+position = Vector2( 597.864, 165.634 )
 
 [node name="Image" type="TextureRect" parent="TransmutingReagent/Reagent"]
 margin_right = 150.0
@@ -299,14 +299,15 @@ __meta__ = {
 }
 
 [node name="ReagentTransmuted" parent="TransmutingReagent/PossibleTransmutations" instance=ExtResource( 11 )]
-margin_left = 450.0
-margin_right = 450.0
+margin_left = 350.0
+margin_right = 550.0
+margin_bottom = 200.0
 
 [node name="Arrow" type="TextureRect" parent="TransmutingReagent"]
-margin_left = 770.241
-margin_top = 304.011
-margin_right = 1282.24
-margin_bottom = 816.011
+margin_left = 746.43
+margin_top = 313.535
+margin_right = 1258.43
+margin_bottom = 825.535
 rect_rotation = 90.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )

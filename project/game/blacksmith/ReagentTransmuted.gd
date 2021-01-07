@@ -36,7 +36,6 @@ func activate():
 	if active:
 		return
 	active = true
-	AudioManager.play_sfx("click")
 	$Active.show()
 	emit_signal("activate")
 

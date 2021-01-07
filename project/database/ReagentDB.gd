@@ -29,7 +29,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 5, "upgraded_value": 6, "upgraded_boost": {"type": "all", "value": 2}},
 		"gold_value" : 25,
 		"substitute" : ["common"],
-		"transmutations" : ["rare"],
+		"transmutations" : ["rare", "super_damaging", "super_defensive"],
 	},
 	"rare": {
 		"name": "Rare Elementium",

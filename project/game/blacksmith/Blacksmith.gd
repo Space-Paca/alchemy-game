@@ -166,6 +166,8 @@ func _on_TransmuteConfirmUpgrade_pressed():
 
 
 func _on_reagent_transmute_activate(reagent):
+	if chosen_transmutation:
+		AudioManager.play_sfx("click_possible_transmutation")
 	chosen_transmutation = reagent.reagent
 	for child in $TransmutingReagent/PossibleTransmutations.get_children():
 		if child != reagent:

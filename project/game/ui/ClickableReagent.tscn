@@ -61,3 +61,4 @@ margin_bottom = 27.7526
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.356863, 1, 0, 1 )
 text = "+"
+[connection signal="mouse_entered" from="." to="." method="_on_ClickableReagent_mouse_entered"]

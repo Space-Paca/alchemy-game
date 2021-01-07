@@ -14,6 +14,7 @@ func _process(dt):
 		$Active.modulate.a = max($Active.modulate.a - SPEED*dt, 0)
 
 func activate():
+	AudioManager.play_sfx("click_clickable_reagent")
 	active = true
 	disabled = true
 
@@ -29,3 +30,7 @@ func setup(reagent_texture, upgraded):
 		$Upgraded.show()
 	else:
 		$Upgraded.hide()
+
+
+func _on_ClickableReagent_mouse_entered():
+	AudioManager.play_sfx("hover_clickable_reagent")

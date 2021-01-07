@@ -51,6 +51,17 @@ func _ready():
 	for _i in range(3):
 		add_reagent("weak_defensive", false)
 
+class BagSorter:
+	static func sort_ascending_name(a, b):
+		if a.type < b.type:
+			return true
+		elif a.type == b.type and a.upgraded:
+			return true
+		return false
+
+
+func sort_bag():
+	bag.sort_custom(BagSorter, "sort_ascending_name")
 
 func draw_reagents_resolve():
 	emit_signal("draw_resolve")
@@ -115,12 +126,15 @@ func spend_pearls(amount: int) -> bool:
 
 func upgrade_reagent(index: int):
 	bag[index].upgraded = true
+	sort_bag()
 
 func transmute_reagent(index: int, transmute_into: String):
 	bag[index].type = transmute_into
+	sort_bag()
 
 func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})
+	sort_bag()
 
 
 func remove_reagent(type: String, upgraded: bool):
@@ -129,11 +143,13 @@ func remove_reagent(type: String, upgraded: bool):
 		if reagent.type == type and reagent.upgraded == upgraded:
 			bag.remove(i)
 			break
+	sort_bag()
 
 
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
 	bag.remove(index)
+	sort_bag()
 
 
 func set_hud(_hud):

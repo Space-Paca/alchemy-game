@@ -95,11 +95,13 @@ func _on_ShopRecipe_hint_bought(combination: Combination):
 	emit_signal("hint_bought", combination)
 
 
-func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index):
+func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 	chosen_reagent_index = reagent_index
 	
 	reagent_destroy_label.show()
 	var reagent_name = ReagentManager.get_data(reagent).name
+	if upgraded:
+		reagent_name += "+"
 	reagent_destroy_label.text = DESTROY_TEXT % [reagent_name, DESTROY_COST]
 
 

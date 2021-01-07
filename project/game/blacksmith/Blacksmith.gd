@@ -7,6 +7,8 @@ const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn
 onready var reagent_list = $ClickableReagentList
 onready var main_buttons = $MainButtons
 onready var transmuting_reagent_tooltip = $TransmutingReagent/Reagent/TooltipCollision
+onready var upgrading_reagent_tooltip = $UpgradingReagent/Reagent/TooltipCollision
+onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/TooltipCollision
 
 var player
 var map_node : MapNode
@@ -23,11 +25,12 @@ func setup(node, _player):
 	main_buttons.show()
 	reagent_list.clear()
 	reagent_list.hide()
-	$UpgradingReagent.hide()
 	player = _player
 	state = "start"
 	map_node = node
 	transmuting_reagent_tooltip.disable()
+	remove_transmuting_possibilities()
+
 
 func update_reagent_list(type: String):
 	index_map = []
@@ -76,6 +79,8 @@ func back():
 		reagent_list.hide()
 		reagent_list.deactivate_reagents()
 		$UpgradingReagent.hide()
+		upgrading_reagent_tooltip.disable()
+		upgraded_reagent_tooltip.disable()
 	elif "confirm_reagent_transmute":
 		state = "start"
 		main_buttons.show()
@@ -115,12 +120,10 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 	if state == "upgrading_reagent" or state == "confirm_reagent_upgrade":
 		state = "confirm_reagent_upgrade"
 		$UpgradingReagent.show()
+		upgrading_reagent_tooltip.enable()
+		upgraded_reagent_tooltip.enable()
 		$UpgradingReagent/Reagent/Image.texture = data.image
 		$UpgradingReagent/ReagentUpgraded/Image.texture = data.image
-		$UpgradingReagent/Reagent/Label.text = data.tooltip % data.effect.value
-		$UpgradingReagent/ReagentUpgraded/Label.text = data.tooltip % data.effect.upgraded_value + " Boost " + \
-									  data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
-									
 	elif state == "transmuting_reagent" or state == "confirm_reagent_transmute":
 		state = "confirm_reagent_transmute"
 		$TransmutingReagent.show()
@@ -152,6 +155,8 @@ func _on_ConfirmUpgrade_pressed():
 		player.upgrade_reagent(chosen_reagent_index)
 		reagent_list.deactivate_reagents()
 		$UpgradingReagent.hide()
+		upgrading_reagent_tooltip.disable()
+		upgraded_reagent_tooltip.disable()
 		state = "upgrading_reagent"
 		if not update_reagent_list("upgrade"):
 			back()
@@ -201,9 +206,9 @@ func _on_TooltipCollision_disable_tooltip(type : String):
 	if type == "transmuting_reagent":
 		tooltip = transmuting_reagent_tooltip
 	elif type == "upgrading_reagent":
-		tooltip = transmuting_reagent_tooltip
+		tooltip = upgrading_reagent_tooltip
 	elif type == "upgraded_reagent":
-		tooltip = transmuting_reagent_tooltip
+		tooltip = upgraded_reagent_tooltip
 	else:
 		assert(false, "Not a valid type of tooltip collision: " + str(type))
 	
@@ -220,11 +225,13 @@ func _on_TooltipCollision_enable_tooltip(type : String):
 		upgraded = chosen_reagent_upgraded
 		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
 	elif type == "upgrading_reagent":
+		reagent = chosen_reagent_name
 		upgraded = false
-		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
+		tooltip_position = $UpgradingReagent/Reagent/TooltipPosition
 	elif type == "upgraded_reagent":
+		reagent = chosen_reagent_name
 		upgraded = true
-		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
+		tooltip_position = $UpgradingReagent/ReagentUpgraded/TooltipPosition
 	else:
 		assert(false, "Not a valid type of tooltip collision: " + str(type))
 	

@@ -51,7 +51,7 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 		text = data.tooltip % data.effect.value
 	else:
 		title = data.name + "+"
-		text = data.tooltip % data.effect.upgraded_value + " Boost " + \
+		text = data.tooltip % data.effect.upgraded_value + ". Boost " + \
 			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
 	if unstable:
 		text += " It's unstable."

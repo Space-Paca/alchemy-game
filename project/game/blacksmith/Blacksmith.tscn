@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
@@ -28,12 +28,8 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 38
-outline_size = 6
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 80, 80 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 78
@@ -41,6 +37,9 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 80, 80 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 90, 90 )
@@ -103,15 +102,18 @@ __meta__ = {
 
 [node name="UpgradingReagent" type="NinePatchRect" parent="."]
 visible = false
-margin_left = 515.248
-margin_top = 205.566
-margin_right = 1905.25
-margin_bottom = 985.566
+margin_left = 838.243
+margin_top = 162.261
+margin_right = 1538.24
+margin_bottom = 942.261
 texture = ExtResource( 8 )
 patch_margin_left = 276
 patch_margin_top = 191
 patch_margin_right = 245
 patch_margin_bottom = 147
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ConfirmUpgrade" type="Button" parent="UpgradingReagent"]
 anchor_left = 0.5
@@ -157,18 +159,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UpgradingReagent/Reagent"]
-margin_left = 175.0
-margin_right = 775.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 680, 150 )
-custom_fonts/font = SubResource( 3 )
-text = "asdsada"
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TooltipCollision" parent="UpgradingReagent/Reagent" instance=ExtResource( 12 )]
+position = Vector2( 71.3525, 68.974 )
+enabled = false
+
+[node name="CollisionShape2D" parent="UpgradingReagent/Reagent/TooltipCollision" index="0"]
+shape = SubResource( 6 )
+
+[node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/Reagent"]
+position = Vector2( 186.516, -21.4837 )
 
 [node name="ReagentUpgraded" type="Node2D" parent="UpgradingReagent"]
 position = Vector2( 285.111, 484.001 )
@@ -178,19 +177,6 @@ margin_right = 150.0
 margin_bottom = 150.0
 texture = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UpgradingReagent/ReagentUpgraded"]
-margin_left = 175.0
-margin_right = 855.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 680, 150 )
-custom_fonts/font = SubResource( 3 )
-text = "asdsada"
-valign = 1
-autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -206,6 +192,16 @@ text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TooltipCollision" parent="UpgradingReagent/ReagentUpgraded" instance=ExtResource( 12 )]
+position = Vector2( 74.8943, 67.1346 )
+enabled = false
+
+[node name="CollisionShape2D" parent="UpgradingReagent/ReagentUpgraded/TooltipCollision" index="0"]
+shape = SubResource( 7 )
+
+[node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/ReagentUpgraded"]
+position = Vector2( 197.193, -23.323 )
 
 [node name="Arrow" type="TextureRect" parent="UpgradingReagent"]
 margin_left = 436.064
@@ -249,15 +245,6 @@ text = "confirm upgrade (    )"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade"]
-margin_left = 434.121
-margin_top = 10.9012
-margin_right = 500.121
-margin_bottom = 94.9012
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "-2 "
 
 [node name="TextureRect" type="TextureRect" parent="TransmutingReagent/ConfirmUpgrade"]
 margin_left = 508.514
@@ -340,9 +327,17 @@ margin_bottom = 754.863
 [connection signal="pressed" from="MainButtons/Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="MainButtons/Transmute" to="." method="_on_Transmute_pressed"]
 [connection signal="pressed" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]
+[connection signal="disable_tooltip" from="UpgradingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "upgrading_reagent" ]]
+[connection signal="enable_tooltip" from="UpgradingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "upgrading_reagent" ]]
+[connection signal="disable_tooltip" from="UpgradingReagent/ReagentUpgraded/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "upgraded_reagent" ]]
+[connection signal="enable_tooltip" from="UpgradingReagent/ReagentUpgraded/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "upgraded_reagent" ]]
 [connection signal="pressed" from="TransmutingReagent/ConfirmUpgrade" to="." method="_on_TransmuteConfirmUpgrade_pressed"]
 [connection signal="disable_tooltip" from="TransmutingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "transmuting_reagent" ]]
 [connection signal="enable_tooltip" from="TransmutingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "transmuting_reagent" ]]
 [connection signal="reagent_pressed" from="ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
+
+[editable path="UpgradingReagent/Reagent/TooltipCollision"]
+
+[editable path="UpgradingReagent/ReagentUpgraded/TooltipCollision"]
 
 [editable path="TransmutingReagent/Reagent/TooltipCollision"]

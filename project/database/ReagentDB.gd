@@ -19,7 +19,7 @@ const DB = {
 		"effect" : {"type": "damage", "value": 3, "upgraded_value": 4, "upgraded_boost": {"type": "all", "value": 1}},
 		"gold_value" : 10,
 		"substitute" : [],
-		"transmutations" : ["uncommon"],
+		"transmutations" : ["uncommon", "damaging", "defensive"],
 	},
 	"uncommon": {
 		"name": "Uncommon Elementium",

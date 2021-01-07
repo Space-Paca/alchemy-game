@@ -1,6 +1,7 @@
 extends Area2D
 
 export var TIMEOUT = .1
+export var enabled = true
 
 signal enable_tooltip
 signal disable_tooltip
@@ -33,8 +34,15 @@ func _input(event):
 			emit_signal("disable_tooltip")
 			
 func _process(delta):
-	if entered and timer < TIMEOUT:
+	if enabled and entered and timer < TIMEOUT:
 		timer += delta
 		if timer >= TIMEOUT:
 			timer = TIMEOUT
 			emit_signal("enable_tooltip")
+
+func enable():
+	enabled = true
+
+func disable():
+	enabled = false
+	timer = 0

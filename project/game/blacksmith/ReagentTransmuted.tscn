@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=2]
 [ext_resource path="res://game/blacksmith/ReagentTransmuted.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_selection test.png" type="Texture" id=4]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 78
@@ -11,6 +12,9 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 90, 90 )
 
 [node name="ReagentTransmuted" type="Control"]
 margin_right = 150.0
@@ -52,6 +56,19 @@ text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 5 )]
+position = Vector2( 75, 70 )
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 2 )
+
+[node name="TooltipPosition" type="Position2D" parent="."]
+position = Vector2( 227.474, -72.6783 )
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

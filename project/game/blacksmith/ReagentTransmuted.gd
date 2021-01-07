@@ -10,6 +10,8 @@ var reagent
 var upgraded
 var active = false
 var over = false
+var tooltips_enabled = false
+var block_tooltips = false
 
 func _process(dt):
 	if over:
@@ -46,6 +48,18 @@ func deactivate():
 	$Active.hide()
 	emit_signal("deactivate")
 
+func remove_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func disable_tooltips():
+	remove_tooltips()
+	block_tooltips = true
+
+
+func enable_tooltips():
+	block_tooltips = false
 
 func _on_Button_mouse_entered():
 	if not active:
@@ -59,3 +73,20 @@ func _on_Button_mouse_exited():
 func _on_Button_pressed():
 	if not active:
 		activate()
+
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
+	tooltips_enabled = true
+	var tooltip = ReagentManager.get_tooltip(reagent, upgraded, false, false)
+	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
+	tooltip = ReagentManager.get_substitution_tooltip(reagent)
+	if tooltip:
+		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, null, false, true, false)
+
+
+func _on_TooltipCollision_disable_tooltip():
+	remove_tooltips()

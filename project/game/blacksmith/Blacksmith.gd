@@ -6,13 +6,17 @@ const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn
 
 onready var reagent_list = $ClickableReagentList
 onready var main_buttons = $MainButtons
+onready var transmuting_reagent_tooltip = $TransmutingReagent/Reagent/TooltipCollision
 
 var player
 var map_node : MapNode
 var state
 var chosen_reagent_index
 var chosen_transmutation = null
+var chosen_reagent_name : String
+var chosen_reagent_upgraded : bool
 var index_map = []
+var tooltips_enabled = false
 
 
 func setup(node, _player):
@@ -23,6 +27,7 @@ func setup(node, _player):
 	player = _player
 	state = "start"
 	map_node = node
+	transmuting_reagent_tooltip.disable()
 
 func update_reagent_list(type: String):
 	index_map = []
@@ -77,6 +82,14 @@ func back():
 		reagent_list.hide()
 		reagent_list.deactivate_reagents()
 		$TransmutingReagent.hide()
+		transmuting_reagent_tooltip.disable()
+		remove_transmuting_possibilities()
+
+
+func remove_transmuting_possibilities():
+	for child in $TransmutingReagent/PossibleTransmutations.get_children():
+		$TransmutingReagent/PossibleTransmutations.remove_child(child)
+		child.queue_free()
 
 
 func _on_BackButton_pressed():
@@ -95,6 +108,8 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 	reagent_list.activate_reagent(reagent_index)
 	chosen_reagent_index = index_map[reagent_index]
 	chosen_transmutation = null
+	chosen_reagent_name = reagent_name
+	chosen_reagent_upgraded = upgraded
 	var data = ReagentDB.get_from_name(reagent_name)
 	
 	if state == "upgrading_reagent" or state == "confirm_reagent_upgrade":
@@ -109,13 +124,13 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 	elif state == "transmuting_reagent" or state == "confirm_reagent_transmute":
 		state = "confirm_reagent_transmute"
 		$TransmutingReagent.show()
+		transmuting_reagent_tooltip.enable()
 		$TransmutingReagent/Reagent/Image.texture = data.image
 		if upgraded:
 			$TransmutingReagent/Reagent/Upgraded.show()
 		else:
 			$TransmutingReagent/Reagent/Upgraded.hide()
-		for child in $TransmutingReagent/PossibleTransmutations.get_children():
-			$TransmutingReagent/PossibleTransmutations.remove_child(child)
+		remove_transmuting_possibilities()
 		
 		var first = true
 		for transmutation in data.transmutations:
@@ -158,6 +173,8 @@ func _on_TransmuteConfirmUpgrade_pressed():
 		player.transmute_reagent(chosen_reagent_index, chosen_transmutation)
 		reagent_list.deactivate_reagents()
 		$TransmutingReagent.hide()
+		transmuting_reagent_tooltip.disable()
+		remove_transmuting_possibilities()
 		state = "transmuting_reagent"
 		if not update_reagent_list("transmute"):
 			back()
@@ -172,3 +189,50 @@ func _on_reagent_transmute_activate(reagent):
 	for child in $TransmutingReagent/PossibleTransmutations.get_children():
 		if child != reagent:
 			child.deactivate()
+
+
+func remove_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
+func _on_TooltipCollision_disable_tooltip(type : String):
+	var tooltip
+	if type == "transmuting_reagent":
+		tooltip = transmuting_reagent_tooltip
+	elif type == "upgrading_reagent":
+		tooltip = transmuting_reagent_tooltip
+	elif type == "upgraded_reagent":
+		tooltip = transmuting_reagent_tooltip
+	else:
+		assert(false, "Not a valid type of tooltip collision: " + str(type))
+	
+	if tooltip.enabled:
+		remove_tooltips()
+
+func _on_TooltipCollision_enable_tooltip(type : String):
+	var reagent
+	var upgraded
+	var tooltip_position
+	
+	if type == "transmuting_reagent":
+		reagent = chosen_reagent_name
+		upgraded = chosen_reagent_upgraded
+		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
+	elif type == "upgrading_reagent":
+		upgraded = false
+		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
+	elif type == "upgraded_reagent":
+		upgraded = true
+		tooltip_position = $TransmutingReagent/Reagent/TooltipPosition
+	else:
+		assert(false, "Not a valid type of tooltip collision: " + str(type))
+	
+	tooltips_enabled = true
+	var tooltip = ReagentManager.get_tooltip(reagent, upgraded, false, false)
+	TooltipLayer.add_tooltip(tooltip_position.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
+	tooltip = ReagentManager.get_substitution_tooltip(reagent)
+	if tooltip:
+		TooltipLayer.add_tooltip(tooltip_position.global_position, tooltip.title, \
+							 tooltip.text, tooltip.title_image, null, false, true, false)

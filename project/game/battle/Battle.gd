@@ -727,6 +727,7 @@ func _on_reagent_destroyed(reagent):
 
 func _on_reagent_unrestrained_slot(reagent, slot):
 	slot.unrestrain()
+	reagent.slot.remove_reagent()
 	discard_bag.discard(reagent)
 
 func _on_enemy_acted(enemy, actions):

@@ -76,7 +76,7 @@ func _on_Button_pressed():
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips:
+	if block_tooltips or not reagent:
 		return
 	tooltips_enabled = true
 	var tooltip = ReagentManager.get_tooltip(reagent, upgraded, false, false)

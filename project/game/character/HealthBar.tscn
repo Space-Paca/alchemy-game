@@ -3,17 +3,15 @@
 [ext_resource path="res://assets/images/ui/Player Lifebar.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/Player Lifebar Holder.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=4]
 [ext_resource path="res://game/character/HealthBar.gd" type="Script" id=5]
 [ext_resource path="res://game/character/PlayerHealthFont.tres" type="DynamicFont" id=6]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/Shield.png-7c02f745a5d0529809ea6851a28a8c78.stex"
-
-[sub_resource type="DynamicFont" id=2]
-size = 34
-outline_size = 4
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -49,29 +47,30 @@ __meta__ = {
 }
 
 [node name="Shield" type="TextureRect" parent="."]
-margin_left = -27.6171
-margin_top = 0.681162
-margin_right = 48.3829
-margin_bottom = 87.6812
-rect_scale = Vector2( 1.4, 1.4 )
-rect_pivot_offset = Vector2( 38, 43 )
-texture = SubResource( 1 )
+margin_left = -36.6171
+margin_top = -18.3189
+margin_right = 69.3829
+margin_bottom = 103.681
+rect_pivot_offset = Vector2( 53, 61 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Shield"]
-margin_left = 1.42857
-margin_top = 1.42857
-margin_right = 77.4286
-margin_bottom = 78.4286
-custom_fonts/font = SubResource( 2 )
+margin_left = 16.4286
+margin_top = 17.4286
+margin_right = 92.4286
+margin_bottom = 94.4286
+custom_fonts/font = SubResource( 1 )
 text = "10"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="Shield"]
 
 [node name="Tween" type="Tween" parent="."]
 

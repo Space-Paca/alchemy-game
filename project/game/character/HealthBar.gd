@@ -24,6 +24,9 @@ const BG_TEXTURE = {
 onready var label = $Label
 onready var shield = $Shield
 onready var shield_label = $Shield/Label
+onready var shield_tween = $Shield/Tween
+
+var half_shield_size = false
 
 func get_width():
 	return $Bar.rect_size.x
@@ -54,6 +57,8 @@ func update_visuals(new_hp, new_shield):
 	var updated_shield = update_shield(new_shield)
 	if updated_life or updated_shield:
 		$Tween.start()
+		if updated_shield:
+			shield_tween.start()
 		yield($Tween, "tween_all_completed")
 		emit_signal('animation_completed')
 
@@ -71,10 +76,14 @@ func update_shield(value):
 		if cur_shield <= 0:
 			$Tween.interpolate_property(shield, "modulate", shield.modulate, Color(1,1,1,1), dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
-		var prev_scale = shield.rect_scale
-		var target_scale = prev_scale * 1.3
-		$Tween.interpolate_property(shield, "rect_scale", prev_scale, target_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN)
-		$Tween.interpolate_property(shield, "rect_scale", target_scale, prev_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN, dur/2)
+		var prev_scale = Vector2(1.0, 1.0)
+		var target_scale = Vector2(1.3, 1.3)
+		if half_shield_size:
+			prev_scale *= .5
+			target_scale *= .5
+		shield_tween.remove_all()
+		shield_tween.interpolate_property(shield, "rect_scale", prev_scale, target_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN)
+		shield_tween.interpolate_property(shield, "rect_scale", target_scale, prev_scale, dur/2, Tween.TRANS_QUAD, Tween.EASE_IN, dur/2)
 		$Tween.interpolate_method(self, "set_shield_text", cur_shield, value, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		return true
 	
@@ -131,7 +140,7 @@ func set_enemy_type(enemy_size):
 	$Bar.rect_size.y = 20
 	$Label.rect_size = $Bar.rect_size
 	$Label.add_font_override("font", ENEMY_FONT)
-	$Shield.rect_scale = Vector2(.5,.5)
+	half_shield_size = true #WTF
 	$Shield.rect_position.x -= 17
 	$Shield.rect_position.y -= 32
 	$Center.position = $Bar.rect_size/2

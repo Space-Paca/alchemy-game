@@ -111,3 +111,5 @@ margin_bottom = 246.23
 [connection signal="mouse_entered" from="Sprite/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
+
+[editable path="HealthBar"]

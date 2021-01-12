@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="ReagentDisplay" parent="." instance=ExtResource( 4 )]
+margin_bottom = 34.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 30.0

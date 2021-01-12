@@ -39,7 +39,7 @@ var unstable := false
 var freezed := false
 var burned := false
 var highlighted := false
-var tooltips_enabled = false
+var tooltip_enabled = false
 
 
 func set_image(texture):
@@ -289,8 +289,8 @@ func enable_tooltips():
 
 
 func remove_tooltips():
-	if tooltips_enabled:
-		tooltips_enabled = false
+	if tooltip_enabled:
+		tooltip_enabled = false
 		TooltipLayer.clean_tooltips()
 
 
@@ -332,14 +332,14 @@ func unrestrain_slot(target_slot):
 
 
 func _on_TooltipCollision_disable_tooltip():
-	if tooltip.enabled:
+	if tooltip_enabled:
 		remove_tooltips()
 
 
 func _on_TooltipCollision_enable_tooltip():
 	if (slot and slot.type != "hand") or is_drag:
 		return
-	tooltips_enabled = true
+	tooltip_enabled = true
 	var tip = ReagentManager.get_tooltip(type, upgraded, unstable, burned)
 	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
 							 tip.text, tip.title_image, tip.subtitle, true)

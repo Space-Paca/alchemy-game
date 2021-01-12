@@ -30,7 +30,6 @@ var mastery_unlocked := false
 var tagged := true
 var filtered := true
 
-
 func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents
@@ -92,6 +91,7 @@ func update_mastery(new_value: int, threshold: int):
 		favorite_button.visible = true
 		mastery_progress.visible = false
 
+
 func is_mastered():
 	return mastery_unlocked
 
@@ -116,6 +116,16 @@ func set_favorite_button(status):
 func favorite_error():
 	AudioManager.play_sfx("error")
 	favorite_button.pressed = false
+
+
+func enable_tooltips():
+	for reagent_amount in grid.get_children():
+		reagent_amount.enable_tooltips()
+
+
+func disable_tooltips():
+	for reagent_amount in grid.get_children():
+		reagent_amount.disable_tooltips()
 
 
 func _on_Panel_mouse_entered():

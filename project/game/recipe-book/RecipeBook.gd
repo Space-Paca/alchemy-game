@@ -154,13 +154,37 @@ func remove_hand():
 	hand_rect.visible = false
 
 
+func enable_tooltips():
+	#Hand reagents
+	for display in upper_hand.get_children():
+		display.enable_tooltips()
+	for display in lower_hand.get_children():
+		display.enable_tooltips()
+	#Recipes
+	for display in recipe_grid.get_children():
+		display.enable_tooltips()
+
+
+func disable_tooltips():
+	#Hand reagents
+	for display in upper_hand.get_children():
+		display.disable_tooltips()
+	for display in lower_hand.get_children():
+		display.disable_tooltips()
+	#Recipes
+	for display in recipe_grid.get_children():
+		display.disable_tooltips()
+
+
 func toggle_visibility():
 	visible = !visible
 	
 	if visible:
 		AudioManager.play_sfx("open_recipe_book")
+		enable_tooltips()
 	else:
 		AudioManager.play_sfx("close_recipe_book")
+		disable_tooltips()
 		_on_recipe_display_unhovered()
 	
 	if state == States.BATTLE:

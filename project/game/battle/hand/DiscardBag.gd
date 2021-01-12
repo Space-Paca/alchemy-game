@@ -78,7 +78,7 @@ func discard(reagent):
 	add_reagent(reagent)
 
 func add_reagent(reagent, should_update_counter: = true):
-	reagent.disable()
+	reagent.disable_tooltips()
 	reagent.disable_dragging()
 	reagent.visible = false
 	discarded_reagents.add_child(reagent)

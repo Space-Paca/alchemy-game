@@ -56,7 +56,7 @@ func get_reagent_names() -> Array:
 
 
 func add_reagent(reagent, should_update_counter: = true):
-	reagent.disable()
+	reagent.disable_tooltips()
 	reagent.disable_dragging()
 	reagent.visible = false
 	drawable_reagents.add_child(reagent)
@@ -77,7 +77,7 @@ func start_drawing(_reagents):
 		reagent.grow()
 		reagent.rect_scale = Vector2(0,0)
 		hand.place_reagent(reagent)
-		reagent.enable()
+		reagent.enable_tooltips()
 		update_counter(_reagents.size())
 		if not _reagents.empty():
 			randomize()

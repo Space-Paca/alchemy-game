@@ -412,7 +412,7 @@ func recipe_book_toggled(visible: bool):
 		player_ui.disable_tooltips()
 		TooltipLayer.clean_tooltips()
 		for reagent in reagents.get_children():
-			reagent.disable()
+			reagent.disable_tooltips()
 			reagent.disable_dragging()
 		draw_bag.disable()
 		discard_bag.disable()
@@ -423,7 +423,7 @@ func recipe_book_toggled(visible: bool):
 		recipes_button.show()
 		pass_turn_button.show()
 		for reagent in reagents.get_children():
-			reagent.enable()
+			reagent.enable_tooltips()
 			reagent.enable_dragging()
 		draw_bag.enable()
 		discard_bag.disable()
@@ -519,14 +519,14 @@ func disable_elements():
 	for enemy in enemies_node.get_children():
 		enemy.disable()
 	for reagent in reagents.get_children():
-		reagent.disable()
+		reagent.disable_tooltips()
 
 
 func enable_elements():
 	for enemy in enemies_node.get_children():
 		enemy.enable()
 	for reagent in reagents.get_children():
-		reagent.enable()
+		reagent.enable_tooltips()
 
 
 func win():
@@ -918,7 +918,7 @@ func _on_player_died(_player):
 	for enemy in enemies_node.get_children():
 		enemy.disable()
 	for reagent in reagents.get_children():
-		reagent.disable()
+		reagent.disable_tooltips()
 	add_child(GAMEOVER_SCENE.instance())
 	AudioManager.play_bgm("gameover", false, true)
 	AudioManager.stop_aux_bgm("heart-beat")

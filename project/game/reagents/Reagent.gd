@@ -17,6 +17,7 @@ signal destroyed
 signal exploded
 
 onready var image = $Image
+onready var tooltip = $TooltipCollision
 
 var stop_auto_moving := false
 var hovering := false
@@ -33,13 +34,12 @@ var dispenser = null
 var returning_to_dispenser := false
 var speed_mod := 1.0
 var effect_mod := 1.0
-var tooltips_enabled := false
-var block_tooltips := false
 var upgraded := false
 var unstable := false
 var freezed := false
 var burned := false
 var highlighted := false
+var tooltips_enabled = false
 
 
 func set_image(texture):
@@ -263,7 +263,7 @@ func start_dragging():
 	pick_effect()
 	is_drag = true
 	drag_offset = -get_local_mouse_position()
-	disable_tooltips()
+	remove_tooltips()
 	emit_signal("started_dragging", self)
 
 
@@ -279,13 +279,20 @@ func stop_hovering():
 	emit_signal("stopped_hovering", self)
 
 
-func disable():
-	disable_tooltips()
-	block_tooltips = true
+func disable_tooltips():
+	remove_tooltips()
+	$TooltipCollision.disable()
 
 
-func enable():
-	block_tooltips = false
+func enable_tooltips():
+	tooltip.enable()
+
+
+func remove_tooltips():
+	if tooltips_enabled:
+		tooltips_enabled = false
+		TooltipLayer.clean_tooltips()
+
 
 func toggle_unstable():
 	unstable = not unstable
@@ -323,23 +330,20 @@ func disable_dragging():
 func unrestrain_slot(target_slot):
 	emit_signal("unrestrained_slot", self, target_slot)
 
-func disable_tooltips():
-	if tooltips_enabled:
-		tooltips_enabled = false
-		TooltipLayer.clean_tooltips()
 
 func _on_TooltipCollision_disable_tooltip():
-	disable_tooltips()
+	if tooltip.enabled:
+		remove_tooltips()
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips or (slot and slot.type != "hand") or is_drag:
+	if (slot and slot.type != "hand") or is_drag:
 		return
 	tooltips_enabled = true
-	var tooltip = ReagentManager.get_tooltip(type, upgraded, unstable, burned)
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
-	tooltip = ReagentManager.get_substitution_tooltip(type)
-	if tooltip:
-		TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, null, false, true, false)
+	var tip = ReagentManager.get_tooltip(type, upgraded, unstable, burned)
+	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)
+	tip = ReagentManager.get_substitution_tooltip(type)
+	if tip:
+		TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, null, false, true, false)

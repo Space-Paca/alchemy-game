@@ -40,6 +40,9 @@ func _process(delta):
 			timer = TIMEOUT
 			emit_signal("enable_tooltip")
 
+func get_position():
+	return $TooltipPosition.global_position
+
 func enable():
 	enabled = true
 

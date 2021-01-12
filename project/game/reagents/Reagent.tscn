@@ -200,8 +200,8 @@ TIMEOUT = 0.2
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 3 )
 
-[node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 37.5267, -48.1825 )
+[node name="TooltipPosition" parent="TooltipCollision" index="1"]
+position = Vector2( 37.6355, -48.3813 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

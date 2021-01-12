@@ -43,7 +43,7 @@ func create_reagent(dispenser, type, quick_place):
 	reagent.dispenser = dispenser
 	reagents.add_child(reagent)
 	reagent.rect_global_position = get_viewport().get_mouse_position()
-	reagent.disable() #Blocks tooltips
+	reagent.disable_tooltips()
 	
 	if not quick_place:
 		reagent.start_dragging()

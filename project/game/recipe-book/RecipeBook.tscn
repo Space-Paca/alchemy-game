@@ -64,18 +64,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Divider" type="TextureRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 41.5304
-margin_top = 169.847
-margin_right = 774.53
-margin_bottom = 229.847
-texture = ExtResource( 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Icon" type="TextureRect" parent="Background"]
 margin_left = 67.2957
 margin_top = 100.969
@@ -164,18 +152,6 @@ alignment = 1
 [node name="Lower" type="HBoxContainer" parent="Background/HandRect/CenterContainer/HandReagents"]
 custom_constants/separation = 0
 alignment = 1
-
-[node name="LowerDivider" type="TextureRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 8.23267
-margin_top = 752.559
-margin_right = 741.232
-margin_bottom = 812.559
-texture = ExtResource( 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TagButtons" type="VBoxContainer" parent="Background"]
 margin_left = 772.473
@@ -334,6 +310,30 @@ margin_right = 35.8469
 margin_bottom = 28.0056
 custom_fonts/font = ExtResource( 8 )
 text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpperDivider" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 41.5304
+margin_top = 169.847
+margin_right = 774.53
+margin_bottom = 229.847
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LowerDivider" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 8.23267
+margin_top = 752.559
+margin_right = 741.232
+margin_bottom = 812.559
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

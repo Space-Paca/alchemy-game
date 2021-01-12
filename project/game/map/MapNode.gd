@@ -33,7 +33,6 @@ var is_revealed := false
 var type := EMPTY
 var mouse_over = false
 var tooltips_enabled := false
-var block_tooltips := false
 var camera = null
 
 func _process(dt):
@@ -45,13 +44,13 @@ func _process(dt):
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
 
 
-func disable():
-	disable_tooltips()
-	block_tooltips = true
+func disable_tooltips():
+	remove_tooltips()
+	$TooltipCollision.disable()
 
 
-func enable():
-	block_tooltips = false
+func enable_tooltips():
+	$TooltipCollision.enable()
 
 
 func get_alpha():
@@ -89,7 +88,7 @@ func should_autoreveal() -> bool:
 	return type in [EMPTY, SHOP, REST, SMITH, LABORATORY, TREASURE]
 
 
-func disable_tooltips():
+func remove_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
@@ -116,14 +115,14 @@ func _on_Button_mouse_exited():
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips or type == EMPTY:
+	if type == EMPTY:
 		return
 	
 	tooltips_enabled = true
 	var tooltip = get_node_tooltip()
-	TooltipLayer.add_tooltip($TooltipPosition.global_position - camera.get_offset(), \
+	TooltipLayer.add_tooltip($TooltipCollision.get_position() - camera.get_offset(), \
 							tooltip.title, tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 
 
 func _on_TooltipCollision_disable_tooltip():
-	disable_tooltips()
+	remove_tooltips()

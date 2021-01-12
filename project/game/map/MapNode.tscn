@@ -33,8 +33,8 @@ __meta__ = {
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )
 
-[node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( -107.799, -161.253 )
+[node name="TooltipPosition" parent="TooltipCollision" index="1"]
+position = Vector2( -108.53, -161.145 )
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

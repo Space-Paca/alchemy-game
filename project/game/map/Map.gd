@@ -83,9 +83,7 @@ func set_disabled(toggle:bool):
 
 func enable():
 	show()
-	for node in $Nodes.get_children():
-		if node.is_revealed:
-			node.enable()
+	enable_tooltips()
 	floor_label.show()
 	update_camera = true
 	if camera_last_pos:
@@ -94,13 +92,21 @@ func enable():
 
 func disable():
 	hide()
-	for node in $Nodes.get_children():
-		if node.is_revealed:
-			node.disable()
+	disable_tooltips()
 	floor_label.hide()
 	update_camera = false
 	camera_last_pos = camera.position
 	reset_camera()
+
+func enable_tooltips():
+	for node in $Nodes.get_children():
+		if node.is_revealed:
+			node.enable_tooltips()
+
+func disable_tooltips():
+	for node in $Nodes.get_children():
+		if node.is_revealed:
+			node.disable_tooltips()
 
 
 func recipe_toogle(active : bool):
@@ -108,6 +114,10 @@ func recipe_toogle(active : bool):
 		return
 	
 	floor_label.visible = !active
+	if active:
+		disable_tooltips()
+	else:
+		enable_tooltips()
 
 
 func set_level(level:int):
@@ -245,7 +255,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 			
 			### NODE CREATION ###
 			var new_node : MapNode = MAP_NODE_SCENE.instance()
-			new_node.disable()
+			new_node.disable_tooltips()
 			new_node.modulate.a = 0
 			new_node.set_camera($Camera)
 			nodes.add_child(new_node)
@@ -347,7 +357,7 @@ func reveal_paths(node:MapNode):
 
 func _on_path_reached(node:MapNode):
 	node.fade_in()
-	node.enable()
+	node.enable_tooltips()
 	if node.should_autoreveal() or\
 	   Debug.reveal_map or\
 	   (player and player.has_artifact("reveal_map")):

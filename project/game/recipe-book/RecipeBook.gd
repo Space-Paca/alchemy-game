@@ -141,6 +141,9 @@ func create_hand(battle):
 			hand_container.rect_scale = Vector2(1, 1)
 			hand_container.rect_position -= (hand_container.rect_size*.2)/2
 	
+	if visible:
+		enable_tooltips()
+	
 
 
 func remove_hand():
@@ -156,9 +159,7 @@ func remove_hand():
 
 func enable_tooltips():
 	#Hand reagents
-	for display in upper_hand.get_children():
-		display.enable_tooltips()
-	for display in lower_hand.get_children():
+	for display in hand_reagents:
 		display.enable_tooltips()
 	#Recipes
 	for display in recipe_grid.get_children():
@@ -170,9 +171,7 @@ func enable_tooltips():
 
 func disable_tooltips():
 	#Hand reagents
-	for display in upper_hand.get_children():
-		display.disable_tooltips()
-	for display in lower_hand.get_children():
+	for display in hand_reagents:
 		display.disable_tooltips()
 	#Recipes
 	for display in recipe_grid.get_children():
@@ -218,6 +217,8 @@ func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_reagents[i].set_reagent(reagents[i])
 	reapply_tag_and_filters()
+	if visible:
+		enable_tooltips()
 
 
 func update_bags():

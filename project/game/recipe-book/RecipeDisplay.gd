@@ -14,7 +14,6 @@ onready var mastery_progress = $Panel/MasteryProgress
 onready var mastery_label = $Panel/MasteryLabel
 onready var grid = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
 onready var title = $Panel/MarginContainer/VBoxContainer/Title
-onready var reagent_list = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList
 onready var left_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
 onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
 
@@ -121,6 +120,13 @@ func favorite_error():
 func enable_tooltips():
 	for reagent_amount in grid.get_children():
 		reagent_amount.enable_tooltips()
+	
+	if left_column:
+		for reagent_amount in left_column.get_children():
+			reagent_amount.enable_tooltips()
+	if right_column:
+		for reagent_amount in right_column.get_children():
+			reagent_amount.enable_tooltips()
 
 
 func disable_tooltips():

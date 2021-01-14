@@ -162,7 +162,10 @@ func enable_tooltips():
 		display.enable_tooltips()
 	#Recipes
 	for display in recipe_grid.get_children():
-		display.enable_tooltips()
+		if display.visible:
+			display.enable_tooltips()
+		else:
+			display.disable_tooltips()
 
 
 func disable_tooltips():
@@ -359,6 +362,8 @@ func tag_all_combinations():
 func update_recipes_shown():
 	for recipe_display in recipe_displays.values():
 		recipe_display.visible = recipe_display.tagged and recipe_display.filtered
+	if visible:
+		enable_tooltips()
 
 
 func reset_recipe_visibility():

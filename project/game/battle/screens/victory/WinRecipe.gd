@@ -15,6 +15,22 @@ var discover_all = false
 func _ready():
 	for reagent in grid.get_children():
 		reagent.set_mode("grid")
+	for reagent in reagent_list.get_children():
+		reagent.set_mode("blank")
+
+
+func enable_tooltips():
+	for reagent in grid.get_children():
+		reagent.enable_tooltips()
+	for reagent in reagent_list.get_children():
+		reagent.enable_tooltips()
+
+
+func disable_tooltips():
+	for reagent in grid.get_children():
+		reagent.disable_tooltips()
+	for reagent in reagent_list.get_children():
+		reagent.disable_tooltips()
 
 
 func set_combination(_combination: Combination):
@@ -46,7 +62,8 @@ func set_combination(_combination: Combination):
 	var i = 0
 	for reagent in combination.reagent_amounts:
 		for j in combination.reagent_amounts[reagent]:
-			reagent_list.get_child(i).texture = ReagentDB.get_from_name(reagent).image
+			var display = reagent_list.get_child(i)
+			display.set_reagent(reagent)
 			i += 1
 
 

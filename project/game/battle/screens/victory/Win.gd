@@ -74,12 +74,22 @@ func set_combinations(combinations: Array):
 				recipes_button.hide()
 			print("Win.gd: Not enough combinations to fill victory screen")
 			recipe_displays[i].hide()
-	
+
+
+func enable_tooltips():
+	for recipe in recipe_displays:
+		recipe.enable_tooltips()
+
+
+func disable_tooltips():
+	for recipe in recipe_displays:
+		recipe.disable_tooltips()
 
 
 func display():
 	bg.show()
 	enable_buttons()
+	enable_tooltips()
 
 
 func change_state(new_state:int):
@@ -166,6 +176,7 @@ func _on_WinRecipe_chosen(chosen_recipe):
 	for recipe_display in recipe_displays:
 		if recipe_display != chosen_recipe:
 			recipe_display.hide()
+			recipe_display.disable_tooltips()
 	
 	recipes_button.hide()
 	back_button.hide()

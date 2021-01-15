@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/ui/player-info/bg paper.png" type="Texture" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://game/ui/PlayerInfo.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/ui/Coin Icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/player-info/down_arrow.png" type="Texture" id=8]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -15,12 +16,18 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="InputEventKey" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25, 25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25, 25 )
+
+[sub_resource type="InputEventKey" id=4]
 pressed = true
 scancode = 16777218
 
-[sub_resource type="ShortCut" id=3]
-shortcut = SubResource( 2 )
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
 [node name="PlayerInfo" type="Control"]
 anchor_right = 1.0
@@ -96,6 +103,16 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "100"
 valign = 1
 
+[node name="TooltipCollision" parent="BG/CurrencyContainer/Gold" instance=ExtResource( 9 )]
+position = Vector2( 20.6595, 22.2487 )
+
+[node name="CollisionShape2D" parent="BG/CurrencyContainer/Gold/TooltipCollision" index="0"]
+position = Vector2( -1.58917, -1.58919 )
+shape = SubResource( 2 )
+
+[node name="TooltipPosition" parent="BG/CurrencyContainer/Gold/TooltipCollision" index="1"]
+position = Vector2( 96.4743, -26.258 )
+
 [node name="Pearls" type="HBoxContainer" parent="BG/CurrencyContainer"]
 margin_left = 184.0
 margin_right = 298.0
@@ -124,6 +141,16 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "100"
 valign = 1
 
+[node name="TooltipCollision" parent="BG/CurrencyContainer/Pearls" instance=ExtResource( 9 )]
+position = Vector2( 21.719, 23.3082 )
+
+[node name="CollisionShape2D" parent="BG/CurrencyContainer/Pearls/TooltipCollision" index="0"]
+position = Vector2( -1.05945, -0.529724 )
+shape = SubResource( 3 )
+
+[node name="TooltipPosition" parent="BG/CurrencyContainer/Pearls/TooltipCollision" index="1"]
+position = Vector2( 92.7662, -26.258 )
+
 [node name="DownButton" type="TextureButton" parent="BG"]
 visible = false
 anchor_left = 0.5
@@ -133,8 +160,16 @@ anchor_bottom = 1.0
 margin_left = -38.0
 margin_top = -50.0
 margin_right = 38.0
-shortcut = SubResource( 3 )
+shortcut = SubResource( 5 )
 texture_normal = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="disable_tooltip" from="BG/CurrencyContainer/Gold/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "gold" ]]
+[connection signal="enable_tooltip" from="BG/CurrencyContainer/Gold/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "gold" ]]
+[connection signal="disable_tooltip" from="BG/CurrencyContainer/Pearls/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "pearl" ]]
+[connection signal="enable_tooltip" from="BG/CurrencyContainer/Pearls/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "pearl" ]]
 [connection signal="pressed" from="BG/DownButton" to="." method="_on_DownButton_pressed"]
+
+[editable path="BG/CurrencyContainer/Gold/TooltipCollision"]
+
+[editable path="BG/CurrencyContainer/Pearls/TooltipCollision"]

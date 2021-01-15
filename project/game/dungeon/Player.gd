@@ -37,7 +37,7 @@ func _ready():
 	hand_size = HAND_SIZES[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	gold = initial_gold
-	pearls = 10
+	pearls = 0
 	
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()

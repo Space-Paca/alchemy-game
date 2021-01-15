@@ -6,8 +6,9 @@
 [ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/pearl_button.png" type="Texture" id=8]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 72

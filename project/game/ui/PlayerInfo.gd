@@ -10,11 +10,16 @@ onready var healthbar = $BG/HealthBar
 onready var portrait = $BG/Portrait
 onready var artifacts = $BG/Artifacts
 onready var tween = $Tween
+onready var gold_tooltip =  $BG/CurrencyContainer/Gold/TooltipCollision
+onready var pearl_tooltip =  $BG/CurrencyContainer/Pearls/TooltipCollision
 
 const TWEEN_DURATION = .7
 const HIDDEN_POSITION = Vector2(660, -627)
 const SHOWING_POSITION = Vector2(660, -400)
+const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
+const GOLD_TEXTURE = preload("res://assets/images/ui/Coin Icon.png")
 
+var tooltip_enabled = false
 
 func set_player(player: Player):
 	# warning-ignore:return_value_discarded
@@ -63,6 +68,49 @@ func animation_show():
 	button.disabled = false
 
 
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
+
+
+func get_tooltip_data(type):
+	var tooltip = {}
+	tooltip.text = ""
+	if type == "gold":
+		tooltip.title = "Gold"
+		tooltip.title_image = GOLD_TEXTURE
+		tooltip.subtitle = "Common Currency"
+	elif type == "pearl":
+		tooltip.title = "Pearls"
+		tooltip.title_image = PEARL_TEXTURE
+		tooltip.subtitle = "Rare Currency"
+	else:
+		assert(false, "Not a valid tooltip type: " + str(type))
+	
+	return tooltip
+
+
 func _on_DownButton_pressed():
 	animation_hide()
 	emit_signal("button_pressed")
+
+
+func _on_TooltipCollision_disable_tooltip(_type):
+	if tooltip_enabled:
+		remove_tooltips()
+
+
+func _on_TooltipCollision_enable_tooltip(type):
+	var tooltip
+	if type == "gold":
+		tooltip = gold_tooltip
+	elif type == "pearl":
+		tooltip = pearl_tooltip
+	else:
+		assert(false, "Not a valid tooltip type: " + str(type))
+	
+	tooltip_enabled = true
+	var tip = get_tooltip_data(type)
+	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)

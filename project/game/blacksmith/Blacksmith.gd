@@ -212,7 +212,7 @@ func _on_TooltipCollision_disable_tooltip(type : String):
 	else:
 		assert(false, "Not a valid type of tooltip collision: " + str(type))
 	
-	if tooltip.enabled:
+	if tooltip.enabled and tooltips_enabled:
 		remove_tooltips()
 
 func _on_TooltipCollision_enable_tooltip(type : String):

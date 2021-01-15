@@ -5,13 +5,14 @@
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/arrow.webp" type="Texture" id=5]
-[ext_resource path="res://assets/images/ui/crystal violet.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/background/reagent smith.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
 [ext_resource path="res://game/blacksmith/ReagentTransmuted.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=12]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 59

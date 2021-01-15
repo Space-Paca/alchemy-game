@@ -720,3 +720,7 @@ func _on_MessageLayer_favorite_recipe(combination):
 
 func _on_player_reveal_map():
 	map.reveal_all_paths()
+
+
+func _on_PauseButton_pressed():
+	$PauseScreen.toggle_pause()

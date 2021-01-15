@@ -11,7 +11,7 @@ signal battle_won
 signal floor_selected(floor_number)
 signal test_map_creation
 
-const VERSION := "v0.1.2"
+const VERSION := "v0.1.3"
 const MAX_FLOOR := 3
 
 var floor_to_go := -1

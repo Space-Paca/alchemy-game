@@ -21,10 +21,13 @@ func _ready():
 	EventManager.connect("left", self, "_on_event_left")
 
 
-func load_event(new_event: Event, player: Player):
+func load_event(new_event: Event, player: Player, override_text: String = ""):
 	event = new_event
 	title_label.text = event.title
-	text_label.text = event.text
+	if override_text != "":
+		text_label.bbcode_text = override_text
+	else:
+		text_label.bbcode_text = event.text
 	image.texture = IMAGES[event.type]
 	
 	for child in vbox.get_children():

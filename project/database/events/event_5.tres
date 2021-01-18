@@ -1,0 +1,39 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 5
+title = "A Peculiar Trade"
+text = "You come across a small hut, and the smell of fresh herbs invite you in.
+
+An old-woman, with bushy eyebrows and vulpine eyes, welcomes you, and after peeking at the dangling reagents from your pouch, speaks with a raspy voice:
+
+\"What some lovely trinkets you have there, care to make a deal? An offer I lay bare, one-for-one, what a steal!\"
+
+She brings up a relative large bag, it's contents hidden from sight. You may grab bindly from it, but for each one a reagent you must leave behind."
+leave_text_1 = "After leaving your part of the agreement upon a wooden table, you reach for the bag and collect you rewards.
+
+\"You got what you received, and now you must leave, as my eyes have perceived, you must be in a hurry...
+No time for sighs, no reason for goodbyes, come back anytime, have a safe journey!\"
+
+The old-woman smiles delightfully while you step out the hut and resume your adventure."
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = "You are happy with what you got, and don't trust the unnerving smile from the old-woman. You leave the hut as quickly as you entered and resume your adventure."
+type = 0
+floor_appearance = {
+1: true,
+2: true,
+3: true
+}
+options = [ {
+"args": [  ],
+"button_text": "Exchange reagents.",
+"callback": "none"
+}, {
+"args": [  ],
+"button_text": "Leave the hut.",
+"callback": "leave_option"
+} ]

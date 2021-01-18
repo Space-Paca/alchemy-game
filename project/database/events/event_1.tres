@@ -5,8 +5,36 @@
 [resource]
 script = ExtResource( 1 )
 id = 1
-title = "Ramblin' Gamblin Man"
-text = "Hey, wanna gamble?"
+title = "Travellin' Gamblin' Man"
+text = "While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
+
+(woobly text)\"Hey, wanna gamble?\"(/woobly text) you hear from the figure as a wide smile emerges from the shadowy hood.
+
+His hand stretches to [i]small[/i] table in front of him, something you're sure wasn't there before. Two cards lay face down.
+
+\"A game of chance huh\" you think to yourself. This might be an opportunity to make a few coins... (smaller text)if you feel luck is by your side.(/smaller text)"
+leave_text_1 = "You pick a card and look at it.
+
+Looking back at you is golden painting of a sun. A warm feeling of relief fills your mind.
+
+A maniacal laugh turns your attention forward across the table, but you see only empty space where the cloaked figure used to be...
+
+It is gone, but a shimmering pile of coins sits above the table.
+
+(highlight)You gain <amount> gold.(/highlight)"
+leave_text_2 = "You pick a card and look at it.
+
+Looking back at you is a crimson painting of death. Shivers run down your spine.
+
+A maniacal laugh turns your attention forward across the table, but you see only empty space where the cloaked figure used to be...
+
+It is gone, along with your coins."
+leave_text_3 = ""
+leave_text_4 = "You don't trust luck is by your side, and you certainly don't feel confortable interacting with unknown creepy figures.
+
+As you hesitate to accept the gambling offer, the hooded disappears in the blink of an eye. Maybe for the best.
+
+You gather your belongings and resume your journey."
 type = 0
 floor_appearance = {
 1: true,
@@ -27,6 +55,6 @@ options = [ {
 "callback": "bet"
 }, {
 "args": [  ],
-"button_text": "Leave.",
-"callback": "leave"
+"button_text": "Don't gamble.",
+"callback": "leave_option"
 } ]

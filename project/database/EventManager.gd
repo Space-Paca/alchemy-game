@@ -3,6 +3,17 @@ extends Node
 signal left
 
 const FLOORS = [1, 2, 3]
+# Text effects
+const FORMAT_DICT = {
+		"(highlight)": "[color=#ffff00]",
+		"(/highlight)": "[/color]",
+		"(woobly text)": "[shake]",
+		"(/woobly text)": "[/shake]",
+		"(smaller text)": "[i]",
+		"(/smaller text)": "[/i]",
+		"(waving text)": "[wave amp=50 freq=2]",
+		"(/waving text)": "[/wave]"
+}
 
 var events_by_id := {}
 var events_by_floor := {1: [], 2: [], 3: []}
@@ -22,11 +33,24 @@ func _ready():
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
 				var event := load(str(path, file_name)) as Event
 				events_by_id[event.id] = event
+				event.text = format(event.text)
+				event.leave_text_1 = format(event.leave_text_1)
+				event.leave_text_2 = format(event.leave_text_2)
+				event.leave_text_3 = format(event.leave_text_3)
+				event.leave_text_4 = format(event.leave_text_4)
 			file_name = dir.get_next()
 	else:
 		print("EventManager: An error occurred when trying to access the path.")
 	
 	dummy_leave_event = events_by_id[-1]
+
+
+func format(text: String) -> String:
+	for key in FORMAT_DICT.keys():
+		for i in text.count(key):
+			text = text.replace(key, FORMAT_DICT[key])
+	
+	return text
 
 
 func reset_events():
@@ -40,6 +64,9 @@ func reset_events():
 	
 	for f in FLOORS:
 		events_by_floor[f].shuffle()
+	
+	# Reset event 4 (hole) chances and reward
+	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
 
 
 func get_random_event(current_floor: int) -> Event:
@@ -48,6 +75,9 @@ func get_random_event(current_floor: int) -> Event:
 		dummy_leave_event.title = "No event to show"
 		dummy_leave_event.text = str("Not enough events for floor ", current_floor)
 		return dummy_leave_event
+	
+	current_event = events_by_id[3]
+	return events_by_id[3]
 	
 	assert(events_by_floor[current_floor].size())
 	current_event = events_by_floor[current_floor].pop_front()
@@ -58,14 +88,22 @@ func get_random_event(current_floor: int) -> Event:
 	return current_event
 
 
-####### EVENT CALLBACKS #######
+####### GENERAL EVENT CALLBACKS #######
 
 func none(_event_display, _player):
 	assert(false, "No callback set for this option")
 
 
+func trigger_battle():
+	pass
+
+
 func leave(_event_display, _player):
 	emit_signal("left")
+
+
+func leave_option(event_display, player):
+	load_leave_event(event_display, player, current_event.leave_text_4)
 
 
 func load_leave_event(event_display, player, text: String, title := "", type := -1):
@@ -75,10 +113,15 @@ func load_leave_event(event_display, player, text: String, title := "", type := 
 	load_new_event(event_display, player, dummy_leave_event.id)
 
 
-func load_new_event(event_display, player, new_event_id: int):
-	event_display.load_event(events_by_id[new_event_id], player)
+func load_new_event(event_display, player, new_event_id: int,
+		override_text : String = ""):
+	event_display.load_event(events_by_id[new_event_id], player, override_text)
+	current_event = events_by_id[new_event_id]
 
 
+####### SPECIFIC EVENT CALLBACKS #######
+
+#1
 func bet(event_display, player, amount: int):
 	if not player.spend_gold(amount):
 		AudioManager.play_sfx("error")
@@ -86,12 +129,13 @@ func bet(event_display, player, amount: int):
 	
 	if randf() > .5:
 		player.add_gold(2 * amount)
-		load_leave_event(event_display, player,
-				"Congratulations, you won %d gold!" % amount)
+		var text : String = current_event.leave_text_1
+		text = text.replace("<amount>", str(2 * amount))
+		load_leave_event(event_display, player, text)
 	else:
-		load_leave_event(event_display, player, "Too bad, you lost!")
+		load_leave_event(event_display, player, current_event.leave_text_2)
 
-
+#2
 func well(event_display, player, amount: int):
 	if not player.spend_gold(amount):
 		AudioManager.play_sfx("error")
@@ -103,18 +147,56 @@ func well(event_display, player, amount: int):
 		if rand < .5:
 			won = true
 		elif rand < .9:
-			## DAR ARTEFATO INCOMUM
-			load_leave_event(event_display, player,
-					"The well rewarded you with an uncommon artifact!")
+			var artifacts : Array = ArtifactDB.get_artifacts("uncommon")
+			artifacts.shuffle()
+			var rewarded = false
+			for artifact in artifacts:
+				if not player.has_artifact(artifact):
+					AudioManager.play_sfx("get_artifact")
+					player.add_artifact(artifact)
+					rewarded = true
+					break
+			
+			assert(rewarded, "Event id 2: Artifact not rewarded")
+			
+			load_leave_event(event_display, player, current_event.leave_text_2)
 			return
 	else:
 		var chance = {5: .1, 10: .25, 30: .8}
 		won = randf() < chance[amount]
 	
 	if won:
-		player.add_gold(100)
-		load_leave_event(event_display, player,
-				"The well rewarded you with 100 gold!")
+		var reward = 100
+		player.add_gold(reward)
+		var text = current_event.leave_text_1.replace("<amount>", str(reward))
+		load_leave_event(event_display, player, text)
 	else:
-		load_leave_event(event_display, player,
-				"Nothing happened.")
+		load_leave_event(event_display, player, current_event.leave_text_3)
+
+#3 / 4
+func hole(event_display, player, chance, reward):
+	if randf() < chance:
+		player.set_hp(int(ceil(player.hp / 2.0)))
+		player.add_gold(reward)
+		var text = current_event.leave_text_1.replace("<amount>", str(reward))
+		load_leave_event(event_display, player, text)
+	else:
+		player.add_gold(reward)
+		
+		# Increase next attempt's chance of failure and reward
+		events_by_id[4].options[0]["args"][0] *= 2
+		if events_by_id[4].options[0]["args"][0] > .4:
+			events_by_id[4].options[0]["args"][0] = .4
+		events_by_id[4].options[0]["args"][1] *= 2
+		
+		var text = events_by_id[4].text.replace("<amount>", str(reward))
+		
+		load_new_event(event_display, player, 4, text)
+
+# 5
+
+
+
+# 6
+func event_6(event_display, player):
+	pass

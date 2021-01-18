@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/background/events.png" type="Texture" id=1]
 [ext_resource path="res://game/event/EventDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/events/event_luck.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -13,8 +14,12 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="DynamicFont" id=2]
+size = 36
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=3]
 length = 64.0
 loop = true
 tracks/0/type = "value"
@@ -97,18 +102,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="VBox/TextRect/TextContainer"]
+[node name="Text" type="RichTextLabel" parent="VBox/TextRect/TextContainer"]
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 850.0
 margin_bottom = 550.0
 rect_min_size = Vector2( 800, 500 )
-custom_fonts/font = ExtResource( 5 )
-text = "Body"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=50 freq=2]Body[/wave] [i]small[/i]"
+text = "Body small"
 
 [node name="Image" type="TextureRect" parent="."]
 margin_left = 1080.0
@@ -119,4 +123,4 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 3 )

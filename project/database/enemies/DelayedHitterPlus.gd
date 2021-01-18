@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/delayed hitter plus/idle.png"
-var name = "Delayed hitter"
+var name = "Dire Virulyn Prowler"
 var sfx = "stone_golem"
 var use_idle_sfx = false
 var hp = 65

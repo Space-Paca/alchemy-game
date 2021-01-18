@@ -1,6 +1,6 @@
 extends Reference
 
-var image = "res://assets/images/enemies/revenger/idle.png"
+var image = "res://assets/images/enemies/martyr/idle.png"
 var name = "Carapa Vindicator"
 var sfx = "toxic_slime"
 var use_idle_sfx = false

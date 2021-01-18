@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/small divider/idle.png"
-var name = "Small Divider"
+var name = "Plantling"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
 var hp = 10

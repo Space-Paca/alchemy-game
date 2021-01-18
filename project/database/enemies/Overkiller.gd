@@ -1,7 +1,7 @@
 extends Reference
 
-var image = "res://assets/images/enemies/self destructor/idle.png"
-var name = "Overkiller"
+var image = "res://assets/images/enemies/overkiller/idle.png"
+var name = "Soulbound Doll"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 60

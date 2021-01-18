@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/self destructor/idle.png"
-var name = "Self Destructor"
+var name = "Unstable Craggium"
 var sfx = "toxic_slime_minion"
 var use_idle_sfx = false
 var hp = 2

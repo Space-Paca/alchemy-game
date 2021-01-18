@@ -1,7 +1,7 @@
 extends Reference
 
-var image = "res://assets/images/enemies/curser/idle.png"
-var name = "Necromancer"
+var image = "res://assets/images/enemies/necromancer/idle.png"
+var name = "Reanimancer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 130

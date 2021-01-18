@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/elite dodger/idle.png"
-var name = "Elite Dodger"
+var name = "Queen Needler"
 var sfx = "eye_crab"
 var use_idle_sfx = true
 var hp = 45

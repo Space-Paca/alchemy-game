@@ -1,7 +1,7 @@
 extends Reference
 
-var image = "res://assets/images/enemies/small divider/idle.png"
-var name = "Healer"
+var image = "res://assets/images/enemies/healer/idle.png"
+var name = "Mender Homunculus"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 80

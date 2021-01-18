@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/boss1/idle.png"
-var name = "Boss1"
+var name = "Archmage Zopherus, the Profaner"
 var sfx = "boss_1"
 var use_idle_sfx = false
 var hp = 100

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/small piercing/idle.png"
-var name = "Baby Slasher"
+var name = "Needler Spawn"
 var sfx = "eye_crab_minion"
 var use_idle_sfx = false
 var hp = 5

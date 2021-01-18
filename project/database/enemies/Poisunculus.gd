@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/poison elite/idle.png"
-var name = "Monstrão"
+var name = "Subject #13"
 var sfx = "fat_monster"
 var use_idle_sfx = true
 var hp = 80

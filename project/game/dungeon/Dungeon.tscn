@@ -11,9 +11,9 @@
 [ext_resource path="res://game/event/EventDisplay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/images/ui/exit_button_hover.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/ui/exit_button_pressed.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/ui/exit_button_normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/ui/menu_idle.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/menu_mouser-over.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/menu_pressed.png" type="Texture" id=14]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -48,14 +48,13 @@ visible = false
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" type="TextureButton" parent="UI"]
-margin_left = 1848.55
-margin_top = 12.7751
-margin_right = 1904.55
-margin_bottom = 68.7751
-texture_normal = ExtResource( 14 )
+margin_left = 1782.08
+margin_top = 7.11824
+margin_right = 1912.08
+margin_bottom = 130.118
+texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 12 )
-expand = true
+texture_hover = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,4 +75,6 @@ __meta__ = {
 [connection signal="recipe_toggle" from="Laboratory" to="." method="_on_Laboratory_recipe_toggle"]
 [connection signal="closed" from="Treasure" to="." method="_on_Treasure_closed"]
 [connection signal="closed" from="EventDisplay" to="." method="_on_EventDisplay_closed"]
+[connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]
+[connection signal="mouse_entered" from="UI/PauseButton" to="." method="_on_PauseButton_mouse_entered"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]

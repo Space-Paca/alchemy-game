@@ -724,3 +724,11 @@ func _on_player_reveal_map():
 
 func _on_PauseButton_pressed():
 	$PauseScreen.toggle_pause()
+
+
+func _on_PauseButton_mouse_entered():
+	AudioManager.play_sfx("hover_menu_button")
+
+
+func _on_PauseButton_button_down():
+	AudioManager.play_sfx("click_menu_button")

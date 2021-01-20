@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 10
+title = "Cursed Knight"
+text = "At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, armored with an ebony-colored suit, shield and halberd.
+
+Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an odd feeling tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
+leave_text_1 = "You lift the halberd from the ground, and a surge of power instantly runs through your veins.
+But as a burning candle that bursts into flames, you feel as your life is now running out faster than before.
+
+You just hope your fate doesn't coincide with the knight's..."
+leave_text_2 = "You lift the shield from the ground, and a surge of invincibility pounds in your chest.
+But as a burning candle that shines the brightest, you feel as your life is now running out faster than before.
+
+You just hope your fate doesn't coincide with the knight's..."
+leave_text_3 = ""
+leave_text_4 = "You don't want to end up as another dead corpse, found by an adventurer as yourself. You leave the fallen knight alone and continue your journey."
+type = 2
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ "cursed_halberd" ],
+"button_text": "Get the halberd.",
+"callback": "get_artifact"
+}, {
+"args": [ "cursed_shield" ],
+"button_text": "Get the shield.",
+"callback": "get_artifact"
+}, {
+"args": [  ],
+"button_text": "Don't take anything.",
+"callback": "leave_option"
+} ]

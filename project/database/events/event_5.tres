@@ -22,11 +22,11 @@ The old-woman smiles delightfully while you step out the hut and resume your adv
 leave_text_2 = ""
 leave_text_3 = ""
 leave_text_4 = "You are happy with what you got, and don't trust the unnerving smile from the old-woman. You leave the hut as quickly as you entered and resume your adventure."
-type = 0
+type = 2
 floor_appearance = {
-1: true,
-2: true,
-3: true
+1: false,
+2: false,
+3: false
 }
 options = [ {
 "args": [  ],

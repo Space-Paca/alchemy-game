@@ -76,9 +76,6 @@ func get_random_event(current_floor: int) -> Event:
 		dummy_leave_event.text = str("Not enough events for floor ", current_floor)
 		return dummy_leave_event
 	
-	current_event = events_by_id[3]
-	return events_by_id[3]
-	
 	assert(events_by_floor[current_floor].size())
 	current_event = events_by_floor[current_floor].pop_front()
 	
@@ -92,10 +89,6 @@ func get_random_event(current_floor: int) -> Event:
 
 func none(_event_display, _player):
 	assert(false, "No callback set for this option")
-
-
-func trigger_battle():
-	pass
 
 
 func leave(_event_display, _player):
@@ -194,9 +187,32 @@ func hole(event_display, player, chance, reward):
 		load_new_event(event_display, player, 4, text)
 
 # 5
+# Troca até 3 reagentes do jogador por um número igual de reagentes aleatórios
 
 
-
-# 6
-func event_6(event_display, player):
+# 6 / 7 / 8
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+func artifact_battle(event_display, player, artifact_rarity: String,
+		encounter: Encounter, chance: float):
+#	if randf() < chance:
+#		check_encounter(encounter)
+#	else:
+#		encounter = null
+	
+	
 	pass
+	
+	
+	
+	
+	## LOAD ENCOUNTER
+	return
+	
+	
+	
+# warning-ignore:unreachable_code
+	load_leave_event(event_display, player, current_event.leave_text_2)

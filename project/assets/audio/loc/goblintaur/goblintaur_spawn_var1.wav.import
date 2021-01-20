@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goblintaur_spawn_var1.wav-7b3939cfae4137651b15e0f9bd61dbf8.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/goblintaur/goblintaur_spawn_var1.wav"
+dest_files=[ "res://.import/goblintaur_spawn_var1.wav-7b3939cfae4137651b15e0f9bd61dbf8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/turtle_spider_hit_var2.wav-6f00d93ae058c96d3680c663d1eefae8.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/turtle_spider/turtle_spider_hit_var2.wav"
+dest_files=[ "res://.import/turtle_spider_hit_var2.wav-6f00d93ae058c96d3680c663d1eefae8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

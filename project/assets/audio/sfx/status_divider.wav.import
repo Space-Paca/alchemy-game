@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_divider.wav-119e1e383034be4b3b530854a9578eb2.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/status_divider.wav"
+dest_files=[ "res://.import/status_divider.wav-119e1e383034be4b3b530854a9578eb2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

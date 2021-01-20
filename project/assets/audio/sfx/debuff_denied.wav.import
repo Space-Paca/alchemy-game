@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/debuff_denied.wav-755c79833e74e84a13d3ac3e6afe7622.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/debuff_denied.wav"
+dest_files=[ "res://.import/debuff_denied.wav-755c79833e74e84a13d3ac3e6afe7622.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

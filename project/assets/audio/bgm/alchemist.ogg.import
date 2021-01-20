@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/alchemist.ogg-95c638e741dd68c4932815b11558e5e1.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/alchemist.ogg"
+dest_files=[ "res://.import/alchemist.ogg-95c638e741dd68c4932815b11558e5e1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

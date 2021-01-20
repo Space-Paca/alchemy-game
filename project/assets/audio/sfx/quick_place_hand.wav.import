@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/quick_place_hand.wav-c5e10d6d7b65e7dc60a9378a9f7173e9.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/quick_place_hand.wav"
+dest_files=[ "res://.import/quick_place_hand.wav-c5e10d6d7b65e7dc60a9378a9f7173e9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

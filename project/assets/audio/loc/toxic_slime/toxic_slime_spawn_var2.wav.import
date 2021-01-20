@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toxic_slime_spawn_var2.wav-70b22985792640e72533815af7516f83.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/toxic_slime/toxic_slime_spawn_var2.wav"
+dest_files=[ "res://.import/toxic_slime_spawn_var2.wav-70b22985792640e72533815af7516f83.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toxic_slime_attack_var1.wav-9e44d795461e924982f7fb3f271694bf.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/toxic_slime/toxic_slime_attack_var1.wav"
+dest_files=[ "res://.import/toxic_slime_attack_var1.wav-9e44d795461e924982f7fb3f271694bf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

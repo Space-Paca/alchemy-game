@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/quick_place_grid.wav-cf86b886c4cd095ce7ad885a13570e77.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/quick_place_grid.wav"
+dest_files=[ "res://.import/quick_place_grid.wav-cf86b886c4cd095ce7ad885a13570e77.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

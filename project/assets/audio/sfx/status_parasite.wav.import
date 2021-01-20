@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_parasite.wav-4d86a5481e400e2094f3a4f686045d80.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/status_parasite.wav"
+dest_files=[ "res://.import/status_parasite.wav-4d86a5481e400e2094f3a4f686045d80.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

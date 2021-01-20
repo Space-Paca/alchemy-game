@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/damage_common_stronger.wav-f6794aee5cfec65de49a30c49eb4f57c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/damage_common_stronger.wav"
+dest_files=[ "res://.import/damage_common_stronger.wav-f6794aee5cfec65de49a30c49eb4f57c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

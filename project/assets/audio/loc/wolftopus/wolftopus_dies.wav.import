@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wolftopus_dies.wav-0eaeeeae53752ab54ad9c387949ffba8.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/wolftopus/wolftopus_dies.wav"
+dest_files=[ "res://.import/wolftopus_dies.wav-0eaeeeae53752ab54ad9c387949ffba8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

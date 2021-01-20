@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/battle_2_layer_3.ogg-388b7ca588766bc750dce5e4b600f98f.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/battle_2_layer_3.ogg"
+dest_files=[ "res://.import/battle_2_layer_3.ogg-388b7ca588766bc750dce5e4b600f98f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

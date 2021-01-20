@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/burning_reagent.wav-a4549ac27559b0ff8a478d05c698b5eb.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/burning_reagent.wav"
+dest_files=[ "res://.import/burning_reagent.wav-a4549ac27559b0ff8a478d05c698b5eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/eye_crab_minion_attack_var2.wav-c5a70188164ab6e578628849ed07f18a.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/eye_crab_minion/eye_crab_minion_attack_var2.wav"
+dest_files=[ "res://.import/eye_crab_minion_attack_var2.wav-c5a70188164ab6e578628849ed07f18a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

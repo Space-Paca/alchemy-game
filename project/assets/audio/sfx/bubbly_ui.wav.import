@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bubbly_ui.wav-81d2234120de307eee70cec3fd29ed5f.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/bubbly_ui.wav"
+dest_files=[ "res://.import/bubbly_ui.wav-81d2234120de307eee70cec3fd29ed5f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

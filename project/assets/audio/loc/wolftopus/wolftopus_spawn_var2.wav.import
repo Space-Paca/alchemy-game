@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wolftopus_spawn_var2.wav-61f672da8aa93ff0be04179ff5f8fa58.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/wolftopus/wolftopus_spawn_var2.wav"
+dest_files=[ "res://.import/wolftopus_spawn_var2.wav-61f672da8aa93ff0be04179ff5f8fa58.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/eye_crab_dies.wav-8bea515617ff7895e7f0efa915551f99.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/eye_crab/eye_crab_dies.wav"
+dest_files=[ "res://.import/eye_crab_dies.wav-8bea515617ff7895e7f0efa915551f99.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

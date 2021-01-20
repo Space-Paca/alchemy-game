@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stone_golem_hit_var1.wav-21ca877d94a31167081ee03c09441608.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/stone_golem/stone_golem_hit_var1.wav"
+dest_files=[ "res://.import/stone_golem_hit_var1.wav-21ca877d94a31167081ee03c09441608.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

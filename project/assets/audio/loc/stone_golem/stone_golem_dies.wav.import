@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stone_golem_dies.wav-c181e9606fbdb7d2a69300581e21434e.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/stone_golem/stone_golem_dies.wav"
+dest_files=[ "res://.import/stone_golem_dies.wav-c181e9606fbdb7d2a69300581e21434e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_evasion.wav-e120516a7631a45ee7b1d583cd7fda70.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/status_evasion.wav"
+dest_files=[ "res://.import/status_evasion.wav-e120516a7631a45ee7b1d583cd7fda70.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

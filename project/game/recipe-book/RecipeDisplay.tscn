@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/ui/star_off.png" type="Texture" id=1]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/images/ui/book/recipe_page.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/book/mastery_bar.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/book/mastery_bg.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -22,8 +25,13 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.635294, 0.333333, 0.333333, 1 )
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="RecipeDisplay" type="Control"]
 anchor_right = 1.0
@@ -151,9 +159,9 @@ autowrap = true
 
 [node name="MasteryLabel" type="Label" parent="Panel"]
 margin_left = 15.0
-margin_top = 275.0
+margin_top = 272.0
 margin_right = 287.0
-margin_bottom = 308.0
+margin_bottom = 305.0
 rect_min_size = Vector2( 272, 33 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -170,11 +178,20 @@ margin_right = 274.0
 margin_bottom = 337.0
 rect_min_size = Vector2( 250, 30 )
 custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 value = 50.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Border" type="TextureRect" parent="Panel/MasteryProgress"]
+margin_left = -7.35626
+margin_top = -4.44223
+margin_right = 262.644
+margin_bottom = 37.5578
+texture = ExtResource( 7 )
+expand = true
 
 [node name="Button" type="Button" parent="Panel"]
 anchor_right = 1.0

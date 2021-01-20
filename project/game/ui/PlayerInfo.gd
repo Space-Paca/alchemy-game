@@ -17,7 +17,7 @@ const TWEEN_DURATION = .7
 const HIDDEN_POSITION = Vector2(660, -627)
 const SHOWING_POSITION = Vector2(660, -400)
 const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
-const GOLD_TEXTURE = preload("res://assets/images/ui/Coin Icon.png")
+const GOLD_TEXTURE = preload("res://assets/images/ui/coin.png")
 
 var tooltip_enabled = false
 

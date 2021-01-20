@@ -35,6 +35,13 @@ var mouse_over = false
 var tooltips_enabled := false
 var camera = null
 
+
+func _ready():
+	randomize()
+	$Light2D.rotation = rand_range(0, 360)
+	$Light2D.texture_scale = rand_range(1.8, 2.7)
+
+
 func _process(dt):
 	if mouse_over and type != EMPTY:
 		$Button.rect_scale.x = min($Button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
@@ -60,6 +67,8 @@ func get_alpha():
 func fade_in():
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
 								.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($Light2D, "energy", 0, 1,
+							.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
 

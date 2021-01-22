@@ -277,9 +277,9 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 				untyped_nodes.append(new_node)
 			
 			# Add map line
-			var map_line := MapLine.new()
-			map_line.set_line(starting_pos.global_position, new_pos.global_position)
+			var map_line := MAP_LINE.instance()
 			lines.add_child(map_line)
+			map_line.set_line(starting_pos.global_position, new_pos.global_position)
 			starting_pos.node.map_lines.append(map_line)
 			
 			total_nodes -= 1

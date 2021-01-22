@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=1]
 [ext_resource path="res://game/map/MapNode.gd" type="Script" id=2]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/map/light_tex.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/map/light_tex_2.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/parchmentAncient.png-a923964bb87daf852739ffe73fe52b02.stex"
+path="res://.import/extra-icon2.png-2281777ba767eb69b87345c5a6de5628.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/parchmentAncient.png"
-dest_files=[ "res://.import/parchmentAncient.png-a923964bb87daf852739ffe73fe52b02.stex" ]
+source_file="res://assets/images/map/extra-icon2.png"
+dest_files=[ "res://.import/extra-icon2.png-2281777ba767eb69b87345c5a6de5628.stex" ]
 
 [params]
 

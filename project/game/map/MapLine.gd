@@ -27,15 +27,15 @@ func _ready():
 
 func begin_fill():
 	set_process(true)
-	for i in ball_amount:
-		var light = $Lights.get_child(i)
-		light.mode = Light2D.MODE_ADD
-		var dur = PATH_FILL_TIME/float(ball_amount)
-		$Tween.interpolate_property(light, "energy", 0.01, .3, dur, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-		$Tween.start()
-		yield(get_tree().create_timer(dur), "timeout")
-		light.mode = Light2D.MODE_MIX
-		light.energy = 1
+#	for i in ball_amount:
+#		var light = $Lights.get_child(i)
+#		light.mode = Light2D.MODE_ADD
+#		var dur = PATH_FILL_TIME/float(ball_amount)
+#		$Tween.interpolate_property(light, "energy", 0.01, .3, dur, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+#		$Tween.start()
+#		yield(get_tree().create_timer(dur), "timeout")
+#		light.mode = Light2D.MODE_MIX
+#		light.energy = 1
 
 func set_line(origin:Vector2, target:Vector2):
 	var dist := origin.distance_to(target) - MAP_NODE_SIZE
@@ -72,5 +72,13 @@ func _draw():
 		var pos := line_vector.clamped(i * BALL_DIST)
 		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
 		radius_multiplier = clamp(radius_multiplier, 0, 1)
+		var light = $Lights.get_child(i)
+		var energy = max(radius_multiplier, 0.01)
+		if energy < .9:
+			light.mode = Light2D.MODE_ADD
+			energy = clamp(energy, 0, .28)
+		else:
+			light.mode = Light2D.MODE_MIX
+		light.energy = energy
 		var size = BALL_SIZE * radius_multiplier
 		draw_texture_rect(balls[i], Rect2(pos - size / 2, size), false)

@@ -206,6 +206,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		initial_node = MAP_NODE_SCENE.instance()
 		initial_node.set_camera($Camera)
 		nodes.add_child(initial_node)
+		initial_node.light_up()
 		active_nodes.append(initial_node)
 		center_position.node = initial_node
 		var available_starting_positions : Array = [center_position]

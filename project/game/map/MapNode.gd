@@ -63,23 +63,23 @@ func enable_tooltips():
 func get_alpha():
 	return modulate.a
 
-
-func fade_in():
+func light_up():
 	var dur = .5
-	$Light2D.mode = Light2D.MODE_ADD
-	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
-								dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property($Light2D, "energy", 0.01, .3,
+	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
-	yield(get_tree().create_timer(dur), "timeout")
-	$Light2D.energy = .8
-	$Light2D.mode = Light2D.MODE_MIX
-	$Tween.interpolate_property($Light2D, "energy", $Light2D.energy, 1,
-							.4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.start()
 
+
+
+func fade_in():
+	var dur = .5
+	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
+								dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
+							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	is_revealed = true
 
 func set_camera(cam):
 	camera = cam

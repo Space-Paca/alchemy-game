@@ -1,28 +1,28 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/tooltip/Tooltip.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/tooltip_bg.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/intents/attack_normal.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 62
+size = 28
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 41
+size = 20
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 45
+use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [node name="Tooltip" type="Control"]
 anchor_right = 1.0
@@ -47,10 +47,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="."]
-margin_left = 33.2317
-margin_top = 24.4966
-margin_right = 80.2317
-margin_bottom = 59.4966
+margin_left = 33.0
+margin_top = 22.0
+margin_right = 108.0
+margin_bottom = 73.0
 custom_fonts/font = SubResource( 1 )
 text = "Title"
 valign = 1
@@ -59,10 +59,10 @@ __meta__ = {
 }
 
 [node name="Subtitle" type="Label" parent="."]
-margin_left = 32.4966
-margin_top = 52.4302
-margin_right = 58.4966
-margin_bottom = 87.4302
+margin_left = 33.0
+margin_top = 60.0
+margin_right = 69.0
+margin_bottom = 95.0
 custom_fonts/font = SubResource( 2 )
 text = "Sub"
 valign = 1

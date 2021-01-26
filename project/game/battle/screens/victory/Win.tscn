@@ -5,28 +5,27 @@
 [ext_resource path="res://assets/images/ui/Continue to map Button.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/pearl_button.png" type="Texture" id=8]
-
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 52
+size = 48
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [node name="Win" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -101,6 +100,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BG/MovingScreen/RecipesContainer/BackButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -17.0
+margin_bottom = -7.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 align = 1
@@ -148,9 +149,9 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
 margin_left = 84.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 234.0
-margin_bottom = 85.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 150, 80 )
 custom_fonts/font = SubResource( 3 )
 text = "x 1"
@@ -168,6 +169,8 @@ texture_normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -10.0
+margin_bottom = -10.0
 custom_fonts/font = SubResource( 3 )
 text = "Collect Pearls"
 align = 1
@@ -188,8 +191,9 @@ texture_normal = ExtResource( 1 )
 [node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -10.0
 margin_right = -10.9999
-margin_bottom = -5.99999
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 3 )
 text = "Get a recipe hint"
 align = 1
@@ -213,8 +217,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="BG/MovingScreen/ContinueButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -10.0
 margin_right = -12.0
-margin_bottom = -5.99999
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 3 )
 text = "Continue to map"
 align = 1

@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=5]
@@ -18,16 +18,17 @@
 [ext_resource path="res://assets/images/ui/book/Label Red Hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=18]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=19]
 
 [sub_resource type="DynamicFont" id=1]
-size = 128
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
+size = 64
+use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 2 )
+extra_spacing_top = -30
+font_data = ExtResource( 19 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 103
+size = 60
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -91,11 +92,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -19.0
+margin_top = -11.0
 margin_right = 31.5
-margin_bottom = 27.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "hand"
+text = "Hand"
 align = 1
 valign = 1
 __meta__ = {
@@ -114,11 +115,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -19.0
+margin_top = -11.0
 margin_right = 31.5
-margin_bottom = 27.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "deck"
+text = "Deck"
 align = 1
 valign = 1
 __meta__ = {
@@ -138,11 +139,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -19.0
-margin_right = 31.5
-margin_bottom = 27.0
+margin_top = -11.0
+margin_right = 55.5
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "incomplete"
+text = "Incomplete"
 align = 1
 valign = 1
 __meta__ = {
@@ -162,11 +163,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -19.0
+margin_top = -11.0
 margin_right = 31.5
-margin_bottom = 27.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "complete"
+text = "Complete"
 align = 1
 valign = 1
 __meta__ = {
@@ -186,11 +187,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -19.0
+margin_top = -11.0
 margin_right = 31.5
-margin_bottom = 27.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "all"
+text = "All"
 align = 1
 valign = 1
 __meta__ = {
@@ -220,10 +221,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -46.1531
-margin_top = -17.9944
-margin_right = 35.8469
-margin_bottom = 28.0056
+margin_left = -49.0
+margin_top = -2.00015
+margin_right = 52.0
+margin_bottom = 63.9998
 custom_fonts/font = ExtResource( 8 )
 text = "Close"
 __meta__ = {
@@ -249,11 +250,12 @@ margin_bottom = 167.969
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Background"]
-margin_left = 188.724
-margin_top = 116.071
-margin_right = 438.724
-margin_bottom = 187.071
+margin_left = 180.0
+margin_top = 105.0
+margin_right = 489.0
+margin_bottom = 176.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Recipe List"
 align = 1
 valign = 1
@@ -261,8 +263,8 @@ valign = 1
 [node name="NothingFound" type="Label" parent="Background"]
 margin_left = 169.124
 margin_top = 262.178
-margin_right = 626.124
-margin_bottom = 333.178
+margin_right = 620.124
+margin_bottom = 339.178
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "No recipes found..."

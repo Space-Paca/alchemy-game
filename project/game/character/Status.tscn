@@ -2,13 +2,14 @@
 
 [ext_resource path="res://game/character/Status.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=2]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 31
+size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -31,9 +32,9 @@ __meta__ = {
 
 [node name="Value" type="Label" parent="."]
 margin_left = 43.0
-margin_top = 5.0
-margin_right = 76.0
-margin_bottom = 39.0
+margin_top = 1.0
+margin_right = 73.0
+margin_bottom = 43.0
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {

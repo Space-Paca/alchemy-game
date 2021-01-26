@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fat_monster_hit_var3.wav-72c99f5443d6d15d5ef5006863e46cd9.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/final/fat_monster_hit_var3.wav"
+dest_files=[ "res://.import/fat_monster_hit_var3.wav-72c99f5443d6d15d5ef5006863e46cd9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

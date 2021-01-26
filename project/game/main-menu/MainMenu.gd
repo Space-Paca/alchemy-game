@@ -6,7 +6,6 @@ func _ready():
 	TutorialLayer.start("first_battle")
 # (❁´◡`❁)
 
-
 func _input(event):
 	if event.is_action_pressed("quit"):
 		$QuitConfirm.show()

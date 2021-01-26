@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toxic_slime_minion_attack_var2.wav-024f4e83f3f1cf66e3c7b26d06def3c6.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/final/toxic_slime_minion_attack_var2.wav"
+dest_files=[ "res://.import/toxic_slime_minion_attack_var2.wav-024f4e83f3f1cf66e3c7b26d06def3c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

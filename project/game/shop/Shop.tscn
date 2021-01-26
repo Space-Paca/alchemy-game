@@ -4,17 +4,17 @@
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://game/shop/ShopRecipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/shop.jpg" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 40
+size = 20
 use_filter = true
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 80
+size = 32
 use_filter = true
 font_data = ExtResource( 5 )
 
@@ -94,10 +94,10 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
 
-I bet you also would like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
+I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
 text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... hmm so tasty
 
-I bet you also would like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
+I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

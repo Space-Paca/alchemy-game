@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/background.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 256
@@ -12,6 +12,7 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 0.627451 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_top = -50
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -75,21 +76,21 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 0.627451 )
 use_mipmaps = true
 use_filter = true
-extra_spacing_top = 8
+extra_spacing_top = -5
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 62
+size = 27
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 128
+size = 80
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="TextureRect"]
 margin_right = 40.0
@@ -102,8 +103,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 use_parent_material = true
-margin_right = 800.0
-margin_bottom = 275.0
+margin_left = 20.0
+margin_right = 847.0
+margin_bottom = 330.0
 rect_min_size = Vector2( 800, 0 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -126,7 +128,7 @@ __meta__ = {
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
 margin_right = 300.0
-margin_bottom = 77.0
+margin_bottom = 91.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -136,9 +138,9 @@ custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "New Game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 107.0
+margin_top = 121.0
 margin_right = 300.0
-margin_bottom = 184.0
+margin_bottom = 212.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -166,6 +168,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+rect_min_size = Vector2( 851, 915 )
 custom_fonts/font = SubResource( 7 )
 text = "HOW TO PLAY:
 
@@ -201,8 +204,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_right = -9.99994
+margin_bottom = -15.0
+rect_min_size = Vector2( 580, 230 )
 custom_fonts/font = SubResource( 7 )
 text = "USEFUL SHORTCUT KEYS:
 
@@ -229,40 +233,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -458.5
-margin_top = -145.5
-margin_right = 458.5
-margin_bottom = 145.5
+margin_left = -652.0
+margin_top = -173.5
+margin_right = 652.0
+margin_bottom = 173.5
 custom_constants/separation = 100
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="QuitConfirm/VBoxContainer"]
-margin_right = 917.0
-margin_bottom = 71.0
+margin_right = 1304.0
+margin_bottom = 101.0
 custom_fonts/font = SubResource( 8 )
 text = "Are you sure you want to exit the game?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]
-margin_top = 171.0
-margin_right = 917.0
-margin_bottom = 291.0
+margin_top = 201.0
+margin_right = 1304.0
+margin_bottom = 347.0
 theme = ExtResource( 5 )
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Yes" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
-margin_left = 233.0
-margin_right = 433.0
-margin_bottom = 120.0
+margin_left = 427.0
+margin_right = 627.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "Yes"
 
 [node name="No" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
-margin_left = 483.0
-margin_right = 683.0
-margin_bottom = 120.0
+margin_left = 677.0
+margin_right = 877.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "No"
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]

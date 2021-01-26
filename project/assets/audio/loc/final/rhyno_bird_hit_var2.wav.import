@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rhyno_bird_hit_var2.wav-2cef4561c8764e2b4426304991b82399.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/final/rhyno_bird_hit_var2.wav"
+dest_files=[ "res://.import/rhyno_bird_hit_var2.wav-2cef4561c8764e2b4426304991b82399.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

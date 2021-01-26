@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dies.wav-f02c625511059aceed754e20a4a5ff44.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/loc/enemy_7/dies.wav"
+dest_files=[ "res://.import/dies.wav-f02c625511059aceed754e20a4a5ff44.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

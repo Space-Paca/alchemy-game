@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_4_dies.wav-38d27b96a952ae3547dffc995343de42.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/loc/enemy_4/enemy_4_dies.wav"
+dest_files=[ "res://.import/enemy_4_dies.wav-38d27b96a952ae3547dffc995343de42.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

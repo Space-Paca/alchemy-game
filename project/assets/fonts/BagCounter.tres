@@ -1,10 +1,12 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 42
+size = 36
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
+extra_spacing_top = -26
 font_data = ExtResource( 1 )

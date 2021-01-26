@@ -1,18 +1,18 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/ui/book/recipe_page.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=3]
 [ext_resource path="res://game/ui/RecipeDisplayBig.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 36
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 1 )
+size = 32
+font_data = ExtResource( 5 )
 
 [node name="RecipeDisplayBig" type="TextureRect"]
 anchor_right = 0.312
@@ -49,7 +49,7 @@ custom_constants/separation = 30
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 520.0
-margin_bottom = 45.0
+margin_bottom = 47.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "RECIPE NAME"
@@ -57,9 +57,9 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_left = 56.0
-margin_top = 75.0
+margin_top = 77.0
 margin_right = 463.0
-margin_bottom = 278.0
+margin_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -122,9 +122,9 @@ margin_left = 4.0
 margin_right = 4.0
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_top = 308.0
+margin_top = 310.0
 margin_right = 520.0
-margin_bottom = 344.0
+margin_bottom = 352.0
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

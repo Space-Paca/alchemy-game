@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/debug-menu/Debug.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 20
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -114,9 +114,8 @@ __meta__ = {
 [node name="FPS" type="Label" parent="Info"]
 visible = false
 margin_left = 40.0
-margin_top = 8.0
 margin_right = 40.0
-margin_bottom = 22.0
+margin_bottom = 27.0
 size_flags_horizontal = 8
 custom_fonts/font = SubResource( 1 )
 
@@ -131,9 +130,9 @@ __meta__ = {
 
 [node name="Version" type="Label" parent="Info"]
 margin_left = 40.0
-margin_top = 13.0
+margin_top = 35.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 61.0
 size_flags_horizontal = 8
 custom_fonts/font = SubResource( 1 )
 

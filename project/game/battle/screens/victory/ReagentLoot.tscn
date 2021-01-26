@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/reagents/putrid_beetle.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/battle/screens/victory/ReagentLoot.gd" type="Script" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/ui/Transmute 5 Gold button.png" type="Texture" id=5]
@@ -14,7 +14,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 52
+size = 48
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -49,8 +49,9 @@ texture_normal = ExtResource( 6 )
 [node name="Label" type="Label" parent="GetButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -7.0
 margin_right = -17.0
-margin_bottom = -5.99999
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 1 )
 text = "Get"
 align = 1
@@ -69,8 +70,9 @@ texture_normal = ExtResource( 5 )
 [node name="Label" type="Label" parent="SellButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -7.0
 margin_right = -9.99997
-margin_bottom = -5.99999
+margin_bottom = -22.0
 custom_fonts/font = SubResource( 2 )
 text = "Transmute (X gold)"
 align = 1

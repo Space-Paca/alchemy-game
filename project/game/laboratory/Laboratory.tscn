@@ -5,7 +5,6 @@
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/background/dungeon.jpg" type="Texture" id=5]
-[ext_resource path="res://assets/fonts/Medieval Sharp/MedievalSharp-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=9]
@@ -15,6 +14,7 @@
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=15]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 570, 520 )
@@ -25,7 +25,8 @@ outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+extra_spacing_top = -20
+font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "blink_red"
@@ -64,7 +65,7 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 16 )
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -200,10 +201,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Counter"]
-margin_left = 137.846
-margin_top = 144.659
-margin_right = 337.846
-margin_bottom = 265.659
+margin_left = 160.0
+margin_top = 135.0
+margin_right = 310.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "10"

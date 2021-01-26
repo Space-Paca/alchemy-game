@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/ui/MessageLayer.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/images/ui/pass_turn_hover.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -15,7 +15,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 90
+size = 50
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
@@ -99,17 +99,17 @@ __meta__ = {
 }
 
 [node name="FavoriteRecipe" type="Button" parent="Control/Buttons"]
-margin_left = 644.0
-margin_right = 1047.0
-margin_bottom = 114.0
+margin_left = 492.0
+margin_right = 1100.0
+margin_bottom = 146.0
 theme = ExtResource( 3 )
 text = "Favorite this Recipe"
 
 [node name="FavoriteError" type="Label" parent="Control/Buttons/FavoriteRecipe"]
-margin_left = -270.487
-margin_top = 116.069
-margin_right = 639.513
-margin_bottom = 219.069
+margin_left = -270.0
+margin_top = 100.0
+margin_right = 640.0
+margin_bottom = 247.0
 custom_fonts/font = SubResource( 2 )
 text = "Favorite this recipe on the recipes page
 after you unfavorite another!"
@@ -119,9 +119,9 @@ __meta__ = {
 }
 
 [node name="Continue" type="Button" parent="Control/Buttons"]
-margin_left = 1070.0
-margin_right = 1276.0
-margin_bottom = 114.0
+margin_left = 1123.0
+margin_right = 1427.0
+margin_bottom = 146.0
 theme = ExtResource( 3 )
 text = "Continue"
 __meta__ = {

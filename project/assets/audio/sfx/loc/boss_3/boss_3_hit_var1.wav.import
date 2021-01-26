@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss_3_hit_var1.wav-c84967a2b85e10d4e97eae18d8bdbff5.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/loc/boss_3/boss_3_hit_var1.wav"
+dest_files=[ "res://.import/boss_3_hit_var1.wav-c84967a2b85e10d4e97eae18d8bdbff5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

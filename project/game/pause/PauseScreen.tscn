@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/fonts/rm_almanack/rm_almanack.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 128
+size = 160
 outline_size = 5
 outline_color = Color( 0, 0, 0, 0.501961 )
 use_mipmaps = true
@@ -14,8 +14,8 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 128
-outline_size = 8
+size = 80
+outline_size = 6
 outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 4 )
@@ -26,7 +26,6 @@ layer = 4
 script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
@@ -36,13 +35,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Background"]
-margin_left = 631.5
-margin_top = 214.5
-margin_right = 1288.5
-margin_bottom = 493.5
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -399.0
+margin_top = 100.0
+margin_right = 399.0
+margin_bottom = 379.0
 custom_fonts/font = SubResource( 1 )
-text = "Game Paused
-"
+text = "Game Paused"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,37 +52,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -225.0
+margin_left = -350.0
 margin_top = -90.0
-margin_right = 225.0
-margin_bottom = 278.0
+margin_right = 350.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 700, 0 )
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Resume" type="Button" parent="Background/Menu"]
-margin_right = 450.0
-margin_bottom = 120.0
+margin_right = 700.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 450, 120 )
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Resume"
 
 [node name="Return" type="Button" parent="Background/Menu"]
-margin_top = 124.0
-margin_right = 450.0
-margin_bottom = 244.0
+margin_top = 166.0
+margin_right = 700.0
+margin_bottom = 312.0
 rect_min_size = Vector2( 450, 120 )
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Return to Main Menu"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
-margin_top = 248.0
-margin_right = 450.0
-margin_bottom = 368.0
+margin_top = 332.0
+margin_right = 700.0
+margin_bottom = 478.0
 rect_min_size = Vector2( 450, 120 )
-size_flags_horizontal = 4
+size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Exit to Desktop"
 
@@ -103,29 +105,29 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Background/ConfirmMenu"]
 margin_right = 450.0
-margin_bottom = 71.0
+margin_bottom = 101.0
 custom_fonts/font = SubResource( 2 )
 text = "Are you sure?"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ConfirmMenu"]
-margin_top = 171.0
+margin_top = 201.0
 margin_right = 450.0
-margin_bottom = 291.0
+margin_bottom = 347.0
 theme = ExtResource( 3 )
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Yes" type="Button" parent="Background/ConfirmMenu/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 120.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "Yes"
 
 [node name="No" type="Button" parent="Background/ConfirmMenu/HBoxContainer"]
 margin_left = 250.0
 margin_right = 450.0
-margin_bottom = 120.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "No"
 [connection signal="pressed" from="Background/Menu/Resume" to="." method="_on_Resume_pressed"]

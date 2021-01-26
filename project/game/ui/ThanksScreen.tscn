@@ -1,22 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/fonts/Deutsch.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/ui/ThanksScreen.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/background/win_screen.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 100
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 173
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 use_mipmaps = true
 use_filter = true
@@ -30,23 +24,18 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Thanks" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -957.33
-margin_top = -633.439
-margin_right = 962.67
-margin_bottom = 566.561
-custom_fonts/italics_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+anchor_right = 1.0
+margin_right = 0.00012207
+margin_bottom = 400.0
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]
-Thank you for playing!"
-text = "
-Thank you for playing!"
+bbcode_text = "[center]Thank you for playing![/center]"
+text = "Thank you for playing!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,9 +48,9 @@ margin_left = -2.82837
 margin_top = -141.421
 margin_right = -2.82825
 margin_bottom = 58.5786
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "[center]Check back in the future for more updates!"
+bbcode_text = "[center]Check back in the future for more updates![/center]"
 text = "Check back in the future for more updates!"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -171,6 +171,8 @@ Debug="*res://game/debug-menu/Debug.tscn"
 ArtifactCallbacks="*res://database/ArtifactCallbacks.gd"
 EventManager="*res://database/EventManager.gd"
 TutorialLayer="*res://game/tutorial/TutorialLayer.tscn"
+FileManager="*res://game/file-manager/FileManager.gd"
+Profile="*res://game/file-manager/Profile.gd"
 
 [debug]
 

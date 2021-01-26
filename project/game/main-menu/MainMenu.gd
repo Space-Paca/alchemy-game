@@ -3,7 +3,6 @@ extends TextureRect
 func _ready():
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
-	TutorialLayer.start("first_battle")
 # (❁´◡`❁)
 
 func _input(event):

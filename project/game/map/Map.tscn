@@ -12,8 +12,8 @@ light_mode = 2
 
 [sub_resource type="DynamicFont" id=2]
 size = 128
-outline_size = 3
-outline_color = Color( 0.945098, 0.945098, 0.945098, 0.0666667 )
+outline_size = 7
+outline_color = Color( 0.945098, 0.945098, 0.945098, 0.403922 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -20
@@ -266,7 +266,7 @@ margin_top = 32.0
 margin_right = 404.0
 margin_bottom = 182.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.184314, 0.137255, 0.137255, 1 )
 text = "Floor W"
 __meta__ = {
 "_edit_use_anchors_": false

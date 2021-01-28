@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/background/dungeon.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=6]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=9]
@@ -15,11 +16,20 @@
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=14]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 570, 520 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 100
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
@@ -28,8 +38,7 @@ use_filter = true
 extra_spacing_top = -20
 font_data = ExtResource( 16 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "blink_red"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:custom_colors/font_color")
 tracks/0/interp = 1
@@ -43,8 +52,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:custom_colors/font_color")
@@ -58,14 +66,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="DynamicFont" id=5]
-size = 60
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 16 )
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -130,12 +130,54 @@ __meta__ = {
 
 [node name="Book" type="Node2D" parent="."]
 
-[node name="BG" type="TextureRect" parent="Book"]
-margin_left = -820.0
-margin_right = 820.0
-margin_bottom = 1064.0
+[node name="Book3" type="TextureRect" parent="Book"]
+margin_left = -870.0
+margin_right = 842.0
+margin_bottom = 1080.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book2" type="TextureRect" parent="Book"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1080.0
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecipesButton" type="TextureButton" parent="Book"]
+margin_left = 766.342
+margin_top = 207.985
+margin_right = 1066.34
+margin_bottom = 337.985
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 13 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Book/RecipesButton"]
+margin_left = 24.4467
+margin_top = 6.22935
+margin_right = 256.447
+margin_bottom = 127.229
+custom_fonts/font = SubResource( 1 )
+text = "Recipes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book1" type="TextureRect" parent="Book"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1084.0
+texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -174,7 +216,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
 position = Vector2( 130.108, 8.48529 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Counter" type="Node2D" parent="."]
 position = Vector2( 857.682, 407.528 )
@@ -206,7 +248,7 @@ margin_top = 135.0
 margin_right = 310.0
 margin_bottom = 285.0
 rect_min_size = Vector2( 150, 150 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "10"
 align = 1
@@ -217,33 +259,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Counter"]
 autoplay = "default"
-anims/blink_red = SubResource( 3 )
-anims/default = SubResource( 4 )
-
-[node name="RecipesButton" type="TextureButton" parent="."]
-margin_left = 766.342
-margin_top = 207.985
-margin_right = 1066.34
-margin_bottom = 337.985
-texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 13 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="RecipesButton"]
-margin_left = 24.4467
-margin_top = 6.22935
-margin_right = 256.447
-margin_bottom = 127.229
-custom_fonts/font = SubResource( 5 )
-text = "Recipes"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anims/blink_red = SubResource( 4 )
+anims/default = SubResource( 5 )
 
 [node name="Grid" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5
@@ -265,6 +282,6 @@ hide_description = true
 [node name="Reagents" type="Node" parent="."]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]
+[connection signal="pressed" from="Book/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]
-[connection signal="pressed" from="RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]

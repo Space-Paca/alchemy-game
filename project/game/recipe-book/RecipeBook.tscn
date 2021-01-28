@@ -45,27 +45,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="Control" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 11.2246
-margin_top = -537.755
-margin_right = 829.225
-margin_bottom = 542.245
+margin_top = -540.0
+margin_right = 818.0
+margin_bottom = 540.0
+
+[node name="Book3" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1080.0
 texture = ExtResource( 3 )
-expand = true
-stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BookPages" type="TextureRect" parent="Background"]
-margin_left = 513.511
-margin_top = -2.82831
-margin_right = 860.511
-margin_bottom = 1077.17
-texture = ExtResource( 18 )
+[node name="CloseButton" type="TextureButton" parent="Background"]
+margin_left = 800.0
+margin_top = 60.0
+margin_right = 950.0
+margin_bottom = 158.0
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/CloseButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -2.00015
+margin_right = 52.0
+margin_bottom = 63.9998
+custom_fonts/font = ExtResource( 8 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book2" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1080.0
+texture = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,49 +225,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Book1" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1084.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
 margin_left = 508.724
 margin_top = 119.183
 margin_right = -309.276
 margin_bottom = -960.817
-
-[node name="CloseButton" type="TextureButton" parent="Background"]
-margin_left = 763.355
-margin_top = 54.8147
-margin_right = 913.355
-margin_bottom = 152.815
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Background/CloseButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = -2.00015
-margin_right = 52.0
-margin_bottom = 63.9998
-custom_fonts/font = ExtResource( 8 )
-text = "Close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Book" type="TextureRect" parent="Background"]
-margin_left = -820.119
-margin_top = -10.5946
-margin_right = 815.881
-margin_bottom = 1069.41
-texture = ExtResource( 17 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="Background"]
 margin_left = 67.2957
@@ -362,6 +360,8 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
 [connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered"]
@@ -373,5 +373,3 @@ __meta__ = {
 [connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
-[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]

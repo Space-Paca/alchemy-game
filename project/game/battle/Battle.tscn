@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -12,9 +12,10 @@
 [ext_resource path="res://game/ui/RecipeNameDisplay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/battle/player-ui/CombineButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/battle/FavoriteButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/background/forest.jpg" type="Texture" id=14]
 [ext_resource path="res://assets/images/background/forest_fg.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/ui/book_final.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/background/cave_fg.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/background/temple.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/background/village.jpg" type="Texture" id=19]
@@ -25,6 +26,7 @@
 [ext_resource path="res://assets/images/background/fire.jpg" type="Texture" id=24]
 [ext_resource path="res://assets/images/background/fire_fg.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/background/temple_bg.jpg" type="Texture" id=26]
+[ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=27]
 
 [sub_resource type="Animation" id=1]
 resource_name = "rotating"
@@ -107,13 +109,28 @@ __meta__ = {
 
 [node name="BGTween" type="Tween" parent="."]
 
-[node name="Book" type="TextureRect" parent="."]
+[node name="Book" type="Control" parent="."]
 margin_left = -818.0
-margin_right = 818.0
+margin_right = 904.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book3" type="TextureRect" parent="Book"]
+margin_left = -52.0
+margin_right = 1670.0
 margin_bottom = 1080.0
 texture = ExtResource( 16 )
-expand = true
-stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book2" type="TextureRect" parent="Book"]
+margin_left = -52.0
+margin_right = 1670.0
+margin_bottom = 1080.0
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,6 +146,15 @@ margin_left = 1570.62
 margin_top = 897.25
 margin_right = 1895.62
 margin_bottom = 995.256
+
+[node name="Book1" type="TextureRect" parent="Book"]
+margin_left = -52.0
+margin_right = 1670.0
+margin_bottom = 1084.0
+texture = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Grid" parent="Book" instance=ExtResource( 3 )]
 margin_left = 1048.0

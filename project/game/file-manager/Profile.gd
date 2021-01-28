@@ -26,3 +26,12 @@ func set_save_data(data):
 func get_tutorial(name):
 	assert(tutorials.has(name), "Not a valid tutorial: " + str(name))
 	return tutorials[name]
+
+func set_tutorial(name: String, value: bool):
+	assert(tutorials.has(name), "Not a valid tutorial: " + str(name))
+	tutorials[name] = value
+
+
+func reset_tutorials():
+	for keys in tutorials.keys():
+		tutorials[keys] = false

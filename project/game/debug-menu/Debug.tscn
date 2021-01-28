@@ -97,6 +97,12 @@ margin_right = 239.0
 margin_bottom = 336.0
 text = "Lower Recipes Threshold"
 
+[node name="Reset Tutorials" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 272.0
+margin_right = 239.0
+margin_bottom = 292.0
+text = "Reset Tutorials"
+
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -130,9 +136,9 @@ __meta__ = {
 
 [node name="Version" type="Label" parent="Info"]
 margin_left = 40.0
-margin_top = 35.0
+margin_top = 14.0
 margin_right = 40.0
-margin_bottom = 61.0
+margin_bottom = 40.0
 size_flags_horizontal = 8
 custom_fonts/font = SubResource( 1 )
 
@@ -154,3 +160,4 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Reset Tutorials" to="." method="_on_Reset_Tutorials_pressed"]

@@ -104,6 +104,11 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	if encounter.is_elite and player.has_artifact("vulture_mask"):
 		player.add_status("perm_strength", 5, true)
 	
+	if not Profile.get_tutorial("first_battle"):
+		TutorialLayer.start("first_battle")
+		yield(TutorialLayer, "tutorial_finished")
+		Profile.set_tutorial("first_battle", true)
+	
 	new_player_turn()
 
 

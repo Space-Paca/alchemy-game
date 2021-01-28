@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal tutorial_finished
+
 const ALPHA_SPEED = 2.5
 const POS_SPEED = 600
 const DIM_SPEED = 600
@@ -47,6 +49,7 @@ func _input(event):
 				active = false
 				regions = null
 				current_region = false
+				emit_signal("tutorial_finished")
 
 func start(name):
 	set_regions(DB.get(name))

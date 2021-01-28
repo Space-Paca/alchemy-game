@@ -88,3 +88,7 @@ func _on_Test_Map_Creation_pressed():
 
 func _on_RecipeThreshold_toggled(button_pressed):
 	lower_threshold = button_pressed
+
+
+func _on_Reset_Tutorials_pressed():
+	Profile.reset_tutorials()

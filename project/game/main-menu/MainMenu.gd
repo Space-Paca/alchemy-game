@@ -3,6 +3,8 @@ extends TextureRect
 func _ready():
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
+	
+	FileManager.load_game()
 # (❁´◡`❁)
 
 func _input(event):
@@ -22,11 +24,13 @@ func _on_NewGameButton_pressed():
 
 
 func _on_QuitButton_pressed():
-	get_tree().quit()
+	$QuitConfirm.show()
+	$ColorRect.hide()
+	$ColorRect2.hide()
 
 
 func _on_Yes_pressed():
-	get_tree().quit()
+	FileManager.save_and_quit()
 
 
 func _on_No_pressed():

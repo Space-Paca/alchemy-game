@@ -56,7 +56,7 @@ func _on_Exit_pressed():
 
 
 func _on_Yes_pressed():
-	get_tree().quit()
+	FileManager.save_and_quit()
 
 
 func _on_No_pressed():

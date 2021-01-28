@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/tutorial/TutorialLayer.gd" type="Script" id=1]
 [ext_resource path="res://game/tutorial/tutorial_mask.shader" type="Shader" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/dimension = Vector2( 200, 100 )
 shader_param/position = Vector2( 300, 100 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 43
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [node name="TutorialLayer" type="CanvasLayer"]
 layer = 6
@@ -18,6 +25,20 @@ material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 731.846
+margin_top = 85.3071
+margin_right = 1091.85
+margin_bottom = 146.307
+custom_fonts/font = SubResource( 2 )
+text = "This text label that is quite long but that's okay, we are all equal in God' eyes"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

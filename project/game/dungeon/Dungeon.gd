@@ -606,7 +606,10 @@ func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: b
 		if not battle.grid.show_combination_hint(combination):
 			AudioManager.play_sfx("error")
 			#TODO: Blink restrain/restricted slots
-
+		elif not Profile.get_tutorial("clicked_recipe"):
+			TutorialLayer.start("clicked_recipe")
+			yield(TutorialLayer, "tutorial_finished")
+			Profile.set_tutorial("clicked_recipe", true)
 
 func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 	favorite_combination(combination, button_pressed)

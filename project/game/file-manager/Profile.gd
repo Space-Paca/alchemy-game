@@ -3,6 +3,7 @@ extends Node
 var tutorials = {
 	"first_battle": false,
 	"recipe_book": false,
+	"clicked_recipe": false,
 	"map": false,
 }
 

@@ -423,6 +423,12 @@ func recipe_book_toggled(visible: bool):
 		discard_bag.disable()
 		grid.hide_effects()
 		hand.hide_effects()
+		
+		if not Profile.get_tutorial("recipe_book"):
+			TutorialLayer.start("recipe_book")
+			yield(TutorialLayer, "tutorial_finished")
+			Profile.set_tutorial("recipe_book", true)
+		
 	else:
 		player_ui.enable_tooltips()
 		recipes_button.show()
@@ -993,6 +999,7 @@ func _on_PassTurnButton_pressed():
 
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_book_toggle")
+	
 
 
 func _on_win_screen_continue_pressed():

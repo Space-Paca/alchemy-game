@@ -3,9 +3,10 @@ extends CanvasLayer
 signal tutorial_finished
 
 const ALPHA_SPEED = 2.5
-const POS_SPEED = 600
-const DIM_SPEED = 600
-const MARGIN = 8
+const POS_SPEED = 6
+const DIM_SPEED = 6
+const MARGIN = 3
+const DEFAULT_WIDTH = 400
 
 onready var rect = $Rect
 onready var label = $Label
@@ -36,7 +37,7 @@ func _process(delta):
 		if diff.length() <= POS_SPEED*delta:
 			pos = target_pos
 		else:
-			pos += diff.normalized()*POS_SPEED*delta
+			pos += diff*min(POS_SPEED*delta,1)
 		set_position(pos)
 		diff_sum += diff.length()
 		
@@ -47,7 +48,7 @@ func _process(delta):
 		if diff.length() <= DIM_SPEED*delta:
 			dimension = target_dim
 		else:
-			dimension += diff.normalized()*DIM_SPEED*delta
+			dimension += diff*min(DIM_SPEED*delta,1)
 		set_dimension(dimension)
 		diff_sum += diff.length()
 		
@@ -67,6 +68,7 @@ func _input(event):
 				regions = null
 				current_region = false
 				emit_signal("tutorial_finished")
+				rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
 				update_label_text()
 
@@ -79,6 +81,7 @@ func set_regions(new_regions):
 	set_position(regions[0].position + regions[0].dimension/2)
 	set_dimension(Vector2(0,0))
 	update_label_text()
+	rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	active = true
 
 
@@ -103,18 +106,26 @@ func update_label_text():
 	label.rect_size.y = 1
 	var region = regions[current_region]
 	label.text = region.text
+	if region.has("text_width"):
+		label.rect_size.x = region.text_width
+	else:
+		label.rect_size.x = DEFAULT_WIDTH
 	yield(get_tree(), "idle_frame")
 	
 	#Set tutorial text position
 	if region.text_side == "left":
 		label.rect_position.x = region.position.x - label.rect_size.x - MARGIN
 		label.rect_position.y = region.position.y + region.dimension.y/2 - label.rect_size.y/2
+		label.valign = Label.VALIGN_CENTER
 	elif region.text_side == "right":
 		label.rect_position.x = region.position.x + region.dimension.x + MARGIN
 		label.rect_position.y = region.position.y + region.dimension.y/2 - label.rect_size.y/2
+		label.valign = Label.VALIGN_CENTER
 	elif region.text_side == "top":
 		label.rect_position.x = region.position.x + region.dimension.x/2 - label.rect_size.x/2
 		label.rect_position.y = region.position.y - label.rect_size.y - MARGIN
+		label.valign = Label.VALIGN_TOP
 	elif region.text_side == "bottom":
 		label.rect_position.x = region.position.x + region.dimension.x/2 - label.rect_size.x/2
 		label.rect_position.y = region.position.y + region.dimension.y + MARGIN
+		label.valign = Label.VALIGN_TOP

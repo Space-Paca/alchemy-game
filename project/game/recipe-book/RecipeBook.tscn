@@ -234,12 +234,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
-margin_left = 508.724
-margin_top = 119.183
-margin_right = -309.276
-margin_bottom = -960.817
-
 [node name="Icon" type="TextureRect" parent="Background"]
 margin_left = 67.2957
 margin_top = 100.969
@@ -358,6 +352,12 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
+margin_left = 508.724
+margin_top = 119.183
+margin_right = -309.276
+margin_bottom = -960.817
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]

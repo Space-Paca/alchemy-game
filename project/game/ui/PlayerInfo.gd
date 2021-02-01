@@ -80,7 +80,7 @@ func get_tooltip_data(type):
 	if type == "gold":
 		tooltip.title = "Gold"
 		tooltip.title_image = GOLD_TEXTURE
-		tooltip.subtitle = "Common Currency"
+		tooltip.subtitle = "Currency"
 	elif type == "pearl":
 		tooltip.title = "Pearls"
 		tooltip.title_image = PEARL_TEXTURE

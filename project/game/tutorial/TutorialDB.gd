@@ -61,6 +61,20 @@ const TUTORIAL = {
 		{"position": Vector2(40,40), "dimension": Vector2(1680,915), 
 		 "text_side": "bottom", "text": "Good luck adventurer!",
 		 "text_width": 900},
+	],
+	"map": [
+		{"position": Vector2(140,40), "dimension": Vector2(1680,915),
+		 "text_side": "bottom", "text": "Welcome to your adventure, alchemist!"},
+		{"position": Vector2(620,400), "dimension": Vector2(700,500), 
+		 "text_side": "top", "text": "You must explore the land facing monsters,\nlearning and crafting alchemic recipes along the way",
+		"text_width": 1000},
+		{"position": Vector2(420,400), "dimension": Vector2(700,500),
+		 "text_side": "right", "text": "Find and defeat the land's boss to progress",
+		"text_width": 425, "image": "res://assets/images/map/boss-open2.png", "image_scale": 2},
+		{"position": Vector2(140,40), "dimension": Vector2(1680,815),
+		 "text_side": "bottom", "text": "Exploring and discovering things on your own is part of your task,\nso don't be afraid to be curious!",
+		"text_width": 1500},
+		
 	]
 }
 

@@ -10,6 +10,7 @@ const DEFAULT_WIDTH = 400
 
 onready var rect = $Rect
 onready var label = $Label
+onready var image = $Image
 
 var active = false
 var current_region = 0
@@ -53,10 +54,12 @@ func _process(delta):
 		diff_sum += diff.length()
 		
 		label.modulate.a = (1.0 - min(diff_sum/10, 1))*rect.modulate.a
+		image.modulate.a = label.modulate.a
 	else:
 		#BG alpha
 		rect.modulate.a = max(rect.modulate.a - ALPHA_SPEED*delta, 0)
 		label.modulate.a = rect.modulate.a
+		image.modulate.a = rect.modulate.a
 
 
 func _input(event):
@@ -70,7 +73,7 @@ func _input(event):
 				emit_signal("tutorial_finished")
 				rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
-				update_label_text()
+				update_elements()
 
 func start(name):
 	set_regions(DB.get(name))
@@ -80,7 +83,7 @@ func set_regions(new_regions):
 	regions = new_regions
 	set_position(regions[0].position + regions[0].dimension/2)
 	set_dimension(Vector2(0,0))
-	update_label_text()
+	update_elements()
 	rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	active = true
 
@@ -101,7 +104,8 @@ func get_dimension():
 	return rect.material.get_shader_param("dimension")
 
 
-func update_label_text():
+func update_elements():
+	#Start with label
 	label.text = ""
 	label.rect_size.y = 1
 	var region = regions[current_region]
@@ -129,3 +133,32 @@ func update_label_text():
 		label.rect_position.x = region.position.x + region.dimension.x/2 - label.rect_size.x/2
 		label.rect_position.y = region.position.y + region.dimension.y + MARGIN
 		label.valign = Label.VALIGN_TOP
+	
+	#Now image
+	update_image()
+	
+func update_image():
+	var region = regions[current_region]
+	if region.has("image"):
+		image.show()
+		image.texture = load(region.image)
+		image.rect_scale = Vector2(region.image_scale, region.image_scale)
+		
+		var w = image.texture.get_width()*region.image_scale
+		var h = image.texture.get_height()*region.image_scale
+		
+		#Set tutorial image position
+		if region.text_side == "left":
+			image.rect_position.x = label.rect_position.x - MARGIN - w
+			image.rect_position.y = region.position.y + region.dimension.y/2 - h/2
+		elif region.text_side == "right":
+			image.rect_position.x = label.rect_position.x + label.rect_size.x + MARGIN
+			image.rect_position.y = region.position.y + region.dimension.y/2 - h/2
+		elif region.text_side == "top":
+			image.rect_position.x = region.position.x + region.dimension.x/2 - w/2
+			image.rect_position.y = label.rect_position.y - MARGIN - h
+		elif region.text_side == "bottom":
+			image.rect_position.x = region.position.x + region.dimension.x/2 - w/2
+			image.rect_position.y = label.rect_position.y + label.rect_size.y + MARGIN
+	else:
+		image.hide()

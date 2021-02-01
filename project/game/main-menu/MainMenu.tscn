@@ -15,6 +15,14 @@ use_filter = true
 extra_spacing_top = -50
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=9]
+size = 100
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.627451 )
 border_width_left = 5
@@ -79,12 +87,6 @@ use_filter = true
 extra_spacing_top = -5
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
-size = 27
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 6 )
-
 [sub_resource type="DynamicFont" id=8]
 size = 80
 outline_size = 8
@@ -109,17 +111,26 @@ margin_bottom = 330.0
 rect_min_size = Vector2( 800, 0 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-text = "Alchemy"
+text = "Alchemia"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Subtitle" type="Label" parent="Title"]
+margin_left = 94.4352
+margin_top = 224.506
+margin_right = 784.435
+margin_bottom = 372.506
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.945098, 0.721569, 0.47451, 1 )
+text = "Creatio Ex Nihilo"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 100.0
-margin_top = 320.0
-margin_right = 400.0
-margin_bottom = 504.0
+margin_left = 860.828
+margin_top = 419.781
+margin_right = 1160.83
+margin_bottom = 631.781
 rect_min_size = Vector2( 300, 0 )
 custom_constants/separation = 30
 __meta__ = {
@@ -148,76 +159,6 @@ custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Quit"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 0.825
-anchor_bottom = 0.126
-margin_left = 954.0
-margin_top = 76.0
-margin_right = 241.0
-margin_bottom = 874.92
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="Label" parent="ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-rect_min_size = Vector2( 851, 915 )
-custom_fonts/font = SubResource( 7 )
-text = "HOW TO PLAY:
-
-OBJECTIVE:
-- You must explore the dungeon facing monsters, learning and crafting alchemic recipes along the way. Defeat the level's boss to progress to the next one.
-
-CONTROLS:
-- Use the mouse to drag and drop reagents from your hand to your crafting grid and click the combine button to attempt to combine the reagents into a recipe.
-- You can click the \"Recipes\" button (shortcut: Tab) to open your recipe list, clicking a recipe in this list shows the reagents you have to place in your grid. While reagents are being shown in the grid in this way, you can click the corresponding reagent in your hand with the right mouse button to send it to the correct position automatically (you can also right click any reagent just to quick place it into the grid).
-- When you can't or don't want to use any further reagents, click the \"End Turn\" button and the enemies will take their actions according to their intents shown above them.
-
-TIPS:
-- After combining the same recipe several times you master it, allowing you to favorite it to quickly combine it if you have the necessary reagents."
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-anchor_right = 0.825
-anchor_bottom = 0.126
-margin_left = 66.8511
-margin_top = 573.089
-margin_right = -917.149
-margin_bottom = 687.009
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="Label" parent="ColorRect2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -9.99994
-margin_bottom = -15.0
-rect_min_size = Vector2( 580, 230 )
-custom_fonts/font = SubResource( 7 )
-text = "USEFUL SHORTCUT KEYS:
-
-ESC: Exit the game/Return to main menu
-TAB: Toggle your recipe book
-Right Mouse Click/Shift Click: Quick place reagents
-F4: Toggle fullscreen"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="QuitConfirm" type="ColorRect" parent="."]
 visible = false

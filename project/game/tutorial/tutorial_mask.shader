@@ -13,5 +13,6 @@ void fragment(){
 	}
 	else{
 		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+		COLOR.a = .85;
 	}
 }

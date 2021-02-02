@@ -75,8 +75,14 @@ func _input(event):
 			else:
 				update_elements()
 
+
+func is_active():
+	return active
+
+
 func start(name):
 	set_regions(DB.get(name))
+
 
 func set_regions(new_regions):
 	current_region = 0

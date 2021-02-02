@@ -77,7 +77,7 @@ func get_width():
 	return TOOLTIP_WIDTH
 
 func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = false, expanded = false, stylize := true):
-	if has_tooltip(title):
+	if has_tooltip(title) or TutorialLayer.is_active():
 		return
 	var tip = TOOLTIP.instance()
 	$Tooltips.add_child(tip)

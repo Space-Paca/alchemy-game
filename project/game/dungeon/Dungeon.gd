@@ -76,7 +76,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
-		if not (battle and battle.player_disabled):
+		if not (battle and battle.player_disabled) and not TutorialLayer.is_active():
 			recipe_book_toggle()
 			TooltipLayer.clean_tooltips()
 	elif event.is_action_pressed("toggle_fullscreen"):

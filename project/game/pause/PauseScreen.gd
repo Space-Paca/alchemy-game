@@ -17,7 +17,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
 		if confirm.visible:
 			no_quit()
-		else:
+		elif not TutorialLayer.is_active():
 			toggle_pause()
 
 

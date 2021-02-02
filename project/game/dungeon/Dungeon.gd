@@ -68,7 +68,7 @@ func _ready():
 	player_info.set_player(player)
 	
 	if not Profile.get_tutorial("map"):
-		yield(get_tree().create_timer(1.7), "timeout")
+		yield(get_tree().create_timer(1.82), "timeout")
 		TutorialLayer.start("map")
 		yield(TutorialLayer, "tutorial_finished")
 		Profile.set_tutorial("map", true)

@@ -160,8 +160,15 @@ margin_right = 450.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "No"
+[connection signal="mouse_entered" from="Background/Menu/Resume" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="mouse_entered" from="Background/Menu/MusicVolume" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Background/Menu/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/Menu/SFXVolume" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Background/Menu/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/Menu/Return" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Return" to="." method="_on_Return_pressed"]
+[connection signal="mouse_entered" from="Background/Menu/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]

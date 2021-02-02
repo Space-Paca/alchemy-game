@@ -20,6 +20,7 @@ const AUX_FADEOUT_SPEED = 40 #Speed aux bgm fadein
 const AUX_FADEIN_SPEED = 60 #Speed aux bgm fadeout
 #Volume
 const MUTE_DB = -60 #Muted volume
+const CONTROL_MULTIPLIER = 2.5
 #Layer
 const MAX_LAYERS = 3
 #BGM
@@ -139,6 +140,25 @@ func setup_locs():
 	else:
 		push_error("An error occurred when trying to access locutions path.")
 		assert(false)
+
+#Expects a value between 0 and 1
+func set_bus_volume(which_bus, value):
+	var db = (1-value)*MUTE_DB/CONTROL_MULTIPLIER
+	if which_bus == "bgm":
+		AudioServer.set_bus_volume_db(BGM_BUS, db)
+	elif which_bus == "sfx":
+		AudioServer.set_bus_volume_db(SFX_BUS, db)
+	else:
+		assert(false, "Not a valid bus to set volume: " + str(which_bus))
+
+
+func get_bus_volume(which_bus):
+	if which_bus == "bgm":
+		return clamp(1.0 - AudioServer.get_bus_volume_db(BGM_BUS)/float(MUTE_DB/CONTROL_MULTIPLIER), 0.0, 1.0)
+	elif which_bus == "sfx":
+		return clamp(1.0 - AudioServer.get_bus_volume_db(SFX_BUS)/float(MUTE_DB/CONTROL_MULTIPLIER), 0.0, 1.0)
+	else:
+		assert(false, "Not a valid bus to set volume: " + str(which_bus))
 
 
 func get_bgm_layer(name, layer):

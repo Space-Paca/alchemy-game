@@ -2,6 +2,5 @@
 
 [resource]
 resource_name = "NotchFilter"
-cutoff_hz = 1200.0
-resonance = 0.05
+cutoff_hz = 100.0
 gain = 0.1

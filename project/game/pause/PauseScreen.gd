@@ -3,14 +3,25 @@ extends CanvasLayer
 onready var bg = $Background
 onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
+onready var bgmslider = $Background/Menu/MusicVolume
+onready var sfxslider = $Background/Menu/SFXVolume
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
+const SLIDER_COOLDOWN = .18
+
 
 var paused := false
+var slider_sfx_cooldown = 0
 
 
 func _ready():
 	bg.hide()
+	
+	update_music_volumes()
+
+
+func _process(delta):
+	slider_sfx_cooldown = max(slider_sfx_cooldown - delta, 0)
 
 
 func _unhandled_input(event):
@@ -40,6 +51,17 @@ func no_quit():
 	menu.show()
 
 
+func update_music_volumes():
+	bgmslider.value = AudioManager.get_bus_volume("bgm")*100
+	sfxslider.value = AudioManager.get_bus_volume("sfx")*100
+
+
+func play_slider_sfx():
+	if bg.visible and slider_sfx_cooldown <= 0:
+		slider_sfx_cooldown = SLIDER_COOLDOWN
+		AudioManager.play_sfx("click")
+
+
 func _on_Resume_pressed():
 	toggle_pause()
 
@@ -62,3 +84,16 @@ func _on_Yes_pressed():
 
 func _on_No_pressed():
 	no_quit()
+
+
+func _on_SFXVolume_value_changed(value):
+	play_slider_sfx()
+	AudioManager.set_bus_volume("sfx", value/float(sfxslider.max_value))
+
+
+func _on_MusicVolume_value_changed(value):
+	AudioManager.set_bus_volume("bgm", value/float(bgmslider.max_value))
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

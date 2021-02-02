@@ -52,12 +52,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -90.0
-margin_right = 350.0
-margin_bottom = 388.0
+margin_left = -355.787
+margin_top = -221.84
+margin_right = 344.213
+margin_bottom = 496.16
 rect_min_size = Vector2( 700, 0 )
 custom_constants/separation = 20
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,19 +71,48 @@ size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Resume"
 
-[node name="Return" type="Button" parent="Background/Menu"]
+[node name="MusicLabel" type="Label" parent="Background/Menu"]
 margin_top = 166.0
 margin_right = 700.0
-margin_bottom = 312.0
+margin_bottom = 217.0
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="Background/Menu"]
+margin_top = 237.0
+margin_right = 700.0
+margin_bottom = 266.0
+max_value = 100.0
+value = 50.0
+
+[node name="SFXLabel" type="Label" parent="Background/Menu"]
+margin_top = 286.0
+margin_right = 700.0
+margin_bottom = 337.0
+text = "Sound Effects Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolume" type="HSlider" parent="Background/Menu"]
+margin_top = 357.0
+margin_right = 700.0
+margin_bottom = 386.0
+value = 50.0
+tick_count = 1
+
+[node name="Return" type="Button" parent="Background/Menu"]
+margin_top = 406.0
+margin_right = 700.0
+margin_bottom = 552.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Return to Main Menu"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
-margin_top = 332.0
+margin_top = 572.0
 margin_right = 700.0
-margin_bottom = 478.0
+margin_bottom = 718.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4

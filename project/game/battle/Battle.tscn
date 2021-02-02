@@ -121,6 +121,7 @@ __meta__ = {
 margin_left = -52.0
 margin_right = 1670.0
 margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,6 +131,7 @@ __meta__ = {
 margin_left = -52.0
 margin_right = 1670.0
 margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,6 +153,7 @@ margin_bottom = 995.256
 margin_left = -52.0
 margin_right = 1670.0
 margin_bottom = 1084.0
+mouse_filter = 2
 texture = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false

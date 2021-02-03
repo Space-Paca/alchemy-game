@@ -111,11 +111,15 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="."]
-margin_left = 873.976
-margin_top = 862.522
-margin_right = 1093.98
-margin_bottom = 952.522
-text = "continue"
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -152.0
+margin_top = -218.0
+margin_right = 152.0
+margin_bottom = -71.9999
+text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,11 +129,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.511
-margin_top = -135.51
-margin_right = 308.489
-margin_bottom = -15.5102
-text = "HEAL 70 HP (70% max hp)"
+margin_left = -384.5
+margin_top = -136.0
+margin_right = 384.5
+margin_bottom = 10.0
+text = "Heal 70 HP (70% max hp)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -139,11 +143,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -169.7
-margin_top = 20.6526
-margin_right = 180.3
-margin_bottom = 140.653
-text = "STUDY RECIPES"
+margin_left = -219.5
+margin_top = 20.0
+margin_right = 219.5
+margin_bottom = 166.0
+text = "Study Recipes"
 __meta__ = {
 "_edit_use_anchors_": false
 }

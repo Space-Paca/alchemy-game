@@ -40,25 +40,21 @@ __meta__ = {
 }
 
 [node name="ShopMenu" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -460.0
-margin_top = -53.0
-margin_right = -346.0
-margin_bottom = 53.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RecipesButton" type="Button" parent="ShopMenu"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 408.157
-margin_top = 447.142
-margin_right = 743.157
-margin_bottom = 561.142
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1115.0
+margin_top = -160.0
+margin_right = -606.0
+margin_bottom = -14.0
 theme = ExtResource( 7 )
 text = "Shop for recipes"
 __meta__ = {
@@ -66,14 +62,14 @@ __meta__ = {
 }
 
 [node name="ReagentsButton" type="Button" parent="ShopMenu"]
-anchor_left = 0.5
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 782.002
-margin_top = 336.582
-margin_right = 1163.0
-margin_bottom = 457.582
+margin_left = -593.0
+margin_top = -160.0
+margin_right = -14.9999
+margin_bottom = -14.0
 theme = ExtResource( 7 )
 text = "Get rid of reagents"
 __meta__ = {
@@ -81,7 +77,7 @@ __meta__ = {
 }
 
 [node name="ShopkeeperDialogue" type="Node2D" parent="ShopMenu"]
-position = Vector2( 821.111, 523.802 )
+position = Vector2( 1321.11, 1010.8 )
 
 [node name="Label" type="RichTextLabel" parent="ShopMenu/ShopkeeperDialogue"]
 margin_left = -352.173

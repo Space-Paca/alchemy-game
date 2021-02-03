@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/images/ui/recipe_hint_button.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/Continue to map Button.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/pearl_button.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=9]
@@ -120,6 +121,7 @@ margin_top = -300.0
 margin_right = 366.5
 margin_bottom = 300.0
 rect_min_size = Vector2( 733, 600 )
+theme = ExtResource( 6 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false

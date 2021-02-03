@@ -37,14 +37,15 @@ func setup(_enemy, _action, texture, value, multiplier):
 	emit_signal("set_up")
 
 func update_position():
-	var margin = 1
+	var margin = 2
+	var padding = 3
 	$Value.rect_position.x = $Image.rect_size.x + margin
-	margin = -8
+	margin = -18
 	$X.rect_position.x = $Value.rect_position.x + $Value.rect_size.x + margin
-	$X.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $X.rect_size.y
-	margin = 10
+	$X.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $X.rect_size.y - padding
+	margin = 7
 	$Multiplier.rect_position.x = $X.rect_position.x + $X.rect_size.x + margin
-	$Multiplier.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $Multiplier.rect_size.y
+	$Multiplier.rect_position.y = $Value.rect_position.y + $Value.rect_size.y - $Multiplier.rect_size.y - padding
 	
 	#Update tooltip info
 	var w

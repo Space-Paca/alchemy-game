@@ -148,7 +148,10 @@ func update_image():
 	if region.has("image"):
 		image.show()
 		image.texture = load(region.image)
-		image.rect_scale = Vector2(region.image_scale, region.image_scale)
+		if region.has("image_scale"):
+			image.rect_scale = Vector2(region.image_scale, region.image_scale)
+		else:
+			image.rect_scale = Vector2(1,1)
 		
 		var w = image.texture.get_width()*region.image_scale
 		var h = image.texture.get_height()*region.image_scale

@@ -70,7 +70,7 @@ const TUTORIAL = {
 		"text_width": 1000},
 		{"position": Vector2(420,400), "dimension": Vector2(700,500),
 		 "text_side": "right", "text": "Find and defeat the land's boss to progress",
-		"text_width": 425, "image": "res://assets/images/map/boss-open2.png", "image_scale": 2},
+		"text_width": 425, "image": "res://game/tutorial/boss-icon.png", "image_scale": 2},
 		{"position": Vector2(140,40), "dimension": Vector2(1680,815),
 		 "text_side": "bottom", "text": "Exploring and discovering things on your own is part of your journey,\nso don't be afraid to be curious!",
 		"text_width": 1500},

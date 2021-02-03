@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/tutorial/TutorialLayer.gd" type="Script" id=1]
 [ext_resource path="res://game/tutorial/tutorial_mask.shader" type="Shader" id=2]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/shaders/highlight.shader" type="Shader" id=4]
+[ext_resource path="res://assets/images/map/boss-open2.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -14,6 +16,12 @@ size = 43
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/grayscale = 0.0
+shader_param/highlight_thickness = 10.227
+shader_param/highlight_color = Color( 1, 1, 1, 1 )
 
 [node name="TutorialLayer" type="CanvasLayer"]
 layer = 6
@@ -44,8 +52,10 @@ __meta__ = {
 }
 
 [node name="Image" type="TextureRect" parent="."]
+material = SubResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

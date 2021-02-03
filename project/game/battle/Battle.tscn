@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://assets/images/background/fire_fg.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/background/temple_bg.jpg" type="Texture" id=26]
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/ui/book/Label Blue Disabled.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/ui/book/bookmark_btn_disabled.png" type="Texture" id=29]
 
 [sub_resource type="Animation" id=1]
 resource_name = "rotating"
@@ -142,12 +144,14 @@ margin_left = 1573.96
 margin_top = 812.487
 margin_right = 1773.96
 margin_bottom = 882.487
+texture_disabled = ExtResource( 29 )
 
 [node name="PassTurnButton" parent="Book" instance=ExtResource( 2 )]
 margin_left = 1570.62
 margin_top = 897.25
 margin_right = 1895.62
 margin_bottom = 995.256
+texture_disabled = ExtResource( 28 )
 
 [node name="Book1" type="TextureRect" parent="Book"]
 margin_left = -52.0

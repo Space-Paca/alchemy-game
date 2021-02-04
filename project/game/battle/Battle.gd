@@ -201,6 +201,7 @@ func enemies_init():
 	for enemy in enemies_node.get_children():
 		if enemy.data.battle_init and not enemy.already_inited:
 			enemy.already_inited = true
+			enemy.just_spawned = false
 			had_init = true
 			enemy.act()
 			yield(enemy, "action_resolved")

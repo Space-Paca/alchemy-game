@@ -71,6 +71,7 @@ func _input(event):
 				regions = null
 				current_region = false
 				emit_signal("tutorial_finished")
+				yield(get_tree(), "idle_frame")
 				rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
 				update_elements()

@@ -18,6 +18,8 @@ var reagents = null #Set by parent
 var player = null #Set by parent
 var tooltips_enabled := false
 var block_tooltips := false
+var forced_draw_faint := false
+var forced_draw_damage := false
 
 
 func _ready():
@@ -176,9 +178,35 @@ func draw_reagent():
 	if drawable_reagents.get_child_count() == 0:
 		push_error('Not enough reagents')
 		assert(false)
+	
+	var index = -1
+	#Guarantee player gets a faint and damage reagent for tutorial purposes
+	if not Profile.get_tutorial("clicked_recipe") and not (forced_draw_faint and forced_draw_damage):
+		if not forced_draw_faint:
+			forced_draw_faint = true
+			for i in drawable_reagents.get_child_count():
+				if drawable_reagents.get_child(i).type == "faint":
+					index = i
+					break
+			if index == -1:
+				assert(index, "Couldn't find a forced faint index for tutorial")
+				randomize()
+				index = randi() % drawable_reagents.get_child_count()
+		elif not forced_draw_damage:
+			forced_draw_damage = true
+			for i in drawable_reagents.get_child_count():
+				if drawable_reagents.get_child(i).type == "weak_damaging":
+					index = i
+					break
+			if index == -1:
+				assert(index, "Couldn't find a forced damage index for tutorial")
+				randomize()
+				index = randi() % drawable_reagents.get_child_count()
 	#Remove reagent from draw bag
-	randomize()
-	var index = randi() % drawable_reagents.get_child_count()
+	else:
+		randomize()
+		index = randi() % drawable_reagents.get_child_count()
+	
 	var reagent = drawable_reagents.get_child(index)
 	drawable_reagents.remove_child(reagent)
 	update_counter()

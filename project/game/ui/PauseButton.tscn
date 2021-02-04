@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/images/ui/menu_mouser-over.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/menu_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/menu_idle.png" type="Texture" id=3]
+
+[node name="PauseButton" type="TextureButton"]
+margin_left = 1782.08
+margin_top = 7.11824
+margin_right = 1912.08
+margin_bottom = 130.118
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

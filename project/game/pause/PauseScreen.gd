@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+enum Modes {DUNGEON, MENU}
+export(Modes) var mode
+
 onready var bg = $Background
 onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
@@ -18,6 +21,9 @@ func _ready():
 	bg.hide()
 	
 	update_music_volumes()
+	
+	if mode == Modes.MENU:
+		$Background/Menu/Return.hide()
 
 
 func _process(delta):

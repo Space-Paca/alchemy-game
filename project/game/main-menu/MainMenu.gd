@@ -8,8 +8,8 @@ func _ready():
 # (❁´◡`❁)
 
 func _input(event):
-	if event.is_action_pressed("quit"):
-		$QuitConfirm.show()
+	if $QuitConfirm.visible and event.is_action_pressed("quit") :
+		 $PauseScreen.toggle_pause()#Toggle pause again so it actually doesn't pauses
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
@@ -31,3 +31,15 @@ func _on_Yes_pressed():
 
 func _on_No_pressed():
 	$QuitConfirm.hide()
+
+
+func _on_PauseButton_pressed():
+	$PauseScreen.toggle_pause()
+
+
+func _on_PauseButton_mouse_entered():
+	AudioManager.play_sfx("hover_menu_button")
+
+
+func _on_PauseButton_button_down():
+	AudioManager.play_sfx("click_menu_button")

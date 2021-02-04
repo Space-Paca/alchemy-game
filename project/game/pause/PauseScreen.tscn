@@ -81,7 +81,6 @@ text = "Music Volume"
 margin_top = 237.0
 margin_right = 700.0
 margin_bottom = 266.0
-max_value = 100.0
 value = 50.0
 
 [node name="SFXLabel" type="Label" parent="Background/Menu"]

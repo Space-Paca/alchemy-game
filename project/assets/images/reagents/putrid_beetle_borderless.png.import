@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex"
+path="res://.import/putrid_beetle_borderless.png-376c756283b0d2e3a5615a7cdb4eec56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/boss-open2.png"
-dest_files=[ "res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex" ]
+source_file="res://assets/images/reagents/putrid_beetle_borderless.png"
+dest_files=[ "res://.import/putrid_beetle_borderless.png-376c756283b0d2e3a5615a7cdb4eec56.stex" ]
 
 [params]
 

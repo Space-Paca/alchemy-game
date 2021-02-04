@@ -61,7 +61,7 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 	var subtitle = data.rarity + " Reagent"
 	
 	var tooltip = {"title": title, "text": text, \
-				   "title_image": data.image.get_path(), "subtitle": subtitle}
+				   "title_image": data.tooltip_image_path, "subtitle": subtitle}
 
 	return tooltip
 
@@ -76,11 +76,11 @@ func get_substitution_tooltip(type):
 	if data.substitute.size() == 1:
 		text += "this "
 		plural = ""
-		filler = "                      "
+		filler = "                            "
 	else:
 		text += "these "
 		plural = "s"
-		filler = "                      "
+		filler = "                          "
 	text += "reagent"+plural+":"
 	#For some reason \n just erases other images, so using gambiara to properly change lines
 	text += filler
@@ -89,7 +89,7 @@ func get_substitution_tooltip(type):
 		var path = sub_data.image.get_path()
 		text += "[img=48x48]"+path+"[/img]  "
 	var tooltip = {"title": "Substitutes", "text": text, \
-				   "title_image": data.image.get_path()}
+				   "title_image": data.tooltip_image_path}
 	
 	return tooltip
 

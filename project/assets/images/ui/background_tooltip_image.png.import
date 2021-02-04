@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex"
+path="res://.import/background_tooltip_image.png-0aea689d1fe4437f2bd63dd14a82c154.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/boss-open2.png"
-dest_files=[ "res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex" ]
+source_file="res://assets/images/ui/background_tooltip_image.png"
+dest_files=[ "res://.import/background_tooltip_image.png-0aea689d1fe4437f2bd63dd14a82c154.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
-flags/anisotropic=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

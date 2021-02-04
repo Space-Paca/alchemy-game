@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex"
+path="res://.import/uncommon_elementium_borderless.png-47632e5e2934e6f1563aa4ae0e3f3ff8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/map/boss-open2.png"
-dest_files=[ "res://.import/boss-open2.png-84c7cd6bddded67998cae6ffc3b070e7.stex" ]
+source_file="res://assets/images/reagents/uncommon_elementium_borderless.png"
+dest_files=[ "res://.import/uncommon_elementium_borderless.png-47632e5e2934e6f1563aa4ae0e3f3ff8.stex" ]
 
 [params]
 

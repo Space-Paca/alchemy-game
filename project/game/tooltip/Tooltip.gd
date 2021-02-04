@@ -1,9 +1,10 @@
 extends Control
 
 const MARGIN_X = 35
-const MARGIN_Y = 34
-const SEPARATION_TITLE_SUBTITLE = 4
-const SEPARATION_TITLE_TEXT = 12
+const MARGIN_Y = 38
+const SEPARATION_TITLE_SUBTITLE = 2
+const SEPARATION_TITLE_TEXT = 9
+const SEPARATION_TITLE_IMAGE = 15
 const TITLE_IMAGE_SIZE = 48
 
 signal set_up
@@ -42,12 +43,12 @@ func setup(_title, _text, _title_image, _subtitle = false, expanded = false, sty
 		$BG.modulate = Color(1,1,1,1)
 
 	if not _title_image:
-		$TitleImage.hide()
+		$TitleImageBG.hide()
 	else:
 		if _title_image is String:
-			$TitleImage.texture = load(_title_image)
+			$TitleImageBG/TitleImage.texture = load(_title_image)
 		else:
-			$TitleImage.texture = _title_image
+			$TitleImageBG/TitleImage.texture = _title_image
 	
 	update_size()
 
@@ -80,15 +81,20 @@ func update_size():
 	
 	
 	#Update title image
-	var margin = 8
-	$TitleImage.rect_position.x = $Title.rect_position.x + $Title.get_combined_minimum_size().x + margin
-	$TitleImage.rect_position.y = $Title.rect_position.y + $Title.rect_size.y/2.0 - TITLE_IMAGE_SIZE/2.0
-	var scale_x = TITLE_IMAGE_SIZE/float($TitleImage.texture.get_width())
-	var scale_y = TITLE_IMAGE_SIZE/float($TitleImage.texture.get_height())
-	$TitleImage.rect_scale = Vector2(scale_x,scale_y)
+	$TitleImageBG.rect_position.x = $Title.rect_position.x + $Title.get_combined_minimum_size().x + SEPARATION_TITLE_IMAGE
+	$TitleImageBG.rect_position.y = $Title.rect_position.y + $Title.rect_size.y/2.0 - $TitleImageBG.rect_size.x/2.0
+	var scale
+	var w = $TitleImageBG/TitleImage.texture.get_width()
+	var h = $TitleImageBG/TitleImage.texture.get_height()
+	if w >= h:
+		scale = TITLE_IMAGE_SIZE/float(w)
+	else:
+		scale = TITLE_IMAGE_SIZE/float(h)
+	$TitleImageBG/TitleImage.rect_scale = Vector2(scale,scale)
+	$TitleImageBG/TitleImage.rect_position.x = $TitleImageBG.rect_size.x/2 - w*scale/2
+	$TitleImageBG/TitleImage.rect_position.y = $TitleImageBG.rect_size.y/2 - h*scale/2
 	
-	
-	$BG.rect_size.x = $TitleImage.rect_position.x + $TitleImage.rect_size.x * scale_x + MARGIN_X
+	$BG.rect_size.x = $TitleImageBG.rect_position.x + $TitleImageBG.rect_size.x + MARGIN_X
 	$Text.rect_size.x = $BG.rect_size.x - 2*MARGIN_X
 	
 	#Update subtitle

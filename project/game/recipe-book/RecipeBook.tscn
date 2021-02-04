@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -68,6 +69,7 @@ margin_right = 950.0
 margin_bottom = 158.0
 texture_normal = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 20 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

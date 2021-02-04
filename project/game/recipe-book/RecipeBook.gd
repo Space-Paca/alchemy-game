@@ -184,6 +184,11 @@ func toggle_visibility():
 	if visible:
 		AudioManager.play_sfx("open_recipe_book")
 		enable_tooltips()
+		
+		if not Profile.get_tutorial("recipe_book"):
+			$Background/CloseButton.disabled = true
+		else:
+			$Background/CloseButton.disabled = false
 	else:
 		AudioManager.play_sfx("close_recipe_book")
 		disable_tooltips()

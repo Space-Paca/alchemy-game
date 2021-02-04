@@ -389,7 +389,8 @@ func enable_player():
 	discard_bag.enable()
 	
 	player_disabled = false
-	pass_turn_button.disabled = false
+	if Profile.get_tutorial("recipe_book"):
+		pass_turn_button.disabled = false
 	
 	#Check curse
 	var curse = player.get_status("curse")
@@ -399,7 +400,7 @@ func enable_player():
 	else:
 		combine_button.disable_curse()
 
-	if not curse or curse.amount > recipes_created:
+	if Profile.get_tutorial("recipe_book") and (not curse or curse.amount > recipes_created):
 		combine_button.enable()
 	
 
@@ -429,6 +430,8 @@ func recipe_book_toggled(visible: bool):
 			TutorialLayer.start("recipe_book")
 			yield(TutorialLayer, "tutorial_finished")
 			Profile.set_tutorial("recipe_book", true)
+			pass_turn_button.disabled = false
+			combine_button.enable()
 		
 	else:
 		player_ui.enable_tooltips()

@@ -31,7 +31,6 @@
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_disabled.png" type="Texture" id=29]
 
 [sub_resource type="Animation" id=1]
-resource_name = "rotating"
 length = 30.0
 loop = true
 tracks/0/type = "value"

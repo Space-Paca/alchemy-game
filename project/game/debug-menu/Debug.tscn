@@ -30,14 +30,19 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 840.0
-margin_top = 372.0
+margin_top = 348.0
 margin_right = 1079.0
-margin_bottom = 708.0
+margin_bottom = 732.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 239.0
 margin_bottom = 20.0
 text = "Win Battle"
+
+[node name="DieBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+margin_right = 239.0
+margin_bottom = 20.0
+text = "Win Battle?"
 
 [node name="UnlockCombBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 24.0
@@ -98,9 +103,9 @@ margin_bottom = 336.0
 text = "Lower Recipes Threshold"
 
 [node name="Reset Tutorials" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 272.0
+margin_top = 340.0
 margin_right = 239.0
-margin_bottom = 292.0
+margin_bottom = 360.0
 text = "Reset Tutorials"
 
 [node name="Info" type="VBoxContainer" parent="."]
@@ -151,6 +156,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/WinBtn" to="." method="_on_WinBtn_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/DieBtn" to="." method="_on_DieBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockCombBtn" to="." method="_on_UnlockCombBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UpdateRecipesButton" to="." method="_on_UpdateRecipesButton_pressed"]
 [connection signal="item_selected" from="Background/CenterContainer/VBoxContainer/FloorButton" to="." method="_on_FloorButton_item_selected"]

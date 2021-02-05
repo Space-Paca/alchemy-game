@@ -8,6 +8,7 @@ onready var version_label = $Info/Version
 
 signal combinations_unlocked
 signal battle_won
+signal died
 signal floor_selected(floor_number)
 signal test_map_creation
 
@@ -46,6 +47,11 @@ func set_version_visible(enable: bool):
 
 func _on_WinBtn_pressed():
 	emit_signal("battle_won")
+	bg.hide()
+
+
+func _on_DieBtn_pressed():
+	emit_signal("died", null)
 	bg.hide()
 
 

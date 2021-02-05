@@ -65,6 +65,8 @@ func _ready():
 	# DEBUG
 # warning-ignore:return_value_discarded
 	Debug.connect("battle_won", self, "_on_Debug_battle_won")
+# warning-ignore:return_value_discarded
+	Debug.connect("died", self, "_on_player_died")
 
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):

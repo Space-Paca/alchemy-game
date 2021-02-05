@@ -48,6 +48,7 @@ func set_pause(p: bool):
 	bg.visible = p
 	if p:
 		AudioServer.add_bus_effect(0, AUDIO_FILTER)
+		update_music_volumes()
 	else:
 		AudioServer.remove_bus_effect(0, 0)
 
@@ -95,11 +96,12 @@ func _on_No_pressed():
 func _on_SFXVolume_value_changed(value):
 	play_slider_sfx()
 	AudioManager.set_bus_volume("sfx", value/float(sfxslider.max_value))
+	Profile.set_option("sfx_volume", value/float(sfxslider.max_value))
 
 
 func _on_MusicVolume_value_changed(value):
 	AudioManager.set_bus_volume("bgm", value/float(bgmslider.max_value))
-
+	Profile.set_option("bgm_volume", value/float(bgmslider.max_value))
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")

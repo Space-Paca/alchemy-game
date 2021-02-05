@@ -65,14 +65,6 @@ func _on_FPSButton_toggled(button_pressed):
 	set_process(button_pressed)
 
 
-func _on_MusicButton_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioManager.BGM_BUS, !button_pressed)
-
-
-func _on_SFXButton_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioManager.SFX_BUS, !button_pressed)
-
-
 func _on_FloorButton_item_selected(id):
 	if id > 1:
 		floor_to_go = id - 1

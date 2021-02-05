@@ -67,20 +67,6 @@ margin_right = 239.0
 margin_bottom = 136.0
 text = "Show FPS"
 
-[node name="MusicButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 140.0
-margin_right = 239.0
-margin_bottom = 180.0
-pressed = true
-text = "Music"
-
-[node name="SFXButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 184.0
-margin_right = 239.0
-margin_bottom = 224.0
-pressed = true
-text = "SFX"
-
 [node name="RevealMap" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 228.0
 margin_right = 239.0
@@ -161,8 +147,6 @@ __meta__ = {
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UpdateRecipesButton" to="." method="_on_UpdateRecipesButton_pressed"]
 [connection signal="item_selected" from="Background/CenterContainer/VBoxContainer/FloorButton" to="." method="_on_FloorButton_item_selected"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/FPSButton" to="." method="_on_FPSButton_toggled"]
-[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
-[connection signal="toggled" from="Background/CenterContainer/VBoxContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]

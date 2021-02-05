@@ -143,7 +143,11 @@ func setup_locs():
 
 #Expects a value between 0 and 1
 func set_bus_volume(which_bus, value):
-	var db = (1-value)*MUTE_DB/CONTROL_MULTIPLIER
+	var db
+	if value <= 0.0:
+		db = MUTE_DB
+	else:
+		db = (1-value)*MUTE_DB/CONTROL_MULTIPLIER
 	if which_bus == "bgm":
 		AudioServer.set_bus_volume_db(BGM_BUS, db)
 	elif which_bus == "sfx":

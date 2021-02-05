@@ -81,6 +81,7 @@ text = "Music Volume"
 margin_top = 237.0
 margin_right = 700.0
 margin_bottom = 266.0
+step = 10.0
 value = 50.0
 
 [node name="SFXLabel" type="Label" parent="Background/Menu"]
@@ -96,6 +97,7 @@ __meta__ = {
 margin_top = 357.0
 margin_right = 700.0
 margin_bottom = 386.0
+step = 10.0
 value = 50.0
 tick_count = 1
 

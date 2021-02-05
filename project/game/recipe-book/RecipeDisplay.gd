@@ -22,12 +22,25 @@ const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
 const RECIPE_BG = preload("res://assets/images/ui/book/recipe_page.png")
 const RECIPE_MASTERED_BG = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const MAX_REAGENT_COLUMN = 4
+const HOVERED_SCALE = 1.05
+const SCALE_SPEED = 5
 
 var combination : Combination
 var reagent_array := []
 var mastery_unlocked := false
 var tagged := true
 var filtered := true
+var hovered := false
+
+
+func _process(delta):
+	if hovered:
+		rect_scale.x = min(rect_scale.x + delta*SCALE_SPEED, HOVERED_SCALE)
+		rect_scale.y = min(rect_scale.y + delta*SCALE_SPEED, HOVERED_SCALE)
+	else:
+		rect_scale.x = max(rect_scale.x - delta*SCALE_SPEED, 1)
+		rect_scale.y = max(rect_scale.y - delta*SCALE_SPEED, 1)
+
 
 func set_combination(_combination: Combination):
 	combination = _combination
@@ -136,11 +149,14 @@ func disable_tooltips():
 
 func _on_Panel_mouse_entered():
 	if combination.discovered:
+		hovered = true
+		AudioManager.play_sfx("hover_recipe_button")
 		emit_signal("hovered", reagent_array)
 
 
 func _on_Panel_mouse_exited():
 	if combination.discovered:
+		hovered = false
 		emit_signal("unhovered")
 
 

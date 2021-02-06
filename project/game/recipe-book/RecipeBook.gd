@@ -17,6 +17,7 @@ onready var lower_divider = $Background/LowerDivider
 onready var hand_tag_button = $Background/TagButtons/HandBtn
 onready var filter_menu = $Background/FilterMenu
 onready var no_recipes_label = $Background/NothingFound
+onready var reagent_container = $Background/LeftSide/ScrollContainer/ReagentContainer
 onready var tween : Tween = $Tween
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
@@ -25,6 +26,7 @@ const LONG_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn.png")
 const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short.png")
 const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
 const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
+const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
 const ACTIVE_TAG_LABEL_POS = 110
 const INACTIVE_TAG_LABEL_POS = 53
 const BATTLE_POS = Vector2.ZERO
@@ -42,6 +44,7 @@ var battle_draw_bag
 var battle_discard_bag
 var player : Player
 
+
 func _ready():
 	discard_bag.disable()
 	draw_bag.disable()
@@ -53,6 +56,12 @@ func _process(dt):
 		no_recipes_label.modulate.a = min(no_recipes_label.modulate.a + NOTHING_FOUND_LABEL_SPEED*dt, 1)
 	else:
 		no_recipes_label.modulate.a = 0
+
+
+func set_player(p: Player):
+	player = p
+	$Background/LeftSide/PlayerInfo.set_player(p)
+	update_reagents(player.bag)
 
 
 func change_state(new_state: int):
@@ -116,6 +125,17 @@ func add_combination(combination: Combination, position: int, threshold: int):
 func update_combination(combination: Combination):
 	assert(recipe_displays.has(combination.recipe.name),"RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.name)
 	recipe_displays[combination.recipe.name].update_combination()
+
+
+func update_reagents(bag):
+	for child in reagent_container.get_children():
+		reagent_container.remove_child(child)
+	
+	for reagent in bag:
+		var clickable_reagent = CLICKABLE_REAGENT.instance()
+		var texture = ReagentDB.get_from_name(reagent.type).image
+		clickable_reagent.setup(texture, reagent.upgraded)
+		reagent_container.add_child(clickable_reagent)
 
 
 func create_hand(battle):

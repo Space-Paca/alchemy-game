@@ -8,6 +8,7 @@ signal draw_resolve
 signal hp_updated(hp, max_hp)
 signal gold_updated(gold)
 signal pearls_updated(pearl)
+signal bag_updated(bag)
 signal reveal_map
 
 const HAND_SIZES = [5,8,12]
@@ -132,14 +133,19 @@ func spend_pearls(amount: int) -> bool:
 func upgrade_reagent(index: int):
 	bag[index].upgraded = true
 	sort_bag()
+	emit_signal("bag_updated", bag)
+
 
 func transmute_reagent(index: int, transmute_into: String):
 	bag[index].type = transmute_into
 	sort_bag()
+	emit_signal("bag_updated", bag)
+
 
 func add_reagent(type, upgraded):
 	bag.append({"type": type, "upgraded": upgraded})
 	sort_bag()
+	emit_signal("bag_updated", bag)
 
 
 func remove_reagent(type: String, upgraded: bool):
@@ -149,12 +155,14 @@ func remove_reagent(type: String, upgraded: bool):
 			bag.remove(i)
 			break
 	sort_bag()
+	emit_signal("bag_updated", bag)
 
 
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
 	bag.remove(index)
 	sort_bag()
+	emit_signal("bag_updated", bag)
 
 
 func set_hud(_hud):

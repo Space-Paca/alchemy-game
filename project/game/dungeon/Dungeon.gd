@@ -64,7 +64,8 @@ func _ready():
 	
 	play_map_bgm()
 	
-	recipe_book.player = player
+	recipe_book.set_player(player)
+	player.connect("bag_updated", $BookLayer/RecipeBook, "update_reagents")
 	player_info.set_player(player)
 	
 	if not Profile.get_tutorial("map"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=20]
+[ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -361,6 +362,31 @@ margin_top = 119.183
 margin_right = -309.276
 margin_bottom = -960.817
 
+[node name="LeftSide" type="Control" parent="Background"]
+margin_left = -750.0
+margin_top = 120.0
+margin_right = -150.0
+margin_bottom = 980.0
+
+[node name="PlayerInfo" parent="Background/LeftSide" instance=ExtResource( 21 )]
+
+[node name="BG" parent="Background/LeftSide/PlayerInfo" index="0"]
+self_modulate = Color( 1, 1, 1, 0 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/LeftSide"]
+margin_left = 70.0
+margin_top = 180.0
+margin_right = 570.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 500, 600 )
+theme = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentContainer" type="GridContainer" parent="Background/LeftSide/ScrollContainer"]
+columns = 7
+
 [node name="Tween" type="Tween" parent="."]
 [connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
@@ -375,3 +401,5 @@ margin_bottom = -960.817
 [connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
+
+[editable path="Background/LeftSide/PlayerInfo"]

@@ -79,7 +79,7 @@ __meta__ = {
 
 [node name="Gold" type="HBoxContainer" parent="BG/CurrencyContainer"]
 margin_right = 114.0
-margin_bottom = 51.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 40, 40 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,7 +87,7 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Gold"]
 margin_right = 40.0
-margin_bottom = 51.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 5 )
 expand = true
@@ -95,9 +95,8 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="BG/CurrencyContainer/Gold"]
 margin_left = 44.0
-margin_top = 2.0
 margin_right = 114.0
-margin_bottom = 49.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 70, 40 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -117,7 +116,7 @@ position = Vector2( 96.4743, -26.258 )
 [node name="Pearls" type="HBoxContainer" parent="BG/CurrencyContainer"]
 margin_left = 184.0
 margin_right = 298.0
-margin_bottom = 51.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 40, 40 )
 size_flags_stretch_ratio = 0.0
 __meta__ = {
@@ -126,7 +125,7 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="BG/CurrencyContainer/Pearls"]
 margin_right = 40.0
-margin_bottom = 51.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 7 )
 expand = true
@@ -134,9 +133,8 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="BG/CurrencyContainer/Pearls"]
 margin_left = 44.0
-margin_top = 2.0
 margin_right = 114.0
-margin_bottom = 49.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 70, 40 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

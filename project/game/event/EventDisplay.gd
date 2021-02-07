@@ -7,6 +7,7 @@ onready var text_label = $VBox/TextRect/TextContainer/Text
 onready var vbox = $VBox
 onready var image = $Image
 
+const THEME = preload("res://assets/themes/event_theme/event_theme.tres")
 const IMAGES = [preload("res://assets/images/events/event_luck.png"),
 		preload("res://assets/images/events/event_challenge.png"),
 		preload("res://assets/images/events/event_tradeoff.png"),
@@ -37,10 +38,11 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	for option in event.options:
 		var button = Button.new()
 		vbox.add_child(button)
-		button.text = option.button_text
+		button.text = "  -  " + option.button_text
 		button.align = Button.ALIGN_LEFT
 		button.connect("pressed", EventManager, option.callback,
 				[self, player] + option.args)
+		button.theme = THEME
 
 
 func _on_event_left():

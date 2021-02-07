@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/background/events.png" type="Texture" id=1]
 [ext_resource path="res://game/event/EventDisplay.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/themes/event_theme/event_theme.tres" type="Theme" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -82,7 +83,7 @@ __meta__ = {
 
 [node name="TextRect" type="ColorRect" parent="VBox"]
 margin_right = 900.0
-margin_bottom = 600.0
+margin_bottom = 514.0
 rect_min_size = Vector2( 900, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -115,12 +116,33 @@ bbcode_enabled = true
 bbcode_text = "[wave amp=50 freq=2]Body[/wave] [i]small[/i]"
 text = "Body small"
 
+[node name="ExampleButton1" type="Button" parent="VBox"]
+margin_top = 518.0
+margin_right = 900.0
+margin_bottom = 557.0
+theme = ExtResource( 7 )
+text = "  -  This is an example button"
+align = 0
+
+[node name="ExampleButton2" type="Button" parent="VBox"]
+margin_top = 561.0
+margin_right = 900.0
+margin_bottom = 600.0
+theme = ExtResource( 7 )
+text = "  -  This is also an example button"
+align = 0
+
 [node name="Image" type="TextureRect" parent="."]
-margin_left = 1080.0
-margin_top = 440.0
-margin_right = 1680.0
-margin_bottom = 1040.0
+margin_left = 1124.0
+margin_top = 274.0
+margin_right = 1660.0
+margin_bottom = 1044.0
 texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

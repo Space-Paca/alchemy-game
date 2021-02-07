@@ -23,6 +23,10 @@ func clear_filters():
 
 func _on_Button_toggled(button_pressed: bool):
 	filter_rect.visible = button_pressed
+	if button_pressed:
+		AudioManager.play_sfx("open_filter")
+	else:
+		AudioManager.play_sfx("close_filter")
 
 
 func _on_Filter_toggled(button_pressed: bool, index: int):
@@ -30,5 +34,5 @@ func _on_Filter_toggled(button_pressed: bool, index: int):
 		filter_values.append(index)
 	else:
 		filter_values.erase(index)
-	
+	AudioManager.play_sfx("click_filter_button")
 	emit_signal("filters_updated", filter_values)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/recipe-book/FilterMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/book/filter-menu.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/filter_menu.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=4]
 
@@ -72,61 +72,61 @@ __meta__ = {
 
 [node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_right = 142.0
-margin_bottom = 53.0
+margin_bottom = 47.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Attack"
 
 [node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 57.0
+margin_top = 51.0
 margin_right = 142.0
-margin_bottom = 110.0
+margin_bottom = 98.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Defense"
 
 [node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 114.0
+margin_top = 102.0
 margin_right = 142.0
-margin_bottom = 167.0
+margin_bottom = 149.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Area"
 
 [node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 171.0
+margin_top = 153.0
 margin_right = 142.0
-margin_bottom = 224.0
+margin_bottom = 200.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Buff"
 
 [node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 228.0
+margin_top = 204.0
 margin_right = 142.0
-margin_bottom = 281.0
+margin_bottom = 251.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Debuff"
 
 [node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 285.0
+margin_top = 255.0
 margin_right = 142.0
-margin_bottom = 338.0
+margin_bottom = 302.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1
 text = "Heal"
 
 [node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 342.0
+margin_top = 306.0
 margin_right = 142.0
-margin_bottom = 395.0
+margin_bottom = 353.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 1

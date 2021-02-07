@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/home title start screen_3.png-d0e5c6b0effbacc04d607852bdfb6f28.stex"
+path="res://.import/max_hp.png-5287213a62045ffa333acd3c16d26c22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/home title start screen_3.png"
-dest_files=[ "res://.import/home title start screen_3.png-d0e5c6b0effbacc04d607852bdfb6f28.stex" ]
+source_file="res://assets/images/artifacts/max_hp.png"
+dest_files=[ "res://.import/max_hp.png-5287213a62045ffa333acd3c16d26c22.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
-flags/anisotropic=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

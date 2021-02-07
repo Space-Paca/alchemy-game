@@ -8,7 +8,7 @@
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/home title start screen_3.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 80
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.788235 )
@@ -90,7 +90,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="QuitConfirm/VBoxContainer"]
 margin_right = 1304.0
 margin_bottom = 101.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 text = "Are you sure you want to exit the game?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]

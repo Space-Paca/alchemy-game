@@ -173,6 +173,7 @@ EventManager="*res://database/EventManager.gd"
 TutorialLayer="*res://game/tutorial/TutorialLayer.tscn"
 FileManager="*res://game/file-manager/FileManager.gd"
 Profile="*res://game/file-manager/Profile.gd"
+Transition="*res://game/ui/transition/Transition.tscn"
 
 [debug]
 

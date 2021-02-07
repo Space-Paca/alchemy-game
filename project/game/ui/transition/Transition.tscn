@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/transition/texture.png" type="Texture" id=1]
+[ext_resource path="res://game/ui/transition/Transition.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float value : hint_range(0.0, 1.0);
+uniform float smoothing : hint_range(0.0, 1.0);
+uniform bool mirror_x;
+uniform bool mirror_y;
+
+void fragment() {
+	float x = mirror_x ? 1.0 - UV.x : UV.x;
+	float y = mirror_y ? 1.0 - UV.y : UV.y;
+	vec4 color = texture(TEXTURE, vec2(x, y));
+	float upper_edge = value * (1.0 + smoothing);
+	float lower_edge = upper_edge - smoothing;
+	
+	COLOR = vec4(vec3(0.0), 1.0 - smoothstep(lower_edge, upper_edge, color.r));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/value = 0.0
+shader_param/smoothing = 0.25
+shader_param/mirror_x = false
+shader_param/mirror_y = false
+
+[node name="Transition" type="CanvasLayer"]
+layer = 9
+script = ExtResource( 2 )
+
+[node name="TransitionTexture" type="TextureRect" parent="."]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

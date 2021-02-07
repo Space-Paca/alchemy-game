@@ -18,6 +18,7 @@ const HIDDEN_POSITION = Vector2(660, -627)
 const SHOWING_POSITION = Vector2(660, -400)
 const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
 const GOLD_TEXTURE = preload("res://assets/images/ui/coin.png")
+const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 
 var tooltip_enabled = false
 
@@ -28,14 +29,27 @@ func set_player(player: Player):
 	player.connect("gold_updated", self, "update_gold")
 	# warning-ignore:return_value_discarded
 	player.connect("pearls_updated", self, "update_pearls")
+	# warning-ignore:return_value_discarded
+	player.connect("artifacts_updated", self, "update_artifacts")
 	
 	update_values(player)
+
 
 
 func update_values(player: Player):
 	update_hp(player.hp, player.max_hp)
 	update_gold(player.gold)
 	update_pearls(player.pearls)
+
+
+func update_artifacts(player_artifacts):
+	for artifact in artifacts.get_children():
+		artifacts.remove_child(artifact)
+	for artifact_type in player_artifacts:
+		var artifact = ARTIFACT.instance()
+		artifacts.add_child(artifact)
+		artifact.init(artifact_type)
+		artifact.update_size(.8)
 
 
 func update_hp(hp: int, max_hp: int):

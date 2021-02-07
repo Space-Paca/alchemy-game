@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/images/artifacts/comum.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/artifacts/debuff_kit.png" type="Texture" id=1]
 [ext_resource path="res://game/treasure/ArtifactLoot.gd" type="Script" id=2]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=3]
 

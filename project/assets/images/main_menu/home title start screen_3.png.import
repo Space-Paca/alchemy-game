@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/raro.png-9148626d1e2d1260ddda09e63134a5d5.stex"
+path="res://.import/home title start screen_3.png-271f0078baed846f568990229092671a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/artifacts/raro.png"
-dest_files=[ "res://.import/raro.png-9148626d1e2d1260ddda09e63134a5d5.stex" ]
+source_file="res://assets/images/main_menu/home title start screen_3.png"
+dest_files=[ "res://.import/home title start screen_3.png-271f0078baed846f568990229092671a.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

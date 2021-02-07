@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/incomum.png-eb5432fd4e7629eda91773bc0257c049.stex"
+path="res://.import/background.png-b6eaae0ee2dfb66da3c81b35b44349db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/artifacts/incomum.png"
-dest_files=[ "res://.import/incomum.png-eb5432fd4e7629eda91773bc0257c049.stex" ]
+source_file="res://assets/images/main_menu/background.png"
+dest_files=[ "res://.import/background.png-b6eaae0ee2dfb66da3c81b35b44349db.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

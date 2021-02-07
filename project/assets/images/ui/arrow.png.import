@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.webp-789c43c765bb3b4090b05f311c7d85d4.stex"
+path="res://.import/arrow.png-eb59304b581d7bc32cae1d6f49907219.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/arrow.webp"
-dest_files=[ "res://.import/arrow.webp-789c43c765bb3b4090b05f311c7d85d4.stex" ]
+source_file="res://assets/images/ui/arrow.png"
+dest_files=[ "res://.import/arrow.png-eb59304b581d7bc32cae1d6f49907219.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

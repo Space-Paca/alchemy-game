@@ -25,6 +25,7 @@ func setup(node, _player):
 	main_buttons.show()
 	reagent_list.clear()
 	reagent_list.hide()
+	reagent_list.disable_tooltips()
 	player = _player
 	state = "start"
 	map_node = node
@@ -56,6 +57,10 @@ func update_reagent_list(type: String):
 		
 	reagent_list.clear()
 	reagent_list.populate(reagents)
+	if reagent_list.visible:
+		reagent_list.enable_tooltips()
+	else:
+		reagent_list.disable_tooltips()
 	
 	return true
 
@@ -68,15 +73,18 @@ func back():
 		main_buttons.show()
 		reagent_list.deactivate_reagents()
 		reagent_list.hide()
+		reagent_list.disable_tooltips()
 	elif state == "transmuting_reagent":
 		state = "start"
 		main_buttons.show()
 		reagent_list.deactivate_reagents()
 		reagent_list.hide()
+		reagent_list.disable_tooltips()
 	elif state == "confirm_reagent_upgrade":
 		state = "start"
 		main_buttons.show()
 		reagent_list.hide()
+		reagent_list.disable_tooltips()
 		reagent_list.deactivate_reagents()
 		$UpgradingReagent.hide()
 		upgrading_reagent_tooltip.disable()
@@ -85,6 +93,7 @@ func back():
 		state = "start"
 		main_buttons.show()
 		reagent_list.hide()
+		reagent_list.disable_tooltips()
 		reagent_list.deactivate_reagents()
 		$TransmutingReagent.hide()
 		transmuting_reagent_tooltip.disable()
@@ -107,6 +116,7 @@ func _on_Upgrade_pressed():
 	state = "upgrading_reagent"
 	main_buttons.hide()
 	reagent_list.show()
+	reagent_list.enable_tooltips()
 
 
 func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_index: int, upgraded := false):
@@ -170,6 +180,7 @@ func _on_Transmute_pressed():
 	state = "transmuting_reagent"
 	main_buttons.hide()
 	reagent_list.show()
+	reagent_list.enable_tooltips()
 
 
 func _on_TransmuteConfirmUpgrade_pressed():

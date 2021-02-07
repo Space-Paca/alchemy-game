@@ -57,3 +57,21 @@ func update_combination():
 			right_container.queue_free()
 		if middle_container:
 			middle_container.queue_free()
+
+
+func enable_tooltips():
+	for reagent in grid.get_children():
+		reagent.enable_tooltips()
+	for reagent in left_column.get_children():
+		reagent.enable_tooltips()
+	for reagent in right_column.get_children():
+		reagent.enable_tooltips()
+
+
+func disable_tooltips():
+	for reagent in grid.get_children():
+		reagent.disable_tooltips()
+	for reagent in left_column.get_children():
+		reagent.disable_tooltips()
+	for reagent in right_column.get_children():
+		reagent.disable_tooltips()

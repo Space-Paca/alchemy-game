@@ -1,33 +1,17 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/arrow.webp" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/arrow.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/background/reagent smith.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/BlacksmithNegativeFont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
 [ext_resource path="res://game/blacksmith/ReagentTransmuted.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=13]
-
-[sub_resource type="DynamicFont" id=1]
-size = 59
-outline_size = 6
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-extra_spacing_top = -15
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 59
-outline_size = 7
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 13 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 80, 80 )
@@ -63,10 +47,10 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="."]
-margin_left = 58.2214
-margin_top = 948.668
-margin_right = 258.221
-margin_bottom = 1038.67
+margin_left = 43.9509
+margin_top = 40.1133
+margin_right = 254.951
+margin_bottom = 186.113
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,19 +67,17 @@ __meta__ = {
 }
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
-margin_right = 523.0
-margin_bottom = 134.0
-custom_fonts/font = SubResource( 1 )
+margin_right = 573.0
+margin_bottom = 146.0
 text = "upgrade reagent"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Transmute" type="Button" parent="MainButtons"]
-margin_top = 194.0
-margin_right = 523.0
-margin_bottom = 328.0
-custom_fonts/font = SubResource( 1 )
+margin_top = 206.0
+margin_right = 573.0
+margin_bottom = 352.0
 text = "transmute reagent"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,22 +103,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -278.176
-margin_top = 324.362
-margin_right = 311.824
-margin_bottom = 444.362
-custom_fonts/font = SubResource( 1 )
-text = "confirm upgrade (          )"
+margin_left = -335.357
+margin_top = 342.862
+margin_right = 344.643
+margin_bottom = 488.862
+text = "confirm upgrade (      )"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UpgradingReagent/ConfirmUpgrade"]
-margin_left = 495.0
-margin_top = 12.0
-margin_right = 551.0
-margin_bottom = 105.0
-custom_fonts/font = SubResource( 2 )
+margin_left = 542.639
+margin_top = 45.4299
+margin_right = 591.639
+margin_bottom = 109.43
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-1 "
 __meta__ = {
@@ -144,10 +125,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="UpgradingReagent/ConfirmUpgrade"]
-margin_left = 550.0
-margin_top = 45.0
-margin_right = 806.0
-margin_bottom = 301.0
+margin_left = 584.63
+margin_top = 50.6973
+margin_right = 840.63
+margin_bottom = 306.697
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
@@ -208,6 +189,7 @@ shape = SubResource( 5 )
 position = Vector2( 197.193, -23.323 )
 
 [node name="Arrow" type="TextureRect" parent="UpgradingReagent"]
+modulate = Color( 0.592157, 0.968627, 0.419608, 1 )
 margin_left = 436.064
 margin_top = 309.933
 margin_right = 948.064
@@ -240,21 +222,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -278.176
-margin_top = 324.362
-margin_right = 311.824
-margin_bottom = 444.362
-custom_fonts/font = SubResource( 1 )
-text = "confirm upgrade (    )"
+margin_left = -350.718
+margin_top = 301.767
+margin_right = 349.282
+margin_bottom = 447.767
+text = "confirm upgrade (      )"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade"]
+margin_left = 543.821
+margin_top = 45.0765
+margin_right = 599.821
+margin_bottom = 138.076
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "-2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="TransmutingReagent/ConfirmUpgrade"]
-margin_left = 490.0
-margin_top = 44.0
-margin_right = 798.0
-margin_bottom = 352.0
+margin_left = 598.119
+margin_top = 53.1248
+margin_right = 906.119
+margin_bottom = 361.125
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
@@ -309,6 +302,7 @@ margin_right = 550.0
 margin_bottom = 200.0
 
 [node name="Arrow" type="TextureRect" parent="TransmutingReagent"]
+modulate = Color( 0.933333, 0.592157, 0, 1 )
 margin_left = 746.43
 margin_top = 313.535
 margin_right = 1258.43
@@ -323,10 +317,10 @@ __meta__ = {
 
 [node name="ClickableReagentList" parent="." instance=ExtResource( 3 )]
 visible = false
-margin_left = 46.5328
-margin_top = 154.863
-margin_right = 546.533
-margin_bottom = 754.863
+margin_left = 20.3703
+margin_top = 295.19
+margin_right = 520.37
+margin_bottom = 895.19
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainButtons/Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="MainButtons/Transmute" to="." method="_on_Transmute_pressed"]

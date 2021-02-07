@@ -17,6 +17,17 @@ func populate(reagent_array: Array):
 		button.setup(texture, reagent.upgraded, reagent.type)
 		button.connect("pressed", self, "_on_reagent_pressed", [reagent.type,
 				button.get_index(), reagent.upgraded])
+		button.disable_tooltips()
+
+
+func enable_tooltips():
+	for reagent in grid.get_children():
+		reagent.enable_tooltips()
+
+
+func disable_tooltips():
+	for reagent in grid.get_children():
+		reagent.disable_tooltips()
 
 
 func clear():

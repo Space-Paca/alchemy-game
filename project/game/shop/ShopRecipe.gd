@@ -44,6 +44,14 @@ func update_display():
 		hint_button.text = "Buy Hint"
 
 
+func enable_tooltips():
+	recipe_display.enable_tooltips()
+
+
+func disable_tooltips():
+	recipe_display.disable_tooltips()
+
+
 func _on_Buy_pressed():
 	if player.spend_gold(buy_cost):
 		AudioManager.play_sfx("buy")

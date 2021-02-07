@@ -67,10 +67,13 @@ func _on_BackButton_pressed():
 		States.REAGENTS:
 			curr_state = States.MENU
 			reagents_menu.hide()
+			reagent_list.disable_tooltips()
 			shop_menu.show()
 		States.RECIPES:
 			curr_state = States.MENU
 			recipe_menu.hide()
+			for recipe in $RecipeMenu/HBoxContainer.get_children():
+				recipe.disable_tooltips()
 			shop_menu.show()
 
 
@@ -78,6 +81,8 @@ func _on_RecipesButton_pressed():
 	curr_state = States.RECIPES
 	shop_menu.hide()
 	recipe_menu.show()
+	for recipe in $RecipeMenu/HBoxContainer.get_children():
+		recipe.enable_tooltips()
 	emit_signal("combinations_seen", shown_combinations)
 
 
@@ -85,6 +90,7 @@ func _on_ReagentsButton_pressed():
 	curr_state = States.REAGENTS
 	shop_menu.hide()
 	reagents_menu.show()
+	reagent_list.enable_tooltips()
 
 
 func _on_ShopRecipe_bought(combination: Combination):

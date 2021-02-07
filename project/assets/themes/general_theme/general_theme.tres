@@ -53,9 +53,9 @@ margin_right = 23.0
 margin_top = 28.0
 margin_bottom = 28.0
 
-[sub_resource type="StyleBoxEmpty" id=14]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=15]
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 9 )
@@ -110,8 +110,8 @@ HSlider/icons/grabber = ExtResource( 11 )
 HSlider/icons/grabber_disabled = ExtResource( 12 )
 HSlider/icons/grabber_highlight = ExtResource( 10 )
 HSlider/icons/tick = null
-HSlider/styles/grabber_area = SubResource( 14 )
-HSlider/styles/grabber_area_highlight = SubResource( 15 )
+HSlider/styles/grabber_area = SubResource( 6 )
+HSlider/styles/grabber_area_highlight = SubResource( 7 )
 HSlider/styles/slider = SubResource( 8 )
 ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )

@@ -134,7 +134,7 @@ func update_reagents(bag):
 	for reagent in bag:
 		var clickable_reagent = CLICKABLE_REAGENT.instance()
 		var texture = ReagentDB.get_from_name(reagent.type).image
-		clickable_reagent.setup(texture, reagent.upgraded)
+		clickable_reagent.setup(texture, reagent.upgraded, reagent.type)
 		reagent_container.add_child(clickable_reagent)
 
 
@@ -187,6 +187,9 @@ func enable_tooltips():
 			display.enable_tooltips()
 		else:
 			display.disable_tooltips()
+	#Bag reagents
+	for reagent in reagent_container.get_children():
+		reagent.enable_tooltips()
 
 
 func disable_tooltips():
@@ -196,6 +199,9 @@ func disable_tooltips():
 	#Recipes
 	for display in recipe_grid.get_children():
 		display.disable_tooltips()
+	#Bag reagents
+	for reagent in reagent_container.get_children():
+		reagent.disable_tooltips()
 
 
 func toggle_visibility():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=20]
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -373,12 +374,22 @@ margin_bottom = 980.0
 [node name="BG" parent="Background/LeftSide/PlayerInfo" index="0"]
 self_modulate = Color( 1, 1, 1, 0 )
 
+[node name="BagIcon" type="TextureRect" parent="Background/LeftSide"]
+margin_left = 20.2043
+margin_top = 159.39
+margin_right = 161.204
+margin_bottom = 293.39
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/LeftSide"]
 margin_left = 70.0
-margin_top = 180.0
+margin_top = 320.0
 margin_right = 570.0
-margin_bottom = 190.0
-rect_min_size = Vector2( 500, 600 )
+margin_bottom = 720.0
+rect_min_size = Vector2( 500, 400 )
 theme = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

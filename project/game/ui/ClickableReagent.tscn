@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/ui/ClickableReagent.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/reagent_list/slot.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/images/ui/reagent_list/slot_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/reagent_list/slot_disabled.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -15,6 +16,9 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 30 )
 
 [node name="ClickableReagent" type="TextureButton"]
 anchor_right = 1.0
@@ -42,10 +46,10 @@ __meta__ = {
 }
 
 [node name="Reagent" type="TextureRect" parent="."]
-margin_left = 4.77136
-margin_top = 4.41482
-margin_right = 59.7714
-margin_bottom = 59.4148
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 3 )
 expand = true
@@ -61,4 +65,15 @@ margin_bottom = 27.7526
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.356863, 1, 0, 1 )
 text = "+"
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 8 )]
+position = Vector2( 32.0811, 32.0811 )
+TIMEOUT = 0.3
+
+[node name="CollisionShape2D" parent="TooltipCollision" index="0"]
+shape = SubResource( 2 )
 [connection signal="mouse_entered" from="." to="." method="_on_ClickableReagent_mouse_entered"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="TooltipCollision"]

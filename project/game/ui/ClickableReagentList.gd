@@ -14,7 +14,7 @@ func populate(reagent_array: Array):
 		var button = CLICKABLE_REAGENT.instance()
 		
 		grid.add_child(button)
-		button.setup(texture, reagent.upgraded)
+		button.setup(texture, reagent.upgraded, reagent.type)
 		button.connect("pressed", self, "_on_reagent_pressed", [reagent.type,
 				button.get_index(), reagent.upgraded])
 

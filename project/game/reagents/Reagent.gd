@@ -305,29 +305,35 @@ func toggle_unstable():
 	else:
 		$AnimationPlayer.play("idle")
 
+
 func explode():
 	$AnimationPlayer.play("explode")
+
 
 func explode_end():
 	AudioManager.play_sfx("reagent_explosion")
 	$AnimationPlayer.play("idle")
 	emit_signal("exploded")
-	
+
 
 func upgrade():
 	upgraded = true
 	$Image/Upgraded.show()
 
+
 func downgrade():
 	upgraded = false
 	$Image/Upgraded.hide()
 
+
 func is_upgraded():
 	return upgraded
+
 
 func disable_dragging():
 	can_drag = false
 	disable_drag = true
+
 
 func unrestrain_slot(target_slot):
 	emit_signal("unrestrained_slot", self, target_slot)

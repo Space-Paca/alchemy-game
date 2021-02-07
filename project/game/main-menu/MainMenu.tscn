@@ -1,95 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/background.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://game/ui/PauseButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/images/home title start screen_3.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 256
-outline_size = 5
-outline_color = Color( 0, 0, 0, 0.627451 )
-use_mipmaps = true
-use_filter = true
-extra_spacing_top = -50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 100
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 0.627451 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.870588, 0.870588, 0.870588, 0.627451 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 0.627451 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0, 0, 0, 0.627451 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="DynamicFont" id=7]
-size = 64
-outline_size = 4
-outline_color = Color( 0, 0, 0, 0.627451 )
-use_mipmaps = true
-use_filter = true
-extra_spacing_top = -5
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 size = 80
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.788235 )
@@ -105,60 +24,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
-use_parent_material = true
-margin_left = 20.0
-margin_right = 847.0
-margin_bottom = 330.0
-rect_min_size = Vector2( 800, 0 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-text = "Alchemia"
-align = 1
+[node name="Title" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -430.0
+margin_right = 430.0
+margin_bottom = 513.0
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Subtitle" type="Label" parent="Title"]
-margin_left = 94.4352
-margin_top = 224.506
-margin_right = 784.435
-margin_bottom = 372.506
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.945098, 0.721569, 0.47451, 1 )
-text = "Creatio Ex Nihilo"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 860.828
-margin_top = 419.781
-margin_right = 1160.83
-margin_bottom = 631.781
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -176.5
+margin_top = -480.0
+margin_right = 176.5
+margin_bottom = -158.0
 rect_min_size = Vector2( 300, 0 )
+theme = ExtResource( 5 )
 custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 91.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+margin_right = 353.0
+margin_bottom = 146.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "New Game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 121.0
-margin_right = 300.0
-margin_bottom = 212.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+margin_top = 176.0
+margin_right = 353.0
+margin_bottom = 322.0
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 text = "Quit"
 
@@ -188,7 +90,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="QuitConfirm/VBoxContainer"]
 margin_right = 1304.0
 margin_bottom = 101.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Are you sure you want to exit the game?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]

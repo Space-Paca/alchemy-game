@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_favorites.png-a44d2950cb6a2c50e2c8b7fbe6456fd1.stex"
+path="res://.import/freeze.png-1813dc431120bc14b0c340420613a074.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/background_favorites.png"
-dest_files=[ "res://.import/background_favorites.png-a44d2950cb6a2c50e2c8b7fbe6456fd1.stex" ]
+source_file="res://assets/images/status/freeze.png"
+dest_files=[ "res://.import/freeze.png-1813dc431120bc14b0c340420613a074.stex" ]
 
 [params]
 

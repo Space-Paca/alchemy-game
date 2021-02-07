@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/character/StatusBar.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/background_bags.png" type="Texture" id=2]
 
 [node name="StatusBar" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="."]
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+rect_scale = Vector2( 1, 0.6 )
+texture = ExtResource( 2 )
+patch_margin_left = 72
+patch_margin_top = 60
+patch_margin_right = 57
+patch_margin_bottom = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }

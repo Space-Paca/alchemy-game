@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_favorites.png-a44d2950cb6a2c50e2c8b7fbe6456fd1.stex"
+path="res://.import/curse.png-204da0318a59d51f939ddef31c530d21.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/background_favorites.png"
-dest_files=[ "res://.import/background_favorites.png-a44d2950cb6a2c50e2c8b7fbe6456fd1.stex" ]
+source_file="res://assets/images/status/curse.png"
+dest_files=[ "res://.import/curse.png-204da0318a59d51f939ddef31c530d21.stex" ]
 
 [params]
 

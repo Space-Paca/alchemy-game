@@ -16,8 +16,8 @@ func init(_type: String, value, _positive: bool):
 	else:
 		set_value("")
 	
-	var w = $Image.texture.get_width() + $Value.rect_size.x
-	var h = $Image.texture.get_height()
+	var w = $Value.rect_position.x + $Value.rect_size.x
+	var h = $Image.rect_size.y
 	$TooltipCollision.position.x = w/2
 	$TooltipCollision.position.y = h/2
 	$TooltipCollision.set_collision_width(w)

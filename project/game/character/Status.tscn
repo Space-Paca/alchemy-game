@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/character/Status.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/status/poison.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
@@ -16,7 +16,7 @@ font_data = ExtResource( 3 )
 [sub_resource type="RectangleShape2D" id=2]
 
 [node name="Status" type="HBoxContainer"]
-custom_constants/separation = -2
+custom_constants/separation = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,15 +25,17 @@ __meta__ = {
 [node name="Image" type="TextureRect" parent="."]
 margin_right = 45.0
 margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
 texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="."]
-margin_left = 43.0
+margin_left = 49.0
 margin_top = 1.0
-margin_right = 73.0
+margin_right = 79.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 1 )
 text = "10"

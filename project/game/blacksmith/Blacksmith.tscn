@@ -30,20 +30,20 @@ size = 32
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 80, 80 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 78
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 80, 80 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 90, 90 )
 
 [node name="Blacksmith" type="Control"]
@@ -78,7 +78,7 @@ margin_left = -383.0
 margin_top = -427.0
 margin_right = 517.0
 margin_bottom = -127.0
-rect_min_size = Vector2( 900, 300 )
+rect_min_size = Vector2( 900, 320 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,26 +87,29 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="ShopkeeperDialogue/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="RichTextLabel" parent="ShopkeeperDialogue/Panel/CenterContainer"]
 margin_left = 25.0
-margin_top = 20.0
+margin_top = 15.0
 margin_right = 875.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 850, 260 )
+margin_bottom = 345.0
+rect_min_size = Vector2( 850, 330 )
 custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
+bbcode_text = "Oh hello hello adventurer, welcome to my smith!
+I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
 
-I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
-text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... hmm so tasty
+I can even [wave]transmute[/wave] them into better reagents, oh yes yes! But those will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]"
+text = "Oh hello hello adventurer, welcome to my smith!
+I can see you carry all sorts of trinkets in your bag... I can improve them, oh yes yes! ...if you spare me some precious pearls in return, of course hehehe
 
-I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
+I can even transmute them into better reagents, oh yes yes! But those will cost extra hehehe"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,10 +154,10 @@ __meta__ = {
 
 [node name="UpgradingReagent" type="NinePatchRect" parent="."]
 visible = false
-margin_left = 838.243
-margin_top = 162.261
-margin_right = 1538.24
-margin_bottom = 942.261
+margin_left = 1040.19
+margin_top = 219.478
+margin_right = 1740.18
+margin_bottom = 999.478
 texture = ExtResource( 8 )
 patch_margin_left = 276
 patch_margin_top = 191
@@ -169,10 +172,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -335.357
-margin_top = 342.862
-margin_right = 344.643
-margin_bottom = 488.862
+margin_left = -331.793
+margin_top = 296.535
+margin_right = 348.207
+margin_bottom = 442.535
 text = "confirm upgrade (      )"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -215,7 +218,7 @@ position = Vector2( 71.3525, 68.974 )
 enabled = false
 
 [node name="CollisionShape2D" parent="UpgradingReagent/Reagent/TooltipCollision" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/Reagent"]
 position = Vector2( 186.516, -21.4837 )
@@ -238,7 +241,7 @@ margin_left = 130.227
 margin_top = -29.8289
 margin_right = 170.227
 margin_bottom = 55.1711
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -249,7 +252,7 @@ position = Vector2( 74.8943, 67.1346 )
 enabled = false
 
 [node name="CollisionShape2D" parent="UpgradingReagent/ReagentUpgraded/TooltipCollision" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/ReagentUpgraded"]
 position = Vector2( 197.193, -23.323 )
@@ -335,7 +338,7 @@ margin_left = 151.475
 margin_top = -10.6116
 margin_right = 191.475
 margin_bottom = 74.3884
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -346,7 +349,7 @@ position = Vector2( 75.5955, 73.0754 )
 enabled = false
 
 [node name="CollisionShape2D" parent="TransmutingReagent/Reagent/TooltipCollision" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="TooltipPosition" type="Position2D" parent="TransmutingReagent/Reagent"]
 position = Vector2( 200.3, -38.4272 )

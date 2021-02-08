@@ -68,7 +68,7 @@ text = "+"
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 8 )]
 position = Vector2( 32.0811, 32.0811 )
-TIMEOUT = 0.3
+TIMEOUT = 0.5
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )

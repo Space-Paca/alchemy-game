@@ -102,11 +102,11 @@ custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "Oh hello hello adventurer, welcome to my smith!
+bbcode_text = "Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
 
 I can even [wave]transmute[/wave] them into better reagents, oh yes yes! But those will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]"
-text = "Oh hello hello adventurer, welcome to my smith!
+text = "Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of trinkets in your bag... I can improve them, oh yes yes! ...if you spare me some precious pearls in return, of course hehehe
 
 I can even transmute them into better reagents, oh yes yes! But those will cost extra hehehe"

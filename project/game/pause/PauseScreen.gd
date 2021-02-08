@@ -6,8 +6,9 @@ export(Modes) var mode
 onready var bg = $Background
 onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
-onready var bgmslider = $Background/Menu/MusicVolume
-onready var sfxslider = $Background/Menu/SFXVolume
+onready var settings = $Background/SettingsMenu
+onready var bgmslider = $Background/SettingsMenu/MusicVolume
+onready var sfxslider = $Background/SettingsMenu/SFXVolume
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
@@ -34,6 +35,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
 		if confirm.visible:
 			no_quit()
+		elif settings.visible:
+			settings_back()
 		elif not TutorialLayer.is_active():
 			toggle_pause()
 
@@ -56,6 +59,11 @@ func set_pause(p: bool):
 
 func no_quit():
 	confirm.hide()
+	menu.show()
+
+
+func settings_back():
+	settings.hide()
 	menu.show()
 
 
@@ -103,9 +111,19 @@ func _on_MusicVolume_value_changed(value):
 	AudioManager.set_bus_volume("bgm", value/float(bgmslider.max_value))
 	Profile.set_option("bgm_volume", value/float(bgmslider.max_value))
 
+
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
 
 
 func _on_ResetTutorial_pressed():
 	Profile.reset_tutorials()
+
+
+func _on_Settings_pressed():
+	menu.hide()
+	settings.show()
+
+
+func _on_Back_pressed():
+	settings_back()

@@ -29,7 +29,7 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
-color = Color( 0, 0, 0, 0.784314 )
+color = Color( 0, 0, 0, 0.980392 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,58 +70,28 @@ size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Resume"
 
-[node name="MusicLabel" type="Label" parent="Background/Menu"]
+[node name="Settings" type="Button" parent="Background/Menu"]
 margin_top = 166.0
 margin_right = 700.0
-margin_bottom = 217.0
-text = "Music Volume"
-
-[node name="MusicVolume" type="HSlider" parent="Background/Menu"]
-margin_top = 237.0
-margin_right = 700.0
-margin_bottom = 266.0
-step = 10.0
-value = 50.0
-
-[node name="SFXLabel" type="Label" parent="Background/Menu"]
-margin_top = 286.0
-margin_right = 700.0
-margin_bottom = 337.0
-text = "Sound Effects Volume"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolume" type="HSlider" parent="Background/Menu"]
-margin_top = 357.0
-margin_right = 700.0
-margin_bottom = 386.0
-step = 10.0
-value = 50.0
-tick_count = 1
+margin_bottom = 312.0
+rect_min_size = Vector2( 450, 100 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "Settings"
 
 [node name="Return" type="Button" parent="Background/Menu"]
-margin_top = 406.0
+margin_top = 332.0
 margin_right = 700.0
-margin_bottom = 552.0
+margin_bottom = 478.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Return to Main Menu"
 
-[node name="ResetTutorial" type="Button" parent="Background/Menu"]
-margin_top = 572.0
-margin_right = 700.0
-margin_bottom = 718.0
-rect_min_size = Vector2( 450, 120 )
-size_flags_horizontal = 5
-size_flags_vertical = 4
-text = "Reset Tutorial Hints"
-
 [node name="Exit" type="Button" parent="Background/Menu"]
-margin_top = 738.0
+margin_top = 498.0
 margin_right = 700.0
-margin_bottom = 884.0
+margin_bottom = 644.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -169,17 +139,77 @@ margin_right = 450.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "No"
+
+[node name="SettingsMenu" type="VBoxContainer" parent="Background"]
+visible = false
+margin_left = 604.0
+margin_top = 318.0
+margin_right = 1304.0
+margin_bottom = 870.0
+rect_min_size = Vector2( 700, 0 )
+custom_constants/separation = 20
+
+[node name="MusicLabel" type="Label" parent="Background/SettingsMenu"]
+margin_right = 700.0
+margin_bottom = 51.0
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="Background/SettingsMenu"]
+margin_top = 71.0
+margin_right = 700.0
+margin_bottom = 100.0
+step = 10.0
+value = 50.0
+
+[node name="SFXLabel" type="Label" parent="Background/SettingsMenu"]
+margin_top = 120.0
+margin_right = 700.0
+margin_bottom = 171.0
+text = "Sound Effects Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolume" type="HSlider" parent="Background/SettingsMenu"]
+margin_top = 191.0
+margin_right = 700.0
+margin_bottom = 220.0
+step = 10.0
+value = 50.0
+tick_count = 1
+
+[node name="ResetTutorial" type="Button" parent="Background/SettingsMenu"]
+margin_top = 240.0
+margin_right = 700.0
+margin_bottom = 386.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "Reset Tutorial Hints"
+
+[node name="Back" type="Button" parent="Background/SettingsMenu"]
+margin_top = 406.0
+margin_right = 700.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "Back"
 [connection signal="mouse_entered" from="Background/Menu/Resume" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="mouse_entered" from="Background/Menu/MusicVolume" to="." method="_on_button_mouse_entered"]
-[connection signal="value_changed" from="Background/Menu/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
-[connection signal="mouse_entered" from="Background/Menu/SFXVolume" to="." method="_on_button_mouse_entered"]
-[connection signal="value_changed" from="Background/Menu/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/Menu/Settings" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/Menu/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="mouse_entered" from="Background/Menu/Return" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Return" to="." method="_on_Return_pressed"]
-[connection signal="mouse_entered" from="Background/Menu/ResetTutorial" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Background/Menu/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
 [connection signal="mouse_entered" from="Background/Menu/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]
+[connection signal="mouse_entered" from="Background/SettingsMenu/MusicVolume" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Background/SettingsMenu/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/SettingsMenu/SFXVolume" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Background/SettingsMenu/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/SettingsMenu/ResetTutorial" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/SettingsMenu/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
+[connection signal="mouse_entered" from="Background/SettingsMenu/Back" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/SettingsMenu/Back" to="." method="_on_Back_pressed"]

@@ -59,6 +59,9 @@ func _process(dt):
 		no_recipes_label.modulate.a = 0
 
 
+func update_player_info():
+	$Background/LeftSide/PlayerInfo.update_values(player)
+
 func set_player(p: Player):
 	player = p
 	$Background/LeftSide/PlayerInfo.set_player(p)

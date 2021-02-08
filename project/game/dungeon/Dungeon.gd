@@ -447,6 +447,8 @@ func enable_map():
 
 func recipe_book_toggle():
 	var book_visible = recipe_book.toggle_visibility()
+	if book_visible:
+		recipe_book.update_player_info()
 	map.recipe_toogle(book_visible)
 	if battle:
 		battle.recipe_book_toggled(book_visible)

@@ -52,13 +52,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -355.787
-margin_top = -221.84
-margin_right = 344.213
-margin_bottom = 496.16
+margin_left = -356.0
+margin_top = -222.0
+margin_right = 344.0
+margin_bottom = 662.0
 rect_min_size = Vector2( 700, 0 )
 custom_constants/separation = 20
-alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,7 +65,7 @@ __meta__ = {
 [node name="Resume" type="Button" parent="Background/Menu"]
 margin_right = 700.0
 margin_bottom = 146.0
-rect_min_size = Vector2( 450, 120 )
+rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Resume"
@@ -105,15 +104,24 @@ tick_count = 1
 margin_top = 406.0
 margin_right = 700.0
 margin_bottom = 552.0
-rect_min_size = Vector2( 450, 120 )
+rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Return to Main Menu"
 
-[node name="Exit" type="Button" parent="Background/Menu"]
+[node name="ResetTutorial" type="Button" parent="Background/Menu"]
 margin_top = 572.0
 margin_right = 700.0
 margin_bottom = 718.0
+rect_min_size = Vector2( 450, 120 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "Reset Tutorial Hints"
+
+[node name="Exit" type="Button" parent="Background/Menu"]
+margin_top = 738.0
+margin_right = 700.0
+margin_bottom = 884.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -169,6 +177,8 @@ text = "No"
 [connection signal="value_changed" from="Background/Menu/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
 [connection signal="mouse_entered" from="Background/Menu/Return" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Return" to="." method="_on_Return_pressed"]
+[connection signal="mouse_entered" from="Background/Menu/ResetTutorial" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/Menu/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
 [connection signal="mouse_entered" from="Background/Menu/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]

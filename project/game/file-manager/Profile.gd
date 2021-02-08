@@ -71,3 +71,4 @@ func set_option(name: String, value: float):
 func reset_tutorials():
 	for keys in tutorials.keys():
 		tutorials[keys] = false
+	FileManager.save_profile()

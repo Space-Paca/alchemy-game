@@ -105,3 +105,7 @@ func _on_MusicVolume_value_changed(value):
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+
+func _on_ResetTutorial_pressed():
+	Profile.reset_tutorials()

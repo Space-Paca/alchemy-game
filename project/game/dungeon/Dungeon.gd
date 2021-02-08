@@ -394,6 +394,7 @@ func open_smith(room, _player):
 
 func open_lab(room, _player):
 	AudioManager.play_bgm("laboratory")
+	recipe_book.change_state(RecipeBook.States.LAB)
 	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
 	map.disable()
@@ -650,6 +651,7 @@ func _on_Blacksmith_closed():
 
 
 func _on_Laboratory_closed():
+	recipe_book.change_state(RecipeBook.States.MAP)
 	lab.hide()
 	cur_lab_attempts = lab.get_attempts()
 	enable_map()
@@ -743,3 +745,11 @@ func _on_PauseButton_mouse_entered():
 
 func _on_PauseButton_button_down():
 	AudioManager.play_sfx("click_menu_button")
+
+
+func _on_RecipeBook_recipe_pressed_lab(combination: Combination):
+	assert(lab.grid.grid_size >= combination.grid_size)
+	recipe_book_toggle()
+	lab.grid.clear_hints()
+	if not lab.grid.show_combination_hint(combination):
+		AudioManager.play_sfx("error")

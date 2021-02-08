@@ -2,6 +2,7 @@ extends Control
 class_name RecipeBook
 
 signal recipe_pressed(combination, mastery_unlocked)
+signal recipe_pressed_lab(combination)
 signal favorite_toggled(combination, button_pressed)
 signal close
 
@@ -89,7 +90,9 @@ func change_state(new_state: int):
 				filter_by_tag(DECK)
 				update_tag_buttons(DECK)
 		States.LAB:
-			pass
+			reset_recipe_visibility()
+			filter_by_tag(INCOMPLETE)
+			update_tag_buttons(INCOMPLETE)
 	
 	state = new_state
 
@@ -431,22 +434,26 @@ func _on_recipe_display_unhovered():
 
 
 func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool):
-	if state != States.BATTLE:
+	if state != States.BATTLE and state != States.LAB:
 		return
-	
-	if not hand_reagents.size():
-		error_effect()
-		return
-	
-	var combination_reagents = combination.recipe.reagents.duplicate()
-	var hand_array = []
-	for reagent_display in hand_reagents:
-		hand_array.append(reagent_display.reagent_name)
-	var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
-	if valid_reagents:
-		emit_signal("recipe_pressed", combination, mastery_unlocked)
+	print("here")
+	if state == States.BATTLE:
+		if not hand_reagents.size():
+			error_effect()
+			return
+		
+		var combination_reagents = combination.recipe.reagents.duplicate()
+		var hand_array = []
+		for reagent_display in hand_reagents:
+			hand_array.append(reagent_display.reagent_name)
+		var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
+		if valid_reagents:
+			emit_signal("recipe_pressed", combination, mastery_unlocked)
+		else:
+			error_effect()
 	else:
-		error_effect()
+		print("emitted")
+		emit_signal("recipe_pressed_lab", combination)
 
 
 func _on_recipe_display_favorite_toggled(combination: Combination, button_pressed: bool):
@@ -470,6 +477,7 @@ func _on_FilterMenu_filters_updated(filters: Array):
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
 
 func _on_CloseButton_pressed():
 	emit_signal("close")

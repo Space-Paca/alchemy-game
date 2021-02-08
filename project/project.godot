@@ -152,9 +152,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Alchemy"
+config/name="Alchemia: Creatio Ex Nihilo"
 run/main_scene="res://game/main-menu/MainMenu.tscn"
-config/icon="res://assets/images/slime-icon.png"
+boot_splash/image="res://assets/images/splash_screen.png"
+config/icon="res://assets/images/icon.png"
 
 [autoload]
 

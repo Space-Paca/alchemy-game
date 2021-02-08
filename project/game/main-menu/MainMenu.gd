@@ -1,6 +1,8 @@
 extends TextureRect
 
 func _ready():
+	yield(get_tree(),"idle_frame")
+	Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
 	

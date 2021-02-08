@@ -71,3 +71,10 @@ func end_transition():
 	transition_texture.hide()
 	
 	emit_signal("finished")
+
+
+func single_out_transition():
+	randomize_direction()
+	active = true
+	transition_texture.show()
+	end_transition()

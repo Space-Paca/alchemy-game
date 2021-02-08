@@ -124,7 +124,9 @@ mode = 1
 
 [node name="Background" parent="PauseScreen" index="0"]
 visible = false
+[connection signal="mouse_entered" from="VBoxContainer/NewGameButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/No" to="." method="_on_No_pressed"]

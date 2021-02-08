@@ -32,15 +32,16 @@ func transition_to(scene_path: String):
 	transition_texture.show()
 	tween.interpolate_property(material, "shader_param/value", 0, 1, DURATION_2)
 	tween.start()
+	AudioManager.play_sfx("transition_in")
 	
 	yield(tween, "tween_completed")
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(scene_path)
 	invert_direction()
-	
+	yield(get_tree(), "idle_frame")
 	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)
 	tween.start()
-	
+	AudioManager.play_sfx("transition_out")
 	yield(tween, "tween_completed")
 	active = false
 	transition_texture.hide()
@@ -54,7 +55,7 @@ func begin_transition():
 	transition_texture.show()
 	tween.interpolate_property(material, "shader_param/value", 0, 1, DURATION_2)
 	tween.start()
-	
+	AudioManager.play_sfx("transition_in")
 	yield(tween, "tween_completed")
 	
 	emit_signal("screen_dimmed")
@@ -64,7 +65,7 @@ func end_transition():
 	invert_direction()
 	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)
 	tween.start()
-	
+	AudioManager.play_sfx("transition_out")
 	yield(tween, "tween_completed")
 	active = false
 	transition_texture.hide()

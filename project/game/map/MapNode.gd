@@ -125,7 +125,8 @@ func _on_Button_pressed():
 
 func _on_Button_mouse_entered():
 	mouse_over = true
-
+	if type != EMPTY:
+		AudioManager.play_sfx("hover_map_node")
 
 func _on_Button_mouse_exited():
 	mouse_over = false

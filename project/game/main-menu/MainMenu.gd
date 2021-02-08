@@ -16,6 +16,7 @@ func _input(event):
 
 
 func _on_NewGameButton_pressed():
+	AudioManager.play_sfx("start_new_game")
 	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
 
 
@@ -41,3 +42,8 @@ func _on_PauseButton_mouse_entered():
 
 func _on_PauseButton_button_down():
 	AudioManager.play_sfx("click_menu_button")
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_mainmenu_button")
+

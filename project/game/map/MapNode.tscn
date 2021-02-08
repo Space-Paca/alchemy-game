@@ -36,7 +36,7 @@ playback_process_mode = 0
 shape = SubResource( 1 )
 
 [node name="TooltipPosition" parent="TooltipCollision" index="1"]
-position = Vector2( 142.541, -126.222 )
+position = Vector2( 55.7043, -58.2629 )
 
 [node name="Light2D" type="Light2D" parent="."]
 light_mask = 16

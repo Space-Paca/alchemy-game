@@ -55,6 +55,7 @@ func update_combinations():
 func update_reagents():
 	var reagent_array = []
 	reagent_list.clear()
+	reagent_list.deactivate_reagents()
 	for reagent in player.bag:
 		reagent_array.append({"type":reagent.type, "upgraded": reagent.upgraded})
 	reagent_list.populate(reagent_array)
@@ -68,6 +69,7 @@ func _on_BackButton_pressed():
 			curr_state = States.MENU
 			reagents_menu.hide()
 			reagent_list.disable_tooltips()
+			reagent_list.deactivate_reagents()
 			shop_menu.show()
 		States.RECIPES:
 			curr_state = States.MENU
@@ -102,6 +104,7 @@ func _on_ShopRecipe_hint_bought(combination: Combination):
 
 
 func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
+	reagent_list.activate_reagent(reagent_index)
 	chosen_reagent_index = reagent_index
 	
 	reagent_destroy_label.show()
@@ -122,3 +125,4 @@ func _on_YesButton_pressed():
 
 func _on_NoButton_pressed():
 	reagent_destroy_label.hide()
+	reagent_list.deactivate_reagents()

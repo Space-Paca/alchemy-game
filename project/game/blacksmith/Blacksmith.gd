@@ -9,6 +9,7 @@ onready var main_buttons = $MainButtons
 onready var transmuting_reagent_tooltip = $TransmutingReagent/Reagent/TooltipCollision
 onready var upgrading_reagent_tooltip = $UpgradingReagent/Reagent/TooltipCollision
 onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/TooltipCollision
+onready var dialog = $ShopkeeperDialogue
 
 var player
 var map_node : MapNode
@@ -23,6 +24,7 @@ var tooltips_enabled = false
 
 func setup(node, _player):
 	main_buttons.show()
+	dialog.show()
 	reagent_list.clear()
 	reagent_list.hide()
 	reagent_list.disable_tooltips()
@@ -71,18 +73,21 @@ func back():
 	elif state == "upgrading_reagent":
 		state = "start"
 		main_buttons.show()
+		dialog.show()
 		reagent_list.deactivate_reagents()
 		reagent_list.hide()
 		reagent_list.disable_tooltips()
 	elif state == "transmuting_reagent":
 		state = "start"
 		main_buttons.show()
+		dialog.show()
 		reagent_list.deactivate_reagents()
 		reagent_list.hide()
 		reagent_list.disable_tooltips()
 	elif state == "confirm_reagent_upgrade":
 		state = "start"
 		main_buttons.show()
+		dialog.show()
 		reagent_list.hide()
 		reagent_list.disable_tooltips()
 		reagent_list.deactivate_reagents()
@@ -92,6 +97,7 @@ func back():
 	elif "confirm_reagent_transmute":
 		state = "start"
 		main_buttons.show()
+		dialog.show()
 		reagent_list.hide()
 		reagent_list.disable_tooltips()
 		reagent_list.deactivate_reagents()
@@ -115,6 +121,7 @@ func _on_Upgrade_pressed():
 		return
 	state = "upgrading_reagent"
 	main_buttons.hide()
+	dialog.hide()
 	reagent_list.show()
 	reagent_list.enable_tooltips()
 
@@ -179,6 +186,7 @@ func _on_Transmute_pressed():
 		return
 	state = "transmuting_reagent"
 	main_buttons.hide()
+	dialog.hide()
 	reagent_list.show()
 	reagent_list.enable_tooltips()
 

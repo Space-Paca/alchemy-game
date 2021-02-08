@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -13,20 +13,37 @@
 [ext_resource path="res://game/blacksmith/ReagentTransmuted.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=12]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 80, 80 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=4]
-size = 78
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
 use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 80, 80 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="DynamicFont" id=6]
+size = 78
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 80, 80 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 90, 90 )
 
 [node name="Blacksmith" type="Control"]
@@ -46,6 +63,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ShopkeeperDialogue" type="Node2D" parent="."]
+position = Vector2( 1321.11, 1010.8 )
+
+[node name="Polygon2D" type="Polygon2D" parent="ShopkeeperDialogue"]
+show_behind_parent = true
+position = Vector2( -347.828, -413.13 )
+color = Color( 0.807843, 0.8, 0.698039, 1 )
+antialiased = true
+polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418 )
+
+[node name="Panel" type="Panel" parent="ShopkeeperDialogue"]
+margin_left = -383.0
+margin_top = -427.0
+margin_right = 517.0
+margin_bottom = -127.0
+rect_min_size = Vector2( 900, 300 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ShopkeeperDialogue/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="ShopkeeperDialogue/Panel/CenterContainer"]
+margin_left = 25.0
+margin_top = 20.0
+margin_right = 875.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 850, 260 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
+
+I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
+text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... hmm so tasty
+
+I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BackButton" type="Button" parent="."]
 margin_left = 43.9509
 margin_top = 40.1133
@@ -57,10 +123,10 @@ __meta__ = {
 }
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
-margin_left = 493.889
-margin_top = 395.615
-margin_right = 919.89
-margin_bottom = 695.615
+margin_left = 300.0
+margin_top = 400.0
+margin_right = 873.0
+margin_bottom = 752.0
 custom_constants/separation = 60
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,7 +215,7 @@ position = Vector2( 71.3525, 68.974 )
 enabled = false
 
 [node name="CollisionShape2D" parent="UpgradingReagent/Reagent/TooltipCollision" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/Reagent"]
 position = Vector2( 186.516, -21.4837 )
@@ -172,7 +238,7 @@ margin_left = 130.227
 margin_top = -29.8289
 margin_right = 170.227
 margin_bottom = 55.1711
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,7 +249,7 @@ position = Vector2( 74.8943, 67.1346 )
 enabled = false
 
 [node name="CollisionShape2D" parent="UpgradingReagent/ReagentUpgraded/TooltipCollision" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="TooltipPosition" type="Position2D" parent="UpgradingReagent/ReagentUpgraded"]
 position = Vector2( 197.193, -23.323 )
@@ -269,7 +335,7 @@ margin_left = 151.475
 margin_top = -10.6116
 margin_right = 191.475
 margin_bottom = 74.3884
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -280,7 +346,7 @@ position = Vector2( 75.5955, 73.0754 )
 enabled = false
 
 [node name="CollisionShape2D" parent="TransmutingReagent/Reagent/TooltipCollision" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="TooltipPosition" type="Position2D" parent="TransmutingReagent/Reagent"]
 position = Vector2( 200.3, -38.4272 )

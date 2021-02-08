@@ -768,8 +768,7 @@ func _on_Battle_update_recipes_display():
 
 
 func _on_PlayerInfo_button_pressed():
-	#recipe_book_toggle()
-	pass
+	recipe_book_toggle()
 
 
 func _on_RecipeBook_close():

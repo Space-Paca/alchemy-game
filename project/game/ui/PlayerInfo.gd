@@ -153,7 +153,7 @@ func _on_TooltipCollision_enable_tooltip(type):
 
 func _on_DownButton_mouse_entered():
 	mouse_over_downbutton = true
-	AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_playerinfo_button")
 
 
 func _on_DownButton_mouse_exited():

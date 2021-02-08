@@ -436,7 +436,6 @@ func _on_recipe_display_unhovered():
 func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool):
 	if state != States.BATTLE and state != States.LAB:
 		return
-	print("here")
 	if state == States.BATTLE:
 		if not hand_reagents.size():
 			error_effect()

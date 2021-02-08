@@ -156,6 +156,8 @@ config/name="Alchemia: Creatio Ex Nihilo"
 run/main_scene="res://game/main-menu/MainMenu.tscn"
 boot_splash/image="res://assets/images/splash_screen.png"
 config/icon="res://assets/images/icon.png"
+config/macos_native_icon="res://assets/images/icon.icns"
+config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 

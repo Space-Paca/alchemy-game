@@ -51,6 +51,7 @@ func set_pause(p: bool):
 		update_music_volumes()
 	else:
 		AudioServer.remove_bus_effect(0, 0)
+		FileManager.save_profile()
 
 
 func no_quit():

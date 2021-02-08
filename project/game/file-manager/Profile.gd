@@ -55,6 +55,7 @@ func get_tutorial(name):
 func set_tutorial(name: String, value: bool):
 	assert(tutorials.has(name), "Not a valid tutorial: " + str(name))
 	tutorials[name] = value
+	FileManager.save_profile()
 
 
 func get_option(name):

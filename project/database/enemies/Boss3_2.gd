@@ -1,8 +1,8 @@
 extends Reference
 
 var image = "res://assets/images/enemies/boss3-2/idle.png"
-var name = "Boss3 Phase2"
-var sfx = "Angel"
+var name = "Bigger Angel"
+var sfx = "boss_1"
 var use_idle_sfx = false
 var hp = 300
 var battle_init = true

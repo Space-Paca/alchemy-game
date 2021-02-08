@@ -330,9 +330,6 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	
 	positions.queue_free()
 	
-	if Transition.active:
-		yield(Transition, "finished")
-	
 	reveal_paths(initial_node)
 
 
@@ -344,6 +341,9 @@ func reveal_all_paths():
 func reveal_paths(node:MapNode):
 	if node.paths_revealed:
 		return
+	
+	if Transition.active:
+		yield(Transition, "finished")
 	
 	for i in node.map_tree_children.size():
 		var line : MapLine = node.map_lines[i]

@@ -1005,13 +1005,10 @@ func _on_PassTurnButton_pressed():
 
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_book_toggle")
-	
 
 
 func _on_win_screen_continue_pressed():
-	AudioManager.play_bgm("map" + str(floor_level))
 	emit_signal("finished", is_boss)
-	queue_free()
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)

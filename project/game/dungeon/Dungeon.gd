@@ -339,9 +339,9 @@ func should_unlock_mastery(combination: Combination) -> bool:
 func new_battle(encounter: Encounter):
 	assert(battle == null)
 	battle = BATTLE_SCENE.instance()
-	add_child(battle)
-	
 	player_info.hide()
+	
+	add_child(battle)
 	
 	battle.setup(player, encounter, favorite_combinations, floor_level)
 # warning-ignore:return_value_discarded
@@ -361,13 +361,15 @@ func new_battle(encounter: Encounter):
 # warning-ignore:return_value_discarded
 	battle.connect("update_recipes_display", self, "_on_Battle_update_recipes_display")
 	
+	Transition.end_transition()
+	yield(Transition, "finished")
+	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
 
 
 func open_shop():
 	AudioManager.play_bgm("shop")
-	map.disable()
 	
 	if first_shop_visit:
 		first_shop_visit = false
@@ -376,20 +378,24 @@ func open_shop():
 	shop.update_combinations()
 	shop.update_reagents()
 	shop.show()
+	
+	Transition.end_transition()
 
 
 func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
 	rest.setup(room, _player, get_incomplete_combinations())
 	rest.show()
-	map.disable()
+	
+	Transition.end_transition()
 
 
 func open_smith(room, _player):
 	AudioManager.play_bgm("blacksmith")
 	smith.setup(room, _player)
 	smith.show()
-	map.disable()
+	
+	Transition.end_transition()
 
 
 func open_lab(room, _player):
@@ -397,22 +403,25 @@ func open_lab(room, _player):
 	recipe_book.change_state(RecipeBook.States.LAB)
 	lab.setup(room, _player, cur_lab_attempts)
 	lab.show()
-	map.disable()
 	player_info.hide()
+	
+	Transition.end_transition()
 
 
 func open_treasure(room, _player):
 	AudioManager.play_bgm("treasure")
 	treasure.setup(room, _player, floor_level)
 	treasure.show()
-	map.disable()
+	
+	Transition.end_transition()
 
 
 func open_event(map_node: MapNode):
 	event_display.load_event(EventManager.get_random_event(floor_level), player)
 	event_display.show()
 	map_node.set_type(MapNode.EMPTY)
-	map.disable()
+	
+	Transition.end_transition()
 
 
 func extract_boost_effects(reagents):
@@ -471,12 +480,17 @@ func _on_Combination_fully_discovered(combination: Combination):
 
 
 func _on_map_node_selected(node: MapNode):
-	if node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS]:
-		current_node = node
-		new_battle(node.encounter)
-		map.disable()
-		node.set_type(MapNode.EMPTY)
-	elif node.type == MapNode.SHOP:
+	if not node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS,
+			MapNode.SHOP, MapNode.REST, MapNode.SMITH, MapNode.LABORATORY,
+			MapNode.TREASURE, MapNode.EVENT]:
+		return
+	
+	TooltipLayer.clean_tooltips()
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	map.disable()
+	
+	if node.type == MapNode.SHOP:
 		open_shop()
 	elif node.type == MapNode.REST:
 		open_rest(node, player)
@@ -489,9 +503,10 @@ func _on_map_node_selected(node: MapNode):
 	elif node.type == MapNode.EVENT:
 		current_node = node
 		open_event(node)
-	else:
-		return
-	TooltipLayer.clean_tooltips()
+	else: # MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS
+		current_node = node
+		new_battle(node.encounter)
+		node.set_type(MapNode.EMPTY)
 
 
 func _on_Battle_won():
@@ -516,8 +531,15 @@ func _on_Battle_won():
 
 
 func _on_Battle_finished(is_boss):
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
+	battle.queue_free()
 	battle = null
 	recipe_book.change_state(RecipeBook.States.MAP)
+	AudioManager.play_bgm("map" + str(floor_level))
+	
+	Transition.end_transition()
 	
 	if is_boss:
 		map.queue_free()

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal finished
+signal screen_dimmed
 
 onready var transition_texture = $TransitionTexture
 onready var tween = $Tween
@@ -37,6 +38,30 @@ func transition_to(scene_path: String):
 	get_tree().change_scene(scene_path)
 	invert_direction()
 	
+	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)
+	tween.start()
+	
+	yield(tween, "tween_completed")
+	active = false
+	transition_texture.hide()
+	
+	emit_signal("finished")
+
+
+func begin_transition():
+	randomize_direction()
+	active = true
+	transition_texture.show()
+	tween.interpolate_property(material, "shader_param/value", 0, 1, DURATION_2)
+	tween.start()
+	
+	yield(tween, "tween_completed")
+	
+	emit_signal("screen_dimmed")
+
+
+func end_transition():
+	invert_direction()
 	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)
 	tween.start()
 	

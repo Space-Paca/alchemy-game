@@ -30,5 +30,4 @@ func _ready():
 	tween.start()
 	yield(tween, "tween_completed")
 	
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://game/main-menu/MainMenu.tscn")
+	Transition.transition_to("res://game/main-menu/MainMenu.tscn")

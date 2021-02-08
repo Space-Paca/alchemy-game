@@ -329,6 +329,10 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 			count_by_type[type] -= 1
 	
 	positions.queue_free()
+	
+	if Transition.active:
+		yield(Transition, "finished")
+	
 	reveal_paths(initial_node)
 
 

@@ -5,7 +5,7 @@ func _ready():
 
 
 func _on_Button_pressed():
-	var _err = get_tree().change_scene("res://game/main-menu/MainMenu.tscn")
+	Transition.transition_to("res://game/main-menu/MainMenu.tscn")
 
 
 func _on_Button_button_down():

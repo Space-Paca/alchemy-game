@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal transition_finished
+signal finished
 
 onready var transition_texture = $TransitionTexture
 onready var tween = $Tween
@@ -44,4 +44,4 @@ func transition_to(scene_path: String):
 	active = false
 	transition_texture.hide()
 	
-	emit_signal("transition_finished")
+	emit_signal("finished")

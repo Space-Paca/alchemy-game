@@ -76,8 +76,7 @@ func _on_Resume_pressed():
 func _on_Return_pressed():
 	set_pause(false)
 	AudioManager.stop_all_enemy_idle_sfx()
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://game/main-menu/MainMenu.tscn")
+	Transition.transition_to("res://game/main-menu/MainMenu.tscn")
 
 
 func _on_Exit_pressed():

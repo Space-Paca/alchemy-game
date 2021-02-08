@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weak.PNG-91a6aded4e066cd8dd8f9572a124a361.stex"
+path="res://.import/weak.png-a15e72e8a71ccbdfeed3516ab7e2d896.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/weak.PNG"
-dest_files=[ "res://.import/weak.PNG-91a6aded4e066cd8dd8f9572a124a361.stex" ]
+source_file="res://assets/images/recipe-icons/weak.png"
+dest_files=[ "res://.import/weak.png-a15e72e8a71ccbdfeed3516ab7e2d896.stex" ]
 
 [params]
 

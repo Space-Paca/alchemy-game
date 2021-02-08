@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cura-plus.PNG-a5b3645e5ebb347e8f45e08c15da6207.stex"
+path="res://.import/cura-plus.png-002ad0343f6248642afef86fff7a1fd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/cura-plus.PNG"
-dest_files=[ "res://.import/cura-plus.PNG-a5b3645e5ebb347e8f45e08c15da6207.stex" ]
+source_file="res://assets/images/recipe-icons/cura-plus.png"
+dest_files=[ "res://.import/cura-plus.png-002ad0343f6248642afef86fff7a1fd5.stex" ]
 
 [params]
 

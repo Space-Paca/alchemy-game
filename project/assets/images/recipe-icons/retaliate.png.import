@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/retaliate.PNG-08c36975db120a53f22de25ff7fa04bd.stex"
+path="res://.import/retaliate.png-bb37f9010c1f243a74b8885aee3d27d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/retaliate.PNG"
-dest_files=[ "res://.import/retaliate.PNG-08c36975db120a53f22de25ff7fa04bd.stex" ]
+source_file="res://assets/images/recipe-icons/retaliate.png"
+dest_files=[ "res://.import/retaliate.png-bb37f9010c1f243a74b8885aee3d27d4.stex" ]
 
 [params]
 

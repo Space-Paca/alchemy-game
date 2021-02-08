@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/escudo-lixo.PNG-899b38d05bdeddff25494846ea4f0bb7.stex"
+path="res://.import/escudo-lixo.png-b05e189c530f830e1b384a301f64dc92.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/escudo-lixo.PNG"
-dest_files=[ "res://.import/escudo-lixo.PNG-899b38d05bdeddff25494846ea4f0bb7.stex" ]
+source_file="res://assets/images/recipe-icons/escudo-lixo.png"
+dest_files=[ "res://.import/escudo-lixo.png-b05e189c530f830e1b384a301f64dc92.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dano-escudo.PNG-8faa7d0363d54bb95cd85c440b4d096d.stex"
+path="res://.import/dano-escudo.png-6f70d14fd5e008a704b162046e229431.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/dano-escudo.PNG"
-dest_files=[ "res://.import/dano-escudo.PNG-8faa7d0363d54bb95cd85c440b4d096d.stex" ]
+source_file="res://assets/images/recipe-icons/dano-escudo.png"
+dest_files=[ "res://.import/dano-escudo.png-6f70d14fd5e008a704b162046e229431.stex" ]
 
 [params]
 

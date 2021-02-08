@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ataque-multiplo-plusplus.PNG-66ff2f0b2e5757bb964cee2eb71a212b.stex"
+path="res://.import/ataque-multiplo-plusplus.png-1d3e936b21188d1f1cbfb9b6f421f58b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/ataque-multiplo-plusplus.PNG"
-dest_files=[ "res://.import/ataque-multiplo-plusplus.PNG-66ff2f0b2e5757bb964cee2eb71a212b.stex" ]
+source_file="res://assets/images/recipe-icons/ataque-multiplo-plusplus.png"
+dest_files=[ "res://.import/ataque-multiplo-plusplus.png-1d3e936b21188d1f1cbfb9b6f421f58b.stex" ]
 
 [params]
 

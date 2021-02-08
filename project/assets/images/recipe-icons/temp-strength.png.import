@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temp-strength.PNG-7acc433e773f182be02e39e1d216b4df.stex"
+path="res://.import/temp-strength.png-ef136f7a63cffb14710f6abcd4c82ef9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/temp-strength.PNG"
-dest_files=[ "res://.import/temp-strength.PNG-7acc433e773f182be02e39e1d216b4df.stex" ]
+source_file="res://assets/images/recipe-icons/temp-strength.png"
+dest_files=[ "res://.import/temp-strength.png-ef136f7a63cffb14710f6abcd4c82ef9.stex" ]
 
 [params]
 

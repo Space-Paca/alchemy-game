@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dano-plusplus.PNG-285030a71497811a1124637b30e6b0eb.stex"
+path="res://.import/dano-plusplus.png-84907913f100793a392e716e4e5bc707.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/dano-plusplus.PNG"
-dest_files=[ "res://.import/dano-plusplus.PNG-285030a71497811a1124637b30e6b0eb.stex" ]
+source_file="res://assets/images/recipe-icons/dano-plusplus.png"
+dest_files=[ "res://.import/dano-plusplus.png-84907913f100793a392e716e4e5bc707.stex" ]
 
 [params]
 

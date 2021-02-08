@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dano-lixo.PNG-93d8bfbc76662a8f81152cd91897a929.stex"
+path="res://.import/dano-lixo.png-603333a9b207fff5b1451e706e88e0f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/dano-lixo.PNG"
-dest_files=[ "res://.import/dano-lixo.PNG-93d8bfbc76662a8f81152cd91897a929.stex" ]
+source_file="res://assets/images/recipe-icons/dano-lixo.png"
+dest_files=[ "res://.import/dano-lixo.png-603333a9b207fff5b1451e706e88e0f7.stex" ]
 
 [params]
 

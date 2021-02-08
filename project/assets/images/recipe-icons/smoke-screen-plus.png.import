@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smoke-screen-plus.PNG-e62e71c4b25d4b5380cd46404ee67045.stex"
+path="res://.import/smoke-screen-plus.png-ee06fc1130d72922c7d7a82a1f3c3a6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/smoke-screen-plus.PNG"
-dest_files=[ "res://.import/smoke-screen-plus.PNG-e62e71c4b25d4b5380cd46404ee67045.stex" ]
+source_file="res://assets/images/recipe-icons/smoke-screen-plus.png"
+dest_files=[ "res://.import/smoke-screen-plus.png-ee06fc1130d72922c7d7a82a1f3c3a6f.stex" ]
 
 [params]
 

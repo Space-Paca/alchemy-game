@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/images/recipe-icons/Cure Poison.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/recipe-icons/cura-poison-plus.png" type="Texture" id=1]
 [ext_resource path="res://database/Recipe.gd" type="Script" id=2]
 
 [resource]

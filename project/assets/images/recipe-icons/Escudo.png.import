@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Escudo.png-77f6665c18a940b654ddc69b7a1ae23b.stex"
+path="res://.import/escudo.PNG-c3e7c7d44415ac1e058202ad21eef995.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/Escudo.png"
-dest_files=[ "res://.import/Escudo.png-77f6665c18a940b654ddc69b7a1ae23b.stex" ]
+source_file="res://assets/images/recipe-icons/escudo.PNG"
+dest_files=[ "res://.import/escudo.PNG-c3e7c7d44415ac1e058202ad21eef995.stex" ]
 
 [params]
 

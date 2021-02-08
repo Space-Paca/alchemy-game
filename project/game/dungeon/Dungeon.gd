@@ -647,9 +647,14 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 
 
 func _on_Shop_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	shop.hide()
 	enable_map()
 	play_map_bgm()
+	
+	Transition.end_transition()
 
 
 func _on_Shop_combination_bought(combination: Combination):
@@ -661,35 +666,60 @@ func _on_Shop_hint_bought(combination: Combination):
 
 
 func _on_Rest_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	rest.hide()
 	enable_map()
 	play_map_bgm()
+	
+	Transition.end_transition()
 
 
 func _on_Blacksmith_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	smith.hide()
 	enable_map()
 	play_map_bgm()
+	
+	Transition.end_transition()
 
 
 func _on_Laboratory_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	recipe_book.change_state(RecipeBook.States.MAP)
 	lab.hide()
 	cur_lab_attempts = lab.get_attempts()
 	enable_map()
 	play_map_bgm()
+	
+	Transition.end_transition()
 
 
 func _on_Treasure_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	treasure.hide()
 	enable_map()
 	play_map_bgm()
+	
+	Transition.end_transition()
 
 
 func _on_EventDisplay_closed():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
 	event_display.hide()
 	enable_map()
 	map.reveal_paths(current_node)
+	
+	Transition.end_transition()
 
 
 func _on_Debug_combinations_unlocked():

@@ -370,8 +370,9 @@ margin_right = -150.0
 margin_bottom = 980.0
 
 [node name="PlayerInfo" parent="Background/LeftSide" instance=ExtResource( 21 )]
+hide_button = true
 
-[node name="BG" parent="Background/LeftSide/PlayerInfo" index="0"]
+[node name="BG" parent="Background/LeftSide/PlayerInfo" index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
 
 [node name="BagIcon" type="TextureRect" parent="Background/LeftSide"]

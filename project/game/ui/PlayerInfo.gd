@@ -2,8 +2,10 @@ extends Control
 
 signal button_pressed
 
+export var hide_button := false
+
 onready var bg = $BG
-onready var button = $BG/DownButton
+onready var button = $DownButton
 onready var gold_label = $BG/CurrencyContainer/Gold/Label
 onready var pearls_label = $BG/CurrencyContainer/Pearls/Label
 onready var healthbar = $BG/HealthBar
@@ -19,8 +21,24 @@ const SHOWING_POSITION = Vector2(660, -400)
 const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
 const GOLD_TEXTURE = preload("res://assets/images/ui/coin.png")
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
+const DOWNBUTTON_START_Y = 150
+const DOWNBUTTON_TARGET_Y = 170
+const BUTTON_SPEED = 300
 
 var tooltip_enabled = false
+var mouse_over_downbutton = false
+
+
+func _ready():
+	if hide_button:
+		button.hide()
+
+
+func _process(dt):
+	if mouse_over_downbutton:
+		button.rect_position.y = min(button.rect_position.y + BUTTON_SPEED*dt, DOWNBUTTON_TARGET_Y)
+	else:
+		button.rect_position.y = max(button.rect_position.y - BUTTON_SPEED*dt, DOWNBUTTON_START_Y)
 
 func set_player(player: Player):
 	# warning-ignore:return_value_discarded
@@ -68,6 +86,8 @@ func update_pearls(value: int):
 func animation_hide():
 	tween.interpolate_property(bg, "rect_position", null, HIDDEN_POSITION,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
+	tween.interpolate_property(button, "rect_position:y", null, HIDDEN_POSITION,
+			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
 	tween.start()
 	
 	button.disabled = true
@@ -106,7 +126,8 @@ func get_tooltip_data(type):
 
 
 func _on_DownButton_pressed():
-	animation_hide()
+	#animation_hide()
+	mouse_over_downbutton = false
 	emit_signal("button_pressed")
 
 
@@ -128,3 +149,12 @@ func _on_TooltipCollision_enable_tooltip(type):
 	var tip = get_tooltip_data(type)
 	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
 							 tip.text, tip.title_image, tip.subtitle, true)
+
+
+func _on_DownButton_mouse_entered():
+	mouse_over_downbutton = true
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_DownButton_mouse_exited():
+	mouse_over_downbutton = false

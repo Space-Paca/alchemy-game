@@ -1,20 +1,35 @@
 extends TextureRect
 
+onready var anim = $AnimationPlayer
+
 func _ready():
+	set_process_input(false)
 	yield(get_tree(),"idle_frame")
 	Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
 	
 	FileManager.load_game()
+	
+	yield(Transition, "finished")
+	anim.play("intro")
+	set_process_input(true)
 # (❁´◡`❁)
 
 func _input(event):
+	if anim.is_playing() and (event.is_action_pressed("left_mouse_button") or \
+			event.is_action_pressed("quit")):
+		skip_intro_animation()
+	
 	if $QuitConfirm.visible and event.is_action_pressed("quit") :
 		 $PauseScreen.toggle_pause()#Toggle pause again so it actually doesn't pauses
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
+
+
+func skip_intro_animation():
+	anim.seek(anim.get_animation("intro").length, true)
 
 
 func _on_NewGameButton_pressed():

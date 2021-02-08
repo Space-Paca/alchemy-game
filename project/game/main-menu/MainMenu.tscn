@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
@@ -8,12 +8,166 @@
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/main_menu/home title start screen_3.png" type="Texture" id=8]
 
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float value : hint_range(0, 1);
+uniform sampler2D noise_texture;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	float alpha = texture(noise_texture, UV).r;
+	float l_edge = clamp(alpha * 1.9, 0, 1);
+	float u_edge = clamp(alpha * 1.9 - .9, 0, 1);
+	alpha = smoothstep(l_edge, u_edge, 1.0 - value) * color.a;
+	COLOR.rgb = color.rgb;
+	COLOR.a = alpha;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/value = 0.0
+shader_param/noise_texture = SubResource( 5 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 80
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "intro"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:material:shader_param/value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/PauseButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NewGameButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("QuitButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UI/PauseButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.3, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("NewGameButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("QuitButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("NewGameButton:rect_position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0, 783.5, -0.25, 0, 0.25, 0, 783.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 2.5 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("NewGameButton:rect_position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 2.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("QuitButton:rect_position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0, 783.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.6, 2.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("QuitButton:rect_position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 776, -0.25, 0, 0.25, 0, 776, -0.25, 0, 0.25, 0, 776, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.6, 2.5 )
+}
 
 [node name="MainMenu" type="TextureRect"]
 margin_right = 40.0
@@ -25,6 +179,7 @@ __meta__ = {
 }
 
 [node name="Title" type="TextureRect" parent="."]
+material = SubResource( 3 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -430.0
@@ -35,33 +190,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -176.5
-margin_top = -480.0
-margin_right = 176.5
-margin_bottom = -158.0
-rect_min_size = Vector2( 300, 0 )
+[node name="NewGameButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 600.0
+margin_top = 600.0
+margin_right = 953.0
+margin_bottom = 746.0
 theme = ExtResource( 5 )
-custom_constants/separation = 30
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+disabled = true
+text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
-margin_right = 353.0
-margin_bottom = 146.0
+[node name="QuitButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 600.0
+margin_top = 776.0
+margin_right = 953.0
+margin_bottom = 922.0
+theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
-text = "New Game"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 176.0
-margin_right = 353.0
-margin_bottom = 322.0
-custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+disabled = true
 text = "Quit"
 
 [node name="QuitConfirm" type="ColorRect" parent="."]
@@ -118,16 +269,21 @@ text = "No"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+disabled = true
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
 
 [node name="Background" parent="PauseScreen" index="0"]
 visible = false
-[connection signal="mouse_entered" from="VBoxContainer/NewGameButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/intro = SubResource( 6 )
+[connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="QuitConfirm/VBoxContainer/HBoxContainer/No" to="." method="_on_No_pressed"]
 [connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]

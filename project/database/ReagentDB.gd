@@ -164,6 +164,16 @@ const DB = {
 		"effect" : {"type": "damage_self", "value": 2, "upgraded_value": 1, "upgraded_boost": {"type": "all", "value": 1}},
 		"gold_value" : 1,
 		"substitute" : [],
+	},
+	"unknown": {
+		"name": "Unknown",
+		"rarity": "Unknown",
+		"image": preload("res://assets/images/reagents/unknown_reagent.png"),
+		"tooltip_image_path": "res://assets/images/reagents/unknown_reagent.png",
+		"tooltip" : "Unknown reagent",
+		"effect" : {"type": "damage_self", "value": 10, "upgraded_value": 1, "upgraded_boost": {"type": "all", "value": 1}},
+		"gold_value" : 1,
+		"substitute" : [],
 	}
 }
 

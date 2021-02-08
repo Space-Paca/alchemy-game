@@ -148,21 +148,18 @@ func disable_tooltips():
 
 
 func _on_Panel_mouse_entered():
-	if combination.discovered:
-		hovered = true
-		AudioManager.play_sfx("hover_recipe_button")
-		emit_signal("hovered", reagent_array)
+	hovered = true
+	AudioManager.play_sfx("hover_recipe_button")
+	emit_signal("hovered", reagent_array)
 
 
 func _on_Panel_mouse_exited():
-	if combination.discovered:
-		hovered = false
-		emit_signal("unhovered")
+	hovered = false
+	emit_signal("unhovered")
 
 
 func _on_Button_pressed():
-	if combination.discovered:
-		emit_signal("pressed", combination, mastery_unlocked)
+	emit_signal("pressed", combination, mastery_unlocked)
 
 
 func _on_FavoriteButton_toggled(button_pressed):

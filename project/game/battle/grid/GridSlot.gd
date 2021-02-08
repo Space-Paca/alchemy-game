@@ -60,12 +60,12 @@ func get_height():
 	return $FullImage.rect_size.y
 
 func set_hint(reagent_name):
-	if reagent_name:
-		reagent_hint.texture = ReagentDB.get_from_name(reagent_name).image
-		reagent_hint_name = reagent_name
-	else:
+	if not reagent_name:
 		reagent_hint.texture = null
 		reagent_hint_name = null
+	else:
+		reagent_hint.texture = ReagentDB.get_from_name(reagent_name).image
+		reagent_hint_name = reagent_name
 
 func get_hint():
 	return reagent_hint_name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
@@ -8,12 +8,19 @@
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=2]
 size = 20
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 use_filter = true
 font_data = ExtResource( 5 )
@@ -79,13 +86,39 @@ __meta__ = {
 [node name="ShopkeeperDialogue" type="Node2D" parent="ShopMenu"]
 position = Vector2( 1321.11, 1010.8 )
 
-[node name="Label" type="RichTextLabel" parent="ShopMenu/ShopkeeperDialogue"]
-margin_left = -352.173
-margin_top = -413.838
-margin_right = 497.827
-margin_bottom = -113.838
-custom_fonts/italics_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+[node name="Polygon2D" type="Polygon2D" parent="ShopMenu/ShopkeeperDialogue"]
+show_behind_parent = true
+position = Vector2( -347.828, -413.13 )
+color = Color( 0.807843, 0.8, 0.698039, 1 )
+antialiased = true
+polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418 )
+
+[node name="Panel" type="Panel" parent="ShopMenu/ShopkeeperDialogue"]
+margin_left = -383.0
+margin_top = -427.0
+margin_right = 517.0
+margin_bottom = -127.0
+rect_min_size = Vector2( 900, 300 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ShopMenu/ShopkeeperDialogue/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="ShopMenu/ShopkeeperDialogue/Panel/CenterContainer"]
+margin_left = 25.0
+margin_top = 20.0
+margin_right = 875.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 850, 260 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
@@ -98,13 +131,6 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Polygon2D" type="Polygon2D" parent="ShopMenu/ShopkeeperDialogue"]
-show_behind_parent = true
-position = Vector2( -347.828, -413.13 )
-color = Color( 0.807843, 0.8, 0.698039, 1 )
-antialiased = true
-polygon = PoolVector2Array( -19.9775, -20.4361, 451, -22.5262, 453.817, -88.7837, 554.223, -22.9843, 853.654, -24.3132, 858.824, 311.699, -12.2234, 310.407 )
 
 [node name="RecipeMenu" type="CenterContainer" parent="."]
 visible = false

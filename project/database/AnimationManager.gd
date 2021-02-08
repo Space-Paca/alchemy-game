@@ -28,6 +28,9 @@ func play(name: String, pos: Vector2):
 		push_error("Not a valid animation:" + str(name))
 		assert(false)
 	
+	if name == "shield":
+		return
+	
 	var animation = ANIM[name].duplicate()
 	animation.position = pos
 	animation.show()

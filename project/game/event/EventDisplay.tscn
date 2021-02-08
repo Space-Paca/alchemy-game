@@ -133,10 +133,10 @@ text = "  -  This is also an example button"
 align = 0
 
 [node name="Image" type="TextureRect" parent="."]
-margin_left = 1124.0
-margin_top = 274.0
-margin_right = 1660.0
-margin_bottom = 1044.0
+margin_left = 1100.84
+margin_top = 268.655
+margin_right = 1636.84
+margin_bottom = 1038.65
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 5

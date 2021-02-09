@@ -34,8 +34,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("toggle_debug"):
-		pass
-		#bg.visible = !bg.visible
+		bg.visible = !bg.visible
 
 
 func _process(_delta):

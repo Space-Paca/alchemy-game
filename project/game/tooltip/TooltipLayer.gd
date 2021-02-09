@@ -128,12 +128,14 @@ func update_tooltips_pos():
 	var total_height = 0
 	var max_width = 0
 	for tip in $Tooltips.get_children():
-		max_width = tip.rect_position.y if tip.rect_position.y > max_width else max_width
+		max_width = tip.get_width() if tip.get_width() > max_width else max_width
 		tip.rect_position.y = y
 		var h = tip.get_height()
 		y += h
 		total_height += h
+	var screen_w = ProjectSettings.get_setting("display/window/size/width")
+	var screen_h = ProjectSettings.get_setting("display/window/size/height")
 	$Tooltips.position.y = min($Tooltips.position.y + total_height,
-							   get_viewport().size.y-SCREEN_MARGIN) - total_height
+							   screen_h-SCREEN_MARGIN) - total_height
 	$Tooltips.position.x = min($Tooltips.position.x + max_width,
-							   get_viewport().size.x-SCREEN_MARGIN) - max_width
+							   screen_w-SCREEN_MARGIN) - max_width

@@ -68,7 +68,9 @@ func _process(dt):
 
 		#Move camera linearly
 		var dist = (target_pos - $Camera.position)
-		if CAMERA_LINEAR_SPEED*dt < 3*dist.length():
+		if CAMERA_EXPONENTIAL_SPEED*dt >= dist.length():
+			$Camera.position = target_pos
+		elif CAMERA_LINEAR_SPEED*dt < 3*dist.length():
 			$Camera.position += dist.normalized()*CAMERA_LINEAR_SPEED*dt
 		else:
 			$Camera.position += dist*CAMERA_EXPONENTIAL_SPEED*dt

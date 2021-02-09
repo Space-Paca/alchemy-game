@@ -177,6 +177,7 @@ TutorialLayer="*res://game/tutorial/TutorialLayer.tscn"
 FileManager="*res://game/file-manager/FileManager.gd"
 Profile="*res://game/file-manager/Profile.gd"
 Transition="*res://game/ui/transition/Transition.tscn"
+SubtitleLayer="*res://SubtitleLayer.tscn"
 
 [debug]
 
@@ -228,6 +229,16 @@ left_mouse_button={
 fadeout={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+next_text={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
+ ]
+}
+close_text={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":85,"unicode":0,"echo":false,"script":null)
  ]
 }
 

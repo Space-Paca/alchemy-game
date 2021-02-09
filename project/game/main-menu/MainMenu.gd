@@ -7,7 +7,7 @@ func _ready():
 	yield(get_tree(),"idle_frame")
 	Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
-	Debug.set_version_visible(true)
+	Debug.set_version_visible(false)
 	
 	FileManager.load_game()
 	

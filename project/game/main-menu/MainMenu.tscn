@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
+[ext_resource path="res://FadeOut.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://game/ui/PauseButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
@@ -280,6 +281,8 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 6 )
+
+[node name="FadeOut" parent="." instance=ExtResource( 2 )]
 [connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="mouse_entered" from="QuitButton" to="." method="_on_button_mouse_entered"]
@@ -291,3 +294,5 @@ anims/intro = SubResource( 6 )
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]
 
 [editable path="PauseScreen"]
+
+[editable path="FadeOut"]

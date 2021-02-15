@@ -345,10 +345,6 @@ func new_player_turn():
 
 
 func new_enemy_turn():
-	if not grid.is_empty():
-		grid.return_to_hand()
-		yield(grid, "returned_to_hand")
-
 	for enemy in enemies_node.get_children():
 		if not enemy.just_spawned:
 			enemy.new_turn()
@@ -962,6 +958,10 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 
 func _on_PassTurnButton_pressed():
+	if not grid.is_empty():
+		grid.return_to_hand()
+		return
+	
 	player.update_status("end_turn")
 	
 	disable_player()

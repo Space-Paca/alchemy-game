@@ -111,7 +111,7 @@ const STATUSES = {
 	"in-text_name": "permanent strength"},
    "poison": {
 	"title_name": "Poison",
-	"description": "This character is dealt 1 poison damage per stack. Decreases every turn",
+	"description": "This character is dealt 1 poison damage per stack at the end of its turn. Decreases every turn",
 	"image": preload("res://assets/images/status/poison.png"),
 	"intent_title": "Poisoning",
 	"in-text_name": "poison"},

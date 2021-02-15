@@ -186,7 +186,7 @@ gdscript/warnings/integer_division=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/borderless=true
+window/size/resizable=false
 window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -228,7 +228,7 @@ left_mouse_button={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
+quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

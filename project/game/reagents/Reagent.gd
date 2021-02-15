@@ -93,7 +93,8 @@ func error_effect():
 
 
 func quick_place():
-	emit_signal("quick_place", self)
+	if not TutorialLayer.active:
+		emit_signal("quick_place", self)
 
 
 func is_frozen():
@@ -178,9 +179,10 @@ func destroy():
 
 
 func hover_effect():
-	hovering = true
-	AudioManager.play_sfx("hover_reagent")
-	slight_grow()
+	if not TutorialLayer.active:
+		hovering = true
+		AudioManager.play_sfx("hover_reagent")
+		slight_grow()
 
 
 func pick_effect():

@@ -8,8 +8,8 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/dimension = Vector2( 200, 100 )
-shader_param/position = Vector2( 300, 100 )
+shader_param/dimension = Vector2( 500, 300 )
+shader_param/position = Vector2( 100, 200 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 43
@@ -32,6 +32,9 @@ modulate = Color( 0, 0, 0, 0.45098 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 6.72714
+margin_right = 6.72729
+rect_min_size = Vector2( 1920, 1080 )
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false

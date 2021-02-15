@@ -12,7 +12,7 @@ signal died
 signal floor_selected(floor_number)
 signal test_map_creation
 
-const VERSION := "v0.2.0"
+const VERSION := "v0.2.1"
 const MAX_FLOOR := 3
 
 var floor_to_go := -1
@@ -34,8 +34,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("toggle_debug"):
-		#bg.visible = !bg.visible
-		pass
+		bg.visible = !bg.visible
 
 
 func _process(_delta):

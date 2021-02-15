@@ -67,7 +67,7 @@ const TUTORIAL = {
 		 "text_side": "bottom", "text": "Welcome to your adventure, alchemist!"},
 		{"position": Vector2(620,400), "dimension": Vector2(700,500), 
 		 "text_side": "top", "text": "You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way",
-		"text_width": 1000},
+		"text_width": 1200},
 		{"position": Vector2(420,400), "dimension": Vector2(700,500),
 		 "text_side": "right", "text": "Find and defeat the land's boss to progress",
 		"text_width": 425, "image": "res://game/tutorial/boss-icon.png", "image_scale": 2},

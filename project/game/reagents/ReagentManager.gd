@@ -6,8 +6,8 @@ const REAGENT = preload("res://game/reagents/Reagent.tscn")
 func random_type():
 	var types = ReagentDB.get_types()
 	randomize()
-	types.shuffle()
-	return types[1]
+	types.shuffle() 
+	return types[0] if types[0] != "unknown" else types[1]
 
 
 func create_object(type: String):

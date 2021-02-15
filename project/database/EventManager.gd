@@ -15,6 +15,9 @@ const FORMAT_DICT = {
 		"(/waving text)": "[/wave]"
 }
 
+# Event constants
+const HOLE_MAX_CHANCE = .8
+
 var events_by_id := {}
 var events_by_floor := {1: [], 2: [], 3: []}
 var dummy_leave_event : Event
@@ -183,8 +186,8 @@ func hole(event_display, player, chance, reward):
 		
 		# Increase next attempt's chance of failure and reward
 		events_by_id[4].options[0]["args"][0] *= 2
-		if events_by_id[4].options[0]["args"][0] > .4:
-			events_by_id[4].options[0]["args"][0] = .4
+		if events_by_id[4].options[0]["args"][0] > HOLE_MAX_CHANCE:
+			events_by_id[4].options[0]["args"][0] = HOLE_MAX_CHANCE
 		events_by_id[4].options[0]["args"][1] *= 2
 		
 		var text = events_by_id[4].text.replace("<amount>", str(reward))

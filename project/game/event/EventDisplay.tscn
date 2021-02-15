@@ -15,20 +15,20 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.941176 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=2]
-size = 14
+[sub_resource type="DynamicFont" id=3]
+size = 18
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 64.0
 loop = true
 tracks/0/type = "value"
@@ -94,7 +94,7 @@ margin_bottom = 514.0
 rect_min_size = Vector2( 900, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="TextContainer" type="MarginContainer" parent="VBox/TextRect"]
 anchor_right = 1.0
@@ -112,7 +112,7 @@ margin_left = 25.0
 margin_top = 25.0
 margin_right = 1025.0
 margin_bottom = 489.0
-custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/italics_font = SubResource( 3 )
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[wave amp=50 freq=2]Body[/wave] [i]small[/i]"
@@ -148,4 +148,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 3 )
+anims/idle = SubResource( 4 )

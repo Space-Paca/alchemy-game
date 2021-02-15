@@ -10,7 +10,7 @@ text = "While exploring, you pass by a misterious figure hidden beneath a dusty 
 
 (woobly text)\"Hey, wanna gamble?\"(/woobly text) you hear from the figure as a wide smile emerges from the shadowy hood.
 
-His hand stretches to [i]small[/i] table in front of him, something you're sure wasn't there before. Two cards lay face down.
+His hand stretches to a small table in front of him, something you're sure wasn't there before. Two cards lay face down.
 
 \"A game of chance huh\" you think to yourself. This might be an opportunity to make a few coins... (smaller text)if you feel luck is by your side.(/smaller text)"
 leave_text_1 = "You pick a card and look at it.

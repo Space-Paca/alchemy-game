@@ -5,12 +5,14 @@ onready var floor_button = $Background/CenterContainer/VBoxContainer/FloorButton
 onready var fps_label = $Info/FPS
 onready var unlock_btn = $Background/CenterContainer/VBoxContainer/UnlockCombBtn
 onready var version_label = $Info/Version
+onready var id_box = $Background/CenterContainer/VBoxContainer/Event/IdBox
 
 signal combinations_unlocked
 signal battle_won
 signal died
 signal floor_selected(floor_number)
 signal test_map_creation
+signal event_pressed(id)
 
 const VERSION := "v0.2.1"
 const MAX_FLOOR := 3
@@ -90,3 +92,8 @@ func _on_RecipeThreshold_toggled(button_pressed):
 
 func _on_Reset_Tutorials_pressed():
 	Profile.reset_tutorials()
+
+
+func _on_EventButton_pressed():
+	emit_signal("event_pressed", int(id_box.get_line_edit().text))
+	bg.hide()

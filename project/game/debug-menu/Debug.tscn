@@ -30,9 +30,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 840.0
-margin_top = 392.0
+margin_top = 378.0
 margin_right = 1079.0
-margin_bottom = 688.0
+margin_bottom = 702.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 239.0
@@ -40,59 +40,80 @@ margin_bottom = 20.0
 text = "Win Battle"
 
 [node name="DieBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_right = 239.0
-margin_bottom = 20.0
-text = "Win Battle?"
-
-[node name="UnlockCombBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 239.0
 margin_bottom = 44.0
-text = "Unlock Combinations"
+text = "Win Battle?"
 
-[node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+[node name="UnlockCombBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 239.0
 margin_bottom = 68.0
-text = "Update Recipe Dependencies"
+text = "Unlock Combinations"
 
-[node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
+[node name="UpdateRecipesButton" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 72.0
 margin_right = 239.0
 margin_bottom = 92.0
+text = "Update Recipe Dependencies"
 
-[node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+[node name="FloorButton" type="OptionButton" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 96.0
 margin_right = 239.0
-margin_bottom = 136.0
+margin_bottom = 116.0
+
+[node name="FPSButton" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 239.0
+margin_bottom = 160.0
 text = "Show FPS"
 
 [node name="RevealMap" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 228.0
+margin_top = 164.0
 margin_right = 239.0
-margin_bottom = 268.0
+margin_bottom = 204.0
 text = "Auto Reveal Maps"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TestMapCreation" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 272.0
+margin_top = 208.0
 margin_right = 239.0
-margin_bottom = 292.0
+margin_bottom = 228.0
 text = "Test Map Creation"
 
 [node name="RecipeThreshold" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 296.0
+margin_top = 232.0
 margin_right = 239.0
-margin_bottom = 336.0
+margin_bottom = 272.0
 text = "Lower Recipes Threshold"
 
 [node name="Reset Tutorials" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 340.0
+margin_top = 276.0
 margin_right = 239.0
-margin_bottom = 360.0
+margin_bottom = 296.0
 text = "Reset Tutorials"
+
+[node name="Event" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 300.0
+margin_right = 239.0
+margin_bottom = 324.0
+
+[node name="EventButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Event"]
+margin_right = 161.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Go to event:"
+
+[node name="IdBox" type="SpinBox" parent="Background/CenterContainer/VBoxContainer/Event"]
+margin_left = 165.0
+margin_right = 239.0
+margin_bottom = 24.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+align = 3
 
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -151,3 +172,4 @@ __meta__ = {
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Reset Tutorials" to="." method="_on_Reset_Tutorials_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Event/EventButton" to="." method="_on_EventButton_pressed"]

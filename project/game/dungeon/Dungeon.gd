@@ -38,6 +38,8 @@ func _ready():
 	Debug.connect("floor_selected", self, "_on_Debug_floor_selected")
 # warning-ignore:return_value_discarded
 	Debug.connect("test_map_creation", self, "_on_Debug_test_map_creation")
+# warning-ignore:return_value_discarded
+	Debug.connect("event_pressed", self, "_on_Debug_event_pressed")
 
 
 # warning-ignore:return_value_discarded
@@ -763,6 +765,13 @@ func _on_Debug_test_map_creation():
 		yield(get_tree(), "idle_frame")
 	print("Finished " + str(n) + " map creations in " + str(total_time) + "ms")
 	print("Average time per map: " + str(float(total_time)/n) + "ms")
+
+
+func _on_Debug_event_pressed(id: int):
+	print(id)
+	map.disable()
+	event_display.load_event(EventManager.get_event_by_id(id), player)
+	event_display.show()
 
 
 func _on_Battle_update_recipes_display():

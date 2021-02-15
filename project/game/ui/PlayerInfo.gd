@@ -21,8 +21,8 @@ const SHOWING_POSITION = Vector2(660, -400)
 const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
 const GOLD_TEXTURE = preload("res://assets/images/ui/coin.png")
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
-const DOWNBUTTON_START_Y = 150
-const DOWNBUTTON_TARGET_Y = 170
+const DOWNBUTTON_START_Y = 130
+const DOWNBUTTON_TARGET_Y = 150
 const BUTTON_SPEED = 300
 
 var tooltip_enabled = false

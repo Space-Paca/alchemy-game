@@ -7,6 +7,10 @@ script = ExtResource( 1 )
 id = -1
 title = ""
 text = ""
+leave_text_1 = ""
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = ""
 type = 0
 floor_appearance = {
 1: false,

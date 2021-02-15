@@ -85,6 +85,11 @@ func get_random_event(current_floor: int) -> Event:
 	return current_event
 
 
+func get_event_by_id(id: int) -> Event:
+	current_event = events_by_id[id]
+	return current_event
+
+
 ####### GENERAL EVENT CALLBACKS #######
 
 func none(_event_display, _player):

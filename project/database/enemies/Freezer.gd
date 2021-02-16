@@ -27,12 +27,12 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 100},
+		{"name": "shield", "value": 150},
 		{"name": "status", "status_name": "tough", "value": 0, "target": "self", "positive": true},
 		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false},
 	],
 	"attack": [
-		{"name": "damage", "value": [15, 18], "type": "regular"}
+		{"name": "damage", "value": [15, 25], "type": "regular"}
 	],
 	"attack2": [
 		{"name": "damage", "value": 5, "amount": 3, "type": "regular"},
@@ -40,7 +40,7 @@ var actions = {
 	],
 	"freeze": [
 		{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false},
-		{"name": "shield", "value": 5},
+		{"name": "shield", "value": [5,10]},
 		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true},
 	],
 	"spawn": [

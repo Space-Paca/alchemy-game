@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/small regular enemy plus/idle.png"
 var name = "Carapa Beserker"
 var sfx = "wolftopus"
 var use_idle_sfx = false
-var hp = 25
+var hp = 45
 var battle_init = false
 var size = "small"
 var change_phase = null
@@ -17,6 +17,6 @@ var first_state = ["attack"]
 
 var actions = {
 	"attack": [
-		{"name": "damage", "value": [8,10], "type": "regular"}
+		{"name": "damage", "value": [8,25], "type": "regular"}
 	]
 }

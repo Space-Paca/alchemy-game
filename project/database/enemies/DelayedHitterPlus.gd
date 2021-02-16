@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/delayed hitter plus/idle.png"
 var name = "Dire Virulyn Prowler"
 var sfx = "stone_golem"
 var use_idle_sfx = false
-var hp = 65
+var hp = 130
 var battle_init = false
 var size = "small"
 var change_phase = null
@@ -33,6 +33,6 @@ var actions = {
 		{"name": "idle", "sfx": "charge"}
 	],
 	"attack": [
-		{"name": "damage", "value": [25, 29], "type": "regular"},
+		{"name": "damage", "value": [25, 40], "type": "regular"},
 	],
 }

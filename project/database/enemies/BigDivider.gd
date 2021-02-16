@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/big divider/idle.png"
 var name = "Plantora"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
-var hp = 40
+var hp = 80
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -25,13 +25,13 @@ var actions = {
 		{"name": "status", "status_name": "splitting", "value": 0, "target": "self", "positive": true, "extra_args": {"enemy": "medium_divider"}}
 	],
 	"attack": [
-		{"name": "damage", "value": [18, 20], "type": "regular"}
+		{"name": "damage", "value": [20, 30], "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [10, 12]},
-		{"name": "damage", "value": [10, 12], "type": "regular"}
+		{"name": "shield", "value": [15, 20]},
+		{"name": "damage", "value": [10, 20], "type": "regular"}
 	],
 	"poison": [
-		{"name": "damage", "value": [13, 17], "type": "venom"},
+		{"name": "damage", "value": [15, 25], "type": "venom"},
 	],
 }

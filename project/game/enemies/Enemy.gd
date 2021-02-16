@@ -247,6 +247,7 @@ func update_action():
 		if action.name == "damage":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var amount = action.amount if action.has("amount") else 1
+			amount = get_random_value(amount) if amount is Array else amount
 			act = ["damage", {"value": value, "type": action.type, "amount": amount}]
 		elif action.name == "drain":
 			var value = get_random_value(action.value) if action.value is Array else action.value

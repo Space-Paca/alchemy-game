@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss2/idle.png"
 var name = "Executioner Okoth, the Unchained"
 var sfx = "boss_1"
 var use_idle_sfx = false
-var hp = 200
+var hp = 300
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -30,20 +30,21 @@ var first_state = ["start"]
 
 var actions = {
 	"start": [
-		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false}
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false}
 	],
 	"attack1": [
-		{"name": "damage", "value": [12,15], "type": "regular"},
+		{"name": "damage", "value": [20,25], "type": "regular"},
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
 		{"name": "damage", "value": [3,4], "type": "regular", "amount": 2},
 	],
 	"attack3": [
-		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
 		{"name": "damage", "value": [3,4], "type": "regular", "amount": 3},
 	],
 	"attack4": [
+		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
 		{"name": "damage", "value": [3,4], "type": "regular", "amount": 4},
 	],
 	"attack5": [
@@ -51,17 +52,21 @@ var actions = {
 	],
 	"restrict_buff": [
 		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true},
+		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
 	],
 	"spawn1": [
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
 		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
 		{"name": "spawn", "enemy": "baby_poison", "minion": true},
 	],
 	"spawn2": [
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
 		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
 		{"name": "spawn", "enemy": "baby_humunculus", "minion": true},
 	],
 	"spawn3": [
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
 		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
 		{"name": "spawn", "enemy": "baby_slasher", "minion": true},
 		{"name": "spawn", "enemy": "baby_slasher", "minion": true},

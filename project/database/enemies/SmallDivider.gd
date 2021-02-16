@@ -22,16 +22,16 @@ var first_state = ["first"]
 
 var actions = {
 	"attack": [
-		{"name": "damage", "value": [7, 9], "type": "regular"}
+		{"name": "status", "status_name": "poison", "value": [2,3], "target": "player", "positive": false}
 	],
 	"defend": [
-		{"name": "shield", "value": [4, 5]},
-		{"name": "damage", "value": [4, 5], "type": "regular"}
+		{"name": "shield", "value": [10, 15]},
+		{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false}
 	],
 	"poison": [
-		{"name": "damage", "value": [4, 6], "type": "venom"},
+		{"name": "damage", "value": [10, 12], "type": "venom"},
 	],
 	"first": [
-		{"name": "damage", "value": 1, "type": "venom"},
+		{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false}
 	],
 }

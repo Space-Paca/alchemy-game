@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/medium divider/idle.png"
 var name = "Plantoon"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
-var hp = 30
+var hp = 60
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -26,16 +26,16 @@ var actions = {
 		{"name": "status", "status_name": "splitting", "value": 0, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}}
 	],
 	"attack": [
-		{"name": "damage", "value": [10, 15], "type": "regular"}
+		{"name": "damage", "value": [15, 25], "type": "regular"}
 	],
 	"defend": [
-		{"name": "shield", "value": [6, 8]},
-		{"name": "damage", "value": [6, 8], "type": "regular"}
+		{"name": "shield", "value": [10, 18]},
+		{"name": "damage", "value": [10, 15], "type": "regular"}
 	],
 	"poison": [
-		{"name": "damage", "value": [8, 12], "type": "venom"},
+		{"name": "damage", "value": [10, 15], "type": "venom"},
 	],
 	"first": [
-		{"name": "damage", "value": [2,3], "type": "venom"},
+		{"name": "damage", "value": [5,10], "type": "venom"},
 	],
 }

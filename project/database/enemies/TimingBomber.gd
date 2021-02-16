@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/timing bomber/idle.png"
 var name = "Dr. Bomberson"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 150
+var hp = 202
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -37,14 +37,14 @@ var actions = {
 	],
 	"attack": [
 		{"name": "status", "status_name": "time_bomb", "value": 3, "target": "player", "positive": false},
-		{"name": "damage", "value": [8,10], "type": "regular"},
+		{"name": "damage", "value": [15,17], "type": "regular"},
 	],
 	"big-attack": [
-		{"name": "status", "status_name": "time_bomb", "value": 1, "target": "player", "positive": false},
-		{"name": "damage", "value": [11,16], "type": "regular"},
+		{"name": "status", "status_name": "time_bomb", "value": 2, "target": "player", "positive": false},
+		{"name": "damage", "value": [19,25], "type": "regular"},
 	],
 	"defend": [
 		{"name": "status", "status_name": "time_bomb", "value": 4, "target": "player", "positive": false},
-		{"name": "shield", "value": [5,6]}
+		{"name": "shield", "value": [14,15]}
 	],
 }

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/parasiter/idle.png"
 var name = "Vile Hag"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 75
+var hp = 125
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -26,9 +26,9 @@ var actions = {
 		{"name": "status", "status_name": "hex", "value": 2, "target": "self", "positive": true}
 	],
 	"drain": [
-		{"name": "drain", "value": [8, 10]}
+		{"name": "drain", "value": [15, 22]}
 	],
 	"attack": [
-		{"name": "damage", "value": 5, "amount": 2, "type": "regular"}
+		{"name": "damage", "value": [5,8], "amount": [2,4], "type": "regular"}
 	],
 }

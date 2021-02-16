@@ -44,7 +44,7 @@ const BG_ENTER_DUR = .7
 const FG_ENTER_DUR = 1.0
 const BOOK_ENTER_DUR = .4
 const BOOK_START_X = -1920
-const BOOK_TARGET_X = -812 
+const BOOK_TARGET_X = -812
 
 var floor_level
 var ended := false
@@ -72,51 +72,51 @@ func _ready():
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
 	floor_level = _floor_level
 	current_encounter = encounter
-	
+
 	setup_bg()
-	
+
 	setup_nodes(_player)
-	
+
 	setup_player(_player)
-	
+
 	effect_manager.setup(_player)
-	
+
 	setup_favorites(favorite_combinations)
-	
+
 	setup_player_ui()
-	
+
 	setup_enemy(encounter)
-	
+
 	setup_audio(encounter)
-	
+
 	AudioManager.play_sfx("start_battle")
-	
+
 	#Wait sometime before showing book and starting battle
 	yield(get_tree().create_timer(BG_ENTER_DUR + 1.0), "timeout")
-	
+
 	$BGTween.interpolate_property(book, "rect_position:x", BOOK_START_X, BOOK_TARGET_X, BOOK_ENTER_DUR, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$BGTween.start()
-	
+
 	yield($BGTween, "tween_completed")
-	
+
 	while enemies_init():
 		yield(self, "finished_enemies_init")
-	
+
 	player.call_artifacts("battle_start", {"player": player})
 	if encounter.is_elite and player.has_artifact("vulture_mask"):
 		player.add_status("perm_strength", 5, true)
-	
+
 	if not Profile.get_tutorial("first_battle"):
 		TutorialLayer.start("first_battle")
 		yield(TutorialLayer, "tutorial_finished")
 		Profile.set_tutorial("first_battle", true)
-	
+
 	new_player_turn()
 
 
 func setup_bg():
 	book.rect_position.x = BOOK_START_X
-	
+
 	if current_encounter.is_boss:
 		if floor_level == 3:
 			$FinalBossBG.show()
@@ -125,7 +125,7 @@ func setup_bg():
 	else:
 		$BG.texture = backgrounds[floor_level-1]
 		$FG.texture = foregrounds[floor_level-1]
-	
+
 	$BGTween.interpolate_property($BG, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.interpolate_property($FG, "rect_position:x", 150, -499, FG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.start()
@@ -143,25 +143,25 @@ func setup_nodes(_player):
 
 func setup_player(_player):
 	player = _player
-	
+
 	#Setup player bag
 	for bag_reagent in player.bag:
 		var reagent = create_reagent(bag_reagent.type)
 		if bag_reagent.upgraded:
 			reagent.upgrade()
 		draw_bag.add_reagent(reagent)
-	
+
 	#Setup player hand
 	hand.set_hand(player.hand_size)
-	
+
 	#Setup player grid
 	grid.set_grid(player.grid_size)
-	
+
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
 	player.connect("freeze_hand", self, "_on_player_freeze_hand")
 	player.connect("restrict", self, "_on_player_restrict")
-	
+
 	player.set_hud(player_ui)
 
 	disable_player()
@@ -174,9 +174,9 @@ func setup_favorites(favorite_combinations: Array):
 
 func setup_player_ui():
 	player_ui.set_life(player.max_hp, player.hp)
-	
+
 	player_ui.update_portrait(player.hp, player.max_hp)
-	
+
 	player_ui.update_artifacts(player)
 
 func setup_enemy(encounter: Encounter):
@@ -184,17 +184,17 @@ func setup_enemy(encounter: Encounter):
 		is_boss = true
 	if encounter.is_elite:
 		is_elite = true
-	
+
 	#Clean up dummy enemies
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
 		child.queue_free()
-	
+
 	#Wait for BG to start placing enemies
 	yield($BGTween, "tween_completed")
 	for enemy in encounter.enemies:
 		add_enemy(enemy)
-	
+
 	update_enemy_positions()
 
 
@@ -209,7 +209,7 @@ func enemies_init():
 			yield(enemy, "action_resolved")
 			#Wait a bit before next enemy/start player turn
 			yield(get_tree().create_timer(.3), "timeout")
-	
+
 	if had_init:
 		emit_signal("finished_enemies_init")
 	return had_init
@@ -235,7 +235,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("combinations_seen", self, "_on_win_screen_combinations_seen")
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
 	win_screen.connect("pearl_collected", self, "_on_win_screen_pearl_collected")
-	
+
 	win_screen.set_loot(encounter.get_loot())
 
 
@@ -255,36 +255,36 @@ func create_reagent(type):
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
-	
+
 	if is_minion:
 		enemy_node.add_status("minion", 1, false)
-	
+
 	if initial_pos:
 		enemy_node.position = initial_pos
 	else:
 		enemy_node.position = $EnemyStartPosition.position
-	
+
 	if just_spawned:
 		enemy_node.just_spawned = true
-	
+
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
 		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
-	
+
 	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
 	enemy_node.connect("spawn_new_enemy", self, "spawn_new_enemy")
 	enemy_node.connect("damage_player", self, "damage_player")
 	enemy_node.connect("add_status_all_enemies", self, "add_status_all_enemies")
 	effect_manager.add_enemy(enemy_node)
-	
+
 	if just_spawned:
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 	else:
 		randomize()
 		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
-	
+
 	enemy_node.update_action()
 
 
@@ -312,33 +312,33 @@ func update_enemy_positions():
 func new_player_turn():
 	if ended:
 		return
-	
+
 	recipes_created = 0
 	deviated_recipes = []
 	used_all_reagents_in_recipes = true
 	player.new_turn()
-	
+
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
 		emit_signal("update_recipes_display")
-	
+
 	if player.get_status("burning"):
 		hand.burn_reagents(player.get_status("burning").amount)
-	
+
 	if player.get_status("confusion"):
 		var func_state = hand.randomize_reagents()
 		if func_state and func_state.is_valid():
 			yield(hand, "reagents_randomized")
-	
+
 	if player.get_status("restrain"):
 		var func_state = grid.restrain(player.get_status("restrain").amount)
 		if func_state and func_state.is_valid():
 			yield(grid, "restrained")
-	
-	
+
+
 	enable_player()
-	
+
 	if (first_turn):
 		first_turn = false
 		emit_signal("hand_set")
@@ -352,7 +352,7 @@ func new_enemy_turn():
 			yield(enemy, "acted")
 		if ended:
 			return
-	
+
 	#Resolve enemies spawned in enemy turn
 	#and trigger end turn status
 	for enemy in enemies_node.get_children():
@@ -364,7 +364,7 @@ func new_enemy_turn():
 				#Wait a bit before next enemy/start player turn
 				yield(get_tree().create_timer(.3), "timeout")
 		enemy.update_status("end_turn")
-	
+
 	new_player_turn()
 
 
@@ -375,7 +375,7 @@ func disable_player():
 	pass_turn_button.disabled = true
 	combine_button.disable()
 	set_favorites_disabled(true)
-	
+
 	for reagent in reagents.get_children():
 		reagent.disable_dragging()
 
@@ -385,11 +385,11 @@ func enable_player():
 		return
 	draw_bag.enable()
 	discard_bag.enable()
-	
+
 	player_disabled = false
 	if Profile.get_tutorial("recipe_book"):
 		pass_turn_button.disabled = false
-	
+
 	#Check curse
 	var curse = player.get_status("curse")
 	if curse:
@@ -400,12 +400,12 @@ func enable_player():
 
 	if Profile.get_tutorial("recipe_book") and (not curse or curse.amount > recipes_created):
 		combine_button.enable()
-	
 
-		
-	
+
+
+
 	set_favorites_disabled(false)
-	
+
 	for reagent in reagents.get_children():
 		reagent.enable_dragging()
 
@@ -423,14 +423,14 @@ func recipe_book_toggled(visible: bool):
 		discard_bag.disable()
 		grid.hide_effects()
 		hand.hide_effects()
-		
+
 		if not Profile.get_tutorial("recipe_book"):
 			TutorialLayer.start("recipe_book")
 			yield(TutorialLayer, "tutorial_finished")
 			Profile.set_tutorial("recipe_book", true)
 			pass_turn_button.disabled = false
 			combine_button.enable()
-		
+
 	else:
 		player_ui.enable_tooltips()
 		recipes_button.show()
@@ -469,15 +469,15 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 		for reagent in destroy_reagents:
 			if grid.destroy_reagent(reagent):
 				yield(grid, "reagent_destroyed")
-		
+
 		# Discard reagents
 		grid.clean()
-		
+
 		# Show targeting interface if needed
 		var total_targets = get_targeted_effect_total(effects)
 		if total_targets:
 			targeting_interface.begin(total_targets)
-		
+
 		var used_temp_strength = false
 		for i in range(effects.size()):
 			if effect_manager.has_method(effects[i]):
@@ -496,13 +496,13 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 			else:
 				print("Effect %s not found" % effects[i])
 				assert(false)
-		
+
 		if used_temp_strength:
 			player.remove_status("temp_strength")
 
 		if total_targets:
 			targeting_interface.end()
-	
+
 	#Resolve enemies spawned in player turn
 	for enemy in enemies_node.get_children():
 		if enemy.just_spawned:
@@ -512,19 +512,19 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 				yield(enemy, "action_resolved")
 				#Wait a bit before next enemy/start player turn
 				yield(get_tree().create_timer(.3), "timeout")
-	
+
 	enable_player()
 
 
 func get_targeted_effect_total(effects: Array) -> int:
 	if enemies_node.get_children().size() <= 1:
 		return 0
-	
+
 	var total := 0
 	for effect in effects:
 		if effect in effect_manager.TARGETED_EFFECTS:
 			total += 1
-	
+
 	return total
 
 
@@ -545,35 +545,35 @@ func enable_elements():
 func win():
 	if ended:
 		return
-	
+
 	ended = true
 	disable_elements()
-	
+
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")
 	else:
 		AudioManager.play_sfx("win_normal_battle")
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
-	
+
 	if not is_boss or floor_level < Debug.MAX_FLOOR:
 		setup_win_screen(current_encounter)
-		
+
 		TooltipLayer.clean_tooltips()
 		disable_player()
 		player.clear_status()
-		
+
 		player.call_artifacts("battle_finish", {"player": player})
-		
+
 		emit_signal("won")
-		
+
 		#Wait a bit before starting win bgm
 		yield(get_tree().create_timer(.3), "timeout")
 		if is_boss:
 			AudioManager.play_bgm("win_boss_battle", false, true)
 		else:
 			AudioManager.play_bgm("win_normal_battle", false, true)
-	
+
 	else:
 		_on_win_screen_continue_pressed()
 
@@ -599,11 +599,11 @@ func autocomplete_grid(combination: Combination):
 	for reagent in reagents.get_children():
 		available_reagents.append(reagent.type)
 	var selected_reagents = ReagentManager.get_reagents_to_use(recipe_reagents, available_reagents)
-	
+
 	if selected_reagents:
 		for off_i in range(0, grid.grid_size - combination.grid_size + 1):
 			for off_j in range(0, grid.grid_size - combination.grid_size + 1):
-			
+
 				var valid_hint = true
 				for i in range(combination.grid_size):
 					for j in range(combination.grid_size):
@@ -657,7 +657,7 @@ func has_reagents(reagent_array: Array):
 			if valid_reagents[idx]:
 				selected_reagents.append(reagents.get_child(idx))
 		return selected_reagents
-	
+
 	return false
 
 
@@ -764,7 +764,7 @@ func _on_enemy_acted(enemy, actions):
 					yield(player, "resolved")
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
-		
+
 			enemy.remove_status("temp_strength")
 		if name == "drain":
 			for i in range(0, args.amount):
@@ -773,7 +773,7 @@ func _on_enemy_acted(enemy, actions):
 											  enemy.get_damage_modifiers())
 				if i == args.amount - 1:
 					enemy.remove_intent()
-				#Wait before going to next action/enemy	
+				#Wait before going to next action/enemy
 				if func_state and func_state.is_valid():
 					yield(player, "resolved")
 				else:
@@ -783,7 +783,7 @@ func _on_enemy_acted(enemy, actions):
 			#enemy.play_animation("self_destruct")
 			enemy.take_damage(enemy, enemy.hp, "piercing")
 			yield(get_tree().create_timer(.1), "timeout")
-			
+
 			var func_state = player.take_damage(enemy, args.value +\
 					enemy.get_damage_modifiers(), "piercing")
 			#Wait before going to next action/enemy
@@ -791,14 +791,14 @@ func _on_enemy_acted(enemy, actions):
 				yield(player, "resolved")
 			else:
 				yield(get_tree().create_timer(.5), "timeout")
-			
+
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "shield":
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()
-			#Wait before going to next action/enemy	
+			#Wait before going to next action/enemy
 			yield(enemy, "resolved")
 		elif name == "status":
 			var value = args.value if args.has("value") else 1
@@ -865,11 +865,11 @@ func _on_enemy_acted(enemy, actions):
 		elif name == "idle":
 			if args.has("sfx"):
 				AudioManager.play_sfx(args.sfx)
-			
+
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
-	
+
 	enemy.action_resolved()
 
 
@@ -880,23 +880,23 @@ func _on_enemy_died(enemy):
 	effect_manager.remove_enemy(enemy)
 	#Temporary store enemy
 	$EnemyToBeRemoved.add_child(enemy)
-	
+
 	var func_state = enemy.update_status("on_death")
 	if func_state and func_state.is_valid():
 		yield(enemy, "finished_updating_status")
-	
+
 	for ally_enemy in enemies_node.get_children():
 		func_state = ally_enemy.update_status("on_ally_died")
 		if func_state and func_state.is_valid():
 			yield(ally_enemy, "finished_updating_status")
-	
+
 	if enemy.data.change_phase:
 		yield(get_tree().create_timer(1.5), "timeout")
 		#TODO: Add more cool effects here, like screen shaking
 		spawn_new_enemy(enemy, enemy.data.change_phase, false)
-	
+
 	$EnemyToBeRemoved.remove_child(enemy)
-	
+
 	#Update idle sfx
 	if enemy.data.use_idle_sfx:
 		var remove_sfx = true
@@ -906,11 +906,11 @@ func _on_enemy_died(enemy):
 				break
 		if remove_sfx:
 			AudioManager.stop_enemy_idle_sfx(enemy.data.sfx)
-	
+
 	if not enemies_node.get_child_count():
 		win()
 		return
-	
+
 	#Check for minion enemies and kill if they are the only ones left
 	var all_minions = true
 	for enemy in enemies_node.get_children():
@@ -958,14 +958,20 @@ func _on_DiscardBag_reagent_discarded(reagent):
 
 
 func _on_PassTurnButton_pressed():
+	end_turn()
+
+func end_turn():
+	if player_disabled:
+		return
+
 	if not grid.is_empty():
 		grid.return_to_hand()
 		return
-	
+
 	player.update_status("end_turn")
-	
+
 	disable_player()
-	
+
 	#Check for artifacts effects
 	if player.has_artifact("heal_leftover"):
 		for reagent in reagents.get_children():
@@ -981,14 +987,14 @@ func _on_PassTurnButton_pressed():
 		if player.has_artifact("strength_optimize"):
 			effect_manager.add_status("self", "perm_strength", 10, true)
 			yield(effect_manager, "effect_resolved")
-	
+
 	#Check for unstable reagents
 	for reagent in reagents.get_children():
 		if reagent.unstable:
 			reagent.slot.remove_reagent()
 			discard_bag.discard(reagent)
 			yield(get_tree().create_timer(.5), "timeout")
-	
+
 	#clear hints
 	grid.clear_hints()
 	#Unfreeze hand
@@ -999,7 +1005,7 @@ func _on_PassTurnButton_pressed():
 	grid.unrestrain_all_slots()
 	#Unburn reagents
 	hand.unburn_reagents()
-	
+
 	new_enemy_turn()
 
 
@@ -1036,11 +1042,11 @@ func _on_win_screen_pearl_collected(quantity:int):
 
 func _on_Hand_hand_slot_reagent_set():
 	var reagent_array = hand.get_reagent_names()
-	
+
 	if grid.is_empty():
 		emit_signal("current_reagents_updated", reagent_array)
 		return
-	
+
 	var grid_index = 0
 	for i in range(reagent_array.size()):
 		if not reagent_array[i]:
@@ -1050,7 +1056,7 @@ func _on_Hand_hand_slot_reagent_set():
 					grid_index = j + 1
 					reagent_array[i] = reagent.type
 					break
-	
+
 	emit_signal("current_reagents_updated", reagent_array)
 
 
@@ -1072,7 +1078,7 @@ func _on_PassTurnButton_button_down():
 
 func _on_FavoriteButton_pressed(index: int):
 	AudioManager.play_sfx("click")
-	
+
 	var button : FavoriteButton = favorites.get_child(index)
 	var selected_reagents = has_reagents(button.reagent_array)
 	if selected_reagents:
@@ -1102,7 +1108,7 @@ func _on_Grid_modified():
 	if grid.is_empty():
 		recipe_name_display.reset()
 		return
-	
+
 	var reagent_matrix := []
 	for i in range(grid.grid_size):
 		var line = []
@@ -1113,7 +1119,7 @@ func _on_Grid_modified():
 			else:
 				line.append(null)
 		reagent_matrix.append(line)
-	
+
 	emit_signal("grid_modified", reagent_matrix)
 
 
@@ -1125,18 +1131,24 @@ func _on_Debug_battle_won():
 	win()
 
 func _on_CombineButton_pressed():
+	combine()
+
+func combine():
+	if player_disabled:
+		return
+
 	if grid.is_empty():
 		AudioManager.play_sfx("error")
 		return
-	
+
 	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
 		AudioManager.play_sfx("error")
 		return
-	
+
 	AudioManager.play_sfx("combine_button_click")
-	
+
 	grid.clear_hints()
-	
+
 	var reagent_matrix := []
 	var child_index := 0
 	var reagent_list = []
@@ -1151,9 +1163,9 @@ func _on_CombineButton_pressed():
 				line.append(null)
 			child_index += 1
 		reagent_matrix.append(line)
-	
+
 	disable_player()
-	
+
 	#Combination animation
 	var sfx_dur = AudioManager.get_sfx_duration("combine")
 	var dur = reagent_list.size()*.3
@@ -1165,9 +1177,15 @@ func _on_CombineButton_pressed():
 
 	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
-	
+
 	recipes_created += 1
 	#Check curse
 	var curse = player.get_status("curse")
 	if curse:
 		combine_button.set_curse(recipes_created, curse.amount)
+
+func _input(event):
+	if event.is_action_pressed("end_turn"):
+		end_turn()
+	elif event.is_action_pressed("combine"):
+		combine()

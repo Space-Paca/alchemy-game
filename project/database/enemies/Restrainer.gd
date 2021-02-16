@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/restrainer/idle.png"
 var name = "Restrainer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 200
+var hp = 450
 var battle_init = false
 var size = "big"
 var change_phase = null
@@ -36,25 +36,26 @@ var first_state = ["attack1", "attack2"]
 
 var actions = {
 	"attack1": [
-		{"name": "status", "status_name": "restrain", "value": 4, "target": "player", "positive": false},
-		{"name": "damage", "value": [15, 25], "type": "regular"}
+		{"name": "status", "status_name": "restrain", "value": 6, "target": "player", "positive": false},
+		{"name": "damage", "value": [25, 45], "type": "regular"}
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrain", "value": 5, "target": "player", "positive": false},
-		{"name": "damage", "value": [12, 20], "type": "regular"}
+		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false},
+		{"name": "damage", "value": [30, 40], "type": "regular"}
 	],
 	"attack3": [
-		{"name": "damage", "value": [20, 30], "type": "regular"}
+		{"name": "damage", "value": 66, "type": "regular"}
 	],
 	"charging": [
 		{"name": "idle", "sfx": "charge"}
 	],
 	"big_restrain": [
 		{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false},
+		{"name": "damage", "value": 15, "type": "piercing"},
 		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
 	],
 	"medium_restrain": [
-		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false},
-		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true},
+		{"name": "status", "status_name": "restrain", "value": 14, "target": "player", "positive": false},
+		{"name": "status", "status_name": "temp_strength", "value": 20, "target": "self", "positive": true},
 	],
 }

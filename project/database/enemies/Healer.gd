@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/healer/idle.png"
 var name = "Mender Homunculus"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 80
+var hp = 170
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -27,18 +27,18 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 35},
+		{"name": "shield", "value": 50},
 	],
 	"attack": [
-		{"name": "damage", "value": 10, "type": "regular"},
-		{"name": "heal", "value": [5,10], "target": "all_enemies"},
+		{"name": "damage", "value": 20, "type": "regular"},
+		{"name": "heal", "value": [10,20], "target": "all_enemies"},
 	],
 	"defend": [
-		{"name": "shield", "value": [10, 35]},
-		{"name": "heal", "value": [5,10], "target": "all_enemies"},
+		{"name": "shield", "value": [10, 50]},
+		{"name": "heal", "value": [10,20], "target": "all_enemies"},
 	],
 	"heal": [
-		{"name": "heal", "value": [10,20], "target": "all_enemies"},
-		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true},
+		{"name": "heal", "value": [20,30], "target": "all_enemies"},
+		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true},
 	],
 }

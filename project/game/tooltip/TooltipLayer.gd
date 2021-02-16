@@ -56,7 +56,7 @@ var keywords = {
 	"on fire": {
 		"type": "tooltip",
 		"title": "On Fire",
-		"text": "This reagent, when touched, will deal 4 regular damage to user.",
+		"text": "This reagent, when touched, will deal 9 regular damage to user.",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	}
 }

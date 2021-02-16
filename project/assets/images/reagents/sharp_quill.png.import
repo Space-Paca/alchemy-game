@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PotionIconsAdd_04.png-c0fe2ccc4cb7d3c37921912b9b4e942c.stex"
+path="res://.import/sharp_quill.png-f603885485bfe8f7087068313f04effd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/intents/PotionIconsAdd_04.png"
-dest_files=[ "res://.import/PotionIconsAdd_04.png-c0fe2ccc4cb7d3c37921912b9b4e942c.stex" ]
+source_file="res://assets/images/reagents/sharp_quill.png"
+dest_files=[ "res://.import/sharp_quill.png-f603885485bfe8f7087068313f04effd.stex" ]
 
 [params]
 

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/confuser/idle.png"
 var name = "Frwnph"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 150
+var hp = 345
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -35,10 +35,11 @@ var actions = {
 		{"name": "damage", "value": [5, 8], "amount": 2, "type": "venom"}
 	],
 	"defend1": [
-		{"name": "shield", "value": [8, 20]},
+		{"name": "shield", "value": [12, 30]},
+		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true},
 	],
 	"defend2": [
-		{"name": "shield", "value": [4, 7]},
-		{"name": "status", "status_name": "poison", "value": [2, 4], "target": "player", "positive": false}
+		{"name": "shield", "value": [15, 25]},
+		{"name": "status", "status_name": "poison", "value": [3, 6], "target": "player", "positive": false}
 	],
 }

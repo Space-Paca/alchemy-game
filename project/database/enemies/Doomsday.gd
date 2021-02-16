@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/doomsayer/idle.png"
 var name = "Doomsayer"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 320
+var hp = 460
 var battle_init = true
 var size = "big"
 var change_phase = null
@@ -33,18 +33,18 @@ var actions = {
 		{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true}
 	],
 	"attack1": [
-		{"name": "damage", "value": [20, 30], "type": "regular"},
-		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
+		{"name": "damage", "value": [30, 50], "type": "regular"},
+		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true}
 	],
 	"attack2": [
-		{"name": "damage", "value": [4, 5], "amount": 6, "type": "regular"},
-		{"name": "status", "status_name": "impending_doom", "value": [2,3], "target": "self", "positive": true, "reduce": true}
+		{"name": "damage", "value": [4, 7], "amount": 7, "type": "regular"},
+		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true}
 	],
 	"doom": [
 		{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true}
 	],
 	"dodge": [
 		{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true},
-		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true}
+		{"name": "status", "status_name": "dodge", "value": 4, "target": "self", "positive": true}
 	],
 }

@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/boss3-1/idle.png"
 var name = "Angel"
 var sfx = "boss_1"
 var use_idle_sfx = false
-var hp = 300
+var hp = 600
 var battle_init = false
 var size = "big"
 var change_phase = "boss_3_2"
@@ -32,47 +32,48 @@ var first_state = ["start"]
 
 var actions = {
 	"start": [
-		{"name": "damage", "value": 40, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+		{"name": "damage", "value": 80, "type": "regular"},
+		{"name": "shield", "value": [50,70], "type": "regular"},
 	],
 	"buff1": [
-		{"name": "status", "status_name": "concentration", "value": 20, "target": "self", "positive": false},
-	],
-	"attack1": [
-		{"name": "damage", "value": [15,18], "amount":2, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
-	],
-	"buff2": [
 		{"name": "status", "status_name": "concentration", "value": 30, "target": "self", "positive": false},
 	],
-	"attack2": [
-		{"name": "damage", "value": [15,18], "amount":2, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+	"attack1": [
+		{"name": "damage", "value": [28,30], "amount":2, "type": "regular"},
+		{"name": "shield", "value": [50,70], "type": "regular"},
 	],
-	"buff3": [
+	"buff2": [
 		{"name": "status", "status_name": "concentration", "value": 40, "target": "self", "positive": false},
 	],
-	"attack3": [
-		{"name": "damage", "value": [15,18], "amount":3, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+	"attack2": [
+		{"name": "damage", "value": [28,30], "amount":2, "type": "regular"},
+		{"name": "shield", "value": [50,70], "type": "regular"},
 	],
-	"buff4": [
+	"buff3": [
 		{"name": "status", "status_name": "concentration", "value": 50, "target": "self", "positive": false},
 	],
-	"attack4": [
-		{"name": "damage", "value": [15,18], "amount":3, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+	"attack3": [
+		{"name": "damage", "value": [38,40], "amount":3, "type": "regular"},
+		{"name": "shield", "value": [50,70], "type": "regular"},
 	],
-	"buff5": [
+	"buff4": [
 		{"name": "status", "status_name": "concentration", "value": 60, "target": "self", "positive": false},
 	],
+	"attack4": [
+		{"name": "damage", "value": [38,40], "amount":3, "type": "regular"},
+		{"name": "shield", "value": [50,70], "type": "regular"},
+	],
+	"buff5": [
+		{"name": "status", "status_name": "concentration", "value": 70, "target": "self", "positive": false},
+		{"name": "status", "status_name": "perm_strength", "value": 10, "target": "self", "positive": true},
+	],
 	"attack5-1": [
-		{"name": "damage", "value": 55, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+		{"name": "damage", "value": 100, "type": "regular"},
+		{"name": "shield", "value": 70, "type": "regular"},
 	],
 	"attack5-2": [
-		{"name": "damage", "value": [19,20], "amount":3, "type": "regular"},
-		{"name": "shield", "value": [40,50], "type": "regular"},
+		{"name": "damage", "value": [28,30], "amount":3, "type": "regular"},
+		{"name": "shield", "value": 70, "type": "regular"},
 	],
 	
 }

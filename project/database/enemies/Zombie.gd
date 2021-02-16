@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/zombie/idle.png"
 var name = "Reanimated Corpse"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
-var hp = 45
+var hp = 60
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -26,9 +26,9 @@ var actions = {
 		{"name": "status", "status_name": "poison_immunity", "value": 1, "target": "self", "positive": true}
 	],
 	"drain": [
-		{"name": "drain", "value": [6, 10]}
+		{"name": "drain", "value": [15, 20]}
 	],
 	"attack": [
-		{"name": "damage", "value": [8,12], "type": "regular"}
+		{"name": "damage", "value": [20,30], "type": "regular"}
 	],
 }

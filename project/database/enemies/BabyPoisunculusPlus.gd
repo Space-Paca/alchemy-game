@@ -4,7 +4,7 @@ var image = "res://assets/images/enemies/small poison enemy plus/idle.png"
 var name = "Toxic Oozeling"
 var sfx = "toxic_slime_minion"
 var use_idle_sfx = false
-var hp = 30
+var hp = 90
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -21,17 +21,18 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 20}
+		{"name": "shield", "value": 30}
 	],
 	"poison": [
-		{"name": "damage", "value": [10,15], "type": "venom"}
+		{"name": "damage", "value": [12,20], "type": "venom"}
 	],
 	"medium-poison": [
-		{"name": "damage", "value": [7,9], "type": "venom"}
+		{"name": "status", "status_name": "poison", "value": [2, 4], "target": "player", "positive": false},
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
 		
 	],
 	"defend-poison": [
-		{"name": "shield", "value": [10,15]},
-		{"name": "damage", "value": [5,6], "type": "venom"}
+		{"name": "shield", "value": [20,25]},
+		{"name": "damage", "value": [5,6], "amount": 2, "type": "venom"}
 	]
 }

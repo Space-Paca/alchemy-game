@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/attack_pierce.png-d4157a0c10462d6b694659a3cb1097e3.stex"
+path="res://.import/sharp_quill_borderless.png-61e21413c78abb2e8483546a47563092.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/intents/attack_pierce.png"
-dest_files=[ "res://.import/attack_pierce.png-d4157a0c10462d6b694659a3cb1097e3.stex" ]
+source_file="res://assets/images/reagents/sharp_quill_borderless.png"
+dest_files=[ "res://.import/sharp_quill_borderless.png-61e21413c78abb2e8483546a47563092.stex" ]
 
 [params]
 

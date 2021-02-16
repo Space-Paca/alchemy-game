@@ -68,6 +68,12 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Debug.connect("died", self, "_on_player_died")
 
+func _input(event):
+	if not TutorialLayer.is_active() and not recipe_book_visible:
+		if event.is_action_pressed("end_turn"):
+			end_turn()
+		elif event.is_action_pressed("combine"):
+			combine()
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
 	floor_level = _floor_level
@@ -698,6 +704,104 @@ func add_status_all_enemies(status, amount, positive, extra_args = {}):
 	for enemy in enemies_node.get_children():
 		enemy.add_status(status, amount, positive, extra_args)
 
+func end_turn():
+	if player_disabled:
+		return
+
+	if not grid.is_empty():
+		grid.return_to_hand()
+		return
+
+	player.update_status("end_turn")
+
+	disable_player()
+
+	#Check for artifacts effects
+	if player.has_artifact("heal_leftover"):
+		for reagent in reagents.get_children():
+			effect_manager.heal(2)
+			yield(get_tree().create_timer(.3), "timeout")
+	if reagents.get_children().size() <= 0 and used_all_reagents_in_recipes:
+		if player.has_artifact("damage_optimize"):
+			effect_manager.damage_all(30, "regular")
+			yield(effect_manager, "effect_resolved")
+		if player.has_artifact("heal_optimize"):
+			effect_manager.heal(30)
+			yield(effect_manager, "effect_resolved")
+		if player.has_artifact("strength_optimize"):
+			effect_manager.add_status("self", "perm_strength", 10, true)
+			yield(effect_manager, "effect_resolved")
+
+	#Check for unstable reagents
+	for reagent in reagents.get_children():
+		if reagent.unstable:
+			reagent.slot.remove_reagent()
+			discard_bag.discard(reagent)
+			yield(get_tree().create_timer(.5), "timeout")
+
+	#clear hints
+	grid.clear_hints()
+	#Unfreeze hand
+	hand.unfreeze_all_slots()
+	#Unrestrict grid
+	grid.unrestrict_all_slots()
+	#Unrestrain grid
+	grid.unrestrain_all_slots()
+	#Unburn reagents
+	hand.unburn_reagents()
+
+	new_enemy_turn()
+
+func combine():
+	if player_disabled:
+		return
+
+	if grid.is_empty():
+		AudioManager.play_sfx("error")
+		return
+
+	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
+		AudioManager.play_sfx("error")
+		return
+
+	AudioManager.play_sfx("combine_button_click")
+
+	grid.clear_hints()
+
+	var reagent_matrix := []
+	var child_index := 0
+	var reagent_list = []
+	for _i in range(grid.grid_size):
+		var line = []
+		for _j in range(grid.grid_size):
+			var reagent = grid.slots.get_child(child_index).current_reagent
+			if reagent:
+				reagent_list.append(reagent)
+				line.append(reagent.type)
+			else:
+				line.append(null)
+			child_index += 1
+		reagent_matrix.append(line)
+
+	disable_player()
+
+	#Combination animation
+	var sfx_dur = AudioManager.get_sfx_duration("combine")
+	var dur = reagent_list.size()*.3
+	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
+	for reagent in reagent_list:
+		reagent.combine_animation(grid.get_center(), dur)
+
+	yield(reagent_list.back(), "finished_combine_animation")
+
+	emit_signal("combination_made", reagent_matrix, reagent_list)
+	emit_signal("current_reagents_updated", hand.get_reagent_names())
+
+	recipes_created += 1
+	#Check curse
+	var curse = player.get_status("curse")
+	if curse:
+		combine_button.set_curse(recipes_created, curse.amount)
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -961,55 +1065,6 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	end_turn()
 
-func end_turn():
-	if player_disabled:
-		return
-
-	if not grid.is_empty():
-		grid.return_to_hand()
-		return
-
-	player.update_status("end_turn")
-
-	disable_player()
-
-	#Check for artifacts effects
-	if player.has_artifact("heal_leftover"):
-		for reagent in reagents.get_children():
-			effect_manager.heal(2)
-			yield(get_tree().create_timer(.3), "timeout")
-	if reagents.get_children().size() <= 0 and used_all_reagents_in_recipes:
-		if player.has_artifact("damage_optimize"):
-			effect_manager.damage_all(30, "regular")
-			yield(effect_manager, "effect_resolved")
-		if player.has_artifact("heal_optimize"):
-			effect_manager.heal(30)
-			yield(effect_manager, "effect_resolved")
-		if player.has_artifact("strength_optimize"):
-			effect_manager.add_status("self", "perm_strength", 10, true)
-			yield(effect_manager, "effect_resolved")
-
-	#Check for unstable reagents
-	for reagent in reagents.get_children():
-		if reagent.unstable:
-			reagent.slot.remove_reagent()
-			discard_bag.discard(reagent)
-			yield(get_tree().create_timer(.5), "timeout")
-
-	#clear hints
-	grid.clear_hints()
-	#Unfreeze hand
-	hand.unfreeze_all_slots()
-	#Unrestrict grid
-	grid.unrestrict_all_slots()
-	#Unrestrain grid
-	grid.unrestrain_all_slots()
-	#Unburn reagents
-	hand.unburn_reagents()
-
-	new_enemy_turn()
-
-
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_book_toggle")
 
@@ -1133,61 +1188,3 @@ func _on_Debug_battle_won():
 
 func _on_CombineButton_pressed():
 	combine()
-
-func combine():
-	if player_disabled:
-		return
-
-	if grid.is_empty():
-		AudioManager.play_sfx("error")
-		return
-
-	if player.get_status("deviation") and deviated_recipes.has(recipe_name_display.get_name()):
-		AudioManager.play_sfx("error")
-		return
-
-	AudioManager.play_sfx("combine_button_click")
-
-	grid.clear_hints()
-
-	var reagent_matrix := []
-	var child_index := 0
-	var reagent_list = []
-	for _i in range(grid.grid_size):
-		var line = []
-		for _j in range(grid.grid_size):
-			var reagent = grid.slots.get_child(child_index).current_reagent
-			if reagent:
-				reagent_list.append(reagent)
-				line.append(reagent.type)
-			else:
-				line.append(null)
-			child_index += 1
-		reagent_matrix.append(line)
-
-	disable_player()
-
-	#Combination animation
-	var sfx_dur = AudioManager.get_sfx_duration("combine")
-	var dur = reagent_list.size()*.3
-	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
-	for reagent in reagent_list:
-		reagent.combine_animation(grid.get_center(), dur)
-
-	yield(reagent_list.back(), "finished_combine_animation")
-
-	emit_signal("combination_made", reagent_matrix, reagent_list)
-	emit_signal("current_reagents_updated", hand.get_reagent_names())
-
-	recipes_created += 1
-	#Check curse
-	var curse = player.get_status("curse")
-	if curse:
-		combine_button.set_curse(recipes_created, curse.amount)
-
-func _input(event):
-	if not TutorialLayer.is_active() and not recipe_book_visible:
-		if event.is_action_pressed("end_turn"):
-			end_turn()
-		elif event.is_action_pressed("combine"):
-			combine()

@@ -102,8 +102,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		if damage > status.amount:
 			AudioManager.play_sfx("divine_protected")
 # warning-ignore:narrowing_conversion
-		damage = min(status.amount, damage)
-		status.amount -= damage
+		if status.amount <= 0:
+			damage = 0
+		else:
+			status.amount -= damage
 	
 	#Block damage with shield
 	if type == "regular":

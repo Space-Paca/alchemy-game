@@ -59,7 +59,7 @@ var recipes_created
 var current_encounter
 var first_turn = true
 var used_all_reagents_in_recipes = false
-
+var recipe_book_visible = false
 
 func _ready():
 	# DEBUG
@@ -411,6 +411,7 @@ func enable_player():
 
 
 func recipe_book_toggled(visible: bool):
+	recipe_book_visible = visible
 	if visible:
 		recipes_button.hide()
 		pass_turn_button.hide()
@@ -1185,7 +1186,8 @@ func combine():
 		combine_button.set_curse(recipes_created, curse.amount)
 
 func _input(event):
-	if event.is_action_pressed("end_turn"):
-		end_turn()
-	elif event.is_action_pressed("combine"):
-		combine()
+	if not TutorialLayer.is_active() and not recipe_book_visible:
+		if event.is_action_pressed("end_turn"):
+			end_turn()
+		elif event.is_action_pressed("combine"):
+			combine()

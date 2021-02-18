@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Supernova"
-grid_size = 3
+grid_size = 4
 floor_sold_in = 3
 reagents = [ "rare", "uncommon", "damaging", "super_damaging", "super_damaging" ]
 effects = [ "damage" ]
@@ -16,7 +16,7 @@ override_description = ""
 override_short_description = ""
 filters = [ 0 ]
 fav_icon = ExtResource( 1 )
-shop_cost = 55
+shop_cost = 100
 master_effects = [ "damage" ]
 master_effect_args = [ [ 120, "regular" ] ]
 master_destroy_reagents = [  ]

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Alchemist's Inferno"
-grid_size = 3
+grid_size = 4
 floor_sold_in = 3
 reagents = [ "damaging", "damaging", "damaging", "damaging", "super_damaging" ]
 effects = [ "damage" ]

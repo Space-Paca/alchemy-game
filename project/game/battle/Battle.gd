@@ -70,9 +70,9 @@ func _ready():
 
 func _input(event):
 	if not TutorialLayer.is_active() and not recipe_book_visible:
-		if event.is_action_pressed("end_turn"):
+		if not pass_turn_button.disabled and event.is_action_pressed("end_turn"):
 			end_turn()
-		elif event.is_action_pressed("combine"):
+		elif not combine_button.disabled and event.is_action_pressed("combine"):
 			combine()
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):

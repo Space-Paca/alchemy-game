@@ -45,7 +45,7 @@ const TUTORIAL = {
 		"text_width": 420},
 		{"position": Vector2(800,900), "dimension": Vector2(260,120), 
 		 "text_side": "top", "text": "When you have nothing else to do,\nor want to hold on to some reagents,\nyou can pass the turn by clicking here.\nYou can also pass your turn by pressing E.",
-		"text_width": 450},
+		"text_width": 850},
 		{"position": Vector2(250,680), "dimension": Vector2(290,220),
 		 "text_side": "top", "text": "Finally, some important shortcuts!",
 		"text_width": 420},

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://game/recipe-book/RecipeDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 
@@ -32,25 +32,26 @@ __meta__ = {
 }
 
 [node name="Recipes" type="ScrollContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -840.0
-margin_top = -260.426
-margin_right = 840.0
-margin_bottom = 251.574
+margin_left = -628.219
+margin_top = -247.413
+margin_right = 1271.78
+margin_bottom = 681.587
 grow_horizontal = 2
 grow_vertical = 2
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 5 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBox" type="HBoxContainer" parent="Recipes"]
-margin_right = 1992.0
-margin_bottom = 385.0
+margin_right = 2490.0
+margin_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 30
@@ -59,46 +60,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RecipeDisplay" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 307.0
-margin_bottom = 385.0
+[node name="WinRecipe" parent="Recipes/HBox" instance=ExtResource( 3 )]
 
-[node name="RecipeDisplay2" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 337.0
-margin_right = 644.0
-margin_bottom = 385.0
+[node name="WinRecipe2" parent="Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 630.0
+margin_right = 1230.0
 
-[node name="RecipeDisplay5" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 674.0
-margin_right = 981.0
-margin_bottom = 385.0
+[node name="WinRecipe3" parent="Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 1260.0
+margin_right = 1860.0
 
-[node name="RecipeDisplay6" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1011.0
-margin_right = 1318.0
-margin_bottom = 385.0
-
-[node name="RecipeDisplay3" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1348.0
-margin_right = 1655.0
-margin_bottom = 385.0
-
-[node name="RecipeDisplay4" parent="Recipes/HBox" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1685.0
-margin_right = 1992.0
-margin_bottom = 385.0
+[node name="WinRecipe4" parent="Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 1890.0
+margin_right = 2490.0
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 60.0
@@ -115,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -152.0
-margin_top = -218.0
-margin_right = 152.0
-margin_bottom = -71.9999
+margin_left = -75.7186
+margin_top = -230.714
+margin_right = 228.281
+margin_bottom = -84.7134
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,19 +117,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -219.5
-margin_top = 20.0
-margin_right = 219.5
-margin_bottom = 166.0
-text = "Study Recipes"
+margin_left = -436.206
+margin_top = 22.5198
+margin_right = 446.794
+margin_bottom = 168.52
+text = "Discover and Master 1 Recipe"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="ChooseOneLabel" type="Label" parent="."]
 anchor_right = 1.0
 margin_top = 250.0
-margin_bottom = 352.0
+margin_bottom = 392.0
 custom_fonts/font = SubResource( 1 )
 text = "Choose only one"
 align = 1

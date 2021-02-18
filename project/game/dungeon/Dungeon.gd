@@ -147,14 +147,14 @@ func create_level(level: int, debug := false):
 		map.queue_free()
 
 
-func get_incomplete_combinations():
-	var incomplete_combinations = []
+func get_rest_combinations():
+	var rest_combinations = []
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
-			if player.known_recipes.has(combination.recipe.name) and not combination.discovered:
-				incomplete_combinations.append(combination)
+			if player.known_recipes.has(combination.recipe.name) and (not combination.discovered or not recipe_book.is_mastered(combination)):
+				rest_combinations.append(combination)
 	
-	return incomplete_combinations
+	return rest_combinations
 
 
 func setup_shop():
@@ -386,7 +386,7 @@ func open_shop():
 
 func open_rest(room, _player):
 	AudioManager.play_bgm("rest")
-	rest.setup(room, _player, get_incomplete_combinations())
+	rest.setup(room, _player, get_rest_combinations())
 	rest.show()
 	
 	Transition.end_transition()

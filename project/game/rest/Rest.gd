@@ -10,9 +10,10 @@ const GREAT_REST_HEAL_PERCENTAGE = 70
 var map_node : MapNode
 var player
 var combinations
-
+var state = "main"
 
 func setup(node, _player, _combinations):
+	state = "main"
 	map_node = node
 	player = _player
 	combinations = _combinations
@@ -76,11 +77,12 @@ func _on_HealButton_pressed():
 
 func _on_HintButton_pressed():
 	if combinations.size() > 0:
-		$BackButton.hide()
+		$ChooseOneLabel.hide()
 		$HealButton.hide()
 		$HintButton.hide()
 		$Recipes.show()
 		setup_recipes()
+		state = "recipes"
 	else:
 		AudioManager.play_sfx("error")
 
@@ -91,7 +93,14 @@ func _on_ContinueButton_pressed():
 
 
 func _on_BackButton_pressed():
-	emit_signal("closed")
+	if state == "recipes":
+		$ChooseOneLabel.show()
+		$HealButton.show()
+		$HintButton.show()
+		$Recipes.hide()
+		state = "main"
+	else:
+		emit_signal("closed")
 
 
 func _on_recipe_chosen(chosen_recipe):

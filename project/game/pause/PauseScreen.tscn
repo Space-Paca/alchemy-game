@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
@@ -216,13 +216,24 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id=28]
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxEmpty" id=29]
 
 [sub_resource type="StyleBoxEmpty" id=30]
 
-[sub_resource type="StyleBoxEmpty" id=31]
+[sub_resource type="StyleBoxEmpty" id=35]
+
+[sub_resource type="ButtonGroup" id=33]
 
 [sub_resource type="StyleBoxEmpty" id=32]
 
@@ -256,7 +267,6 @@ __meta__ = {
 }
 
 [node name="Menu" type="VBoxContainer" parent="Background"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -350,6 +360,7 @@ rect_min_size = Vector2( 200, 120 )
 text = "No"
 
 [node name="SettingsMenu" type="VBoxContainer" parent="Background"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -389,24 +400,21 @@ theme = ExtResource( 3 )
 tab_align = 0
 scrolling_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Video"]
+[node name="VBoxContainer" type="Control" parent="Background/SettingsMenu/TabContainer/Video"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -210.5
+margin_left = -230.5
 margin_top = -184.5
-margin_right = 210.5
-margin_bottom = -62.5
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 230.5
+margin_bottom = 48.5
 
 [node name="FullscreenContainer" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer"]
-margin_right = 421.0
-margin_bottom = 51.0
-custom_constants/separation = 50
+margin_top = 91.0
+margin_right = 461.0
+margin_bottom = 142.0
+custom_constants/separation = 91
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
 margin_right = 167.0
@@ -414,9 +422,39 @@ margin_bottom = 51.0
 custom_fonts/font = SubResource( 20 )
 text = "Fullscreen"
 
-[node name="CheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
-margin_left = 217.0
-margin_right = 233.0
+[node name="FullscreenCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
+margin_left = 258.0
+margin_right = 308.0
+margin_bottom = 51.0
+theme = ExtResource( 3 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/hover_pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+custom_fonts/font = SubResource( 20 )
+custom_constants/hseparation = 40
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderlessContainer2" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer"]
+margin_top = 182.0
+margin_right = 461.0
+margin_bottom = 233.0
+custom_constants/separation = 86
+
+[node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2"]
+margin_right = 173.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 20 )
+text = "Borderless"
+
+[node name="BorderlessCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2"]
+margin_left = 259.0
+margin_right = 309.0
 margin_bottom = 51.0
 theme = ExtResource( 3 )
 custom_styles/hover = SubResource( 21 )
@@ -432,26 +470,25 @@ __meta__ = {
 }
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer"]
-margin_top = 71.0
-margin_right = 421.0
-margin_bottom = 122.0
+margin_right = 461.0
+margin_bottom = 51.0
 custom_constants/separation = 45
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer"]
-margin_right = 173.0
+margin_right = 213.0
 margin_bottom = 51.0
 custom_fonts/font = SubResource( 20 )
-text = "Resolution"
+text = "Window Size"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Resolution" type="Control" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer"]
-margin_left = 218.0
-margin_right = 421.0
+margin_left = 258.0
+margin_right = 461.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 203, 0 )
 __meta__ = {
@@ -505,76 +542,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown"]
+[node name="ResolutionsContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown"]
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 13.0
-margin_top = -125.0
-margin_right = 189.0
-margin_bottom = 120.0
+margin_left = -90.0
+margin_top = -145.0
+margin_right = 90.0
+margin_bottom = 145.0
+mouse_filter = 0
 custom_constants/separation = 15
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Res1" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
-margin_right = 176.0
-margin_bottom = 50.0
+[node name="Res1" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_top = 22.0
+margin_right = 180.0
+margin_bottom = 72.0
 focus_mode = 1
 custom_styles/hover = SubResource( 27 )
-custom_styles/pressed = SubResource( 28 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 30 )
-custom_styles/hover_pressed = SubResource( 31 )
-custom_styles/normal = SubResource( 32 )
+custom_styles/hover_pressed = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
 custom_fonts/font = ExtResource( 18 )
 enabled_focus_mode = 1
+group = SubResource( 33 )
 text = "1280x720"
 
-[node name="Res2" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
-margin_top = 65.0
-margin_right = 176.0
-margin_bottom = 115.0
+[node name="Res2" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_top = 87.0
+margin_right = 180.0
+margin_bottom = 137.0
 focus_mode = 1
 custom_styles/hover = SubResource( 27 )
-custom_styles/pressed = SubResource( 28 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 30 )
-custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/hover_pressed = SubResource( 34 )
 custom_styles/normal = SubResource( 32 )
 custom_fonts/font = ExtResource( 18 )
 enabled_focus_mode = 1
+group = SubResource( 33 )
 text = "1366x768"
 
-[node name="Res3" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
-margin_top = 130.0
-margin_right = 176.0
-margin_bottom = 180.0
+[node name="Res3" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_top = 152.0
+margin_right = 180.0
+margin_bottom = 202.0
 focus_mode = 1
 custom_styles/hover = SubResource( 27 )
-custom_styles/pressed = SubResource( 28 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 30 )
-custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/hover_pressed = SubResource( 34 )
 custom_styles/normal = SubResource( 32 )
 custom_fonts/font = ExtResource( 18 )
 enabled_focus_mode = 1
+group = SubResource( 33 )
 text = "1600x900"
 
-[node name="Res4" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
-margin_top = 195.0
-margin_right = 176.0
-margin_bottom = 245.0
+[node name="Res4" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_top = 217.0
+margin_right = 180.0
+margin_bottom = 267.0
 focus_mode = 1
 custom_styles/hover = SubResource( 27 )
-custom_styles/pressed = SubResource( 28 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 30 )
-custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/hover_pressed = SubResource( 27 )
 custom_styles/normal = SubResource( 32 )
 custom_fonts/font = ExtResource( 18 )
 pressed = true
 enabled_focus_mode = 1
+group = SubResource( 33 )
 text = "1920x1080"
 
 [node name="Audio" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
@@ -694,7 +740,13 @@ text = "Back"
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]
+[connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
+[connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton" to="." method="_on_ResolutionButton_toggled"]
+[connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res1" to="." method="_on_Resolution_button_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res2" to="." method="_on_Resolution_button_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res3" to="." method="_on_Resolution_button_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res4" to="." method="_on_Resolution_button_pressed" binds= [ 3 ]]
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
 [connection signal="mouse_entered" from="Background/SettingsMenu/TabContainer/Gameplay/ResetTutorial" to="." method="_on_button_mouse_entered"]

@@ -11,6 +11,10 @@ onready var settings = $Background/SettingsMenu
 onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
 onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
 onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
+onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
+onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox
+onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
+onready var resolution_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
@@ -25,6 +29,11 @@ func _ready():
 	bg.hide()
 	
 	update_music_volumes()
+	
+	fullscreen_button.pressed = Profile.get_option("fullscreen")
+	borderless_button.pressed = Profile.get_option("borderless")
+	var size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
+	window_size_label.text = str(size.x, "x", size.y)
 	
 	if mode == Modes.MENU:
 		$Background/Menu/Return.hide()
@@ -142,3 +151,26 @@ func _on_Back_pressed():
 
 func _on_ResolutionButton_toggled(button_pressed):
 	resolution_dropdown.visible = button_pressed
+
+
+func _on_FullscreenCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	OS.window_fullscreen = button_pressed
+	Profile.set_option("fullscreen", button_pressed)
+
+
+func _on_BorderlessCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	OS.window_borderless = button_pressed
+	Profile.set_option("borderless", button_pressed)
+
+
+func _on_Resolution_button_pressed(button_id: int):
+	AudioManager.play_sfx("click")
+	if button_id == Profile.get_option("window_size"):
+		return
+	
+	var size = Profile.WINDOW_SIZES[button_id]
+	window_size_label.text = str(size.x, "x", size.y)
+	OS.window_size = size
+	Profile.set_option("window_size", button_id)

@@ -1,13 +1,19 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://game/recipe-book/FilterMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/filter_menu.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/themes/general_theme/check off-small.png" type="Texture" id=7]
 [ext_resource path="res://assets/themes/general_theme/check on-small.png" type="Texture" id=8]
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="DynamicFont" id=1]
+size = 27
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.282353, 0.0470588, 0, 1 )
 corner_radius_top_left = 33
 corner_radius_top_right = 33
@@ -16,13 +22,13 @@ corner_radius_bottom_left = 33
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
-[sub_resource type="StyleBoxEmpty" id=2]
-
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxFlat" id=45]
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
 corner_radius_top_left = 33
 corner_radius_top_right = 33
@@ -31,7 +37,7 @@ corner_radius_bottom_left = 33
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
-[sub_resource type="StyleBoxFlat" id=44]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.282353, 0.0470588, 0, 1 )
 corner_radius_top_left = 33
 corner_radius_top_right = 33
@@ -42,7 +48,7 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -53,47 +59,47 @@ expand_margin_right = 3.0
 expand_margin_top = 2.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=43]
+[sub_resource type="StyleBoxEmpty" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=13]
 
+[sub_resource type="StyleBoxEmpty" id=14]
+
 [sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=18]
 
+[sub_resource type="StyleBoxEmpty" id=19]
+
 [sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
 
 [sub_resource type="StyleBoxEmpty" id=24]
 
 [sub_resource type="StyleBoxEmpty" id=25]
 
+[sub_resource type="StyleBoxEmpty" id=26]
+
 [sub_resource type="StyleBoxEmpty" id=27]
 
+[sub_resource type="StyleBoxEmpty" id=28]
+
 [sub_resource type="StyleBoxEmpty" id=29]
-
-[sub_resource type="StyleBoxEmpty" id=30]
-
-[sub_resource type="StyleBoxEmpty" id=32]
-
-[sub_resource type="StyleBoxEmpty" id=34]
-
-[sub_resource type="StyleBoxEmpty" id=35]
-
-[sub_resource type="StyleBoxEmpty" id=37]
-
-[sub_resource type="StyleBoxEmpty" id=39]
-
-[sub_resource type="StyleBoxEmpty" id=40]
-
-[sub_resource type="StyleBoxEmpty" id=42]
 
 [node name="FilterMenu" type="Control"]
 anchor_right = 1.0
@@ -129,8 +135,11 @@ margin_left = 10.0
 margin_top = -22.5
 margin_right = 100.0
 margin_bottom = 22.5
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "Filters"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Filters" type="NinePatchRect" parent="."]
 visible = false
@@ -166,12 +175,12 @@ __meta__ = {
 margin_right = 160.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 45 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 text = "Clear all"
 
 [node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -183,13 +192,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 43 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Attack"
@@ -203,13 +212,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 12 )
 custom_styles/disabled = SubResource( 13 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 15 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Defense"
@@ -223,13 +232,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 17 )
-custom_styles/disabled = SubResource( 18 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 20 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Area"
@@ -243,13 +252,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 24 )
-custom_styles/disabled = SubResource( 25 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 27 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Buff"
@@ -263,13 +272,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 29 )
-custom_styles/disabled = SubResource( 30 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 32 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 23 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Debuff"
@@ -283,13 +292,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 34 )
-custom_styles/disabled = SubResource( 35 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 37 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 26 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Heal"
@@ -303,13 +312,13 @@ custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 7 )
-custom_styles/hover = SubResource( 44 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 39 )
-custom_styles/disabled = SubResource( 40 )
-custom_styles/hover_pressed = SubResource( 44 )
-custom_styles/normal = SubResource( 42 )
-custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/disabled = SubResource( 28 )
+custom_styles/hover_pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 29 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Misc"

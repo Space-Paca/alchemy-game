@@ -4,7 +4,6 @@
 [ext_resource path="res://game/event/EventDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/events/event_luck.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/themes/event_theme/event_theme.tres" type="Theme" id=7]
 
@@ -28,7 +27,13 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="DynamicFont" id=4]
+size = 27
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=5]
 length = 64.0
 loop = true
 tracks/0/type = "value"
@@ -113,7 +118,7 @@ margin_top = 25.0
 margin_right = 1025.0
 margin_bottom = 489.0
 custom_fonts/italics_font = SubResource( 3 )
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[wave amp=50 freq=2]Body[/wave] [i]small[/i]"
 text = "Body small"
@@ -148,4 +153,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 4 )
+anims/idle = SubResource( 5 )

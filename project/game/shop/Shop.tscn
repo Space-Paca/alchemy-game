@@ -1,6 +1,5 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://game/shop/ShopRecipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/shop.jpg" type="Texture" id=4]
@@ -22,6 +21,12 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 27
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
@@ -178,7 +183,7 @@ margin_left = 798.735
 margin_top = 388.551
 margin_right = 1225.74
 margin_bottom = 433.551
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Get rid of reagent for 50 gold?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ReagentsMenu/ReagentDestroyLabel"]
@@ -193,16 +198,16 @@ __meta__ = {
 }
 
 [node name="YesButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_right = 102.0
-margin_bottom = 101.0
-custom_fonts/font = ExtResource( 1 )
+margin_right = 91.0
+margin_bottom = 91.0
+custom_fonts/font = SubResource( 4 )
 text = "Yes!"
 
 [node name="NoButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_left = 142.0
-margin_right = 472.0
-margin_bottom = 101.0
-custom_fonts/font = ExtResource( 1 )
+margin_left = 131.0
+margin_right = 400.0
+margin_bottom = 91.0
+custom_fonts/font = SubResource( 4 )
 text = "On second thought..."
 
 [node name="BackButton" type="Button" parent="."]

@@ -77,12 +77,6 @@ const UNCOMMON = [
 		"description": "When resting, you heal completely",
 	},
 	{
-		"id": "reveal_map",
-		"name": "Silver Sextant",
-		"image": preload("res://assets/images/artifacts/reveal_map.png"),
-		"description": "All maps are revealed",
-	},
-	{
 		"id": "buff_kit",
 		"name": "Powerful Satchel",
 		"image": preload("res://assets/images/artifacts/buff_kit.png"),
@@ -203,6 +197,12 @@ const RARE = [
 		"name": "Seal of Might",
 		"image": preload("res://assets/images/artifacts/strength_optimize.png"),
 		"description": "Whenever you end your turn, if you used all your reagents in recipes, you gain 10 permanent strength",
+	},
+	{
+		"id": "reveal_map",
+		"name": "Silver Sextant",
+		"image": preload("res://assets/images/artifacts/reveal_map.png"),
+		"description": "All maps are revealed",
 	},
 ]
 

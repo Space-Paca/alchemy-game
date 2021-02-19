@@ -22,7 +22,7 @@ const SLIDER_COOLDOWN = .18
 
 var paused := false
 var slider_sfx_cooldown = 0
-var block_pause = true
+var block_pause = false
 
 
 func _ready():

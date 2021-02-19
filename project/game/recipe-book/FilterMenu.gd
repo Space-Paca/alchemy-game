@@ -36,3 +36,8 @@ func _on_Filter_toggled(button_pressed: bool, index: int):
 		filter_values.erase(index)
 	AudioManager.play_sfx("click_filter_button")
 	emit_signal("filters_updated", filter_values)
+
+
+func _on_ClearButton_pressed():
+	AudioManager.play_sfx("click")
+	clear_filters()

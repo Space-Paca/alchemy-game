@@ -4,11 +4,13 @@ enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
 onready var bg = $Background
+onready var screen_title = $Background/Label
 onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
 onready var settings = $Background/SettingsMenu
-onready var bgmslider = $Background/SettingsMenu/MusicVolume
-onready var sfxslider = $Background/SettingsMenu/SFXVolume
+onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
+onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
+onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
@@ -63,6 +65,7 @@ func no_quit():
 
 
 func settings_back():
+	screen_title.text = "Game Paused"
 	settings.hide()
 	menu.show()
 
@@ -121,9 +124,14 @@ func _on_ResetTutorial_pressed():
 
 
 func _on_Settings_pressed():
+	screen_title.text = "Settings"
 	menu.hide()
 	settings.show()
 
 
 func _on_Back_pressed():
 	settings_back()
+
+
+func _on_ResolutionButton_toggled(button_pressed):
+	resolution_dropdown.visible = button_pressed

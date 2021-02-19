@@ -1,11 +1,141 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/themes/general_theme/h_scroller.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/general_theme/scroller_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/themes/general_theme/scroll_bg.png" type="Texture" id=8]
+[ext_resource path="res://assets/themes/general_theme/scroller.png" type="Texture" id=9]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/themes/general_theme/default_button_disabled.png" type="Texture" id=11]
+[ext_resource path="res://assets/themes/general_theme/default_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/themes/general_theme/default_button_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/themes/general_theme/h_scroll.png" type="Texture" id=14]
+[ext_resource path="res://assets/themes/general_theme/default_button.png" type="Texture" id=15]
+[ext_resource path="res://game/pause/HorizontalSlider.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/images/ui/book/filter_menu.png" type="Texture" id=17]
+[ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=18]
+[ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 4
+outline_color = Color( 0.0969086, 0.339844, 0.323826, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.327
+margin_right = 23.327
+margin_top = 27.9924
+margin_bottom = 27.9924
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 14 )
+region_rect = Rect2( 30, 0, 100, 29 )
+margin_left = 27.9335
+margin_right = 29.4037
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 34.9905
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 28.4318
+margin_bottom = 27.1395
+
+[sub_resource type="DynamicFont" id=13]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 2 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_disabled = ExtResource( 5 )
+HSlider/icons/grabber_highlight = ExtResource( 10 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 6 )
+HSlider/styles/grabber_area_highlight = SubResource( 7 )
+HSlider/styles/slider = SubResource( 8 )
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 9 )
+VScrollBar/styles/grabber_highlight = SubResource( 10 )
+VScrollBar/styles/grabber_pressed = SubResource( 11 )
+VScrollBar/styles/scroll = SubResource( 12 )
+VScrollBar/styles/scroll_focus = null
+
+[sub_resource type="DynamicFont" id=15]
 size = 160
 outline_size = 5
 outline_color = Color( 0, 0, 0, 0.501961 )
@@ -13,12 +143,88 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=16]
 size = 80
 outline_size = 6
 outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color( 0.0784314, 0.0235294, 0.0235294, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_color = Color( 0.921569, 0.721569, 0.552941, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color( 0.0431373, 0.0156863, 0.0156863, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_color = Color( 0.921569, 0.721569, 0.552941, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.0784314, 0.0235294, 0.0235294, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.921569, 0.721569, 0.552941, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 12
+
+[sub_resource type="DynamicFont" id=20]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.282353, 0.0470588, 0, 1 )
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
 
 [node name="PauseScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -28,7 +234,7 @@ script = ExtResource( 1 )
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 3 )
+theme = SubResource( 14 )
 color = Color( 0, 0, 0, 0.980392 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,57 +247,60 @@ margin_left = -399.0
 margin_top = 40.0
 margin_right = 399.0
 margin_bottom = 319.0
-custom_fonts/font = SubResource( 1 )
+rect_min_size = Vector2( 800, 0 )
+custom_fonts/font = SubResource( 15 )
 text = "Game Paused"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Menu" type="VBoxContainer" parent="Background"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -356.0
-margin_top = -222.0
-margin_right = 344.0
-margin_bottom = 662.0
-rect_min_size = Vector2( 700, 0 )
-custom_constants/separation = 20
+margin_left = -300.0
+margin_top = -190.0
+margin_right = 300.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 600, 0 )
+custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Resume" type="Button" parent="Background/Menu"]
-margin_right = 700.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 450, 100 )
+margin_right = 600.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 450, 50 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Resume"
 
 [node name="Settings" type="Button" parent="Background/Menu"]
-margin_top = 166.0
-margin_right = 700.0
-margin_bottom = 312.0
+margin_top = 150.0
+margin_right = 600.0
+margin_bottom = 270.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Settings"
 
 [node name="Return" type="Button" parent="Background/Menu"]
-margin_top = 332.0
-margin_right = 700.0
-margin_bottom = 478.0
+margin_top = 300.0
+margin_right = 600.0
+margin_bottom = 420.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Return to Main Menu"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
-margin_top = 498.0
-margin_right = 700.0
-margin_bottom = 644.0
+margin_top = 450.0
+margin_right = 600.0
+margin_bottom = 570.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -115,7 +324,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Background/ConfirmMenu"]
 margin_right = 450.0
 margin_bottom = 101.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 16 )
 text = "Are you sure?"
 align = 1
 
@@ -141,58 +350,338 @@ rect_min_size = Vector2( 200, 120 )
 text = "No"
 
 [node name="SettingsMenu" type="VBoxContainer" parent="Background"]
-visible = false
-margin_left = 604.0
-margin_top = 318.0
-margin_right = 1304.0
-margin_bottom = 870.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -450.0
+margin_top = -780.0
+margin_right = 450.0
+margin_bottom = -40.0
 rect_min_size = Vector2( 700, 0 )
 custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MusicLabel" type="Label" parent="Background/SettingsMenu"]
+[node name="TabContainer" type="TabContainer" parent="Background/SettingsMenu"]
+margin_right = 900.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 900, 600 )
+theme = ExtResource( 3 )
+custom_styles/tab_fg = SubResource( 17 )
+custom_styles/tab_bg = SubResource( 18 )
+custom_styles/panel = SubResource( 19 )
+custom_constants/side_margin = 30
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 66.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 3 )
+tab_align = 0
+scrolling_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Video"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -210.5
+margin_top = -184.5
+margin_right = 210.5
+margin_bottom = -62.5
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer"]
+margin_right = 421.0
+margin_bottom = 51.0
+custom_constants/separation = 50
+
+[node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
+margin_right = 167.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 20 )
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
+margin_left = 217.0
+margin_right = 267.0
+margin_bottom = 51.0
+theme = ExtResource( 3 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/hover_pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+custom_fonts/font = SubResource( 20 )
+custom_constants/hseparation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer"]
+margin_top = 71.0
+margin_right = 421.0
+margin_bottom = 122.0
+custom_constants/separation = 45
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer"]
+margin_right = 173.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 20 )
+text = "Resolution"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution" type="Control" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer"]
+margin_left = 218.0
+margin_right = 421.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 203, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResolutionButton" type="TextureButton" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton"]
+margin_left = 160.0
+margin_top = 20.0
+margin_right = 185.0
+margin_bottom = 42.0
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 15.0
+margin_top = -17.5
+margin_right = 137.0
+margin_bottom = 17.5
+custom_fonts/font = ExtResource( 18 )
+text = "1920x1080"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DropDown" type="NinePatchRect" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
+visible = false
+margin_top = 65.0
+margin_right = 203.0
+margin_bottom = 355.0
+mouse_filter = 0
+texture = ExtResource( 17 )
+patch_margin_left = 50
+patch_margin_top = 9
+patch_margin_right = 44
+patch_margin_bottom = 37
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 13.0
+margin_top = -125.0
+margin_right = 189.0
+margin_bottom = 120.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Res1" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
+margin_right = 176.0
+margin_bottom = 50.0
+focus_mode = 1
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+custom_fonts/font = ExtResource( 18 )
+enabled_focus_mode = 1
+text = "1280x720"
+
+[node name="Res2" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
+margin_top = 65.0
+margin_right = 176.0
+margin_bottom = 115.0
+focus_mode = 1
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+custom_fonts/font = ExtResource( 18 )
+enabled_focus_mode = 1
+text = "1366x768"
+
+[node name="Res3" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
+margin_top = 130.0
+margin_right = 176.0
+margin_bottom = 180.0
+focus_mode = 1
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+custom_fonts/font = ExtResource( 18 )
+enabled_focus_mode = 1
+text = "1600x900"
+
+[node name="Res4" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/VBoxContainer"]
+margin_top = 195.0
+margin_right = 176.0
+margin_bottom = 245.0
+focus_mode = 1
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/hover_pressed = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+custom_fonts/font = ExtResource( 18 )
+pressed = true
+enabled_focus_mode = 1
+text = "1920x1080"
+
+[node name="Audio" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 66.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 3 )
+tab_align = 0
+scrolling_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsMenu/TabContainer/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -205.0
+margin_right = 350.0
+margin_bottom = 205.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
 margin_right = 700.0
 margin_bottom = 51.0
 text = "Music Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MusicVolume" type="HSlider" parent="Background/SettingsMenu"]
-margin_top = 71.0
-margin_right = 700.0
-margin_bottom = 100.0
-step = 10.0
-value = 50.0
+[node name="MusicVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
+margin_top = 101.0
+margin_bottom = 130.0
 
-[node name="SFXLabel" type="Label" parent="Background/SettingsMenu"]
-margin_top = 120.0
+[node name="Separator" type="Control" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+margin_top = 180.0
 margin_right = 700.0
-margin_bottom = 171.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="SFXLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+margin_top = 280.0
+margin_right = 700.0
+margin_bottom = 331.0
 text = "Sound Effects Volume"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolume" type="HSlider" parent="Background/SettingsMenu"]
-margin_top = 191.0
-margin_right = 700.0
-margin_bottom = 220.0
-step = 10.0
-value = 50.0
-tick_count = 1
+[node name="SFXVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
+margin_top = 381.0
+margin_bottom = 410.0
 
-[node name="ResetTutorial" type="Button" parent="Background/SettingsMenu"]
-margin_top = 240.0
-margin_right = 700.0
-margin_bottom = 386.0
+[node name="Controls" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 66.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 3 )
+tab_align = 0
+scrolling_enabled = false
+
+[node name="Gameplay" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 66.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 3 )
+tab_align = 0
+scrolling_enabled = false
+
+[node name="ResetTutorial" type="Button" parent="Background/SettingsMenu/TabContainer/Gameplay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -73.0
+margin_right = 350.0
+margin_bottom = 73.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Reset Tutorial Hints"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Back" type="Button" parent="Background/SettingsMenu"]
-margin_top = 406.0
-margin_right = 700.0
-margin_bottom = 552.0
-rect_min_size = Vector2( 450, 120 )
-size_flags_horizontal = 5
+margin_left = 275.0
+margin_top = 620.0
+margin_right = 625.0
+margin_bottom = 740.0
+rect_min_size = Vector2( 350, 120 )
+size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 [connection signal="mouse_entered" from="Background/Menu/Resume" to="." method="_on_button_mouse_entered"]
@@ -205,11 +694,10 @@ text = "Back"
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]
-[connection signal="mouse_entered" from="Background/SettingsMenu/MusicVolume" to="." method="_on_button_mouse_entered"]
-[connection signal="value_changed" from="Background/SettingsMenu/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
-[connection signal="mouse_entered" from="Background/SettingsMenu/SFXVolume" to="." method="_on_button_mouse_entered"]
-[connection signal="value_changed" from="Background/SettingsMenu/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
-[connection signal="mouse_entered" from="Background/SettingsMenu/ResetTutorial" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Background/SettingsMenu/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
+[connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton" to="." method="_on_ResolutionButton_toggled"]
+[connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
+[connection signal="mouse_entered" from="Background/SettingsMenu/TabContainer/Gameplay/ResetTutorial" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/SettingsMenu/TabContainer/Gameplay/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
 [connection signal="mouse_entered" from="Background/SettingsMenu/Back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/SettingsMenu/Back" to="." method="_on_Back_pressed"]

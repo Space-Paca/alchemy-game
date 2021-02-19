@@ -1,9 +1,99 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://game/recipe-book/FilterMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/filter_menu.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/BagTooltip.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/themes/general_theme/check off-small.png" type="Texture" id=7]
+[ext_resource path="res://assets/themes/general_theme/check on-small.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.282353, 0.0470588, 0, 1 )
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.282353, 0.0470588, 0, 1 )
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 3.0
+expand_margin_top = 2.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=43]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=34]
+
+[sub_resource type="StyleBoxEmpty" id=35]
+
+[sub_resource type="StyleBoxEmpty" id=37]
+
+[sub_resource type="StyleBoxEmpty" id=39]
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxEmpty" id=42]
 
 [node name="FilterMenu" type="Control"]
 anchor_right = 1.0
@@ -46,7 +136,7 @@ text = "Filters"
 visible = false
 margin_top = 65.0
 margin_right = 203.0
-margin_bottom = 485.0
+margin_bottom = 505.0
 mouse_filter = 0
 texture = ExtResource( 2 )
 patch_margin_left = 50
@@ -63,75 +153,168 @@ __meta__ = {
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = -197.5
-margin_right = 162.0
-margin_bottom = 197.5
+margin_top = -210.0
+margin_right = 180.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 160, 0 )
+custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_right = 142.0
-margin_bottom = 47.0
-focus_mode = 1
+[node name="ClearButton" type="Button" parent="Filters/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 45 )
 custom_fonts/font = ExtResource( 4 )
+text = "Clear all"
+
+[node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
+margin_top = 75.0
+margin_right = 160.0
+margin_bottom = 110.0
+focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 43 )
+custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Attack"
 
 [node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 51.0
-margin_right = 142.0
-margin_bottom = 98.0
+margin_top = 125.0
+margin_right = 160.0
+margin_bottom = 160.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 15 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Defense"
 
 [node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 102.0
-margin_right = 142.0
-margin_bottom = 149.0
+margin_top = 175.0
+margin_right = 160.0
+margin_bottom = 210.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Area"
 
 [node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 153.0
-margin_right = 142.0
-margin_bottom = 200.0
+margin_top = 225.0
+margin_right = 160.0
+margin_bottom = 260.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 27 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Buff"
 
 [node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 204.0
-margin_right = 142.0
-margin_bottom = 251.0
+margin_top = 275.0
+margin_right = 160.0
+margin_bottom = 310.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 32 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Debuff"
 
 [node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 255.0
-margin_right = 142.0
-margin_bottom = 302.0
+margin_top = 325.0
+margin_right = 160.0
+margin_bottom = 360.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 34 )
+custom_styles/disabled = SubResource( 35 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 37 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Heal"
 
 [node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
-margin_top = 306.0
-margin_right = 142.0
-margin_bottom = 353.0
+margin_top = 375.0
+margin_right = 160.0
+margin_bottom = 410.0
 focus_mode = 1
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 7 )
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/hover_pressed = SubResource( 44 )
+custom_styles/normal = SubResource( 42 )
 custom_fonts/font = ExtResource( 4 )
+custom_constants/hseparation = 15
 enabled_focus_mode = 1
 text = "Misc"
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
+[connection signal="pressed" from="Filters/VBoxContainer/ClearButton" to="." method="_on_ClearButton_pressed"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox1" to="." method="_on_Filter_toggled" binds= [ 0 ]]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox2" to="." method="_on_Filter_toggled" binds= [ 1 ]]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox3" to="." method="_on_Filter_toggled" binds= [ 2 ]]

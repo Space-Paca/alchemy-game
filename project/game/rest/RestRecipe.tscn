@@ -6,7 +6,9 @@
 [ext_resource path="res://game/rest/RestRecipe.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 27
+size = 76
+outline_size = 3
+outline_color = Color( 0, 0.219608, 0.219608, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )

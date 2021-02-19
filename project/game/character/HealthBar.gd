@@ -8,7 +8,7 @@ const ENEMY_FONT = preload("res://game/character/EnemyHealthFont.tres")
 const ENEMY_SIZE = {
 	"small": 256,
 	"medium": 511,
-	"big": 963,
+	"big": 780,
 }
 const PROGRESS_TEXTURE = {
 	"small": preload("res://assets/images/ui/Small Enemy Lifebar.png"),
@@ -137,8 +137,10 @@ func set_enemy_type(enemy_size):
 	$BarEffect.texture = prog_tex
 	$Bar.texture_under = bg_tex
 	$Bar.rect_size.x = ENEMY_SIZE[enemy_size]
-	$Bar.rect_size.y = 20
+	$Bar.rect_size.y = 25
 	$Label.rect_size = $Bar.rect_size
+	$Label.rect_position.y -= $Label.rect_size.y/2
+	
 	$Label.add_font_override("font", ENEMY_FONT)
 	half_shield_size = true #WTF
 	$Shield.rect_position.x -= 17

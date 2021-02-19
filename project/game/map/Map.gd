@@ -2,6 +2,7 @@ extends Control
 class_name Map
 
 signal map_node_pressed(node)
+signal finished_active_paths
 
 onready var bg = $Background
 onready var lines = $Lines
@@ -374,6 +375,7 @@ func _on_path_reached(node:MapNode):
 	
 	if not active_paths:
 		set_disabled(false)
+		emit_signal("finished_active_paths")
 
 
 func _on_map_node_clicked(node:MapNode):

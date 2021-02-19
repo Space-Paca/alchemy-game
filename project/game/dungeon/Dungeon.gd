@@ -72,7 +72,7 @@ func _ready():
 	
 	if not Profile.get_tutorial("map"):
 		$PauseScreen.set_block_pause(true)
-		yield(get_tree().create_timer(1.82), "timeout")
+		yield(map, "finished_active_paths")
 		TutorialLayer.start("map")
 		yield(TutorialLayer, "tutorial_finished")
 		Profile.set_tutorial("map", true)

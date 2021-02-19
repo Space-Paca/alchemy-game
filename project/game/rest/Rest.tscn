@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/rest/RestRecipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 
@@ -32,14 +32,15 @@ __meta__ = {
 }
 
 [node name="Recipes" type="ScrollContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -628.219
-margin_top = -247.413
-margin_right = 1271.78
-margin_bottom = 681.587
+margin_left = -627.401
+margin_top = -383.093
+margin_right = 1272.6
+margin_bottom = 708.907
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.8, 0.8 )
@@ -50,8 +51,8 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="Recipes"]
-margin_right = 2490.0
-margin_bottom = 900.0
+margin_right = 3120.0
+margin_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 30
@@ -60,19 +61,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WinRecipe" parent="Recipes/HBox" instance=ExtResource( 3 )]
+[node name="RestRecipe" parent="Recipes/HBox" instance=ExtResource( 3 )]
+margin_bottom = 1080.0
 
-[node name="WinRecipe2" parent="Recipes/HBox" instance=ExtResource( 3 )]
+[node name="RestRecipe2" parent="Recipes/HBox" instance=ExtResource( 3 )]
 margin_left = 630.0
 margin_right = 1230.0
+margin_bottom = 1080.0
 
-[node name="WinRecipe3" parent="Recipes/HBox" instance=ExtResource( 3 )]
+[node name="RestRecipe3" parent="Recipes/HBox" instance=ExtResource( 3 )]
 margin_left = 1260.0
 margin_right = 1860.0
+margin_bottom = 1080.0
 
-[node name="WinRecipe4" parent="Recipes/HBox" instance=ExtResource( 3 )]
+[node name="RestRecipe4" parent="Recipes/HBox" instance=ExtResource( 3 )]
 margin_left = 1890.0
 margin_right = 2490.0
+margin_bottom = 1080.0
+
+[node name="RestRecipe5" parent="Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 2520.0
+margin_right = 3120.0
+margin_bottom = 1080.0
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 60.0

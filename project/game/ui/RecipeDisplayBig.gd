@@ -11,11 +11,11 @@ onready var right_column = $MarginContainer/VBoxContainer/HBoxContainer/Right/Re
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_SIZE = 50
+const MASTERED_TEXTURE = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const REAGENT_AMOUNT = preload("res://game/ui/ReagentAmountBig.tscn")
 const MAX_REAGENT_COLUMN = 4
 
 var combination : Combination
-
 
 func set_combination(_combination: Combination):
 	combination = _combination
@@ -58,6 +58,11 @@ func update_combination():
 		if middle_container:
 			middle_container.queue_free()
 
+
+func master_combination():
+	title.text = combination.recipe.name + "+"
+	description.text = RecipeManager.get_description(combination.recipe, true)
+	texture = MASTERED_TEXTURE
 
 func enable_tooltips():
 	for reagent in grid.get_children():

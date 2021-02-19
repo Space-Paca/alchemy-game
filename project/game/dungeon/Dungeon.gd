@@ -43,7 +43,7 @@ func _ready():
 
 
 # warning-ignore:return_value_discarded
-	rest.connect("combination_rewarded", self, "_on_combination_rewarded")
+	rest.connect("combination_studied", self, "_on_combination_studied")
 # warning-ignore:return_value_discarded
 	lab.connect("combination_made", self, "_on_Laboratory_combination_made")
 # warning-ignore:return_value_discarded
@@ -574,6 +574,12 @@ func _on_new_combinations_seen(new_combinations: Array):
 
 
 func _on_combination_rewarded(combination):
+	recipe_book.update_combination(combination)
+
+
+func _on_combination_studied(combination):
+	times_recipe_made[combination.recipe.name] = mastery_threshold(combination)
+	recipe_book.unlock_mastery(combination)
 	recipe_book.update_combination(combination)
 
 

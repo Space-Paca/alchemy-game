@@ -1,9 +1,9 @@
 extends Control
 
 signal closed
-signal combination_rewarded
+signal combination_studied
 
-const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
+const RECIPE = preload("res://game/rest/RestRecipe.tscn")
 const REST_HEAL_PERCENTAGE = 35
 const GREAT_REST_HEAL_PERCENTAGE = 70
 
@@ -62,9 +62,9 @@ func setup_recipes():
 
 func create_display(combination):
 	var recipe_display = RECIPE.instance()
-	recipe_display.discover_all = true
 	$Recipes/HBox.add_child(recipe_display)
 	recipe_display.set_combination(combination)
+	recipe_display.enable_tooltips()
 	recipe_display.connect("chosen", self, "_on_recipe_chosen")
 
 
@@ -98,6 +98,8 @@ func _on_BackButton_pressed():
 		$HealButton.show()
 		$HintButton.show()
 		$Recipes.hide()
+		for child in $Recipes/HBox.get_children():
+			$Recipes/HBox.remove_child(child)
 		state = "main"
 	else:
 		emit_signal("closed")
@@ -108,5 +110,5 @@ func _on_recipe_chosen(chosen_recipe):
 		if recipe_display != chosen_recipe:
 			$Recipes/HBox.remove_child(recipe_display)
 
-	emit_signal("combination_rewarded", chosen_recipe.combination)
+	emit_signal("combination_studied", chosen_recipe.combination)
 	$ContinueButton.show()

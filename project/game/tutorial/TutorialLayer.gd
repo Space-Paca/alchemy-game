@@ -21,6 +21,7 @@ var DB = load("res://game/tutorial/TutorialDB.gd").new()
 func _ready():
 	rect.modulate.a = 0
 	label.modulate.a = 0
+	image.hide()
 
 
 func _process(delta):

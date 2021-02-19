@@ -18,6 +18,7 @@ const SLIDER_COOLDOWN = .18
 
 var paused := false
 var slider_sfx_cooldown = 0
+var block_pause = true
 
 
 func _ready():
@@ -44,6 +45,8 @@ func _unhandled_input(event):
 
 
 func toggle_pause():
+	if block_pause or Transition.active:
+		return
 	set_pause(!paused)
 
 
@@ -62,6 +65,10 @@ func set_pause(p: bool):
 func no_quit():
 	confirm.hide()
 	menu.show()
+
+
+func set_block_pause(value: bool):
+	block_pause = value
 
 
 func settings_back():

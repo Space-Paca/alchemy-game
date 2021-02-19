@@ -13,6 +13,7 @@ signal grid_modified(reagent_matrix)
 signal recipe_book_toggle
 signal hand_set
 signal update_recipes_display
+signal block_pause
 
 onready var effect_manager = $EffectManager
 onready var book = $Book
@@ -76,6 +77,8 @@ func _input(event):
 			combine()
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
+	emit_signal("block_pause", true)
+	
 	floor_level = _floor_level
 	current_encounter = encounter
 
@@ -111,13 +114,15 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	player.call_artifacts("battle_start", {"player": player})
 	if encounter.is_elite and player.has_artifact("vulture_mask"):
 		player.add_status("perm_strength", 5, true)
-
+	
 	if not Profile.get_tutorial("first_battle"):
 		TutorialLayer.start("first_battle")
 		yield(TutorialLayer, "tutorial_finished")
 		Profile.set_tutorial("first_battle", true)
 
 	new_player_turn()
+	
+	emit_signal("block_pause", false)
 
 
 func setup_bg():

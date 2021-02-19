@@ -416,7 +416,7 @@ text = "Fullscreen"
 
 [node name="CheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
 margin_left = 217.0
-margin_right = 267.0
+margin_right = 233.0
 margin_bottom = 51.0
 theme = ExtResource( 3 )
 custom_styles/hover = SubResource( 21 )

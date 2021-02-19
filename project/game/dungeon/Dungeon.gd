@@ -71,10 +71,12 @@ func _ready():
 	player_info.set_player(player)
 	
 	if not Profile.get_tutorial("map"):
+		$PauseScreen.set_block_pause(true)
 		yield(get_tree().create_timer(1.82), "timeout")
 		TutorialLayer.start("map")
 		yield(TutorialLayer, "tutorial_finished")
 		Profile.set_tutorial("map", true)
+		$PauseScreen.set_block_pause(false)
 
 
 func _input(event):
@@ -340,12 +342,9 @@ func should_unlock_mastery(combination: Combination) -> bool:
 
 func new_battle(encounter: Encounter):
 	assert(battle == null)
+	
 	battle = BATTLE_SCENE.instance()
-	player_info.hide()
 	
-	add_child(battle)
-	
-	battle.setup(player, encounter, favorite_combinations, floor_level)
 # warning-ignore:return_value_discarded
 	battle.connect("combination_made", self, "_on_Battle_combination_made")
 # warning-ignore:return_value_discarded
@@ -362,13 +361,20 @@ func new_battle(encounter: Encounter):
 	battle.connect("recipe_book_toggle", self, "recipe_book_toggle")
 # warning-ignore:return_value_discarded
 	battle.connect("update_recipes_display", self, "_on_Battle_update_recipes_display")
+# warning-ignore:return_value_discarded
+	battle.connect("block_pause", self, "_on_Battle_block_pause")
+	
+	player_info.hide()
+	
+	add_child(battle)
+	
+	battle.setup(player, encounter, favorite_combinations, floor_level)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
-
 
 func open_shop():
 	AudioManager.play_bgm("shop")
@@ -796,6 +802,10 @@ func _on_MessageLayer_favorite_recipe(combination):
 
 func _on_player_reveal_map():
 	map.reveal_all_paths()
+
+
+func _on_Battle_block_pause(value):
+	$PauseScreen.set_block_pause(value)
 
 
 func _on_PauseButton_pressed():

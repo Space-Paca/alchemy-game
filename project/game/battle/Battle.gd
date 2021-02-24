@@ -341,6 +341,7 @@ func new_player_turn():
 		var func_state = hand.randomize_reagents()
 		if func_state and func_state.is_valid():
 			yield(hand, "reagents_randomized")
+			emit_signal("update_recipes_display")
 
 	if player.get_status("restrain"):
 		var func_state = grid.restrain(player.get_status("restrain").amount)

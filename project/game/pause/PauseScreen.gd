@@ -14,7 +14,8 @@ onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VB
 onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
 onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox
 onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
-onready var resolution_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
+onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
+onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
@@ -29,11 +30,6 @@ func _ready():
 	bg.hide()
 	
 	update_music_volumes()
-	
-	fullscreen_button.pressed = Profile.get_option("fullscreen")
-	borderless_button.pressed = Profile.get_option("borderless")
-	var size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
-	window_size_label.text = str(size.x, "x", size.y)
 	
 	if mode == Modes.MENU:
 		$Background/Menu/Return.hide()
@@ -66,6 +62,7 @@ func set_pause(p: bool):
 	if p:
 		AudioServer.add_bus_effect(0, AUDIO_FILTER)
 		update_music_volumes()
+		update_buttons()
 	else:
 		AudioServer.remove_bus_effect(0, 0)
 		FileManager.save_profile()
@@ -89,6 +86,16 @@ func settings_back():
 func update_music_volumes():
 	bgmslider.value = AudioManager.get_bus_volume("bgm")*100
 	sfxslider.value = AudioManager.get_bus_volume("sfx")*100
+
+
+func update_buttons():
+	var index = Profile.get_option("window_size")
+	var size = Profile.WINDOW_SIZES[index]
+	window_size_buttons[index].pressed = true
+	window_size_label.text = str(size.x, "x", size.y)
+	fullscreen_button.pressed = Profile.get_option("fullscreen")
+	borderless_button.pressed = Profile.get_option("borderless")
+	resolution_button.disabled = fullscreen_button.pressed
 
 
 func play_slider_sfx():
@@ -157,6 +164,9 @@ func _on_FullscreenCheckBox_toggled(button_pressed):
 	AudioManager.play_sfx("click")
 	OS.window_fullscreen = button_pressed
 	Profile.set_option("fullscreen", button_pressed)
+	resolution_button.disabled = button_pressed
+	
+	print(OS.window_size)
 
 
 func _on_BorderlessCheckBox_toggled(button_pressed):

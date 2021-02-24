@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/images/ui/book/drop-down_arrow.png" type="Texture" id=20]
 [ext_resource path="res://assets/themes/general_theme/check off-small.png" type="Texture" id=21]
 [ext_resource path="res://assets/themes/general_theme/check on.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ui/filter_menu-gray.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -512,6 +513,7 @@ __meta__ = {
 [node name="ResolutionButton" type="TextureButton" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
 toggle_mode = true
 texture_normal = ExtResource( 17 )
+texture_disabled = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

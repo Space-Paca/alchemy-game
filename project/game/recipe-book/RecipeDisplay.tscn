@@ -157,6 +157,7 @@ margin_bottom = 201.0
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = -6
 align = 1
 autowrap = true
 

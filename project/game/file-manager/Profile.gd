@@ -44,6 +44,7 @@ func set_save_data(data):
 	
 	set_data(data, "tutorials", tutorials)
 	set_data(data, "options", options)
+	set_data(data, "controls", controls)
 	
 	AudioManager.set_bus_volume("bgm", options.bgm_volume)
 	AudioManager.set_bus_volume("sfx", options.sfx_volume)

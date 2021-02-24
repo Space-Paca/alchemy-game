@@ -77,6 +77,7 @@ func set_pause(p: bool):
 		AudioServer.add_bus_effect(0, AUDIO_FILTER)
 		update_music_volumes()
 		update_buttons()
+		update_controls()
 	else:
 		AudioServer.remove_bus_effect(0, 0)
 		FileManager.save_profile()
@@ -113,7 +114,10 @@ func update_buttons():
 
 
 func update_controls():
-	pass
+	for i in 4:
+		var button : Button = controls_buttons[i]
+		var action : String = controls_actions[i]
+		button.text = OS.get_scancode_string(Profile.get_control(action))
 
 
 func bind_key(scancode: int):

@@ -1,4 +1,4 @@
-extends Control
+extends TextureRect
 
 var type : String
 var tooltips_enabled := false
@@ -10,21 +10,23 @@ const BASE_HEIGHT = 64
 func init(_type: String):
 	type = _type
 	var data = ArtifactDB.get_from_name(type)
-	$Image.texture = data.image
+	texture = data.image
 	update_size(1.0)
 
 
 func update_size(scale: float):
 	var w = BASE_WIDTH*scale
 	var h = BASE_HEIGHT*scale
-	$Image.rect_size = Vector2(w,h)
-	rect_min_size = Vector2(w,h)
-	$TooltipCollision.position.x = w/2
-	$TooltipCollision.position.y = h/2
+	rect_size = Vector2(w,h)
+	update_tooltip_collision()
+
+func update_tooltip_collision():
+	var w = rect_size.x * rect_scale.x
+	var h = rect_size.y * rect_scale.x
+	$TooltipCollision.global_position.x = rect_global_position.x + w/2
+	$TooltipCollision.global_position.y = rect_global_position.y + h/2
 	$TooltipCollision.set_collision_width(w)
 	$TooltipCollision.set_collision_height(h)
-	$TooltipPosition.position.x = w + 5
-	$TooltipPosition.position.y = 0
 
 func disable():
 	block_tooltips = true
@@ -46,5 +48,5 @@ func _on_TooltipCollision_enable_tooltip():
 		return
 	tooltips_enabled = true
 	var tooltip = ArtifactDB.get_tooltip(type)
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+	TooltipLayer.add_tooltip($TooltipCollision.get_position(), tooltip.title, \
 							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)

@@ -32,7 +32,8 @@ var mouse_over_downbutton = false
 func _ready():
 	if hide_button:
 		button.hide()
-
+	for artifact in artifacts.get_children():
+		artifacts.remove_child(artifact)
 
 func _process(dt):
 	if mouse_over_downbutton:
@@ -68,6 +69,11 @@ func update_artifacts(player_artifacts):
 		artifacts.add_child(artifact)
 		artifact.init(artifact_type)
 		artifact.update_size(.8)
+	
+	#Wait a frame for container objects to be placed correctly
+	yield(get_tree(), "idle_frame")
+	for artifact in artifacts.get_children():
+		artifact.update_tooltip_collision()
 
 
 func update_hp(hp: int, max_hp: int):

@@ -8,6 +8,10 @@ const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 onready var health_bar = $HealthBar
 onready var portrait = $Portrait
 
+func _ready():
+	for artifact in $Artifacts.get_children():
+		$Artifacts.remove_child(artifact)
+
 func enable_tooltips():
 	$StatusBar.enable()
 	for artifact in $Artifacts.get_children():
@@ -45,8 +49,8 @@ func update_artifacts(player):
 	
 	for artifact_name in player.get_artifacts():
 		var artifact = ARTIFACT.instance()
-		artifact.init(artifact_name)
 		$Artifacts.add_child(artifact)
+		artifact.init(artifact_name)
 
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)

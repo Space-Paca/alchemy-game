@@ -292,4 +292,3 @@ static func get_rarity_from_name(name: String) -> String:
 	
 	assert(false, "Given type of artifact doesn't exist: " + str(name))
 	return ""
-

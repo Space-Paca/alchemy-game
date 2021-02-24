@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
@@ -41,8 +41,9 @@ outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "intro"
+[sub_resource type="ButtonGroup" id=6]
+
+[sub_resource type="Animation" id=7]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:material:shader_param/value")
@@ -278,8 +279,20 @@ mode = 1
 [node name="Background" parent="PauseScreen" index="0"]
 visible = false
 
+[node name="Res1" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="0"]
+group = SubResource( 6 )
+
+[node name="Res2" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="1"]
+group = SubResource( 6 )
+
+[node name="Res3" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="2"]
+group = SubResource( 6 )
+
+[node name="Res4" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="3"]
+group = SubResource( 6 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/intro = SubResource( 6 )
+anims/intro = SubResource( 7 )
 [connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="mouse_entered" from="QuitButton" to="." method="_on_button_mouse_entered"]

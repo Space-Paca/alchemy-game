@@ -53,6 +53,7 @@ func _ready():
 	for _i in range(3):
 		add_reagent("weak_defensive", false)
 
+
 class BagSorter:
 	static func sort_ascending_name(a, b):
 		if a.type < b.type:

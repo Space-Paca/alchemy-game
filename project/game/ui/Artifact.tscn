@@ -2,21 +2,19 @@
 
 [ext_resource path="res://game/ui/Artifact.gd" type="Script" id=1]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/images/status/random_status.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/artifacts/carapa_buckler.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Artifact" type="Control"]
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Image" type="TextureRect" parent="."]
+[node name="Artifact" type="TextureRect"]
 margin_right = 45.0
 margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
+stretch_mode = 6
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,8 +25,8 @@ position = Vector2( 24.8541, 20.2852 )
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )
 
-[node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 101.17, -24.8639 )
+[node name="TooltipPosition" parent="TooltipCollision" index="1"]
+position = Vector2( 50.1031, -33.4447 )
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

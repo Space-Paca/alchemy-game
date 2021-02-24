@@ -19,11 +19,19 @@ var options = {
 	"window_size": 3
 }
 
+var controls = {
+	"show_recipe_book": KEY_TAB,
+	"combine": KEY_SPACE,
+	"end_turn": KEY_E,
+	"toggle_fullscreen": KEY_F4 
+}
+
 func get_save_data():
 	var data = {
 		"version": Debug.VERSION,
 		"tutorials": tutorials,
 		"options": options,
+		"controls": controls
 	}
 	
 	return data
@@ -42,6 +50,9 @@ func set_save_data(data):
 	OS.window_fullscreen = options.fullscreen
 	OS.window_borderless = options.borderless
 	OS.window_size = WINDOW_SIZES[options.window_size]
+	
+	for action in controls.keys():
+		edit_control_action(action, controls[action])
 
 
 func set_data(data, name, default_values):
@@ -76,6 +87,26 @@ func get_option(name):
 func set_option(name: String, value):
 	assert(options.has(name), "Not a valid option: " + str(name))
 	options[name] = value
+
+
+func get_control(name):
+	assert(controls.has(name), "Not a valid control action: " + str(name))
+	return controls[name]
+
+
+func set_control(name: String, value):
+	assert(controls.has(name), "Not a valid control action: " + str(name))
+	controls[name] = value
+	edit_control_action(name, value)
+
+
+func edit_control_action(action: String, scancode:int):
+	assert(InputMap.has_action(action), "Action not in InputMap: " + str(action))
+	var key = InputEventKey.new()
+	key.pressed = true
+	key.scancode = scancode
+	InputMap.action_erase_events(action)
+	InputMap.action_add_event(action, key)
 
 
 func reset_tutorials():

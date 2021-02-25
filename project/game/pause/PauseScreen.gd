@@ -16,8 +16,9 @@ onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBox
 onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
 onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
 onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
-onready var controls_buttons = [$Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button, $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
-$Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button]
+onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button,
+"combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
+"toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
 
 const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
@@ -28,8 +29,6 @@ var slider_sfx_cooldown = 0
 var block_pause = false
 var is_keybinding = false
 var keybinding = {"button": null, "action": "", "text": ""}
-var controls_actions = ["show_recipe_book", "combine", "end_turn",
-			"toggle_fullscreen"]
 
 
 func _ready():
@@ -38,11 +37,11 @@ func _ready():
 	if mode == Modes.MENU:
 		$Background/Menu/Return.hide()
 	
-	for i in 4:
-		var button : Button = controls_buttons[i]
+	for action in controls_buttons.keys():
+		var button : Button = controls_buttons[action]
 # warning-ignore:return_value_discarded
 		button.connect("toggled", self, "_on_ControlsButton_toggled",
-				[controls_actions[i], button])
+				[action, button])
 
 
 func _process(delta):
@@ -114,18 +113,25 @@ func update_buttons():
 
 
 func update_controls():
-	for i in 4:
-		var button : Button = controls_buttons[i]
-		var action : String = controls_actions[i]
+	for action in controls_buttons.keys():
+		var button : Button = controls_buttons[action]
 		button.text = OS.get_scancode_string(Profile.get_control(action))
 
 
 func bind_key(scancode: int):
-	keybinding.text = OS.get_scancode_string(scancode)
+	for action in controls_buttons.keys():
+		if action == keybinding.action:
+			continue
+		
+		if scancode == Profile.get_control(action):
+			var current_sc = Profile.get_control(keybinding.action)
+			controls_buttons[action].text = OS.get_scancode_string(current_sc)
+			Profile.set_control(action, current_sc)
 	
+	keybinding.text = OS.get_scancode_string(scancode)
 	Profile.set_control(keybinding.action, scancode)
 	
-	cancel_keybinding()
+	keybinding.button.pressed = false
 
 
 func cancel_keybinding():

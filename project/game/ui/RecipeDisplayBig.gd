@@ -67,16 +67,20 @@ func master_combination():
 func enable_tooltips():
 	for reagent in grid.get_children():
 		reagent.enable_tooltips()
-	for reagent in left_column.get_children():
-		reagent.enable_tooltips()
-	for reagent in right_column.get_children():
-		reagent.enable_tooltips()
+	if left_column:
+		for reagent in left_column.get_children():
+			reagent.enable_tooltips()
+	if right_column:
+		for reagent in right_column.get_children():
+			reagent.enable_tooltips()
 
 
 func disable_tooltips():
 	for reagent in grid.get_children():
 		reagent.disable_tooltips()
-	for reagent in left_column.get_children():
-		reagent.disable_tooltips()
-	for reagent in right_column.get_children():
-		reagent.disable_tooltips()
+	if left_column:
+		for reagent in left_column.get_children():
+			reagent.disable_tooltips()
+	if right_column:
+		for reagent in right_column.get_children():
+			reagent.disable_tooltips()

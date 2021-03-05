@@ -54,6 +54,32 @@ func _ready():
 		add_reagent("weak_defensive", false)
 
 
+func get_save_data():
+	var data = {
+		"bag": bag.duplicate(true),
+		"gold": gold,
+		"pearls": pearls,
+		"cur_level": cur_level,
+		"artifacts": artifacts.duplicate(true),
+		"known_recipes": known_recipes.duplicate(true),
+		"hp": hp,
+		"max_hp": max_hp,
+	}
+	
+	return data
+
+
+func load_save_data(data):
+	bag = data.bag
+	gold = data.gold
+	pearls = data.pearls
+	cur_level = data.cur_level
+	artifacts = data.artifacts
+	known_recipes = data.known_recipes
+	hp = data.hp
+	max_hp = data.max_hp
+
+
 class BagSorter:
 	static func sort_ascending_name(a, b):
 		if a.type < b.type:

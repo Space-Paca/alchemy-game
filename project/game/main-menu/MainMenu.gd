@@ -3,6 +3,7 @@ extends TextureRect
 onready var anim = $AnimationPlayer
 
 func _ready():
+	FileManager.set_current_run(false)
 	set_process_input(false)
 	yield(get_tree(),"idle_frame")
 	Transition.single_out_transition()
@@ -10,6 +11,8 @@ func _ready():
 	Debug.set_version_visible(true)
 	
 	FileManager.load_game()
+	
+	$ContinueButton.visible = FileManager.run_file_exists()
 	
 	yield(Transition, "finished")
 	anim.play("intro")
@@ -64,3 +67,6 @@ func _on_PauseButton_button_down():
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_mainmenu_button")
 
+
+func _on_ContinueButton_pressed():
+	pass # Replace with function body.

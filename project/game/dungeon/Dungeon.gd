@@ -54,6 +54,10 @@ func _ready():
 # warning-ignore:return_value_discarded
 	player.connect("reveal_map", self, "_on_player_reveal_map")
 	
+	
+	FileManager.set_current_run(self)
+	
+	
 	randomize()
 	create_combinations()
 	EventManager.reset_events()
@@ -89,6 +93,12 @@ func _input(event):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
 
+
+func get_save_data():
+	var data = {
+		"player": player.get_save_data()
+	}
+	return data
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))

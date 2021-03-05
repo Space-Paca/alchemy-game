@@ -146,7 +146,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 680, -0.25, 0, 0.25, 0, 680, -0.25, 0, 0.25, 0, 680, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 2, 2.5 )
 }
 tracks/9/type = "bezier"
@@ -166,8 +166,44 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 776, -0.25, 0, 0.25, 0, 776, -0.25, 0, 0.25, 0, 776, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 855, -0.25, 0, 0.25, 0, 855, -0.25, 0, 0.25, 0, 855, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1.6, 2.5 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("ContinueButton:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ContinueButton:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.6, 1.6, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("ContinueButton:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.9, 1.6, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 600, 504.672 ), Vector2( 600, 504.672 ), Vector2( 785, 504.672 ), Vector2( 785, 504.672 ) ]
 }
 
 [node name="MainMenu" type="TextureRect"]
@@ -191,12 +227,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ContinueButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 600.0
+margin_top = 504.672
+margin_right = 953.001
+margin_bottom = 650.672
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+disabled = true
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NewGameButton" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 600.0
-margin_top = 600.0
+margin_top = 680.0
 margin_right = 953.0
-margin_bottom = 746.0
+margin_bottom = 826.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 disabled = true
@@ -208,9 +258,9 @@ __meta__ = {
 [node name="QuitButton" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 600.0
-margin_top = 776.0
+margin_top = 855.0
 margin_right = 953.0
-margin_bottom = 922.0
+margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 disabled = true
@@ -290,6 +340,8 @@ group = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 7 )
+[connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="mouse_entered" from="QuitButton" to="." method="_on_button_mouse_entered"]

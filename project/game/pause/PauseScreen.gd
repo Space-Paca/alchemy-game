@@ -155,6 +155,8 @@ func _on_Resume_pressed():
 func _on_Return_pressed():
 	set_pause(false)
 	AudioManager.stop_all_enemy_idle_sfx()
+	if FileManager.current_run_exists():
+		FileManager.save_run()
 	Transition.transition_to("res://game/main-menu/MainMenu.tscn")
 
 

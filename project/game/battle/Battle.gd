@@ -1043,6 +1043,7 @@ func _on_player_died(_player):
 		enemy.disable()
 	for reagent in reagents.get_children():
 		reagent.disable_tooltips()
+	FileManager.delete_run_file()
 	add_child(GAMEOVER_SCENE.instance())
 	AudioManager.play_bgm("gameover", false, true)
 	AudioManager.stop_aux_bgm("heart-beat")

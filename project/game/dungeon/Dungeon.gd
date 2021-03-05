@@ -106,9 +106,6 @@ func set_save_data(data):
 	player.set_save_data(data.player)
 	floor_level = player.cur_level
 
-func load_save_data(data):
-	pass
-
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
 
@@ -500,6 +497,7 @@ func favorite_combination(combination, active):
 
 
 func thanks_for_playing():
+	FileManager.delete_run_file()
 	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
 	add_child(scene)
 

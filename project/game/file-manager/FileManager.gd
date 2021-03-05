@@ -1,6 +1,7 @@
 extends Node
 
 var dungeon = false
+var continue_game
 
 
 func save_and_quit():
@@ -75,7 +76,7 @@ func save_run():
 	run_file.close()
 
 
-func load_run(dungeon):
+func load_run():
 	var run_file = File.new()
 	if not run_file.file_exists("user://run.save"):
 		print("Run file not found. Aborting load.")

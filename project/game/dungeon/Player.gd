@@ -69,7 +69,7 @@ func get_save_data():
 	return data
 
 
-func load_save_data(data):
+func set_save_data(data):
 	bag = data.bag
 	gold = data.gold
 	pearls = data.pearls

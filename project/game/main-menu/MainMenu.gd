@@ -69,4 +69,6 @@ func _on_button_mouse_entered():
 
 
 func _on_ContinueButton_pressed():
-	pass # Replace with function body.
+	AudioManager.play_sfx("start_new_game")
+	FileManager.continue_game = true
+	Transition.transition_to("res://game/dungeon/Dungeon.tscn")

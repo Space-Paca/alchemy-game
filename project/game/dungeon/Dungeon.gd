@@ -31,6 +31,7 @@ var first_shop_visit = true
 
 
 func _ready():
+	randomize()
 	# DEBUG
 # warning-ignore:return_value_discarded
 	Debug.connect("combinations_unlocked", self, "_on_Debug_combinations_unlocked")
@@ -54,17 +55,18 @@ func _ready():
 # warning-ignore:return_value_discarded
 	player.connect("reveal_map", self, "_on_player_reveal_map")
 	
-	
 	FileManager.set_current_run(self)
 	
+	if FileManager.continue_game:
+		FileManager.continue_game = false
+		FileManager.load_run()
+	else:
+		if Debug.floor_to_go != -1:
+			floor_level = Debug.floor_to_go
+			player.set_level(floor_level)
 	
-	randomize()
 	create_combinations()
 	EventManager.reset_events()
-	
-	if Debug.floor_to_go != -1:
-		floor_level = Debug.floor_to_go
-		player.set_level(floor_level)
 	
 	create_level(floor_level)
 	
@@ -99,6 +101,13 @@ func get_save_data():
 		"player": player.get_save_data()
 	}
 	return data
+
+func set_save_data(data):
+	player.set_save_data(data.player)
+	floor_level = player.cur_level
+
+func load_save_data(data):
+	pass
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))

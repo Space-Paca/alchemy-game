@@ -1,7 +1,7 @@
 extends Node
 
 var dungeon = false
-var continue_game
+var continue_game = false
 
 
 func save_and_quit():

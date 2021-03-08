@@ -13,6 +13,16 @@ var reagent_amounts := {}
 var hints := 0
 
 
+func load_from_data(data, _recipe):
+	recipe = _recipe
+	grid_size = recipe.grid_size
+	matrix = data.matrix
+	known_matrix = data.known_matrix
+	unknown_reagent_coords = data.unknown_reagent_coords
+	discovered = data.discovered
+	reagent_amounts = data.reagent_amounts
+	hints = data.hints
+
 func create_from_recipe(_recipe: Recipe, combinations: Dictionary):
 	recipe = _recipe
 	grid_size = recipe.grid_size
@@ -159,9 +169,10 @@ func reveal_all_but(amount: int):
 			unknown_reagent_coords.erase(coords)
 
 
-func discover_all_reagents():
+func discover_all_reagents(emit := true):
 	if not discovered:
 		discovered = true
 		known_matrix = matrix
 		unknown_reagent_coords.clear()
-		emit_signal("fully_discovered", self)
+		if emit:
+			emit_signal("fully_discovered", self)

@@ -64,8 +64,10 @@ func _ready():
 		if Debug.floor_to_go != -1:
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
+
+		create_combinations()
 	
-	create_combinations()
+	
 	EventManager.reset_events()
 	
 	create_level(floor_level)
@@ -98,16 +100,81 @@ func _input(event):
 
 func get_save_data():
 	var data = {
-		"player": player.get_save_data()
+		"player": player.get_save_data(),
+		"combinations": get_combinations_data()
 	}
 	return data
 
 func set_save_data(data):
 	player.set_save_data(data.player)
 	floor_level = player.cur_level
+	load_combinations(data.combinations)
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
+
+
+func get_combinations_data():
+	var data = []
+	
+	for size_array in combinations.values():
+		for combination in size_array:
+			var times_made = 0
+			if times_recipe_made.has(combination.recipe.name):
+				times_made = times_recipe_made[combination.recipe.name]
+			var comb = {
+				"recipe_name": combination.recipe.name,
+				"matrix": combination.matrix.duplicate(true),
+				"known_matrix": combination.known_matrix.duplicate(true),
+				"unknown_reagent_coords": combination.unknown_reagent_coords.duplicate(true),
+				"discovered": combination.discovered,
+				"reagent_amounts": combination.reagent_amounts.duplicate(true),
+				"hints": combination.hints,
+				"times_made": times_made,
+			}
+			data.append(comb)
+		
+	return data
+
+
+func load_combinations(combinations_data):
+	for data_combination in combinations_data:
+		var combination = Combination.new()
+		
+		data_combination.combination = combination
+		
+		#Find correspondent recipe object belonging to this combination
+		var recipe_ref = null
+		for recipe in RecipeManager.recipes.values():
+			if recipe.name == data_combination.recipe_name:
+				recipe_ref = recipe
+				break
+		assert(recipe_ref, "Coudn't find this recipe to load combination:" + str(data_combination.recipe_name))
+		
+		combination.load_from_data(data_combination, recipe_ref)
+		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")
+		
+		if combinations.has(combination.grid_size):
+			(combinations[combination.grid_size] as Array).append(combination)
+		else:
+			combinations[combination.grid_size] = [combination]
+	
+	#Update recipe book in the order recipes were discovered
+	for recipe in player.known_recipes:
+		var data_combination = null
+		for data in combinations_data:
+			if data.recipe_name == recipe:
+				data_combination = data
+				break
+		assert(data_combination, "Couldn't find combination for this recipe: " + str(recipe))
+		var combination = data_combination.combination
+		recipe_book.add_combination(combination, player.known_recipes.find(combination.recipe.name),\
+									mastery_threshold(combination))
+		if should_unlock_mastery(combination):
+			recipe_book.unlock_mastery(combination)
+		else:
+			recipe_book.update_mastery(combination, data_combination.times_made,\
+								   mastery_threshold(combination))
 
 
 func create_combinations():

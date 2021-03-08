@@ -93,6 +93,15 @@ func get_event_by_id(id: int) -> Event:
 	return current_event
 
 
+####### SAVE/LOAD METHODS #######
+
+func get_save_data():
+	var data = {
+		"events_by_id": events_by_id.duplicate(true),
+		"events_by_floor": events_by_floor.duplicate(true),
+	}
+		
+
 ####### GENERAL EVENT CALLBACKS #######
 
 func none(_event_display, _player):

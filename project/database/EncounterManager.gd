@@ -1,5 +1,7 @@
 extends Node
 
+const PATH := "res://database/encounters/"
+
 var boss_encounters := {}
 var elite_encounters := {}
 var encounters := {}
@@ -12,14 +14,13 @@ var boss_encounter_pool : Array
 
 func _ready():
 	var dir := Directory.new()
-	var path := "res://database/encounters/"
-	if dir.open(path) == OK:
+	if dir.open(PATH) == OK:
 # warning-ignore:return_value_discarded
 		dir.list_dir_begin()
 		var file_name := dir.get_next() as String
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
-				var encounter := load(str(path, file_name)) as Encounter
+				var encounter := load(str(PATH, file_name)) as Encounter
 				encounter.resource_name = file_name
 				if encounter.is_boss:
 					if not boss_encounters.has(encounter.level):
@@ -36,6 +37,68 @@ func _ready():
 			file_name = dir.get_next()
 	else:
 		print("EncounterManager: An error occurred when trying to access the path.")
+
+func get_save_data():
+	var data = {}
+	
+	data.encounter_index = encounter_index
+	data.encounter_pool = []
+	for encounter in encounter_pool:
+		data.encounter_pool.append(encounter.resource_name)
+	
+	data.elite_encounter_index = elite_encounter_index
+	data.elite_encounter_pool = []
+	for encounter in elite_encounter_pool:
+		data.elite_encounter_pool.append(encounter.resource_name)
+	
+	data.boss_encounter_pool = []
+	for encounter in boss_encounter_pool:
+		data.boss_encounter_pool.append(encounter.resource_name)
+	
+	return data
+
+
+func load_save_data(data):
+	encounter_pool = []
+	encounter_index = data.encounter_index
+	for data_encounter in data.encounter_pool:
+		var found = false
+		for encounter_level in encounters.values():
+			for encounter in encounter_level:
+				if encounter.resource_name == data_encounter:
+					found = true
+					encounter_pool.append(encounter)
+					break
+			if found:
+				break
+		assert(found, "Couldn't find normal encounter in database: " + str(data_encounter))
+	
+	elite_encounter_pool = []
+	elite_encounter_index = data.elite_encounter_index
+	for data_encounter in data.elite_encounter_pool:
+		var found = false
+		for encounter_level in elite_encounters.values():
+			for encounter in encounter_level:
+				if encounter.resource_name == data_encounter:
+					found = true
+					elite_encounter_pool.append(encounter)
+					break
+			if found:
+				break
+		assert(found, "Couldn't find elite encounter in database: " + str(data_encounter))
+	
+	boss_encounter_pool = []
+	for data_encounter in data.boss_encounter_pool:
+		var found = false
+		for encounter_level in boss_encounters.values():
+			for encounter in encounter_level:
+				if encounter.resource_name == data_encounter:
+					found = true
+					boss_encounter_pool.append(encounter)
+					break
+			if found:
+				break
+		assert(found, "Couldn't find boss encounter in database: " + str(data_encounter))
 
 
 func set_random_encounter_pool(level: int):

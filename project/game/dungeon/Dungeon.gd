@@ -64,13 +64,9 @@ func _ready():
 		if Debug.floor_to_go != -1:
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
-
 		create_combinations()
-	
-	
-	EventManager.reset_events()
-	
-	create_level(floor_level)
+		EventManager.reset_events()
+		create_level(floor_level)
 	
 	play_map_bgm()
 	
@@ -101,7 +97,8 @@ func _input(event):
 func get_save_data():
 	var data = {
 		"player": player.get_save_data(),
-		"combinations": get_combinations_data()
+		"combinations": get_combinations_data(),
+		"encounters": EncounterManager.get_save_data()
 	}
 	return data
 
@@ -109,6 +106,8 @@ func set_save_data(data):
 	player.set_save_data(data.player)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)
+	EventManager.reset_events()
+	load_level(data)
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
@@ -195,6 +194,43 @@ func create_combinations():
 			combination.discover_all_reagents()
 			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name),\
 										mastery_threshold(combination))
+
+
+func load_level(data):
+	EncounterManager.load_save_data(data.encounters)
+
+	var level = floor_level
+	
+	# MAP
+	map = MAP_SCENE.instance()
+	map.set_player(player)
+	add_child(map)
+	match level:
+		1:
+			# ( *∀*)y─┛
+			#  ______________
+			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
+			map.create_map(7, 2, 0)
+		2:
+			map.create_map(7, 2, 1)
+		3:
+			map.create_map(8, 2, 1)
+		var invalid:
+			assert(false, str("Invalid level: ", invalid))
+	map.set_level(level)
+	map.connect("map_node_pressed", self, "_on_map_node_selected")
+	
+	for grid_size in combinations:
+		for combination in combinations[grid_size]:
+			if combination.recipe.floor_sold_in == level and not\
+					player.known_recipes.has(combination.recipe.name):
+				possible_rewarded_combinations.append(combination)
+	
+	# SHOP
+	first_shop_visit = true
+	
+	#LAB
+	cur_lab_attempts = laboratory_attempts[level - 1]
 
 
 func create_level(level: int, debug := false):

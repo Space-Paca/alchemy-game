@@ -108,7 +108,7 @@ func is_mastered():
 	return mastery_unlocked
 
 
-func unlock_mastery():
+func unlock_mastery(show_message := true):
 	if not mastery_unlocked:
 		description.text = RecipeManager.get_description(combination.recipe, true)
 		mastery_unlocked = true
@@ -117,7 +117,8 @@ func unlock_mastery():
 		mastery_label.text = "Mastered"
 		bg.texture = RECIPE_MASTERED_BG
 		title.text = title.text + "+"
-		MessageLayer.recipe_mastered(combination)
+		if show_message:
+			MessageLayer.recipe_mastered(combination)
 
 
 func set_favorite_button(status):

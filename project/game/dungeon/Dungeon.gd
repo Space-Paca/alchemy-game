@@ -158,7 +158,10 @@ func load_combinations(combinations_data):
 			(combinations[combination.grid_size] as Array).append(combination)
 		else:
 			combinations[combination.grid_size] = [combination]
-	
+		
+		if data_combination.times_made > 0:
+			times_recipe_made[combination.recipe.name] = data_combination.times_made
+		
 	#Update recipe book in the order recipes were discovered
 	for recipe in player.known_recipes:
 		var data_combination = null
@@ -171,7 +174,7 @@ func load_combinations(combinations_data):
 		recipe_book.add_combination(combination, player.known_recipes.find(combination.recipe.name),\
 									mastery_threshold(combination))
 		if should_unlock_mastery(combination):
-			recipe_book.unlock_mastery(combination)
+			recipe_book.unlock_mastery(combination, false)
 		else:
 			recipe_book.update_mastery(combination, data_combination.times_made,\
 								   mastery_threshold(combination))

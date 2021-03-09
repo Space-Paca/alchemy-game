@@ -100,7 +100,7 @@ func get_save_data():
 		"events_by_id": events_by_id.duplicate(true),
 		"events_by_floor": events_by_floor.duplicate(true),
 	}
-		
+	return data
 
 ####### GENERAL EVENT CALLBACKS #######
 

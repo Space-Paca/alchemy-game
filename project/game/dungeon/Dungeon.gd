@@ -98,7 +98,8 @@ func get_save_data():
 	var data = {
 		"player": player.get_save_data(),
 		"combinations": get_combinations_data(),
-		"encounters": EncounterManager.get_save_data()
+		"encounters": EncounterManager.get_save_data(),
+		"map": map.get_save_data(),
 	}
 	return data
 
@@ -205,18 +206,7 @@ func load_level(data):
 	map = MAP_SCENE.instance()
 	map.set_player(player)
 	add_child(map)
-	match level:
-		1:
-			# ( *∀*)y─┛
-			#  ______________
-			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
-			map.create_map(7, 2, 0)
-		2:
-			map.create_map(7, 2, 1)
-		3:
-			map.create_map(8, 2, 1)
-		var invalid:
-			assert(false, str("Invalid level: ", invalid))
+	map.load_map(data.map)
 	map.set_level(level)
 	map.connect("map_node_pressed", self, "_on_map_node_selected")
 	

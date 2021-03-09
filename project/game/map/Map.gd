@@ -170,6 +170,77 @@ func set_player(_player):
 	player = _player
 
 
+func get_save_data():
+	var data = {}
+	
+	#Serialize all nodes positions, type and children
+	data.nodes = []
+	for node in nodes.get_children():
+		#Removes the autoplaced @ since it wont work later when manually naming nodes 
+		var node_name = node.name.replace("@", "")
+		var x = node.rect_position.x + nodes.rect_position.x
+		var y = node.rect_position.y + nodes.rect_position.y
+		var node_data = {
+			"pos": [x, y],
+			"name": node_name,
+			"type": node.type,
+			"paths_revealed": node.paths_revealed,
+			"map_tree_children": [],
+		}
+		for child in node.map_tree_children:
+			var child_name = child.name.replace("@", "")
+			node_data.map_tree_children.append(child_name)
+		if node == initial_node:
+			data.initial_node_name = node_name
+		data.nodes.append(node_data)
+	
+	return data
+
+
+func load_map(data):
+	reset_camera(true)
+	camera_last_pos = false
+	
+	#Creating nodes
+	var nodes_to_reveal = []
+	for node_data in data.nodes:
+		### NODE CREATION ###
+		var new_node : MapNode = MAP_NODE_SCENE.instance()
+		new_node.disable_tooltips()
+		new_node.modulate.a = 0
+		new_node.set_camera($Camera)
+		new_node.name = node_data.name
+		nodes.add_child(new_node)
+		var x = float(node_data.pos[0])
+		var y = float(node_data.pos[1])
+		new_node.rect_global_position = Vector2(x, y)
+		new_node.set_type(node_data.type)
+		if node_data.paths_revealed:
+			nodes_to_reveal.append(new_node)
+		# warning-ignore:return_value_discarded
+		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
+		
+		
+		#Setup initial node
+		if new_node.name == data.initial_node_name:
+			initial_node = new_node
+			initial_node.modulate.a = 1
+			
+	#Setting up map tree children
+	for node_data in data.nodes:
+		var node = nodes.get_node(node_data.name)
+		for child in node_data.map_tree_children:
+			var child_node = nodes.get_node(child)
+			node.map_tree_children.append(child_node)
+			# Add map line
+			var map_line := MAP_LINE.instance()
+			lines.add_child(map_line)
+			map_line.set_line(node.rect_global_position, child_node.rect_global_position)
+			node.map_lines.append(map_line)
+
+	reveal_paths(initial_node, nodes_to_reveal)
+
+
 func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=2, shops:int=1, events:int=1, labs:int=1, treasures:int=1):
 	
@@ -341,7 +412,7 @@ func reveal_all_paths():
 		reveal_paths(node)
 
 
-func reveal_paths(node:MapNode):
+func reveal_paths(node:MapNode, nodes_to_reveal := []):
 	if node.paths_revealed:
 		return
 	
@@ -353,7 +424,7 @@ func reveal_paths(node:MapNode):
 		var child_node : MapNode = node.map_tree_children[i]
 		active_nodes.append(child_node)
 # warning-ignore:return_value_discarded
-		line.connect("filled", self, "_on_path_reached", [child_node])
+		line.connect("filled", self, "_on_path_reached", [child_node, nodes_to_reveal])
 		line.begin_fill()
 		active_paths += 1
 	
@@ -363,12 +434,13 @@ func reveal_paths(node:MapNode):
 		set_disabled(true)
 
 
-func _on_path_reached(node:MapNode):
+func _on_path_reached(node:MapNode, nodes_to_reveal:= []):
 	node.fade_in()
 	node.enable_tooltips()
 	if node.should_autoreveal() or\
 	   Debug.reveal_map or\
-	   (player and player.has_artifact("reveal_map")):
+	   (player and player.has_artifact("reveal_map")) or\
+		nodes_to_reveal.has(node):
 		reveal_paths(node)
 	
 	active_paths -= 1

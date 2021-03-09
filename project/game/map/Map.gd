@@ -13,9 +13,8 @@ onready var floor_label = $CanvasLayer/FloorLabel
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
-const CAMERA_LINEAR_SPEED = 60
-const CAMERA_EXPONENTIAL_SPEED = .1
-const EPSLON = 1
+const EPSILON = 1
+const CAMERA_SPEED = .6
 const CENTRAL_NODE_CHILDREN_SIZE = 2
 const PLAYER_UI_HEIGHT = 250
 
@@ -68,15 +67,8 @@ func _process(dt):
 		target_pos.y -= PLAYER_UI_HEIGHT/2
 
 		#Move camera linearly
-		var dist = (target_pos - $Camera.position)
-		if CAMERA_EXPONENTIAL_SPEED*dt >= dist.length():
-			$Camera.position = target_pos
-		elif CAMERA_LINEAR_SPEED*dt < 3*dist.length():
-			$Camera.position += dist.normalized()*CAMERA_LINEAR_SPEED*dt
-		else:
-			$Camera.position += dist*CAMERA_EXPONENTIAL_SPEED*dt
-		
-		if (target_pos - $Camera.position).length() <= EPSLON:
+		$Camera.position = lerp($Camera.position, target_pos, CAMERA_SPEED*dt)
+		if (target_pos - $Camera.position).length() <= EPSILON:
 			$Camera.position = target_pos
 
 

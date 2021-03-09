@@ -61,11 +61,15 @@ func disable_player():
 	$Combine.disabled = true
 	$BackButton.disabled = true
 	dispenser_list.disable()
+	for reagent in reagents.get_children():
+		reagent.can_drag = false
 
 func enable_player():
 	$Combine.disabled = false
 	$BackButton.disabled = false
 	dispenser_list.enable()
+	for reagent in reagents.get_children():
+		reagent.can_drag = true
 
 func display_name_for_combination(combination):
 	recipe_name_display.display_name_for_combination(combination, false)
@@ -83,6 +87,15 @@ func combination_failed():
 		yield(grid, "repositioned_reagents")
 	
 	enable_player()
+
+
+func recipe_book_visibility(is_visible):
+	if is_visible:
+		disable_player()
+	else:
+		enable_player()
+	
+
 
 func _on_BackButton_pressed():
 	$Book/ReagentDropZone.monitorable = false
@@ -183,7 +196,6 @@ func _on_Grid_modified():
 		reagent_matrix.append(line)
 	
 	emit_signal("grid_modified", reagent_matrix, grid.grid_size)
-
 
 
 func _on_RecipesButton_pressed():

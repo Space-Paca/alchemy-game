@@ -574,6 +574,10 @@ func recipe_book_toggle():
 		battle.recipe_book_toggled(book_visible)
 	elif not lab.visible:
 		player_info.visible = !book_visible
+	
+	if lab.visible:
+		lab.recipe_book_visibility(book_visible)
+	
 
 
 func favorite_combination(combination, active):

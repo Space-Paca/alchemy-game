@@ -19,7 +19,7 @@ const FORMAT_DICT = {
 const HOLE_MAX_CHANCE = .8
 
 var events_by_id := {}
-var events_by_floor := {1: [], 2: [], 3: []}
+var event_ids_by_floor := {1: [], 2: [], 3: []}
 var dummy_leave_event : Event
 var current_quest : Event
 var current_event : Event
@@ -58,15 +58,15 @@ func format(text: String) -> String:
 
 func reset_events():
 	for f in FLOORS:
-		events_by_floor[f].clear()
+		event_ids_by_floor[f].clear()
 	
 	for event in events_by_id.values():
 		for f in FLOORS:
 			if event.floor_appearance[f]:
-				events_by_floor[f].append(event)
+				event_ids_by_floor[f].append(event.id)
 	
 	for f in FLOORS:
-		events_by_floor[f].shuffle()
+		event_ids_by_floor[f].shuffle()
 	
 	# Reset event 4 (hole) chances and reward
 	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
@@ -74,18 +74,20 @@ func reset_events():
 
 func get_random_event(current_floor: int) -> Event:
 	## For testing purposes
-	if not events_by_floor[current_floor].size():
+	if not event_ids_by_floor[current_floor].size():
 		dummy_leave_event.title = "No event to show"
 		dummy_leave_event.text = str("Not enough events for floor ", current_floor)
 		return dummy_leave_event
 	
-	assert(events_by_floor[current_floor].size())
-	current_event = events_by_floor[current_floor].pop_front()
+	var id : int
+	
+	assert(event_ids_by_floor[current_floor].size())
+	id = event_ids_by_floor[current_floor].pop_front()
 	
 	for f in FLOORS:
-		events_by_floor[f].erase(current_event)
+		event_ids_by_floor[f].erase(id)
 	
-	return current_event
+	return get_event_by_id(id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -98,7 +100,7 @@ func get_event_by_id(id: int) -> Event:
 func get_save_data():
 	var data = {
 		"events_by_id": events_by_id.duplicate(true),
-		"events_by_floor": events_by_floor.duplicate(true),
+		"events_by_floor": event_ids_by_floor.duplicate(true),
 	}
 	return data
 

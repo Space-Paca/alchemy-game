@@ -99,6 +99,7 @@ func get_save_data():
 		"player": player.get_save_data(),
 		"combinations": get_combinations_data(),
 		"encounters": EncounterManager.get_save_data(),
+		"events": EventManager.get_save_data(),
 		"map": map.get_save_data(),
 	}
 	return data
@@ -107,7 +108,7 @@ func set_save_data(data):
 	player.set_save_data(data.player)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)
-	EventManager.reset_events()
+	EventManager.load_save_data(data.events)
 	load_level(data)
 
 func play_map_bgm():

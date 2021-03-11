@@ -71,7 +71,6 @@ func reset_events():
 	# Reset event 4 (hole) chances and reward
 	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
 
-
 func get_random_event(current_floor: int) -> Event:
 	## For testing purposes
 	if not event_ids_by_floor[current_floor].size():
@@ -99,10 +98,19 @@ func get_event_by_id(id: int) -> Event:
 
 func get_save_data():
 	var data = {
-		"events_by_id": events_by_id.duplicate(true),
-		"events_by_floor": event_ids_by_floor.duplicate(true),
+		"events_ids_by_floor": event_ids_by_floor.duplicate(true),
 	}
 	return data
+
+
+func load_save_data(data):
+	event_ids_by_floor = {1: [], 2: [], 3: []}
+	
+	#Manually setting events since data labels are all strings
+	for f in data.events_ids_by_floor:
+		event_ids_by_floor[int(f)] = data.events_ids_by_floor[f]
+	
+
 
 ####### GENERAL EVENT CALLBACKS #######
 

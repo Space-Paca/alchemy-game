@@ -30,6 +30,7 @@ const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
 
 var logic
 var data
+var enemy_type
 var cur_actions
 var player
 var just_spawned := false
@@ -60,6 +61,13 @@ func _ready():
 	self.connect("stun", self, "stun")
 # warning-ignore:return_value_discarded
 	self.connect("remove_attack", self, "remove_attack")
+
+
+func update_life(new_hp, new_shield):
+	hp = new_hp
+	shield = new_shield
+	health_bar.update_visuals(hp, shield)
+
 
 func heal(amount : int):
 	if amount > 0:
@@ -181,6 +189,11 @@ func gain_shield(value):
 
 func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
+	update_status_bar()
+
+#Add status without any effects, when loading hard data
+func hard_set_status(status, amount, positive, extra_args):
+	.add_status(status, amount, positive, extra_args)
 	update_status_bar()
 
 

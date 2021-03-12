@@ -27,6 +27,7 @@ var map : Map
 var current_node : MapNode
 var laboratory_attempts = [6,7,8]
 var cur_lab_attempts
+var battle_load_data = false
 var first_shop_visit = true
 
 
@@ -74,14 +75,22 @@ func _ready():
 	player.connect("bag_updated", $BookLayer/RecipeBook, "update_reagents")
 	player_info.set_player(player)
 	
-	if not Profile.get_tutorial("map"):
-		$PauseScreen.set_block_pause(true)
-		yield(map, "finished_active_paths")
-		TutorialLayer.start("map")
-		yield(TutorialLayer, "tutorial_finished")
-		Profile.set_tutorial("map", true)
+	$PauseScreen.set_block_pause(true)
+	
+	if battle_load_data:
+		yield(get_tree().create_timer(.5), "timeout")
 		$PauseScreen.set_block_pause(false)
+		load_battle(battle_load_data)
+		battle_load_data = false
+	else:
+		yield(map, "finished_active_paths")
+		if not Profile.get_tutorial("map"):
+			TutorialLayer.start("map")
+			yield(TutorialLayer, "tutorial_finished")
+			Profile.set_tutorial("map", true)
+		
 
+		$PauseScreen.set_block_pause(false)
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
@@ -101,6 +110,10 @@ func get_save_data():
 		"encounters": EncounterManager.get_save_data(),
 		"events": EventManager.get_save_data(),
 		"map": map.get_save_data(),
+		"cur_lab_attempts": cur_lab_attempts,
+		"first_shop_visit": first_shop_visit,
+		"battle": battle.get_save_data() if battle else false,
+		"current_node": "" if not current_node else current_node.name
 	}
 	return data
 
@@ -110,6 +123,8 @@ func set_save_data(data):
 	load_combinations(data.combinations)
 	EventManager.load_save_data(data.events)
 	load_level(data)
+	battle_load_data = data.battle
+	current_node = null if data.current_node == "" else map.get_map_node(data.current_node)
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
@@ -218,10 +233,10 @@ func load_level(data):
 				possible_rewarded_combinations.append(combination)
 	
 	# SHOP
-	first_shop_visit = true
+	first_shop_visit = data.first_shop_visit
 	
 	#LAB
-	cur_lab_attempts = laboratory_attempts[level - 1]
+	cur_lab_attempts = data.cur_lab_attempts
 
 
 func create_level(level: int, debug := false):
@@ -453,9 +468,7 @@ func should_unlock_mastery(combination: Combination) -> bool:
 	return times_recipe_made[combination.recipe.name] >= mastery_threshold(combination)
 
 
-func new_battle(encounter: Encounter):
-	assert(battle == null)
-	
+func create_battle():
 	battle = BATTLE_SCENE.instance()
 	
 # warning-ignore:return_value_discarded
@@ -480,6 +493,32 @@ func new_battle(encounter: Encounter):
 	player_info.hide()
 	
 	add_child(battle)
+
+
+
+func load_battle(data):
+	assert(battle == null)
+	
+	TooltipLayer.clean_tooltips()
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	map.disable()
+	
+	create_battle()
+	
+	battle.load_state(data, player, favorite_combinations, floor_level)
+	
+	Transition.end_transition()
+	yield(Transition, "finished")
+	
+	recipe_book.change_state(RecipeBook.States.BATTLE)
+	recipe_book.create_hand(battle)
+
+
+func new_battle(encounter: Encounter):
+	assert(battle == null)
+	
+	create_battle()
 	
 	battle.setup(player, encounter, favorite_combinations, floor_level)
 	
@@ -634,7 +673,6 @@ func _on_map_node_selected(node: MapNode):
 	else: # MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS
 		current_node = node
 		new_battle(node.encounter)
-		node.set_type(MapNode.EMPTY)
 
 
 func _on_Battle_won():
@@ -682,7 +720,9 @@ func _on_Battle_finished(is_boss):
 			thanks_for_playing()
 	else:
 		enable_map()
+		current_node.set_type(MapNode.EMPTY)
 		map.reveal_paths(current_node)
+		current_node = null
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -852,6 +892,7 @@ func _on_EventDisplay_closed():
 	event_display.hide()
 	enable_map()
 	map.reveal_paths(current_node)
+	current_node = null
 	
 	Transition.end_transition()
 

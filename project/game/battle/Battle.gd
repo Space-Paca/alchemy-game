@@ -76,6 +76,69 @@ func _input(event):
 		elif not combine_button.disabled and event.is_action_pressed("combine"):
 			combine()
 
+
+func get_save_data():
+	var data = {
+		"encounter": current_encounter.resource_name,
+		"enemies": get_enemies_save_data(),
+	}
+
+	
+	return data
+
+
+func get_enemies_save_data():
+	var data = []
+	for enemy in enemies_node.get_children():
+		var enemy_data = {
+			"name": enemy.enemy_type,
+			"hp": enemy.hp,
+			"shield": enemy.shield,
+			"status": [],
+			"current_state": enemy.logic.get_current_state(),
+		}
+		data.append(enemy_data)
+	
+	return data
+
+
+func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int):
+	emit_signal("block_pause", true)
+	
+	floor_level = _floor_level
+	current_encounter = EncounterManager.load_resource(data.encounter)
+	
+	setup_bg()
+
+	setup_nodes(_player)
+
+	setup_player(_player)
+	
+	effect_manager.setup(_player)
+
+	setup_favorites(favorite_combinations)
+
+	setup_player_ui()
+
+	setup_enemy(current_encounter, data.enemies)
+
+	setup_audio(current_encounter)
+
+	AudioManager.play_sfx("start_battle")
+	
+	#Wait sometime before showing book and starting battle
+	yield(get_tree().create_timer(BG_ENTER_DUR + 1.0), "timeout")
+	
+	$BGTween.interpolate_property(book, "rect_position:x", BOOK_START_X, BOOK_TARGET_X, BOOK_ENTER_DUR, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$BGTween.start()
+
+	yield($BGTween, "tween_completed")
+	
+	load_player_turn(data)
+	
+	emit_signal("block_pause", false)
+
+
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
 	emit_signal("block_pause", true)
 	
@@ -190,7 +253,7 @@ func setup_player_ui():
 
 	player_ui.update_artifacts(player)
 
-func setup_enemy(encounter: Encounter):
+func setup_enemy(encounter: Encounter, load_enemies_data = false):
 	if encounter.is_boss:
 		is_boss = true
 	if encounter.is_elite:
@@ -203,8 +266,12 @@ func setup_enemy(encounter: Encounter):
 
 	#Wait for BG to start placing enemies
 	yield($BGTween, "tween_completed")
-	for enemy in encounter.enemies:
-		add_enemy(enemy)
+	if not load_enemies_data:
+		for enemy in encounter.enemies:
+			add_enemy(enemy)
+	else:
+		for enemy_data in load_enemies_data:
+			load_enemy(enemy_data)
 
 	update_enemy_positions()
 
@@ -263,6 +330,32 @@ func create_reagent(type):
 	return reagent
 
 
+func load_enemy(data):
+	var enemy_node = EnemyManager.create_object(data.name, player)
+	enemies_node.add_child(enemy_node)
+
+	enemy_node.position = $EnemyStartPosition.position
+	
+	enemy_node.update_life(data.hp, data.shield)
+
+	#Idle sfx
+	if enemy_node.data.use_idle_sfx:
+		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
+
+	enemy_node.connect("action", self, "_on_enemy_acted")
+	enemy_node.connect("died", self, "_on_enemy_died")
+	enemy_node.connect("spawn_new_enemy", self, "spawn_new_enemy")
+	enemy_node.connect("damage_player", self, "damage_player")
+	enemy_node.connect("add_status_all_enemies", self, "add_status_all_enemies")
+	effect_manager.add_enemy(enemy_node)
+
+	randomize()
+	yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
+	AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+
+	enemy_node.logic.set_state(data.current_state)
+	enemy_node.update_action()
+
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
@@ -318,6 +411,38 @@ func update_enemy_positions():
 	else:
 		push_error(str(enemy_count) + " is not a valid enemy number")
 		assert(false)
+
+func load_player_turn(data):
+	recipes_created = 0
+	deviated_recipes = []
+	used_all_reagents_in_recipes = true
+	player.new_turn()
+
+	if hand.available_slot_count() > 0:
+		draw_bag.refill_hand()
+		yield(draw_bag,"hand_refilled")
+		emit_signal("update_recipes_display")
+
+	if player.get_status("burning"):
+		hand.burn_reagents(player.get_status("burning").amount)
+
+	if player.get_status("confusion"):
+		var func_state = hand.randomize_reagents()
+		if func_state and func_state.is_valid():
+			yield(hand, "reagents_randomized")
+			emit_signal("update_recipes_display")
+
+	if player.get_status("restrain"):
+		var func_state = grid.restrain(player.get_status("restrain").amount)
+		if func_state and func_state.is_valid():
+			yield(grid, "restrained")
+
+
+	enable_player()
+
+	if (first_turn):
+		first_turn = false
+		emit_signal("hand_set")
 
 
 func new_player_turn():

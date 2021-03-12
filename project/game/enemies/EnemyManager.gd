@@ -55,6 +55,8 @@ func create_object(enemy_type, player):
 	enemy.get_node("Sprite").set_material(mat_override)
 	
 	enemy.init(enemy_data.name, enemy_data.hp)
+	enemy.enemy_type = enemy_type
+	
 	var logic = {"states":enemy_data.states,
 				 "connections": enemy_data.connections,
 				 "first_state": enemy_data.first_state,

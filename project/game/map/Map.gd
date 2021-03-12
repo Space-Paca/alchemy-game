@@ -399,6 +399,11 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 	reveal_paths(initial_node)
 
 
+func get_map_node(node_name):
+	node_name = node_name.replace("@", "")
+	return nodes.get_node(node_name)
+
+
 func reveal_all_paths():
 	for node in active_nodes:
 		reveal_paths(node)

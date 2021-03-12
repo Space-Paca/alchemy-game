@@ -101,6 +101,10 @@ func load_save_data(data):
 		assert(found, "Couldn't find boss encounter in database: " + str(data_encounter))
 
 
+func load_resource(resource_name):
+	return load(str(PATH, resource_name))
+
+
 func set_random_encounter_pool(level: int):
 	#Regular enemies
 	encounter_pool = encounters[level].duplicate()

@@ -277,6 +277,12 @@ func reduce_status(status: String, amount: int):
 	hud.update_status_bar(self)
 
 
+#Add status without any effects, when loading hard data
+func hard_set_status(status, amount, positive, extra_args):
+	.add_status(status, amount, positive, extra_args)
+	hud.update_status_bar(self)
+
+
 func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
 	.add_status(status, amount, positive, extra_args)
 	hud.update_status_bar(self)

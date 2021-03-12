@@ -191,6 +191,7 @@ func reduce_status(status: String, amount: int):
 	.reduce_status(status, amount)
 	update_status_bar()
 
+
 #Add status without any effects, when loading hard data
 func hard_set_status(status, amount, positive, extra_args):
 	.add_status(status, amount, positive, extra_args)

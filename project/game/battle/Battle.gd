@@ -81,11 +81,22 @@ func get_save_data():
 	var data = {
 		"encounter": current_encounter.resource_name,
 		"enemies": get_enemies_save_data(),
+		"player": get_player_save_data(),
 	}
 
 	
 	return data
 
+
+func get_player_save_data():
+	var data = {
+		"recipes_created": recipes_created,
+		"deviated_recipes": deviated_recipes.duplicate(true),
+		"used_all_reagents_in_recipes": used_all_reagents_in_recipes,
+		"status_list": player.status_list.duplicate(true),
+	}
+	
+	return data
 
 func get_enemies_save_data():
 	var data = []
@@ -94,7 +105,7 @@ func get_enemies_save_data():
 			"name": enemy.enemy_type,
 			"hp": enemy.hp,
 			"shield": enemy.shield,
-			"status": [],
+			"status_list": enemy.status_list.duplicate(true),
 			"current_state": enemy.logic.get_current_state(),
 		}
 		data.append(enemy_data)
@@ -134,7 +145,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	yield($BGTween, "tween_completed")
 	
-	load_player_turn(data)
+	load_player_turn(data.player)
 	
 	emit_signal("block_pause", false)
 
@@ -335,8 +346,10 @@ func load_enemy(data):
 	enemies_node.add_child(enemy_node)
 
 	enemy_node.position = $EnemyStartPosition.position
-	
 	enemy_node.update_life(data.hp, data.shield)
+	for status_name in data.status_list:
+		var status = data.status_list[status_name]
+		enemy_node.hard_set_status(status_name, status.amount, status.positive, status.extra_args)
 
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
@@ -413,10 +426,15 @@ func update_enemy_positions():
 		assert(false)
 
 func load_player_turn(data):
-	recipes_created = 0
-	deviated_recipes = []
-	used_all_reagents_in_recipes = true
-	player.new_turn()
+	recipes_created = data.recipes_created
+	deviated_recipes = data.deviated_recipes
+	used_all_reagents_in_recipes = data.used_all_reagents_in_recipes
+	
+	for status_name in data.status_list:
+		var status = data.status_list[status_name]
+		player.hard_set_status(status_name, status.amount, status.positive, status.extra_args)
+	
+	#player.new_turn()
 
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
@@ -426,23 +444,10 @@ func load_player_turn(data):
 	if player.get_status("burning"):
 		hand.burn_reagents(player.get_status("burning").amount)
 
-	if player.get_status("confusion"):
-		var func_state = hand.randomize_reagents()
-		if func_state and func_state.is_valid():
-			yield(hand, "reagents_randomized")
-			emit_signal("update_recipes_display")
-
-	if player.get_status("restrain"):
-		var func_state = grid.restrain(player.get_status("restrain").amount)
-		if func_state and func_state.is_valid():
-			yield(grid, "restrained")
-
-
 	enable_player()
 
-	if (first_turn):
-		first_turn = false
-		emit_signal("hand_set")
+	first_turn = false
+	emit_signal("hand_set")
 
 
 func new_player_turn():

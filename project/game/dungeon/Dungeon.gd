@@ -14,6 +14,7 @@ const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
 const EVENT_SCENE = preload("res://game/event/EventDisplay.tscn")
 const RECIPES_REWARDED_PER_BATTLE = 3
+const SAVE_VERSION = 1.0
 
 var battle
 var combinations := {}
@@ -105,6 +106,7 @@ func _input(event):
 
 func get_save_data():
 	var data = {
+		"save_version": SAVE_VERSION,
 		"player": player.get_save_data(),
 		"combinations": get_combinations_data(),
 		"encounters": EncounterManager.get_save_data(),
@@ -118,6 +120,11 @@ func get_save_data():
 	return data
 
 func set_save_data(data):
+	if data.save_version != SAVE_VERSION:
+		print("Different save version on loaded run.")
+		print("Game version: " + str(SAVE_VERSION) + "; Saved run version: " + str(data.save_version))
+		#For now does nothing, but we should convert the save files if needed
+	
 	player.set_save_data(data.player)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)

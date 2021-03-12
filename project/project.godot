@@ -236,6 +236,10 @@ end_turn={
  ]
 }
 
+[network]
+
+limits/debugger_stdout/max_warnings_per_second=10000
+
 [rendering]
 
 quality/driver/fallback_to_gles2=true

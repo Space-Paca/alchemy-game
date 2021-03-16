@@ -248,13 +248,18 @@ func act():
 	
 	if hp > 0:
 		logic.update_state()
-		update_action()
+		update_actions()
 	
 
+func load_actions(actions_data):
+	cur_actions = []
+	for action in actions_data:
+		cur_actions.append(action)
+	update_intent()
 
-func update_action():
+func update_actions():
 	var state = logic.get_current_state()
-
+	
 	cur_actions = []
 	for action in data.actions[state]:
 		var act
@@ -400,6 +405,10 @@ func set_image(new_texture):
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
 
 
+func get_actions_data():
+	return cur_actions.duplicate(true)
+
+
 #Removes first intent (the one in the left)
 func remove_intent():
 	if $Intents.get_child_count() > 0:
@@ -442,6 +451,14 @@ func set_pos(target_pos):
 	var dur = (position - target_pos).length()/speed
 	tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.start()
+
+
+func update_intents_by_data(intent_data):
+	clear_intents()
+	for d in intent_data:
+		var intent = IntentManager.create_intent_data(d.action)
+		add_intent(d.action, intent.texture, d.value, d.multiplier)
+
 
 func update_intent():
 	clear_intents()

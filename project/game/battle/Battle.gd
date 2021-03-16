@@ -107,6 +107,7 @@ func get_enemies_save_data():
 			"shield": enemy.shield,
 			"status_list": enemy.status_list.duplicate(true),
 			"current_state": enemy.logic.get_current_state(),
+			"actions": enemy.get_actions_data(),
 		}
 		data.append(enemy_data)
 	
@@ -367,7 +368,7 @@ func load_enemy(data):
 	AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 
 	enemy_node.logic.set_state(data.current_state)
-	enemy_node.update_action()
+	enemy_node.load_actions(data.actions)
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
 	var enemy_node = EnemyManager.create_object(enemy, player)
@@ -402,7 +403,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
 		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
 
-	enemy_node.update_action()
+	enemy_node.update_actions()
 
 
 func update_enemy_positions():

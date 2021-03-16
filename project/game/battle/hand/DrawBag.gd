@@ -32,6 +32,18 @@ func disable():
 func enable():
 	block_tooltips = false
 
+
+func get_data():
+	var data = []
+	for reagent in drawable_reagents.get_children():
+		data.append({
+			"type": reagent.type,
+			"upgraded": reagent.upgraded,
+		})
+	
+	return data
+
+
 func copy_bag(other_bag):
 	for c in drawable_reagents.get_children():
 		drawable_reagents.remove_child(c)

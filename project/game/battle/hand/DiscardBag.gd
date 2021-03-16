@@ -18,6 +18,18 @@ func _ready():
 	center.position = texture_rect.rect_size/2
 	update_counter()
 
+
+func get_data():
+	var data = []
+	for reagent in discarded_reagents.get_children():
+		data.append({
+			"type": reagent.type,
+			"upgraded": reagent.upgraded,
+		})
+	
+	return data
+
+
 func disable():
 	disable_tooltips()
 	block_tooltips = true

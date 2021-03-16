@@ -94,6 +94,8 @@ func get_player_save_data():
 		"deviated_recipes": deviated_recipes.duplicate(true),
 		"used_all_reagents_in_recipes": used_all_reagents_in_recipes,
 		"status_list": player.status_list.duplicate(true),
+		"bags": get_bags_data(),
+		"hand": get_hand_data(),
 	}
 	
 	return data
@@ -114,6 +116,20 @@ func get_enemies_save_data():
 	return data
 
 
+func get_bags_data():
+	var data = {
+		"draw": draw_bag.get_data(),
+		"discard": discard_bag.get_data(),
+	}
+	return data
+
+func get_hand_data():
+	var data = {}
+	
+	
+	return data
+
+
 func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int):
 	emit_signal("block_pause", true)
 	
@@ -124,7 +140,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	setup_nodes(_player)
 
-	setup_player(_player)
+	setup_player(_player, data.player)
 	
 	effect_manager.setup(_player)
 
@@ -227,18 +243,32 @@ func setup_nodes(_player):
 	grid.hand = hand
 
 
-func setup_player(_player):
+func setup_player(_player, player_data = null):
 	player = _player
 
 	#Setup player bag
-	for bag_reagent in player.bag:
-		var reagent = create_reagent(bag_reagent.type)
-		if bag_reagent.upgraded:
-			reagent.upgrade()
-		draw_bag.add_reagent(reagent)
+	if not player_data:
+		for bag_reagent in player.bag:
+			var reagent = create_reagent(bag_reagent.type)
+			if bag_reagent.upgraded:
+				reagent.upgrade()
+			draw_bag.add_reagent(reagent)
+	else:
+		for bag_reagent in player_data.bags.draw:
+			var reagent = create_reagent(bag_reagent.type)
+			if bag_reagent.upgraded:
+				reagent.upgrade()
+			draw_bag.add_reagent(reagent)
+		for bag_reagent in player_data.bags.discard:
+			var reagent = create_reagent(bag_reagent.type)
+			if bag_reagent.upgraded:
+				reagent.upgrade()
+			discard_bag.add_reagent(reagent)
 
 	#Setup player hand
 	hand.set_hand(player.hand_size)
+	if player_data:
+		pass
 
 	#Setup player grid
 	grid.set_grid(player.grid_size)

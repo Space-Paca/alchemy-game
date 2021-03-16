@@ -94,8 +94,11 @@ func get_player_save_data():
 		"deviated_recipes": deviated_recipes.duplicate(true),
 		"used_all_reagents_in_recipes": used_all_reagents_in_recipes,
 		"status_list": player.status_list.duplicate(true),
-		"bags": get_bags_data(),
-		"hand": get_hand_data(),
+		"bags": {
+			"draw": draw_bag.get_data(),
+			"discard": discard_bag.get_data(),
+		},
+		"hand": hand.get_data(),
 	}
 	
 	return data
@@ -112,20 +115,6 @@ func get_enemies_save_data():
 			"actions": enemy.get_actions_data(),
 		}
 		data.append(enemy_data)
-	
-	return data
-
-
-func get_bags_data():
-	var data = {
-		"draw": draw_bag.get_data(),
-		"discard": discard_bag.get_data(),
-	}
-	return data
-
-func get_hand_data():
-	var data = {}
-	
 	
 	return data
 
@@ -254,21 +243,24 @@ func setup_player(_player, player_data = null):
 				reagent.upgrade()
 			draw_bag.add_reagent(reagent)
 	else:
-		for bag_reagent in player_data.bags.draw:
-			var reagent = create_reagent(bag_reagent.type)
-			if bag_reagent.upgraded:
-				reagent.upgrade()
+		for reagent_data in player_data.bags.draw:
+			var reagent = create_reagent(reagent_data.type)
+			reagent.load_data(reagent_data)
 			draw_bag.add_reagent(reagent)
-		for bag_reagent in player_data.bags.discard:
-			var reagent = create_reagent(bag_reagent.type)
-			if bag_reagent.upgraded:
-				reagent.upgrade()
+		for reagent_data in player_data.bags.discard:
+			var reagent = create_reagent(reagent_data.type)
+			reagent.load_data(reagent_data)
 			discard_bag.add_reagent(reagent)
 
 	#Setup player hand
 	hand.set_hand(player.hand_size)
 	if player_data:
-		pass
+		for reagent_data in player_data.hand:
+			var reagent = create_reagent(reagent_data.type)
+			reagent.load_data(reagent_data)
+			reagents.add_child(reagent)
+			hand.place_reagent(reagent)
+			reagent.enable_tooltips()
 
 	#Setup player grid
 	grid.set_grid(player.grid_size)
@@ -464,16 +456,6 @@ func load_player_turn(data):
 	for status_name in data.status_list:
 		var status = data.status_list[status_name]
 		player.hard_set_status(status_name, status.amount, status.positive, status.extra_args)
-	
-	#player.new_turn()
-
-	if hand.available_slot_count() > 0:
-		draw_bag.refill_hand()
-		yield(draw_bag,"hand_refilled")
-		emit_signal("update_recipes_display")
-
-	if player.get_status("burning"):
-		hand.burn_reagents(player.get_status("burning").amount)
 
 	enable_player()
 

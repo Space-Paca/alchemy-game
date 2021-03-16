@@ -84,6 +84,25 @@ func _process(delta):
 				emit_signal("reached_target_pos")
 
 
+func get_data():
+	var data = {
+		"type": type,
+		"upgraded": upgraded,
+		"unstable": unstable,
+		"freezed": freezed,
+		"burned": burned,
+	}
+	return data
+
+
+func load_data(data):
+	unstable = data.unstable
+	freezed = data.freezed
+	burned = data.burned
+	if data.upgraded:
+		upgrade()
+
+
 func error_effect():
 	# warning-ignore:return_value_discarded
 	$Tween.interpolate_property($Image, "modulate", Color.red, Color.white,

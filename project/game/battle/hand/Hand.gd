@@ -37,6 +37,15 @@ func get_slots():
 	return upper_slots.get_children() + lower_slots.get_children()
 
 
+func get_data():
+	var data = []
+	for slot in get_slots():
+		var reagent = slot.get_reagent()
+		if reagent:
+			data.append(reagent.get_data())
+	return data
+
+
 func set_hand(number: int):
 	size = number
 	
@@ -118,7 +127,8 @@ func available_slot_count():
 #Places a reagent in an empty position, throws error if unable
 func place_reagent(reagent):
 	for slot in get_slots():
-		if not slot.get_reagent() and not slot.is_frozen():
+		if not slot.get_reagent() and \
+		   (not slot.is_frozen() or reagent.frozen):
 			slot.set_reagent(reagent)
 			yield(slot, "reagent_set")
 			emit_signal("reagent_placed")

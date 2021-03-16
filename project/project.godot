@@ -238,7 +238,7 @@ end_turn={
 
 [network]
 
-limits/debugger_stdout/max_warnings_per_second=10000
+limits/debugger_stdout/max_warnings_per_second=10000000
 
 [rendering]
 

@@ -267,7 +267,7 @@ position = Vector2( 1620, 640 )
 [node name="Pos8" type="Position2D" parent="EnemiesPositions"]
 position = Vector2( 1420, 500 )
 
-[node name="Reagents" type="Node" parent="."]
+[node name="Reagents" type="Node2D" parent="."]
 
 [node name="TargetingInterface" parent="." instance=ExtResource( 20 )]
 

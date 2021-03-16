@@ -22,10 +22,7 @@ func _ready():
 func get_data():
 	var data = []
 	for reagent in discarded_reagents.get_children():
-		data.append({
-			"type": reagent.type,
-			"upgraded": reagent.upgraded,
-		})
+		data.append(reagent.get_data())
 	
 	return data
 

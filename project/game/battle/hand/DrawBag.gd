@@ -225,6 +225,17 @@ func draw_reagent():
 	reagents.add_child(reagent)
 	return reagent
 
+
+func draw_specific_reagent(reagent):
+	drawable_reagents.remove_child(reagent)
+	update_counter()
+	reagent.visible = true
+	reagent.rect_position = get_center()
+	reagent.rect_scale = Vector2(0,0)
+	reagents.add_child(reagent)
+	return reagent
+
+
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false

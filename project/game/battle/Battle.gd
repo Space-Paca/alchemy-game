@@ -129,8 +129,8 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	setup_nodes(_player)
 
-	setup_player(_player, data.player)
-	
+	var reagents_to_be_draw = setup_player(_player, data.player)
+
 	effect_manager.setup(_player)
 
 	setup_favorites(favorite_combinations)
@@ -151,7 +151,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	yield($BGTween, "tween_completed")
 	
-	load_player_turn(data.player)
+	load_player_turn(data.player, reagents_to_be_draw)
 	
 	emit_signal("block_pause", false)
 
@@ -254,13 +254,13 @@ func setup_player(_player, player_data = null):
 
 	#Setup player hand
 	hand.set_hand(player.hand_size)
+	var reagents_to_be_draw = []
 	if player_data:
 		for reagent_data in player_data.hand:
 			var reagent = create_reagent(reagent_data.type)
 			reagent.load_data(reagent_data)
-			reagents.add_child(reagent)
-			hand.place_reagent(reagent)
-			reagent.enable_tooltips()
+			draw_bag.add_reagent(reagent)
+			reagents_to_be_draw.append(reagent)
 
 	#Setup player grid
 	grid.set_grid(player.grid_size)
@@ -271,8 +271,16 @@ func setup_player(_player, player_data = null):
 	player.connect("restrict", self, "_on_player_restrict")
 
 	player.set_hud(player_ui)
+	
+	if player_data:
+		for status_name in player_data.status_list:
+			var status = player_data.status_list[status_name]
+			player.hard_set_status(status_name, status.amount, status.positive, status.extra_args)
 
 	disable_player()
+	
+	if player_data:
+		return reagents_to_be_draw
 
 
 func setup_favorites(favorite_combinations: Array):
@@ -448,15 +456,17 @@ func update_enemy_positions():
 		push_error(str(enemy_count) + " is not a valid enemy number")
 		assert(false)
 
-func load_player_turn(data):
+func load_player_turn(data, reagents_to_be_draw : Array):
 	recipes_created = data.recipes_created
 	deviated_recipes = data.deviated_recipes
 	used_all_reagents_in_recipes = data.used_all_reagents_in_recipes
 	
-	for status_name in data.status_list:
-		var status = data.status_list[status_name]
-		player.hard_set_status(status_name, status.amount, status.positive, status.extra_args)
-
+	if not reagents_to_be_draw.empty():
+		for reagent in reagents_to_be_draw:
+			draw_bag.draw_specific_reagent(reagent)
+		draw_bag.start_drawing(reagents_to_be_draw)
+		yield(draw_bag, "given_reagents_drawn")
+	
 	enable_player()
 
 	first_turn = false
@@ -555,9 +565,6 @@ func enable_player():
 
 	if Profile.get_tutorial("recipe_book") and (not curse or curse.amount > recipes_created):
 		combine_button.enable()
-
-
-
 
 	set_favorites_disabled(false)
 

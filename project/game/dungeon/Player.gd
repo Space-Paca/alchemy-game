@@ -356,6 +356,7 @@ func has_artifact(name : String):
 
 func add_artifact(name : String):
 	if not has_artifact(name):
+		AudioManager.play_sfx("get_artifact")
 		artifacts.append(name)
 		ArtifactCallbacks.call_on_add(name, {"player": self})
 		emit_signal("artifacts_updated", artifacts)

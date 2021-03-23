@@ -74,7 +74,6 @@ func _on_BackButton_pressed():
 	emit_signal("closed")
 
 func _on_loot_pressed(artifact):
-	AudioManager.play_sfx("get_artifact")
 	player.add_artifact(artifact.id)
 	for art in $Artifacts.get_children():
 		art.disable()

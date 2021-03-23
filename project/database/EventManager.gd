@@ -71,6 +71,7 @@ func reset_events():
 	# Reset event 4 (hole) chances and reward
 	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
 
+
 func get_random_event(current_floor: int) -> Event:
 	## For testing purposes
 	if not event_ids_by_floor[current_floor].size():
@@ -86,6 +87,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
+	return get_event_by_id(9)
 	return get_event_by_id(id)
 
 
@@ -172,7 +174,6 @@ func well(event_display, player, amount: int):
 			var rewarded = false
 			for artifact in artifacts:
 				if not player.has_artifact(artifact):
-					AudioManager.play_sfx("get_artifact")
 					player.add_artifact(artifact)
 					rewarded = true
 					break
@@ -243,3 +244,12 @@ func artifact_battle(event_display, player, artifact_rarity: String,
 	
 # warning-ignore:unreachable_code
 	load_leave_event(event_display, player, current_event.leave_text_2)
+
+#9
+func take_pearls(event_display, player):
+	var amount : int = 2 if randf() < .5 else 3
+	var text = current_event.leave_text_1.replace("<amount>", str(amount))
+	player.add_pearls(amount)
+	player.add_artifact("cursed_pearls")
+	
+	load_leave_event(event_display, player, text)

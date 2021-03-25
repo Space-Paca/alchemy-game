@@ -31,6 +31,28 @@ func _draw():
 			Vector2(container.rect_size.x+10, container.rect_size.y/2), Color.green)
 
 
+func get_data():
+	var data = []
+	for slot in slots.get_children():
+		var slot_data = {
+			"restricted": slot.restricted,
+			"restrained": slot.restrained,
+		}
+		data.append(slot_data)
+
+	return data
+
+
+func load_data(data : Array):
+	for i in slots.get_child_count():
+		var slot = slots.get_child(i)
+		var slot_data = data[i]
+		if slot_data.restrained:
+			slot.restrain()
+		if slot_data.restricted:
+			slot.restrict()
+
+
 func get_center():
 	return container.rect_global_position + container.rect_size/2
 

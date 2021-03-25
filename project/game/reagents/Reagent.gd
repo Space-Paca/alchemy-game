@@ -96,9 +96,9 @@ func get_data():
 
 
 func load_data(data):
-	unstable = data.unstable
 	freezed = data.freezed
 	burned = data.burned
+	unstable = data.unstable
 	if data.upgraded:
 		upgrade()
 

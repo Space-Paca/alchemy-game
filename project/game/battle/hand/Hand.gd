@@ -38,11 +38,22 @@ func get_slots():
 
 
 func get_data():
-	var data = []
+	var data = {
+		"reagents": [],
+		"frozen_slots": 0,
+	}
+	#Get reagent data
+	var frozen_slots = 0
 	for slot in get_slots():
 		var reagent = slot.get_reagent()
 		if reagent:
-			data.append(reagent.get_data())
+			data.reagents.append(reagent.get_data())
+		if slot.frozen:
+			frozen_slots += 1
+	
+	#Get frozen status
+	data.frozen_slots = frozen_slots
+	
 	return data
 
 

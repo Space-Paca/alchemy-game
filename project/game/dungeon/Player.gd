@@ -74,6 +74,8 @@ func set_save_data(data):
 	gold = data.gold
 	pearls = data.pearls
 	cur_level = data.cur_level
+	hand_size = HAND_SIZES[cur_level-1]
+	grid_size = GRID_SIZES[cur_level-1]
 	artifacts = data.artifacts
 	known_recipes = data.known_recipes
 	hp = data.hp

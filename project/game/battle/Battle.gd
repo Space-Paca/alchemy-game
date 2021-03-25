@@ -100,6 +100,7 @@ func get_player_save_data():
 			"discard": discard_bag.get_data(),
 		},
 		"hand": hand.get_data(),
+		"grid": grid.get_data(),
 	}
 	
 	return data
@@ -257,14 +258,19 @@ func setup_player(_player, player_data = null):
 	hand.set_hand(player.hand_size)
 	var reagents_to_be_draw = []
 	if player_data:
-		for reagent_data in player_data.hand:
+		for reagent_data in player_data.hand.reagents:
 			var reagent = create_reagent(reagent_data.type)
 			reagent.load_data(reagent_data)
 			draw_bag.add_reagent(reagent)
 			reagents_to_be_draw.append(reagent)
-
+		if player_data.hand.frozen_slots > 0:
+			hand.freeze_slots(player_data.hand.frozen_slots)
+	
+	
 	#Setup player grid
 	grid.set_grid(player.grid_size)
+	if player_data:
+		grid.load_data(player_data.grid)
 
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
@@ -465,10 +471,16 @@ func load_player_turn(data, reagents_to_be_draw : Array):
 	player.hard_set_shield(data.shield)
 	
 	if not reagents_to_be_draw.empty():
+		var reagents_array = reagents_to_be_draw.duplicate(true)
 		for reagent in reagents_to_be_draw:
 			draw_bag.draw_specific_reagent(reagent)
 		draw_bag.start_drawing(reagents_to_be_draw)
 		yield(draw_bag, "given_reagents_drawn")
+		#Fix unstable reagents
+		for reagent in reagents_array:
+			if reagent.unstable:
+				reagent.unstable = false
+				reagent.toggle_unstable()
 	
 	enable_player()
 

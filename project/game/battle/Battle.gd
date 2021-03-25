@@ -93,6 +93,7 @@ func get_player_save_data():
 		"recipes_created": recipes_created,
 		"deviated_recipes": deviated_recipes.duplicate(true),
 		"used_all_reagents_in_recipes": used_all_reagents_in_recipes,
+		"shield": player.shield,
 		"status_list": player.status_list.duplicate(true),
 		"bags": {
 			"draw": draw_bag.get_data(),
@@ -460,6 +461,8 @@ func load_player_turn(data, reagents_to_be_draw : Array):
 	recipes_created = data.recipes_created
 	deviated_recipes = data.deviated_recipes
 	used_all_reagents_in_recipes = data.used_all_reagents_in_recipes
+	
+	player.hard_set_shield(data.shield)
 	
 	if not reagents_to_be_draw.empty():
 		for reagent in reagents_to_be_draw:

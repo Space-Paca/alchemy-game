@@ -110,14 +110,13 @@ func set_favorite_button(combination, pressed):
 	recipe_displays[combination.recipe.name].set_favorite_button(pressed)
 
 
-func add_combination(combination: Combination, position: int, threshold: int):
+func add_combination(combination: Combination, threshold: int):
 	if recipe_displays.has(combination.recipe.name):
 		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.name)
 		return
 	
 	var recipe_display = RECIPE.instance()
 	recipe_grid.add_child(recipe_display)
-	recipe_grid.move_child(recipe_display, position)
 	recipe_display.set_combination(combination)
 	recipe_display.connect("hovered", self, "_on_recipe_display_hovered")
 	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")

@@ -294,6 +294,11 @@ func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
 		AnimationManager.play("debuff", hud.get_animation_position())
 
 
+func hard_set_shield(amount: int):
+	shield = amount
+	hud.update_visuals(self)
+
+
 func gain_shield(amount: int):
 	if amount > 0:
 		.gain_shield(amount)

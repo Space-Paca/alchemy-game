@@ -194,8 +194,7 @@ func load_combinations(combinations_data):
 				break
 		assert(data_combination, "Couldn't find combination for this recipe: " + str(recipe))
 		var combination = data_combination.combination
-		recipe_book.add_combination(combination, player.known_recipes.find(combination.recipe.name),\
-									mastery_threshold(combination))
+		recipe_book.add_combination(combination, mastery_threshold(combination))
 		if should_unlock_mastery(combination):
 			recipe_book.unlock_mastery(combination, false)
 		else:
@@ -216,8 +215,7 @@ func create_combinations():
 		
 		if player.known_recipes.has(recipe.name):
 			combination.discover_all_reagents()
-			recipe_book.add_combination(combination, player.known_recipes.find(recipe.name),\
-										mastery_threshold(combination))
+			recipe_book.add_combination(combination, mastery_threshold(combination))
 
 
 func load_level(data):
@@ -802,8 +800,8 @@ func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
 	lab.display_name_for_combination(combination)
 
 
-func _on_Player_combination_discovered(combination, index):
-	recipe_book.add_combination(combination, index, mastery_threshold(combination))
+func _on_Player_combination_discovered(combination, _index):
+	recipe_book.add_combination(combination, mastery_threshold(combination))
 
 
 func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
@@ -910,9 +908,7 @@ func _on_Debug_combinations_unlocked():
 		for grid_size in [2, 3, 4]:
 			for combination in combinations[grid_size]:
 				combination.discover_all_reagents()
-				recipe_book.add_combination(combination,
-						player.known_recipes.bsearch(combination.recipe.name),
-						mastery_threshold(combination))
+				recipe_book.add_combination(combination, mastery_threshold(combination))
 				recipe_book.update_combination(combination)
 
 

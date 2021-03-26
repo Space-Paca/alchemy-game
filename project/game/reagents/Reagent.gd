@@ -36,7 +36,7 @@ var speed_mod := 1.0
 var effect_mod := 1.0
 var upgraded := false
 var unstable := false
-var freezed := false
+var frozen := false
 var burned := false
 var highlighted := false
 var tooltip_enabled = false
@@ -89,14 +89,14 @@ func get_data():
 		"type": type,
 		"upgraded": upgraded,
 		"unstable": unstable,
-		"freezed": freezed,
+		"frozen": frozen,
 		"burned": burned,
 	}
 	return data
 
 
 func load_data(data):
-	freezed = data.freezed
+	frozen = data.frozen
 	burned = data.burned
 	unstable = data.unstable
 	if data.upgraded:
@@ -117,15 +117,15 @@ func quick_place():
 
 
 func is_frozen():
-	return freezed
+	return frozen
 
 
 func freeze():
-	freezed = true
+	frozen = true
 
 
 func unfreeze():
-	freezed = false
+	frozen = false
 
 
 func is_burned():

@@ -22,6 +22,7 @@ func _process(delta):
 	if is_restricted():
 		$RestrictImage.modulate.a = min($RestrictImage.modulate.a + ALPHA_SPEED*delta, 1)
 		restrict_chain.modulate.a = min(restrict_chain.modulate.a + ALPHA_SPEED*delta, 1)
+		$CanvasLayer.offset = rect_global_position
 	else:
 		$RestrictImage.modulate.a = max($RestrictImage.modulate.a - ALPHA_SPEED*delta, 0)
 		restrict_chain.modulate.a = max(restrict_chain.modulate.a - ALPHA_SPEED*delta, 0)
@@ -86,7 +87,6 @@ func restrict():
 	restricted = true
 	randomize()
 	restrict_chain.rect_rotation = rand_range(0, 360)
-	$CanvasLayer.offset = rect_global_position
 
 func unrestrict():
 	restricted = false

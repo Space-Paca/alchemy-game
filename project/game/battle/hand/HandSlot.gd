@@ -14,6 +14,7 @@ func _ready():
 
 func _process(delta):
 	if is_frozen():
+		$CanvasLayer.offset = rect_global_position
 		$FrozenImage.modulate.a = min($FrozenImage.modulate.a + ALPHA_SPEED*delta, 1)
 		frozen_effect.modulate.a = min(frozen_effect.modulate.a + ALPHA_SPEED*delta, 1)
 	else:
@@ -68,7 +69,6 @@ func freeze():
 	var reagent = get_reagent()
 	if reagent:
 		reagent.freeze()
-	$CanvasLayer.offset = rect_global_position
 
 func unfreeze():
 	frozen = false

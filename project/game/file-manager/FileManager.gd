@@ -57,6 +57,7 @@ func run_file_exists():
 
 
 func delete_run_file():
+	create_run_backup()
 	var run_file = File.new()
 	if run_file.file_exists("user://run.save"):
 		var dir = Directory.new()
@@ -68,13 +69,26 @@ func delete_run_file():
 
 func save_run():
 	assert(dungeon, "Dungeon reference invalid.")
-	
+	create_run_backup()
 	var run_file = File.new()
 	run_file.open("user://run.save", File.WRITE)
 	var run_data = dungeon.get_save_data()
 	run_file.store_line(to_json(run_data))
 	run_file.close()
 
+
+func create_run_backup():
+	var run_file = File.new()
+	if not run_file.file_exists("user://run.save"):
+		return
+	run_file.open("user://run.save", File.READ)
+	var backup_file = File.new()
+	backup_file.open("user://run.backup", File.WRITE)
+	while run_file.get_position() < run_file.get_len():
+		var data = parse_json(run_file.get_line())
+		backup_file.store_line(to_json(data))
+	run_file.close()
+	backup_file.close()
 
 func load_run():
 	var run_file = File.new()

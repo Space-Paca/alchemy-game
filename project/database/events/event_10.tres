@@ -6,9 +6,9 @@
 script = ExtResource( 1 )
 id = 10
 title = "Cursed Knight"
-text = "At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, armored with an ebony-colored suit, shield and halberd.
+text = "At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, suited with an ebony-colored armor, shield and halberd.
 
-Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an odd feeling tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
+Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (wobbly text)odd feeling(/wobbly text) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
 leave_text_1 = "You lift the halberd from the ground, and a surge of power instantly runs through your veins.
 But as a burning candle that bursts into flames, you feel as your life is now running out faster than before.
 
@@ -22,17 +22,17 @@ leave_text_4 = "You don't want to end up as another dead corpse, found by an adv
 type = 2
 floor_appearance = {
 1: false,
-2: false,
-3: false
+2: true,
+3: true
 }
 options = [ {
-"args": [ "cursed_halberd" ],
+"args": [ true ],
 "button_text": "Get the halberd.",
-"callback": "get_artifact"
+"callback": "take_cursed_artifact"
 }, {
-"args": [ "cursed_shield" ],
+"args": [ false ],
 "button_text": "Get the shield.",
-"callback": "get_artifact"
+"callback": "take_cursed_artifact"
 }, {
 "args": [  ],
 "button_text": "Don't take anything.",

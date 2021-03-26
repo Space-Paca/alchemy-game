@@ -213,6 +213,18 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "When transmuting reagents for gold, you get half the original value",
 	},
+	{
+		"id": "cursed_halberd",
+		"name": "Cursed Halberd",
+		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
+		"description": "",
+	},
+	{
+		"id": "cursed_shield",
+		"name": "Cursed Shield",
+		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
+		"description": "",
+	}
 ]
 
 static func get_artifacts_data(rarity : String) -> Array:

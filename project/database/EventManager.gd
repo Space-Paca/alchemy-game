@@ -88,6 +88,7 @@ func get_random_event(current_floor: int) -> Event:
 		event_ids_by_floor[f].erase(id)
 	
 	return get_event_by_id(9)
+# warning-ignore:unreachable_code
 	return get_event_by_id(id)
 
 
@@ -251,5 +252,17 @@ func take_pearls(event_display, player):
 	var text = current_event.leave_text_1.replace("<amount>", str(amount))
 	player.add_pearls(amount)
 	player.add_artifact("cursed_pearls")
+	
+	load_leave_event(event_display, player, text)
+
+#10/11
+func take_cursed_artifact(event_display, player, is_halberd):
+	var text : String
+	if is_halberd:
+		player.add_artifact("cursed_halberd")
+		text = current_event.leave_text_1
+	else:
+		player.add_artifact("cursed_shield")
+		text = current_event.leave_text_2
 	
 	load_leave_event(event_display, player, text)

@@ -16,7 +16,8 @@ var options = {
 	"sfx_volume": 1.0,
 	"fullscreen": true,
 	"borderless": false,
-	"window_size": 3
+	"window_size": 3,
+	"auto_end_turn": false,
 }
 
 var controls = {

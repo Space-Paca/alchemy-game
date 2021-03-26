@@ -14,6 +14,7 @@ onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContaine
 onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
 onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
 onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox
+onready var auto_end_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
 onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
 onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
@@ -113,6 +114,7 @@ func update_buttons():
 	window_size_label.text = str(size.x, "x", size.y)
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
+	auto_end_button.pressed = Profile.get_option("auto_end_turn")
 	resolution_button.disabled = fullscreen_button.pressed
 
 
@@ -251,3 +253,7 @@ func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
 	keybinding.text = button.text
 	
 	button.text = "..."
+
+func _on_AutoPassCheckBox_toggled(button_pressed):
+	printt("here", button_pressed)
+	Profile.set_option("auto_end_turn", button_pressed)

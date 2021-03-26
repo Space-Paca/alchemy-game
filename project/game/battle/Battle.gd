@@ -690,8 +690,11 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 				yield(enemy, "action_resolved")
 				#Wait a bit before next enemy/start player turn
 				yield(get_tree().create_timer(.3), "timeout")
-
+	
 	enable_player()
+	if Profile.get_option("auto_end_turn") and hand.is_empty():
+		yield(get_tree().create_timer(.2), "timeout")
+		end_turn()
 
 
 func get_targeted_effect_total(effects: Array) -> int:

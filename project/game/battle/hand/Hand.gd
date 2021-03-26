@@ -127,6 +127,13 @@ func randomize_reagents():
 		emit_signal("reagents_randomized")
 
 
+func is_empty():
+	for slot in get_slots():
+		if slot.get_reagent() and not slot.is_frozen():
+			return false
+	return true
+
+
 func available_slot_count():
 	var count = 0
 	for slot in get_slots():

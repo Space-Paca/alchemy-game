@@ -255,5 +255,4 @@ func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
 	button.text = "..."
 
 func _on_AutoPassCheckBox_toggled(button_pressed):
-	printt("here", button_pressed)
 	Profile.set_option("auto_end_turn", button_pressed)

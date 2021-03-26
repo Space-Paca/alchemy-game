@@ -78,13 +78,13 @@ func _ready():
 	
 	$PauseScreen.set_block_pause(true)
 	
+	yield(map, "finished_active_paths")
 	if battle_load_data:
 		yield(get_tree().create_timer(.5), "timeout")
 		$PauseScreen.set_block_pause(false)
 		load_battle(battle_load_data)
 		battle_load_data = false
 	else:
-		yield(map, "finished_active_paths")
 		if not Profile.get_tutorial("map"):
 			TutorialLayer.start("map")
 			yield(TutorialLayer, "tutorial_finished")

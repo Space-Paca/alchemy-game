@@ -326,6 +326,9 @@ disabled = true
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
 
+[node name="Video" parent="PauseScreen/Background/SettingsMenu/TabContainer" index="0"]
+visible = true
+
 [node name="Res1" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="0"]
 group = SubResource( 6 )
 

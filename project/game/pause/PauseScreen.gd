@@ -7,6 +7,7 @@ onready var bg = $Background
 onready var screen_title = $Background/Label
 onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
+onready var exit_button = $Background/Menu/Exit
 onready var settings = $Background/SettingsMenu
 onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
 onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
@@ -36,6 +37,9 @@ func _ready():
 	
 	if mode == Modes.MENU:
 		$Background/Menu/Return.hide()
+		exit_button.text = "Exit to Desktop"
+	else:
+		exit_button.text = "Save & Exit to Desktop"
 	
 	for action in controls_buttons.keys():
 		var button : Button = controls_buttons[action]

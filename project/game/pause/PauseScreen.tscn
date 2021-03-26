@@ -346,7 +346,7 @@ margin_bottom = 420.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Return to Main Menu"
+text = "Save & Return to Menu"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
 margin_top = 450.0
@@ -355,7 +355,7 @@ margin_bottom = 570.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Exit to Desktop"
+text = "Save & Exit to Desktop"
 
 [node name="ConfirmMenu" type="VBoxContainer" parent="Background"]
 visible = false

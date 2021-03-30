@@ -22,4 +22,4 @@ master_effect_args = [ [ 12 ] ]
 master_destroy_reagents = [ "trash" ]
 override_master_description = ""
 override_master_short_description = ""
-reagent_combinations = [ [ "defensive", "trash" ], [ "trash", "weak_defensive" ], [ "super_defensive", "trash" ] ]
+reagent_combinations = [ [ "defensive", "trash" ], [ "trash", "weak_defensive" ], [ "super_defensive", "trash" ], [ "defensive", "trash_plus" ], [ "trash_plus", "weak_defensive" ], [ "super_defensive", "trash_plus" ] ]

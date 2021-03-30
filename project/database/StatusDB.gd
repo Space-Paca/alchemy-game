@@ -105,7 +105,7 @@ const STATUSES = {
 	"in-text_name": "minion"},
    "perm_strength": {
 	"title_name": "Permanent Strength",
-	"description": "Permanently increases this character attack damage",
+	"description": "Permanently increases this character attack damage in recipes",
 	"image": preload("res://assets/images/status/perm_strength.png"),
 	"intent_title": "Powering up",
 	"in-text_name": "permanent strength"},
@@ -165,7 +165,7 @@ const STATUSES = {
 	"in-text_name": "splitting"},
    "temp_strength": {
 	"title_name": "Temporary Buff",
-	"description": "Increases the damage of this character next attack",
+	"description": "Increases the damage of this character next attack in recipes",
 	"image": preload("res://assets/images/status/temp_strength.png"),
 	"intent_title": "Focusing strength",
 	"in-text_name": "temporary buff"},

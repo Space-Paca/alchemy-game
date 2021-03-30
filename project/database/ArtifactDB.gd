@@ -240,6 +240,7 @@ static func get_artifacts_data(rarity : String) -> Array:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
 		return []
 
+
 static func get_artifacts(rarity : String) -> Array:
 	var artifacts = []
 	if rarity == "common":
@@ -258,6 +259,15 @@ static func get_artifacts(rarity : String) -> Array:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
 		return []
 	return artifacts
+
+
+static func has(name: String) -> bool:
+	for dict in [EVENT, COMMON, UNCOMMON, RARE]:
+		for artifact in dict:
+			if artifact.id == name:
+				return true
+	return false
+
 
 static func get_from_name(name: String) -> Dictionary:
 	for artifact in COMMON:

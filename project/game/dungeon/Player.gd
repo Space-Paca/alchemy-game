@@ -52,6 +52,10 @@ func _ready():
 		add_reagent("weak_damaging", false)
 	for _i in range(3):
 		add_reagent("weak_defensive", false)
+	
+	# DEBUG
+# warning-ignore:return_value_discarded
+	Debug.connect("artifact_pressed", self, "_on_Debug_artifact_added")
 
 
 func get_save_data():
@@ -382,3 +386,8 @@ func remove_artifact(name : String):
 
 func reveal_map():
 	emit_signal("reveal_map")
+
+
+func _on_Debug_artifact_added(name: String):
+	if not has_artifact(name):
+		add_artifact(name)

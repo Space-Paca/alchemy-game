@@ -30,9 +30,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 840.0
-margin_top = 378.0
+margin_top = 366.0
 margin_right = 1079.0
-margin_bottom = 702.0
+margin_bottom = 714.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 239.0
@@ -115,6 +115,23 @@ max_value = 10.0
 value = 1.0
 align = 3
 
+[node name="Artifact" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 328.0
+margin_right = 239.0
+margin_bottom = 348.0
+
+[node name="ArtifactButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Artifact"]
+margin_right = 89.0
+margin_bottom = 20.0
+text = "Add artifact:"
+
+[node name="TextEdit" type="TextEdit" parent="Background/CenterContainer/VBoxContainer/Artifact"]
+margin_left = 93.0
+margin_right = 239.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -162,6 +179,8 @@ custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/WinBtn" to="." method="_on_WinBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/DieBtn" to="." method="_on_DieBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockCombBtn" to="." method="_on_UnlockCombBtn_pressed"]
@@ -173,3 +192,4 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Reset Tutorials" to="." method="_on_Reset_Tutorials_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Event/EventButton" to="." method="_on_EventButton_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Artifact/ArtifactButton" to="." method="_on_ArtifactButton_pressed"]

@@ -1,11 +1,13 @@
 extends CanvasLayer
 
 onready var bg = $Background
+onready var tween = $Tween
 onready var floor_button = $Background/CenterContainer/VBoxContainer/FloorButton
 onready var fps_label = $Info/FPS
 onready var unlock_btn = $Background/CenterContainer/VBoxContainer/UnlockCombBtn
 onready var version_label = $Info/Version
 onready var id_box = $Background/CenterContainer/VBoxContainer/Event/IdBox
+onready var artifact_box = $Background/CenterContainer/VBoxContainer/Artifact/TextEdit
 
 signal combinations_unlocked
 signal battle_won
@@ -13,6 +15,7 @@ signal died
 signal floor_selected(floor_number)
 signal test_map_creation
 signal event_pressed(id)
+signal artifact_pressed(name)
 
 const VERSION := "v0.2.1"
 const MAX_FLOOR := 3
@@ -97,3 +100,15 @@ func _on_Reset_Tutorials_pressed():
 func _on_EventButton_pressed():
 	emit_signal("event_pressed", int(id_box.get_line_edit().text))
 	bg.hide()
+
+
+func _on_ArtifactButton_pressed():
+	var name = artifact_box.text
+	if ArtifactDB.has(name):
+		emit_signal("artifact_pressed", artifact_box.text)
+		bg.hide()
+	else:
+		tween.interpolate_property(artifact_box, "modulate", Color.red,
+				Color.white, .5)
+		tween.start()
+	artifact_box.text = ""

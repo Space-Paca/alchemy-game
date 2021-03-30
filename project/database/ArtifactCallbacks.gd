@@ -83,7 +83,7 @@ func on_battle_start_temp_strength_plus(args):
 
 func on_battle_start_cursed_halberd(args):
 	args.player.add_status("perm_strength", 5, true)
-	args.player.take_damage(8)
+	args.player.take_damage(args.player, 8, "regular", false)
 
 func on_battle_start_cursed_shield(args):
 	args.player.take_damage(args.player, 8, "regular", false)

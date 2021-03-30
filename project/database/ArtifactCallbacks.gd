@@ -17,6 +17,7 @@ func call_on_turn_start(name : String, args : Dictionary):
 		call("on_turn_start_" + name, args)
 
 #On add methods
+
 func on_add_coin_bag(args):
 	AudioManager.play_sfx("get_coins")
 	args.player.gold += 40
@@ -44,7 +45,7 @@ func on_add_random_kit(args):
 func on_add_trash_heal(args):
 	AudioManager.play_sfx("debuff")
 	for _i in range(0,4):
-		args.player.add_reagent("trash", false)
+		args.player.add_reagent("trash_plus", false)
 
 func on_add_max_hp(args):
 	AudioManager.play_sfx("heal")
@@ -62,7 +63,9 @@ func on_add_money_bag(args):
 func on_add_reveal_map(args):
 	args.player.reveal_map()
 
+
 #On battle start methods
+
 func on_battle_start_carapa_buckler(args):
 	args.player.gain_shield(10)
 
@@ -78,8 +81,21 @@ func on_battle_start_temp_strength(args):
 func on_battle_start_temp_strength_plus(args):
 	args.player.add_status("temp_strength", 12, true)
 
+func on_battle_start_cursed_halberd(args):
+	args.player.add_status("perm_strength", 5, true)
+	args.player.take_damage(8)
+
+func on_battle_start_cursed_shield(args):
+	args.player.take_damage(args.player, 8, "regular", false)
+
+
 #On battle finish methods
+
 func on_battle_finish_mender_belt(args):
 	args.player.heal(8)
 
 
+#On battle turn start methods
+
+func on_turn_start_cursed_shield(args):
+	args.player.gain_shield(5)

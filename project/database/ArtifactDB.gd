@@ -133,7 +133,7 @@ const UNCOMMON = [
 		"id": "trash_heal",
 		"name": "Mortar and Pestle",
 		"image": preload("res://assets/images/artifacts/trash_heal.png"),
-		"description": "When acquired, add 4 trash-reagents to your bag. Misused trash reagents will heal you instead of harm you",
+		"description": "When acquired, add 4 Pristine Beetles to your bag. Misused beetle reagents will heal you instead of harm you",
 	},
 	{
 		"id": "strength_plus",
@@ -217,13 +217,13 @@ const EVENT = [
 		"id": "cursed_halberd",
 		"name": "Cursed Halberd",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "",
+		"description": "At the start of each battle, gain 5 permanent strength. At the start of each battle, take 8 damage.",
 	},
 	{
 		"id": "cursed_shield",
 		"name": "Cursed Shield",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "",
+		"description": "At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage.",
 	}
 ]
 
@@ -260,9 +260,6 @@ static func get_artifacts(rarity : String) -> Array:
 	return artifacts
 
 static func get_from_name(name: String) -> Dictionary:
-	for artifact in EVENT:
-		if artifact.id == name:
-			return artifact
 	for artifact in COMMON:
 			if artifact.id == name:
 				return artifact
@@ -270,6 +267,9 @@ static func get_from_name(name: String) -> Dictionary:
 		if artifact.id == name:
 			return artifact
 	for artifact in RARE:
+		if artifact.id == name:
+			return artifact
+	for artifact in EVENT:
 		if artifact.id == name:
 			return artifact
 	
@@ -289,9 +289,6 @@ static func get_tooltip(name: String) -> Dictionary:
 
 
 static func get_rarity_from_name(name: String) -> String:
-	for artifact in EVENT:
-		if artifact.id == name:
-			return "Event"
 	for artifact in COMMON:
 			if artifact.id == name:
 				return "Common"
@@ -301,6 +298,9 @@ static func get_rarity_from_name(name: String) -> String:
 	for artifact in RARE:
 		if artifact.id == name:
 			return "Rare"
+	for artifact in EVENT:
+		if artifact.id == name:
+			return "Event"
 	
 	assert(false, "Given type of artifact doesn't exist: " + str(name))
 	return ""

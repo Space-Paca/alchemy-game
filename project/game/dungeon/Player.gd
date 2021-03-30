@@ -316,6 +316,7 @@ func gain_shield(amount: int):
 
 func new_turn():
 	update_status("start_turn")
+	call_artifacts("turn_start", {"player": self})
 	if hud.need_to_update_visuals(self):
 		hud.update_visuals(self)
 		yield(hud, "animation_completed")

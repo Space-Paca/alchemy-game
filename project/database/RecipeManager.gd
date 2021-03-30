@@ -142,7 +142,7 @@ func describe_effects(effects_list, effect_args):
 			if count == 1:
 				text += "Deals %d %s damage to target enemy." % [args[0], args[1]]
 			else:
-				text += "Deals %d %s damage %d times to any number of targets." % [args[0], args[1], count]
+				text += "Deals %d %s damage %d times." % [args[0], args[1], count]
 		elif effect == "damage_all":
 			text += "Deals %d %s damage to all enemies." % [args[0], args[1]]
 		elif effect == "heal":

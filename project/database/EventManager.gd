@@ -7,8 +7,8 @@ const FLOORS = [1, 2, 3]
 const FORMAT_DICT = {
 		"(highlight)": "[color=#ffff00]",
 		"(/highlight)": "[/color]",
-		"(woobly text)": "[shake]",
-		"(/woobly text)": "[/shake]",
+		"(wobbly text)": "[shake]",
+		"(/wobbly text)": "[/shake]",
 		"(smaller text)": "[i]",
 		"(/smaller text)": "[/i]",
 		"(waving text)": "[wave amp=50 freq=2]",
@@ -70,6 +70,19 @@ func reset_events():
 	
 	# Reset event 4 (hole) chances and reward
 	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
+	
+	# Reset event 13 (blood font) amount of times payed
+	events_by_id[13].options[0]["args"] = events_by_id[12].options[0]["args"]
+
+
+func reward_random_artifact(player: Player, artifacts: Array) -> void:
+	artifacts.shuffle()
+	for artifact in artifacts:
+		if not player.has_artifact(artifact):
+			player.add_artifact(artifact)
+			return
+	
+	assert(false, "Couldn't reward random artifact")
 
 
 func get_random_event(current_floor: int) -> Event:
@@ -87,7 +100,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(9)
+	return get_event_by_id(12)
 # warning-ignore:unreachable_code
 	return get_event_by_id(id)
 
@@ -171,16 +184,7 @@ func well(event_display, player, amount: int):
 			won = true
 		elif rand < .9:
 			var artifacts : Array = ArtifactDB.get_artifacts("uncommon")
-			artifacts.shuffle()
-			var rewarded = false
-			for artifact in artifacts:
-				if not player.has_artifact(artifact):
-					player.add_artifact(artifact)
-					rewarded = true
-					break
-			
-			assert(rewarded, "Event id 2: Artifact not rewarded")
-			
+			reward_random_artifact(player, artifacts)
 			load_leave_event(event_display, player, current_event.leave_text_2)
 			return
 	else:
@@ -255,7 +259,7 @@ func take_pearls(event_display, player):
 	
 	load_leave_event(event_display, player, text)
 
-#10/11
+#10
 func take_cursed_artifact(event_display, player, is_halberd):
 	var text : String
 	if is_halberd:
@@ -266,3 +270,43 @@ func take_cursed_artifact(event_display, player, is_halberd):
 		text = current_event.leave_text_2
 	
 	load_leave_event(event_display, player, text)
+
+#11
+func take_trash(event_display, player, amount):
+	var text : String
+	var artifacts : Array
+	match amount:
+		1:
+			text = current_event.leave_text_1
+			artifacts = ArtifactDB.get_artifacts("common")
+		4:
+			text = current_event.leave_text_2
+			artifacts = ArtifactDB.get_artifacts("uncommon")
+		8:
+			text = current_event.leave_text_3
+			artifacts = ArtifactDB.get_artifacts("rare")
+	
+	for i in amount:
+		player.add_reagent("trash_plus", false)
+	
+	reward_random_artifact(player, artifacts)
+	
+	load_leave_event(event_display, player, text)
+
+#12/13
+func coins_for_blood(event_display, player, times):
+	events_by_id[13].options[0]["args"][0] += 1
+	
+	if player.hp <= 4:
+		AudioManager.play_sfx("error")
+		return
+	
+	player.set_hp(player.hp - 4)
+	player.add_gold(5)
+	if times >= 10:
+		player.add_gold(5)
+		reward_random_artifact(player, ArtifactDB.get_artifacts("uncommon"))
+		load_leave_event(event_display, player, current_event.leave_text_1)
+		return
+	
+	load_new_event(event_display, player, 13)

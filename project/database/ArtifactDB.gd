@@ -80,13 +80,13 @@ const UNCOMMON = [
 		"id": "buff_kit",
 		"name": "Powerful Satchel",
 		"image": preload("res://assets/images/artifacts/buff_kit.png"),
-		"description": "When acquired, add 3 buff-reagents to your bag",
+		"description": "When acquired, add 3 Horn Fragment reagents to your bag",
 	},
 	{
 		"id": "debuff_kit",
 		"name": "Wicked Satchel",
 		"image": preload("res://assets/images/artifacts/debuff_kit.png"),
-		"description": "When acquired, add 3 debuff-reagents to your bag",
+		"description": "When acquired, add 3 Cracked Skull reagents to your bag",
 	},
 	{
 		"id": "trash_heal",
@@ -105,47 +105,6 @@ const UNCOMMON = [
 		"name": "Morhk Chain",
 		"image": preload("res://assets/images/artifacts/temp_strength_plus.png"),
 		"description": "Start each battle with 12 temporary strength",
-	},
-	{
-		"id": "random_kit",
-		"name": "Unpredictable Satchel",
-		"image": preload("res://assets/images/artifacts/random_kit.png"),
-		"description": "When acquired, add 4 random reagents to your bag",
-	},
-	{
-		"id": "poisoned_dagger",
-		"name": "Poisoned Dagger",
-		"image": preload("res://assets/images/artifacts/poisoned_dagger.png"),
-		"description": "Whenever you deal unblocked damage to an enemy, apply 1 poison to it",
-	},	{
-		"id": "buff_kit",
-		"name": "Powerful Satchel",
-		"image": preload("res://assets/images/artifacts/buff_kit.png"),
-		"description": "When acquired, add 3 buff-reagents to your bag",
-	},
-	{
-		"id": "debuff_kit",
-		"name": "Wicked Satchel",
-		"image": preload("res://assets/images/artifacts/debuff_kit.png"),
-		"description": "When acquired, add 3 debuff-reagents to your bag",
-	},
-	{
-		"id": "trash_heal",
-		"name": "Mortar and Pestle",
-		"image": preload("res://assets/images/artifacts/trash_heal.png"),
-		"description": "When acquired, add 4 Pristine Beetles to your bag. Misused beetle reagents will heal you instead of harm you",
-	},
-	{
-		"id": "strength_plus",
-		"name": "Mightstone",
-		"image": preload("res://assets/images/artifacts/strength_plus.png"),
-		"description": "Start each battle with 8 permanent strength",
-	},
-	{
-		"id": "temp_strength_plus",
-		"name": "Morhk Chain",
-		"image": preload("res://assets/images/artifacts/temp_strength_plus.png"),
-		"description": "Start each battle with 20 temporary strength",
 	},
 	{
 		"id": "random_kit",

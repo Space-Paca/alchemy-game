@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 11
+title = "Artefatos por lixo"
+text = "Quer lixo?"
+leave_text_1 = "Ganhou 1 artefato comum"
+leave_text_2 = "Ganhou 1 artefato incomum"
+leave_text_3 = "\"Well, let's do this\", you think as you drop your belongings  and frantically start searching the body for something important.
+
+This maddening task takes unbearing amounts of time, but it finally pays off, as you find, deep into the rotting corpse, a legendary artifact!
+
+You immediately retrieve it and get away from the body, trying your best to remove all the crawling life away from you.
+
+You leave the scene as fast as you can, not noticing some extra weight from the extra passengers that crawled in your bag."
+leave_text_4 = "Ignorou"
+type = 2
+floor_appearance = {
+1: false,
+2: true,
+3: true
+}
+options = [ {
+"args": [ 1 ],
+"button_text": "Search the corpse superficially (receive 1 Preserved Beetle reagent).",
+"callback": "take_trash"
+}, {
+"args": [ 4 ],
+"button_text": "Pegar 4",
+"callback": "take_trash"
+}, {
+"args": [ 8 ],
+"button_text": "Pegar 8",
+"callback": "take_trash"
+}, {
+"args": [  ],
+"button_text": "Ignorar",
+"callback": "leave_option"
+} ]

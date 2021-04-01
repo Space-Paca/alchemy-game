@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 13
+title = "Fonte de sangue"
+text = "Quer mais?"
+leave_text_1 = "Para de fazer isso, toma um artefato."
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = "Não quer mais"
+type = 2
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ 1 ],
+"button_text": "Pagar vida.",
+"callback": "coins_for_blood"
+}, {
+"args": [  ],
+"button_text": "Leave.",
+"callback": "leave_option"
+} ]

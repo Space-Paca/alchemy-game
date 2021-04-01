@@ -5,12 +5,24 @@
 [resource]
 script = ExtResource( 1 )
 id = 12
-title = "Fonte de sangue"
-text = "Pagar 4 de vida pra ganhar 5 de dinheiro?"
-leave_text_1 = ""
+title = "Blood Fountain"
+text = "Your journey is halted by a demonic altar.
+
+What looks to be a fountain pouring an unending flow stream of blood, an ominious statue inside of it catches your attention. It's of an unholy demon, its dark ebony body covered from the fountain splashes, and its open mouth, his sharp teeth are dripping in blood, inviting you to contribute yourself to this pagan ritual. 
+
+Will you participate in this sinister offering? It is known those who pay the price of life are generously compensated in the eyes of the dark gods..."
+leave_text_1 = "At the brink of death, you stab yourself into the demon's mouth, offering the last drop of blood you had in your body, and then collapsing into the fountain, (smaller text)lifeless.(/smaller text)
+
+An act of unquestionable devotion or just complete foolishness, this deed of madness has interested something powerful, because suddenly you are blasted from the fountain, coughing and dripping blood, with a thin thread of life still in you.
+
+And your life isn't the only gift you have received: in your arms resides a most powerful artifact, spoken only in miths and legends: (highlight)The Blood Cursed Grimorie(/highlight).
+
+You gather your belongings, and with the little strength you still have, resume your journey. And now, with a dark voice guiding you in your thoughts..."
 leave_text_2 = ""
 leave_text_3 = ""
-leave_text_4 = "Saiu sem pagar"
+leave_text_4 = "You don't want to get involved in this, so you ignore the sinister offering.
+
+As you walk away, you feel a presence looming over you, but it quickly dissipates..."
 type = 2
 floor_appearance = {
 1: true,
@@ -19,7 +31,7 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 1 ],
-"button_text": "Pagar vida.",
+"button_text": "Offer 4 health.",
 "callback": "coins_for_blood"
 }, {
 "args": [  ],

@@ -298,15 +298,26 @@ func coins_for_blood(event_display, player, times):
 	events_by_id[13].options[0]["args"][0] += 1
 	
 	if player.hp <= 4:
-		AudioManager.play_sfx("error")
+		player.set_hp(1)
+		player.add_artifact("bloodcursed_grimoire")
+		load_leave_event(event_display, player, events_by_id[12].leave_text_1)
 		return
 	
 	player.set_hp(player.hp - 4)
-	player.add_gold(5)
+	
 	if times >= 10:
-		player.add_gold(5)
 		reward_random_artifact(player, ArtifactDB.get_artifacts("uncommon"))
-		load_leave_event(event_display, player, current_event.leave_text_1)
+		load_leave_event(event_display, player, current_event.leave_text_2)
 		return
 	
-	load_new_event(event_display, player, 13)
+	var text : String
+	var gold = 3 + randi() % 5 if randf() > .1 else 10
+	
+	if times <= 1:
+		player.add_gold(gold)
+		text = events_by_id[13].text.replace("<amount>", str(gold))
+	else:
+		player.add_gold(gold)
+		text = current_event.leave_text_1.replace("<amount>", str(gold))
+	
+	load_new_event(event_display, player, 13, text)

@@ -183,6 +183,12 @@ const EVENT = [
 		"name": "Cursed Shield",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage.",
+	},
+	{
+		"id": "bloodcursed_grimoire",
+		"name": "Bloodcursed Grimoire",
+		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
+		"description": "",
 	}
 ]
 

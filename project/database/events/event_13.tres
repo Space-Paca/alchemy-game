@@ -5,12 +5,30 @@
 [resource]
 script = ExtResource( 1 )
 id = 13
-title = "Fonte de sangue"
-text = "Quer mais?"
-leave_text_1 = "Para de fazer isso, toma um artefato."
-leave_text_2 = ""
+title = "Blood Fountain"
+text = "Sticking your hand into the demon's sharp teeth, you make a small offering to the fountain, a sharp pain rushes through your hand as your blood drops into the crimson pool, quickly lost like tears in the rain.
+
+And just as the pain starts to fade away, you see the familiar glimmer of gold sparkling in the pool. With your other hand you reach to grab your reward: (highlight)<amount> gold coins(/highlight)!
+
+You could leave now... or make another offering. The dark gods are known to (highlight)compensate highly(/highlight) those who push themselves to their limit for their amusement..."
+leave_text_1 = "You make another offering.
+
+The pain is only getting worse, but the fountain quickly returns the favor.
+
+You reach for the pool of blood and retrieve (highlight)<amount> gold coins(/highlight).
+
+Is it time to stop? Or continue pleasing the gods?"
+leave_text_2 = "You stab your hand one last time, your hand already deformed from all those offerings.
+
+But as you look to the pool in search of your reward, you are surprised to find something else, a gift from the gods themselves, pleased at your dedication.
+
+You grab the object and resume your journey. As you walk away, you feel a dark presence looming over you. It gets a bit lighter after a few hours, but it never truly leaves..."
 leave_text_3 = ""
-leave_text_4 = "Não quer mais"
+leave_text_4 = "You've made all the offerings you could.
+
+You fix your hand with whatever you could find in your backpack, and leave this sinister place.
+
+You feel a strange sensation taking over you as you leave, and it takes many hours until it goes back to normal..."
 type = 2
 floor_appearance = {
 1: false,
@@ -19,7 +37,7 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 1 ],
-"button_text": "Pagar vida.",
+"button_text": "Offer 4 health.",
 "callback": "coins_for_blood"
 }, {
 "args": [  ],

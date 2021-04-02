@@ -16,6 +16,10 @@ func call_on_turn_start(name : String, args : Dictionary):
 	if has_method("on_turn_start_" + name):
 		call("on_turn_start_" + name, args)
 
+func call_on_enemy_died(name : String, args : Dictionary):
+	if has_method("on_enemy_died_" + name):
+		call("on_enemy_died_" + name, args)
+
 #On add methods
 
 func on_add_coin_bag(args):
@@ -99,3 +103,9 @@ func on_battle_finish_mender_belt(args):
 
 func on_turn_start_cursed_shield(args):
 	args.player.gain_shield(5)
+
+
+#On enemy died methods
+
+func on_enemy_died_bloodcursed_grimoire(args):
+	args.player.heal(9)

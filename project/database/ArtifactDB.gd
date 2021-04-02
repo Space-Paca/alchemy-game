@@ -188,7 +188,7 @@ const EVENT = [
 		"id": "bloodcursed_grimoire",
 		"name": "Bloodcursed Grimoire",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "",
+		"description": "Whenever you defeat an enemy, gain 9 life",
 	}
 ]
 

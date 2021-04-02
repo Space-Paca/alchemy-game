@@ -1185,7 +1185,9 @@ func _on_enemy_died(enemy):
 				break
 		if remove_sfx:
 			AudioManager.stop_enemy_idle_sfx(enemy.data.sfx)
-
+	
+	player.call_artifacts("enemy_died", {"player": player})
+	
 	if not enemies_node.get_child_count():
 		win()
 		return

@@ -73,6 +73,9 @@ func reset_events():
 	
 	# Reset event 13 (blood font) amount of times payed
 	events_by_id[13].options[0]["args"] = events_by_id[12].options[0]["args"]
+	
+	# Reset event 15 (blood sacrifice) options
+	events_by_id[15].options = events_by_id[14].options.duplicate(true)
 
 
 func reward_random_artifact(player: Player, artifacts: Array) -> void:
@@ -100,7 +103,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(12)
+	return get_event_by_id(14)
 # warning-ignore:unreachable_code
 	return get_event_by_id(id)
 
@@ -321,3 +324,26 @@ func coins_for_blood(event_display, player, times):
 		text = current_event.leave_text_1.replace("<amount>", str(gold))
 	
 	load_new_event(event_display, player, 13, text)
+
+#14/15
+func life_trade(event_display, player, option_id, life_amount):
+	if player.hp <= life_amount:
+		AudioManager.play_sfx("error")
+		return
+	
+	player.set_hp(player.hp - life_amount)
+	
+	match option_id:
+		0:
+			player.add_gold(15)
+		1:
+			player.add_pearls(1)
+		2:
+			reward_random_artifact(player, ArtifactDB.get_artifacts("common"))
+	
+	for option in events_by_id[15].options:
+		if option_id == option["args"][0]:
+			events_by_id[15].options.erase(option)
+			break
+	
+	load_new_event(event_display, player, 15)

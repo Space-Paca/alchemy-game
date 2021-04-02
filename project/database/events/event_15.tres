@@ -1,0 +1,44 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 15
+title = "Sacrifício de sangue"
+text = "From the shadows in a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides.
+
+As you approach it, an eerie figure pops out from an opening, hastly addressing to you, as if it sensed your presence long before you came.
+
+(waving text)\"Greeetings you traveleeerrr\"(/waving text) the figure hisses, \"I can senssee you are a powerrrfull adventurerrr. How would you like trade a bit of your, hmmm, (highlight)strength(/highlight), with me?\"
+
+You've heard of this before, the shady figure is vampire kin, known to live on the life forces of other beings. Sometimes tempting with material trades, others just brutally suck the life of their victims. This one seems to be the more civilized kind.
+
+The shady figure extends a bony hand, waiting your response."
+leave_text_1 = "5 de vida = 15 moedas"
+leave_text_2 = "15 de vida = 1 pérola"
+leave_text_3 = "25 de vida = 1 artefato comum"
+leave_text_4 = "\"Não obrigado\", você diz."
+type = 2
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ 0, 5 ],
+"button_text": "Pagar 5 de vida por 15 moedas.",
+"callback": "life_trade"
+}, {
+"args": [ 1, 15 ],
+"button_text": "Pagar 15 de vida por 1 pérola.",
+"callback": "life_trade"
+}, {
+"args": [ 2, 25 ],
+"button_text": "Pagar 25 de vida por 1 artefato comum.",
+"callback": "life_trade"
+}, {
+"args": [  ],
+"button_text": "Leave.",
+"callback": "leave_option"
+} ]

@@ -63,13 +63,13 @@ func enable_tooltips():
 func get_alpha():
 	return modulate.a
 
+
 func light_up():
 	var dur = .5
 	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
-
 
 
 func fade_in():
@@ -80,6 +80,7 @@ func fade_in():
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
+
 
 func set_camera(cam):
 	camera = cam

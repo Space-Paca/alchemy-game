@@ -582,9 +582,9 @@ func open_treasure(room, _player):
 
 
 func open_event(map_node: MapNode):
+	event_display.set_map_node(map_node)
 	event_display.load_event(EventManager.get_random_event(floor_level), player)
 	event_display.show()
-	map_node.set_type(MapNode.EMPTY)
 	
 	Transition.end_transition()
 
@@ -821,6 +821,7 @@ func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: b
 			yield(TutorialLayer, "tutorial_finished")
 			Profile.set_tutorial("clicked_recipe", true)
 
+
 func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 	favorite_combination(combination, button_pressed)
 
@@ -900,6 +901,14 @@ func _on_EventDisplay_closed():
 	current_node = null
 	
 	Transition.end_transition()
+
+
+func _on_EventDisplay_event_spawned_rest():
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
+	event_display.hide()
+	open_rest(event_display.map_node, player)
 
 
 func _on_Debug_combinations_unlocked():

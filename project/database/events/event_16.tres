@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 16
+title = "Pacto de Sangue"
+text = "Oi"
+leave_text_1 = "Pagou"
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = "Saiu"
+type = 2
+floor_appearance = {
+1: true,
+2: true,
+3: true
+}
+options = [ {
+"args": [  ],
+"button_text": "Pagar",
+"callback": "blood_pact"
+}, {
+"args": [  ],
+"button_text": "Leave.",
+"callback": "leave_option"
+} ]

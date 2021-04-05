@@ -5,12 +5,34 @@
 [resource]
 script = ExtResource( 1 )
 id = 14
-title = "Sacrifício de sangue"
-text = "\"Compro sangue\", disse o cara."
-leave_text_1 = "5 de vida = 15 moedas"
-leave_text_2 = "15 de vida = 1 pérola"
-leave_text_3 = "25 de vida = 1 artefato comum"
-leave_text_4 = "\"Não obrigado\", você diz."
+title = "Shady Businessss"
+text = "In a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides. As you approach it, an eerie figure pops out from an opening, hastily addressing to you:
+
+(waving text)\"Greetingsss traveler\"(/waving text) the figure hisses, (waving text)\"Would you like trade sssome of your (highlight)ssstrength(/highlight)?(/waving text)\"
+
+You've heard of this before, the figure is vampire kin, known to drain the life forces of beings. Sometimes just brutally sucking the life of their victims, this one seems to be the more civilized kind.
+
+The shady figure extends a bony hand, waiting your response."
+leave_text_1 = "You could use a little gold. 
+
+You signal to the vampire, and they nod with an unsettling smirk on their face.
+
+You grab their hand and a quick flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quicky fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure."
+leave_text_2 = "You point to one of the sparkly pearls dangling in the corner of the caravan.
+
+The vampire smiles, their eyes sparks disconcertingly.
+
+You grab their hand and a mild flow of energy pulses from your hand into their body. You feel weak, but you try to recompose yourself when the vampire handles the precious pearl to you."
+leave_text_3 = "You point to a certain trinket dangling from the caravan. The vampire's eyes open wide, ample smile on their face, barely containing immense joy.
+
+Unprompted, they grab your hand, as if to not give you time to change your mind, and a surge of energy flows through your hand from your body, a feeling of pain mixed with a burning sensation.
+
+When the vampire releases your hand, you collapse to the floor. The vampire tosses your artifact by your feet, and with a toothed grin hisses to you:
+
+(waving text)\"Anything elssse?\"(/waving text)"
+leave_text_4 = "You don't trust the figure and step away from the caravan. You both take different paths as you resume your journey.
+
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."
 type = 2
 floor_appearance = {
 1: true,
@@ -19,18 +41,18 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 0, 5 ],
-"button_text": "Pagar 5 de vida por 15 moedas.",
+"button_text": "Pay 5 life for 15 gold coins.",
 "callback": "life_trade"
 }, {
 "args": [ 1, 15 ],
-"button_text": "Pagar 15 de vida por 1 pérola.",
+"button_text": "Pay 15 life for a pearl.",
 "callback": "life_trade"
 }, {
 "args": [ 2, 25 ],
-"button_text": "Pagar 25 de vida por 1 artefato comum.",
+"button_text": "Pay 25 life for a common artifact.",
 "callback": "life_trade"
 }, {
 "args": [  ],
-"button_text": "Leave.",
+"button_text": "Decline the offer.",
 "callback": "leave_option"
 } ]

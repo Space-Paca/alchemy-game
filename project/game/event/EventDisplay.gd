@@ -1,6 +1,7 @@
 extends Control
 
-signal closed
+signal closed_event
+signal event_spawned_rest
 
 onready var title_label = $Title
 onready var text_label = $VBox/TextRect/TextContainer/Text
@@ -15,11 +16,18 @@ const IMAGES = [preload("res://assets/images/events/event_luck.png"),
 		preload("res://assets/images/events/event_quest.png")]
 
 var event : Event
+var map_node : MapNode
 
 
 func _ready():
 # warning-ignore:return_value_discarded
-	EventManager.connect("left", self, "_on_event_left")
+	EventManager.connect("left_event", self, "_on_event_left")
+# warning-ignore:return_value_discarded
+	EventManager.connect("spawned_rest", self, "_on_event_spawned_rest")
+
+
+func set_map_node(node: MapNode) -> void:
+	map_node = node
 
 
 func load_event(new_event: Event, player: Player, override_text: String = ""):
@@ -46,4 +54,10 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 
 
 func _on_event_left():
-	emit_signal("closed")
+	map_node.set_type(MapNode.EMPTY)
+	emit_signal("closed_event")
+
+
+func _on_event_spawned_rest():
+	map_node.set_type(MapNode.REST)
+	emit_signal("event_spawned_rest")

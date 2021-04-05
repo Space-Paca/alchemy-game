@@ -1,6 +1,7 @@
 extends Node
 
-signal left
+signal left_event
+signal spawned_rest
 
 const FLOORS = [1, 2, 3]
 # Text effects
@@ -103,9 +104,8 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(14)
-# warning-ignore:unreachable_code
-	return get_event_by_id(id)
+	return get_event_by_id(17)
+#	return get_event_by_id(id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -138,7 +138,7 @@ func none(_event_display, _player):
 
 
 func leave(_event_display, _player):
-	emit_signal("left")
+	emit_signal("left_event")
 
 
 func leave_option(event_display, player):
@@ -332,18 +332,37 @@ func life_trade(event_display, player, option_id, life_amount):
 		return
 	
 	player.set_hp(player.hp - life_amount)
+	var text : String
 	
 	match option_id:
 		0:
 			player.add_gold(15)
+			text = events_by_id[14].leave_text_1
 		1:
 			player.add_pearls(1)
+			text = events_by_id[14].leave_text_2
 		2:
 			reward_random_artifact(player, ArtifactDB.get_artifacts("common"))
+			text = events_by_id[14].leave_text_3
 	
 	for option in events_by_id[15].options:
 		if option_id == option["args"][0]:
 			events_by_id[15].options.erase(option)
 			break
 	
-	load_new_event(event_display, player, 15)
+	load_new_event(event_display, player, 15, text)
+
+#16
+func blood_pact(event_display, player):
+	player.set_hp(int(ceil(player.hp * 2.0 / 3.0)))
+	player.add_artifact("TO DO")
+	
+	load_leave_event(event_display, player, current_event.leave_text_1)
+
+#17
+func resting_place(event_display, player, chose_rest: bool):
+	if chose_rest:
+		emit_signal("spawned_rest")
+	else:
+		player.add_artifact("TO DO")
+		load_leave_event(event_display, player, current_event.leave_text_1)

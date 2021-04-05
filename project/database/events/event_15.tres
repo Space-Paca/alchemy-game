@@ -5,20 +5,14 @@
 [resource]
 script = ExtResource( 1 )
 id = 15
-title = "Sacrifício de sangue"
-text = "From the shadows in a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides.
+title = "Shady Businessss"
+text = ""
+leave_text_1 = ""
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = "You've made all the bargains you wanted (or could), so you turn from the caravan and leave to your journey, going different paths than the vampire.
 
-As you approach it, an eerie figure pops out from an opening, hastly addressing to you, as if it sensed your presence long before you came.
-
-(waving text)\"Greeetings you traveleeerrr\"(/waving text) the figure hisses, \"I can senssee you are a powerrrfull adventurerrr. How would you like trade a bit of your, hmmm, (highlight)strength(/highlight), with me?\"
-
-You've heard of this before, the shady figure is vampire kin, known to live on the life forces of other beings. Sometimes tempting with material trades, others just brutally suck the life of their victims. This one seems to be the more civilized kind.
-
-The shady figure extends a bony hand, waiting your response."
-leave_text_1 = "5 de vida = 15 moedas"
-leave_text_2 = "15 de vida = 1 pérola"
-leave_text_3 = "25 de vida = 1 artefato comum"
-leave_text_4 = "\"Não obrigado\", você diz."
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."
 type = 2
 floor_appearance = {
 1: false,
@@ -27,18 +21,18 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 0, 5 ],
-"button_text": "Pagar 5 de vida por 15 moedas.",
+"button_text": "Pay 5 life for 15 gold coins.",
 "callback": "life_trade"
 }, {
 "args": [ 1, 15 ],
-"button_text": "Pagar 15 de vida por 1 pérola.",
+"button_text": "Pay 15 life for a pearl.",
 "callback": "life_trade"
 }, {
 "args": [ 2, 25 ],
-"button_text": "Pagar 25 de vida por 1 artefato comum.",
+"button_text": "Pay 25 life for a common artifact.",
 "callback": "life_trade"
 }, {
 "args": [  ],
-"button_text": "Leave.",
+"button_text": "Stop bartering.",
 "callback": "leave_option"
 } ]

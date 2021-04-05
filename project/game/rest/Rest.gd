@@ -49,7 +49,8 @@ func update_heal_button():
 
 
 func reset_room():
-	map_node.set_type(MapNode.EMPTY)
+	if map_node:
+		map_node.set_type(MapNode.EMPTY)
 
 
 func setup_recipes():

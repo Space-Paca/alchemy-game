@@ -136,7 +136,8 @@ func set_hp(new_value: int):
 
 func set_max_hp(value):
 	.set_max_hp(value)
-	hud.update_max_hp(value)
+	if hud:
+		hud.update_max_hp(value)
 
 
 func add_gold(amount: int):

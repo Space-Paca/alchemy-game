@@ -99,7 +99,7 @@ func on_battle_finish_mender_belt(args):
 	args.player.heal(8)
 
 
-func on_battle_finish_pact_thing(args):
+func on_battle_finish_gold_ankh(args):
 	args.player.increase_max_hp(10)
 	args.player.heal(10)
 

@@ -191,8 +191,8 @@ const EVENT = [
 		"description": "Whenever you defeat an enemy, gain 9 life",
 	},
 	{
-		"id": "pact_thing",
-		"name": "Pact Thing",
+		"id": "gold_ankh",
+		"name": "Gold Ankh",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "Whenever you finish a battle, gain 10 max health",
 	}

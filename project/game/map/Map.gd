@@ -178,7 +178,10 @@ func get_save_data():
 			"type": node.type,
 			"paths_revealed": node.paths_revealed,
 			"map_tree_children": [],
+			"encounter": false,
 		}
+		if node.encounter:
+			node_data.encounter = node.encounter.resource_name
 		for child in node.map_tree_children:
 			var child_name = child.name.replace("@", "")
 			node_data.map_tree_children.append(child_name)
@@ -209,6 +212,8 @@ func load_map(data):
 		new_node.set_type(node_data.type)
 		if node_data.paths_revealed:
 			nodes_to_reveal.append(new_node)
+		if node_data.encounter:
+			new_node.encounter = EncounterManager.load_resource(node_data.encounter)
 		# warning-ignore:return_value_discarded
 		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
 		

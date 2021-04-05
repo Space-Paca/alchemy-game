@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/images/transition/texture.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/transition/texture2.png" type="Texture" id=1]
 [ext_resource path="res://game/ui/transition/Transition.gd" type="Script" id=2]
 
 [sub_resource type="Shader" id=1]
@@ -20,6 +20,7 @@ void fragment() {
 	
 	COLOR = vec4(vec3(0.0), 1.0 - smoothstep(lower_edge, upper_edge, color.r));
 }"
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )

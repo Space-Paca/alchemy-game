@@ -22,6 +22,11 @@ func disable_tooltips():
 	for artifact in $Artifacts.get_children():
 		artifact.disable()
 
+
+func update_max_hp(value):
+	health_bar.update_max_hp(value)
+
+
 func set_life(max_hp, hp):
 	health_bar.set_life(hp, max_hp)
 

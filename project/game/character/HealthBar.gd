@@ -108,6 +108,12 @@ func set_life(hp, max_hp):
 	$Bar.value = hp
 	$Label.text = str(hp) + "/" + str(max_hp)
 
+
+func update_max_hp(new_max_hp):
+	$Bar.max_value = new_max_hp
+	$Label.text = str($Bar.value) + "/" + str(new_max_hp)
+
+
 func update_life(new_hp):
 	var diff = new_hp - $Bar.value
 	

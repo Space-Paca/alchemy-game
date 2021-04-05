@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 initial_recipes = [ "Small Bomb", "Lesser Stoneskin Potion", "Acid Gas" ]
-max_hps = [ 100, 140, 180 ]
+max_hps = [ 100, 180, 250 ]

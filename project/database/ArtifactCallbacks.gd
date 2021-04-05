@@ -99,6 +99,11 @@ func on_battle_finish_mender_belt(args):
 	args.player.heal(8)
 
 
+func on_battle_finish_pact_thing(args):
+	args.player.increase_max_hp(10)
+	args.player.heal(10)
+
+
 #On battle turn start methods
 
 func on_turn_start_cursed_shield(args):

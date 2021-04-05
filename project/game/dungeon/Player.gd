@@ -107,7 +107,11 @@ func level_up():
 	if cur_level <= MAX_LEVEL:
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
-		set_max_hp(player_class.max_hps[cur_level-1])
+		if cur_level > 1:
+			printt(player_class.max_hps[cur_level-1],player_class.max_hps[cur_level-2])
+			increase_max_hp(player_class.max_hps[cur_level-1] - player_class.max_hps[cur_level-2])
+		else:
+			set_max_hp(player_class.max_hps[cur_level-1])
 		full_heal()
 
 
@@ -128,6 +132,11 @@ func full_heal():
 func set_hp(new_value: int):
 	hp = new_value
 	emit_signal("hp_updated", hp, max_hp)
+
+
+func set_max_hp(value):
+	.set_max_hp(value)
+	hud.update_max_hp(value)
 
 
 func add_gold(amount: int):

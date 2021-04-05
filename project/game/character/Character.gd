@@ -14,7 +14,7 @@ signal damage_player
 signal freeze_hand
 signal restrict
 
-var max_hp : int
+var max_hp := 0
 var hp : int
 var shield : int
 var status_list : Dictionary
@@ -30,6 +30,10 @@ func init(_name: String, _max_hp: int):
 
 func set_max_hp(value):
 	max_hp = value
+
+
+func increase_max_hp(value):
+	set_max_hp(max_hp + value)
 
 
 func full_heal():

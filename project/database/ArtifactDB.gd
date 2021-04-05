@@ -189,6 +189,12 @@ const EVENT = [
 		"name": "Bloodcursed Grimoire",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "Whenever you defeat an enemy, gain 9 life",
+	},
+	{
+		"id": "pact_thing",
+		"name": "Pact Thing",
+		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
+		"description": "Whenever you finish a battle, gain 10 max health",
 	}
 ]
 

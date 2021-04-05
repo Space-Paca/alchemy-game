@@ -6,14 +6,14 @@
 [ext_resource path="res://assets/images/ui/Shield.png" type="Texture" id=4]
 [ext_resource path="res://game/character/HealthBar.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 65
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
@@ -47,7 +47,7 @@ margin_left = -4.56781
 margin_top = 3.92975
 margin_right = 895.432
 margin_bottom = 86.9297
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "5/10"
 align = 1
 valign = 1
@@ -70,7 +70,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Shield"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 1
 valign = 1

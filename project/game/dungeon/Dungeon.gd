@@ -126,6 +126,7 @@ func set_save_data(data):
 		#For now does nothing, but we should convert the save files if needed
 	
 	player.set_save_data(data.player)
+	player_info.update_artifacts(player.artifacts)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)
 	EventManager.load_save_data(data.events)

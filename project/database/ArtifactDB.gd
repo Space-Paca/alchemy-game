@@ -195,7 +195,13 @@ const EVENT = [
 		"name": "Gold Ankh",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "Whenever you finish a battle, gain 10 max health",
-	}
+	},
+	{
+		"id": "cursed_scholar_mask",
+		"name": "Cursed Scholar's Mask",
+		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
+		"description": "You can't heal in resting circles. Whenever you discover a new recipe, you heal 10% of your max life (doesn't apply on bought recipes)",
+	},
 ]
 
 static func get_artifacts_data(rarity : String) -> Array:

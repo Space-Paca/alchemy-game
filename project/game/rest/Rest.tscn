@@ -114,9 +114,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -384.5
-margin_top = -136.0
+margin_top = -145.514
 margin_right = 384.5
-margin_bottom = 10.0
+margin_bottom = 0.486328
 text = "Heal 70 HP (70% max hp)"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -127,9 +127,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -436.206
+margin_left = -443.341
 margin_top = 22.5198
-margin_right = 446.794
+margin_right = 439.659
 margin_bottom = 168.52
 text = "Discover and Master 1 Recipe"
 __meta__ = {
@@ -147,6 +147,30 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Warning" type="ColorRect" parent="."]
+margin_left = 1403.76
+margin_top = 234.905
+margin_right = 1893.76
+margin_bottom = 394.905
+color = Color( 0, 0, 0, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Warning"]
+anchor_right = 1.0
+margin_right = 3.05176e-05
+margin_bottom = 160.0
+text = "Cant heal because of X"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarningTween" type="Tween" parent="Warning"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="HealButton" to="." method="_on_HealButton_pressed"]

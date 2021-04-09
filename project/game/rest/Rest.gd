@@ -7,10 +7,14 @@ const RECIPE = preload("res://game/rest/RestRecipe.tscn")
 const REST_HEAL_PERCENTAGE = 35
 const GREAT_REST_HEAL_PERCENTAGE = 70
 
+onready var warning = $Warning
+onready var warning_label = $Warning/Label
+
 var map_node : MapNode
 var player
 var combinations
 var state = "main"
+var disable_heal_button = false
 
 func setup(node, _player, _combinations):
 	state = "main"
@@ -20,6 +24,7 @@ func setup(node, _player, _combinations):
 	
 	update_heal_button()
 	
+	$Warning.modulate.a = 0
 	$BackButton.show()
 	$HealButton.show()
 	$HintButton.show()
@@ -45,7 +50,15 @@ func get_heal_value():
 
 
 func update_heal_button():
-	$HealButton.text = "HEAL " + str(get_heal_value()) + " HP ("+str(get_percent_heal())+"% max hp)" 
+	var button = $HealButton
+	if player.has_artifact("cursed_scholar_mask"):
+		button.text = "CAN'T HEAL"
+		button.modulate.r = .7; button.modulate.g = .7; button.modulate.b = .7
+		disable_heal_button = "Can't heal while wearing the Cursed Scholar's Mask"
+	else:
+		disable_heal_button = false
+		button.modulate.r = 1.0; button.modulate.g = 1.0; button.modulate.b = 1.0
+		button.text = "HEAL " + str(get_heal_value()) + " HP ("+str(get_percent_heal())+"% max hp)" 
 
 
 func reset_room():
@@ -70,10 +83,20 @@ func create_display(combination):
 
 
 func _on_HealButton_pressed():
-	AudioManager.play_sfx("heal")
-	player.hp = min(player.hp + get_heal_value(), player.max_hp)
-	reset_room()
-	emit_signal("closed")
+	if disable_heal_button:
+		AudioManager.play_sfx("error")
+		warning_label.text = disable_heal_button
+		var tween = $Warning/WarningTween
+		var cur_a = warning.modulate.a
+		tween.stop_all()
+		tween.interpolate_property(warning, "modulate:a", cur_a, 1, (1-cur_a)*.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		tween.interpolate_property(warning, "modulate:a", 1, 0, .3, Tween.TRANS_CUBIC, Tween.EASE_IN, 1.6)
+		tween.start()
+	else:
+		AudioManager.play_sfx("heal")
+		player.hp = min(player.hp + get_heal_value(), player.max_hp)
+		reset_room()
+		emit_signal("closed")
 
 
 func _on_HintButton_pressed():

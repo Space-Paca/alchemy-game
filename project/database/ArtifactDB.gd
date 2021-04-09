@@ -176,13 +176,13 @@ const EVENT = [
 		"id": "cursed_halberd",
 		"name": "Cursed Halberd",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "At the start of each battle, gain 5 permanent strength. At the start of each battle, take 8 damage.",
+		"description": "At the start of each battle, gain 5 permanent strength. At the start of each battle, take 8 damage",
 	},
 	{
 		"id": "cursed_shield",
 		"name": "Cursed Shield",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage.",
+		"description": "At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage",
 	},
 	{
 		"id": "bloodcursed_grimoire",

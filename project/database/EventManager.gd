@@ -141,6 +141,10 @@ func leave(_event_display, _player):
 	emit_signal("left_event")
 
 
+func leave_to_resting_place(_event_display, _player):
+	emit_signal("spawned_rest")
+
+
 func leave_option(event_display, player):
 	load_leave_event(event_display, player, current_event.leave_text_4)
 
@@ -360,9 +364,9 @@ func blood_pact(event_display, player):
 	load_leave_event(event_display, player, current_event.leave_text_1)
 
 #17
-func resting_place(event_display, player, chose_rest: bool):
-	if chose_rest:
-		emit_signal("spawned_rest")
-	else:
+func resting_place(event_display, player, chose_artifact: bool):
+	if chose_artifact:
 		player.add_artifact("TO DO")
-		load_leave_event(event_display, player, current_event.leave_text_1)
+		load_new_event(event_display, player, 18)
+	else:
+		leave_to_resting_place(event_display, player)

@@ -22,7 +22,7 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/laboratory.png"),
 		preload("res://assets/images/map/treasure.png")]
 const LEGEND = ["", "Enemy", "Elite", "Boss",
-		"Shop", "Rest", "Reagent Smith", "Event", "Laboratory", "Treasure"]
+		"Shop", "Resting Circle", "Reagent Smith", "Event", "Laboratory", "Treasure"]
 
 var encounter : Encounter
 var is_leaf := true

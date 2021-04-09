@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-id = 17
+id = 18
 title = "Resting Place"
 text = "Oi"
 leave_text_1 = ""
@@ -13,16 +13,12 @@ leave_text_3 = ""
 leave_text_4 = ""
 type = 3
 floor_appearance = {
-1: true,
-2: true,
-3: true
+1: false,
+2: false,
+3: false
 }
 options = [ {
-"args": [ false ],
-"button_text": "Go to resting place.",
-"callback": "resting_place"
-}, {
 "args": [ true ],
-"button_text": "Get artifact.",
-"callback": "resting_place"
+"button_text": "Go to resting place.",
+"callback": "leave_to_resting_place"
 } ]

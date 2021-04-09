@@ -8,12 +8,12 @@ const FLOORS = [1, 2, 3]
 const FORMAT_DICT = {
 		"(highlight)": "[color=#ffff00]",
 		"(/highlight)": "[/color]",
-		"(wobbly text)": "[shake]",
-		"(/wobbly text)": "[/shake]",
-		"(smaller text)": "[i]",
-		"(/smaller text)": "[/i]",
-		"(waving text)": "[wave amp=50 freq=2]",
-		"(/waving text)": "[/wave]"
+		"(shake)": "[shake]",
+		"(/shake)": "[/shake]",
+		"(small)": "[i]",
+		"(/small)": "[/i]",
+		"(wave)": "[wave amp=50 freq=2]",
+		"(/wave)": "[/wave]"
 }
 
 # Event constants
@@ -358,8 +358,8 @@ func life_trade(event_display, player, option_id, life_amount):
 
 #16
 func blood_pact(event_display, player):
-	player.set_hp(int(ceil(player.hp * 2.0 / 3.0)))
-	player.add_artifact("TO DO")
+	player.set_hp(int(ceil(player.hp * 1.0 / 3.0)))
+	player.add_artifact("gold_ankh")
 	
 	load_leave_event(event_display, player, current_event.leave_text_1)
 

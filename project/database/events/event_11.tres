@@ -6,28 +6,28 @@
 script = ExtResource( 1 )
 id = 11
 title = "Decomposing Corpse"
-text = "Turning a corner, you are stunned by a (wobbly text)rancid stench(/wobbly text) emanating from nearby. You spot the origin of the foul smell: a dead body of an unlucky adventurer who passed by this path, no more than a few moons ago.
+text = "Turning a corner, you are stunned by a (shake)rancid stench(/shake) emanating from nearby. You spot the origin of the foul smell: a dead body of an unlucky adventurer who passed by this path, no more than a few moons ago.
 
-You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongs its carcass. However, the corpse its completely infested in (wobbly text)bugs and worms(/wobbly text).
+You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongs its carcass. However, the corpse its completely infested in (shake)bugs and worms(/shake).
 
-You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (wobbly text)gnawing(/wobbly text) the dead adventurer?"
+You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?"
 leave_text_1 = "You examine the body from a distance, looking for anything of value...
 
-Then something catches your eye, a glimpse of (highlight)something interesting(/highlight) from the corpse! You quickly approach your target, and in swift motion, grab the object as fast as you can from the (wobbly text)swarm of worms and beetles(/wobbly text).
+Then something catches your eye, a glimpse of (highlight)something interesting(/highlight) from the corpse! You quickly approach your target, and in swift motion, grab the object as fast as you can from the (shake)swarm of worms and beetles(/shake).
 
 You shake the worms from the artifact as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air and resuming your journey."
 leave_text_2 = "You get near the body, in hopes of finding (highlight)something worthy(/highlight).
 
 Just as you are about to give up on this foul task, you spot something of quite valor from deep inside the body. Using all your mental strength, you push your hand deep into the reeking corpse, pulling from within a (highlight)valuable artifact(/highlight)!
 
-You shake the bugs from the artifact and yourself as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air, (smaller text)not noticing a few extra passengers that remained in your bag...(/smaller text)"
+You shake the bugs from the artifact and yourself as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air, (small)not noticing a few extra passengers that remained in your bag...(/small)"
 leave_text_3 = "\"Well, let's do this\", you whisper to yourself as you drop your belongings and frantically start searching the body for something important.
 
 This maddening task takes unbearing amounts of time, but it finally pays off when you find, deep into the rotting corpse, (highlight)a legendary artifact(/highlight)!
 
-You immediately retrieve it and get away from the body, trying your best to remove all the (wobbly text)crawling life(/wobbly text) away from you.
+You immediately retrieve it and get away from the body, trying your best to remove all the (shake)crawling life(/shake) away from you.
 
-You leave the scene as fast as you can, (smaller text)not noticing some extra weight from the extra passengers that crawled in your bag...(/smaller text)"
+You leave the scene as fast as you can, (small)not noticing some extra weight from the extra passengers that crawled in your bag...(/small)"
 leave_text_4 = "The stench is terrible, and you don't feel like digging through corpses today. 
 
 You leave the place as fast as you can, knowing full well fresh air beats a bag full of corpse-eating beetles."

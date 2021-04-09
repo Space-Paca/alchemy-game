@@ -9,7 +9,7 @@ title = "Hole in Wall"
 text = "You reach and get (highlight)<amount> coins(/highlight), but you feel like if you stretched your arm just a bit further you could have gotten even more. At the same time the noises are getting louder."
 leave_text_1 = "As you're feeling around for the coins your fingertips touch something hairy...
 
-(waving text)*EEEYOUCH*(/waving text)
+(wave)*EEEYOUCH*(/wave)
 
 You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?"
 leave_text_2 = ""

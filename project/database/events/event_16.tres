@@ -5,12 +5,22 @@
 [resource]
 script = ExtResource( 1 )
 id = 16
-title = "Pacto de Sangue"
-text = "Oi"
-leave_text_1 = "Pagou"
+title = "The Golden Summoning"
+text = "While exploring the caverns, you find a secluse chamber, hidden in the shadows of one of the many rocky corridors.
+
+Inside lies an ornamental chest, covered in dust and debris. Using some force you manage to open it, and inside you find an ancient scroll detailing about a (highlight)mystical artifact(/highlight) capable of immense (highlight)healing properties(/highlight). Furthermore, at the bottom of the scroll, instructions on how to summon it.
+
+You reckon you have the necessary materials to try the summoning right there, however the scroll is very descriptive on how (shake)(highlight)dangerous(/highlight)(/shake) this process is. Should you try to conjure this artifact despite the consequences?"
+leave_text_1 = "The thought of acquiring a legendary artifact fills you with determination. You make all the necessary preparations, and begin the summoning.
+
+It doesn't take long for the ground to start to shake, and a flow of energy to accumulate at the center the chamber. Just as the artifact is starting to materialize, an (shake)explosion(/shake) errupts from it, and you are thrown violently to the wall behind you. You fall unconcious.
+
+After a while you come to yourself, body in bruises and pain. But just across you lies the result of the summoning, a beautifully golden Ankh resting peacefully in the middle of the room. You slowly get up, grab your reward, and leave the chamber to resume your journey."
 leave_text_2 = ""
 leave_text_3 = ""
-leave_text_4 = "Saiu"
+leave_text_4 = "As tempting as conjuring an artifact seems, you don't want to risk blowing yourself.
+
+You leave the chamber and resume your journey, leaving the scroll behind."
 type = 2
 floor_appearance = {
 1: true,
@@ -19,10 +29,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Pagar",
+"button_text": "Lose 2/3 of your current life and gain the Gold Ankh.",
 "callback": "blood_pact"
 }, {
 "args": [  ],
-"button_text": "Leave.",
+"button_text": "Ignore the scroll and leave.",
 "callback": "leave_option"
 } ]

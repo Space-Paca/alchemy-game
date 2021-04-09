@@ -8,11 +8,11 @@ id = 1
 title = "Travellin' Gamblin' Man"
 text = "While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
 
-(wobbly text)\"Hey, wanna gamble?\"(/wobbly text) you hear from the figure as a wide smile emerges from the shadowy hood.
+(shake)\"Hey, wanna gamble?\"(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
 
 His hand stretches to a small table in front of him, something you're sure wasn't there before. Two cards lay face down.
 
-\"A game of chance huh\" you think to yourself. This might be an opportunity to make a few coins... (smaller text)if you feel luck is by your side.(/smaller text)"
+\"A game of chance huh\" you think to yourself. This might be an opportunity to make a few coins... (small)if you feel luck is by your side.(/small)"
 leave_text_1 = "You pick a card and look at it.
 
 Looking back at you is golden painting of a sun. A warm feeling of relief fills your mind.

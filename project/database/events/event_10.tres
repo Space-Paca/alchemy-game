@@ -8,7 +8,7 @@ id = 10
 title = "Cursed Knight"
 text = "At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, suited with an ebony-colored armor, shield and halberd.
 
-Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (wobbly text)odd feeling(/wobbly text) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
+Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (shake)odd feeling(/shake) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
 leave_text_1 = "You lift the halberd from the ground, and a surge of power instantly runs through your veins.
 But as a burning candle that bursts into flames, you feel as your life is now running out faster than before.
 

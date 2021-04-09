@@ -13,7 +13,7 @@ You peek in and the sight of a familiar glimmer of coins catches your eyes. Howe
 Maybe if you're fast enough, you can grab a few gold coins without any consequences..."
 leave_text_1 = "As you're feeling around for the coins your fingertips touch something hairy...
 
-(waving text)*EEEYOUCH*(/waving text)
+(wave)*EEEYOUCH*(/wave)
 
 You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?"
 leave_text_2 = ""

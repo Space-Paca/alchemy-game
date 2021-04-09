@@ -8,7 +8,7 @@ id = 14
 title = "Shady Businessss"
 text = "In a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides. As you approach it, an eerie figure pops out from an opening, hastily addressing to you:
 
-(waving text)\"Greetingsss traveler\"(/waving text) the figure hisses, (waving text)\"Would you like trade sssome of your (highlight)ssstrength(/highlight)?(/waving text)\"
+(wave)\"Greetingsss traveler\"(/wave) the figure hisses, (wave)\"Would you like trade sssome of your (highlight)ssstrength(/highlight)?(/wave)\"
 
 You've heard of this before, the figure is vampire kin, known to drain the life forces of beings. Sometimes just brutally sucking the life of their victims, this one seems to be the more civilized kind.
 
@@ -29,7 +29,7 @@ Unprompted, they grab your hand, as if to not give you time to change your mind,
 
 When the vampire releases your hand, you collapse to the floor. The vampire tosses your artifact by your feet, and with a toothed grin hisses to you:
 
-(waving text)\"Anything elssse?\"(/waving text)"
+(wave)\"Anything elssse?\"(/wave)"
 leave_text_4 = "You don't trust the figure and step away from the caravan. You both take different paths as you resume your journey.
 
 From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."

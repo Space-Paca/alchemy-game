@@ -55,7 +55,7 @@ func disable_tooltips():
 func _on_Buy_pressed():
 	if player.spend_gold(buy_cost):
 		AudioManager.play_sfx("buy")
-		combination.discover_all_reagents()
+		combination.discover_all_reagents("shop")
 		update_display()
 		emit_signal("bought", combination)
 	else:
@@ -64,7 +64,7 @@ func _on_Buy_pressed():
 
 func _on_Hint_pressed():
 	if player.spend_gold(hint_cost):
-		combination.get_hint()
+		combination.get_hint("shop")
 		update_display()
 		AudioManager.play_sfx("discover_clue_recipe")
 		emit_signal("hint_bought", combination)

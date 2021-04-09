@@ -118,7 +118,7 @@ func is_downgraded_version_of(matrix1:Array, matrix2:Array):
 	return true
 
 
-func get_hint(which := 0):
+func get_hint(from: String, which := 0):
 	if not which:
 		hints += 1
 	elif hints > which or discovered:
@@ -132,7 +132,7 @@ func get_hint(which := 0):
 		2:
 			reveal_all_but(2)
 		_:
-			discover_all_reagents()
+			discover_all_reagents(from)
 
 
 func reveal_all_but(amount: int):
@@ -169,10 +169,10 @@ func reveal_all_but(amount: int):
 			unknown_reagent_coords.erase(coords)
 
 
-func discover_all_reagents(emit := true):
+func discover_all_reagents(type: String, emit := true):
 	if not discovered:
 		discovered = true
 		known_matrix = matrix
 		unknown_reagent_coords.clear()
 		if emit:
-			emit_signal("fully_discovered", self)
+			emit_signal("fully_discovered", self, type)

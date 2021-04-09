@@ -34,7 +34,7 @@ func disable_tooltips():
 
 func _on_Choose_pressed():
 	AudioManager.play_sfx("study_recipe")
-	combination.discover_all_reagents()
+	combination.discover_all_reagents("rest")
 	update_display()
 	master_combination()
 	

@@ -77,9 +77,9 @@ func enable_button():
 
 func _on_ChooseButton_pressed():
 	if not discover_all:
-		combination.get_hint(2)
+		combination.get_hint("win_battle_hint",2)
 	else:
-		combination.discover_all_reagents()
+		combination.discover_all_reagents("battle_win")
 	
 	if not combination.discovered:
 		AudioManager.play_sfx("discover_clue_recipe")

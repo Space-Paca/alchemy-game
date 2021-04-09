@@ -52,11 +52,13 @@ func _process(dt):
 
 
 func disable_tooltips():
+	$Button.disabled = true
 	remove_tooltips()
 	$TooltipCollision.disable()
 
 
 func enable_tooltips():
+	$Button.disabled = type == EMPTY and true or false
 	$TooltipCollision.enable()
 
 
@@ -92,7 +94,6 @@ func set_type(new_type:int):
 	
 	type = new_type
 	button.texture_normal = IMAGES[type]
-	button.disabled = type == EMPTY
 	
 	if type == ENEMY:
 		encounter = EncounterManager.get_random_encounter()
@@ -126,7 +127,7 @@ func _on_Button_pressed():
 
 func _on_Button_mouse_entered():
 	mouse_over = true
-	if type != EMPTY:
+	if type != EMPTY and not button.disabled:
 		AudioManager.play_sfx("hover_map_node")
 
 func _on_Button_mouse_exited():

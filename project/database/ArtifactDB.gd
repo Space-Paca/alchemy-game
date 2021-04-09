@@ -200,7 +200,7 @@ const EVENT = [
 		"id": "cursed_scholar_mask",
 		"name": "Cursed Scholar's Mask",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
-		"description": "You can't heal in resting circles. Whenever you discover a new recipe, you heal 10% of your max life (doesn't apply on bought recipes)",
+		"description": "You can't heal in resting circles. Whenever you discover a new recipe, you heal 15% of your max life (doesn't apply on bought recipes)",
 	},
 ]
 

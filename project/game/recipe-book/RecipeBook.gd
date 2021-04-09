@@ -453,7 +453,6 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 		else:
 			error_effect()
 	else:
-		print("emitted")
 		emit_signal("recipe_pressed_lab", combination)
 
 

@@ -20,6 +20,10 @@ func call_on_enemy_died(name : String, args : Dictionary):
 	if has_method("on_enemy_died_" + name):
 		call("on_enemy_died_" + name, args)
 
+func call_on_discover_recipe(name : String, args : Dictionary):
+	if has_method("on_discover_recipe_" + name):
+		call("on_discover_recipe_" + name, args)
+
 #On add methods
 
 func on_add_coin_bag(args):
@@ -114,3 +118,14 @@ func on_turn_start_cursed_shield(args):
 
 func on_enemy_died_bloodcursed_grimoire(args):
 	args.player.heal(9)
+
+
+#On discover a recipe
+
+func on_discover_recipe_cursed_scholar_mask(args):
+	AudioManager.play_sfx("heal")
+	var amount = ceil(args.player.max_hp*.15)
+	if args.source == "battle_win" or args.source == "battle":
+		args.player.heal(amount)
+	else:
+		args.player.set_hp(min(args.player.hp + amount, args.player.max_hp))

@@ -215,7 +215,7 @@ func create_combinations():
 			combinations[combination.grid_size] = [combination]
 		
 		if player.known_recipes.has(recipe.name):
-			combination.discover_all_reagents()
+			combination.discover_all_reagents("new_game")
 			recipe_book.add_combination(combination, mastery_threshold(combination))
 
 
@@ -418,11 +418,11 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array, possible_c
 	
 	return null
 
-func make_combination(combination: Combination, boost_effects: Dictionary, apply_effects := true):
+func make_combination(type: String, combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe
 	
 	if not player.known_recipes.has(recipe.name) or not combination.discovered:
-		combination.discover_all_reagents()
+		combination.discover_all_reagents(type)
 		player.discover_combination(combination, true)
 		MessageLayer.new_recipe_discovered(combination)
 		recipe_book.update_combination(combination)
@@ -648,9 +648,10 @@ func thanks_for_playing():
 	add_child(scene)
 
 
-func _on_Combination_fully_discovered(combination: Combination):
+func _on_Combination_fully_discovered(combination: Combination, source: String):
 	possible_rewarded_combinations.erase(combination)
-
+	if source != "shop" and source != "new_game" and source != "debug":
+		player.call_artifacts("discover_recipe", {"player": player, "source": source})
 
 func _on_map_node_selected(node: MapNode):
 	if not node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS,
@@ -755,7 +756,7 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 		for reagent in reagent_list:
 			if reagent.unstable:
 				reagent.toggle_unstable()
-		make_combination(combination, extract_boost_effects(reagent_list))
+		make_combination("battle", combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")
 		battle.apply_effects(["combination_failure"], reagent_list)
@@ -781,7 +782,7 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 	var combination = get_combination_in_grid(reagent_matrix, grid_size)
 	if combination:
 		AudioManager.play_sfx("combine_success")
-		make_combination(combination, {}, false)
+		make_combination("laboratory", combination, {}, false)
 		lab.combination_success()
 	else:
 		AudioManager.play_sfx("combine_fail")
@@ -917,7 +918,7 @@ func _on_Debug_combinations_unlocked():
 		Debug.recipes_unlocked = true
 		for grid_size in [2, 3, 4]:
 			for combination in combinations[grid_size]:
-				combination.discover_all_reagents()
+				combination.discover_all_reagents("debug")
 				recipe_book.add_combination(combination, mastery_threshold(combination))
 				recipe_book.update_combination(combination)
 

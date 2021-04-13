@@ -19,7 +19,7 @@ const TRACK_FADEIN_SPEED = 60 #Speed individual bgm tracks fadeout
 const AUX_FADEOUT_SPEED = 40 #Speed aux bgm fadein
 const AUX_FADEIN_SPEED = 60 #Speed aux bgm fadeout
 #Volume
-const MUTE_DB = -60 #Muted volume
+const MUTE_DB = -80 #Muted volume
 const CONTROL_MULTIPLIER = 2.5
 #Layer
 const MAX_LAYERS = 3

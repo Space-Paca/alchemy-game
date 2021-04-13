@@ -76,11 +76,11 @@ func get_substitution_tooltip(type):
 	if data.substitute.size() == 1:
 		text += "this "
 		plural = ""
-		filler = "                            "
+		filler = "          "
 	else:
 		text += "these "
 		plural = "s"
-		filler = "                          "
+		filler = "        "
 	text += "reagent"+plural+":"
 	#For some reason \n just erases other images, so using gambiara to properly change lines
 	text += filler

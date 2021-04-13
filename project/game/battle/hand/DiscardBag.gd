@@ -127,8 +127,9 @@ func get_tooltip():
 	
 	for key in keys:
 		var path = ReagentDB.get_from_name(key).image.get_path()
-		#For some reason \n just reases other images, so using gambiara to properly change lines
 		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x " + str(reagent_types[key]) + "           [/font]"
+		#For some reason \n just erases other images, so using gambiara to properly change lines
+		tooltip.text += "     "
 	return tooltip
 
 func _on_TooltipCollision_enable_tooltip():

@@ -5,10 +5,22 @@
 [resource]
 script = ExtResource( 1 )
 id = 17
-title = "Resting Place"
-text = "Oi"
-leave_text_1 = ""
-leave_text_2 = ""
+title = "The Mask in the Circle"
+text = "You spot a much familiar mystical circle at the distance, a place you use often as a resting place.
+
+However, when you approach it, you find an (highlight)unusual object(/highlight) resting on one of the great stones surrounding the peaceful place: (highlight)an eerie mask(/highlight), with a (wave)powerful aura(/wave) emanating from it.
+
+You know you should be careful with artifacts such as this, but the mask is inviting you to put it on..."
+leave_text_1 = "Finding a resting circle is a relief on its own, you don't want to risk your life by playing with unknown artifacts...
+
+You leave the mask where it is and proceed to the mystical circle."
+leave_text_2 = "The mask (wave)calls(/wave) to you, and before you know it, you are placing the ominous object on yourself.
+
+What follows is a (shake)burst of information(/shake) feeding directly into your brain as the mask glows blindingly.
+
+After what felt like days, the mask suddenly drops into the ground, quickly followed by yourself. At first it feels like nothing ever happened, but in your mind, the change is obvious: it grows inside of you, (highlight)a desire to learn each and every recipe ever made(/highlight). This sensation burns in your mind and heart, and seems like a positive effect from the mask... but alongside with it you might have trouble (highlight)finding rest ever again(/highlight)...
+
+You stash the mask in your backpack and proceed to the resting place."
 leave_text_3 = ""
 leave_text_4 = ""
 type = 3
@@ -19,10 +31,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ false ],
-"button_text": "Go to resting place.",
+"button_text": "Ignore the mask and enter the resting circle.",
 "callback": "resting_place"
 }, {
 "args": [ true ],
-"button_text": "Get artifact.",
+"button_text": "Put on the mask before entering the resting circle.",
 "callback": "resting_place"
 } ]

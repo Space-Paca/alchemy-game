@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 id = 6
 title = "A Risky Prospect"
-text = "You notice an (highlight)enemy encampment(/highlight) in the distance, and as you approach the loud snoring from the creatures alleviates your worries. They're all sound asleep and surely you'll be able to pass without a fight, but as you get closer you see they have a stolen (bold)alchemist's chest(/bold), exactly like the ones you've seen containing artifacts from this forgotten kingdom.
+text = "You notice an (highlight)enemy encampment(/highlight) in the distance, and as you approach the loud snoring from the creatures alleviates your worries. They're all sound asleep and surely you'll be able to pass without a fight, but as you get closer you see they have a stolen (highlight)alchemist's chest(/highlight), exactly like the ones you've seen containing artifacts from this forgotten kingdom.
 
 \"Maybe I can get it without waking anyone, but is it worth the risk?\" you think to yourself as the prospect of treasure tempts you to get even closer..."
 leave_text_1 = "Silent as night and quick as shadow, you rush to the chest, get whatever you could find, and leave without any alarm.

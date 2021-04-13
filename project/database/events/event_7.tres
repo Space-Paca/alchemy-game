@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 id = 7
-title = "A Risky Prospect"
-text = "You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (bold)treasure chest(/bold), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
+title = "A Dangerous Proposition"
+text = "You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
 
 \"Maybe I can get it without drawing attention, but is it worth the risk?\" you think to yourself as the prospect of treasure tempts you to get even closer..."
 leave_text_1 = "Hiding in the cave's shadows, you sneak to the chest, get your prize, and manage to leave unseen.

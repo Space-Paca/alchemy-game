@@ -24,6 +24,7 @@ var events_by_id := {}
 var event_ids_by_floor := {1: [], 2: [], 3: []}
 var dummy_battle_event : Event
 var dummy_leave_event : Event
+var dummy_rest_event : Event
 var current_quest : Event
 var current_event : Event
 
@@ -48,8 +49,9 @@ func _ready():
 	else:
 		print("EventManager: An error occurred when trying to access the path.")
 	
-	dummy_leave_event = events_by_id[-1]
-	dummy_battle_event = events_by_id[-2]
+	dummy_battle_event = events_by_id[-1]
+	dummy_leave_event = events_by_id[-2]
+	dummy_rest_event = events_by_id[-3]
 
 
 func format(text: String) -> String:
@@ -107,8 +109,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(7)
-#	return get_event_by_id(id)
+	return get_event_by_id(17)#id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -170,6 +171,13 @@ func load_leave_event(event_display, player, text: String, title := "", type := 
 	dummy_leave_event.title = current_event.title if title == "" else title
 	dummy_leave_event.type = current_event.type if type == -1 else type
 	load_new_event(event_display, player, dummy_leave_event.id)
+
+
+func load_rest_event(event_display, player, text: String, title := "", type := -1):
+	dummy_rest_event.text = text
+	dummy_rest_event.title = current_event.title if title == "" else title
+	dummy_rest_event.type = current_event.type if type == -1 else type
+	load_new_event(event_display, player, dummy_rest_event.id)
 
 
 func load_new_event(event_display, player, new_event_id: int,
@@ -371,8 +379,11 @@ func blood_pact(event_display, player):
 
 #17
 func resting_place(event_display, player, chose_artifact: bool):
+	var text : String
 	if chose_artifact:
 		player.add_artifact("cursed_scholar_mask")
-		load_new_event(event_display, player, 18)
+		text = current_event.leave_text_2
 	else:
-		rest(event_display, player)
+		text = current_event.leave_text_1
+	
+	load_rest_event(event_display, player, text)

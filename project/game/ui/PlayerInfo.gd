@@ -68,12 +68,11 @@ func update_artifacts(player_artifacts):
 		var artifact = ARTIFACT.instance()
 		artifacts.add_child(artifact)
 		artifact.init(artifact_type)
-		artifact.update_size(.8)
 	
 	#Wait a frame for container objects to be placed correctly
 	yield(get_tree(), "idle_frame")
 	for artifact in artifacts.get_children():
-		artifact.update_tooltip_collision()
+		artifact.update_size(.8)
 
 
 func update_hp(hp: int, max_hp: int):

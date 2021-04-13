@@ -17,10 +17,11 @@ texture = ExtResource( 3 )
 position = Vector2( 11.7725, 28.5905 )
 
 [node name="Artifacts" type="HBoxContainer" parent="."]
-margin_left = 216.951
-margin_top = 35.3176
-margin_right = 696.951
-margin_bottom = 85.3176
+margin_left = 217.0
+margin_top = 35.0
+margin_right = 687.0
+margin_bottom = 85.0
+custom_constants/separation = -48
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false

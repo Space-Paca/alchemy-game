@@ -108,7 +108,6 @@ func level_up():
 		hand_size = HAND_SIZES[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
 		if cur_level > 1:
-			printt(player_class.max_hps[cur_level-1],player_class.max_hps[cur_level-2])
 			increase_max_hp(player_class.max_hps[cur_level-1] - player_class.max_hps[cur_level-2])
 		else:
 			set_max_hp(player_class.max_hps[cur_level-1])

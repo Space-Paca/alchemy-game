@@ -56,6 +56,10 @@ func update_artifacts(player):
 		var artifact = ARTIFACT.instance()
 		$Artifacts.add_child(artifact)
 		artifact.init(artifact_name)
+	
+	yield(get_tree(), "idle_frame")
+	for artifact in $Artifacts.get_children():
+		artifact.update_size(1.0)
 
 func update_status_bar(player):
 	$StatusBar.clean_removed_status(player.status_list)

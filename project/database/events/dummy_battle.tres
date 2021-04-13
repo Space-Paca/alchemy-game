@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = -2
+title = ""
+text = ""
+leave_text_1 = ""
+leave_text_2 = ""
+leave_text_3 = ""
+leave_text_4 = ""
+type = 0
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ null ],
+"button_text": "Battle!",
+"callback": "battle"
+} ]

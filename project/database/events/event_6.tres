@@ -12,53 +12,26 @@ text = "You notice an (highlight)enemy encampment(/highlight) in the distance, a
 leave_text_1 = "Silent as night and quick as shadow, you rush to the chest, get whatever you could find, and leave without any alarm.
 
 Your reward for this venture: a fine trinket. And you'll be long gone before anyone finds out what you have done."
-leave_text_2 = ""
+leave_text_2 = "You decide to try your luck, and start sneaking to your target. 
+You manage to reach it without any problems, but as you open the chest, a long and unwelcome creaking sound stops your heart, and before you know it, you hear a shout alarming your presence.
+
+You'll have to fight your way out."
 leave_text_3 = ""
-leave_text_4 = ""
-type = 0
+leave_text_4 = "You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
+
+You continue your journey, glad you don't have to fight for your life another day."
+type = 1
 floor_appearance = {
-1: false,
-2: false,
-3: false
+1: true,
+2: true,
+3: true
 }
 options = [ {
-"args": [  ],
-"button_text": "",
-"callback": "none"
+"args": [ "common", "normal", 0.5 ],
+"button_text": "Go for the treasure.",
+"callback": "artifact_battle"
 }, {
 "args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
-}, {
-"args": [  ],
-"button_text": "",
-"callback": "none"
+"button_text": "Walk away.",
+"callback": "leave_option"
 } ]

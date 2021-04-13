@@ -905,6 +905,15 @@ func _on_EventDisplay_closed():
 	Transition.end_transition()
 
 
+func _on_EventDisplay_event_spawned_battle(encounter):
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	
+	event_display.hide()
+	current_node = event_display.map_node
+	new_battle(encounter)
+
+
 func _on_EventDisplay_event_spawned_rest():
 	Transition.begin_transition()
 	yield(Transition, "screen_dimmed")

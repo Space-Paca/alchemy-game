@@ -6,7 +6,13 @@
 script = ExtResource( 1 )
 id = 18
 title = "Resting Place"
-text = "Oi"
+text = "The mask (wave)calls(/wave) to you, and before you know it, you are placing the ominous object on yourself.
+
+What follows is a (shake)burst of information(/shake) feeding directly into your brain as the mask glows blindingly.
+
+After what felt like days, the mask suddenly drops into the ground, quickly followed by yourself. At first it feels like nothing ever happened, but in your mind, the change is obvious: it grows inside of you, (highlight)a desire to learn each and every recipe ever made(/highlight). This sensation burns in your mind and heart, and seems like a positive effect from the mask... but alongside with it you might have trouble (highlight)finding rest ever again(/highlight)...
+
+You stash the mask in your backpack and proceed to the resting place."
 leave_text_1 = ""
 leave_text_2 = ""
 leave_text_3 = ""

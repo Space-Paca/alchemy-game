@@ -23,6 +23,7 @@ void fragment() {
 	COLOR.rgb = color.rgb;
 	COLOR.a = alpha;
 }"
+custom_defines = ""
 
 [sub_resource type="OpenSimplexNoise" id=2]
 

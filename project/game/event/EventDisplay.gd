@@ -2,6 +2,7 @@ extends Control
 
 signal closed_event
 signal event_spawned_rest
+signal event_spawned_battle(encounter)
 
 onready var title_label = $Title
 onready var text_label = $VBox/TextRect/TextContainer/Text
@@ -22,6 +23,8 @@ var map_node : MapNode
 func _ready():
 # warning-ignore:return_value_discarded
 	EventManager.connect("left_event", self, "_on_event_left")
+# warning-ignore:return_value_discarded
+	EventManager.connect("spawned_battle", self, "_on_event_spawned_battle")
 # warning-ignore:return_value_discarded
 	EventManager.connect("spawned_rest", self, "_on_event_spawned_rest")
 
@@ -56,6 +59,10 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 func _on_event_left():
 	map_node.set_type(MapNode.EMPTY)
 	emit_signal("closed_event")
+
+
+func _on_event_spawned_battle(encounter: Encounter):
+	emit_signal("event_spawned_battle", encounter)
 
 
 func _on_event_spawned_rest():

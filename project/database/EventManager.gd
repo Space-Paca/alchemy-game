@@ -2,6 +2,7 @@ extends Node
 
 signal left_event
 signal spawned_rest
+signal spawned_battle(encounter)
 
 const FLOORS = [1, 2, 3]
 # Text effects
@@ -21,6 +22,7 @@ const HOLE_MAX_CHANCE = .8
 
 var events_by_id := {}
 var event_ids_by_floor := {1: [], 2: [], 3: []}
+var dummy_battle_event : Event
 var dummy_leave_event : Event
 var current_quest : Event
 var current_event : Event
@@ -47,6 +49,7 @@ func _ready():
 		print("EventManager: An error occurred when trying to access the path.")
 	
 	dummy_leave_event = events_by_id[-1]
+	dummy_battle_event = events_by_id[-2]
 
 
 func format(text: String) -> String:
@@ -104,7 +107,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(17)
+	return get_event_by_id(7)
 #	return get_event_by_id(id)
 
 
@@ -137,16 +140,29 @@ func none(_event_display, _player):
 	assert(false, "No callback set for this option")
 
 
+func battle(_event_display, _player, encounter):
+	emit_signal("spawned_battle", encounter)
+
+
 func leave(_event_display, _player):
 	emit_signal("left_event")
 
 
-func leave_to_resting_place(_event_display, _player):
+func rest(_event_display, _player):
 	emit_signal("spawned_rest")
 
 
 func leave_option(event_display, player):
 	load_leave_event(event_display, player, current_event.leave_text_4)
+
+
+func load_battle_event(event_display, player, text: String, encounter: Encounter,
+		title := "", type := -1):
+	dummy_battle_event.text = text
+	dummy_battle_event.title = current_event.title if title == "" else title
+	dummy_battle_event.type = current_event.type if type == -1 else type
+	dummy_battle_event.options[0].args[0] = encounter
+	load_new_event(event_display, player, dummy_battle_event.id)
 
 
 func load_leave_event(event_display, player, text: String, title := "", type := -1):
@@ -230,32 +246,22 @@ func hole(event_display, player, chance, reward):
 # Troca até 3 reagentes do jogador por um número igual de reagentes aleatórios
 
 
-# 6 / 7 / 8
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
+# 6 / 7
 func artifact_battle(event_display, player, artifact_rarity: String,
-		encounter: Encounter, chance: float):
-#	if randf() < chance:
-#		check_encounter(encounter)
-#	else:
-#		encounter = null
+		encounter_type: String, chance: float):
+	var encounter : Encounter
+	reward_random_artifact(player, ArtifactDB.get_artifacts(artifact_rarity))
 	
+	if encounter_type == "normal":
+		encounter = EncounterManager.get_random_encounter()
+	elif encounter_type == "elite":
+		encounter = EncounterManager.get_random_elite_encounter()
 	
-	pass
-	
-	
-	
-	
-	## LOAD ENCOUNTER
-	return
-	
-	
-	
-# warning-ignore:unreachable_code
-	load_leave_event(event_display, player, current_event.leave_text_2)
+	if randf() < chance:
+		load_battle_event(event_display, player, current_event.leave_text_2,
+				encounter)
+	else:
+		load_leave_event(event_display, player, current_event.leave_text_1)
 
 #9
 func take_pearls(event_display, player):
@@ -366,7 +372,7 @@ func blood_pact(event_display, player):
 #17
 func resting_place(event_display, player, chose_artifact: bool):
 	if chose_artifact:
-		player.add_artifact("TO DO")
+		player.add_artifact("cursed_scholar_mask")
 		load_new_event(event_display, player, 18)
 	else:
-		leave_to_resting_place(event_display, player)
+		rest(event_display, player)

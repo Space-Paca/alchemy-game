@@ -5,7 +5,7 @@ const COMMON = [
 		"id": "poison_kit",
 		"name": "Slimy Satchel",
 		"image": preload("res://assets/images/artifacts/poison_kit.png"),
-		"description": "When acquired, add 3 poison reagents to your bag",
+		"description": "When acquired, add 3 Noxious Essence reagents to your bag",
 	},
    {
 		"id": "buff_poison",
@@ -23,7 +23,7 @@ const COMMON = [
 		"id": "max_hp",
 		"name": "Chalice of Life",
 		"image": preload("res://assets/images/artifacts/max_hp.png"),
-		"description": "Increase your H.P. by 20",
+		"description": "When acquired, your total life is increased by 20",
 	},
 	{
 		"id": "temp_strength",
@@ -92,7 +92,7 @@ const UNCOMMON = [
 		"id": "trash_heal",
 		"name": "Mortar and Pestle",
 		"image": preload("res://assets/images/artifacts/trash_heal.png"),
-		"description": "When acquired, add 4 trash-reagents to your bag. Misused trash reagents will heal you instead of harm you",
+		"description": "When acquired, add 4 Putrid Beetle reagents to your bag. Misused Beetle reagents will heal you instead of harm you",
 	},
 	{
 		"id": "strength_plus",

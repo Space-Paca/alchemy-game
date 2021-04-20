@@ -109,7 +109,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(18)#id)
+	return get_event_by_id(id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -433,3 +433,12 @@ func push_luck(event_display, player, times: int):
 	else:
 		text += "maybe it's time to stop searching and leave before finding yourself in a undesirable conflict?"
 		load_new_event(event_display, player, 19, text)
+
+#20
+func helpful_homunculus(event_display, player, increase_max_hp):
+	if increase_max_hp:
+		player.increase_max_hp(10)
+		load_leave_event(event_display, player, current_event.leave_text_2)
+	else:
+		player.set_hp(player.hp + 40)
+		load_leave_event(event_display, player, current_event.leave_text_1)

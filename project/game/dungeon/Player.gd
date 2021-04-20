@@ -137,6 +137,7 @@ func set_max_hp(value):
 	.set_max_hp(value)
 	if hud:
 		hud.update_max_hp(value)
+	emit_signal("hp_updated", hp, max_hp)
 
 
 func add_gold(amount: int):

@@ -76,12 +76,12 @@ func reset_events():
 	
 	# Reset event 4 (hole) chances and reward
 	events_by_id[4].options[0]["args"] = events_by_id[3].options[0]["args"]
-	
 	# Reset event 13 (blood font) amount of times payed
 	events_by_id[13].options[0]["args"] = events_by_id[12].options[0]["args"]
-	
 	# Reset event 15 (blood sacrifice) options
 	events_by_id[15].options = events_by_id[14].options.duplicate(true)
+	# Reset event 19 (boneyard) amount of times searched
+	events_by_id[19].options[0]["args"][0] = 0
 
 
 func reward_random_artifact(player: Player, artifacts: Array) -> void:
@@ -109,7 +109,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(8)#id)
+	return get_event_by_id(18)#id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -398,3 +398,38 @@ func resting_place(event_display, player, chose_artifact: bool):
 		text = current_event.leave_text_1
 	
 	load_rest_event(event_display, player, text)
+
+#18/19
+func push_luck(event_display, player, times: int):
+	events_by_id[19].options[0]["args"][0] += 1
+	
+	if randf() < .25 * (times + 1):
+		var encounter = EncounterManager.get_random_elite_encounter()
+		load_battle_event(event_display, player, events_by_id[19].leave_text_3,
+				encounter)
+		return
+	
+	var reward = randf()
+	var text : String
+	
+	if reward < .3:
+		text = events_by_id[18].leave_text_1
+	elif reward < .6:
+		text = events_by_id[18].leave_text_2
+		player.add_gold(30)
+	elif reward < .9:
+		text = events_by_id[18].leave_text_3
+		reward_random_artifact(player, ArtifactDB.get_artifacts("common"))
+	elif reward < .99:
+		text = events_by_id[19].leave_text_1
+		reward_random_artifact(player, ArtifactDB.get_artifacts("uncommon"))
+	else:
+		text = events_by_id[19].leave_text_2
+		reward_random_artifact(player, ArtifactDB.get_artifacts("rare"))
+	
+	if times + 1 >= 3:
+		text += "this time, as close as you can bear. It's time to leave this place."
+		load_leave_event(event_display, player, text)
+	else:
+		text += "maybe it's time to stop searching and leave before finding yourself in a undesirable conflict?"
+		load_new_event(event_display, player, 19, text)

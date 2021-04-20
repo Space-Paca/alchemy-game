@@ -1,0 +1,44 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://database/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 19
+title = "The Boneyard"
+text = ""
+leave_text_1 = "You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+After some time, you find something remarkable! Next to the bones of a massive beast, in what seems to once be inside its belly, (highlight)a powerful artifact(/highlight) is resting. You quickly pick it up and stash it.
+
+You then hear unappetizing sounds, not far away... "
+leave_text_2 = "You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You are almost giving up, when suddenly something (highlight)peculiar(/highlight) catches your attention: resting on the corner of a fence, amidst piles of bones, lies the remains of a long dead adventurer. However, his bony hands are clutching something in such a away you could feel his demise was related to protecting whatever its in his hands.
+
+You approaching it and finally find what it is: (highlight)a legendary artifact!(/highlight) You immediately store it, amazed on having such luck in finding this.
+
+You then hear unpleasant sounds, not far away... "
+leave_text_3 = "You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You spend some time searching for something useful, but just as when you are most distracted in your task, you turn around and find yourself face to face to a most uninviting encounter, another foe that had the same idea as you, and not at all happy with this rendezvous.
+
+You'll have to battle your way out of this one."
+leave_text_4 = "You pushed your luck in this place, and prudently decide it's time to leave.
+
+You pack your things and swiflty leave to resume your journey."
+type = 1
+floor_appearance = {
+1: false,
+2: false,
+3: false
+}
+options = [ {
+"args": [ 0 ],
+"button_text": "Search for something valuable.",
+"callback": "push_luck"
+}, {
+"args": [  ],
+"button_text": "Stop searching.",
+"callback": "leave_option"
+} ]

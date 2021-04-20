@@ -61,6 +61,7 @@ var current_encounter
 var first_turn = true
 var used_all_reagents_in_recipes = false
 var recipe_book_visible = false
+var is_event = false
 
 func _ready():
 	# DEBUG
@@ -363,7 +364,7 @@ func setup_win_screen(encounter: Encounter):
 	win_screen.connect("combination_chosen", self, "_on_win_screen_combination_chosen")
 	win_screen.connect("pearl_collected", self, "_on_win_screen_pearl_collected")
 
-	win_screen.set_loot(encounter.get_loot())
+	win_screen.set_loot(encounter.get_loot(is_event))
 
 
 func create_reagent(type):

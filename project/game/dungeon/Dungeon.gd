@@ -707,6 +707,7 @@ func _on_Battle_finished(is_boss):
 	Transition.begin_transition()
 	yield(Transition, "screen_dimmed")
 	
+	is_boss = not battle.is_event and is_boss
 	battle.queue_free()
 	battle = null
 	recipe_book.change_state(RecipeBook.States.MAP)
@@ -912,6 +913,7 @@ func _on_EventDisplay_event_spawned_battle(encounter):
 	event_display.hide()
 	current_node = event_display.map_node
 	new_battle(encounter)
+	battle.is_event = true
 
 
 func _on_EventDisplay_event_spawned_rest():

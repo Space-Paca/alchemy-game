@@ -109,7 +109,7 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
-	return get_event_by_id(17)#id)
+	return get_event_by_id(8)#id)
 
 
 func get_event_by_id(id: int) -> Event:
@@ -254,7 +254,7 @@ func hole(event_display, player, chance, reward):
 # Troca até 3 reagentes do jogador por um número igual de reagentes aleatórios
 
 
-# 6 / 7
+#6 / 7
 func artifact_battle(event_display, player, artifact_rarity: String,
 		encounter_type: String, chance: float):
 	var encounter : Encounter
@@ -264,6 +264,17 @@ func artifact_battle(event_display, player, artifact_rarity: String,
 		encounter = EncounterManager.get_random_encounter()
 	elif encounter_type == "elite":
 		encounter = EncounterManager.get_random_elite_encounter()
+	
+	if randf() < chance:
+		load_battle_event(event_display, player, current_event.leave_text_2,
+				encounter)
+	else:
+		load_leave_event(event_display, player, current_event.leave_text_1)
+
+#8
+func boss_2_battle(event_display, player, chance: float):
+	var encounter : Encounter = EncounterManager.boss_encounters[2].front()
+	reward_random_artifact(player, ArtifactDB.get_artifacts("rare"))
 	
 	if randf() < chance:
 		load_battle_event(event_display, player, current_event.leave_text_2,

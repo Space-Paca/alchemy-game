@@ -20,14 +20,15 @@ export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"healing": 0, "buff": 0, "poison": 0, "debuff": 0}
 export(Array, float) var extra_loot_chance : Array
 
-func get_loot() -> Array:
+
+func get_loot(is_event: bool) -> Array:
 	var loot := []
 	var chance = 1
 	var extra_chance := extra_loot_chance.duplicate()
 	var pool := []
 	
 	#Add pearl and artiifact loot for special encounters
-	if is_boss or is_elite:
+	if not is_event and (is_boss or is_elite):
 		loot.append("pearl")
 		loot.append("pearl")
 		var artifact_rarity = level if not is_boss else level + 1

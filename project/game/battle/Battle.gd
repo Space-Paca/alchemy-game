@@ -83,6 +83,7 @@ func get_save_data():
 		"encounter": current_encounter.resource_name,
 		"enemies": get_enemies_save_data(),
 		"player": get_player_save_data(),
+		"is_event": is_event,
 	}
 
 	
@@ -127,6 +128,8 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	
 	floor_level = _floor_level
 	current_encounter = EncounterManager.load_resource(data.encounter)
+	
+	is_event = data.is_event
 	
 	setup_bg()
 

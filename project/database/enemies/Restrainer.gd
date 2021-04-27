@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/restrainer/idle.png"
-var name = "Restrainer"
+var name = "Boris, the Spider"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 450

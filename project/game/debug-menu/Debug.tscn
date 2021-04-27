@@ -89,11 +89,11 @@ margin_right = 239.0
 margin_bottom = 272.0
 text = "Lower Recipes Threshold"
 
-[node name="Reset Tutorials" type="Button" parent="Background/CenterContainer/VBoxContainer"]
+[node name="ResetCompendium" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 276.0
 margin_right = 239.0
 margin_bottom = 296.0
-text = "Reset Tutorials"
+text = "Reset Compendium"
 
 [node name="Event" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 300.0
@@ -189,6 +189,6 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RevealMap" to="." method="_on_RevealMap_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/TestMapCreation" to="." method="_on_Test_Map_Creation_pressed"]
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]
-[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Reset Tutorials" to="." method="_on_Reset_Tutorials_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/ResetCompendium" to="." method="_on_ResetCompendium_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Event/EventButton" to="." method="_on_EventButton_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Artifact/ArtifactButton" to="." method="_on_ArtifactButton_pressed"]

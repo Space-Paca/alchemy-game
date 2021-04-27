@@ -93,10 +93,6 @@ func _on_RecipeThreshold_toggled(button_pressed):
 	lower_threshold = button_pressed
 
 
-func _on_Reset_Tutorials_pressed():
-	Profile.reset_tutorials()
-
-
 func _on_EventButton_pressed():
 	emit_signal("event_pressed", int(id_box.get_line_edit().text))
 	bg.hide()
@@ -112,3 +108,7 @@ func _on_ArtifactButton_pressed():
 				Color.white, .5)
 		tween.start()
 	artifact_box.text = ""
+
+
+func _on_ResetCompendium_pressed():
+	Profile.reset_compendium()

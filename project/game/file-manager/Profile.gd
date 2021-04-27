@@ -29,12 +29,25 @@ var controls = {
 
 var known_recipes = {}
 
+func _ready():
+	reset_known_recipes()
+
+
+func reset_known_recipes():
+	known_recipes.clear()
+	for recipe in RecipeManager.recipes.values():
+		known_recipes[recipe.name] = {
+			"amount": -1,
+		}
+
+
 func get_save_data():
 	var data = {
 		"version": Debug.VERSION,
 		"tutorials": tutorials,
 		"options": options,
-		"controls": controls
+		"controls": controls,
+		"known_recipes": known_recipes,
 	}
 	
 	return data
@@ -43,11 +56,12 @@ func get_save_data():
 func set_save_data(data):
 	if data.version != Debug.VERSION:
 		#Handle version diff here. For now, just print a warning.
-		push_warning("WARNING! Different save version for profile. It's version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
+		push_warning("WARNING! Different save version for profile. Its version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
 	
 	set_data(data, "tutorials", tutorials)
 	set_data(data, "options", options)
 	set_data(data, "controls", controls)
+	set_data(data, "known_recipes", known_recipes)
 	
 	AudioManager.set_bus_volume("bgm", options.bgm_volume)
 	AudioManager.set_bus_volume("sfx", options.sfx_volume)
@@ -119,10 +133,20 @@ func reset_tutorials():
 	FileManager.save_profile()
 
 
-func update_known_recipe(name):
-	if known_recipes.has(name):
-		known_recipes[name].amount += 1
+func reset_compendium():
+	reset_known_recipes()
+	FileManager.save_profile()
+
+
+func saw_recipe(name):
+	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
+	if known_recipes[name].amount == -1:
+		known_recipes[name].amount = 0
+
+
+func made_recipe(name):
+	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
+	if known_recipes[name].amount == -1:
+		known_recipes[name].amount = 1
 	else:
-		known_recipes[name] = {
-			"amount": 1,
-		}
+		known_recipes[name].amount += 1

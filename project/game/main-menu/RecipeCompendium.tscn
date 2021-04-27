@@ -1,0 +1,163 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=10]
+[ext_resource path="res://game/recipe-book/FilterMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/images/ui/book/Label Red.png" type="Texture" id=12]
+[ext_resource path="res://game/main-menu/RecipeCompendium.gd" type="Script" id=13]
+[ext_resource path="res://assets/images/ui/book/Label Red Hover.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -30
+font_data = ExtResource( 2 )
+
+[node name="RecipeCompendium" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 910.0
+margin_right = 910.0
+mouse_filter = 2
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -540.0
+margin_right = 818.0
+margin_bottom = 540.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book3" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1080.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="Background"]
+margin_left = 800.0
+margin_top = 60.0
+margin_right = 950.0
+margin_bottom = 158.0
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/CloseButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -2.00015
+margin_right = 52.0
+margin_bottom = 63.9998
+custom_fonts/font = ExtResource( 3 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book2" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Book1" type="TextureRect" parent="Background"]
+margin_left = -870.0
+margin_right = 852.0
+margin_bottom = 1084.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="Background"]
+margin_left = 67.2957
+margin_top = 100.969
+margin_right = 155.296
+margin_bottom = 167.969
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Background"]
+margin_left = 180.0
+margin_top = 105.0
+margin_right = 489.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Compendium"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background"]
+margin_left = 5.10858
+margin_top = 209.882
+margin_right = 705.109
+margin_bottom = 929.882
+rect_min_size = Vector2( 700, 580 )
+size_flags_horizontal = 6
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecipeGrid" type="GridContainer" parent="Background/ScrollContainer"]
+margin_left = 700.0
+margin_right = 700.0
+size_flags_horizontal = 10
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="UpperDivider" type="TextureRect" parent="Background"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 41.5304
+margin_top = 169.847
+margin_right = 774.53
+margin_bottom = 229.847
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FilterMenu" parent="Background" instance=ExtResource( 11 )]
+margin_left = 508.724
+margin_top = 119.183
+margin_right = -309.276
+margin_bottom = -960.817
+[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]

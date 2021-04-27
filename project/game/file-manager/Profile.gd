@@ -27,6 +27,8 @@ var controls = {
 	"toggle_fullscreen": KEY_F4 
 }
 
+var known_recipes = {}
+
 func get_save_data():
 	var data = {
 		"version": Debug.VERSION,
@@ -115,3 +117,12 @@ func reset_tutorials():
 	for keys in tutorials.keys():
 		tutorials[keys] = false
 	FileManager.save_profile()
+
+
+func update_known_recipe(name):
+	if known_recipes.has(name):
+		known_recipes[name].amount += 1
+	else:
+		known_recipes[name] = {
+			"amount": 1,
+		}

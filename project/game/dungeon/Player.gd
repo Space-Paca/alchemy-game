@@ -44,6 +44,8 @@ func _ready():
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
 	known_recipes.sort()
+	for recipe_name in known_recipes:
+		Profile.saw_recipe(recipe_name)
 	
 	# Initial bag
 	for _i in range(5):

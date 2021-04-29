@@ -30,7 +30,8 @@ var controls = {
 var known_recipes = {}
 
 func _ready():
-	reset_known_recipes()
+	if known_recipes.empty():
+		reset_known_recipes()
 
 
 func reset_known_recipes():

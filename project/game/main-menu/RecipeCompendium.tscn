@@ -120,6 +120,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="UpperDivider" type="TextureRect" parent="Background"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 41.5304
+margin_top = 169.847
+margin_right = 774.53
+margin_bottom = 229.847
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Background"]
 margin_left = 5.10858
 margin_top = 209.882
@@ -140,18 +152,6 @@ size_flags_horizontal = 10
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
-
-[node name="UpperDivider" type="TextureRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 41.5304
-margin_top = 169.847
-margin_right = 774.53
-margin_bottom = 229.847
-texture = ExtResource( 6 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FilterMenu" parent="Background" instance=ExtResource( 11 )]
 margin_left = 508.724

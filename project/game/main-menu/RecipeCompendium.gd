@@ -1,5 +1,7 @@
 extends Control
 
+signal closed
+
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var filter_menu = $Background/FilterMenu
@@ -9,18 +11,33 @@ const RECIPE = preload("res://game/main-menu/CompendiumRecipeDisplay.tscn")
 var recipe_displays := {}
 
 
+class RecipeSorter:
+	static func sort_ascending(a, b):
+		if a.combination.grid_size == b.combination.grid_size:
+			return a.combination.recipe.name < b.combination.recipe.name
+		return a.combination.grid_size < b.combination.grid_size
+
+
 func _ready():
 	populate()
 
 
 func populate():
+	var display_array := []
+	
 	for recipe_name in Profile.known_recipes:
 		var display = RECIPE.instance()
 		var combination = Combination.new()
 		combination.create_from_recipe(RecipeManager.recipes[recipe_name], {})
-		recipe_grid.add_child(display)
-		display.set_combination(combination)
+		display.combination = combination
 		recipe_displays[recipe_name] = display
+		display_array.append(display)
+	
+	display_array.sort_custom(RecipeSorter, "sort_ascending")
+	
+	for display in display_array:
+		recipe_grid.add_child(display)
+		display.set_combination(display.combination)
 
 
 func enable_tooltips():
@@ -72,5 +89,4 @@ func _on_button_mouse_entered():
 
 
 func _on_CloseButton_pressed():
-	pass
-	#close
+	emit_signal("closed")

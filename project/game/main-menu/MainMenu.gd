@@ -9,8 +9,7 @@ func _ready():
 	Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
-	
-	FileManager.load_game()
+	$RecipeCompendium.hide()
 	
 	$ContinueButton.visible = FileManager.run_file_exists()
 	
@@ -72,3 +71,15 @@ func _on_ContinueButton_pressed():
 	AudioManager.play_sfx("start_new_game")
 	FileManager.continue_game = true
 	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
+
+
+func _on_CompendiumButton_pressed():
+	$RecipeCompendium.show()
+	$UI/PauseButton.hide()
+	$UI/CompendiumButton.hide()
+
+
+func _on_RecipeCompendium_closed():
+	$RecipeCompendium.hide()
+	$UI/PauseButton.show()
+	$UI/CompendiumButton.show()

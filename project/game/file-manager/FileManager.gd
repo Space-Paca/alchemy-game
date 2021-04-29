@@ -4,6 +4,10 @@ var dungeon = false
 var continue_game = false
 
 
+func _ready():
+	load_game()
+
+
 func save_and_quit():
 	save_game()
 	get_tree().quit()

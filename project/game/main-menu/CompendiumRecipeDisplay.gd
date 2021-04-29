@@ -4,10 +4,10 @@ signal hovered(reagent_array)
 signal unhovered()
 
 onready var bg = $Background
+onready var unknown_bg = $UnknownBG
 onready var middle_container = $Background/MarginContainer/VBoxContainer/HBoxContainer/Middle
 onready var right_container = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right
 onready var description = $Background/MarginContainer/VBoxContainer/Description
-onready var favorite_button = $Background/FavoriteButton
 onready var memorization_progress = $Background/MemorizationProgress
 onready var memorization_label = $Background/MemorizationLabel
 onready var grid = $Background/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
@@ -52,19 +52,20 @@ func set_combination(_combination: Combination):
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
-	if combination.discovered:
-		right_container.queue_free()
-		middle_container.queue_free()
+	set_progress(combination.recipe.name)
+
+
+func set_progress(recipe_name: String):
+	var amount = Profile.known_recipes[recipe_name]["amount"]
+	var threshold = Profile.known_recipes[recipe_name]["memorized_threshold"]
+	
+	if amount == -1:
+		bg.hide()
+		unknown_bg.show()
 	else:
-		var columns := [left_column, right_column]
-		var i := 0
-		for reagent in combination.reagent_amounts:
-			var reagent_amount = REAGENT_AMOUNT.instance()
-# warning-ignore:integer_division
-			columns[i / MAX_REAGENT_COLUMN].add_child(reagent_amount)
-			reagent_amount.set_reagent(reagent)
-			reagent_amount.set_amount(combination.reagent_amounts[reagent])
-			i += 1
+		memorization_label.text = "Memorization " + str(amount) + "/" + str(threshold)
+		memorization_progress.max_value = threshold
+		memorization_progress.value = amount
 
 
 func enable_tooltips():

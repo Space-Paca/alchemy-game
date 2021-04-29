@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/main-menu/CompendiumRecipeDisplay.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/ui/book/recipe_page.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book/mastery_bar.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/book/mastery_bg.png" type="Texture" id=6]
@@ -25,7 +26,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
@@ -33,6 +34,14 @@ modulate_color = Color( 0.537255, 1, 0, 1 )
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 160
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [node name="CompendiumRecipeDisplay" type="Control"]
 anchor_right = 1.0
@@ -184,7 +193,7 @@ margin_right = 274.0
 margin_bottom = 337.0
 rect_min_size = Vector2( 250, 30 )
 mouse_filter = 2
-custom_styles/fg = SubResource( 6 )
+custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
 value = 50.0
 percent_visible = false
@@ -203,5 +212,28 @@ expand = true
 [node name="Panel" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="UnknownBG" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color( 0.0588235, 0.027451, 0.0196078, 0.913725 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UnknownBG"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.5
+margin_top = -118.5
+margin_right = 35.5
+margin_bottom = 118.5
+custom_fonts/font = SubResource( 6 )
+text = "?"
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]

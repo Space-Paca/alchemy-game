@@ -52,7 +52,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	lab.connect("grid_modified", self, "_on_Laboratory_grid_modified")
 # warning-ignore:return_value_discarded
-	MessageLayer.connect("favorite_recipe", self, "_on_MessageLayer_favorite_recipe")
+	MessageLayer.connect("favorite_recipe", self, "_on_favorite_recipe")
 
 # warning-ignore:return_value_discarded
 	player.connect("reveal_map", self, "_on_player_reveal_map")
@@ -217,6 +217,8 @@ func create_combinations():
 		if player.known_recipes.has(recipe.name):
 			combination.discover_all_reagents("new_game")
 			recipe_book.add_combination(combination, mastery_threshold(combination))
+			if Profile.is_recipe_memorized(combination.recipe.name):
+				favorite_combination(combination, true, false)
 
 
 func load_level(data):
@@ -627,7 +629,7 @@ func recipe_book_toggle():
 	
 
 
-func favorite_combination(combination, active):
+func favorite_combination(combination, active, play_sfx = true):
 	if active:
 		if favorite_combinations.size() >= max_favorites:
 			recipe_book.favorite_error(combination)
@@ -636,7 +638,8 @@ func favorite_combination(combination, active):
 			recipe_book.favorite_error(combination)
 			MessageLayer.favorite_error("already_has")
 		else:
-			AudioManager.play_sfx("apply_favorite")
+			if play_sfx:
+				AudioManager.play_sfx("apply_favorite")
 			favorite_combinations.append(combination)
 			if battle:
 				battle.add_favorite(combination)
@@ -991,7 +994,7 @@ func _on_Laboratory_recipe_toggle():
 	recipe_book_toggle()
 
 
-func _on_MessageLayer_favorite_recipe(combination):
+func _on_favorite_recipe(combination):
 	recipe_book.set_favorite_button(combination, true)
 
 

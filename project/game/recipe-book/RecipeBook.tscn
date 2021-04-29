@@ -278,6 +278,7 @@ margin_top = 209.882
 margin_right = 705.109
 margin_bottom = 789.882
 rect_min_size = Vector2( 700, 580 )
+mouse_filter = 1
 size_flags_horizontal = 6
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
@@ -402,6 +403,7 @@ __meta__ = {
 columns = 7
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
@@ -417,3 +419,5 @@ columns = 7
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
 
 [editable path="Background/LeftSide/PlayerInfo"]
+[editable path="Background/LeftSide/PlayerInfo/BG/CurrencyContainer/Gold/TooltipCollision"]
+[editable path="Background/LeftSide/PlayerInfo/BG/CurrencyContainer/Pearls/TooltipCollision"]

@@ -39,6 +39,7 @@ func reset_known_recipes():
 		known_recipes[recipe.name] = {
 			"memorized_threshold": memorized_threshold(recipe.name),
 			"amount": -1,
+			"memorized": false,
 		}
 
 
@@ -158,3 +159,8 @@ func made_recipe(name):
 		known_recipes[name].amount = 1
 	else:
 		known_recipes[name].amount += 1
+
+
+func is_recipe_memorized(name):
+	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
+	return known_recipes[name].memorized

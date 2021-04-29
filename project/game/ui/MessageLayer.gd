@@ -59,16 +59,27 @@ func recipe_mastered(combination: Combination):
 
 func new_recipe_discovered(combination: Combination):
 	$Control.show()
-	
 	arrow.hide()
-	favorite_button.hide()
+	
+	current_combination = combination
+	var memorized = Profile.is_recipe_memorized(combination.recipe.name)
+	
+	if memorized:
+		favorite_button.show()
+		favorite_error_label.hide()
+		favorite_button.text = "Favorite this Recipe"
+		favorite_button.disabled = false
+		title.text = "Discovered Memorized Recipe!"
+	else:
+		favorite_button.hide()
+		title.text = "Discovered New Recipe!"
 	
 	var display = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display)
 	display.set_combination(combination)
 	display.preview_mode(false)
 	
-	title.text = "Discovered New Recipe!"
+
 
 func add_message(text: String, duration: float = DEFAULT_DURATION):
 	var message : Message = MESSAGE.instance()
@@ -89,8 +100,14 @@ func exit():
 		$Control/Recipes.remove_child(display)
 	emit_signal("continued")
 
-func favorite_error():
-	favorite_button.text = "Unavailable favorite slot"
+func favorite_error(type):
+	if type == "unavailable":
+		favorite_button.text = "Unavailable favorite slot"
+	elif type == "already_favorited":
+		favorite_button.text = "Recipe already favorited"
+	else:
+		push_error("Not a valid type of error:" + str(type))
+		
 	favorite_error_label.show()
 
 func _on_message_disappeared(message: Message):

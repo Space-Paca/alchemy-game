@@ -631,7 +631,10 @@ func favorite_combination(combination, active):
 	if active:
 		if favorite_combinations.size() >= max_favorites:
 			recipe_book.favorite_error(combination)
-			MessageLayer.favorite_error()
+			MessageLayer.favorite_error("unavailable")
+		elif favorite_combinations.has(combination):
+			recipe_book.favorite_error(combination)
+			MessageLayer.favorite_error("already_has")
 		else:
 			AudioManager.play_sfx("apply_favorite")
 			favorite_combinations.append(combination)

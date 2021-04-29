@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/ui/star_off.png" type="Texture" id=1]
 [ext_resource path="res://game/recipe-book/RecipeDisplay.gd" type="Script" id=2]
@@ -35,6 +35,15 @@ region_rect = Rect2( 0, 0, 32, 32 )
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 32, 32 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 10 )
+
 [node name="RecipeDisplay" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,6 +51,7 @@ margin_right = -1920.0
 margin_bottom = -1080.0
 rect_min_size = Vector2( 307, 385 )
 rect_pivot_offset = Vector2( 153, 192 )
+mouse_filter = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -207,14 +217,14 @@ __meta__ = {
 }
 
 [node name="FavoriteButton" type="TextureButton" parent="Panel"]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -171.0
-margin_top = 307.0
-margin_right = -135.0
-margin_bottom = 343.0
+margin_left = -236.433
+margin_top = 342.695
+margin_right = -200.433
+margin_bottom = 378.695
 rect_min_size = Vector2( 36, 36 )
+mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
@@ -223,8 +233,19 @@ stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="Panel/FavoriteButton"]
+margin_left = 36.6034
+margin_top = 12.4495
+margin_right = 174.603
+margin_bottom = 33.4495
+custom_fonts/font = SubResource( 6 )
+text = "Favorite Recipe"
+
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]
 [connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
 [connection signal="button_down" from="Panel/FavoriteButton" to="." method="_on_FavoriteButton_button_down"]
+[connection signal="mouse_entered" from="Panel/FavoriteButton" to="." method="_on_FavoriteButton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FavoriteButton" to="." method="_on_FavoriteButton_mouse_exited"]
 [connection signal="toggled" from="Panel/FavoriteButton" to="." method="_on_FavoriteButton_toggled"]

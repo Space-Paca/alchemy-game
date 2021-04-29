@@ -127,6 +127,7 @@ text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="Control/Buttons/FavoriteRecipe" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Control/Buttons/FavoriteRecipe" to="." method="_on_FavoriteRecipe_pressed"]
 [connection signal="mouse_entered" from="Control/Buttons/Continue" to="." method="_on_button_mouse_entered"]

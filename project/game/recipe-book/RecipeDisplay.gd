@@ -24,13 +24,21 @@ const RECIPE_MASTERED_BG = preload("res://assets/images/ui/book/mastered_recipe_
 const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
+const ALPHA_SPEED = 4
 
 var combination : Combination
 var reagent_array := []
 var mastery_unlocked := false
+var memorized := false
 var tagged := true
 var filtered := true
 var hovered := false
+var mouse_over_favorite := false
+
+
+func _ready():
+	favorite_button.get_node("Label").modulate.a = 0.0
+	favorite_button.hide()
 
 
 func _process(delta):
@@ -40,7 +48,12 @@ func _process(delta):
 	else:
 		rect_scale.x = max(rect_scale.x - delta*SCALE_SPEED, 1)
 		rect_scale.y = max(rect_scale.y - delta*SCALE_SPEED, 1)
-
+	
+	var fav_label = favorite_button.get_node("Label")
+	if mouse_over_favorite:
+		fav_label.modulate.a = min(fav_label.modulate.a + delta*ALPHA_SPEED, 1.0)
+	else:
+		fav_label.modulate.a = max(fav_label.modulate.a - delta*ALPHA_SPEED, 0.0)
 
 func set_combination(_combination: Combination):
 	combination = _combination
@@ -69,6 +82,9 @@ func set_combination(_combination: Combination):
 			reagent_amount.set_reagent(reagent)
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
+	
+	if Profile.is_recipe_memorized(combination.recipe.name):
+		unlock_memorized()
 
 
 func update_combination():
@@ -108,6 +124,10 @@ func is_mastered():
 	return mastery_unlocked
 
 
+func unlock_memorized():
+	memorized = true
+	favorite_button.visible = true
+
 func unlock_mastery(show_message := true):
 	if not mastery_unlocked:
 		description.text = RecipeManager.get_description(combination.recipe, true)
@@ -122,7 +142,7 @@ func unlock_mastery(show_message := true):
 
 
 func set_favorite_button(status):
-	if mastery_unlocked:
+	if mastery_unlocked or memorized:
 		favorite_button.pressed = status
 
 
@@ -135,10 +155,10 @@ func enable_tooltips():
 	for reagent_amount in grid.get_children():
 		reagent_amount.enable_tooltips()
 	
-	if left_column:
+	if left_column and is_instance_valid(left_column):
 		for reagent_amount in left_column.get_children():
 			reagent_amount.enable_tooltips()
-	if right_column:
+	if right_column and is_instance_valid(right_column):
 		for reagent_amount in right_column.get_children():
 			reagent_amount.enable_tooltips()
 
@@ -169,3 +189,11 @@ func _on_FavoriteButton_toggled(button_pressed):
 
 func _on_FavoriteButton_button_down():
 	AudioManager.play_sfx("click")
+
+
+func _on_FavoriteButton_mouse_entered():
+	mouse_over_favorite = true
+
+
+func _on_FavoriteButton_mouse_exited():
+	mouse_over_favorite = false

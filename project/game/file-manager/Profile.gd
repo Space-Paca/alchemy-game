@@ -40,7 +40,7 @@ func reset_known_recipes():
 		known_recipes[recipe.name] = {
 			"memorized_threshold": memorized_threshold(recipe.name),
 			"amount": -1,
-			"memorized": false,
+			"memorized": true,
 		}
 
 

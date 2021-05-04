@@ -219,6 +219,7 @@ func create_combinations():
 			recipe_book.add_combination(combination, mastery_threshold(combination))
 			if Profile.is_recipe_memorized(combination.recipe.name):
 				favorite_combination(combination, true, false)
+				recipe_book.set_favorite_button(combination, true)
 
 
 func load_level(data):
@@ -636,7 +637,7 @@ func favorite_combination(combination, active, play_sfx = true):
 			MessageLayer.favorite_error("unavailable")
 		elif favorite_combinations.has(combination):
 			recipe_book.favorite_error(combination)
-			MessageLayer.favorite_error("already_has")
+			MessageLayer.favorite_error("already_favorited")
 		else:
 			if play_sfx:
 				AudioManager.play_sfx("apply_favorite")

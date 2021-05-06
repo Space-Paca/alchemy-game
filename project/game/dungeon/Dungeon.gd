@@ -67,6 +67,7 @@ func _ready():
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
 		create_combinations()
+		Profile.reset_recipes_made_in_run()
 		EventManager.reset_events()
 		create_level(floor_level)
 	

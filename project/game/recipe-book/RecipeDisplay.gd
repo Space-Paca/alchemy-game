@@ -19,7 +19,6 @@ onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Ri
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-const RECIPE_BG = preload("res://assets/images/ui/book/recipe_page.png")
 const RECIPE_MASTERED_BG = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05

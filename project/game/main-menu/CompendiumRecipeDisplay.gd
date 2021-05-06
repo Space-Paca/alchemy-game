@@ -17,8 +17,6 @@ onready var right_column = $Background/MarginContainer/VBoxContainer/HBoxContain
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-const RECIPE_BG = preload("res://assets/images/ui/book/recipe_page.png")
-const RECIPE_MASTERED_BG = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
@@ -45,12 +43,24 @@ func set_combination(_combination: Combination):
 	description.text = RecipeManager.get_description(combination.recipe)
 	grid.columns = combination.grid_size
 	
+	# Grid
 	for i in range(combination.grid_size):
 		for j in range(combination.grid_size):
 			var reagent = REAGENT.instance()
 			reagent.set_mode("grid")
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
+	
+	# Reagents
+	var columns := [left_column, right_column]
+	var i := 0
+	for reagent in combination.reagent_amounts:
+		var reagent_amount = REAGENT_AMOUNT.instance()
+# warning-ignore:integer_division
+		columns[i / MAX_REAGENT_COLUMN].add_child(reagent_amount)
+		reagent_amount.set_reagent(reagent)
+		reagent_amount.set_amount(combination.reagent_amounts[reagent])
+		i += 1
 	
 	set_progress(combination.recipe.name)
 

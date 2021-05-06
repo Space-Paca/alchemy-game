@@ -26,6 +26,7 @@ var grid_size : int
 var bag := []
 var artifacts := []
 var known_recipes : Array
+var made_recipes : Dictionary
 var cur_level : int
 var player_class : PlayerClass
 
@@ -44,8 +45,9 @@ func _ready():
 	# Initial recipes
 	known_recipes = player_class.initial_recipes.duplicate()
 	known_recipes.sort()
+	reset_made_recipes()
 	for recipe_name in known_recipes:
-		Profile.saw_recipe(recipe_name)
+		saw_recipe(recipe_name)
 	
 	# Initial bag
 	for _i in range(5):
@@ -68,6 +70,7 @@ func get_save_data():
 		"cur_level": cur_level,
 		"artifacts": artifacts.duplicate(true),
 		"known_recipes": known_recipes.duplicate(true),
+		"made_recipes": made_recipes.duplicate(true),
 		"hp": hp,
 		"max_hp": max_hp,
 	}
@@ -84,6 +87,7 @@ func set_save_data(data):
 	grid_size = GRID_SIZES[cur_level-1]
 	artifacts = data.artifacts
 	known_recipes = data.known_recipes
+	made_recipes = data.made_recipes
 	hp = data.hp
 	max_hp = data.max_hp
 
@@ -351,6 +355,26 @@ func remove_status(status: String):
 func update_status(type: String):
 	.update_status(type)
 	hud.update_status_bar(self)
+
+
+func reset_made_recipes():
+	made_recipes.clear()
+	for recipe in RecipeManager.recipes.values():
+		made_recipes[recipe.name] = {
+			"amount": -1,
+		}
+
+func saw_recipe(name):
+	assert(made_recipes.has(name), "Not a valid recipe name: "+str(name))
+	if made_recipes[name].amount == -1:
+		made_recipes[name].amount = 0
+
+func made_recipe(name):
+	assert(made_recipes.has(name), "Not a valid recipe name: "+str(name))
+	if made_recipes[name].amount == -1:
+		made_recipes[name].amount = 1
+	else:
+		made_recipes[name].amount += 1
 
 
 func discover_combination(combination: Combination, play_sfx := false):

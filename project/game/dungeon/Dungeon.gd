@@ -67,7 +67,6 @@ func _ready():
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
 		create_combinations()
-		Profile.reset_recipes_made_in_run()
 		EventManager.reset_events()
 		create_level(floor_level)
 	
@@ -437,7 +436,7 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 			battle.enable_elements()
 	
 	if apply_effects:
-		Profile.made_recipe(recipe.name)
+		player.made_recipe(recipe.name)
 		battle.add_recipe_deviation(recipe.name)
 		if not times_recipe_made.has(recipe.name):
 			times_recipe_made[recipe.name] = 1
@@ -746,7 +745,7 @@ func _on_new_combinations_seen(new_combinations: Array):
 	for combination in new_combinations:
 		if combination:
 			player.discover_combination(combination)
-			Profile.saw_recipe(combination.recipe.name)
+			player.saw_recipe(combination.recipe.name)
 
 
 func _on_combination_rewarded(combination):

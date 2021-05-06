@@ -40,7 +40,6 @@ func reset_known_recipes():
 		known_recipes[recipe.name] = {
 			"memorized_threshold": memorized_threshold(recipe.name),
 			"amount": -1,
-			"made_in_run": 0,
 			"memorized": false,
 		}
 
@@ -147,27 +146,6 @@ func memorized_threshold(recipe_name: String) -> int:
 	var threshold = min(10, 18 - recipe.reagents.size() - 3*recipe.destroy_reagents.size() - 2*recipe.grid_size)
 	threshold = 3*max(threshold, 2)
 	return threshold
-
-
-func reset_recipes_made_in_run():
-	for recipe in known_recipes.values():
-		recipe.made_in_run = 0
-
-
-func saw_recipe(name):
-	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
-	if known_recipes[name].amount == -1:
-		known_recipes[name].amount = 0
-
-
-func made_recipe(name):
-	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
-	if known_recipes[name].amount == -1:
-		known_recipes[name].amount = 1
-		known_recipes[name].made_in_run = 1
-	else:
-		known_recipes[name].amount += 1
-		known_recipes[name].made_in_run += 1
 
 
 func is_recipe_memorized(name):

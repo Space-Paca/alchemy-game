@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/enemies/baby retaliate/idle.png" type="Texture" id=3]
 [ext_resource path="res://assets/shaders/highlight.shader" type="Shader" id=4]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -77,8 +78,13 @@ margin_right = -218.886
 margin_bottom = 246.23
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="TooltipCollision" parent="." instance=ExtResource( 5 )]
+position = Vector2( -14.2544, 32.0723 )
 [connection signal="mouse_entered" from="Sprite/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]
+[connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 
 [editable path="HealthBar"]

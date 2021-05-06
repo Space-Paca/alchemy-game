@@ -13,6 +13,7 @@ onready var button = $Sprite/Button
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
 onready var tween = $Tween
+onready var tooltip = $TooltipCollision
 
 const INTENT = preload("res://game/enemies/Intent.tscn")
 
@@ -36,6 +37,7 @@ var player
 var just_spawned := false
 var _playback_speed := 1.0
 var already_inited = false
+var tooltip_enabled = false
 
 
 func _ready():
@@ -403,6 +405,10 @@ func set_image(new_texture):
 	
 	# Button
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
+	
+	# Tooltip
+	$TooltipCollision.position = Vector2(0, 0)
+	$TooltipCollision.set_collision_shape(Vector2(w,h))
 
 
 func get_actions_data():
@@ -485,6 +491,7 @@ func get_width():
 func get_height():
 	return sprite.texture.get_height()
 
+
 func set_button_disabled(disable: bool):
 	button.visible = not disable
 	button.disabled = disable
@@ -492,6 +499,29 @@ func set_button_disabled(disable: bool):
 	var color := HL_COLOR
 	color.a = 0 if disable else 1
 	sprite.material.set_shader_param("highlight_color", color)
+
+
+func get_tooltip():
+	var tooltip = {"title": data.name, "text": "", \
+				   "title_image": false, "subtitle": "Enemy"}
+
+	return tooltip
+
+
+func disable_tooltips():
+	remove_tooltips()
+	$TooltipCollision.disable()
+
+
+func enable_tooltips():
+	tooltip.enable()
+
+
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
+
 
 func _on_Button_pressed():
 	tween.stop(sprite.material)
@@ -517,3 +547,15 @@ func _on_Button_mouse_exited():
 			"shader_param/highlight_thickness", null, HL_MIN_THICKNESS,
 			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
+
+
+func _on_TooltipCollision_disable_tooltip():
+	if tooltip_enabled:
+		remove_tooltips()
+
+
+func _on_TooltipCollision_enable_tooltip():
+	tooltip_enabled = true
+	var tip = get_tooltip()
+	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)

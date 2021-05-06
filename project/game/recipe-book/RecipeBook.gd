@@ -105,9 +105,9 @@ func reapply_tag_and_filters():
 	filter_menu.reapply_filters()
 
 
-func set_favorite_button(combination, pressed):
+func set_favorite_button(combination, pressed, temp_disconnect = false):
 	assert(recipe_displays.has(combination.recipe.name), "Doesn't have this recipe display:" + str(combination.recipe.name))
-	recipe_displays[combination.recipe.name].set_favorite_button(pressed)
+	recipe_displays[combination.recipe.name].set_favorite_button(pressed, temp_disconnect)
 
 
 func add_combination(combination: Combination, threshold: int):

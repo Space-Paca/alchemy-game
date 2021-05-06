@@ -219,7 +219,7 @@ func create_combinations():
 			recipe_book.add_combination(combination, mastery_threshold(combination))
 			if Profile.is_recipe_memorized(combination.recipe.name):
 				favorite_combination(combination, true, false)
-				recipe_book.set_favorite_button(combination, true)
+				recipe_book.set_favorite_button(combination, true, true)
 
 
 func load_level(data):
@@ -996,7 +996,8 @@ func _on_Laboratory_recipe_toggle():
 
 
 func _on_favorite_recipe(combination):
-	recipe_book.set_favorite_button(combination, true)
+	favorite_combination(combination, true)
+	recipe_book.set_favorite_button(combination, true, true)
 
 
 func _on_player_reveal_map():

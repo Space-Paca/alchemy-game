@@ -33,6 +33,7 @@ var tagged := true
 var filtered := true
 var hovered := false
 var mouse_over_favorite := false
+var ignore_signal = false
 
 
 func _ready():
@@ -140,8 +141,10 @@ func unlock_mastery(show_message := true):
 			MessageLayer.recipe_mastered(combination)
 
 
-func set_favorite_button(status):
+func set_favorite_button(status, temp_disconnect = false):
 	if mastery_unlocked or memorized:
+		if temp_disconnect:
+			ignore_signal = true
 		favorite_button.pressed = status
 
 
@@ -183,7 +186,10 @@ func _on_Button_pressed():
 
 
 func _on_FavoriteButton_toggled(button_pressed):
-	emit_signal("favorite_toggled", combination, button_pressed)
+	if not ignore_signal:
+		emit_signal("favorite_toggled", combination, button_pressed)
+	else:
+		ignore_signal = false
 
 
 func _on_FavoriteButton_button_down():

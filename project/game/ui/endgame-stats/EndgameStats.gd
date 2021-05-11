@@ -6,7 +6,8 @@ const RECIPE = preload("res://game/ui/endgame-stats/RecipeMemorization.tscn")
 
 
 func _ready():
-	populate()
+	#populate()
+	pass
 
 
 func populate():

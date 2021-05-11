@@ -19,6 +19,7 @@ var hp : int
 var shield : int
 var status_list : Dictionary
 var char_name: String 
+var what_killed_me = false
 
 
 func init(_name: String, _max_hp: int):
@@ -189,7 +190,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	if hp <= 0:
 		hp = 0
-		die()
+		die({
+			"source": source,
+			"type": type,
+		})
 	else:
 		if pre_shield <= 0 and damage > 0 and status_list.has("arcane_aegis"):
 			AudioManager.play_sfx("shield_gain")
@@ -207,7 +211,8 @@ func gain_shield(value):
 	AudioManager.play_sfx("shield_gain")
 	shield += value
 
-func die():
+func die(reason = false):
+	what_killed_me = reason
 	emit_signal("died", self)
 
 #STATUS FUNCS

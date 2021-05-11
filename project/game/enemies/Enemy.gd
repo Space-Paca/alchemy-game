@@ -85,7 +85,7 @@ func heal(amount : int):
 
 
 
-func die():
+func die(_reason=false):
 	#Audio
 	AudioManager.play_enemy_dies_sfx(data.sfx)
 	disable()
@@ -502,10 +502,10 @@ func set_button_disabled(disable: bool):
 
 
 func get_tooltip():
-	var tooltip = {"title": data.name, "text": "", \
+	var tip = {"title": data.name, "text": "", \
 				   "title_image": false, "subtitle": "Enemy"}
 
-	return tooltip
+	return tip
 
 
 func disable_tooltips():

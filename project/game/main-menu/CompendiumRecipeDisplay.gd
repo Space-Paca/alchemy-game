@@ -66,8 +66,7 @@ func set_combination(_combination: Combination):
 
 
 func set_progress(recipe_name: String):
-	var amount = Profile.known_recipes[recipe_name]["amount"] -\
-			Profile.known_recipes[recipe_name]["made_in_run"]
+	var amount = Profile.known_recipes[recipe_name]["amount"]
 	var threshold = Profile.known_recipes[recipe_name]["memorized_threshold"]
 	
 	if amount == -1:

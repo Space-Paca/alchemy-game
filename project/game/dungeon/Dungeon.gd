@@ -687,6 +687,8 @@ func _on_map_node_selected(node: MapNode):
 		open_event(node)
 	else: # MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS
 		current_node = node
+		if not Profile.get_tutorial("first_battle") and node.type == MapNode.ENEMY and floor_level == 1:
+			node.encounter = EncounterManager.get_tutorial_encounter()
 		new_battle(node.encounter)
 
 

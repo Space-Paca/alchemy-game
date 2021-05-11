@@ -1,6 +1,7 @@
 extends Node
 
 const PATH := "res://database/encounters/"
+const TUTORIAL_ENCOUNTER_NAME := "floor1_1.tres"
 
 var boss_encounters := {}
 var elite_encounters := {}
@@ -10,6 +11,7 @@ var encounter_index : int
 var elite_encounter_pool : Array
 var elite_encounter_index : int
 var boss_encounter_pool : Array
+var tutorial_encounter
 
 
 func _ready():
@@ -34,6 +36,9 @@ func _ready():
 					if not encounters.has(encounter.level):
 						encounters[encounter.level] = []
 					encounters[encounter.level].append(encounter)
+				
+				if encounter.resource_name == TUTORIAL_ENCOUNTER_NAME:
+					tutorial_encounter = encounter
 			file_name = dir.get_next()
 	else:
 		print("EncounterManager: An error occurred when trying to access the path.")
@@ -119,6 +124,10 @@ func set_random_encounter_pool(level: int):
 	#Boss
 	boss_encounter_pool = boss_encounters[level].duplicate()
 	boss_encounter_pool.shuffle()
+
+
+func get_tutorial_encounter():
+	return tutorial_encounter
 
 
 func get_random_encounter() -> Encounter:

@@ -21,7 +21,6 @@ void fragment(){
 	COLOR = mix(COLOR, vec4(vec3(0.0), 1.0), mix_value);
 }
 "
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
@@ -129,6 +128,7 @@ text = "RESTART"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "gameover"
 anims/gameover = SubResource( 3 )
+
 [connection signal="button_down" from="BG/VBoxContainer/Button" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/VBoxContainer/Button" to="." method="_on_Button_pressed"]

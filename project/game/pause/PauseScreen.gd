@@ -69,6 +69,7 @@ func _unhandled_input(event):
 
 func toggle_pause():
 	if block_pause or Transition.active:
+		AudioManager.play_sfx("error")
 		return
 	set_pause(!paused)
 

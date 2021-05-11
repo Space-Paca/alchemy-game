@@ -733,7 +733,8 @@ func win():
 
 	ended = true
 	disable_elements()
-
+	emit_signal("block_pause", true)
+	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")
 	else:
@@ -1209,6 +1210,7 @@ func _on_enemy_died(enemy):
 
 
 func _on_player_died(_player):
+	emit_signal("block_pause", true)
 	AudioManager.play_sfx("game_over")
 	TooltipLayer.clean_tooltips()
 	ended = true
@@ -1251,6 +1253,7 @@ func _on_RecipesButton_pressed():
 
 
 func _on_win_screen_continue_pressed():
+	emit_signal("block_pause", false)
 	emit_signal("finished", is_boss)
 
 func _on_win_screen_reagent_looted(reagent: String):

@@ -229,6 +229,8 @@ func load_level(data):
 	
 	# MAP
 	map = MAP_SCENE.instance()
+	# warning-ignore:return_value_discarded
+	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
 	map.load_map(data.map)
@@ -253,6 +255,8 @@ func create_level(level: int, debug := false):
 	
 	# MAP
 	map = MAP_SCENE.instance()
+	# warning-ignore:return_value_discarded
+	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
 	match level:
@@ -718,6 +722,7 @@ func _on_Battle_finished(is_boss):
 	yield(Transition, "screen_dimmed")
 	
 	is_boss = not battle.is_event and is_boss
+	var is_elite = battle.is_elite
 	battle.queue_free()
 	battle = null
 	recipe_book.change_state(RecipeBook.States.MAP)
@@ -726,6 +731,7 @@ func _on_Battle_finished(is_boss):
 	Transition.end_transition()
 	
 	if is_boss:
+		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
 		if floor_level <= Debug.MAX_FLOOR:
@@ -737,8 +743,13 @@ func _on_Battle_finished(is_boss):
 			enable_map()
 			thanks_for_playing()
 	else:
+		if is_elite:
+			player.increase_floor_stat("elite_encounters_finished")
+		else:
+			player.increase_floor_stat("normal_encounters_finished")
 		enable_map()
 		current_node.set_type(MapNode.EMPTY)
+		player.set_floor_stat("percentage_done", map.get_done_percentage())
 		map.reveal_paths(current_node)
 		current_node = null
 
@@ -914,6 +925,8 @@ func _on_EventDisplay_closed():
 	map.reveal_paths(current_node)
 	current_node = null
 	
+	player.set_floor_stat("percentage_done", map.get_done_percentage())
+	
 	Transition.end_transition()
 
 
@@ -1028,3 +1041,8 @@ func _on_RecipeBook_recipe_pressed_lab(combination: Combination):
 	lab.grid.clear_hints()
 	if not lab.grid.show_combination_hint(combination):
 		AudioManager.play_sfx("error")
+
+
+func _on_map_finished_revealing_map():
+	player.set_floor_stat("percentage_done", map.get_done_percentage())
+

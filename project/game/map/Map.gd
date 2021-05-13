@@ -48,6 +48,7 @@ var stored_map_positions = null
 var positions = null
 var center_position = null
 var player = null
+var total_number_nodes := -1
 
 
 func _ready():
@@ -211,12 +212,15 @@ func get_save_data():
 			data.initial_node_name = node_name
 		data.nodes.append(node_data)
 	
+	data.total_number_nodes = total_number_nodes
 	return data
 
 
 func load_map(data):
 	reset_camera(true)
 	camera_last_pos = false
+	
+	total_number_nodes = data.total_number_nodes
 	
 	#Creating nodes
 	var nodes_to_reveal = []
@@ -291,6 +295,8 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 		
 		var total_nodes := normal_encounters + elite_encounters + shops + rests +\
 				smiths + events + labs + treasures + 1
+		
+		total_number_nodes = total_nodes
 		
 		validate_map(total_nodes, normal_encounters)
 		
@@ -456,6 +462,18 @@ func reveal_paths(node:MapNode, nodes_to_reveal := []):
 	
 	if active_paths:
 		set_disabled(true)
+
+#"Done" nodes ares any visible nodes except undone encounters/events
+func get_done_percentage(boss_defeated = false):
+	var seen = 0
+	for node in active_nodes:
+		if node.type != MapNode.ENEMY and\
+		   node.type != MapNode.ELITE and\
+		   (boss_defeated or node.type != MapNode.BOSS) and\
+		   node.type != MapNode.EVENT:
+			seen += 1
+	
+	return seen/float(total_number_nodes + 1)
 
 
 func _on_path_reached(node:MapNode, nodes_to_reveal:= []):

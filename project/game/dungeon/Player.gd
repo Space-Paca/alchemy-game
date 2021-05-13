@@ -34,26 +34,27 @@ var floor_stats = [
 		"normal_encounters_finished": 0,
 		"elite_encounters_finished": 0,
 		"monsters_defeated": 0,
-		"percentage_completed": 0.0,
+		"percentage_done": 0.0,
 	},
 	#Floor 2
 	{
 		"normal_encounters_finished": 0,
 		"elite_encounters_finished": 0,
 		"monsters_defeated": 0,
-		"percentage_completed": 0.0,
+		"percentage_done": 0.0,
 	},
 	#Floor 3
 	{
 		"normal_encounters_finished": 0,
 		"elite_encounters_finished": 0,
 		"monsters_defeated": 0,
-		"percentage_completed": 0.0,
+		"percentage_done": 0.0,
 	},
 ]
 var stats = {
 	"reagents_removed": 0,
 	"damage_dealt": 0,
+	"damage_blocked": 0,
 	"damage_received": 0,
 	"damage_healed": 0,
 }

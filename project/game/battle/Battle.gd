@@ -1158,6 +1158,7 @@ func _on_enemy_acted(enemy, actions):
 
 
 func _on_enemy_died(enemy):
+	player.increase_floor_stat("monsters_defeated")
 	if ended:
 		return
 	enemies_node.remove_child(enemy)

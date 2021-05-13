@@ -5,12 +5,32 @@ signal map_node_pressed(node)
 signal finished_active_paths
 
 onready var bg = $Background
+onready var visible_bg = $VisibleBackground
 onready var lines = $Lines
 onready var camera = $Camera
 onready var click_block = $ClickBlock
 onready var nodes = $Nodes
 onready var floor_label = $CanvasLayer/FloorLabel
 
+const FLOOR_LABEL = [
+	"The Woods",
+	"The Cavern",
+	"The Dungeon",
+]
+const MAPS_BG = [
+	{
+		"unexplored": preload("res://assets/images/map/mapa01_floresta_inexplorado.jpg"),
+		"explored": preload("res://assets/images/map/mapa01_floresta_explorado.jpg"),
+	},
+	{
+		"unexplored": preload("res://assets/images/map/mapa02_caverna_inexplorado.jpg"),
+		"explored": preload("res://assets/images/map/mapa02_caverna_explorado.jpg"),
+	},
+	{
+		"unexplored": preload("res://assets/images/map/mapa01_floresta_inexplorado.jpg"),
+		"explored": preload("res://assets/images/map/mapa01_floresta_explorado.jpg"),
+	},
+]
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const EPSILON = 1
@@ -117,7 +137,9 @@ func recipe_toogle(active : bool):
 
 func set_level(level:int):
 	current_level = level
-	floor_label.text = str("Floor ", current_level)
+	floor_label.text = FLOOR_LABEL[current_level-1]
+	bg.texture = MAPS_BG[current_level-1].unexplored
+	visible_bg.texture = MAPS_BG[current_level-1].explored
 
 
 func shift_positions():

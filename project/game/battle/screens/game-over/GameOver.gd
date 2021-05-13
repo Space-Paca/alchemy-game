@@ -4,6 +4,10 @@ func _ready():
 	pass
 
 
+func set_player(p: Player):
+	$BG/EndgameStats.set_player(p)
+
+
 func _on_Button_pressed():
 	Transition.transition_to("res://game/main-menu/MainMenu.tscn")
 

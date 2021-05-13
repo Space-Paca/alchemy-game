@@ -151,3 +151,9 @@ func memorized_threshold(recipe_name: String) -> int:
 func is_recipe_memorized(name):
 	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
 	return known_recipes[name].memorized
+
+
+func memorize_recipe(name):
+	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
+	known_recipes[name].memorized = true
+	known_recipes[name].amount = known_recipes[name].memorized_threshold

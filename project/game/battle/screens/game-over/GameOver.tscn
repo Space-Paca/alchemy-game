@@ -21,11 +21,12 @@ void fragment(){
 	COLOR = mix(COLOR, vec4(vec3(0.0), 1.0), mix_value);
 }
 "
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/grayscale = 1.0
-shader_param/mix_value = 1.0
+shader_param/grayscale = 0.0
+shader_param/mix_value = 0.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "gameover"
@@ -94,6 +95,8 @@ __meta__ = {
 }
 
 [node name="BG" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
@@ -102,15 +105,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EndgameStats" parent="BG" instance=ExtResource( 5 )]
+
 [node name="VBoxContainer" type="VBoxContainer" parent="BG"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -116.5
-margin_right = 256.0
-margin_bottom = 116.5
+margin_left = -1158.1
+margin_top = 392.508
+margin_right = -646.104
+margin_bottom = 625.508
 custom_constants/separation = 50
 alignment = 1
 __meta__ = {
@@ -123,12 +128,9 @@ margin_right = 512.0
 margin_bottom = 189.0
 text = "RESTART"
 
-[node name="GameOverStats" parent="BG" instance=ExtResource( 5 )]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "gameover"
 anims/gameover = SubResource( 3 )
-
 [connection signal="button_down" from="BG/VBoxContainer/Button" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/VBoxContainer/Button" to="." method="_on_Button_pressed"]

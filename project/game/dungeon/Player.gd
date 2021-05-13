@@ -28,6 +28,36 @@ var artifacts := []
 var known_recipes : Array
 var made_recipes : Dictionary
 var cur_level : int
+var floor_stats = [
+	#Floor 1
+	{
+		"normal_encounters_finished": 0,
+		"elite_encounters_finished": 0,
+		"monsters_defeated": 0,
+		"percentage_completed": 0.0,
+	},
+	#Floor 2
+	{
+		"normal_encounters_finished": 0,
+		"elite_encounters_finished": 0,
+		"monsters_defeated": 0,
+		"percentage_completed": 0.0,
+	},
+	#Floor 3
+	{
+		"normal_encounters_finished": 0,
+		"elite_encounters_finished": 0,
+		"monsters_defeated": 0,
+		"percentage_completed": 0.0,
+	},
+]
+var stats = {
+	"reagents_removed": 0,
+	"damage_dealt": 0,
+	"damage_received": 0,
+	"damage_healed": 0,
+}
+
 var player_class : PlayerClass
 
 
@@ -73,6 +103,8 @@ func get_save_data():
 		"made_recipes": made_recipes.duplicate(true),
 		"hp": hp,
 		"max_hp": max_hp,
+		"floor_stats": floor_stats.duplicate(true),
+		"stats": stats.duplicate(true),
 	}
 	
 	return data
@@ -90,6 +122,15 @@ func set_save_data(data):
 	made_recipes = data.made_recipes
 	hp = data.hp
 	max_hp = data.max_hp
+	#Copy floor stats from data, but remain default values that are not present
+	for level in data.floor_stats.size():
+		for key in floor_stats[level].keys():
+			if data.floor_stats[level].has(key):
+				floor_stats[level][key] = data.floor_stats[level][key]
+	#Copy stats from data, but remain default values that are not present
+	for key in stats.keys():
+		if data.stats.has(key):
+			stats[key] = data.stats[key]
 
 
 class BagSorter:
@@ -127,6 +168,14 @@ func set_level(level:int):
 	grid_size = GRID_SIZES[cur_level-1]
 	set_max_hp(player_class.max_hps[cur_level-1])
 	full_heal()
+
+
+func set_floor_stat(type: String, value):
+	floor_stats[cur_level-1][type] = value
+
+
+func increase_floor_stat(type: String):
+	floor_stats[cur_level-1][type] += 1
 
 
 func full_heal():

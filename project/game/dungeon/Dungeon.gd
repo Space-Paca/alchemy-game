@@ -19,6 +19,8 @@ const SAVE_VERSION = 1.0
 var battle
 var combinations := {}
 var failed_combinations := []
+var time_of_run = 0.0
+var time_running = false
 var floor_level := 1
 var times_recipe_made := {}
 var favorite_combinations := []
@@ -33,6 +35,9 @@ var first_shop_visit = true
 
 
 func _ready():
+	$UI/Timer.update_timer(time_of_run)
+	time_running = false
+	
 	randomize()
 	# DEBUG
 # warning-ignore:return_value_discarded
@@ -92,6 +97,7 @@ func _ready():
 		
 
 		$PauseScreen.set_block_pause(false)
+		time_running = true
 
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
@@ -102,6 +108,12 @@ func _input(event):
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
+
+
+func _process(delta):
+	if time_running:
+		time_of_run += delta
+		$UI/Timer.update_timer(time_of_run) 
 
 
 func get_save_data():
@@ -115,7 +127,8 @@ func get_save_data():
 		"cur_lab_attempts": cur_lab_attempts,
 		"first_shop_visit": first_shop_visit,
 		"battle": battle.get_save_data() if battle else false,
-		"current_node": "" if not current_node else current_node.name
+		"current_node": "" if not current_node else current_node.name,
+		"time_if_run": time_of_run,
 	}
 	return data
 
@@ -133,6 +146,8 @@ func set_save_data(data):
 	load_level(data)
 	battle_load_data = data.battle
 	current_node = null if data.current_node == "" else map.get_map_node(data.current_node)
+	time_of_run = data.time_of_run
+	$UI/Timer.update_timer(time_of_run)
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
@@ -512,9 +527,9 @@ func create_battle():
 
 func load_battle(data):
 	assert(battle == null)
-	
 	TooltipLayer.clean_tooltips()
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	map.disable()
 	
@@ -524,6 +539,7 @@ func load_battle(data):
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
+	time_running = true
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
@@ -531,13 +547,13 @@ func load_battle(data):
 
 func new_battle(encounter: Encounter):
 	assert(battle == null)
-	
 	create_battle()
 	
 	battle.setup(player, encounter, favorite_combinations, floor_level)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
+	time_running = true
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
@@ -554,6 +570,8 @@ func open_shop():
 	shop.show()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func open_rest(room, _player):
@@ -562,6 +580,8 @@ func open_rest(room, _player):
 	rest.show()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func open_smith(room, _player):
@@ -570,6 +590,8 @@ func open_smith(room, _player):
 	smith.show()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func open_lab(room, _player):
@@ -580,6 +602,8 @@ func open_lab(room, _player):
 	player_info.hide()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func open_treasure(room, _player):
@@ -588,6 +612,8 @@ func open_treasure(room, _player):
 	treasure.show()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func open_event(map_node: MapNode):
@@ -596,6 +622,8 @@ func open_event(map_node: MapNode):
 	event_display.show()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func extract_boost_effects(reagents):
@@ -673,6 +701,7 @@ func _on_map_node_selected(node: MapNode):
 	
 	TooltipLayer.clean_tooltips()
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	map.disable()
 	
@@ -719,6 +748,7 @@ func _on_Battle_won():
 
 func _on_Battle_finished(is_boss):
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	is_boss = not battle.is_event and is_boss
@@ -739,6 +769,8 @@ func _on_Battle_finished(is_boss):
 			$Player.level_up()
 			player_info.update_values(player)
 			player_info.show()
+			yield(Transition, "finished")
+			time_running = true
 		else:
 			enable_map()
 			thanks_for_playing()
@@ -752,6 +784,8 @@ func _on_Battle_finished(is_boss):
 		player.set_floor_stat("percentage_done", map.get_done_percentage())
 		map.reveal_paths(current_node)
 		current_node = null
+		yield(Transition, "finished")
+		time_running = true
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -853,6 +887,7 @@ func _on_RecipeBook_favorite_toggled(combination, button_pressed):
 
 func _on_Shop_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	shop.hide()
@@ -860,6 +895,8 @@ func _on_Shop_closed():
 	play_map_bgm()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_Shop_combination_bought(combination: Combination):
@@ -872,6 +909,7 @@ func _on_Shop_hint_bought(combination: Combination):
 
 func _on_Rest_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	rest.hide()
@@ -879,10 +917,13 @@ func _on_Rest_closed():
 	play_map_bgm()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_Blacksmith_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	smith.hide()
@@ -890,10 +931,13 @@ func _on_Blacksmith_closed():
 	play_map_bgm()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_Laboratory_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	recipe_book.change_state(RecipeBook.States.MAP)
@@ -903,10 +947,13 @@ func _on_Laboratory_closed():
 	play_map_bgm()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_Treasure_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	treasure.hide()
@@ -914,10 +961,13 @@ func _on_Treasure_closed():
 	play_map_bgm()
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_EventDisplay_closed():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	event_display.hide()
@@ -928,10 +978,13 @@ func _on_EventDisplay_closed():
 	player.set_floor_stat("percentage_done", map.get_done_percentage())
 	
 	Transition.end_transition()
+	yield(Transition, "finished")
+	time_running = true
 
 
 func _on_EventDisplay_event_spawned_battle(encounter):
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	event_display.hide()
@@ -942,6 +995,7 @@ func _on_EventDisplay_event_spawned_battle(encounter):
 
 func _on_EventDisplay_event_spawned_rest():
 	Transition.begin_transition()
+	time_running = false
 	yield(Transition, "screen_dimmed")
 	
 	event_display.hide()

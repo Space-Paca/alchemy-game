@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/dungeon/Dungeon.gd" type="Script" id=1]
 [ext_resource path="res://game/dungeon/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/ui/PauseButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/ui/Timer.tscn" type="PackedScene" id=13]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -46,6 +47,12 @@ visible = false
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 12 )]
+
+[node name="Timer" parent="UI" instance=ExtResource( 13 )]
+margin_left = 0.46936
+margin_top = 1000.4
+margin_right = -1799.53
+margin_bottom = -29.6021
 
 [node name="PauseScreen" parent="." instance=ExtResource( 11 )]
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]

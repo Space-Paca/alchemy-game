@@ -171,6 +171,7 @@ func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage"
 	possible_enemies.shuffle()
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
+			player.increase_stat("damage_dealt", amount + boost)
 			var func_state = enemy.take_damage(player, amount + boost, type)
 			if func_state and func_state.is_valid():
 				yield(enemy, "resolved")
@@ -196,6 +197,7 @@ func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, us
 		yield(self, "target_set")
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+	player.increase_stat("damage_dealt", amount + boost)
 	func_state = target.take_damage(player, amount + boost, type)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
@@ -210,6 +212,7 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 		yield(self, "target_set")
 	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+	player.increase_stat("damage_dealt", amount + boost)
 	func_state = target.drain(player, amount + boost)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
@@ -223,6 +226,7 @@ func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
 	var temp_enemies = enemies.duplicate()
 	for enemy in temp_enemies:
+		player.increase_stat("damage_dealt", amount + boost)
 		var func_state = (enemy as Enemy).take_damage(player, amount + boost, type)
 		if func_state and func_state.is_valid():
 			yield(enemy, "resolved")

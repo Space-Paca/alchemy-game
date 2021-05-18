@@ -57,6 +57,7 @@ var stats = {
 	"damage_blocked": 0,
 	"damage_received": 0,
 	"damage_healed": 0,
+	"shield_gain": 0,
 }
 
 var player_class : PlayerClass
@@ -179,6 +180,10 @@ func increase_floor_stat(type: String):
 	floor_stats[cur_level-1][type] += 1
 
 
+func increase_stat(type: String, how_much = 1):
+	stats[type] += how_much
+
+
 func full_heal():
 	.full_heal()
 	emit_signal("hp_updated", hp, max_hp)
@@ -260,6 +265,7 @@ func remove_reagent(type: String, upgraded: bool):
 
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
+	increase_stat("reagent_removed")
 	bag.remove(index)
 	sort_bag()
 	emit_signal("bag_updated", bag)
@@ -275,6 +281,8 @@ func heal(amount : int):
 		amount = ceil(float(amount) * 1.5)
 	if amount > 0:
 		var amount_healed = .heal(amount)
+		
+		increase_stat("damage_healed", amount_healed)
 		
 		#Animation
 		AnimationManager.play("heal", hud.get_animation_position())
@@ -302,6 +310,9 @@ func drain(source: Character, value: int):
 	
 	var unblocked_dmg = .take_damage(source, value, "drain")
 	
+	increase_stat("damage_blocked", value - unblocked_dmg)
+	increase_stat("damage_received", unblocked_dmg)
+	
 	if unblocked_dmg > 0:
 		source.heal(unblocked_dmg)
 
@@ -321,7 +332,10 @@ func take_damage(source: Character, value: int, type: String, retaliate := true)
 	#Check for weakness status
 	value = int(ceil(2*value/3.0)) if source.get_status("weakness") else value
 	
-	var _unblocked_dmg = .take_damage(source, value, type, retaliate)
+	var unblocked_dmg = .take_damage(source, value, type, retaliate)
+	
+	increase_stat("damage_blocked", value - unblocked_dmg)
+	increase_stat("damage_received", unblocked_dmg)
 
 	#Animations
 	if type == "regular":
@@ -374,6 +388,8 @@ func hard_set_shield(amount: int):
 func gain_shield(amount: int):
 	if amount > 0:
 		.gain_shield(amount)
+		
+		increase_stat("shield_gain", amount)
 		
 		#Animation
 		AnimationManager.play("shield", hud.get_animation_position())

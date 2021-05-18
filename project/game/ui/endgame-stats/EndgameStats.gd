@@ -34,7 +34,8 @@ func populate():
 		
 		var amount_made = player.made_recipes[recipe_name].amount
 		if amount_made > 0 or amount_made > Profile.known_recipes[recipe_name].amount:
+			var new = Profile.known_recipes[recipe_name].amount == -1
 			var total_amount = update_known_recipe(recipe_name, amount_made)
 			var recipe = RECIPE.instance()
 			recipe_container.add_child(recipe)
-			recipe.set_recipe(recipe_name, amount_made, total_amount)
+			recipe.set_recipe(recipe_name, amount_made, total_amount, new)

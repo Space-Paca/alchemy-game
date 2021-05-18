@@ -18,3 +18,11 @@ func _on_Button_button_down():
 
 func _on_Button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	Transition.begin_transition()
+	yield(Transition, "screen_dimmed")
+	$BG.show()
+	Transition.end_transition()
+	yield(Transition, "finished")

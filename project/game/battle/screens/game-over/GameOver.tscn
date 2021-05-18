@@ -10,7 +10,6 @@
 code = "shader_type canvas_item;
 
 uniform float grayscale : hint_range(0.0, 1.0);
-uniform float mix_value : hint_range(0.0, 1.0);
 
 render_mode unshaded;
 
@@ -18,66 +17,28 @@ void fragment(){
 	COLOR = texture(SCREEN_TEXTURE, vec2(UV.x, 1.0 - UV.y));
 	vec3 grey = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
 	COLOR.rgb = COLOR.rgb + grayscale*(grey - COLOR.rgb);
-	COLOR = mix(COLOR, vec4(vec3(0.0), 1.0), mix_value);
 }
 "
 custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/grayscale = 0.0
-shader_param/mix_value = 0.0
+shader_param/grayscale = 1.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "gameover"
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("ShaderRect:material:shader_param/mix_value")
+tracks/0/path = NodePath("ShaderRect:material:shader_param/grayscale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.7, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ShaderRect:material:shader_param/grayscale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BG:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2.5, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("BG:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
 }
 
 [node name="GameOver" type="CanvasLayer"]
@@ -96,7 +57,6 @@ __meta__ = {
 
 [node name="BG" type="TextureRect" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
@@ -124,7 +84,7 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="BG/VBoxContainer"]
 margin_top = 43.0
-margin_right = 512.0
+margin_right = 511.0
 margin_bottom = 189.0
 text = "RESTART"
 
@@ -134,3 +94,4 @@ anims/gameover = SubResource( 3 )
 [connection signal="button_down" from="BG/VBoxContainer/Button" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

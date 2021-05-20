@@ -2,6 +2,10 @@ extends TextureRect
 
 onready var anim = $AnimationPlayer
 
+const ALPHA_SPEED = 6
+
+var hover_compendium = false
+
 func _ready():
 	FileManager.set_current_run(false)
 	set_process_input(false)
@@ -17,6 +21,15 @@ func _ready():
 	anim.play("intro")
 	set_process_input(true)
 # (❁´◡`❁)
+
+
+func _process(dt):
+	var label = $UI/CompendiumButton/Label
+	if hover_compendium:
+		label.modulate.a = min(label.modulate.a + ALPHA_SPEED*dt, 1.0)
+	else:
+		label.modulate.a = max(label.modulate.a - ALPHA_SPEED*dt, 0.0)
+
 
 func _input(event):
 	if anim.is_playing() and (event.is_action_pressed("left_mouse_button") or \
@@ -74,6 +87,7 @@ func _on_ContinueButton_pressed():
 
 
 func _on_CompendiumButton_pressed():
+	hover_compendium = false
 	$RecipeCompendium.show()
 	$UI/PauseButton.hide()
 	$UI/CompendiumButton.hide()
@@ -83,3 +97,11 @@ func _on_RecipeCompendium_closed():
 	$RecipeCompendium.hide()
 	$UI/PauseButton.show()
 	$UI/CompendiumButton.show()
+
+
+func _on_CompendiumButton_mouse_entered():
+	hover_compendium = true
+
+
+func _on_CompendiumButton_mouse_exited():
+	hover_compendium = false

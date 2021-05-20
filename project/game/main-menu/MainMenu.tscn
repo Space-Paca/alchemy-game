@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -40,6 +40,14 @@ shader_param/noise_texture = SubResource( 3 )
 size = 80
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.788235 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 23
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
@@ -226,7 +234,7 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 2.3, 2.5 ),
+"times": PoolRealArray( 0, 1.6, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -351,10 +359,10 @@ disabled = true
 
 [node name="CompendiumButton" type="TextureButton" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 1800.0
-margin_top = 160.0
-margin_right = 1888.0
-margin_bottom = 227.0
+margin_left = 1687.49
+margin_top = 810.639
+margin_right = 1775.49
+margin_bottom = 877.639
 disabled = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
@@ -364,6 +372,15 @@ texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="UI/CompendiumButton"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -16.6489
+margin_top = 67.7848
+margin_right = 107.351
+margin_bottom = 97.7848
+custom_fonts/font = SubResource( 8 )
+text = "Compendium"
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
@@ -381,6 +398,7 @@ group = SubResource( 6 )
 group = SubResource( 6 )
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 7 )
@@ -396,6 +414,8 @@ anims/intro = SubResource( 7 )
 [connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]
 [connection signal="mouse_entered" from="UI/PauseButton" to="." method="_on_PauseButton_mouse_entered"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="mouse_entered" from="UI/CompendiumButton" to="." method="_on_CompendiumButton_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CompendiumButton" to="." method="_on_CompendiumButton_mouse_exited"]
 [connection signal="pressed" from="UI/CompendiumButton" to="." method="_on_CompendiumButton_pressed"]
 [connection signal="closed" from="RecipeCompendium" to="." method="_on_RecipeCompendium_closed"]
 

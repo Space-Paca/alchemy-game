@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/images/ui/book.png" type="Texture" id=3]
+[ext_resource path="res://game/ui/endgame-stats/XPDivider.gd" type="Script" id=4]
+[ext_resource path="res://game/ui/endgame-stats/EndGameXPProgressControl.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 44
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
+font_data = ExtResource( 2 )
+
+[node name="XPDivider" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 134.029
+margin_top = 104.832
+margin_right = 752.029
+margin_bottom = 180.832
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Knowledge Administration"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPPool" type="HBoxContainer" parent="."]
+margin_left = 120.779
+margin_top = 216.13
+margin_right = 663.779
+margin_bottom = 256.13
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmpiricLabel" type="Label" parent="XPPool"]
+margin_top = 13.0
+margin_right = 449.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Empiric Points Available:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="XPPool"]
+margin_left = 473.0
+margin_right = 606.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressThingies" type="VBoxContainer" parent="."]
+margin_left = 121.226
+margin_top = 296.33
+margin_right = 721.226
+margin_bottom = 896.33
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndGameXPProgressControl" parent="ProgressThingies" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 600.0
+margin_bottom = 175.0
+
+[node name="EndGameXPProgressControl2" parent="ProgressThingies" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 179.0
+margin_right = 600.0
+margin_bottom = 354.0
+
+[node name="EndGameXPProgressControl3" parent="ProgressThingies" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 358.0
+margin_right = 600.0
+margin_bottom = 533.0
+
+[node name="EndGameXPProgressControl4" parent="ProgressThingies" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 537.0
+margin_right = 600.0
+margin_bottom = 712.0

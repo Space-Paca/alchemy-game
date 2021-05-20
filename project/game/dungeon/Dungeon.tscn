@@ -55,7 +55,6 @@ margin_right = -1799.53
 margin_bottom = -29.6021
 
 [node name="PauseScreen" parent="." instance=ExtResource( 11 )]
-
 [connection signal="combination_discovered" from="Player" to="." method="_on_Player_combination_discovered"]
 [connection signal="close" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_close"]
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]

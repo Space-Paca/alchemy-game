@@ -1,11 +1,12 @@
 extends Control
 
 onready var recipe_container = $ScrollContainer/RecipeContainer
+onready var compendium_tooltip = $Table/Title/Info/TooltipCollision
 
 const RECIPE = preload("res://game/ui/endgame-stats/RecipeMemorization.tscn")
 
 var player : Player
-
+var tooltip_enabled = false
 
 func _ready():
 	populate()
@@ -39,3 +40,28 @@ func populate():
 			var recipe = RECIPE.instance()
 			recipe_container.add_child(recipe)
 			recipe.set_recipe(recipe_name, amount_made, total_amount, new)
+
+
+func get_compendium_hint_tooltip():
+	var tip = {"title": "Compendium", "text": "The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures", \
+				   "title_image": "res://assets/images/ui/compendium_icon.png", "subtitle": ""}
+
+	return tip
+
+
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
+
+
+func _on_TooltipCollision_enable_tooltip():
+	tooltip_enabled = true
+	var tip = get_compendium_hint_tooltip()
+	TooltipLayer.add_tooltip(compendium_tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)
+
+
+func _on_TooltipCollision_disable_tooltip():
+	if tooltip_enabled:
+		remove_tooltips()

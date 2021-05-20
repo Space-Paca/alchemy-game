@@ -81,6 +81,7 @@ margin_bottom = 246.23
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 5 )]
 position = Vector2( -14.2544, 32.0723 )
+
 [connection signal="mouse_entered" from="Sprite/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Sprite/Button" to="." method="_on_Button_pressed"]

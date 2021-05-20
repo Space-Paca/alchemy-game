@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=9]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=10]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 60
 use_mipmaps = true
 use_filter = true
@@ -18,7 +19,10 @@ extra_spacing_top = -10
 extra_spacing_bottom = -10
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 27, 27 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 28
 use_mipmaps = true
 use_filter = true
@@ -91,7 +95,7 @@ margin_left = 1060.0
 margin_top = 90.0
 margin_right = 1597.0
 margin_bottom = 166.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Compendium Progress"
 __meta__ = {
@@ -123,12 +127,18 @@ text = "i"
 align = 1
 valign = 1
 
+[node name="TooltipCollision" parent="Table/Title/Info" instance=ExtResource( 10 )]
+position = Vector2( 25.1501, 24.5362 )
+
+[node name="CollisionShape2D" parent="Table/Title/Info/TooltipCollision" index="0"]
+shape = SubResource( 3 )
+
 [node name="Header1" type="Label" parent="Table"]
 margin_left = 1060.0
 margin_top = 175.0
 margin_right = 1260.0
 margin_bottom = 235.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Recipes in book"
 valign = 1
@@ -141,7 +151,7 @@ margin_left = 1265.0
 margin_top = 175.0
 margin_right = 1365.0
 margin_bottom = 235.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Times made"
 align = 1
@@ -156,7 +166,7 @@ margin_left = 1345.0
 margin_top = 175.0
 margin_right = 1645.0
 margin_bottom = 235.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Memorization progress"
 align = 1
@@ -278,3 +288,8 @@ margin_bottom = 1080.0
 margin_top = 1080.0
 margin_right = 602.0
 margin_bottom = 1170.0
+
+[connection signal="disable_tooltip" from="Table/Title/Info/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="Table/Title/Info/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="Table/Title/Info/TooltipCollision"]

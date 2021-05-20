@@ -43,7 +43,7 @@ outline_color = Color( 0, 0, 0, 0.788235 )
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 size = 23
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -51,9 +51,9 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="ButtonGroup" id=6]
+[sub_resource type="ButtonGroup" id=7]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:material:shader_param/value")
@@ -379,29 +379,29 @@ margin_left = -16.6489
 margin_top = 67.7848
 margin_right = 107.351
 margin_bottom = 97.7848
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Compendium"
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
 
 [node name="Res1" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="0"]
-group = SubResource( 6 )
+group = SubResource( 7 )
 
 [node name="Res2" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="1"]
-group = SubResource( 6 )
+group = SubResource( 7 )
 
 [node name="Res3" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="2"]
-group = SubResource( 6 )
+group = SubResource( 7 )
 
 [node name="Res4" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="3"]
-group = SubResource( 6 )
+group = SubResource( 7 )
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/intro = SubResource( 7 )
+anims/intro = SubResource( 8 )
 
 [connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

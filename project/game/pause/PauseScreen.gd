@@ -3,6 +3,8 @@ extends CanvasLayer
 enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
+signal exited_pause
+
 onready var bg = $Background
 onready var screen_title = $Background/Label
 onready var menu = $Background/Menu
@@ -86,6 +88,7 @@ func set_pause(p: bool):
 	else:
 		AudioServer.remove_bus_effect(0, 0)
 		FileManager.save_profile()
+		emit_signal("exited_pause")
 
 
 func no_quit():
@@ -257,3 +260,7 @@ func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
 
 func _on_AutoPassCheckBox_toggled(button_pressed):
 	Profile.set_option("auto_end_turn", button_pressed)
+
+
+func _on_ShowTimerCheckBox_toggled(button_pressed):
+	Profile.set_option("show_timer", button_pressed)

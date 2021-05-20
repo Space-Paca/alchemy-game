@@ -9,6 +9,7 @@ onready var lab = $Laboratory
 onready var smith = $Blacksmith
 onready var treasure = $Treasure
 onready var event_display = $EventDisplay
+onready var timer = $UI/Timer
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
@@ -35,9 +36,6 @@ var first_shop_visit = true
 
 
 func _ready():
-	$UI/Timer.update_timer(time_of_run)
-	time_running = false
-	
 	randomize()
 	# DEBUG
 # warning-ignore:return_value_discarded
@@ -61,6 +59,11 @@ func _ready():
 
 # warning-ignore:return_value_discarded
 	player.connect("reveal_map", self, "_on_player_reveal_map")
+	
+	timer.update_timer(time_of_run)
+	time_running = false
+	timer.visible = Profile.get_option("show_timer")
+	
 	
 	FileManager.set_current_run(self)
 	
@@ -128,7 +131,7 @@ func get_save_data():
 		"first_shop_visit": first_shop_visit,
 		"battle": battle.get_save_data() if battle else false,
 		"current_node": "" if not current_node else current_node.name,
-		"time_if_run": time_of_run,
+		"time_of_run": time_of_run,
 	}
 	return data
 
@@ -1100,3 +1103,7 @@ func _on_RecipeBook_recipe_pressed_lab(combination: Combination):
 func _on_map_finished_revealing_map():
 	player.set_floor_stat("percentage_done", map.get_done_percentage())
 
+
+
+func _on_PauseScreen_exited_pause():
+	timer.visible = Profile.get_option("show_timer")

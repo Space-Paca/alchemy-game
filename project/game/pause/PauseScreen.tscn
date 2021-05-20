@@ -947,10 +947,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResetTutorial" type="Button" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer"]
+[node name="ShowTimerContainer" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer"]
 margin_top = 70.0
 margin_right = 619.0
-margin_bottom = 216.0
+margin_bottom = 120.0
+custom_constants/separation = 91
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer"]
+margin_top = 7.0
+margin_right = 133.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 20 )
+text = "Show Timer"
+
+[node name="ShowTimerCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer"]
+margin_left = 224.0
+margin_right = 274.0
+margin_bottom = 50.0
+theme = ExtResource( 3 )
+custom_icons/radio_checked = ExtResource( 22 )
+custom_icons/checked = ExtResource( 22 )
+custom_icons/radio_unchecked = ExtResource( 18 )
+custom_icons/unchecked = ExtResource( 18 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/hover_pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+custom_fonts/font = SubResource( 20 )
+custom_constants/hseparation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetTutorial" type="Button" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer"]
+margin_top = 140.0
+margin_right = 619.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -989,6 +1026,7 @@ text = "Back"
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox" to="." method="_on_AutoPassCheckBox_toggled"]
+[connection signal="toggled" from="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox" to="." method="_on_ShowTimerCheckBox_toggled"]
 [connection signal="mouse_entered" from="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ResetTutorial" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
 [connection signal="mouse_entered" from="Background/SettingsMenu/Back" to="." method="_on_button_mouse_entered"]

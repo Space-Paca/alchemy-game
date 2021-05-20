@@ -384,6 +384,7 @@ group = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 7 )
+
 [connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]

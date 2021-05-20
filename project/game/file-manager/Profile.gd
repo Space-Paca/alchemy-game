@@ -18,6 +18,7 @@ var options = {
 	"borderless": false,
 	"window_size": 3,
 	"auto_end_turn": false,
+	"show_timer": false,
 }
 
 var controls = {

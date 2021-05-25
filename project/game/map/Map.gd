@@ -27,8 +27,8 @@ const MAPS_BG = [
 		"explored": preload("res://assets/images/map/mapa02_caverna_explorado.jpg"),
 	},
 	{
-		"unexplored": preload("res://assets/images/map/mapa01_floresta_inexplorado.jpg"),
-		"explored": preload("res://assets/images/map/mapa01_floresta_explorado.jpg"),
+		"unexplored": preload("res://assets/images/map/mapa03_masmorra_inexplorado.jpg"),
+		"explored": preload("res://assets/images/map/mapa03_masmorra_explorado.jpg"),
 	},
 ]
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")

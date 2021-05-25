@@ -26,6 +26,8 @@ font_data = ExtResource( 3 )
 [node name="CompendiumProgress" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1290.0
+margin_bottom = -215.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,10 +41,9 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Table"]
-margin_left = 1060.0
-margin_top = 90.0
-margin_right = 1597.0
-margin_bottom = 166.0
+margin_left = 40.0
+margin_right = 577.0
+margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Compendium Progress"
@@ -79,10 +80,10 @@ valign = 1
 position = Vector2( 25.1501, 24.5362 )
 
 [node name="Header1" type="Label" parent="Table"]
-margin_left = 1060.0
-margin_top = 175.0
-margin_right = 1260.0
-margin_bottom = 235.0
+margin_left = 40.0
+margin_top = 85.0
+margin_right = 240.0
+margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Recipes in book"
@@ -92,10 +93,10 @@ __meta__ = {
 }
 
 [node name="Header2" type="Label" parent="Table"]
-margin_left = 1265.0
-margin_top = 175.0
-margin_right = 1365.0
-margin_bottom = 235.0
+margin_left = 245.0
+margin_top = 85.0
+margin_right = 345.0
+margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Times made"
@@ -107,10 +108,10 @@ __meta__ = {
 }
 
 [node name="Header3" type="Label" parent="Table"]
-margin_left = 1345.0
-margin_top = 175.0
-margin_right = 1645.0
-margin_bottom = 235.0
+margin_left = 325.0
+margin_top = 85.0
+margin_right = 625.0
+margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Memorization progress"
@@ -122,10 +123,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Table"]
-margin_left = 1035.0
-margin_top = 228.0
-margin_right = 1647.0
-margin_bottom = 252.0
+margin_left = 15.0
+margin_top = 138.0
+margin_right = 627.0
+margin_bottom = 162.0
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {
@@ -133,10 +134,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Table"]
-margin_left = 1281.0
-margin_top = 176.0
-margin_right = 2088.0
-margin_bottom = 193.0
+margin_left = 261.0
+margin_top = 86.0
+margin_right = 951.0
+margin_bottom = 103.0
 rect_rotation = 90.0
 texture = ExtResource( 7 )
 expand = true
@@ -145,10 +146,10 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="Table"]
-margin_left = 1365.0
-margin_top = 176.0
-margin_right = 2172.0
-margin_bottom = 193.0
+margin_left = 345.0
+margin_top = 86.0
+margin_right = 1035.0
+margin_bottom = 103.0
 rect_rotation = 90.0
 texture = ExtResource( 7 )
 expand = true
@@ -157,10 +158,9 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 1020.0
-margin_top = 254.0
-margin_right = 1650.0
-margin_bottom = 955.0
+margin_top = 164.0
+margin_right = 630.0
+margin_bottom = 764.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

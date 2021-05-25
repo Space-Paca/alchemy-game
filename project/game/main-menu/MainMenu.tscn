@@ -25,7 +25,6 @@ void fragment() {
 	COLOR.rgb = color.rgb;
 	COLOR.a = alpha;
 }"
-custom_defines = ""
 
 [sub_resource type="OpenSimplexNoise" id=2]
 
@@ -403,6 +402,7 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 8 )
+
 [connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="mouse_entered" from="NewGameButton" to="." method="_on_button_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://game/ui/endgame-stats/XPControlSlider.gd" type="Script" id=8]
+[ext_resource path="res://assets/images/ui/background_xp.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -17,8 +18,18 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 7 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 40
+outline_size = 5
+outline_color = Color( 0, 0, 0, 0.588235 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
 [sub_resource type="DynamicFont" id=2]
 size = 45
+outline_size = 5
+outline_color = Color( 0, 0, 0, 0.588235 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
@@ -33,10 +44,12 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 37
+size = 63
+outline_size = 4
+outline_color = Color( 0, 0.262745, 0.537255, 0.588235 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [node name="EndGameXPProgressControl" type="Control"]
 anchor_right = 1.0
@@ -46,6 +59,19 @@ margin_bottom = -940.0
 rect_min_size = Vector2( 600, 175 )
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color( 0.901961, 0.501961, 0.501961, 1 )
+margin_left = 220.0
+margin_top = 123.0
+margin_right = 482.0
+margin_bottom = 343.0
+rect_scale = Vector2( 0.50432, 0.285714 )
+texture = ExtResource( 9 )
+flip_v = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -74,6 +100,7 @@ margin_left = 107.0
 margin_top = 3.0
 margin_right = 174.0
 margin_bottom = 54.0
+custom_fonts/font = SubResource( 6 )
 text = "200"
 
 [node name="Max" type="Label" parent="NumberContainer"]
@@ -128,9 +155,9 @@ __meta__ = {
 }
 
 [node name="CurrentAllocatedXP" type="Label" parent="."]
-margin_top = 130.0
+margin_top = 96.3641
 margin_right = 570.0
-margin_bottom = 181.0
+margin_bottom = 190.364
 custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 1

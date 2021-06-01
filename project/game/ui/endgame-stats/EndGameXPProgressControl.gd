@@ -4,7 +4,7 @@ signal changed_xp
 
 const MODIFIED_COLOR = Color.aqua
 const NORMAL_COLOR = Color.white
-const PREVIEW_SPEED = 4
+const PREVIEW_DUR = .3
 
 onready var stat_name = $Name
 onready var current_xp_node = $NumberContainer/Current
@@ -21,11 +21,12 @@ var max_xp = 100
 
 
 func _ready():
-	#TEST
-	setup("Unlock Recipes", 20, 100, 10)
-	set_available_xp(5)
 	reset_preview()
 
+
+func set_total_available_xp(value):
+	available_xp = value
+	slider.max_value = value
 
 func setup(name, _initial_xp, _max_xp, total_available_xp):
 	stat_name.text = name
@@ -39,6 +40,8 @@ func setup(name, _initial_xp, _max_xp, total_available_xp):
 	slider.max_value = total_available_xp
 	progress_bar.max_value = max_xp
 	progress_bar.value = initial_xp
+	
+	reset_preview()
 
 
 func set_available_xp(value):
@@ -72,9 +75,9 @@ func update_preview():
 	
 	#Stretch effect
 	$Tween.remove_all()
-	var region_dur = abs(target_rect.size.x - preview.region_rect.size.x)/PREVIEW_SPEED 
-	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, region_dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property(preview, "position", preview.position, target_pos, region_dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	var dur = PREVIEW_DUR
+	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(preview, "position", preview.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 
 
@@ -90,14 +93,16 @@ func update_xp_text():
 
 
 func _on_HSlider_value_changed(value):
-	if value > available_xp:
-		var diff = value - available_xp
-		slider.set_value(slider.value - diff)
-		value = available_xp
-	allocated_label.text = str(slider.value)
 	var changed_value = value - modified_xp
+	if changed_value > available_xp:
+		value = modified_xp + available_xp
+	if initial_xp + value > max_xp:
+		value = max_xp - initial_xp
+	slider.set_value(value)
+	allocated_label.text = str(slider.value)
+	changed_value = value - modified_xp
 	if changed_value != 0:
 		modified_xp += changed_value
 		update_xp_text()
 		update_preview()
-		emit_signal("changed_xp", value)
+		emit_signal("changed_xp", changed_value)

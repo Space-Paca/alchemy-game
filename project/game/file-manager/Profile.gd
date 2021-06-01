@@ -28,11 +28,33 @@ var controls = {
 	"toggle_fullscreen": KEY_F4 
 }
 
+var progression = {
+	"recipes": {
+		"name": "Recipes",
+		"cur_xp": 0,
+		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+	},
+	"artifacts": {
+		"name": "Relics",
+		"cur_xp": 5,
+		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+	},
+	"misc": {
+		"name": "The World",
+		"cur_xp": 3,
+		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+	}
+}
+
 var known_recipes = {}
 
 func _ready():
 	if known_recipes.empty():
 		reset_known_recipes()
+
+func reset_progression():
+	for category in progression:
+		progression[category].cur_xp = 0
 
 
 func reset_known_recipes():
@@ -52,6 +74,7 @@ func get_save_data():
 		"options": options,
 		"controls": controls,
 		"known_recipes": known_recipes,
+		"progression": progression,
 	}
 	
 	return data
@@ -66,6 +89,7 @@ func set_save_data(data):
 	set_data(data, "options", options)
 	set_data(data, "controls", controls)
 	set_data(data, "known_recipes", known_recipes)
+	set_data(data, "progression", progression)
 	
 	AudioManager.set_bus_volume("bgm", options.bgm_volume)
 	AudioManager.set_bus_volume("sfx", options.sfx_volume)
@@ -81,7 +105,7 @@ func set_data(data, name, default_values):
 	if not data.has(name):
 		return
 	
-	#Update received data with missing default values
+	#Update received data with missing default values, only checking for 1 depth
 	for key in default_values.keys():
 		if not data[name].has(key):
 			data[name][key] = default_values[key]
@@ -158,3 +182,18 @@ func memorize_recipe(name):
 	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
 	known_recipes[name].memorized = true
 	known_recipes[name].amount = known_recipes[name].memorized_threshold
+
+
+func get_progression(type):
+	assert(progression.has(type), "Not a valid progression type: "+str(type))
+	return progression[type]
+
+
+func get_progression_xp(type):
+	assert(progression.has(type), "Not a valid progression type: "+str(type))
+	return progression[type].cur_xp
+
+
+func set_progression_xp(type, value):
+	assert(progression.has(type), "Not a valid progression type: "+str(type))
+	progression[type].cur_xp = value

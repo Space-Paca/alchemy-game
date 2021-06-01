@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=2]
@@ -23,18 +23,14 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 32, 32 )
-
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 37
@@ -88,28 +84,11 @@ custom_fonts/font = SubResource( 2 )
 text = "/2000"
 align = 2
 
-[node name="PreviewProgress" type="ProgressBar" parent="."]
-visible = false
-margin_top = 55.0
-margin_right = 570.0
-margin_bottom = 85.0
-rect_min_size = Vector2( 570, 30 )
-mouse_filter = 2
-size_flags_vertical = 4
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 4 )
-step = 1.0
-value = 75.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="StatProgress" type="ProgressBar" parent="."]
 margin_top = 55.0
-margin_right = 570.0
+margin_right = 560.0
 margin_bottom = 85.0
-rect_min_size = Vector2( 570, 30 )
+rect_min_size = Vector2( 560, 30 )
 mouse_filter = 2
 size_flags_vertical = 4
 custom_styles/fg = SubResource( 3 )
@@ -121,11 +100,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Border" type="TextureRect" parent="StatProgress"]
-margin_left = -4.0
-margin_top = -2.0
-margin_right = 296.0
-margin_bottom = 28.0
+[node name="PreviewProgress" type="Sprite" parent="."]
+position = Vector2( 288.774, 69.2016 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 30, 30 )
+
+[node name="Border" type="TextureRect" parent="."]
+margin_left = -10.7272
+margin_top = 50.4773
+margin_right = 589.273
+margin_bottom = 90.4773
 rect_min_size = Vector2( 600, 40 )
 texture = ExtResource( 2 )
 expand = true
@@ -152,5 +137,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

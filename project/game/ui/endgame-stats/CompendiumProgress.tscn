@@ -27,22 +27,21 @@ font_data = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1290.0
-margin_bottom = -215.0
+margin_bottom = -316.0
+rect_min_size = Vector2( 630, 764 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Table" type="Control" parent="."]
-margin_left = -20.0
-margin_right = -20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="Table"]
-margin_left = 40.0
-margin_right = 577.0
+margin_left = 20.0
+margin_right = 557.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -80,9 +79,9 @@ valign = 1
 position = Vector2( 25.1501, 24.5362 )
 
 [node name="Header1" type="Label" parent="Table"]
-margin_left = 40.0
+margin_left = 20.0
 margin_top = 85.0
-margin_right = 240.0
+margin_right = 220.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -93,9 +92,9 @@ __meta__ = {
 }
 
 [node name="Header2" type="Label" parent="Table"]
-margin_left = 245.0
+margin_left = 225.0
 margin_top = 85.0
-margin_right = 345.0
+margin_right = 325.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -108,9 +107,9 @@ __meta__ = {
 }
 
 [node name="Header3" type="Label" parent="Table"]
-margin_left = 325.0
+margin_left = 305.0
 margin_top = 85.0
-margin_right = 625.0
+margin_right = 605.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -123,9 +122,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Table"]
-margin_left = 15.0
+margin_left = -5.0
 margin_top = 138.0
-margin_right = 627.0
+margin_right = 607.0
 margin_bottom = 162.0
 texture = ExtResource( 7 )
 expand = true
@@ -134,9 +133,9 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Table"]
-margin_left = 261.0
+margin_left = 241.0
 margin_top = 86.0
-margin_right = 951.0
+margin_right = 931.0
 margin_bottom = 103.0
 rect_rotation = 90.0
 texture = ExtResource( 7 )
@@ -146,9 +145,9 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="Table"]
-margin_left = 345.0
+margin_left = 325.0
 margin_top = 86.0
-margin_right = 1035.0
+margin_right = 1015.0
 margin_bottom = 103.0
 rect_rotation = 90.0
 texture = ExtResource( 7 )

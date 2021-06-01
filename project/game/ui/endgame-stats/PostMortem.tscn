@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/ui/endgame-stats/PostMortem.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(.0, .0, .0, 1.0);
+
+float rand(float x) {
+	return fract(sin(x) * 43758.5453);
+}
+
+float triangle(float x) {
+	return abs(1.0 - mod(abs(x), 2.0)) * 2.0 - 1.0;
+}
+
+void fragment() {
+	float time = floor(TIME * 6.0) / 16.0;
+	vec2 uv = UV;
+	vec2 p = uv;
+	vec4 base_color = texture(TEXTURE, uv);
+	vec4 color = base_color;
+	vec4 edges;
+	
+	p += vec2(triangle(p.y * rand(time) * 2.0) * rand(time * 0.05) * 0.01,
+			triangle(p.x * rand(time * 1.7) * 4.0) * rand(time * 0.05) * 0.01);
+	p += vec2(rand(p.x * 3.1 + p.y * 8.7) * 0.01,
+			rand(p.x * 1.1 + p.y * 6.7) * 0.01);
+	edges = vec4(1.2) - (base_color / vec4(texture(TEXTURE, p)));
+	color.rgb = vec3(base_color.r);
+	color = color / vec4(length(edges));
+	color.rbg = vec3(1.0 - max(.0, min(1.0, color.r)));
+	color.a = base_color.a * color.r;
+	color.rgb *= outline_color.rgb;
+	
+	
+	COLOR = color;
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/outline_color = Color( 0.172549, 0.0666667, 0.0235294, 1 )
+
+[node name="PostMortem" type="Control"]
+anchor_right = 0.328
+anchor_bottom = 0.707
+margin_right = 0.23999
+margin_bottom = 0.440063
+rect_min_size = Vector2( 630, 764 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.219608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 20.0
+margin_right = 557.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Post-mortem"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Killer" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 100.0
+margin_right = 320.0
+margin_bottom = 474.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Killer"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Killed by:"
+
+[node name="Image" type="TextureRect" parent="Killer"]
+material = SubResource( 4 )
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 337.0
+rect_min_size = Vector2( 300, 300 )
+expand = true
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Killer"]
+margin_top = 341.0
+margin_right = 300.0
+margin_bottom = 374.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Monster"
+align = 1

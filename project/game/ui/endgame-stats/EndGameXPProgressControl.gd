@@ -1,6 +1,7 @@
 extends Control
 
 signal changed_xp
+signal finished_applying
 
 const MODIFIED_COLOR = Color.aqua
 const NORMAL_COLOR = Color.white
@@ -22,6 +23,28 @@ var max_xp = 100
 
 func _ready():
 	reset_preview()
+
+
+func apply():
+	slider.editable = false
+	
+	progress_bar.value += modified_xp
+	var dur = 5
+	var target_rect = Rect2(0, 0, 0, progress_bar.rect_size.y)
+	var target_percentage = ((initial_xp + modified_xp)/float(max_xp))
+	var target_x = target_percentage*progress_bar.rect_size.x/preview.scale.x
+	$Tween.interpolate_method(self, "set_slider_value", slider.value, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(preview, "position:x", preview.position, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+	
+	yield($Tween, "tween_all_completed")
+	
+	slider.editable = true
+	emit_signal("finished_applying")
+
+func get_modified_xp():
+	return modified_xp
 
 
 func set_total_available_xp(value):
@@ -90,6 +113,10 @@ func update_xp_text():
 		allocated_label.modulate = NORMAL_COLOR
 		current_xp_node.modulate = NORMAL_COLOR
 	max_xp_node.text = "/"+str(max_xp)
+
+
+func set_slider_value(value):
+	slider.set_value(value)
 
 
 func _on_HSlider_value_changed(value):

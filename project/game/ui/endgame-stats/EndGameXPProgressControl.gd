@@ -15,6 +15,8 @@ onready var allocated_label = $CurrentAllocatedXP
 onready var preview = $PreviewProgress
 onready var progress_bar = $StatProgress
 
+
+var ignore_callback = false
 var available_xp = 10
 var initial_xp = 20
 var modified_xp = 0
@@ -29,17 +31,22 @@ func apply():
 	slider.editable = false
 	
 	progress_bar.value += modified_xp
-	var dur = 5
+	var dur = 1.2
 	var target_rect = Rect2(0, 0, 0, progress_bar.rect_size.y)
 	var target_percentage = ((initial_xp + modified_xp)/float(max_xp))
-	var target_x = target_percentage*progress_bar.rect_size.x/preview.scale.x
+	var target_x = target_percentage*progress_bar.rect_size.x
+	
+	initial_xp += modified_xp 
+	modified_xp = 0
+	
+	ignore_callback = true
 	$Tween.interpolate_method(self, "set_slider_value", slider.value, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property(preview, "position:x", preview.position, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(preview, "position:x", preview.position.x, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 	
 	yield($Tween, "tween_all_completed")
-	
+	ignore_callback = false
 	slider.editable = true
 	emit_signal("finished_applying")
 
@@ -107,26 +114,30 @@ func update_preview():
 func update_xp_text():
 	current_xp_node.text = str(initial_xp + modified_xp)
 	if modified_xp > 0:
-		allocated_label.modulate = MODIFIED_COLOR
 		current_xp_node.modulate = MODIFIED_COLOR
 	else:
-		allocated_label.modulate = NORMAL_COLOR
 		current_xp_node.modulate = NORMAL_COLOR
 	max_xp_node.text = "/"+str(max_xp)
 
 
 func set_slider_value(value):
 	slider.set_value(value)
+	allocated_label.text = str(slider.value)
+	if slider.value == 0:
+		allocated_label.modulate = NORMAL_COLOR
+	else:
+		allocated_label.modulate = MODIFIED_COLOR
 
 
 func _on_HSlider_value_changed(value):
+	if ignore_callback:
+		return
 	var changed_value = value - modified_xp
 	if changed_value > available_xp:
 		value = modified_xp + available_xp
 	if initial_xp + value > max_xp:
 		value = max_xp - initial_xp
-	slider.set_value(value)
-	allocated_label.text = str(slider.value)
+	set_slider_value(value)
 	changed_value = value - modified_xp
 	if changed_value != 0:
 		modified_xp += changed_value

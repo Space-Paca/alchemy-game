@@ -43,7 +43,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TempBg" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 3 )
@@ -117,10 +117,10 @@ margin_right = 600.0
 margin_bottom = 533.0
 
 [node name="ApplyButton" type="Button" parent="."]
-margin_left = 312.53
-margin_top = 823.742
-margin_right = 542.53
-margin_bottom = 969.742
+margin_left = 522.07
+margin_top = 821.854
+margin_right = 752.07
+margin_bottom = 967.854
 theme = ExtResource( 6 )
 text = "Apply"
 __meta__ = {

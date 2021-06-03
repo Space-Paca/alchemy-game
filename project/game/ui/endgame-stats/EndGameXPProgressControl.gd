@@ -27,6 +27,16 @@ func _ready():
 	reset_preview()
 
 
+func max_level(name):
+	slider.editable = false
+	var dur = .8
+	stat_name.text = name
+	$Tween.interpolate_property(slider, "modulate", slider.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(allocated_label, "modulate", allocated_label.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($NumberContainer, "modulate", $NumberContainer.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($BG, "modulate", $BG.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+
 func apply():
 	slider.editable = false
 	

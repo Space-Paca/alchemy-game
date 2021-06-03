@@ -32,7 +32,7 @@ var progression = {
 	"recipes": {
 		"name": "Recipes",
 		"cur_xp": 0,
-		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+		"level_progression": [10, 12],
 	},
 	"artifacts": {
 		"name": "Relics",

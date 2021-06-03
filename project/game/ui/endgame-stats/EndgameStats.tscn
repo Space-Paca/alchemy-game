@@ -132,7 +132,6 @@ margin_bottom = 87.0
 rect_min_size = Vector2( 270, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Quick Restart"
-
 [connection signal="button_down" from="Page1/Next" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Page1/Next" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Page1/Next" to="." method="_on_Next_pressed"]

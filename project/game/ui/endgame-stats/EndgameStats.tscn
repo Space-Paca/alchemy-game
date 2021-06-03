@@ -80,10 +80,10 @@ __meta__ = {
 }
 
 [node name="PostMortem" parent="Page1" instance=ExtResource( 8 )]
-margin_left = 1020.0
-margin_top = 100.0
-margin_right = 1020.24
-margin_bottom = 100.44
+margin_left = 1040.0
+margin_top = 90.0
+margin_right = 1040.24
+margin_bottom = 90.44
 
 [node name="Next" type="Button" parent="Page1"]
 margin_left = 1450.0

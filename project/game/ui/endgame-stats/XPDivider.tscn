@@ -16,7 +16,9 @@ extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 44
+size = 46
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -10
@@ -62,22 +64,22 @@ __meta__ = {
 }
 
 [node name="EmpiricLabel" type="Label" parent="."]
-margin_left = 113.708
-margin_top = 221.674
-margin_right = 562.708
-margin_bottom = 257.674
+margin_left = 119.365
+margin_top = 217.431
+margin_right = 586.365
+margin_bottom = 256.431
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Empiric Points Available:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Amount" type="Label" parent="."]
-margin_left = 586.708
-margin_top = 200.674
-margin_right = 736.708
-margin_bottom = 279.674
+margin_left = 598.022
+margin_top = 196.431
+margin_right = 748.022
+margin_bottom = 275.431
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "1000"
@@ -86,10 +88,10 @@ __meta__ = {
 }
 
 [node name="ProgressThingies" type="VBoxContainer" parent="."]
-margin_left = 121.226
-margin_top = 296.33
-margin_right = 721.226
-margin_bottom = 829.33
+margin_left = 138.197
+margin_top = 287.845
+margin_right = 738.197
+margin_bottom = 820.845
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,10 +117,10 @@ margin_right = 600.0
 margin_bottom = 533.0
 
 [node name="ApplyButton" type="Button" parent="."]
-margin_left = 297.428
-margin_top = 840.732
-margin_right = 527.428
-margin_bottom = 986.732
+margin_left = 312.53
+margin_top = 823.742
+margin_right = 542.53
+margin_bottom = 969.742
 theme = ExtResource( 6 )
 text = "Apply"
 __meta__ = {

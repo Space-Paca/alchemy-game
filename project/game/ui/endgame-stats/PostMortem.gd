@@ -12,7 +12,9 @@ func _ready():
 
 
 func set_player(p: Player):
-	if p.what_killed_me.source != p:
+	if not p.what_killed_me:
+		pass
+	elif p.what_killed_me.source != p:
 		$Killer/Name.text = p.what_killed_me.source.data.name
 		$Killer/Image.texture = load(p.what_killed_me.source.data.image)
 	elif p.what_killed_me.type == "poison":

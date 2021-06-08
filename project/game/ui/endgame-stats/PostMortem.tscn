@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/themes/general_theme/scroller_pressedH.png" type="Texture" id=8]
 [ext_resource path="res://assets/themes/general_theme/scroller_hoverH.png" type="Texture" id=9]
 [ext_resource path="res://assets/themes/general_theme/default_button_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=11]
 [ext_resource path="res://assets/themes/general_theme/default_button.png" type="Texture" id=12]
 [ext_resource path="res://assets/themes/general_theme/default_button_disabled.png" type="Texture" id=13]
 [ext_resource path="res://assets/themes/general_theme/default_button_hover.png" type="Texture" id=14]
@@ -20,6 +21,9 @@
 [ext_resource path="res://assets/themes/general_theme/h_scroller_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/themes/general_theme/scroller_mini.png" type="Texture" id=20]
 [ext_resource path="res://assets/themes/general_theme/scroller_mini_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/ui/book/player portrait.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ui/coin.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -205,6 +209,7 @@ font_data = ExtResource( 2 )
 code = "shader_type canvas_item;
 
 uniform vec4 outline_color : hint_color = vec4(.0, .0, .0, 1.0);
+uniform float freq : hint_range(1.0, 20.0);
 
 float rand(float x) {
 	return fract(sin(x) * 43758.5453);
@@ -215,7 +220,7 @@ float triangle(float x) {
 }
 
 void fragment() {
-	float time = floor(TIME * 6.0) / 16.0;
+	float time = floor(TIME * freq) / 16.0;
 	vec2 uv = UV;
 	vec2 p = uv;
 	vec4 base_color = texture(TEXTURE, uv);
@@ -241,6 +246,7 @@ custom_defines = ""
 [sub_resource type="ShaderMaterial" id=22]
 shader = SubResource( 21 )
 shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/freq = 6.0
 
 [sub_resource type="DynamicFont" id=23]
 size = 25
@@ -259,6 +265,17 @@ expand_margin_top = 10.0
 
 [sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0.313726, 0.117647, 0.0666667, 0.313726 )
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.313726, 0.117647, 0.0666667, 0.313726 )
+corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
@@ -329,7 +346,14 @@ text = "Unknown"
 align = 1
 autowrap = true
 
-[node name="BagIcon" type="TextureRect" parent="."]
+[node name="Bag" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BagIcon" type="TextureRect" parent="Bag"]
 margin_left = 20.0
 margin_top = 439.0
 margin_right = 100.0
@@ -341,7 +365,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="BagIcon"]
+[node name="Panel" type="Panel" parent="Bag/BagIcon"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -350,19 +374,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="Bag"]
 show_behind_parent = true
 margin_left = 20.0
 margin_top = 530.0
 margin_right = 610.0
-margin_bottom = 744.0
+margin_bottom = 777.0
 rect_min_size = Vector2( 590, 247 )
 custom_styles/panel = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="Bag"]
 margin_left = 20.0
 margin_top = 530.0
 margin_right = 610.0
@@ -372,7 +396,124 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReagentContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="ReagentContainer" type="GridContainer" parent="Bag/ScrollContainer"]
 custom_constants/vseparation = 6
 custom_constants/hseparation = 6
 columns = 8
+
+[node name="Divider" type="TextureRect" parent="."]
+margin_left = 300.0
+margin_top = 80.0
+margin_right = 673.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="PlayerInfo" type="Control" parent="."]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 610.0
+margin_bottom = 430.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="PlayerInfo"]
+margin_right = 150.0
+margin_bottom = 150.0
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerInfo"]
+margin_left = 160.0
+margin_right = 290.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 150 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+margin_top = 23.0
+margin_right = 130.0
+margin_bottom = 73.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="GoldLabel" type="Label" parent="PlayerInfo/VBoxContainer/HBoxContainer"]
+margin_left = 54.0
+margin_top = 8.0
+margin_right = 89.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "123"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+margin_top = 77.0
+margin_right = 130.0
+margin_bottom = 127.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/HBoxContainer2"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="PearlLabel" type="Label" parent="PlayerInfo/VBoxContainer/HBoxContainer2"]
+margin_left = 54.0
+margin_top = 8.0
+margin_right = 89.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "123"
+
+[node name="Panel" type="Panel" parent="PlayerInfo"]
+margin_left = 20.0
+margin_top = 160.0
+margin_right = 290.0
+margin_bottom = 321.0
+rect_min_size = Vector2( 270, 161 )
+custom_styles/panel = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerInfo/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="PlayerInfo/Panel/ScrollContainer"]
+columns = 5
+
+[node name="Label" type="Label" parent="PlayerInfo/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No artifacts collected"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

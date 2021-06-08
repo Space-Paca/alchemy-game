@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -34,6 +34,14 @@ use_filter = true
 extra_spacing_top = -30
 extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 51
+outline_size = 6
+outline_color = Color( 0, 0.341176, 0.188235, 0.203922 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="XPDivider" type="Control"]
 anchor_right = 1.0
@@ -75,11 +83,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Amount" type="Label" parent="."]
-margin_left = 598.022
-margin_top = 196.431
-margin_right = 748.022
-margin_bottom = 275.431
+[node name="Amount" type="Label" parent="EmpiricLabel"]
+margin_left = 478.657
+margin_top = -21.0
+margin_right = 628.657
+margin_bottom = 58.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "1000"
@@ -92,6 +100,7 @@ margin_left = 138.197
 margin_top = 287.845
 margin_right = 738.197
 margin_bottom = 820.845
+custom_constants/separation = 23
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,26 +114,29 @@ margin_bottom = 175.0
 [node name="EndGameXPProgressControl2" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 179.0
+margin_top = 198.0
 margin_right = 600.0
-margin_bottom = 354.0
+margin_bottom = 373.0
 
 [node name="EndGameXPProgressControl3" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 358.0
+margin_top = 396.0
 margin_right = 600.0
-margin_bottom = 533.0
+margin_bottom = 571.0
 
 [node name="ApplyButton" type="Button" parent="."]
-margin_left = 522.07
-margin_top = 821.854
-margin_right = 752.07
-margin_bottom = 967.854
+margin_left = 293.664
+margin_top = 879.021
+margin_right = 553.664
+margin_bottom = 1000.02
 theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="ApplyButton" to="." method="_on_ApplyButton_pressed"]

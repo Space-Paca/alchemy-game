@@ -27,10 +27,17 @@ func _ready():
 	reset_preview()
 
 
+func start_max_level():
+	slider.modulate.a = 0
+	$NumberContainer.modulate.a = 0
+	allocated_label.modulate.a = 0
+	$BG.modulate.a = 0
+
 func max_level(name):
 	slider.editable = false
 	var dur = .8
 	stat_name.text = name
+	progress_bar.value = max_xp
 	$Tween.interpolate_property(slider, "modulate", slider.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(allocated_label, "modulate", allocated_label.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($NumberContainer, "modulate", $NumberContainer.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -79,8 +86,9 @@ func setup(name, _initial_xp, _max_xp, total_available_xp):
 	available_xp = total_available_xp
 	slider.max_value = total_available_xp
 	progress_bar.max_value = max_xp
-	progress_bar.value = initial_xp
-	
+	var dur = 1
+	$Tween.interpolate_property(progress_bar, "value", 0, initial_xp, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
 	reset_preview()
 
 

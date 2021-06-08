@@ -120,7 +120,6 @@ mouse_filter = 2
 size_flags_vertical = 4
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
-step = 1.0
 value = 50.0
 percent_visible = false
 __meta__ = {

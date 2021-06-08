@@ -36,22 +36,22 @@ extra_spacing_top = -30
 extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.537255, 1, 0, 1 )
+
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 32, 32 )
-modulate_color = Color( 0.537255, 1, 0, 1 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 51
 outline_size = 6
 outline_color = Color( 0, 0.341176, 0.188235, 0.203922 )
@@ -127,8 +127,8 @@ anchor_bottom = 0.0
 margin_right = 600.0
 margin_bottom = 175.0
 
-[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl" index="3"]
-custom_styles/fg = SubResource( 5 )
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl" index="4"]
+custom_styles/fg = SubResource( 4 )
 
 [node name="EndGameXPProgressControl2" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -137,8 +137,8 @@ margin_top = 198.0
 margin_right = 600.0
 margin_bottom = 373.0
 
-[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl2" index="3"]
-custom_styles/fg = SubResource( 8 )
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl2" index="4"]
+custom_styles/fg = SubResource( 5 )
 
 [node name="EndGameXPProgressControl3" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -147,8 +147,8 @@ margin_top = 396.0
 margin_right = 600.0
 margin_bottom = 571.0
 
-[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl3" index="3"]
-custom_styles/fg = SubResource( 7 )
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl3" index="4"]
+custom_styles/fg = SubResource( 6 )
 
 [node name="ApplyButton" type="Button" parent="."]
 margin_left = 293.664
@@ -156,7 +156,7 @@ margin_top = 879.021
 margin_right = 553.664
 margin_bottom = 1000.02
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false

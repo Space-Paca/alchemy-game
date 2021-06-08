@@ -5,6 +5,7 @@ const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 onready var xp_pool_amount_label = $EmpiricLabel/Amount
 onready var progress_cont = $ProgressThingies
 onready var apply_button = $ApplyButton
+onready var increasing_xp_sfx_len = preload("res://assets/audio/sfx/increasing_xp_counter.wav").get_length()
 
 var initial_xp_pool = 0
 var xp_pool = 0
@@ -69,11 +70,16 @@ func set_initial_xp_pool(value):
 	xp_pool = value
 	set_xp_pool_label(0)
 	update_apply_button()
-	var d = .7
-	$Tween.interpolate_property($EmpiricLabel, "modulate:a", 0, 1, d, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.interpolate_method(self, "set_xp_pool_label", 0, value, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT, d)
+	var delay = .7
+	$Tween.interpolate_property($EmpiricLabel, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-	yield($Tween, "tween_all_completed")
+	yield($Tween, "tween_completed")
+	var dur = 1.0
+	$Tween.interpolate_method(self, "set_xp_pool_label", 0, value, dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	if value != 0:
+		AudioManager.play_sfx("increasing_xp_counter", increasing_xp_sfx_len/dur)
+	yield($Tween, "tween_completed")
 	yield(get_tree().create_timer(.2),"timeout")
 	setup_xp_progress_bars()
 

@@ -16,6 +16,7 @@ onready var slider = $HSlider
 onready var allocated_label = $CurrentAllocatedXP
 onready var preview = $PreviewProgress
 onready var progress_bar = $StatProgress
+onready var bar_charging_sfx_len = preload("res://assets/audio/sfx/bar_charging.wav").get_length()
 
 
 var ignore_callback = false
@@ -28,6 +29,11 @@ var max_xp = 100
 func _ready():
 	reset_preview()
 	progress_bar.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
+
+
+func level_up():
+	AudioManager.play_sfx("level_up")
+	$AnimationPlayer.play("level_up")
 
 
 func start_max_level():
@@ -65,11 +71,16 @@ func apply():
 	$Tween.interpolate_method(self, "set_slider_value", slider.value, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "position:x", preview.position.x, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	AudioManager.play_sfx("bar_charging", bar_charging_sfx_len/dur)
 	$Tween.start()
 	
 	yield($Tween, "tween_all_completed")
+	update_xp_text()
 	ignore_callback = false
 	slider.editable = true
+	if progress_bar.value == max_xp:
+		level_up()
+	
 	emit_signal("finished_applying")
 
 func get_modified_xp():
@@ -93,6 +104,8 @@ func setup(name, _initial_xp, _max_xp, total_available_xp):
 	progress_bar.max_value = max_xp
 	var dur = 1
 	$Tween.interpolate_property(progress_bar, "value", 0, initial_xp, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	if initial_xp != 0:
+		AudioManager.play_sfx("bar_charging", bar_charging_sfx_len/dur)
 	$Tween.start()
 	reset_preview()
 
@@ -131,6 +144,8 @@ func update_preview():
 	var dur = PREVIEW_DUR
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "position", preview.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	var mod = .5
+	AudioManager.play_sfx("bar_preview", 1.0 + mod*gain_percent)
 	$Tween.start()
 
 

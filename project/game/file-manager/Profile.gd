@@ -31,8 +31,8 @@ var controls = {
 var progression = {
 	"recipes": {
 		"name": "Recipes",
-		"cur_xp": 12,
-		"level_progression": [10, 12],
+		"cur_xp": 0,
+		"level_progression": [4, 6, 8, 10],
 	},
 	"artifacts": {
 		"name": "Relics",

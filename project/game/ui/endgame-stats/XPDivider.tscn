@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/ui/endgame-stats/XPDivider.gd" type="Script" id=4]
 [ext_resource path="res://game/ui/endgame-stats/EndGameXPProgressControl.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/images/ui/book/mastery_bar.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -34,6 +35,21 @@ use_filter = true
 extra_spacing_top = -30
 extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.537255, 1, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.537255, 1, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.537255, 1, 0, 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 51
@@ -111,6 +127,9 @@ anchor_bottom = 0.0
 margin_right = 600.0
 margin_bottom = 175.0
 
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl" index="3"]
+custom_styles/fg = SubResource( 5 )
+
 [node name="EndGameXPProgressControl2" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -118,12 +137,18 @@ margin_top = 198.0
 margin_right = 600.0
 margin_bottom = 373.0
 
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl2" index="3"]
+custom_styles/fg = SubResource( 8 )
+
 [node name="EndGameXPProgressControl3" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 396.0
 margin_right = 600.0
 margin_bottom = 571.0
+
+[node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl3" index="3"]
+custom_styles/fg = SubResource( 7 )
 
 [node name="ApplyButton" type="Button" parent="."]
 margin_left = 293.664
@@ -140,3 +165,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="ApplyButton" to="." method="_on_ApplyButton_pressed"]
+
+[editable path="ProgressThingies/EndGameXPProgressControl"]
+[editable path="ProgressThingies/EndGameXPProgressControl2"]
+[editable path="ProgressThingies/EndGameXPProgressControl3"]

@@ -6,6 +6,8 @@ signal finished_applying
 const MODIFIED_COLOR = Color.aqua
 const NORMAL_COLOR = Color.white
 const PREVIEW_DUR = .3
+const BAR_NORMAL_COLOR = Color(0x89ff00ff)
+const BAR_MAX_COLOR = Color(0x0000ffff)
 
 onready var stat_name = $Name
 onready var current_xp_node = $NumberContainer/Current
@@ -25,6 +27,7 @@ var max_xp = 100
 
 func _ready():
 	reset_preview()
+	progress_bar.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
 
 
 func start_max_level():
@@ -32,6 +35,7 @@ func start_max_level():
 	$NumberContainer.modulate.a = 0
 	allocated_label.modulate.a = 0
 	$BG.modulate.a = 0
+	progress_bar.get_stylebox("fg").modulate_color = BAR_MAX_COLOR
 
 func max_level(name):
 	slider.editable = false
@@ -42,6 +46,7 @@ func max_level(name):
 	$Tween.interpolate_property(allocated_label, "modulate", allocated_label.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($NumberContainer, "modulate", $NumberContainer.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($BG, "modulate", $BG.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(progress_bar.get_stylebox("fg"), "modulate_color", progress_bar.get_stylebox("fg").modulate_color, BAR_MAX_COLOR, dur, Tween.TRANS_QUAD, Tween.EASE_OUT) 
 	$Tween.start()
 
 func apply():

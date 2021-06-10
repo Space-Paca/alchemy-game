@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://game/ui/endgame-stats/RunStats.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -10
+extra_spacing_bottom = -10
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0, 0, 1 )
+
+[node name="RunStats" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1370.0
+margin_bottom = -220.0
+rect_min_size = Vector2( 550, 860 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 60.0
+margin_right = 597.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

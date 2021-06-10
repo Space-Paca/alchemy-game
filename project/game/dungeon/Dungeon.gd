@@ -116,7 +116,7 @@ func _input(event):
 func _process(delta):
 	if time_running:
 		time_of_run += delta
-		$UI/Timer.update_timer(time_of_run) 
+		timer.update_timer(time_of_run) 
 
 
 func get_save_data():
@@ -150,7 +150,7 @@ func set_save_data(data):
 	battle_load_data = data.battle
 	current_node = null if data.current_node == "" else map.get_map_node(data.current_node)
 	time_of_run = data.time_of_run
-	$UI/Timer.update_timer(time_of_run)
+	timer.update_timer(time_of_run)
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))

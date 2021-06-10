@@ -80,6 +80,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RunStats" parent="Page1" instance=ExtResource( 9 )]
+margin_left = 260.0
+margin_top = 90.0
+margin_right = -1660.0
+margin_bottom = -990.0
+
 [node name="PostMortem" parent="Page1" instance=ExtResource( 8 )]
 margin_left = 1040.0
 margin_top = 90.0

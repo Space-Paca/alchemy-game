@@ -19,7 +19,7 @@ var options = {
 	"window_size": 3,
 	"auto_end_turn": false,
 	"show_timer": false,
-	"locale": "en",
+	"locale": "pt_BR",
 }
 
 var controls = {
@@ -52,6 +52,12 @@ var known_recipes = {}
 func _ready():
 	if known_recipes.empty():
 		reset_known_recipes()
+	update_translation()
+
+
+func update_translation():
+	TranslationServer.set_locale(Profile.get_option("locale"))
+
 
 func reset_progression():
 	for category in progression:

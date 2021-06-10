@@ -43,6 +43,8 @@ func _on_Next_pressed():
 	$Page1.hide()
 	$Page2.show()
 	xpdivider.set_initial_xp_pool(15)
+	yield(xpdivider, "setup_animation_complete")
+	progress_buttons_set_disabled(xpdivider.can_apply_xp())
 
 
 func _on_Button_button_down():

@@ -1,5 +1,7 @@
 extends Control
 
+signal setup_animation_complete
+
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 
 onready var xp_pool_amount_label = $EmpiricLabel/Amount
@@ -25,6 +27,10 @@ func get_level_xp(prog):
 		return prog.cur_xp
 
 
+func can_apply_xp():
+	return true
+
+
 func get_level(prog):
 	for i in range(0, prog.level_progression.size()):
 		if prog.level_progression[i] > prog.cur_xp:
@@ -34,6 +40,26 @@ func get_level(prog):
 
 func is_max_level(prog):
 	return get_level(prog) == prog.level_progression.size()
+
+
+func set_initial_xp_pool(value):
+	yield(get_tree().create_timer(.2),"timeout")
+	initial_xp_pool = value
+	xp_pool = value
+	set_xp_pool_label(0)
+	update_apply_button()
+	var delay = .7
+	$Tween.interpolate_property($EmpiricLabel, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	var dur = 1.0
+	$Tween.interpolate_method(self, "set_xp_pool_label", 0, value, dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	if value != 0:
+		AudioManager.play_sfx("increasing_xp_counter", increasing_xp_sfx_len/dur)
+	yield($Tween, "tween_completed")
+	yield(get_tree().create_timer(.2),"timeout")
+	setup_xp_progress_bars()
 
 
 func setup_xp_progress_bars():
@@ -61,26 +87,8 @@ func setup_xp_progress_bars():
 		yield(get_tree().create_timer(.4),"timeout")
 	$Tween.interpolate_property(apply_button, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$Tween.start()
-
-
-func set_initial_xp_pool(value):
-	yield(get_tree().create_timer(.2),"timeout")
-	initial_xp_pool = value
-	xp_pool = value
-	set_xp_pool_label(0)
-	update_apply_button()
-	var delay = .7
-	$Tween.interpolate_property($EmpiricLabel, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.start()
 	yield($Tween, "tween_completed")
-	var dur = 1.0
-	$Tween.interpolate_method(self, "set_xp_pool_label", 0, value, dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.start()
-	if value != 0:
-		AudioManager.play_sfx("increasing_xp_counter", increasing_xp_sfx_len/dur)
-	yield($Tween, "tween_completed")
-	yield(get_tree().create_timer(.2),"timeout")
-	setup_xp_progress_bars()
+	emit_signal("setup_animation_complete")
 
 
 func set_xp_pool_label(value):

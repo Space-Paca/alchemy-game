@@ -8,13 +8,14 @@ var player : Player
 
 
 func _ready():
+	progress_buttons_set_disabled(true)
 	$Page1.show()
 	$Page2.hide()
 
 
 func set_player(p: Player):
 	player = p
-	$Page1/RunStats.set_player(p)
+	#$Page1/RunStats.set_player(p)
 	$Page1/PostMortem.set_player(p)
 	$Page2/CompendiumProgress.set_player(p)
 
@@ -53,3 +54,7 @@ func _on_Button_button_down():
 
 func _on_Button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+
+func _on_XPDivider_applied_xp():
+	progress_buttons_set_disabled(xpdivider.can_apply_xp())

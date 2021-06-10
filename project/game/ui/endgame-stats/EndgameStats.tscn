@@ -143,6 +143,7 @@ text = "Main Menu"
 [connection signal="button_down" from="Page1/Next" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Page1/Next" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Page1/Next" to="." method="_on_Next_pressed"]
+[connection signal="applied_xp" from="Page2/XPDivider" to="." method="_on_XPDivider_applied_xp"]
 [connection signal="button_down" from="Page2/Buttons/Restart" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Page2/Buttons/Restart" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Page2/Buttons/Restart" to="." method="_on_Restart_pressed"]

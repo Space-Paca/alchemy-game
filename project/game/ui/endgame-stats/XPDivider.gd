@@ -1,6 +1,7 @@
 extends Control
 
 signal setup_animation_complete
+signal applied_xp
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 
@@ -22,14 +23,21 @@ func _ready():
 func get_level_xp(prog):
 	var level = get_level(prog)
 	if level > 0:
-		return prog.level_progression[level - 1] - prog.cur_xp
+		return prog.cur_xp - prog.level_progression[level - 1]
 	else:
 		return prog.cur_xp
 
 
 func can_apply_xp():
-	return true
-
+	var all_maxed = true
+	var idx = 0
+	for child in progress_cont.get_children():
+		var prog_data = Profile.get_progression(PROGRESSIONS[idx])
+		if not is_max_level(prog_data):
+			all_maxed = false
+			break
+		idx += 1
+	return not all_maxed and xp_pool > 0
 
 func get_level(prog):
 	for i in range(0, prog.level_progression.size()):
@@ -136,3 +144,4 @@ func _on_ApplyButton_pressed():
 					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
 		idx += 1
 	update_apply_button()
+	emit_signal("applied_xp")

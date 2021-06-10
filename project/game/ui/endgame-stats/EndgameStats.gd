@@ -2,12 +2,14 @@ extends Control
 
 onready var menu_button = $Page2/Buttons/Menu
 onready var restart_button = $Page2/Buttons/Restart
+onready var xpdivider = $Page2/XPDivider
 
 var player : Player
 
 
 func _ready():
-	pass
+	$Page1.show()
+	$Page2.hide()
 
 
 func set_player(p: Player):
@@ -39,6 +41,7 @@ func _on_Restart_pressed():
 func _on_Next_pressed():
 	$Page1.hide()
 	$Page2.show()
+	xpdivider.set_initial_xp_pool(15)
 
 
 func _on_Button_button_down():

@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/images/ui/book.png" type="Texture" id=3]
 [ext_resource path="res://game/ui/endgame-stats/XPDivider.gd" type="Script" id=4]
 [ext_resource path="res://game/ui/endgame-stats/EndGameXPProgressControl.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
@@ -62,15 +61,9 @@ font_data = ExtResource( 2 )
 [node name="XPDivider" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TempBg" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

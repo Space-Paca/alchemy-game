@@ -15,7 +15,6 @@ func _ready():
 		child.modulate.a = 0
 	apply_button.modulate.a = 0
 	$EmpiricLabel.modulate.a = 0
-	set_initial_xp_pool(15)
 
 
 func get_level_xp(prog):

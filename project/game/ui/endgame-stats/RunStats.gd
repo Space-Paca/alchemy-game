@@ -5,4 +5,4 @@ func _ready():
 
 
 func set_player(p: Player):
-	pass
+	print(p.cur_level)

@@ -74,17 +74,12 @@ __meta__ = {
 }
 
 [node name="Page1" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="RunStats" parent="Page1" instance=ExtResource( 9 )]
-margin_left = 260.0
-margin_top = 90.0
-margin_right = -1660.0
-margin_bottom = -990.0
 
 [node name="PostMortem" parent="Page1" instance=ExtResource( 8 )]
 margin_left = 1040.0
@@ -102,7 +97,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Next"
 
 [node name="Page2" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

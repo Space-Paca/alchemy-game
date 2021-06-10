@@ -180,6 +180,7 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/WinBtn" to="." method="_on_WinBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/DieBtn" to="." method="_on_DieBtn_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockCombBtn" to="." method="_on_UnlockCombBtn_pressed"]

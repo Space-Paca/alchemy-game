@@ -716,6 +716,7 @@ func get_targeted_effect_total(effects: Array) -> int:
 func disable_elements():
 	for enemy in enemies_node.get_children():
 		enemy.disable()
+		enemy.disable_tooltips()
 	for reagent in reagents.get_children():
 		reagent.disable_tooltips()
 
@@ -1216,10 +1217,7 @@ func _on_player_died(_player):
 	TooltipLayer.clean_tooltips()
 	ended = true
 	disable_player()
-	for enemy in enemies_node.get_children():
-		enemy.disable()
-	for reagent in reagents.get_children():
-		reagent.disable_tooltips()
+	disable_elements()
 	FileManager.delete_run_file()
 	var gameover = GAMEOVER_SCENE.instance()
 	gameover.set_player(player)

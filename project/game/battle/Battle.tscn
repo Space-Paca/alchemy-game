@@ -274,6 +274,7 @@ position = Vector2( 1420, 500 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyToBeRemoved" type="Node2D" parent="."]
+
 [connection signal="button_down" from="Book/RecipesButton" to="." method="_on_RecipesButton_button_down"]
 [connection signal="mouse_entered" from="Book/RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
 [connection signal="pressed" from="Book/RecipesButton" to="." method="_on_RecipesButton_pressed"]

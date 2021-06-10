@@ -48,13 +48,13 @@ func setup_xp_progress_bars():
 		var max_xp
 		if cur_level == 0:
 			max_xp = lvl_prog[cur_level]
-			child.setup("Unlock " + prog_data.name + "- Level " + str(cur_level), init_xp, max_xp, xp_pool)
+			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
 		elif not is_max_level(prog_data):
 			max_xp = lvl_prog[cur_level] - lvl_prog[cur_level-1]
-			child.setup("Unlock " + prog_data.name + "- Level " + str(cur_level), init_xp, max_xp, xp_pool)
+			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
 		else:
 			child.start_max_level()
-			child.max_level("Unlock " + prog_data.name + "- MAX LEVEL!")
+			child.max_level(prog_data.name)
 		idx += 1
 		$Tween.interpolate_property(child, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		$Tween.start()
@@ -121,12 +121,11 @@ func _on_ApplyButton_pressed():
 			Profile.increase_progression(PROGRESSIONS[idx], xp)
 			if get_level(prog_data) > cur_level:
 				if is_max_level(prog_data):
-					child.max_level("Unlock " + prog_data.name + "- MAX LEVEL!")
+					child.max_level(prog_data.name)
 				else:
 					var new_level = get_level(prog_data)
-					var name = "Unlock " + prog_data.name + "- Level " + str(new_level)
 					var lvl_prog = prog_data.level_progression
 					var max_xp = lvl_prog[new_level] - lvl_prog[new_level-1]
-					child.setup(name, 0, max_xp, xp_pool)
+					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
 		idx += 1
 	update_apply_button()

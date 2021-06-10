@@ -9,7 +9,8 @@ const PREVIEW_DUR = .3
 const BAR_NORMAL_COLOR = Color(0x89ff00ff)
 const BAR_MAX_COLOR = Color(0x0000ffff)
 
-onready var stat_name = $Name
+onready var stat_name = $NameContainer/Name
+onready var stat_level = $NameContainer/Level
 onready var current_xp_node = $NumberContainer/Current
 onready var max_xp_node = $NumberContainer/Max
 onready var slider = $HSlider
@@ -46,7 +47,8 @@ func start_max_level():
 func max_level(name):
 	slider.editable = false
 	var dur = .8
-	stat_name.text = name
+	stat_name.text = "Unlock " + str(name) + " -"
+	stat_level.text = "MAX LEVEL!"
 	progress_bar.value = max_xp
 	$Tween.interpolate_property(slider, "modulate", slider.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(allocated_label, "modulate", allocated_label.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -91,8 +93,9 @@ func set_total_available_xp(value):
 	available_xp = value
 	slider.max_value = value
 
-func setup(name, _initial_xp, _max_xp, total_available_xp):
-	stat_name.text = name
+func setup(name, level, _initial_xp, _max_xp, total_available_xp):
+	stat_name.text = "Unlock " + str(name) + " -"
+	stat_level.text = "Level " + str(level)
 	
 	initial_xp = _initial_xp
 	max_xp = _max_xp

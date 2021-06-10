@@ -42,7 +42,7 @@ var progression = {
 	"misc": {
 		"name": "The World",
 		"cur_xp": 118,
-		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+		"level_progression": [10, 20, 40, 60, 80, 100, 120, 2000],
 	}
 }
 

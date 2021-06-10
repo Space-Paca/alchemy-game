@@ -236,6 +236,10 @@ end_turn={
  ]
 }
 
+[locale]
+
+locale_filter=[ 1, [ "en", "pt_BR" ] ]
+
 [network]
 
 limits/debugger_stdout/max_warnings_per_second=10000000

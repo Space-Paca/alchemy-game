@@ -1,38 +1,41 @@
 extends VBoxContainer
 
 const FLOOR_NAMES = ["Floor 1", "Floor 2", "Floor 3"]
-const XP_MULT = {
-	1: {"normal": 1, "elite": 1, "monsters": 1, "map": 1},
-	2: {"normal": 1, "elite": 1, "monsters": 1, "map": 1},
-	3: {"normal": 1, "elite": 1, "monsters": 1, "map": 1},
-}
+const XP_MULT = [
+	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
+	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
+	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
+]
 
 var total_xp : int
 
 
-func set_amounts(level: int, normal: int, elite: int, monsters: int,
-		map: float):
+func set_amounts(level: int, stats: Dictionary):
+	var amount : int
 	var xp_value : int
 	
-	$FloorName.text = FLOOR_NAMES[level-1]
+	$FloorName.text = FLOOR_NAMES[level]
 	
-	$NormalEncounters/Amount.text = str(normal)
-	xp_value = XP_MULT[level]["normal"] * normal
+	amount = stats.normal_encounters_finished
+	xp_value = XP_MULT[level]["normal"] * amount
 	total_xp += xp_value
+	$NormalEncounters/Amount.text = str(amount)
 	$NormalEncounters/Exp.text = str(xp_value)
 	
-	$EliteEncounters/Amount.text = str(elite)
-	xp_value = XP_MULT[level]["elite"] * elite
+	amount = stats.elite_encounters_finished
+	xp_value = XP_MULT[level]["elite"] * amount
 	total_xp += xp_value
+	$EliteEncounters/Amount.text = str(amount)
 	$EliteEncounters/Exp.text = str(xp_value)
 	
-	$MonstersDefeated/Amount.text = str(monsters)
-	xp_value = XP_MULT[level]["monsters"] * monsters
+	amount = stats.monsters_defeated
+	xp_value = XP_MULT[level]["monsters"] * amount
 	total_xp += xp_value
+	$MonstersDefeated/Amount.text = str(amount)
 	$MonstersDefeated/Exp.text = str(xp_value)
 	
-	var map_percent = int(floor(map * 100))
-	$ExplorationRate/Amount.text = str(map_percent, "%")
-	xp_value = XP_MULT[level]["map"] * map_percent
+	amount = int(floor(stats.percentage_done * 100))
+	xp_value = XP_MULT[level]["map"] * amount
 	total_xp += xp_value
+	$ExplorationRate/Amount.text = str(amount, "%")
 	$ExplorationRate/Exp.text = str(xp_value)

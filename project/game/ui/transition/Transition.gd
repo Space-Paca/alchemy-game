@@ -43,6 +43,7 @@ func transition_to(scene_path: String):
 	tween.start()
 	AudioManager.play_sfx("transition_out")
 	yield(tween, "tween_completed")
+	yield(get_tree(), "idle_frame")
 	active = false
 	transition_texture.hide()
 	
@@ -57,6 +58,7 @@ func begin_transition():
 	tween.start()
 	AudioManager.play_sfx("transition_in")
 	yield(tween, "tween_completed")
+	yield(get_tree(), "idle_frame")
 	
 	emit_signal("screen_dimmed")
 
@@ -67,6 +69,7 @@ func end_transition():
 	tween.start()
 	AudioManager.play_sfx("transition_out")
 	yield(tween, "tween_completed")
+	yield(get_tree(), "idle_frame")
 	active = false
 	transition_texture.hide()
 	

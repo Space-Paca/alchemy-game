@@ -15,7 +15,7 @@ func _ready():
 
 func set_player(p: Player):
 	player = p
-	#$Page1/RunStats.set_player(p)
+	$Page1/RunStats.set_player(p)
 	$Page1/PostMortem.set_player(p)
 	$Page2/CompendiumProgress.set_player(p)
 

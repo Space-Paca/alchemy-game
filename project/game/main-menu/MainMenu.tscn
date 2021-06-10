@@ -270,7 +270,7 @@ margin_bottom = 650.672
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 disabled = true
-text = "Continue"
+text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -284,7 +284,7 @@ margin_bottom = 826.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 disabled = true
-text = "New Game"
+text = "NEW_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -298,7 +298,10 @@ margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
 disabled = true
-text = "Quit"
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="QuitConfirm" type="ColorRect" parent="."]
 visible = false

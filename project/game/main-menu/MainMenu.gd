@@ -8,6 +8,7 @@ var hover_compendium = false
 
 func _ready():
 	FileManager.set_current_run(false)
+	TranslationServer.set_locale(Profile.get_option("locale"))
 	set_process_input(false)
 	yield(get_tree(),"idle_frame")
 	Transition.single_out_transition()

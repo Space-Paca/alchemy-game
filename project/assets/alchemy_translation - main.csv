@@ -2,3 +2,34 @@ key,en,pt_BR
 NEW_GAME,New Game,Novo Jogo
 QUIT,Quit,Sair
 CONTINUE,Continue,Continuar
+RESUME,Resume,Continuar
+SETTINGS,Settings,Configurações
+SAVE_RETURN_MENU,Save & Return to Menu,Salvar e Retornar para Menu
+SAVE_RETURN_DESKTOP,Save & Exit to Desktop,Salvar e Sair do Jogo
+ARE_YOU_SURE,Are you sure?,Tem certeza?
+ARE_YOU_SURE_EXIT,Are you sure you want to exit the game?,Tem certeza que quer sair do jogo?
+YES,Yes,Sim
+NO,No,Não
+EXIT_DESKTOP,Exit to Desktop,Sair do Jogo
+GAME_PAUSED,Game Paused,Jogo Pausado
+VIDEO,Video,Gráficos
+AUDIO,Audio,Áudio
+CONTROLS,Controls,Controles
+GAMEPLAY,Gameplay,Jogabilidade
+LANGUAGE,Language,Linguagem
+OPT_WINDOW_SIZE,Window Size,Tamanho da Janela
+OPT_FULLSCREEN,Fullscreen,Tela Cheia
+OPT_BORDERLESS,Borderless,Sem Borda
+OPT_MUSIC_VOLUME,Music Volume,Volume da Música
+OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros
+OPT_OPEN/CLOSE_BOOK,Open/Close Book,Abrir/Fechar Livro
+OPT_COMBINE,Combine,Combinar
+OPT_END_TURN,End Turn,Terminar Turno
+OPT_TOGGLE_FULLSCREEN,Toggle Fullscreen,Ativar/Desativar Tela Cheia
+OPT_AUTO_END_TURN,Auto End Turn,Terminar Turno Automaticamente
+OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
+OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
+OPT_LANGUAGE,Language,Linguagem
+BACK,Back,Voltar
+COMPENDIUM,Compendium,Compêndio
+FILTERS,Filters,Filtros

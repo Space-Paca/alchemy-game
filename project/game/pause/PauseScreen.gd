@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const TABS = ["VIDEO", "AUDIO", "CONTROLS", "GAMEPLAY", "LANGUAGE"]
+
 enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
@@ -24,6 +26,7 @@ onready var language_label = $Background/SettingsMenu/TabContainer/Language/VBox
 onready var language_buttons = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer.get_children()
 onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
 onready var language_button = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton
+onready var tab_container = $Background/SettingsMenu/TabContainer
 onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button,
 "combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
 "toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
@@ -44,15 +47,18 @@ func _ready():
 	
 	if mode == Modes.MENU:
 		$Background/Menu/Return.hide()
-		exit_button.text = "Exit to Desktop"
+		exit_button.text = "EXIT_DESKTOP"
 	else:
-		exit_button.text = "Save & Exit to Desktop"
+		exit_button.text = "SAVE_RETURN_DESKTOP"
 	
 	for action in controls_buttons.keys():
 		var button : Button = controls_buttons[action]
 # warning-ignore:return_value_discarded
 		button.connect("toggled", self, "_on_ControlsButton_toggled",
 				[action, button])
+	
+	for idx in tab_container.get_child_count():
+		tab_container.set_tab_title(idx, TABS[idx])
 
 
 func _process(delta):
@@ -105,7 +111,7 @@ func set_block_pause(value: bool):
 
 
 func settings_back():
-	screen_title.text = "Game Paused"
+	screen_title.text = "GAME_PAUSED"
 	settings.hide()
 	menu.show()
 
@@ -213,7 +219,7 @@ func _on_ResetTutorial_pressed():
 
 
 func _on_Settings_pressed():
-	screen_title.text = "Settings"
+	screen_title.text = "SETTINGS"
 	menu.hide()
 	settings.show()
 

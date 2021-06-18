@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -52,6 +52,8 @@ use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="ButtonGroup" id=7]
+
+[sub_resource type="ButtonGroup" id=9]
 
 [sub_resource type="Animation" id=8]
 length = 2.5
@@ -330,7 +332,7 @@ __meta__ = {
 margin_right = 1304.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 5 )
-text = "Are you sure you want to exit the game?"
+text = "ARE_YOU_SURE_EXIT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]
 margin_top = 201.0
@@ -345,14 +347,14 @@ margin_left = 427.0
 margin_right = 627.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
-text = "Yes"
+text = "YES"
 
 [node name="No" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
 margin_left = 677.0
 margin_right = 877.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
-text = "No"
+text = "NO"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -383,7 +385,10 @@ margin_top = 67.7848
 margin_right = 107.351
 margin_bottom = 97.7848
 custom_fonts/font = SubResource( 6 )
-text = "Compendium"
+text = "COMPENDIUM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
@@ -399,6 +404,12 @@ group = SubResource( 7 )
 
 [node name="Res4" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="3"]
 group = SubResource( 7 )
+
+[node name="En" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="0"]
+group = SubResource( 9 )
+
+[node name="Pt_BR" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="1"]
+group = SubResource( 9 )
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
 visible = false

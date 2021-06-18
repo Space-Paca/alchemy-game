@@ -301,7 +301,7 @@ margin_right = 399.0
 margin_bottom = 319.0
 rect_min_size = Vector2( 800, 0 )
 custom_fonts/font = SubResource( 15 )
-text = "Game Paused"
+text = "GAME_PAUSED"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -328,7 +328,7 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 450, 50 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Resume"
+text = "RESUME"
 
 [node name="Settings" type="Button" parent="Background/Menu"]
 margin_top = 150.0
@@ -337,7 +337,7 @@ margin_bottom = 270.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Return" type="Button" parent="Background/Menu"]
 margin_top = 300.0
@@ -346,7 +346,7 @@ margin_bottom = 420.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Save & Return to Menu"
+text = "SAVE_RETURN_MENU"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
 margin_top = 450.0
@@ -355,7 +355,7 @@ margin_bottom = 570.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Save & Exit to Desktop"
+text = "SAVE_RETURN_DESKTOP"
 
 [node name="ConfirmMenu" type="VBoxContainer" parent="Background"]
 visible = false
@@ -376,7 +376,7 @@ __meta__ = {
 margin_right = 450.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 16 )
-text = "Are you sure?"
+text = "ARE_YOU_SURE"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ConfirmMenu"]
@@ -391,14 +391,14 @@ alignment = 1
 margin_right = 200.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
-text = "Yes"
+text = "YES"
 
 [node name="No" type="Button" parent="Background/ConfirmMenu/HBoxContainer"]
 margin_left = 250.0
 margin_right = 450.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
-text = "No"
+text = "NO"
 
 [node name="SettingsMenu" type="VBoxContainer" parent="Background"]
 visible = false
@@ -462,7 +462,7 @@ margin_top = 8.0
 margin_right = 113.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 20 )
-text = "Fullscreen"
+text = "OPT_FULLSCREEN"
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer"]
 margin_left = 204.0
@@ -497,7 +497,7 @@ margin_top = 8.0
 margin_right = 118.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 20 )
-text = "Borderless"
+text = "OPT_BORDERLESS"
 
 [node name="BorderlessCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2"]
 margin_left = 204.0
@@ -533,7 +533,7 @@ margin_top = 8.0
 margin_right = 142.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 20 )
-text = "Window Size"
+text = "OPT_WINDOW_SIZE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -716,7 +716,7 @@ __meta__ = {
 [node name="MusicLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
 margin_right = 700.0
 margin_bottom = 51.0
-text = "Music Volume"
+text = "OPT_MUSIC_VOLUME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -735,7 +735,7 @@ rect_min_size = Vector2( 0, 50 )
 margin_top = 280.0
 margin_right = 700.0
 margin_bottom = 331.0
-text = "Sound Effects Volume"
+text = "OPT_SFX_VOLUME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -780,7 +780,7 @@ margin_top = 4.0
 margin_right = 290.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 290, 0 )
-text = "Open/close book:"
+text = "OPT_OPEN/CLOSE_BOOK"
 align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook"]
@@ -808,7 +808,7 @@ margin_top = 4.0
 margin_right = 290.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 290, 0 )
-text = "Combine:"
+text = "OPT_COMBINE"
 align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine"]
@@ -836,7 +836,7 @@ margin_top = 4.0
 margin_right = 290.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 290, 0 )
-text = "End turn:"
+text = "OPT_END_TURN"
 align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn"]
@@ -864,7 +864,7 @@ margin_top = 4.0
 margin_right = 290.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 290, 0 )
-text = "Toggle fullscreen:"
+text = "OPT_TOGGLE_FULLSCREEN"
 align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen"]
@@ -916,7 +916,7 @@ margin_top = 7.0
 margin_right = 162.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 20 )
-text = "Auto End Turn"
+text = "OPT_AUTO_END_TURN"
 
 [node name="AutoPassCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer"]
 margin_left = 253.0
@@ -953,7 +953,7 @@ margin_top = 7.0
 margin_right = 133.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 20 )
-text = "Show Timer"
+text = "OPT_SHOW_TIMER"
 
 [node name="ShowTimerCheckBox" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer"]
 margin_left = 224.0
@@ -983,7 +983,7 @@ margin_bottom = 286.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-text = "Reset Tutorial Hints"
+text = "OPT_RESET_TUTORIAL_HINTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1023,7 +1023,7 @@ margin_top = 8.0
 margin_right = 142.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 20 )
-text = "Language"
+text = "OPT_LANGUAGE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1146,7 +1146,7 @@ margin_bottom = 740.0
 rect_min_size = Vector2( 350, 120 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Back"
+text = "BACK"
 
 [connection signal="mouse_entered" from="Background/Menu/Resume" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Resume" to="." method="_on_Resume_pressed"]

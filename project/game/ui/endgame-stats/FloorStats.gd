@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-const FLOOR_NAMES = ["Floor 1", "Floor 2", "Floor 3"]
 const XP_MULT = [
 	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
 	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
@@ -14,7 +13,7 @@ func set_amounts(level: int, stats: Dictionary):
 	var amount : int
 	var xp_value : int
 	
-	$FloorName.text = FLOOR_NAMES[level]
+	$FloorName.text = Map.FLOOR_LABEL[level]
 	
 	amount = stats.normal_encounters_finished
 	xp_value = XP_MULT[level]["normal"] * amount

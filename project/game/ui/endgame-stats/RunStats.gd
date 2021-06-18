@@ -15,3 +15,5 @@ func set_player(p: Player):
 		floor_stats.set_amounts(i, p.floor_stats[i])
 		total_xp += floor_stats.total_xp
 		$Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(floor_stats)
+	
+	$Panel/MarginContainer/VBoxContainer/TotalXP.text = str("Total: ", total_xp)

@@ -14,12 +14,16 @@ onready var settings = $Background/SettingsMenu
 onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
 onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
 onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
+onready var language_dropdown = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown
 onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
 onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox
 onready var auto_end_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
 onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
+onready var language_label = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton/Label
+onready var language_buttons = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer.get_children()
 onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
+onready var language_button = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton
 onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button,
 "combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
 "toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
@@ -116,10 +120,16 @@ func update_buttons():
 	var size = Profile.WINDOW_SIZES[index]
 	window_size_buttons[index].pressed = true
 	window_size_label.text = str(size.x, "x", size.y)
+	index = Profile.get_option("locale")
+	var lang = Profile.LANGUAGES[index]
+	language_buttons[index].pressed = true
+	language_label.text = lang.name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
 	auto_end_button.pressed = Profile.get_option("auto_end_turn")
 	resolution_button.disabled = fullscreen_button.pressed
+	resolution_dropdown.visible = false
+	language_dropdown.visible = false
 
 
 func update_controls():
@@ -217,6 +227,10 @@ func _on_Back_pressed():
 
 func _on_ResolutionButton_toggled(button_pressed):
 	resolution_dropdown.visible = button_pressed
+	if button_pressed:
+		AudioManager.play_sfx("open_filter")
+	else:
+		AudioManager.play_sfx("close_filter")
 
 
 func _on_FullscreenCheckBox_toggled(button_pressed):
@@ -264,3 +278,22 @@ func _on_AutoPassCheckBox_toggled(button_pressed):
 
 func _on_ShowTimerCheckBox_toggled(button_pressed):
 	Profile.set_option("show_timer", button_pressed)
+
+
+func _on_LanguageButton_toggled(button_pressed):
+	language_dropdown.visible = button_pressed
+	if button_pressed:
+		AudioManager.play_sfx("open_filter")
+	else:
+		AudioManager.play_sfx("close_filter")
+
+
+func _on_Language_Button_pressed(button_id: int):
+	AudioManager.play_sfx("click")
+	if button_id == Profile.get_option("locale"):
+		return
+	
+	var lang = Profile.LANGUAGES[button_id]
+	language_label.text = lang.name
+	TranslationServer.set_locale(lang.locale)
+	Profile.set_option("locale", button_id)

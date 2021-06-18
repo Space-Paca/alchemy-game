@@ -3,6 +3,11 @@ extends Node
 const WINDOW_SIZES = [Vector2(1280, 720), Vector2(1366, 768),
 		Vector2(1600, 900), Vector2(1920, 1080)]
 
+const LANGUAGES = [
+	{"locale":"en", "name": "English"},
+	{"locale":"pt_BR", "name": "Português"},
+]
+
 #Default tutorial flags
 var tutorials = {
 	"first_battle": false,
@@ -19,7 +24,7 @@ var options = {
 	"window_size": 3,
 	"auto_end_turn": false,
 	"show_timer": false,
-	"locale": "pt_BR",
+	"locale": 1,
 }
 
 var controls = {
@@ -56,7 +61,7 @@ func _ready():
 
 
 func update_translation():
-	TranslationServer.set_locale(Profile.get_option("locale"))
+	TranslationServer.set_locale(LANGUAGES[Profile.get_option("locale")].locale)
 
 
 func reset_progression():

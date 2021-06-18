@@ -626,7 +626,6 @@ custom_styles/hover_pressed = SubResource( 28 )
 custom_styles/normal = SubResource( 31 )
 custom_fonts/font = SubResource( 20 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 group = SubResource( 32 )
 text = "1280x720"
 
@@ -646,7 +645,6 @@ custom_styles/hover_pressed = SubResource( 28 )
 custom_styles/normal = SubResource( 33 )
 custom_fonts/font = SubResource( 20 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 group = SubResource( 32 )
 text = "1366x768"
 
@@ -666,7 +664,6 @@ custom_styles/hover_pressed = SubResource( 28 )
 custom_styles/normal = SubResource( 33 )
 custom_fonts/font = SubResource( 20 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 group = SubResource( 32 )
 text = "1600x900"
 
@@ -687,7 +684,6 @@ custom_styles/normal = SubResource( 33 )
 custom_fonts/font = SubResource( 20 )
 custom_constants/hseparation = 15
 pressed = true
-enabled_focus_mode = 1
 group = SubResource( 32 )
 text = "1920x1080"
 

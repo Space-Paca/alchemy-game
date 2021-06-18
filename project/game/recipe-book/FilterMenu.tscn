@@ -187,6 +187,7 @@ text = "Clear all"
 margin_top = 75.0
 margin_right = 160.0
 margin_bottom = 110.0
+focus_mode = 1
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -199,7 +200,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 11 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Attack"
 
 [node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -218,7 +218,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 14 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Defense"
 
 [node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -237,7 +236,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 17 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Area"
 
 [node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -256,7 +254,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Buff"
 
 [node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -275,7 +272,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 23 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Debuff"
 
 [node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -294,7 +290,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 26 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Heal"
 
 [node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -313,7 +308,6 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 29 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-enabled_focus_mode = 1
 text = "Misc"
 
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]

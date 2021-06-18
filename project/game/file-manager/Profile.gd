@@ -41,7 +41,7 @@ var progression = {
 		"level_progression": [4, 6, 8, 10],
 	},
 	"artifacts": {
-		"name": "Relics",
+		"name": "Artifacts",
 		"cur_xp": 201,
 		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
 	},

@@ -5,11 +5,12 @@ const XP_MULT = [
 	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
 	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
 ]
+const REGION_XP = [100, 200, 300]
 
 var total_xp : int
 
 
-func set_amounts(level: int, stats: Dictionary):
+func set_amounts(level: int, cleared: bool, stats: Dictionary):
 	var amount : int
 	var xp_value : int
 	
@@ -38,3 +39,9 @@ func set_amounts(level: int, stats: Dictionary):
 	total_xp += xp_value
 	$ExplorationRate/Amount.text = str(amount, "%")
 	$ExplorationRate/Exp.text = str(xp_value)
+	
+	if cleared:
+		$RegionClear.show()
+		xp_value = REGION_XP[level]
+		total_xp += xp_value
+		$RegionClear/Exp.text = str(xp_value)

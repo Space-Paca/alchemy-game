@@ -58,6 +58,8 @@ var stats = {
 	"damage_received": 0,
 	"damage_healed": 0,
 	"shield_gain": 0,
+	"recipes_made": 0,
+	"recipes_discovered": 0
 }
 
 var player_class : PlayerClass
@@ -196,7 +198,7 @@ func set_hp(new_value: int):
 
 func set_max_hp(value):
 	.set_max_hp(value)
-	if hud:
+	if hud and is_instance_valid(hud):
 		hud.update_max_hp(value)
 	emit_signal("hp_updated", hp, max_hp)
 
@@ -441,6 +443,7 @@ func made_recipe(name):
 		made_recipes[name].amount = 1
 	else:
 		made_recipes[name].amount += 1
+	increase_stat("recipes_made")
 
 
 func discover_combination(combination: Combination, play_sfx := false):
@@ -488,6 +491,19 @@ func remove_artifact(name : String):
 
 func reveal_map():
 	emit_signal("reveal_map")
+
+
+func get_discovered_recipes_amount():
+	pass
+
+
+func get_made_recipes_amount() -> int:
+	var total : int
+	for r in made_recipes:
+		if made_recipes[r].amount > 0:
+			total += made_recipes[r].amount
+	
+	return total
 
 
 func _on_Debug_artifact_added(name: String):

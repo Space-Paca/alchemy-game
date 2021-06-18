@@ -473,8 +473,8 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 			if battle:
 				battle.enable_elements()
 		else:
-			recipe_book.update_mastery(combination, times_recipe_made[recipe.name],\
-									   mastery_threshold(combination))
+			recipe_book.update_mastery(combination, times_recipe_made[recipe.name],
+					mastery_threshold(combination))
 	
 		if recipe_book.is_mastered(combination):
 			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)

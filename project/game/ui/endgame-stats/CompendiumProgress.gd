@@ -45,9 +45,9 @@ func populate():
 
 
 func get_compendium_hint_tooltip():
-	var tip = {"title": "Compendium", "text": "The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures", \
-				   "title_image": "res://assets/images/ui/compendium_icon.png", "subtitle": ""}
-
+	var tip = {"title": "Compendium", "text": "The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures",
+			"title_image": "res://assets/images/ui/compendium_icon.png",
+			"subtitle": ""}
 	return tip
 
 

@@ -35,10 +35,12 @@ func transition_to(scene_path: String):
 	AudioManager.play_sfx("transition_in")
 	
 	yield(tween, "tween_completed")
+	yield(get_tree(), "idle_frame")
+	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(scene_path)
+	
 	invert_direction()
-	yield(get_tree(), "idle_frame")
 	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)
 	tween.start()
 	AudioManager.play_sfx("transition_out")

@@ -235,5 +235,6 @@ margin_right = 35.5
 margin_bottom = 118.5
 custom_fonts/font = SubResource( 6 )
 text = "?"
+
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]

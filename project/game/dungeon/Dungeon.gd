@@ -130,7 +130,7 @@ func get_save_data():
 		"cur_lab_attempts": cur_lab_attempts,
 		"first_shop_visit": first_shop_visit,
 		"battle": battle.get_save_data() if battle else false,
-		"current_node": "" if (not current_node or is_instance_valid(current_node)) else current_node.name,
+		"current_node": "" if (not current_node or not is_instance_valid(current_node)) else current_node.name,
 		"time_of_run": time_of_run,
 	}
 	return data

@@ -3,6 +3,7 @@ extends Control
 signal hovered(reagent_array)
 signal unhovered()
 
+onready var window_y = get_viewport_rect().size.y
 onready var bg = $Background
 onready var unknown_bg = $UnknownBG
 onready var middle_container = $Background/MarginContainer/VBoxContainer/HBoxContainer/Middle
@@ -28,6 +29,8 @@ var hovered := false
 
 
 func _process(delta):
+	if unknown_bg.visible:
+		return
 	if hovered:
 		rect_scale.x = min(rect_scale.x + delta*SCALE_SPEED, HOVERED_SCALE)
 		rect_scale.y = min(rect_scale.y + delta*SCALE_SPEED, HOVERED_SCALE)

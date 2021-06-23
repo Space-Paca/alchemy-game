@@ -169,10 +169,9 @@ func reveal_all_but(amount: int):
 			unknown_reagent_coords.erase(coords)
 
 
-func discover_all_reagents(type: String, emit := true):
+func discover_all_reagents(type: String):
 	if not discovered:
 		discovered = true
 		known_matrix = matrix
 		unknown_reagent_coords.clear()
-		if emit:
-			emit_signal("fully_discovered", self, type)
+		emit_signal("fully_discovered", self, type)

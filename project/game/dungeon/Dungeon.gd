@@ -97,8 +97,6 @@ func _ready():
 			TutorialLayer.start("map")
 			yield(TutorialLayer, "tutorial_finished")
 			Profile.set_tutorial("map", true)
-		
-
 		$PauseScreen.set_block_pause(false)
 		time_running = true
 
@@ -521,6 +519,8 @@ func create_battle():
 	battle.connect("update_recipes_display", self, "_on_Battle_update_recipes_display")
 # warning-ignore:return_value_discarded
 	battle.connect("block_pause", self, "_on_Battle_block_pause")
+# warning-ignore:return_value_discarded
+	battle.connect("player_died", self, "_on_Battle_player_died")
 	
 	player_info.hide()
 	
@@ -695,6 +695,7 @@ func _on_Combination_fully_discovered(combination: Combination, source: String):
 	possible_rewarded_combinations.erase(combination)
 	if source != "shop" and source != "new_game" and source != "debug":
 		player.call_artifacts("discover_recipe", {"player": player, "source": source})
+	player.increase_stat("recipes_discovered")
 
 func _on_map_node_selected(node: MapNode):
 	if not node.type in [MapNode.ENEMY, MapNode.ELITE, MapNode.BOSS,
@@ -1104,6 +1105,11 @@ func _on_map_finished_revealing_map():
 	player.set_floor_stat("percentage_done", map.get_done_percentage())
 
 
-
 func _on_PauseScreen_exited_pause():
 	timer.visible = Profile.get_option("show_timer")
+
+
+func _on_Battle_player_died():
+	time_running = false
+	set_process(false)
+	player.increase_stat("time", time_of_run)

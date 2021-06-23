@@ -29,13 +29,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 30
 use_mipmaps = true
 use_filter = true
@@ -104,7 +104,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
 margin_right = 450.0
-margin_bottom = 178.0
+margin_bottom = 284.0
 rect_min_size = Vector2( 450, 0 )
 custom_constants/separation = 20
 
@@ -122,56 +122,56 @@ margin_right = 450.0
 margin_bottom = 86.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_right = 124.0
+margin_right = 202.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Recipes found: "
+text = "Fully discovered recipes: "
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_left = 128.0
-margin_right = 140.0
+margin_left = 206.0
+margin_right = 218.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_left = 144.0
+margin_left = 222.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
 
-[node name="Masterized" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Mastered" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 106.0
 margin_right = 450.0
 margin_bottom = 132.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Masterized"]
-margin_right = 165.0
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
+margin_right = 148.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Recipes masterized: "
+text = "Mastered recipes: "
 
-[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Masterized"]
-margin_left = 169.0
-margin_right = 181.0
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
+margin_left = 152.0
+margin_right = 164.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
-[node name="Exp" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Masterized"]
-margin_left = 185.0
+[node name="Exp" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
+margin_left = 168.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
@@ -184,15 +184,15 @@ margin_bottom = 178.0
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Artifacts"]
 margin_right = 154.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Artifacts collected: "
+text = "Collected artifacts: "
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Artifacts"]
 margin_left = 158.0
 margin_right = 170.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -201,10 +201,38 @@ margin_left = 174.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+
+[node name="Div2" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 450.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 450, 40 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Time" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 258.0
+margin_right = 450.0
+margin_bottom = 284.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time"]
+margin_right = 93.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Total time: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time"]
+margin_left = 97.0
+margin_right = 97.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="TotalXP" type="Label" parent="Panel/VBoxContainer"]
 margin_top = 661.0
@@ -212,7 +240,7 @@ margin_right = 450.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Total: "
 align = 2

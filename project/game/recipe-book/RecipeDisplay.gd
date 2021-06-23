@@ -128,17 +128,21 @@ func unlock_memorized():
 	memorized = true
 	favorite_button.visible = true
 
-func unlock_mastery(show_message := true):
-	if not mastery_unlocked:
-		description.text = RecipeManager.get_description(combination.recipe, true)
-		mastery_unlocked = true
-		favorite_button.visible = true
-		mastery_progress.visible = false
-		mastery_label.text = "Mastered"
-		bg.texture = RECIPE_MASTERED_BG
-		title.text = title.text + "+"
-		if show_message:
-			MessageLayer.recipe_mastered(combination)
+func unlock_mastery(show_message := true) -> bool:
+	if mastery_unlocked:
+		return false
+
+	description.text = RecipeManager.get_description(combination.recipe, true)
+	mastery_unlocked = true
+	favorite_button.visible = true
+	mastery_progress.visible = false
+	mastery_label.text = "Mastered"
+	bg.texture = RECIPE_MASTERED_BG
+	title.text = title.text + "+"
+	if show_message:
+		MessageLayer.recipe_mastered(combination)
+	
+	return true
 
 
 func set_favorite_button(status, temp_disconnect = false):

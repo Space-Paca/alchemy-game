@@ -9,7 +9,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 use_mipmaps = true
 use_filter = true
@@ -39,7 +39,7 @@ margin_bottom = 72.0
 [node name="Label" type="Label" parent="NormalEncounters"]
 margin_right = 169.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Normal Encounters: "
 
@@ -47,7 +47,7 @@ text = "Normal Encounters: "
 margin_left = 173.0
 margin_right = 185.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -56,7 +56,7 @@ margin_left = 189.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
@@ -69,7 +69,7 @@ margin_bottom = 102.0
 [node name="Label" type="Label" parent="EliteEncounters"]
 margin_right = 143.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elite Encounters: "
 
@@ -77,7 +77,7 @@ text = "Elite Encounters: "
 margin_left = 147.0
 margin_right = 159.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -86,7 +86,7 @@ margin_left = 163.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
@@ -99,7 +99,7 @@ margin_bottom = 132.0
 [node name="Label" type="Label" parent="MonstersDefeated"]
 margin_right = 161.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Monsters defeated: "
 
@@ -107,7 +107,7 @@ text = "Monsters defeated: "
 margin_left = 165.0
 margin_right = 177.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -116,7 +116,7 @@ margin_left = 181.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
@@ -129,7 +129,7 @@ margin_bottom = 162.0
 [node name="Label" type="Label" parent="ExplorationRate"]
 margin_right = 141.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Exploration rate: "
 
@@ -137,7 +137,7 @@ text = "Exploration rate: "
 margin_left = 145.0
 margin_right = 157.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -146,7 +146,7 @@ margin_left = 161.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
@@ -160,7 +160,7 @@ margin_bottom = 192.0
 [node name="Label" type="Label" parent="RegionClear"]
 margin_right = 125.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Region cleared!"
 
@@ -169,7 +169,7 @@ margin_left = 129.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2

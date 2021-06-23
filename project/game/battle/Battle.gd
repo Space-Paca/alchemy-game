@@ -14,6 +14,7 @@ signal recipe_book_toggle
 signal hand_set
 signal update_recipes_display
 signal block_pause
+signal player_died
 
 onready var effect_manager = $EffectManager
 onready var book = $Book
@@ -1213,6 +1214,7 @@ func _on_enemy_died(enemy):
 
 func _on_player_died(_player):
 	emit_signal("block_pause", true)
+	emit_signal("player_died")
 	AudioManager.play_sfx("game_over")
 	TooltipLayer.clean_tooltips()
 	ended = true

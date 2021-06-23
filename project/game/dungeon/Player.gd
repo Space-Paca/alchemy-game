@@ -52,14 +52,15 @@ var floor_stats = [
 	},
 ]
 var stats = {
+	"time": .0,
 	"reagents_removed": 0,
 	"damage_dealt": 0,
 	"damage_blocked": 0,
 	"damage_received": 0,
 	"damage_healed": 0,
 	"shield_gain": 0,
-	"recipes_made": 0,
-	"recipes_discovered": 0
+	"recipes_discovered": 0,
+	"recipes_mastered": 0
 }
 
 var player_class : PlayerClass
@@ -443,7 +444,6 @@ func made_recipe(name):
 		made_recipes[name].amount = 1
 	else:
 		made_recipes[name].amount += 1
-	increase_stat("recipes_made")
 
 
 func discover_combination(combination: Combination, play_sfx := false):

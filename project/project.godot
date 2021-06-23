@@ -238,6 +238,7 @@ end_turn={
 
 [locale]
 
+test="pt_BR"
 locale_filter=[ 1, [ "en", "pt_BR" ] ]
 translations=PoolStringArray( "res://assets/translation/alchemy_translation - main.en.translation", "res://assets/translation/alchemy_translation - main.pt_BR.translation" )
 translation_remaps={

@@ -296,6 +296,7 @@ func _on_LanguageButton_toggled(button_pressed):
 
 func _on_Language_Button_pressed(button_id: int):
 	AudioManager.play_sfx("click")
+	language_dropdown.visible = false
 	if button_id == Profile.get_option("locale"):
 		return
 	

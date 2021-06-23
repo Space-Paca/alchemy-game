@@ -394,6 +394,9 @@ __meta__ = {
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
 
+[node name="Background" parent="PauseScreen" index="0"]
+visible = false
+
 [node name="Res1" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="0"]
 group = SubResource( 7 )
 

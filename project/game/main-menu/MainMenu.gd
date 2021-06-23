@@ -11,7 +11,7 @@ func _ready():
 	set_process_input(false)
 	$RecipeCompendium.show()
 	yield(get_tree(),"idle_frame")
-	Transition.single_out_transition()
+	#Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
 	Debug.set_version_visible(true)
 	$RecipeCompendium.hide()

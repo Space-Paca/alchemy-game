@@ -153,7 +153,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Alchemia: Creatio Ex Nihilo"
-run/main_scene="res://game/main-menu/MainMenu.tscn"
+run/main_scene="res://game/splash-screen/SplashScreen.tscn"
 boot_splash/image="res://assets/images/splash_screen/splash_screen.png"
 config/icon="res://assets/images/icon.png"
 config/macos_native_icon="res://assets/images/icon.icns"

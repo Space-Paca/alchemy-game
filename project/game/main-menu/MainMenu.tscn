@@ -365,10 +365,10 @@ disabled = true
 
 [node name="CompendiumButton" type="TextureButton" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 1687.49
-margin_top = 810.639
-margin_right = 1775.49
-margin_bottom = 877.639
+margin_left = 1805.92
+margin_top = 163.04
+margin_right = 1893.92
+margin_bottom = 230.04
 disabled = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
@@ -387,6 +387,7 @@ margin_right = 107.351
 margin_bottom = 97.7848
 custom_fonts/font = SubResource( 6 )
 text = "COMPENDIUM"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

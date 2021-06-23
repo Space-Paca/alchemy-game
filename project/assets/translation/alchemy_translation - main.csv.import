@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://assets/translation/alchemy_translation - main.en.translation", "res://assets/translation/alchemy_translation - main.pt_BR.translation" ]
+
+source_file="res://assets/translation/alchemy_translation - main.csv"
+dest_files=[ "res://assets/translation/alchemy_translation - main.en.translation", "res://assets/translation/alchemy_translation - main.pt_BR.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

@@ -380,7 +380,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Background/ConfirmMenu"]
-margin_right = 450.0
+margin_right = 558.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 16 )
 text = "ARE_YOU_SURE"
@@ -388,21 +388,22 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ConfirmMenu"]
 margin_top = 201.0
-margin_right = 450.0
+margin_right = 558.0
 margin_bottom = 347.0
 theme = ExtResource( 3 )
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Yes" type="Button" parent="Background/ConfirmMenu/HBoxContainer"]
-margin_right = 200.0
+margin_left = 54.0
+margin_right = 254.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "YES"
 
 [node name="No" type="Button" parent="Background/ConfirmMenu/HBoxContainer"]
-margin_left = 250.0
-margin_right = 450.0
+margin_left = 304.0
+margin_right = 504.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 200, 120 )
 text = "NO"

@@ -112,6 +112,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="."]
+margin_right = 203.0
+margin_bottom = 59.0
+rect_scale = Vector2( 1.1, 1 )
 toggle_mode = true
 texture_normal = ExtResource( 2 )
 __meta__ = {
@@ -136,16 +139,17 @@ margin_top = -22.5
 margin_right = 100.0
 margin_bottom = 22.5
 custom_fonts/font = SubResource( 1 )
-text = "Filters"
+text = "FILTERS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Filters" type="NinePatchRect" parent="."]
 visible = false
-margin_top = 65.0
-margin_right = 203.0
-margin_bottom = 505.0
+margin_left = 0.622131
+margin_top = 57.3627
+margin_right = 223.622
+margin_bottom = 497.363
 mouse_filter = 0
 texture = ExtResource( 2 )
 patch_margin_left = 50
@@ -181,7 +185,7 @@ custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 1 )
-text = "Clear all"
+text = "CLEAR_ALL"
 
 [node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 75.0
@@ -200,7 +204,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 11 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Attack"
+text = "ATTACK"
 
 [node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 125.0
@@ -218,7 +222,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 14 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Defense"
+text = "DEFENSE"
 
 [node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 175.0
@@ -236,7 +240,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 17 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Area"
+text = "AREA"
 
 [node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 225.0
@@ -254,7 +258,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Buff"
+text = "BUFF"
 
 [node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 275.0
@@ -272,7 +276,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 23 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Debuff"
+text = "DEBUFF"
 
 [node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 325.0
@@ -290,7 +294,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 26 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Heal"
+text = "HEAL"
 
 [node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 375.0
@@ -308,7 +312,7 @@ custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 29 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 15
-text = "Misc"
+text = "MISC"
 
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
 [connection signal="pressed" from="Filters/VBoxContainer/ClearButton" to="." method="_on_ClearButton_pressed"]

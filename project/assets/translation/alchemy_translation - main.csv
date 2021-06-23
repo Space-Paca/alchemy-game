@@ -33,3 +33,12 @@ OPT_LANGUAGE,Language,Linguagem
 BACK,Back,Voltar
 COMPENDIUM,Compendium,Compêndio
 FILTERS,Filters,Filtros
+CLOSE,Close,Fechar
+CLEAR_ALL,Clear all,Limpar
+ATTACK,Attack,Ataque
+DEFENSE,Defense,Defesa
+AREA,Area,Area
+BUFF,Buff,Fortalecer
+DEBUFF,Debuff,Enfraquecer
+HEAL,Heal,Cura
+MISC,Misc,Diversos

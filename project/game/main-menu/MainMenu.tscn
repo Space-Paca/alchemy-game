@@ -53,9 +53,9 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="ButtonGroup" id=7]
 
-[sub_resource type="ButtonGroup" id=9]
+[sub_resource type="ButtonGroup" id=8]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:material:shader_param/value")
@@ -333,6 +333,7 @@ margin_right = 1304.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 5 )
 text = "ARE_YOU_SURE_EXIT"
+align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]
 margin_top = 201.0
@@ -406,16 +407,16 @@ group = SubResource( 7 )
 group = SubResource( 7 )
 
 [node name="En" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="0"]
-group = SubResource( 9 )
+group = SubResource( 8 )
 
 [node name="Pt_BR" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="1"]
-group = SubResource( 9 )
+group = SubResource( 8 )
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/intro = SubResource( 8 )
+anims/intro = SubResource( 9 )
 
 [connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

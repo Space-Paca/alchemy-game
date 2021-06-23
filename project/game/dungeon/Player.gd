@@ -498,7 +498,7 @@ func get_discovered_recipes_amount():
 
 
 func get_made_recipes_amount() -> int:
-	var total : int
+	var total := 0
 	for r in made_recipes:
 		if made_recipes[r].amount > 0:
 			total += made_recipes[r].amount

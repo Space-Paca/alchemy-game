@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -6,12 +6,14 @@
 [ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/arrow.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/background/reagent smith.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/images/background/blacksmith/bg.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/BlacksmithNegativeFont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=10]
 [ext_resource path="res://game/blacksmith/ReagentTransmuted.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/images/background/blacksmith/seller.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/background/blacksmith/table.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
@@ -46,6 +48,122 @@ extents = Vector2( 80, 80 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 90, 90 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "enter"
+length = 16.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Table:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -380, 775.401 ), Vector2( 471.398, 775.401 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seller:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1932.04, 125.475 ), Vector2( 950.406, 125.475 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShopkeeperDialogue:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShopkeeperDialogue/Panel/CenterContainer/Label:visible_characters")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 2.1, 2.2, 3.2, 3.5, 5, 5.6, 6.2, 6.5, 7.9, 8.1, 10.3, 10.4, 11.1, 11.3, 13.5, 13.9, 15.2, 16.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 0, 0, 26, 26, 48, 48, 81, 89, 102, 102, 137, 137, 198, 198, 206, 206, 266, 266, 291, 298 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShopkeeperDialogue/Panel:rect_size")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1.1, 3.1, 3.5, 6.8, 7.2, 9.3, 9.7, 11.2, 11.6, 14.1, 14.6, 16.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 900, 0 ), Vector2( 900, 0 ), Vector2( 900, 45 ), Vector2( 900, 45 ), Vector2( 900, 93 ), Vector2( 900, 93 ), Vector2( 900, 138 ), Vector2( 900, 138 ), Vector2( 900, 183 ), Vector2( 900, 183 ), Vector2( 900, 265 ), Vector2( 900, 265 ), Vector2( 900, 320 ), Vector2( 900, 320 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Table:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -380.094, 772.731 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seller:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1932.04, 125.475 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShopkeeperDialogue:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShopkeeperDialogue/Panel/CenterContainer/Label:visible_characters")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
 [node name="Blacksmith" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,6 +177,26 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Seller" type="TextureRect" parent="."]
+margin_left = 950.406
+margin_top = 125.475
+margin_right = 1865.42
+margin_bottom = 1042.47
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Table" type="TextureRect" parent="."]
+margin_left = 471.398
+margin_top = 775.401
+margin_right = 1291.4
+margin_bottom = 1080.4
+texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,8 +215,8 @@ polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418
 margin_left = -383.0
 margin_top = -427.0
 margin_right = 517.0
-margin_bottom = -127.0
-rect_min_size = Vector2( 900, 320 )
+margin_bottom = -107.0
+rect_min_size = Vector2( 900, 0 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,6 +244,7 @@ bbcode_text = "Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
 
 I can even [wave]transmute[/wave] them into better reagents, oh yes yes! But those will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]"
+visible_characters = 298
 text = "Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of trinkets in your bag... I can improve them, oh yes yes! ...if you spare me some precious pearls in return, of course hehehe
 
@@ -390,6 +529,11 @@ margin_left = 20.3703
 margin_top = 295.19
 margin_right = 520.37
 margin_bottom = 895.19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enter = SubResource( 8 )
+anims/init = SubResource( 9 )
+
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainButtons/Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="MainButtons/Transmute" to="." method="_on_Transmute_pressed"]
@@ -404,7 +548,5 @@ margin_bottom = 895.19
 [connection signal="reagent_pressed" from="ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
 
 [editable path="UpgradingReagent/Reagent/TooltipCollision"]
-
 [editable path="UpgradingReagent/ReagentUpgraded/TooltipCollision"]
-
 [editable path="TransmutingReagent/Reagent/TooltipCollision"]

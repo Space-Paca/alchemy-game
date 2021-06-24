@@ -23,6 +23,7 @@ var tooltips_enabled = false
 
 
 func setup(node, _player):
+	$AnimationPlayer.play("init")
 	main_buttons.show()
 	dialog.show()
 	reagent_list.clear()
@@ -34,6 +35,8 @@ func setup(node, _player):
 	transmuting_reagent_tooltip.disable()
 	remove_transmuting_possibilities()
 
+func start():
+	$AnimationPlayer.play("enter")
 
 func update_reagent_list(type: String):
 	index_map = []

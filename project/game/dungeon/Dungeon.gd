@@ -594,6 +594,7 @@ func open_smith(room, _player):
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
+	smith.start()
 	time_running = true
 
 

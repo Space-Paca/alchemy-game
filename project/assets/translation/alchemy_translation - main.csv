@@ -42,3 +42,20 @@ BUFF,Buff,Fortalecer
 DEBUFF,Debuff,Enfraquecer
 HEAL,Heal,Cura
 MISC,Misc,Diversos
+END_TURN,End Turn,Terminar   Turno
+RECIPES,Recipes,Receitas
+COMBINE,Combine,Combinar
+DRAW_BAG,Draw Bag,Bolsa de Compra
+DISCARD_BAG,Discard Bag,Bolsa de Descarte
+RECIPE_LIST,Recipe List,Lista de Receitas
+HAND,Hand,Mão
+BAG,Bag,Bolsa
+INCOMPLETE,Incomplete,Incompletas
+COMPLETE,Complete,Completas
+ALL,All,Todas
+PEARLS,Pearls,Pérolas
+GOLD,Gold,Ouro
+RESOURCE,Resource,Recurso
+RARE_RESOURCE,Rare Resource,Recurso Raro
+NO_RECIPE_FOUND,No recipes found...,Nenhuma receita encontrada...
+CURSED,CURSED,ALMALDIÇOADO

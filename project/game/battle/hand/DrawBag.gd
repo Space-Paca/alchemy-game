@@ -243,7 +243,7 @@ func disable_tooltips():
 		
 func get_tooltip():
 	var tooltip = {}
-	tooltip.title = "Draw Bag"
+	tooltip.title = "DRAW_BAG"
 	tooltip.text = ""
 	var reagent_types = {}
 	for reagent in $DrawableReagents.get_children():

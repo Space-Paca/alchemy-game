@@ -109,7 +109,7 @@ func disable_tooltips():
 
 func get_tooltip():
 	var tooltip = {}
-	tooltip.title = "Discard Bag"
+	tooltip.title = "DISCARD_BAG"
 	tooltip.text = ""
 	var reagent_types = {}
 	for reagent in $DiscardedReagents.get_children():

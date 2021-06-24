@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/RecipeBookNotFoundFont_en.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=5]
@@ -18,24 +18,10 @@
 [ext_resource path="res://assets/images/ui/book/Label Red Hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=18]
-[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://assets/fonts/RecipeBookTitleFont_en.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=20]
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=22]
-
-[sub_resource type="DynamicFont" id=1]
-size = 64
-use_mipmaps = true
-use_filter = true
-extra_spacing_top = -30
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 60
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
 
 [node name="RecipeBook" type="Control"]
 anchor_right = 1.0
@@ -87,7 +73,7 @@ margin_top = -2.00015
 margin_right = 52.0
 margin_bottom = 63.9998
 custom_fonts/font = ExtResource( 8 )
-text = "Close"
+text = "CLOSE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -128,7 +114,7 @@ margin_top = -11.0
 margin_right = 31.5
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "Hand"
+text = "HAND"
 align = 1
 valign = 1
 __meta__ = {
@@ -151,7 +137,7 @@ margin_top = -11.0
 margin_right = 31.5
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "Bag"
+text = "BAG"
 align = 1
 valign = 1
 __meta__ = {
@@ -175,7 +161,7 @@ margin_top = -11.0
 margin_right = 55.5
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "Incomplete"
+text = "INCOMPLETE"
 align = 1
 valign = 1
 __meta__ = {
@@ -199,7 +185,7 @@ margin_top = -11.0
 margin_right = 31.5
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "Complete"
+text = "COMPLETE"
 align = 1
 valign = 1
 __meta__ = {
@@ -223,7 +209,7 @@ margin_top = -11.0
 margin_right = 31.5
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 8 )
-text = "All"
+text = "ALL"
 align = 1
 valign = 1
 __meta__ = {
@@ -247,25 +233,24 @@ margin_right = 155.296
 margin_bottom = 167.969
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="Background"]
-margin_left = 180.0
-margin_top = 105.0
-margin_right = 489.0
-margin_bottom = 176.0
-custom_fonts/font = SubResource( 1 )
+[node name="Title" type="Label" parent="Background"]
+margin_left = 163.0
+margin_top = 112.0
+margin_right = 507.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Recipe List"
-align = 1
+text = "RECIPE_LIST"
 valign = 1
 
 [node name="NothingFound" type="Label" parent="Background"]
-margin_left = 169.124
-margin_top = 262.178
-margin_right = 620.124
-margin_bottom = 339.178
-custom_fonts/font = SubResource( 2 )
+margin_left = 80.0
+margin_top = 262.0
+margin_right = 718.0
+margin_bottom = 339.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "No recipes found..."
+text = "NO_RECIPE_FOUND"
 align = 1
 valign = 1
 __meta__ = {
@@ -361,10 +346,10 @@ __meta__ = {
 }
 
 [node name="FilterMenu" parent="Background" instance=ExtResource( 10 )]
-margin_left = 508.724
-margin_top = 119.183
-margin_right = -309.276
-margin_bottom = -960.817
+margin_left = 538.996
+margin_top = 136.001
+margin_right = -279.004
+margin_bottom = -943.999
 
 [node name="LeftSide" type="Control" parent="Background"]
 margin_left = -750.0
@@ -403,6 +388,7 @@ __meta__ = {
 columns = 7
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
@@ -418,7 +404,5 @@ columns = 7
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
 
 [editable path="Background/LeftSide/PlayerInfo"]
-
 [editable path="Background/LeftSide/PlayerInfo/BG/CurrencyContainer/Gold/TooltipCollision"]
-
 [editable path="Background/LeftSide/PlayerInfo/BG/CurrencyContainer/Pearls/TooltipCollision"]

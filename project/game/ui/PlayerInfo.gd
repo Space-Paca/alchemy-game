@@ -117,13 +117,13 @@ func get_tooltip_data(type):
 	var tooltip = {}
 	tooltip.text = ""
 	if type == "gold":
-		tooltip.title = "Gold"
+		tooltip.title = "GOLD"
 		tooltip.title_image = GOLD_TEXTURE
-		tooltip.subtitle = "Currency"
+		tooltip.subtitle = "RESOURCE"
 	elif type == "pearl":
-		tooltip.title = "Pearls"
+		tooltip.title = "PEARLS"
 		tooltip.title_image = PEARL_TEXTURE
-		tooltip.subtitle = "Rare Currency"
+		tooltip.subtitle = "RARE_RESOURCE"
 	else:
 		assert(false, "Not a valid tooltip type: " + str(type))
 	

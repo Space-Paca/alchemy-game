@@ -242,6 +242,9 @@ test="pt_BR"
 locale_filter=[ 1, [ "en", "pt_BR" ] ]
 translations=PoolStringArray( "res://assets/translation/alchemy_translation - main.en.translation", "res://assets/translation/alchemy_translation - main.pt_BR.translation" )
 translation_remaps={
+"res://assets/fonts/PassTurnButton_en.tres": PoolStringArray( "res://assets/fonts/PassTurnButton_pt_BR.tres:pt_BR" ),
+"res://assets/fonts/RecipeBookNotFoundFont_en.tres": PoolStringArray( "res://assets/fonts/RecipeBookNotFoundFont_pt_BR.tres:pt_BR" ),
+"res://assets/fonts/RecipeBookTitleFont_en.tres": PoolStringArray( "res://assets/fonts/RecipeBookTitleFont_pt_BR.tres:pt_BR" ),
 "res://assets/images/splash_screen/splash_screen.png": PoolStringArray( "res://assets/images/splash_screen/splash_screen_en.png:en", "res://assets/images/splash_screen/splash_screen_pt_BR.png:pt_BR" )
 }
 

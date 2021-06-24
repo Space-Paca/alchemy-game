@@ -22,12 +22,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 30.0
-margin_top = 3.0
-margin_right = 159.0
-margin_bottom = 63.0
+margin_left = 38.1895
+margin_top = 6.1498
+margin_right = 167.189
+margin_bottom = 66.1498
 custom_fonts/font = SubResource( 1 )
-text = "Recipes"
+text = "RECIPES"
 align = 1
 valign = 1
 __meta__ = {

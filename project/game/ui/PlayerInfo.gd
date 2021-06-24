@@ -27,6 +27,7 @@ const BUTTON_SPEED = 300
 
 var tooltip_enabled = false
 var mouse_over_downbutton = false
+var block_tooltips = false
 
 
 func _ready():
@@ -35,11 +36,23 @@ func _ready():
 	for artifact in artifacts.get_children():
 		artifacts.remove_child(artifact)
 
+
 func _process(dt):
 	if mouse_over_downbutton:
 		button.rect_position.y = min(button.rect_position.y + BUTTON_SPEED*dt, DOWNBUTTON_TARGET_Y)
 	else:
 		button.rect_position.y = max(button.rect_position.y - BUTTON_SPEED*dt, DOWNBUTTON_START_Y)
+
+
+func hide():
+	.hide()
+	disable_tooltips()
+
+
+func show():
+	.show()
+	enable_tooltips()
+	
 
 func set_player(player: Player):
 	# warning-ignore:return_value_discarded
@@ -52,7 +65,6 @@ func set_player(player: Player):
 	player.connect("artifacts_updated", self, "update_artifacts")
 	
 	update_values(player)
-
 
 
 func update_values(player: Player):
@@ -107,6 +119,19 @@ func animation_show():
 	button.disabled = false
 
 
+func disable_tooltips():
+	remove_tooltips()
+	for artifact in $BG/Artifacts.get_children():
+		artifact.disable()
+	block_tooltips = true
+
+
+func enable_tooltips():
+	for artifact in $BG/Artifacts.get_children():
+		artifact.enable()
+	block_tooltips = false
+
+
 func remove_tooltips():
 	if tooltip_enabled:
 		tooltip_enabled = false
@@ -142,6 +167,8 @@ func _on_TooltipCollision_disable_tooltip(_type):
 
 
 func _on_TooltipCollision_enable_tooltip(type):
+	if block_tooltips:
+		return
 	var tooltip
 	if type == "gold":
 		tooltip = gold_tooltip

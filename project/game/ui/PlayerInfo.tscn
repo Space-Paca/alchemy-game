@@ -191,6 +191,7 @@ shape = SubResource( 3 )
 position = Vector2( 92.7662, -26.258 )
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="mouse_entered" from="DownButton" to="." method="_on_DownButton_mouse_entered"]
 [connection signal="mouse_exited" from="DownButton" to="." method="_on_DownButton_mouse_exited"]
 [connection signal="pressed" from="DownButton" to="." method="_on_DownButton_pressed"]
@@ -200,5 +201,4 @@ position = Vector2( 92.7662, -26.258 )
 [connection signal="enable_tooltip" from="BG/CurrencyContainer/Pearls/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "pearl" ]]
 
 [editable path="BG/CurrencyContainer/Gold/TooltipCollision"]
-
 [editable path="BG/CurrencyContainer/Pearls/TooltipCollision"]

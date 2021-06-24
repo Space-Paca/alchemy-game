@@ -27,6 +27,7 @@ shape = SubResource( 1 )
 
 [node name="TooltipPosition" parent="TooltipCollision" index="1"]
 position = Vector2( 50.1031, -33.4447 )
+
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

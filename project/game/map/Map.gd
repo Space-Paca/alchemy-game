@@ -13,9 +13,9 @@ onready var nodes = $Nodes
 onready var floor_label = $CanvasLayer/FloorLabel
 
 const FLOOR_LABEL = [
-	"The Woods",
-	"The Cavern",
-	"The Dungeon",
+	"Forgotten Kingdom",
+	"Caves of Sorrow",
+	"Big Big Depths",
 ]
 const MAPS_BG = [
 	{

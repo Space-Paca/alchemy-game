@@ -27,6 +27,8 @@ onready var language_buttons = $Background/SettingsMenu/TabContainer/Language/VB
 onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
 onready var language_button = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton
 onready var tab_container = $Background/SettingsMenu/TabContainer
+onready var show_timer_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
+onready var end_turn_button = $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button
 onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button,
 "combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
 "toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
@@ -136,6 +138,8 @@ func update_buttons():
 	resolution_button.disabled = fullscreen_button.pressed
 	resolution_dropdown.visible = false
 	language_dropdown.visible = false
+	show_timer_button.pressed = Profile.get_option("show_timer")
+	end_turn_button = Profile.get_option("auto_end_turn")
 
 
 func update_controls():

@@ -503,7 +503,7 @@ func set_button_disabled(disable: bool):
 
 func get_tooltip():
 	var tip = {"title": data.name, "text": "", \
-				   "title_image": false, "subtitle": "Enemy"}
+				   "title_image": false, "subtitle": "ENEMY"}
 
 	return tip
 

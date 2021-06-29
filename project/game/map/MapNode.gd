@@ -21,8 +21,8 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/event.png"),
 		preload("res://assets/images/map/laboratory.png"),
 		preload("res://assets/images/map/treasure.png")]
-const LEGEND = ["", "Enemy", "Elite", "Boss",
-		"Shop", "Resting Circle", "Reagent Smith", "Event", "Laboratory", "Treasure"]
+const LEGEND = ["", "ENEMY", "ELITE", "BOSS",
+		"SHOP", "RESTING_CIRCLE", "REAGENT_SMITH", "EVENT", "LABORATORY", "TREASURE"]
 
 var encounter : Encounter
 var is_leaf := true
@@ -116,7 +116,7 @@ func remove_tooltips():
 func get_node_tooltip():
 	var tooltip = {}
 	tooltip = {"title": LEGEND[type], "text": "", \
-			   "title_image": IMAGES[type], "subtitle": "Location"}
+			   "title_image": IMAGES[type], "subtitle": "LOCATION"}
 	return tooltip
 
 

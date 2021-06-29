@@ -62,3 +62,13 @@ CURSED,CURSED,ALMALDIÇOADO
 FLOOR_NAME_1,Forgotten Kingdom,Reino Esquecido
 FLOOR_NAME_2,Caves of Sorrow,Cavernas do Sofrimento
 FLOOR_NAME_3,Big Big Depths,Nome Grande Profundo
+LOCATION,Location,Local
+ENEMY,Enemy,Inimigo
+ELITE,Elite,Inimigo Elite
+BOSS,Guardian,Guardião
+SHOP,Shop,Loja
+RESTING_CIRCLE,Resting Circle,Círculo do Descanso
+REAGENT_SMITH,Reagent Smith,Forjador de Reagentes
+EVENT,Event,Evento
+LABORATORY,Laboratory,Laboratório
+TREASURE,Treasure,Tesouro

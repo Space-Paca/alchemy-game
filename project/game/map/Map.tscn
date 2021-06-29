@@ -11,8 +11,8 @@
 light_mode = 2
 
 [sub_resource type="DynamicFont" id=2]
-size = 128
-outline_size = 2
+size = 110
+outline_size = 4
 outline_color = Color( 0.945098, 0.945098, 0.945098, 0.403922 )
 use_mipmaps = true
 use_filter = true
@@ -263,11 +263,12 @@ __meta__ = {
 [node name="FloorLabel" type="Label" parent="CanvasLayer"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 404.0
-margin_bottom = 182.0
+margin_right = 658.0
+margin_bottom = 335.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.184314, 0.137255, 0.137255, 1 )
-text = "Floor W"
+text = "BIG FLOOR NAME"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

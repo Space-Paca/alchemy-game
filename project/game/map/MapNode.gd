@@ -24,6 +24,12 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 const LEGEND = ["", "ENEMY", "ELITE", "BOSS",
 		"SHOP", "RESTING_CIRCLE", "REAGENT_SMITH", "EVENT", "LABORATORY", "TREASURE"]
 
+const BOSS_IMAGES = [
+	preload("res://assets/images/map/boss-closed.png"),
+	preload("res://assets/images/map/boss-open1.png"),
+	preload("res://assets/images/map/boss-open2.png"),
+]
+
 var encounter : Encounter
 var is_leaf := true
 var map_tree_children := []
@@ -82,6 +88,8 @@ func fade_in():
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
+	if type == BOSS:
+		$AnimationPlayer.play("BossIntro")
 
 
 func set_camera(cam):
@@ -93,7 +101,11 @@ func set_type(new_type:int):
 		return
 	
 	type = new_type
-	button.texture_normal = IMAGES[type]
+	
+	if type == BOSS:
+		button.texture_normal = BOSS_IMAGES[0]
+	else:
+		button.texture_normal = IMAGES[type]
 	
 	if type == ENEMY:
 		encounter = EncounterManager.get_random_encounter()

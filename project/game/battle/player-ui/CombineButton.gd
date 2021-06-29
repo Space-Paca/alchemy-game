@@ -10,7 +10,7 @@ var cursed := false
 
 
 func _ready():
-	$CursedText.modulate.a = 0
+	$CursedContainer.modulate.a = 0
 	$Label.modulate.a = 0
 	modulate = Color.white
 
@@ -21,12 +21,13 @@ func _process(delta):
 	else:
 		$Label.modulate.a = min($Label.modulate.a + ALPHA_SPEED*delta, 1)
 	
+	var node = $CursedContainer
 	if cursed:
-		$CursedText.modulate.a = min($CursedText.modulate.a + ALPHA_SPEED*delta, 1)
+		node.modulate.a = min(node.modulate.a + ALPHA_SPEED*delta, 1)
 		modulate.r = max(modulate.r - CURSE_SPEED*delta, .71)
 		modulate.g = max(modulate.g - CURSE_SPEED*delta, .33)
 	else:
-		$CursedText.modulate.a = max($CursedText.modulate.a - ALPHA_SPEED*delta, 0)
+		node.modulate.a = max(node.modulate.a - ALPHA_SPEED*delta, 0)
 		modulate.r = min(modulate.r + CURSE_SPEED*delta, 1)
 		modulate.g = min(modulate.g + CURSE_SPEED*delta, 1)
 		
@@ -57,7 +58,7 @@ func enable_curse():
 
 
 func set_curse(cur_value, max_value):
-	$CursedText.text = "CURSED "+str(cur_value)+"/"+str(max_value)
+	$CursedContainer/Amount.text = str(cur_value)+"/"+str(max_value)
 	
 
 func _on_CombineButton_mouse_entered():

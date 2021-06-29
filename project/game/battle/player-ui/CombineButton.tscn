@@ -58,14 +58,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CursedText" type="Label" parent="."]
-margin_left = 11.5681
-margin_top = 126.975
-margin_right = 113.568
-margin_bottom = 144.975
+[node name="CursedContainer" type="HBoxContainer" parent="."]
+margin_left = -0.466431
+margin_top = 99.0404
+margin_right = 134.534
+margin_bottom = 139.04
+rect_min_size = Vector2( 135, 40 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CursedText" type="Label" parent="CursedContainer"]
+margin_left = 26.0
+margin_top = 9.0
+margin_right = 81.0
+margin_bottom = 30.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.882353, 0.882353, 0.882353, 1 )
-text = "CURSED 0/3"
+text = "CURSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="CursedContainer"]
+margin_left = 85.0
+margin_top = 9.0
+margin_right = 109.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.882353, 0.882353, 0.882353, 1 )
+text = "0/3"
 align = 1
 valign = 1
 __meta__ = {

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/ui/endgame-stats/FloorStats.gd" type="Script" id=2]
+[ext_resource path="res://game/ui/endgame-stats/ExpLabel.gd" type="Script" id=3]
+[ext_resource path="res://game/ui/endgame-stats/StatElement.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -30,11 +32,13 @@ margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Floor 1"
+script = ExtResource( 4 )
 
 [node name="NormalEncounters" type="HBoxContainer" parent="."]
 margin_top = 46.0
 margin_right = 450.0
 margin_bottom = 72.0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="NormalEncounters"]
 margin_right = 169.0
@@ -60,11 +64,13 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 3 )
 
 [node name="EliteEncounters" type="HBoxContainer" parent="."]
 margin_top = 76.0
 margin_right = 450.0
 margin_bottom = 102.0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="EliteEncounters"]
 margin_right = 143.0
@@ -90,11 +96,13 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 3 )
 
 [node name="MonstersDefeated" type="HBoxContainer" parent="."]
 margin_top = 106.0
 margin_right = 450.0
 margin_bottom = 132.0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="MonstersDefeated"]
 margin_right = 161.0
@@ -120,11 +128,13 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 3 )
 
 [node name="ExplorationRate" type="HBoxContainer" parent="."]
 margin_top = 136.0
 margin_right = 450.0
 margin_bottom = 162.0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="ExplorationRate"]
 margin_right = 141.0
@@ -150,12 +160,14 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 3 )
 
 [node name="RegionClear" type="HBoxContainer" parent="."]
 visible = false
 margin_top = 166.0
 margin_right = 450.0
 margin_bottom = 192.0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="RegionClear"]
 margin_right = 125.0
@@ -173,3 +185,4 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 3 )

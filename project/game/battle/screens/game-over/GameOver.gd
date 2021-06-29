@@ -16,6 +16,8 @@ func animate_book():
 	tween.interpolate_property($BG/EndgameStats, "rect_position:y", null, 0, 1.5,
 			Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
+	yield(tween, "tween_completed")
+	$BG/EndgameStats/Page1/RunStats.begin_animations()
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):

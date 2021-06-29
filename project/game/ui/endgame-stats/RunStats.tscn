@@ -1,10 +1,23 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/ui/endgame-stats/RunStats.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=5]
+[ext_resource path="res://game/ui/endgame-stats/StatElement.gd" type="Script" id=6]
+[ext_resource path="res://assets/themes/general_theme/scrollerH.png" type="Texture" id=7]
+[ext_resource path="res://assets/themes/general_theme/scroller_hoverH.png" type="Texture" id=8]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/themes/general_theme/default_button.png" type="Texture" id=10]
+[ext_resource path="res://assets/themes/general_theme/default_button_disabled.png" type="Texture" id=11]
+[ext_resource path="res://assets/themes/general_theme/default_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/themes/general_theme/default_button_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/themes/general_theme/h_scroll.png" type="Texture" id=15]
+[ext_resource path="res://assets/themes/general_theme/scroller_pressedH.png" type="Texture" id=16]
+[ext_resource path="res://assets/themes/general_theme/h_scroller.png" type="Texture" id=17]
+[ext_resource path="res://game/ui/endgame-stats/ExpLabel.gd" type="Script" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -29,13 +42,165 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=18]
+size = 70
+outline_size = 4
+outline_color = Color( 0.0969086, 0.339844, 0.323826, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.327
+margin_right = 23.327
+margin_top = 27.9924
+margin_bottom = 27.9924
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 89, 96 )
+margin_left = 23.0
+margin_right = 23.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 31.9245
+margin_right = 29.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 33.0
+margin_right = 30.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 32.0
+margin_right = 28.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 29.0
+margin_right = 28.0
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 15 )
+region_rect = Rect2( 30, 0, 100, 29 )
+margin_left = 27.9335
+margin_right = 29.4037
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="DynamicFont" id=17]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=26]
+default_font = SubResource( 17 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 18 )
+Button/styles/disabled = SubResource( 19 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 20 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 6 )
+HScrollBar/styles/grabber_highlight = SubResource( 7 )
+HScrollBar/styles/grabber_pressed = SubResource( 8 )
+HScrollBar/styles/scroll = SubResource( 9 )
+HScrollBar/styles/scroll_focus = null
+HSlider/icons/grabber = ExtResource( 17 )
+HSlider/icons/grabber_disabled = ExtResource( 14 )
+HSlider/icons/grabber_highlight = ExtResource( 9 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 10 )
+HSlider/styles/grabber_area_highlight = SubResource( 11 )
+HSlider/styles/slider = SubResource( 12 )
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 21 )
+VScrollBar/styles/grabber_highlight = SubResource( 22 )
+VScrollBar/styles/grabber_pressed = SubResource( 23 )
+VScrollBar/styles/scroll = SubResource( 24 )
+VScrollBar/styles/scroll_focus = SubResource( 25 )
+
+[sub_resource type="DynamicFont" id=27]
 size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=28]
 size = 30
 use_mipmaps = true
 use_filter = true
@@ -75,8 +240,8 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="."]
 margin_top = 100.0
-margin_right = 40.0
-margin_bottom = 140.0
+margin_right = 550.0
+margin_bottom = 860.0
 rect_min_size = Vector2( 550, 760 )
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
@@ -100,11 +265,13 @@ margin_right = 490.0
 margin_bottom = 621.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource( 26 )
+follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
 margin_right = 450.0
-margin_bottom = 284.0
+margin_bottom = 652.0
 rect_min_size = Vector2( 450, 0 )
 custom_constants/separation = 20
 
@@ -115,16 +282,18 @@ rect_min_size = Vector2( 450, 40 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 6 )
 
 [node name="Recipes" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 60.0
 margin_right = 450.0
 margin_bottom = 86.0
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
 margin_right = 202.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Fully discovered recipes: "
 
@@ -132,7 +301,7 @@ text = "Fully discovered recipes: "
 margin_left = 206.0
 margin_right = 218.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -141,20 +310,22 @@ margin_left = 222.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 18 )
 
 [node name="Mastered" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 106.0
 margin_right = 450.0
 margin_bottom = 132.0
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
 margin_right = 148.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Mastered recipes: "
 
@@ -162,7 +333,7 @@ text = "Mastered recipes: "
 margin_left = 152.0
 margin_right = 164.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -171,20 +342,22 @@ margin_left = 168.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 18 )
 
 [node name="Artifacts" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 152.0
 margin_right = 450.0
 margin_bottom = 178.0
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Artifacts"]
 margin_right = 154.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Collected artifacts: "
 
@@ -192,7 +365,7 @@ text = "Collected artifacts: "
 margin_left = 158.0
 margin_right = 170.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
@@ -201,10 +374,11 @@ margin_left = 174.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0 XP"
 align = 2
+script = ExtResource( 18 )
 
 [node name="Div2" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 198.0
@@ -214,16 +388,18 @@ rect_min_size = Vector2( 450, 40 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 6 )
 
 [node name="Time" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 258.0
 margin_right = 450.0
 margin_bottom = 284.0
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time"]
 margin_right = 93.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Total time: "
 
@@ -231,7 +407,167 @@ text = "Total time: "
 margin_left = 97.0
 margin_right = 97.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Transfigured" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 304.0
+margin_right = 450.0
+margin_bottom = 330.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Transfigured"]
+margin_right = 192.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Transfigured reagents: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Transfigured"]
+margin_left = 196.0
+margin_right = 196.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Upgraded" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 350.0
+margin_right = 450.0
+margin_bottom = 376.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Upgraded"]
+margin_right = 164.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Upgraded reagents: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Upgraded"]
+margin_left = 168.0
+margin_right = 168.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Removed" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 450.0
+margin_bottom = 422.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Removed"]
+margin_right = 160.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Removed reagents: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Removed"]
+margin_left = 164.0
+margin_right = 164.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="DmgDealt" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 442.0
+margin_right = 450.0
+margin_bottom = 468.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgDealt"]
+margin_right = 119.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage dealt: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgDealt"]
+margin_left = 123.0
+margin_right = 123.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="DmgTaken" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 488.0
+margin_right = 450.0
+margin_bottom = 514.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgTaken"]
+margin_right = 125.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage taken: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgTaken"]
+margin_left = 129.0
+margin_right = 129.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="DmgHealed" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 534.0
+margin_right = 450.0
+margin_bottom = 560.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgHealed"]
+margin_right = 132.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage healed: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgHealed"]
+margin_left = 136.0
+margin_right = 136.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="DmgBlocked" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 580.0
+margin_right = 450.0
+margin_bottom = 606.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgBlocked"]
+margin_right = 142.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage blocked: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgBlocked"]
+margin_left = 146.0
+margin_right = 146.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Block" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 626.0
+margin_right = 450.0
+margin_bottom = 652.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Block"]
+margin_right = 159.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Total block gained: "
+
+[node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Block"]
+margin_left = 163.0
+margin_right = 163.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="TotalXP" type="Label" parent="Panel/VBoxContainer"]
@@ -240,7 +576,14 @@ margin_right = 450.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 28 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Total: "
 align = 2
+
+[node name="ScrollBlocker" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

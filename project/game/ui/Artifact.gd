@@ -11,6 +11,7 @@ func init(_type: String):
 	type = _type
 	var data = ArtifactDB.get_from_name(type)
 	texture = data.image
+	yield(self, "ready")
 	update_size(1.0)
 
 

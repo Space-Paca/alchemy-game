@@ -19,7 +19,6 @@ void fragment(){
 	COLOR.rgb = COLOR.rgb + grayscale*(grey - COLOR.rgb);
 }
 "
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
@@ -75,4 +74,5 @@ autoplay = "gameover"
 anims/gameover = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

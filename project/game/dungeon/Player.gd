@@ -54,6 +54,8 @@ var floor_stats = [
 var stats = {
 	"time": .0,
 	"reagents_removed": 0,
+	"reagents_transfigured": 0,
+	"reagents_upgraded": 0,
 	"damage_dealt": 0,
 	"damage_blocked": 0,
 	"damage_received": 0,
@@ -239,12 +241,14 @@ func spend_pearls(amount: int) -> bool:
 
 
 func upgrade_reagent(index: int):
+	increase_stat("reagents_upgraded")
 	bag[index].upgraded = true
 	sort_bag()
 	emit_signal("bag_updated", bag)
 
 
 func transmute_reagent(index: int, transmute_into: String):
+	increase_stat("reagents_transfigured")
 	bag[index].type = transmute_into
 	sort_bag()
 	emit_signal("bag_updated", bag)

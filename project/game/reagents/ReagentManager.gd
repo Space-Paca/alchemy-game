@@ -1,6 +1,7 @@
 extends Node
 
 const REAGENT = preload("res://game/reagents/Reagent.tscn")
+const FONT_PATH = "res://assets/fonts/TooltipImageFont.tres"
 
 
 func random_type():
@@ -46,19 +47,23 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 	var data = get_data(type)
 	var text
 	var title
+	data.tooltip = tr(data.tooltip)
+	data.name = tr(data.name)
 	if not upgraded:
 		title = data.name
 		text = data.tooltip % data.effect.value
 	else:
 		title = data.name + "+"
-		text = data.tooltip % data.effect.upgraded_value + ". Boost " + \
-			   data.effect.upgraded_boost.type + " recipes by " + str(data.effect.upgraded_boost.value) + "."
+		text = data.tooltip % data.effect.upgraded_value + ". "
+		text += tr("BOOST_RECIPES") % \
+				tr(data.effect.upgraded_boost.type)
+		text += " " + str(data.effect.upgraded_boost.value) + "."
 	if unstable:
-		text += " It's unstable."
+		text += " " + tr("UNSTABLE") + "."
 	if burned:
-		text += " It's on fire."
+		text += " " + tr("ON_FIRE") + "."
 	
-	var subtitle = data.rarity + " Reagent"
+	var subtitle = tr(data.rarity + "_REAGENT")
 	
 	var tooltip = {"title": title, "text": text, \
 				   "title_image": data.tooltip_image_path, "subtitle": subtitle}
@@ -70,25 +75,17 @@ func get_substitution_tooltip(type):
 	if data.substitute.size() <= 0:
 		return null
 	
-	var text = "This reagent can serve as substitute for "
-	var plural
-	var filler
+	var text
 	if data.substitute.size() == 1:
-		text += "this "
-		plural = ""
-		filler = "          "
+		text = tr("SUBSTITUTION_TOOLTIP_SINGULAR")
 	else:
-		text += "these "
-		plural = "s"
-		filler = "        "
-	text += "reagent"+plural+":"
-	#For some reason \n just erases other images, so using gambiara to properly change lines
-	text += filler
+		text = tr("SUBSTITUTION_TOOLTIP_PLURAL")
+	text += ": "
 	for sub_reagent in data.substitute:
 		var sub_data = get_data(sub_reagent)
 		var path = sub_data.image.get_path()
-		text += "[img=48x48]"+path+"[/img]  "
-	var tooltip = {"title": "Substitutes", "text": text, \
+		text += "[font="+FONT_PATH+"][img=48x48]"+path+"[/img][/font]  "
+	var tooltip = {"title": "SUBSTITUTES", "text": text, \
 				   "title_image": data.tooltip_image_path}
 	
 	return tooltip

@@ -72,3 +72,46 @@ REAGENT_SMITH,Reagent Smith,Forjador de Reagentes
 EVENT,Event,Evento
 LABORATORY,Laboratory,Laboratório
 TREASURE,Treasure,Tesouro
+FAINT,Faint,Fraco
+FAINT_REAGENT,Faint Reagent,Reagente Fraco
+COMMON,Common,Comum
+COMMON_REAGENT,Common Reagent,Reagente Comum
+UNCOMMON,Uncommon,Incomum
+UNCOMMON_REAGENT,Uncommon Reagent,Reagente Incomum
+RARE,Rare,Raro
+RARE_REAGENT,Rare Reagent,Reagente Raro
+BEETLE,Beetle,Besouro
+BEETLE_REAGENT,Bettle Reagent,Reagente Besouro
+UNKNOWN,Unknown,Desconhecido
+UNKNOWN_REAGENT,Unknown Reagent,Reagente Desconhecido
+BOOST_RECIPES,Boost %s recipes by,Impulsiona receitas de %s por
+UNSTABLE,Unstable,Instável
+ON_FIRE,On fire,Pegando fogo
+SUBSTITUTES,Substitutes,Substituições
+SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este reagente
+SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes reagentes
+RGNT_FAIN_ELEM_NAME,Faint Elementium,Elementium Fraco
+RGNT_COM_ELEM_NAME,Common Elementium,Elementium Comum
+RGNT_UNC_ELEM_NAME,Uncommon Elementium,Elementium Incomum
+RGNT_RARE_ELEM_NAME,Rare Elementium,Elementium Raro
+RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflige %s dano regular a um inimigo aleatório"
+RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
+RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negro
+RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
+RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflige %s dano regular a todos inimigos"
+RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
+RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
+RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
+RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, aplica %s de escudo ao usuário"
+RGNT_HEALING_NAME,Invigorating Root,Raíz Revigorante
+RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %s hp","Se usado em uma má combinação, cura %s de vida ao usuário"
+RGNT_POISON_NAME,Noxious Essence,Essência Nociva
+RGNT_POISON_TOOLTIP,"If used in a miscombination, applies %s poison to a random enemy","Se usado em uma má combinação, aplica %s de veneno a um inimigo aleatório"
+RGNT_BUFF_NAME,Horn Fragment,Lasca de Chifre
+RGNT_BUFF_TOOLTIP,"If used in a miscombination, applies %s temporary strength to user","Se usado em uma má combinação, aplica %s de força temporária ao usuário"
+RGNT_DEBUFF_NAME,Cracked Skull,Crânio Rachado
+RGNT_DEBUFF_TOOLTIP,"If used in a miscombination, applies %s weakness to a random enemy","Se usado em uma má combinação, aplica %s de fraqueza a um inimigo aleatório"
+RGNT_TRASH_NAME,Putrid Beetle,Besouro Pútrido
+RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflige %s dano regular ao usuário"
+RGNT_TRASH_PLUS_NAME,Preserved Beetle,Besouro Preservado
+RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano regular ao usuário. Não pode ser destruído em receitas."

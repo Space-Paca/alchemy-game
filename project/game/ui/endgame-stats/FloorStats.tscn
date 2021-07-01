@@ -21,6 +21,7 @@ font_data = ExtResource( 1 )
 margin_right = 450.0
 margin_bottom = 162.0
 rect_min_size = Vector2( 450, 0 )
+custom_constants/separation = 20
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -35,9 +36,9 @@ text = "Floor 1"
 script = ExtResource( 4 )
 
 [node name="NormalEncounters" type="HBoxContainer" parent="."]
-margin_top = 46.0
+margin_top = 62.0
 margin_right = 450.0
-margin_bottom = 72.0
+margin_bottom = 88.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="NormalEncounters"]
@@ -67,9 +68,9 @@ align = 2
 script = ExtResource( 3 )
 
 [node name="EliteEncounters" type="HBoxContainer" parent="."]
-margin_top = 76.0
+margin_top = 108.0
 margin_right = 450.0
-margin_bottom = 102.0
+margin_bottom = 134.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="EliteEncounters"]
@@ -99,9 +100,9 @@ align = 2
 script = ExtResource( 3 )
 
 [node name="MonstersDefeated" type="HBoxContainer" parent="."]
-margin_top = 106.0
+margin_top = 154.0
 margin_right = 450.0
-margin_bottom = 132.0
+margin_bottom = 180.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="MonstersDefeated"]
@@ -131,9 +132,9 @@ align = 2
 script = ExtResource( 3 )
 
 [node name="ExplorationRate" type="HBoxContainer" parent="."]
-margin_top = 136.0
+margin_top = 200.0
 margin_right = 450.0
-margin_bottom = 162.0
+margin_bottom = 226.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="ExplorationRate"]

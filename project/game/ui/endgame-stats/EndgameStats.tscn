@@ -75,7 +75,6 @@ __meta__ = {
 }
 
 [node name="Page1" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -101,9 +100,14 @@ margin_right = 1650.0
 margin_bottom = 978.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 1 )
+disabled = true
 text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Page2" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -147,6 +151,7 @@ rect_min_size = Vector2( 270, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Main Menu"
 
+[connection signal="animation_finished" from="Page1/RunStats" to="." method="_on_RunStats_animation_finished"]
 [connection signal="button_down" from="Page1/Next" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Page1/Next" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Page1/Next" to="." method="_on_Next_pressed"]

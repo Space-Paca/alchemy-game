@@ -43,7 +43,7 @@ func _on_Restart_pressed():
 func _on_Next_pressed():
 	$Page1.hide()
 	$Page2.show()
-	xpdivider.set_initial_xp_pool(15)
+	xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)
 	yield(xpdivider, "setup_animation_complete")
 	progress_buttons_set_disabled(xpdivider.can_apply_xp())
 
@@ -58,3 +58,7 @@ func _on_Button_mouse_entered():
 
 func _on_XPDivider_applied_xp():
 	progress_buttons_set_disabled(xpdivider.can_apply_xp())
+
+
+func _on_RunStats_animation_finished():
+	$Page1/Next.disabled = false

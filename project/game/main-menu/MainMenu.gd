@@ -11,12 +11,9 @@ func _ready():
 	set_process_input(false)
 	$RecipeCompendium.show()
 	yield(get_tree(),"idle_frame")
-	#Transition.single_out_transition()
 	AudioManager.play_bgm("menu")
-	Debug.set_version_visible(true)
 	$RecipeCompendium.hide()
 	$ContinueButton.visible = FileManager.run_file_exists()
-	
 	yield(Transition, "finished")
 	anim.play("intro")
 	set_process_input(true)

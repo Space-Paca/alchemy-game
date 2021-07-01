@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/splash-screen/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/splash_screen/splash_screen.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/flags/USA.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/images/flags/Brazil.png" type="Texture" id=4]
 
 [node name="SplashScreen" type="Control"]
 anchor_right = 1.0
@@ -18,3 +20,37 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ChooseLanguage" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="English" type="TextureButton" parent="ChooseLanguage"]
+margin_left = 295.0
+margin_top = 355.0
+margin_right = 945.0
+margin_bottom = 755.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portugues" type="TextureButton" parent="ChooseLanguage"]
+margin_left = 1025.0
+margin_top = 355.0
+margin_right = 1675.0
+margin_bottom = 755.0
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ChooseLanguage/English" to="." method="_on_button_pressed" binds= [ "en" ]]
+[connection signal="pressed" from="ChooseLanguage/Portugues" to="." method="_on_button_pressed" binds= [ "pt_BR" ]]

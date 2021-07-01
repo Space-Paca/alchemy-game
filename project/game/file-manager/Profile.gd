@@ -25,6 +25,7 @@ var options = {
 	"auto_end_turn": false,
 	"show_timer": false,
 	"locale": 1,
+	"choose_language": false,
 }
 
 var controls = {

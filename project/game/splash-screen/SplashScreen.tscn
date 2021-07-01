@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/splash-screen/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/splash_screen/splash_screen.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/flags/USA.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/images/flags/USA_selected.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/flags/Brazil.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/flags/USA.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/flags/Brazil_selected.png" type="Texture" id=6]
 
 [node name="SplashScreen" type="Control"]
 anchor_right = 1.0
@@ -35,7 +37,9 @@ margin_left = 295.0
 margin_top = 355.0
 margin_right = 945.0
 margin_bottom = 755.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,6 +51,8 @@ margin_top = 355.0
 margin_right = 1675.0
 margin_bottom = 755.0
 texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

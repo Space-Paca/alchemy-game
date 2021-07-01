@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/USA.jpg-e369af4492800dd8789dce863d755f07.stex"
+path="res://.import/Brazil_selected.png-e12ae0d4b4eec13f9abf8d2b345e3020.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/flags/USA.jpg"
-dest_files=[ "res://.import/USA.jpg-e369af4492800dd8789dce863d755f07.stex" ]
+source_file="res://assets/images/flags/Brazil_selected.png"
+dest_files=[ "res://.import/Brazil_selected.png-e12ae0d4b4eec13f9abf8d2b345e3020.stex" ]
 
 [params]
 

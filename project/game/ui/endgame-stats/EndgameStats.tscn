@@ -82,22 +82,22 @@ __meta__ = {
 }
 
 [node name="PostMortem" parent="Page1" instance=ExtResource( 8 )]
-margin_left = 1040.0
+margin_left = 225.0
 margin_top = 90.0
-margin_right = 1040.24
-margin_bottom = 90.44
+margin_right = 225.24
+margin_bottom = 152.96
 
 [node name="RunStats" parent="Page1" instance=ExtResource( 10 )]
-margin_left = 271.0
+margin_left = 1080.0
 margin_top = 90.0
-margin_right = -1099.0
+margin_right = -290.0
 margin_bottom = -130.0
 
 [node name="Next" type="Button" parent="Page1"]
-margin_left = 1450.0
-margin_top = 891.0
-margin_right = 1650.0
-margin_bottom = 978.0
+margin_left = 1431.0
+margin_top = 890.0
+margin_right = 1631.0
+margin_bottom = 977.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 1 )
 disabled = true

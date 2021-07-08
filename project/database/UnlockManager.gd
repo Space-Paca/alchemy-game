@@ -28,7 +28,16 @@ const UNLOCKS = {
 }
 
 
-func get_unlocked_recipes(level):
+func get_unlock(level, type):
+	assert(UNLOCKS.has(type), "Not a valid unlock type: " + str(type))
+	if UNLOCKS[type].size() <= level:
+		return UNLOCKS[type][level - 1]
+	else:
+		print("No " + str(type) + " unlocks for this level: " + str(level))
+		return false
+
+
+func get_all_unlocked_recipes(level):
 	var unlocks = []
 	var count = 0
 	for recipe in UNLOCKS.recipes:
@@ -39,7 +48,7 @@ func get_unlocked_recipes(level):
 	return unlocks
 
 
-func get_unlocked_artifacts(level):
+func get_all_unlocked_artifacts(level):
 	var unlocks = []
 	var count = 0
 	for artifact in UNLOCKS.artifacts:
@@ -50,7 +59,7 @@ func get_unlocked_artifacts(level):
 	return unlocks
 
 
-func get_unlocked_events(level):
+func get_all_unlocked_events(level):
 	var unlocks = []
 	var count = 0
 	for data in UNLOCKS.misc:

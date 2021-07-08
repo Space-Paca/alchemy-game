@@ -40,10 +40,7 @@ func can_apply_xp():
 	return not all_maxed and xp_pool > 0
 
 func get_level(prog):
-	for i in range(0, prog.level_progression.size()):
-		if prog.level_progression[i] > prog.cur_xp:
-			return i
-	return prog.level_progression.size()
+	return Profile.get_progression_level(prog)
 
 
 func is_max_level(prog):

@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 name = "Hero's Mixture"
 grid_size = 4
+must_unlock = false
 floor_sold_in = 3
 reagents = [ "uncommon", "uncommon", "uncommon", "defensive", "defensive", "super_defensive", "super_defensive", "damaging", "damaging", "super_damaging", "super_damaging" ]
 effects = [ "shield", "damage" ]

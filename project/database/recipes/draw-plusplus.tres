@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Psychstorm Draught"
 grid_size = 3
+must_unlock = true
 floor_sold_in = 3
 reagents = [ "rare", "rare", "uncommon", "uncommon", "uncommon" ]
 effects = [ "draw" ]

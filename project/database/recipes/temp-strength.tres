@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Lesser Strength Tonic"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "buff", "common" ]
 effects = [ "add_status" ]

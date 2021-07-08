@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 name = "Feebleness Gas"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "uncommon", "debuff" ]
 effects = [ "add_status_all" ]

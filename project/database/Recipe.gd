@@ -5,6 +5,7 @@ enum FILTERS {ATTACK, DEFENSE, AREA, BUFF, DEBUFF, HEAL, MISC}
 
 export(String) var name
 export(int) var grid_size
+export(bool) var must_unlock := false
 export(int) var floor_sold_in
 export(Array, String) var reagents
 export(Array, String) var effects

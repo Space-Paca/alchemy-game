@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Explorer's Mixture"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "common", "common", "defensive", "defensive", "damaging", "damaging" ]
 effects = [ "shield", "damage" ]

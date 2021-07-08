@@ -220,7 +220,14 @@ func load_combinations(combinations_data):
 
 
 func create_combinations():
+	var level = Profile.get_progression_level("recipes")
+	var unlocked_recipes = UnlockManager.get_all_unlocked_recipes(level)
+	print(level)
+	print(unlocked_recipes)
 	for recipe in RecipeManager.recipes.values():
+		if recipe.must_unlock and unlocked_recipes.find(recipe.name) == -1:
+			print(recipe.name) #IS USING WRONG NAME
+			continue
 		var combination = Combination.new()
 		combination.create_from_recipe(recipe, combinations)
 		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")

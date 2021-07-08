@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Healing Salve"
 grid_size = 2
+must_unlock = false
 floor_sold_in = 1
 reagents = [ "common", "common", "healing" ]
 effects = [ "heal" ]

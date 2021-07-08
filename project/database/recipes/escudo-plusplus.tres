@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Greater Stoneskin Potion"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "common", "defensive", "super_defensive" ]
 effects = [ "shield" ]

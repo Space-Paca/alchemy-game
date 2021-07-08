@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Plague Vial"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 3
 reagents = [ "poison", "damaging", "super_damaging" ]
 effects = [ "add_status" ]

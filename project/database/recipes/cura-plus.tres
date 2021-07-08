@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Healing Elixir"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "common", "common", "uncommon", "uncommon", "healing" ]
 effects = [ "heal" ]

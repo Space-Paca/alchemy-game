@@ -2,7 +2,14 @@ extends Node
 
 const UNLOCKS = {
 	"recipes": [
-		"test",
+		"cycle",
+		"poison-area",
+		"draw",
+		"poison-plus",
+		"dano-omega",
+		"draw-plus",
+		"dano-omegaplus",
+		"draw-plusplus",
 	],
 	"artifacts": [
 		"test",
@@ -72,12 +79,11 @@ func get_all_unlocked_events(level):
 
 
 func is_misc_unlocked(level, name):
-	var unlocks = []
 	var count = 0
 	for data in UNLOCKS.misc:
 		if count >= level:
 			break
-		if data.name == "name":
+		if data.name == name:
 			return true
 		count += 1
 	return false

@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "Bottled Lightning"
 grid_size = 3
+must_unlock = false
 floor_sold_in = 2
 reagents = [ "uncommon", "damaging", "super_damaging" ]
 effects = [ "damage" ]

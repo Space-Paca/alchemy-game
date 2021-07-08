@@ -38,7 +38,7 @@ var controls = {
 var progression = {
 	"recipes": {
 		"name": "Recipes",
-		"cur_xp": 9,
+		"cur_xp": 0,
 		"level_progression": [4, 6, 8, 10],
 	},
 	"artifacts": {
@@ -200,6 +200,18 @@ func memorize_recipe(name):
 func get_progression(type):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	return progression[type]
+
+
+func get_progression_level(type_prog):
+	var prog
+	if typeof(type_prog) == TYPE_STRING:
+		prog = get_progression(type_prog)
+	else:
+		prog = type_prog
+	for i in range(0, prog.level_progression.size()):
+		if prog.level_progression[i] > prog.cur_xp:
+			return i
+	return prog.level_progression.size()
 
 
 func get_progression_xp(type):

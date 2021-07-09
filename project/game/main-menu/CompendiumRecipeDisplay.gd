@@ -65,12 +65,12 @@ func set_combination(_combination: Combination):
 		reagent_amount.set_amount(combination.reagent_amounts[reagent])
 		i += 1
 	
-	set_progress(combination.recipe.name)
+	set_progress(combination.recipe.id)
 
 
-func set_progress(recipe_name: String):
-	var amount = Profile.known_recipes[recipe_name]["amount"]
-	var threshold = Profile.known_recipes[recipe_name]["memorized_threshold"]
+func set_progress(recipe_id: String):
+	var amount = Profile.known_recipes[recipe_id]["amount"]
+	var threshold = Profile.known_recipes[recipe_id]["memorized_threshold"]
 	
 	if amount == -1:
 		bg.hide()

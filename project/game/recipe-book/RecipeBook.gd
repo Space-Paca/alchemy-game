@@ -106,13 +106,13 @@ func reapply_tag_and_filters():
 
 
 func set_favorite_button(combination, pressed, temp_disconnect = false):
-	assert(recipe_displays.has(combination.recipe.name), "Doesn't have this recipe display:" + str(combination.recipe.name))
-	recipe_displays[combination.recipe.name].set_favorite_button(pressed, temp_disconnect)
+	assert(recipe_displays.has(combination.recipe.id), "Doesn't have this recipe display:" + str(combination.recipe.id))
+	recipe_displays[combination.recipe.id].set_favorite_button(pressed, temp_disconnect)
 
 
 func add_combination(combination: Combination, threshold: int):
-	if recipe_displays.has(combination.recipe.name):
-		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.name)
+	if recipe_displays.has(combination.recipe.id):
+		print("RecipeBook.gd add_combination recipe %s already exists" % combination.recipe.id)
 		return
 	
 	var recipe_display = RECIPE.instance()
@@ -122,14 +122,14 @@ func add_combination(combination: Combination, threshold: int):
 	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")
 	recipe_display.connect("pressed", self, "_on_recipe_display_pressed")
 	recipe_display.connect("favorite_toggled", self, "_on_recipe_display_favorite_toggled")
-	recipe_displays[combination.recipe.name] = recipe_display
+	recipe_displays[combination.recipe.id] = recipe_display
 	
 	recipe_display.update_mastery(0, threshold)
 
 
 func update_combination(combination: Combination):
-	assert(recipe_displays.has(combination.recipe.name),"RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.name)
-	recipe_displays[combination.recipe.name].update_combination()
+	assert(recipe_displays.has(combination.recipe.id),"RecipeBook.gd update_combination: %s not in recipe book" % combination.recipe.id)
+	recipe_displays[combination.recipe.id].update_combination()
 
 
 func update_reagents(bag):
@@ -238,16 +238,16 @@ func toggle_visibility():
 
 
 func is_mastered(combination : Combination):
-	return recipe_displays[combination.recipe.name].is_mastered()
+	return recipe_displays[combination.recipe.id].is_mastered()
 	
 
 func unlock_mastery(combination: Combination, show_message := true):
-	if recipe_displays[combination.recipe.name].unlock_mastery(show_message):
+	if recipe_displays[combination.recipe.id].unlock_mastery(show_message):
 		player.increase_stat("recipes_mastered")
 
 
 func update_mastery(combination: Combination, current_value: int, threshold: int):
-	recipe_displays[combination.recipe.name].update_mastery(current_value, threshold)
+	recipe_displays[combination.recipe.id].update_mastery(current_value, threshold)
 
 
 func update_hand(reagents: Array):
@@ -280,7 +280,7 @@ func reset_hand_reagents_color():
 
 
 func favorite_error(combination: Combination):
-	recipe_displays[combination.recipe.name].favorite_error()
+	recipe_displays[combination.recipe.id].favorite_error()
 
 
 func error_effect():

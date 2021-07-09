@@ -83,7 +83,7 @@ func set_combination(_combination: Combination):
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
 	
-	if Profile.is_recipe_memorized(combination.recipe.name):
+	if Profile.is_recipe_memorized(combination.recipe.id):
 		unlock_memorized()
 
 

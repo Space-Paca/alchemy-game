@@ -72,9 +72,9 @@ func reset_progression():
 
 func reset_known_recipes():
 	known_recipes.clear()
-	for recipe in RecipeManager.recipes.values():
-		known_recipes[recipe.name] = {
-			"memorized_threshold": memorized_threshold(recipe.name),
+	for recipe_id in RecipeManager.recipes.keys():
+		known_recipes[recipe_id] = {
+			"memorized_threshold": memorized_threshold(recipe_id),
 			"amount": -1,
 			"memorized": false,
 		}
@@ -179,8 +179,8 @@ func reset_compendium():
 	FileManager.save_profile()
 
 
-func memorized_threshold(recipe_name: String) -> int:
-	var recipe = RecipeManager.recipes[recipe_name]
+func memorized_threshold(recipe_id: String) -> int:
+	var recipe = RecipeManager.recipes[recipe_id]
 	var threshold = min(10, 18 - recipe.reagents.size() - 3*recipe.destroy_reagents.size() - 2*recipe.grid_size)
 	threshold = 3*max(threshold, 2)
 	return threshold

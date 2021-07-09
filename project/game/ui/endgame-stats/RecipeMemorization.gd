@@ -11,7 +11,7 @@ onready var tween = $Tween
 
 const DURATION = 1
 
-var recipe_name : String
+var recipe_id : String
 var amount_made : int
 var final_amount : int
 
@@ -29,17 +29,17 @@ func _process(_delta):
 		set_process(false)
 
 
-func set_recipe(_recipe_name: String, _amount_made: int, _final_amount: int, new: bool):
-	recipe_name = _recipe_name
+func set_recipe(id, _amount_made: int, _final_amount: int, new: bool):
+	recipe_id = id
 	amount_made = _amount_made
 	final_amount = _final_amount
-	icon.texture = RecipeManager.recipes[recipe_name].fav_icon
-	name_label.text = recipe_name
+	icon.texture = RecipeManager.recipes[recipe_id].fav_icon
+	name_label.text = RecipeManager.recipes[recipe_id].name
 	made_label.text = str(amount_made)
 	new_label.visible = new
 	
 	var amount = final_amount - amount_made
-	var threshold = Profile.known_recipes[recipe_name].memorized_threshold
+	var threshold = Profile.known_recipes[recipe_id].memorized_threshold
 	
 	current_label.text = str(amount)
 	total_label.text = "/" + str(threshold)

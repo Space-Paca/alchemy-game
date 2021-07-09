@@ -9,8 +9,6 @@ var player : Player
 var tooltip_enabled = false
 
 func _ready():
-#	for child in recipe_container.get_children():
-#		recipe_container.remove_child(child)
 	populate()
 
 
@@ -18,30 +16,31 @@ func set_player(p: Player):
 	player = p
 
 
-func update_known_recipe(recipe_name: String, amount_made: int) -> int:
-	if Profile.known_recipes[recipe_name].amount == -1:
-		Profile.known_recipes[recipe_name].amount = amount_made
+func update_known_recipe(recipe_id: String, amount_made: int) -> int:
+	if Profile.known_recipes[recipe_id].amount == -1:
+		Profile.known_recipes[recipe_id].amount = amount_made
 	else:
-		Profile.known_recipes[recipe_name].amount += amount_made
-		if Profile.known_recipes[recipe_name].amount >\
-				Profile.known_recipes[recipe_name].memorized_threshold:
-			Profile.memorize_recipe(recipe_name)
+		Profile.known_recipes[recipe_id].amount += amount_made
+		if Profile.known_recipes[recipe_id].amount >\
+				Profile.known_recipes[recipe_id].memorized_threshold:
+			Profile.memorize_recipe(recipe_id)
 	
-	return Profile.known_recipes[recipe_name].amount
+	return Profile.known_recipes[recipe_id].amount
 
 
 func populate():
-	for recipe_name in Profile.known_recipes.keys():
-		if Profile.known_recipes[recipe_name].memorized:
+	for recipe_id in Profile.known_recipes.keys():
+		var recipe = Profile.known_recipes[recipe_id]
+		if recipe.memorized:
 			continue
 		
-		var amount_made = player.made_recipes[recipe_name].amount
-		if amount_made >= 0 or amount_made > Profile.known_recipes[recipe_name].amount:
-			var new = Profile.known_recipes[recipe_name].amount == -1
-			var total_amount = update_known_recipe(recipe_name, amount_made)
-			var recipe = RECIPE.instance()
-			recipe_container.add_child(recipe)
-			recipe.set_recipe(recipe_name, amount_made, total_amount, new)
+		var amount_made = player.made_recipes[recipe_id].amount
+		if amount_made >= 0 or amount_made > recipe.amount:
+			var new = Profile.known_recipes[recipe_id].amount == -1
+			var total_amount = update_known_recipe(recipe_id, amount_made)
+			var recipe_obj = RECIPE.instance()
+			recipe_container.add_child(recipe_obj)
+			recipe_obj.set_recipe(recipe_id, amount_made, total_amount, new)
 
 
 func get_compendium_hint_tooltip():

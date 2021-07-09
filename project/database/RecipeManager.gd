@@ -21,8 +21,8 @@ func _ready():
 				if recipe.effects.size() != recipe.effect_args.size():
 					push_error("RecipeManager: %s effect and arguments size mismatch" % str(path, file_name))
 					assert(false)
-				
-				recipes[recipe.name] = recipe
+				recipe.id = file_name.replace(".tres", "")
+				recipes[recipe.id] = recipe
 			file_name = dir.get_next()
 	else:
 		print("RecipeManager: An error occurred when trying to access the path.")

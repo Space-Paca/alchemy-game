@@ -3,6 +3,8 @@ class_name Recipe
 
 enum FILTERS {ATTACK, DEFENSE, AREA, BUFF, DEBUFF, HEAL, MISC}
 
+var id
+
 export(String) var name
 export(int) var grid_size
 export(bool) var must_unlock := false

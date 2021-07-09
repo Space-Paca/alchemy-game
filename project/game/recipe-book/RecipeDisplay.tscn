@@ -241,6 +241,7 @@ margin_right = 174.603
 margin_bottom = 33.4495
 custom_fonts/font = SubResource( 6 )
 text = "Favorite Recipe"
+
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]
 [connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]

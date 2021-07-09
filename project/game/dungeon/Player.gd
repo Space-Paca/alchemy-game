@@ -83,8 +83,8 @@ func _ready():
 	known_recipes = player_class.initial_recipes.duplicate()
 	known_recipes.sort()
 	reset_made_recipes()
-	for recipe_name in known_recipes:
-		saw_recipe(recipe_name)
+	for recipe_id in known_recipes:
+		saw_recipe(recipe_id)
 	
 	# Initial bag
 	for _i in range(5):
@@ -432,31 +432,31 @@ func update_status(type: String):
 
 func reset_made_recipes():
 	made_recipes.clear()
-	for recipe in RecipeManager.recipes.values():
-		made_recipes[recipe.name] = {
+	for recipe_id in RecipeManager.recipes.keys():
+		made_recipes[recipe_id] = {
 			"amount": -1,
 		}
 
-func saw_recipe(name):
-	assert(made_recipes.has(name), "Not a valid recipe name: "+str(name))
-	if made_recipes[name].amount == -1:
-		made_recipes[name].amount = 0
+func saw_recipe(id):
+	assert(made_recipes.has(id), "Not a valid recipe name: "+str(id))
+	if made_recipes[id].amount == -1:
+		made_recipes[id].amount = 0
 
-func made_recipe(name):
-	assert(made_recipes.has(name), "Not a valid recipe name: "+str(name))
-	if made_recipes[name].amount == -1:
-		made_recipes[name].amount = 1
+func made_recipe(id):
+	assert(made_recipes.has(id), "Not a valid recipe name: "+str(id))
+	if made_recipes[id].amount == -1:
+		made_recipes[id].amount = 1
 	else:
-		made_recipes[name].amount += 1
+		made_recipes[id].amount += 1
 
 
 func discover_combination(combination: Combination, play_sfx := false):
-	if (known_recipes.has(combination.recipe.name)):
+	if (known_recipes.has(combination.recipe.id)):
 		return
 	
-	var recipe_name = combination.recipe.name
-	var index = known_recipes.bsearch(recipe_name)
-	known_recipes.insert(index, recipe_name)
+	var recipe_id = combination.recipe.id
+	var index = known_recipes.bsearch(recipe_id)
+	known_recipes.insert(index, recipe_id)
 	if play_sfx:
 		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-initial_recipes = [ "Small Bomb", "Lesser Stoneskin Potion", "Acid Gas" ]
+initial_recipes = [ "dano", "escudo", "ataque-area" ]
 max_hps = [ 100, 180, 250 ]

@@ -15,7 +15,7 @@ const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
 const EVENT_SCENE = preload("res://game/event/EventDisplay.tscn")
 const RECIPES_REWARDED_PER_BATTLE = 3
-const SAVE_VERSION = 1.0
+const SAVE_VERSION = 2.0
 
 var battle
 var combinations := {}
@@ -160,10 +160,10 @@ func get_combinations_data():
 	for size_array in combinations.values():
 		for combination in size_array:
 			var times_made = 0
-			if times_recipe_made.has(combination.recipe.name):
-				times_made = times_recipe_made[combination.recipe.name]
+			if times_recipe_made.has(combination.recipe.id):
+				times_made = times_recipe_made[combination.recipe.id]
 			var comb = {
-				"recipe_name": combination.recipe.name,
+				"recipe_id": combination.recipe.id,
 				"matrix": combination.matrix.duplicate(true),
 				"known_matrix": combination.known_matrix.duplicate(true),
 				"unknown_reagent_coords": combination.unknown_reagent_coords.duplicate(true),
@@ -185,11 +185,11 @@ func load_combinations(combinations_data):
 		
 		#Find correspondent recipe object belonging to this combination
 		var recipe_ref = null
-		for recipe in RecipeManager.recipes.values():
-			if recipe.name == data_combination.recipe_name:
-				recipe_ref = recipe
+		for recipe_id in RecipeManager.recipes.keys():
+			if recipe_id == data_combination.recipe_id:
+				recipe_ref = RecipeManager.recipes[recipe_id]
 				break
-		assert(recipe_ref, "Coudn't find this recipe to load combination:" + str(data_combination.recipe_name))
+		assert(recipe_ref, "Coudn't find this recipe to load combination:" + str(data_combination.recipe_id))
 		
 		combination.load_from_data(data_combination, recipe_ref)
 		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")
@@ -200,16 +200,16 @@ func load_combinations(combinations_data):
 			combinations[combination.grid_size] = [combination]
 		
 		if data_combination.times_made > 0:
-			times_recipe_made[combination.recipe.name] = data_combination.times_made
+			times_recipe_made[combination.recipe.id] = data_combination.times_made
 		
 	#Update recipe book in the order recipes were discovered
-	for recipe in player.known_recipes:
+	for recipe_id in player.known_recipes:
 		var data_combination = null
 		for data in combinations_data:
-			if data.recipe_name == recipe:
+			if data.recipe_id == recipe_id:
 				data_combination = data
 				break
-		assert(data_combination, "Couldn't find combination for this recipe: " + str(recipe))
+		assert(data_combination, "Couldn't find combination for this recipe: " + str(recipe_id))
 		var combination = data_combination.combination
 		recipe_book.add_combination(combination, mastery_threshold(combination))
 		if should_unlock_mastery(combination):
@@ -222,12 +222,11 @@ func load_combinations(combinations_data):
 func create_combinations():
 	var level = Profile.get_progression_level("recipes")
 	var unlocked_recipes = UnlockManager.get_all_unlocked_recipes(level)
-	print(level)
-	print(unlocked_recipes)
-	for recipe in RecipeManager.recipes.values():
-		if recipe.must_unlock and unlocked_recipes.find(recipe.name) == -1:
-			print(recipe.name) #IS USING WRONG NAME
+	for recipe_id in RecipeManager.recipes.keys():
+		var recipe = RecipeManager.recipes[recipe_id]
+		if recipe.must_unlock and unlocked_recipes.find(recipe_id) == -1:
 			continue
+		
 		var combination = Combination.new()
 		combination.create_from_recipe(recipe, combinations)
 		combination.connect("fully_discovered", self, "_on_Combination_fully_discovered")
@@ -237,10 +236,10 @@ func create_combinations():
 		else:
 			combinations[combination.grid_size] = [combination]
 		
-		if player.known_recipes.has(recipe.name):
+		if player.known_recipes.has(recipe.id):
 			combination.discover_all_reagents("new_game")
 			recipe_book.add_combination(combination, mastery_threshold(combination))
-			if Profile.is_recipe_memorized(combination.recipe.name):
+			if Profile.is_recipe_memorized(combination.recipe.id):
 				favorite_combination(combination, true, false)
 				recipe_book.set_favorite_button(combination, true, true)
 
@@ -263,7 +262,7 @@ func load_level(data):
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
-					player.known_recipes.has(combination.recipe.name):
+					player.known_recipes.has(combination.recipe.id):
 				possible_rewarded_combinations.append(combination)
 	
 	# SHOP
@@ -300,7 +299,7 @@ func create_level(level: int, debug := false):
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
-					player.known_recipes.has(combination.recipe.name):
+					player.known_recipes.has(combination.recipe.id):
 				possible_rewarded_combinations.append(combination)
 	
 	# SHOP
@@ -317,7 +316,7 @@ func get_rest_combinations():
 	var rest_combinations = []
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
-			if player.known_recipes.has(combination.recipe.name) and (not combination.discovered or not recipe_book.is_mastered(combination)):
+			if player.known_recipes.has(combination.recipe.id) and (not combination.discovered or not recipe_book.is_mastered(combination)):
 				rest_combinations.append(combination)
 	
 	return rest_combinations
@@ -334,7 +333,7 @@ func setup_shop():
 			if combination.recipe.floor_sold_in != floor_level:
 				continue
 			
-			if not player.known_recipes.has(combination.recipe.name):
+			if not player.known_recipes.has(combination.recipe.id):
 				unknown.append(combination)
 			elif not combination.discovered:
 				incomplete.append(combination)
@@ -451,7 +450,7 @@ func get_combination_in_matrix(grid_size: int, reagent_matrix: Array, possible_c
 func make_combination(type: String, combination: Combination, boost_effects: Dictionary, apply_effects := true):
 	var recipe := combination.recipe
 	
-	if not player.known_recipes.has(recipe.name) or not combination.discovered:
+	if not player.known_recipes.has(recipe.id) or not combination.discovered:
 		combination.discover_all_reagents(type)
 		player.discover_combination(combination, true)
 		MessageLayer.new_recipe_discovered(combination)
@@ -463,12 +462,12 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 			battle.enable_elements()
 	
 	if apply_effects:
-		player.made_recipe(recipe.name)
-		battle.add_recipe_deviation(recipe.name)
-		if not times_recipe_made.has(recipe.name):
-			times_recipe_made[recipe.name] = 1
+		player.made_recipe(recipe.id)
+		battle.add_recipe_deviation(recipe.id)
+		if not times_recipe_made.has(recipe.id):
+			times_recipe_made[recipe.id] = 1
 		else:
-			times_recipe_made[recipe.name] += 1
+			times_recipe_made[recipe.id] += 1
 		
 		if not recipe_book.is_mastered(combination) and should_unlock_mastery(combination):
 			recipe_book.unlock_mastery(combination)
@@ -478,7 +477,7 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 			if battle:
 				battle.enable_elements()
 		else:
-			recipe_book.update_mastery(combination, times_recipe_made[recipe.name],
+			recipe_book.update_mastery(combination, times_recipe_made[recipe.id],
 					mastery_threshold(combination))
 	
 		if recipe_book.is_mastered(combination):
@@ -486,8 +485,8 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 		else:
 			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 		
-	elif not times_recipe_made.has(recipe.name):
-		times_recipe_made[recipe.name] = 0
+	elif not times_recipe_made.has(recipe.id):
+		times_recipe_made[recipe.id] = 0
 
 
 func mastery_threshold(combination: Combination) -> int:
@@ -499,10 +498,10 @@ func mastery_threshold(combination: Combination) -> int:
 
 
 func should_unlock_mastery(combination: Combination) -> bool:
-	if not times_recipe_made.has(combination.recipe.name):
+	if not times_recipe_made.has(combination.recipe.id):
 		return false
 	
-	return times_recipe_made[combination.recipe.name] >= mastery_threshold(combination)
+	return times_recipe_made[combination.recipe.id] >= mastery_threshold(combination)
 
 
 func create_battle():
@@ -804,7 +803,7 @@ func _on_new_combinations_seen(new_combinations: Array):
 	for combination in new_combinations:
 		if combination:
 			player.discover_combination(combination)
-			player.saw_recipe(combination.recipe.name)
+			player.saw_recipe(combination.recipe.id)
 
 
 func _on_combination_rewarded(combination):
@@ -812,7 +811,7 @@ func _on_combination_rewarded(combination):
 
 
 func _on_combination_studied(combination):
-	times_recipe_made[combination.recipe.name] = mastery_threshold(combination)
+	times_recipe_made[combination.recipe.id] = mastery_threshold(combination)
 	recipe_book.unlock_mastery(combination)
 	recipe_book.update_combination(combination)
 

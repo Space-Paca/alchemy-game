@@ -25,12 +25,12 @@ func _ready():
 func populate():
 	var display_array := []
 	
-	for recipe_name in Profile.known_recipes:
+	for recipe_id in Profile.known_recipes:
 		var display = RECIPE.instance()
 		var combination = Combination.new()
-		combination.create_from_recipe(RecipeManager.recipes[recipe_name], {})
+		combination.create_from_recipe(RecipeManager.recipes[recipe_id], {})
 		display.combination = combination
-		recipe_displays[recipe_name] = display
+		recipe_displays[recipe_id] = display
 		display_array.append(display)
 	
 	display_array.sort_custom(RecipeSorter, "sort_ascending")

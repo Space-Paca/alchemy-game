@@ -62,7 +62,7 @@ func new_recipe_discovered(combination: Combination):
 	arrow.hide()
 	
 	current_combination = combination
-	var memorized = Profile.is_recipe_memorized(combination.recipe.name)
+	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
 	
 	if memorized:
 		favorite_button.show()

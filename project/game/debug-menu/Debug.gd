@@ -112,3 +112,7 @@ func _on_ArtifactButton_pressed():
 
 func _on_ResetCompendium_pressed():
 	Profile.reset_compendium()
+
+
+func _on_ResetProgress_pressed():
+	Profile.reset_progression()

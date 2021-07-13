@@ -39,6 +39,19 @@ func setup(node, _player, level):
 			loot.connect("pressed", self, "_on_loot_pressed")
 	
 	AudioManager.play_sfx("enter_treasure_room")
+	
+	enter_animation()
+
+
+func enter_animation():
+	$Artifacts.modulate.a = 1.0
+	var i = 1
+	var delay = .5
+	for artifact in $Artifacts.get_children():
+		artifact.modulate.a = 0
+		$Tween.interpolate_property(artifact, "modulate:a", 0, 1, .6, Tween.TRANS_CUBIC, Tween.EASE_OUT, delay*i)
+		i += 1
+	$Tween.start()
 
 func get_rarity_by_level(level):
 	match level:
@@ -60,14 +73,16 @@ func filter_player_artifacts(pool):
 	return filtered
 
 func reset_room():
-	reset()
 	map_node.set_type(MapNode.EMPTY)
+	$Tween.interpolate_property($Artifacts, "modulate:a", 1, 0, .7, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	for artifact in $Artifacts.get_children():
+		$Artifacts.remove_child(artifact)
 
 func reset():
 	$AllArtifacts.hide()
 	$BackButton.text = "Ignore"
-	for artifact in $Artifacts.get_children():
-		$Artifacts.remove_child(artifact)
 
 func _on_BackButton_pressed():
 	reset_room()

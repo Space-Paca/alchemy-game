@@ -197,71 +197,89 @@ const EVENT = [
 		"name": "Cursed Pearls",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "When transmuting reagents for gold, you get half the original value",
+		"must_unlock": false,
 	},
 	{
 		"id": "cursed_halberd",
 		"name": "Cursed Halberd",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "At the start of each battle, gain 5 permanent strength. At the start of each battle, take 8 damage",
+		"must_unlock": false,
 	},
 	{
 		"id": "cursed_shield",
 		"name": "Cursed Shield",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage",
+		"must_unlock": false,
 	},
 	{
 		"id": "bloodcursed_grimoire",
 		"name": "Bloodcursed Grimoire",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "Whenever you defeat an enemy, gain 9 life",
+		"must_unlock": false,
 	},
 	{
 		"id": "gold_ankh",
 		"name": "Gold Ankh",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "Whenever you finish a battle, gain 10 max health",
+		"must_unlock": false,
 	},
 	{
 		"id": "cursed_scholar_mask",
 		"name": "Cursed Scholar's Mask",
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "You can't heal in resting circles. Whenever you discover a new recipe, you heal 15% of your max life (doesn't apply on bought recipes)",
+		"must_unlock": false,
 	},
 ]
 
-static func get_artifacts_data(rarity : String) -> Array:
+static func get_artifacts_data(rarity : String, get_only_unlocked := true) -> Array:
+	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts(Profile.get_progression_level("artifacts"))
+	var pool
 	if rarity == "common":
-		return COMMON.duplicate()
+		pool = COMMON.duplicate()
 	elif rarity == "uncommon":
-		return UNCOMMON.duplicate()
+		pool = UNCOMMON.duplicate()
 	elif rarity == "rare":
-		return RARE.duplicate()
+		pool = RARE.duplicate()
 	elif rarity == "event":
-		return EVENT.duplicate()
+		pool = EVENT.duplicate()
 	else:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
-		return []
+		pool = []
+	
+	if get_only_unlocked:
+		var to_remove = []
+		for artifact in pool:
+			if artifact.must_unlock and not unlocked_artifacts.has(artifact.id):
+				to_remove.append(artifact)
+		for rem_art in to_remove:
+			pool.remove(pool.find(rem_art))
 
+	return pool
 
 static func get_artifacts(rarity : String, get_only_unlocked := true) -> Array:
 	var artifacts = []
-	#var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts(Profile.)
+	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts(Profile.get_progression_level("artifacts"))
+	var pool
 	if rarity == "common":
-		for artifact in COMMON:
-			artifacts.append(artifact.id)
+		pool = COMMON
 	elif rarity == "uncommon":
-		for artifact in UNCOMMON:
-			artifacts.append(artifact.id)
+		pool = UNCOMMON
 	elif rarity == "rare":
-		for artifact in RARE:
-			artifacts.append(artifact.id)
+		pool = RARE
 	elif rarity == "event":
-		for artifact in EVENT:
-			artifacts.append(artifact.id)
+		pool = EVENT
 	else:
 		assert(false, "Not a valid rarity for artifacts: " + str(rarity))
 		return []
+
+	for artifact in pool:
+		if not get_only_unlocked or not artifact.must_unlock or unlocked_artifacts.has(artifact.id):
+			artifacts.append(artifact.id)
 	return artifacts
 
 

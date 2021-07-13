@@ -20,7 +20,7 @@ func setup(node, _player, level):
 	#increase if player already has all of that levels artifacts (somehow)
 	while(level <= 3):
 		var artifact_rarity = get_rarity_by_level(level)
-		var filtered_artifacts = filter_player_artifacts(player, ArtifactDB.get_artifacts_data(artifact_rarity))
+		var filtered_artifacts = filter_player_artifacts(ArtifactDB.get_artifacts_data(artifact_rarity))
 		filtered_artifacts.shuffle()
 		while(filtered_artifacts.size() > 0 and artifacts_found.size() < ARTIFACTS_NUMBER):
 			artifacts_found.append(filtered_artifacts.pop_front())
@@ -51,10 +51,10 @@ func get_rarity_by_level(level):
 		_:
 			assert(false, "Not a valid floor level number: " + str(level))
 
-func filter_player_artifacts(_player, pool):
+func filter_player_artifacts(pool):
 	var filtered = []
 	for artifact in pool:
-		if not _player.has_artifact(artifact.id):
+		if not player.has_artifact(artifact.id):
 			filtered.append(artifact)
 	
 	return filtered

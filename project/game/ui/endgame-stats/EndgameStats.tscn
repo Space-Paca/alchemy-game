@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://game/ui/endgame-stats/PostMortem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/ui/endgame-stats/XPDivider.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/ui/endgame-stats/RunStats.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/ui/endgame-stats/UnlockablePopup.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -150,6 +151,9 @@ margin_bottom = 87.0
 rect_min_size = Vector2( 270, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Main Menu"
+
+[node name="UnlockablePopup" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [connection signal="animation_finished" from="Page1/RunStats" to="." method="_on_RunStats_animation_finished"]
 [connection signal="button_down" from="Page1/Next" to="." method="_on_Button_button_down"]

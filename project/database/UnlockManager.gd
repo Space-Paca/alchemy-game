@@ -12,7 +12,14 @@ const UNLOCKS = {
 		"draw-plusplus",
 	],
 	"artifacts": [
-		"test",
+		"buff_poison",
+		"reveal_map",
+		"temp_strength",
+		"vulture_mask",
+		"strength_plus",
+		"full_rest",
+		"poisoned_dagger",
+		"midas"
 	],
 	"misc": [
 		{
@@ -26,6 +33,10 @@ const UNLOCKS = {
 		{
 			"type": "event",
 			"name": "event1",
+		},
+		{
+			"type": "misc",
+			"name": "compendium",
 		},
 		{
 			"type": "event",

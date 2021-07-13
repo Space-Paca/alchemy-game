@@ -39,17 +39,17 @@ var progression = {
 	"recipes": {
 		"name": "Recipes",
 		"cur_xp": 0,
-		"level_progression": [4, 6, 8, 10],
+		"level_progression": [10, 20, 30, 45, 60, 80, 100, 120],
 	},
 	"artifacts": {
 		"name": "Artifacts",
-		"cur_xp": 201,
-		"level_progression": [10, 20, 40, 60, 80, 100, 120, 200],
+		"cur_xp": 0,
+		"level_progression": [10, 20, 30, 45, 60, 80, 100, 120],
 	},
 	"misc": {
 		"name": "The World",
-		"cur_xp": 118,
-		"level_progression": [10, 20, 40, 60, 80, 100, 120, 2000],
+		"cur_xp": 0,
+		"level_progression": [10, 30, 50, 70, 100],
 	}
 }
 

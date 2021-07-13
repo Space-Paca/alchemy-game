@@ -63,6 +63,7 @@ position = Vector2( 302, 32 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )
+
 [connection signal="button_down" from="GetButton" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="GetButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="GetButton" to="." method="_on_GetButton_pressed"]

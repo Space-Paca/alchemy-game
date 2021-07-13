@@ -7,9 +7,17 @@ var artifact_id = null
 var tooltips_enabled := false
 var block_tooltips := false
 
-func setup(_artifact):
+func setup(_artifact, rarity):
 	artifact = _artifact
 	$Image.texture = artifact.image
+	if rarity == "common":
+		$Particles2D.process_material.hue_variation = -1
+	elif rarity == "uncommon":
+		$Particles2D.process_material.hue_variation = -.25
+	elif rarity == "rare":
+		$Particles2D.process_material.hue_variation = .25
+	else:
+		push_error("Not a valid rarity: " + str(rarity))
 
 func disable():
 	disable_tooltips()

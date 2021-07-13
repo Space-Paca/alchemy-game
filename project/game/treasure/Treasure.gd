@@ -23,7 +23,7 @@ func setup(node, _player, level):
 		var filtered_artifacts = filter_player_artifacts(ArtifactDB.get_artifacts_data(artifact_rarity))
 		filtered_artifacts.shuffle()
 		while(filtered_artifacts.size() > 0 and artifacts_found.size() < ARTIFACTS_NUMBER):
-			artifacts_found.append(filtered_artifacts.pop_front())
+			artifacts_found.append([filtered_artifacts.pop_front(), artifact_rarity])
 		if artifacts_found.size() == ARTIFACTS_NUMBER:
 			break
 		level += 1
@@ -32,10 +32,10 @@ func setup(node, _player, level):
 		$AllArtifacts.show()
 		$BackButton.text = "Cool"
 	else:
-		for artifact in artifacts_found:
+		for artifact_data in artifacts_found:
 			var loot = ARTIFACT_LOOT.instance()
 			$Artifacts.add_child(loot)
-			loot.setup(artifact)
+			loot.setup(artifact_data[0], artifact_data[1])
 			loot.connect("pressed", self, "_on_loot_pressed")
 	
 	AudioManager.play_sfx("enter_treasure_room")

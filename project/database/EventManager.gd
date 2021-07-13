@@ -17,6 +17,12 @@ const FORMAT_DICT = {
 		"(/wave)": "[/wave]"
 }
 
+const IMAGES = [preload("res://assets/images/events/event_luck.png"),
+		preload("res://assets/images/events/event_challenge.png"),
+		preload("res://assets/images/events/event_tradeoff.png"),
+		preload("res://assets/images/events/event_positive.png"),
+		preload("res://assets/images/events/event_quest.png")]
+
 # Event constants
 const HOLE_MAX_CHANCE = .8
 

@@ -10,11 +10,6 @@ onready var vbox = $VBox
 onready var image = $Image
 
 const THEME = preload("res://assets/themes/event_theme/event_theme.tres")
-const IMAGES = [preload("res://assets/images/events/event_luck.png"),
-		preload("res://assets/images/events/event_challenge.png"),
-		preload("res://assets/images/events/event_tradeoff.png"),
-		preload("res://assets/images/events/event_positive.png"),
-		preload("res://assets/images/events/event_quest.png")]
 
 var event : Event
 var map_node : MapNode
@@ -40,7 +35,7 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 		text_label.bbcode_text = override_text
 	else:
 		text_label.bbcode_text = event.text
-	image.texture = IMAGES[event.type]
+	image.texture = EventManager.IMAGES[event.type]
 	
 	for child in vbox.get_children():
 		if child is Button:

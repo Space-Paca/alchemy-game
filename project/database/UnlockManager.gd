@@ -56,7 +56,7 @@ const UNLOCKS = {
 
 func get_unlock(level, type):
 	assert(UNLOCKS.has(type), "Not a valid unlock type: " + str(type))
-	if UNLOCKS[type].size() <= level:
+	if UNLOCKS[type].size() > level:
 		return UNLOCKS[type][level - 1]
 	else:
 		print("No " + str(type) + " unlocks for this level: " + str(level))
@@ -65,7 +65,7 @@ func get_unlock(level, type):
 
 func get_unlock_data(level, type):
 	assert(UNLOCKS.has(type), "Not a valid unlock type: " + str(type))
-	assert(UNLOCKS[type].size() <= level,
+	assert(UNLOCKS[type].size() > level,
 			"No " + str(type) + " unlocks for this level: " + str(level))
 	
 	var data := {}

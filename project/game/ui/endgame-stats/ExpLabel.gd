@@ -3,7 +3,8 @@ extends Label
 signal animation_finished
 
 export var unit := " EP"
-export var base_duration := .05
+export var min_duration_point := .03
+export var max_duration := .7
 export var color := Color.rebeccapurple
 
 var amount := 0
@@ -16,7 +17,8 @@ func _ready():
 func animate():
 	var t = Tween.new()
 	add_child(t)
-	t.interpolate_method(self, "change_text_value", 0, amount, base_duration * amount)
+	var duration = min(max_duration, min_duration_point * amount)
+	t.interpolate_method(self, "change_text_value", 0, amount, duration)
 	t.start()
 	yield(t, "tween_completed")
 	emit_signal("animation_finished")

@@ -1,5 +1,7 @@
 extends ColorRect
 
+signal closed
+
 
 func setup(unlock_data: Dictionary):
 	$BG/VBoxContainer/Title.text = unlock_data.name
@@ -10,4 +12,4 @@ func setup(unlock_data: Dictionary):
 
 func _on_Continue_pressed():
 	AudioManager.play_sfx("click")
-	hide()
+	emit_signal("closed")

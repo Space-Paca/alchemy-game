@@ -167,3 +167,4 @@ visible = false
 [connection signal="button_down" from="Page2/Buttons/Menu" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="Page2/Buttons/Menu" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="Page2/Buttons/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="closed" from="UnlockablePopup" to="." method="_on_UnlockablePopup_closed"]

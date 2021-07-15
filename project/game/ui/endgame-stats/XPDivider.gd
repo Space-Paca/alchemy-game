@@ -3,6 +3,7 @@ extends Control
 signal setup_animation_complete
 signal applied_xp
 signal content_unlocked(unlock_data)
+signal unlock_popup_closed
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 
@@ -146,6 +147,8 @@ func _on_ApplyButton_pressed():
 					var max_xp = lvl_prog[new_level] - lvl_prog[new_level-1]
 					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
 				unlock_content(idx)
+				yield(self, "unlock_popup_closed")
+				
 		idx += 1
 	update_apply_button()
 	emit_signal("applied_xp")

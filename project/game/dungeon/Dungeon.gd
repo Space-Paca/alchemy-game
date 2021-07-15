@@ -281,16 +281,19 @@ func create_level(level: int, debug := false):
 	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
+	var misc_level = Profile.get_progression_level("misc")
+	var smith_amount = 1 if UnlockManager.is_misc_unlocked(misc_level, "REAGENT_SMITH") else 0
+	var lab_amount = 1 if UnlockManager.is_misc_unlocked(misc_level, "LABORATORY") else 0
 	match level:
 		1:
 			# ( *∀*)y─┛
 			#  ______________
 			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
-			map.create_map(7, 2, 0)
+			map.create_map(7, 2, 0, 2, 1, 1, lab_amount, 1)
 		2:
-			map.create_map(7, 2, 1)
+			map.create_map(7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		3:
-			map.create_map(8, 2, 1)
+			map.create_map(8, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		var invalid:
 			assert(false, str("Invalid level: ", invalid))
 	map.set_level(level)

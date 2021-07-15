@@ -24,7 +24,7 @@ const UNLOCKS = {
 	"misc": [
 		{
 			"type": "MISC",
-			"name": "compendium",
+			"name": "COMPENDIUM",
 			"description": "Lalalalal",
 			"texture_path": "res://assets/images/ui/compendium_icon.png"
 		},

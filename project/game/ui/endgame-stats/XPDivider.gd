@@ -3,6 +3,7 @@ extends Control
 signal setup_animation_complete
 signal applied_xp
 signal content_unlocked(unlock_data)
+# warning-ignore:unused_signal
 signal unlock_popup_closed
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]

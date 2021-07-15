@@ -31,6 +31,7 @@ OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
 OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
 OPT_LANGUAGE,Language,Linguagem
 BACK,Back,Voltar
+APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
 FILTERS,Filters,Filtros
 CLOSE,Close,Fechar
@@ -115,3 +116,7 @@ RGNT_TRASH_NAME,Putrid Beetle,Besouro Pútrido
 RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflige %s dano regular ao usuário"
 RGNT_TRASH_PLUS_NAME,Preserved Beetle,Besouro Preservado
 RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano regular ao usuário. Não pode ser destruído em receitas."
+TUT_MAP_1,"Welcome to your adventure, alchemist!","Bem vindo à sua aventura, alquemista!"
+TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino, enfrentando monstros,\naprendendo e construindo receitas alquemicas durante sua jornada"
+TUT_MAP_3,Find and defeat the land's Guardian to progress,Encontre e derrote o Guardião de cada local para progredir
+TUT_MAP_4,"Exploring and discovering things on your own is part of your journey,\nso don't be afraid to be curious!","Explorar e descobrir as coisas por conta própria faz parte de sua jornada, portanto não tenha medo de ser curioso!"

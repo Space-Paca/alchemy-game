@@ -42,12 +42,12 @@ const UNLOCKS = {
 		},
 		{
 			"type": "EVENT",
-			"name": 21,
+			"event_id": 21,
 			"description": "Evento 21",
 		},
 		{
 			"type": "EVENT",
-			"id": 22,
+			"event_id": 22,
 			"description": "Evento 22",
 		}
 	]
@@ -127,7 +127,7 @@ func get_all_unlocked_events(level):
 		if count >= level:
 			break
 		if data.type == "EVENT":
-			unlocks.append(data.name)
+			unlocks.append(data.event_id)
 		count += 1
 	return unlocks
 

@@ -2,6 +2,7 @@ extends Control
 
 signal setup_animation_complete
 signal applied_xp
+signal content_unlocked(unlock_data)
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 
@@ -38,6 +39,7 @@ func can_apply_xp():
 			break
 		idx += 1
 	return not all_maxed and xp_pool > 0
+
 
 func get_level(prog):
 	return Profile.get_progression_level(prog)
@@ -116,6 +118,12 @@ func update_apply_button():
 	apply_button.disabled = (xp_pool == initial_xp_pool)
 
 
+func unlock_content(index: int):
+	var level = Profile.get_progression_level(PROGRESSIONS[index])
+	var unlock_data = UnlockManager.get_unlock_data(level, PROGRESSIONS[index])
+	emit_signal("content_unlocked", unlock_data)
+
+
 func _on_changed_xp(value):
 	set_xp_pool(xp_pool - value)
 
@@ -139,6 +147,7 @@ func _on_ApplyButton_pressed():
 					var lvl_prog = prog_data.level_progression
 					var max_xp = lvl_prog[new_level] - lvl_prog[new_level-1]
 					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
+				unlock_content(idx)
 		idx += 1
 	update_apply_button()
 	emit_signal("applied_xp")

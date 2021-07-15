@@ -62,3 +62,8 @@ func _on_XPDivider_applied_xp():
 
 func _on_RunStats_animation_finished():
 	$Page1/Next.disabled = false
+
+
+func _on_XPDivider_content_unlocked(unlock_data):
+	$UnlockablePopup.setup(unlock_data)
+	$UnlockablePopup.show()

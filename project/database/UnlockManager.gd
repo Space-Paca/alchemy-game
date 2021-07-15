@@ -1,5 +1,11 @@
 extends Node
 
+
+const PROGRESSIONS = {
+	"recipes": [10, 20, 30, 45, 60, 80, 100, 120],
+	"artifacts": [10, 20, 30, 45, 60, 80, 100, 120],
+	"misc": [10, 30, 50, 70, 100],
+}
 const UNLOCKS = {
 	"recipes": [
 		"cycle",
@@ -52,6 +58,19 @@ const UNLOCKS = {
 		}
 	]
 }
+
+
+func get_progression(type):
+	assert(PROGRESSIONS.has(type), "Not a valid type of progression: " + str(type))
+	return PROGRESSIONS[type]
+
+
+func get_progression_level(type, cur_xp):
+	var prog = get_progression(type)
+	for i in range(0, prog.size()):
+		if prog[i] > cur_xp:
+			return i
+	return prog.size()
 
 
 func get_unlock(level, type):

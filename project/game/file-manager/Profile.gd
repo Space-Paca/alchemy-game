@@ -39,17 +39,14 @@ var progression = {
 	"recipes": {
 		"name": "Recipes",
 		"cur_xp": 0,
-		"level_progression": [10, 20, 30, 45, 60, 80, 100, 120],
 	},
 	"artifacts": {
 		"name": "Artifacts",
 		"cur_xp": 0,
-		"level_progression": [10, 20, 30, 45, 60, 80, 100, 120],
 	},
 	"misc": {
 		"name": "The World",
 		"cur_xp": 0,
-		"level_progression": [10, 30, 50, 70, 100],
 	}
 }
 
@@ -197,21 +194,19 @@ func memorize_recipe(name):
 	known_recipes[name].amount = known_recipes[name].memorized_threshold
 
 
+func is_max_level(prog_type):
+	var prog = UnlockManager.get_progression(prog_type)
+	return get_progression_level(prog_type) == prog.size()
+
+
 func get_progression(type):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	return progression[type]
 
 
-func get_progression_level(type_prog):
-	var prog
-	if typeof(type_prog) == TYPE_STRING:
-		prog = get_progression(type_prog)
-	else:
-		prog = type_prog
-	for i in range(0, prog.level_progression.size()):
-		if prog.level_progression[i] > prog.cur_xp:
-			return i
-	return prog.level_progression.size()
+func get_progression_level(type):
+	var prog = get_progression(type)
+	return UnlockManager.get_progression_level(type, prog.cur_xp)
 
 
 func get_progression_xp(type):

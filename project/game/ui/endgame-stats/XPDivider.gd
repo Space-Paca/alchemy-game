@@ -21,32 +21,29 @@ func _ready():
 	$EmpiricLabel.modulate.a = 0
 
 
-func get_level_xp(prog):
-	var level = get_level(prog)
+func get_level_xp(prog_type):
+	var level = get_level(prog_type)
+	var prog = UnlockManager.get_progression(prog_type)
+	var cur_xp = Profile.get_progression_xp(prog_type)
 	if level > 0:
-		return prog.cur_xp - prog.level_progression[level - 1]
+		return cur_xp - prog[level - 1]
 	else:
-		return prog.cur_xp
+		return cur_xp
 
 
 func can_apply_xp():
 	var all_maxed = true
 	var idx = 0
 	for child in progress_cont.get_children():
-		var prog_data = Profile.get_progression(PROGRESSIONS[idx])
-		if not is_max_level(prog_data):
+		if not Profile.is_max_level(PROGRESSIONS[idx]):
 			all_maxed = false
 			break
 		idx += 1
 	return not all_maxed and xp_pool > 0
 
 
-func get_level(prog):
-	return Profile.get_progression_level(prog)
-
-
-func is_max_level(prog):
-	return get_level(prog) == prog.level_progression.size()
+func get_level(prog_type):
+	return Profile.get_progression_level(prog_type)
 
 
 func set_initial_xp_pool(value):
@@ -73,15 +70,16 @@ func setup_xp_progress_bars():
 	var idx = 0
 	for child in progress_cont.get_children():
 		child.connect("changed_xp", self, "_on_changed_xp")
-		var prog_data = Profile.get_progression(PROGRESSIONS[idx])
-		var cur_level = get_level(prog_data)
-		var init_xp = get_level_xp(prog_data)
-		var lvl_prog = prog_data.level_progression
+		var prog_type = PROGRESSIONS[idx]
+		var prog_data = Profile.get_progression(prog_type)
+		var cur_level = get_level(prog_type)
+		var init_xp = get_level_xp(prog_type)
+		var lvl_prog = UnlockManager.get_progression(prog_type)
 		var max_xp
 		if cur_level == 0:
 			max_xp = lvl_prog[cur_level]
 			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
-		elif not is_max_level(prog_data):
+		elif not Profile.is_max_level(prog_type):
 			max_xp = lvl_prog[cur_level] - lvl_prog[cur_level-1]
 			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
 		else:
@@ -135,16 +133,17 @@ func _on_ApplyButton_pressed():
 		if xp > 0:
 			initial_xp_pool -= xp
 			child.apply()
-			var prog_data = Profile.get_progression(PROGRESSIONS[idx])
 			yield(child, "finished_applying")
-			var cur_level = get_level(prog_data)
-			Profile.increase_progression(PROGRESSIONS[idx], xp)
-			if get_level(prog_data) > cur_level:
-				if is_max_level(prog_data):
+			var prog_type = PROGRESSIONS[idx]
+			var cur_level = get_level(prog_type)
+			var prog_data = Profile.get_progression(PROGRESSIONS[idx])
+			Profile.increase_progression(prog_type, xp)
+			if get_level(prog_type) > cur_level:
+				if Profile.is_max_level(prog_type):
 					child.max_level(prog_data.name)
 				else:
-					var new_level = get_level(prog_data)
-					var lvl_prog = prog_data.level_progression
+					var new_level = get_level(prog_type)
+					var lvl_prog = UnlockManager.get_progression(prog_type)
 					var max_xp = lvl_prog[new_level] - lvl_prog[new_level-1]
 					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
 				unlock_content(idx)

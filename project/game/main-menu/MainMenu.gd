@@ -1,6 +1,7 @@
 extends TextureRect
 
 onready var anim = $AnimationPlayer
+onready var compendium_button = $UI/CompendiumButton
 
 const ALPHA_SPEED = 6
 
@@ -10,6 +11,7 @@ func _ready():
 	FileManager.set_current_run(false)
 	set_process_input(false)
 	$RecipeCompendium.show()
+	compendium_button.visible = UnlockManager.is_misc_unlocked(Profile.get_progression_level("misc"), "compendium")
 	yield(get_tree(),"idle_frame")
 	AudioManager.play_bgm("menu")
 	$RecipeCompendium.hide()

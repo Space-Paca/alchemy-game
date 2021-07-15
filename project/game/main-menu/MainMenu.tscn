@@ -112,7 +112,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.3, 2.5 ),
+"times": PoolRealArray( 0, 1.6, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -267,7 +267,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 600.0
 margin_top = 504.672
-margin_right = 953.001
+margin_right = 974.001
 margin_bottom = 650.672
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -281,7 +281,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 600.0
 margin_top = 680.0
-margin_right = 953.0
+margin_right = 1018.0
 margin_bottom = 826.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
@@ -295,7 +295,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 600.0
 margin_top = 855.0
-margin_right = 953.0
+margin_right = 952.997
 margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )

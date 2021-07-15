@@ -8,6 +8,7 @@ const ALPHA_SPEED = 6
 var hover_compendium = false
 
 func _ready():
+	anim.play("reset")
 	FileManager.set_current_run(false)
 	set_process_input(false)
 	$RecipeCompendium.show()
@@ -17,7 +18,10 @@ func _ready():
 	$RecipeCompendium.hide()
 	$ContinueButton.visible = FileManager.run_file_exists()
 	yield(Transition, "finished")
-	anim.play("intro")
+	if FileManager.run_file_exists():
+		anim.play("intro")
+	else:
+		anim.play("intro-no-continue")
 	set_process_input(true)
 # (❁´◡`❁)
 

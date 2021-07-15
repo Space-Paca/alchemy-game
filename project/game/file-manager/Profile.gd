@@ -58,6 +58,15 @@ func _ready():
 	update_translation()
 
 
+func get_locale_idx(locale):
+	var idx = 0
+	for lang in Profile.LANGUAGES:
+		if lang.locale == locale:
+			return idx
+		idx += 1
+	push_error("Couldn't find given locale: " + str(locale))
+
+
 func update_translation():
 	TranslationServer.set_locale(LANGUAGES[Profile.get_option("locale")].locale)
 

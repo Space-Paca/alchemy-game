@@ -82,8 +82,8 @@ func get_unlock(level, type):
 		return false
 
 
-func get_unlock_data(level, type):
-	assert(UNLOCKS.has(type), "Not a valid unlock type: " + str(type))
+func get_unlock_data(type):
+	var level = Profile.get_progression_level(type)
 	assert(UNLOCKS[type].size() > level,
 			"No " + str(type) + " unlocks for this level: " + str(level))
 	
@@ -96,7 +96,7 @@ func get_unlock_data(level, type):
 			data["type"] = "RECIPE"
 			data["name"] = recipe.name
 			data["texture"] = recipe.fav_icon
-			data["description"] = RecipeManager.get_description(recipe.name)
+			data["description"] = RecipeManager.get_description(recipe)
 		"artifacts":
 			var artifact_name = get_unlock(level, type)
 			var artifact_data = ArtifactDB.get_from_name(artifact_name)
@@ -117,7 +117,8 @@ func get_unlock_data(level, type):
 	return data
 
 
-func get_all_unlocked_recipes(level):
+func get_all_unlocked_recipes():
+	var level = Profile.get_progression_level("recipes")
 	var unlocks = []
 	var count = 0
 	for recipe in UNLOCKS.recipes:
@@ -128,7 +129,8 @@ func get_all_unlocked_recipes(level):
 	return unlocks
 
 
-func get_all_unlocked_artifacts(level):
+func get_all_unlocked_artifacts():
+	var level = Profile.get_progression_level("artifacts")
 	var unlocks = []
 	var count = 0
 	for artifact in UNLOCKS.artifacts:
@@ -139,7 +141,8 @@ func get_all_unlocked_artifacts(level):
 	return unlocks
 
 
-func get_all_unlocked_events(level):
+func get_all_unlocked_events():
+	var level = Profile.get_progression_level("misc")
 	var unlocks = []
 	var count = 0
 	for data in UNLOCKS.misc:
@@ -151,7 +154,8 @@ func get_all_unlocked_events(level):
 	return unlocks
 
 
-func is_misc_unlocked(level, name):
+func is_misc_unlocked(name):
+	var level = Profile.get_progression_level("misc")
 	var count = 0
 	for data in UNLOCKS.misc:
 		if count >= level:

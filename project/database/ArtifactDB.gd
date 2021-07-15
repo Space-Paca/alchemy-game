@@ -237,7 +237,7 @@ const EVENT = [
 ]
 
 static func get_artifacts_data(rarity : String, get_only_unlocked := true) -> Array:
-	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts(Profile.get_progression_level("artifacts"))
+	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts()
 	var pool
 	if rarity == "common":
 		pool = COMMON.duplicate()
@@ -263,7 +263,7 @@ static func get_artifacts_data(rarity : String, get_only_unlocked := true) -> Ar
 
 static func get_artifacts(rarity : String, get_only_unlocked := true) -> Array:
 	var artifacts = []
-	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts(Profile.get_progression_level("artifacts"))
+	var unlocked_artifacts = UnlockManager.get_all_unlocked_artifacts()
 	var pool
 	if rarity == "common":
 		pool = COMMON

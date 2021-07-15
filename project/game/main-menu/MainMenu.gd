@@ -12,7 +12,7 @@ func _ready():
 	FileManager.set_current_run(false)
 	set_process_input(false)
 	$RecipeCompendium.show()
-	compendium_button.visible = UnlockManager.is_misc_unlocked(Profile.get_progression_level("misc"), "compendium")
+	compendium_button.visible = UnlockManager.is_misc_unlocked("compendium")
 	yield(get_tree(),"idle_frame")
 	AudioManager.play_bgm("menu")
 	$RecipeCompendium.hide()

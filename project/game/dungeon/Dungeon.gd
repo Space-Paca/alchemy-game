@@ -220,8 +220,7 @@ func load_combinations(combinations_data):
 
 
 func create_combinations():
-	var level = Profile.get_progression_level("recipes")
-	var unlocked_recipes = UnlockManager.get_all_unlocked_recipes(level)
+	var unlocked_recipes = UnlockManager.get_all_unlocked_recipes()
 	for recipe_id in RecipeManager.recipes.keys():
 		var recipe = RecipeManager.recipes[recipe_id]
 		if recipe.must_unlock and unlocked_recipes.find(recipe_id) == -1:
@@ -281,9 +280,8 @@ func create_level(level: int, debug := false):
 	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
-	var misc_level = Profile.get_progression_level("misc")
-	var smith_amount = 1 if UnlockManager.is_misc_unlocked(misc_level, "REAGENT_SMITH") else 0
-	var lab_amount = 1 if UnlockManager.is_misc_unlocked(misc_level, "LABORATORY") else 0
+	var smith_amount = 1 if UnlockManager.is_misc_unlocked("REAGENT_SMITH") else 0
+	var lab_amount = 1 if UnlockManager.is_misc_unlocked("LABORATORY") else 0
 	match level:
 		1:
 			# ( *∀*)y─┛

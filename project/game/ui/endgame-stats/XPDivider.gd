@@ -117,8 +117,7 @@ func update_apply_button():
 
 
 func unlock_content(index: int):
-	var level = Profile.get_progression_level(PROGRESSIONS[index])
-	var unlock_data = UnlockManager.get_unlock_data(level, PROGRESSIONS[index])
+	var unlock_data = UnlockManager.get_unlock_data(PROGRESSIONS[index])
 	emit_signal("content_unlocked", unlock_data)
 
 

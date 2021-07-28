@@ -48,6 +48,9 @@ RECIPES,Recipes,Receitas
 COMBINE,Combine,Combinar
 DRAW_BAG,Draw Bag,Bolsa de Compra
 DISCARD_BAG,Discard Bag,Bolsa de Descarte
+MASTERY,Mastery,Masteria
+MASTERED,Mastered,Masterizada
+FAVORITE_RECIPE,Favorite Recipe,Favoritar Receita
 RECIPE_LIST,Recipe List,Lista de Receitas
 HAND,Hand,Mão
 BAG,Bag,Bolsa
@@ -117,6 +120,26 @@ RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the 
 RGNT_TRASH_PLUS_NAME,Preserved Beetle,Besouro Preservado
 RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano regular ao usuário. Não pode ser destruído em receitas."
 TUT_MAP_1,"Welcome to your adventure, alchemist!","Bem vindo à sua aventura, alquemista!"
-TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino, enfrentando monstros,\naprendendo e construindo receitas alquemicas durante sua jornada"
+TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino enfrentando monstros,\naprendendo e construindo receitas alquemicas durante sua jornada"
 TUT_MAP_3,Find and defeat the land's Guardian to progress,Encontre e derrote o Guardião de cada local para progredir
 TUT_MAP_4,"Exploring and discovering things on your own is part of your journey,\nso don't be afraid to be curious!","Explorar e descobrir as coisas por conta própria faz parte de sua jornada, portanto não tenha medo de ser curioso!"
+TUT_FB_1,You have found an enemy encounter!,Você achou um encontro de inimigo!
+TUT_FB_2,Your objective is to eliminate all enemies\nand not get killed in the process,Seu objetivo nestes encontros é\neliminar todos inimigos\ne não morrer no processo
+TUT_FB_3,Each turn you'll draw reagents from your bag until you have filled your hand entirely,Em cada turno você irá comprar reagentes da sua bolsa até que\nvocê tenha enchido completamente sua mão
+TUT_FB_4,You'll drag reagents from your hand to your alchemical grid to craft recipes,"Você irá arrastar reagentes da sua mão para sua grade alquemica, para poder construir receitas"
+TUT_FB_5,You can find your list of recipes clicking here.\nTry it now!,Você pode ver sua lista de receitas clicando aqui.\nTente agora!
+TUT_RB_1,Here you'll find all recipes you've learned or found clues to,Aqui você encontra todas receitas das quais já aprendeu ou possui dicas de como fazer
+TUT_RB_2,"Use these tags to limit recipes you can view,\nsuch as recipes you can make using reagents in your current hand,\nor using everything inside your bag","Use estes marcadores para limitar receitas visíveis,\ncomo por exemplo receitas que podem ser feitas com reagentes da sua mão,\nou considerando todos reagentes da sua bolsa"
+TUT_RB_3,The filters will help you find specific recipes when you have discovered lots of them,Os filtros vão te ajudar a achar receitas específicas quando você tiver muitas descobertas
+TUT_RB_4,Using a recipe will fill its Mastery gauge.\nUse a recipe enough times and you'll unlock a better version of it!,"Sempre que você fizer uma receita, você irá avançar seu progresso de Masteria.\nUse uma receita bastante vezes para desbloquear uma versão mais poderosa dela!"
+TUT_RB_5,"Finally, when you've found a recipe you want to try,\nclick on it.\nTry it now!","Finalmente, quando você tiver encontrado uma receita que quiser usar, clique nela.\nTeste agora!"
+TUT_CR_1,You can now see a preview of the recipe you've chosen.\nIt will help you craft it more easily,Você agora pode ver um rascunho da receita escolhida.\nIsto ajudará na criação da receita
+TUT_CR_2,"Also, clicking on a mastered recipe will craft it for you automatically!","Além disso, clicar em uma receita masterizada irá montar a receita para você automaticamente!"
+TUT_CR_3,"Drag reagents from your hand to the appropriate places. \nIMPORTANT!\nSome reagents can substitute others,\nhover your mouse on your reagents to find out more about this.","Arraste reagentes da sua mão para as\nposições correspondentes.\nIMPORTANTE!\nAlguns reagentes podem substituir outros,\npasse o mouse em cima dos seus reagentes\npara saber mais sobre isso."
+TUT_CR_4,"When you've placed everything, click the Combine button or press SPACE!","Quando você tiver colocado todos reagentes, aperte o botão de Combinar ou pressione Espaço."
+TUT_CR_5,"When you have nothing else to do,\nor want to hold on to some reagents,\nyou can pass the turn by clicking here.\nYou can also pass your turn by pressing E.","Quando você não tiver nada mais para fazer,\nou quiser segurar alguns reagentes\npara usar futuramente,\nvocê pode passar o turno clicando aqui.\nVocê também pode passar o turno apertando E."
+TUT_CR_6,"Finally, some very important shortcuts!","E finalmente, alguns atalhos muito importantes!"
+TUT_CR_7,Right clicking a reagent is extremely useful to move them around faster,Clicar com o botão direito do mouse sobre algum reagente é extremamente útil para mover eles rapidamente para todos lugares.
+TUT_CR_8,"Also, you can open your recipe book with TAB.\nYou can do it outside of battle too!",Você também pode abrir seu livro de receitas com TAB.\nIsso também funciona fora da batalha!
+TUT_CR_9,"Lastly, you can hover your mouse on almost anything to learn more about it","E por último, você pode passar o mouse sobre quase qualquer coisa para saber mais sobre ela."
+TUT_CR_10,Good luck adventurer!,Boa sorte aventureiro!

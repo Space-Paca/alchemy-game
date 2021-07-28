@@ -171,16 +171,38 @@ custom_constants/line_spacing = -6
 align = 1
 autowrap = true
 
-[node name="MasteryLabel" type="Label" parent="Panel"]
+[node name="MasteryLabelContainer" type="HBoxContainer" parent="Panel"]
 margin_left = 15.0
 margin_top = 272.0
-margin_right = 287.0
+margin_right = 289.0
 margin_bottom = 305.0
 rect_min_size = Vector2( 272, 33 )
+custom_constants/separation = 8
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mastery" type="Label" parent="Panel/MasteryLabelContainer"]
+margin_left = 64.0
+margin_top = 1.0
+margin_right = 165.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Mastery 0/5"
-align = 1
+text = "MASTERY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Panel/MasteryLabelContainer"]
+margin_left = 173.0
+margin_top = 1.0
+margin_right = 210.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -240,7 +262,10 @@ margin_top = 12.4495
 margin_right = 174.603
 margin_bottom = 33.4495
 custom_fonts/font = SubResource( 6 )
-text = "Favorite Recipe"
+text = "FAVORITE_RECIPE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]

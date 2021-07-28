@@ -11,7 +11,7 @@ onready var right_container = $Panel/MarginContainer/VBoxContainer/HBoxContainer
 onready var description = $Panel/MarginContainer/VBoxContainer/Description
 onready var favorite_button = $Panel/FavoriteButton
 onready var mastery_progress = $Panel/MasteryProgress
-onready var mastery_label = $Panel/MasteryLabel
+onready var mastery_label = $Panel/MasteryLabelContainer
 onready var grid = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
 onready var title = $Panel/MarginContainer/VBoxContainer/Title
 onready var left_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
@@ -111,11 +111,13 @@ func preview_mode(is_mastered: bool):
 
 func update_mastery(new_value: int, threshold: int):
 	if new_value < threshold :
-		mastery_label.text = "Mastery " + str(new_value) + "/" + str(threshold)
+		mastery_label.get_node("Mastery").text = "MASTERY"
+		mastery_label.get_node("Amount").text = str(new_value) + "/" + str(threshold)
 		mastery_progress.max_value = threshold
 		mastery_progress.value = new_value
 	else:
-		mastery_label.text = "Mastered"
+		mastery_label.get_node("Mastery").text = "MASTERED"
+		mastery_label.get_node("Amount").text = ""
 		favorite_button.visible = true
 		mastery_progress.visible = false
 
@@ -136,7 +138,8 @@ func unlock_mastery(show_message := true) -> bool:
 	mastery_unlocked = true
 	favorite_button.visible = true
 	mastery_progress.visible = false
-	mastery_label.text = "Mastered"
+	mastery_label.get_node("Mastery").text = "MASTERED"
+	mastery_label.get_node("Amount").text = ""
 	bg.texture = RECIPE_MASTERED_BG
 	title.text = title.text + "+"
 	if show_message:

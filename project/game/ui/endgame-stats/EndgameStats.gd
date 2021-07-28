@@ -66,7 +66,7 @@ func _on_RunStats_animation_finished():
 
 func _on_XPDivider_content_unlocked(unlock_data):
 	$UnlockablePopup.setup(unlock_data)
-	$UnlockablePopup.show()
+	$UnlockablePopup.appear()
 
 
 func _on_UnlockablePopup_closed():

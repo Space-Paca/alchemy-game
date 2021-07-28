@@ -10,6 +10,10 @@ func setup(unlock_data: Dictionary):
 	$BG/Description.text = unlock_data.description
 
 
+func appear():
+	$AnimationPlayer.play("appear")
+
+
 func _on_Continue_pressed():
 	AudioManager.play_sfx("click")
 	emit_signal("closed")

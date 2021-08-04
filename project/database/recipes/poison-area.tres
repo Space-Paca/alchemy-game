@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Toxic Gas"
+name = "RE_POISON_AREA"
 grid_size = 3
 must_unlock = true
 floor_sold_in = 2

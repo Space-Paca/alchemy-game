@@ -189,7 +189,7 @@ ST_TIME_BOMB_INTENT,Planting bomb,Colocando bomba
 ST_TOUGH_TITLE,Tough Skin,Pele Resistente
 ST_TOUGH_DESC,Shield isn't removed at the end of turn,Escudo não é removido no final do turno
 ST_TOUGH_INTENT,Toughing Up,Resistindo
-ST_WEAK_TITLE,Weak,Fraco
+ST_WEAK_TITLE,Weakness,Fraqueza
 ST_WEAK_DESC,This character deals 1/3 less attack damage. Decreases every turn,Este personagem inflige 1/3 a menos em seus ataques. Diminui em cada turno
 ST_WEAK_INTENT,Weakening,Enfraquecendo
 RGNT_FAIN_ELEM_NAME,Faint Elementium,Elementium Fraco
@@ -267,3 +267,49 @@ DESC_DESTROY_REAGENTS_ALL,Destroys all the %s in the process.,Destroi todas/todo
 DESC_DESTROY_REAGENTS_SOME,Destroys %d %s in the process.,Destroi %d %s no processo.
 DESC_DESTROY_REAGENTS_ONLY,Destroys the %s in the process.,Destroi %s no processo.
 DESC_DESTROY_REAGENTS_ONE,Destroys one %s in the process.,Destroi 1 %s no processo.
+RE_ATAQUE_AREA_PLUS,Acid Cloud,Nuvem Ácida
+RE_ATAQUE_AREA,Acid Gas,Gás Ácido
+RE_ATAQUE_MULTIPLO_PLUS,Cluster Bomb,Bomba Esmigalhadora
+RE_ATAQUE_MULTIPLO_PLUSPLUS,Blockbuster Bomb,Bomba Desintegradora
+RE_ATAQUE_MULTIPLO,Frag Bomb,Bomba de Fragmentação
+RE_CURA_PLUS,Healing Elixir,Elixir de Cura
+RE_CURA_PLUSPLUS,Elixir of Life,Elixir da Vida
+RE_CURA,Healing Salve,Pomada Curativa
+RE_CURA_POISON_PLUS,Strong Antivenom,Antiveneno Poderoso
+RE_CURA_POISON,Antivenom,Antiveneno
+CYCLE,Elemental Transmutation,Transmutação Elemental
+RE_DANO_ESCUDO_OMEGA,Hero's Mixture,Mistura Heróica
+RE_DANO_ESCUDOPLUS,Explorer's Mixture,Mistura do Explorador
+RE_DANO_ESCUDOPLUSPLUS,Adventurer's Mixture,Mistura do Aventureiro
+RE_DANO_ESCUDO,Traveler's Mixture,Mistura do Andarilho
+RE_DANO_LIXO,Beetle Bomb,Bomba Besouro
+RE_DANO_OMEGA,Supernova,Supernova
+RE_DANO_OMEGAPLUS,Hypernova,Hipernova
+RE_DANO_PEN_PLUS,Alchemist's Conflagration,Conflagração Alquímica
+RE_DANO_PEN_PLUSPLUS,Alchemist's Inferno,Inferno Alquímico
+RE_DANO_PEN,Alchemist's Fire,Fogo Alquímico
+RE_DANO_PLUS,Thunderstone,Pedra do Trovão
+RE_DANO_PLUSPLUS,Bottled Lightning,Relâmpago Engarrafado
+RE_DANO,Small Bomb,Bomba Pequena
+RE_DRAIN_PLUS,Vampiric Substance,Substância Vampírica
+RE_DRAIN_PLUSPLUS,Vampiric Quintessence,Quintessência Vampírica
+RE_DRAIN,Vampiric Essence,Essência Vampírica
+RE_DRAW_PLUS,Mindstorm Draught,Torrente Mental
+RE_DRAW_PLUSPLUS,Psychstorm Draught,Torrente Psíquica
+RE_DRAW,Brainstorm Draught,Torrente Cerebral
+RE_SHIELD_LIXO,Exoskeleton Potion,Poção de Exoesqueleto
+﻿RE_SHIELD_PLUS,Stoneskin Potion,Poção de Pele de Pedra
+RE_SHIELD_PLUSPLUS,Mountainskin Potion,Poção de Pele Montanhosa
+RE_SHIELD,Rockskin Potion,Poção de Pele Rochosa
+RE_HEAL_LIXO,Bug Compound,Composto de Inseto
+RE_POISON_AREA,Toxic Gas,Gás Tóxico
+RE_POISON_PLUS,Noxious Vial,Frasco Nocivo
+RE_POISON_PLUSPLUS,Plague Vial,Frasco Pandêmico
+RE_POISON,Poison Vial,Frasco de Veneno
+RE_RETALIATE,Thornskin Tonic,Tônico Espinhoso
+RE_SMOKESCREEN_PLUS,Greater Smokescreen Tonic,Tônico Nebuloso
+RE_SMOKESCREEN,Lesser Smokescreen Tonic,Tônico Esfumaçado
+RE_TEMP_STRENGTH_PLUS,Greater Strength Tonic,Tônico de Super Fortalecimento
+RE_TEMP_STRENGTH,Lesser Strength Tonic,Tônico de Fortalecimento
+RE_WEAK_AREA,Feebleness Gas,Gás Enfraquecedor
+RE_WEAK,Feebleness Oil,Óleo Enfraquecedor

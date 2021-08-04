@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Stoneskin Potion"
+name = "﻿RE_SHIELD_PLUS"
 grid_size = 2
 must_unlock = false
 floor_sold_in = 1

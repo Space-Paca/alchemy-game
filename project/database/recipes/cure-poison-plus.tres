@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Strong Antivenom"
+name = "RE_CURA_POISON_PLUS"
 grid_size = 3
 must_unlock = false
 floor_sold_in = 2

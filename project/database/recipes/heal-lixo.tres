@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Bug Compound"
+name = "RE_HEAL_LIXO"
 grid_size = 2
 must_unlock = false
 floor_sold_in = 1

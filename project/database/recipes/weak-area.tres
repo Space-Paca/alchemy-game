@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Feebleness Gas"
+name = "RE_WEAK_AREA"
 grid_size = 3
 must_unlock = false
 floor_sold_in = 2

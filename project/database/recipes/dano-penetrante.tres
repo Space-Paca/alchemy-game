@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Alchemist's Fire"
+name = "RE_DANO_PEN"
 grid_size = 2
 must_unlock = false
 floor_sold_in = 1

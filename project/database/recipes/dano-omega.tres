@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Supernova"
+name = "RE_DANO_OMEGA"
 grid_size = 4
 must_unlock = true
 floor_sold_in = 3

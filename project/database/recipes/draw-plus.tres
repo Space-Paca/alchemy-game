@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Mindstorm Draught"
+name = "RE_DRAW_PLUS"
 grid_size = 2
 must_unlock = true
 floor_sold_in = 3

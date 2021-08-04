@@ -2,191 +2,191 @@ class_name StatusDB
 
 const STATUSES = {
    "arcane_aegis": {
-	"title_name": "Arcane Aegis",
-	"description": "Whenever this characters is attacked, if it wasn't shielded, gains shield",
+	"title_name": "ST_ARCANE_AEGIS_TITLE",
+	"description": "ST_ARCANE_AEGIS_DESC",
 	"image": preload("res://assets/images/status/arcane_aegis.png"),
-	"intent_title": "Casting Arcane Aegis",
-	"in-text_name": "arcane aegis"},
+	"intent_title": "ST_ARCANE_AEGIS_INTENT"
+	},
    "avenge": {
-	"title_name": "Avenge",
-	"description": "When an ally dies, this character gains permanent strength",
+	"title_name": "ST_AVENGE_TITLE",
+	"description": "ST_AVENGE_DESC",
 	"image": preload("res://assets/images/status/avenge.png"),
-	"intent_title": "Avenging",
-	"in-text_name": "avenge"},
+	"intent_title": "ST_AVENGE_INTENT"
+	},
    "burning": {
-	"title_name": "Burning",
-	"description": "At start of turn, will randomly burn player's reagents until end of turn",
+	"title_name": "ST_BURNING_TITLE",
+	"description": "ST_BURNING_DESC",
 	"image": preload("res://assets/images/status/burning.png"),
-	"intent_title": "Immolate",
-	"in-text_name": "burning"},
+	"intent_title": "ST_BURNING_INTENT"
+	},
    "concentration": {
-	"title_name": "Concentration",
-	"description": "If this character takes enough damage, it will lose focus and stop attacking",
+	"title_name": "ST_CONCENTRATION_TITLE",
+	"description": "ST_CONCENTRATION_DESC",
 	"image": preload("res://assets/images/status/concentration.png"),
-	"intent_title": "Concentrating",
-	"in-text_name": "concentration"},
+	"intent_title": "ST_CONCENTRATION_INTENT"
+	},
    "confusion": {
-	"title_name": "Confusion",
-	"description": "Transforms reagents randomly at the start of every turn",
+	"title_name": "ST_CONFUSION_TITLE",
+	"description": "ST_CONFUSION_DESC",
 	"image": preload("res://assets/images/status/confusion.png"),
-	"intent_title": "Dazzling",
-	"in-text_name": "confusion"},
+	"intent_title": "ST_CONFUSION_INTENT"
+	},
    "curse": {
-	"title_name": "Curse",
-	"description": "Limits the number of recipes you can try to create each turn",
+	"title_name": "ST_CURSE_TITLE",
+	"description": "ST_CURSE_DESC",
 	"image": preload("res://assets/images/status/curse.png"),
-	"intent_title": "Cursing",
-	"in-text_name": "curse"},
+	"intent_title": "ST_CURSE_INTENT"
+	},
    "deep_wound": {
-	"title_name": "Deep Wound",
-	"description": "This character can't heal",
+	"title_name": "ST_DEEP_WOUND_TITLE",
+	"description": "ST_DEEP_WOUND_DESC",
 	"image": preload("res://assets/images/status/deep_wound.png"),
-	"intent_title": "Wounding",
-	"in-text_name": "deep wound"},
+	"intent_title": "ST_DEEP_WOUND_INTENT"
+	},
    "deviation": {
-	"title_name": "Deviation",
-	"description": "This character can't repeat recipes on the same turn",
+	"title_name": "ST_DEVIATION_TITLE",
+	"description": "ST_DEVIATION_DESC",
 	"image": preload("res://assets/images/status/deviation.png"),
-	"intent_title": "Deviating",
-	"in-text_name": "deviation"},
+	"intent_title": "ST_DEVIATION_INTENT"
+	},
    "divine_protection": {
-	"title_name": "Divine Protection",
-	"description": "Every turn, this character becomes invincible after taking enough damage",
+	"title_name": "ST_DIVINE_PROTECTION_TITLE",
+	"description": "ST_DIVINE_PROTECTION_DESC",
 	"image": preload("res://assets/images/status/divine_protection.png"),
-	"intent_title": "Favor from the Gods",
-	"in-text_name": "Divine protection"},
+	"intent_title": "ST_DIVINE_PROTECTION_INTENT"
+	},
    "dodge": {
-	"title_name": "Dodge",
-	"description": "This character will avoid the next attack. Last until end of turn.",
+	"title_name": "ST_DODGE_TITLE",
+	"description": "ST_DODGE_DESC",
 	"image": preload("res://assets/images/status/dodge.png"),
-	"intent_title": "Dodging",
-	"in-text_name": "dodge"},
+	"intent_title": "ST_DODGE_INTENT"
+	},
    "enrage": {
-	"title_name": "Enrage",
-	"description": "Whenever this character takes damage, it gets 1 permanent strength per stack",
+	"title_name": "ST_ENRAGE_TITLE",
+	"description": "ST_ENRAGE_DESC",
 	"image": preload("res://assets/images/status/enrage.png"),
-	"intent_title": "Raging",
-	"in-text_name": "enrage"},
+	"intent_title": "ST_ENRAGE_INTENT"
+	},
    "evasion": {
-	"title_name": "Evasion",
-	"description": "This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn",
+	"title_name": "ST_EVASION_TITLE",
+	"description": "ST_EVASION_DESC",
 	"image": preload("res://assets/images/status/evasion.png"),
-	"intent_title": "Evading",
-	"in-text_name": "evasion"},
+	"intent_title": "ST_EVASION_INTENT"
+	},
    "freeze": {
-	"title_name": "Freezing",
-	"description": "At start of turn, will freezes player's hand slots until end of turn",
+	"title_name": "ST_FREEZE_TITLE",
+	"description": "ST_FREEZE_DESC",
 	"image": preload("res://assets/images/status/freeze.png"),
-	"intent_title": "Freezing",
-	"in-text_name": "freeze"},
+	"intent_title": "ST_FREEZE_INTENT"
+	},
    "hex": {
-	"title_name": "Hex",
-	"description": "This character gains permanent strength each time you misuse a reagent",
+	"title_name": "ST_HEX_TITLE",
+	"description": "ST_HEX_DESC",
 	"image": preload("res://assets/images/status/hex.png"),
-	"intent_title": "Hexing",
-	"in-text_name": "hex"},
+	"intent_title": "ST_HEX_INTENT"
+	},
    "impending_doom": {
-	"title_name": "Impending Doom",
-	"description": "When this counter reaches 0, this character will receive 999 permanent strength",
+	"title_name": "ST_DOOM_TITLE",
+	"description": "ST_DOOM_DESC",
 	"image": preload("res://assets/images/status/impending_doom.png"),
-	"intent_title": "Dooming",
-	"in-text_name": "impending doom"},
+	"intent_title": "ST_DOOM_INTENT"
+	},
    "martyr": {
-	"title_name": "Martyr",
-	"description": "When this character dies, it apply 1 permanent strength per stack to each other enemy",
+	"title_name": "ST_MARTYR_TITLE",
+	"description": "ST_MARTYR_DESC",
 	"image": preload("res://assets/images/status/martyr.png"),
-	"intent_title": "Martyrdom",
-	"in-text_name": "martyr"},
+	"intent_title": "ST_MARTYR_INTENT"
+	},
    "minion": {
-	"title_name": "Minion",
-	"description": "This enemy will disappear if his summoner dies",
+	"title_name": "ST_MINION_TITLE",
+	"description": "ST_MINION_DESC",
 	"image": preload("res://assets/images/status/minion.png"),
-	"intent_title": "Minion",
-	"in-text_name": "minion"},
+	"intent_title": "ST_MINION_INTENT"
+	},
    "perm_strength": {
-	"title_name": "Permanent Strength",
-	"description": "Permanently increases this character attack damage in recipes",
+	"title_name": "ST_PERM_STRENGTH_TITLE",
+	"description": "ST_PERM_STRENGTH_DESC",
 	"image": preload("res://assets/images/status/perm_strength.png"),
-	"intent_title": "Powering up",
-	"in-text_name": "permanent strength"},
+	"intent_title": "ST_PERM_STRENGTH_INTENT"
+	},
    "poison": {
-	"title_name": "Poison",
-	"description": "This character is dealt 1 poison damage per stack at the end of its turn. Decreases every turn",
+	"title_name": "ST_POISON_TITLE",
+	"description": "ST_POISON_DESC",
 	"image": preload("res://assets/images/status/poison.png"),
-	"intent_title": "Poisoning",
-	"in-text_name": "poison"},
+	"intent_title": "ST_POISON_INTENT"
+	},
    "poison_immunity": {
-	"title_name": "Poison Immunity",
-	"description": "This character can't receive poison",
+	"title_name": "ST_POISON_IMU_TITLE",
+	"description": "ST_POISON_IMU_DESC",
 	"image": preload("res://assets/images/status/poison_immunity.png"),
-	"intent_title": "Immunizing",
-	"in-text_name": "poison immunity"},
+	"intent_title": "ST_POISON_IMU_INTENT"
+	},
    "restrain": {
-	"title_name": "Restrained",
-	"description": "Locks grid slots randomly until end of turn. You can spend reagents to unlock them",
+	"title_name": "ST_RESTRAIN_TITLE",
+	"description": "ST_RESTRAIN_DESC",
 	"image": preload("res://assets/images/status/restrain.png"),
-	"intent_title": "Restraining",
-	"in-text_name": "restrain"},
+	"intent_title": "ST_RESTRAIN_INTENT"
+	},
    "restrict_major": {
-	"title_name": "Major Restriction",
-	"description": "Blocks a number of grid slots until end of turn",
+	"title_name": "ST_MAJOR_RESTRICT_TITLE",
+	"description": "ST_MAJOR_RESTRICT_DESC",
 	"image": preload("res://assets/images/status/restrict_major.png"),
-	"intent_title": "Chaining",
-	"in-text_name": "major restriction"},
+	"intent_title": "ST_MAJOR_RESTRICT_INTENT"
+	},
    "restrict_minor": {
-	"title_name": "Minor Restriction",
-	"description": "Blocks a number of grid slots until end of turn",
+	"title_name": "ST_MINOR_RESTRICT_TITLE",
+	"description": "ST_MINOR_RESTRICT_DESC",
 	"image": preload("res://assets/images/status/restrict_minor.png"),
-	"intent_title": "Binding",
-	"in-text_name": "minor restriction"},
+	"intent_title": "ST_MINOR_RESTRICT_INTENT"
+	},
    "retaliate": {
-	"title_name": "Retaliate",
-	"description": "This character returns 1 regular damage per stack each time it is attacked. Lasts until end of turn",
+	"title_name": "ST_RETALIATE_TITLE",
+	"description": "ST_RETALIATE_DESC",
 	"image": preload("res://assets/images/status/retaliate.png"),
-	"intent_title": "Retaliating",
-	"in-text_name": "retaliate"},
+	"intent_title": "ST_RETALIATE_INTENT"
+	},
    "revenge": {
-	"title_name": "Revenge",
-	"description": "When this character dies, it will deal 1 regular damage per stack to you",
+	"title_name": "ST_REVENGE_TITLE",
+	"description": "ST_REVENGE_DESC",
 	"image": preload("res://assets/images/status/revenge.png"),
-	"intent_title": "Revengeance",
-	"in-text_name": "revenge"},
+	"intent_title": "ST_REVENGE_INTENT"
+	},
    "soulbind": {
-	"title_name": "Soulbind",
-	"description": "When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage",
+	"title_name": "ST_SOULBIND_TITLE",
+	"description": "ST_SOULBIND_DESC",
 	"image": preload("res://assets/images/status/soulbind.png"),
-	"intent_title": "Binding soul",
-	"in-text_name": "soulbind"},
+	"intent_title": "ST_SOULBIND_INTENT"
+	},
    "splitting": {
-	"title_name": "Splitting",
-	"description": "When this character dies, it will divide into two",
+	"title_name": "ST_SPLITTING_TITLE",
+	"description": "ST_SPLITTING_DESC",
 	"image": preload("res://assets/images/status/splitting.png"),
-	"intent_title": "Mitosis",
-	"in-text_name": "splitting"},
+	"intent_title": "ST_SPLITTING_INTENT"
+	},
    "temp_strength": {
-	"title_name": "Temporary Buff",
-	"description": "Increases the damage of this character next attack in recipes",
+	"title_name": "ST_TEMP_STRENGTH_TITLE",
+	"description": "ST_TEMP_STRENGTH_DESC",
 	"image": preload("res://assets/images/status/temp_strength.png"),
-	"intent_title": "Focusing strength",
-	"in-text_name": "temporary buff"},
+	"intent_title": "ST_TEMP_STRENGTH_INTENT"
+	},
    "time_bomb": {
-	"title_name": "Time Bomb",
-	"description": "Player will draw unstable reagents",
+	"title_name": "ST_TIME_BOMB_TITLE",
+	"description": "ST_TIME_BOMB_DESC",
 	"image": preload("res://assets/images/status/time_bomb.png"),
-	"intent_title": "Planting Bomb",
-	"in-text_name": "time bomb"},
+	"intent_title": "ST_TIME_BOMB_INTENT"
+	},
    "tough": {
-	"title_name": "Tough Skin",
-	"description": "Shield isn't removed at the end of turn",
+	"title_name": "ST_TOUGH_TITLE",
+	"description": "ST_TOUGH_DESC",
 	"image": preload("res://assets/images/status/tough.png"),
-	"intent_title": "Toughing Up",
-	"in-text_name": "tough"},
+	"intent_title": "ST_TOUGH_INTENT"
+	},
    "weakness": {
-	"title_name": "Weak",
-	"description": "This character deals 1/3 less attack damage. Decreases every turn",
+	"title_name": "ST_WEAK_TITLE",
+	"description": "ST_WEAK_DESC",
 	"image": preload("res://assets/images/status/weakness.png"),
-	"intent_title": "Weakening",
-	"in-text_name": "weakness"},
+	"intent_title": "ST_WEAK_INTENT"
+	},
 }
 
 static func get_all_status() -> Dictionary:

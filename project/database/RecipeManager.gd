@@ -55,11 +55,11 @@ func get_short_description(recipe, is_master := false):
 	if is_master:
 		if recipe.override_master_short_description and recipe.override_master_short_description != "":
 			return recipe.override_master_short_description
-		text += short_describe_effects(recipe.master_effects, recipe.master_effect_args)
+		text += describe_effects(recipe.master_effects, recipe.master_effect_args, true)
 	else:
 		if recipe.override_short_description and recipe.override_short_description != "":
 			return recipe.override_short_description
-		text += short_describe_effects(recipe.effects, recipe.effect_args)
+		text += describe_effects(recipe.effects, recipe.effect_args, true)
 	
 	return text
 
@@ -110,19 +110,21 @@ func describe_destructions(reagents, destroyed_reagents):
 		for reagent in reagents:
 			if reagent == destroyed_reagent:
 				recipe_count += 1
+		text += " "
 		if recipe_count == count and count > 1:
-			text += " Destroys all the %s reagents in the process." % [reagent_name]
+			text += tr("DESC_DESTROY_REAGENTS_ALL") % [tr(reagent_name)]
 		elif count > 1:
-			text += " Destroys %d %s reagents in the process." % [count, reagent_name]
+			text += tr("DESC_DESTROY_REAGENTS_SOME") % [count, tr(reagent_name)]
 		elif recipe_count == count:
-			text += " Destroys the %s reagent in the process." % [reagent_name]
+			text += tr("DESC_DESTROY_REAGENTS_ONLY") % [tr(reagent_name)]
 		else:
-			text += " Destroys one %s reagent in the process." % [reagent_name]
+			text += tr("DESC_DESTROY_REAGENTS_ONE") % [tr(reagent_name)]
 	
 	return text
 
 
-func describe_effects(effects_list, effect_args):
+func describe_effects(effects_list, effect_args, short:= false):
+	var short_text = "SHORT_" if short else "" 
 	var text = ""
 	var i = 0
 	while(i < effects_list.size()):
@@ -140,83 +142,33 @@ func describe_effects(effects_list, effect_args):
 				else:
 					break
 			if count == 1:
-				text += "Deals %d %s damage to target enemy." % [args[0], args[1]]
+				text += tr("DESC_"+short_text+"DAMAGE_SINGLE") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]
 			else:
-				text += "Deals %d %s damage %d times." % [args[0], args[1], count]
+				text += tr("DESC_"+short_text+"DAMAGE_MULT") % [args[0], tr(args[1].to_upper()+"_DAMAGE"), count]
 		elif effect == "damage_all":
-			text += "Deals %d %s damage to all enemies." % [args[0], args[1]]
+			text += tr("DESC_"+short_text+"DAMAGE_ALL") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]
 		elif effect == "heal":
-			text += "Heals %d HP." % [args[0]]
+			text += tr("DESC_"+short_text+"HEAL") % [args[0]]
 		elif effect == "reduce_status":
-			var status = StatusDB.get_from_name(args[1])["in-text_name"]
+			var status = StatusDB.get_from_name(args[1])["title_name"]
 			if args[0] == "self":
-				text += "Removes up to %d %s from yourself." % [args[2], status]
+				text += tr("DESC_"+short_text+"REDUCE_STATUS_SELF") % [args[2], tr(status)]
 		elif effect == "draw":
-			text += "Draw %d reagents." % [args[0]]
+			text += tr("DESC_"+short_text+"DRAW") % [args[0]]
 		elif effect == "shield":
-			text += "Gain %d shield until end of turn." % [args[0]]
+			text += tr("DESC_"+short_text+"SHIELD") % [args[0]]
 		elif effect == "drain":
-			text += "Drain %d life from target enemy." % [args[0]]
+			text += tr("DESC_"+short_text+"DRAIN") % [args[0]]
 		elif effect == "add_status":
-			var status = StatusDB.get_from_name(args[1])["in-text_name"]
+			var status = StatusDB.get_from_name(args[1])["title_name"]
 			if args[0] == "enemy":
-				text += "Applies %d %s to target enemy." % [args[2], status]
+				text += tr("DESC_"+short_text+"STATUS_ENEMY") % [args[2], tr(status)]
 			elif args[0] == "self":
-				text += "Gain %d %s." % [args[2], status]
+				text += tr("DESC_"+short_text+"STATUS_SELF") % [args[2], tr(status)]
 		elif effect == "add_status_all":
-			var status = StatusDB.get_from_name(args[0])["in-text_name"]
-			text += "Applies %d %s to all enemies." % [args[1], status]
+			var status = StatusDB.get_from_name(args[0])["title_name"]
+			text += tr("DESC_"+short_text+"STATUS_ALL") % [args[1], tr(status)]
 				
 		i += 1
 		
 	return text
-
-func short_describe_effects(effects_list, effect_args):
-	var text = ""
-	var i = 0
-	while(i < effects_list.size()):
-		if i > 0:
-			text += " "
-		var effect = effects_list[i]
-		var args = effect_args[i]
-		if effect == "damage":
-			#Check for multiple attacks
-			var count = 1
-			for j in range(i+1, effects_list.size()):
-				if effects_list[j] == "damage" and effect_args[i][1] == effect_args[i][1]:
-					count += 1
-					i += 1
-				else:
-					break
-			if count == 1:
-				text += "Deals %d %s damage." % [args[0], args[1]]
-			else:
-				text += "Deals %d %s damage %d times." % [args[0], args[1], count]
-		elif effect == "damage_all":
-			text += "Deals %d %s damage to all enemies." % [args[0], args[1]]
-		elif effect == "heal":
-			text += "Heals %d HP." % [args[0]]
-		elif effect == "reduce_status":
-			var status = StatusDB.get_from_name(args[1])["in-text_name"]
-			if args[0] == "self":
-				text += "Removes %d %s from self." % [args[2], status]
-		elif effect == "draw":
-			text += "Draw %d reagents." % [args[0]]
-		elif effect == "shield":
-			text += "Gain %d shield." % [args[0]]
-		elif effect == "drain":
-			text += "Drain %d life." % [args[0]]
-		elif effect == "add_status":
-			var status = StatusDB.get_from_name(args[1])["in-text_name"]
-			if args[0] == "enemy":
-				text += "Applies %d %s." % [args[2], status]
-			elif args[0] == "self":
-				text += "Gain %d %s." % [args[2], status]
-		elif effect == "add_status_all":
-			var status = StatusDB.get_from_name(args[0])["in-text_name"]
-			text += "Applies %d %s to all enemies." % [args[1], status]
-				
-		i += 1
-		
-	return text
-

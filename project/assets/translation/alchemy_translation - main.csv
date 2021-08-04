@@ -46,6 +46,7 @@ MISC,Misc,Diversos
 END_TURN,End Turn,Terminar   Turno
 RECIPES,Recipes,Receitas
 COMBINE,Combine,Combinar
+MISCOMBINATION,Miscombination,Má Combinação
 DRAW_BAG,Draw Bag,Bolsa de Compra
 DISCARD_BAG,Discard Bag,Bolsa de Descarte
 MASTERY,Mastery,Masteria
@@ -94,15 +95,112 @@ ON_FIRE,On fire,Pegando fogo
 SUBSTITUTES,Substitutes,Substituições
 SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este reagente
 SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes reagentes
+REGULAR_DAMAGE,regular damage,dano normal
+PIERCING_DAMAGE,piercing damage,dano penetrante
+CRUSHING_DAMAGE,crushing damage,dano esmagador
+VENOM_DAMAGE,poison damage,dano venenoso
+ST_ARCANE_AEGIS_TITLE,Arcane Aegis,Égide Arcana
+ST_ARCANE_AEGIS_DESC,"Whenever this characters is attacked, if it wasn't shielded, gains shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar escudo"
+ST_ARCANE_AEGIS_INTENT,Casting Arcane Aegis,Formando Égide Arcana
+ST_AVENGE_TITLE,Avenge,Vingar
+ST_AVENGE_DESC,"When an ally dies, this character gains Permanent Strength","Quando algum aliado morre, este personagem ganha Força Permanente"
+ST_AVENGE_INTENT,Avenging,Vingando
+ST_BURNING_TITLE,Burning,Queimando
+ST_BURNING_DESC,"At start of turn, will randomly burn player's reagents until end of turn","No começo do turno, queima reagentes aleatórios da mão até o fim do turno"
+ST_BURNING_INTENT,Immolate,Imolando
+ST_CONCENTRATION_TITLE,Concentration,Concentração
+ST_CONCENTRATION_DESC,"If this character takes enough damage, it will lose focus and stop attacking","Se este personagem recebe dano suficiente, irá perder o foco e não vai mais atacar"
+ST_CONCENTRATION_INTENT,Concentrating,Concentrando
+ST_CONFUSION_TITLE,Confusion,Confusão
+ST_CONFUSION_DESC,Transforms reagents randomly at the start of every turn,Transforma reagentes aleatórios no começo de cada turno
+ST_CONFUSION_INTENT,Dazzling,Deslumbrando
+ST_CURSE_TITLE,Curse,Maldição
+ST_CURSE_DESC,Limits the number of recipes you can try to create each turn,Limite o número de receitas que você pode criar cada turno
+ST_CURSE_INTENT,Cursing,Amaldiçoando
+ST_DEEP_WOUND_TITLE,Deep Wound,Ferida Profunda
+ST_DEEP_WOUND_DESC,This character can't heal,Este personagem não pode curar
+ST_DEEP_WOUND_INTENT,Wounding,Ferindo
+ST_DEVIATION_TITLE,Deviation,Divergência
+ST_DEVIATION_DESC,This character can't repeat recipes on the same turn,Este personagem não pode repetir receitas no mesmo turno
+ST_DEVIATION_INTENT,Deviating,Divergindo
+ST_DIVINE_PROTECTION_TITLE,Divine Protection,Proteção Divina
+ST_DIVINE_PROTECTION_DESC,"Every turn, this character becomes invincible after taking enough damage","Em cada turno, este personagem fica invencível depois de tomar dano suficiente"
+ST_DIVINE_PROTECTION_INTENT,Favor from the Gods,Favor dos Deuses
+ST_DODGE_TITLE,Dodge,Esquivar
+ST_DODGE_DESC,This character will avoid the next attack. Last until end of turn,Este personagem irá evitar o próximo ataque. Dura até o fim do turno
+ST_DODGE_INTENT,Dodging,Esquivando
+ST_ENRAGE_TITLE,Enrage,Enfurecido
+ST_ENRAGE_DESC,"Whenever this character takes damage, it gets Permanent Strength","Sempre que este personagem toma dano, recebe Força Permanente"
+ST_ENRAGE_INTENT,Raging,Enfurecendo
+ST_EVASION_TITLE,Evasion,Evasão
+ST_EVASION_DESC,This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn,Este personagem tem 50% de chance de evitar o próximo ataque. Dura até o fim do turno
+ST_EVASION_INTENT,Evading,Evadindo
+ST_FREEZE_TITLE,Freezing,Congelando
+ST_FREEZE_DESC,"At start of turn, will freezes player's hand slots until end of turn","No começo do turno, congela espaços de mão do jogador até final do turno"
+ST_FREEZE_INTENT,Freezing,Congelando
+ST_HEX_TITLE,Hex,Feitiço
+ST_HEX_DESC,This character gains permanent strength each time you misuse a reagent,Este personagem ganha força permanente sempre o jogador utiliza incorretamente algum reagente
+ST_HEX_INTENT,Hexing,Enfeitiçando
+ST_DOOM_TITLE,Impending Doom,Perdição Inevitável
+ST_DOOM_DESC,"When this counter reaches 0, this character will receive 999 Permanent Strength","Quando este contador chegar em 0, este personagem irá receber 999 de Força Permanente"
+ST_DOOM_INTENT,Dooming,Perdição
+ST_MARTYR_TITLE,Martyr,Mártir
+ST_MARTYR_DESC,"When this character dies, it applies Permanent Strength to each other ally","Quando este personagem morre, aplica Força Permanente a todos outros aliados"
+ST_MARTYR_INTENT,Martyrdom,Martirio
+ST_MINION_TITLE,Minion,Lacaio
+ST_MINION_DESC,This enemy will disappear if his summoner dies,Este inimigo irá desaparecer se seu mestre morrer
+ST_MINION_INTENT,Minion,Lacaio
+ST_PERM_STRENGTH_TITLE,Permanent Strength,Força Permanente
+ST_PERM_STRENGTH_DESC,Permanently increases this character attack damage,Permanentemente aumenta o dano de ataque deste personagem
+ST_PERM_STRENGTH_INTENT,Powering up,Fortalecendo
+ST_POISON_TITLE,Poison,Veneno
+ST_POISON_DESC,This character is dealt poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar dano venenoso no final de seu turno. Diminui a cada turno
+ST_POISON_INTENT,Poisoning,Envenenando
+ST_POISON_IMU_TITLE,Poison Immunity,Imunidade a Veneno
+ST_POISON_IMU_DESC,This character can't receive Poison,Este personagem não pode receber Veneno
+ST_POISON_IMU_INTENT,Immunizing,Imunizando
+ST_RESTRAIN_TITLE,Restrained,Contido
+ST_RESTRAIN_DESC,Locks grid slots randomly until end of turn. You can spend reagents to unlock them,Bloqueia espaços da grade aleatóriamente até o fim do turno. Você pode gastar reagentes para desbloquea-los
+ST_RESTRAIN_INTENT,Restraining,Contendo
+ST_MAJOR_RESTRICT_TITLE,Major Restriction,Restrição Maior
+ST_MAJOR_RESTRICT_DESC,Blocks a number of grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
+ST_MAJOR_RESTRICT_INTENT,Chaining,Acorrentando
+ST_MINOR_RESTRICT_TITLE,Minor Restriction,Restrição Menor
+ST_MINOR_RESTRICT_DESC,Blocks a number of grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
+ST_MINOR_RESTRICT_INTENT,Binding,Prendendo
+ST_RETALIATE_TITLE,Retaliate,Retaliação
+ST_RETALIATE_DESC,This character returns regular damage each time it is attacked. Lasts until end of turn,Este personagem devolve dano normal cada vez que é atacado. Dura até o fim do turno
+ST_RETALIATE_INTENT,Retaliating,Retaliando
+ST_REVENGE_TITLE,Revenge,Vingança
+ST_REVENGE_DESC,"When this character dies, it will deal regular damage to you","Quando este personagem morre, inflige dano normal a você"
+ST_REVENGE_INTENT,Revengeance,Vingando
+ST_SOULBIND_TITLE,Soulbind,Conexão de Alma
+ST_SOULBIND_DESC,"When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage","Quando este personagem morre, qualquer dano excedente em sua vida será devolvido 4 vezes mais como dano regular"
+ST_SOULBIND_INTENT,Binding soul,Conectando alma
+ST_SPLITTING_TITLE,Splitting,Dividindo
+ST_SPLITTING_DESC,"When this character dies, it will divide into two","Quando este personagem morre, irá dividir em 2"
+ST_SPLITTING_INTENT,Mitosis,Mitose
+ST_TEMP_STRENGTH_TITLE,Temporary Buff,Poder Temporário
+ST_TEMP_STRENGTH_DESC,Increases the damage of this character next attack,Aumenta o dano deste personagem em seu próximo ataque
+ST_TEMP_STRENGTH_INTENT,Focusing strength,Focando forças
+ST_TIME_BOMB_TITLE,Time Bomb,Bomba Relógio
+ST_TIME_BOMB_DESC,Player will draw unstable reagents,Jogador irá comprar reagentes instáveis
+ST_TIME_BOMB_INTENT,Planting bomb,Colocando bomba
+ST_TOUGH_TITLE,Tough Skin,Pele Resistente
+ST_TOUGH_DESC,Shield isn't removed at the end of turn,Escudo não é removido no final do turno
+ST_TOUGH_INTENT,Toughing Up,Resistindo
+ST_WEAK_TITLE,Weak,Fraco
+ST_WEAK_DESC,This character deals 1/3 less attack damage. Decreases every turn,Este personagem inflige 1/3 a menos em seus ataques. Diminui em cada turno
+ST_WEAK_INTENT,Weakening,Enfraquecendo
 RGNT_FAIN_ELEM_NAME,Faint Elementium,Elementium Fraco
 RGNT_COM_ELEM_NAME,Common Elementium,Elementium Comum
 RGNT_UNC_ELEM_NAME,Uncommon Elementium,Elementium Incomum
 RGNT_RARE_ELEM_NAME,Rare Elementium,Elementium Raro
-RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflige %s dano regular a um inimigo aleatório"
+RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflige %s de dano normal a um inimigo aleatório"
 RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
 RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negro
 RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
-RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflige %s dano regular a todos inimigos"
+RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflige %s de dano normal a todos inimigos"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
@@ -116,9 +214,9 @@ RGNT_BUFF_TOOLTIP,"If used in a miscombination, applies %s temporary strength to
 RGNT_DEBUFF_NAME,Cracked Skull,Crânio Rachado
 RGNT_DEBUFF_TOOLTIP,"If used in a miscombination, applies %s weakness to a random enemy","Se usado em uma má combinação, aplica %s de fraqueza a um inimigo aleatório"
 RGNT_TRASH_NAME,Putrid Beetle,Besouro Pútrido
-RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflige %s dano regular ao usuário"
+RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflige %s de dano normal ao usuário"
 RGNT_TRASH_PLUS_NAME,Preserved Beetle,Besouro Preservado
-RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano regular ao usuário. Não pode ser destruído em receitas."
+RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano normal ao usuário. Não pode ser destruído em receitas."
 TUT_MAP_1,"Welcome to your adventure, alchemist!","Bem vindo à sua aventura, alquemista!"
 TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino enfrentando monstros,\naprendendo e construindo receitas alquemicas durante sua jornada"
 TUT_MAP_3,Find and defeat the land's Guardian to progress,Encontre e derrote o Guardião de cada local para progredir
@@ -143,3 +241,29 @@ TUT_CR_7,Right clicking a reagent is extremely useful to move them around faster
 TUT_CR_8,"Also, you can open your recipe book with TAB.\nYou can do it outside of battle too!",Você também pode abrir seu livro de receitas com TAB.\nIsso também funciona fora da batalha!
 TUT_CR_9,"Lastly, you can hover your mouse on almost anything to learn more about it","E por último, você pode passar o mouse sobre quase qualquer coisa para saber mais sobre ela."
 TUT_CR_10,Good luck adventurer!,Boa sorte aventureiro!
+DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflige %d de %s ao inimigo alvo.
+DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
+DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
+DESC_HEAL,Heals %d HP.,Cura %d de vida.
+DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remove até %d de %s de sí mesmo.
+DESC_DRAW,Draw %d reagents.,Compre %d reagentes.
+DESC_SHIELD,Gain %d shield until end of turn.,Ganhe %d de escudo até o fim do turno.
+DESC_DRAIN,Drain %d life from target enemy.,Drena %d de vida do inimigo alvo.
+DESC_STATUS_ENEMY,Applies %d %s to target enemy.,Aplica %d de %s ao inimigo alvo.
+DESC_STATUS_SELF,Gain %d %s.,Receba %d de %s.
+DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplica %d de %s a todos inimigos.
+DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflige %d de %s.
+DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
+DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
+DESC_SHORT_HEAL,Heals %d HP.,Cura %d de vida.
+DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remove até %d de %s de sí mesmo.
+DESC_SHORT_DRAW,Draw %d reagents.,Compre %d reagentes.
+DESC_SHORT_SHIELD,Gain %d shield.,Ganhe %d de escudo.
+DESC_SHORT_DRAIN,Drain %d life.,Drena %d de vida.
+DESC_SHORT_STATUS_ENEMY,Applies %d %s.,Aplica %d de %s.
+DESC_SHORT_STATUS_SELF,Gain %d %s.,Receba %d de %s.
+DESC_SHORT_STATUS_ALL,Applies %d %s to all enemies.,Aplica %d de %s a todos inimigos.
+DESC_DESTROY_REAGENTS_ALL,Destroys all the %s in the process.,Destroi todas/todos %s no processo.
+DESC_DESTROY_REAGENTS_SOME,Destroys %d %s in the process.,Destroi %d %s no processo.
+DESC_DESTROY_REAGENTS_ONLY,Destroys the %s in the process.,Destroi %s no processo.
+DESC_DESTROY_REAGENTS_ONE,Destroys one %s in the process.,Destroi 1 %s no processo.

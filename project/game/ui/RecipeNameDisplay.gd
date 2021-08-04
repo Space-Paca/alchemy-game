@@ -21,7 +21,7 @@ func _ready():
 func display_name_for_combination(combination, update_description : bool, mastered := false):
 	if combination:
 		if combination is String and combination == "failure":
-			recipe_name_label.text = "Miscombination"
+			recipe_name_label.text = "MISCOMBINATION"
 			recipe_description_label.text = ""
 			set_label_color(RED, OUTLINE_FONT)
 		else:

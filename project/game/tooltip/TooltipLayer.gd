@@ -68,7 +68,7 @@ func import_status_keywords():
 	var all_status = StatusDB.get_all_status()
 	for status_name in all_status.keys():
 		var status = all_status[status_name]
-		keywords[status["in-text_name"]] = {
+		keywords[status["title_name"]] = {
 			"type": "status",
 			"name": status_name
 		}

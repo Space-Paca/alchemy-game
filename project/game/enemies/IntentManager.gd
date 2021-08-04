@@ -144,7 +144,7 @@ func get_intent_tooltip(action, enemy):
 		
 		var status_data = StatusDB.get_from_name(args.status)
 		tooltip.title = status_data.intent_title
-		tooltip.text += status_data["in-text_name"]
+		tooltip.text += tr(status_data["title_name"])
 		
 		tooltip.text += " next turn"
 	elif name == "spawn":

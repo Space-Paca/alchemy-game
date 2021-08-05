@@ -313,3 +313,67 @@ RE_TEMP_STRENGTH_PLUS,Greater Strength Tonic,Tônico de Super Fortalecimento
 RE_TEMP_STRENGTH,Lesser Strength Tonic,Tônico de Fortalecimento
 RE_WEAK_AREA,Feebleness Gas,Gás Enfraquecedor
 RE_WEAK,Feebleness Oil,Óleo Enfraquecedor
+ART_POISON_KIT_NAME,Slimy Satchel,Mochila Gosmenta
+ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag","Quando adquirida, adicione 3 Essência Nociva à sua bolsa"
+ART_BUFF_POISON_NAME,Poisoner's Thesis,Tese de Envenenador
+ART_BUFF_POISON_DESC,"Whenever you apply Poison, apply 1 extra Poison","Sempre que você aplicar Veneno, aplica 1 Veneno extra"
+ART_STRENGTH_NAME,Powerstone,Pedra do Poder
+ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
+ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida
+ART_MAX_HP_DESC,"When acquired, your total life is increased by 20","Quando adquirido, sua vida total aumenta em 20"
+ART_TEMP_STRENGTH_NAME,Morhk Nosering,Piercing de Morhk
+ART_TEMP_STRENGTH_DESC,Start each battle with 6 Temporary Buff,Comece cada batalha com 3 de Poder Temporário
+ART_GREAT_REST_NAME,Warm Blanket,Cobertor Quentinho
+ART_GREAT_REST_DESC,"When resting, you heal 70% of you max health","Quando for descansar, recupere 70% de sua vida máxima"
+ART_MONEY_BAG_NAME,Coin Pouch,Bolsa de Moedas
+ART_MONEY_BAG_DESC,"When acquired, gain 40 gold","Quando adquirido, ganhe 40 de ouro"
+ART_BLUE_OYSTER_NAME,Blue Oyster,Ostra Azul
+ART_BLUE_OYSTER_DESC,"Whenever you defeat an elite or guardian encounter, gain 1 extra pearl","Sempre que você vencer algum encontro de inimigo elite ou guardião, ganhe uma pérola extra"
+ART_MENDER_BELT_NAME,Mender's Belt,Cinto de Mender
+ART_MENDER_BELT_DESC,"Whenever you finish a battle, heal 8","Sempre que você terminar uma batalha, cure 8"
+ART_CARAPA_BUCKLER_NAME,Carapa Buckler,Broquel de Carapa
+ART_CARAPA_BUCKLER_DESC,Start each battle with 10 shield,Comece cada batalha com 10 de escudo
+ART_VULTURE_MASK_NAME,Vulture Mask,Máscara do Abutre
+ART_VULTURE_MASK_DESC,Start each battle against an elite with 5 Permanent Strength,Comece cada encontro de inimigo elite com 5 de Força Permanente
+ART_FULL_REST_NAME,Soothing Teapot,Bule Calmante
+ART_FULL_REST_DESC,"When resting, you heal completely","Quando for descansar, cure completamente"
+ART_BUFF_KIT_NAME,Powerful Satchel,Sacola Poderosa
+ART_BUFF_KIT_DESC,"When acquired, add 3 Horn Fragment reagents to your bag","Quando adquirida, adicione 3 Lasca de Chifre à sua bolsa"
+ART_DEBUFF_KIT_NAME,Wicked Satchel,Sacola Malvada
+ART_DEBUFF_KIT_DESC,"When acquired, add 3 Cracked Skull reagents to your bag","Quando adquirida, adicione 3 Crânio Rachado à sua bolsa"
+ART_TRASH_HEAL_NAME,Mortar and Pestle,Almofariz e Pilão
+ART_TRASH_HEAL_DESC,"When acquired, add 4 Putrid Beetle reagents to your bag. Misused Beetle reagents will heal you instead of harm you","Quando adquirida, adicione 4 Besouro Preservado à sua bolsa. Reagentes besouro mal utilizados vão te curar em vez de te machucar"
+ART_STRENGTH_PLUS_NAME,Mightstone,Pedra da Força
+ART_STRENGTH_PLUS_DESC,Start each battle with 8 Permanent Strength,Comece cada batalha com 8 de Força Permanente
+ART_TEMP_STRENGTH_PLUS_NAME,Morhk Chain,Corrente de Morhk
+ART_TEMP_STRENGTH_PLUS_DESC,Start each battle with 12 Temporary Buff,Comece cada batalha com 12 de Poder Temporário
+ART_RANDOM_KIT_NAME,Unpredictable Satchel,Sacole Imprevisível
+ART_RANDOM_KIT_DESC,"When acquired, add 4 random reagents to your bag","Quando adquirida, adicione 4 reagentes aleatórios à sua bolsa"
+ART_POISONED_DAGGER_NAME,Poisoned Dagger,Adaga Envenenada
+ART_POISONED_DAGGER_DESC,"Whenever you deal unblocked damage to an enemy, apply 1 Poison to it","Sempre que você inflingir dano não bloqueado a algum inimigo, aplique 1 de Veneno a ele"
+ART_BUFF_HEAL_NAME,Ivory Cup,Taça de Marfim
+ART_BUFF_HEAL_DESC,"Whenever you heal yourself during battle, heal 50% more","Sempre que você se curar durante a batalha, cure 50% mais"
+ART_MIDAS_NAME,Midas' Finger,Dedo de Midas
+ART_MIDAS_DESC,"When acquired, triple your current gold","Quando adquirido, triplique sua quantidade de ouro atual"
+ART_HEAL_LEFTOVER_NAME,Sprig of Mistletoe,Raminho de Visco
+ART_HEAL_LEFTOVER_DESC,"Whenever you end your turn, heal 2 for every reagent left in your hand","Sempre que você terminar seu turno, cure 2 para cada reagente não utilizado em sua mão"
+ART_DAMAGE_OPTIMIZE_NAME,Seal of Swords,Selo das Espadas
+ART_DAMAGE_OPTIMIZE_DESC,"Whenever you end your turn, if you used all your reagents in recipes, deal 30 damage to all enemies","Sempre que você terminar seu turno, se você usou todos seus reagentes em receitas, inflija 30 de dano a todos inimigos"
+ART_HEAL_OPTIMIZE_NAME,Seal of Respite,Selo da Trégua
+ART_HEAL_OPTIMIZE_DESC,"Whenever you end your turn, if you used all your reagents in recipes, you heal 30","Sempre que você terminar seu turno, se você usou todos seus reagentes em receitas, cure 30 de vida"
+ART_STRENGTH_OPTIMIZE_NAME,Seal of Might,Selo do Poder
+ART_STRENGTH_OPTIMIZE_DESC,"Whenever you end your turn, if you used all your reagents in recipes, you gain 10 Permanent Strength","Sempre que você terminar seu turno, se você usou todos seus reagentes em receitas, ganhe 10 de Força Permanente"
+ART_REVEAL_MAP_NAME,Silver Sextant,Sextante Prateado
+ART_REVEAL_MAP_DESC,All maps are revealed,Todos mapas são revelados
+ART_CURSED_PEARLS_NAME,Cursed Pearls,Pérolas Amaldiçoadas
+ART_CURSED_PEARLS_DESC,"When transmuting reagents for gold, you get half the original value","Quando transmutar reagentes para ouro, ganhe apenas metade do valor original"
+ART_CURSED_HALBERD_NAME,Cursed Halberd,Alabarda Amaldiçoadas
+ART_CURSED_HALBERD_DESC,"At the start of each battle, gain 5 Permanent Strength. At the start of each battle, take 8 damage","No começo de cada batalha, ganhe 5 de Força Permanente. No começo de cada batalha, tome 8 de dano."
+ART_CURSED_SHIELD_NAME,Cursed Shield,Escudo Amaldiçoadas
+ART_CURSED_SHIELD_DESC,"At the start of each turn, gain 5 shield. At the start of each battle, take 8 damage","No começo de cada turno, ganhe 5 de escudo. No começo de cada batalha, tome 8 de dano."
+ART_BLOODCURSED_GRIMOIRE_NAME,Bloodcursed Grimoire,Grimório Sangrento
+ART_BLOODCURSED_GRIMOIRE_DESC,"Whenever you defeat an enemy, gain 9 life","Sempre que você derrotar um inimigo, ganhe 9 de vida"
+ART_GOLD_ANKH_NAME,Gold Ankh,Ankh Dourado
+ART_GOLD_ANKH_DESC,"Whenever you finish a battle, gain 10 max health","Sempre que você terminar uma batalha, ganhe 10 de vida máxima"
+ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso 
+ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 15% of your max life (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 15% da vida máxima (não funciona em receitas compradas)"

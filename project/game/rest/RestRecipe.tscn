@@ -36,8 +36,9 @@ margin_top = 912.05
 margin_right = 495.062
 margin_bottom = 1065.05
 custom_fonts/font = SubResource( 1 )
-text = "Choose"
+text = "CHOOSE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Choose" to="." method="_on_Choose_pressed"]

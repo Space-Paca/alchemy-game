@@ -38,12 +38,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -116.5
-margin_top = -180.0
-margin_right = 116.5
-margin_bottom = -34.0
+margin_left = -151.361
+margin_top = -190.04
+margin_right = 156.639
+margin_bottom = -44.0397
 theme = ExtResource( 2 )
-text = "Ignore"
+text = "IGNORE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,7 +56,7 @@ margin_top = 300.0
 margin_right = 347.497
 margin_bottom = 402.0
 custom_fonts/font = ExtResource( 3 )
-text = "Choose One"
+text = "CHOOSE_ONE"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -73,7 +73,7 @@ margin_right = 935.5
 margin_bottom = 51.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "You apparently have all the treasure in the world..."
+text = "ALL_ARTIFACTS"
 align = 1
 autowrap = true
 __meta__ = {

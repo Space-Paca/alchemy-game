@@ -14,7 +14,7 @@ var map_node : MapNode
 var player
 var combinations
 var state = "main"
-var disable_heal_button = false
+var disable_heal_text = false
 
 func setup(node, _player, _combinations):
 	state = "main"
@@ -26,8 +26,8 @@ func setup(node, _player, _combinations):
 	
 	$Warning.modulate.a = 0
 	$BackButton.show()
-	$HealButton.show()
-	$HintButton.show()
+	$ButtonContainer/HealButton.show()
+	$ButtonContainer/HintButton.show()
 	$Recipes.hide()
 	$ContinueButton.hide()
 
@@ -50,15 +50,16 @@ func get_heal_value():
 
 
 func update_heal_button():
-	var button = $HealButton
+	var button = $ButtonContainer/HealButton
 	if player.has_artifact("cursed_scholar_mask"):
-		button.text = "CAN'T HEAL"
+		button.text = tr("CANT_HEAL")
 		button.modulate.r = .7; button.modulate.g = .7; button.modulate.b = .7
-		disable_heal_button = "Can't heal while wearing the Cursed Scholar's Mask"
+		disable_heal_text = "CANT_HEAL_SCHOLAR_MASK"
 	else:
-		disable_heal_button = false
+		disable_heal_text = false
 		button.modulate.r = 1.0; button.modulate.g = 1.0; button.modulate.b = 1.0
-		button.text = "HEAL " + str(get_heal_value()) + " HP ("+str(get_percent_heal())+"% max hp)" 
+		print(tr("HEAL_TEXT"))
+		button.text = tr("HEAL_TEXT")  % [get_heal_value(), get_percent_heal()] 
 
 
 func reset_room():
@@ -83,9 +84,9 @@ func create_display(combination):
 
 
 func _on_HealButton_pressed():
-	if disable_heal_button:
+	if disable_heal_text:
 		AudioManager.play_sfx("error")
-		warning_label.text = disable_heal_button
+		warning_label.text = tr(disable_heal_text)
 		var tween = $Warning/WarningTween
 		var cur_a = warning.modulate.a
 		tween.stop_all()
@@ -102,8 +103,8 @@ func _on_HealButton_pressed():
 func _on_HintButton_pressed():
 	if combinations.size() > 0:
 		$ChooseOneLabel.hide()
-		$HealButton.hide()
-		$HintButton.hide()
+		$ButtonContainer/HealButton.hide()
+		$ButtonContainer/HintButton.hide()
 		$Recipes.show()
 		setup_recipes()
 		state = "recipes"
@@ -119,8 +120,8 @@ func _on_ContinueButton_pressed():
 func _on_BackButton_pressed():
 	if state == "recipes":
 		$ChooseOneLabel.show()
-		$HealButton.show()
-		$HintButton.show()
+		$ButtonContainer/HealButton.show()
+		$ButtonContainer/HintButton.show()
 		$Recipes.hide()
 		for child in $Recipes/HBox.get_children():
 			$Recipes/HBox.remove_child(child)

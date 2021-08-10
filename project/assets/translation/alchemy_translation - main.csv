@@ -30,6 +30,15 @@ OPT_AUTO_END_TURN,Auto End Turn,Terminar Turno Automaticamente
 OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
 OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
 OPT_LANGUAGE,Language,Linguagem
+CHOOSE_ONE,Choose One,Escolha Um
+ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...
+IGNORE,Ignore,Ignorar
+CHOOSE_ONLY_ONE,Choose only one,Escolha apenas um
+HEAL_TEXT,Heal %d HP (%d%% max hp),Cura %d PV (%d%% da vida máx.)
+CANT_HEAL,CAN'T HEAL,NÃO PODE CURAR
+CANT_HEAL_SCHOLAR_MASK,Can't heal while wearing the Cursed Scholar's Mask,Não pode curar enquanto estiver usando a Máscara Amaldiçoada do Estudioso 
+DISCOVER_RECIPE,Discover and Master 1 Recipe,Descubra e Masterize 1 Receita
+CHOOSE,Choose,Escolher
 BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
@@ -206,7 +215,7 @@ RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
 RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, aplica %s de escudo ao usuário"
 RGNT_HEALING_NAME,Invigorating Root,Raíz Revigorante
-RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %s hp","Se usado em uma má combinação, cura %s de vida ao usuário"
+RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %d HP","Se usado em uma má combinação, cura o usuário em %d PV"
 RGNT_POISON_NAME,Noxious Essence,Essência Nociva
 RGNT_POISON_TOOLTIP,"If used in a miscombination, applies %s poison to a random enemy","Se usado em uma má combinação, aplica %s de veneno a um inimigo aleatório"
 RGNT_BUFF_NAME,Horn Fragment,Lasca de Chifre
@@ -244,7 +253,7 @@ TUT_CR_10,Good luck adventurer!,Boa sorte aventureiro!
 DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflige %d de %s ao inimigo alvo.
 DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
 DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
-DESC_HEAL,Heals %d HP.,Cura %d de vida.
+DESC_HEAL,Heals %d HP.,Cura %d PV.
 DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remove até %d de %s de sí mesmo.
 DESC_DRAW,Draw %d reagents.,Compre %d reagentes.
 DESC_SHIELD,Gain %d shield until end of turn.,Ganhe %d de escudo até o fim do turno.
@@ -255,7 +264,7 @@ DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplica %d de %s a todos inimigos.
 DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflige %d de %s.
 DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
 DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
-DESC_SHORT_HEAL,Heals %d HP.,Cura %d de vida.
+DESC_SHORT_HEAL,Heals %d HP.,Cura %d PV.
 DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remove até %d de %s de sí mesmo.
 DESC_SHORT_DRAW,Draw %d reagents.,Compre %d reagentes.
 DESC_SHORT_SHIELD,Gain %d shield.,Ganhe %d de escudo.

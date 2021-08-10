@@ -53,9 +53,9 @@ func update_combination():
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
 	if combination.discovered:
-		if right_container:
+		if right_container and is_instance_valid(right_container):
 			right_container.queue_free()
-		if middle_container:
+		if middle_container and is_instance_valid(middle_container):
 			middle_container.queue_free()
 
 

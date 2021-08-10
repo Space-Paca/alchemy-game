@@ -99,39 +99,45 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -75.7186
-margin_top = -230.714
-margin_right = 228.281
-margin_bottom = -84.7134
-text = "Continue"
+margin_left = -25.3217
+margin_top = -240.793
+margin_right = 348.678
+margin_bottom = -94.7927
+text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -384.5
-margin_top = -145.514
-margin_right = 384.5
-margin_bottom = 0.486328
-text = "Heal 70 HP (70% max hp)"
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+margin_left = 473.73
+margin_top = 423.333
+margin_right = 1565.73
+margin_bottom = 745.333
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 30
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HintButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -443.341
-margin_top = 22.5198
-margin_right = 439.659
-margin_bottom = 168.52
-text = "Discover and Master 1 Recipe"
+[node name="HealButton" type="Button" parent="ButtonContainer"]
+margin_right = 1405.0
+margin_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HEAL_TEXT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintButton" type="Button" parent="ButtonContainer"]
+margin_top = 176.0
+margin_right = 1405.0
+margin_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DISCOVER_RECIPE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,7 +147,7 @@ anchor_right = 1.0
 margin_top = 250.0
 margin_bottom = 392.0
 custom_fonts/font = SubResource( 1 )
-text = "Choose only one"
+text = "CHOOSE_ONLY_ONE"
 align = 1
 valign = 1
 __meta__ = {
@@ -171,7 +177,8 @@ __meta__ = {
 }
 
 [node name="WarningTween" type="Tween" parent="Warning"]
+
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
-[connection signal="pressed" from="HealButton" to="." method="_on_HealButton_pressed"]
-[connection signal="pressed" from="HintButton" to="." method="_on_HintButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/HealButton" to="." method="_on_HealButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/HintButton" to="." method="_on_HintButton_pressed"]

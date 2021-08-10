@@ -60,7 +60,7 @@ func update_combination():
 
 
 func master_combination():
-	title.text = combination.recipe.name + "+"
+	title.text = tr(combination.recipe.name) + "+"
 	description.text = RecipeManager.get_description(combination.recipe, true)
 	texture = MASTERED_TEXTURE
 

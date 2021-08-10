@@ -38,6 +38,14 @@ HEAL_TEXT,Heal %d HP (%d%% max hp),Cura %d PV (%d%% da vida máx.)
 CANT_HEAL,CAN'T HEAL,NÃO PODE CURAR
 CANT_HEAL_SCHOLAR_MASK,Can't heal while wearing the Cursed Scholar's Mask,Não pode curar enquanto estiver usando a Máscara Amaldiçoada do Estudioso 
 DISCOVER_RECIPE,Discover and Master 1 Recipe,Descubra e Masterize 1 Receita
+FAVORITE_THIS_RECIPE,Favorite this Recipe,Favoritar esta Receita
+MASTERED_RECIPE_EXC,Mastered Recipe!,Receita Masterizada!
+DISC_MEMORIZED_RECIPE,Discovered Memorized Recipe!,Descobriu Receira Memorizada!
+DISC_NEW_RECIPE,Discovered New Recipe!,Descobriu Receita Nova!
+UNAVAILABLE_FAV_SLOT,Unavailable favorite slot,Sem espaço para favoritar
+ALREADY_FAV,Recipe already favorited,Receita já favoritada
+FAV_ERROR,Favorite this recipe on the recipes page\nafter you unfavorite another!,Favorite esta receita na página de receitas\napós você desfavoritar alguma outra!
+FAVORITED_EXC,Favorited!,Favoritada!
 CHOOSE,Choose,Escolher
 BACK,Back,Voltar
 APPLY,Apply,Aplicar

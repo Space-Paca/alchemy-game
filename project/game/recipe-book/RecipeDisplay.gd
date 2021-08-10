@@ -106,7 +106,7 @@ func preview_mode(is_mastered: bool):
 	if is_mastered:
 		description.text = RecipeManager.get_description(combination.recipe, true)
 		bg.texture = RECIPE_MASTERED_BG
-		title.text = title.text + "+"
+		title.text = tr(title.text) + "+"
 		
 
 func update_mastery(new_value: int, threshold: int):
@@ -141,7 +141,7 @@ func unlock_mastery(show_message := true) -> bool:
 	mastery_label.get_node("Mastery").text = "MASTERED"
 	mastery_label.get_node("Amount").text = ""
 	bg.texture = RECIPE_MASTERED_BG
-	title.text = title.text + "+"
+	title.text = tr(title.text) + "+"
 	if show_message:
 		MessageLayer.recipe_mastered(combination)
 	

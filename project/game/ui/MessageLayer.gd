@@ -41,7 +41,7 @@ func recipe_mastered(combination: Combination):
 	
 	favorite_button.show()
 	favorite_error_label.hide()
-	favorite_button.text = "Favorite this Recipe"
+	favorite_button.text = "FAVORITE_THIS_RECIPE"
 	favorite_button.disabled = false
 	
 	var display_normal = RECIPE_DISPLAY.instance()
@@ -55,7 +55,7 @@ func recipe_mastered(combination: Combination):
 	
 	arrow.show()
 	
-	title.text = "Mastered Recipe!"
+	title.text = "MASTERED_RECIPE_EXC"
 
 func new_recipe_discovered(combination: Combination):
 	$Control.show()
@@ -67,12 +67,12 @@ func new_recipe_discovered(combination: Combination):
 	if memorized:
 		favorite_button.show()
 		favorite_error_label.hide()
-		favorite_button.text = "Favorite this Recipe"
+		favorite_button.text = "FAVORITE_THIS_RECIPE"
 		favorite_button.disabled = false
-		title.text = "Discovered Memorized Recipe!"
+		title.text = "DISC_MEMORIZED_RECIPE"
 	else:
 		favorite_button.hide()
-		title.text = "Discovered New Recipe!"
+		title.text = "DISC_NEW_RECIPE"
 	
 	var display = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display)
@@ -102,9 +102,9 @@ func exit():
 
 func favorite_error(type):
 	if type == "unavailable":
-		favorite_button.text = "Unavailable favorite slot"
+		favorite_button.text = "UNAVAILABLE_FAV_SLOT"
 	elif type == "already_favorited":
-		favorite_button.text = "Recipe already favorited"
+		favorite_button.text = "ALREADY_FAV"
 	else:
 		push_error("Not a valid type of error:" + str(type))
 		
@@ -131,6 +131,6 @@ func _on_button_mouse_entered():
 
 
 func _on_FavoriteRecipe_pressed():
-	favorite_button.text = "Favorited!"
+	favorite_button.text = "FAVORITED_EXC"
 	favorite_button.disabled = true
 	emit_signal("favorite_recipe", current_combination)

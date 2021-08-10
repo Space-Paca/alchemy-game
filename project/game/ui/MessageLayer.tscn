@@ -99,11 +99,11 @@ __meta__ = {
 }
 
 [node name="FavoriteRecipe" type="Button" parent="Control/Buttons"]
-margin_left = 492.0
-margin_right = 1100.0
+margin_left = 364.0
+margin_right = 1158.0
 margin_bottom = 146.0
 theme = ExtResource( 3 )
-text = "Favorite this Recipe"
+text = "FAVORITE_THIS_RECIPE"
 
 [node name="FavoriteError" type="Label" parent="Control/Buttons/FavoriteRecipe"]
 margin_left = -270.0
@@ -111,19 +111,18 @@ margin_top = 100.0
 margin_right = 640.0
 margin_bottom = 247.0
 custom_fonts/font = SubResource( 2 )
-text = "Favorite this recipe on the recipes page
-after you unfavorite another!"
+text = "FAV_ERROR"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Continue" type="Button" parent="Control/Buttons"]
-margin_left = 1123.0
-margin_right = 1427.0
+margin_left = 1181.0
+margin_right = 1555.0
 margin_bottom = 146.0
 theme = ExtResource( 3 )
-text = "Continue"
+text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }

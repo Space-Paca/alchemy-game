@@ -10,6 +10,7 @@ onready var transmuting_reagent_tooltip = $TransmutingReagent/Reagent/TooltipCol
 onready var upgrading_reagent_tooltip = $UpgradingReagent/Reagent/TooltipCollision
 onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/TooltipCollision
 onready var dialog = $ShopkeeperDialogue
+onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/Label
 
 var player
 var map_node : MapNode
@@ -36,6 +37,7 @@ func setup(node, _player):
 	remove_transmuting_possibilities()
 
 func start():
+	dialog_label.bbcode_text = tr("REAGENTSMITH_DIALOG_1")
 	$AnimationPlayer.play("enter")
 
 func update_reagent_list(type: String):

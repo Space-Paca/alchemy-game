@@ -101,7 +101,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ShopkeeperDialogue/Panel:rect_size")
-tracks/4/interp = 2
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
@@ -240,15 +240,9 @@ custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "Oh hello hello adventurer, welcome to my forge!
-I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
-
-I can even [wave]transmute[/wave] them into better reagents, oh yes yes! But those will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]"
+bbcode_text = "REAGENTSMITH_DIALOG_1"
 visible_characters = 298
-text = "Oh hello hello adventurer, welcome to my forge!
-I can see you carry all sorts of trinkets in your bag... I can improve them, oh yes yes! ...if you spare me some precious pearls in return, of course hehehe
-
-I can even transmute them into better reagents, oh yes yes! But those will cost extra hehehe"
+text = "REAGENTSMITH_DIALOG_1"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -277,17 +271,17 @@ __meta__ = {
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
 margin_right = 650.0
-margin_bottom = 146.0
-text = "Upgrade reagent"
+margin_bottom = 51.0
+text = "UPGRADE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Transmute" type="Button" parent="MainButtons"]
-margin_top = 206.0
+margin_top = 111.0
 margin_right = 650.0
-margin_bottom = 352.0
-text = "Transfigure reagent"
+margin_bottom = 162.0
+text = "TRANSFIGURE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -316,16 +310,41 @@ margin_left = -331.793
 margin_top = 296.535
 margin_right = 348.207
 margin_bottom = 442.535
-text = "confirm upgrade (      )"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UpgradingReagent/ConfirmUpgrade"]
-margin_left = 542.639
-margin_top = 45.4299
-margin_right = 591.639
-margin_bottom = 109.43
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradingReagent/ConfirmUpgrade"]
+margin_left = 5.03967
+margin_top = 45.3572
+margin_right = 676.04
+margin_bottom = 96.3572
+custom_constants/separation = 17
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Label" parent="UpgradingReagent/ConfirmUpgrade/HBoxContainer"]
+margin_left = 82.0
+margin_right = 439.0
+margin_bottom = 51.0
+text = "CONFIRM_UPGRADE"
+
+[node name="Parentheses" type="Label" parent="UpgradingReagent/ConfirmUpgrade/HBoxContainer"]
+margin_left = 456.0
+margin_right = 588.0
+margin_bottom = 51.0
+text = "(           )"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="UpgradingReagent/ConfirmUpgrade/HBoxContainer/Parentheses"]
+margin_left = 20.1167
+margin_top = -4.56604
+margin_right = 69.1167
+margin_bottom = 59.4341
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-1 "
@@ -333,11 +352,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="UpgradingReagent/ConfirmUpgrade"]
-margin_left = 584.63
-margin_top = 50.6973
-margin_right = 840.63
-margin_bottom = 306.697
+[node name="TextureRect" type="TextureRect" parent="UpgradingReagent/ConfirmUpgrade/HBoxContainer/Parentheses"]
+margin_left = 63.3672
+margin_top = 0.701416
+margin_right = 319.367
+margin_bottom = 256.701
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
@@ -435,16 +454,38 @@ margin_left = -445.001
 margin_top = 301.767
 margin_right = 448.999
 margin_bottom = 447.767
-text = "Confirm transfiguration (      )"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade"]
-margin_left = 753.821
-margin_top = 45.076
-margin_right = 809.821
-margin_bottom = 138.075
+[node name="HBoxContainer" type="HBoxContainer" parent="TransmutingReagent/ConfirmUpgrade"]
+margin_left = -0.363159
+margin_top = 47.3636
+margin_right = 899.637
+margin_bottom = 98.3636
+custom_constants/separation = 19
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Label" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer"]
+margin_left = 105.0
+margin_right = 634.0
+margin_bottom = 51.0
+text = "CONFIRM_TRANSFIGURATION"
+
+[node name="Parentheses" type="Label" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer"]
+margin_left = 653.0
+margin_right = 795.0
+margin_bottom = 51.0
+text = "(            )"
+
+[node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer/Parentheses"]
+margin_left = 23.0082
+margin_top = -5.68085
+margin_right = 79.0082
+margin_bottom = 87.3181
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-2"
@@ -452,11 +493,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="TransmutingReagent/ConfirmUpgrade"]
-margin_left = 803.119
-margin_top = 53.125
-margin_right = 1111.12
-margin_bottom = 361.125
+[node name="TextureRect" type="TextureRect" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer/Parentheses"]
+margin_left = 72.3062
+margin_top = 2.36816
+margin_right = 380.307
+margin_bottom = 310.368
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 

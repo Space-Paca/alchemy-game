@@ -39,7 +39,7 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = ArtifactDB.get_tooltip(artifact.id)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
-							 tooltip.text, tooltip.title_image, tooltip.subtitle, true)
+							 tr(tooltip.text), tooltip.title_image, tooltip.subtitle, true)
 
 
 func _on_TooltipCollision_disable_tooltip():

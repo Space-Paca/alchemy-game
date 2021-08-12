@@ -25,7 +25,7 @@ func display_name_for_combination(combination, update_description : bool, master
 			recipe_description_label.text = ""
 			set_label_color(RED, OUTLINE_FONT)
 		else:
-			recipe_name_label.text = combination.recipe.name
+			recipe_name_label.text = tr(combination.recipe.name)
 			if mastered:
 				recipe_name_label.text += "+"
 			if update_description:

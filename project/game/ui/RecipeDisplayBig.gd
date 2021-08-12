@@ -78,9 +78,9 @@ func enable_tooltips():
 func disable_tooltips():
 	for reagent in grid.get_children():
 		reagent.disable_tooltips()
-	if left_column:
+	if left_column and is_instance_valid(left_column):
 		for reagent in left_column.get_children():
 			reagent.disable_tooltips()
-	if right_column:
+	if right_column and is_instance_valid(right_column):
 		for reagent in right_column.get_children():
 			reagent.disable_tooltips()

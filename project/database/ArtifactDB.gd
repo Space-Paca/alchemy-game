@@ -40,7 +40,7 @@ const COMMON = [
 		"id": "great_rest",
 		"name": "ART_GREAT_REST_NAME",
 		"image": preload("res://assets/images/artifacts/great_rest.png"),
-		"description": "ART__DESC",
+		"description": "ART_GREAT_REST_DESC",
 		"must_unlock": false,
 	},
 	{

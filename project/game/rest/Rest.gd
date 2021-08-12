@@ -91,7 +91,7 @@ func _on_HealButton_pressed():
 		var cur_a = warning.modulate.a
 		tween.stop_all()
 		tween.interpolate_property(warning, "modulate:a", cur_a, 1, (1-cur_a)*.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-		tween.interpolate_property(warning, "modulate:a", 1, 0, .3, Tween.TRANS_CUBIC, Tween.EASE_IN, 1.6)
+		tween.interpolate_property(warning, "modulate:a", 1, 0, .3, Tween.TRANS_CUBIC, Tween.EASE_IN, 4.6)
 		tween.start()
 	else:
 		AudioManager.play_sfx("heal")

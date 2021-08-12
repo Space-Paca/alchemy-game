@@ -122,7 +122,8 @@ __meta__ = {
 }
 
 [node name="HealButton" type="Button" parent="ButtonContainer"]
-margin_right = 1405.0
+margin_top = 95.0
+margin_right = 1092.0
 margin_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -133,8 +134,8 @@ __meta__ = {
 
 [node name="HintButton" type="Button" parent="ButtonContainer"]
 margin_top = 176.0
-margin_right = 1405.0
-margin_bottom = 322.0
+margin_right = 1092.0
+margin_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "DISCOVER_RECIPE"

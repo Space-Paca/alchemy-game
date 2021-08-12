@@ -3,9 +3,9 @@ extends VBoxContainer
 signal animation_finished
 
 const XP_MULT = [
-	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
-	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
-	{"normal": 1, "elite": 1, "monsters": 1, "map": 1},
+	{"normal": 10, "elite": 20, "monsters": 4, "map": 1},
+	{"normal": 15, "elite": 30, "monsters": 6, "map": 1.25},
+	{"normal": 20, "elite": 40, "monsters": 8, "map": 1.5},
 ]
 const REGION_XP = [100, 200, 300]
 

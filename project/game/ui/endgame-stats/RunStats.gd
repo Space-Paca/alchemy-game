@@ -3,7 +3,7 @@ extends Control
 signal animation_finished
 
 const FLOOR_STATS = preload("res://game/ui/endgame-stats/FloorStats.tscn")
-const XP_MULT = {"artifacts": 10, "discovered": 5, "mastered": 10}
+const XP_MULT = {"artifacts": 15, "discovered": 5, "mastered": 15}
 const THEME = preload("res://assets/themes/general_theme/general_theme.tres")
 
 var total_xp : int
@@ -11,7 +11,6 @@ var total_xp : int
 func _ready():
 	$Panel/VBoxContainer/TotalContainer/EP.change_text_value()
 	yield(get_tree(), "idle_frame")
-#	yield(get_tree().create_timer(.1), "timeout")
 	$Panel/VBoxContainer/TotalContainer/EP.change_text_value(0)
 
 

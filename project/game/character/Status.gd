@@ -37,7 +37,7 @@ func get_self_tooltip():
 	var tooltip = {}
 	var status_data = StatusDB.get_from_name(type)
 	tooltip.title = status_data.title_name
-	tooltip.text = status_data.description
+	tooltip.text = tr(status_data.description)
 	tooltip.title_image = status_data.image
 	tooltip.subtitle = "Status"
 	

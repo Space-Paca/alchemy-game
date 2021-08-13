@@ -11,11 +11,11 @@ var change_phase = null
 
 var states = ["init", "dodge", "attack", "big_attack"]
 var connections = [	      ["init", "big_attack", 1],
-						  ["big_attack", "dodge", 2],
+						  ["big_attack", "dodge", 1],
 						  ["big_attack", "attack", 5],
 						  ["dodge", "attack", 6],
 						  ["dodge", "big_attack", 3],
-						  ["attack", "dodge", 4],
+						  ["attack", "dodge", 3],
 						  ["attack", "attack", 5],
 						  ["attack", "big_attack", 2],
 				 ]

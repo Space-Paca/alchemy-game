@@ -124,6 +124,10 @@ REGULAR_DAMAGE,regular damage,dano normal
 PIERCING_DAMAGE,piercing damage,dano penetrante
 CRUSHING_DAMAGE,crushing damage,dano esmagador
 VENOM_DAMAGE,poison damage,dano venenoso
+COMMON_ARTIFACT,Common Artifact,Artefato Comum
+UNCOMMON_ARTIFACT,Uncommon Artifact,Artefato Incomum
+RARE_ARTIFACT,Rare Artifact,Artefato Raro
+EVENT_ARTIFACT,Event Artifact,Artefato de Evento
 ST_ARCANE_AEGIS_TITLE,Arcane Aegis,Égide Arcana
 ST_ARCANE_AEGIS_DESC,"Whenever this characters is attacked, if it wasn't shielded, gains shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar escudo"
 ST_ARCANE_AEGIS_INTENT,Casting Arcane Aegis,Formando Égide Arcana

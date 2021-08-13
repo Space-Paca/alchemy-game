@@ -315,7 +315,7 @@ static func get_tooltip(id: String) -> Dictionary:
 	tooltip.title = artifact.name
 	tooltip.title_image = artifact.image
 	tooltip.text = artifact.description
-	tooltip.subtitle = get_rarity_from_name(artifact.id) + " Artifact"
+	tooltip.subtitle = get_rarity_from_name(artifact.id)
 	
 	return tooltip
 
@@ -323,16 +323,16 @@ static func get_tooltip(id: String) -> Dictionary:
 static func get_rarity_from_name(id: String) -> String:
 	for artifact in COMMON:
 			if artifact.id == id:
-				return "Common"
+				return "COMMON_ARTIFACT"
 	for artifact in UNCOMMON:
 		if artifact.id == id:
-			return "Uncommon"
+			return "UNCOMMON_ARTIFACT"
 	for artifact in RARE:
 		if artifact.id == id:
-			return "Rare"
+			return "RARE_ARTIFACT"
 	for artifact in EVENT:
 		if artifact.id == id:
-			return "Event"
+			return "EVENT_ARTIFACT"
 	
 	assert(false, "Given type of artifact doesn't exist: " + str(id))
 	return ""

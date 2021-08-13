@@ -1,11 +1,29 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=29 format=2]
 
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0000_poeira.png" type="Texture" id=1]
 [ext_resource path="res://game/shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://game/shop/ShopRecipe.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/images/background/shop.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0003_vendedora.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://game/ui/ClickableReagentList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0004_fg-2.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000_lamparina.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0006_rettrato.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0000s_0001_palpebra.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0005_bau.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0009_bg.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0000s_0000_oculos.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0005_papel.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0003_fg-1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0002_GLOW--janela.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0001_raio-d-luz.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0000s_0002_olho.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0001_moedas.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0008_objetos--bg.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0007_mesa.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0007_fg3.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0002_potes-de-vidro.png" type="Texture" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
@@ -46,7 +64,187 @@ anchor_right = 0.979903
 anchor_bottom = 0.964272
 margin_right = 40.0
 margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGObjects" type="TextureRect" parent="BG"]
+margin_left = 894.892
+margin_top = 11.2994
+margin_right = 1776.89
+margin_bottom = 695.299
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FG2" type="TextureRect" parent="BG"]
+margin_left = -0.784332
+margin_top = -0.437166
+margin_right = 313.216
+margin_bottom = 1079.56
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FG1" type="TextureRect" parent="BG"]
+margin_left = -0.797882
+margin_top = -1.42026
+margin_right = 869.202
+margin_bottom = 1078.58
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FG3" type="TextureRect" parent="BG"]
+margin_left = 742.448
+margin_top = -0.176363
+margin_right = 1919.45
+margin_bottom = 401.824
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lamp" type="TextureRect" parent="BG"]
+margin_left = 1702.51
+margin_top = -5.21604
+margin_right = 1879.51
+margin_bottom = 244.784
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="BG"]
+margin_left = 1016.6
+margin_top = 157.336
+margin_right = 1154.6
+margin_bottom = 323.336
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowGlow" type="TextureRect" parent="BG"]
+margin_left = -1.41431
+margin_top = -1.41422
+margin_right = 38.5857
+margin_bottom = 38.5858
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dust" type="TextureRect" parent="BG"]
+margin_left = 346.324
+margin_top = 122.058
+margin_right = 959.324
+margin_bottom = 753.058
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LightRay" type="TextureRect" parent="BG"]
+margin_left = 207.364
+margin_top = 38.9944
+margin_right = 1271.36
+margin_bottom = 962.994
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chest" type="TextureRect" parent="BG"]
+margin_left = 1681.21
+margin_top = 706.916
+margin_right = 1919.21
+margin_bottom = 1078.92
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Table" type="TextureRect" parent="BG"]
+margin_left = 837.693
+margin_top = 638.626
+margin_right = 1760.69
+margin_bottom = 1024.63
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paper" type="TextureRect" parent="BG/Table"]
+margin_left = 577.044
+margin_top = 42.8375
+margin_right = 933.044
+margin_bottom = 191.837
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="TextureRect" parent="BG/Table"]
+margin_left = 350.258
+margin_top = 138.591
+margin_right = 694.258
+margin_bottom = 243.591
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Witch" type="TextureRect" parent="."]
+margin_left = 947.461
+margin_top = 156.23
+margin_right = 1714.46
+margin_bottom = 815.23
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Eye" type="TextureRect" parent="Witch"]
+margin_left = 262.064
+margin_top = 196.548
+margin_right = 326.064
+margin_bottom = 262.548
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EyeLid" type="TextureRect" parent="Witch"]
+margin_left = 246.944
+margin_top = 188.988
+margin_right = 341.944
+margin_bottom = 233.988
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glasses" type="TextureRect" parent="Witch"]
+margin_left = 236.865
+margin_top = 166.31
+margin_right = 352.865
+margin_bottom = 288.31
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TableGlass" type="TextureRect" parent="."]
+margin_left = 881.945
+margin_top = 478.77
+margin_right = 1744.94
+margin_bottom = 906.77
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

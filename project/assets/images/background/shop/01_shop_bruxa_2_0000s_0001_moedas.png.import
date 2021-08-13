@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.jpg-6f6439e6d3d63eabc0280c5c80b9b153.stex"
+path="res://.import/01_shop_bruxa_2_0000s_0001_moedas.png-4e798e54d5c8bd28f348286edf7ba54b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/shop/bg.jpg"
-dest_files=[ "res://.import/bg.jpg-6f6439e6d3d63eabc0280c5c80b9b153.stex" ]
+source_file="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0001_moedas.png"
+dest_files=[ "res://.import/01_shop_bruxa_2_0000s_0001_moedas.png-4e798e54d5c8bd28f348286edf7ba54b.stex" ]
 
 [params]
 

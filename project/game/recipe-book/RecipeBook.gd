@@ -49,6 +49,7 @@ var player : Player
 func _ready():
 	discard_bag.disable()
 	draw_bag.disable()
+	disable_tooltips()
 	no_recipes_label.modulate.a = 0
 
 
@@ -195,6 +196,8 @@ func enable_tooltips():
 	#Bag reagents
 	for reagent in reagent_container.get_children():
 		reagent.enable_tooltips()
+	#Player info
+	$Background/LeftSide/PlayerInfo.enable_tooltips()
 
 
 func disable_tooltips():
@@ -207,6 +210,8 @@ func disable_tooltips():
 	#Bag reagents
 	for reagent in reagent_container.get_children():
 		reagent.disable_tooltips()
+	#Player info
+	$Background/LeftSide/PlayerInfo.disable_tooltips()
 
 
 func toggle_visibility():

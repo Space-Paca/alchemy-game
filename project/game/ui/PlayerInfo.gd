@@ -123,6 +123,7 @@ func disable_tooltips():
 	remove_tooltips()
 	for artifact in $BG/Artifacts.get_children():
 		artifact.disable()
+	
 	block_tooltips = true
 
 

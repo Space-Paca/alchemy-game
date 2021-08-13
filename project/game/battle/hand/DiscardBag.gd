@@ -83,6 +83,7 @@ func discard(reagent):
 	
 	reagent.speed_mod = 1
 	reagent.effect_mod = 1
+	reagent.unhighlight()
 	emit_signal("reagent_discarded", reagent)
 	add_reagent(reagent)
 

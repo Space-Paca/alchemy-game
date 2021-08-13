@@ -272,7 +272,7 @@ func remove_reagent(type: String, upgraded: bool):
 
 #༼ つ ◕_◕ ༽つ༼
 func destroy_reagent(index: int):
-	increase_stat("reagent_removed")
+	increase_stat("reagents_removed")
 	bag.remove(index)
 	sort_bag()
 	emit_signal("bag_updated", bag)

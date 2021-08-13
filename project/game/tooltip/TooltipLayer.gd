@@ -45,7 +45,7 @@ var keywords = {
 		"type": "tooltip",
 		"title": "Drain",
 		"text": "Deals regular damage and heals any unblocked damage.",
-		"title_image": preload("res://assets/images/intents/attack_crushing.png"),
+		"title_image": preload("res://assets/images/intents/attack_drain.png"),
 	},
 	"unstable": {
 		"type": "tooltip",

@@ -32,16 +32,16 @@ func update_display():
 		buy_cost /= 2
 		hint_cost /= 2
 	
-	buy_button.text = "Buy Recipe (%d)" % buy_cost
-	hint_button.text = "Buy Hint (%d)" % hint_cost
+	buy_button.text = tr("BUY_RECIPE")+" (%d)" % buy_cost
+	hint_button.text = tr("BUY_HINT")+" (%d)" % hint_cost
 	
 	if combination.discovered:
 		buy_button.disabled = true
 		hint_button.visible = false
-		buy_button.text = "Already known"
+		buy_button.text = "ALREADY_KNOWN"
 	elif combination.hints >= 2:
 		hint_button.disabled = true
-		hint_button.text = "Buy Hint"
+		hint_button.text = "BUY_HINT"
 
 
 func enable_tooltips():

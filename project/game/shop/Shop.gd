@@ -9,6 +9,8 @@ onready var recipes = $RecipeMenu/HBoxContainer
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
 onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroyLabel
+onready var dialog_label = $ShopMenu/ShopkeeperDialogue/Panel/CenterContainer/Label
+onready var panel = $ShopMenu/ShopkeeperDialogue/Panel
 # MENUS
 onready var shop_menu = $ShopMenu
 onready var reagents_menu = $ReagentsMenu
@@ -17,7 +19,7 @@ onready var recipe_menu = $RecipeMenu
 enum States {MENU, RECIPES, REAGENTS}
 
 const DESTROY_COST := 30
-const DESTROY_TEXT := "Are you sure you want to destroy %s reagent for %d gold?"
+const DIALOG_SPEED := 25
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 
 var chosen_reagent_index : int
@@ -26,7 +28,7 @@ var curr_state = States.MENU
 var shown_combinations := []
 
 
-func setup(combinations: Array, _player: Player):
+func first_setup(combinations: Array, _player: Player):
 	player = _player
 	update_reagents()
 	
@@ -45,6 +47,26 @@ func setup(combinations: Array, _player: Player):
 		else:
 			print("Shop.gd: Not enough combinations to fill shop")
 			recipe.hide()
+
+func setup():
+	update_combinations()
+	update_reagents()
+	dialog_label.percent_visible = 0
+	panel.rect_size.y = 60
+
+func start():
+	dialog_label.text = tr("SHOP_DIALOG_1")
+	dialog_label.bbcode_text = tr("SHOP_DIALOG_1")
+	yield(get_tree(), "idle_frame") #necessary just while we dont have animation
+	start_dialogue()
+	#$AnimationPlayer.play("enter")
+
+
+func start_dialogue():
+	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
+	$Tween.interpolate_property(dialog_label, "percent_visible", 0, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 330, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
 
 
 func update_combinations():
@@ -108,10 +130,10 @@ func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 	chosen_reagent_index = reagent_index
 	
 	reagent_destroy_label.show()
-	var reagent_name = ReagentManager.get_data(reagent).name
+	var reagent_name = tr(ReagentManager.get_data(reagent).name)
 	if upgraded:
 		reagent_name += "+"
-	reagent_destroy_label.text = DESTROY_TEXT % [reagent_name, DESTROY_COST]
+	reagent_destroy_label.text = tr("DESTROY_REAGENT") % [reagent_name, DESTROY_COST]
 
 
 func _on_YesButton_pressed():

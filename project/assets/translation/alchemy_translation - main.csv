@@ -9,7 +9,9 @@ SAVE_RETURN_DESKTOP,Save & Exit to Desktop,Salvar e Sair do Jogo
 ARE_YOU_SURE,Are you sure?,Tem certeza?
 ARE_YOU_SURE_EXIT,Are you sure you want to exit the game?,Tem certeza que quer sair do jogo?
 YES,Yes,Sim
+YES_EXC,Yes!,Sim!
 NO,No,Não
+SECOND_THOUGHT,On second thought...,Pensando bem...
 EXIT_DESKTOP,Exit to Desktop,Sair do Jogo
 GAME_PAUSED,Game Paused,Jogo Pausado
 VIDEO,Video,Gráficos
@@ -51,13 +53,24 @@ UPGRADE_REAGENT,Upgrade Reagent,Melhorar Reagente
 TRANSFIGURE_REAGENT,Transfigure Reagent,Transfigurar Reagente
 CONFIRM_UPGRADE,Confirm Upgrade,Confirmar Melhoria
 CONFIRM_TRANSFIGURATION,Confirm Transfiguration,Confirmar Transfiguração
-REAGENTSMITH_DIALOG_1,"Oh hello hello adventurer, welcome to my forge!
+REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
-
-I can even [wave]transfigure[/wave] them into better reagents, oh yes yes! But that will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]","Oh olá olá aventureiro, bem vindo a minha forja!
+                  
+I can even [wave]transfigure[/wave] them into better reagents, oh yes yes! But that will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]""","""Oh olá olá aventureiro, bem vindo a minha forja!
 Posso ver que você carrega todo tipo de [shake]muambas[/shake] nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [shake][i]hehehe[/i][/shake]
+              
+Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais [shake]caro[/shake] [shake][i]hehehe[/i][/shake]"""
+SHOP_RECIPES,Shop for Recipes,Comprar Receitas
+RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
+DESTROY_REAGENT,Are you sure you want to destroy %s  for %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?
+BUY_RECIPE,Buy Recipe,Comprar Receita
+BUY_HINT,Buy Hint,Comprar Dica
+ALREADY_KNOWN,Already Known,Já Conhecida
+SHOP_DIALOG_1,"""Hey there honey, stop by and take a look at my wares. I collect all sorts of recipes from fallen adventurers that... [shake]don't need it anymore [wave]hohoho[/wave][/shake]
 
-Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais [shake]caro[/shake] [shake][i]hehehe[/i][/shake]"
+I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. I would LOVE to do that for you... [shake]for a small price [wave]hohoho[/wave][/shake]""","""Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... [shake]não precisam mais [wave]hohoho[/wave][/shake]
+
+Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... [shake]por um pequeno preço [wave]hohoho[/wave][/shake]"""
 LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar

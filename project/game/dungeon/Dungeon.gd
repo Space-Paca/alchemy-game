@@ -352,7 +352,7 @@ func setup_shop():
 		if shop_combinations.size() == i:
 			shop_combinations.append(null)
 	
-	shop.setup(shop_combinations, player)
+	shop.first_setup(shop_combinations, player)
 
 
 func is_single_reagent(reagent_matrix):
@@ -575,12 +575,12 @@ func open_shop():
 		first_shop_visit = false
 		setup_shop()
 	
-	shop.update_combinations()
-	shop.update_reagents()
+	shop.setup()
 	shop.show()
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
+	shop.start()
 	time_running = true
 
 

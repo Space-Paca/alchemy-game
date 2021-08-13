@@ -266,7 +266,7 @@ margin_top = -160.0
 margin_right = -606.0
 margin_bottom = -14.0
 theme = ExtResource( 7 )
-text = "Shop for recipes"
+text = "SHOP_RECIPES"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,7 +281,7 @@ margin_top = -160.0
 margin_right = -14.9999
 margin_bottom = -14.0
 theme = ExtResource( 7 )
-text = "Get rid of reagents"
+text = "RID_REAGENTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -300,8 +300,8 @@ polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418
 margin_left = -383.0
 margin_top = -427.0
 margin_right = 517.0
-margin_bottom = -127.0
-rect_min_size = Vector2( 900, 300 )
+margin_bottom = -87.0
+rect_min_size = Vector2( 900, 0 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -310,26 +310,26 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="ShopMenu/ShopkeeperDialogue/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 900, 340 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="RichTextLabel" parent="ShopMenu/ShopkeeperDialogue/Panel/CenterContainer"]
 margin_left = 25.0
-margin_top = 20.0
 margin_right = 875.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 850, 260 )
+margin_bottom = 340.0
+rect_min_size = Vector2( 850, 340 )
 custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... [shake][i]hmm so tasty[/i][/shake]
+bbcode_text = "\"Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... [shake]não precisam mais [wave]hohoho[/wave][/shake]
 
-I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price [wave]he he he...[/wave]"
-text = "Hey there traveller, stop by and take a look at my wares. I collected all sorts of recipes from fallen adventurers... hmm so tasty
+Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... [shake]por um pequeno preço [wave]hohoho[/wave][/shake]\""
+text = "\"Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... não precisam mais hohoho
 
-I bet you would also like to get rid of some of those pesky reagents that find their way back into your magic satchel, I can do that for you... for a small price he he he..."
+Aposto que você adoraria se livrar de alguns desses reagentes indesejados que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... por um pequeno preço hohoho\""
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -382,7 +382,7 @@ margin_top = 388.551
 margin_right = 1225.74
 margin_bottom = 433.551
 custom_fonts/font = SubResource( 4 )
-text = "Get rid of reagent for 50 gold?"
+text = "REMOVE_REAGENT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ReagentsMenu/ReagentDestroyLabel"]
 anchor_top = 1.0
@@ -396,17 +396,17 @@ __meta__ = {
 }
 
 [node name="YesButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_right = 91.0
-margin_bottom = 91.0
+margin_right = 305.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
-text = "Yes!"
+text = "YES_EXC"
 
 [node name="NoButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_left = 131.0
-margin_right = 400.0
-margin_bottom = 91.0
+margin_left = 345.0
+margin_right = 779.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
-text = "On second thought..."
+text = "SECOND_THOUGHT"
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 46.6164
@@ -418,6 +418,10 @@ text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]

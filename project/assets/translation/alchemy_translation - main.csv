@@ -54,7 +54,10 @@ CONFIRM_TRANSFIGURATION,Confirm Transfiguration,Confirmar Transfiguração
 REAGENTSMITH_DIALOG_1,"Oh hello hello adventurer, welcome to my forge!
 I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
 
-I can even [wave]transmute[/wave] them into better reagents, oh yes yes! But those will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]",
+I can even [wave]transfigure[/wave] them into better reagents, oh yes yes! But that will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]","Oh olá olá aventureiro, bem vindo a minha forja!
+Posso ver que você carrega todo tipo de [shake]muambas[/shake] nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [shake][i]hehehe[/i][/shake]
+
+Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais [shake]caro[/shake] [shake][i]hehehe[/i][/shake]"
 BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio

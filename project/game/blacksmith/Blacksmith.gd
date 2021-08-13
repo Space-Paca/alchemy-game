@@ -3,6 +3,7 @@ extends Control
 signal closed
 
 const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn")
+const DIALOG_SPEED = 25
 
 onready var reagent_list = $ClickableReagentList
 onready var main_buttons = $MainButtons
@@ -11,6 +12,7 @@ onready var upgrading_reagent_tooltip = $UpgradingReagent/Reagent/TooltipCollisi
 onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/TooltipCollision
 onready var dialog = $ShopkeeperDialogue
 onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/Label
+onready var panel = $ShopkeeperDialogue/Panel
 
 var player
 var map_node : MapNode
@@ -39,6 +41,14 @@ func setup(node, _player):
 func start():
 	dialog_label.bbcode_text = tr("REAGENTSMITH_DIALOG_1")
 	$AnimationPlayer.play("enter")
+
+
+func start_dialogue():
+	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
+	$Tween.interpolate_property(dialog_label, "visible_characters", 0, dialog_label.get_total_character_count()-1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.9, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+
 
 func update_reagent_list(type: String):
 	index_map = []
@@ -168,7 +178,6 @@ func _on_ClickableReagentList_reagent_pressed(reagent_name: String, reagent_inde
 				reagent.activate()
 	else:
 		assert(false, "Not a valid state when clicking reagents: " + str(state))
-
 
 
 func _on_ConfirmUpgrade_pressed():

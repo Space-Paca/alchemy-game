@@ -70,6 +70,9 @@ func _ready():
 	Debug.connect("battle_won", self, "_on_Debug_battle_won")
 # warning-ignore:return_value_discarded
 	Debug.connect("died", self, "_on_player_died")
+	
+	#Hoping to fix dim screen bug
+	targeting_interface.end()
 
 func _input(event):
 	if not TutorialLayer.is_active() and not recipe_book_visible:

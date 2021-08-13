@@ -1,356 +1,44 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/ui/Box Recipe Tips.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/ui/Choose Button.png" type="Texture" id=3]
+[ext_resource path="res://game/ui/RecipeDisplayBig.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=2]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.gd" type="Script" id=4]
-[ext_resource path="res://game/recipe-book/ReagentDisplay.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/images/ui/SpellName Holder.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 70
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 6 )
 
 [node name="WinRecipe" type="TextureRect"]
-margin_right = 600.0
-margin_bottom = 900.0
-rect_min_size = Vector2( 600, 900 )
-texture = ExtResource( 1 )
+margin_right = 640.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 640, 1080 )
+theme = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NameBanner" type="TextureRect" parent="."]
-margin_left = 50.0
-margin_top = 120.0
-margin_right = 550.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 0, 50 )
-mouse_filter = 2
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RecipeName" type="Label" parent="NameBanner"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -2.0
-margin_right = 3.05176e-05
-margin_bottom = -10.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Recipe Name"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="RecipeDisplayBig" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -146.0
-margin_top = 166.919
-margin_right = 146.0
-margin_bottom = 458.919
-rect_min_size = Vector2( 292, 292 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -440.0
+margin_right = 300.0
+margin_bottom = 360.0
 
-[node name="RecipeGrid" type="GridContainer" parent="CenterContainer"]
-margin_right = 292.0
-margin_bottom = 292.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ChooseButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -169.0
+margin_top = -280.0
+margin_right = 169.0
+margin_bottom = -173.0
 size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Reagent1" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_right = 70.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent2" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 74.0
-margin_right = 144.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent3" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 148.0
-margin_right = 218.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent4" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 222.0
-margin_right = 292.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent5" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_top = 74.0
-margin_right = 70.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent6" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 74.0
-margin_top = 74.0
-margin_right = 144.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent7" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 148.0
-margin_top = 74.0
-margin_right = 218.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent8" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 222.0
-margin_top = 74.0
-margin_right = 292.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent9" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_top = 148.0
-margin_right = 70.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent10" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 74.0
-margin_top = 148.0
-margin_right = 144.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent11" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 148.0
-margin_top = 148.0
-margin_right = 218.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent12" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 222.0
-margin_top = 148.0
-margin_right = 292.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent13" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_top = 222.0
-margin_right = 70.0
-margin_bottom = 292.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent14" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 74.0
-margin_top = 222.0
-margin_right = 144.0
-margin_bottom = 292.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent15" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 148.0
-margin_top = 222.0
-margin_right = 218.0
-margin_bottom = 292.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="Reagent16" parent="CenterContainer/RecipeGrid" instance=ExtResource( 5 )]
-margin_left = 222.0
-margin_top = 222.0
-margin_right = 292.0
-margin_bottom = 292.0
-rect_min_size = Vector2( 70, 70 )
-
-[node name="ReagentsNeeded" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = 461.327
-margin_right = -355.0
-margin_bottom = -412.673
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Reagents Needed:"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReagentContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -264.066
-margin_top = 458.904
-margin_right = 85.9339
-margin_bottom = 558.904
-rect_min_size = Vector2( 350, 100 )
-rect_scale = Vector2( 1.5, 1.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReagentList" type="GridContainer" parent="ReagentContainer"]
-margin_left = 41.0
-margin_top = 18.0
-margin_right = 309.0
-margin_bottom = 82.0
-columns = 8
-
-[node name="ReagentDisplay1" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-
-[node name="ReagentDisplay2" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 34.0
-margin_right = 64.0
-
-[node name="ReagentDisplay3" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 68.0
-margin_right = 98.0
-
-[node name="ReagentDisplay4" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 102.0
-margin_right = 132.0
-
-[node name="ReagentDisplay5" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 136.0
-margin_right = 166.0
-
-[node name="ReagentDisplay6" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 170.0
-margin_right = 200.0
-
-[node name="ReagentDisplay7" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 204.0
-margin_right = 234.0
-
-[node name="ReagentDisplay8" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 238.0
-margin_right = 268.0
-
-[node name="ReagentDisplay9" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_top = 34.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay10" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 34.0
-margin_top = 34.0
-margin_right = 64.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay11" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 68.0
-margin_top = 34.0
-margin_right = 98.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay12" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 102.0
-margin_top = 34.0
-margin_right = 132.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay13" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 136.0
-margin_top = 34.0
-margin_right = 166.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay14" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 170.0
-margin_top = 34.0
-margin_right = 200.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay15" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 204.0
-margin_top = 34.0
-margin_right = 234.0
-margin_bottom = 64.0
-
-[node name="ReagentDisplay16" parent="ReagentContainer/ReagentList" instance=ExtResource( 5 )]
-margin_left = 238.0
-margin_top = 34.0
-margin_right = 268.0
-margin_bottom = 64.0
-
-[node name="DescriptionLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -173.811
-margin_top = 584.146
-margin_right = 176.189
-margin_bottom = 634.146
-rect_min_size = Vector2( 350, 50 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "This is some example text"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChooseButton" type="TextureButton" parent="."]
-margin_left = 114.0
-margin_top = 730.0
-margin_right = 485.0
-margin_bottom = 837.0
-size_flags_horizontal = 4
-texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ChooseButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -22.0
-margin_bottom = -4.0
-custom_fonts/font = SubResource( 4 )
 text = "Get Hint"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="ChooseButton" to="." method="_on_ChooseButton_pressed"]

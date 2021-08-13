@@ -5,10 +5,9 @@ signal reagent_sold
 
 onready var get_button = $GetButton
 onready var sell_button = $SellButton
-onready var sell_label = $SellButton/Label
-onready var texture_rect = $TextureRect
+onready var texture_rect = $Frame/Reagent
 
-const TEXT = "Transmute (%d gold)"
+const TEXT = "Transmute: +%d"
 
 var reagent : String
 var upgraded := false
@@ -24,12 +23,12 @@ func set_reagent(reagent_name: String, player: Player):
 	
 	if player.has_artifact("cursed_pearls"):
 		gold_value = gold_value/2
-		sell_label.modulate = Color(.45,0,0)
-	else:
-		sell_label.modulate = Color(1,1,1)
+#		sell_label.modulate = Color(.45,0,0)
+#	else:
+#		sell_label.modulate = Color(1,1,1)
 	
 	texture_rect.texture = ReagentDB.DB[reagent].image
-	sell_label.text = TEXT % gold_value
+	sell_button.text = TEXT % gold_value
 
 func disable_tooltip():
 	tooltip_enabled = false

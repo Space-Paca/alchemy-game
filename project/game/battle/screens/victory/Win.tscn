@@ -1,32 +1,208 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://assets/images/ui/recipe_hint_button.png" type="Texture" id=1]
+[ext_resource path="res://assets/themes/general_theme/h_scroller.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/ui/Continue to map Button.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/Continue to map Button2.png" type="Texture" id=4]
+[ext_resource path="res://assets/themes/general_theme/h_scroll.png" type="Texture" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/ui/pearl_button.png" type="Texture" id=8]
+[ext_resource path="res://assets/themes/general_theme/scrollerH.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/images/ui/loot/title loot screen.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/images/ui/loot/loot_window2_scrolls.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/loot/slot_reward.png" type="Texture" id=13]
+[ext_resource path="res://assets/themes/general_theme/default_button_disabled.png" type="Texture" id=14]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/ui/loot/scroll_bg.png" type="Texture" id=16]
+[ext_resource path="res://assets/themes/general_theme/default_button_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/themes/general_theme/h_scroller_hover.png" type="Texture" id=19]
+[ext_resource path="res://assets/themes/general_theme/default_button.png" type="Texture" id=20]
+[ext_resource path="res://assets/themes/general_theme/default_button_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/themes/general_theme/scroller_hoverH.png" type="Texture" id=22]
+[ext_resource path="res://assets/themes/general_theme/scroller_pressedH.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/ui/loot/scroller_iron.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
-size = 72
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.156863 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 64
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 14 )
+region_rect = Rect2( 5, 5, 294, 86 )
+margin_left = 100.0
+margin_right = 100.0
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 18 )
+region_rect = Rect2( 5, 5, 294, 86 )
+margin_left = 100.0
+margin_right = 100.0
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 20 )
+region_rect = Rect2( 5, 5, 294, 86 )
+margin_left = 100.0
+margin_right = 100.0
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 21 )
+region_rect = Rect2( 5, 5, 294, 86 )
+margin_left = 100.0
+margin_right = 100.0
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 31.9245
+margin_right = 29.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 33.0
+margin_right = 30.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 32.0
+margin_right = 28.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 164, 29 )
+margin_left = 29.0
+margin_right = 28.0
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 4 )
+region_rect = Rect2( 30, 0, 100, 29 )
+margin_left = 27.9335
+margin_right = 29.4037
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 34.9905
+margin_bottom = 35.0
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+modulate_color = Color( 1.2, 1.2, 1.2, 1 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 35.0
+margin_bottom = 35.0
+modulate_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 29, 164 )
+margin_top = 28.4318
+margin_bottom = 27.1395
+
+[sub_resource type="DynamicFont" id=18]
+size = 40
 use_mipmaps = true
 use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=19]
+default_font = SubResource( 18 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.47451, 0.47451, 0.47451, 0.517647 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 0.686275 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 2 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 6 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 7 )
+HScrollBar/styles/grabber_highlight = SubResource( 8 )
+HScrollBar/styles/grabber_pressed = SubResource( 9 )
+HScrollBar/styles/scroll = SubResource( 10 )
+HScrollBar/styles/scroll_focus = null
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_disabled = ExtResource( 15 )
+HSlider/icons/grabber_highlight = ExtResource( 19 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 11 )
+HSlider/styles/grabber_area_highlight = SubResource( 12 )
+HSlider/styles/slider = SubResource( 13 )
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 14 )
+VScrollBar/styles/grabber_highlight = SubResource( 15 )
+VScrollBar/styles/grabber_pressed = SubResource( 16 )
+VScrollBar/styles/scroll = SubResource( 17 )
+VScrollBar/styles/scroll_focus = null
+
+[sub_resource type="DynamicFont" id=20]
+size = 60
+outline_size = 4
+outline_color = Color( 0, 0, 0, 0.286275 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = 8
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=22]
 size = 48
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 11 )
 
 [node name="Win" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -34,20 +210,30 @@ script = ExtResource( 2 )
 [node name="BG" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 19 )
 color = Color( 0, 0, 0, 0.752941 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BG"]
+[node name="Title" type="TextureRect" parent="BG"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -488.5
-margin_right = 488.5
-margin_bottom = 78.0
-custom_fonts/font = SubResource( 1 )
-text = "Collect your rewards:"
+margin_left = -345.0
+margin_right = 345.0
+margin_bottom = 173.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BG/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 20 )
+text = "Collect your rewards"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,178 +254,166 @@ __meta__ = {
 }
 
 [node name="WinRecipe1" parent="BG/MovingScreen/RecipesContainer" instance=ExtResource( 5 )]
-margin_left = 56.0001
-margin_top = 90.0
-margin_right = 656.0
-margin_bottom = 990.0
 
 [node name="WinRecipe2" parent="BG/MovingScreen/RecipesContainer" instance=ExtResource( 5 )]
-margin_left = 660.0
-margin_top = 90.0
-margin_right = 1260.0
-margin_bottom = 990.0
+margin_left = 640.0
+margin_right = 1280.0
 
 [node name="WinRecipe3" parent="BG/MovingScreen/RecipesContainer" instance=ExtResource( 5 )]
-margin_left = 1264.0
-margin_top = 90.0
-margin_right = 1864.0
-margin_bottom = 990.0
+margin_left = 1280.0
+margin_right = 1920.0
 
-[node name="BackButton" type="TextureButton" parent="BG/MovingScreen/RecipesContainer"]
+[node name="BackButton" type="Button" parent="BG/MovingScreen/RecipesContainer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -154.0
-margin_top = -91.0
-margin_right = 154.0
-texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="BG/MovingScreen/RecipesContainer/BackButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -17.0
-margin_bottom = -7.0
-custom_fonts/font = SubResource( 2 )
+margin_left = -138.5
+margin_top = -120.0
+margin_right = 138.5
+margin_bottom = -20.0
+rect_min_size = Vector2( 0, 100 )
 text = "Back"
-align = 1
-valign = 1
+
+[node name="LootBackground" type="TextureRect" parent="BG/MovingScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -600.0
+margin_top = -900.0
+margin_right = 600.0
+margin_bottom = -20.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG/MovingScreen"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/MovingScreen/LootBackground"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -366.5
-margin_top = -300.0
-margin_right = 366.5
+margin_left = -368.0
+margin_top = -380.0
+margin_right = 400.0
 margin_bottom = 300.0
-rect_min_size = Vector2( 733, 600 )
 theme = ExtResource( 6 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RewardsContainer" type="VBoxContainer" parent="BG/MovingScreen/ScrollContainer"]
-margin_right = 721.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 721, 0 )
+[node name="RewardsContainer" type="VBoxContainer" parent="BG/MovingScreen/LootBackground/ScrollContainer"]
+margin_right = 735.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 735, 0 )
 custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PearlContainer" type="HBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
+[node name="PearlContainer" type="HBoxContainer" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
 visible = false
-margin_right = 721.0
-margin_bottom = 91.0
+margin_right = 735.0
+margin_bottom = 96.0
+custom_constants/separation = 0
 
-[node name="Pearl" type="TextureRect" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
-margin_right = 80.0
-margin_bottom = 91.0
+[node name="Frame" type="TextureRect" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer"]
+margin_right = 117.0
+margin_bottom = 96.0
+texture = ExtResource( 13 )
+stretch_mode = 6
+
+[node name="Pearl" type="TextureRect" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Frame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 80, 80 )
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
-margin_left = 84.0
-margin_top = 4.0
-margin_right = 234.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 150, 80 )
-custom_fonts/font = SubResource( 3 )
+[node name="Label" type="Label" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer"]
+margin_left = 117.0
+margin_top = 8.0
+margin_right = 247.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 130, 80 )
+custom_fonts/font = SubResource( 22 )
 text = "x 1"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer"]
-margin_left = 238.0
-margin_right = 721.0
-margin_bottom = 91.0
-texture_normal = ExtResource( 8 )
-
-[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -10.0
-margin_bottom = -10.0
-custom_fonts/font = SubResource( 3 )
+[node name="Button" type="Button" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer"]
+margin_left = 247.0
+margin_right = 735.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 488, 0 )
 text = "Collect Pearls"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
-margin_right = 721.0
+[node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
+margin_right = 735.0
 
-[node name="RecipesButton" type="TextureButton" parent="BG/MovingScreen/ScrollContainer/RewardsContainer"]
+[node name="RecipesButton" type="Button" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
+margin_left = 132.0
 margin_top = 50.0
-margin_right = 721.0
-margin_bottom = 141.0
-texture_normal = ExtResource( 1 )
-
-[node name="Label" type="Label" parent="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -10.0
-margin_right = -10.9999
-margin_bottom = -16.0
-custom_fonts/font = SubResource( 3 )
+margin_right = 602.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 0, 96 )
+size_flags_horizontal = 6
 text = "Get a recipe hint"
+
+[node name="Nothing" type="Label" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
+visible = false
+margin_top = 196.0
+margin_right = 735.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 0, 200 )
+text = "Nothing left to collect"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ContinueButton" type="TextureButton" parent="BG/MovingScreen"]
-margin_left = 753.5
-margin_top = 870.0
-margin_right = 1165.5
-margin_bottom = 961.0
-grow_horizontal = 0
-size_flags_horizontal = 4
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="BG/MovingScreen/ContinueButton"]
-anchor_right = 1.0
+[node name="ContinueButton" type="Button" parent="BG/MovingScreen/LootBackground"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = -10.0
-margin_right = -12.0
-margin_bottom = -16.0
-custom_fonts/font = SubResource( 3 )
+margin_left = -235.5
+margin_top = -110.0
+margin_right = 235.5
+margin_bottom = 10.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 4
 text = "Continue to map"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe1" to="." method="_on_WinRecipe_chosen"]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe2" to="." method="_on_WinRecipe_chosen"]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
 [connection signal="button_down" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_Button_button_down"]
 [connection signal="pressed" from="BG/MovingScreen/RecipesContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_Button_button_down"]
-[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_pearl_collected"]
-[connection signal="button_down" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
-[connection signal="pressed" from="BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
-[connection signal="button_down" from="BG/MovingScreen/ContinueButton" to="." method="_on_Button_button_down"]
-[connection signal="mouse_entered" from="BG/MovingScreen/ContinueButton" to="." method="_on_Button_mouse_entered"]
-[connection signal="pressed" from="BG/MovingScreen/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="button_down" from="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Button" to="." method="_on_pearl_collected"]
+[connection signal="button_down" from="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/RecipesButton" to="." method="_on_RecipesButton_pressed"]
+[connection signal="button_down" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_button_down"]
+[connection signal="mouse_entered" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_ContinueButton_pressed"]

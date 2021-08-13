@@ -8,17 +8,18 @@ signal artifact_looted(artifact_name)
 signal reagent_sold(gold_value)
 signal pearl_collected(quantity)
 
-onready var loot_list = $BG/MovingScreen/ScrollContainer/RewardsContainer/LootList
-onready var pearl_container = $BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer
-onready var rewards_container = $BG/MovingScreen/ScrollContainer
+onready var loot_list = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/LootList
+onready var pearl_container = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer
+onready var loot_bg = $BG/MovingScreen/LootBackground
+onready var rewards_container = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
 onready var recipe_displays = [$BG/MovingScreen/RecipesContainer/WinRecipe1,
 		$BG/MovingScreen/RecipesContainer/WinRecipe2,
 		$BG/MovingScreen/RecipesContainer/WinRecipe3]
 onready var back_button = $BG/MovingScreen/RecipesContainer/BackButton
-onready var recipes_button = $BG/MovingScreen/ScrollContainer/RewardsContainer/RecipesButton
-onready var continue_button = $BG/MovingScreen/ContinueButton
-onready var pearl_label = $BG/MovingScreen/ScrollContainer/RewardsContainer/PearlContainer/Label
+onready var recipes_button = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/RecipesButton
+onready var continue_button = $BG/MovingScreen/LootBackground/ContinueButton
+onready var pearl_label = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Label
 onready var moving_screen = $BG/MovingScreen
 onready var bg = $BG
 onready var tween = $Tween
@@ -138,6 +139,20 @@ func enable_buttons():
 			back_button.disabled = false
 
 
+func check_loot_left():
+	for child in loot_list.get_children():
+		if child.visible:
+			return
+	
+	loot_list.hide()
+	
+	for child in rewards_container.get_children():
+		if child.visible:
+			return
+	
+	$BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/Nothing.show()
+
+
 func _on_ContinueButton_pressed():
 	emit_signal("continue_pressed")
 
@@ -145,23 +160,30 @@ func _on_ContinueButton_pressed():
 func _on_reagent_looted(reagent_loot):
 	AudioManager.play_sfx("get_loot")
 	emit_signal("reagent_looted", reagent_loot.reagent)
+	reagent_loot.hide()
 	reagent_loot.queue_free()
+	check_loot_left()
 
 
 func _on_reagent_sold(reagent_loot):
 	emit_signal("reagent_sold", reagent_loot.gold_value)
+	reagent_loot.hide()
 	reagent_loot.queue_free()
+	check_loot_left()
 
 
 func _on_artifact_looted(artifact_loot):
 	AudioManager.play_sfx("get_artifact")
 	emit_signal("artifact_looted", artifact_loot.artifact)
+	artifact_loot.hide()
 	artifact_loot.queue_free()
+	check_loot_left()
 
 
 func _on_pearl_collected():
 	emit_signal("pearl_collected", pearl_amount)
 	pearl_container.hide()
+	check_loot_left()
 
 
 func _on_Button_button_down():
@@ -181,11 +203,13 @@ func _on_WinRecipe_chosen(chosen_recipe):
 	recipes_button.hide()
 	back_button.hide()
 	
+	check_loot_left()
+	
 	tween.interpolate_property(chosen_recipe, "rect_position:x", null, 1264,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(recipes_container, "rect_position:x", null, 0,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.interpolate_property(rewards_container, "rect_position:x", null, 400,
+	tween.interpolate_property(loot_bg, "rect_position:x", null, 0,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
 	change_state(States.LOOT)

@@ -3,7 +3,7 @@ extends HBoxContainer
 signal artifact_looted
 
 onready var get_button = $GetButton
-onready var texture_rect = $TextureRect
+onready var texture_rect = $Frame/Artifact
 
 var artifact : String
 var artifact_data : Dictionary

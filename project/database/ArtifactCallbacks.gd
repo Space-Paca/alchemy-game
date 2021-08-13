@@ -96,6 +96,9 @@ func on_battle_start_cursed_halberd(args):
 func on_battle_start_cursed_shield(args):
 	args.player.take_damage(args.player, 8, "regular", false)
 
+func on_battle_start_vulture_mask(args):
+	if args.encounter.is_elite:
+		args.player.add_status("perm_strength", 5, true)
 
 #On battle finish methods
 

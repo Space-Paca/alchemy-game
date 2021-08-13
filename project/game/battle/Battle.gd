@@ -201,10 +201,6 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 	while enemies_init():
 		yield(self, "finished_enemies_init")
 
-	player.call_artifacts("battle_start", {"player": player})
-	if encounter.is_elite and player.has_artifact("vulture_mask"):
-		player.add_status("perm_strength", 5, true)
-	
 	if not Profile.get_tutorial("first_battle"):
 		TutorialLayer.start("first_battle")
 		yield(TutorialLayer, "tutorial_finished")
@@ -504,7 +500,10 @@ func new_player_turn():
 	deviated_recipes = []
 	used_all_reagents_in_recipes = true
 	player.new_turn()
-
+	
+	if first_turn:
+		player.call_artifacts("battle_start", {"player": player, "encounter": current_encounter})
+	
 	if hand.available_slot_count() > 0:
 		draw_bag.refill_hand()
 		yield(draw_bag,"hand_refilled")
@@ -527,7 +526,7 @@ func new_player_turn():
 
 	enable_player()
 
-	if (first_turn):
+	if first_turn:
 		first_turn = false
 		emit_signal("hand_set")
 
@@ -754,7 +753,7 @@ func win():
 		disable_player()
 		player.clear_status()
 
-		player.call_artifacts("battle_finish", {"player": player})
+		player.call_artifacts("battle_finish", {"player": player, "encounter": current_encounter})
 
 		emit_signal("won")
 
@@ -1197,7 +1196,7 @@ func _on_enemy_died(enemy):
 		if remove_sfx:
 			AudioManager.stop_enemy_idle_sfx(enemy.data.sfx)
 	
-	player.call_artifacts("enemy_died", {"player": player})
+	player.call_artifacts("enemy_died", {"player": player, "encounter": current_encounter})
 	
 	if not enemies_node.get_child_count():
 		win()

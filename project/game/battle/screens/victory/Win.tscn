@@ -198,7 +198,7 @@ use_filter = true
 extra_spacing_bottom = 8
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=21]
 size = 48
 use_mipmaps = true
 use_filter = true
@@ -211,7 +211,7 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 19 )
-color = Color( 0, 0, 0, 0.752941 )
+color = Color( 0, 0, 0, 0.952941 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -350,7 +350,7 @@ margin_top = 8.0
 margin_right = 247.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 130, 80 )
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 21 )
 text = "x 1"
 valign = 1
 __meta__ = {

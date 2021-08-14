@@ -7,8 +7,6 @@ onready var get_button = $GetButton
 onready var sell_button = $SellButton
 onready var texture_rect = $Frame/Reagent
 
-const TEXT = "Transmute: +%d"
-
 var reagent : String
 var upgraded := false
 var gold_value : int
@@ -28,7 +26,7 @@ func set_reagent(reagent_name: String, player: Player):
 #		sell_label.modulate = Color(1,1,1)
 	
 	texture_rect.texture = ReagentDB.DB[reagent].image
-	sell_button.text = TEXT % gold_value
+	sell_button.text = tr("TRANSMUTE") % gold_value
 
 func disable_tooltip():
 	tooltip_enabled = false

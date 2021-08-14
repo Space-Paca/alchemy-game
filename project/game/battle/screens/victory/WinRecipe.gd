@@ -22,7 +22,7 @@ func set_combination(_combination: Combination):
 	
 	# BUTTON TEXT
 	if discover_all or combination.hints >= 2:
-		choose_button.text = "Learn"
+		choose_button.text = "LEARN"
 		discover_all = true
 	
 	recipe_display.set_combination(combination)

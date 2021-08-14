@@ -65,6 +65,8 @@ RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
 DESTROY_REAGENT,Are you sure you want to destroy %s  for %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?
 BUY_RECIPE,Buy Recipe,Comprar Receita
 BUY_HINT,Buy Hint,Comprar Dica
+GET_HINT,Get Hint,Pegar Dica
+LEARN,Learn,Aprender
 ALREADY_KNOWN,Already Known,Já Conhecida
 SHOP_DIALOG_1,"""Hey there honey, stop by and take a look at my wares. I collect all sorts of recipes from fallen adventurers that... [shake]don't need it anymore [wave]hohoho[/wave][/shake]
 
@@ -75,7 +77,7 @@ LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
-COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada.
+COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey. Find it on the main menu.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada. Ache-o no menu principal.
 FILTERS,Filters,Filtros
 CLOSE,Close,Fechar
 CLEAR_ALL,Clear all,Limpar
@@ -124,6 +126,15 @@ EVENT,Event,Evento
 LABORATORY,Laboratory,Laboratório
 LABORATORY_UNLOCK_DESC,The Laboratory will now appear during your adventures! A peaceful place to test some recipes before venturing into battle...,O Laborátorio agora irá aparecer durante suas aventuras! Um lugar pacífico para poder testar algumas receitas antes de enfrentar inimigos...
 TREASURE,Treasure,Tesouro
+COLLECT_REWARDS,Collect your Rewards,Colete suas Recompensas
+GET_RECIPE_HINT,Get a Recipe Hint,Pegar uma Dica de Receita
+CONTINUE_TO_MAP,Continue to Map,Continuar ao Mapa
+GET,Get,Pegar
+TRANSMUTE,Transmute: +%d,Transmutar: +%d
+COLLECT_PEARLS,Collect Pearls,Coletar Pérolas
+COLLECT_PEARL,Collect Pearl,Coletar Pérola
+COLLECT_ARTIFACT,Collect Artifact,Coletar Artefato
+NOTHING_TO_COLLECT,Nothing left to collect...,Nada mais para coletar...
 FAINT,Faint,Fraco
 FAINT_REAGENT,Faint Reagent,Reagente Fraco
 COMMON,Common,Comum
@@ -249,7 +260,7 @@ RGNT_UNC_ELEM_NAME,Uncommon Elementium,Elementium Incomum
 RGNT_RARE_ELEM_NAME,Rare Elementium,Elementium Raro
 RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflige %s de dano normal a um inimigo aleatório"
 RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
-RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negro
+RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negra
 RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
 RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflige %s de dano normal a todos inimigos"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama

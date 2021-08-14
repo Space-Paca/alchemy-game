@@ -10,6 +10,7 @@ signal pearl_collected(quantity)
 
 onready var loot_list = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/LootList
 onready var pearl_container = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer
+onready var pearl_button = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Button
 onready var loot_bg = $BG/MovingScreen/LootBackground
 onready var rewards_container = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer
 onready var recipes_container = $BG/MovingScreen/RecipesContainer
@@ -60,6 +61,10 @@ func set_loot(loot: Array):
 		if player.has_artifact("blue_oyster"):
 			pearl_amount += 1
 		pearl_container.show()
+		if pearl_amount > 1:
+			pearl_button.text = tr("COLLECT_PEARLS")
+		else:
+			pearl_button.text = tr("COLLECT_PEARL")
 		pearl_label.text = str("x ", pearl_amount)
 	
 	disable_buttons()

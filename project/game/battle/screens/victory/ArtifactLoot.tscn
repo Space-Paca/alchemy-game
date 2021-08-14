@@ -6,7 +6,7 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/ui/loot/slot_reward.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 302, 32 )
 
 [node name="ArtifactLoot" type="HBoxContainer"]
@@ -48,10 +48,10 @@ rect_min_size = Vector2( 130, 0 )
 
 [node name="GetButton" type="Button" parent="."]
 margin_left = 247.0
-margin_right = 735.0
+margin_right = 800.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 488, 0 )
-text = "Collect Artifact"
+text = "COLLECT_ARTIFACT"
 
 [node name="TooltipPosition" type="Node2D" parent="."]
 position = Vector2( 741, 0 )
@@ -61,7 +61,7 @@ visible = false
 position = Vector2( 302, 32 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [connection signal="button_down" from="GetButton" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="GetButton" to="." method="_on_Button_mouse_entered"]

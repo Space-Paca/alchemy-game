@@ -231,7 +231,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 20 )
-text = "Collect your rewards"
+text = "COLLECT_REWARDS"
 align = 1
 valign = 1
 __meta__ = {
@@ -273,7 +273,7 @@ margin_top = -120.0
 margin_right = 138.5
 margin_bottom = -20.0
 rect_min_size = Vector2( 0, 100 )
-text = "Back"
+text = "BACK"
 
 [node name="LootBackground" type="TextureRect" parent="BG/MovingScreen"]
 anchor_left = 0.5
@@ -362,19 +362,19 @@ margin_left = 247.0
 margin_right = 735.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 488, 0 )
-text = "Collect Pearls"
+text = "COLLECT_PEARLS"
 
 [node name="LootList" type="VBoxContainer" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
 margin_right = 735.0
 
 [node name="RecipesButton" type="Button" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
-margin_left = 132.0
+margin_left = 101.0
 margin_top = 50.0
-margin_right = 602.0
+margin_right = 633.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 0, 96 )
 size_flags_horizontal = 6
-text = "Get a recipe hint"
+text = "GET_RECIPE_HINT"
 
 [node name="Nothing" type="Label" parent="BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer"]
 visible = false
@@ -382,7 +382,7 @@ margin_top = 196.0
 margin_right = 735.0
 margin_bottom = 396.0
 rect_min_size = Vector2( 0, 200 )
-text = "Nothing left to collect"
+text = "NOTHING_TO_COLLECT"
 align = 1
 valign = 1
 
@@ -391,14 +391,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -235.5
+margin_left = -303.044
 margin_top = -110.0
-margin_right = 235.5
+margin_right = 260.956
 margin_bottom = 10.0
 grow_horizontal = 0
 rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 4
-text = "Continue to map"
+text = "CONTINUE_TO_MAP"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -140,17 +140,17 @@ func get_all_unlocked_artifacts():
 	return unlocks
 
 
-func get_all_unlocked_events():
+func get_locked_events():
 	var level = Profile.get_progression_level("misc")
-	var unlocks = []
+	var events = []
 	var count = 0
 	for data in UNLOCKS.misc:
-		if count >= level:
-			break
+		if count < level:
+			continue
 		if data.type == "EVENT":
-			unlocks.append(data.event_id)
+			events.append(data.event_id)
 		count += 1
-	return unlocks
+	return events
 
 
 func is_misc_unlocked(name):

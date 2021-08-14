@@ -206,19 +206,19 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=22]
+[sub_resource type="ShaderMaterial" id=21]
 shader = ExtResource( 25 )
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 shader_param/freq = 6.0
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=22]
 size = 25
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -15
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.313726, 0.117647, 0.0666667, 0.313726 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -226,7 +226,7 @@ expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
 
-[sub_resource type="StyleBoxFlat" id=25]
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.313726, 0.117647, 0.0666667, 0.313726 )
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -236,7 +236,7 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxFlat" id=26]
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0.313726, 0.117647, 0.0666667, 0.313726 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -289,7 +289,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "KILLED_BY"
 
 [node name="Image" type="TextureRect" parent="Killer"]
-material = SubResource( 22 )
+material = SubResource( 21 )
 margin_top = 37.0
 margin_right = 250.0
 margin_bottom = 287.0
@@ -303,7 +303,7 @@ margin_top = 291.0
 margin_right = 250.0
 margin_bottom = 331.0
 rect_min_size = Vector2( 250, 40 )
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "UNKNOWN"
 align = 1
@@ -332,7 +332,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 24 )
+custom_styles/panel = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -343,7 +343,7 @@ margin_top = 91.0
 margin_right = 590.0
 margin_bottom = 338.0
 rect_min_size = Vector2( 590, 294 )
-custom_styles/panel = SubResource( 25 )
+custom_styles/panel = SubResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -450,7 +450,7 @@ margin_top = 160.0
 margin_right = 290.0
 margin_bottom = 321.0
 rect_min_size = Vector2( 270, 161 )
-custom_styles/panel = SubResource( 26 )
+custom_styles/panel = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

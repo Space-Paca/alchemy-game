@@ -48,11 +48,10 @@ func reset_events():
 	for f in FLOORS:
 		event_ids_by_floor[f].clear()
 	
-	var unlocked_events : Array = UnlockManager.get_all_unlocked_events()
-	
 	for event in events_by_id.values():
 		for f in FLOORS:
-			if event.floor_appearance[f] and unlocked_events.has(event.id):
+			if event.floor_appearance[f] and\
+					not UnlockManager.get_locked_events().has(event.id):
 				event_ids_by_floor[f].append(event.id)
 	
 	for f in FLOORS:

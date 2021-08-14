@@ -503,14 +503,14 @@ __meta__ = {
 columns = 5
 
 [node name="Label" type="Label" parent="PlayerInfo/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "No artifacts collected"
+text = "NO_ARTIFACTS_COLLECTED"
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

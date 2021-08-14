@@ -280,8 +280,8 @@ func create_level(level: int, debug := false):
 	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
-	var smith_amount = 1 if UnlockManager.is_misc_unlocked("REAGENT_SMITH") else 1
-	var lab_amount = 1 if UnlockManager.is_misc_unlocked("LABORATORY") else 1
+	var smith_amount = 1 if UnlockManager.is_misc_unlocked("REAGENT_SMITH") else 0
+	var lab_amount = 1 if UnlockManager.is_misc_unlocked("LABORATORY") else 0
 	match level:
 		1:
 			# ( *∀*)y─┛

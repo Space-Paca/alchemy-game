@@ -120,7 +120,7 @@ func on_turn_start_cursed_shield(args):
 #On enemy died methods
 
 func on_enemy_died_bloodcursed_grimoire(args):
-	args.player.heal(9)
+	args.player.heal(int(float(args.player.max_hp)/10.0))
 
 
 #On discover a recipe

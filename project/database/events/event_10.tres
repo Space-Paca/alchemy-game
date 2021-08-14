@@ -19,14 +19,14 @@ floor_appearance = {
 }
 options = [ {
 "args": [ true ],
-"button_text": "Get the halberd.",
+"button_text": "EVENT_10_OPT_1",
 "callback": "take_cursed_artifact"
 }, {
 "args": [ false ],
-"button_text": "Get the shield.",
+"button_text": "EVENT_10_OPT_2",
 "callback": "take_cursed_artifact"
 }, {
 "args": [  ],
-"button_text": "Don't take anything.",
+"button_text": "EVENT_10_OPT_3",
 "callback": "leave_option"
 } ]

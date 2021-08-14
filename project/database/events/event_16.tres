@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Lose 2/3 of your current life and gain the Gold Ankh.",
+"button_text": "EVENT_16_OPT_1",
 "callback": "blood_pact"
 }, {
 "args": [  ],
-"button_text": "Ignore the scroll and leave.",
+"button_text": "EVENT_16_OPT_2",
 "callback": "leave_option"
 } ]

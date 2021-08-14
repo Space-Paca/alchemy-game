@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Take the pearls.",
+"button_text": "EVENT_9_OPT_1",
 "callback": "take_pearls"
 }, {
 "args": [  ],
-"button_text": "Leave the pearls.",
+"button_text": "EVENT_9_OPT_2",
 "callback": "leave_option"
 } ]

@@ -19,18 +19,18 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 5 ],
-"button_text": "Bet 5 coins.",
+"button_text": "EVENT_1_OPT_1",
 "callback": "bet"
 }, {
 "args": [ 20 ],
-"button_text": "Bet 20 coins.",
+"button_text": "EVENT_1_OPT_2",
 "callback": "bet"
 }, {
 "args": [ 40 ],
-"button_text": "Bet 40 coins.",
+"button_text": "EVENT_1_OPT_3",
 "callback": "bet"
 }, {
 "args": [  ],
-"button_text": "Don't gamble.",
+"button_text": "EVENT_1_OPT_4",
 "callback": "leave_option"
 } ]

@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ "common", "normal", 0.5 ],
-"button_text": "Go for the treasure.",
+"button_text": "EVENT_6_OPT_1",
 "callback": "artifact_battle"
 }, {
 "args": [  ],
-"button_text": "Walk away.",
+"button_text": "EVENT_6_OPT_2",
 "callback": "leave_option"
 } ]

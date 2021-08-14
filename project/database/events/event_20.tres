@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ false ],
-"button_text": "Accept a healing blessing (heal 35 life).",
+"button_text": "EVENT_20_OPT_1",
 "callback": "helpful_homunculus"
 }, {
 "args": [ true ],
-"button_text": "Accept a life blessing (increase max life by 10).",
+"button_text": "EVENT_20_OPT_2",
 "callback": "helpful_homunculus"
 } ]

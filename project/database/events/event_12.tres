@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 1 ],
-"button_text": "Offer 4 health.",
+"button_text": "EVENT_12_OPT_1",
 "callback": "coins_for_blood"
 }, {
 "args": [  ],
-"button_text": "Leave.",
+"button_text": "EVENT_12_OPT_2",
 "callback": "leave_option"
 } ]

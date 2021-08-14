@@ -19,6 +19,6 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Go to resting circle.",
+"button_text": "EVENT_DUMMY_REST_OPT_1",
 "callback": "rest"
 } ]

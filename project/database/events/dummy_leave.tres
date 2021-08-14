@@ -19,6 +19,6 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Leave.",
+"button_text": "EVENT_DUMMY_LEAVE_OPT_1",
 "callback": "leave"
 } ]

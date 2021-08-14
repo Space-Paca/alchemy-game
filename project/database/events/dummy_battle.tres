@@ -19,6 +19,6 @@ floor_appearance = {
 }
 options = [ {
 "args": [ null ],
-"button_text": "Battle!",
+"button_text": "EVENT_DUMMY_BATTLE_OPT_1",
 "callback": "battle"
 } ]

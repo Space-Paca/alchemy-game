@@ -19,22 +19,22 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 5 ],
-"button_text": "Throw 5 coins.",
+"button_text": "EVENT_2_OPT_1",
 "callback": "well"
 }, {
 "args": [ 10 ],
-"button_text": "Throw 10 coins.",
+"button_text": "EVENT_2_OPT_2",
 "callback": "well"
 }, {
 "args": [ 30 ],
-"button_text": "Throw 30 coins.",
+"button_text": "EVENT_2_OPT_3",
 "callback": "well"
 }, {
 "args": [ 50 ],
-"button_text": "Throw 50 coins.",
+"button_text": "EVENT_2_OPT_4",
 "callback": "well"
 }, {
 "args": [  ],
-"button_text": "Ignore the well.",
+"button_text": "EVENT_2_OPT_5",
 "callback": "leave_option"
 } ]

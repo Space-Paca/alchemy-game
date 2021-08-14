@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [  ],
-"button_text": "Exchange reagents.",
+"button_text": "EVENT_5_OPT_1",
 "callback": "none"
 }, {
 "args": [  ],
-"button_text": "Leave the hut.",
+"button_text": "EVENT_5_OPT_2",
 "callback": "leave_option"
 } ]

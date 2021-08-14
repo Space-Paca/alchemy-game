@@ -19,18 +19,18 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 0, 5 ],
-"button_text": "Pay 5 life for 15 gold coins.",
+"button_text": "EVENT_15_OPT_1",
 "callback": "life_trade"
 }, {
 "args": [ 1, 15 ],
-"button_text": "Pay 15 life for a pearl.",
+"button_text": "EVENT_15_OPT_2",
 "callback": "life_trade"
 }, {
 "args": [ 2, 25 ],
-"button_text": "Pay 25 life for a common artifact.",
+"button_text": "EVENT_15_OPT_3",
 "callback": "life_trade"
 }, {
 "args": [  ],
-"button_text": "Stop bartering.",
+"button_text": "EVENT_15_OPT_4",
 "callback": "leave_option"
 } ]

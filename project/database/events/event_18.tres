@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 0 ],
-"button_text": "Search for something valuable.",
+"button_text": "EVENT_18_OPT_1",
 "callback": "push_luck"
 }, {
 "args": [  ],
-"button_text": "Ignore.",
+"button_text": "EVENT_18_OPT_2",
 "callback": "leave_option"
 } ]

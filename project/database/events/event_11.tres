@@ -19,18 +19,18 @@ floor_appearance = {
 }
 options = [ {
 "args": [ 1 ],
-"button_text": "Search the corpse superficially (receive 1 Preserved Beetle reagent).",
+"button_text": "EVENT_11_OPT_1",
 "callback": "take_trash"
 }, {
 "args": [ 4 ],
-"button_text": "Search the corpse moderately (receive 4 Preserved Beetle reagents).",
+"button_text": "EVENT_11_OPT_2",
 "callback": "take_trash"
 }, {
 "args": [ 8 ],
-"button_text": "Search the corpse completely (receive 8 Preserved Beetle reagents).",
+"button_text": "EVENT_11_OPT_3",
 "callback": "take_trash"
 }, {
 "args": [  ],
-"button_text": "Ignore the body and move on.",
+"button_text": "EVENT_11_OPT_4",
 "callback": "leave_option"
 } ]

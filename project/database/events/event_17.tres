@@ -19,10 +19,10 @@ floor_appearance = {
 }
 options = [ {
 "args": [ false ],
-"button_text": "Ignore the mask and enter the resting circle.",
+"button_text": "EVENT_17_OPT_1",
 "callback": "resting_place"
 }, {
 "args": [ true ],
-"button_text": "Put on the mask before entering the resting circle.",
+"button_text": "EVENT_17_OPT_2",
 "callback": "resting_place"
 } ]

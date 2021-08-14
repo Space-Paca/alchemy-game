@@ -10,6 +10,17 @@ onready var vbox = $VBox
 onready var image = $Image
 
 const THEME = preload("res://assets/themes/event_theme/event_theme.tres")
+# Text effects
+const FORMAT_DICT = {
+		"(highlight)": "[color=#ffff00]",
+		"(/highlight)": "[/color]",
+		"(shake)": "[shake]",
+		"(/shake)": "[/shake]",
+		"(small)": "[i]",
+		"(/small)": "[/i]",
+		"(wave)": "[wave amp=50 freq=2]",
+		"(/wave)": "[/wave]"
+}
 
 var event : Event
 var map_node : MapNode
@@ -30,11 +41,11 @@ func set_map_node(node: MapNode) -> void:
 
 func load_event(new_event: Event, player: Player, override_text: String = ""):
 	event = new_event
-	title_label.text = event.title
+	title_label.text = tr(event.title)
 	if override_text != "":
-		text_label.bbcode_text = override_text
+		text_label.bbcode_text = translate_and_format(override_text)
 	else:
-		text_label.bbcode_text = event.text
+		text_label.bbcode_text = translate_and_format(event.text)
 	image.texture = EventManager.IMAGES[event.type]
 	
 	for child in vbox.get_children():
@@ -44,11 +55,20 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	for option in event.options:
 		var button = Button.new()
 		vbox.add_child(button)
-		button.text = "  -  " + option.button_text
+		button.text = "  -  " + tr(option.button_text)
 		button.align = Button.ALIGN_LEFT
 		button.connect("pressed", EventManager, option.callback,
 				[self, player] + option.args)
 		button.theme = THEME
+
+
+func translate_and_format(text: String) -> String:
+	text = tr(text)
+	for key in FORMAT_DICT.keys():
+		for i in text.count(key):
+			text = text.replace(key, FORMAT_DICT[key])
+	
+	return text
 
 
 func _on_event_left():

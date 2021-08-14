@@ -5,17 +5,6 @@ signal spawned_rest
 signal spawned_battle(encounter)
 
 const FLOORS = [1, 2, 3]
-# Text effects
-const FORMAT_DICT = {
-		"(highlight)": "[color=#ffff00]",
-		"(/highlight)": "[/color]",
-		"(shake)": "[shake]",
-		"(/shake)": "[/shake]",
-		"(small)": "[i]",
-		"(/small)": "[/i]",
-		"(wave)": "[wave amp=50 freq=2]",
-		"(/wave)": "[/wave]"
-}
 
 const IMAGES = [preload("res://assets/images/events/event_luck.png"),
 		preload("res://assets/images/events/event_challenge.png"),
@@ -46,11 +35,6 @@ func _ready():
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
 				var event := load(str(path, file_name)) as Event
 				events_by_id[event.id] = event
-				event.text = format(event.text)
-				event.leave_text_1 = format(event.leave_text_1)
-				event.leave_text_2 = format(event.leave_text_2)
-				event.leave_text_3 = format(event.leave_text_3)
-				event.leave_text_4 = format(event.leave_text_4)
 			file_name = dir.get_next()
 	else:
 		print("EventManager: An error occurred when trying to access the path.")
@@ -58,14 +42,6 @@ func _ready():
 	dummy_battle_event = events_by_id[-1]
 	dummy_leave_event = events_by_id[-2]
 	dummy_rest_event = events_by_id[-3]
-
-
-func format(text: String) -> String:
-	for key in FORMAT_DICT.keys():
-		for i in text.count(key):
-			text = text.replace(key, FORMAT_DICT[key])
-	
-	return text
 
 
 func reset_events():
@@ -165,23 +141,23 @@ func leave_option(event_display, player):
 
 func load_battle_event(event_display, player, text: String, encounter: Encounter,
 		title := "", type := -1):
-	dummy_battle_event.text = text
-	dummy_battle_event.title = current_event.title if title == "" else title
+	dummy_battle_event.text = tr(text)
+	dummy_battle_event.title = tr(current_event.title if title == "" else title)
 	dummy_battle_event.type = current_event.type if type == -1 else type
 	dummy_battle_event.options[0].args[0] = encounter
 	load_new_event(event_display, player, dummy_battle_event.id)
 
 
 func load_leave_event(event_display, player, text: String, title := "", type := -1):
-	dummy_leave_event.text = text
+	dummy_leave_event.text = tr(text)
 	dummy_leave_event.title = current_event.title if title == "" else title
 	dummy_leave_event.type = current_event.type if type == -1 else type
 	load_new_event(event_display, player, dummy_leave_event.id)
 
 
 func load_rest_event(event_display, player, text: String, title := "", type := -1):
-	dummy_rest_event.text = text
-	dummy_rest_event.title = current_event.title if title == "" else title
+	dummy_rest_event.text = tr(text)
+	dummy_rest_event.title = tr(current_event.title if title == "" else title)
 	dummy_rest_event.type = current_event.type if type == -1 else type
 	load_new_event(event_display, player, dummy_rest_event.id)
 
@@ -203,6 +179,7 @@ func bet(event_display, player, amount: int):
 	if randf() > .5:
 		player.add_gold(2 * amount)
 		var text : String = current_event.leave_text_1
+		text = tr(text)
 		text = text.replace("<amount>", str(2 * amount))
 		load_leave_event(event_display, player, text)
 	else:
@@ -231,7 +208,8 @@ func well(event_display, player, amount: int):
 	if won:
 		var reward = 100
 		player.add_gold(reward)
-		var text = current_event.leave_text_1.replace("<amount>", str(reward))
+		var text = tr(current_event.leave_text_1)
+		text = text.replace("<amount>", str(reward))
 		load_leave_event(event_display, player, text)
 	else:
 		load_leave_event(event_display, player, current_event.leave_text_3)
@@ -241,7 +219,8 @@ func hole(event_display, player, chance, reward):
 	if randf() < chance:
 		player.set_hp(int(ceil(player.hp / 2.0)))
 		player.add_gold(reward)
-		var text = current_event.leave_text_1.replace("<amount>", str(reward))
+		var text = tr(current_event.leave_text_1)
+		text = text.replace("<amount>", str(reward))
 		load_leave_event(event_display, player, text)
 	else:
 		player.add_gold(reward)
@@ -252,7 +231,8 @@ func hole(event_display, player, chance, reward):
 			events_by_id[4].options[0]["args"][0] = HOLE_MAX_CHANCE
 		events_by_id[4].options[0]["args"][1] *= 2
 		
-		var text = events_by_id[4].text.replace("<amount>", str(reward))
+		var text = tr(events_by_id[4].text)
+		text = text.replace("<amount>", str(reward))
 		
 		load_new_event(event_display, player, 4, text)
 
@@ -291,7 +271,8 @@ func boss_2_battle(event_display, player, chance: float):
 #9
 func take_pearls(event_display, player):
 	var amount : int = 2 if randf() < .5 else 3
-	var text = current_event.leave_text_1.replace("<amount>", str(amount))
+	var text = tr(current_event.leave_text_1)
+	text = text.replace("<amount>", str(amount))
 	player.add_pearls(amount)
 	player.add_artifact("cursed_pearls")
 	
@@ -353,9 +334,11 @@ func coins_for_blood(event_display, player, times):
 	
 	if times <= 1:
 		player.add_gold(gold)
+		text = tr(text)
 		text = events_by_id[13].text.replace("<amount>", str(gold))
 	else:
 		player.add_gold(gold)
+		text = tr(text)
 		text = current_event.leave_text_1.replace("<amount>", str(gold))
 	
 	load_new_event(event_display, player, 13, text)

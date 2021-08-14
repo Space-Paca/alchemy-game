@@ -48,13 +48,13 @@ const UNLOCKS = {
 		},
 		{
 			"type": "EVENT",
-			"event_id": 21,
-			"description": "Evento 21",
+			"event_id": 18,
+			"description": "EVENT_UNLOCK_DESC",
 		},
 		{
 			"type": "EVENT",
-			"event_id": 22,
-			"description": "Evento 22",
+			"event_id": 20,
+			"description": "EVENT_UNLOCK_DESC",
 		}
 	]
 }

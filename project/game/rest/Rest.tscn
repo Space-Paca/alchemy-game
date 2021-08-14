@@ -122,22 +122,23 @@ __meta__ = {
 }
 
 [node name="HealButton" type="Button" parent="ButtonContainer"]
-margin_top = 95.0
 margin_right = 1092.0
-margin_bottom = 146.0
+margin_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 0, 150 )
 text = "HEAL_TEXT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HintButton" type="Button" parent="ButtonContainer"]
-margin_top = 176.0
+margin_top = 180.0
 margin_right = 1092.0
-margin_bottom = 227.0
+margin_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 0, 150 )
 text = "DISCOVER_RECIPE"
 __meta__ = {
 "_edit_use_anchors_": false

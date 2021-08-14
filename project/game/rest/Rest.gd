@@ -137,3 +137,4 @@ func _on_recipe_chosen(chosen_recipe):
 
 	emit_signal("combination_studied", chosen_recipe.combination)
 	$ContinueButton.show()
+	$BackButton.hide()

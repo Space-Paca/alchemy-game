@@ -2,7 +2,7 @@ extends Label
 
 signal animation_finished
 
-export var unit := " EP"
+export var unit := "EP"
 export var min_duration_point := .03
 export var max_duration := .7
 export var color := Color.rebeccapurple
@@ -10,7 +10,7 @@ export var color := Color.rebeccapurple
 var amount := 0
 
 func _ready():
-	text = "0" + unit
+	text = "0" + " " + tr(unit)
 	set("custom_colors/font_color", color)
 
 
@@ -27,14 +27,14 @@ func animate():
 
 func change_text_value(value: int = -1):
 	if value != -1:
-		text = str(value) + unit
+		text = str(value) + " " + tr(unit)
 		return
 	
 	# Gambiarra for setting the label's size to the maximum amount will occupy
 	var string = ""
 	for i in amount % 10:
 		string += "W"
-	text = string + unit
+	text = string + " " + tr(unit)
 
 
 func _on_EP_resized():

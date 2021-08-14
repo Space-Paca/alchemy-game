@@ -47,8 +47,8 @@ func start_max_level():
 func max_level(name):
 	slider.editable = false
 	var dur = .8
-	stat_name.text = "Unlock " + str(name) + " -"
-	stat_level.text = "MAX LEVEL!"
+	stat_name.text = tr("UNLOCK") + " " + str(name) + " -"
+	stat_level.text = tr("MAX_LEVEL")
 	progress_bar.value = max_xp
 	$Tween.interpolate_property(slider, "modulate", slider.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(allocated_label, "modulate", allocated_label.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -94,8 +94,8 @@ func set_total_available_xp(value):
 	slider.max_value = value
 
 func setup(name, level, _initial_xp, _max_xp, total_available_xp):
-	stat_name.text = "Unlock " + str(name) + " -"
-	stat_level.text = "Level " + str(level)
+	stat_name.text = tr("UNLOCK") + " " + tr(name) + " -"
+	stat_level.text = tr("LEVEL") + " " + str(level)
 	
 	initial_xp = _initial_xp
 	max_xp = _max_xp

@@ -50,7 +50,7 @@ func set_player(p: Player):
 			amount * XP_MULT.artifacts
 	
 	#tempo da run (nao da pontos)
-	set_time_label($Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time/Label,
+	set_time_label($Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time/Amount,
 			p.stats.time)
 	
 	#reagentes transfigurados (nao da ponto)

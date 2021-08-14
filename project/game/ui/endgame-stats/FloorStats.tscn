@@ -32,7 +32,7 @@ margin_right = 450.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Floor 1"
+text = "Floor Name"
 script = ExtResource( 4 )
 
 [node name="NormalEncounters" type="HBoxContainer" parent="."]
@@ -42,22 +42,22 @@ margin_bottom = 88.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="NormalEncounters"]
-margin_right = 169.0
+margin_right = 257.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Normal Encounters: "
+text = "STAT_NORMAL_ENCOUNTER"
 
 [node name="Amount" type="Label" parent="NormalEncounters"]
-margin_left = 173.0
-margin_right = 185.0
+margin_left = 261.0
+margin_right = 273.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="NormalEncounters"]
-margin_left = 189.0
+margin_left = 277.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -74,22 +74,22 @@ margin_bottom = 134.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="EliteEncounters"]
-margin_right = 143.0
+margin_right = 229.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Elite Encounters: "
+text = "STAT_ELITE_ENCOUNTER"
 
 [node name="Amount" type="Label" parent="EliteEncounters"]
-margin_left = 147.0
-margin_right = 159.0
+margin_left = 233.0
+margin_right = 245.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="EliteEncounters"]
-margin_left = 163.0
+margin_left = 249.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -106,22 +106,22 @@ margin_bottom = 180.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="MonstersDefeated"]
-margin_right = 161.0
+margin_right = 239.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Monsters defeated: "
+text = "STAT_ENEMIES_DEFEATED"
 
 [node name="Amount" type="Label" parent="MonstersDefeated"]
-margin_left = 165.0
-margin_right = 177.0
+margin_left = 243.0
+margin_right = 255.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="MonstersDefeated"]
-margin_left = 181.0
+margin_left = 259.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -138,22 +138,22 @@ margin_bottom = 226.0
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="ExplorationRate"]
-margin_right = 141.0
+margin_right = 183.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Exploration rate: "
+text = "STAT_EXPLORATION"
 
 [node name="Amount" type="Label" parent="ExplorationRate"]
-margin_left = 145.0
-margin_right = 157.0
+margin_left = 187.0
+margin_right = 199.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="ExplorationRate"]
-margin_left = 161.0
+margin_left = 203.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -175,7 +175,7 @@ margin_right = 125.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Region cleared!"
+text = "REGION_CLEARED"
 
 [node name="Exp" type="Label" parent="RegionClear"]
 margin_left = 129.0

@@ -150,6 +150,8 @@ func get_tooltip_data(type):
 		tooltip.title = "PEARLS"
 		tooltip.title_image = PEARL_TEXTURE
 		tooltip.subtitle = "RARE_RESOURCE"
+		if not UnlockManager.is_misc_unlocked("REAGENT_SMITH"):
+			tooltip.text = tr("PEARL_TOOLTIP_TEXT")
 	else:
 		assert(false, "Not a valid tooltip type: " + str(type))
 	

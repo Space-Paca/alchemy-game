@@ -7,10 +7,11 @@ const RECIPE = preload("res://game/ui/endgame-stats/RecipeMemorization.tscn")
 
 var player : Player
 var tooltip_enabled = false
+var block_tooltips = false
 
 func _ready():
 	populate()
-
+	disable_tooltips()
 
 func set_player(p: Player):
 	player = p
@@ -44,10 +45,19 @@ func populate():
 
 
 func get_compendium_hint_tooltip():
-	var tip = {"title": "Compendium", "text": "The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures",
+	var tip = {"title": tr("COMPENDIUM"), "text": tr("COMPENDIUM_INFO"),
 			"title_image": "res://assets/images/ui/compendium_icon.png",
 			"subtitle": ""}
 	return tip
+
+
+func enable_tooltips():
+	block_tooltips = false
+
+
+func disable_tooltips():
+	block_tooltips = true
+	remove_tooltips()
 
 
 func remove_tooltips():
@@ -57,6 +67,9 @@ func remove_tooltips():
 
 
 func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
+	
 	tooltip_enabled = true
 	var tip = get_compendium_hint_tooltip()
 	TooltipLayer.add_tooltip(compendium_tooltip.get_position(), tip.title, \

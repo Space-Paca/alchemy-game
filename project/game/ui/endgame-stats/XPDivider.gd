@@ -8,7 +8,8 @@ signal unlock_popup_closed
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
 
-onready var xp_pool_amount_label = $EmpiricLabel/Amount
+onready var xp_pool_amount_label = $HBoxContainer/Amount
+onready var empiric_label = $HBoxContainer/EmpiricLabel
 onready var progress_cont = $ProgressThingies
 onready var apply_button = $ApplyButton
 onready var increasing_xp_sfx_len = preload("res://assets/audio/sfx/increasing_xp_counter.wav").get_length()
@@ -20,7 +21,7 @@ func _ready():
 	for child in progress_cont.get_children():
 		child.modulate.a = 0
 	apply_button.modulate.a = 0
-	$EmpiricLabel.modulate.a = 0
+	empiric_label.modulate.a = 0
 
 
 func get_level_xp(prog_type):
@@ -55,7 +56,7 @@ func set_initial_xp_pool(value):
 	set_xp_pool_label(0)
 	update_apply_button()
 	var delay = .7
-	$Tween.interpolate_property($EmpiricLabel, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(empiric_label, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	var dur = 1.0

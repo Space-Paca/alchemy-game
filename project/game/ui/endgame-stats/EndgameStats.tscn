@@ -13,8 +13,8 @@
 [ext_resource path="res://game/ui/endgame-stats/UnlockablePopup.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
-size = 40
-outline_size = 3
+size = 32
+outline_size = 4
 outline_color = Color( 0.0969086, 0.339844, 0.323826, 1 )
 use_mipmaps = true
 use_filter = true
@@ -95,14 +95,14 @@ margin_right = -290.0
 margin_bottom = -130.0
 
 [node name="Next" type="Button" parent="Page1"]
-margin_left = 1431.0
-margin_top = 890.0
-margin_right = 1631.0
-margin_bottom = 977.0
+margin_left = 1363.0
+margin_top = 884.0
+margin_right = 1641.0
+margin_bottom = 971.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = SubResource( 1 )
 disabled = true
-text = "Next"
+text = "NEXT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -128,29 +128,31 @@ margin_right = -270.0
 margin_bottom = -216.0
 
 [node name="Buttons" type="HBoxContainer" parent="Page2"]
-margin_left = 1037.0
-margin_top = 891.0
-margin_right = 1607.0
-margin_bottom = 978.0
-custom_constants/separation = 30
+margin_left = 929.0
+margin_top = 903.0
+margin_right = 1768.0
+margin_bottom = 990.0
+custom_constants/separation = -2
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restart" type="Button" parent="Page2/Buttons"]
-margin_right = 270.0
+margin_left = 48.0
+margin_right = 407.0
 margin_bottom = 87.0
 rect_min_size = Vector2( 270, 0 )
 custom_fonts/font = SubResource( 1 )
-text = "Quick Restart"
+text = "QUICK_RES"
 
 [node name="Menu" type="Button" parent="Page2/Buttons"]
-margin_left = 300.0
-margin_right = 570.0
+margin_left = 405.0
+margin_right = 790.0
 margin_bottom = 87.0
 rect_min_size = Vector2( 270, 0 )
 custom_fonts/font = SubResource( 1 )
-text = "Main Menu"
+text = "MAIN_MENU"
 
 [node name="UnlockablePopup" parent="." instance=ExtResource( 11 )]
 

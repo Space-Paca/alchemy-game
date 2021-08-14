@@ -1,18 +1,28 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/ui/endgame-stats/CompendiumProgress.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 60
+size = 55
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -10
 extra_spacing_bottom = -10
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 27.391, 27.6441 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 28
@@ -44,7 +54,7 @@ margin_right = 557.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Compendium Progress"
+text = "COMPENDIUM_PROG"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,13 +79,20 @@ margin_left = -20.0
 margin_top = -25.5
 margin_right = 20.0
 margin_bottom = 25.5
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "i"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TooltipCollision" parent="Table/Title/Info" instance=ExtResource( 1 )]
 position = Vector2( 25.1501, 24.5362 )
+
+[node name="CollisionShape2D" parent="Table/Title/Info/TooltipCollision" index="0"]
+shape = SubResource( 4 )
 
 [node name="Header1" type="Label" parent="Table"]
 margin_left = 20.0
@@ -84,7 +101,7 @@ margin_right = 220.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Recipes in book"
+text = "RECIPE_IN_BOOK"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -97,7 +114,7 @@ margin_right = 325.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Times made"
+text = "TIMES_MADE"
 align = 1
 valign = 1
 autowrap = true
@@ -106,13 +123,13 @@ __meta__ = {
 }
 
 [node name="Header3" type="Label" parent="Table"]
-margin_left = 305.0
+margin_left = 308.337
 margin_top = 85.0
-margin_right = 605.0
+margin_right = 588.337
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Memorization progress"
+text = "MEMORIZATION_PROGRESS"
 align = 1
 valign = 1
 autowrap = true
@@ -165,3 +182,8 @@ __meta__ = {
 
 [node name="RecipeContainer" type="VBoxContainer" parent="ScrollContainer"]
 custom_constants/separation = 0
+
+[connection signal="disable_tooltip" from="Table/Title/Info/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="Table/Title/Info/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
+
+[editable path="Table/Title/Info/TooltipCollision"]

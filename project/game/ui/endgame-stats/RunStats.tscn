@@ -216,7 +216,7 @@ margin_right = 557.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Stats"
+text = "STATS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -274,22 +274,22 @@ margin_bottom = 86.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_right = 202.0
+margin_right = 315.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Fully discovered recipes: "
+text = "STAT_FULLY_DISCOVERED_RECIPES"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_left = 206.0
-margin_right = 218.0
+margin_left = 319.0
+margin_right = 331.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Recipes"]
-margin_left = 222.0
+margin_left = 335.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -306,22 +306,22 @@ margin_bottom = 132.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
-margin_right = 148.0
+margin_right = 237.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Mastered recipes: "
+text = "STAT_MASTERED_RECIPES"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
-margin_left = 152.0
-margin_right = 164.0
+margin_left = 241.0
+margin_right = 253.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="Exp" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Mastered"]
-margin_left = 168.0
+margin_left = 257.0
 margin_right = 450.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -342,7 +342,7 @@ margin_right = 154.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Collected artifacts: "
+text = "STAT_ARTIFACTS"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Artifacts"]
 margin_left = 158.0
@@ -380,15 +380,15 @@ margin_bottom = 284.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time"]
-margin_right = 93.0
+margin_right = 103.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Total time: "
+text = "STAT_TIME"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Time"]
-margin_left = 97.0
-margin_right = 97.0
+margin_left = 107.0
+margin_right = 107.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -400,15 +400,15 @@ margin_bottom = 330.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Transfigured"]
-margin_right = 192.0
+margin_right = 193.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Transfigured reagents: "
+text = "STAT_TRANSFIGURED"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Transfigured"]
-margin_left = 196.0
-margin_right = 196.0
+margin_left = 197.0
+margin_right = 197.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -420,15 +420,15 @@ margin_bottom = 376.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Upgraded"]
-margin_right = 164.0
+margin_right = 257.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Upgraded reagents: "
+text = "STAT_UPGRADED_REAGENTS"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Upgraded"]
-margin_left = 168.0
-margin_right = 168.0
+margin_left = 261.0
+margin_right = 261.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -440,15 +440,15 @@ margin_bottom = 422.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Removed"]
-margin_right = 160.0
+margin_right = 240.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Removed reagents: "
+text = "STAT_REMOVED_REAGENT"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Removed"]
-margin_left = 164.0
-margin_right = 164.0
+margin_left = 244.0
+margin_right = 244.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -460,15 +460,15 @@ margin_bottom = 468.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgDealt"]
-margin_right = 119.0
+margin_right = 201.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Damage dealt: "
+text = "STAT_DAMAGE_DEALT"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgDealt"]
-margin_left = 123.0
-margin_right = 123.0
+margin_left = 205.0
+margin_right = 205.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -480,15 +480,15 @@ margin_bottom = 514.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgTaken"]
-margin_right = 125.0
+margin_right = 205.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Damage taken: "
+text = "STAT_DAMAGE_TAKEN"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgTaken"]
-margin_left = 129.0
-margin_right = 129.0
+margin_left = 209.0
+margin_right = 209.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -500,15 +500,15 @@ margin_bottom = 560.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgHealed"]
-margin_right = 132.0
+margin_right = 214.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Damage healed: "
+text = "STAT_DAMAGE_HEALED"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgHealed"]
-margin_left = 136.0
-margin_right = 136.0
+margin_left = 218.0
+margin_right = 218.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -520,15 +520,15 @@ margin_bottom = 606.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgBlocked"]
-margin_right = 142.0
+margin_right = 225.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Damage blocked: "
+text = "STAT_DAMAGE_BLOCKED"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/DmgBlocked"]
-margin_left = 146.0
-margin_right = 146.0
+margin_left = 229.0
+margin_right = 229.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -540,26 +540,27 @@ margin_bottom = 652.0
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Block"]
-margin_right = 159.0
+margin_right = 193.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Total block gained: "
+text = "STAT_BLOCK_GAINED"
 
 [node name="Amount" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Block"]
-margin_left = 163.0
-margin_right = 163.0
+margin_left = 197.0
+margin_right = 197.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="TotalContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_left = 227.0
+margin_left = 161.0
 margin_top = 581.0
 margin_right = 490.0
 margin_bottom = 620.0
 grow_horizontal = 0
 size_flags_horizontal = 8
+custom_constants/separation = 12
 alignment = 2
 script = ExtResource( 6 )
 __meta__ = {
@@ -567,25 +568,25 @@ __meta__ = {
 }
 
 [node name="Total" type="Label" parent="Panel/VBoxContainer/TotalContainer"]
-margin_right = 78.0
+margin_right = 87.0
 margin_bottom = 39.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Total: "
+text = "TOTAL"
 align = 2
 
 [node name="EP" type="Label" parent="Panel/VBoxContainer/TotalContainer"]
-margin_left = 82.0
-margin_right = 263.0
+margin_left = 99.0
+margin_right = 329.0
 margin_bottom = 39.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0.4, 0.2, 0.6, 1 )
-text = "Empiric Points"
+text = "EMPIRIC_POINTS"
 align = 2
 script = ExtResource( 18 )
-unit = " Empiric Points"
+unit = "EMPIRIC_POINTS"
 
 [node name="ScrollBlocker" type="Control" parent="."]
 anchor_right = 1.0

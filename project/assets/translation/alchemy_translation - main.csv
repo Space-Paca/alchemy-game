@@ -78,6 +78,42 @@ BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
 COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey. Find it on the main menu.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada. Ache-o no menu principal.
+COMPENDIUM_INFO,"The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures","O Compêndio guarda todas as receitas que você fez, junto de quantas vezes você criou elas. Se você fizer uma receita vezes suficiente, ela sera Memorizada, deixando-a muito mais facll de se fazer em aventuras futuras."
+COMPENDIUM_PROG,Compendium Progress,Progresso de Compêndio
+RECIPE_IN_BOOK,Recipes in book,Receitas no livro
+TIMES_MADE,Times made,Vezes feita
+MEMORIZATION_PROGRESS,Memorization progress,Progresso de Memorização
+NEW,New!,Nova!
+KILLED_BY,Killed by:,Morto por:
+STATS,Stats,Estatísticas
+STAT_NORMAL_ENCOUNTER,Normal Encounters: ,Encontros Normais:
+STAT_ELITE_ENCOUNTER,Elite Encounters: ,Encontros Elite:
+STAT_ENEMIES_DEFEATED,Enemies defeated: ,Inimigos derrotados:
+STAT_EXPLORATION,Exploration rate: ,Taxa de exploração:
+REGION_CLEARED,Region cleared!,Região vencida!
+STAT_FULLY_DISCOVERED_RECIPES,Fully discovered recipes: ,Receitas totalmente descobertas:
+STAT_MASTERED_RECIPES,Mastered recipes: ,Receitas Masterizadas:
+STAT_ARTIFACTS,Collected artifacts: ,Artefatos coletados:
+STAT_TIME,Total time: ,Tempo total:
+STAT_TRANSFIGURED,Transfigured reagents: ,Reagentes Transfigurados:
+STAT_UPGRADED_REAGENTS,Upgraded reagents: ,Reagentes Melhorados:
+STAT_REMOVED_REAGENT,Removed reagents: ,Reagentes Removidos:
+STAT_DAMAGE_DEALT,Damage dealt: ,Dano infligido:
+STAT_DAMAGE_TAKEN,Damage taken: ,Dano recebido:
+STAT_DAMAGE_HEALED,Damage healed: ,Dano curado:
+STAT_DAMAGE_BLOCKED,Damage blocked: ,Dano bloqueado:
+STAT_BLOCK_GAINED,Total block gained: ,Escudo ganho:
+TOTAL,Total: ,Total:
+EP,EP,PE
+EMPIRIC_POINTS,Empiric Points,Pontos Empíricos
+KNOWLEDGE_ADMIN,Knowledge Administration,Gestor de Conhecimento
+EMPIRIC_AVAILABLE,Empiric Points:,Pontos Empíricos:
+UNLOCK,Unlock,Desbloquear
+LEVEL,Level,Nível
+MAX_LEVEL,MAX LEVEL!,NÍVEL MÁXIMO!
+NEXT,Next,Continuar
+QUICK_RES,Quick Restart,Nova Partida
+MAIN_MENU,Main Menu,Menu Principal
 FILTERS,Filters,Filtros
 CLOSE,Close,Fechar
 CLEAR_ALL,Clear all,Limpar
@@ -89,6 +125,8 @@ DEBUFF,Debuff,Enfraquecer
 HEAL,Heal,Cura
 MISC,Misc,Diversos
 END_TURN,End Turn,Terminar   Turno
+ARTIFACTS,Artifacts,Artefatos
+THE_WORLD,The World,O Mundo
 RECIPES,Recipes,Receitas
 RECIPE,Recipe,Receita
 MASTERED_RECIPE,Mastered Recipe,Receita Masterizada
@@ -106,6 +144,7 @@ INCOMPLETE,Incomplete,Incompletas
 COMPLETE,Complete,Completas
 ALL,All,Todas
 PEARLS,Pearls,Pérolas
+PEARL_TOOLTIP_TEXT,...but what is it for?,...mas para que servem?
 GOLD,Gold,Ouro
 RESOURCE,Resource,Recurso
 RARE_RESOURCE,Rare Resource,Recurso Raro

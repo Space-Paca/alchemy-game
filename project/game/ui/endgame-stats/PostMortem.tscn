@@ -322,7 +322,7 @@ margin_right = 250.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Killed by:"
+text = "KILLED_BY"
 
 [node name="Image" type="TextureRect" parent="Killer"]
 material = SubResource( 22 )
@@ -341,7 +341,7 @@ margin_bottom = 331.0
 rect_min_size = Vector2( 250, 40 )
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Unknown"
+text = "UNKNOWN"
 align = 1
 autowrap = true
 

@@ -926,6 +926,9 @@ func _on_Rest_closed():
 	
 	rest.hide()
 	enable_map()
+	if current_node:
+		map.reveal_paths(current_node)
+		current_node = null
 	play_map_bgm()
 	
 	Transition.end_transition()
@@ -1011,6 +1014,7 @@ func _on_EventDisplay_event_spawned_rest():
 	yield(Transition, "screen_dimmed")
 	
 	event_display.hide()
+	current_node = event_display.map_node
 	open_rest(event_display.map_node, player)
 
 

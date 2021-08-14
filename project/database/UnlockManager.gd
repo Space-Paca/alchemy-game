@@ -2,9 +2,9 @@ extends Node
 
 
 const PROGRESSIONS = {
-	"recipes": [10, 20, 30, 45, 60, 80, 100, 120],
-	"artifacts": [10, 20, 30, 45, 60, 80, 100, 120],
-	"misc": [10, 30, 50, 70, 100],
+	"recipes": [300, 650, 1200, 1800, 2700, 3850, 5000, 7300],
+	"artifacts": [500, 1150, 2000, 3200, 4700, 6800, 8900, 11000],
+	"misc": [100, 600, 1200, 2000, 3000],
 }
 const UNLOCKS = {
 	"recipes": [
@@ -31,19 +31,19 @@ const UNLOCKS = {
 		{
 			"type": "MISC",
 			"name": "COMPENDIUM",
-			"description": "Lalalalal",
+			"description": "COMPENDIUM_UNLOCK_DESC",
 			"texture_path": "res://assets/images/ui/compendium_icon.png"
 		},
 		{
 			"type": "LOCATION",
 			"name": "LABORATORY",
-			"description": "Popopopop",
+			"description": "LABORATORY_UNLOCK_DESC",
 			"texture_path": "res://assets/images/ui/cauldron.png"
 		},
 		{
 			"type": "LOCATION",
 			"name": "REAGENT_SMITH",
-			"description": "Pipipipip",
+			"description": "REAGENT_SMITH_UNLOCK_DESC",
 			"texture_path": "res://assets/images/map/smith.png"
 		},
 		{

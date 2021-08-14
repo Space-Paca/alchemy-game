@@ -75,6 +75,7 @@ LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
+COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada.
 FILTERS,Filters,Filtros
 CLOSE,Close,Fechar
 CLEAR_ALL,Clear all,Limpar
@@ -118,8 +119,10 @@ BOSS,Guardian,Guardião
 SHOP,Shop,Loja
 RESTING_CIRCLE,Resting Circle,Círculo do Descanso
 REAGENT_SMITH,Reagent Smith,Forjador de Reagentes
+REAGENT_SMITH_UNLOCK_DESC,"A misterious figure can now appear on your journeys, be on the lookout for the Reagent Smith. Some say he is mad in love for Pearls...","Uma figura misteriosa poderá aparecer em suas jornadas, fique atento ao Forjador de Reagentes. Alguns dizem que ele é um fanático por Pérolas..."
 EVENT,Event,Evento
 LABORATORY,Laboratory,Laboratório
+LABORATORY_UNLOCK_DESC,The Laboratory will now appear during your adventures! A peaceful place to test some recipes before venturing into battle...,O Laborátorio agora irá aparecer durante suas aventuras! Um lugar pacífico para poder testar algumas receitas antes de enfrentar inimigos...
 TREASURE,Treasure,Tesouro
 FAINT,Faint,Fraco
 FAINT_REAGENT,Faint Reagent,Reagente Fraco

@@ -58,16 +58,15 @@ func stylize_text(text):
 		text = text.replace(keyword, "[color=lime]" + keyword + "[/color]")
 	
 	#Color numbers
-	#This could/will probably not work properly if there is two equal nubmers on the text
-	#But we'll deal with this later (。・ω・。)
+	#It works with two equal numbers now! (*/ω＼*)
 	var regex = RegEx.new()
 	regex.compile("(\\d+%*)")
 	var offset = 0
 	while offset < text.length():
 		var result = regex.search(text, offset)
 		if result:
-			var n = result.get_string(1)
-			text = text.replace(n, "[color=fuchsia]"+n+"[/color]")
+			text = text.insert(result.get_end(1), "[/color]")
+			text = text.insert(result.get_start(1), "[color=fuchsia]")
 			offset = result.get_end(1) + "[color=fuchsia]".length()
 		else:
 			break

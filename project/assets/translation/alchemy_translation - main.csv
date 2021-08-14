@@ -87,6 +87,8 @@ HEAL,Heal,Cura
 MISC,Misc,Diversos
 END_TURN,End Turn,Terminar   Turno
 RECIPES,Recipes,Receitas
+RECIPE,Recipe,Receita
+MASTERED_RECIPE,Mastered Recipe,Receita Masterizada
 COMBINE,Combine,Combinar
 MISCOMBINATION,Miscombination,Má Combinação
 DRAW_BAG,Draw Bag,Bolsa de Compra
@@ -423,17 +425,23 @@ ART_GOLD_ANKH_NAME,Gold Ankh,Ankh Dourado
 ART_GOLD_ANKH_DESC,"Whenever you finish a battle, gain 10 max health","Sempre que você terminar uma batalha, ganhe 10 de vida máxima"
 ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso 
 ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 15% of your max life (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 15% da vida máxima (não funciona em receitas compradas)"
-EVENT_DUMMY_BATTLE_OPT_1,Battle!,
-EVENT_DUMMY_LEAVE_OPT_1,Leave.,
-EVENT_DUMMY_REST_OPT_1,Go to resting circle.,
-EVENT_1_TITLE,Travellin' Gamblin' Man,
+EVENT_DUMMY_BATTLE_OPT_1,Battle!,Battle!
+EVENT_DUMMY_LEAVE_OPT_1,Leave.,Leave.
+EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Go to resting circle.
+EVENT_1_TITLE,Travellin' Gamblin' Man,Travellin' Gamblin' Man
 EVENT_1_TEXT,"While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
 
 (shake)""Hey, wanna gamble?""(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
 
 His hand stretches to a small table in front of him, something you're sure wasn't there before. Two cards lay face down.
 
-""A game of chance huh"" you think to yourself. This might be an opportunity to make a few coins... (small)if you feel luck is by your side.(/small)",
+""A game of chance huh"" you think to yourself. This might be an opportunity to make a few coins... (small)if you feel luck is by your side.(/small)","While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
+
+(shake)""Hey, wanna gamble?""(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
+
+His hand stretches to a small table in front of him, something you're sure wasn't there before. Two cards lay face down.
+
+""A game of chance huh"" you think to yourself. This might be an opportunity to make a few coins... (small)if you feel luck is by your side.(/small)"
 EVENT_1_LEAVE_1,"You pick a card and look at it.
 
 Looking back at you is golden painting of a sun. A warm feeling of relief fills your mind.
@@ -442,31 +450,55 @@ A maniacal laugh turns your attention forward across the table, but you see only
 
 It is gone, but a shimmering pile of coins sits above the table.
 
-(highlight)You gain <amount> gold.(/highlight)",
+(highlight)You gain <amount> gold.(/highlight)","You pick a card and look at it.
+
+Looking back at you is golden painting of a sun. A warm feeling of relief fills your mind.
+
+A maniacal laugh turns your attention forward across the table, but you see only empty space where the cloaked figure used to be...
+
+It is gone, but a shimmering pile of coins sits above the table.
+
+(highlight)You gain <amount> gold.(/highlight)"
 EVENT_1_LEAVE_2,"You pick a card and look at it.
 
 Looking back at you is a crimson painting of death. Shivers run down your spine.
 
 A maniacal laugh turns your attention forward across the table, but you see only empty space where the cloaked figure used to be...
 
-It is gone, along with your coins.",
+It is gone, along with your coins.","You pick a card and look at it.
+
+Looking back at you is a crimson painting of death. Shivers run down your spine.
+
+A maniacal laugh turns your attention forward across the table, but you see only empty space where the cloaked figure used to be...
+
+It is gone, along with your coins."
 EVENT_1_LEAVE_4,"You don't trust luck is by your side, and you certainly don't feel confortable interacting with unknown creepy figures.
 
 As you hesitate to accept the gambling offer, the hooded disappears in the blink of an eye. Maybe for the best.
 
-You gather your belongings and resume your journey.",
-EVENT_1_OPT_1,Bet 5 coins.,
-EVENT_1_OPT_2,Bet 20 coins.,
-EVENT_1_OPT_3,Bet 40 coins.,
-EVENT_1_OPT_4,Don't gamble.,
-EVENT_2_TITLE,Solitary Well,
+You gather your belongings and resume your journey.","You don't trust luck is by your side, and you certainly don't feel confortable interacting with unknown creepy figures.
+
+As you hesitate to accept the gambling offer, the hooded disappears in the blink of an eye. Maybe for the best.
+
+You gather your belongings and resume your journey."
+EVENT_1_OPT_1,Bet 5 coins.,Bet 5 coins.
+EVENT_1_OPT_2,Bet 20 coins.,Bet 20 coins.
+EVENT_1_OPT_3,Bet 40 coins.,Bet 40 coins.
+EVENT_1_OPT_4,Don't gamble.,Don't gamble.
+EVENT_2_TITLE,Solitary Well,Solitary Well
 EVENT_2_TEXT,"You come across a solitary well, a strange sight amidst all the chaos around you so far.
 
 It seems in perfect condition despite the growing moss covering its surface.
 You would feel ill at ease if not for an almost blissful aura radiating from it.
 
 Maybe it's an invite to offer something.
-Maybe it's just a trick of the light.",
+Maybe it's just a trick of the light.","You come across a solitary well, a strange sight amidst all the chaos around you so far.
+
+It seems in perfect condition despite the growing moss covering its surface.
+You would feel ill at ease if not for an almost blissful aura radiating from it.
+
+Maybe it's an invite to offer something.
+Maybe it's just a trick of the light."
 EVENT_2_LEAVE_1,"The clattering sounds of your coins hitting the inner stone walls of the well fade into nothingness.
 After a moment of silence, a faint splashing sound hits your eardrums.
 
@@ -477,342 +509,562 @@ Suddenly a golden glimmer catches you attention on the other side of well. You w
 
 You walk away from the well, happier and a bit heavier than before.
 
-(highlight)You gain <amount> gold.(/highlight)",
+(highlight)You gain <amount> gold.(/highlight)","The clattering sounds of your coins hitting the inner stone walls of the well fade into nothingness.
+After a moment of silence, a faint splashing sound hits your eardrums.
+
+You stare blankly for a few minutes, hoping something would magically happen.
+
+Suddenly a golden glimmer catches you attention on the other side of well. You walk to it, to find an unnatended satchel full of gold!
+""Was this here before?"" the thought passes by your head while you hastily pick up every coin you can carry.
+
+You walk away from the well, happier and a bit heavier than before.
+
+(highlight)You gain <amount> gold.(/highlight)"
 EVENT_2_LEAVE_2,"The clatter sounds of your coins hitting the inner stone walls of the well fades into nothingness.
 After a moment of silence, a faint splashing sound hits your eardrums.
 
 You stare blankly for a few minutes, hoping something would magically happen.
 
 In disbelief you start walking away when you immediatly stumble upon an artifact that was lying right behind your feet.
-Amazed, you pickup the object, and continue onto your journey.",
+Amazed, you pickup the object, and continue onto your journey.","The clatter sounds of your coins hitting the inner stone walls of the well fades into nothingness.
+After a moment of silence, a faint splashing sound hits your eardrums.
+
+You stare blankly for a few minutes, hoping something would magically happen.
+
+In disbelief you start walking away when you immediatly stumble upon an artifact that was lying right behind your feet.
+Amazed, you pickup the object, and continue onto your journey."
 EVENT_2_LEAVE_3,"The clattering sounds of your coins hitting the inner stone walls of the well fade into nothingness.
 After a moment of silence, a faint splashing sound hits your eardrums.
 
 You stare blankly for a few minutes, hoping something would magically happen.
 It does not.
-Grudgingly you walk away promising yourself to never be fooled by a well again...",
-EVENT_2_LEAVE_4,"Only a fool would throw coins to the indifferent void. You ignore the well and resume your journey, happy to leave that unsettling scenario behind.",
-EVENT_2_OPT_1,Throw 5 coins.,
-EVENT_2_OPT_2,Throw 10 coins.,
-EVENT_2_OPT_3,Throw 30 coins.,
-EVENT_2_OPT_4,Throw 50 coins.,
-EVENT_2_OPT_5,Ignore the well.,
-EVENT_3_TITLE,Hole in Wall,
+Grudgingly you walk away promising yourself to never be fooled by a well again...","The clattering sounds of your coins hitting the inner stone walls of the well fade into nothingness.
+After a moment of silence, a faint splashing sound hits your eardrums.
+
+You stare blankly for a few minutes, hoping something would magically happen.
+It does not.
+Grudgingly you walk away promising yourself to never be fooled by a well again..."
+EVENT_2_LEAVE_4,"Only a fool would throw coins to the indifferent void. You ignore the well and resume your journey, happy to leave that unsettling scenario behind.","Only a fool would throw coins to the indifferent void. You ignore the well and resume your journey, happy to leave that unsettling scenario behind."
+EVENT_2_OPT_1,Throw 5 coins.,Throw 5 coins.
+EVENT_2_OPT_2,Throw 10 coins.,Throw 10 coins.
+EVENT_2_OPT_3,Throw 30 coins.,Throw 30 coins.
+EVENT_2_OPT_4,Throw 50 coins.,Throw 50 coins.
+EVENT_2_OPT_5,Ignore the well.,Ignore the well.
+EVENT_3_TITLE,Hole in Wall,Hole in Wall
 EVENT_3_TEXT,"You come to a dead end while exploring, but the wall facing you catches your attention.
 It appears to have an unusual hole, fitting almost exactly to the size of your hands.
 
 You peek in and the sight of a familiar glimmer of coins catches your eyes. However, an alarming hissing sound emanates from the wall.
-Maybe if you're fast enough, you can grab a few gold coins without any consequences...",
+Maybe if you're fast enough, you can grab a few gold coins without any consequences...","You come to a dead end while exploring, but the wall facing you catches your attention.
+It appears to have an unusual hole, fitting almost exactly to the size of your hands.
+
+You peek in and the sight of a familiar glimmer of coins catches your eyes. However, an alarming hissing sound emanates from the wall.
+Maybe if you're fast enough, you can grab a few gold coins without any consequences..."
 EVENT_3_LEAVE_1,"As you're feeling around for the coins your fingertips touch something hairy...
 
 (wave)*EEEYOUCH*(/wave)
 
-You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?",
-EVENT_3_LEAVE_4,You don't feel the need to risk your arm for a few measly coins. You leave and resume your journey.,
-EVENT_3_OPT_1,Reach for the coins.,
-EVENT_3_OPT_2,Turn around and leave.,
-EVENT_4_TEXT,"You reach and get (highlight)<amount> coins(/highlight), but you feel like if you stretched your arm just a bit further you could have gotten even more. At the same time the noises are getting louder.",
+You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?","As you're feeling around for the coins your fingertips touch something hairy...
+
+(wave)*EEEYOUCH*(/wave)
+
+You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?"
+EVENT_3_LEAVE_4,You don't feel the need to risk your arm for a few measly coins. You leave and resume your journey.,You don't feel the need to risk your arm for a few measly coins. You leave and resume your journey.
+EVENT_3_OPT_1,Reach for the coins.,Reach for the coins.
+EVENT_3_OPT_2,Turn around and leave.,Turn around and leave.
+EVENT_4_TEXT,"You reach and get (highlight)<amount> coins(/highlight), but you feel like if you stretched your arm just a bit further you could have gotten even more. At the same time the noises are getting louder.","You reach and get (highlight)<amount> coins(/highlight), but you feel like if you stretched your arm just a bit further you could have gotten even more. At the same time the noises are getting louder."
 EVENT_4_LEAVE_1,"As you're feeling around for the coins your fingertips touch something hairy...
 
 (wave)*EEEYOUCH*(/wave)
 
-You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?",
-EVENT_4_LEAVE_4,"You took enough risks, and got yourself some nice loot as reward. You leave satisfied and resume your journey.",
-EVENT_4_OPT_1,Reach for the coins.,
-EVENT_4_OPT_2,Turn around and leave.,
-EVENT_5_TITLE,A Peculiar Trade,
+You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?","As you're feeling around for the coins your fingertips touch something hairy...
+
+(wave)*EEEYOUCH*(/wave)
+
+You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?"
+EVENT_4_LEAVE_4,"You took enough risks, and got yourself some nice loot as reward. You leave satisfied and resume your journey.","You took enough risks, and got yourself some nice loot as reward. You leave satisfied and resume your journey."
+EVENT_4_OPT_1,Reach for the coins.,Reach for the coins.
+EVENT_4_OPT_2,Turn around and leave.,Turn around and leave.
+EVENT_5_TITLE,A Peculiar Trade,A Peculiar Trade
 EVENT_5_TEXT,"You come across a small hut, and the smell of fresh herbs invite you in.
 
 An old-woman, with bushy eyebrows and vulpine eyes, welcomes you, and after peeking at the dangling reagents from your pouch, speaks with a raspy voice:
 
 ""What some lovely trinkets you have there, care to make a deal? An offer I lay bare, one-for-one, what a steal!""
 
-She brings up a relative large bag, it's contents hidden from sight. You may grab bindly from it, but for each one a reagent you must leave behind.",
+She brings up a relative large bag, it's contents hidden from sight. You may grab bindly from it, but for each one a reagent you must leave behind.","You come across a small hut, and the smell of fresh herbs invite you in.
+
+An old-woman, with bushy eyebrows and vulpine eyes, welcomes you, and after peeking at the dangling reagents from your pouch, speaks with a raspy voice:
+
+""What some lovely trinkets you have there, care to make a deal? An offer I lay bare, one-for-one, what a steal!""
+
+She brings up a relative large bag, it's contents hidden from sight. You may grab bindly from it, but for each one a reagent you must leave behind."
 EVENT_5_LEAVE_1,"After leaving your part of the agreement upon a wooden table, you reach for the bag and collect you rewards.
 
 ""You got what you received, and now you must leave, as my eyes have perceived, you must be in a hurry...
 No time for sighs, no reason for goodbyes, come back anytime, have a safe journey!""
 
-The old-woman smiles delightfully while you step out the hut and resume your adventure.",
-EVENT_5_LEAVE_4,"You are happy with what you got, and don't trust the unnerving smile from the old-woman. You leave the hut as quickly as you entered and resume your adventure.",
-EVENT_5_OPT_1,Exchange reagents.,
-EVENT_5_OPT_2,Leave the hut.,
-EVENT_6_TITLE,A Risky Prospect,
+The old-woman smiles delightfully while you step out the hut and resume your adventure.","After leaving your part of the agreement upon a wooden table, you reach for the bag and collect you rewards.
+
+""You got what you received, and now you must leave, as my eyes have perceived, you must be in a hurry...
+No time for sighs, no reason for goodbyes, come back anytime, have a safe journey!""
+
+The old-woman smiles delightfully while you step out the hut and resume your adventure."
+EVENT_5_LEAVE_4,"You are happy with what you got, and don't trust the unnerving smile from the old-woman. You leave the hut as quickly as you entered and resume your adventure.","You are happy with what you got, and don't trust the unnerving smile from the old-woman. You leave the hut as quickly as you entered and resume your adventure."
+EVENT_5_OPT_1,Exchange reagents.,Exchange reagents.
+EVENT_5_OPT_2,Leave the hut.,Leave the hut.
+EVENT_6_TITLE,A Risky Prospect,A Risky Prospect
 EVENT_6_TEXT,"You notice an (highlight)enemy encampment(/highlight) in the distance, and as you approach the loud snoring from the creatures alleviates your worries. They're all sound asleep and surely you'll be able to pass without a fight, but as you get closer you see they have a stolen (highlight)alchemist's chest(/highlight), exactly like the ones you've seen containing artifacts from this forgotten kingdom.
 
-""Maybe I can get it without waking anyone, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer...",
+""Maybe I can get it without waking anyone, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer...","You notice an (highlight)enemy encampment(/highlight) in the distance, and as you approach the loud snoring from the creatures alleviates your worries. They're all sound asleep and surely you'll be able to pass without a fight, but as you get closer you see they have a stolen (highlight)alchemist's chest(/highlight), exactly like the ones you've seen containing artifacts from this forgotten kingdom.
+
+""Maybe I can get it without waking anyone, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer..."
 EVENT_6_LEAVE_1,"Silent as night and quick as shadow, you rush to the chest, get whatever you could find, and leave without any alarm.
 
-Your reward for this venture: a fine trinket. And you'll be long gone before anyone finds out what you have done.",
+Your reward for this venture: a fine trinket. And you'll be long gone before anyone finds out what you have done.","Silent as night and quick as shadow, you rush to the chest, get whatever you could find, and leave without any alarm.
+
+Your reward for this venture: a fine trinket. And you'll be long gone before anyone finds out what you have done."
 EVENT_6_LEAVE_2,"You decide to try your luck, and start sneaking to your target. 
 You manage to reach it without any problems, but as you open the chest, a long and unwelcome creaking sound stops your heart, and before you know it, you hear a shout alarming your presence.
 
-You'll have to fight your way out.",
+You'll have to fight your way out.","You decide to try your luck, and start sneaking to your target. 
+You manage to reach it without any problems, but as you open the chest, a long and unwelcome creaking sound stops your heart, and before you know it, you hear a shout alarming your presence.
+
+You'll have to fight your way out."
 EVENT_6_LEAVE_4,"You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
 
-You continue your journey, glad you don't have to fight for your life another day.",
-EVENT_6_OPT_1,Go for the treasure.,
-EVENT_6_OPT_2,Walk away.,
-EVENT_7_TITLE,A Dangerous Proposition,
+You continue your journey, glad you don't have to fight for your life another day.","You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
+
+You continue your journey, glad you don't have to fight for your life another day."
+EVENT_6_OPT_1,Go for the treasure.,Go for the treasure.
+EVENT_6_OPT_2,Walk away.,Walk away.
+EVENT_7_TITLE,A Dangerous Proposition,A Dangerous Proposition
 EVENT_7_TEXT,"You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
 
-""Maybe I can get it without drawing attention, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer...",
+""Maybe I can get it without drawing attention, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer...","You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
+
+""Maybe I can get it without drawing attention, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer..."
 EVENT_7_LEAVE_1,"Hiding in the cave's shadows, you sneak to the chest, get your prize, and manage to leave unseen.
 
-Your reward for this venture: a powerful artifact! And you'll be long gone before anyone finds out what you have done.",
+Your reward for this venture: a powerful artifact! And you'll be long gone before anyone finds out what you have done.","Hiding in the cave's shadows, you sneak to the chest, get your prize, and manage to leave unseen.
+
+Your reward for this venture: a powerful artifact! And you'll be long gone before anyone finds out what you have done."
 EVENT_7_LEAVE_2,"You decide to try your luck, and start sneaking to your target. 
 You reach the chest and find exactly what you are looking for, but before you can count yourself out of danger, a worrying sound of a creature running at your location tells you it's not over yet.
 
-There is no other exit, so you'll have to fight your way out if you want to leave this place alive.",
+There is no other exit, so you'll have to fight your way out if you want to leave this place alive.","You decide to try your luck, and start sneaking to your target. 
+You reach the chest and find exactly what you are looking for, but before you can count yourself out of danger, a worrying sound of a creature running at your location tells you it's not over yet.
+
+There is no other exit, so you'll have to fight your way out if you want to leave this place alive."
 EVENT_7_LEAVE_4,"You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
 
-You continue your journey, glad you don't have to fight for your life another day.",
-EVENT_7_OPT_1,Go for the treasure.,
-EVENT_7_OPT_2,Walk away.,
-EVENT_8_TITLE,A Threatening Venture,
+You continue your journey, glad you don't have to fight for your life another day.","You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
+
+You continue your journey, glad you don't have to fight for your life another day."
+EVENT_7_OPT_1,Go for the treasure.,Go for the treasure.
+EVENT_7_OPT_2,Walk away.,Walk away.
+EVENT_8_TITLE,A Threatening Venture,A Threatening Venture
 EVENT_8_TEXT,"You notice an (highlight)abandoned sanctuary(/highlight) in the distance, and as you approach, the trinkets and decorations laid at its entrance indicates it is for a powerful foe that once roamed this land. However, from beyond the entrance gates, you see a (highlight)legendary artifact(/highlight), something you've only seen written in tales from this forgotten kingdom.
 
-""Maybe I can get it without consequences, but is it worth provoking the spirit that lies in this place?"" you think to yourself as the prospect of treasure tempts you to get even closer...",
+""Maybe I can get it without consequences, but is it worth provoking the spirit that lies in this place?"" you think to yourself as the prospect of treasure tempts you to get even closer...","You notice an (highlight)abandoned sanctuary(/highlight) in the distance, and as you approach, the trinkets and decorations laid at its entrance indicates it is for a powerful foe that once roamed this land. However, from beyond the entrance gates, you see a (highlight)legendary artifact(/highlight), something you've only seen written in tales from this forgotten kingdom.
+
+""Maybe I can get it without consequences, but is it worth provoking the spirit that lies in this place?"" you think to yourself as the prospect of treasure tempts you to get even closer..."
 EVENT_8_LEAVE_1,"Light as a feather, you sneak into the sanctuary, careful not to disturb any presence that might lurks in its walls.
 You reach the legendary relic, and leave as quick as you came, ignoring the malevolent aura that shook your core as you left.
 
-Your reward for this venture: a legendary artifact!! And you'll be long gone before anyone finds out what you have done.",
+Your reward for this venture: a legendary artifact!! And you'll be long gone before anyone finds out what you have done.","Light as a feather, you sneak into the sanctuary, careful not to disturb any presence that might lurks in its walls.
+You reach the legendary relic, and leave as quick as you came, ignoring the malevolent aura that shook your core as you left.
+
+Your reward for this venture: a legendary artifact!! And you'll be long gone before anyone finds out what you have done."
 EVENT_8_LEAVE_2,"You decide to try your luck, and start sneaking to your target. 
 You manage to reach it without any problems, but as you hold the legendary relic, a ghoulish sound emanates deep into the sanctuary. The passage in which you came suddenly closes, and the air around you gets colder by the moment.
 
-Whatever you have disturbed by entering this place, it's about to come directly for you, and your only hope left is to fight your way out.",
+Whatever you have disturbed by entering this place, it's about to come directly for you, and your only hope left is to fight your way out.","You decide to try your luck, and start sneaking to your target. 
+You manage to reach it without any problems, but as you hold the legendary relic, a ghoulish sound emanates deep into the sanctuary. The passage in which you came suddenly closes, and the air around you gets colder by the moment.
+
+Whatever you have disturbed by entering this place, it's about to come directly for you, and your only hope left is to fight your way out."
 EVENT_8_LEAVE_4,"You analyze the situation, and it's not worth risking disturbing an ancient evil over a relic.
 
-You continue your journey, glad you don't have to fight for your life another day.",
-EVENT_8_OPT_1,Go for the treasure.,
-EVENT_8_OPT_2,Walk away.,
-EVENT_9_TITLE,Cursed Pearls,
+You continue your journey, glad you don't have to fight for your life another day.","You analyze the situation, and it's not worth risking disturbing an ancient evil over a relic.
+
+You continue your journey, glad you don't have to fight for your life another day."
+EVENT_8_OPT_1,Go for the treasure.,Go for the treasure.
+EVENT_8_OPT_2,Walk away.,Walk away.
+EVENT_9_TITLE,Cursed Pearls,Cursed Pearls
 EVENT_9_TEXT,"While treading an unconventional path, you step into puddle, where a (wave)shiny sparkle(/wave) catches your attention. You lean down and reach into the shallow pool and find a handful of precious pearls!
 
 However, unlike the ones you've seen before, these emanate somekind of ghoulish aura, as if embedded with an ancient evil.
 
-You ponder for a moment if it's worth keeping them, unafraid of the consequences, or if it's better to leave this fate to another soul...",
+You ponder for a moment if it's worth keeping them, unafraid of the consequences, or if it's better to leave this fate to another soul...","While treading an unconventional path, you step into puddle, where a (wave)shiny sparkle(/wave) catches your attention. You lean down and reach into the shallow pool and find a handful of precious pearls!
+
+However, unlike the ones you've seen before, these emanate somekind of ghoulish aura, as if embedded with an ancient evil.
+
+You ponder for a moment if it's worth keeping them, unafraid of the consequences, or if it's better to leave this fate to another soul..."
 EVENT_9_LEAVE_1,"You take the (highlight)<amount>(/highlight) pearls, but something isn't right... You feel like some of your alchemical powers have been sapped by the simple act of picking up those damned pearls.
 
-What a horrible night to have a curse.",
-EVENT_9_LEAVE_4,"Your wise judgment encourages you to leave the pearls where you found them, and you continue your journey.",
-EVENT_9_OPT_1,Take the pearls.,
-EVENT_9_OPT_2,Leave the pearls.,
-EVENT_10_TITLE,Cursed Knight,
+What a horrible night to have a curse.","You take the (highlight)<amount>(/highlight) pearls, but something isn't right... You feel like some of your alchemical powers have been sapped by the simple act of picking up those damned pearls.
+
+What a horrible night to have a curse."
+EVENT_9_LEAVE_4,"Your wise judgment encourages you to leave the pearls where you found them, and you continue your journey.","Your wise judgment encourages you to leave the pearls where you found them, and you continue your journey."
+EVENT_9_OPT_1,Take the pearls.,Take the pearls.
+EVENT_9_OPT_2,Leave the pearls.,Leave the pearls.
+EVENT_10_TITLE,Cursed Knight,Cursed Knight
 EVENT_10_TEXT,"At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, suited with an ebony-colored armor, shield and halberd.
 
-Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (shake)odd feeling(/shake) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate.",
+Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (shake)odd feeling(/shake) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate.","At the distance you spot a black mass blocking your path. Upon reaching the obstacle, you realize it's the fallen corpse of dead knight, suited with an ebony-colored armor, shield and halberd.
+
+Despite their weight, you fathom you could retrieve the weapon or the shield for yourself, however, an (shake)odd feeling(/shake) tells you that, as powerful as they seem to be, they could be related as to why the knight came to its fate."
 EVENT_10_LEAVE_1,"You lift the halberd from the ground, and a surge of power instantly runs through your veins.
 But as a burning candle that bursts into flames, you feel as your life is now running out faster than before.
 
-You just hope your fate doesn't coincide with the knight's...",
+You just hope your fate doesn't coincide with the knight's...","You lift the halberd from the ground, and a surge of power instantly runs through your veins.
+But as a burning candle that bursts into flames, you feel as your life is now running out faster than before.
+
+You just hope your fate doesn't coincide with the knight's..."
 EVENT_10_LEAVE_2,"You lift the shield from the ground, and a surge of invincibility pounds in your chest.
 But as a burning candle that shines the brightest, you feel as your life is now running out faster than before.
 
-You just hope your fate doesn't coincide with the knight's...",
-EVENT_10_LEAVE_4,"You don't want to end up as another dead corpse, found by an adventurer as yourself. You leave the fallen knight alone and continue your journey.",
-EVENT_10_OPT_1,Get the halberd.,
-EVENT_10_OPT_2,Get the shield.,
-EVENT_10_OPT_3,Don't take anything.,
-EVENT_11_TITLE,Decomposing Corpse,
+You just hope your fate doesn't coincide with the knight's...","You lift the shield from the ground, and a surge of invincibility pounds in your chest.
+But as a burning candle that shines the brightest, you feel as your life is now running out faster than before.
+
+You just hope your fate doesn't coincide with the knight's..."
+EVENT_10_LEAVE_4,"You don't want to end up as another dead corpse, found by an adventurer as yourself. You leave the fallen knight alone and continue your journey.","You don't want to end up as another dead corpse, found by an adventurer as yourself. You leave the fallen knight alone and continue your journey."
+EVENT_10_OPT_1,Get the halberd.,Get the halberd.
+EVENT_10_OPT_2,Get the shield.,Get the shield.
+EVENT_10_OPT_3,Don't take anything.,Don't take anything.
+EVENT_11_TITLE,Decomposing Corpse,Decomposing Corpse
 EVENT_11_TEXT,"Turning a corner, you are stunned by a (shake)rancid stench(/shake) emanating from nearby. You spot the origin of the foul smell: a dead body of an unlucky adventurer who passed by this path, no more than a few moons ago.
 
 You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongs its carcass. However, the corpse its completely infested in (shake)bugs and worms(/shake).
 
-You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?",
+You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?","Turning a corner, you are stunned by a (shake)rancid stench(/shake) emanating from nearby. You spot the origin of the foul smell: a dead body of an unlucky adventurer who passed by this path, no more than a few moons ago.
+
+You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongs its carcass. However, the corpse its completely infested in (shake)bugs and worms(/shake).
+
+You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?"
 EVENT_11_LEAVE_1,"You examine the body from a distance, looking for anything of value...
 
 Then something catches your eye, a glimpse of (highlight)something interesting(/highlight) from the corpse! You quickly approach your target, and in swift motion, grab the object as fast as you can from the (shake)swarm of worms and beetles(/shake).
 
-You shake the worms from the artifact as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air and resuming your journey.",
+You shake the worms from the artifact as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air and resuming your journey.","You examine the body from a distance, looking for anything of value...
+
+Then something catches your eye, a glimpse of (highlight)something interesting(/highlight) from the corpse! You quickly approach your target, and in swift motion, grab the object as fast as you can from the (shake)swarm of worms and beetles(/shake).
+
+You shake the worms from the artifact as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air and resuming your journey."
 EVENT_11_LEAVE_2,"You get near the body, in hopes of finding (highlight)something worthy(/highlight).
 
 Just as you are about to give up on this foul task, you spot something of quite valor from deep inside the body. Using all your mental strength, you push your hand deep into the reeking corpse, pulling from within a (highlight)valuable artifact(/highlight)!
 
-You shake the bugs from the artifact and yourself as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air, (small)not noticing a few extra passengers that remained in your bag...(/small)",
+You shake the bugs from the artifact and yourself as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air, (small)not noticing a few extra passengers that remained in your bag...(/small)","You get near the body, in hopes of finding (highlight)something worthy(/highlight).
+
+Just as you are about to give up on this foul task, you spot something of quite valor from deep inside the body. Using all your mental strength, you push your hand deep into the reeking corpse, pulling from within a (highlight)valuable artifact(/highlight)!
+
+You shake the bugs from the artifact and yourself as best as you can and stash it in your backpack, leaving quickly for a breath of fresh air, (small)not noticing a few extra passengers that remained in your bag...(/small)"
 EVENT_11_LEAVE_3,"""Well, let's do this"", you whisper to yourself as you drop your belongings and frantically start searching the body for something important.
 
 This maddening task takes unbearing amounts of time, but it finally pays off when you find, deep into the rotting corpse, (highlight)a legendary artifact(/highlight)!
 
 You immediately retrieve it and get away from the body, trying your best to remove all the (shake)crawling life(/shake) away from you.
 
-You leave the scene as fast as you can, (small)not noticing some extra weight from the extra passengers that crawled in your bag...(/small)",
+You leave the scene as fast as you can, (small)not noticing some extra weight from the extra passengers that crawled in your bag...(/small)","""Well, let's do this"", you whisper to yourself as you drop your belongings and frantically start searching the body for something important.
+
+This maddening task takes unbearing amounts of time, but it finally pays off when you find, deep into the rotting corpse, (highlight)a legendary artifact(/highlight)!
+
+You immediately retrieve it and get away from the body, trying your best to remove all the (shake)crawling life(/shake) away from you.
+
+You leave the scene as fast as you can, (small)not noticing some extra weight from the extra passengers that crawled in your bag...(/small)"
 EVENT_11_LEAVE_4,"The stench is terrible, and you don't feel like digging through corpses today. 
 
-You leave the place as fast as you can, knowing full well fresh air beats a bag full of corpse-eating beetles.",
-EVENT_11_OPT_1,Search the corpse superficially (receive 1 Preserved Beetle reagent).,
-EVENT_11_OPT_2,Search the corpse moderately (receive 4 Preserved Beetle reagents).,
-EVENT_11_OPT_3,Search the corpse completely (receive 8 Preserved Beetle reagents).,
-EVENT_11_OPT_4,Ignore the body and move on.,
-EVENT_12_TITLE,Blood Fountain,
+You leave the place as fast as you can, knowing full well fresh air beats a bag full of corpse-eating beetles.","The stench is terrible, and you don't feel like digging through corpses today. 
+
+You leave the place as fast as you can, knowing full well fresh air beats a bag full of corpse-eating beetles."
+EVENT_11_OPT_1,Search the corpse superficially (receive 1 Preserved Beetle reagent).,Search the corpse superficially (receive 1 Preserved Beetle reagent).
+EVENT_11_OPT_2,Search the corpse moderately (receive 4 Preserved Beetle reagents).,Search the corpse moderately (receive 4 Preserved Beetle reagents).
+EVENT_11_OPT_3,Search the corpse completely (receive 8 Preserved Beetle reagents).,Search the corpse completely (receive 8 Preserved Beetle reagents).
+EVENT_11_OPT_4,Ignore the body and move on.,Ignore the body and move on.
+EVENT_12_TITLE,Blood Fountain,Blood Fountain
 EVENT_12_TEXT,"Your journey is halted by a demonic altar.
 
 What looks to be a fountain pouring an unending flow stream of blood, an ominious statue inside of it catches your attention. It's of an unholy demon, its dark ebony body covered from the fountain splashes, and its open mouth, his sharp teeth are dripping in blood, inviting you to contribute yourself to this pagan ritual. 
 
-Will you participate in this sinister offering? It is known those who pay the price of life are generously compensated in the eyes of the dark gods...",
+Will you participate in this sinister offering? It is known those who pay the price of life are generously compensated in the eyes of the dark gods...","Your journey is halted by a demonic altar.
+
+What looks to be a fountain pouring an unending flow stream of blood, an ominious statue inside of it catches your attention. It's of an unholy demon, its dark ebony body covered from the fountain splashes, and its open mouth, his sharp teeth are dripping in blood, inviting you to contribute yourself to this pagan ritual. 
+
+Will you participate in this sinister offering? It is known those who pay the price of life are generously compensated in the eyes of the dark gods..."
 EVENT_12_LEAVE_1,"At the brink of death, you stab yourself into the demon's mouth, offering the last drop of blood you had in your body, and then collapsing into the fountain, (small)lifeless.(/small)
 
 An act of unquestionable devotion or just complete foolishness, this deed of madness has interested something powerful, because suddenly you are blasted from the fountain, coughing and dripping blood, with a thin thread of life still in you.
 
 And your life isn't the only gift you have received: in your arms resides a most powerful artifact, spoken only in miths and legends: (highlight)The Bloodcursed Grimorie(/highlight).
 
-You gather your belongings, and with the little strength you still have, resume your journey. And now, with a dark voice guiding you in your thoughts...",
+You gather your belongings, and with the little strength you still have, resume your journey. And now, with a dark voice guiding you in your thoughts...","At the brink of death, you stab yourself into the demon's mouth, offering the last drop of blood you had in your body, and then collapsing into the fountain, (small)lifeless.(/small)
+
+An act of unquestionable devotion or just complete foolishness, this deed of madness has interested something powerful, because suddenly you are blasted from the fountain, coughing and dripping blood, with a thin thread of life still in you.
+
+And your life isn't the only gift you have received: in your arms resides a most powerful artifact, spoken only in miths and legends: (highlight)The Bloodcursed Grimorie(/highlight).
+
+You gather your belongings, and with the little strength you still have, resume your journey. And now, with a dark voice guiding you in your thoughts..."
 EVENT_12_LEAVE_4,"You don't want to get involved in this, so you ignore the sinister offering.
 
-As you walk away, you feel a presence looming over you, but it quickly dissipates...",
-EVENT_12_OPT_1,Offer your life (lose 4 health).,
-EVENT_12_OPT_2,Leave.,
+As you walk away, you feel a presence looming over you, but it quickly dissipates...","You don't want to get involved in this, so you ignore the sinister offering.
+
+As you walk away, you feel a presence looming over you, but it quickly dissipates..."
+EVENT_12_OPT_1,Offer your life (lose 4 health).,Offer your life (lose 4 health).
+EVENT_12_OPT_2,Leave.,Leave.
 EVENT_13_TEXT,"Sticking your hand into the demon's sharp teeth, you make a small offering to the fountain, a sharp pain rushes through your hand as your blood drops into the crimson pool, quickly lost like tears in the rain.
 
 And just as the pain starts to fade away, you see the familiar glimmer of gold sparkling in the pool. With your other hand you reach to grab your reward: (highlight)<amount> gold coins(/highlight)!
 
-You could leave now... or make another offering. The dark gods are known to (highlight)compensate highly(/highlight) those who push themselves to their limit for their amusement...",
+You could leave now... or make another offering. The dark gods are known to (highlight)compensate highly(/highlight) those who push themselves to their limit for their amusement...","Sticking your hand into the demon's sharp teeth, you make a small offering to the fountain, a sharp pain rushes through your hand as your blood drops into the crimson pool, quickly lost like tears in the rain.
+
+And just as the pain starts to fade away, you see the familiar glimmer of gold sparkling in the pool. With your other hand you reach to grab your reward: (highlight)<amount> gold coins(/highlight)!
+
+You could leave now... or make another offering. The dark gods are known to (highlight)compensate highly(/highlight) those who push themselves to their limit for their amusement..."
 EVENT_13_LEAVE_1,"You make another offering.
 
 The pain is only getting worse, but the fountain quickly returns the favor.
 
 You reach for the pool of blood and retrieve (highlight)<amount> gold coins(/highlight).
 
-Is it time to stop? Or continue pleasing the gods?",
+Is it time to stop? Or continue pleasing the gods?","You make another offering.
+
+The pain is only getting worse, but the fountain quickly returns the favor.
+
+You reach for the pool of blood and retrieve (highlight)<amount> gold coins(/highlight).
+
+Is it time to stop? Or continue pleasing the gods?"
 EVENT_13_LEAVE_2,"You stab your hand one last time, your hand already deformed from all those offerings.
 
 But as you look to the pool in search of your reward, you are surprised to find something else, a gift from the gods themselves, pleased at your dedication.
 
-You grab the object and resume your journey. As you walk away, you feel a dark presence looming over you. It gets a bit lighter after a few hours, but it never truly leaves...",
+You grab the object and resume your journey. As you walk away, you feel a dark presence looming over you. It gets a bit lighter after a few hours, but it never truly leaves...","You stab your hand one last time, your hand already deformed from all those offerings.
+
+But as you look to the pool in search of your reward, you are surprised to find something else, a gift from the gods themselves, pleased at your dedication.
+
+You grab the object and resume your journey. As you walk away, you feel a dark presence looming over you. It gets a bit lighter after a few hours, but it never truly leaves..."
 EVENT_13_LEAVE_4,"You've made all the offerings you could.
 
 You fix your hand with whatever you could find in your backpack, and leave this sinister place.
 
-You feel a strange sensation taking over you as you leave, and it takes many hours until it goes back to normal...",
-EVENT_13_OPT_1,Offer your life (lose 4 health).,
-EVENT_13_OPT_2,Leave.,
-EVENT_14_TITLE,Shady Businessss,
+You feel a strange sensation taking over you as you leave, and it takes many hours until it goes back to normal...","You've made all the offerings you could.
+
+You fix your hand with whatever you could find in your backpack, and leave this sinister place.
+
+You feel a strange sensation taking over you as you leave, and it takes many hours until it goes back to normal..."
+EVENT_13_OPT_1,Offer your life (lose 4 health).,Offer your life (lose 4 health).
+EVENT_13_OPT_2,Leave.,Leave.
+EVENT_14_TITLE,Shady Businessss,Shady Businessss
 EVENT_14_TEXT,"In a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides. As you approach it, an eerie figure pops out from an opening, hastily addressing to you:
 
 (wave)""Greetingsss traveler""(/wave) the figure hisses, (wave)""Would you like trade sssome of your (highlight)ssstrength(/highlight)?(/wave)""
 
 You've heard of this before, the figure is vampire kin, known to drain the life forces of beings. Sometimes just brutally sucking the life of their victims, this one seems to be the more civilized kind.
 
-The shady figure extends a bony hand, waiting your response.",
+The shady figure extends a bony hand, waiting your response.","In a distance lies a dusky caravan, with a variety of trinkets and curios dangling on the sides. As you approach it, an eerie figure pops out from an opening, hastily addressing to you:
+
+(wave)""Greetingsss traveler""(/wave) the figure hisses, (wave)""Would you like trade sssome of your (highlight)ssstrength(/highlight)?(/wave)""
+
+You've heard of this before, the figure is vampire kin, known to drain the life forces of beings. Sometimes just brutally sucking the life of their victims, this one seems to be the more civilized kind.
+
+The shady figure extends a bony hand, waiting your response."
 EVENT_14_LEAVE_1,"You could use a little gold. 
 
 You signal to the vampire, and they nod with an unsettling smirk on their face.
 
-You grab their hand and a quick flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quicky fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure.",
+You grab their hand and a quick flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quicky fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure.","You could use a little gold. 
+
+You signal to the vampire, and they nod with an unsettling smirk on their face.
+
+You grab their hand and a quick flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quicky fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure."
 EVENT_14_LEAVE_2,"You point to one of the sparkly pearls dangling in the corner of the caravan.
 
 The vampire smiles, their eyes sparks disconcertingly.
 
-You grab their hand and a mild flow of energy pulses from your hand into their body. You feel weak, but you try to recompose yourself when the vampire handles the precious pearl to you.",
+You grab their hand and a mild flow of energy pulses from your hand into their body. You feel weak, but you try to recompose yourself when the vampire handles the precious pearl to you.","You point to one of the sparkly pearls dangling in the corner of the caravan.
+
+The vampire smiles, their eyes sparks disconcertingly.
+
+You grab their hand and a mild flow of energy pulses from your hand into their body. You feel weak, but you try to recompose yourself when the vampire handles the precious pearl to you."
 EVENT_14_LEAVE_3,"You point to a certain trinket dangling from the caravan. The vampire's eyes open wide, ample smile on their face, barely containing immense joy.
 
 Unprompted, they grab your hand, as if to not give you time to change your mind, and a surge of energy flows through your hand from your body, a feeling of pain mixed with a burning sensation.
 
 When the vampire releases your hand, you collapse to the floor. The vampire tosses your artifact by your feet, and with a toothed grin hisses to you:
 
-(wave)""Anything elssse?""(/wave)",
+(wave)""Anything elssse?""(/wave)","You point to a certain trinket dangling from the caravan. The vampire's eyes open wide, ample smile on their face, barely containing immense joy.
+
+Unprompted, they grab your hand, as if to not give you time to change your mind, and a surge of energy flows through your hand from your body, a feeling of pain mixed with a burning sensation.
+
+When the vampire releases your hand, you collapse to the floor. The vampire tosses your artifact by your feet, and with a toothed grin hisses to you:
+
+(wave)""Anything elssse?""(/wave)"
 EVENT_14_LEAVE_4,"You don't trust the figure and step away from the caravan. You both take different paths as you resume your journey.
 
-From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade...",
-EVENT_14_OPT_1,Pay 5 life for 15 gold coins.,
-EVENT_14_OPT_2,Pay 15 life for a pearl.,
-EVENT_14_OPT_3,Pay 25 life for a common artifact.,
-EVENT_14_OPT_4,Decline the offer.,
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade...","You don't trust the figure and step away from the caravan. You both take different paths as you resume your journey.
+
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."
+EVENT_14_OPT_1,Pay 5 life for 15 gold coins.,Pay 5 life for 15 gold coins.
+EVENT_14_OPT_2,Pay 15 life for a pearl.,Pay 15 life for a pearl.
+EVENT_14_OPT_3,Pay 25 life for a common artifact.,Pay 25 life for a common artifact.
+EVENT_14_OPT_4,Decline the offer.,Decline the offer.
 EVENT_15_LEAVE_4,"You've made all the bargains you wanted (or could), so you turn from the caravan and leave to your journey, going different paths than the vampire.
 
-From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade...",
-EVENT_15_OPT_1,Pay 5 life for 15 gold coins.,
-EVENT_15_OPT_2,Pay 15 life for a pearl.,
-EVENT_15_OPT_3,Pay 25 life for a common artifact.,
-EVENT_15_OPT_4,Stop bartering.,
-EVENT_16_TITLE,The Golden Summoning,
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade...","You've made all the bargains you wanted (or could), so you turn from the caravan and leave to your journey, going different paths than the vampire.
+
+From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."
+EVENT_15_OPT_1,Pay 5 life for 15 gold coins.,Pay 5 life for 15 gold coins.
+EVENT_15_OPT_2,Pay 15 life for a pearl.,Pay 15 life for a pearl.
+EVENT_15_OPT_3,Pay 25 life for a common artifact.,Pay 25 life for a common artifact.
+EVENT_15_OPT_4,Stop bartering.,Stop bartering.
+EVENT_16_TITLE,The Golden Summoning,The Golden Summoning
 EVENT_16_TEXT,"While exploring the caverns, you find a secluse chamber, hidden in the shadows of one of the many rocky corridors.
 
 Inside lies an ornamental chest, covered in dust and debris. Using some force you manage to open it, and inside you find an ancient scroll detailing about a (highlight)mystical artifact(/highlight) capable of immense (highlight)healing properties(/highlight). Furthermore, at the bottom of the scroll, instructions on how to summon it.
 
-You reckon you have the necessary materials to try the summoning right there, however the scroll is very descriptive on how (shake)(highlight)dangerous(/highlight)(/shake) this process is. Should you try to conjure this artifact despite the consequences?",
+You reckon you have the necessary materials to try the summoning right there, however the scroll is very descriptive on how (shake)(highlight)dangerous(/highlight)(/shake) this process is. Should you try to conjure this artifact despite the consequences?","While exploring the caverns, you find a secluse chamber, hidden in the shadows of one of the many rocky corridors.
+
+Inside lies an ornamental chest, covered in dust and debris. Using some force you manage to open it, and inside you find an ancient scroll detailing about a (highlight)mystical artifact(/highlight) capable of immense (highlight)healing properties(/highlight). Furthermore, at the bottom of the scroll, instructions on how to summon it.
+
+You reckon you have the necessary materials to try the summoning right there, however the scroll is very descriptive on how (shake)(highlight)dangerous(/highlight)(/shake) this process is. Should you try to conjure this artifact despite the consequences?"
 EVENT_16_LEAVE_1,"The thought of acquiring a legendary artifact fills you with determination. You make all the necessary preparations, and begin the summoning.
 
 It doesn't take long for the ground to start to shake, and a flow of energy to accumulate at the center the chamber. Just as the artifact is starting to materialize, an (shake)explosion(/shake) errupts from it, and you are thrown violently to the wall behind you. You fall unconcious.
 
-After a while you come to yourself, body in bruises and pain. But just across you lies the result of the summoning, a beautifully golden Ankh resting peacefully in the middle of the room. You slowly get up, grab your reward, and leave the chamber to resume your journey.",
+After a while you come to yourself, body in bruises and pain. But just across you lies the result of the summoning, a beautifully golden Ankh resting peacefully in the middle of the room. You slowly get up, grab your reward, and leave the chamber to resume your journey.","The thought of acquiring a legendary artifact fills you with determination. You make all the necessary preparations, and begin the summoning.
+
+It doesn't take long for the ground to start to shake, and a flow of energy to accumulate at the center the chamber. Just as the artifact is starting to materialize, an (shake)explosion(/shake) errupts from it, and you are thrown violently to the wall behind you. You fall unconcious.
+
+After a while you come to yourself, body in bruises and pain. But just across you lies the result of the summoning, a beautifully golden Ankh resting peacefully in the middle of the room. You slowly get up, grab your reward, and leave the chamber to resume your journey."
 EVENT_16_LEAVE_4,"As tempting as conjuring an artifact seems, you don't want to risk blowing yourself.
 
-You leave the chamber and resume your journey, leaving the scroll behind.",
-EVENT_16_OPT_1,Lose 2/3 of your current life and gain the Gold Ankh.,
-EVENT_16_OPT_2,Ignore the scroll and leave.,
-EVENT_17_TITLE,The Mask in the Circle,
+You leave the chamber and resume your journey, leaving the scroll behind.","As tempting as conjuring an artifact seems, you don't want to risk blowing yourself.
+
+You leave the chamber and resume your journey, leaving the scroll behind."
+EVENT_16_OPT_1,Lose 2/3 of your current life and gain the Gold Ankh.,Lose 2/3 of your current life and gain the Gold Ankh.
+EVENT_16_OPT_2,Ignore the scroll and leave.,Ignore the scroll and leave.
+EVENT_17_TITLE,The Mask in the Circle,The Mask in the Circle
 EVENT_17_TEXT,"You spot a much familiar mystical circle at the distance, a place you use often as a resting place.
 
 However, when you approach it, you find an (highlight)unusual object(/highlight) resting on one of the great stones surrounding the peaceful place: (highlight)an eerie mask(/highlight), with a (wave)powerful aura(/wave) emanating from it.
 
-You know you should be careful with artifacts such as this, but the mask is inviting you to put it on...",
+You know you should be careful with artifacts such as this, but the mask is inviting you to put it on...","You spot a much familiar mystical circle at the distance, a place you use often as a resting place.
+
+However, when you approach it, you find an (highlight)unusual object(/highlight) resting on one of the great stones surrounding the peaceful place: (highlight)an eerie mask(/highlight), with a (wave)powerful aura(/wave) emanating from it.
+
+You know you should be careful with artifacts such as this, but the mask is inviting you to put it on..."
 EVENT_17_LEAVE_1,"Finding a resting circle is a relief on its own, you don't want to risk your life by playing with unknown artifacts...
 
-You leave the mask where it is and proceed to the mystical circle.",
+You leave the mask where it is and proceed to the mystical circle.","Finding a resting circle is a relief on its own, you don't want to risk your life by playing with unknown artifacts...
+
+You leave the mask where it is and proceed to the mystical circle."
 EVENT_17_LEAVE_2,"The mask (wave)calls(/wave) to you, and before you know it, you are placing the ominous object on yourself.
 
 What follows is a (shake)burst of information(/shake) feeding directly into your brain as the mask glows blindingly.
 
 After what felt like days, the mask suddenly drops into the ground, quickly followed by yourself. At first it feels like nothing ever happened, but in your mind, the change is obvious: it grows inside of you, (highlight)a desire to learn each and every recipe ever made(/highlight). This sensation burns in your mind and heart, and seems like a positive effect from the mask... but alongside with it you might have trouble (highlight)finding rest ever again(/highlight)...
 
-You stash the mask in your backpack and proceed to the resting place.",
-EVENT_17_OPT_1,Ignore the mask and enter the resting circle.,
-EVENT_17_OPT_2,Put on the mask before entering the resting circle.,
-EVENT_18_TITLE,The Boneyard,
+You stash the mask in your backpack and proceed to the resting place.","The mask (wave)calls(/wave) to you, and before you know it, you are placing the ominous object on yourself.
+
+What follows is a (shake)burst of information(/shake) feeding directly into your brain as the mask glows blindingly.
+
+After what felt like days, the mask suddenly drops into the ground, quickly followed by yourself. At first it feels like nothing ever happened, but in your mind, the change is obvious: it grows inside of you, (highlight)a desire to learn each and every recipe ever made(/highlight). This sensation burns in your mind and heart, and seems like a positive effect from the mask... but alongside with it you might have trouble (highlight)finding rest ever again(/highlight)...
+
+You stash the mask in your backpack and proceed to the resting place."
+EVENT_17_OPT_1,Ignore the mask and enter the resting circle.,Ignore the mask and enter the resting circle.
+EVENT_17_OPT_2,Put on the mask before entering the resting circle.,Put on the mask before entering the resting circle.
+EVENT_18_TITLE,The Boneyard,The Boneyard
 EVENT_18_TEXT,"A foul and acidic smell guide your nose to a nearby field, vast as the eye can see, filled with an abundance of corpses, trash and forgotten scraps.
 
 You've reached the infamous (highlight)Boneyard(/highlight).
 
-You could spend sometime searching the discarded remains in hopes of finding (highlight)something valuable(/highlight), but you would be risking coming across (shake)dangerous foes(/shake) doing the same...",
+You could spend sometime searching the discarded remains in hopes of finding (highlight)something valuable(/highlight), but you would be risking coming across (shake)dangerous foes(/shake) doing the same...","A foul and acidic smell guide your nose to a nearby field, vast as the eye can see, filled with an abundance of corpses, trash and forgotten scraps.
+
+You've reached the infamous (highlight)Boneyard(/highlight).
+
+You could spend sometime searching the discarded remains in hopes of finding (highlight)something valuable(/highlight), but you would be risking coming across (shake)dangerous foes(/shake) doing the same..."
 EVENT_18_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 You fail to find anything useful, only weirdly shaped bones and a few decaying Morhks left to their fate.
 
-You then hear unappealing sounds, not far away... ",
+You then hear unappealing sounds, not far away... ","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You fail to find anything useful, only weirdly shaped bones and a few decaying Morhks left to their fate.
+
+You then hear unappealing sounds, not far away... "
 EVENT_18_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 You then find a small but very promising chest, buried deep on a pile of bones! You dig up, open it, and inside you find a humble amount of (highlight)gold coins!(/highlight)
 
-You then hear dreary sounds, not far away... ",
+You then hear dreary sounds, not far away... ","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You then find a small but very promising chest, buried deep on a pile of bones! You dig up, open it, and inside you find a humble amount of (highlight)gold coins!(/highlight)
+
+You then hear dreary sounds, not far away... "
 EVENT_18_LEAVE_3,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 After a while, you find something quite interesting! (highlight)A trinket(/highlight) hidden behind some Carapa remains. You clean it up and stash it among your belongings.
 
-You then hear unattractive sounds, not far away... ",
+You then hear unattractive sounds, not far away... ","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+After a while, you find something quite interesting! (highlight)A trinket(/highlight) hidden behind some Carapa remains. You clean it up and stash it among your belongings.
+
+You then hear unattractive sounds, not far away... "
 EVENT_18_LEAVE_4,"As attractive as rumaging through remains and scraps looks, you figure you have better things to do.
 
-You resume your journey, leaving the (highlight)Boneyard(/highlight) behind.",
-EVENT_18_OPT_1,Search for something valuable.,
-EVENT_18_OPT_2,Ignore.,
+You resume your journey, leaving the (highlight)Boneyard(/highlight) behind.","As attractive as rumaging through remains and scraps looks, you figure you have better things to do.
+
+You resume your journey, leaving the (highlight)Boneyard(/highlight) behind."
+EVENT_18_OPT_1,Search for something valuable.,Search for something valuable.
+EVENT_18_OPT_2,Ignore.,Ignore.
 EVENT_19_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 After some time, you find something remarkable! Next to the bones of a massive beast, in what seems to once be inside its belly, (highlight)a powerful artifact(/highlight) is resting. You quickly pick it up and stash it.
 
-You then hear unappetizing sounds, not far away... ",
+You then hear unappetizing sounds, not far away... ","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+After some time, you find something remarkable! Next to the bones of a massive beast, in what seems to once be inside its belly, (highlight)a powerful artifact(/highlight) is resting. You quickly pick it up and stash it.
+
+You then hear unappetizing sounds, not far away... "
 EVENT_19_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 You are almost giving up, when suddenly something (highlight)peculiar(/highlight) catches your attention: resting on the corner of a fence, amidst piles of bones, lies the remains of a long dead adventurer. However, his bony hands are clutching something in such a away you could feel his demise was related to protecting whatever its in his hands.
 
 You approaching it and finally find what it is: (highlight)a legendary artifact!(/highlight) You immediately store it, amazed on having such luck in finding this.
 
-You then hear unpleasant sounds, not far away... ",
+You then hear unpleasant sounds, not far away... ","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You are almost giving up, when suddenly something (highlight)peculiar(/highlight) catches your attention: resting on the corner of a fence, amidst piles of bones, lies the remains of a long dead adventurer. However, his bony hands are clutching something in such a away you could feel his demise was related to protecting whatever its in his hands.
+
+You approaching it and finally find what it is: (highlight)a legendary artifact!(/highlight) You immediately store it, amazed on having such luck in finding this.
+
+You then hear unpleasant sounds, not far away... "
 EVENT_19_LEAVE_3,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 You spend some time searching for something useful, but just as when you are most distracted in your task, you turn around and find yourself face to face to a most uninviting encounter, another foe that had the same idea as you, and not at all happy with this rendezvous.
 
-You'll have to battle your way out of this one.",
+You'll have to battle your way out of this one.","You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+
+You spend some time searching for something useful, but just as when you are most distracted in your task, you turn around and find yourself face to face to a most uninviting encounter, another foe that had the same idea as you, and not at all happy with this rendezvous.
+
+You'll have to battle your way out of this one."
 EVENT_19_LEAVE_4,"You pushed your luck in this place, and prudently decide it's time to leave.
 
-You pack your things and swiflty leave to resume your journey.",
-EVENT_19_OPT_1,Search for something valuable.,
-EVENT_19_OPT_2,Stop searching.,
-EVENT_20_TITLE,The Helpful Homunculus,
+You pack your things and swiflty leave to resume your journey.","You pushed your luck in this place, and prudently decide it's time to leave.
+
+You pack your things and swiflty leave to resume your journey."
+EVENT_19_OPT_1,Search for something valuable.,Search for something valuable.
+EVENT_19_OPT_2,Stop searching.,Stop searching.
+EVENT_20_TITLE,The Helpful Homunculus,The Helpful Homunculus
 EVENT_20_TEXT,"Pacing yourself in your journey, you come across a peculiar being: a lonely (highlight)Mender Homunculus(/highlight), with no other foe in sight.
 
 This type of homunculus is mostly seen in groups, using their natural healing powers to help others in exchange of protection and company. However, this one seems to be on a quest of his own, and since it's showing no apparent threat, you don't mind passing by the curious figure.
 
-As you both get near one another, the Mender gets excited by your presence, as if he admires your strength and tenacity in having a journey of your own. He senses you could use a helping hand, and speechless (small)(as they all are)(/small), extends his arms as to offer you a (highlight)small curative blessing(/highlight).",
+As you both get near one another, the Mender gets excited by your presence, as if he admires your strength and tenacity in having a journey of your own. He senses you could use a helping hand, and speechless (small)(as they all are)(/small), extends his arms as to offer you a (highlight)small curative blessing(/highlight).","Pacing yourself in your journey, you come across a peculiar being: a lonely (highlight)Mender Homunculus(/highlight), with no other foe in sight.
+
+This type of homunculus is mostly seen in groups, using their natural healing powers to help others in exchange of protection and company. However, this one seems to be on a quest of his own, and since it's showing no apparent threat, you don't mind passing by the curious figure.
+
+As you both get near one another, the Mender gets excited by your presence, as if he admires your strength and tenacity in having a journey of your own. He senses you could use a helping hand, and speechless (small)(as they all are)(/small), extends his arms as to offer you a (highlight)small curative blessing(/highlight)."
 EVENT_20_LEAVE_1,"You politely accept the gentle homunculus' offer and extend you arms in response, as to receive some relief on your wounds.
 
 The mender swiftly holds your arms with his soft hands, and a (wave)wave of tranquility(/wave) flows from his hand into your body. You can quickly (highlight)feel your bruises healing up(/highlight).
@@ -821,13 +1073,27 @@ After some moments, the Mender stops, still speechless, but with a gleeful expre
 
 He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
 
-You resume you own journey, more peaceful after this encounter, and better prepared for what's to come.",
+You resume you own journey, more peaceful after this encounter, and better prepared for what's to come.","You politely accept the gentle homunculus' offer and extend you arms in response, as to receive some relief on your wounds.
+
+The mender swiftly holds your arms with his soft hands, and a (wave)wave of tranquility(/wave) flows from his hand into your body. You can quickly (highlight)feel your bruises healing up(/highlight).
+
+After some moments, the Mender stops, still speechless, but with a gleeful expression on its face. You smile in appreciation of his efforts.
+
+He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
+
+You resume you own journey, more peaceful after this encounter, and better prepared for what's to come."
 EVENT_20_LEAVE_2,"You humbly accept the caring homunculus' offer and kneel before him, as to receive a vitality blessing from the shaman.
 
 The mender touches your head lightly with his warm hands, and after a few moments, a (wave)stream of energy(/wave) flows into your body. You can (highlight)feel yourself getting stronger and healthier(/highlight).
 
 After giving you all the strength he could, the Mender stops, volunteering his hand to help you get up again. You oblige, and after recomposing yourself, thank the compassionate Mender in appreciation of his efforts. He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
 
-You resume you own journey, more peaceful after this encounter, and better prepared for what's to come.",
-EVENT_20_OPT_1,Accept a healing blessing (heal 35 life).,
-EVENT_20_OPT_2,Accept a life blessing (increase max life by 10).,
+You resume you own journey, more peaceful after this encounter, and better prepared for what's to come.","You humbly accept the caring homunculus' offer and kneel before him, as to receive a vitality blessing from the shaman.
+
+The mender touches your head lightly with his warm hands, and after a few moments, a (wave)stream of energy(/wave) flows into your body. You can (highlight)feel yourself getting stronger and healthier(/highlight).
+
+After giving you all the strength he could, the Mender stops, volunteering his hand to help you get up again. You oblige, and after recomposing yourself, thank the compassionate Mender in appreciation of his efforts. He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
+
+You resume you own journey, more peaceful after this encounter, and better prepared for what's to come."
+EVENT_20_OPT_1,Accept a healing blessing (heal 35 life).,Accept a healing blessing (heal 35 life).
+EVENT_20_OPT_2,Accept a life blessing (increase max life by 10).,Accept a life blessing (increase max life by 10).

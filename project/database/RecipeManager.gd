@@ -84,10 +84,10 @@ func get_tooltip(recipe, mastered):
 	tooltip.title = recipe.name
 	tooltip.title_image = recipe.fav_icon
 	if mastered:
-		tooltip.subtitle = "Mastered Recipe"
+		tooltip.subtitle = tr("MASTERED_RECIPE")
 		tooltip.text = get_description(recipe, true)
 	else:
-		tooltip.subtitle = "Recipe"
+		tooltip.subtitle = tr("RECIPE")
 		tooltip.text = get_description(recipe, false)
 	return tooltip
 

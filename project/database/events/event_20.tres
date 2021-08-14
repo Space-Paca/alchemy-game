@@ -5,28 +5,10 @@
 [resource]
 script = ExtResource( 1 )
 id = 20
-title = "The Helpful Homunculus"
-text = "Pacing yourself in your journey, you come across a peculiar being: a lonely (highlight)Mender Homunculus(/highlight), with no other foe in sight.
-
-This type of homunculus is mostly seen in groups, using their natural healing powers to help others in exchange of protection and company. However, this one seems to be on a quest of his own, and since it's showing no apparent threat, you don't mind passing by the curious figure.
-
-As you both get near one another, the Mender gets excited by your presence, as if he admires your strength and tenacity in having a journey of your own. He senses you could use a helping hand, and speechless (small)(as they all are)(/small), extends his arms as to offer you a (highlight)small curative blessing(/highlight)."
-leave_text_1 = "You politely accept the gentle homunculus' offer and extend you arms in response, as to receive some relief on your wounds.
-
-The mender swiftly holds your arms with his soft hands, and a (wave)wave of tranquility(/wave) flows from his hand into your body. You can quickly (highlight)feel your bruises healing up(/highlight).
-
-After some moments, the Mender stops, still speechless, but with a gleeful expression on its face. You smile in appreciation of his efforts.
-
-He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
-
-You resume you own journey, more peaceful after this encounter, and better prepared for what's to come."
-leave_text_2 = "You humbly accept the caring homunculus' offer and kneel before him, as to receive a vitality blessing from the shaman.
-
-The mender touches your head lightly with his warm hands, and after a few moments, a (wave)stream of energy(/wave) flows into your body. You can (highlight)feel yourself getting stronger and healthier(/highlight).
-
-After giving you all the strength he could, the Mender stops, volunteering his hand to help you get up again. You oblige, and after recomposing yourself, thank the compassionate Mender in appreciation of his efforts. He lightly bows and starts strolling back onto the path he was before, back to his own personal adventure.
-
-You resume you own journey, more peaceful after this encounter, and better prepared for what's to come."
+title = "EVENT_20_TITLE"
+text = "EVENT_20_TEXT"
+leave_text_1 = "EVENT_20_LEAVE_1"
+leave_text_2 = "EVENT_20_LEAVE_2"
 leave_text_3 = ""
 leave_text_4 = ""
 type = 3

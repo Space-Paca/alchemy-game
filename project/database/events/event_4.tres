@@ -5,16 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 id = 4
-title = "Hole in Wall"
-text = "You reach and get (highlight)<amount> coins(/highlight), but you feel like if you stretched your arm just a bit further you could have gotten even more. At the same time the noises are getting louder."
-leave_text_1 = "As you're feeling around for the coins your fingertips touch something hairy...
-
-(wave)*EEEYOUCH*(/wave)
-
-You quickly pull back your arm, your hands cut up, blood dripping from your arms. You got (highlight)<amount> coins(/highlight), but was it worth it?"
+title = "EVENT_3_TITLE"
+text = "EVENT_4_TEXT"
+leave_text_1 = "EVENT_4_LEAVE_1"
 leave_text_2 = ""
 leave_text_3 = ""
-leave_text_4 = "You took enough risks, and got yourself some nice loot as reward. You leave satisfied and resume your journey."
+leave_text_4 = "EVENT_4_LEAVE_4"
 type = 0
 floor_appearance = {
 1: false,

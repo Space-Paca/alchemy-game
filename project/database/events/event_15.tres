@@ -5,14 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 id = 15
-title = "Shady Businessss"
+title = "EVENT_14_TITLE"
 text = ""
 leave_text_1 = ""
 leave_text_2 = ""
 leave_text_3 = ""
-leave_text_4 = "You've made all the bargains you wanted (or could), so you turn from the caravan and leave to your journey, going different paths than the vampire.
-
-From a distance, you can still hear the echoing hisses of joy from the bony figure, as they search for other adventurers for a trade..."
+leave_text_4 = "EVENT_15_LEAVE_4"
 type = 2
 floor_appearance = {
 1: false,

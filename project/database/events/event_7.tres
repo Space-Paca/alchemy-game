@@ -5,21 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 id = 7
-title = "A Dangerous Proposition"
-text = "You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
-
-\"Maybe I can get it without drawing attention, but is it worth the risk?\" you think to yourself as the prospect of treasure tempts you to get even closer..."
-leave_text_1 = "Hiding in the cave's shadows, you sneak to the chest, get your prize, and manage to leave unseen.
-
-Your reward for this venture: a powerful artifact! And you'll be long gone before anyone finds out what you have done."
-leave_text_2 = "You decide to try your luck, and start sneaking to your target. 
-You reach the chest and find exactly what you are looking for, but before you can count yourself out of danger, a worrying sound of a creature running at your location tells you it's not over yet.
-
-There is no other exit, so you'll have to fight your way out if you want to leave this place alive."
+title = "EVENT_7_TITLE"
+text = "EVENT_7_TEXT"
+leave_text_1 = "EVENT_7_LEAVE_1"
+leave_text_2 = "EVENT_7_LEAVE_2"
 leave_text_3 = ""
-leave_text_4 = "You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
-
-You continue your journey, glad you don't have to fight for your life another day."
+leave_text_4 = "EVENT_7_LEAVE_4"
 type = 1
 floor_appearance = {
 1: false,

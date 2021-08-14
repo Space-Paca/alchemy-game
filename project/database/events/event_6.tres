@@ -5,21 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 id = 6
-title = "A Risky Prospect"
-text = "You notice an (highlight)enemy encampment(/highlight) in the distance, and as you approach the loud snoring from the creatures alleviates your worries. They're all sound asleep and surely you'll be able to pass without a fight, but as you get closer you see they have a stolen (highlight)alchemist's chest(/highlight), exactly like the ones you've seen containing artifacts from this forgotten kingdom.
-
-\"Maybe I can get it without waking anyone, but is it worth the risk?\" you think to yourself as the prospect of treasure tempts you to get even closer..."
-leave_text_1 = "Silent as night and quick as shadow, you rush to the chest, get whatever you could find, and leave without any alarm.
-
-Your reward for this venture: a fine trinket. And you'll be long gone before anyone finds out what you have done."
-leave_text_2 = "You decide to try your luck, and start sneaking to your target. 
-You manage to reach it without any problems, but as you open the chest, a long and unwelcome creaking sound stops your heart, and before you know it, you hear a shout alarming your presence.
-
-You'll have to fight your way out."
+title = "EVENT_6_TITLE"
+text = "EVENT_6_TEXT"
+leave_text_1 = "EVENT_6_LEAVE_1"
+leave_text_2 = "EVENT_6_LEAVE_2"
 leave_text_3 = ""
-leave_text_4 = "You analyze the situation, and it's not worth risking an unnecessary fight over a stolen chest.
-
-You continue your journey, glad you don't have to fight for your life another day."
+leave_text_4 = "EVENT_6_LEAVE_4"
 type = 1
 floor_appearance = {
 1: true,

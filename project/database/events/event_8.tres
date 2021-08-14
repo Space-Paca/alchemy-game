@@ -5,22 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 id = 8
-title = "A Threatening Venture"
-text = "You notice an (highlight)abandoned sanctuary(/highlight) in the distance, and as you approach, the trinkets and decorations laid at its entrance indicates it is for a powerful foe that once roamed this land. However, from beyond the entrance gates, you see a (highlight)legendary artifact(/highlight), something you've only seen written in tales from this forgotten kingdom.
-
-\"Maybe I can get it without consequences, but is it worth provoking the spirit that lies in this place?\" you think to yourself as the prospect of treasure tempts you to get even closer..."
-leave_text_1 = "Light as a feather, you sneak into the sanctuary, careful not to disturb any presence that might lurks in its walls.
-You reach the legendary relic, and leave as quick as you came, ignoring the malevolent aura that shook your core as you left.
-
-Your reward for this venture: a legendary artifact!! And you'll be long gone before anyone finds out what you have done."
-leave_text_2 = "You decide to try your luck, and start sneaking to your target. 
-You manage to reach it without any problems, but as you hold the legendary relic, a ghoulish sound emanates deep into the sanctuary. The passage in which you came suddenly closes, and the air around you gets colder by the moment.
-
-Whatever you have disturbed by entering this place, it's about to come directly for you, and your only hope left is to fight your way out."
+title = "EVENT_8_TITLE"
+text = "EVENT_8_TEXT"
+leave_text_1 = "EVENT_8_LEAVE_1"
+leave_text_2 = "EVENT_8_LEAVE_2"
 leave_text_3 = ""
-leave_text_4 = "You analyze the situation, and it's not worth risking disturbing an ancient evil over a relic.
-
-You continue your journey, glad you don't have to fight for your life another day."
+leave_text_4 = "EVENT_8_LEAVE_4"
 type = 1
 floor_appearance = {
 1: false,

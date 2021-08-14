@@ -100,8 +100,7 @@ func get_unlock_data(type):
 		"artifacts":
 			var artifact_name = get_unlock(level, type)
 			var artifact_data = ArtifactDB.get_from_name(artifact_name)
-			data["type"] = str(ArtifactDB.get_rarity_from_name(artifact_name),
-					" ARTIFACT")
+			data["type"] = tr(ArtifactDB.get_rarity_from_name(artifact_name))
 			data["name"] = artifact_data.name
 			data["texture"] = artifact_data.image
 			data["description"] = artifact_data.description

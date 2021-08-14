@@ -3,6 +3,10 @@ extends Control
 onready var menu_button = $Page2/Buttons/Menu
 onready var restart_button = $Page2/Buttons/Restart
 onready var xpdivider = $Page2/XPDivider
+onready var compendium_progress = $Page2/CompendiumProgress
+onready var unknown_compendium = $Page2/Unknown
+
+const SPEED = 3
 
 var player : Player
 
@@ -11,7 +15,18 @@ func _ready():
 	progress_buttons_set_disabled(true)
 	$Page1.show()
 	$Page2.hide()
+	if not UnlockManager.is_misc_unlocked("COMPENDIUM"):
+		unknown_compendium.modulate.a = 1.0
+		compendium_progress.modulate.a = 0.0
 
+
+func _process(dt):
+	if not UnlockManager.is_misc_unlocked("COMPENDIUM"):
+		unknown_compendium.modulate.a = min(unknown_compendium.modulate.a + dt*SPEED, 1.0)
+		compendium_progress.modulate.a = max(compendium_progress.modulate.a - dt*SPEED, 0.0)
+	else:
+		unknown_compendium.modulate.a = max(unknown_compendium.modulate.a - dt*SPEED, 0.0)
+		compendium_progress.modulate.a = min(compendium_progress.modulate.a + dt*SPEED, 1.0)
 
 func set_player(p: Player):
 	player = p
@@ -44,7 +59,8 @@ func _on_Next_pressed():
 	$Page1.hide()
 	$Page2.show()
 	$Page2/CompendiumProgress.enable_tooltips()
-	xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)#(10000)
+	#xpdivider.set_initial_xp_pool(10000)
+	xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)
 	yield(xpdivider, "setup_animation_complete")
 	progress_buttons_set_disabled(xpdivider.can_apply_xp())
 

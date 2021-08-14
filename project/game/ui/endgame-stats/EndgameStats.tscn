@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://game/ui/endgame-stats/XPDivider.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/ui/endgame-stats/RunStats.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/ui/endgame-stats/UnlockablePopup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/images/intents/random.png" type="Texture" id=12]
+[ext_resource path="res://assets/shaders/scribble.shader" type="Shader" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -21,6 +23,11 @@ use_filter = true
 extra_spacing_top = -10
 extra_spacing_bottom = -10
 font_data = ExtResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 13 )
+shader_param/outline_color = Color( 0.572549, 0.427451, 0.333333, 1 )
+shader_param/freq = 4.0
 
 [node name="EndgameStats" type="Control"]
 anchor_right = 1.0
@@ -126,6 +133,20 @@ margin_left = 1020.0
 margin_top = 100.0
 margin_right = -270.0
 margin_bottom = -216.0
+
+[node name="Unknown" type="TextureRect" parent="Page2"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
+margin_left = 1150.0
+margin_top = 230.0
+margin_right = 1200.0
+margin_bottom = 290.0
+rect_scale = Vector2( 8.81291, 8.67483 )
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Buttons" type="HBoxContainer" parent="Page2"]
 margin_left = 929.0

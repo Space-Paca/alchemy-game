@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/audio/sfx/bar_charging.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 29
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -144,9 +144,9 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="NameContainer"]
-margin_top = 1.0
-margin_right = 224.0
-margin_bottom = 43.0
+margin_top = 2.0
+margin_right = 205.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Unlock Recipes - "
@@ -155,10 +155,10 @@ __meta__ = {
 }
 
 [node name="Level" type="Label" parent="NameContainer"]
-margin_left = 228.0
-margin_top = 1.0
-margin_right = 314.0
-margin_bottom = 43.0
+margin_left = 209.0
+margin_top = 2.0
+margin_right = 289.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Level 1"

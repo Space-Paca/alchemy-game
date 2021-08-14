@@ -69,10 +69,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="."]
-margin_left = 134.029
-margin_top = 104.832
-margin_right = 752.029
-margin_bottom = 180.832
+margin_left = 124.029
+margin_top = 108.832
+margin_right = 742.029
+margin_bottom = 184.832
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "KNOWLEDGE_ADMIN"
@@ -128,6 +128,14 @@ anchor_bottom = 0.0
 margin_right = 600.0
 margin_bottom = 175.0
 
+[node name="Name" parent="ProgressThingies/EndGameXPProgressControl/NameContainer" index="0"]
+margin_top = 1.0
+margin_bottom = 39.0
+
+[node name="Level" parent="ProgressThingies/EndGameXPProgressControl/NameContainer" index="1"]
+margin_top = 1.0
+margin_bottom = 39.0
+
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl" index="4"]
 custom_styles/fg = SubResource( 4 )
 
@@ -138,6 +146,14 @@ margin_top = 198.0
 margin_right = 600.0
 margin_bottom = 373.0
 
+[node name="Name" parent="ProgressThingies/EndGameXPProgressControl2/NameContainer" index="0"]
+margin_top = 1.0
+margin_bottom = 39.0
+
+[node name="Level" parent="ProgressThingies/EndGameXPProgressControl2/NameContainer" index="1"]
+margin_top = 1.0
+margin_bottom = 39.0
+
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl2" index="4"]
 custom_styles/fg = SubResource( 5 )
 
@@ -147,6 +163,14 @@ anchor_bottom = 0.0
 margin_top = 396.0
 margin_right = 600.0
 margin_bottom = 571.0
+
+[node name="Name" parent="ProgressThingies/EndGameXPProgressControl3/NameContainer" index="0"]
+margin_top = 1.0
+margin_bottom = 39.0
+
+[node name="Level" parent="ProgressThingies/EndGameXPProgressControl3/NameContainer" index="1"]
+margin_top = 1.0
+margin_bottom = 39.0
 
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl3" index="4"]
 custom_styles/fg = SubResource( 6 )

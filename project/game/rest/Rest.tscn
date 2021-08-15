@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
@@ -6,7 +6,18 @@
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.831373 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+expand_margin_left = 30.0
+expand_margin_right = 30.0
+expand_margin_top = 10.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="DynamicFont" id=2]
 size = 95
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
@@ -31,64 +42,64 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Recipes" type="ScrollContainer" parent="."]
-visible = false
+[node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -627.401
-margin_top = -383.093
-margin_right = 1272.6
-margin_bottom = 708.907
-grow_horizontal = 2
-grow_vertical = 2
-rect_scale = Vector2( 0.8, 0.8 )
+margin_left = -800.0
+margin_top = -240.0
+margin_right = 800.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 1600, 680 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Recipes" type="ScrollContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -149.0
+rect_min_size = Vector2( 1600, 0 )
 theme = ExtResource( 5 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBox" type="HBoxContainer" parent="Recipes"]
-margin_right = 3120.0
-margin_bottom = 1080.0
+[node name="HBox" type="HBoxContainer" parent="Panel/Recipes"]
+margin_right = 2520.0
+margin_bottom = 640.0
 grow_horizontal = 2
-grow_vertical = 2
+rect_min_size = Vector2( 1600, 0 )
+size_flags_horizontal = 5
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RestRecipe" parent="Recipes/HBox" instance=ExtResource( 3 )]
-margin_bottom = 1080.0
+[node name="RestRecipe" parent="Panel/Recipes/HBox" instance=ExtResource( 3 )]
 
-[node name="RestRecipe2" parent="Recipes/HBox" instance=ExtResource( 3 )]
-margin_left = 630.0
-margin_right = 1230.0
-margin_bottom = 1080.0
+[node name="RestRecipe2" parent="Panel/Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 510.0
+margin_right = 990.0
 
-[node name="RestRecipe3" parent="Recipes/HBox" instance=ExtResource( 3 )]
-margin_left = 1260.0
-margin_right = 1860.0
-margin_bottom = 1080.0
+[node name="RestRecipe3" parent="Panel/Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 1020.0
+margin_right = 1500.0
 
-[node name="RestRecipe4" parent="Recipes/HBox" instance=ExtResource( 3 )]
-margin_left = 1890.0
-margin_right = 2490.0
-margin_bottom = 1080.0
+[node name="RestRecipe4" parent="Panel/Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 1530.0
+margin_right = 2010.0
 
-[node name="RestRecipe5" parent="Recipes/HBox" instance=ExtResource( 3 )]
-margin_left = 2520.0
-margin_right = 3120.0
-margin_bottom = 1080.0
+[node name="RestRecipe5" parent="Panel/Recipes/HBox" instance=ExtResource( 3 )]
+margin_left = 2040.0
+margin_right = 2520.0
 
 [node name="BackButton" type="Button" parent="."]
-margin_left = 60.0
-margin_top = 900.0
-margin_right = 271.0
-margin_bottom = 1046.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 335.0
+margin_bottom = 186.0
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -25.3217
-margin_top = -240.793
-margin_right = 348.678
-margin_bottom = -94.7927
+margin_left = -194.5
+margin_top = -156.0
+margin_right = 194.5
+margin_bottom = -10.0
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -148,7 +159,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 250.0
 margin_bottom = 392.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "CHOOSE_ONLY_ONE"
 align = 1
 valign = 1

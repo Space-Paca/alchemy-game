@@ -28,7 +28,7 @@ func setup(node, _player, _combinations):
 	$BackButton.show()
 	$ButtonContainer/HealButton.show()
 	$ButtonContainer/HintButton.show()
-	$Recipes.hide()
+	$Panel.hide()
 	$ContinueButton.hide()
 
 func get_percent_heal():
@@ -68,8 +68,8 @@ func reset_room():
 
 
 func setup_recipes():
-	for child in $Recipes/HBox.get_children():
-		$Recipes/HBox.remove_child(child)
+	for child in $Panel/Recipes/HBox.get_children():
+		$Panel/Recipes/HBox.remove_child(child)
 	
 	for combination in combinations:
 		create_display(combination)
@@ -77,7 +77,7 @@ func setup_recipes():
 
 func create_display(combination):
 	var recipe_display = RECIPE.instance()
-	$Recipes/HBox.add_child(recipe_display)
+	$Panel/Recipes/HBox.add_child(recipe_display)
 	recipe_display.set_combination(combination)
 	recipe_display.enable_tooltips()
 	recipe_display.connect("chosen", self, "_on_recipe_chosen")
@@ -105,7 +105,7 @@ func _on_HintButton_pressed():
 		$ChooseOneLabel.hide()
 		$ButtonContainer/HealButton.hide()
 		$ButtonContainer/HintButton.hide()
-		$Recipes.show()
+		$Panel.show()
 		setup_recipes()
 		state = "recipes"
 	else:
@@ -122,18 +122,18 @@ func _on_BackButton_pressed():
 		$ChooseOneLabel.show()
 		$ButtonContainer/HealButton.show()
 		$ButtonContainer/HintButton.show()
-		$Recipes.hide()
-		for child in $Recipes/HBox.get_children():
-			$Recipes/HBox.remove_child(child)
+		$Panel.hide()
+		for child in $Panel/Recipes/HBox.get_children():
+			$Panel/Recipes/HBox.remove_child(child)
 		state = "main"
 	else:
 		emit_signal("closed")
 
 
 func _on_recipe_chosen(chosen_recipe):
-	for recipe_display in $Recipes/HBox.get_children():
+	for recipe_display in $Panel/Recipes/HBox.get_children():
 		if recipe_display != chosen_recipe:
-			$Recipes/HBox.remove_child(recipe_display)
+			$Panel/Recipes/HBox.remove_child(recipe_display)
 
 	emit_signal("combination_studied", chosen_recipe.combination)
 	$ContinueButton.show()

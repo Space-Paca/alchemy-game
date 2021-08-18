@@ -121,6 +121,8 @@ custom_fonts/italics_font = SubResource( 3 )
 custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[wave amp=50 freq=2]Body[/wave] [i]small[/i]"
+visible_characters = 0
+percent_visible = 0.0
 text = "Body small"
 
 [node name="ExampleButton1" type="Button" parent="VBox"]
@@ -154,3 +156,5 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/idle = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]

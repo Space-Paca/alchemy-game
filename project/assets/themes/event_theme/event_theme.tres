@@ -2,17 +2,17 @@
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.117647, 0.117647, 0.223529, 0.803922 )
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0.0392157, 0.913725 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0.0392157, 0.882353 )
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.117647, 0.117647, 0.223529, 0.803922 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -39,7 +39,7 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = null
+Button/styles/disabled = SubResource( 3 )
 Button/styles/focus = SubResource( 1 )
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )

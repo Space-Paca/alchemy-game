@@ -62,7 +62,7 @@ Posso ver que você carrega todo tipo de [shake]muambas[/shake] nessa sua sacola
 Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais [shake]caro[/shake] [shake][i]hehehe[/i][/shake]"""
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
 RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
-DESTROY_REAGENT,Are you sure you want to destroy %s  for %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?
+DESTROY_REAGENT,Are you sure you want to destroy %s for the cost of %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?
 BUY_RECIPE,Buy Recipe,Comprar Receita
 BUY_HINT,Buy Hint,Comprar Dica
 GET_HINT,Get Hint,Pegar Dica

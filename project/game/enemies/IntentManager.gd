@@ -77,14 +77,12 @@ func get_intent_tooltip(action, enemy):
 		var value = args.value
 		value += enemy.get_damage_modifiers()
 		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
-		tooltip.title = "Attacking"
-		var amount_text
+		tooltip.title = tr("INTENT_ATTACKING_TITLE")
 		if args.amount > 1:
-			amount_text = " " + str(args.amount) + " times"
+			tooltip.text = tr("INTENT_ATTACKING_PLURAL_DESC") % [value, tr((args.type + "_DAMAGE").to_upper()), args.amount]
 		else:
-			amount_text = ""
-		tooltip.text = "This enemy is going to deal " + str(value) + " " + \
-					   args.type + " damage" + amount_text +  " next turn"
+			tooltip.text = tr("INTENT_ATTACKING_DESC") % [value, tr((args.type + "_DAMAGE").to_upper())]
+		
 		if args.type == "regular":
 			tooltip.title_image = IMAGES.regular_attack
 		elif args.type == "piercing":
@@ -97,67 +95,59 @@ func get_intent_tooltip(action, enemy):
 		var value = args.value
 		value += enemy.get_damage_modifiers()
 		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
-		tooltip.title = "Draining"
-		var amount_text
+		tooltip.title = tr("INTENT_DRAINING_TITLE")
 		if args.amount > 1:
-			amount_text = " " + str(args.amount) + " times"
+			tooltip.text = tr("INTENT_DRAINING_PLURAL_DESC") % [value, args.amount]
 		else:
-			amount_text = ""
-		tooltip.text = "This enemy is going to drain " + str(value) + \
-					   amount_text +  " next turn"
+			tooltip.text = tr("INTENT_DRAINING_DESC") % [value]
 		tooltip.title_image = IMAGES.drain
 	elif name == "shield":
-		tooltip.title = "Defending"
-		tooltip.text = "This enemy is getting " + str(args.value) + " shield next turn"
+		tooltip.title = tr("INTENT_DEFENDING_TITLE")
+		tooltip.text = tr("INTENT_DEFENDING_DESC") % [args.value]
 		tooltip.title_image = IMAGES.shield
 	elif name == "heal":
 		tooltip.title_image = IMAGES.heal
 		if args.target == "self":
-			tooltip.title = "Healing"
-			tooltip.text = "This enemy is healing " + str(args.value) + " next turn"
+			tooltip.title = tr("INTENT_HEALING_TITLE")
+			tooltip.text = tr("INTENT_HEALING_DESC") % [args.value]
 		elif args.target == "all_enemies":
-			tooltip.title = "Healing all Enemies"
-			tooltip.text = "This enemy is healing all enemies by " + str(args.value) + " next turn"
+			tooltip.title = tr("INTENT_HEALING_ALL_TITLE")
+			tooltip.text = tr("INTENT_HEALING_ALL_DESC") % [args.value]
 	elif name == "self_destruct":
-		tooltip.title = "Self Destructing"
-		tooltip.text = "This enemy will destroy itself next turn, dealing " + str(args.value) + " piercing damage to the player as result"
+		tooltip.title = tr("INTENT_SELF_DESTRUCT_TITLE")
+		tooltip.text = tr("INTENT_SELF_DESTRUCT_DESC") % [args.value]
 		tooltip.title_image = IMAGES.self_destruct
 	elif name == "status":
-		var verb
+		var status_data = StatusDB.get_from_name(args.status)
+		tooltip.title = status_data.intent_title
+		
 		if args.positive:
 			tooltip.title_image = IMAGES.buff
 		else:
 			tooltip.title_image = IMAGES.debuff
 			
-		if args.target == "self":
-			verb = "getting"
-		else:
-			verb = "applying"
-		
+		var target
 		if args.has("reduce") and args.reduce:
-			verb = "removing"
-
-		tooltip.text = "This character is " + verb + " "
-		
+			target = "REMOVE"
+		elif args.target == "self":
+			target = "SELF"
+		else:
+			target = "ENEMY"
 		if args.value > 1:
-			tooltip.text += str(args.value) + " "
-		
-		var status_data = StatusDB.get_from_name(args.status)
-		tooltip.title = status_data.intent_title
-		tooltip.text += tr(status_data["title_name"])
-		
-		tooltip.text += " next turn"
+			tooltip.text = "INTENT_STATUS_"+target+"_DESC" % [tr(status_data["title_name"])]
+		else:
+			tooltip.text = "INTENT_STATUS_"+target+"_PLURAL_DESC" % [args.value, tr(status_data["title_name"])]
 	elif name == "spawn":
-		tooltip.title = "Spawning"
-		tooltip.text = "This enemy is spawning another enemy next turn"
+		tooltip.title = tr("INTENT_SPAWNING_TITLE")
+		tooltip.text = tr("INTENT_SPAWNING_DESC")
 		tooltip.title_image = IMAGES.spawn
 	elif name == "add_reagent":
-		tooltip.title = "Adding reagent"
-		tooltip.text = "This enemy is going to add a reagent to your bag next turn"
+		tooltip.title = tr("INTENT_ADDING_REAGENT_TITLE")
+		tooltip.text = tr("INTENT_ADDING_REAGENT_DESC")
 		tooltip.title_image = IMAGES.random
 	elif name == "idle":
-		tooltip.title = "Preparing"
-		tooltip.text = "This enemy is preparing something..."
+		tooltip.title = tr("INTENT_IDLE_TITLE")
+		tooltip.text = tr("INTENT_IDLE_DESC")
 		tooltip.title_image = IMAGES.random
 	else:
 		push_error("Not a known action:" + str(name))

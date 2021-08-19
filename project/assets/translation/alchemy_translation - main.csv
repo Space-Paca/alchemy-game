@@ -202,6 +202,12 @@ COMMON_ARTIFACT,Common Artifact,Artefato Comum
 UNCOMMON_ARTIFACT,Uncommon Artifact,Artefato Incomum
 RARE_ARTIFACT,Rare Artifact,Artefato Raro
 EVENT_ARTIFACT,Event Artifact,Artefato de Evento
+INTENT_STATUS_SELF_DESC,This character is getting %s next turn,Este personagem vai receber %s próximo turno
+INTENT_STATUS_SELF_PLURAL_DESC,This character is getting %d %s next turn,Este personagem vai receber %d de %s próximo turno
+INTENT_STATUS_ENEMY_DESC,This character is applying %s next turn,Este personagem vai aplicar %s próximo turno
+INTENT_STATUS_ENEMY_PLURAL_DESC,This character is applying %d %s next turn,Este personagem vai aplicar %d de %s próximo turno
+INTENT_STATUS_REMOVE_DESC,This character is removing %s next turn,Este personagem vai remover %s próximo turno
+INTENT_STATUS_REMOVE_PLURAL_DESC,This character is removing %d %s next turn,Este personagem vai remover %d de %s próximo turno
 ST_ARCANE_AEGIS_TITLE,Arcane Aegis,Égide Arcana
 ST_ARCANE_AEGIS_DESC,"Whenever this characters is attacked, if it wasn't shielded, gains shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar escudo"
 ST_ARCANE_AEGIS_INTENT,Casting Arcane Aegis,Formando Égide Arcana
@@ -344,6 +350,26 @@ TUT_CR_7,Right clicking a reagent is extremely useful to move them around faster
 TUT_CR_8,"Also, you can open your recipe book with TAB.\nYou can do it outside of battle too!",Você também pode abrir seu livro de receitas com TAB.\nIsso também funciona fora da batalha!
 TUT_CR_9,"Lastly, you can hover your mouse on almost anything to learn more about it","E por último, você pode passar o mouse sobre quase qualquer coisa para saber mais sobre ela."
 TUT_CR_10,Good luck adventurer!,Boa sorte aventureiro!
+INTENT_ATTACKING_TITLE,Attacking,Atacando
+INTENT_ATTACKING_DESC,This enemy is going to deal %d %s next turn,Este inimigo vai inflingir %d de %s próximo turno
+INTENT_ATTACKING_PLURAL_DESC,This enemy is going to deal %d %s %d times next turn,Este inimigo vai inflingir %d de %s %d vezes próximo turno
+INTENT_DRAINING_TITLE,Draining,Drenando
+INTENT_DRAINING_DESC,This enemy is going to drain %d next turn,Este inimigo vai drenar %d próximo turno
+INTENT_DRAINING_PLURAL_DESC,This enemy is going to drain %d %d times next turn,Este inimigo vai drenar %d %d vezes próximo turno
+INTENT_DEFENDING_TITLE,Defending,Defendendo
+INTENT_DEFENDING_DESC,This enemy is getting %d shield next turn,Este inimigo vai ganhar %d de escudo próximo turno
+INTENT_HEALING_TITLE,Healing,Curando
+INTENT_HEALING_DESC,This enemy is healing %d next turn,Este inimigo vai curar %d próximo turno
+INTENT_HEALING_ALL_TITLE,Healing All Allies,Curando
+INTENT_HEALING_ALL_DESC,This enemy is healing all allies by %d next turn,Este inimigo vai curar todos aliados em %d próximo turno
+INTENT_SELF_DESTRUCT_TITLE,Self Destructing,Se Auto-Destruindo
+INTENT_SELF_DESTRUCT_DESC,"This enemy will destroy itself next turn, dealing %d piercing damage to the player as result","Este inimigo vai se auto-destruir próximo turno, causando %d de dano penetrante ao jogador como resultado"
+INTENT_SPAWNING_TITLE,Spawning,Invocando
+INTENT_SPAWNING_DESC,This enemy is spawning another enemy next turn,Este inimigo vai invocar outro inimigo próximo turno
+INTENT_ADDING_REAGENT_TITLE,Adding Reagent,Adicionando Reagente
+INTENT_ADDING_REAGENT_DESC,This enemy is going to add one or more reagents to your bag next turn,Este inimigo irá adicionar um ou mais reagentes à sua bolsa próximo turno
+INTENT_IDLE_TITLE,Preparing,Preparando
+INTENT_IDLE_DESC,This enemy is preparing something...,Este inimigo está preparando algo...
 DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflija %d de %s ao inimigo alvo.
 DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
 DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.

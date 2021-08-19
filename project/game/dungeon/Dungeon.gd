@@ -630,7 +630,7 @@ func open_treasure(room, _player):
 func open_event(map_node: MapNode):
 	event_display.set_map_node(map_node)
 	event_display.load_event(EventManager.get_random_event(floor_level), player)
-	event_display.show()
+	show_event()
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -670,7 +670,16 @@ func recipe_book_toggle():
 	
 	if lab.visible:
 		lab.recipe_book_visibility(book_visible)
-	
+
+
+func show_event():
+	event_display.show()
+	$PauseScreen.set_block_pause(true)
+
+
+func hide_event():
+	event_display.hide()
+	$PauseScreen.set_block_pause(false)
 
 
 func favorite_combination(combination, active, play_sfx = true):
@@ -985,7 +994,7 @@ func _on_EventDisplay_closed():
 	time_running = false
 	yield(Transition, "screen_dimmed")
 	
-	event_display.hide()
+	hide_event()
 	enable_map()
 	map.reveal_paths(current_node)
 	current_node = null
@@ -1002,7 +1011,7 @@ func _on_EventDisplay_event_spawned_battle(encounter):
 	time_running = false
 	yield(Transition, "screen_dimmed")
 	
-	event_display.hide()
+	hide_event()
 	current_node = event_display.map_node
 	new_battle(encounter)
 	battle.is_event = true
@@ -1013,7 +1022,7 @@ func _on_EventDisplay_event_spawned_rest():
 	time_running = false
 	yield(Transition, "screen_dimmed")
 	
-	event_display.hide()
+	hide_event()
 	current_node = event_display.map_node
 	open_rest(event_display.map_node, player)
 
@@ -1058,10 +1067,9 @@ func _on_Debug_test_map_creation():
 
 
 func _on_Debug_event_pressed(id: int):
-	print(id)
 	map.disable()
 	event_display.load_event(EventManager.get_event_by_id(id), player)
-	event_display.show()
+	show_event()
 
 
 func _on_Battle_update_recipes_display():

@@ -25,7 +25,7 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 94, 62 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 302, 32 )
+extents = Vector2( 365, 48 )
 
 [node name="ReagentLoot" type="HBoxContainer"]
 margin_right = 624.0
@@ -98,8 +98,7 @@ __meta__ = {
 position = Vector2( 741, 0 )
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 302, 32 )
+position = Vector2( 365, 48 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 5 )

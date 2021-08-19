@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/ui/loot/slot_reward.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 302, 32 )
+extents = Vector2( 365, 48 )
 
 [node name="ArtifactLoot" type="HBoxContainer"]
 margin_right = 735.0
@@ -54,11 +54,10 @@ rect_min_size = Vector2( 488, 0 )
 text = "COLLECT_ARTIFACT"
 
 [node name="TooltipPosition" type="Node2D" parent="."]
-position = Vector2( 741, 0 )
+position = Vector2( 735, 0 )
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 302, 32 )
+position = Vector2( 365, 48 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 1 )

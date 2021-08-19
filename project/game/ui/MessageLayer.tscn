@@ -99,9 +99,9 @@ __meta__ = {
 }
 
 [node name="FavoriteRecipe" type="Button" parent="Control/Buttons"]
-margin_left = 364.0
-margin_right = 1158.0
-margin_bottom = 146.0
+margin_left = 439.0
+margin_right = 1068.0
+margin_bottom = 114.0
 theme = ExtResource( 3 )
 text = "FAVORITE_THIS_RECIPE"
 
@@ -118,9 +118,9 @@ __meta__ = {
 }
 
 [node name="Continue" type="Button" parent="Control/Buttons"]
-margin_left = 1181.0
-margin_right = 1555.0
-margin_bottom = 146.0
+margin_left = 1091.0
+margin_right = 1480.0
+margin_bottom = 114.0
 theme = ExtResource( 3 )
 text = "CONTINUE"
 __meta__ = {

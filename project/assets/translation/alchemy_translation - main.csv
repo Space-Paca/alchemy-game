@@ -4,7 +4,7 @@ QUIT,Quit,Sair
 CONTINUE,Continue,Continuar
 RESUME,Resume,Continuar
 SETTINGS,Settings,Configurações
-SAVE_RETURN_MENU,Save & Return to Menu,Salvar e Retornar para Menu
+SAVE_RETURN_MENU,Save & Return to Menu,Salvar e Retornar ao Menu
 SAVE_RETURN_DESKTOP,Save & Exit to Desktop,Salvar e Sair do Jogo
 ARE_YOU_SURE,Are you sure?,Tem certeza?
 ARE_YOU_SURE_EXIT,Are you sure you want to exit the game?,Tem certeza que quer sair do jogo?
@@ -39,9 +39,9 @@ CHOOSE_ONLY_ONE,Choose only one,Escolha apenas um
 HEAL_TEXT,Heal %d HP (%d%% max hp),Cura %d PV (%d%% da vida máx.)
 CANT_HEAL,CAN'T HEAL,NÃO PODE CURAR
 CANT_HEAL_SCHOLAR_MASK,Can't heal while wearing the Cursed Scholar's Mask,Não pode curar enquanto estiver usando a Máscara Amaldiçoada do Estudioso 
-DISCOVER_RECIPE,Discover and Master 1 Recipe,Descubra e Masterize 1 Receita
+DISCOVER_RECIPE,Discover and Master 1 Recipe,Descubra e Aperfeiçoe 1 Receita
 FAVORITE_THIS_RECIPE,Favorite this Recipe,Favoritar esta Receita
-MASTERED_RECIPE_EXC,Mastered Recipe!,Receita Masterizada!
+MASTERED_RECIPE_EXC,Mastered Recipe!,Receita Aperfeiçoada!
 DISC_MEMORIZED_RECIPE,Discovered Memorized Recipe!,Descobriu Receira Memorizada!
 DISC_NEW_RECIPE,Discovered New Recipe!,Descobriu Receita Nova!
 UNAVAILABLE_FAV_SLOT,Unavailable favorite slot,Sem espaço para favoritar
@@ -93,7 +93,7 @@ STAT_ENEMIES_DEFEATED,Enemies defeated: ,Inimigos derrotados:
 STAT_EXPLORATION,Exploration rate: ,Taxa de exploração:
 REGION_CLEARED,Region cleared!,Região vencida!
 STAT_FULLY_DISCOVERED_RECIPES,Fully discovered recipes: ,Receitas totalmente descobertas:
-STAT_MASTERED_RECIPES,Mastered recipes: ,Receitas Masterizadas:
+STAT_MASTERED_RECIPES,Mastered recipes: ,Receitas Aperfeiçoadas:
 STAT_ARTIFACTS,Collected artifacts: ,Artefatos coletados:
 STAT_TIME,Total time: ,Tempo total:
 STAT_TRANSFIGURED,Transfigured reagents: ,Reagentes Transfigurados:
@@ -130,13 +130,13 @@ ARTIFACTS,Artifacts,Artefatos
 THE_WORLD,The World,O Mundo
 RECIPES,Recipes,Receitas
 RECIPE,Recipe,Receita
-MASTERED_RECIPE,Mastered Recipe,Receita Masterizada
+MASTERED_RECIPE,Mastered Recipe,Receita Aperfeiçoada
 COMBINE,Combine,Combinar
 MISCOMBINATION,Miscombination,Má Combinação
 DRAW_BAG,Draw Bag,Bolsa de Compra
 DISCARD_BAG,Discard Bag,Bolsa de Descarte
-MASTERY,Mastery,Masteria
-MASTERED,Mastered,Masterizada
+MASTERY,Mastery,Aperfeiçoamento
+MASTERED,Mastered,Aperfeiçoada
 FAVORITE_RECIPE,Favorite Recipe,Favoritar Receita
 RECIPE_LIST,Recipe List,Lista de Receitas
 HAND,Hand,Mão
@@ -192,8 +192,8 @@ BOOST_RECIPES,Boost %s recipes by,Impulsiona receitas de %s por
 UNSTABLE,Unstable,Instável
 ON_FIRE,On fire,Pegando fogo
 SUBSTITUTES,Substitutes,Substituições
-SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este reagente
-SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes reagentes
+SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este outro reagente
+SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes outros reagentes
 REGULAR_DAMAGE,regular damage,dano normal
 PIERCING_DAMAGE,piercing damage,dano penetrante
 CRUSHING_DAMAGE,crushing damage,dano esmagador
@@ -248,7 +248,7 @@ ST_DOOM_TITLE,Impending Doom,Perdição Inevitável
 ST_DOOM_DESC,"When this counter reaches 0, this character will receive 999 Permanent Strength","Quando este contador chegar em 0, este personagem irá receber 999 de Força Permanente"
 ST_DOOM_INTENT,Dooming,Perdição
 ST_MARTYR_TITLE,Martyr,Mártir
-ST_MARTYR_DESC,"When this character dies, it applies Permanent Strength to each other ally","Quando este personagem morre, aplica Força Permanente a todos outros aliados"
+ST_MARTYR_DESC,"When this character dies, it applies Permanent Strength to each other ally","Quando este personagem morre, aplique Força Permanente a todos outros aliados"
 ST_MARTYR_INTENT,Martyrdom,Martirio
 ST_MINION_TITLE,Minion,Lacaio
 ST_MINION_DESC,This enemy will disappear if his summoner dies,Este inimigo irá desaparecer se seu mestre morrer
@@ -275,7 +275,7 @@ ST_RETALIATE_TITLE,Retaliate,Retaliação
 ST_RETALIATE_DESC,This character returns regular damage each time it is attacked. Lasts until end of turn,Este personagem devolve dano normal cada vez que é atacado. Dura até o fim do turno
 ST_RETALIATE_INTENT,Retaliating,Retaliando
 ST_REVENGE_TITLE,Revenge,Vingança
-ST_REVENGE_DESC,"When this character dies, it will deal regular damage to you","Quando este personagem morre, inflige dano normal a você"
+ST_REVENGE_DESC,"When this character dies, it will deal regular damage to you","Quando este personagem morre, inflija dano normal a você"
 ST_REVENGE_INTENT,Revengeance,Vingando
 ST_SOULBIND_TITLE,Soulbind,Conexão de Alma
 ST_SOULBIND_DESC,"When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage","Quando este personagem morre, qualquer dano excedente em sua vida será devolvido 4 vezes mais como dano regular"
@@ -293,21 +293,21 @@ ST_TOUGH_TITLE,Tough Skin,Pele Resistente
 ST_TOUGH_DESC,Shield isn't removed at the end of turn,Escudo não é removido no final do turno
 ST_TOUGH_INTENT,Toughing Up,Resistindo
 ST_WEAK_TITLE,Weakness,Fraqueza
-ST_WEAK_DESC,This character deals 1/3 less attack damage. Decreases every turn,Este personagem inflige 1/3 a menos em seus ataques. Diminui em cada turno
+ST_WEAK_DESC,This character deals 1/3 less attack damage. Decreases every turn,Este personagem inflija 1/3 a menos em seus ataques. Diminui em cada turno
 ST_WEAK_INTENT,Weakening,Enfraquecendo
 RGNT_FAIN_ELEM_NAME,Faint Elementium,Elementium Fraco
 RGNT_COM_ELEM_NAME,Common Elementium,Elementium Comum
 RGNT_UNC_ELEM_NAME,Uncommon Elementium,Elementium Incomum
 RGNT_RARE_ELEM_NAME,Rare Elementium,Elementium Raro
-RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflige %s de dano normal a um inimigo aleatório"
+RGNT_ELEM_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy","Se usado em uma má combinação, inflija %s de dano normal a um inimigo aleatório"
 RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
 RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negra
 RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
-RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflige %s de dano normal a todos inimigos"
+RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflija %s de dano normal a todos inimigos"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
-RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, aplica %s de escudo ao usuário"
+RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, conceda %s de escudo ao usuário"
 RGNT_HEALING_NAME,Invigorating Root,Raíz Revigorante
 RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %d HP","Se usado em uma má combinação, cura o usuário em %d PV"
 RGNT_POISON_NAME,Noxious Essence,Essência Nociva
@@ -317,11 +317,11 @@ RGNT_BUFF_TOOLTIP,"If used in a miscombination, applies %s temporary strength to
 RGNT_DEBUFF_NAME,Cracked Skull,Crânio Rachado
 RGNT_DEBUFF_TOOLTIP,"If used in a miscombination, applies %s weakness to a random enemy","Se usado em uma má combinação, aplica %s de fraqueza a um inimigo aleatório"
 RGNT_TRASH_NAME,Putrid Beetle,Besouro Pútrido
-RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflige %s de dano normal ao usuário"
+RGNT_TRASH_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user","Se usado em uma má combinação, inflija %s de dano normal ao usuário"
 RGNT_TRASH_PLUS_NAME,Preserved Beetle,Besouro Preservado
-RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflige %s dano normal ao usuário. Não pode ser destruído em receitas."
-TUT_MAP_1,"Welcome to your adventure, alchemist!","Bem vindo à sua aventura, alquemista!"
-TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino enfrentando monstros,\naprendendo e construindo receitas alquemicas durante sua jornada"
+RGNT_TRASH_PLUS_TOOLTIP,"If used in a miscombination, deals %s regular damage to the user. Can't be destroyed in recipes.","Se usado em uma má combinação, inflija %s dano normal ao usuário. Não pode ser destruído em receitas."
+TUT_MAP_1,"Welcome to your adventure, alchemist!","Bem-vindo à sua aventura, alquimista!"
+TUT_MAP_2,"You must explore the land facing monsters,\nlearning alchemical recipes and crafting them along the way","Você precisará explorar o reino enfrentando monstros,\naprendendo e construindo receitas alquímicas durante sua jornada"
 TUT_MAP_3,Find and defeat the land's Guardian to progress,Encontre e derrote o Guardião de cada local para progredir
 TUT_MAP_4,"Exploring and discovering things on your own is part of your journey,\nso don't be afraid to be curious!","Explorar e descobrir as coisas por conta própria faz parte de sua jornada, portanto não tenha medo de ser curioso!"
 TUT_FB_1,You have found an enemy encounter!,Você achou um encontro de inimigo!
@@ -332,10 +332,10 @@ TUT_FB_5,You can find your list of recipes clicking here.\nTry it now!,Você pod
 TUT_RB_1,Here you'll find all recipes you've learned or found clues to,Aqui você encontra todas receitas das quais já aprendeu ou possui dicas de como fazer
 TUT_RB_2,"Use these tags to limit recipes you can view,\nsuch as recipes you can make using reagents in your current hand,\nor using everything inside your bag","Use estes marcadores para limitar receitas visíveis,\ncomo por exemplo receitas que podem ser feitas com reagentes da sua mão,\nou considerando todos reagentes da sua bolsa"
 TUT_RB_3,The filters will help you find specific recipes when you have discovered lots of them,Os filtros vão te ajudar a achar receitas específicas quando você tiver muitas descobertas
-TUT_RB_4,Using a recipe will fill its Mastery gauge.\nUse a recipe enough times and you'll unlock a better version of it!,"Sempre que você fizer uma receita, você irá avançar seu progresso de Masteria.\nUse uma receita bastante vezes para desbloquear uma versão mais poderosa dela!"
+TUT_RB_4,Using a recipe will fill its Mastery gauge.\nUse a recipe enough times and you'll unlock a better version of it!,"Sempre que você fizer uma receita, você irá avançar seu progresso de Aperfeiçoamento.\nUse uma receita bastante vezes para desbloquear uma versão mais poderosa dela!"
 TUT_RB_5,"Finally, when you've found a recipe you want to try,\nclick on it.\nTry it now!","Finalmente, quando você tiver encontrado uma receita que quiser usar, clique nela.\nTeste agora!"
 TUT_CR_1,You can now see a preview of the recipe you've chosen.\nIt will help you craft it more easily,Você agora pode ver um rascunho da receita escolhida.\nIsto ajudará na criação da receita
-TUT_CR_2,"Also, clicking on a mastered recipe will craft it for you automatically!","Além disso, clicar em uma receita masterizada irá montar a receita para você automaticamente!"
+TUT_CR_2,"Also, clicking on a mastered recipe will craft it for you automatically!","Além disso, clicar em uma receita aperfeiçoada irá montar a receita para você automaticamente!"
 TUT_CR_3,"Drag reagents from your hand to the appropriate places. \nIMPORTANT!\nSome reagents can substitute others,\nhover your mouse on your reagents to find out more about this.","Arraste reagentes da sua mão para as\nposições correspondentes.\nIMPORTANTE!\nAlguns reagentes podem substituir outros,\npasse o mouse em cima dos seus reagentes\npara saber mais sobre isso."
 TUT_CR_4,"When you've placed everything, click the Combine button or press SPACE!","Quando você tiver colocado todos reagentes, aperte o botão de Combinar ou pressione Espaço."
 TUT_CR_5,"When you have nothing else to do,\nor want to hold on to some reagents,\nyou can pass the turn by clicking here.\nYou can also pass your turn by pressing E.","Quando você não tiver nada mais para fazer,\nou quiser segurar alguns reagentes\npara usar futuramente,\nvocê pode passar o turno clicando aqui.\nVocê também pode passar o turno apertando E."
@@ -344,32 +344,32 @@ TUT_CR_7,Right clicking a reagent is extremely useful to move them around faster
 TUT_CR_8,"Also, you can open your recipe book with TAB.\nYou can do it outside of battle too!",Você também pode abrir seu livro de receitas com TAB.\nIsso também funciona fora da batalha!
 TUT_CR_9,"Lastly, you can hover your mouse on almost anything to learn more about it","E por último, você pode passar o mouse sobre quase qualquer coisa para saber mais sobre ela."
 TUT_CR_10,Good luck adventurer!,Boa sorte aventureiro!
-DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflige %d de %s ao inimigo alvo.
-DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
-DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
-DESC_HEAL,Heals %d HP.,Cura %d PV.
-DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remove até %d de %s de sí mesmo.
+DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflija %d de %s ao inimigo alvo.
+DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
+DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
+DESC_HEAL,Heals %d HP.,Cure %d PV.
+DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remova até %d de %s de sí mesmo.
 DESC_DRAW,Draw %d reagents.,Compre %d reagentes.
 DESC_SHIELD,Gain %d shield until end of turn.,Ganhe %d de escudo até o fim do turno.
-DESC_DRAIN,Drain %d life from target enemy.,Drena %d de vida do inimigo alvo.
-DESC_STATUS_ENEMY,Applies %d %s to target enemy.,Aplica %d de %s ao inimigo alvo.
+DESC_DRAIN,Drain %d life from target enemy.,Drene %d de vida do inimigo alvo.
+DESC_STATUS_ENEMY,Applies %d %s to target enemy.,Aplique %d de %s ao inimigo alvo.
 DESC_STATUS_SELF,Gain %d %s.,Receba %d de %s.
-DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplica %d de %s a todos inimigos.
-DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflige %d de %s.
-DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflige %d de %s %d vezes.
-DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflige %d de %s a todos inimigos.
-DESC_SHORT_HEAL,Heals %d HP.,Cura %d PV.
-DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remove até %d de %s de sí mesmo.
+DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplique %d de %s a todos inimigos.
+DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflija %d de %s.
+DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
+DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
+DESC_SHORT_HEAL,Heals %d HP.,Cure %d PV.
+DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remova até %d de %s de sí mesmo.
 DESC_SHORT_DRAW,Draw %d reagents.,Compre %d reagentes.
 DESC_SHORT_SHIELD,Gain %d shield.,Ganhe %d de escudo.
-DESC_SHORT_DRAIN,Drain %d life.,Drena %d de vida.
-DESC_SHORT_STATUS_ENEMY,Applies %d %s.,Aplica %d de %s.
+DESC_SHORT_DRAIN,Drain %d life.,Drene %d de vida.
+DESC_SHORT_STATUS_ENEMY,Applies %d %s.,Aplique %d de %s.
 DESC_SHORT_STATUS_SELF,Gain %d %s.,Receba %d de %s.
-DESC_SHORT_STATUS_ALL,Applies %d %s to all enemies.,Aplica %d de %s a todos inimigos.
-DESC_DESTROY_REAGENTS_ALL,Destroys all the %s in the process.,Destroi todas/todos %s no processo.
-DESC_DESTROY_REAGENTS_SOME,Destroys %d %s in the process.,Destroi %d %s no processo.
-DESC_DESTROY_REAGENTS_ONLY,Destroys the %s in the process.,Destroi %s no processo.
-DESC_DESTROY_REAGENTS_ONE,Destroys one %s in the process.,Destroi 1 %s no processo.
+DESC_SHORT_STATUS_ALL,Applies %d %s to all enemies.,Aplique %d de %s a todos inimigos.
+DESC_DESTROY_REAGENTS_ALL,Destroys all the %s in the process.,Destrua todas/todos %s no processo.
+DESC_DESTROY_REAGENTS_SOME,Destroys %d %s in the process.,Destrua %d %s no processo.
+DESC_DESTROY_REAGENTS_ONLY,Destroys the %s in the process.,Destrua %s no processo.
+DESC_DESTROY_REAGENTS_ONE,Destroys one %s in the process.,Destrua 1 %s no processo.
 RE_ATAQUE_AREA_PLUS,Acid Cloud,Nuvem Ácida
 RE_ATAQUE_AREA,Acid Gas,Gás Ácido
 RE_ATAQUE_MULTIPLO_PLUS,Cluster Bomb,Bomba Esmigalhadora

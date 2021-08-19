@@ -5,7 +5,7 @@ signal button_pressed
 export var hide_button := false
 
 onready var bg = $BG
-onready var button = $DownButton
+onready var downbutton = $DownButton
 onready var gold_label = $BG/CurrencyContainer/Gold/Label
 onready var pearls_label = $BG/CurrencyContainer/Pearls/Label
 onready var healthbar = $BG/HealthBar
@@ -31,17 +31,17 @@ var block_tooltips = false
 
 
 func _ready():
-	if hide_button:
-		button.hide()
+	if hide_button or not Profile.get_tutorial("clicked_recipe"):
+		downbutton.hide()
 	for artifact in artifacts.get_children():
 		artifacts.remove_child(artifact)
 
 
 func _process(dt):
 	if mouse_over_downbutton:
-		button.rect_position.y = min(button.rect_position.y + BUTTON_SPEED*dt, DOWNBUTTON_TARGET_Y)
+		downbutton.rect_position.y = min(downbutton.rect_position.y + BUTTON_SPEED*dt, DOWNBUTTON_TARGET_Y)
 	else:
-		button.rect_position.y = max(button.rect_position.y - BUTTON_SPEED*dt, DOWNBUTTON_START_Y)
+		downbutton.rect_position.y = max(downbutton.rect_position.y - BUTTON_SPEED*dt, DOWNBUTTON_START_Y)
 
 
 func hide():
@@ -52,7 +52,15 @@ func hide():
 func show():
 	.show()
 	enable_tooltips()
-	
+	updateDownButton()
+
+
+func updateDownButton():
+	if not Profile.get_tutorial("clicked_recipe"):
+		$DownButton.hide()
+	else:
+		$DownButton.show()
+
 
 func set_player(player: Player):
 	# warning-ignore:return_value_discarded
@@ -103,11 +111,11 @@ func update_pearls(value: int):
 func animation_hide():
 	tween.interpolate_property(bg, "rect_position", null, HIDDEN_POSITION,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
-	tween.interpolate_property(button, "rect_position:y", null, HIDDEN_POSITION,
+	tween.interpolate_property(downbutton, "rect_position:y", null, HIDDEN_POSITION,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
 	tween.start()
 	
-	button.disabled = true
+	downbutton.disabled = true
 
 
 func animation_show():
@@ -116,7 +124,7 @@ func animation_show():
 	tween.start()
 	
 	yield(tween, "tween_completed")
-	button.disabled = false
+	downbutton.disabled = false
 
 
 func disable_tooltips():

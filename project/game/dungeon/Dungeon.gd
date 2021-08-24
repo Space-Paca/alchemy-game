@@ -816,6 +816,8 @@ func _on_Battle_finished(is_boss):
 		current_node = null
 		yield(Transition, "finished")
 		time_running = true
+	
+	FileManager.save_game()
 
 
 func _on_new_combinations_seen(new_combinations: Array):
@@ -927,6 +929,7 @@ func _on_Shop_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_Shop_combination_bought(combination: Combination):
@@ -952,6 +955,7 @@ func _on_Rest_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_Blacksmith_closed():
@@ -966,6 +970,7 @@ func _on_Blacksmith_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_Laboratory_closed():
@@ -982,6 +987,7 @@ func _on_Laboratory_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_Treasure_closed():
@@ -996,6 +1002,7 @@ func _on_Treasure_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_EventDisplay_closed():
@@ -1013,6 +1020,7 @@ func _on_EventDisplay_closed():
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	FileManager.save_run()
 
 
 func _on_EventDisplay_event_spawned_battle(encounter):

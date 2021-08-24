@@ -55,10 +55,11 @@ func combination_failure(reagent_list, grid):
 			"heal": 0,
 			"status": 0,
 		}
+
 		if reagent.type != "trash":
 			grid.remove_reagent(reagent)
 		
-		if reagent.type == "trash" and player.has_artifact("trash_heal"):
+		if (reagent.type == "trash" or reagent.type == "trash_plus") and player.has_artifact("trash_heal"):
 			effect.type = "heal"
 			
 		if effect.type == "damage":

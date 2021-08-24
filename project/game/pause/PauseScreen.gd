@@ -18,7 +18,8 @@ onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContaine
 onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
 onready var language_dropdown = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown
 onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
-onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer2/BorderlessCheckBox
+onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
+onready var mapfog_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
 onready var auto_end_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
 onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
@@ -134,6 +135,7 @@ func update_buttons():
 	language_label.text = lang.name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
+	mapfog_button.pressed = Profile.get_option("disable_map_fog")
 	auto_end_button.pressed = Profile.get_option("auto_end_turn")
 	resolution_button.disabled = fullscreen_button.pressed
 	resolution_dropdown.visible = false
@@ -308,3 +310,8 @@ func _on_Language_Button_pressed(button_id: int):
 	language_label.text = lang.name
 	TranslationServer.set_locale(lang.locale)
 	Profile.set_option("locale", button_id)
+
+
+func _on_MapFogCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	Profile.set_option("disable_map_fog", button_pressed)

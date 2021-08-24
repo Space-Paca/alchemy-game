@@ -6,11 +6,9 @@
 [ext_resource path="res://game/map/MapPosition.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/map/mapa01_floresta_explorado.jpg" type="Texture" id=6]
+[ext_resource path="res://game/map/VisibleMapMaterial.tres" type="Material" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=1]
-light_mode = 2
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 110
 outline_size = 4
 outline_color = Color( 0.945098, 0.945098, 0.945098, 0.403922 )
@@ -45,7 +43,7 @@ __meta__ = {
 
 [node name="VisibleBackground" type="TextureRect" parent="."]
 light_mask = 16
-material = SubResource( 1 )
+material = ExtResource( 7 )
 margin_left = -750.0
 margin_top = -515.0
 margin_right = 2530.0
@@ -265,7 +263,7 @@ margin_left = 32.0
 margin_top = 32.0
 margin_right = 658.0
 margin_bottom = 335.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.184314, 0.137255, 0.137255, 1 )
 text = "BIG FLOOR NAME"
 autowrap = true

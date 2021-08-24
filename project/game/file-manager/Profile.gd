@@ -26,6 +26,7 @@ var options = {
 	"show_timer": false,
 	"locale": 1,
 	"choose_language": false,
+	"disable_map_fog": false,
 }
 
 var controls = {

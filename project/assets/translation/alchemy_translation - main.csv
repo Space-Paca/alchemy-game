@@ -22,6 +22,8 @@ LANGUAGE,Language,Linguagem
 OPT_WINDOW_SIZE,Window Size,Tamanho da Janela
 OPT_FULLSCREEN,Fullscreen,Tela Cheia
 OPT_BORDERLESS,Borderless,Sem Borda
+OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
+OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música
 OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros
 OPT_OPEN/CLOSE_BOOK,Open/Close Book,Abrir/Fechar Livro

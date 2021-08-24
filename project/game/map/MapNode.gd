@@ -10,7 +10,7 @@ enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 const ALPHA_SPEED = 6
 const SCALE_SPEED = 3
 const TARGET_SCALE = 1.2
-
+const LIGHT_TEX = preload("res://assets/images/map/light_tex_2.png")
 const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/enemy.png"),
 		preload("res://assets/images/map/elite.png"),
@@ -46,6 +46,10 @@ func _ready():
 	randomize()
 	$Light2D.rotation = rand_range(0, 360)
 	$Light2D.texture_scale = rand_range(1.8, 2.7)
+	if Profile.get_option("disable_map_fog"):
+		disable_lights()
+	else:
+		enable_lights()
 
 
 func _process(dt):
@@ -55,6 +59,14 @@ func _process(dt):
 	else:
 		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
+
+
+func enable_lights():
+	$Light2D.enabled = true
+
+
+func disable_lights():
+	$Light2D.enabled = false
 
 
 func disable_tooltips():

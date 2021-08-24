@@ -25,6 +25,34 @@ func _ready():
 	set_process(false)
 
 
+func _process(delta):
+	time += delta
+	update()
+	if time >= PATH_FILL_TIME:
+		set_process(false)
+		yield(get_tree().create_timer(WAIT_TIMER), "timeout")
+		emit_signal("filled")
+
+
+func _draw():
+	var disable_light = Profile.get_option("disable_map_fog")
+	for i in ball_amount:
+		var pos := line_vector.clamped(i * BALL_DIST)
+		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
+		radius_multiplier = clamp(radius_multiplier, 0, 1)
+		var light = $Lights.get_child(i)
+		var energy = max(radius_multiplier, 0.01)
+		if energy < .9:
+			light.mode = Light2D.MODE_ADD
+			energy = clamp(energy, 0, .28)
+		else:
+			light.mode = Light2D.MODE_MIX
+		light.energy = energy
+		light.enabled = not disable_light
+		var size = BALL_SIZE * radius_multiplier
+		draw_texture_rect(balls[i], Rect2(pos - size / 2, size), false)
+
+
 func begin_fill():
 	set_process(true)
 #	for i in ball_amount:
@@ -36,6 +64,7 @@ func begin_fill():
 #		yield(get_tree().create_timer(dur), "timeout")
 #		light.mode = Light2D.MODE_MIX
 #		light.energy = 1
+
 
 func set_line(origin:Vector2, target:Vector2):
 	var dist := origin.distance_to(target) - MAP_NODE_SIZE
@@ -55,30 +84,14 @@ func set_line(origin:Vector2, target:Vector2):
 		light.energy = 0
 		light.range_item_cull_mask = 16 #bit 4
 		$Lights.add_child(light)
-		
+		light.enabled = not Profile.get_option("disable_map_fog")
 
 
-func _process(delta):
-	time += delta
-	update()
-	if time >= PATH_FILL_TIME:
-		set_process(false)
-		yield(get_tree().create_timer(WAIT_TIMER), "timeout")
-		emit_signal("filled")
+func enable_lights():
+	for light in $Lights.get_children():
+		light.enabled = true
 
 
-func _draw():
-	for i in ball_amount:
-		var pos := line_vector.clamped(i * BALL_DIST)
-		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
-		radius_multiplier = clamp(radius_multiplier, 0, 1)
-		var light = $Lights.get_child(i)
-		var energy = max(radius_multiplier, 0.01)
-		if energy < .9:
-			light.mode = Light2D.MODE_ADD
-			energy = clamp(energy, 0, .28)
-		else:
-			light.mode = Light2D.MODE_MIX
-		light.energy = energy
-		var size = BALL_SIZE * radius_multiplier
-		draw_texture_rect(balls[i], Rect2(pos - size / 2, size), false)
+func disable_lights():
+	for light in $Lights.get_children():
+		light.enabled = true

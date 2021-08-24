@@ -4,6 +4,8 @@ class_name Map
 signal map_node_pressed(node)
 signal finished_active_paths
 
+const VISIBLE_MAP_MATERIAL = preload("res://game/map/VisibleMapMaterial.tres")
+
 onready var bg = $Background
 onready var visible_bg = $VisibleBackground
 onready var lines = $Lines
@@ -134,6 +136,21 @@ func recipe_toogle(active : bool):
 		disable_tooltips()
 	else:
 		enable_tooltips()
+
+
+func enable_map_fog():
+	visible_bg.material = VISIBLE_MAP_MATERIAL
+	for map_node in nodes.get_children():
+		map_node.enable_lights()
+	for map_line in lines.get_children():
+		map_line.enable_lights()
+
+func disable_map_fog():
+	visible_bg.material = null
+	for map_node in nodes.get_children():
+		map_node.disable_lights()
+	for map_line in lines.get_children():
+		map_line.disable_lights()
 
 
 func set_level(level:int):

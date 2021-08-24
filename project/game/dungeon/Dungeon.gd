@@ -64,7 +64,6 @@ func _ready():
 	time_running = false
 	timer.visible = Profile.get_option("show_timer")
 	
-	
 	FileManager.set_current_run(self)
 	
 	if FileManager.continue_game:
@@ -269,7 +268,8 @@ func load_level(data):
 	
 	#LAB
 	cur_lab_attempts = data.cur_lab_attempts
-
+	
+	updateMapFog()
 
 func create_level(level: int, debug := false):
 	EncounterManager.set_random_encounter_pool(level)
@@ -308,6 +308,8 @@ func create_level(level: int, debug := false):
 	
 	#LAB
 	cur_lab_attempts = laboratory_attempts[level - 1]
+	
+	updateMapFog()
 	
 	if debug:
 		map.queue_free()
@@ -353,6 +355,13 @@ func setup_shop():
 			shop_combinations.append(null)
 	
 	shop.first_setup(shop_combinations, player)
+
+
+func updateMapFog():
+	if Profile.get_option("disable_map_fog"):
+		map.disable_map_fog()
+	else:
+		map.enable_map_fog()
 
 
 func is_single_reagent(reagent_matrix):
@@ -1127,6 +1136,7 @@ func _on_map_finished_revealing_map():
 
 func _on_PauseScreen_exited_pause():
 	timer.visible = Profile.get_option("show_timer")
+	updateMapFog()
 
 
 func _on_Battle_player_died():

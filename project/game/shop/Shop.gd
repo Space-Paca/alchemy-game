@@ -65,7 +65,7 @@ func start():
 func start_dialogue():
 	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
 	$Tween.interpolate_property(dialog_label, "percent_visible", 0, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 330, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 

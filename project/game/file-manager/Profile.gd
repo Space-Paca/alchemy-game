@@ -103,8 +103,9 @@ func get_save_data():
 func set_save_data(data):
 	if data.version != Debug.VERSION:
 		#Handle version diff here. For now, just print a warning.
-		push_warning("WARNING! Different save version for profile. Its version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
-	
+		push_warning("Different save version for profile. Its version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
+		push_warning("Properly updating to new save version") #Lol ||ヽ(*￣▽￣*)ノミ
+		
 	set_data(data, "tutorials", tutorials)
 	set_data(data, "options", options)
 	set_data(data, "controls", controls)

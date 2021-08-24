@@ -103,6 +103,7 @@ func update_combination():
 func preview_mode(is_mastered: bool):
 	mastery_label.hide()
 	mastery_progress.hide()
+	favorite_button.hide()
 	if is_mastered:
 		description.text = RecipeManager.get_description(combination.recipe, true)
 		bg.texture = RECIPE_MASTERED_BG

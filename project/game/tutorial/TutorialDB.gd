@@ -64,14 +64,14 @@ const TUTORIAL = {
 		 "text_width": 900},
 	],
 	"map": [
-		{"position": Vector2(140,40), "dimension": Vector2(1680,915),
+		{"position": Vector2(140,340), "dimension": Vector2(1680,615),
 		 "text_side": "bottom", "text": "TUT_MAP_1"},
 		{"position": Vector2(620,400), "dimension": Vector2(700,500), 
 		 "text_side": "top", "text": "TUT_MAP_2", "text_width": 1200},
 		{"position": Vector2(420,400), "dimension": Vector2(700,500),
 		 "text_side": "right", "text": "TUT_MAP_3",
 		"text_width": 425, "image": "res://game/tutorial/boss-icon.png", "image_scale": 2},
-		{"position": Vector2(140,40), "dimension": Vector2(1680,815),
+		{"position": Vector2(140,340), "dimension": Vector2(1680,515),
 		 "text_side": "bottom", "text": "TUT_MAP_4", "text_width": 1500},
 		
 	]

@@ -33,16 +33,20 @@ func _process(_delta):
 		message_stack[i].rect_position.y = lerp(message_stack[i].rect_position.y,
 				message_height * i, .1)
 
-func recipe_mastered(combination: Combination):
+
+func recipe_mastered(combination: Combination, favorited: bool):
 	AudioManager.play_sfx("recipe_mastered")
 	$Control.show()
 	
 	current_combination = combination
+	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
 	
 	favorite_button.show()
 	favorite_error_label.hide()
 	favorite_button.text = "FAVORITE_THIS_RECIPE"
-	favorite_button.disabled = false
+	favorite_button.disabled = memorized and favorited
+	if memorized and favorited:
+		favorite_button.text = "FAVORITED_EXC"
 	
 	var display_normal = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display_normal)
@@ -57,6 +61,7 @@ func recipe_mastered(combination: Combination):
 	
 	title.text = "MASTERED_RECIPE_EXC"
 
+
 func new_recipe_discovered(combination: Combination):
 	$Control.show()
 	arrow.hide()
@@ -65,20 +70,19 @@ func new_recipe_discovered(combination: Combination):
 	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
 	
 	if memorized:
+		title.text = "DISC_MEMORIZED_RECIPE"
 		favorite_button.show()
 		favorite_error_label.hide()
 		favorite_button.text = "FAVORITE_THIS_RECIPE"
 		favorite_button.disabled = false
-		title.text = "DISC_MEMORIZED_RECIPE"
 	else:
-		favorite_button.hide()
 		title.text = "DISC_NEW_RECIPE"
+		favorite_button.hide()
 	
 	var display = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display)
 	display.set_combination(combination)
 	display.preview_mode(false)
-	
 
 
 func add_message(text: String, duration: float = DEFAULT_DURATION):
@@ -100,6 +104,7 @@ func exit():
 		$Control/Recipes.remove_child(display)
 	emit_signal("continued")
 
+
 func favorite_error(type):
 	if type == "unavailable":
 		favorite_button.text = "UNAVAILABLE_FAV_SLOT"
@@ -109,6 +114,7 @@ func favorite_error(type):
 		push_error("Not a valid type of error:" + str(type))
 		
 	favorite_error_label.show()
+
 
 func _on_message_disappeared(message: Message):
 	message_stack.erase(message)
@@ -123,7 +129,6 @@ func _on_Continue_pressed():
 
 func _on_OpenRecipes_pressed():
 	exit()
-
 
 
 func _on_button_mouse_entered():

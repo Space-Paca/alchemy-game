@@ -38,6 +38,7 @@ enum States {BATTLE, MAP, LAB}
 enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
 
 var recipe_displays := {}
+var favorite_combinations := []
 var hand_reagents : Array
 var current_tag := HAND
 var state : int = States.MAP
@@ -247,7 +248,8 @@ func is_mastered(combination : Combination):
 	
 
 func unlock_mastery(combination: Combination, show_message := true):
-	if recipe_displays[combination.recipe.id].unlock_mastery(show_message):
+	if recipe_displays[combination.recipe.id].unlock_mastery(show_message,
+			favorite_combinations.has(combination)):
 		player.increase_stat("recipes_mastered")
 
 

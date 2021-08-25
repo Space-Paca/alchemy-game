@@ -24,7 +24,6 @@ var time_of_run = 0.0
 var time_running = false
 var floor_level := 1
 var times_recipe_made := {}
-var favorite_combinations := []
 var max_favorites := 8
 var possible_rewarded_combinations := []
 var map : Map
@@ -99,6 +98,7 @@ func _ready():
 		$PauseScreen.set_block_pause(false)
 		time_running = true
 
+
 func _input(event):
 	if event.is_action_pressed("show_recipe_book"):
 		if not (battle and battle.player_disabled) and not TutorialLayer.is_active() \
@@ -132,6 +132,7 @@ func get_save_data():
 	}
 	return data
 
+
 func set_save_data(data):
 	if data.save_version != SAVE_VERSION:
 		print("Different save version on loaded run.")
@@ -148,6 +149,7 @@ func set_save_data(data):
 	current_node = null if data.current_node == "" else map.get_map_node(data.current_node)
 	time_of_run = data.time_of_run
 	timer.update_timer(time_of_run)
+
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
@@ -554,7 +556,7 @@ func load_battle(data):
 	
 	create_battle()
 	
-	battle.load_state(data, player, favorite_combinations, floor_level)
+	battle.load_state(data, player, recipe_book.favorite_combinations, floor_level)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -568,7 +570,7 @@ func new_battle(encounter: Encounter):
 	assert(battle == null)
 	create_battle()
 	
-	battle.setup(player, encounter, favorite_combinations, floor_level)
+	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -693,20 +695,20 @@ func hide_event():
 
 func favorite_combination(combination, active, play_sfx = true):
 	if active:
-		if favorite_combinations.size() >= max_favorites:
+		if recipe_book.favorite_combinations.size() >= max_favorites:
 			recipe_book.favorite_error(combination)
 			MessageLayer.favorite_error("unavailable")
-		elif favorite_combinations.has(combination):
+		elif recipe_book.favorite_combinations.has(combination):
 			recipe_book.favorite_error(combination)
 			MessageLayer.favorite_error("already_favorited")
 		else:
 			if play_sfx:
 				AudioManager.play_sfx("apply_favorite")
-			favorite_combinations.append(combination)
+			recipe_book.favorite_combinations.append(combination)
 			if battle:
 				battle.add_favorite(combination)
 	else:
-		favorite_combinations.erase(combination)
+		recipe_book.favorite_combinations.erase(combination)
 		if battle:
 			battle.remove_favorite(combination)
 

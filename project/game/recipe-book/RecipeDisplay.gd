@@ -55,6 +55,7 @@ func _process(delta):
 	else:
 		fav_label.modulate.a = max(fav_label.modulate.a - delta*ALPHA_SPEED, 0.0)
 
+
 func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents
@@ -84,7 +85,8 @@ func set_combination(_combination: Combination):
 			i += 1
 	
 	if Profile.is_recipe_memorized(combination.recipe.id):
-		unlock_memorized()
+		memorized = true
+		favorite_button.visible = true
 
 
 func update_combination():
@@ -108,7 +110,7 @@ func preview_mode(is_mastered: bool):
 		description.text = RecipeManager.get_description(combination.recipe, true)
 		bg.texture = RECIPE_MASTERED_BG
 		title.text = tr(title.text) + "+"
-		
+
 
 func update_mastery(new_value: int, threshold: int):
 	if new_value < threshold :
@@ -127,24 +129,19 @@ func is_mastered():
 	return mastery_unlocked
 
 
-func unlock_memorized():
-	memorized = true
-	favorite_button.visible = true
-
-func unlock_mastery(show_message := true) -> bool:
+func unlock_mastery(show_message: bool, favorited: bool) -> bool:
 	if mastery_unlocked:
 		return false
-
+	
 	description.text = RecipeManager.get_description(combination.recipe, true)
 	mastery_unlocked = true
-	favorite_button.visible = true
 	mastery_progress.visible = false
 	mastery_label.get_node("Mastery").text = "MASTERED"
 	mastery_label.get_node("Amount").text = ""
 	bg.texture = RECIPE_MASTERED_BG
 	title.text = tr(title.text) + "+"
 	if show_message:
-		MessageLayer.recipe_mastered(combination)
+		MessageLayer.recipe_mastered(combination, favorited)
 	
 	return true
 

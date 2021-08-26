@@ -17,6 +17,7 @@ var tutorials = {
 }
 
 var options = {
+	"master_volume": 1.0,
 	"bgm_volume": 1.0,
 	"sfx_volume": 1.0,
 	"fullscreen": true,
@@ -112,8 +113,9 @@ func set_save_data(data):
 	set_data(data, "known_recipes", known_recipes)
 	set_data(data, "progression", progression)
 	
-	AudioManager.set_bus_volume("bgm", options.bgm_volume)
-	AudioManager.set_bus_volume("sfx", options.sfx_volume)
+	AudioManager.set_bus_volume(AudioManager.MASTER_BUS, options.master_volume)
+	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
+	AudioManager.set_bus_volume(AudioManager.SFX_BUS, options.sfx_volume)
 	OS.window_fullscreen = options.fullscreen
 	OS.window_borderless = options.borderless
 	OS.window_size = WINDOW_SIZES[options.window_size]

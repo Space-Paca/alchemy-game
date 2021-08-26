@@ -13,8 +13,12 @@ onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
 onready var exit_button = $Background/Menu/Exit
 onready var settings = $Background/SettingsMenu
+onready var masterslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterVolume
+onready var master_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterLabel/Amount
 onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
+onready var bgm_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicLabel/Amount
 onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
+onready var sfx_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXLabel/Amount
 onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
 onready var language_dropdown = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown
 onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
@@ -120,8 +124,12 @@ func settings_back():
 
 
 func update_music_volumes():
-	bgmslider.value = AudioManager.get_bus_volume("bgm")*100
-	sfxslider.value = AudioManager.get_bus_volume("sfx")*100
+	masterslider.value = AudioManager.get_bus_volume(AudioManager.MASTER_BUS)*100
+	master_label.text = str(masterslider.value)
+	bgmslider.value = AudioManager.get_bus_volume(AudioManager.BGM_BUS)*100
+	bgm_label.text = str(bgmslider.value)
+	sfxslider.value = AudioManager.get_bus_volume(AudioManager.SFX_BUS)*100
+	sfx_label.text = str(sfxslider.value)
 
 
 func update_buttons():
@@ -205,14 +213,24 @@ func _on_No_pressed():
 	no_quit()
 
 
+func _on_MasterVolume_value_changed(value):
+	play_slider_sfx()
+	AudioManager.set_bus_volume(AudioManager.MASTER_BUS,
+			value/float(masterslider.max_value))
+	master_label.text = str(value)
+	Profile.set_option("master_volume", value/float(masterslider.max_value))
+
+
 func _on_SFXVolume_value_changed(value):
 	play_slider_sfx()
-	AudioManager.set_bus_volume("sfx", value/float(sfxslider.max_value))
+	AudioManager.set_bus_volume(AudioManager.SFX_BUS, value/float(sfxslider.max_value))
+	sfx_label.text = str(value)
 	Profile.set_option("sfx_volume", value/float(sfxslider.max_value))
 
 
 func _on_MusicVolume_value_changed(value):
-	AudioManager.set_bus_volume("bgm", value/float(bgmslider.max_value))
+	AudioManager.set_bus_volume(AudioManager.BGM_BUS, value/float(bgmslider.max_value))
+	bgm_label.text = str(value)
 	Profile.set_option("bgm_volume", value/float(bgmslider.max_value))
 
 

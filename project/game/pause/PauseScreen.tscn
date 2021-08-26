@@ -83,13 +83,13 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=12]
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=13]
 size = 23
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.282353, 0.0470588, 0, 1 )
 corner_radius_top_left = 33
 corner_radius_top_right = 33
@@ -100,7 +100,7 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.282353, 0.0470588, 0, 0.415686 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -111,17 +111,17 @@ expand_margin_right = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxEmpty" id=15]
-
 [sub_resource type="StyleBoxEmpty" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
-[sub_resource type="ButtonGroup" id=18]
+[sub_resource type="StyleBoxEmpty" id=18]
 
-[sub_resource type="StyleBoxEmpty" id=19]
+[sub_resource type="ButtonGroup" id=19]
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.188235, 0.670588, 0.639216, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -133,11 +133,11 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxEmpty" id=21]
-
 [sub_resource type="StyleBoxEmpty" id=22]
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.141176, 0.498039, 0.47451, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -149,7 +149,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=25]
 size = 40
 outline_size = 3
 outline_color = Color( 0.0941176, 0.341176, 0.321569, 1 )
@@ -157,7 +157,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=26]
 size = 40
 outline_size = 3
 outline_color = Color( 0.0784314, 0.364706, 0.427451, 0.690196 )
@@ -318,6 +318,7 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -432,7 +433,7 @@ margin_left = -1.00415
 margin_top = 34.0319
 margin_right = 440.996
 margin_bottom = 85.0319
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 1, 0.803922, 0.545098, 1 )
 text = "OPT_DISABLEFOG_DESC"
 __meta__ = {
@@ -558,15 +559,15 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 14 )
-custom_styles/normal = SubResource( 17 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 18 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "1280x720"
 
 [node name="Res2" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
@@ -577,15 +578,15 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 14 )
-custom_styles/normal = SubResource( 19 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "1366x768"
 
 [node name="Res3" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
@@ -596,15 +597,15 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 14 )
-custom_styles/normal = SubResource( 19 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "1600x900"
 
 [node name="Res4" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
@@ -615,20 +616,19 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 13 )
-custom_styles/normal = SubResource( 19 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
 pressed = true
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "1920x1080"
 
 [node name="Audio" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -648,41 +648,86 @@ margin_left = -350.0
 margin_top = -205.0
 margin_right = 350.0
 margin_bottom = 205.0
-custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+[node name="MasterLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
 margin_right = 700.0
 margin_bottom = 51.0
+text = "OPT_MASTER_VOLUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "50"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
+margin_top = 55.0
+margin_bottom = 84.0
+
+[node name="Separator1" type="Control" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+margin_top = 88.0
+margin_right = 700.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="MusicLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+margin_top = 142.0
+margin_right = 700.0
+margin_bottom = 193.0
 text = "OPT_MUSIC_VOLUME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
-margin_top = 101.0
-margin_bottom = 130.0
+[node name="Amount" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "50"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Separator" type="Control" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
-margin_top = 180.0
+[node name="MusicVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
+margin_top = 197.0
+margin_bottom = 226.0
+
+[node name="Separator2" type="Control" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
+margin_top = 230.0
 margin_right = 700.0
-margin_bottom = 230.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="SFXLabel" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer"]
-margin_top = 280.0
+margin_top = 284.0
 margin_right = 700.0
-margin_bottom = 331.0
+margin_bottom = 335.0
 text = "OPT_SFX_VOLUME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Amount" type="Label" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "50"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SFXVolume" parent="Background/SettingsMenu/TabContainer/Audio/VBoxContainer" instance=ExtResource( 16 )]
-margin_top = 381.0
-margin_bottom = 410.0
+margin_top = 339.0
+margin_bottom = 368.0
 
 [node name="Controls" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
 visible = false
@@ -728,12 +773,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 23 )
-custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+custom_fonts/font = SubResource( 25 )
 toggle_mode = true
 text = "Tab"
 
@@ -756,12 +801,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 23 )
-custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+custom_fonts/font = SubResource( 25 )
 toggle_mode = true
 text = "Space"
 
@@ -784,12 +829,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 23 )
-custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+custom_fonts/font = SubResource( 25 )
 toggle_mode = true
 text = "E"
 
@@ -812,12 +857,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 23 )
-custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+custom_fonts/font = SubResource( 25 )
 toggle_mode = true
 text = "F4"
 
@@ -923,7 +968,7 @@ margin_bottom = 260.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 text = "OPT_RESET_TUTORIAL_HINTS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1048,15 +1093,15 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 14 )
-custom_styles/normal = SubResource( 17 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 18 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "English"
 
 [node name="Pt_BR" type="CheckBox" parent="Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer"]
@@ -1067,15 +1112,15 @@ custom_icons/radio_checked = ExtResource( 19 )
 custom_icons/checked = ExtResource( 19 )
 custom_icons/radio_unchecked = ExtResource( 21 )
 custom_icons/unchecked = ExtResource( 21 )
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 16 )
-custom_styles/hover_pressed = SubResource( 14 )
-custom_styles/normal = SubResource( 19 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 15
-group = SubResource( 18 )
+group = SubResource( 19 )
 text = "Português"
 
 [node name="Back" type="Button" parent="Background/SettingsMenu"]
@@ -1106,6 +1151,7 @@ text = "BACK"
 [connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res2" to="." method="_on_Resolution_button_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res3" to="." method="_on_Resolution_button_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res4" to="." method="_on_Resolution_button_pressed" binds= [ 3 ]]
+[connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterVolume" to="." method="_on_MasterVolume_value_changed"]
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox" to="." method="_on_AutoPassCheckBox_toggled"]

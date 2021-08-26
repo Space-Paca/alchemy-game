@@ -7,7 +7,6 @@
 margin_right = 700.0
 margin_bottom = 29.0
 theme = ExtResource( 1 )
-step = 10.0
 value = 50.0
 __meta__ = {
 "_edit_use_anchors_": false

@@ -124,11 +124,11 @@ func get_tooltip():
 	tooltip.pos = $TooltipPosition.global_position - Vector2(0,keys.size()*TOOLTIP_LINE_HEIGHT)
 	
 	if keys.size() <= 0:
-		tooltip.text += "- empty - "
+		tooltip.text += tr("EMPTY")
 	
 	for key in keys:
 		var path = ReagentDB.get_from_name(key).image.get_path()
-		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x " + str(reagent_types[key]) + "           [/font]"
+		tooltip.text += "[img=40x40]"+path+"[/img][font=res://assets/fonts/BagTooltip.tres]x" + str(reagent_types[key]) + "[/font]"
 		#For some reason \n just erases other images, so using gambiara to properly change lines
 		tooltip.text += "     "
 	return tooltip

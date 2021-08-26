@@ -257,7 +257,7 @@ func get_tooltip():
 	tooltip.pos = $TooltipPosition.global_position - Vector2(0,keys.size()*TOOLTIP_LINE_HEIGHT)
 	
 	if keys.size() <= 0:
-		tooltip.text += "- empty - "
+		tooltip.text += tr("EMPTY")
 	
 	for key in keys:
 		var path = ReagentDB.get_from_name(key).image.get_path()

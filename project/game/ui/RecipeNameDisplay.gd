@@ -5,7 +5,7 @@ export var hide_description := false
 onready var recipe_name_label = $RecipeName
 onready var recipe_description_label = $RecipeDescription
 
-const RED = Color(1,0.2,0.2,1)
+const RED = Color(1,0.3,0.3,1)
 const BLACK = Color(0,0,0,1)
 const NORMAL_FONT = preload("res://game/ui/RecipeNameNormalFont.tres")
 const OUTLINE_FONT = preload("res://game/ui/RecipeNameOutlineFont.tres")

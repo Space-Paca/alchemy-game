@@ -558,6 +558,7 @@ func new_enemy_turn():
 func disable_player():
 	draw_bag.disable()
 	discard_bag.disable()
+	recipes_button.disabled = true
 	player_disabled = true
 	pass_turn_button.disabled = true
 	combine_button.disable()
@@ -572,7 +573,7 @@ func enable_player():
 		return
 	draw_bag.enable()
 	discard_bag.enable()
-
+	recipes_button.disabled = false
 	player_disabled = false
 	if Profile.get_tutorial("recipe_book"):
 		pass_turn_button.disabled = false
@@ -738,6 +739,9 @@ func win():
 	ended = true
 	disable_elements()
 	emit_signal("block_pause", true)
+	
+	if recipe_book_visible:
+		emit_signal("recipe_book_toggle")
 	
 	if is_boss:
 		AudioManager.play_sfx("win_boss_battle")

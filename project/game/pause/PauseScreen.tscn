@@ -211,34 +211,34 @@ __meta__ = {
 
 [node name="Resume" type="Button" parent="Background/Menu"]
 margin_right = 644.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 450, 50 )
+margin_bottom = 100.0
+rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "RESUME"
 
 [node name="Settings" type="Button" parent="Background/Menu"]
-margin_top = 81.0
+margin_top = 130.0
 margin_right = 644.0
-margin_bottom = 181.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "SETTINGS"
 
 [node name="Return" type="Button" parent="Background/Menu"]
-margin_top = 211.0
+margin_top = 260.0
 margin_right = 644.0
-margin_bottom = 311.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "SAVE_RETURN_MENU"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
-margin_top = 341.0
+margin_top = 390.0
 margin_right = 644.0
-margin_bottom = 461.0
+margin_bottom = 510.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -289,6 +289,7 @@ rect_min_size = Vector2( 200, 120 )
 text = "NO"
 
 [node name="SettingsMenu" type="VBoxContainer" parent="Background"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -318,7 +319,6 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -629,6 +629,7 @@ group = SubResource( 19 )
 text = "1920x1080"
 
 [node name="Audio" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

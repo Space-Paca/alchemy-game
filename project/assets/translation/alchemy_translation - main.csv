@@ -24,6 +24,7 @@ OPT_FULLSCREEN,Fullscreen,Tela Cheia
 OPT_BORDERLESS,Borderless,Sem Borda
 OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
 OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
+OPT_MASTER_VOLUME,Master Volume,Volume Mestre
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música
 OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros
 OPT_OPEN/CLOSE_BOOK,Open/Close Book,Abrir/Fechar Livro
@@ -35,6 +36,7 @@ OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
 OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
 OPT_LANGUAGE,Language,Linguagem
 CHOOSE_ONE,Choose One,Escolha Um
+CHOOSE_TARGET,Choose Target,Escolher Alvo
 ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...
 IGNORE,Ignore,Ignorar
 CHOOSE_ONLY_ONE,Choose only one,Escolha apenas um

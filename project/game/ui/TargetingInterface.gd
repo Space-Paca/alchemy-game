@@ -6,8 +6,8 @@ onready var label := $Label
 onready var tween := $Tween
 
 const TWEEN_DURATION := .3
-const TEXT := "Choose target"
-const FORMAT := "Choose target (%d/%d)"
+const TEXT := "CHOOSE_TARGET"
+const FORMAT := "(%d/%d)"
 
 var target_total := 0
 var current_target := 0
@@ -19,7 +19,7 @@ func begin(total_targets: int):
 	if target_total > 1:
 		next_target()
 	else:
-		label.text = TEXT
+		label.text = tr(TEXT)
 	
 	label.show()
 	dim_background()
@@ -28,7 +28,7 @@ func begin(total_targets: int):
 func next_target():
 	current_target += 1
 	if current_target <= target_total:
-		label.text = FORMAT % [current_target, target_total]
+		label.text = tr(TEXT) + " " + FORMAT % [current_target, target_total]
 
 
 func end():

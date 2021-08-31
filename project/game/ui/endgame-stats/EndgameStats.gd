@@ -71,6 +71,7 @@ func _on_Restart_pressed():
 
 func _on_Next_pressed():
 	$Page1.hide()
+	$Page1/PostMortem.clear_elements()
 	$Page2.show()
 	$Page2/CompendiumProgress.enable_tooltips()
 	#xpdivider.set_initial_xp_pool(10000)

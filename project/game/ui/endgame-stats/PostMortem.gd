@@ -28,6 +28,15 @@ func set_player(p: Player):
 	set_artifacts(p.artifacts)
 
 
+func clear_elements():
+	var reagent_container = $Bag/ScrollContainer/ReagentContainer
+	for reagent in reagent_container.get_children():
+		reagent_container.remove_child(reagent)
+	var artifact_container = $PlayerInfo/Panel/ScrollContainer/GridContainer
+	for artifact in artifact_container.get_children():
+		artifact_container.remove_child(artifact)
+
+
 func set_reagents(bag: Array):
 	var reagent_container = $Bag/ScrollContainer/ReagentContainer
 	for child in reagent_container.get_children():

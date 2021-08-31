@@ -36,27 +36,27 @@ extra_spacing_top = -30
 extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
 
-[sub_resource type="CanvasItemMaterial" id=7]
+[sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.464435, 1 )
 colors = PoolColorArray( 0, 0, 0, 0.901961, 1, 1, 1, 0.670588, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0 ), 0.0, 3.27644, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=9]
 lifetime_randomness = 0.02
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
@@ -66,24 +66,24 @@ angle = 360.0
 angle_random = 1.0
 scale = 1.3
 scale_random = 0.5
-scale_curve = SubResource( 11 )
-color_ramp = SubResource( 9 )
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
 hue_variation = 0.53
 hue_variation_random = 0.03
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 32, 32 )
 modulate_color = Color( 0.537255, 1, 0, 1 )
@@ -157,10 +157,10 @@ margin_right = 75.0
 margin_bottom = 39.0
 
 [node name="Particles2D" type="Particles2D" parent="HBoxContainer/Amount/ParticleContainer/Control"]
-material = SubResource( 7 )
+material = SubResource( 4 )
 amount = 6
 speed_scale = 0.7
-process_material = SubResource( 12 )
+process_material = SubResource( 9 )
 texture = ExtResource( 3 )
 
 [node name="ProgressThingies" type="VBoxContainer" parent="."]
@@ -188,7 +188,7 @@ margin_top = 1.0
 margin_bottom = 39.0
 
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl" index="4"]
-custom_styles/fg = SubResource( 4 )
+custom_styles/fg = SubResource( 10 )
 
 [node name="EndGameXPProgressControl2" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -206,7 +206,7 @@ margin_top = 1.0
 margin_bottom = 39.0
 
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl2" index="4"]
-custom_styles/fg = SubResource( 5 )
+custom_styles/fg = SubResource( 11 )
 
 [node name="EndGameXPProgressControl3" parent="ProgressThingies" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -224,7 +224,7 @@ margin_top = 1.0
 margin_bottom = 39.0
 
 [node name="StatProgress" parent="ProgressThingies/EndGameXPProgressControl3" index="4"]
-custom_styles/fg = SubResource( 6 )
+custom_styles/fg = SubResource( 12 )
 
 [node name="ApplyButton" type="Button" parent="."]
 margin_left = 255.664

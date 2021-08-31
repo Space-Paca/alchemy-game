@@ -130,6 +130,7 @@ func _on_changed_xp(value):
 
 func _on_ApplyButton_pressed():
 	var idx = 0
+	apply_button.disabled = true
 	for child in progress_cont.get_children():
 		var xp = child.get_modified_xp()
 		if xp > 0:

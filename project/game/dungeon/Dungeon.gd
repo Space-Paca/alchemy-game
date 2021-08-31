@@ -121,6 +121,7 @@ func get_save_data():
 		"save_version": SAVE_VERSION,
 		"player": player.get_save_data(),
 		"combinations": get_combinations_data(),
+		"favorites": get_favorite_data(),
 		"encounters": EncounterManager.get_save_data(),
 		"events": EventManager.get_save_data(),
 		"map": map.get_save_data(),
@@ -143,6 +144,7 @@ func set_save_data(data):
 	player_info.update_artifacts(player.artifacts)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)
+	set_favorite_data(data.favorites)
 	EventManager.load_save_data(data.events)
 	load_level(data)
 	battle_load_data = data.battle
@@ -177,6 +179,14 @@ func get_combinations_data():
 		
 	return data
 
+
+func get_combination_by_name(recipe_name):
+	for size_array in combinations.values():
+		for combination in size_array:
+			if combination.recipe.name == recipe_name:
+				return combination
+	push_error("Not a valid combination name: " + str(recipe_name))
+	return null
 
 func load_combinations(combinations_data):
 	for data_combination in combinations_data:
@@ -242,6 +252,19 @@ func create_combinations():
 			if Profile.is_recipe_memorized(combination.recipe.id):
 				favorite_combination(combination, true, false)
 				recipe_book.set_favorite_button(combination, true, true)
+
+
+func get_favorite_data():
+	var favorites = []
+	for combination in recipe_book.favorite_combinations:
+		favorites.append(combination.recipe.name)
+	return favorites
+
+
+func set_favorite_data(data):
+	for recipe_name in data:
+		var combination = get_combination_by_name(recipe_name)
+		favorite_combination(combination, true, false)
 
 
 func load_level(data):

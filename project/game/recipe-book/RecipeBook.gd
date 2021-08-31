@@ -249,7 +249,7 @@ func is_mastered(combination : Combination):
 
 func unlock_mastery(combination: Combination, show_message := true):
 	if recipe_displays[combination.recipe.id].unlock_mastery(show_message,
-			favorite_combinations.has(combination)):
+			favorite_combinations.has(combination)) and show_message:
 		player.increase_stat("recipes_mastered")
 
 

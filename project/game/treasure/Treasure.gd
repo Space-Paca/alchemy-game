@@ -1,6 +1,7 @@
 extends Control
 
 signal closed
+signal room_reset
 
 const ARTIFACTS_NUMBER = 2
 const ARTIFACT_LOOT = preload("res://game/treasure/ArtifactLoot.tscn")
@@ -79,19 +80,24 @@ func reset_room():
 	yield($Tween, "tween_completed")
 	for artifact in $Artifacts.get_children():
 		$Artifacts.remove_child(artifact)
-
+	emit_signal("room_reset")
+	
 func reset():
 	$AllArtifacts.hide()
 	$BackButton.text = "Ignore"
 
 func _on_BackButton_pressed():
 	reset_room()
+	yield(self, "room_reset")
 	emit_signal("closed")
 
 func _on_loot_pressed(artifact):
 	player.add_artifact(artifact.id)
 	for art in $Artifacts.get_children():
 		art.disable()
+		if art.artifact.id == artifact.id:
+			art.collected()
 	
 	reset_room()
+	yield(self, "room_reset")
 	emit_signal("closed")

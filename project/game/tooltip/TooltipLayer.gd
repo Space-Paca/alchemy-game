@@ -5,58 +5,67 @@ const SCREEN_MARGIN = 10
 const TOOLTIP_WIDTH = 250
 
 var keywords = {
-	"piercing damage": {
+	"PIERCING_DAMAGE": {
 		"type": "tooltip",
-		"title": "Piercing Damage",
-		"text": "Piercing damage ignores shield and deals damage directly to health.",
+		"title": "PIERCING_DAMAGE_TITLE",
+		"text": "PIERCING_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
 	},
-	"crushing damage": {
+	"CRUSHING_DAMAGE": {
 		"type": "tooltip",
-		"title": "Crushing Damage",
-		"text": "Crushing damage deals damage both to shield and health directly.",
+		"title": "CRUSHING_DAMAGE_TITLE",
+		"text": "CRUSHING_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
 	},
-	"regular damage": {
+	"REGULAR_DAMAGE": {
 		"type": "no_tooltip",
 	},
-	"healing": {
+	"HEALING": {
 		"type": "no_tooltip",
 	},
-	"health": {
+	"HEALTH": {
 		"type": "no_tooltip",
 	},
-	"heals": {
+	"HEALS": {
 		"type": "no_tooltip",
 	},
-	"heal": {
+	"HEAL": {
 		"type": "no_tooltip",
 	},
-	"shield damage": {
-		"type": "no_tooltip",
-	},
-	"venom damage": {
+	"VENOM_DAMAGE": {
 		"type": "tooltip",
-		"title": "Venom Damage",
-		"text": "Unblocked venom damage applies poison to enemy instead of damage.",
+		"title": "VENOM_DAMAGE_TITLE",
+		"text": "VENOM_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_venom.png"),
 	},
-	"drain": {
+	"DRAIN": {
 		"type": "tooltip",
-		"title": "Drain",
-		"text": "Deals regular damage and heals any unblocked damage.",
+		"title": "DRAIN_TITLE",
+		"text": "DRAIN_DESC",
 		"title_image": preload("res://assets/images/intents/attack_drain.png"),
 	},
-	"unstable": {
+	"DRAIN_2": {
 		"type": "tooltip",
-		"title": "Unstable",
-		"text": "An unstable reagent, if used in a miscombination or not used until end of turn, explodes dealing 10 regular damage.",
+		"title": "DRAIN_TITLE",
+		"text": "DRAIN_DESC",
+		"title_image": preload("res://assets/images/intents/attack_drain.png"),
+	},
+	"UNSTABLE": {
+		"type": "tooltip",
+		"title": "UNSTABLE_TITLE",
+		"text": "UNSTABLE_DESC",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
-	"on fire": {
+	"UNSTABLE_2": {
 		"type": "tooltip",
-		"title": "On Fire",
-		"text": "This reagent, when touched, will deal 9 regular damage to user.",
+		"title": "UNSTABLE_TITLE",
+		"text": "UNSTABLE_DESC",
+		"title_image": preload("res://assets/images/status/random_status.png"),
+	},
+	"ON_FIRE": {
+		"type": "tooltip",
+		"title": "ON_FIRE_TITLE",
+		"text": "ON_FIRE_DESC",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	}
 }
@@ -96,10 +105,10 @@ func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = fal
 		if keywords.has(keyword):
 			var tp_data = keywords[keyword]
 			if tp_data.type == "tooltip":
-				add_tooltip(pos, tp_data.title, tp_data.text, tp_data.title_image, false, true)
+				add_tooltip(pos, tp_data.title, tr(tp_data.text), tp_data.title_image, false, true)
 			elif tp_data.type == "status":
 				var data = StatusDB.get_from_name(tp_data.name)
-				add_tooltip(pos, data.title_name, data.description, data.image, false, true)
+				add_tooltip(pos, data.title_name, tr(data.description), data.image, false, true)
 
 func fade_tooltip(tip, play_sfx):
 	#Check if tip wasn't freed (trying to fix annoying tween not added error)

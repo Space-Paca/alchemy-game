@@ -134,9 +134,9 @@ func get_intent_tooltip(action, enemy):
 		else:
 			target = "ENEMY"
 		if args.value > 1:
-			tooltip.text = "INTENT_STATUS_"+target+"_DESC" % [tr(status_data["title_name"])]
+			tooltip.text = tr("INTENT_STATUS_"+target+"_PLURAL_DESC") % [args.value, tr(status_data["title_name"])]
 		else:
-			tooltip.text = "INTENT_STATUS_"+target+"_PLURAL_DESC" % [args.value, tr(status_data["title_name"])]
+			tooltip.text = tr("INTENT_STATUS_"+target+"_DESC") % [tr(status_data["title_name"])]
 	elif name == "spawn":
 		tooltip.title = tr("INTENT_SPAWNING_TITLE")
 		tooltip.text = tr("INTENT_SPAWNING_DESC")

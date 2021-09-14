@@ -195,14 +195,33 @@ UNKNOWN,Unknown,Desconhecido
 UNKNOWN_REAGENT,Unknown Reagent,Reagente Desconhecido
 BOOST_RECIPES,Boost %s recipes by,Impulsiona receitas de %s por
 UNSTABLE,Unstable,Instável
+UNSTABLE_2,unstable,instáveis
+UNSTABLE_TITLE,Unstable,Instável
+UNSTABLE_DESC,"An unstable reagent, if used in a miscombination or not used until end of turn, explodes dealing 10 regular damage.","Um reagente instável, se usado em uma má combinação ou se não for utilizado até o final do turno, explodirá infligindo 10 de dano normal."
 ON_FIRE,On fire,Pegando fogo
+ON_FIRE_TITLE,On Fire,Pegando Fogo
+ON_FIRE_DESC,"This reagent, when touched, will deal 9 regular damage to user.","Este reagente, quando tocado, irá dar 9 de dano normal ao usuário."
 SUBSTITUTES,Substitutes,Substituições
 SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este outro reagente
 SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes outros reagentes
 REGULAR_DAMAGE,regular damage,dano normal
 PIERCING_DAMAGE,piercing damage,dano penetrante
+PIERCING_DAMAGE_TITLE,Piercing Damage,Dano Penetrante
+PIERCING_DAMAGE_DESC,Piercing damage ignores shield and deals damage directly to health.,Dano penetrante ignora escuda e inflige dano diretamente à vida.
 CRUSHING_DAMAGE,crushing damage,dano esmagador
+CRUSHING_DAMAGE_TITLE,Crushing Damage,Dano Esmagador
+CRUSHING_DAMAGE_DESC,Crushing damage deals damage both to shield and health directly.,Dano esmagador inflige dano tanto ao escudo quanto diretamente à vida.
 VENOM_DAMAGE,poison damage,dano venenoso
+VENOM_DAMAGE_TITLE,Venom Damage,Dano Venenoso
+VENOM_DAMAGE_DESC,Unblocked venom damage applies poison to target instead of damage.,Dano venenoso que não for bloqueado vai aplicar veneno ao usuário em vez de dano.
+DRAIN,drain,drena
+DRAIN_2,drain,drene
+DRAIN_TITLE,Drain,Drenar
+DRAIN_DESC,Deals regular damage and heals any unblocked damage.,Inflige dano normal e cura o usuário em qualquer dano não bloqueado.
+HEALING,healing,curando
+HEALS,heals,cura
+HEAL,heal,curar
+HEALTH,health,vida
 COMMON_ARTIFACT,Common Artifact,Artefato Comum
 UNCOMMON_ARTIFACT,Uncommon Artifact,Artefato Incomum
 RARE_ARTIFACT,Rare Artifact,Artefato Raro
@@ -289,7 +308,7 @@ ST_REVENGE_TITLE,Revenge,Vingança
 ST_REVENGE_DESC,"When this character dies, it will deal regular damage to you","Quando este personagem morre, inflija dano normal a você"
 ST_REVENGE_INTENT,Revengeance,Vingando
 ST_SOULBIND_TITLE,Soulbind,Conexão de Alma
-ST_SOULBIND_DESC,"When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage","Quando este personagem morre, qualquer dano excedente em sua vida será devolvido 4 vezes mais como dano regular"
+ST_SOULBIND_DESC,"When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage","Quando este personagem morre, qualquer dano excedente em sua vida será devolvido 4 vezes mais como dano normal"
 ST_SOULBIND_INTENT,Binding soul,Conectando alma
 ST_SPLITTING_TITLE,Splitting,Dividindo
 ST_SPLITTING_DESC,"When this character dies, it will divide into two","Quando este personagem morre, irá dividir em 2"

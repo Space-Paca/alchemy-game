@@ -55,7 +55,7 @@ func setup(_title, _text, _title_image, _subtitle = false, expanded = false, sty
 func stylize_text(text):
 	#Color keywords
 	for keyword in TooltipLayer.get_keywords():
-		text = text.replace(keyword, "[color=lime]" + keyword + "[/color]")
+		text = text.replace(tr(keyword), "[color=lime]" + tr(keyword) + "[/color]")
 	
 	#Color numbers
 	#It works with two equal numbers now! (*/ω＼*)
@@ -121,6 +121,6 @@ func get_height():
 func get_keywords():
 	var keywords = []
 	for keyword in TooltipLayer.get_keywords():
-		if $Text.bbcode_text.find(keyword) != -1:
+		if $Text.bbcode_text.find(tr(keyword)) != -1:
 			keywords.append(keyword)
 	return keywords

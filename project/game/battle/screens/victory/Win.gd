@@ -93,7 +93,6 @@ func disable_tooltips():
 
 
 func display():
-	bg.show()
 	enable_buttons()
 	enable_tooltips()
 

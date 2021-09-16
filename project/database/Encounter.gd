@@ -10,7 +10,7 @@ export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", \
 					  "delayed_hitter_plus", "boss_1", "big_divider", "medium_divider", \
 					  "small_divider", "revenger", "rager", "curser", "parasiter", \
 					  "timing_bomber", "baby_humunculus_plus", "freezer", "boss_2", \
-					  "self_destructor", "martyr", "necromancer", "zombie", "doomsday", \
+					  "self_destructor", "avenger", "necromancer", "zombie", "doomsday", \
 					  "healer", "overkiller", "burner", "confuser", "baby_poison_plus", \
 					  "restrainer", "boss_3_1", "boss_3_2") var enemies
 

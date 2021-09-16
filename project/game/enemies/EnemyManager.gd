@@ -22,7 +22,7 @@ const ENEMY_DB = {
 				  "burner" : preload("res://database/enemies/Burner.gd"),
 				  "healer" : preload("res://database/enemies/Healer.gd"),
 				  "doomsday" : preload("res://database/enemies/Doomsday.gd"),
-				  "martyr" : preload("res://database/enemies/Martyr.gd"),
+				  "avenger" : preload("res://database/enemies/Avenger.gd"),
 				  "necromancer": preload("res://database/enemies/Necromancer.gd"),
 				  "zombie": preload("res://database/enemies/Zombie.gd"),
 				  "rager" : preload("res://database/enemies/Rager.gd"),

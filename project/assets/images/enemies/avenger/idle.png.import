@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle.png-fe2b25616548d56fd4ce8d011168d3fd.stex"
+path="res://.import/idle.png-7ac8e85ce512cc2ecfabfc8f9de59a7d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/martyr/idle.png"
-dest_files=[ "res://.import/idle.png-fe2b25616548d56fd4ce8d011168d3fd.stex" ]
+source_file="res://assets/images/enemies/avenger/idle.png"
+dest_files=[ "res://.import/idle.png-7ac8e85ce512cc2ecfabfc8f9de59a7d.stex" ]
 
 [params]
 

@@ -28,6 +28,14 @@ var curr_state = States.MENU
 var shown_combinations := []
 
 
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			#Check to see if text is still rolling
+			if $Tween.is_active():
+				speed_up_dialogue()
+
+
 func first_setup(combinations: Array, _player: Player):
 	player = _player
 	update_reagents()
@@ -65,6 +73,14 @@ func start():
 func start_dialogue():
 	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
 	$Tween.interpolate_property(dialog_label, "percent_visible", 0, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+
+
+func speed_up_dialogue():
+	$Tween.stop_all()
+	var dur = ((1.0 - dialog_label.percent_visible)*dialog_label.get_total_character_count())/(10*DIALOG_SPEED)
+	$Tween.interpolate_property(dialog_label, "percent_visible", dialog_label.percent_visible, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 

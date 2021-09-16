@@ -7,11 +7,19 @@ const XP_MULT = {"artifacts": 15, "discovered": 5, "mastered": 15}
 const THEME = preload("res://assets/themes/general_theme/general_theme.tres")
 
 var total_xp : int
+var skip := false
+var animation_active := false
+
 
 func _ready():
 	$Panel/VBoxContainer/TotalContainer/EP.change_text_value()
 	yield(get_tree(), "idle_frame")
 	$Panel/VBoxContainer/TotalContainer/EP.change_text_value(0)
+
+
+func _input(event):
+	if event.is_action_pressed("left_mouse_button") and animation_active:
+		skip_animations()
 
 
 func set_player(p: Player):
@@ -102,19 +110,36 @@ func set_time_label(label: Label, time: float):
 
 
 func begin_animations():
+	animation_active = true
 	for element in $Panel/VBoxContainer/ScrollContainer/VBoxContainer.get_children():
 		if not element.has_method("animate"):
 			continue
-		element.animate()
+		element.animate(skip)
 		element.set_focus_mode(FOCUS_ALL)
 		element.grab_focus()
 		element.set_focus_mode(FOCUS_NONE)
-		yield(element, "animation_finished")
+		if not skip:
+			yield(element, "animation_finished")
 	
 	$Panel/VBoxContainer/ScrollContainer.theme = THEME
-	$Panel/VBoxContainer/TotalContainer.animate()
-	yield($Panel/VBoxContainer/TotalContainer, "animation_finished")
+	$Panel/VBoxContainer/TotalContainer.animate(skip)
+	if not skip:
+		yield($Panel/VBoxContainer/TotalContainer, "animation_finished")
 	
 	$ScrollBlocker.queue_free()
 	
 	emit_signal("animation_finished")
+	animation_active = false
+
+
+func skip_animations():
+	animation_active = false
+	skip = true
+	var elements := []
+	elements.append_array($Panel/VBoxContainer/ScrollContainer/VBoxContainer.get_children())
+	elements.append($Panel/VBoxContainer/TotalContainer)
+	
+	for element in elements:
+		if element.has_method("animate") and element.animation_active:
+			element.skip()
+			break

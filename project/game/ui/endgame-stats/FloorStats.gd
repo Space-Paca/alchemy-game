@@ -10,6 +10,8 @@ const XP_MULT = [
 const REGION_XP = [100, 200, 300]
 
 var total_xp : int
+var should_skip := false
+var animation_active := false
 
 
 func set_amounts(level: int, cleared: bool, stats: Dictionary):
@@ -49,9 +51,24 @@ func set_amounts(level: int, cleared: bool, stats: Dictionary):
 		$RegionClear/Exp.amount = xp_value
 
 
-func animate():
+func animate(s := false):
+	animation_active = true
+	should_skip = s
 	for child in get_children():
 		if child.visible and child.has_method("animate"):
-			child.animate()
-			yield(child, "animation_finished")
+			child.animate(should_skip)
+			if not should_skip:
+				yield(child, "animation_finished")
+	if not should_skip:
+		emit_signal("animation_finished")
+	animation_active = false
+
+
+func skip():
+	should_skip = true
+	for child in get_children():
+		if child.has_method("animate") and child.animation_active:
+			child.skip()
+			break
 	emit_signal("animation_finished")
+	animation_active = false

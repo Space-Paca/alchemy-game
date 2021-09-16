@@ -233,22 +233,27 @@ INTENT_STATUS_ENEMY_PLURAL_DESC,This character is applying %d %s next turn,Este 
 INTENT_STATUS_REMOVE_DESC,This character is removing %s next turn,Este personagem vai remover %s próximo turno
 INTENT_STATUS_REMOVE_PLURAL_DESC,This character is removing %d %s next turn,Este personagem vai remover %d de %s próximo turno
 ST_ARCANE_AEGIS_TITLE,Arcane Aegis,Égide Arcana
-ST_ARCANE_AEGIS_DESC,"Whenever this characters is attacked, if it wasn't shielded, gains shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar escudo"
+ST_ARCANE_AEGIS_DESC,"Whenever this characters is attacked, if it wasn't shielded, gains %d shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar %d de escudo"
+ST_ARCANE_AEGIS_DESC_GENERIC,"Whenever this characters is attacked, if it wasn't shielded, gains shield","Sempre que este personagem for atacado, se ele não tinha escudo, irá ganhar escudo"
 ST_ARCANE_AEGIS_INTENT,Casting Arcane Aegis,Formando Égide Arcana
 ST_AVENGE_TITLE,Avenge,Vingar
-ST_AVENGE_DESC,"When an ally dies, this character gains Permanent Strength","Quando algum aliado morre, este personagem ganha Força Permanente"
+ST_AVENGE_DESC,"When an ally dies, this character gains %d Permanent Strength","Quando algum aliado morre, este personagem ganha %d de Força Permanente"
+ST_AVENGE_DESC_GENERIC,"When an ally dies, this character gains Permanent Strength","Quando algum aliado morre, este personagem ganha Força Permanente"
 ST_AVENGE_INTENT,Avenging,Vingando
 ST_BURNING_TITLE,Burning,Queimando
-ST_BURNING_DESC,"At start of turn, will randomly burn player's reagents until end of turn","No começo do turno, queima reagentes aleatórios da mão até o fim do turno"
+ST_BURNING_DESC,"At start of turn, will randomly burn %d player's reagents until end of turn","No começo do turno, queima %d reagentes aleatórios da mão até o fim do turno"
+ST_BURNING_DESC_GENERIC,"At start of turn, will randomly burn player's reagents until end of turn","No começo do turno, queima reagentes aleatórios da mão até o fim do turno"
 ST_BURNING_INTENT,Immolate,Imolando
 ST_CONCENTRATION_TITLE,Concentration,Concentração
-ST_CONCENTRATION_DESC,"If this character takes enough damage, it will lose focus and stop attacking","Se este personagem recebe dano suficiente, irá perder o foco e não vai mais atacar"
+ST_CONCENTRATION_DESC,"If this character takes %d damage, it will lose focus and stop attacking","Se este personagem receber %d de dano, irá perder o foco e não vai mais atacar"
+ST_CONCENTRATION_DESC_GENERIC,"If this character takes damage, it will lose focus and stop attacking","Se este personagem receber dano, irá perder o foco e não vai mais atacar"
 ST_CONCENTRATION_INTENT,Concentrating,Concentrando
 ST_CONFUSION_TITLE,Confusion,Confusão
 ST_CONFUSION_DESC,Transforms reagents randomly at the start of every turn,Transforma reagentes aleatórios no começo de cada turno
 ST_CONFUSION_INTENT,Dazzling,Deslumbrando
 ST_CURSE_TITLE,Curse,Maldição
-ST_CURSE_DESC,Limits the number of recipes you can try to create each turn,Limite o número de receitas que você pode criar cada turno
+ST_CURSE_DESC,Limits the max number of recipes you can try to create each turn by %d,Limita o máximo de receitas que você pode tentar criar cada turno a %d
+ST_CURSE_DESC_GENERIC,Limits the max number of recipes you can try to create each turn,Limita o máximo de receitas que você pode tentar criar cada turno
 ST_CURSE_INTENT,Cursing,Amaldiçoando
 ST_DEEP_WOUND_TITLE,Deep Wound,Ferida Profunda
 ST_DEEP_WOUND_DESC,This character can't heal,Este personagem não pode curar
@@ -257,55 +262,67 @@ ST_DEVIATION_TITLE,Deviation,Divergência
 ST_DEVIATION_DESC,This character can't repeat recipes on the same turn,Este personagem não pode repetir receitas no mesmo turno
 ST_DEVIATION_INTENT,Deviating,Divergindo
 ST_DIVINE_PROTECTION_TITLE,Divine Protection,Proteção Divina
-ST_DIVINE_PROTECTION_DESC,"Every turn, this character becomes invincible after taking enough damage","Em cada turno, este personagem fica invencível depois de tomar dano suficiente"
+ST_DIVINE_PROTECTION_DESC,"Every turn, this character becomes invincible after taking %d damage","Em cada turno, este personagem fica invencível depois de tomar %d de dano"
+ST_DIVINE_PROTECTION_DESC_GENERIC,"Every turn, this character becomes invincible after taking some damage","Em cada turno, este personagem fica invencível depois de tomar certa quantidade de dano"
 ST_DIVINE_PROTECTION_INTENT,Favor from the Gods,Favor dos Deuses
 ST_DODGE_TITLE,Dodge,Esquivar
-ST_DODGE_DESC,This character will avoid the next attack. Last until end of turn,Este personagem irá evitar o próximo ataque. Dura até o fim do turno
+ST_DODGE_DESC,This character will avoid the next attack. Lasts until end of turn,Este personagem irá evitar o próximo ataque. Dura até o fim do turno
 ST_DODGE_INTENT,Dodging,Esquivando
 ST_ENRAGE_TITLE,Enrage,Enfurecido
-ST_ENRAGE_DESC,"Whenever this character takes damage, it gets Permanent Strength","Sempre que este personagem toma dano, recebe Força Permanente"
+ST_ENRAGE_DESC,"Whenever this character takes damage, it gets %d Permanent Strength","Sempre que este personagem toma dano, recebe %d de Força Permanente"
+ST_ENRAGE_DESC_GENERIC,"Whenever this character takes damage, it gets Permanent Strength","Sempre que este personagem toma dano, recebe Força Permanente"
 ST_ENRAGE_INTENT,Raging,Enfurecendo
 ST_EVASION_TITLE,Evasion,Evasão
-ST_EVASION_DESC,This character has 50% chance of avoiding the next attack. Last until it triggers or end of turn,Este personagem tem 50% de chance de evitar o próximo ataque. Dura até o fim do turno
+ST_EVASION_DESC,This character has 50% chance of avoiding the next attack. Last until end of turn,Este personagem tem 50% de chance de evitar o próximo ataque. Dura até o fim do turno
 ST_EVASION_INTENT,Evading,Evadindo
 ST_FREEZE_TITLE,Freezing,Congelando
-ST_FREEZE_DESC,"At start of turn, will freezes player's hand slots until end of turn","No começo do turno, congela espaços de mão do jogador até final do turno"
+ST_FREEZE_DESC,"At start of turn, will freeze %d player's hand slots until end of turn","No começo do turno, congela %d espaços de mão do jogador até final do turno"
+ST_FREEZE_DESC_GENERIC,"At start of turn, will freeze player's hand slots until end of turn","No começo do turno, congela espaços de mão do jogador até final do turno"
 ST_FREEZE_INTENT,Freezing,Congelando
 ST_HEX_TITLE,Hex,Feitiço
-ST_HEX_DESC,This character gains permanent strength each time you misuse a reagent,Este personagem ganha força permanente sempre o jogador utiliza incorretamente algum reagente
+ST_HEX_DESC,This character gains %d Permanent Strength each time you misuse a reagent,Este personagem ganha %d de Força Permanente sempre o jogador utiliza incorretamente algum reagente
+ST_HEX_DESC_GENERIC,This character gains Permanent Strength each time you misuse a reagent,Este personagem ganha Força Permanente sempre o jogador utiliza incorretamente algum reagente
 ST_HEX_INTENT,Hexing,Enfeitiçando
 ST_DOOM_TITLE,Impending Doom,Perdição Inevitável
-ST_DOOM_DESC,"When this counter reaches 0, this character will receive 999 Permanent Strength","Quando este contador chegar em 0, este personagem irá receber 999 de Força Permanente"
+ST_DOOM_DESC,"When the Doom Counter reaches 0, this character will receive 999 Permanent Strength","Quando o Contador de Perdição chegar em 0, este personagem irá receber 999 de Força Permanente"
 ST_DOOM_INTENT,Dooming,Perdição
 ST_MARTYR_TITLE,Martyr,Mártir
-ST_MARTYR_DESC,"When this character dies, it applies Permanent Strength to each other ally","Quando este personagem morre, aplique Força Permanente a todos outros aliados"
+ST_MARTYR_DESC,"When this character dies, it applies %d Permanent Strength to each other ally","Quando este personagem morre, aplique %d de Força Permanente a todos outros aliados"
+ST_MARTYR_DESC_GENERIC,"When this character dies, it applies Permanent Strength to each other ally","Quando este personagem morre, aplique Força Permanente a todos outros aliados"
 ST_MARTYR_INTENT,Martyrdom,Martirio
 ST_MINION_TITLE,Minion,Lacaio
 ST_MINION_DESC,This enemy will disappear if his summoner dies,Este inimigo irá desaparecer se seu mestre morrer
 ST_MINION_INTENT,Minion,Lacaio
 ST_PERM_STRENGTH_TITLE,Permanent Strength,Força Permanente
-ST_PERM_STRENGTH_DESC,Permanently increases this character attack damage,Permanentemente aumenta o dano de ataque deste personagem
+ST_PERM_STRENGTH_DESC,Permanently increases this character attack damage by %d,Permanentemente aumenta o dano de ataque deste personagem por %d
+ST_PERM_STRENGTH_DESC_GENERIC,Permanently increases this character attack damage,Permanentemente aumenta o dano de ataque deste personagem
 ST_PERM_STRENGTH_INTENT,Powering up,Fortalecendo
 ST_POISON_TITLE,Poison,Veneno
-ST_POISON_DESC,This character is dealt poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar dano venenoso no final de seu turno. Diminui a cada turno
+ST_POISON_DESC,This character is dealt %d poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar %d de dano venenoso no final de seu turno. Diminui a cada turno
+ST_POISON_DESC_GENERIC,This character is dealt poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar dano venenoso no final de seu turno. Diminui a cada turno
 ST_POISON_INTENT,Poisoning,Envenenando
 ST_POISON_IMU_TITLE,Poison Immunity,Imunidade a Veneno
 ST_POISON_IMU_DESC,This character can't receive Poison,Este personagem não pode receber Veneno
 ST_POISON_IMU_INTENT,Immunizing,Imunizando
 ST_RESTRAIN_TITLE,Restrained,Contido
-ST_RESTRAIN_DESC,Locks grid slots randomly until end of turn. You can spend reagents to unlock them,Bloqueia espaços da grade aleatóriamente até o fim do turno. Você pode gastar reagentes para desbloquea-los
+ST_RESTRAIN_DESC,Locks %d grid slots randomly until end of turn. You can spend reagents to unlock them,Bloqueia %d espaços da grade aleatóriamente até o fim do turno. Você pode gastar reagentes para desbloqueá-los
+ST_RESTRAIN_DESC_GENERIC,Locks grid slots randomly until end of turn. You can spend reagents to unlock them,Bloqueia espaços da grade aleatóriamente até o fim do turno. Você pode gastar reagentes para desbloqueá-los
 ST_RESTRAIN_INTENT,Restraining,Contendo
 ST_MAJOR_RESTRICT_TITLE,Major Restriction,Restrição Maior
-ST_MAJOR_RESTRICT_DESC,Blocks a number of grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
+ST_MAJOR_RESTRICT_DESC,Blocks %d grid slot(s) until end of turn,Bloqueia %d espaço(s) da grade até o fim do turno
+ST_MAJOR_RESTRICT_DESC_GENERIC,Blocks grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
 ST_MAJOR_RESTRICT_INTENT,Chaining,Acorrentando
 ST_MINOR_RESTRICT_TITLE,Minor Restriction,Restrição Menor
-ST_MINOR_RESTRICT_DESC,Blocks a number of grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
+ST_MINOR_RESTRICT_DESC,Blocks %d grid slots until end of turn,Bloqueia %d espaços da grade até o fim do turno
+ST_MINOR_RESTRICT_DESC_GENERIC,Blocks grid slots until end of turn,Bloqueia espaços da grade até o fim do turno
 ST_MINOR_RESTRICT_INTENT,Binding,Prendendo
 ST_RETALIATE_TITLE,Retaliate,Retaliação
-ST_RETALIATE_DESC,This character returns regular damage each time it is attacked. Lasts until end of turn,Este personagem devolve dano normal cada vez que é atacado. Dura até o fim do turno
+ST_RETALIATE_DESC,This character returns %d regular damage each time it is attacked. Lasts until end of turn,Este personagem devolve %d de dano normal cada vez que é atacado. Dura até o fim do turno
+ST_RETALIATE_DESC_GENERIC,This character returns regular damage each time it is attacked. Lasts until end of turn,Este personagem devolve dano normal cada vez que é atacado. Dura até o fim do turno
 ST_RETALIATE_INTENT,Retaliating,Retaliando
 ST_REVENGE_TITLE,Revenge,Vingança
-ST_REVENGE_DESC,"When this character dies, it will deal regular damage to you","Quando este personagem morre, inflija dano normal a você"
+ST_REVENGE_DESC,"When this character dies, it will deal %d regular damage to player","Quando este personagem morre, inflija %d de dano normal ao jogador"
+ST_REVENGE_DESC_GENERIC,"When this character dies, it will deal regular damage to player","Quando este personagem morre, inflija dano normal ao jogador"
 ST_REVENGE_INTENT,Revengeance,Vingando
 ST_SOULBIND_TITLE,Soulbind,Conexão de Alma
 ST_SOULBIND_DESC,"When this character dies, any damage dealt that exceeded his life will return 4 times as regular damage","Quando este personagem morre, qualquer dano excedente em sua vida será devolvido 4 vezes mais como dano normal"
@@ -314,10 +331,12 @@ ST_SPLITTING_TITLE,Splitting,Dividindo
 ST_SPLITTING_DESC,"When this character dies, it will divide into two","Quando este personagem morre, irá dividir em 2"
 ST_SPLITTING_INTENT,Mitosis,Mitose
 ST_TEMP_STRENGTH_TITLE,Temporary Buff,Poder Temporário
-ST_TEMP_STRENGTH_DESC,Increases the damage of this character next attack,Aumenta o dano deste personagem em seu próximo ataque
+ST_TEMP_STRENGTH_DESC,Increases the damage of this character by %d on the next attack,Aumenta o dano deste personagem em %d em seu próximo ataque
+ST_TEMP_STRENGTH_DESC_GENERIC,Increases the damage of this character on the next attack,Aumenta o dano deste personagem em seu próximo ataque
 ST_TEMP_STRENGTH_INTENT,Focusing strength,Focando forças
 ST_TIME_BOMB_TITLE,Time Bomb,Bomba Relógio
-ST_TIME_BOMB_DESC,Player will draw unstable reagents,Jogador irá comprar reagentes instáveis
+ST_TIME_BOMB_DESC,Player will draw %d unstable reagents,Jogador irá comprar %d reagentes instáveis
+ST_TIME_BOMB_DESC_GENERIC,Player will draw unstable reagents,Jogador irá comprar reagentes instáveis
 ST_TIME_BOMB_INTENT,Planting bomb,Colocando bomba
 ST_TOUGH_TITLE,Tough Skin,Pele Resistente
 ST_TOUGH_DESC,Shield isn't removed at the end of turn,Escudo não é removido no final do turno

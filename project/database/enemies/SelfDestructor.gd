@@ -20,7 +20,7 @@ var first_state = ["init"]
 var actions = {
 	"init": [
 		{"name": "shield", "value": 30},
-		{"name": "status", "status_name": "tough", "value": 0, "target": "self", "positive": true}
+		{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true}
 	],
 	"attack": [
 		{"name": "damage", "value": [4,5], "amount": 2, "type": "regular"}

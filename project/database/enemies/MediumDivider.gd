@@ -23,7 +23,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "splitting", "value": 0, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}}
+		{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}}
 	],
 	"attack": [
 		{"name": "damage", "value": [15, 25], "type": "regular"}

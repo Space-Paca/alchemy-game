@@ -11,7 +11,7 @@ func init(_type: String, value, _positive: bool):
 	
 	var status_data = StatusDB.get_from_name(type)
 	$Image.texture = status_data.image
-	if value:
+	if status_data.show_value and value:
 		set_value(value)
 	else:
 		set_value("")
@@ -38,6 +38,8 @@ func get_self_tooltip():
 	var status_data = StatusDB.get_from_name(type)
 	tooltip.title = status_data.title_name
 	tooltip.text = tr(status_data.description)
+	if status_data.use_value_on_tooltip:
+		tooltip.text = tooltip.text % int($Value.text)
 	tooltip.title_image = status_data.image
 	tooltip.subtitle = "Status"
 	

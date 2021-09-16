@@ -108,7 +108,12 @@ func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = fal
 				add_tooltip(pos, tp_data.title, tr(tp_data.text), tp_data.title_image, false, true)
 			elif tp_data.type == "status":
 				var data = StatusDB.get_from_name(tp_data.name)
-				add_tooltip(pos, data.title_name, tr(data.description), data.image, false, true)
+				var tip_text
+				if data.use_value_on_tooltip:
+					tip_text = tr(data.description+"_GENERIC")
+				else:
+					tip_text = tr(data.description)
+				add_tooltip(pos, data.title_name, tip_text, data.image, false, true)
 
 func fade_tooltip(tip, play_sfx):
 	#Check if tip wasn't freed (trying to fix annoying tween not added error)

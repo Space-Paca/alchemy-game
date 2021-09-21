@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "CYCLE"
+name = "RE_CYCLE"
 grid_size = 3
 must_unlock = true
 floor_sold_in = 2

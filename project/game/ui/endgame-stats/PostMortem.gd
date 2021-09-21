@@ -20,6 +20,9 @@ func set_player(p: Player):
 	elif p.what_killed_me.type == "poison":
 		$Killer/Name.text = "POISON"
 		$Killer/Image.texture = poison_texture
+	elif p.what_killed_me.source == p:
+		$Killer/Name.text = "MYSELF"
+		$Killer/Image.texture = load("res://assets/images/ui/SelfDeath.png")
 	
 	$PlayerInfo/VBoxContainer/HBoxContainer/GoldLabel.text = str(p.gold)
 	$PlayerInfo/VBoxContainer/HBoxContainer2/PearlLabel.text = str(p.pearls)

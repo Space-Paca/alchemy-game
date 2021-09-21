@@ -175,6 +175,7 @@ TREASURE,Treasure,Tesouro
 COLLECT_REWARDS,Collect your Rewards,Colete suas Recompensas
 GET_RECIPE_HINT,Get a Recipe Hint,Pegar uma Dica de Receita
 CONTINUE_TO_MAP,Continue to Map,Continuar ao Mapa
+MYSELF,Myself,Eu Mesmo
 GET,Get,Pegar
 TRANSMUTE,Transmute: +%d,Transmutar: +%d
 COLLECT_PEARLS,Collect Pearls,Coletar Pérolas
@@ -449,7 +450,7 @@ RE_CURA_PLUSPLUS,Elixir of Life,Elixir da Vida
 RE_CURA,Healing Salve,Pomada Curativa
 RE_CURA_POISON_PLUS,Strong Antivenom,Antiveneno Poderoso
 RE_CURA_POISON,Antivenom,Antiveneno
-CYCLE,Elemental Transmutation,Transmutação Elemental
+RE_CYCLE,Elemental Transmutation,Transmutação Elemental
 RE_DANO_ESCUDO_OMEGA,Hero's Mixture,Mistura Heróica
 RE_DANO_ESCUDOPLUS,Explorer's Mixture,Mistura do Explorador
 RE_DANO_ESCUDOPLUSPLUS,Adventurer's Mixture,Mistura do Aventureiro

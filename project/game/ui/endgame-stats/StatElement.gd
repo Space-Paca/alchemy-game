@@ -17,11 +17,13 @@ func animate(s := false):
 	should_skip = s
 	
 	if should_skip:
-		pass
+		modulate.a = 1
 	else:
 		t = Tween.new()
 		add_child(t)
+# warning-ignore:return_value_discarded
 		t.interpolate_property(self, "modulate:a", 0, 1, fade_in_duration)
+# warning-ignore:return_value_discarded
 		t.start()
 		yield(t, "tween_completed")
 #		t.queue_free()
@@ -40,6 +42,7 @@ func animate(s := false):
 func skip():
 	should_skip = true
 	if t and is_instance_valid(t) and t.is_active():
+# warning-ignore:return_value_discarded
 		t.seek(fade_in_duration)
 	else:
 		for child in get_children():

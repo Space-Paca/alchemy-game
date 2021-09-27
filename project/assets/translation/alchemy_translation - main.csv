@@ -158,7 +158,7 @@ NO_RECIPE_FOUND,No recipes found...,Nenhuma receita encontrada...
 CURSED,CURSED,ALMALDIÇOADO
 FLOOR_NAME_1,Forgotten Kingdom,Reino Esquecido
 FLOOR_NAME_2,Caves of Sorrow,Cavernas do Sofrimento
-FLOOR_NAME_3,Big Big Depths,Nome Grande Profundo
+FLOOR_NAME_3,Ruins of Bygone Knowledge,Ruinas do Conhecimento Esquecido
 LOCATION,Location,Local
 ENEMY,Enemy,Inimigo
 ELITE,Elite,Inimigo Elite
@@ -1274,8 +1274,8 @@ SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos p
 EN_AVENGER,Carapa Vindicator,Carapa Vindicador
 EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor
 EN_BABY_CARAPA_PLUS,Carapa Beserker,Carapa Bárbaro
-EN_BABY_OOZE,Noxious Oozeling,Lodinho Nocivo
-EN_BABY_OOZE_PLUS,Toxic Oozeling,Lodinho Tóxico
+EN_BABY_OOZE,Noxious Oozeling,Lodim Nocivo
+EN_BABY_OOZE_PLUS,Toxic Oozeling,Lodim Tóxico
 EN_BABY_RETALIATE,Virulyn Prickler,Virulen Afiado
 EN_BABY_SLASHER,Needler Spawn,Prole de Agulho
 EN_BIG_BUFFER,Morhk Savage,Morhk Selvagem
@@ -1305,6 +1305,6 @@ EN_RAGER,Rune Golem,Golem de Runas
 EN_RESTRAINER,"Boris, the Spider","Boris, a Aranha"
 EN_REVENGER,Volatile Ignium,Ignium Volátil
 EN_SELF_DESTRUCTOR,Unstable Craggium,Rochum Instável
-EN_SPAWNER_OOZE,Noxious Ooze,Gosma Nociva
+EN_SPAWNER_OOZE,Noxious Ooze,Lodo Nocivo
 EN_TIMING_BOMBER,Dr. Bomberson,Dr. Bomberson
 EN_ZOMBIE,Reanimated Corpse,Cadáver Reanimado

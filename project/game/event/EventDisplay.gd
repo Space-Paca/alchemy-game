@@ -22,10 +22,12 @@ const FORMAT_DICT = {
 		"(wave)": "[wave amp=50 freq=2]",
 		"(/wave)": "[/wave]"
 }
-const TEXT_SPEED = 150
+const TEXT_SPEED = [40, 150, 350]
 
 var event : Event
 var map_node : MapNode
+var animating_text := false
+var sped_up := 0
 
 
 func _ready():
@@ -39,11 +41,21 @@ func _ready():
 #	Transition.connect("finished", self, "_on_Transition_finished")
 
 
+func _input(e):
+	if e is InputEventMouseButton:
+		if e.button_index == BUTTON_LEFT and e.pressed:
+			#Check to see if text is still rolling and not reached max speed
+			if animating_text and sped_up < TEXT_SPEED.size() - 1:
+				speed_up_text()
+
+
 func set_map_node(node: MapNode) -> void:
 	map_node = node
 
 
 func load_event(new_event: Event, player: Player, override_text: String = ""):
+	sped_up = 0
+	animating_text = false
 	event = new_event
 	title_label.text = tr(event.title)
 	if override_text != "":
@@ -75,7 +87,14 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	else:
 		yield(get_tree(), "idle_frame")
 	
-	animate_text(text_label.get_total_character_count() / TEXT_SPEED)
+	animating_text = true
+	text_label.percent_visible = 0.0
+	animate_text(text_label.get_total_character_count() / TEXT_SPEED[0])
+	
+	yield(tween, "tween_completed")
+	animating_text = false
+	animate_buttons()
+	
 
 
 func translate_and_format(text: String) -> String:
@@ -87,17 +106,24 @@ func translate_and_format(text: String) -> String:
 	return text
 
 
+func speed_up_text():
+	sped_up += 1
+	var speed = TEXT_SPEED[sped_up]
+	animate_text(((1.0 - text_label.percent_visible) * text_label.get_total_character_count()) / speed)
+
+
 func animate_text(duration: float):
 	if text_label.percent_visible:
-		return
-	tween.interpolate_property(text_label, "percent_visible", 0, 1, duration)
+		tween.stop_all()
+	
+	tween.interpolate_property(text_label, "percent_visible", text_label.percent_visible, 1, duration)
 	tween.start()
-	
-	yield(tween, "tween_completed")
-	
+
+
+func animate_buttons():
 	for button in vbox.get_children():
 		if button is Button:
-			tween.interpolate_property(button, "modulate:a", 0, 1, .5)
+			tween.interpolate_property(button, "modulate:a", 0, 1, .5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 			tween.start()
 			yield(tween, "tween_completed")
 	

@@ -502,7 +502,7 @@ ART_MONEY_BAG_NAME,Coin Pouch,Bolsa de Moedas
 ART_MONEY_BAG_DESC,"When acquired, gain 40 gold","Quando adquirido, ganhe 40 de ouro"
 ART_BLUE_OYSTER_NAME,Blue Oyster,Ostra Azul
 ART_BLUE_OYSTER_DESC,"Whenever you defeat an elite or guardian encounter, gain 1 extra pearl","Sempre que você vencer algum encontro de inimigo elite ou guardião, ganhe uma pérola extra"
-ART_MENDER_BELT_NAME,Mender's Belt,Cinto de Mender
+ART_MENDER_BELT_NAME,Mender's Belt,Cinto do Curandeiro
 ART_MENDER_BELT_DESC,"Whenever you finish a battle, heal 8","Sempre que você terminar uma batalha, cure 8"
 ART_CARAPA_BUCKLER_NAME,Carapa Buckler,Broquel de Carapa
 ART_CARAPA_BUCKLER_DESC,Start each battle with 10 shield,Comece cada batalha com 10 de escudo
@@ -1271,40 +1271,40 @@ Você retoma sua jornada, em paz após esse encontro e melhor preparado para o q
 EVENT_20_OPT_1,Accept a healing blessing (heal 35 life).,Aceitar uma benção de cura (cura 35 de vida).
 EVENT_20_OPT_2,Accept a life blessing (increase max life by 10).,Aceitar uma benção de vida (aumenta a vida máxima em 10).
 SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos primeiro.
-EN_AVENGER,Carapa Vindicator,
-EN_BABY_CARAPA,Carapa Outrider,
-EN_BABY_CARAPA_PLUS,Carapa Beserker,
-EN_BABY_OOZE,Noxious Oozeling,
-EN_BABY_OOZE_PLUS,Toxic Oozeling,
-EN_BABY_RETALIATE,Virulyn Prickler,
-EN_BABY_SLASHER,Needler Spawn,
-EN_BIG_BUFFER,Morhk Savage,
-EN_BIG_DIVIDER,Plantora,
-EN_MEDIUM_DIVIDER,Plantoon,
-EN_SMALL_DIVIDER,Plantling,
-EN_BOSS_1,"Archmage Zopherus, the Profaner",
-EN_BOSS_2,"Executioner Okoth, the Unchained",
-EN_BOSS_3_1,"Omniel, Keeper of Knowledge",
-EN_BOSS_3_2,Omniel Awakened,
-EN_BURNER,Scorching Ignium,
-EN_CONFUSER,Frwnph,
-EN_CURSER,Homunculus Mindbane,
-EN_DELAYED_HITTER,Virulyn Prowler,
-EN_DELAYED_HITTER_PLUS,Dire Virulyn Prowler,
-EN_DODGER,Nimble Homunculus,
-EN_DOOMSDAY,Doomsayer,
-EN_ELITE_DODGER,Queen Needler,
-EN_FREEZER,Giant Everfrozen Craggium,
-EN_HEALER,Mender Homunculus,
-EN_CARAPA,Carapa Brave,
-EN_NECROMANCER,Reanimancer,
-EN_OVERKILLER,Soulbound Doll,
-EN_PARASITER,Vile Hag,
-EN_POISUN,Subject #13,
-EN_RAGER,Rune Golem,
-EN_RESTRAINER,"Boris, the Spider",
-EN_REVENGER,Volatile Ignium,
-EN_SELF_DESTRUCTOR,Unstable Craggium,
-EN_SPAWNER_OOZE,Noxious Ooze,
-EN_TIMING_BOMBER,Dr. Bomberson,
-EN_ZOMBIE,Reanimated Corpse,
+EN_AVENGER,Carapa Vindicator,Carapa Vindicador
+EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor
+EN_BABY_CARAPA_PLUS,Carapa Beserker,Carapa Bárbaro
+EN_BABY_OOZE,Noxious Oozeling,Lodinho Nocivo
+EN_BABY_OOZE_PLUS,Toxic Oozeling,Lodinho Tóxico
+EN_BABY_RETALIATE,Virulyn Prickler,Virulen Afiado
+EN_BABY_SLASHER,Needler Spawn,Prole de Agulho
+EN_BIG_BUFFER,Morhk Savage,Morhk Selvagem
+EN_BIG_DIVIDER,Plantora,Plantora
+EN_MEDIUM_DIVIDER,Plantoon,Plantum
+EN_SMALL_DIVIDER,Plantling,Plantim
+EN_BOSS_1,"Archmage Zopherus, the Profaner","Arquimago Zopherus, o Profanador"
+EN_BOSS_2,"Executioner Okoth, the Unchained","Carrasco Okoth, o Desacorrentado"
+EN_BOSS_3_1,"Omniel, Keeper of Knowledge","Omniel, Protetor do Conhecimento"
+EN_BOSS_3_2,Omniel Awakened,Omniel Despertado
+EN_BURNER,Scorching Ignium,Ignium Ardente
+EN_CONFUSER,Frwnph,Frwnph
+EN_CURSER,Homunculus Mindbane,Homúnculo Selamentes
+EN_DELAYED_HITTER,Virulyn Prowler,Virulen Canino
+EN_DELAYED_HITTER_PLUS,Dire Virulyn Prowler,Virulen Canino Medonho
+EN_DODGER,Nimble Homunculus,Homúnculo Ágil
+EN_DOOMSDAY,Doomsayer,Perdição
+EN_ELITE_DODGER,Queen Needler,Rainha Agulho
+EN_FREEZER,Giant Everfrozen Craggium,Rochum Frigelador Gigante
+EN_HEALER,Mender Homunculus,Homúnculo Curandeiro
+EN_CARAPA,Carapa Brave,Carapa Corajoso
+EN_NECROMANCER,Reanimancer,Reanimanciador
+EN_OVERKILLER,Soulbound Doll,Boneca da Alma
+EN_PARASITER,Vile Hag,Bruxa Vil
+EN_POISUN,Subject #13,Experimento #13
+EN_RAGER,Rune Golem,Golem de Runas
+EN_RESTRAINER,"Boris, the Spider","Boris, a Aranha"
+EN_REVENGER,Volatile Ignium,Ignium Volátil
+EN_SELF_DESTRUCTOR,Unstable Craggium,Rochum Instável
+EN_SPAWNER_OOZE,Noxious Ooze,Gosma Nociva
+EN_TIMING_BOMBER,Dr. Bomberson,Dr. Bomberson
+EN_ZOMBIE,Reanimated Corpse,Cadáver Reanimado

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/boss3-1/idle.png"
-var name = "Omniel, Keeper of Knowledge"
+var name = "EN_BOSS_3_1"
 var sfx = "boss_1"
 var use_idle_sfx = false
 var hp = 600

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/spawner poison enemy/idle.png"
-var name = "Noxious Ooze"
+var name = "EN_SPAWNER_OOZE"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
 var hp = 25

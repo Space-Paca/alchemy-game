@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 1
-enemies = [ "spawner_humunculus" ]
+enemies = [ "spawner_ooze" ]
 loot_table = {
 "buffing": 0,
 "common": 0,

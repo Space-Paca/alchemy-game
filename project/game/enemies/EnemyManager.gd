@@ -2,7 +2,7 @@ extends Node
 
 const ENEMY_DB = {
 				  "humunculus": preload("res://database/enemies/Homunculus.gd"),
-				  "spawner_humunculus": preload("res://database/enemies/SpawnerHomunculus.gd"),
+				  "spawner_ooze": preload("res://database/enemies/SpawnerOoze.gd"),
 				  "baby_humunculus": preload("res://database/enemies/BabyHomunculus.gd"),
 				  "baby_humunculus_plus": preload("res://database/enemies/BabyHomunculusPlus.gd"),
 				  "big_buffer": preload("res://database/enemies/BigBuffer.gd"),

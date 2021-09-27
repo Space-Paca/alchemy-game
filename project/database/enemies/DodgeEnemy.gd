@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/dodge enemy/idle.png"
-var name = "Nimble Homunculus"
+var name = "EN_DODGE"
 var sfx = "rhyno_bird"
 var use_idle_sfx = false
 var hp = 28

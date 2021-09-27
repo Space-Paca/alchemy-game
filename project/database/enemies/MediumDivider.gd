@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/medium divider/idle.png"
-var name = "Plantoon"
+var name = "EN_MEDIUM_DIVIDER"
 var sfx = "toxic_slime"
 var use_idle_sfx = true
 var hp = 60

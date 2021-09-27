@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/zombie/idle.png"
-var name = "Reanimated Corpse"
+var name = "EN_ZOMBIE"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 60

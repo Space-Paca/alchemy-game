@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/buffing big enemy/idle.png"
-var name = "Morhk Savage"
+var name = "EN_BIG_BUFFER"
 var sfx = "goblintaur"
 var use_idle_sfx = false
 var hp = 90

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/revenger/idle.png"
-var name = "Volatile Ignium"
+var name = "EN_REVENGER"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 35

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/curser/idle.png"
-var name = "Homunculus Mindbane"
+var name = "EN_CURSER"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 100

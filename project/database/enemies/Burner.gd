@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/burner/idle.png"
-var name = "Scorching Ignium"
+var name = "EN_BURNER"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 220

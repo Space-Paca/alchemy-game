@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/doomsayer/idle.png"
-var name = "Doomsayer"
+var name = "EN_DOOMSDAY"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 460

@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/small poison enemy/idle.png"
-var name = "Noxious Oozeling"
+var name = "EN_BABY_POISUN"
 var sfx = "toxic_slime_minion"
 var use_idle_sfx = false
 var hp = 6

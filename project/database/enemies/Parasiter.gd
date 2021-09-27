@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/parasiter/idle.png"
-var name = "Vile Hag"
+var name = "EN_PARASITER"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 125

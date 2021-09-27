@@ -5,7 +5,7 @@ export(bool) var is_boss = false
 export(bool) var is_elite = false
 export(int, 1, 3) var level = 1
 export(Array, String, "humunculus", "baby_humunculus", "dodge", "big_buffer", \
- 					  "poison",  "baby_poison", "spawner_humunculus", \
+ 					  "poison",  "baby_poison", "spawner_ooze", \
 					  "delayed_hitter", "baby_slasher", "elite_dodger", "baby_retaliate", \
 					  "delayed_hitter_plus", "boss_1", "big_divider", "medium_divider", \
 					  "small_divider", "revenger", "rager", "curser", "parasiter", \

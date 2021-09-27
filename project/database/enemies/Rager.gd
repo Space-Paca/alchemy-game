@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/rager/idle.png"
-var name = "Rune Golem"
+var name = "EN_RAGER"
 var sfx = "toxic_slime"
 var use_idle_sfx = false
 var hp = 100

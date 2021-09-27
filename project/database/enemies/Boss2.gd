@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/boss2/idle.png"
-var name = "Executioner Okoth, the Unchained"
+var name = "EN_BOSS_2"
 var sfx = "boss_1"
 var use_idle_sfx = false
 var hp = 300

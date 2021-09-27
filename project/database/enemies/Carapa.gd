@@ -1,7 +1,7 @@
 extends Reference
 
 var image = "res://assets/images/enemies/regular enemy/idle.png"
-var name = "EN_HOMUNCULUS"
+var name = "EN_CARAPA"
 var sfx = "turtle_spider"
 var use_idle_sfx = false
 var hp = 45

@@ -1,17 +1,17 @@
 extends Node
 
 const ENEMY_DB = {
-				  "humunculus": preload("res://database/enemies/Homunculus.gd"),
+				  "carapa": preload("res://database/enemies/Carapa.gd"),
 				  "spawner_ooze": preload("res://database/enemies/SpawnerOoze.gd"),
-				  "baby_humunculus": preload("res://database/enemies/BabyHomunculus.gd"),
-				  "baby_humunculus_plus": preload("res://database/enemies/BabyHomunculusPlus.gd"),
+				  "baby_carapa": preload("res://database/enemies/BabyCarapa.gd"),
+				  "baby_carapa_plus": preload("res://database/enemies/BabyCarapaPlus.gd"),
 				  "big_buffer": preload("res://database/enemies/BigBuffer.gd"),
 				  "delayed_hitter": preload("res://database/enemies/DelayedHitter.gd"),
 				  "delayed_hitter_plus": preload("res://database/enemies/DelayedHitterPlus.gd"),
-				  "dodge": preload("res://database/enemies/DodgeEnemy.gd"),
+				  "dodger": preload("res://database/enemies/Dodger.gd"),
 				  "poison": preload("res://database/enemies/Poisunculus.gd"),
-				  "baby_poison": preload("res://database/enemies/BabyPoisunculus.gd"),
-				  "baby_poison_plus": preload("res://database/enemies/BabyPoisunculusPlus.gd"),
+				  "baby_poison": preload("res://database/enemies/BabyOoze.gd"),
+				  "baby_poison_plus": preload("res://database/enemies/BabyOozePlus.gd"),
 				  "baby_slasher": preload("res://database/enemies/BabySlasher.gd"),
 				  "baby_retaliate": preload("res://database/enemies/BabyRetaliate.gd"),
 				  "big_divider" : preload("res://database/enemies/BigDivider.gd"),

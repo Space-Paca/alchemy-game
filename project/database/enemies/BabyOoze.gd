@@ -1,10 +1,10 @@
 extends Reference
 
-var image = "res://assets/images/enemies/small poison enemy plus/idle.png"
-var name = "EN_BABY_POISUN_PLUS"
+var image = "res://assets/images/enemies/small poison enemy/idle.png"
+var name = "EN_BABY_OOZE"
 var sfx = "toxic_slime_minion"
 var use_idle_sfx = false
-var hp = 90
+var hp = 6
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -21,18 +21,17 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 30}
+		{"name": "shield", "value": 6}
 	],
 	"poison": [
-		{"name": "damage", "value": [12,20], "type": "venom"}
+		{"name": "damage", "value": [5,7], "type": "venom"}
 	],
 	"medium-poison": [
-		{"name": "status", "status_name": "poison", "value": [2, 4], "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
+		{"name": "damage", "value": [3,6], "type": "venom"}
 		
 	],
 	"defend-poison": [
-		{"name": "shield", "value": [20,25]},
-		{"name": "damage", "value": [5,6], "amount": 2, "type": "venom"}
+		{"name": "shield", "value": [7,9]},
+		{"name": "damage", "value": [2,4], "type": "venom"}
 	]
 }

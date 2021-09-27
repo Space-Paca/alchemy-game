@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 is_boss = false
 is_elite = false
 level = 1
-enemies = [ "dodge", "dodge" ]
+enemies = [ "dodger", "dodger" ]
 loot_table = {
 "buff": 0,
 "common": 0,

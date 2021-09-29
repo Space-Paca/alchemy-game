@@ -63,7 +63,7 @@ var actions = {
 	"spawn2": [
 		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
 		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "spawn", "enemy": "baby_humunculus", "minion": true},
+		{"name": "spawn", "enemy": "baby_carapa", "minion": true},
 	],
 	"spawn3": [
 		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},

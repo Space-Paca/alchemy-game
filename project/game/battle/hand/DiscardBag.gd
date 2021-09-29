@@ -68,6 +68,8 @@ func is_empty():
 	return discarded_reagents.get_child_count() == 0
 
 func discard(reagent):
+	reagent.orbit = false
+	reagent.stop_auto_moving = false
 	if reagent.unstable:
 		reagent.toggle_unstable()
 		reagent.explode()

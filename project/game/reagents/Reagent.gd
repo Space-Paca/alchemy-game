@@ -20,6 +20,8 @@ onready var image = $Image
 onready var tooltip = $TooltipCollision
 
 var stop_auto_moving := false
+var orbit = false
+var orbit_dir := Vector2()
 var hovering := false
 var is_drag = false
 var can_drag = true
@@ -82,7 +84,16 @@ func _process(delta):
 					can_drag = true
 				rect_position = target_position
 				emit_signal("reached_target_pos")
-
+	if orbit:
+		var dir = orbit - rect_position
+		if dir.length() > 0:
+			dir *= 1/pow(dir.length(), 2)*50
+		else:
+			dir *= 500*Vector2(1,0)
+		var centripetal_force = dir.rotated(PI/2).normalized() * delta * 300
+		dir = dir*delta
+		orbit_dir += dir
+		rect_position += orbit_dir + centripetal_force
 
 func get_data():
 	var data = {
@@ -162,7 +173,7 @@ func start_shaking_and_destroy():
 func combine_animation(grid_center: Vector2, duration: float):
 	unhighlight()
 	var center = grid_center + -rect_size/2
-	target_position = center
+	#target_position = center
 	stop_auto_moving = true
 	$CombineTween.interpolate_property(self, "rect_position", rect_position, center, \
 								duration, Tween.TRANS_BACK, Tween.EASE_IN)
@@ -172,7 +183,9 @@ func combine_animation(grid_center: Vector2, duration: float):
 	$CombineTween.start()
 	yield($CombineTween, "tween_all_completed")
 	stop_auto_moving = false
+	orbit = center
 	shake = 0.0
+	stop_auto_moving = true
 	emit_signal("finished_combine_animation")
 
 func reset_to_gridslot(gridslot):
@@ -190,6 +203,8 @@ func stop_hover_effect():
 
 
 func destroy():
+	orbit = false
+	stop_auto_moving = false
 	start_shaking_and_destroy()
 	$AnimationPlayer.play("destroy")
 	yield($AnimationPlayer, "animation_finished")

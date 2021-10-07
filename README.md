@@ -3,6 +3,8 @@
 ###### A turn-based roguelike in which the player collects alchemical reagents and combines them into magical recipes to battle against outlandish foes.
 <hr>
 
+![background](https://user-images.githubusercontent.com/3944304/136468775-28ce327c-be15-47d6-aa25-5d0a3e864320.png)
+
 Welcome to the land of Alchemia, where magic and alchemy meet to create fantastical creatures and allow explorers to harness powers only dreamt of! In your journeys through this land you'll encounter foes, friends, ancient knowledge and relics from a bygone civilization, and much more!
 
 ## Mechanics overview

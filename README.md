@@ -19,7 +19,10 @@ Drag reagents to your grid with left click or right click to send them straight 
 
 ## The team
 
-**Ricardo Fonseca** (@rilifon) - Game Designer & Programmer
-**Arthur Vieira** (@arthurtui) - Game Designer & Programmer
+**Ricardo Fonseca** ([@rilifon](https://github.com/rilifon)) - Game Designer & Programmer
+
+**Arthur Vieira** ([@arthurtui](https://github.com/arthurtui)) - Game Designer & Programmer
+
 **Licinio Souza** - Artist
-**Rodrigo Passos** (@passosteps) - Audio Designer & Musician
+
+**Rodrigo Passos** ([@passosteps](https://github.com/passosteps)) - Audio Designer & Musician

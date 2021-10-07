@@ -3,7 +3,7 @@
 ###### A turn-based roguelike in which the player collects alchemical reagents and combines them into magical recipes to battle against outlandish foes.
 <hr>
 
-Welcome to the land of Alchemia, where magic and alchemy meet to create fantastical creatures and allow men to harness powers only dreamt of! In your journeys through this land you'll encounter foes, friends, ancient knowledge and relics from a bygone civilization, and much more!
+Welcome to the land of Alchemia, where magic and alchemy meet to create fantastical creatures and allow explorers to harness powers only dreamt of! In your journeys through this land you'll encounter foes, friends, ancient knowledge and relics from a bygone civilization, and much more!
 
 ## Mechanics overview
 

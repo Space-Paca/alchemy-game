@@ -106,6 +106,7 @@ func enable():
 	update_camera = true
 	if camera_last_pos:
 		camera.position = camera_last_pos
+	camera.make_current()
 
 
 func disable():
@@ -115,6 +116,7 @@ func disable():
 	update_camera = false
 	camera_last_pos = camera.position
 	reset_camera()
+	ShakeCam.make_current()
 
 func enable_tooltips():
 	for node in $Nodes.get_children():

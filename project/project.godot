@@ -178,6 +178,7 @@ FileManager="*res://game/file-manager/FileManager.gd"
 Profile="*res://game/file-manager/Profile.gd"
 Transition="*res://game/ui/transition/Transition.tscn"
 UnlockManager="*res://database/UnlockManager.gd"
+ShakeCam="*res://game/camera/ShakeCam.tscn"
 
 [debug]
 

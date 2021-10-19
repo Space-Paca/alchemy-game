@@ -21,6 +21,9 @@ export(float) var exponent = 2
 # A value representing current screen shake ranging from 0..1.
 var screen_shake = 0
 
+# A value representing priority of current shake (0 if not active)
+var cur_priority := 0
+
 # The actual range (also 0..1) that the positional and rotational offsets can be
 # multiplied by.
 var shake_factor = 0
@@ -32,6 +35,7 @@ var continuous_shake := false
 func _process(delta):
 	if screen_shake == 0:
 		offset = Vector2.ZERO
+		cur_priority = 0
 		set_process(false)
 		return
 	
@@ -49,17 +53,22 @@ func _process(delta):
 		screen_shake = max(0, screen_shake - dec_ratio * delta)
 
 
-func shake(shake: float, override_current := false) -> void:
-	if override_current:
+func shake(shake: float, priority : int) -> void:
+	if priority > cur_priority:
+		cur_priority = priority
 		screen_shake = shake
-	else:
+	elif priority == cur_priority:
 		screen_shake += shake
+	else:
+		return
 	screen_shake = clamp(screen_shake, 0, 1)
 	continuous_shake = false
 	set_process(true)
 
 
-func set_continuous_shake(shake: float) -> void:
+func set_continuous_shake(shake: float, priority) -> void:
+	if priority < cur_priority:
+		return
 	screen_shake = clamp(shake, 0, 1)
 	if screen_shake == 0:
 		continuous_shake = false

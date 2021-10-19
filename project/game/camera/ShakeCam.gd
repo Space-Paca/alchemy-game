@@ -8,7 +8,7 @@ export(float) var max_offset_y = 250
 
 # Affects how the current offset of the camera affects the offset in the next
 # frame (0 = camera never moves, 1 = completely random shake).
-export(float) var violence = .3
+export(float) var randomness = .3
 
 # The ratio at which the screen shake decreases. It is multiplied by dt in
 # process, so screen_shake goes from 1 to 0 in (1 / dec_ratio) seconds.
@@ -41,15 +41,20 @@ func _process(delta):
 	var to_offset_y = rand_range(-1, 1) * shake_factor * max_offset_y
 	var to_rotation = rand_range(-1, 1) * shake_factor * max_angle
 	
-	offset.x = lerp(offset.x, to_offset_x, violence)
-	offset.y = lerp(offset.y, to_offset_y, violence)
-	rotation_degrees = lerp(rotation_degrees, to_rotation, violence)
+	offset.x = lerp(offset.x, to_offset_x, randomness)
+	offset.y = lerp(offset.y, to_offset_y, randomness)
+	rotation_degrees = lerp(rotation_degrees, to_rotation, randomness)
 	
-	screen_shake = max(0, screen_shake - dec_ratio * delta)
+	if not continuous_shake:
+		screen_shake = max(0, screen_shake - dec_ratio * delta)
 
 
-func add_shake(shake: float) -> void:
-	screen_shake = min(1, screen_shake + shake)
+func add_shake(shake: float, override_current := false) -> void:
+	if override_current:
+		screen_shake = shake
+	else:
+		screen_shake += shake
+	screen_shake = clamp(screen_shake, 0, 1)
 	continuous_shake = false
 	set_process(true)
 

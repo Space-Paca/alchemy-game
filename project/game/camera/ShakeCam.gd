@@ -49,7 +49,7 @@ func _process(delta):
 		screen_shake = max(0, screen_shake - dec_ratio * delta)
 
 
-func add_shake(shake: float, override_current := false) -> void:
+func shake(shake: float, override_current := false) -> void:
 	if override_current:
 		screen_shake = shake
 	else:
@@ -61,5 +61,8 @@ func add_shake(shake: float, override_current := false) -> void:
 
 func set_continuous_shake(shake: float) -> void:
 	screen_shake = clamp(shake, 0, 1)
-	if shake == 0:
+	if screen_shake == 0:
 		continuous_shake = false
+	else:
+		continuous_shake = true
+		set_process(true)

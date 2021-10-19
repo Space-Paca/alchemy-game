@@ -3,4 +3,5 @@
 [ext_resource path="res://game/camera/ShakeCam.gd" type="Script" id=1]
 
 [node name="ShakeCam" type="Camera2D"]
+position = Vector2( 960, 540 )
 script = ExtResource( 1 )

@@ -357,6 +357,8 @@ func take_damage(source: Character, value: int, type: String, retaliate := true)
 		AnimationManager.play("poison", hud.get_animation_position())
 	
 	hud.update_status_bar(self)
+	
+	ShakeCam.shake(.4, ShakeCam.PLAYER_HIT)
 
 	var func_state = hud.update_visuals(self)
 	if func_state and func_state.is_valid():

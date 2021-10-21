@@ -58,7 +58,6 @@ func update_heal_button():
 	else:
 		disable_heal_text = false
 		button.modulate.r = 1.0; button.modulate.g = 1.0; button.modulate.b = 1.0
-		print(tr("HEAL_TEXT"))
 		button.text = tr("HEAL_TEXT")  % [get_heal_value(), get_percent_heal()] 
 
 

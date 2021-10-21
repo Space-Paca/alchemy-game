@@ -1148,7 +1148,7 @@ func _on_PauseButton_pressed():
 
 
 func _on_PauseButton_mouse_entered():
-	AudioManager.play_sfx("hover_menu_button")
+	AudioManager.play_sfx("hover_pause_button")
 
 
 func _on_PauseButton_button_down():

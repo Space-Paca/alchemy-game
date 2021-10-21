@@ -219,7 +219,7 @@ func toggle_visibility():
 	visible = !visible
 	
 	if visible:
-		AudioManager.play_sfx("open_recipe_book")
+		AudioManager.play_sfx("open_recipe_list")
 		enable_tooltips()
 		
 		if not Profile.get_tutorial("recipe_book"):
@@ -227,7 +227,7 @@ func toggle_visibility():
 		else:
 			$Background/CloseButton.disabled = false
 	else:
-		AudioManager.play_sfx("close_recipe_book")
+		AudioManager.play_sfx("close_recipe_list")
 		disable_tooltips()
 		_on_recipe_display_unhovered()
 	
@@ -474,7 +474,7 @@ func _on_battle_hand_set():
 
 
 func _on_Tag_pressed(tag: int):
-	AudioManager.play_sfx("open_recipe_book")
+	AudioManager.play_sfx("open_recipe_list")
 	filter_by_tag(tag)
 	update_tag_buttons(tag)
 

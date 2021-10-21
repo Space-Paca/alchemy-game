@@ -41,3 +41,7 @@ func _on_Filter_toggled(button_pressed: bool, index: int):
 func _on_ClearButton_pressed():
 	AudioManager.play_sfx("click")
 	clear_filters()
+
+
+func _on_filter_mouse_entered():
+	AudioManager.play_sfx("hover_filter_button")

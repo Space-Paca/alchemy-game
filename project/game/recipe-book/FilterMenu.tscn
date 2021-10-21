@@ -315,11 +315,17 @@ custom_constants/hseparation = 15
 text = "MISC"
 
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/ClearButton" to="." method="_on_filter_mouse_entered"]
 [connection signal="pressed" from="Filters/VBoxContainer/ClearButton" to="." method="_on_ClearButton_pressed"]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/CheckBox1" to="." method="_on_filter_mouse_entered"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox1" to="." method="_on_Filter_toggled" binds= [ 0 ]]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/CheckBox2" to="." method="_on_filter_mouse_entered"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox2" to="." method="_on_Filter_toggled" binds= [ 1 ]]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox3" to="." method="_on_Filter_toggled" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/CheckBox4" to="." method="_on_filter_mouse_entered"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox4" to="." method="_on_Filter_toggled" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/CheckBox5" to="." method="_on_filter_mouse_entered"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox5" to="." method="_on_Filter_toggled" binds= [ 4 ]]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox6" to="." method="_on_Filter_toggled" binds= [ 5 ]]
+[connection signal="mouse_entered" from="Filters/VBoxContainer/CheckBox7" to="." method="_on_filter_mouse_entered"]
 [connection signal="toggled" from="Filters/VBoxContainer/CheckBox7" to="." method="_on_Filter_toggled" binds= [ 6 ]]

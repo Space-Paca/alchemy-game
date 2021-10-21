@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hover_menu_button.wav-d90b269a7d2312151d2191e0876a08d1.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/hover_menu_button.wav"
+dest_files=[ "res://.import/hover_menu_button.wav-d90b269a7d2312151d2191e0876a08d1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -18,6 +18,9 @@ export(float) var dec_ratio = 1.2
 # offsets. Suggested value is between 2 and 3.
 export(float) var exponent = 2
 
+# Priorities
+enum {NONE, COMBINATION_ANIM, ENEMY_HIT, PLAYER_HIT, MAX_PRIO}
+
 # A value representing current screen shake ranging from 0..1.
 var screen_shake = 0
 
@@ -53,7 +56,7 @@ func _process(delta):
 		screen_shake = max(0, screen_shake - dec_ratio * delta)
 
 
-func shake(shake: float, priority : int) -> void:
+func shake(shake: float, priority: int) -> void:
 	if priority > cur_priority:
 		cur_priority = priority
 		screen_shake = shake
@@ -66,7 +69,7 @@ func shake(shake: float, priority : int) -> void:
 	set_process(true)
 
 
-func set_continuous_shake(shake: float, priority) -> void:
+func set_continuous_shake(shake: float, priority:= COMBINATION_ANIM) -> void:
 	if priority < cur_priority:
 		return
 	screen_shake = clamp(shake, 0, 1)

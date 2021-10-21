@@ -179,9 +179,11 @@ func combine_animation(grid_center: Vector2, duration: float):
 								duration, Tween.TRANS_BACK, Tween.EASE_IN)
 	$CombineTween.interpolate_method(self, "set_grayscale", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_IN) 
 	$CombineTween.interpolate_property(self, "shake", 0, 1, duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
-
 	$CombineTween.start()
+	$CombineTween.interpolate_method(ShakeCam, "set_continuous_shake", .05, .25,
+			duration)
 	yield($CombineTween, "tween_all_completed")
+	ShakeCam.set_continuous_shake(0, ShakeCam.COMBINATION_ANIM)
 	stop_auto_moving = false
 	orbit = center
 	shake = 0.0

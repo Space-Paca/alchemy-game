@@ -83,11 +83,13 @@ func _on_PauseButton_pressed():
 
 
 func _on_PauseButton_mouse_entered():
-	AudioManager.play_sfx("hover_pause_button")
+	if not $UI/PauseButton.disabled:
+		AudioManager.play_sfx("hover_pause_button")
 
 
 func _on_PauseButton_button_down():
-	AudioManager.play_sfx("click_pause_button")
+	if not $UI/PauseButton.disabled:
+		AudioManager.play_sfx("click_pause_button")
 
 
 func _on_button_mouse_entered(button):
@@ -117,8 +119,9 @@ func _on_RecipeCompendium_closed():
 
 
 func _on_CompendiumButton_mouse_entered():
-	AudioManager.play_sfx("hover_compendium")
-	hover_compendium = true
+	if not $UI/CompendiumButton.disabled:
+		AudioManager.play_sfx("hover_compendium")
+		hover_compendium = true
 
 
 func _on_CompendiumButton_mouse_exited():

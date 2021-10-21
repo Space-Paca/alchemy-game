@@ -9,19 +9,27 @@ var hover_compendium = false
 
 func _ready():
 	anim.play("reset")
+	
+	for button in [$ContinueButton, $NewGameButton, $QuitButton]:
+		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
 	FileManager.set_current_run(false)
 	set_process_input(false)
 	$RecipeCompendium.show()
 	compendium_button.visible = UnlockManager.is_misc_unlocked("COMPENDIUM")
+	
 	yield(get_tree(),"idle_frame")
+	
 	AudioManager.play_bgm("menu")
 	$RecipeCompendium.hide()
 	$ContinueButton.visible = FileManager.run_file_exists()
+	
 	yield(Transition, "finished")
+	
 	if FileManager.run_file_exists():
 		anim.play("intro")
 	else:
 		anim.play("intro-no-continue")
+	
 	set_process_input(true)
 # (❁´◡`❁)
 
@@ -82,8 +90,9 @@ func _on_PauseButton_button_down():
 	AudioManager.play_sfx("click_pause_button")
 
 
-func _on_button_mouse_entered():
-	AudioManager.play_sfx("hover_menu_button")
+func _on_button_mouse_entered(button):
+	if not button.disabled:
+		AudioManager.play_sfx("hover_menu_button")
 
 
 func _on_ContinueButton_pressed():

@@ -165,6 +165,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool, 
 
 #Damage a random enemy
 func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+	ShakeCam.shake(.2, ShakeCam.ENEMY_HIT)
 	var possible_enemies = enemies.duplicate()
 	var boost = boost_effects.all + boost_effects.damage
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
@@ -183,6 +184,7 @@ func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage"
 	resolve()
 
 func damage_self(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
+	ShakeCam.shake(.2, ShakeCam.PLAYER_HIT)
 	var boost = boost_effects.all + boost_effects.damage
 	var func_state = player.take_damage(player, amount + boost, type)
 	if func_state and func_state.is_valid():
@@ -196,6 +198,7 @@ func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, us
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
+	ShakeCam.shake(.2, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
 	player.increase_stat("damage_dealt", amount + boost)
@@ -211,6 +214,7 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
+	ShakeCam.shake(.3, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
 	player.increase_stat("damage_dealt", amount + boost)
@@ -223,6 +227,7 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 	resolve()
 
 func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+	ShakeCam.shake(.5, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
 	var temp_enemies = enemies.duplicate()

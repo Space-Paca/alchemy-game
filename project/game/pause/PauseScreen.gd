@@ -189,10 +189,12 @@ func play_slider_sfx():
 
 
 func _on_Resume_pressed():
+	AudioManager.play_sfx("click")
 	toggle_pause()
 
 
 func _on_Return_pressed():
+	AudioManager.play_sfx("click")
 	set_pause(false)
 	AudioManager.stop_all_enemy_idle_sfx()
 	if FileManager.current_run_exists():
@@ -201,15 +203,18 @@ func _on_Return_pressed():
 
 
 func _on_Exit_pressed():
+	AudioManager.play_sfx("click")
 	menu.hide()
 	confirm.show()
 
 
 func _on_Yes_pressed():
+	AudioManager.play_sfx("click")
 	FileManager.save_and_quit()
 
 
 func _on_No_pressed():
+	AudioManager.play_sfx("click")
 	no_quit()
 
 
@@ -243,12 +248,14 @@ func _on_ResetTutorial_pressed():
 
 
 func _on_Settings_pressed():
+	AudioManager.play_sfx("click")
 	screen_title.text = "SETTINGS"
 	menu.hide()
 	settings.show()
 
 
 func _on_Back_pressed():
+	AudioManager.play_sfx("click")
 	if is_keybinding:
 		keybinding.button.pressed = false
 	else:

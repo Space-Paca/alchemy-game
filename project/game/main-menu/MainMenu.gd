@@ -56,14 +56,17 @@ func _on_NewGameButton_pressed():
 
 
 func _on_QuitButton_pressed():
+	AudioManager.play_sfx("click")
 	$QuitConfirm.show()
 
 
 func _on_Yes_pressed():
+	AudioManager.play_sfx("click")
 	FileManager.save_and_quit()
 
 
 func _on_No_pressed():
+	AudioManager.play_sfx("click")
 	$QuitConfirm.hide()
 
 
@@ -72,15 +75,15 @@ func _on_PauseButton_pressed():
 
 
 func _on_PauseButton_mouse_entered():
-	AudioManager.play_sfx("hover_menu_button")
+	AudioManager.play_sfx("hover_pause_button")
 
 
 func _on_PauseButton_button_down():
-	AudioManager.play_sfx("click_menu_button")
+	AudioManager.play_sfx("click_pause_button")
 
 
 func _on_button_mouse_entered():
-	AudioManager.play_sfx("hover_mainmenu_button")
+	AudioManager.play_sfx("hover_menu_button")
 
 
 func _on_ContinueButton_pressed():
@@ -90,6 +93,7 @@ func _on_ContinueButton_pressed():
 
 
 func _on_CompendiumButton_pressed():
+	AudioManager.play_sfx("open_compendium")
 	hover_compendium = false
 	$RecipeCompendium.show()
 	$UI/PauseButton.hide()
@@ -97,14 +101,24 @@ func _on_CompendiumButton_pressed():
 
 
 func _on_RecipeCompendium_closed():
+	AudioManager.play_sfx("close_compendium")
 	$RecipeCompendium.hide()
 	$UI/PauseButton.show()
 	$UI/CompendiumButton.show()
 
 
 func _on_CompendiumButton_mouse_entered():
+	AudioManager.play_sfx("hover_compendium")
 	hover_compendium = true
 
 
 func _on_CompendiumButton_mouse_exited():
 	hover_compendium = false
+
+
+func _on_Yes_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_No_mouse_entered():
+	AudioManager.play_sfx("hover_button")

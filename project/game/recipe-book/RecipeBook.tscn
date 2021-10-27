@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/RecipeBookNotFoundFont_en.tres" type="DynamicFont" id=2]
@@ -22,6 +22,35 @@
 [ext_resource path="res://assets/images/ui/book/Label Red Disabled.png" type="Texture" id=20]
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=22]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float offset : hint_range(0, 36);
+
+void vertex() {
+	VERTEX = VERTEX + vec2(offset, 0);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
 
 [node name="RecipeBook" type="Control"]
 anchor_right = 1.0
@@ -99,6 +128,7 @@ __meta__ = {
 
 [node name="HandBtn" type="TextureButton" parent="Background/TagButtons"]
 visible = false
+material = SubResource( 2 )
 margin_right = 347.0
 margin_bottom = 98.0
 texture_normal = ExtResource( 11 )
@@ -122,6 +152,7 @@ __meta__ = {
 }
 
 [node name="DeckBtn" type="TextureButton" parent="Background/TagButtons"]
+material = SubResource( 3 )
 margin_right = 347.0
 margin_bottom = 98.0
 texture_normal = ExtResource( 9 )
@@ -145,6 +176,7 @@ __meta__ = {
 }
 
 [node name="IncompleteBtn" type="TextureButton" parent="Background/TagButtons"]
+material = SubResource( 4 )
 margin_top = 102.0
 margin_right = 347.0
 margin_bottom = 200.0
@@ -169,6 +201,7 @@ __meta__ = {
 }
 
 [node name="CompleteBtn" type="TextureButton" parent="Background/TagButtons"]
+material = SubResource( 5 )
 margin_top = 204.0
 margin_right = 347.0
 margin_bottom = 302.0
@@ -193,6 +226,7 @@ __meta__ = {
 }
 
 [node name="AllBtn" type="TextureButton" parent="Background/TagButtons"]
+material = SubResource( 6 )
 margin_top = 306.0
 margin_right = 347.0
 margin_bottom = 404.0
@@ -391,17 +425,22 @@ columns = 7
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered" binds= [ -1 ]]
 [connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
-[connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/TagButtons/HandBtn" to="." method="_on_button_mouse_entered" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Background/TagButtons/HandBtn" to="." method="_on_tagbtn_mouse_exited" binds= [ 0 ]]
 [connection signal="pressed" from="Background/TagButtons/HandBtn" to="." method="_on_Tag_pressed" binds= [ 0 ]]
-[connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/TagButtons/DeckBtn" to="." method="_on_button_mouse_entered" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Background/TagButtons/DeckBtn" to="." method="_on_tagbtn_mouse_exited" binds= [ 1 ]]
 [connection signal="pressed" from="Background/TagButtons/DeckBtn" to="." method="_on_Tag_pressed" binds= [ 1 ]]
-[connection signal="mouse_entered" from="Background/TagButtons/IncompleteBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/TagButtons/IncompleteBtn" to="." method="_on_button_mouse_entered" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Background/TagButtons/IncompleteBtn" to="." method="_on_tagbtn_mouse_exited" binds= [ 2 ]]
 [connection signal="pressed" from="Background/TagButtons/IncompleteBtn" to="." method="_on_Tag_pressed" binds= [ 2 ]]
-[connection signal="mouse_entered" from="Background/TagButtons/CompleteBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/TagButtons/CompleteBtn" to="." method="_on_button_mouse_entered" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Background/TagButtons/CompleteBtn" to="." method="_on_tagbtn_mouse_exited" binds= [ 3 ]]
 [connection signal="pressed" from="Background/TagButtons/CompleteBtn" to="." method="_on_Tag_pressed" binds= [ 3 ]]
-[connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/TagButtons/AllBtn" to="." method="_on_button_mouse_entered" binds= [ 4 ]]
+[connection signal="mouse_exited" from="Background/TagButtons/AllBtn" to="." method="_on_tagbtn_mouse_exited" binds= [ 4 ]]
 [connection signal="pressed" from="Background/TagButtons/AllBtn" to="." method="_on_Tag_pressed" binds= [ 4 ]]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
 

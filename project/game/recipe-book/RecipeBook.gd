@@ -20,6 +20,14 @@ onready var filter_menu = $Background/FilterMenu
 onready var no_recipes_label = $Background/NothingFound
 onready var reagent_container = $Background/LeftSide/ScrollContainer/ReagentContainer
 onready var tween : Tween = $Tween
+onready var tag_buttons = [$Background/TagButtons/HandBtn,
+	$Background/TagButtons/DeckBtn, $Background/TagButtons/IncompleteBtn,
+	$Background/TagButtons/CompleteBtn, $Background/TagButtons/AllBtn]
+onready var tag_labels = [$Background/TagButtons/HandBtn/Label,
+	$Background/TagButtons/DeckBtn/Label,
+	$Background/TagButtons/IncompleteBtn/Label,
+	$Background/TagButtons/CompleteBtn/Label,
+	$Background/TagButtons/AllBtn/Label]
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
@@ -33,6 +41,9 @@ const INACTIVE_TAG_LABEL_POS = 53
 const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
 const NOTHING_FOUND_LABEL_SPEED = 3
+const CLOSE = -1
+const HOVER_OFFSET_MAX = 33
+const TAG_LABEL_POSITION = 53
 
 enum States {BATTLE, MAP, LAB}
 enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
@@ -45,6 +56,8 @@ var state : int = States.MAP
 var battle_draw_bag
 var battle_discard_bag
 var player : Player
+var hovered_tags := [false, false, false, false, false]
+var tag_offsets := [0, 0, 0, 0, 0]
 
 
 func _ready():
@@ -59,6 +72,15 @@ func _process(dt):
 		no_recipes_label.modulate.a = min(no_recipes_label.modulate.a + NOTHING_FOUND_LABEL_SPEED*dt, 1)
 	else:
 		no_recipes_label.modulate.a = 0
+	
+	for i in ALL+1:
+		var target_pos := 0
+		if hovered_tags[i]:
+			target_pos = HOVER_OFFSET_MAX
+		if tag_offsets[i] != target_pos:
+			tag_offsets[i] = lerp(tag_offsets[i], target_pos, .2)
+			tag_buttons[i].material.set_shader_param("offset", tag_offsets[i])
+			tag_labels[i].rect_position.x = TAG_LABEL_POSITION + tag_offsets[i]
 
 
 func update_player_info():
@@ -483,9 +505,16 @@ func _on_FilterMenu_filters_updated(filters: Array):
 	filter_combinations(filters)
 
 
-func _on_button_mouse_entered():
+func _on_button_mouse_entered(which: int):
 	AudioManager.play_sfx("hover_button")
+	
+	if which != CLOSE:
+		hovered_tags[which] = true
 
 
 func _on_CloseButton_pressed():
 	emit_signal("close")
+
+
+func _on_tagbtn_mouse_exited(which: int):
+	hovered_tags[which] = false

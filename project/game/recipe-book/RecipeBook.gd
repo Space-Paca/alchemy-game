@@ -32,8 +32,6 @@ const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_shor
 const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
 const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
-const ACTIVE_TAG_LABEL_POS = 110
-const INACTIVE_TAG_LABEL_POS = 53
 const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
 const NOTHING_FOUND_LABEL_SPEED = 3
@@ -432,11 +430,11 @@ func update_tag_buttons(tag):
 		if idx == tag:
 			button.texture_normal = LONG_TAG_TEXTURE
 			button.texture_hover = LONG_TAG_HOVER_TEXTURE
-			button.get_node("Label").rect_position.x = ACTIVE_TAG_LABEL_POS
+			button.set_active(true)
 		else:
 			button.texture_normal = SHORT_TAG_TEXTURE
 			button.texture_hover = SHORT_TAG_HOVER_TEXTURE
-			button.get_node("Label").rect_position.x = INACTIVE_TAG_LABEL_POS
+			button.set_active(false)
 
 
 func reset_tag_offsets():

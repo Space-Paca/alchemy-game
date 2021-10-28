@@ -17,7 +17,7 @@ onready var slider = $HSlider
 onready var allocated_label = $CurrentAllocatedXP
 onready var preview = $PreviewProgress
 onready var progress_bar = $StatProgress
-onready var bar_charging_sfx_len = preload("res://assets/audio/sfx/bar_charging.wav").get_length()
+onready var bar_growing_sfx_len = preload("res://assets/audio/sfx/bar_growing.wav").get_length()
 
 
 var ignore_callback = false
@@ -73,7 +73,7 @@ func apply():
 	$Tween.interpolate_method(self, "set_slider_value", slider.value, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "position:x", preview.position.x, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	AudioManager.play_sfx("bar_charging", bar_charging_sfx_len/dur)
+	AudioManager.play_sfx("bar_growing", bar_growing_sfx_len/dur)
 	$Tween.start()
 	
 	yield($Tween, "tween_all_completed")
@@ -108,7 +108,7 @@ func setup(name, level, _initial_xp, _max_xp, total_available_xp):
 	var dur = 1
 	$Tween.interpolate_property(progress_bar, "value", 0, initial_xp, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	if initial_xp != 0:
-		AudioManager.play_sfx("bar_charging", bar_charging_sfx_len/dur)
+		AudioManager.play_sfx("bar_growing", bar_growing_sfx_len/dur)
 	$Tween.start()
 	reset_preview()
 
@@ -147,8 +147,9 @@ func update_preview():
 	var dur = PREVIEW_DUR
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property(preview, "position", preview.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	var mod = .5
-	AudioManager.play_sfx("bar_preview", 1.0 + mod*gain_percent)
+	var mod = .6
+	var sfx_name = "bar_preview" if w > preview.region_rect.size.x else "bar_erase"
+	AudioManager.play_sfx(sfx_name, 1.0 + mod*gain_percent)
 	$Tween.start()
 
 

@@ -24,6 +24,7 @@ var floor_to_go := -1
 var recipes_unlocked := false
 var reveal_map := false
 var lower_threshold := false
+var give_xp := false
 
 
 func _ready():
@@ -116,3 +117,7 @@ func _on_ResetCompendium_pressed():
 
 func _on_ResetProgress_pressed():
 	Profile.reset_progression()
+
+
+func _on_GiveXp_toggled(button_pressed):
+	give_xp = button_pressed

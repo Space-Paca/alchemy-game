@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/elite_battle_icon_hover.wav-becb5f8347dd494b054a04f0aa49b3cc.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/elite_battle_icon_hover.wav"
+dest_files=[ "res://.import/elite_battle_icon_hover.wav-becb5f8347dd494b054a04f0aa49b3cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -67,7 +67,7 @@ func delete_run_file():
 		var dir = Directory.new()
 		dir.remove("user://run.save")
 	else:
-		print("Run file not found. Aborting deletion.")
+		#Run file not found. Aborting deletion.
 		return
 
 
@@ -97,7 +97,7 @@ func create_run_backup():
 func load_run():
 	var run_file = File.new()
 	if not run_file.file_exists("user://run.save"):
-		print("Run file not found. Aborting load.")
+		#Run file not found. Aborting load.
 		return
 	run_file.open("user://run.save", File.READ)
 	assert(dungeon, "Dungeon reference invalid.")

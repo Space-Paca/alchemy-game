@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss_battle_icon_hover.wav-a8c1f3c67fcb575fe30280b717e83ac5.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/boss_battle_icon_hover.wav"
+dest_files=[ "res://.import/boss_battle_icon_hover.wav-a8c1f3c67fcb575fe30280b717e83ac5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

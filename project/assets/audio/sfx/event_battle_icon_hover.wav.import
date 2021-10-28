@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/event_battle_icon_hover.wav-5853f75be9a6d11972e3c029d581f9ab.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/event_battle_icon_hover.wav"
+dest_files=[ "res://.import/event_battle_icon_hover.wav-5853f75be9a6d11972e3c029d581f9ab.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

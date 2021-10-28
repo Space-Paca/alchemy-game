@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+outline_size = 7
+outline_color = Color( 0, 0, 0, 0.784314 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -30
+extra_spacing_bottom = -10
+font_data = ExtResource( 1 )
+
+[node name="AmountDigit" type="Label"]
+margin_top = 41.0
+margin_right = 30.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}

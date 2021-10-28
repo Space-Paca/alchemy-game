@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/empiric_points.wav-cfd5c87ccef4bae6be72bfaa2eb675aa.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/empiric_points.wav"
+dest_files=[ "res://.import/empiric_points.wav-cfd5c87ccef4bae6be72bfaa2eb675aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

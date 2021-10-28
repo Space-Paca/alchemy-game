@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/map_expand.wav-321b6ab224645140c6a3b01d56dbf9da.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/map_expand.wav"
+dest_files=[ "res://.import/map_expand.wav-321b6ab224645140c6a3b01d56dbf9da.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

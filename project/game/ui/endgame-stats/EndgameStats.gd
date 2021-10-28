@@ -6,7 +6,7 @@ onready var xpdivider = $Page2/XPDivider
 onready var compendium_progress = $Page2/CompendiumProgress
 onready var unknown_compendium = $Page2/Unknown
 onready var xpwarning = $Page2/XPWarning
-onready var particle_container = $Page2/XPDivider/HBoxContainer/Amount/ParticleContainer
+onready var particle_control = $Page2/XPDivider/ParticleControl
 
 const SPEED = 3
 
@@ -37,10 +37,10 @@ func _process(dt):
 			((is_menu_hovered and menu_button.disabled) or\
 			(is_restart_hovered and restart_button.disabled)):
 		xpwarning.modulate.a = lerp(xpwarning.modulate.a, 1, .1)
-		particle_container.modulate.a = lerp(xpwarning.modulate.a, 1, .1)
+		particle_control.modulate.a = lerp(xpwarning.modulate.a, 1, .1)
 	else:
 		xpwarning.modulate.a = lerp(xpwarning.modulate.a, 0, .1)
-		particle_container.modulate.a = lerp(xpwarning.modulate.a, 0, .1)
+		particle_control.modulate.a = lerp(xpwarning.modulate.a, 0, .1)
 
 func set_player(p: Player):
 	player = p
@@ -74,8 +74,10 @@ func _on_Next_pressed():
 	$Page1/PostMortem.clear_elements()
 	$Page2.show()
 	$Page2/CompendiumProgress.enable_tooltips()
-	#xpdivider.set_initial_xp_pool(10000)
-	xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)
+	if Debug.give_xp:
+		xpdivider.set_initial_xp_pool(10000)
+	else:
+		xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)
 	yield(xpdivider, "setup_animation_complete")
 	xp_divider_animation_complete = true
 	progress_buttons_set_disabled(xpdivider.can_apply_xp())

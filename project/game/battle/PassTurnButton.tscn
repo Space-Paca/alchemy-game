@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/ui/book/Label Blue.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/PassTurnButton_en.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/ui/book/Label Blue Hover.png" type="Texture" id=3]
+[ext_resource path="res://game/recipe-book/TagButton.gd" type="Script" id=4]
 
 [node name="PassTurnButton" type="TextureButton"]
 margin_right = 325.0
@@ -10,6 +11,7 @@ margin_bottom = 98.0
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 expand = true
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

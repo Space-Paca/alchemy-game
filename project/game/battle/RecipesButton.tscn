@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_hover.png" type="Texture" id=3]
+[ext_resource path="res://game/recipe-book/TagButton.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -17,6 +18,7 @@ margin_bottom = 70.0
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 expand = true
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

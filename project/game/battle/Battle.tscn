@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://game/battle/RecipesButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/battle/PassTurnButton.tscn" type="PackedScene" id=2]
@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/ui/book/Label Blue Disabled.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_disabled.png" type="Texture" id=29]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 length = 30.0
 loop = true
 tracks/0/type = "value"
@@ -58,6 +58,23 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 2.6, 2.6 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float offset : hint_range(0, 36);
+
+void vertex() {
+	VERTEX = VERTEX + vec2(offset, 0);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
 backgrounds = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 23 ) ]
@@ -83,7 +100,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FinalBossBG"]
 autoplay = "rotating"
 playback_speed = 0.2
-anims/rotating = SubResource( 1 )
+anims/rotating = SubResource( 2 )
 
 [node name="BG" type="TextureRect" parent="."]
 margin_left = -499.0
@@ -139,6 +156,7 @@ __meta__ = {
 }
 
 [node name="RecipesButton" parent="Book" instance=ExtResource( 1 )]
+material = SubResource( 3 )
 margin_left = 1573.96
 margin_top = 812.487
 margin_right = 1773.96
@@ -146,6 +164,7 @@ margin_bottom = 882.487
 texture_disabled = ExtResource( 29 )
 
 [node name="PassTurnButton" parent="Book" instance=ExtResource( 2 )]
+material = SubResource( 4 )
 margin_left = 1570.62
 margin_top = 897.25
 margin_right = 1895.62

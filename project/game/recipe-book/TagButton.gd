@@ -32,8 +32,12 @@ func offset_position(o: float):
 
 
 func reset_offset():
-	offset_position(0)
+	print("reseeeet")
 	set_process(false)
+	is_mouse_inside = false
+	offset = 0
+	call_deferred("offset_position", 0)
+#	offset_position(0)
 
 
 func _on_mouse_entered():

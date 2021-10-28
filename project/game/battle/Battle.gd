@@ -599,7 +599,9 @@ func recipe_book_toggled(visible: bool):
 	recipe_book_visible = visible
 	if visible:
 		recipes_button.hide()
+		recipes_button.reset_offset()
 		pass_turn_button.hide()
+		pass_turn_button.reset_offset()
 		player_ui.disable_tooltips()
 		TooltipLayer.clean_tooltips()
 		for reagent in reagents.get_children():

@@ -20,6 +20,10 @@ onready var filter_menu = $Background/FilterMenu
 onready var no_recipes_label = $Background/NothingFound
 onready var reagent_container = $Background/LeftSide/ScrollContainer/ReagentContainer
 onready var tween : Tween = $Tween
+onready var tag_buttons := [$Background/CloseButton,
+	$Background/TagButtons/HandBtn, $Background/TagButtons/DeckBtn,
+	$Background/TagButtons/IncompleteBtn, $Background/TagButtons/CompleteBtn,
+	$Background/TagButtons/AllBtn]
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
 const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
@@ -230,6 +234,7 @@ func toggle_visibility():
 	else:
 		AudioManager.play_sfx("close_recipe_list")
 		disable_tooltips()
+		reset_tag_offsets()
 		_on_recipe_display_unhovered()
 	
 	if state == States.BATTLE:
@@ -432,6 +437,11 @@ func update_tag_buttons(tag):
 			button.texture_normal = SHORT_TAG_TEXTURE
 			button.texture_hover = SHORT_TAG_HOVER_TEXTURE
 			button.get_node("Label").rect_position.x = INACTIVE_TAG_LABEL_POS
+
+
+func reset_tag_offsets():
+	for button in tag_buttons:
+		button.reset_offset()
 
 
 func _on_recipe_display_hovered(reagent_array: Array):

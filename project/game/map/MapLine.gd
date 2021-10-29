@@ -16,6 +16,7 @@ const IMAGES = [preload("res://assets/images/map/path-map-1.png"),
 	preload("res://assets/images/map/path-map-3.png")]
 
 var ball_amount : int
+var ball_count : int
 var balls := []
 var line_vector : Vector2
 var time := 0.0
@@ -55,6 +56,9 @@ func _draw():
 
 func begin_fill():
 	set_process(true)
+	ball_count = 0
+	$Tween.interpolate_method(self, "play_sfx", 0, ball_amount, PATH_FILL_TIME, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
 #	for i in ball_amount:
 #		var light = $Lights.get_child(i)
 #		light.mode = Light2D.MODE_ADD
@@ -64,6 +68,12 @@ func begin_fill():
 #		yield(get_tree().create_timer(dur), "timeout")
 #		light.mode = Light2D.MODE_MIX
 #		light.energy = 1
+
+
+func play_sfx(value):
+	if value >= ball_count + 1:
+		ball_count += 1
+		AudioManager.play_sfx("map_points_appear")
 
 
 func set_line(origin:Vector2, target:Vector2):

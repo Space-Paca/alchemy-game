@@ -132,6 +132,26 @@ bus = "SFX"
 stream = SubResource( 10 )
 bus = "SFX"
 
+[node name="SFXPlayer11" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 10 )
+bus = "SFX"
+
+[node name="SFXPlayer12" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 10 )
+bus = "SFX"
+
+[node name="SFXPlayer13" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 10 )
+bus = "SFX"
+
+[node name="SFXPlayer14" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 10 )
+bus = "SFX"
+
+[node name="SFXPlayer15" type="AudioStreamPlayer" parent="SFXS"]
+stream = SubResource( 10 )
+bus = "SFX"
+
 [node name="IdleSFXs" type="Node" parent="."]
 
 [node name="IdleSFXPlayer1" type="AudioStreamPlayer" parent="IdleSFXs"]

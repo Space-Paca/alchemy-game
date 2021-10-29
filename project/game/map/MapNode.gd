@@ -99,6 +99,7 @@ func fade_in():
 	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
+	AudioManager.play_sfx("map_expand")
 	is_revealed = true
 	if type == BOSS:
 		$AnimationPlayer.play("BossIntro")

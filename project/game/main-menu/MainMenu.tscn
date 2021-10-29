@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -17,8 +17,11 @@
 [ext_resource path="res://assets/images/main_menu/lines.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/main_menu/half_moon1.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/main_menu/circle 2_big.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/ui/scroll.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/ui/menu_button_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/MainMenuButtonFont.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/images/ui/menu_button_pressed.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/ui/menu_button_disabled.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/ui/menu_button_normal.png" type="Texture" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -47,64 +50,52 @@ shader_param/value = 0.0
 shader_param/noise_texture = SubResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=5]
-content_margin_top = 20.0
 texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=6]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=7]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=8]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=9]
-content_margin_top = 20.0
 texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=10]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=11]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=12]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=13]
-content_margin_top = 20.0
 texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=14]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=15]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="StyleBoxTexture" id=16]
-content_margin_top = 20.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 1399, 518 )
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 338, 122 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 80

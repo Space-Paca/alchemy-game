@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/ui/book/Label Blue Disabled.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn_disabled.png" type="Texture" id=29]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 30.0
 loop = true
 tracks/0/type = "value"
@@ -58,7 +58,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 2.6, 2.6 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform float offset : hint_range(0, 36);
@@ -68,11 +68,11 @@ void vertex() {
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 1 )
+shader = SubResource( 2 )
 shader_param/offset = 0.0
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
+shader = SubResource( 2 )
 shader_param/offset = 0.0
 
 [node name="Battle" type="Node2D"]
@@ -100,7 +100,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FinalBossBG"]
 autoplay = "rotating"
 playback_speed = 0.2
-anims/rotating = SubResource( 2 )
+anims/rotating = SubResource( 1 )
 
 [node name="BG" type="TextureRect" parent="."]
 margin_left = -499.0

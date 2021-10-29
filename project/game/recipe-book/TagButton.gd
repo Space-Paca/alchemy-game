@@ -51,7 +51,7 @@ func set_active(active: bool):
 
 
 func _on_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_tabs")
 	is_mouse_inside = true
 	set_process(true)
 

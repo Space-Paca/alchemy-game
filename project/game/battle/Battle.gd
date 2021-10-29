@@ -1313,11 +1313,11 @@ func _on_Hand_hand_slot_reagent_set():
 
 func _on_PassTurnButton_mouse_entered():
 	if not pass_turn_button.disabled:
-		AudioManager.play_sfx("hover_button")
+		AudioManager.play_sfx("hover_tabs")
 
 func _on_RecipesButton_mouse_entered():
 	if not recipes_button.disabled:
-		AudioManager.play_sfx("hover_button")
+		AudioManager.play_sfx("hover_tabs")
 
 func _on_RecipesButton_button_down():
 	AudioManager.play_sfx("click")

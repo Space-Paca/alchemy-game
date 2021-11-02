@@ -9,7 +9,7 @@ const BALL_COLOR = Color.black
 const BALL_DIST = 30
 const BALL_SIZE = Vector2(10, 10)
 const MAP_NODE_SIZE = 64
-const PATH_FILL_TIME = 1
+const PATH_FILL_TIME = 1.8
 const WAIT_TIMER = .1
 const IMAGES = [preload("res://assets/images/map/path-map-1.png"),
 	preload("res://assets/images/map/path-map-2.png"),
@@ -42,7 +42,7 @@ func _draw():
 		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
 		radius_multiplier = clamp(radius_multiplier, 0, 1)
 		var light = $Lights.get_child(i)
-		var energy = max(radius_multiplier, 0.01)
+		var energy = max(radius_multiplier*.8, 0.01)
 		if energy < .9:
 			light.mode = Light2D.MODE_ADD
 			energy = clamp(energy, 0, .28)
@@ -73,7 +73,8 @@ func begin_fill():
 func play_sfx(value):
 	if value >= ball_count + 1:
 		ball_count += 1
-		AudioManager.play_sfx("map_points_appear")
+		if randf() > .2:
+			AudioManager.play_sfx("map_points_appear")
 
 
 func set_line(origin:Vector2, target:Vector2):

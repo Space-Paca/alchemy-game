@@ -30,7 +30,7 @@ onready var BGMS = {}
 onready var AUX_BGMS = ["","",""]
 const AMBIENCE_VARIATIONS = 3
 #SFX
-const MAX_SFXS = 15
+const MAX_SFXS = 30
 const SFX_PATH = "res://database/audio/sfxs/"
 onready var SFXS = {}
 onready var CUR_IDLE_SFX = {}

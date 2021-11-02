@@ -10,6 +10,7 @@ enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 const ALPHA_SPEED = 6
 const SCALE_SPEED = 3
 const TARGET_SCALE = 1.2
+const LIGHT_UP_DUR = 2.972
 const LIGHT_TEX = preload("res://assets/images/map/light_tex_2.png")
 const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/enemy.png"),
@@ -93,11 +94,14 @@ func light_up():
 
 
 func fade_in():
-	var dur = .5
+	var offset = .8
+	var dur = LIGHT_UP_DUR + rand_range(-offset, offset)
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
-								dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+								dur/3.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property($Light2D, "scale", Vector2(0,0), Vector2(1,1),
+							dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 	AudioManager.play_sfx("map_expand")
 	is_revealed = true

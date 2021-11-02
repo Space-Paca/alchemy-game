@@ -191,7 +191,11 @@ __meta__ = {
 
 [node name="WarningTween" type="Tween" parent="Warning"]
 
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="mouse_entered" from="ContinueButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/HealButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonContainer/HealButton" to="." method="_on_HealButton_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/HintButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonContainer/HintButton" to="." method="_on_HintButton_pressed"]

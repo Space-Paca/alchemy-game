@@ -41,4 +41,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="mouse_entered" from="ChooseButton" to="." method="_on_ChooseButton_mouse_entered"]
 [connection signal="pressed" from="ChooseButton" to="." method="_on_ChooseButton_pressed"]

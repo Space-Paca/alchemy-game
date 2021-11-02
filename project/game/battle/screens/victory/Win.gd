@@ -228,3 +228,7 @@ func _on_BackButton_pressed():
 func _on_RecipesButton_pressed():
 	change_state(States.RECIPE)
 	emit_signal("combinations_seen", rewarded_combinations)
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

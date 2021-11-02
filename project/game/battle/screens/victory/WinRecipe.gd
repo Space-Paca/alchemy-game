@@ -51,3 +51,7 @@ func _on_ChooseButton_pressed():
 	
 	choose_button.hide()
 	emit_signal("chosen", self)
+
+
+func _on_ChooseButton_mouse_entered():
+	AudioManager.play_sfx("hover_button")

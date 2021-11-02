@@ -474,7 +474,7 @@ func play_sfx(name: String, override_pitch = false):
 	else:
 		player.pitch_scale = sfx.base_pitch
 	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
-
+	
 	player.play()
 
 

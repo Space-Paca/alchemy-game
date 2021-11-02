@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://game/audio/AudioManager.gd" type="Script" id=1]
 
@@ -42,6 +42,21 @@ random_pitch = 1.0
 random_pitch = 1.0
 
 [sub_resource type="AudioStreamRandomPitch" id=14]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=15]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=16]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=17]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=18]
+random_pitch = 1.0
+
+[sub_resource type="AudioStreamRandomPitch" id=19]
 random_pitch = 1.0
 
 [node name="AudioManager" type="Node"]
@@ -133,39 +148,39 @@ stream = SubResource( 10 )
 bus = "SFX"
 
 [node name="SFXPlayer11" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 10 )
+stream = SubResource( 11 )
 bus = "SFX"
 
 [node name="SFXPlayer12" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 10 )
+stream = SubResource( 12 )
 bus = "SFX"
 
 [node name="SFXPlayer13" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 10 )
+stream = SubResource( 13 )
 bus = "SFX"
 
 [node name="SFXPlayer14" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 10 )
+stream = SubResource( 14 )
 bus = "SFX"
 
 [node name="SFXPlayer15" type="AudioStreamPlayer" parent="SFXS"]
-stream = SubResource( 10 )
+stream = SubResource( 15 )
 bus = "SFX"
 
 [node name="IdleSFXs" type="Node" parent="."]
 
 [node name="IdleSFXPlayer1" type="AudioStreamPlayer" parent="IdleSFXs"]
-stream = SubResource( 11 )
+stream = SubResource( 16 )
 bus = "SFX"
 
 [node name="IdleSFXPlayer2" type="AudioStreamPlayer" parent="IdleSFXs"]
-stream = SubResource( 12 )
+stream = SubResource( 17 )
 bus = "SFX"
 
 [node name="IdleSFXPlayer3" type="AudioStreamPlayer" parent="IdleSFXs"]
-stream = SubResource( 13 )
+stream = SubResource( 18 )
 bus = "SFX"
 
 [node name="IdleSFXPlayer4" type="AudioStreamPlayer" parent="IdleSFXs"]
-stream = SubResource( 14 )
+stream = SubResource( 19 )
 bus = "SFX"

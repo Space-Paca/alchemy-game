@@ -210,7 +210,7 @@ __meta__ = {
 }
 
 [node name="Resume" type="Button" parent="Background/Menu"]
-margin_right = 644.0
+margin_right = 607.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
@@ -219,7 +219,7 @@ text = "RESUME"
 
 [node name="Settings" type="Button" parent="Background/Menu"]
 margin_top = 130.0
-margin_right = 644.0
+margin_right = 607.0
 margin_bottom = 230.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
@@ -228,7 +228,7 @@ text = "SETTINGS"
 
 [node name="Return" type="Button" parent="Background/Menu"]
 margin_top = 260.0
-margin_right = 644.0
+margin_right = 607.0
 margin_bottom = 360.0
 rect_min_size = Vector2( 450, 100 )
 size_flags_horizontal = 5
@@ -237,7 +237,7 @@ text = "SAVE_RETURN_MENU"
 
 [node name="Exit" type="Button" parent="Background/Menu"]
 margin_top = 390.0
-margin_right = 644.0
+margin_right = 607.0
 margin_bottom = 510.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5

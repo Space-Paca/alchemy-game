@@ -423,9 +423,14 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
+[connection signal="mouse_entered" from="ShopMenu/RecipesButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
+[connection signal="mouse_entered" from="ShopMenu/ReagentsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
 [connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
+[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

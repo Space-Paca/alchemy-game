@@ -70,3 +70,7 @@ func _on_Hint_pressed():
 		emit_signal("hint_bought", combination)
 	else:
 		AudioManager.play_sfx("error")
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

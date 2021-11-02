@@ -63,5 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="mouse_entered" from="VBoxContainer/Buy" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Hint" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Hint" to="." method="_on_Hint_pressed"]

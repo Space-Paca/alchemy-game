@@ -100,6 +100,7 @@ func update_reagents():
 
 
 func _on_BackButton_pressed():
+	AudioManager.play_sfx("click")
 	match curr_state:
 		States.MENU:
 			emit_signal("closed")
@@ -118,6 +119,7 @@ func _on_BackButton_pressed():
 
 
 func _on_RecipesButton_pressed():
+	AudioManager.play_sfx("click")
 	curr_state = States.RECIPES
 	shop_menu.hide()
 	recipe_menu.show()
@@ -127,6 +129,7 @@ func _on_RecipesButton_pressed():
 
 
 func _on_ReagentsButton_pressed():
+	AudioManager.play_sfx("click")
 	curr_state = States.REAGENTS
 	shop_menu.hide()
 	reagents_menu.show()
@@ -154,6 +157,7 @@ func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 
 func _on_YesButton_pressed():
 	if player.spend_gold(DESTROY_COST):
+		AudioManager.play_sfx("click")
 		player.destroy_reagent(chosen_reagent_index)
 		update_reagents()
 		reagent_destroy_label.hide()
@@ -162,5 +166,11 @@ func _on_YesButton_pressed():
 
 
 func _on_NoButton_pressed():
+	AudioManager.play_sfx("click")
 	reagent_destroy_label.hide()
 	reagent_list.deactivate_reagents()
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+

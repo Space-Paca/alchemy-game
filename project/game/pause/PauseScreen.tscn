@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/images/ui/Negative Effects.png" type="Texture" id=5]
 [ext_resource path="res://game/pause/HorizontalSlider.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/images/ui/book/filter_menu.png" type="Texture" id=17]
 [ext_resource path="res://assets/themes/general_theme/check off.png" type="Texture" id=18]
@@ -144,31 +145,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxEmpty" id=23]
-
-[sub_resource type="StyleBoxEmpty" id=24]
-
-[sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 0.141176, 0.498039, 0.47451, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.423529, 0.709804, 0.698039, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=26]
-size = 40
-outline_size = 3
-outline_color = Color( 0.0941176, 0.341176, 0.321569, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=27]
+[sub_resource type="DynamicFont" id=23]
 size = 40
 outline_size = 3
 outline_color = Color( 0.0784314, 0.364706, 0.427451, 0.690196 )
@@ -786,125 +763,142 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -305.0
-margin_top = -150.5
-margin_right = 215.0
-margin_bottom = 149.5
-custom_constants/separation = 20
+margin_left = -400.0
+margin_top = -201.0
+margin_right = 400.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 800, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Separator1" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 5 )
+expand = true
+
 [node name="OpenCloseBook" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
-margin_right = 520.0
-margin_bottom = 60.0
+margin_top = 14.0
+margin_right = 800.0
+margin_bottom = 94.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook"]
-margin_top = 4.0
-margin_right = 290.0
-margin_bottom = 55.0
+margin_top = 14.0
+margin_right = 445.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 290, 0 )
 text = "OPT_OPEN/CLOSE_BOOK"
-align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook"]
-margin_left = 320.0
-margin_right = 520.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 22 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/disabled = SubResource( 24 )
-custom_styles/normal = SubResource( 25 )
-custom_fonts/font = SubResource( 26 )
+margin_left = 544.0
+margin_right = 800.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 256, 80 )
+size_flags_horizontal = 10
 toggle_mode = true
 text = "Tab"
 
+[node name="Separator2" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
+margin_top = 98.0
+margin_right = 800.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 5 )
+expand = true
+
 [node name="Combine" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
-margin_top = 80.0
-margin_right = 520.0
-margin_bottom = 140.0
+margin_top = 112.0
+margin_right = 800.0
+margin_bottom = 192.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine"]
-margin_top = 4.0
+margin_top = 14.0
 margin_right = 290.0
-margin_bottom = 55.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 290, 0 )
 text = "OPT_COMBINE"
-align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine"]
-margin_left = 320.0
-margin_right = 520.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 22 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/disabled = SubResource( 24 )
-custom_styles/normal = SubResource( 25 )
-custom_fonts/font = SubResource( 26 )
+margin_left = 544.0
+margin_right = 800.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 256, 80 )
+size_flags_horizontal = 10
 toggle_mode = true
 text = "Space"
 
+[node name="Separator3" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
+margin_top = 196.0
+margin_right = 800.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 5 )
+expand = true
+
 [node name="EndTurn" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
-margin_top = 160.0
-margin_right = 520.0
-margin_bottom = 220.0
+margin_top = 210.0
+margin_right = 800.0
+margin_bottom = 290.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn"]
-margin_top = 4.0
-margin_right = 290.0
-margin_bottom = 55.0
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 290, 0 )
 text = "OPT_END_TURN"
-align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn"]
-margin_left = 320.0
-margin_right = 520.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 200, 60 )
+margin_left = 544.0
+margin_right = 800.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 256, 80 )
+size_flags_horizontal = 10
 custom_styles/hover = SubResource( 22 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/disabled = SubResource( 24 )
-custom_styles/normal = SubResource( 25 )
-custom_fonts/font = SubResource( 26 )
 toggle_mode = true
 text = "E"
 
+[node name="Separator4" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
+margin_top = 294.0
+margin_right = 800.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 5 )
+expand = true
+
 [node name="ToggleFullscreen" type="HBoxContainer" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
-margin_top = 240.0
-margin_right = 520.0
-margin_bottom = 300.0
+margin_top = 308.0
+margin_right = 800.0
+margin_bottom = 388.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen"]
-margin_top = 4.0
-margin_right = 290.0
-margin_bottom = 55.0
+margin_top = 14.0
+margin_right = 482.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 290, 0 )
 text = "OPT_TOGGLE_FULLSCREEN"
-align = 2
 
 [node name="Button" type="Button" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen"]
-margin_left = 320.0
-margin_right = 520.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 22 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/disabled = SubResource( 24 )
-custom_styles/normal = SubResource( 25 )
-custom_fonts/font = SubResource( 26 )
+margin_left = 544.0
+margin_right = 800.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 256, 80 )
+size_flags_horizontal = 10
 toggle_mode = true
 text = "F4"
+
+[node name="Separator5" type="TextureRect" parent="Background/SettingsMenu/TabContainer/Controls/VBoxContainer"]
+margin_top = 392.0
+margin_right = 800.0
+margin_bottom = 402.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 5 )
+expand = true
 
 [node name="Gameplay" type="Tabs" parent="Background/SettingsMenu/TabContainer"]
 visible = false
@@ -1008,7 +1002,7 @@ margin_bottom = 260.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 27 )
+custom_fonts/font = SubResource( 23 )
 text = "OPT_RESET_TUTORIAL_HINTS"
 __meta__ = {
 "_edit_use_anchors_": false

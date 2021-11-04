@@ -10,7 +10,7 @@ stereo = true
 [resource]
 script = ExtResource( 1 )
 asset = SubResource( 1 )
-base_db = -6.0
+base_db = 0.0
 random_db_var = 1.0
 base_pitch = 2.0
 random_pitch_var = 0.15

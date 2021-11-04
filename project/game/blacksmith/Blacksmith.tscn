@@ -338,6 +338,7 @@ margin_left = 5.03967
 margin_top = 45.3572
 margin_right = 676.04
 margin_bottom = 96.3572
+mouse_filter = 2
 custom_constants/separation = 17
 alignment = 1
 __meta__ = {
@@ -345,6 +346,7 @@ __meta__ = {
 }
 
 [node name="Confirm" type="Label" parent="UpgradingReagent/ConfirmUpgrade/HBoxContainer"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 82.0
 margin_right = 439.0
 margin_bottom = 51.0
@@ -354,6 +356,7 @@ text = "CONFIRM_UPGRADE"
 margin_left = 456.0
 margin_right = 588.0
 margin_bottom = 51.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "(           )"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -377,6 +380,7 @@ margin_top = 0.701416
 margin_right = 319.367
 margin_bottom = 256.701
 rect_scale = Vector2( 0.2, 0.2 )
+mouse_filter = 2
 texture = ExtResource( 6 )
 
 [node name="Reagent" type="Node2D" parent="UpgradingReagent"]
@@ -482,6 +486,7 @@ margin_left = -0.363159
 margin_top = 47.3636
 margin_right = 899.637
 margin_bottom = 98.3636
+mouse_filter = 2
 custom_constants/separation = 19
 alignment = 1
 __meta__ = {
@@ -492,12 +497,14 @@ __meta__ = {
 margin_left = 105.0
 margin_right = 634.0
 margin_bottom = 51.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CONFIRM_TRANSFIGURATION"
 
 [node name="Parentheses" type="Label" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer"]
 margin_left = 653.0
 margin_right = 795.0
 margin_bottom = 51.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "(            )"
 
 [node name="Label" type="Label" parent="TransmutingReagent/ConfirmUpgrade/HBoxContainer/Parentheses"]
@@ -518,6 +525,7 @@ margin_top = 2.36816
 margin_right = 380.307
 margin_bottom = 310.368
 rect_scale = Vector2( 0.2, 0.2 )
+mouse_filter = 2
 texture = ExtResource( 6 )
 
 [node name="Reagent" type="Node2D" parent="TransmutingReagent"]
@@ -597,14 +605,19 @@ anims/init = SubResource( 9 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="mouse_entered" from="MainButtons/Upgrade" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainButtons/Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="mouse_entered" from="MainButtons/Transmute" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainButtons/Transmute" to="." method="_on_Transmute_pressed"]
+[connection signal="mouse_entered" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="UpgradingReagent/ConfirmUpgrade" to="." method="_on_ConfirmUpgrade_pressed"]
 [connection signal="disable_tooltip" from="UpgradingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "upgrading_reagent" ]]
 [connection signal="enable_tooltip" from="UpgradingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "upgrading_reagent" ]]
 [connection signal="disable_tooltip" from="UpgradingReagent/ReagentUpgraded/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "upgraded_reagent" ]]
 [connection signal="enable_tooltip" from="UpgradingReagent/ReagentUpgraded/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "upgraded_reagent" ]]
+[connection signal="mouse_entered" from="TransmutingReagent/ConfirmUpgrade" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="TransmutingReagent/ConfirmUpgrade" to="." method="_on_TransmuteConfirmUpgrade_pressed"]
 [connection signal="disable_tooltip" from="TransmutingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip" binds= [ "transmuting_reagent" ]]
 [connection signal="enable_tooltip" from="TransmutingReagent/Reagent/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip" binds= [ "transmuting_reagent" ]]

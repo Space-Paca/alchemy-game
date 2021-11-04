@@ -143,12 +143,14 @@ func remove_transmuting_possibilities():
 
 
 func _on_BackButton_pressed():
+	AudioManager.play_sfx("click")
 	back()
 
 
 func _on_Upgrade_pressed():
 	if not update_reagent_list("upgrade"):
 		return
+	AudioManager.play_sfx("click")
 	state = "upgrading_reagent"
 	main_buttons.hide()
 	dialog.hide()
@@ -213,6 +215,7 @@ func _on_ConfirmUpgrade_pressed():
 func _on_Transmute_pressed():
 	if not update_reagent_list("transmute"):
 		return
+	AudioManager.play_sfx("click")
 	state = "transmuting_reagent"
 	main_buttons.hide()
 	dialog.hide()
@@ -291,3 +294,7 @@ func _on_TooltipCollision_enable_tooltip(type : String):
 	if tooltip:
 		TooltipLayer.add_tooltip(tooltip_position.global_position, tooltip.title, \
 							 tooltip.text, tooltip.title_image, null, false, true, false)
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

@@ -72,6 +72,7 @@ TIMEOUT = 0.5
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )
+
 [connection signal="mouse_entered" from="." to="." method="_on_ClickableReagent_mouse_entered"]
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

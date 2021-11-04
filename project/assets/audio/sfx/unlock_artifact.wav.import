@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/unlock_artifact.wav-0f1d0f8290383b53241bfd1f38715d34.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/unlock_artifact.wav"
+dest_files=[ "res://.import/unlock_artifact.wav-0f1d0f8290383b53241bfd1f38715d34.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

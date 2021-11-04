@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/map_points_appear_floor1.wav-cc7e5c15e5d6c5cf4b7233cfedf3b47a.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/map_points_appear_floor1.wav"
+dest_files=[ "res://.import/map_points_appear_floor1.wav-cc7e5c15e5d6c5cf4b7233cfedf3b47a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

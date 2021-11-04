@@ -34,7 +34,7 @@ func _on_Filter_toggled(button_pressed: bool, index: int):
 		filter_values.append(index)
 	else:
 		filter_values.erase(index)
-	AudioManager.play_sfx("click_filter_button")
+	AudioManager.play_sfx("tick_recipe_filter")
 	emit_signal("filters_updated", filter_values)
 
 

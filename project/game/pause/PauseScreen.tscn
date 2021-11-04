@@ -121,7 +121,7 @@ expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.796078, 0.658824, 0.596078, 0.0705882 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -132,7 +132,7 @@ expand_margin_right = 45.0
 expand_margin_top = 20.0
 expand_margin_bottom = 55.0
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.188235, 0.670588, 0.639216, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -144,11 +144,11 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxEmpty" id=22]
-
 [sub_resource type="StyleBoxEmpty" id=23]
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0.141176, 0.498039, 0.47451, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -160,7 +160,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=26]
 size = 40
 outline_size = 3
 outline_color = Color( 0.0941176, 0.341176, 0.321569, 1 )
@@ -168,7 +168,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=27]
 size = 40
 outline_size = 3
 outline_color = Color( 0.0784314, 0.364706, 0.427451, 0.690196 )
@@ -686,7 +686,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 27 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -723,7 +723,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 27 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -760,7 +760,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 27 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -813,12 +813,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
-custom_fonts/font = SubResource( 25 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 toggle_mode = true
 text = "Tab"
 
@@ -841,12 +841,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
-custom_fonts/font = SubResource( 25 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 toggle_mode = true
 text = "Space"
 
@@ -869,12 +869,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
-custom_fonts/font = SubResource( 25 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 toggle_mode = true
 text = "E"
 
@@ -897,12 +897,12 @@ margin_left = 320.0
 margin_right = 520.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
-custom_fonts/font = SubResource( 25 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 toggle_mode = true
 text = "F4"
 
@@ -1008,7 +1008,7 @@ margin_bottom = 260.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 27 )
 text = "OPT_RESET_TUTORIAL_HINTS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1183,6 +1183,7 @@ text = "BACK"
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]
+[connection signal="tab_changed" from="Background/SettingsMenu/TabContainer" to="." method="_on_tab_changed"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
 [connection signal="toggled" from="Background/SettingsMenu/TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox" to="." method="_on_MapFogCheckBox_toggled"]

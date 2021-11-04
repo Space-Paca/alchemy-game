@@ -310,10 +310,12 @@ func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
 	button.text = "..."
 
 func _on_AutoPassCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
 	Profile.set_option("auto_end_turn", button_pressed)
 
 
 func _on_ShowTimerCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
 	Profile.set_option("show_timer", button_pressed)
 
 
@@ -328,6 +330,7 @@ func _on_LanguageButton_toggled(button_pressed):
 func _on_Language_Button_pressed(button_id: int):
 	AudioManager.play_sfx("click")
 	language_dropdown.visible = false
+	language_button.pressed = false
 	if button_id == Profile.get_option("locale"):
 		return
 	
@@ -340,3 +343,7 @@ func _on_Language_Button_pressed(button_id: int):
 func _on_MapFogCheckBox_toggled(button_pressed):
 	AudioManager.play_sfx("click")
 	Profile.set_option("disable_map_fog", button_pressed)
+
+
+func _on_tab_changed(_tab):
+	AudioManager.play_sfx("changed_pause_tab")

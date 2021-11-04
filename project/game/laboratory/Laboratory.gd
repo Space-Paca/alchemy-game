@@ -200,3 +200,11 @@ func _on_Grid_modified():
 
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_toggle")
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_RecipesButton_mouse_entered():
+	AudioManager.play_sfx("hover_tabs")

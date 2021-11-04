@@ -216,6 +216,7 @@ position = Vector2( 438.407, 526.088 )
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Book/ReagentDropZone"]
+visible = false
 position = Vector2( 130.108, 8.48529 )
 shape = SubResource( 2 )
 
@@ -282,8 +283,11 @@ hide_description = true
 
 [node name="Reagents" type="Node" parent="."]
 
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="mouse_entered" from="Combine" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]
+[connection signal="mouse_entered" from="Book/RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
 [connection signal="pressed" from="Book/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]
 [connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]

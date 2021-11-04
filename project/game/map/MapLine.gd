@@ -20,6 +20,7 @@ var ball_count : int
 var balls := []
 var line_vector : Vector2
 var time := 0.0
+var floor_level :int
 
 
 func _ready():
@@ -73,12 +74,13 @@ func begin_fill():
 func play_sfx(value):
 	if value >= ball_count + 1:
 		ball_count += 1
-		if randf() > .2:
-			AudioManager.play_sfx("map_points_appear")
+		if randf() > .5:
+			AudioManager.play_sfx("map_points_appear"+str(floor_level))
 
 
-func set_line(origin:Vector2, target:Vector2):
+func set_line(origin:Vector2, target:Vector2, current_level:int):
 	var dist := origin.distance_to(target) - MAP_NODE_SIZE
+	floor_level = current_level
 	line_vector = target - origin
 	ball_amount = int(dist / BALL_DIST) + 1
 	dist -= (ball_amount - 1) * BALL_DIST

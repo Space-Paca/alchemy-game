@@ -277,13 +277,13 @@ func load_map(data):
 			# Add map line
 			var map_line := MAP_LINE.instance()
 			lines.add_child(map_line)
-			map_line.set_line(node.rect_global_position, child_node.rect_global_position)
+			map_line.set_line(node.rect_global_position, child_node.rect_global_position, current_level)
 			node.map_lines.append(map_line)
 
 	reveal_paths(initial_node, nodes_to_reveal)
 
 
-func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
+func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1,
 		rests:int=2, shops:int=1, events:int=1, labs:int=1, treasures:int=1):
 	
 	#Reset Stored Positions
@@ -398,7 +398,7 @@ func create_map(normal_encounters:int, elite_encounters:int, smiths:int=1,
 			# Add map line
 			var map_line := MAP_LINE.instance()
 			lines.add_child(map_line)
-			map_line.set_line(starting_pos.global_position, new_pos.global_position)
+			map_line.set_line(starting_pos.global_position, new_pos.global_position, level)
 			starting_pos.node.map_lines.append(map_line)
 			
 			total_nodes -= 1

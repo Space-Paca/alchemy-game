@@ -312,11 +312,11 @@ func create_level(level: int, debug := false):
 			# ( *∀*)y─┛
 			#  ______________
 			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
-			map.create_map(7, 2, 0, 2, 1, 1, lab_amount, 1)
+			map.create_map(level, 7, 2, 0, 2, 1, 1, lab_amount, 1)
 		2:
-			map.create_map(7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
+			map.create_map(level, 7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		3:
-			map.create_map(8, 2, smith_amount, 2, 1, 1, lab_amount, 1)
+			map.create_map(level, 8, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		var invalid:
 			assert(false, str("Invalid level: ", invalid))
 	map.set_level(level)

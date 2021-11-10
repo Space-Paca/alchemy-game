@@ -16,7 +16,10 @@ func get_reagent():
 
 func set_reagent(reagent):
 	if reagent.slot:
-		reagent.slot.remove_reagent()
+		if reagent.slot == self:
+			return
+		var emit = false if reagent.slot.type == "grid" and self.type == "grid" else true
+		reagent.slot.remove_reagent(emit)
 	current_reagent = reagent
 	reagent.slot = self
 	reagent.target_position = area.global_position
@@ -24,9 +27,10 @@ func set_reagent(reagent):
 	emit_signal("reagent_set")
 
 
-func remove_reagent():
+func remove_reagent(emit := true):
 	current_reagent = null
-	emit_signal("reagent_removed")
+	if emit:
+		emit_signal("reagent_removed")
 
 
 func get_pos():

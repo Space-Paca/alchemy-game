@@ -170,7 +170,7 @@ func start_shaking_and_destroy():
 	AudioManager.play_sfx("destroy_reagent")
 
 
-func combine_animation(grid_center: Vector2, duration: float):
+func combine_animation(grid_center: Vector2, duration: float, second_animation: bool):
 	unhighlight()
 	var center = grid_center + -rect_size/2
 	#target_position = center
@@ -184,15 +184,14 @@ func combine_animation(grid_center: Vector2, duration: float):
 			duration)
 	yield($CombineTween, "tween_all_completed")
 	ShakeCam.set_continuous_shake(0, ShakeCam.COMBINATION_ANIM)
-	orbit = center
 	shake = 0.0
-	stop_auto_moving = true
+	if second_animation:
+		orbit = center
+		stop_auto_moving = true
+	else:
+		stop_auto_moving = false
+		
 	emit_signal("finished_combine_animation")
-
-
-func stop_combine_animation():
-	orbit = false
-	stop_auto_moving = false
 
 
 func reset_to_gridslot(gridslot):

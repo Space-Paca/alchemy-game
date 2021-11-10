@@ -74,7 +74,7 @@ func begin_fill():
 func play_sfx(value):
 	if value >= ball_count + 1:
 		ball_count += 1
-		if randf() > .5:
+		if floor_level >= 1 and floor_level <= 3 and randf() > .35:
 			AudioManager.play_sfx("map_points_appear"+str(floor_level))
 
 

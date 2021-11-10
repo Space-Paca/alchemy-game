@@ -135,6 +135,7 @@ __meta__ = {
 margin_left = -870.0
 margin_right = 842.0
 margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,6 +145,7 @@ __meta__ = {
 margin_left = -870.0
 margin_right = 852.0
 margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -209,9 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReagentDropZone" type="Area2D" parent="Book" groups=[
-"reagent_drop_zone",
-]]
+[node name="ReagentDropZone" type="Area2D" parent="Book" groups=["reagent_drop_zone"]]
 position = Vector2( 438.407, 526.088 )
 monitorable = false
 
@@ -250,8 +250,8 @@ margin_top = 135.0
 margin_right = 310.0
 margin_bottom = 285.0
 rect_min_size = Vector2( 150, 150 )
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "10"
 align = 1
 valign = 1

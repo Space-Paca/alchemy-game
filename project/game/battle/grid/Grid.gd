@@ -325,5 +325,4 @@ func unrestrain_all_slots():
 			slot.unrestrain()
 
 func _on_slot_changed():
-	print("Slot changed")
 	emit_signal("modified")

@@ -168,7 +168,6 @@ __meta__ = {
 }
 
 [node name="Menu" type="VBoxContainer" parent="Background"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -261,6 +260,7 @@ rect_min_size = Vector2( 200, 120 )
 text = "NO"
 
 [node name="SettingsMenu" type="VBoxContainer" parent="Background"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

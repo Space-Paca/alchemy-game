@@ -31,8 +31,8 @@ func _process(delta):
 		modulate.b = min(modulate.b + HIGHLIGHT_SPEED*delta, 1)
 
 
-func remove_reagent():
-	.remove_reagent()
+func remove_reagent(emit := true):
+	.remove_reagent(emit)
 	unhighlight()
 
 

@@ -232,6 +232,7 @@ func get_save_data():
 		data.nodes.append(node_data)
 	
 	data.total_number_nodes = total_number_nodes
+	data.level = current_level
 	return data
 
 
@@ -262,7 +263,6 @@ func load_map(data):
 		# warning-ignore:return_value_discarded
 		new_node.connect("pressed", self, "_on_map_node_clicked", [new_node])
 		
-		
 		#Setup initial node
 		if new_node.name == data.initial_node_name:
 			initial_node = new_node
@@ -277,7 +277,7 @@ func load_map(data):
 			# Add map line
 			var map_line := MAP_LINE.instance()
 			lines.add_child(map_line)
-			map_line.set_line(node.rect_global_position, child_node.rect_global_position, current_level)
+			map_line.set_line(node.rect_global_position, child_node.rect_global_position, data.level)
 			node.map_lines.append(map_line)
 
 	reveal_paths(initial_node, nodes_to_reveal)

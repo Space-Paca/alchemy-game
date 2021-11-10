@@ -907,7 +907,6 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 	
 
 func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):
-	print(reagent_matrix)
 	var combination = get_combination_in_grid(reagent_matrix, grid_size)
 	if combination and not combination.discovered:
 		combination = null

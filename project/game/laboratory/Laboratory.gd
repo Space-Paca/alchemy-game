@@ -173,11 +173,9 @@ func _on_Combine_pressed():
 	var dur = reagent_list.size()*.3
 	AudioManager.play_sfx("combine", sfx_dur/dur)
 	for reagent in reagent_list:
-		reagent.combine_animation(grid.get_center(), dur)
+		reagent.combine_animation(grid.get_center(), dur, false)
 
 	yield(reagent_list.back(), "finished_combine_animation")
-	for reagent in reagent_list:
-		reagent.stop_combine_animation()
 	
 	emit_signal("combination_made", reagent_matrix, grid.grid_size)
 	

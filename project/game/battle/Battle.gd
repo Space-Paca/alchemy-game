@@ -979,7 +979,7 @@ func combine():
 	var dur = reagent_list.size()*.3
 	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
 	for reagent in reagent_list:
-		reagent.combine_animation(grid.get_center(), dur)
+		reagent.combine_animation(grid.get_center(), dur, true)
 
 	yield(reagent_list.back(), "finished_combine_animation")
 

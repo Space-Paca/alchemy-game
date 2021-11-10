@@ -12,7 +12,8 @@ const SCALE_SPEED = 3
 const TARGET_SCALE = 1.2
 const LIGHT_UP_DUR = 2.972
 const LIGHT_TEX = preload("res://assets/images/map/light_tex_2.png")
-const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
+const IMAGES = [
+		preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/enemy.png"),
 		preload("res://assets/images/map/elite.png"),
 		preload("res://assets/images/map/boss-open2.png"),
@@ -22,6 +23,20 @@ const IMAGES = [preload("res://assets/images/map/elementCircle.png"),
 		preload("res://assets/images/map/event.png"),
 		preload("res://assets/images/map/laboratory.png"),
 		preload("res://assets/images/map/treasure.png")]
+const SFXS = [
+		false,
+		preload("res://assets/audio/sfx/normal_battle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/elite_battle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/boss_battle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/event_battle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/treasure_icon_hover.wav")
+]
+const MUTE_DB = -60
+const SFX_SPEED = 40
 const LEGEND = ["", "ENEMY", "ELITE", "BOSS",
 		"SHOP", "RESTING_CIRCLE", "REAGENT_SMITH", "EVENT", "LABORATORY", "TREASURE"]
 
@@ -44,6 +59,7 @@ var camera = null
 
 
 func _ready():
+	$HoverSFX.volume_db = MUTE_DB
 	randomize()
 	$Light2D.rotation = rand_range(0, 360)
 	$Light2D.texture_scale = rand_range(1.8, 2.7)
@@ -57,10 +73,17 @@ func _process(dt):
 	if mouse_over and type != EMPTY:
 		$Button.rect_scale.x = min($Button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
 		$Button.rect_scale.y = min($Button.rect_scale.y + SCALE_SPEED*dt, TARGET_SCALE)
+		$HoverSFX.volume_db = min($HoverSFX.volume_db + SFX_SPEED*dt, 0.0)
 	else:
 		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
-
+		$HoverSFX.volume_db = max($HoverSFX.volume_db - 1.7*SFX_SPEED*dt, MUTE_DB)
+	
+	if $HoverSFX.stream:
+		if $HoverSFX.volume_db > MUTE_DB and not $HoverSFX.playing:
+			$HoverSFX.play(rand_range(0.0, $HoverSFX.stream.get_length()))
+		elif $HoverSFX.volume_db <= MUTE_DB:
+			$HoverSFX.stop()
 
 func enable_lights():
 	$Light2D.enabled = true
@@ -123,6 +146,8 @@ func set_type(new_type:int):
 		button.texture_normal = BOSS_IMAGES[0]
 	else:
 		button.texture_normal = IMAGES[type]
+	if SFXS[type]:
+		$HoverSFX.stream = SFXS[type]
 	
 	if type == ENEMY:
 		encounter = EncounterManager.get_random_encounter()

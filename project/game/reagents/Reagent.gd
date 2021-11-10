@@ -184,11 +184,16 @@ func combine_animation(grid_center: Vector2, duration: float):
 			duration)
 	yield($CombineTween, "tween_all_completed")
 	ShakeCam.set_continuous_shake(0, ShakeCam.COMBINATION_ANIM)
-	stop_auto_moving = false
 	orbit = center
 	shake = 0.0
 	stop_auto_moving = true
 	emit_signal("finished_combine_animation")
+
+
+func stop_combine_animation():
+	orbit = false
+	stop_auto_moving = false
+
 
 func reset_to_gridslot(gridslot):
 	gridslot.set_reagent(self)

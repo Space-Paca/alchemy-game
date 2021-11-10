@@ -67,6 +67,9 @@ range_item_cull_mask = 16
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BossIntro = SubResource( 2 )
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

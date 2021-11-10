@@ -176,8 +176,11 @@ func _on_Combine_pressed():
 		reagent.combine_animation(grid.get_center(), dur)
 
 	yield(reagent_list.back(), "finished_combine_animation")
-
+	for reagent in reagent_list:
+		reagent.stop_combine_animation()
+	
 	emit_signal("combination_made", reagent_matrix, grid.grid_size)
+	
 
 func _on_Grid_modified():
 	if grid.is_empty():
@@ -194,7 +197,6 @@ func _on_Grid_modified():
 			else:
 				line.append(null)
 		reagent_matrix.append(line)
-	
 	emit_signal("grid_modified", reagent_matrix, grid.grid_size)
 
 

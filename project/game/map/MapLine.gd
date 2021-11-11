@@ -6,7 +6,7 @@ signal filled
 
 const LIGHT_TEX = preload("res://assets/images/map/light_tex.png")
 const BALL_COLOR = Color.black
-const BALL_DIST = 30
+const BALL_DIST = 50
 const BALL_SIZE = Vector2(10, 10)
 const MAP_NODE_SIZE = 64
 const PATH_FILL_TIME = 1.8
@@ -74,7 +74,7 @@ func begin_fill():
 func play_sfx(value):
 	if value >= ball_count + 1:
 		ball_count += 1
-		if floor_level >= 1 and floor_level <= 3 and randf() > .35:
+		if floor_level >= 1 and floor_level <= 3 and randf() > 0.0:
 			AudioManager.play_sfx("map_points_appear"+str(floor_level))
 
 

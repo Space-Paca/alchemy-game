@@ -28,11 +28,11 @@ const SFXS = [
 		preload("res://assets/audio/sfx/normal_battle_icon_hover.wav"),
 		preload("res://assets/audio/sfx/elite_battle_icon_hover.wav"),
 		preload("res://assets/audio/sfx/boss_battle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/shop_icon_hover.wav"),
 		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/blacksmith_icon_hover.wav"),
 		preload("res://assets/audio/sfx/event_battle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+		preload("res://assets/audio/sfx/cauldron_icon_hover.wav"),
 		preload("res://assets/audio/sfx/treasure_icon_hover.wav")
 ]
 const MUTE_DB = -60

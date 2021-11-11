@@ -38,9 +38,7 @@ onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/Tab
 "combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
 "toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
 
-const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 const SLIDER_COOLDOWN = .18
-
 
 var paused := false
 var slider_sfx_cooldown = 0
@@ -98,12 +96,12 @@ func set_pause(p: bool):
 	get_tree().paused = p
 	bg.visible = p
 	if p:
-		AudioServer.add_bus_effect(0, AUDIO_FILTER)
+		AudioManager.enable_bgm_filter_effect()
 		update_music_volumes()
 		update_buttons()
 		update_controls()
 	else:
-		AudioServer.remove_bus_effect(0, 0)
+		AudioManager.disable_bgm_filter_effect()
 		FileManager.save_profile()
 		emit_signal("exited_pause")
 
@@ -347,3 +345,19 @@ func _on_MapFogCheckBox_toggled(button_pressed):
 
 func _on_tab_changed(_tab):
 	AudioManager.play_sfx("changed_pause_tab")
+
+
+func _on_MusicVolume_focus_entered():
+	pass#AudioManager.disable_bgm_filter_effect()
+
+
+func _on_MasterVolume_focus_entered():
+	pass#AudioManager.disable_bgm_filter_effect()
+
+
+func _on_MasterVolume_focus_exited():
+	pass#AudioManager.enable_bgm_filter_effect()
+
+
+func _on_MusicVolume_mouse_exited():
+	pass#AudioManager.enable_bgm_filter_effect()

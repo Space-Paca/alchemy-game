@@ -150,6 +150,8 @@ bus = "SFX"
 
 [node name="BusEffectTween" type="Tween" parent="."]
 
+[node name="BGMBusEffectTween" type="Tween" parent="."]
+
 [node name="SFXS" type="Node" parent="."]
 
 [node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFXS"]

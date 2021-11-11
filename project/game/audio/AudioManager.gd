@@ -1,6 +1,9 @@
 extends Node
 
+#Filter
+const AUDIO_FILTER = preload("res://game/pause/pause_audio_filter.tres")
 #Amplify
+const AMPLIFY_EFFECT = preload("res://game/pause/audio_amplify.tres")
 const MAX_AMPLIFY = 6 #Amplify effect when player is in extreme danger
 const MIN_AMPLIFY = 0 #Value to remove effect
 const AMPLIFY_SPEED = 10 #Speed to increase or decrease amplify effect
@@ -140,6 +143,27 @@ func setup_locs():
 	else:
 		push_error("An error occurred when trying to access locutions path.")
 		assert(false)
+
+
+func enable_bgm_filter_effect():
+	$BGMBusEffectTween.stop_all()
+	#AudioServer.add_bus_effect(1, AUDIO_FILTER)
+	AudioServer.add_bus_effect(1, AMPLIFY_EFFECT)
+	var target_db = -17
+	var dur = abs(AMPLIFY_EFFECT.volume_db - target_db)/15
+	$BGMBusEffectTween.interpolate_property(AMPLIFY_EFFECT, "volume_db", AMPLIFY_EFFECT.volume_db, target_db, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$BGMBusEffectTween.start()
+
+func disable_bgm_filter_effect():
+	$BGMBusEffectTween.stop_all()
+	#Assumes no other effect has entered
+	var dur = abs(AMPLIFY_EFFECT.volume_db)/20
+	$BGMBusEffectTween.interpolate_property(AMPLIFY_EFFECT, "volume_db", AMPLIFY_EFFECT.volume_db, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$BGMBusEffectTween.start()
+	yield($BGMBusEffectTween, "tween_completed")
+	#AudioServer.remove_bus_effect(1, 3)
+	AudioServer.remove_bus_effect(1, 2)
+	
 
 #Expects a value between 0 and 1
 func set_bus_volume(which_bus: int, value: float):

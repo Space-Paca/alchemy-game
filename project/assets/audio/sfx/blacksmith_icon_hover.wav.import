@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blacksmith_icon_hover.wav-b5d9d951eb2e32657f81a94920f2fa7d.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/blacksmith_icon_hover.wav"
+dest_files=[ "res://.import/blacksmith_icon_hover.wav-b5d9d951eb2e32657f81a94920f2fa7d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

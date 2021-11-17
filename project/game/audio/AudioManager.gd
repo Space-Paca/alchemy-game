@@ -46,6 +46,7 @@ var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false
 var cur_sfx_player := 1
+var bgm_filter_enabled = false
 
 func _ready():
 	setup_bgms()
@@ -145,24 +146,36 @@ func setup_locs():
 		assert(false)
 
 
-func enable_bgm_filter_effect():
+func enable_bgm_filter_effect(target_db = -17, speed_mod = 1.0, id = null):
+	if bgm_filter_enabled:
+		bgm_filter_enabled = id if id else true
+		return
+	bgm_filter_enabled = id if id else true
+
 	$BGMBusEffectTween.stop_all()
-	#AudioServer.add_bus_effect(1, AUDIO_FILTER)
+	#Assumes no other effect is possible
+	if AudioServer.get_bus_effect_count(1) == 3:
+		AudioServer.remove_bus_effect(1, 2)
 	AudioServer.add_bus_effect(1, AMPLIFY_EFFECT)
-	var target_db = -17
-	var dur = abs(AMPLIFY_EFFECT.volume_db - target_db)/15
+	var dur = abs(AMPLIFY_EFFECT.volume_db - target_db)/(15*speed_mod)
 	$BGMBusEffectTween.interpolate_property(AMPLIFY_EFFECT, "volume_db", AMPLIFY_EFFECT.volume_db, target_db, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGMBusEffectTween.start()
 
-func disable_bgm_filter_effect():
+func disable_bgm_filter_effect(speed_mod = 1.0, id = null):
+	if not bgm_filter_enabled or (id and id != bgm_filter_enabled):
+		return
+	bgm_filter_enabled = false
+
 	$BGMBusEffectTween.stop_all()
 	#Assumes no other effect has entered
-	var dur = abs(AMPLIFY_EFFECT.volume_db)/20
+	var dur = abs(AMPLIFY_EFFECT.volume_db)/(20*speed_mod)
 	$BGMBusEffectTween.interpolate_property(AMPLIFY_EFFECT, "volume_db", AMPLIFY_EFFECT.volume_db, 0, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGMBusEffectTween.start()
+	
 	yield($BGMBusEffectTween, "tween_completed")
-	#AudioServer.remove_bus_effect(1, 3)
-	AudioServer.remove_bus_effect(1, 2)
+
+	if not bgm_filter_enabled and AudioServer.get_bus_effect_count(1) == 3:
+		AudioServer.remove_bus_effect(1, 2)
 	
 
 #Expects a value between 0 and 1

@@ -82,8 +82,9 @@ func _process(dt):
 	if $HoverSFX.stream:
 		if $HoverSFX.volume_db > MUTE_DB and not $HoverSFX.playing:
 			$HoverSFX.play(rand_range(0.0, $HoverSFX.stream.get_length()))
-		elif $HoverSFX.volume_db <= MUTE_DB:
+		elif $HoverSFX.volume_db <= MUTE_DB and $HoverSFX.playing:
 			$HoverSFX.stop()
+
 
 func enable_lights():
 	$Light2D.enabled = true
@@ -180,12 +181,15 @@ func _on_Button_pressed():
 
 
 func _on_Button_mouse_entered():
-	mouse_over = true
 	if type != EMPTY and not button.disabled:
+		mouse_over = true
 		AudioManager.play_sfx("hover_map_node")
+		AudioManager.enable_bgm_filter_effect(-8, .8, self)
 
 func _on_Button_mouse_exited():
-	mouse_over = false
+	if type != EMPTY and not button.disabled:
+		mouse_over = false
+		AudioManager.disable_bgm_filter_effect(1.1, self)
 
 
 func _on_TooltipCollision_enable_tooltip():

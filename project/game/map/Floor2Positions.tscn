@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/map/Floor1Positions.tscn" type="PackedScene" id=2]
+
+[node name="FixedPositions" instance=ExtResource( 2 )]
+
+[node name="Center" parent="." index="0"]
+position = Vector2( 751, 267 )
+
+[node name="MapPosition1" parent="." index="1"]
+position = Vector2( 1036.12, 159.683 )
+
+[node name="MapPosition2" parent="." index="2"]
+position = Vector2( 725.16, -111.354 )
+
+[node name="MapPosition3" parent="." index="3"]
+position = Vector2( 1213.07, 685.271 )
+
+[node name="MapPosition4" parent="." index="4"]
+position = Vector2( 843.048, 893.075 )
+
+[node name="MapPosition5" parent="." index="5"]
+position = Vector2( 1076.42, 621.739 )
+
+[node name="MapPosition6" parent="." index="6"]
+position = Vector2( 1160.93, 481.815 )
+
+[node name="MapPosition7" parent="." index="7"]
+position = Vector2( 1419.23, 236.301 )
+
+[node name="MapPosition8" parent="." index="8"]
+position = Vector2( 1649.81, 227.546 )
+
+[node name="MapPosition9" parent="." index="9"]
+position = Vector2( 1679.99, 586.313 )
+
+[node name="MapPosition10" parent="." index="10"]
+position = Vector2( 1358.58, 415.792 )
+
+[node name="MapPosition11" parent="." index="11"]
+position = Vector2( 1354.82, 860.084 )
+
+[node name="MapPosition12" parent="." index="12"]
+position = Vector2( 1160.66, 912.198 )
+
+[node name="MapPosition13" parent="." index="13"]
+position = Vector2( 1019.68, 797.816 )
+
+[node name="MapPosition14" parent="." index="14"]
+position = Vector2( 660.893, 1037.38 )
+
+[node name="MapPosition15" parent="." index="15"]
+position = Vector2( 325.893, 912.076 )
+
+[node name="MapPosition16" parent="." index="16"]
+position = Vector2( 9.8085, 577.856 )
+
+[node name="MapPosition17" parent="." index="17"]
+position = Vector2( 236.14, 248.134 )
+
+[node name="MapPosition18" parent="." index="18"]
+position = Vector2( 327.964, -122.236 )
+
+[node name="MapPosition19" parent="." index="19"]
+position = Vector2( 997.246, -111.715 )
+
+[node name="MapPosition20" parent="." index="20"]
+position = Vector2( 1393.59, 18.6806 )
+
+[node name="MapPosition21" parent="." index="21"]
+position = Vector2( 1594.43, 156.835 )
+
+[node name="MapPosition22" parent="." index="22"]
+position = Vector2( 1660.99, 422.162 )
+
+[node name="MapPosition23" parent="." index="23"]
+position = Vector2( 1727.44, 510.751 )
+
+[node name="MapPosition24" parent="." index="24"]
+position = Vector2( 1676.67, 964.973 )
+
+[node name="MapPosition25" parent="." index="25"]
+position = Vector2( 1423.7, 1132.57 )
+
+[node name="MapPosition26" parent="." index="26"]
+position = Vector2( 1080.63, 1261.44 )
+
+[node name="MapPosition27" parent="." index="27"]
+position = Vector2( 58.4706, 36.7181 )
+
+[node name="MapPosition28" parent="." index="28"]
+position = Vector2( -155.074, 330.907 )
+
+[node name="MapPosition29" parent="." index="29"]
+position = Vector2( -157.654, 510.549 )
+
+[node name="MapPosition30" parent="." index="30"]
+position = Vector2( -62.3748, 850.658 )
+
+[node name="MapPosition31" parent="." index="31"]
+position = Vector2( 99.4643, 1150.3 )
+
+[node name="MapPosition32" parent="." index="32"]
+position = Vector2( 591.314, 1250.31 )

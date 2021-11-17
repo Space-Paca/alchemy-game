@@ -5,6 +5,11 @@ signal map_node_pressed(node)
 signal finished_active_paths
 
 const VISIBLE_MAP_MATERIAL = preload("res://game/map/VisibleMapMaterial.tres")
+const FLOOR_POSITIONS = [
+	preload("res://game/map/Floor1Positions.tscn"),
+	preload("res://game/map/Floor2Positions.tscn"),
+	preload("res://game/map/Floor3Positions.tscn")
+]
 
 onready var bg = $Background
 onready var visible_bg = $VisibleBackground
@@ -58,7 +63,7 @@ func _ready():
 
 
 func duplicate_stored_positions():
-	stored_map_positions = $FixedPositions.duplicate(7)
+	stored_map_positions = FLOOR_POSITIONS[current_level].instance().duplicate(7)
 
 
 func _process(dt):

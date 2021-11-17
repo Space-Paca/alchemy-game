@@ -242,6 +242,7 @@ func _on_button_mouse_entered():
 
 
 func _on_ResetTutorial_pressed():
+	AudioManager.play_sfx("click")
 	Profile.reset_tutorials()
 
 

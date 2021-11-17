@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://game/pause/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
@@ -132,14 +132,6 @@ expand_margin_left = 45.0
 expand_margin_right = 45.0
 expand_margin_top = 20.0
 expand_margin_bottom = 55.0
-
-[sub_resource type="DynamicFont" id=23]
-size = 40
-outline_size = 3
-outline_color = Color( 0.0784314, 0.364706, 0.427451, 0.690196 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 4 )
 
 [node name="PauseScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -989,7 +981,6 @@ margin_bottom = 260.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 23 )
 text = "OPT_RESET_TUTORIAL_HINTS"
 __meta__ = {
 "_edit_use_anchors_": false

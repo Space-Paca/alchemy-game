@@ -348,16 +348,16 @@ func _on_tab_changed(_tab):
 
 
 func _on_MusicVolume_focus_entered():
-	pass#AudioManager.disable_bgm_filter_effect()
+	AudioManager.disable_bgm_filter_effect()
 
 
 func _on_MasterVolume_focus_entered():
-	pass#AudioManager.disable_bgm_filter_effect()
+	AudioManager.disable_bgm_filter_effect()
 
 
 func _on_MasterVolume_focus_exited():
-	pass#AudioManager.enable_bgm_filter_effect()
+	AudioManager.enable_bgm_filter_effect()
 
 
-func _on_MusicVolume_mouse_exited():
-	pass#AudioManager.enable_bgm_filter_effect()
+func _on_MusicVolume_focus_exited():
+	AudioManager.enable_bgm_filter_effect()

@@ -90,9 +90,9 @@ func _process(dt):
 		target_pos.y -= PLAYER_UI_HEIGHT/2
 
 		#Move camera linearly
-		$Camera.position = lerp($Camera.position, target_pos, CAMERA_SPEED*dt)
-		if (target_pos - $Camera.position).length() <= EPSILON:
-			$Camera.position = target_pos
+		camera.position = lerp(camera.position, target_pos, CAMERA_SPEED*dt)
+		if (target_pos - camera.position).length() <= EPSILON:
+			camera.position = target_pos
 
 
 func set_disabled(toggle:bool):
@@ -194,10 +194,10 @@ func get_screen_center():
 
 
 func reset_camera(is_map := false):
-	$Camera.position = get_screen_center() 
+	camera.position = get_screen_center() 
 	if is_map:
 # warning-ignore:integer_division
-		$Camera.position -= Vector2(0, PLAYER_UI_HEIGHT/2)
+		camera.position -= Vector2(0, PLAYER_UI_HEIGHT/2)
 
 
 func set_player(_player):
@@ -249,7 +249,7 @@ func load_map(data):
 		var new_node : MapNode = MAP_NODE_SCENE.instance()
 		new_node.disable_tooltips()
 		new_node.modulate.a = 0
-		new_node.set_camera($Camera)
+		new_node.set_camera(camera)
 		new_node.name = node_data.name
 		nodes.add_child(new_node)
 		var x = float(node_data.pos[0])
@@ -322,7 +322,7 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 		shift_positions()
 		
 		initial_node = MAP_NODE_SCENE.instance()
-		initial_node.set_camera($Camera)
+		initial_node.set_camera(camera)
 		nodes.add_child(initial_node)
 		initial_node.light_up()
 		active_nodes.append(initial_node)
@@ -376,7 +376,7 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 			var new_node : MapNode = MAP_NODE_SCENE.instance()
 			new_node.disable_tooltips()
 			new_node.modulate.a = 0
-			new_node.set_camera($Camera)
+			new_node.set_camera(camera)
 			nodes.add_child(new_node)
 			new_node.rect_global_position = new_pos.global_position
 			new_pos.node = new_node

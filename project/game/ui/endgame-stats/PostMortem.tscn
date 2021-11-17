@@ -265,8 +265,8 @@ poison_texture = ExtResource( 5 )
 margin_left = 100.0
 margin_right = 637.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 19 )
 text = "Post-mortem"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -284,8 +284,8 @@ __meta__ = {
 [node name="Title" type="Label" parent="Killer"]
 margin_right = 250.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "KILLED_BY"
 
 [node name="Image" type="TextureRect" parent="Killer"]
@@ -303,8 +303,8 @@ margin_top = 291.0
 margin_right = 250.0
 margin_bottom = 331.0
 rect_min_size = Vector2( 250, 40 )
-custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 22 )
 text = "UNKNOWN"
 align = 1
 autowrap = true
@@ -418,8 +418,8 @@ margin_left = 54.0
 margin_top = 8.0
 margin_right = 89.0
 margin_bottom = 41.0
-custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "123"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
@@ -440,8 +440,8 @@ margin_left = 54.0
 margin_top = 8.0
 margin_right = 89.0
 margin_bottom = 41.0
-custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "123"
 
 [node name="Panel" type="Panel" parent="PlayerInfo"]
@@ -470,8 +470,8 @@ columns = 5
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "NO_ARTIFACTS_COLLECTED"
 align = 1
 valign = 1

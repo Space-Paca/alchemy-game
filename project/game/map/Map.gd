@@ -59,11 +59,13 @@ var total_number_nodes := -1
 
 
 func _ready():
-	duplicate_stored_positions()
+	duplicate_stored_positions(0)
 
 
-func duplicate_stored_positions():
-	stored_map_positions = FLOOR_POSITIONS[current_level].instance().duplicate(7)
+func duplicate_stored_positions(level: int):
+	var floor_positions = FLOOR_POSITIONS[level].instance()
+	add_child(floor_positions)
+	stored_map_positions = floor_positions.duplicate(7)
 
 
 func _process(dt):
@@ -165,6 +167,8 @@ func set_level(level:int):
 	floor_label.text = FLOOR_LABEL[current_level-1]
 	bg.texture = MAPS_BG[current_level-1].unexplored
 	visible_bg.texture = MAPS_BG[current_level-1].explored
+	remove_child(get_node("FixedPositions"))
+	duplicate_stored_positions(current_level-1)
 
 
 func shift_positions():

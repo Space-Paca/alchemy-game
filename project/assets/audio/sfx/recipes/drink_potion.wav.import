@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drink_potion.wav-2556705c5963a96f8f0a1b00c5b42541.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/drink_potion.wav"
+dest_files=[ "res://.import/drink_potion.wav-2556705c5963a96f8f0a1b00c5b42541.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

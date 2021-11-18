@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/throw_potion.wav-02f927dbb73a8eabcd08719a92890351.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/throw_potion.wav"
+dest_files=[ "res://.import/throw_potion.wav-02f927dbb73a8eabcd08719a92890351.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

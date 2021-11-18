@@ -161,6 +161,15 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	yield($BGTween, "tween_completed")
 	
+	if Profile.get_tutorial("first_battle") and \
+	   not Profile.get_tutorial("recipe_book"):
+		Profile.set_tutorial("first_battle", false)
+	
+	if not Profile.get_tutorial("first_battle"):
+		TutorialLayer.start("first_battle")
+		yield(TutorialLayer, "tutorial_finished")
+		Profile.set_tutorial("first_battle", true)
+	
 	load_player_turn(data.player, reagents_to_be_draw)
 	
 	emit_signal("block_pause", false)
@@ -200,7 +209,11 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 
 	while enemies_init():
 		yield(self, "finished_enemies_init")
-
+	
+	if Profile.get_tutorial("first_battle") and \
+	   not Profile.get_tutorial("recipe_book"):
+		Profile.set_tutorial("first_battle", false)
+	
 	if not Profile.get_tutorial("first_battle"):
 		TutorialLayer.start("first_battle")
 		yield(TutorialLayer, "tutorial_finished")

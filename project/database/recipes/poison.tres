@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_POISON"
 grid_size = 2
+sfx = "poison_vial"
 must_unlock = false
 floor_sold_in = 1
 reagents = [ "poison", "damaging" ]

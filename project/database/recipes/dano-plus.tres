@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_DANO_PLUS"
 grid_size = 2
+sfx = "thunderstone"
 must_unlock = false
 floor_sold_in = 1
 reagents = [ "damaging", "damaging", "damaging" ]

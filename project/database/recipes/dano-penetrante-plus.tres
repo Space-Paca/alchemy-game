@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_DANO_PEN_PLUS"
 grid_size = 3
+sfx = "alchemists_fire"
 must_unlock = false
 floor_sold_in = 2
 reagents = [ "damaging", "damaging", "damaging", "damaging" ]

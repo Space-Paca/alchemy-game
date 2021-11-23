@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_ATAQUE_AREA_PLUS"
 grid_size = 3
-sfx = "recipe_drink"
+sfx = "acid_gas"
 must_unlock = false
 floor_sold_in = 2
 reagents = [ "common", "uncommon", "damaging", "super_damaging" ]

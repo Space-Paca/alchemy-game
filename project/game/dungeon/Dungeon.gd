@@ -872,7 +872,7 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 				reagent.toggle_unstable()
 		# Not using AudioManager.get_sfx_duration("combine_success") since it has some silence at the end
 		yield(get_tree().create_timer(1.0), "timeout")
-		var sfx = combination.recipe.sfx
+		var sfx = "recipe_" + combination.recipe.sfx
 		if sfx:
 			AudioManager.play_sfx(sfx)
 			yield(get_tree().create_timer(AudioManager.get_sfx_duration(sfx)), "timeout")

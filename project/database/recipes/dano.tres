@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_DANO"
 grid_size = 2
-sfx = "recipe_throw"
+sfx = "bomb"
 must_unlock = false
 floor_sold_in = 1
 reagents = [ "common", "damaging" ]

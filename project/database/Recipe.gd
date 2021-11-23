@@ -7,7 +7,7 @@ var id
 
 export(String) var name
 export(int) var grid_size
-export(String) var sfx := "recipe_drink"
+export(String) var sfx := "drink_potion"
 export(bool) var must_unlock := false
 export(int) var floor_sold_in
 export(Array, String) var reagents

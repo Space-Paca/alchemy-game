@@ -155,6 +155,7 @@ func set_save_data(data):
 
 func play_map_bgm():
 	AudioManager.play_bgm("map" + str(floor_level))
+	AudioManager.play_ambience(floor_level)
 
 
 func get_combinations_data():
@@ -811,7 +812,6 @@ func _on_Battle_finished(is_boss):
 	battle.queue_free()
 	battle = null
 	recipe_book.change_state(RecipeBook.States.MAP)
-	AudioManager.play_bgm("map" + str(floor_level))
 	
 	Transition.end_transition()
 	
@@ -819,6 +819,7 @@ func _on_Battle_finished(is_boss):
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
+		play_map_bgm()
 		if floor_level <= Debug.MAX_FLOOR:
 			create_level(floor_level)
 			$Player.level_up()
@@ -830,6 +831,7 @@ func _on_Battle_finished(is_boss):
 			enable_map()
 			thanks_for_playing()
 	else:
+		play_map_bgm()
 		if is_elite:
 			player.increase_floor_stat("elite_encounters_finished")
 		else:

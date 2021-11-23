@@ -364,7 +364,7 @@ func setup_audio(encounter : Encounter):
 		AudioManager.play_bgm("boss1", 3)
 	else:
 		AudioManager.play_bgm("battle" + str(floor_level), 3)
-	AudioManager.play_ambience("forest")
+	AudioManager.play_ambience(floor_level)
 	player_ui.update_audio(player.hp, player.max_hp)
 
 

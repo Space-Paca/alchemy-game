@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/audio/bgm/forest_ambience_var3.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/bgm/cave_ambience_var1.ogg" type="AudioStream" id=1]
 [ext_resource path="res://database/audio/BGM.gd" type="Script" id=2]
 
 [resource]

@@ -32,6 +32,7 @@ onready var BGMS = {}
 #AUX
 onready var AUX_BGMS = ["","",""]
 const AMBIENCE_VARIATIONS = 3
+const AMBIENCE_NAME_MAP = ["forest", "cave", "dungeon"]
 #SFX
 const MAX_SFXS = 30
 const SFX_PATH = "res://database/audio/sfxs/"
@@ -41,6 +42,7 @@ onready var CUR_IDLE_SFX = {}
 const LOC_PATH = "res://database/audio/locs/"
 onready var LOCS = {}
 
+var last_ambience_bgm_idx = false
 var bgms_last_pos = {}
 var cur_bgm = null
 var cur_aux_bgm = null
@@ -460,10 +462,17 @@ func stop_aux_bgm(name):
 		i += 1
 
 
-func play_ambience(name: String):
-	#Get a random ambience variation
+func play_ambience(index: int):
+	#Assumes it receives a value starting at 1, shifts to compensate
+	var name = AMBIENCE_NAME_MAP[index-1]
+	
+	#Get a random ambience variation, not repeating the last one
 	randomize()
 	var number = randi()%AMBIENCE_VARIATIONS + 1
+	if last_ambience_bgm_idx:
+		while number == last_ambience_bgm_idx:
+			number = randi()%AMBIENCE_VARIATIONS + 1
+	last_ambience_bgm_idx = number
 	
 	var source_name = name + "_ambience_" + str(number)
 	if not BGMS.has(source_name):

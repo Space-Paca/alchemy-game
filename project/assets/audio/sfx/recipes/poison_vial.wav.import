@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/poison_vial.wav-1fdd050d02810c7b71d9c0324e48d5e2.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/poison_vial.wav"
+dest_files=[ "res://.import/poison_vial.wav-1fdd050d02810c7b71d9c0324e48d5e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -659,7 +659,7 @@ func add_recipe_deviation(name):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]],
-		destroy_reagents: Array = [], boost_effects: Dictionary = {}, sfx = false):
+		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
 		used_all_reagents_in_recipes = false
 		effect_manager.combination_failure(effect_args, grid)
@@ -683,12 +683,6 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 		var used_temp_strength = false
 		for i in range(effects.size()):
 			if effect_manager.has_method(effects[i]):
-				if sfx:
-					if not total_targets or not effects[i] in effect_manager.TARGETED_EFFECTS:
-						AudioManager.play_sfx(sfx)
-						yield(get_tree().create_timer(AudioManager.get_sfx_duration(sfx)), "timeout")
-					else:
-						pass #TO FIX
 				if effects[i] == "damage" or \
 				   effects[i] == "damage_all" or \
 				   effects[i] == "damage_random" or \

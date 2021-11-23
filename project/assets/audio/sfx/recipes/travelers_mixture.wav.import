@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/travelers_mixture.wav-ffb8951e546988a284710b41f463cf09.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/travelers_mixture.wav"
+dest_files=[ "res://.import/travelers_mixture.wav-ffb8951e546988a284710b41f463cf09.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

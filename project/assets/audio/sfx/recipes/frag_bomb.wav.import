@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/frag_bomb.wav-3ff420e337b9b05cd31b5b9ff8545261.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/frag_bomb.wav"
+dest_files=[ "res://.import/frag_bomb.wav-3ff420e337b9b05cd31b5b9ff8545261.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

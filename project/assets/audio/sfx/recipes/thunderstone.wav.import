@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thunderstone.wav-13a5bcc1f862a540c76989d8aab1ec3c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/thunderstone.wav"
+dest_files=[ "res://.import/thunderstone.wav-13a5bcc1f862a540c76989d8aab1ec3c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

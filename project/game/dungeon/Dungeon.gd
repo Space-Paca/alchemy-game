@@ -515,11 +515,10 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 			recipe_book.update_mastery(combination, times_recipe_made[recipe.id],
 					mastery_threshold(combination))
 		
-		var sfx = combination.recipe.sfx
 		if recipe_book.is_mastered(combination):
-			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects, sfx)
+			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)
 		else:
-			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects, sfx)
+			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
 		
 	elif not times_recipe_made.has(recipe.id):
 		times_recipe_made[recipe.id] = 0
@@ -872,7 +871,11 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 			if reagent.unstable:
 				reagent.toggle_unstable()
 		# Not using AudioManager.get_sfx_duration("combine_success") since it has some silence at the end
-		yield(get_tree().create_timer(.5), "timeout")
+		yield(get_tree().create_timer(1.0), "timeout")
+		var sfx = combination.recipe.sfx
+		if sfx:
+			AudioManager.play_sfx(sfx)
+			yield(get_tree().create_timer(AudioManager.get_sfx_duration(sfx)), "timeout")
 		make_combination("battle", combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/audio/bgm/event_bloody_bet.ogg" type="AudioStream" id=1]
+[ext_resource path="res://database/audio/BGM.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+asset = ExtResource( 1 )
+base_db = 0.0
+lowered_db = -20.0

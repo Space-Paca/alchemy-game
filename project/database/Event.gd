@@ -6,6 +6,7 @@ enum Type {LUCK, CHALLENGE, TRADEOFF, POSITIVE, QUEST}
 
 export(int) var id = 0
 export(String) var title = ""
+export(Resource) var bgm
 export(String, MULTILINE) var text = ""
 export(String, MULTILINE) var leave_text_1 = ""
 export(String, MULTILINE) var leave_text_2 = ""

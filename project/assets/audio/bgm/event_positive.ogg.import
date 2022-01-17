@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/event_positive.ogg-27b7c48548ce372b9471129778d84a86.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/event_positive.ogg"
+dest_files=[ "res://.import/event_positive.ogg-27b7c48548ce372b9471129778d84a86.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

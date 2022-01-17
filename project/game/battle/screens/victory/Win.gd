@@ -158,6 +158,7 @@ func check_loot_left():
 
 
 func _on_ContinueButton_pressed():
+	TooltipLayer.clean_tooltips()
 	emit_signal("continue_pressed")
 
 

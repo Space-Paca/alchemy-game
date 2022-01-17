@@ -127,7 +127,7 @@ DEFENSE,Defense,Defesa
 AREA,Area,Area
 BUFF,Buff,Fortalecer
 DEBUFF,Debuff,Enfraquecer
-HEAL,Heal,Cura
+HEAL_H,Heal,Cura
 MISC,Misc,Diversos
 END_TURN,End Turn,Terminar   Turno
 ARTIFACTS,Artifacts,Artefatos

@@ -179,12 +179,12 @@ __meta__ = {
 margin_right = 160.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 1 )
 text = "CLEAR_ALL"
 
 [node name="CheckBox1" type="CheckBox" parent="Filters/VBoxContainer"]
@@ -192,6 +192,8 @@ margin_top = 75.0
 margin_right = 160.0
 margin_bottom = 110.0
 focus_mode = 1
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -202,14 +204,14 @@ custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 10 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "ATTACK"
 
 [node name="CheckBox2" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 125.0
 margin_right = 160.0
 margin_bottom = 160.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -220,14 +222,14 @@ custom_styles/focus = SubResource( 12 )
 custom_styles/disabled = SubResource( 13 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 14 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "DEFENSE"
 
 [node name="CheckBox3" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 175.0
 margin_right = 160.0
 margin_bottom = 210.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -238,14 +240,14 @@ custom_styles/focus = SubResource( 15 )
 custom_styles/disabled = SubResource( 16 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 17 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "AREA"
 
 [node name="CheckBox4" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 225.0
 margin_right = 160.0
 margin_bottom = 260.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -256,14 +258,14 @@ custom_styles/focus = SubResource( 18 )
 custom_styles/disabled = SubResource( 19 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 20 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "BUFF"
 
 [node name="CheckBox5" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 275.0
 margin_right = 160.0
 margin_bottom = 310.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -274,14 +276,14 @@ custom_styles/focus = SubResource( 21 )
 custom_styles/disabled = SubResource( 22 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 23 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "DEBUFF"
 
 [node name="CheckBox6" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 325.0
 margin_right = 160.0
 margin_bottom = 360.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -292,14 +294,14 @@ custom_styles/focus = SubResource( 24 )
 custom_styles/disabled = SubResource( 25 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 26 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
-text = "HEAL"
+text = "HEAL_H"
 
 [node name="CheckBox7" type="CheckBox" parent="Filters/VBoxContainer"]
 margin_top = 375.0
 margin_right = 160.0
 margin_bottom = 410.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 1 )
 custom_icons/radio_checked = ExtResource( 8 )
 custom_icons/checked = ExtResource( 8 )
 custom_icons/radio_unchecked = ExtResource( 7 )
@@ -310,8 +312,6 @@ custom_styles/focus = SubResource( 27 )
 custom_styles/disabled = SubResource( 28 )
 custom_styles/hover_pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 29 )
-custom_fonts/font = SubResource( 1 )
-custom_constants/hseparation = 15
 text = "MISC"
 
 [connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]

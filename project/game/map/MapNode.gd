@@ -115,6 +115,8 @@ func light_up():
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
+	yield($Tween, "tween_completed")
+	animate_light()
 
 
 func fade_in():
@@ -131,6 +133,14 @@ func fade_in():
 	is_revealed = true
 	if type == BOSS:
 		$AnimationPlayer.play("BossIntro")
+	yield($Tween, "tween_all_completed")
+	animate_light()
+
+
+func animate_light():
+	var anim = $Light2D/AnimationPlayer
+	anim.play("moving", -1, rand_range(.5, .7))
+	#anim.seek(rand_range(0.0, anim.current_animation_length), true)
 
 
 func set_camera(cam):

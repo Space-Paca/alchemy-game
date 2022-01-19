@@ -243,6 +243,7 @@ func get_save_data():
 	
 	data.total_number_nodes = total_number_nodes
 	data.level = current_level
+	data.nodes_position = [nodes.rect_position.x,nodes.rect_position.y]
 	return data
 
 
@@ -251,6 +252,7 @@ func load_map(data):
 	camera_last_pos = false
 	
 	total_number_nodes = data.total_number_nodes
+	nodes.rect_position = Vector2(data.nodes_position[0], data.nodes_position[1])
 	
 	#Creating nodes
 	var nodes_to_reveal = []
@@ -314,6 +316,7 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 		randomize()
 		positions = stored_map_positions.duplicate(7)
 		center_position = positions.get_node("Center")
+		nodes.rect_position = center_position.position
 		#Reduce randomly number of childs center node has
 		center_position.children.shuffle()
 		while center_position.children.size() > CENTRAL_NODE_CHILDREN_SIZE:

@@ -288,7 +288,8 @@ func load_map(data):
 			lines.add_child(map_line)
 			map_line.set_line(node.rect_global_position, child_node.rect_global_position, data.level)
 			node.map_lines.append(map_line)
-
+	
+	initial_node.light_up()
 	reveal_paths(initial_node, nodes_to_reveal)
 
 

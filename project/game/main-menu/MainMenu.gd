@@ -2,6 +2,7 @@ extends TextureRect
 
 onready var anim = $AnimationPlayer
 onready var compendium_button = $UI/CompendiumButton
+onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 
 const ALPHA_SPEED = 6
 
@@ -10,7 +11,7 @@ var hover_compendium = false
 func _ready():
 	anim.play("reset")
 	
-	for button in [$ContinueButton, $NewGameButton, $QuitButton]:
+	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
 	FileManager.set_current_run(false)
 	set_process_input(false)
@@ -56,6 +57,11 @@ func _input(event):
 
 func skip_intro_animation():
 	anim.seek(anim.get_animation("intro").length, true)
+	for button in buttons:
+		button.disabled = true
+	yield(get_tree(), "idle_frame")
+	for button in buttons:
+		button.disabled = false
 
 
 func _on_NewGameButton_pressed():

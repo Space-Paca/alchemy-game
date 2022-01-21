@@ -42,8 +42,9 @@ const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const EPSILON = 1
 const CAMERA_SPEED = .6
+const CAMERA_ZOOM_SPEED = .7
 const CENTRAL_NODE_CHILDREN_SIZE = 2
-const PLAYER_UI_HEIGHT = 250
+const PLAYER_UI_HEIGHT = 400
 
 var active_paths := 0
 var active_nodes := []
@@ -93,6 +94,10 @@ func _process(dt):
 			bottom += margin
 			target_pos = Vector2(left+(right-left)/2, top+(bottom-top)/2)
 			target_pos += get_screen_center()
+			var zoom_factor_y = max((bottom - top + 2*margin)/float(1080-PLAYER_UI_HEIGHT), 1.0)
+			var zoom_factor_x = max((right - left + 2*margin)/float(1920), 1.0)
+			var zoom_factor = max(zoom_factor_x, zoom_factor_y)
+			camera.zoom = lerp(camera.zoom, Vector2(zoom_factor,zoom_factor), CAMERA_ZOOM_SPEED*dt)
 # warning-ignore:integer_division
 		target_pos.y -= PLAYER_UI_HEIGHT/2
 
@@ -172,12 +177,9 @@ func set_level(level:int):
 
 
 func shift_positions():
-	if randf() > .5:
-		positions.rect_scale.x = -1
-	if randf() > .5:
-		positions.rect_rotation = 180
-	
-	positions.rect_rotation += 5 * (randf() * 2 - 1)
+	var offset = 5
+	positions.rect_position.x += rand_range(-offset, offset)
+	positions.rect_position.y += rand_range(-offset, offset)
 
 
 func validate_map(total_nodes:int, normal_enemies:int):
@@ -199,7 +201,13 @@ func validate_map(total_nodes:int, normal_enemies:int):
 
 
 func get_screen_center():
-	return Vector2(1920/2, 1080/2)
+	if center_position != null:
+		if center_position is Vector2:
+			return center_position
+		else:
+			return center_position.position
+	else:
+		return Vector2(1920/2, 1080/2)
 
 
 func reset_camera(is_map := false):
@@ -292,6 +300,7 @@ func load_map(data):
 			node.map_lines.append(map_line)
 	
 	initial_node.light_up()
+	center_position = initial_node.rect_global_position
 	reveal_paths(initial_node, nodes_to_reveal)
 
 
@@ -304,7 +313,6 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 		remove_child(old_positions)
 		old_positions.queue_free()
 	
-	reset_camera(true)
 	camera_last_pos = false
 	
 	var untyped_nodes : Array
@@ -459,8 +467,10 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 			map_node.set_type(type)
 			count_by_type[type] -= 1
 	
+	center_position = center_position.position
 	positions.queue_free()
 	
+	reset_camera(true)
 	reveal_paths(initial_node)
 
 

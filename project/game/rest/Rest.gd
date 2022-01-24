@@ -6,9 +6,11 @@ signal combination_studied
 const RECIPE = preload("res://game/rest/RestRecipe.tscn")
 const REST_HEAL_PERCENTAGE = 35
 const GREAT_REST_HEAL_PERCENTAGE = 70
+const FULL_REST_HEAL_PERCENTAGE = 100
 
 onready var warning = $Warning
 onready var warning_label = $Warning/Label
+onready var heal_button_label = $ButtonContainer/HealButton/Text
 
 var map_node : MapNode
 var player
@@ -31,9 +33,19 @@ func setup(node, _player, _combinations):
 	$Panel.hide()
 	$ContinueButton.hide()
 
+
+func get_percent_heal_color():
+	if player.has_artifact("full_rest"):
+		return "fuchsia"
+	elif player.has_artifact("great_rest"):
+		return "green"
+	else:
+		return "black"
+
+
 func get_percent_heal():
 	if player.has_artifact("full_rest"):
-		return 100
+		return FULL_REST_HEAL_PERCENTAGE
 	elif player.has_artifact("great_rest"):
 		return GREAT_REST_HEAL_PERCENTAGE
 	else:
@@ -52,13 +64,13 @@ func get_heal_value():
 func update_heal_button():
 	var button = $ButtonContainer/HealButton
 	if player.has_artifact("cursed_scholar_mask"):
-		button.text = tr("CANT_HEAL")
-		button.modulate.r = .7; button.modulate.g = .7; button.modulate.b = .7
+		heal_button_label.bbcode_text = "[center][color=#870900]"+tr("CANT_HEAL")+"[/color][/center]"
 		disable_heal_text = "CANT_HEAL_SCHOLAR_MASK"
 	else:
 		disable_heal_text = false
 		button.modulate.r = 1.0; button.modulate.g = 1.0; button.modulate.b = 1.0
-		button.text = tr("HEAL_TEXT")  % [get_heal_value(), get_percent_heal()] 
+		heal_button_label.bbcode_text = tr("HEAL_TEXT") % \
+				[get_heal_value(), get_percent_heal_color(), get_percent_heal()] 
 
 
 func reset_room():

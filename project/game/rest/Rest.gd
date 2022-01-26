@@ -78,9 +78,13 @@ func reset_room():
 		map_node.set_type(MapNode.EMPTY)
 
 
-func setup_recipes():
+func reset_recipes():
 	for child in $Panel/Recipes/HBox.get_children():
 		$Panel/Recipes/HBox.remove_child(child)
+
+
+func setup_recipes():
+	reset_recipes()
 	
 	for combination in combinations:
 		create_display(combination)
@@ -134,8 +138,7 @@ func _on_BackButton_pressed():
 		$ButtonContainer/HealButton.show()
 		$ButtonContainer/HintButton.show()
 		$Panel.hide()
-		for child in $Panel/Recipes/HBox.get_children():
-			$Panel/Recipes/HBox.remove_child(child)
+		reset_recipes()
 		state = "main"
 	else:
 		emit_signal("closed")
@@ -149,7 +152,7 @@ func _on_recipe_chosen(chosen_recipe):
 	emit_signal("combination_studied", chosen_recipe.combination)
 	$ContinueButton.show()
 	$BackButton.hide()
-
+	
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")

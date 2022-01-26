@@ -209,8 +209,9 @@ func _on_TooltipCollision_enable_tooltip():
 	tooltips_enabled = true
 	var tooltip = get_node_tooltip()
 	#This math is not ideal still, but for now it suffices
-	TooltipLayer.add_tooltip(($TooltipCollision.get_position() - camera.get_offset())/camera.zoom, \
-							tooltip.title, tooltip.text, tooltip.title_image, tooltip.subtitle, true)
+	var offset = Vector2(50, -40)
+	var pos = $TooltipCollision.get_global_transform_with_canvas().origin + offset
+	TooltipLayer.add_tooltip(pos, tooltip.title, tooltip.text, tooltip.title_image, tooltip.subtitle, true)
 
 
 func _on_TooltipCollision_disable_tooltip():

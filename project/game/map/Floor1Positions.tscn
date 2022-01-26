@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/map/MapPosition.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/map/mapa01_floresta_explorado.jpg" type="Texture" id=2]
 
 [node name="FixedPositions" type="Control"]
 rect_pivot_offset = Vector2( 1151, 830 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Guideline" type="TextureRect" parent="."]
+visible = false
+margin_left = -750.0
+margin_top = -515.0
+margin_right = 2530.0
+margin_bottom = 1739.0
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -152,7 +152,7 @@ func _on_recipe_chosen(chosen_recipe):
 	emit_signal("combination_studied", chosen_recipe.combination)
 	$ContinueButton.show()
 	$BackButton.hide()
-	
+
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")

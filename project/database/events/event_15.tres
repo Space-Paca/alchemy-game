@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 id = 15
 title = "EVENT_14_TITLE"
+bgm = "event_positive"
 text = ""
 leave_text_1 = ""
 leave_text_2 = ""

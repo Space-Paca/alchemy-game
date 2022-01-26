@@ -663,8 +663,11 @@ func open_treasure(room, _player):
 
 
 func open_event(map_node: MapNode):
+	var event = EventManager.get_random_event(floor_level)
 	event_display.set_map_node(map_node)
-	event_display.load_event(EventManager.get_random_event(floor_level), player)
+	if event.bgm != null:
+		AudioManager.play_bgm(event.bgm)
+	event_display.load_event(event, player)
 	show_event()
 	
 	Transition.end_transition()
@@ -1045,6 +1048,7 @@ func _on_EventDisplay_closed():
 	
 	hide_event()
 	enable_map()
+	play_map_bgm()
 	map.reveal_paths(current_node)
 	current_node = null
 	

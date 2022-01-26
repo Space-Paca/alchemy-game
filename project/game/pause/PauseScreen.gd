@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-const TABS = ["VIDEO", "AUDIO", "CONTROLS", "GAMEPLAY", "LANGUAGE"]
-
 enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
@@ -13,38 +11,9 @@ onready var menu = $Background/Menu
 onready var confirm = $Background/ConfirmMenu
 onready var exit_button = $Background/Menu/Exit
 onready var settings = $Background/SettingsMenu
-onready var masterslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterVolume
-onready var master_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MasterLabel/Amount
-onready var bgmslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicVolume
-onready var bgm_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/MusicLabel/Amount
-onready var sfxslider = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXVolume
-onready var sfx_label = $Background/SettingsMenu/TabContainer/Audio/VBoxContainer/SFXLabel/Amount
-onready var resolution_dropdown = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown
-onready var language_dropdown = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown
-onready var fullscreen_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
-onready var borderless_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
-onready var mapfog_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
-onready var auto_end_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
-onready var window_size_label = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
-onready var window_size_buttons = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
-onready var language_label = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton/Label
-onready var language_buttons = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer.get_children()
-onready var resolution_button = $Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton
-onready var language_button = $Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton
-onready var tab_container = $Background/SettingsMenu/TabContainer
-onready var show_timer_button = $Background/SettingsMenu/TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
-onready var end_turn_button = $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button
-onready var controls_buttons = {"show_recipe_book": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/OpenCloseBook/Button,
-"combine": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/Combine/Button, "end_turn": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/EndTurn/Button,
-"toggle_fullscreen": $Background/SettingsMenu/TabContainer/Controls/VBoxContainer/ToggleFullscreen/Button}
-
-const SLIDER_COOLDOWN = .18
 
 var paused := false
-var slider_sfx_cooldown = 0
 var block_pause = false
-var is_keybinding = false
-var keybinding = {"button": null, "action": "", "text": ""}
 
 
 func _ready():
@@ -55,33 +24,19 @@ func _ready():
 		exit_button.text = "EXIT_DESKTOP"
 	else:
 		exit_button.text = "SAVE_RETURN_DESKTOP"
-	
-	for action in controls_buttons.keys():
-		var button : Button = controls_buttons[action]
-# warning-ignore:return_value_discarded
-		button.connect("toggled", self, "_on_ControlsButton_toggled",
-				[action, button])
-	
-	for idx in tab_container.get_child_count():
-		tab_container.set_tab_title(idx, TABS[idx])
-
-
-func _process(delta):
-	slider_sfx_cooldown = max(slider_sfx_cooldown - delta, 0)
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
-		if is_keybinding:
-			cancel_keybinding()
-		elif confirm.visible:
+		if confirm.visible:
 			no_quit()
 		elif settings.visible:
 			settings_back()
 		elif not TutorialLayer.is_active():
 			toggle_pause()
-	elif event is InputEventKey and is_keybinding:
-		bind_key(event.scancode)
+		else:
+			return
+		get_tree().set_input_as_handled()
 
 
 func toggle_pause():
@@ -97,9 +52,9 @@ func set_pause(p: bool):
 	bg.visible = p
 	if p:
 		AudioManager.enable_bgm_filter_effect()
-		update_music_volumes()
-		update_buttons()
-		update_controls()
+		settings.update_music_volumes()
+		settings.update_buttons()
+		settings.update_controls()
 	else:
 		AudioManager.disable_bgm_filter_effect()
 		FileManager.save_profile()
@@ -119,71 +74,6 @@ func settings_back():
 	screen_title.text = "GAME_PAUSED"
 	settings.hide()
 	menu.show()
-
-
-func update_music_volumes():
-	masterslider.value = AudioManager.get_bus_volume(AudioManager.MASTER_BUS)*100
-	master_label.text = str(masterslider.value)
-	bgmslider.value = AudioManager.get_bus_volume(AudioManager.BGM_BUS)*100
-	bgm_label.text = str(bgmslider.value)
-	sfxslider.value = AudioManager.get_bus_volume(AudioManager.SFX_BUS)*100
-	sfx_label.text = str(sfxslider.value)
-
-
-func update_buttons():
-	var index = Profile.get_option("window_size")
-	var size = Profile.WINDOW_SIZES[index]
-	window_size_buttons[index].pressed = true
-	window_size_label.text = str(size.x, "x", size.y)
-	index = Profile.get_option("locale")
-	var lang = Profile.LANGUAGES[index]
-	language_buttons[index].pressed = true
-	language_label.text = lang.name
-	fullscreen_button.pressed = Profile.get_option("fullscreen")
-	borderless_button.pressed = Profile.get_option("borderless")
-	mapfog_button.pressed = Profile.get_option("disable_map_fog")
-	auto_end_button.pressed = Profile.get_option("auto_end_turn")
-	resolution_button.disabled = fullscreen_button.pressed
-	resolution_dropdown.visible = false
-	language_dropdown.visible = false
-	show_timer_button.pressed = Profile.get_option("show_timer")
-	end_turn_button = Profile.get_option("auto_end_turn")
-
-
-func update_controls():
-	for action in controls_buttons.keys():
-		var button : Button = controls_buttons[action]
-		button.text = OS.get_scancode_string(Profile.get_control(action))
-
-
-func bind_key(scancode: int):
-	for action in controls_buttons.keys():
-		if action == keybinding.action:
-			continue
-		
-		if scancode == Profile.get_control(action):
-			var current_sc = Profile.get_control(keybinding.action)
-			controls_buttons[action].text = OS.get_scancode_string(current_sc)
-			Profile.set_control(action, current_sc)
-	
-	keybinding.text = OS.get_scancode_string(scancode)
-	Profile.set_control(keybinding.action, scancode)
-	
-	keybinding.button.pressed = false
-
-
-func cancel_keybinding():
-	keybinding.button.text = keybinding.text
-	is_keybinding = false
-	keybinding.button = null
-	keybinding.action = ""
-	keybinding.text = ""
-
-
-func play_slider_sfx():
-	if bg.visible and slider_sfx_cooldown <= 0:
-		slider_sfx_cooldown = SLIDER_COOLDOWN
-		AudioManager.play_sfx("click")
 
 
 func _on_Resume_pressed():
@@ -216,34 +106,8 @@ func _on_No_pressed():
 	no_quit()
 
 
-func _on_MasterVolume_value_changed(value):
-	play_slider_sfx()
-	AudioManager.set_bus_volume(AudioManager.MASTER_BUS,
-			value/float(masterslider.max_value))
-	master_label.text = str(value)
-	Profile.set_option("master_volume", value/float(masterslider.max_value))
-
-
-func _on_SFXVolume_value_changed(value):
-	play_slider_sfx()
-	AudioManager.set_bus_volume(AudioManager.SFX_BUS, value/float(sfxslider.max_value))
-	sfx_label.text = str(value)
-	Profile.set_option("sfx_volume", value/float(sfxslider.max_value))
-
-
-func _on_MusicVolume_value_changed(value):
-	AudioManager.set_bus_volume(AudioManager.BGM_BUS, value/float(bgmslider.max_value))
-	bgm_label.text = str(value)
-	Profile.set_option("bgm_volume", value/float(bgmslider.max_value))
-
-
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
-
-
-func _on_ResetTutorial_pressed():
-	AudioManager.play_sfx("click")
-	Profile.reset_tutorials()
 
 
 func _on_Settings_pressed():
@@ -252,113 +116,3 @@ func _on_Settings_pressed():
 	menu.hide()
 	settings.show()
 
-
-func _on_Back_pressed():
-	AudioManager.play_sfx("click")
-	if is_keybinding:
-		keybinding.button.pressed = false
-	else:
-		settings_back()
-
-
-func _on_ResolutionButton_toggled(button_pressed):
-	resolution_dropdown.visible = button_pressed
-	if button_pressed:
-		AudioManager.play_sfx("open_filter")
-	else:
-		AudioManager.play_sfx("close_filter")
-
-
-func _on_FullscreenCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	OS.window_fullscreen = button_pressed
-	Profile.set_option("fullscreen", button_pressed)
-	resolution_button.disabled = button_pressed
-
-
-func _on_BorderlessCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	OS.window_borderless = button_pressed
-	Profile.set_option("borderless", button_pressed)
-
-
-func _on_Resolution_button_pressed(button_id: int):
-	AudioManager.play_sfx("click")
-	if button_id == Profile.get_option("window_size"):
-		return
-	
-	var size = Profile.WINDOW_SIZES[button_id]
-	window_size_label.text = str(size.x, "x", size.y)
-	OS.window_size = size
-	Profile.set_option("window_size", button_id)
-
-
-func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
-		button: Button):
-	if is_keybinding and keybinding.button == button:
-		cancel_keybinding()
-		return
-	elif is_keybinding:
-		keybinding.button.pressed = false
-	
-	is_keybinding = true
-	keybinding.button = button
-	keybinding.action = action
-	keybinding.text = button.text
-	
-	button.text = "..."
-
-func _on_AutoPassCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	Profile.set_option("auto_end_turn", button_pressed)
-
-
-func _on_ShowTimerCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	Profile.set_option("show_timer", button_pressed)
-
-
-func _on_LanguageButton_toggled(button_pressed):
-	language_dropdown.visible = button_pressed
-	if button_pressed:
-		AudioManager.play_sfx("open_filter")
-	else:
-		AudioManager.play_sfx("close_filter")
-
-
-func _on_Language_Button_pressed(button_id: int):
-	AudioManager.play_sfx("click")
-	language_dropdown.visible = false
-	language_button.pressed = false
-	if button_id == Profile.get_option("locale"):
-		return
-	
-	var lang = Profile.LANGUAGES[button_id]
-	language_label.text = lang.name
-	TranslationServer.set_locale(lang.locale)
-	Profile.set_option("locale", button_id)
-
-
-func _on_MapFogCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	Profile.set_option("disable_map_fog", button_pressed)
-
-
-func _on_tab_changed(_tab):
-	AudioManager.play_sfx("changed_pause_tab")
-
-
-func _on_MusicVolume_focus_entered():
-	AudioManager.disable_bgm_filter_effect()
-
-
-func _on_MasterVolume_focus_entered():
-	AudioManager.disable_bgm_filter_effect()
-
-
-func _on_MasterVolume_focus_exited():
-	AudioManager.enable_bgm_filter_effect()
-
-
-func _on_MusicVolume_focus_exited():
-	AudioManager.enable_bgm_filter_effect()

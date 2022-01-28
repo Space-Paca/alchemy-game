@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -73,6 +73,16 @@ size = 23
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
 
 [sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.282353, 0.0470588, 0, 1 )
@@ -169,7 +179,6 @@ margin_right = 1090.0
 margin_bottom = 249.0
 rect_min_size = Vector2( 0, 60 )
 custom_constants/separation = 90
-alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -185,9 +194,8 @@ align = 2
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/FullscreenContainer"]
 margin_left = 590.0
-margin_right = 1090.0
+margin_right = 640.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 500, 0 )
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
 custom_fonts/font = SubResource( 6 )
@@ -227,9 +235,8 @@ align = 2
 
 [node name="BorderlessCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/BorderlessContainer"]
 margin_left = 590.0
-margin_right = 1090.0
+margin_right = 640.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 500, 0 )
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
 custom_fonts/font = SubResource( 6 )
@@ -281,9 +288,8 @@ __meta__ = {
 
 [node name="MapFogCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/MapFog"]
 margin_left = 590.0
-margin_right = 1090.0
+margin_right = 640.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 500, 0 )
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
 custom_fonts/font = SubResource( 6 )
@@ -369,7 +375,6 @@ __meta__ = {
 }
 
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
-visible = false
 margin_top = 65.0
 margin_right = 203.0
 margin_bottom = 315.0
@@ -381,6 +386,32 @@ patch_margin_right = 44
 patch_margin_bottom = 37
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseDropdown" type="Button" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown"]
+anchor_left = -4.951
+anchor_top = -2.12
+anchor_right = 4.507
+anchor_bottom = 2.2
+margin_left = 0.0530396
+margin_top = 6.10352e-05
+margin_right = 0.0789185
+rect_min_size = Vector2( 1920, 1080 )
+focus_mode = 0
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -401,7 +432,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Res_3_1920x1080" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+[node name="Res_1920x1080" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
 margin_right = 167.0
 margin_bottom = 35.0
 custom_constants/hseparation = 15
@@ -416,11 +447,10 @@ custom_styles/focus = SubResource( 16 )
 custom_styles/disabled = SubResource( 17 )
 custom_styles/hover_pressed = SubResource( 14 )
 custom_styles/normal = SubResource( 20 )
-pressed = true
 group = SubResource( 19 )
 text = "1920x1080"
 
-[node name="Res_2_1600x900" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+[node name="Res_1600x900" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
 margin_top = 60.0
 margin_right = 167.0
 margin_bottom = 95.0
@@ -439,7 +469,7 @@ custom_styles/normal = SubResource( 20 )
 group = SubResource( 19 )
 text = "1600x900"
 
-[node name="Res_1_1366x768" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+[node name="Res_1366x768" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
 margin_top = 120.0
 margin_right = 167.0
 margin_bottom = 155.0
@@ -458,7 +488,7 @@ custom_styles/normal = SubResource( 20 )
 group = SubResource( 19 )
 text = "1366x768"
 
-[node name="Res_0_1280x720" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+[node name="Res_1280x720" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
 margin_top = 180.0
 margin_right = 167.0
 margin_bottom = 215.0
@@ -962,6 +992,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CloseDropdown" type="Button" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown"]
+anchor_left = -4.951
+anchor_top = -2.12
+anchor_right = 4.507
+anchor_bottom = 2.2
+margin_left = 0.0530396
+margin_top = 6.10352e-05
+margin_right = 0.0789185
+rect_min_size = Vector2( 1920, 1080 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="ResolutionsContainer" type="VBoxContainer" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -979,8 +1031,9 @@ __meta__ = {
 }
 
 [node name="En" type="CheckBox" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer"]
+margin_top = 60.0
 margin_right = 167.0
-margin_bottom = 35.0
+margin_bottom = 95.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -997,9 +1050,9 @@ group = SubResource( 19 )
 text = "English"
 
 [node name="Pt_BR" type="CheckBox" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer"]
-margin_top = 60.0
+margin_top = 120.0
 margin_right = 167.0
-margin_bottom = 95.0
+margin_bottom = 155.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -1025,22 +1078,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "BACK"
 
-[node name="Label" type="Label" parent="."]
-margin_top = 760.0
-margin_right = 1920.0
-margin_bottom = 865.0
-text = "CONSERTAR: botões de toggle pegando largura até o fim
-QOL: clicar fora do dropdown fecha ele, consumindo o input"
-
 [connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_changed"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox" to="." method="_on_MapFogCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton" to="." method="_on_ResolutionButton_toggled"]
-[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_3_1920x1080" to="." method="_on_Resolution_button_pressed" binds= [ 3 ]]
-[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_2_1600x900" to="." method="_on_Resolution_button_pressed" binds= [ 2 ]]
-[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1_1366x768" to="." method="_on_Resolution_button_pressed" binds= [ 1 ]]
-[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_0_1280x720" to="." method="_on_Resolution_button_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1920x1080" to="." method="_on_Resolution_button_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1600x900" to="." method="_on_Resolution_button_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1366x768" to="." method="_on_Resolution_button_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1280x720" to="." method="_on_Resolution_button_pressed" binds= [ 3 ]]
 [connection signal="focus_entered" from="TabContainer/Audio/VBoxContainer/MasterVolume" to="." method="_on_MasterVolume_focus_entered"]
 [connection signal="focus_exited" from="TabContainer/Audio/VBoxContainer/MasterVolume" to="." method="_on_MasterVolume_focus_exited"]
 [connection signal="value_changed" from="TabContainer/Audio/VBoxContainer/MasterVolume" to="." method="_on_MasterVolume_value_changed"]
@@ -1051,6 +1098,8 @@ QOL: clicar fora do dropdown fecha ele, consumindo o input"
 [connection signal="toggled" from="TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox" to="." method="_on_AutoPassCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox" to="." method="_on_ShowTimerCheckBox_toggled"]
 [connection signal="pressed" from="TabContainer/Gameplay/VBoxContainer/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
-[connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton" to="." method="_on_LanguageButton_pressed"]
 [connection signal="toggled" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton" to="." method="_on_LanguageButton_toggled"]
+[connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]
+[connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/En" to="." method="_on_LanguageButton_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/Pt_BR" to="." method="_on_LanguageButton_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

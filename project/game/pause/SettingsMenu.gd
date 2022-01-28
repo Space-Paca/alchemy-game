@@ -68,13 +68,12 @@ func _process(delta):
 
 
 func update_buttons():
-	var index = Profile.get_option("window_size")
-	var size = Profile.WINDOW_SIZES[index]
-	window_size_buttons[index].pressed = true
+	var size_index = Profile.get_option("window_size")
+	var size = Profile.WINDOW_SIZES[size_index]
+	var locale_index = Profile.get_option("locale")
+	var lang = Profile.LANGUAGES[locale_index]
 	window_size_label.text = str(size.x, "x", size.y)
-	index = Profile.get_option("locale")
-	var lang = Profile.LANGUAGES[index]
-	language_buttons[index].pressed = true
+	language_buttons[locale_index].pressed = true
 	language_label.text = lang.name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
@@ -85,6 +84,7 @@ func update_buttons():
 	language_dropdown.visible = false
 	show_timer_button.pressed = Profile.get_option("show_timer")
 	end_turn_button = Profile.get_option("auto_end_turn")
+	window_size_buttons[size_index].pressed = true
 
 
 func update_music_volumes():
@@ -132,6 +132,15 @@ func play_slider_sfx():
 		AudioManager.play_sfx("click")
 
 
+func close_dropdowns():
+	if resolution_dropdown.visible:
+		resolution_dropdown.visible = false
+		resolution_button.pressed = false
+	if language_dropdown.visible:
+		language_dropdown.visible = false
+		language_button.pressed = false
+
+
 func _on_MasterVolume_value_changed(value):
 	play_slider_sfx()
 	AudioManager.set_bus_volume(AudioManager.MASTER_BUS,
@@ -158,6 +167,7 @@ func _on_Back_pressed():
 	if is_keybinding:
 		keybinding.button.pressed = false
 	else:
+		close_dropdowns()
 		emit_signal("back")
 
 
@@ -184,13 +194,14 @@ func _on_BorderlessCheckBox_toggled(button_pressed):
 
 func _on_Resolution_button_pressed(button_id: int):
 	AudioManager.play_sfx("click")
-	if button_id == Profile.get_option("window_size"):
-		return
+	if button_id != Profile.get_option("window_size"):
+		var size = Profile.WINDOW_SIZES[button_id]
+		window_size_label.text = str(size.x, "x", size.y)
+		OS.window_size = size
+		Profile.set_option("window_size", button_id)
 	
-	var size = Profile.WINDOW_SIZES[button_id]
-	window_size_label.text = str(size.x, "x", size.y)
-	OS.window_size = size
-	Profile.set_option("window_size", button_id)
+	AudioManager.play_sfx("close_filter")
+	close_dropdowns()
 
 
 func _on_ControlsButton_toggled(_button_pressed: bool, action: String,
@@ -252,7 +263,7 @@ func _on_MapFogCheckBox_toggled(button_pressed):
 
 func _on_tab_changed(_tab):
 	AudioManager.play_sfx("changed_pause_tab")
-
+	close_dropdowns()
 
 func _on_MusicVolume_focus_entered():
 	AudioManager.disable_bgm_filter_effect()
@@ -268,3 +279,8 @@ func _on_MasterVolume_focus_exited():
 
 func _on_MusicVolume_focus_exited():
 	AudioManager.enable_bgm_filter_effect()
+
+
+func _on_CloseDropdown_pressed():
+	AudioManager.play_sfx("close_filter")
+	close_dropdowns()

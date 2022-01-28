@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -111,10 +111,6 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
-
-[sub_resource type="ButtonGroup" id=19]
-
-[sub_resource type="ButtonGroup" id=20]
 
 [sub_resource type="Animation" id=21]
 length = 5.0
@@ -1004,24 +1000,6 @@ mode = 1
 
 [node name="Background" parent="PauseScreen" index="0"]
 visible = false
-
-[node name="Res1" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="0"]
-group = SubResource( 19 )
-
-[node name="Res2" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="1"]
-group = SubResource( 19 )
-
-[node name="Res3" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="2"]
-group = SubResource( 19 )
-
-[node name="Res4" parent="PauseScreen/Background/SettingsMenu/TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer" index="3"]
-group = SubResource( 19 )
-
-[node name="En" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="0"]
-group = SubResource( 20 )
-
-[node name="Pt_BR" parent="PauseScreen/Background/SettingsMenu/TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer" index="1"]
-group = SubResource( 20 )
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
 visible = false

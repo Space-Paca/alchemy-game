@@ -1,7 +1,7 @@
 extends Node
 
-const WINDOW_SIZES = [Vector2(1280, 720), Vector2(1366, 768),
-		Vector2(1600, 900), Vector2(1920, 1080)]
+const WINDOW_SIZES = [Vector2(1920, 1080), Vector2(1600, 900),
+		Vector2(1366, 768), Vector2(1280, 720)]
 
 const LANGUAGES = [
 	{"locale":"en", "name": "English"},
@@ -22,10 +22,10 @@ var options = {
 	"sfx_volume": 1.0,
 	"fullscreen": true,
 	"borderless": false,
-	"window_size": 3,
+	"window_size": 0,
 	"auto_end_turn": false,
 	"show_timer": false,
-	"locale": 1,
+	"locale": 0,
 	"choose_language": false,
 	"disable_map_fog": false,
 }

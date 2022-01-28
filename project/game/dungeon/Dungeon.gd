@@ -1122,7 +1122,10 @@ func _on_Debug_test_map_creation():
 
 func _on_Debug_event_pressed(id: int):
 	map.disable()
-	event_display.load_event(EventManager.get_event_by_id(id), player)
+	var event = EventManager.get_event_by_id(id)
+	if event.bgm != null:
+		AudioManager.play_bgm(event.bgm)
+	event_display.load_event(event, player)
 	show_event()
 
 

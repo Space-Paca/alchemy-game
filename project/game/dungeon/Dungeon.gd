@@ -822,8 +822,8 @@ func _on_Battle_finished(is_boss):
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
-		play_map_bgm()
 		if floor_level <= Debug.MAX_FLOOR:
+			play_map_bgm()
 			create_level(floor_level)
 			$Player.level_up()
 			player_info.update_values(player)

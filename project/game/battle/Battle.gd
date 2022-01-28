@@ -361,7 +361,7 @@ func enemies_init():
 
 func setup_audio(encounter : Encounter):
 	if encounter.is_boss:
-		AudioManager.play_bgm("boss1", 3)
+		AudioManager.play_bgm("boss" + str(floor_level), 3)
 	else:
 		AudioManager.play_bgm("battle" + str(floor_level), 3)
 	AudioManager.play_ambience(floor_level)

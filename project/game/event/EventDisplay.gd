@@ -63,7 +63,10 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	else:
 		text_label.bbcode_text = translate_and_format(event.text)
 	text_label.percent_visible = 0
-	image.texture = EventManager.IMAGES[event.type]
+	if event.image:
+		image.texture = event.image
+	else:
+		image.texture = EventManager.IMAGES[event.type]
 	
 	for child in vbox.get_children():
 		if child is Button:

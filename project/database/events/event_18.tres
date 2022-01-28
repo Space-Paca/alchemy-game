@@ -1,11 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/Event.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/events/eventos (14).png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
 id = 18
 title = "EVENT_18_TITLE"
+image = ExtResource( 2 )
 bgm = "event_bloody_bet"
 text = "EVENT_18_TEXT"
 leave_text_1 = "EVENT_18_LEAVE_1"

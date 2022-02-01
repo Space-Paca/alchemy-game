@@ -94,7 +94,7 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	
 	animating_text = true
 	text_label.percent_visible = 0.0
-	animate_text(text_label.get_total_character_count() / TEXT_SPEED[0])
+	animate_text(text_label.get_total_character_count() / float(TEXT_SPEED[0]))
 	
 	yield(tween, "tween_completed")
 	animating_text = false
@@ -122,14 +122,13 @@ func translate_and_format(text: String) -> String:
 func speed_up_text():
 	sped_up += 1
 	var speed = TEXT_SPEED[sped_up]
-	animate_text(((1.0 - text_label.percent_visible) * text_label.get_total_character_count()) / speed)
-
+	animate_text(((1.0 - text_label.percent_visible) * text_label.get_total_character_count()) / float(speed))
 
 func animate_text(duration: float):
-	if text_label.percent_visible:
-		tween.stop_all()
+	if text_label.percent_visible > 0.0:
+		tween.remove_all()
 	
-	tween.interpolate_property(text_label, "percent_visible", text_label.percent_visible, 1, duration)
+	tween.interpolate_property(text_label, "percent_visible", text_label.percent_visible, 1.0, duration)
 	tween.start()
 
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex"
+path="res://.import/peculiar_trade.png-0162bd51fc6a4992c87dd40f950a73eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/events/event_tradeoff.png"
-dest_files=[ "res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex" ]
+source_file="res://assets/images/events/peculiar_trade.png"
+dest_files=[ "res://.import/peculiar_trade.png-0162bd51fc6a4992c87dd40f950a73eb.stex" ]
 
 [params]
 

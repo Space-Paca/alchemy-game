@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex"
+path="res://.import/dangerous_proposition.png-bdd890c6f12ac0d81ac34156a872de17.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/events/event_tradeoff.png"
-dest_files=[ "res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex" ]
+source_file="res://assets/images/events/dangerous_proposition.png"
+dest_files=[ "res://.import/dangerous_proposition.png-bdd890c6f12ac0d81ac34156a872de17.stex" ]
 
 [params]
 

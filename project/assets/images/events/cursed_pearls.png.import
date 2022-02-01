@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex"
+path="res://.import/cursed_pearls.png-4b6e725585bb5ef9b3714e8bae6b58f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/events/event_tradeoff.png"
-dest_files=[ "res://.import/event_tradeoff.png-74a76c5db8e1d9192fefc8ebde359dd9.stex" ]
+source_file="res://assets/images/events/cursed_pearls.png"
+dest_files=[ "res://.import/cursed_pearls.png-4b6e725585bb5ef9b3714e8bae6b58f1.stex" ]
 
 [params]
 

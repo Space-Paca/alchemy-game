@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/Event.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/events/eventos (4).png" type="Texture" id=2]
+[ext_resource path="res://assets/images/events/hole_in_wall.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )

@@ -7,7 +7,7 @@ signal event_spawned_battle(encounter)
 onready var title_label = $Title
 onready var text_label = $VBox/TextRect/TextContainer/Text
 onready var vbox = $VBox
-onready var image = $Image
+onready var image = $ImageShadow/Image
 onready var tween = $Tween
 
 const THEME = preload("res://assets/themes/event_theme/event_theme.tres")

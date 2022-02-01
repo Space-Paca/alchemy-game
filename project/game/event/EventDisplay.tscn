@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/background/events.png" type="Texture" id=1]
 [ext_resource path="res://game/event/EventDisplay.gd" type="Script" id=2]
@@ -33,6 +33,86 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 5.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1275, -0.25, 0, 0.25, 0, 1275, -0.25, 0, 0.25, 0, 1275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.5, 5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 285, -0.25, 0, 0.25, 0, 260, -0.25, 0, 0.25, 0, 285, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.5, 5 )
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 510, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 750, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 285, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1275, 285 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 length = 64.0
 loop = true
@@ -64,7 +144,6 @@ margin_left = -190.0
 margin_top = -625.0
 margin_right = 251.0
 margin_bottom = 656.0
-rect_rotation = -82.5027
 rect_pivot_offset = Vector2( 1180, 1180 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -141,17 +220,35 @@ theme = ExtResource( 7 )
 text = "  -  This is also an example button"
 align = 0
 
-[node name="Image" type="TextureRect" parent="."]
-margin_left = 1260.0
-margin_top = 270.0
-margin_right = 1770.0
-margin_bottom = 1020.0
+[node name="ImageShadow" type="TextureRect" parent="."]
+self_modulate = Color( 0, 0, 0, 0.72549 )
+margin_left = 1275.0
+margin_top = 285.0
+margin_right = 1785.0
+margin_bottom = 1035.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Image" type="TextureRect" parent="ImageShadow"]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 494.0
+margin_bottom = 734.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ImageShadow"]
+autoplay = "Idle"
+anims/Idle = SubResource( 6 )
+anims/RESET = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

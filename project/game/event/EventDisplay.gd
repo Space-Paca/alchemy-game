@@ -23,6 +23,7 @@ const FORMAT_DICT = {
 		"(/wave)": "[/wave]"
 }
 const TEXT_SPEED = [40, 150, 350]
+const MAX_TITLE_FONT_SIZE = 100
 
 var event : Event
 var map_node : MapNode
@@ -58,6 +59,7 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	animating_text = false
 	event = new_event
 	title_label.text = tr(event.title)
+	update_title_size()
 	if override_text != "":
 		text_label.bbcode_text = translate_and_format(override_text)
 	else:
@@ -97,7 +99,15 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	yield(tween, "tween_completed")
 	animating_text = false
 	animate_buttons()
-	
+
+
+func update_title_size():
+	var font = title_label.get("custom_fonts/font")
+	font.set("size", MAX_TITLE_FONT_SIZE)
+	var font_size = MAX_TITLE_FONT_SIZE
+	while title_label.get_visible_line_count() < title_label.get_line_count():
+		font_size = font_size-1
+		font.set("size", font_size)
 
 
 func translate_and_format(text: String) -> String:

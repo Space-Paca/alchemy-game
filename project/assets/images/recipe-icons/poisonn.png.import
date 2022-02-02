@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cura-poison.png-f0348fe5495132762741f5947ce4c9dd.stex"
+path="res://.import/poisonn.png-99c55c07dfc18ae9de8fc33afda95037.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/cura-poison.png"
-dest_files=[ "res://.import/cura-poison.png-f0348fe5495132762741f5947ce4c9dd.stex" ]
+source_file="res://assets/images/recipe-icons/poisonn.png"
+dest_files=[ "res://.import/poisonn.png-99c55c07dfc18ae9de8fc33afda95037.stex" ]
 
 [params]
 

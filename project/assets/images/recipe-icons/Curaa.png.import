@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cura.png-d1c07a5a0ae4036ef3d28d145c42c5cc.stex"
+path="res://.import/Curaa.png-f44725195f47001ed82e65da6441ae97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/Cura.png"
-dest_files=[ "res://.import/Cura.png-d1c07a5a0ae4036ef3d28d145c42c5cc.stex" ]
+source_file="res://assets/images/recipe-icons/Curaa.png"
+dest_files=[ "res://.import/Curaa.png-f44725195f47001ed82e65da6441ae97.stex" ]
 
 [params]
 

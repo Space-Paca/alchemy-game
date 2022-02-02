@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-receitas3--cristal.png-b30fec950ac1e1ce89b49a5959018700.stex"
+path="res://.import/dano.png-91e39d817e7bbf03422e1fc118398e79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/icon-receitas3--cristal.png"
-dest_files=[ "res://.import/icon-receitas3--cristal.png-b30fec950ac1e1ce89b49a5959018700.stex" ]
+source_file="res://assets/images/recipe-icons/dano.png"
+dest_files=[ "res://.import/dano.png-91e39d817e7bbf03422e1fc118398e79.stex" ]
 
 [params]
 

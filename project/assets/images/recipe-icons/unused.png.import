@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poisonn.png-99c55c07dfc18ae9de8fc33afda95037.stex"
+path="res://.import/unused.png-2ea41ca45fc6be32e1722743e03ff654.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/recipe-icons/poisonn.png"
-dest_files=[ "res://.import/poisonn.png-99c55c07dfc18ae9de8fc33afda95037.stex" ]
+source_file="res://assets/images/recipe-icons/unused.png"
+dest_files=[ "res://.import/unused.png-2ea41ca45fc6be32e1722743e03ff654.stex" ]
 
 [params]
 

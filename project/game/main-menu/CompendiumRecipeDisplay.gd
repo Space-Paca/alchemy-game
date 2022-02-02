@@ -12,15 +12,17 @@ onready var description = $Background/MarginContainer/VBoxContainer/Description
 onready var memorization_progress = $Background/MemorizationProgress
 onready var memorization_label = $Background/MemorizationLabel
 onready var grid = $Background/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
-onready var title = $Background/MarginContainer/VBoxContainer/Title
+onready var title = $Background/MarginContainer/VBoxContainer/TitleContainer/Title
 onready var left_column = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
 onready var right_column = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
+onready var icon = $Icon
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
 const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
+const MAX_TITLE_FONT_SIZE = 38
 
 var combination : Combination
 var reagent_array := []
@@ -39,10 +41,21 @@ func _process(delta):
 		rect_scale.y = max(rect_scale.y - delta*SCALE_SPEED, 1)
 
 
+func update_title_size():
+	var font = title.get("custom_fonts/font")
+	font.set("size", MAX_TITLE_FONT_SIZE)
+	var font_size = MAX_TITLE_FONT_SIZE
+	while title.get_visible_line_count() < title.get_line_count():
+		font_size = font_size-1
+		font.set("size", font_size)
+
+
 func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents
+	icon.texture = combination.recipe.fav_icon
 	title.text = combination.recipe.name
+	update_title_size()
 	description.text = RecipeManager.get_description(combination.recipe)
 	grid.columns = combination.grid_size
 	

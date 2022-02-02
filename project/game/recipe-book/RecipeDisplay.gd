@@ -13,9 +13,10 @@ onready var favorite_button = $Panel/FavoriteButton
 onready var mastery_progress = $Panel/MasteryProgress
 onready var mastery_label = $Panel/MasteryLabelContainer
 onready var grid = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Left/GridContainer
-onready var title = $Panel/MarginContainer/VBoxContainer/Title
+onready var title = $Panel/MarginContainer/VBoxContainer/TitleContainer/Title
 onready var left_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
 onready var right_column = $Panel/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
+onready var icon = $Panel/Icon
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
@@ -24,6 +25,7 @@ const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
 const ALPHA_SPEED = 4
+const MAX_TITLE_FONT_SIZE = 38
 
 var combination : Combination
 var reagent_array := []
@@ -56,10 +58,21 @@ func _process(delta):
 		fav_label.modulate.a = max(fav_label.modulate.a - delta*ALPHA_SPEED, 0.0)
 
 
+func update_title_size():
+	var font = title.get("custom_fonts/font")
+	font.set("size", MAX_TITLE_FONT_SIZE)
+	var font_size = MAX_TITLE_FONT_SIZE
+	while title.get_visible_line_count() < title.get_line_count():
+		font_size = font_size-1
+		font.set("size", font_size)
+
+
 func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents
+	icon.texture = combination.recipe.fav_icon
 	title.text = combination.recipe.name
+	update_title_size()
 	description.text = RecipeManager.get_description(combination.recipe)
 	grid.columns = combination.grid_size
 	
@@ -110,6 +123,7 @@ func preview_mode(is_mastered: bool):
 		description.text = RecipeManager.get_description(combination.recipe, true)
 		bg.texture = RECIPE_MASTERED_BG
 		title.text = tr(title.text) + "+"
+		update_title_size()
 
 
 func update_mastery(new_value: int, threshold: int):
@@ -140,6 +154,7 @@ func unlock_mastery(show_message: bool, favorited: bool) -> bool:
 	mastery_label.get_node("Amount").text = ""
 	bg.texture = RECIPE_MASTERED_BG
 	title.text = tr(title.text) + "+"
+	update_title_size()
 	if show_message:
 		MessageLayer.recipe_mastered(combination, favorited)
 	

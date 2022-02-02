@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/main-menu/CompendiumRecipeDisplay.gd" type="Script" id=2]
@@ -8,9 +8,11 @@
 [ext_resource path="res://assets/images/ui/book/mastery_bg.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/recipe-icons/dano.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 28
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -82,23 +84,37 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
 margin_left = 15.0
 margin_top = 30.0
-margin_right = 287.0
+margin_right = 289.0
 margin_bottom = 370.0
 rect_min_size = Vector2( 272, 205 )
 custom_constants/separation = -30
 
-[node name="Title" type="Label" parent="Background/MarginContainer/VBoxContainer"]
-margin_right = 272.0
-margin_bottom = 37.0
-custom_fonts/font = SubResource( 1 )
+[node name="TitleContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+margin_right = 274.0
+margin_bottom = 40.0
+
+[node name="VSeparator" type="VSeparator" parent="Background/MarginContainer/VBoxContainer/TitleContainer"]
+margin_right = 45.0
+margin_bottom = 40.0
+custom_constants/separation = 45
+
+[node name="Title" type="Label" parent="Background/MarginContainer/VBoxContainer/TitleContainer"]
+margin_left = 49.0
+margin_right = 274.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 225, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
 text = "RECIPE NAME"
 align = 1
+autowrap = true
+clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
-margin_top = 7.0
-margin_right = 272.0
-margin_bottom = 207.0
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 273.0
+margin_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -162,13 +178,13 @@ margin_left = 4.0
 margin_right = 4.0
 
 [node name="Description" type="Label" parent="Background/MarginContainer/VBoxContainer"]
-margin_top = 177.0
-margin_right = 272.0
-margin_bottom = 201.0
+margin_top = 180.0
+margin_right = 274.0
+margin_bottom = 204.0
 size_flags_vertical = 8
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = -6
+custom_fonts/font = SubResource( 2 )
 align = 1
 autowrap = true
 
@@ -178,8 +194,8 @@ margin_top = 272.0
 margin_right = 287.0
 margin_bottom = 305.0
 rect_min_size = Vector2( 272, 33 )
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Memorization 0/5"
 align = 1
 __meta__ = {
@@ -208,6 +224,17 @@ margin_right = 262.644
 margin_bottom = 37.5578
 texture = ExtResource( 8 )
 expand = true
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_left = 14.0
+margin_top = 23.0
+margin_right = 62.0
+margin_bottom = 71.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="TextureRect" parent="."]
 anchor_right = 1.0

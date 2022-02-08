@@ -4,6 +4,7 @@ const SHAKE_DEGREE = 5
 const FREEZE_SPEED = 3
 const HIGHLIGHT_SPEED = 5
 const HIGHLIGHT_TARGET = 1.6
+const ROTATION_FACTOR = 50
 
 signal reached_target_pos
 signal started_dragging
@@ -75,7 +76,11 @@ func _process(delta):
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		is_drag = false
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and is_drag:
-		rect_position = get_global_mouse_position() + drag_offset
+		var target = get_global_mouse_position() + drag_offset
+		var diff = (target - rect_position)
+		rect_rotation = round(lerp(rect_rotation, sign(diff.x)*diff.length()*.9, ROTATION_FACTOR*delta))
+		rect_rotation = min(max(rect_rotation, -65), 65)
+		rect_position = target
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
 			rect_position += (target_position - rect_position)*.35*speed_mod
@@ -84,6 +89,8 @@ func _process(delta):
 					can_drag = true
 				rect_position = target_position
 				emit_signal("reached_target_pos")
+	if not is_drag:
+		rect_rotation = lerp(rect_rotation, 0, ROTATION_FACTOR*delta)
 	if orbit:
 		var dir = orbit - rect_position
 		if dir.length() > 0:

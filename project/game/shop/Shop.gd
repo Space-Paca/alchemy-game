@@ -20,20 +20,27 @@ enum States {MENU, RECIPES, REAGENTS}
 
 const DESTROY_COST := 30
 const DIALOG_SPEED := 25
+const DIALOG_SPEED_MOD := [1.0, 10.0]
+const WAIT_TIME := 0.7
+const LONG_WAIT_TIME := 1.5
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 
 var chosen_reagent_index : int
 var player : Player
 var curr_state = States.MENU
 var shown_combinations := []
+var dialog_to_use = ""
+var current_dialog_speed = 0
+
+
+func _process(dt):
+	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*5)
 
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			#Check to see if text is still rolling
-			if $Tween.is_active():
-				speed_up_dialogue()
+		if event.button_index == BUTTON_LEFT and event.pressed and dialog_to_use.length() > 0:
+			current_dialog_speed = min(current_dialog_speed+1, DIALOG_SPEED_MOD.size())
 
 
 func first_setup(combinations: Array, _player: Player):
@@ -57,32 +64,45 @@ func first_setup(combinations: Array, _player: Player):
 			recipe.hide()
 
 func setup():
+	dialog_to_use = ""
+	current_dialog_speed = 0
+	dialog_label.bbcode_text = ""
 	update_combinations()
 	update_reagents()
-	dialog_label.percent_visible = 0
-	panel.rect_size.y = 60
 
 func start():
-	dialog_label.text = tr("SHOP_DIALOG_1")
-	dialog_label.bbcode_text = tr("SHOP_DIALOG_1")
+	dialog_label.bbcode_text = ""
 	yield(get_tree(), "idle_frame") #necessary just while we dont have animation
-	start_dialogue()
+	dialog_to_use = tr("SHOP_DIALOG_1")
+	advance_dialogue()
 	#$AnimationPlayer.play("enter")
 
 
-func start_dialogue():
-	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
-	$Tween.interpolate_property(dialog_label, "percent_visible", 0, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
+func advance_dialogue():
+	if dialog_to_use[0] == '[':
+		if dialog_to_use[1] == '/':
+			dialog_label.pop()
+			while dialog_to_use[0] != ']':
+				dialog_to_use = dialog_to_use.substr(1, -1)
+			dialog_to_use = dialog_to_use.substr(1, -1)
+		else:
+			for effect in ["[shake]", "[wave]", "[wait]"]:
+				if dialog_to_use.begins_with(effect):
+					if effect == "[wait]":
+						yield(get_tree().create_timer(WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
+					elif effect == "[longwait]":
+						yield(get_tree().create_timer(LONG_WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
+					else:
+						dialog_label.append_bbcode(effect)
+					dialog_to_use = dialog_to_use.lstrip(effect)
 
-
-func speed_up_dialogue():
-	$Tween.stop_all()
-	var dur = ((1.0 - dialog_label.percent_visible)*dialog_label.get_total_character_count())/(10*DIALOG_SPEED)
-	$Tween.interpolate_property(dialog_label, "percent_visible", dialog_label.percent_visible, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
+	else:
+		dialog_label.append_bbcode(dialog_to_use[0])
+		dialog_to_use = dialog_to_use.substr(1, -1)
+	
+	if dialog_to_use.length() > 0:
+		yield(get_tree().create_timer(1.0/(DIALOG_SPEED*DIALOG_SPEED_MOD[current_dialog_speed])), "timeout")
+		advance_dialogue()
 
 
 func update_combinations():

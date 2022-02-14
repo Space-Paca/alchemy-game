@@ -320,9 +320,9 @@ margin_left = 25.0
 margin_right = 875.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 850, 340 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/italics_font = SubResource( 2 )
 custom_fonts/normal_font = SubResource( 3 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "\"Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... [shake]não precisam mais [wave]hohoho[/wave][/shake]
 
@@ -420,8 +420,6 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Tween" type="Tween" parent="."]
 
 [connection signal="mouse_entered" from="ShopMenu/RecipesButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]

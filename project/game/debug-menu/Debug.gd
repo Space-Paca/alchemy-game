@@ -17,7 +17,7 @@ signal test_map_creation
 signal event_pressed(id)
 signal artifact_pressed(name)
 
-const VERSION := "v0.3.2"
+const VERSION := "v0.3.3"
 const MAX_FLOOR := 3
 
 var floor_to_go := -1

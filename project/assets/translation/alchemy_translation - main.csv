@@ -72,11 +72,11 @@ BUY_HINT,Buy Hint,Comprar Dica
 GET_HINT,Get Hint,Pegar Dica
 LEARN,Learn,Aprender
 ALREADY_KNOWN,Already Known,Já Conhecida
-SHOP_DIALOG_1,"""Hey there honey, stop by and take a look at my wares. I collect all sorts of recipes from fallen adventurers that... [shake]don't need it anymore [wave]hohoho[/wave][/shake]
-
-I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. I would LOVE to do that for you... [shake]for a small price [wave]hohoho[/wave][/shake]""","""Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... [shake]não precisam mais [wave]hohoho[/wave][/shake]
-
-Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... [shake]por um pequeno preço [wave]hohoho[/wave][/shake]"""
+SHOP_DIALOG_1,"""Hey there honey, stop by and take a look at my wares.[shortwait] I collect all sorts of recipes from fallen adventurers that[slow]...[/slow][shake] don't need them anymore [wave][shortwait]hohoho[/wave][/shake][longwait]
+ 
+[shortwait]I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. [shortwait]I would[slow] LOVE[/slow] to do that for you[slow]...[/slow][i]for a small price...[/i] [wave][shortwait]hohoho[/wave]"" ","""Olá querido, que tal dar uma olhadinha no que eu tenho?[shortwait] Eu coleciono todo tipo de receitas de aventureiros que[slow]...[/slow] [shake] não precisam mais delas [wave][shortwait]hohoho[/wave][/shake][longwait]
+ 
+[shortwait]Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. [shortwait]Seria um[slow] PRAZER[/slow] te ajudar nisso[slow]...[/slow] [i] por um pequeno preço...[/i] [wave][shortwait]hohoho[/wave]"" "
 LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar

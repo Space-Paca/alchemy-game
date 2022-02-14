@@ -21,8 +21,13 @@ enum States {MENU, RECIPES, REAGENTS}
 const DESTROY_COST := 30
 const DIALOG_SPEED := 25
 const DIALOG_SPEED_MOD := [1.0, 10.0]
-const WAIT_TIME := 0.7
-const LONG_WAIT_TIME := 1.5
+const ALTERNATIVE_SPEED_MOD := {
+	"fast": .35,
+	"slow": 3.5,
+}
+const WAIT_TIME := 0.3
+const SHORT_WAIT_TIME := 0.15
+const LONG_WAIT_TIME := 1.0
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 
 var chosen_reagent_index : int
@@ -31,10 +36,11 @@ var curr_state = States.MENU
 var shown_combinations := []
 var dialog_to_use = ""
 var current_dialog_speed = 0
+var alternative_speed_mod = 1.0
 
 
 func _process(dt):
-	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*5)
+	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*8)
 
 
 func _input(event):
@@ -66,7 +72,9 @@ func first_setup(combinations: Array, _player: Player):
 func setup():
 	dialog_to_use = ""
 	current_dialog_speed = 0
+	alternative_speed_mod = 1.0
 	dialog_label.bbcode_text = ""
+	panel.rect_size.y = 6
 	update_combinations()
 	update_reagents()
 
@@ -81,27 +89,46 @@ func start():
 func advance_dialogue():
 	if dialog_to_use[0] == '[':
 		if dialog_to_use[1] == '/':
-			dialog_label.pop()
+			if dialog_to_use.begins_with("[/slow]") or dialog_to_use.begins_with("[/fast]"):
+				alternative_speed_mod = 1.0
+			else:
+				dialog_label.pop()
+				
 			while dialog_to_use[0] != ']':
 				dialog_to_use = dialog_to_use.substr(1, -1)
 			dialog_to_use = dialog_to_use.substr(1, -1)
 		else:
-			for effect in ["[shake]", "[wave]", "[wait]"]:
+			var found = false
+			for effect in ["[shake]", "[wave]", "[i]",\
+						   "[wait]", "[shortwait]", "[longwait]",\
+						   "[slow]", "[fast]"]:
 				if dialog_to_use.begins_with(effect):
+					found = true
 					if effect == "[wait]":
 						yield(get_tree().create_timer(WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
+					elif effect == "[shortwait]":
+						yield(get_tree().create_timer(SHORT_WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
 					elif effect == "[longwait]":
 						yield(get_tree().create_timer(LONG_WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
+					elif effect == "[slow]":
+						alternative_speed_mod = ALTERNATIVE_SPEED_MOD.slow
+					elif effect == "[fast]":
+						alternative_speed_mod = ALTERNATIVE_SPEED_MOD.fast
 					else:
 						dialog_label.append_bbcode(effect)
-					dialog_to_use = dialog_to_use.lstrip(effect)
-
+					dialog_to_use = dialog_to_use.trim_prefix(effect)
+					break
+			if not found:
+				push_error("Not a valid effect: " + dialog_to_use)
+				while dialog_to_use[0] != ']':
+					dialog_to_use = dialog_to_use.substr(1, -1)
+				dialog_to_use = dialog_to_use.substr(1, -1)
 	else:
 		dialog_label.append_bbcode(dialog_to_use[0])
 		dialog_to_use = dialog_to_use.substr(1, -1)
 	
 	if dialog_to_use.length() > 0:
-		yield(get_tree().create_timer(1.0/(DIALOG_SPEED*DIALOG_SPEED_MOD[current_dialog_speed])), "timeout")
+		yield(get_tree().create_timer(alternative_speed_mod/(DIALOG_SPEED*DIALOG_SPEED_MOD[current_dialog_speed])), "timeout")
 		advance_dialogue()
 
 

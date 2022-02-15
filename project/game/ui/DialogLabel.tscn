@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://game/ui/DialogLabel.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="DialogLabel" type="RichTextLabel"]
+margin_left = 25.0
+margin_right = 875.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 850, 340 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "\"Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... [shake]não precisam mais [wave]hohoho[/wave][/shake]
+
+Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... [shake]por um pequeno preço [wave]hohoho[/wave][/shake]\""
+text = "\"Olá querido, que tal dar uma olhadinha no que eu tenho? Eu coleciono todo tipo de receitas de aventureiros que... não precisam mais hohoho
+
+Aposto que você adoraria se livrar de alguns desses reagentes indesejados que estão sempre voltando pra sua sacola mágica. Seria um PRAZER te ajudar nisso... por um pequeno preço hohoho\""
+scroll_active = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

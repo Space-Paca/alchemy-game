@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/blacksmith/Blacksmith.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/images/background/blacksmith/seller.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/background/blacksmith/table.png" type="Texture" id=14]
+[ext_resource path="res://game/ui/DialogLabel.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
@@ -21,16 +22,6 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 32
-use_filter = true
-font_data = ExtResource( 2 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 80, 80 )
@@ -88,36 +79,24 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShopkeeperDialogue/Panel/CenterContainer/Label:visible_characters")
+tracks/3/path = NodePath("ShopkeeperDialogue/Panel:rect_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.7, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 0, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ShopkeeperDialogue/Panel:rect_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 0.4, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 900, 0 ), Vector2( 900, 0 ), Vector2( 900, 45 ) ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 1.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -165,18 +144,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("ShopkeeperDialogue/Panel/CenterContainer/Label:visible_characters")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
 
 [node name="Blacksmith" type="Control"]
 anchor_right = 1.0
@@ -196,9 +163,9 @@ __meta__ = {
 }
 
 [node name="Seller" type="TextureRect" parent="."]
-margin_left = 950.406
+margin_left = 1932.04
 margin_top = 125.475
-margin_right = 1865.42
+margin_right = 2847.05
 margin_bottom = 1042.47
 texture = ExtResource( 13 )
 __meta__ = {
@@ -206,9 +173,9 @@ __meta__ = {
 }
 
 [node name="Table" type="TextureRect" parent="."]
-margin_left = 471.398
+margin_left = -380.0
 margin_top = 775.401
-margin_right = 1291.4
+margin_right = 440.002
 margin_bottom = 1080.4
 texture = ExtResource( 14 )
 __meta__ = {
@@ -216,6 +183,7 @@ __meta__ = {
 }
 
 [node name="ShopkeeperDialogue" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1321.11, 1010.8 )
 
 [node name="Polygon2D" type="Polygon2D" parent="ShopkeeperDialogue"]
@@ -229,7 +197,7 @@ polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418
 margin_left = -383.0
 margin_top = -427.0
 margin_right = 517.0
-margin_bottom = -87.0
+margin_bottom = -427.0
 rect_min_size = Vector2( 900, 0 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -244,16 +212,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="RichTextLabel" parent="ShopkeeperDialogue/Panel/CenterContainer"]
-margin_left = 25.0
-margin_top = 5.0
-margin_right = 875.0
-margin_bottom = 335.0
-rect_min_size = Vector2( 850, 330 )
-custom_fonts/italics_font = SubResource( 2 )
-custom_fonts/normal_font = SubResource( 3 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
+[node name="DialogLabel" parent="ShopkeeperDialogue/Panel/CenterContainer" instance=ExtResource( 15 )]
 bbcode_text = "\"Oh olá olá aventureiro, bem vindo a minha forja!
 Posso ver que você carrega todo tipo de [shake]muambas[/shake] nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [shake][i]hehehe[/i][/shake]
 
@@ -262,10 +221,6 @@ text = "\"Oh olá olá aventureiro, bem vindo a minha forja!
 Posso ver que você carrega todo tipo de muambas nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas preciosas pérolas em troca, é claro hehehe
 
 Eu consigo até transfigurar elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais caro hehehe\""
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 43.9509
@@ -367,8 +322,8 @@ margin_left = 20.1167
 margin_top = -4.56604
 margin_right = 69.1167
 margin_bottom = 59.4341
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "-1 "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -512,8 +467,8 @@ margin_left = 23.0082
 margin_top = -5.68085
 margin_right = 79.0082
 margin_bottom = 87.3181
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "-2"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -602,8 +557,6 @@ margin_bottom = 895.19
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enter = SubResource( 8 )
 anims/init = SubResource( 9 )
-
-[node name="Tween" type="Tween" parent="."]
 
 [connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

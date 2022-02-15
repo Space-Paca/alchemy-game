@@ -11,7 +11,7 @@ onready var transmuting_reagent_tooltip = $TransmutingReagent/Reagent/TooltipCol
 onready var upgrading_reagent_tooltip = $UpgradingReagent/Reagent/TooltipCollision
 onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/TooltipCollision
 onready var dialog = $ShopkeeperDialogue
-onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/Label
+onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/DialogLabel
 onready var panel = $ShopkeeperDialogue/Panel
 
 var player
@@ -24,18 +24,22 @@ var chosen_reagent_upgraded : bool
 var index_map = []
 var tooltips_enabled = false
 
+func _process(dt):
+	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*6.5)
+
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			#Check to see if text is still rolling
-			if $Tween.is_active():
-				speed_up_dialogue()
+			dialog_label.speed_up_dialog()
 
 
 func setup(node, _player):
 	$AnimationPlayer.play("init")
 	main_buttons.show()
 	dialog.show()
+	dialog_label.reset()
+	panel.rect_size.y = 6
 	reagent_list.clear()
 	reagent_list.hide()
 	reagent_list.disable_tooltips()
@@ -46,23 +50,11 @@ func setup(node, _player):
 	remove_transmuting_possibilities()
 
 func start():
-	dialog_label.bbcode_text = tr("REAGENTSMITH_DIALOG_1")
 	$AnimationPlayer.play("enter")
 
 
 func start_dialogue():
-	var dur = dialog_label.get_total_character_count()/DIALOG_SPEED
-	$Tween.interpolate_property(dialog_label, "visible_characters", 0, dialog_label.get_total_character_count()-1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.9, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
-
-
-func speed_up_dialogue():
-	$Tween.stop_all()
-	var dur = ((1.0 - dialog_label.percent_visible)*dialog_label.get_total_character_count())/(10*DIALOG_SPEED)
-	$Tween.interpolate_property(dialog_label, "percent_visible", dialog_label.percent_visible, 1, dur, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.interpolate_property(panel, "rect_size:y", panel.rect_size.y, 340, dur*.9, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
+	dialog_label.start_dialog(tr("REAGENTSMITH_DIALOG_1"))
 
 
 func update_reagent_list(type: String):

@@ -3,7 +3,7 @@ extends RichTextLabel
 const DIALOG_SPEED := 25
 const DIALOG_SPEED_MOD := [1.0, 8.0, 100.0]
 const ALTERNATIVE_SPEED_MOD := {
-	"fast": .35,
+	"fast": .4,
 	"slow": 3.5,
 }
 const WAIT_TIME := 0.3
@@ -25,7 +25,6 @@ func reset():
 func speed_up_dialog():
 	 if dialog_to_use.length() > 0:
 			current_dialog_speed = min(current_dialog_speed+1, DIALOG_SPEED_MOD.size()-1)
-			print(current_dialog_speed, DIALOG_SPEED_MOD[current_dialog_speed])
 
 
 func start_dialog(dialog):

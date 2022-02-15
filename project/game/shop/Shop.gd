@@ -66,7 +66,6 @@ func setup():
 
 
 func start():
-	dialog_label.bbcode_text = ""
 	yield(get_tree(), "idle_frame") #necessary just while we dont have animation
 	#$AnimationPlayer.play("enter")
 	dialog_label.start_dialog(tr("SHOP_DIALOG_1"))

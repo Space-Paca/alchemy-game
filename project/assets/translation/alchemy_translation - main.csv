@@ -57,13 +57,13 @@ UPGRADE_REAGENT,Upgrade Reagent,Melhorar Reagente
 TRANSFIGURE_REAGENT,Transfigure Reagent,Transfigurar Reagente
 CONFIRM_UPGRADE,Confirm Upgrade,Confirmar Melhoria
 CONFIRM_TRANSFIGURATION,Confirm Transfiguration,Confirmar Transfiguração
-REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge!
-I can see you carry all sorts of [shake]trinkets[/shake] in your bag... I can improve them, oh yes yes! ...if you spare me some [wave]precious pearls[/wave] in return, of course [shake][i]hehehe[/i][/shake]
-                  
-I can even [wave]transfigure[/wave] them into better reagents, oh yes yes! But that will cost [shake]extra[/shake] [shake][i]hehehe[/i][/shake]""","""Oh olá olá aventureiro, bem vindo a minha forja!
-Posso ver que você carrega todo tipo de [shake]muambas[/shake] nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [shake][i]hehehe[/i][/shake]
-              
-Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais [shake]caro[/shake] [shake][i]hehehe[/i][/shake]"""
+REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge![wait]
+I can see you carry all sorts of[slow] [shake]trinkets[/shake][/slow] in your ba[slow]g...[/slow][shortwait] I can improve them, [fast]oh yes yes![/fast][wait][slow] ...[/slow]if you spare me some [wave]precious pearls[/wave] in return, of course[shake][i][slow] hehehe[/slow][/i][/shake]
+ 
+[shortwait]I can even [wave]transfigure[/wave] them into better reagents,[fast] oh yes yes![/fast][wait] But that will cost [shake]extra[i][slow] hehehe[/slow][/i][/shake]""","""Oh olá olá aventureiro, bem vindo a minha forja![wait]
+Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacol[slow]a...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro[slow] [shake][i]hehehe[/i][/shake][/slow]
+ 
+[shortwait]Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores,[fast] oh sim sim![/fast] Mas isso aí saí um pouco [shake]mais caro[slow] [i]hehehe[/i][/shake]""[/slow]"
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
 RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
 DESTROY_REAGENT,Are you sure you want to destroy %s for the cost of %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?

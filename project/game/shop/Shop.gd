@@ -59,6 +59,7 @@ func first_setup(combinations: Array, _player: Player):
 
 
 func setup():
+	$AnimationPlayer.play("init")
 	dialog_label.reset()
 	panel.rect_size.y = 6
 	update_combinations()
@@ -66,10 +67,12 @@ func setup():
 
 
 func start():
-	yield(get_tree(), "idle_frame") #necessary just while we dont have animation
-	#$AnimationPlayer.play("enter")
-	dialog_label.start_dialog(tr("SHOP_DIALOG_1"))
+	$AnimationPlayer.play("enter")
 	
+
+
+func start_dialog():
+	dialog_label.start_dialog(tr("SHOP_DIALOG_1"))
 
 
 func update_combinations():

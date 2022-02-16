@@ -1,112 +1,185 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/images/map/mapa03_masmorra_explorado.jpg" type="Texture" id=1]
-[ext_resource path="res://game/map/Floor1Positions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/map/MapPosition.gd" type="Script" id=2]
 
-[node name="FixedPositions" instance=ExtResource( 2 )]
+[node name="FixedPositions" type="Control"]
+rect_pivot_offset = Vector2( 1151, 830 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Guideline" parent="." index="0"]
-visible = true
+[node name="Guideline" type="TextureRect" parent="."]
+margin_left = -750.0
+margin_top = -515.0
+margin_right = 2530.0
+margin_bottom = 1739.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Center" parent="." index="1"]
+[node name="Center" type="Node2D" parent="."]
 position = Vector2( 870.566, 447.896 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition2"), NodePath("../MapPosition7"), NodePath("../MapPosition6"), NodePath("../MapPosition5"), NodePath("../MapPosition16"), NodePath("../MapPosition4") ]
 
-[node name="MapPosition1" parent="." index="2"]
-position = Vector2( 1103.49, 304.883 )
+[node name="MapPosition1" type="Node2D" parent="."]
+position = Vector2( 1240.43, 172.433 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition7"), NodePath("../MapPosition6"), NodePath("../MapPosition20"), NodePath("../MapPosition21"), NodePath("../MapPosition22"), NodePath("../MapPosition8") ]
 
-[node name="MapPosition2" parent="." index="3"]
+[node name="MapPosition2" type="Node2D" parent="."]
 position = Vector2( 1261.45, 671.317 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition3"), NodePath("../MapPosition7"), NodePath("../MapPosition10"), NodePath("../MapPosition8"), NodePath("../MapPosition9") ]
 
-[node name="MapPosition3" parent="." index="4"]
-position = Vector2( 1177.37, 854.745 )
+[node name="MapPosition3" type="Node2D" parent="."]
+position = Vector2( 1079.86, 866.637 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition2"), NodePath("../MapPosition12"), NodePath("../MapPosition11"), NodePath("../MapPosition14"), NodePath("../MapPosition30") ]
 
-[node name="MapPosition4" parent="." index="5"]
-position = Vector2( 469.505, 642.187 )
+[node name="MapPosition4" type="Node2D" parent="."]
+position = Vector2( 544.42, 657.17 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition14"), NodePath("../MapPosition15"), NodePath("../MapPosition5"), NodePath("../MapPosition30"), NodePath("../MapPosition12") ]
 
-[node name="MapPosition5" parent="." index="6"]
+[node name="MapPosition5" type="Node2D" parent="."]
 position = Vector2( 597.144, 325.349 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition4"), NodePath("../MapPosition16"), NodePath("../MapPosition18") ]
 
-[node name="MapPosition6" parent="." index="7"]
-position = Vector2( 997.62, 270.286 )
+[node name="MapPosition6" type="Node2D" parent="."]
+position = Vector2( 896.598, 328.654 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition19"), NodePath("../MapPosition7") ]
 
-[node name="MapPosition7" parent="." index="8"]
+[node name="MapPosition7" type="Node2D" parent="."]
 position = Vector2( 1292.24, 370.94 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition6"), NodePath("../MapPosition22"), NodePath("../MapPosition8"), NodePath("../MapPosition2") ]
 
-[node name="MapPosition8" parent="." index="9"]
+[node name="MapPosition8" type="Node2D" parent="."]
 position = Vector2( 1574.97, 459.8 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition2"), NodePath("../MapPosition7"), NodePath("../MapPosition22"), NodePath("../MapPosition9") ]
 
-[node name="MapPosition9" parent="." index="10"]
-position = Vector2( 1685.53, 616.521 )
+[node name="MapPosition9" type="Node2D" parent="."]
+position = Vector2( 1690.29, 647.44 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition2"), NodePath("../MapPosition8"), NodePath("../MapPosition24") ]
 
-[node name="MapPosition10" parent="." index="11"]
-position = Vector2( 1386.99, 836.127 )
+[node name="MapPosition10" type="Node2D" parent="."]
+position = Vector2( 1410.99, 1130.13 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition2"), NodePath("../MapPosition11") ]
 
-[node name="MapPosition11" parent="." index="12"]
-position = Vector2( 1110.62, 1032.85 )
+[node name="MapPosition11" type="Node2D" parent="."]
+position = Vector2( 1146.62, 1160.85 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition3"), NodePath("../MapPosition12"), NodePath("../MapPosition10") ]
 
-[node name="MapPosition12" parent="." index="13"]
+[node name="MapPosition12" type="Node2D" parent="."]
 position = Vector2( 867.128, 1160.27 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition11"), NodePath("../MapPosition3"), NodePath("../MapPosition4"), NodePath("../MapPosition14"), NodePath("../MapPosition30"), NodePath("../MapPosition31") ]
 
-[node name="MapPosition13" parent="." index="14"]
-position = Vector2( 588.258, 1171.22 )
+[node name="MapPosition13" type="Node2D" parent="."]
+position = Vector2( 1024.19, 1337.53 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition31") ]
 
-[node name="MapPosition14" parent="." index="15"]
-position = Vector2( 351.847, 1035.11 )
+[node name="MapPosition14" type="Node2D" parent="."]
+position = Vector2( 336.728, 951.955 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition15"), NodePath("../MapPosition29"), NodePath("../MapPosition30"), NodePath("../MapPosition4"), NodePath("../MapPosition12"), NodePath("../MapPosition3") ]
 
-[node name="MapPosition15" parent="." index="16"]
-position = Vector2( 133.378, 703.026 )
+[node name="MapPosition15" type="Node2D" parent="."]
+position = Vector2( 133.378, 762.486 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition14"), NodePath("../MapPosition4"), NodePath("../MapPosition28") ]
 
-[node name="MapPosition16" parent="." index="17"]
+[node name="MapPosition16" type="Node2D" parent="."]
 position = Vector2( 384.252, 343.531 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition17"), NodePath("../MapPosition5") ]
 
-[node name="MapPosition17" parent="." index="18"]
+[node name="MapPosition17" type="Node2D" parent="."]
 position = Vector2( 141.339, 114.531 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition16"), NodePath("../MapPosition18"), NodePath("../MapPosition15") ]
 
-[node name="MapPosition18" parent="." index="19"]
+[node name="MapPosition18" type="Node2D" parent="."]
 position = Vector2( 481.634, 33.6906 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition17"), NodePath("../MapPosition19"), NodePath("../MapPosition5") ]
 
-[node name="MapPosition19" parent="." index="20"]
-position = Vector2( 830.811, 10.8274 )
+[node name="MapPosition19" type="Node2D" parent="."]
+position = Vector2( 877.954, 33.2766 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition6"), NodePath("../MapPosition18") ]
 
-[node name="MapPosition20" parent="." index="21"]
+[node name="MapPosition20" type="Node2D" parent="."]
 position = Vector2( 1016.21, 52.4308 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition21") ]
 
-[node name="MapPosition21" parent="." index="22"]
+[node name="MapPosition21" type="Node2D" parent="."]
 position = Vector2( 1360.71, 36.8657 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition20") ]
 
-[node name="MapPosition22" parent="." index="23"]
-position = Vector2( 1662.05, 209.52 )
+[node name="MapPosition22" type="Node2D" parent="."]
+position = Vector2( 1675.5, 202.793 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition1"), NodePath("../MapPosition7"), NodePath("../MapPosition8"), NodePath("../MapPosition23") ]
 
-[node name="MapPosition23" parent="." index="24"]
-position = Vector2( 2266.14, 197.307 )
+[node name="MapPosition23" type="Node2D" parent="."]
+position = Vector2( 2259.42, 217.489 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition22"), NodePath("../MapPosition25") ]
 
-[node name="MapPosition24" parent="." index="25"]
+[node name="MapPosition24" type="Node2D" parent="."]
 position = Vector2( 1950.48, 521.609 )
-children = [ NodePath("../MapPosition23"), NodePath("../MapPosition11") ]
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition9") ]
 
-[node name="MapPosition25" parent="." index="26"]
+[node name="MapPosition25" type="Node2D" parent="."]
 position = Vector2( 2265.69, 722.71 )
+script = ExtResource( 2 )
 children = [ NodePath("../MapPosition26"), NodePath("../MapPosition23") ]
 
-[node name="MapPosition26" parent="." index="27"]
+[node name="MapPosition26" type="Node2D" parent="."]
 position = Vector2( 1921.19, 1408.31 )
+script = ExtResource( 2 )
 children = [ NodePath("../MapPosition25"), NodePath("../MapPosition32") ]
 
-[node name="MapPosition27" parent="." index="28"]
+[node name="MapPosition27" type="Node2D" parent="."]
 position = Vector2( -121.342, 489.814 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition28") ]
 
-[node name="MapPosition28" parent="." index="29"]
+[node name="MapPosition28" type="Node2D" parent="."]
 position = Vector2( -273.058, 759.687 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition27"), NodePath("../MapPosition15") ]
 
-[node name="MapPosition29" parent="." index="30"]
+[node name="MapPosition29" type="Node2D" parent="."]
 position = Vector2( 139.538, 1216.9 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition14"), NodePath("../MapPosition30"), NodePath("../MapPosition31") ]
 
-[node name="MapPosition30" parent="." index="31"]
-position = Vector2( 343.351, 1164.96 )
+[node name="MapPosition30" type="Node2D" parent="."]
+position = Vector2( 416.426, 1164.96 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition29"), NodePath("../MapPosition14"), NodePath("../MapPosition31"), NodePath("../MapPosition12") ]
 
-[node name="MapPosition31" parent="." index="32"]
-position = Vector2( 392.555, 1326.5 )
+[node name="MapPosition31" type="Node2D" parent="."]
+position = Vector2( 508.468, 1301.3 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition13"), NodePath("../MapPosition30"), NodePath("../MapPosition29") ]
 
-[node name="MapPosition32" parent="." index="33"]
+[node name="MapPosition32" type="Node2D" parent="."]
 position = Vector2( 1531.44, 1405.21 )
+script = ExtResource( 2 )
+children = [ NodePath("../MapPosition26"), NodePath("../MapPosition10") ]

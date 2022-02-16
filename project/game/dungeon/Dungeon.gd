@@ -279,8 +279,8 @@ func load_level(data):
 	map.connect("finished_active_paths", self, "_on_map_finished_revealing_map")
 	map.set_player(player)
 	add_child(map)
-	map.load_map(data.map)
 	map.set_level(level)
+	map.load_map(data.map)
 	map.connect("map_node_pressed", self, "_on_map_node_selected")
 	
 	for grid_size in combinations:
@@ -308,6 +308,7 @@ func create_level(level: int, debug := false):
 	add_child(map)
 	var smith_amount = 1 if UnlockManager.is_misc_unlocked("REAGENT_SMITH") else 0
 	var lab_amount = 1 if UnlockManager.is_misc_unlocked("LABORATORY") else 0
+	map.set_level(level)
 	match level:
 		1:
 			# ( *∀*)y─┛
@@ -320,7 +321,6 @@ func create_level(level: int, debug := false):
 			map.create_map(level, 8, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		var invalid:
 			assert(false, str("Invalid level: ", invalid))
-	map.set_level(level)
 	map.connect("map_node_pressed", self, "_on_map_node_selected")
 	
 	for grid_size in combinations:

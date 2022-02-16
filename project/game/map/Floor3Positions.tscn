@@ -6,6 +6,7 @@
 [node name="FixedPositions" instance=ExtResource( 2 )]
 
 [node name="Guideline" parent="." index="0"]
+visible = true
 texture = ExtResource( 1 )
 
 [node name="Center" parent="." index="1"]
@@ -78,16 +79,19 @@ position = Vector2( 1360.71, 36.8657 )
 position = Vector2( 1662.05, 209.52 )
 
 [node name="MapPosition23" parent="." index="24"]
-position = Vector2( 2056.84, 197.307 )
+position = Vector2( 2266.14, 197.307 )
 
 [node name="MapPosition24" parent="." index="25"]
 position = Vector2( 1950.48, 521.609 )
+children = [ NodePath("../MapPosition23"), NodePath("../MapPosition11") ]
 
 [node name="MapPosition25" parent="." index="26"]
 position = Vector2( 2265.69, 722.71 )
+children = [ NodePath("../MapPosition26"), NodePath("../MapPosition23") ]
 
 [node name="MapPosition26" parent="." index="27"]
 position = Vector2( 1921.19, 1408.31 )
+children = [ NodePath("../MapPosition25"), NodePath("../MapPosition32") ]
 
 [node name="MapPosition27" parent="." index="28"]
 position = Vector2( -121.342, 489.814 )

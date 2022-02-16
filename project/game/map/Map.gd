@@ -65,8 +65,9 @@ func _ready():
 
 func duplicate_stored_positions(level: int):
 	var floor_positions = FLOOR_POSITIONS[level].instance()
-	add_child(floor_positions)
+	print("getting map: " + str(level))
 	stored_map_positions = floor_positions.duplicate(7)
+	add_child(stored_map_positions)
 
 
 func _process(dt):
@@ -321,6 +322,7 @@ func create_map(level, normal_encounters:int, elite_encounters:int, smiths:int=1
 		var map_valid = true
 		
 		randomize()
+		print("setting positions")
 		positions = stored_map_positions.duplicate(7)
 		center_position = positions.get_node("Center")
 		nodes.rect_position = center_position.position

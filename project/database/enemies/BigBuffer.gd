@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/BigBuffer.tscn"
 var image = "res://assets/images/enemies/buffing big enemy/idle.png"
 var name = "EN_BIG_BUFFER"
 var sfx = "goblintaur"
@@ -21,12 +22,19 @@ var first_state = ["temp_buff"]
 
 var actions = {
 	"temp_buff": [
-		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true}
+		{"name": "status", "status_name": "temp_strength", "value": 10, "target": "self", "positive": true, "animation": "idle"}
 	],
 	"perm_buff": [
-		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true}
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": "idle"}
 	],
 	"attack": [
-		{"name": "damage", "value": [3,5], "type": "regular"},
+		{"name": "damage", "value": [3,5], "type": "regular", "animation": "atk2"},
 	]
 }
+
+var idle_anim_name = "stand"
+var death_anim_name = "death"
+
+
+func _init():
+	anim_precedes_idle = ["atk", "atk2", "dmg", "idle"]

@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://game/enemies/Enemy.gd"
 }, {
 "base": "Reference",
+"class": "EnemyData",
+"language": "GDScript",
+"path": "res://database/EnemyData.gd"
+}, {
+"base": "Reference",
 "class": "EnemyLogic",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyLogic.gd"
@@ -131,6 +136,7 @@ _global_script_class_icons={
 "Combination": "",
 "Encounter": "",
 "Enemy": "",
+"EnemyData": "",
 "EnemyLogic": "",
 "Event": "",
 "EventOption": "",

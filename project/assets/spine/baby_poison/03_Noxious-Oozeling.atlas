@@ -1,0 +1,55 @@
+
+03_Noxious-Oozeling.png
+size: 236,61
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body_ooze1
+  rotate: false
+  xy: 188, 5
+  size: 33, 54
+  orig: 33, 54
+  offset: 0, 0
+  index: -1
+body_ooze2
+  rotate: true
+  xy: 51, 10
+  size: 22, 78
+  orig: 22, 99
+  offset: 0, 21
+  index: -1
+drop1
+  rotate: true
+  xy: 131, 17
+  size: 15, 14
+  orig: 15, 15
+  offset: 0, 1
+  index: -1
+head
+  rotate: false
+  xy: 2, 2
+  size: 47, 57
+  orig: 47, 57
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 147, 4
+  size: 39, 55
+  orig: 40, 56
+  offset: 0, 1
+  index: -1
+pool
+  rotate: false
+  xy: 51, 34
+  size: 94, 25
+  orig: 94, 26
+  offset: 0, 0
+  index: -1
+pool_tiny
+  rotate: true
+  xy: 223, 22
+  size: 37, 11
+  orig: 39, 11
+  offset: 1, 0
+  index: -1

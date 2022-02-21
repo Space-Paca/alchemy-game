@@ -1059,7 +1059,7 @@ func _on_enemy_acted(enemy, actions):
 		var args = action[1]
 		if name == "damage":
 			for i in range(0, args.amount):
-				enemy.play_animation("attack")
+				enemy.play_animation(args.animation)
 				var func_state = player.take_damage(enemy, args.value + \
 													enemy.get_damage_modifiers(),\
 													args.type)
@@ -1072,11 +1072,10 @@ func _on_enemy_acted(enemy, actions):
 					yield(player, "resolved")
 				else:
 					yield(get_tree().create_timer(.5), "timeout")
-
 			enemy.remove_status("temp_strength")
 		if name == "drain":
 			for i in range(0, args.amount):
-				enemy.play_animation("drain")
+				enemy.play_animation(args.animation)
 				var func_state = player.drain(enemy, args.value + \
 											  enemy.get_damage_modifiers())
 				if i == args.amount - 1:
@@ -1104,11 +1103,13 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "shield":
+			enemy.play_animation(args.animation)
 			enemy.gain_shield(args.value)
 			enemy.remove_intent()
 			#Wait before going to next action/enemy
 			yield(enemy, "resolved")
 		elif name == "status":
+			enemy.play_animation(args.animation)
 			var value = args.value if args.has("value") else 1
 			var reduce = args.reduce if args.has("reduce") else false
 			var extra_args = args.extra_args if args.has("extra_args") else {}
@@ -1131,6 +1132,7 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "heal":
+			enemy.play_animation(args.animation)
 			var value = args.value
 			if args.target == "self":
 				var func_state = enemy.heal(value)
@@ -1149,12 +1151,14 @@ func _on_enemy_acted(enemy, actions):
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.5), "timeout")
 		elif name == "spawn":
+			enemy.play_animation(args.animation)
 			var minion = args.has("minion")
 			spawn_new_enemy(enemy, args.enemy, minion)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
 			yield(get_tree().create_timer(.6), "timeout")
 		elif name == "add_reagent":
+			enemy.play_animation(args.animation)
 			for _i in range(0, args.value):
 				AudioManager.play_sfx("create_trash_reagent")
 				var reagent = create_reagent(args.type)

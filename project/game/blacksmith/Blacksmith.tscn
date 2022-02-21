@@ -256,6 +256,8 @@ text = "\"Oh olá olá aventureiro, bem vindo a minha forja!
 Posso ver que você carrega todo tipo de muambas nessa sua sacola... Eu posso melhorá-las, oh sim sim! ...isso se você puder compartilhar algumas dessas preciosas pérolas em troca, é claro hehehe
 
 Eu consigo até transfigurar elas em reagentes melhores, oh sim sim! Mas isso saí um pouco mais caro hehehe\""
+voice_name = "smith"
+amount_of_voices = 7
 
 [node name="BackButton" type="Button" parent="."]
 margin_left = 43.9509

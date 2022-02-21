@@ -86,7 +86,6 @@ func setup_sfxs():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and file_name != "." and file_name != "..":
-				#Found enemy sfx file, creating data on memory
 				SFXS[file_name.replace(".tres", "")] = load(SFX_PATH + file_name)
 				
 			file_name = dir.get_next()

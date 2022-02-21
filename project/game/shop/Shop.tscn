@@ -512,6 +512,7 @@ __meta__ = {
 }
 
 [node name="DialogLabel" parent="ShopMenu/ShopkeeperDialogue/Panel/CenterContainer" instance=ExtResource( 25 )]
+amount_of_voices = 15
 
 [node name="RecipeMenu" type="CenterContainer" parent="."]
 visible = false

@@ -28,6 +28,8 @@ const HL_MAX_THICKNESS = 15
 const HL_MIN_THICKNESS = 2
 const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
 
+const VARIANT_IDLE_CHANCE = .1
+
 var logic
 var data
 var enemy_type
@@ -43,8 +45,8 @@ func _ready():
 	set_button_disabled(true)
 	
 	#Setup idle animation
-	animation.play(data.idle_anim_name)
-	animation.seek(rand_range(0, animation.current_animation_length))
+#	animation.play(data.idle_anim_name)
+#	animation.seek(rand_range(0, animation.current_animation_length))
 #	randomize()
 #	animation.seek(rand_range(0.0, 2.0))
 #	randomize()
@@ -58,6 +60,10 @@ func _ready():
 	tween.interpolate_property(sprite, "modulate", Color.black, Color.white,
 			.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	tween.start()
+	if data.entry_anim_name:
+		animation.play(data.entry_anim_name)
+	else:
+		animation.play(data.idle_anim_name)
 	
 # warning-ignore:return_value_discarded
 	self.connect("stun", self, "stun")
@@ -566,11 +572,13 @@ func _on_TooltipCollision_enable_tooltip():
 							 tip.text, tip.title_image, tip.subtitle, true)
 
 
-func _on_Sprite_animation_complete(_animation_state, track_entry,
-		_event):
+func _on_Sprite_animation_complete(_animation_state, track_entry, _event):
 	var anim_name = track_entry.get_animation().get_anim_name()
-	
 	if anim_name == data.death_anim_name:
 		emit_signal("died", self)
+	elif anim_name == data.idle_anim_name:
+		var variant_idle = data.get_variant_idle()
+		if variant_idle and randf() < VARIANT_IDLE_CHANCE:
+			animation.play(variant_idle)
 	elif data.should_idle(anim_name):
 		animation.play(data.idle_anim_name)

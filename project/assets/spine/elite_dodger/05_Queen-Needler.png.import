@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lobo.png-f39fa1d9c4037556686bc50aa1072a6b.stex"
+path="res://.import/05_Queen-Needler.png-a59e4a56cd048a194fcfa8ad992f55b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/craburtle e lobo/lobo.png"
-dest_files=[ "res://.import/lobo.png-f39fa1d9c4037556686bc50aa1072a6b.stex" ]
+source_file="res://assets/spine/elite_dodger/05_Queen-Needler.png"
+dest_files=[ "res://.import/05_Queen-Needler.png-a59e4a56cd048a194fcfa8ad992f55b1.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

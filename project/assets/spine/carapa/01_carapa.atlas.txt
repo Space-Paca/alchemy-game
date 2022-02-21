@@ -1,0 +1,104 @@
+
+01_carapa.png
+size: 1589,318
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_carapa/arm2
+  rotate: true
+  xy: 1036, 10
+  size: 101, 58
+  orig: 101, 58
+  offset: 0, 0
+  index: -1
+01_carapa/berserker/arm1b
+  rotate: true
+  xy: 901, 2
+  size: 109, 133
+  orig: 109, 133
+  offset: 0, 0
+  index: -1
+01_carapa/berserker/arm2
+  rotate: true
+  xy: 1529, 10
+  size: 101, 58
+  orig: 101, 58
+  offset: 0, 0
+  index: -1
+01_carapa/berserker/body
+  rotate: true
+  xy: 307, 23
+  size: 293, 295
+  orig: 413, 392
+  offset: 46, 17
+  index: -1
+01_carapa/berserker/hand1
+  rotate: false
+  xy: 1148, 48
+  size: 109, 133
+  orig: 109, 133
+  offset: 0, 0
+  index: -1
+01_carapa/berserker/hand2b
+  rotate: false
+  xy: 1291, 113
+  size: 130, 203
+  orig: 130, 203
+  offset: 0, 0
+  index: -1
+01_carapa/berserker2/body
+  rotate: true
+  xy: 2, 23
+  size: 293, 303
+  orig: 413, 392
+  offset: 46, 17
+  index: -1
+01_carapa/berserker2/hand1b
+  rotate: false
+  xy: 1148, 183
+  size: 141, 133
+  orig: 147, 133
+  offset: 0, 0
+  index: -1
+01_carapa/berserker2/hand2b
+  rotate: true
+  xy: 901, 113
+  size: 203, 245
+  orig: 203, 270
+  offset: 0, 0
+  index: -1
+01_carapa/body
+  rotate: true
+  xy: 604, 23
+  size: 293, 295
+  orig: 413, 392
+  offset: 46, 17
+  index: -1
+01_carapa/brave/hand1b
+  rotate: true
+  xy: 1259, 2
+  size: 109, 133
+  orig: 109, 133
+  offset: 0, 0
+  index: -1
+01_carapa/hand1
+  rotate: true
+  xy: 1394, 2
+  size: 109, 133
+  orig: 109, 133
+  offset: 0, 0
+  index: -1
+01_carapa/hand2b
+  rotate: false
+  xy: 1423, 113
+  size: 130, 203
+  orig: 130, 203
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 1096, 97
+  size: 9, 14
+  orig: 9, 14
+  offset: 0, 0
+  index: -1

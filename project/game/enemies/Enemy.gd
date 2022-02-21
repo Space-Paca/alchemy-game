@@ -5,10 +5,9 @@ signal acted
 signal action
 signal selected
 signal action_resolved
-signal animation_finished
 signal resolved
 
-onready var animation = $Sprite/AnimationPlayer
+onready var animation = $AnimationPlayer
 onready var button = $Sprite/Button
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
@@ -44,12 +43,13 @@ func _ready():
 	set_button_disabled(true)
 	
 	#Setup idle animation
-	animation.play("idle")
-	randomize()
-	animation.seek(rand_range(0.0, 2.0))
-	randomize()
-	_playback_speed = rand_range(1.0, 1.3)
-	animation.playback_speed = _playback_speed
+	animation.play(data.idle_anim_name)
+	animation.seek(rand_range(0, animation.current_animation_length))
+#	randomize()
+#	animation.seek(rand_range(0.0, 2.0))
+#	randomize()
+#	_playback_speed = rand_range(1.0, 1.3)
+#	animation.playback_speed = _playback_speed
 	
 	#Setup spawn animation
 	scale = Vector2(0,0)
@@ -91,13 +91,14 @@ func die(_reason=false):
 	disable()
 	
 	#Death animation
-	tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
-	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	tween.start()
-	
-	yield(get_tree().create_timer(.5), "timeout")
-	modulate = Color(1,1,1,0)
-	emit_signal("died", self)
+	animation.play(data.death_anim_name)
+#	tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
+#	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+#	tween.start()
+#
+#	yield(get_tree().create_timer(.5), "timeout")
+#	modulate = Color(1,1,1,0)
+#	emit_signal("died", self)
 
 
 func set_grayscale(value: float):
@@ -269,31 +270,31 @@ func update_actions():
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var amount = action.amount if action.has("amount") else 1
 			amount = get_random_value(amount) if amount is Array else amount
-			act = ["damage", {"value": value, "type": action.type, "amount": amount}]
+			act = ["damage", {"value": value, "type": action.type, "amount": amount, "animation": action.animation}]
 		elif action.name == "drain":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var amount = action.amount if action.has("amount") else 1
-			act = ["drain", {"value": value, "amount": amount}]
+			act = ["drain", {"value": value, "amount": amount, "animation": action.animation}]
 		elif action.name == "self_destruct":
 			var value = get_random_value(action.value) if action.value is Array else action.value
-			act = ["self_destruct", {"value": value}]
+			act = ["self_destruct", {"value": value, "animation": action.animation}]
 		elif action.name == "shield":
 			var value = get_random_value(action.value) if action.value is Array else action.value
-			act = ["shield", {"value": value}]
+			act = ["shield", {"value": value, "animation": action.animation}]
 		elif action.name == "heal":
 			var value = get_random_value(action.value) if action.value is Array else action.value
-			act = ["heal", {"value": value, "target": action.target}]
+			act = ["heal", {"value": value, "target": action.target, "animation": action.animation}]
 		elif action.name == "status":
 			var value = get_random_value(action.value) if action.value is Array else action.value
 			var reduce = action.reduce if action.has("reduce") else false
 			var extra_args = action.extra_args if action.has("extra_args") else {}
 			act = ["status", {"status": action.status_name, "value": value, \
 							  "target": action.target, "positive": action.positive, \
-							  "reduce": reduce, "extra_args": extra_args}]
+							  "reduce": reduce, "extra_args": extra_args, "animation": action.animation}]
 		elif action.name == "spawn":
-			act = ["spawn", {"enemy": action.enemy, "minion": action.has("minion")}]
+			act = ["spawn", {"enemy": action.enemy, "minion": action.has("minion"), "animation": action.animation}]
 		elif action.name == "add_reagent":
-			act = ["add_reagent", {"type": action.type, "value": action.value}]
+			act = ["add_reagent", {"type": action.type, "value": action.value, "animation": action.animation}]
 		elif action.name == "idle":
 			var sfx = {"sfx": action.sfx} if action.has("sfx") else {}
 			act = ["idle", sfx]
@@ -315,14 +316,14 @@ func get_random_value(interval : Array):
 	return randi()%(interval[1]-interval[0]+1) + interval[0]
 
 
-func play_animation(name):
+func play_animation(name: String):
+#	animation.play(name)
+#	yield(animation, "animation_finished")
+#	animation.play("idle")
+#	randomize()
+#	animation.seek(rand_range(0.0, 2.0))
+#	animation.playback_speed = _playback_speed
 	animation.play(name)
-	yield(animation, "animation_finished")
-	emit_signal("animation_finished")
-	animation.play("idle")
-	randomize()
-	animation.seek(rand_range(0.0, 2.0))
-	animation.playback_speed = _playback_speed
 
 
 func action_resolved():
@@ -373,11 +374,13 @@ func disable():
 	for intent in $Intents.get_children():
 		intent.disable()
 
+
 #Called when player dies
 func enable():
 	$StatusBar.enable()
 	for intent in $Intents.get_children():
 		intent.enable()
+
 
 func set_image(new_texture):
 	var margin = 40
@@ -385,15 +388,16 @@ func set_image(new_texture):
 	var h = new_texture.get_height() - margin
 	
 	#Update texture
-	$Sprite.texture = new_texture
+#	$Sprite.texture = new_texture
 
 	#Sprite Position
-	$Sprite.position.x = 0
-	$Sprite.position.y = 0
+#	$Sprite.position.x = 0
+#	$Sprite.position.y = 0
 
 	#Update health bar position
 	$HealthBar.position.x = -$HealthBar.get_width()*$HealthBar.scale.x/2
-	$HealthBar.position.y = $Sprite.position.y + h + HEALTH_BAR_MARGIN - h/2
+#	$HealthBar.position.y = $Sprite.position.y + h + HEALTH_BAR_MARGIN - h/2
+	$HealthBar.position.y = h/2 + HEALTH_BAR_MARGIN
 	
 	#Update status bar position
 	$StatusBar.rect_position.x = $HealthBar.position.x
@@ -402,6 +406,7 @@ func set_image(new_texture):
 	
 	#Update intents position
 	$Intents.position.y = $Sprite.position.y -INTENT_MARGIN - INTENT_H - h/2
+	$Intents.position.y = -INTENT_MARGIN - INTENT_H - h/2
 	
 	# Button
 	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
@@ -559,3 +564,13 @@ func _on_TooltipCollision_enable_tooltip():
 	var tip = get_tooltip()
 	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
 							 tip.text, tip.title_image, tip.subtitle, true)
+
+
+func _on_Sprite_animation_complete(_animation_state, track_entry,
+		_event):
+	var anim_name = track_entry.get_animation().get_anim_name()
+	
+	if anim_name == data.death_anim_name:
+		emit_signal("died", self)
+	elif data.should_idle(anim_name):
+		animation.play(data.idle_anim_name)

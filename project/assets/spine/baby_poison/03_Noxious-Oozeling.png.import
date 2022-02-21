@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/carbutle.png-f545b11e7063fd7a7e18796565d0c253.stex"
+path="res://.import/03_Noxious-Oozeling.png-b37b07ef265b234dfda830abd05041ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/craburtle e lobo/carbutle.png"
-dest_files=[ "res://.import/carbutle.png-f545b11e7063fd7a7e18796565d0c253.stex" ]
+source_file="res://assets/spine/baby_poison/03_Noxious-Oozeling.png"
+dest_files=[ "res://.import/03_Noxious-Oozeling.png-b37b07ef265b234dfda830abd05041ed.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

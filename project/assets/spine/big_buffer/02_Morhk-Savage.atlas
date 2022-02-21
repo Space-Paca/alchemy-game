@@ -1,0 +1,118 @@
+
+02_Morhk-Savage.png
+size: 238,1561
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm1_lower
+  rotate: false
+  xy: 69, 437
+  size: 141, 173
+  orig: 141, 173
+  offset: 0, 0
+  index: -1
+arm1_upper
+  rotate: true
+  xy: 2, 84
+  size: 108, 132
+  orig: 108, 132
+  offset: 0, 0
+  index: -1
+arm2_lpwer
+  rotate: false
+  xy: 2, 699
+  size: 113, 248
+  orig: 113, 248
+  offset: 0, 0
+  index: -1
+arm2_upper
+  rotate: true
+  xy: 2, 302
+  size: 133, 159
+  orig: 133, 159
+  offset: 0, 0
+  index: -1
+body_lower
+  rotate: true
+  xy: 2, 949
+  size: 179, 211
+  orig: 179, 211
+  offset: 0, 0
+  index: -1
+body_upper
+  rotate: false
+  xy: 2, 1329
+  size: 230, 230
+  orig: 230, 230
+  offset: 0, 0
+  index: -1
+cloth back
+  rotate: true
+  xy: 2, 2
+  size: 80, 94
+  orig: 80, 94
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 1130
+  size: 234, 197
+  orig: 234, 197
+  offset: 0, 0
+  index: -1
+hip
+  rotate: true
+  xy: 117, 612
+  size: 175, 99
+  orig: 184, 110
+  offset: 1, 10
+  index: -1
+leg1_lower
+  rotate: false
+  xy: 136, 44
+  size: 95, 145
+  orig: 95, 145
+  offset: 0, 0
+  index: -1
+leg1_upper
+  rotate: true
+  xy: 143, 191
+  size: 109, 77
+  orig: 109, 77
+  offset: 0, 0
+  index: -1
+leg2_lower
+  rotate: false
+  xy: 117, 789
+  size: 111, 158
+  orig: 111, 158
+  offset: 0, 0
+  index: -1
+leg2_upper
+  rotate: false
+  xy: 163, 328
+  size: 73, 107
+  orig: 73, 107
+  offset: 0, 0
+  index: -1
+neck
+  rotate: true
+  xy: 2, 194
+  size: 106, 139
+  orig: 109, 142
+  offset: 1, 1
+  index: -1
+ring_nose
+  rotate: false
+  xy: 69, 660
+  size: 40, 37
+  orig: 40, 37
+  offset: 0, 0
+  index: -1
+tail
+  rotate: true
+  xy: 2, 460
+  size: 237, 65
+  orig: 237, 65
+  offset: 0, 0
+  index: -1

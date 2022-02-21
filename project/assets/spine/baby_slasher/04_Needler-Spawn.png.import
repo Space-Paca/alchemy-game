@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/templo bg.png-a69d716533c6c21b9df2583da32a73eb.stex"
+path="res://.import/04_Needler-Spawn.png-cae3f87b2217e88ec9eaa03f5a489c2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/temple_spine/templo bg.png"
-dest_files=[ "res://.import/templo bg.png-a69d716533c6c21b9df2583da32a73eb.stex" ]
+source_file="res://assets/spine/baby_slasher/04_Needler-Spawn.png"
+dest_files=[ "res://.import/04_Needler-Spawn.png-cae3f87b2217e88ec9eaa03f5a489c2c.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

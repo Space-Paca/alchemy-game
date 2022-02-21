@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/templo bg3.png-bcabc39d62de2334bf24d270344b5245.stex"
+path="res://.import/06_Virulyn-Prowler.png-dafce5de206ad6ea89a8de668537a9dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/temple_spine/templo bg3.png"
-dest_files=[ "res://.import/templo bg3.png-bcabc39d62de2334bf24d270344b5245.stex" ]
+source_file="res://assets/spine/delayed_hitter/06_Virulyn-Prowler.png"
+dest_files=[ "res://.import/06_Virulyn-Prowler.png-dafce5de206ad6ea89a8de668537a9dc.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

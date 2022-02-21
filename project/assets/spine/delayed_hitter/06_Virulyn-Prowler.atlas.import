@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/06_Virulyn-Prowler.atlas-999067f092d3de6953ca4cd2d505ccf3.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/delayed_hitter/06_Virulyn-Prowler.atlas"
+dest_files=[ "res://.import/06_Virulyn-Prowler.atlas-999067f092d3de6953ca4cd2d505ccf3.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

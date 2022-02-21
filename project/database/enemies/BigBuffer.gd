@@ -32,9 +32,8 @@ var actions = {
 	]
 }
 
-var idle_anim_name = "stand"
-var death_anim_name = "death"
-
 
 func _init():
-	anim_precedes_idle = ["atk", "atk2", "dmg", "idle"]
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+#	variant_idles = [""]

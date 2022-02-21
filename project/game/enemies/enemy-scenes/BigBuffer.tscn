@@ -154,8 +154,6 @@ tracks/0/keys = {
 [node name="BigBuffer" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 0, 160 )
-scale = Vector2( 0.9, 0.9 )
 animation_state_data_res = SubResource( 2 )
 current_animations = [ {
 "animation": "stand",

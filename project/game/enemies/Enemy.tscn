@@ -20,6 +20,8 @@ position = Vector2( -414.401, 136.992 )
 
 [node name="Sprite" type="SpineSprite" parent="."]
 material = SubResource( 1 )
+position = Vector2( 0, 150 )
+scale = Vector2( 0.9, 0.9 )
 
 [node name="Button" type="Button" parent="Sprite"]
 modulate = Color( 1, 1, 1, 0 )

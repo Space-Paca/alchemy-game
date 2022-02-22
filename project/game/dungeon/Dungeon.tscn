@@ -77,4 +77,5 @@ margin_bottom = -29.6021
 [connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]
 [connection signal="mouse_entered" from="UI/PauseButton" to="." method="_on_PauseButton_mouse_entered"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="block_pause_update" from="PauseScreen" to="." method="_on_PauseScreen_block_pause_update"]
 [connection signal="exited_pause" from="PauseScreen" to="." method="_on_PauseScreen_exited_pause"]

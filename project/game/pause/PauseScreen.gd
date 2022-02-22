@@ -4,6 +4,7 @@ enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
 signal exited_pause
+signal block_pause_update
 
 onready var bg = $Background
 onready var screen_title = $Background/Label
@@ -72,6 +73,7 @@ func no_quit():
 
 func set_block_pause(value: bool):
 	block_pause = value
+	emit_signal("block_pause_update", block_pause)
 
 
 func settings_back():

@@ -1196,3 +1196,7 @@ func _on_Battle_player_died():
 	time_running = false
 	set_process(false)
 	player.increase_stat("time", time_of_run)
+
+
+func _on_PauseScreen_block_pause_update(value):
+	$UI/PauseButton.set_blocked(value)

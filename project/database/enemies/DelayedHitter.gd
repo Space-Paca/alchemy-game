@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/DelayedHitter.tscn"
 var image = "res://assets/images/enemies/delayed hitter/idle.png"
 var name = "EN_DELAYED_HITTER"
 var sfx = "stone_golem"
@@ -20,15 +21,21 @@ var first_state = ["preparing1"]
 
 var actions = {
 	"preparing1": [
-		{"name": "idle", "sfx": "charge"}
+		{"name": "idle", "sfx": "charge", "animation": ""}
 	],
 	"preparing2": [
-		{"name": "idle", "sfx": "charge"}
+		{"name": "idle", "sfx": "charge", "animation": ""}
 	],
 	"preparing3": [
-		{"name": "idle", "sfx": "charge"}
+		{"name": "idle", "sfx": "charge", "animation": ""}
 	],
 	"attack": [
-		{"name": "damage", "value": [16, 18], "type": "regular"},
+		{"name": "damage", "value": [16, 18], "type": "regular", "animation": "atk"},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+	dmg_anim_name = "dmg"

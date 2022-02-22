@@ -28,7 +28,7 @@ const HL_MAX_THICKNESS = 15
 const HL_MIN_THICKNESS = 2
 const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
 
-const VARIANT_IDLE_CHANCE = .1
+const VARIANT_IDLE_CHANCE = .15
 
 var logic
 var data
@@ -329,7 +329,8 @@ func play_animation(name: String):
 #	randomize()
 #	animation.seek(rand_range(0.0, 2.0))
 #	animation.playback_speed = _playback_speed
-	animation.play(name)
+	if name and name != "":
+		animation.play(name)
 
 
 func action_resolved():

@@ -41,7 +41,7 @@ const ENEMY_DB = {
 }
 
 func create_object(enemy_type, player):
-	enemy_type = "baby_carapa"
+#	enemy_type = "boss_1"
 	if not ENEMY_DB.has(enemy_type):
 		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)

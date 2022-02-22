@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.04_Needler-Spawn.atlas-da9c14ddc9e7c06a4ecb5c9f13dee23c.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/baby_slasher/1.04_Needler-Spawn.atlas"
+dest_files=[ "res://.import/1.04_Needler-Spawn.atlas-da9c14ddc9e7c06a4ecb5c9f13dee23c.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

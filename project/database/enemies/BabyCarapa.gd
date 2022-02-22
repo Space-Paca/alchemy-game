@@ -27,5 +27,6 @@ var actions = {
 func _init():
 	idle_anim_name = "stand"
 	death_anim_name = "death"
+	dmg_anim_name = "dmg"
 	entry_anim_name = "enter"
 	variant_idles = ["idle", "idle2"]

@@ -25,7 +25,8 @@ var index_map = []
 var tooltips_enabled = false
 
 func _process(dt):
-	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*6.5)
+	var lerp_speed = 6.5 if not dialog_label.is_complete() else 25.0
+	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*lerp_speed)
 
 
 func setup(node, _player):

@@ -44,6 +44,10 @@ func speed_up_dialog():
 			current_dialog_speed = min(current_dialog_speed+1, DIALOG_SPEED_MOD.size()-1)
 
 
+func is_complete():
+	return dialog_to_use == ""
+
+
 func start_dialog(dialog):
 	dialog_to_use = dialog
 	advance_dialogue()

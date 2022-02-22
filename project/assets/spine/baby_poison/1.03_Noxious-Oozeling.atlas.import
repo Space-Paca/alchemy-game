@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.03_Noxious-Oozeling.atlas-32c7ac8ddf920aa5a895e1940cf86d4f.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/baby_poison/1.03_Noxious-Oozeling.atlas"
+dest_files=[ "res://.import/1.03_Noxious-Oozeling.atlas-32c7ac8ddf920aa5a895e1940cf86d4f.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

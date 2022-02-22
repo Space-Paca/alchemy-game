@@ -4,6 +4,7 @@ class_name EnemyData
 var variant_idles : Array
 var idle_anim_name : String
 var death_anim_name : String
+var dmg_anim_name : String
 var entry_anim_name : String
 
 

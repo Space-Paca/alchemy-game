@@ -28,7 +28,7 @@ var actions = {
 		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": "idle"}
 	],
 	"attack": [
-		{"name": "damage", "value": [3,5], "type": "regular", "animation": "atk2"},
+		{"name": "damage", "value": [3,5], "type": "regular", "animation": "atk"},
 	]
 }
 
@@ -36,4 +36,5 @@ var actions = {
 func _init():
 	idle_anim_name = "stand"
 	death_anim_name = "death"
+	dmg_anim_name = "dmg"
 #	variant_idles = [""]

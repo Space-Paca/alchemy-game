@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/SpawnerOoze.tscn"
 var image = "res://assets/images/enemies/spawner poison enemy/idle.png"
 var name = "EN_SPAWNER_OOZE"
 var sfx = "toxic_slime"
@@ -30,20 +31,26 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "spawn", "enemy": "baby_poison"},
-		{"name": "spawn", "enemy": "baby_poison"},
+		{"name": "spawn", "enemy": "baby_poison", "animation": "divider"},
+		{"name": "spawn", "enemy": "baby_poison", "animation": "divider"},
 	],
 	"attack": [
-		{"name": "shield", "value": [4,5]},
-		{"name": "damage", "value": [5,6], "type": "regular"},
+		{"name": "shield", "value": [4,5], "animation": ""},
+		{"name": "damage", "value": [5,6], "type": "regular", "animation": "atk"},
 	],
 	"defend": [
-		{"name": "shield", "value": [8,10]},
+		{"name": "shield", "value": [8,10], "animation": ""},
 	],
 	"poison": [
-		{"name": "damage", "value": [5,6], "type": "venom"},
+		{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
 	],
 	"spawn": [
-		{"name": "spawn", "enemy": "baby_poison"},
+		{"name": "spawn", "enemy": "baby_poison", "animation": "divider"},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+	dmg_anim_name = "dmg"

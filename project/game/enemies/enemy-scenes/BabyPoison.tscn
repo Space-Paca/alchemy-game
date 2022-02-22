@@ -1,0 +1,204 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/spine/baby_poison/1.03_Noxious-Oozeling.atlas" type="SpineAtlasResource" id=2]
+[ext_resource path="res://assets/spine/baby_poison/1.03_Noxious-Oozeling.json" type="SpineSkeletonJsonDataResource" id=3]
+
+[sub_resource type="SpineSkeletonDataResource" id=1]
+atlas_res = ExtResource( 2 )
+skeleton_json_res = ExtResource( 3 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=2]
+skeleton = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 1.4333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "death",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "stand",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "stand2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "stand3",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "stand4",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[node name="BabyPoison" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, 50 )
+scale = Vector2( 1, 1 )
+animation_state_data_res = SubResource( 2 )
+current_animations = [ {
+"animation": "stand",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" parent="." index="6"]
+anims/atk = SubResource( 3 )
+anims/death = SubResource( 4 )
+anims/dmg = SubResource( 5 )
+anims/stand = SubResource( 6 )
+anims/stand2 = SubResource( 7 )
+anims/stand3 = SubResource( 8 )
+anims/stand4 = SubResource( 9 )
+
+[connection signal="animation_complete" from="Sprite" to="." method="_on_Sprite_animation_complete"]
+
+[editable path="HealthBar"]

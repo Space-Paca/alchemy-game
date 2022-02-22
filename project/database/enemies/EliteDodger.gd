@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/EliteDodger.tscn"
 var image = "res://assets/images/enemies/elite dodger/idle.png"
 var name = "EN_ELITE_DODGER"
 var sfx = "eye_crab"
@@ -24,24 +25,30 @@ var first_state = ["spawn"]
 
 var actions = {
 	"attack1": [
-		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true},
-		{"name": "damage", "value": [2, 4], "type": "regular"},
+		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+		{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
 	],
 	"attack2": [
-		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true},
-		{"name": "damage", "value": [2, 4], "type": "regular"},
+		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
+		{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
 	],
 	"buff1": [
-		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true},
-		{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true}
+		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+		{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
 	],
 	"buff2": [
-		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true},
-		{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true}
+		{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
+		{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
 	],
 	"spawn": [
-		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true},
-		{"name": "spawn", "enemy": "baby_slasher"},
-		{"name": "spawn", "enemy": "baby_slasher"},
+		{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+		{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
+		{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+	dmg_anim_name = "dmg"

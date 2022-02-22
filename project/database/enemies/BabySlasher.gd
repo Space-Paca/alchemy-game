@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/BabySlasher.tscn"
 var image = "res://assets/images/enemies/small piercing/idle.png"
 var name = "EN_BABY_SLASHER"
 var sfx = "eye_crab_minion"
@@ -17,6 +18,12 @@ var first_state = ["attack"]
 
 var actions = {
 	"attack": [
-		{"name": "damage", "value": [2,3], "type": "piercing"}
+		{"name": "damage", "value": [2,3], "type": "piercing", "animation": "atk"}
 	]
 }
+
+
+func _init():
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+	dmg_anim_name = "dmg"

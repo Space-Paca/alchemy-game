@@ -459,7 +459,7 @@ tracks/0/keys = {
 animation_state_data_res = SubResource( 2 )
 packed_skin_resource = SubResource( 3 )
 current_animations = [ {
-"animation": "enter",
+"animation": "atk",
 "clear": false,
 "delay": 0.0,
 "empty": false,

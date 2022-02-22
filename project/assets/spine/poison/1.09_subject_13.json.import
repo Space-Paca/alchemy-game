@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.09_subject_13.json-5abbeef47148aafbfd34742ee66068c7.spjson"
+
+[deps]
+
+source_file="res://assets/spine/poison/1.09_subject_13.json"
+dest_files=[ "res://.import/1.09_subject_13.json-5abbeef47148aafbfd34742ee66068c7.spjson" ]
+
+[params]
+

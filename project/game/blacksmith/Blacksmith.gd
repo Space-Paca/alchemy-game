@@ -308,4 +308,3 @@ func _on_button_mouse_entered():
 
 func _on_AdvanceDialogArea_pressed():
 	dialog_label.speed_up_dialog()
-

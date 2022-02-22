@@ -317,7 +317,7 @@ polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418
 margin_left = -383.0
 margin_top = -427.0
 margin_right = 517.0
-margin_bottom = -382.0
+margin_bottom = -427.0
 rect_min_size = Vector2( 900, 0 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -379,8 +379,9 @@ __meta__ = {
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
 margin_left = -1000.0
-margin_right = 5520.0
-margin_bottom = 75.0
+margin_right = 520.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
 text = "UPGRADE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -389,7 +390,8 @@ __meta__ = {
 [node name="Transmute" type="Button" parent="MainButtons"]
 margin_top = 111.0
 margin_right = 650.0
-margin_bottom = 186.0
+margin_bottom = 191.0
+rect_min_size = Vector2( 0, 80 )
 text = "TRANSFIGURE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -113,10 +113,34 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 838, 638 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("ShopMenu/RecipesButton:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 805, 920 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ShopMenu/ReagentsButton:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1327, 920 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "enter"
-length = 1.8
+length = 2.4
 step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("ShopMenu/ShopkeeperDialogue:modulate")
@@ -192,9 +216,34 @@ tracks/5/keys = {
 "method": "start_dialog"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("ShopMenu/ReagentsButton:rect_position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.82, 2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1327, 1120 ), Vector2( 1327, 1120 ), Vector2( 1327, 1120 ), Vector2( 1327, 920 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ShopMenu/RecipesButton:rect_position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.82, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 805, 1120 ), Vector2( 805, 1120 ), Vector2( 805, 920 ), Vector2( 805, 920 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "init"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Witch:rect_position")
 tracks/0/interp = 1
@@ -242,6 +291,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -2000, 638 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShopMenu/RecipesButton:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 805, 1120 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ShopMenu/ReagentsButton:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1327, 1120 ) ]
 }
 
 [node name="Shop" type="Control"]
@@ -460,7 +533,7 @@ anchor_bottom = 1.0
 margin_left = -1115.0
 margin_top = -160.0
 margin_right = -606.0
-margin_bottom = -14.0
+margin_bottom = -13.9996
 theme = ExtResource( 7 )
 text = "SHOP_RECIPES"
 __meta__ = {
@@ -475,7 +548,7 @@ anchor_bottom = 1.0
 margin_left = -593.0
 margin_top = -160.0
 margin_right = -14.9999
-margin_bottom = -14.0
+margin_bottom = -13.999
 theme = ExtResource( 7 )
 text = "RID_REAGENTS"
 __meta__ = {
@@ -513,6 +586,18 @@ __meta__ = {
 
 [node name="DialogLabel" parent="ShopMenu/ShopkeeperDialogue/Panel/CenterContainer" instance=ExtResource( 25 )]
 amount_of_voices = 15
+
+[node name="AdvanceDialogArea" type="Button" parent="ShopMenu"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 859.92
+margin_top = 520.302
+margin_right = 1022.92
+margin_bottom = 571.302
+rect_scale = Vector2( 6.4035, 8.23099 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RecipeMenu" type="CenterContainer" parent="."]
 visible = false
@@ -607,6 +692,7 @@ anims/init = SubResource( 8 )
 [connection signal="pressed" from="ShopMenu/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="mouse_entered" from="ShopMenu/ReagentsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
+[connection signal="pressed" from="ShopMenu/AdvanceDialogArea" to="." method="_on_AdvanceDialogArea_pressed"]
 [connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
 [connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]

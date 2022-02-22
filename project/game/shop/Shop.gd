@@ -31,12 +31,6 @@ func _process(dt):
 	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*6.5)
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			dialog_label.speed_up_dialog()
-
-
 func first_setup(combinations: Array, _player: Player):
 	player = _player
 	update_reagents()
@@ -68,11 +62,24 @@ func setup():
 
 func start():
 	$AnimationPlayer.play("enter")
-	
+
+
+func paused():
+	dialog_label.pause_dialog()
+
+
+func exited_pause():
+	dialog_label.resume_dialog()
 
 
 func start_dialog():
 	dialog_label.start_dialog(tr("SHOP_DIALOG_1"))
+
+
+func complete_dialog():
+	dialog_label.complete_dialog()
+	yield(get_tree(), "idle_frame")
+	panel.rect_size.y = 6 + dialog_label.get_content_height()
 
 
 func update_combinations():
@@ -93,6 +100,8 @@ func _on_BackButton_pressed():
 	AudioManager.play_sfx("click")
 	match curr_state:
 		States.MENU:
+			$AnimationPlayer.stop()
+			dialog_label.reset()
 			emit_signal("closed")
 		States.REAGENTS:
 			curr_state = States.MENU
@@ -111,6 +120,8 @@ func _on_BackButton_pressed():
 func _on_RecipesButton_pressed():
 	AudioManager.play_sfx("click")
 	curr_state = States.RECIPES
+	complete_dialog()
+	yield(get_tree(), "idle_frame")
 	shop_menu.hide()
 	recipe_menu.show()
 	for recipe in $RecipeMenu/HBoxContainer.get_children():
@@ -121,6 +132,8 @@ func _on_RecipesButton_pressed():
 func _on_ReagentsButton_pressed():
 	AudioManager.play_sfx("click")
 	curr_state = States.REAGENTS
+	complete_dialog()
+	yield(get_tree(), "idle_frame")
 	shop_menu.hide()
 	reagents_menu.show()
 	reagent_list.enable_tooltips()
@@ -164,3 +177,6 @@ func _on_NoButton_pressed():
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
 
+
+func _on_AdvanceDialogArea_pressed():
+	dialog_label.speed_up_dialog()

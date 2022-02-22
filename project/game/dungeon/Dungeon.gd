@@ -1160,6 +1160,8 @@ func _on_Battle_block_pause(value):
 
 func _on_PauseButton_pressed():
 	$PauseScreen.toggle_pause()
+	if $PauseScreen.is_paused():
+		shop.paused()
 
 
 func _on_PauseButton_mouse_entered():
@@ -1185,6 +1187,7 @@ func _on_map_finished_revealing_map():
 func _on_PauseScreen_exited_pause():
 	timer.visible = Profile.get_option("show_timer")
 	updateMapFog()
+	shop.exited_pause()
 
 
 func _on_Battle_player_died():

@@ -16,6 +16,7 @@ const WAIT_TIME := 0.3
 const SHORT_WAIT_TIME := 0.15
 const LONG_WAIT_TIME := 1.0
 
+var pause = false
 var alphanumeric = RegEx.new()
 var dialog_to_use = ""
 var current_dialog_speed = 0
@@ -29,6 +30,7 @@ func _ready():
 
 
 func reset():
+	pause = false
 	dialog_to_use = ""
 	current_dialog_speed = 0
 	alternative_speed_mod = 1.0
@@ -76,6 +78,8 @@ func get_volume():
 
 
 func advance_dialogue():
+	if pause or dialog_to_use.length() == 0:
+		return
 	if dialog_to_use[0] == '[':
 		if dialog_to_use[1] == '/':
 			if dialog_to_use.begins_with("[/slow]") or dialog_to_use.begins_with("[/fast]"):
@@ -148,11 +152,21 @@ func advance_dialogue():
 			advance_dialogue()
 
 
+func pause_dialog():
+	pause = true
+
+
+func resume_dialog():
+	pause = false
+	if dialog_to_use and dialog_to_use.length() > 0:
+		advance_dialogue()
+
+
 func complete_dialog():
-	for keyword in ["[wait]", "[shortwait]", "[longwait]", \
-					"[slow]", "[/slow]", "[fast]", "[/fast]"]:
-		dialog_to_use = dialog_to_use.replace(keyword, "")
-	# warning-ignore:return_value_discarded	
-	append_bbcode(dialog_to_use)
-	dialog_to_use = ""
-	
+	if dialog_to_use.length() > 0:
+		for keyword in ["[wait]", "[shortwait]", "[longwait]", \
+						"[slow]", "[/slow]", "[fast]", "[/fast]"]:
+			dialog_to_use = dialog_to_use.replace(keyword, "")
+		# warning-ignore:return_value_discarded	
+		append_bbcode(dialog_to_use)
+		dialog_to_use = ""

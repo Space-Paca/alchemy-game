@@ -61,6 +61,10 @@ func set_pause(p: bool):
 		emit_signal("exited_pause")
 
 
+func is_paused():
+	return paused
+
+
 func no_quit():
 	confirm.hide()
 	menu.show()

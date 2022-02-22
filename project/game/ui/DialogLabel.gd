@@ -95,10 +95,13 @@ func advance_dialogue():
 				if dialog_to_use.begins_with(effect):
 					found = true
 					if effect == "[wait]":
+						play_sound = PLAY_SOUND_INTERVAL*DIALOG_SPEED_MOD[current_dialog_speed]
 						yield(get_tree().create_timer(WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
 					elif effect == "[shortwait]":
+						play_sound = PLAY_SOUND_INTERVAL*DIALOG_SPEED_MOD[current_dialog_speed]
 						yield(get_tree().create_timer(SHORT_WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
 					elif effect == "[longwait]":
+						play_sound = PLAY_SOUND_INTERVAL*DIALOG_SPEED_MOD[current_dialog_speed]
 						yield(get_tree().create_timer(LONG_WAIT_TIME/DIALOG_SPEED_MOD[current_dialog_speed]), "timeout")
 					elif effect == "[slow]":
 						alternative_speed_mod = ALTERNATIVE_SPEED_MOD.slow

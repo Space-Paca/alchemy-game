@@ -61,7 +61,7 @@ REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge![wait]
 I can see you carry all sorts of[slow] [shake]trinkets[/shake][/slow] in your ba[slow]g...[/slow][shortwait] I can improve them, [fast]oh yes yes![/fast][wait][slow] ...[/slow]if you spare me some [wave]precious pearls[/wave] in return, of course[shake][i] [slow]hehehe[/slow][/i][/shake]
  
 [shortwait]I can even [wave]transfigure[/wave] them into better reagents,[fast] oh yes yes![/fast][wait] But that will cost [shake]extra[i][slow] hehehe[/slow][/i][/shake]""","""Oh olá olá aventureiro, bem vindo a minha forja![wait]
-Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacol[slow]a...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro[slow][shake][i]hehehe[/i][/shake][/slow]
+Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacol[slow]a...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [slow][shake][i]hehehe[/i][/shake][/slow]
  
 [shortwait]Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores,[fast] oh sim sim![/fast][wait] Mas isso aí saí um pouco [shake]mais caro[slow] [i]hehehe[/i][/shake]""[/slow]"
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
@@ -72,11 +72,11 @@ BUY_HINT,Buy Hint,Comprar Dica
 GET_HINT,Get Hint,Pegar Dica
 LEARN,Learn,Aprender
 ALREADY_KNOWN,Already Known,Já Conhecida
-SHOP_DIALOG_1,"""Hey there honey, stop by and take a look at my wares.[shortwait] I collect all sorts of recipes from fallen adventurers that[slow]...[/slow][shake] don't need them anymore [wave][shortwait]hohoho[/wave][/shake][longwait]
+SHOP_DIALOG_1,"""Hey there honey, [shortwait]stop by and take a look at my wares.[shortwait] I collect all sorts of recipes from fallen adventurers that[slow]...[/slow][shake] don't need them anymore [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave][/shake][longwait]
  
-[shortwait]I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. [shortwait]I would[slow] LOVE[/slow] to do that for you[slow]...[/slow][i]for a small price...[/i][wave][shortwait]hohoho[/wave]"" ","""Olá querido, que tal dar uma olhadinha no que eu tenho?[shortwait] Eu coleciono todo tipo de receitas de aventureiros que[slow]...[/slow] [shake] não precisam mais delas [wave][shortwait]hohoho[/wave][/shake][longwait]
+[shortwait]I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. [shortwait]I would[slow] LOVE[/slow] to do that for you[slow]...[/slow][i]for a small price...[/i][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]"" ","""Olá querido, [shortwait]que tal dar uma olhadinha no que eu tenho?[shortwait] Eu coleciono todo tipo de receitas de aventureiros que[slow]...[/slow] [shake] não precisam mais delas [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave][/shake][longwait]
  
-[shortwait]Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. [shortwait]Seria um[slow] PRAZER[/slow] te ajudar nisso[slow]...[/slow] [i] por um pequeno preço...[/i][wave][shortwait]hohoho[/wave]"" "
+[shortwait]Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. [shortwait]Seria um[slow] PRAZER[/slow] te ajudar nisso[slow]...[/slow] [i] por um pequeno preço...[/i][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]"" "
 LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar

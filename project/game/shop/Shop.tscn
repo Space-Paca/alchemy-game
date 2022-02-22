@@ -589,11 +589,11 @@ amount_of_voices = 15
 
 [node name="AdvanceDialogArea" type="Button" parent="ShopMenu"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 859.92
-margin_top = 520.302
-margin_right = 1022.92
-margin_bottom = 571.302
-rect_scale = Vector2( 6.4035, 8.23099 )
+margin_left = 833.492
+margin_top = 267.344
+margin_right = 996.492
+margin_bottom = 318.344
+rect_scale = Vector2( 6.5373, 12.9701 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false

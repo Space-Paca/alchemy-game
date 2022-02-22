@@ -73,10 +73,46 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 900, 125.475 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("MainButtons/Transmute:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 111 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MainButtons/Upgrade:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MainButtons/Upgrade:margin_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1000.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "enter"
-length = 2.0
+length = 2.4
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Table:rect_position")
@@ -140,6 +176,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 1990, 125.475 ), Vector2( 829, 125.475 ), Vector2( 900, 125.475 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("MainButtons/Transmute:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.55, 1.65, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1000, 111 ), Vector2( -1000, 111 ), Vector2( -1000, 111 ), Vector2( 0, 111 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MainButtons/Upgrade:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.55, 1.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1000, 0 ), Vector2( -1000, 0 ), Vector2( -1000, 0 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "init"
@@ -180,6 +240,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("MainButtons/Upgrade:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1000, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MainButtons/Transmute:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1000, 111 ) ]
+}
 
 [node name="Blacksmith" type="Control"]
 anchor_right = 1.0
@@ -209,16 +293,17 @@ __meta__ = {
 }
 
 [node name="Table" type="TextureRect" parent="."]
-margin_left = 471.398
-margin_top = 775.401
-margin_right = 1291.4
-margin_bottom = 1080.4
+margin_left = -380.094
+margin_top = 772.731
+margin_right = 439.906
+margin_bottom = 1077.73
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ShopkeeperDialogue" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1321.11, 1010.8 )
 
 [node name="Polygon2D" type="Polygon2D" parent="ShopkeeperDialogue"]
@@ -259,6 +344,18 @@ Eu consigo até transfigurar elas em reagentes melhores, oh sim sim! Mas isso sa
 voice_name = "smith"
 amount_of_voices = 7
 
+[node name="AdvanceDialogArea" type="Button" parent="ShopkeeperDialogue"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -384.882
+margin_top = -795.056
+margin_right = -221.882
+margin_bottom = -744.056
+rect_scale = Vector2( 5.73029, 15.8165 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BackButton" type="Button" parent="."]
 margin_left = 43.9509
 margin_top = 40.1133
@@ -281,8 +378,9 @@ __meta__ = {
 }
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
-margin_right = 650.0
-margin_bottom = 51.0
+margin_left = -1000.0
+margin_right = 5520.0
+margin_bottom = 75.0
 text = "UPGRADE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -291,7 +389,7 @@ __meta__ = {
 [node name="Transmute" type="Button" parent="MainButtons"]
 margin_top = 111.0
 margin_right = 650.0
-margin_bottom = 162.0
+margin_bottom = 186.0
 text = "TRANSFIGURE_REAGENT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -596,6 +694,7 @@ anims/RESET = SubResource( 10 )
 anims/enter = SubResource( 8 )
 anims/init = SubResource( 9 )
 
+[connection signal="pressed" from="ShopkeeperDialogue/AdvanceDialogArea" to="." method="_on_AdvanceDialogArea_pressed"]
 [connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="mouse_entered" from="MainButtons/Upgrade" to="." method="_on_button_mouse_entered"]

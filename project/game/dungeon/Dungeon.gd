@@ -1162,6 +1162,7 @@ func _on_PauseButton_pressed():
 	$PauseScreen.toggle_pause()
 	if $PauseScreen.is_paused():
 		shop.paused()
+		smith.paused()
 
 
 func _on_PauseButton_mouse_entered():
@@ -1188,6 +1189,7 @@ func _on_PauseScreen_exited_pause():
 	timer.visible = Profile.get_option("show_timer")
 	updateMapFog()
 	shop.exited_pause()
+	smith.exited_pause()
 
 
 func _on_Battle_player_died():

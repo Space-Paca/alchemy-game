@@ -28,12 +28,6 @@ func _process(dt):
 	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*6.5)
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			dialog_label.speed_up_dialog()
-
-
 func setup(node, _player):
 	$AnimationPlayer.play("init")
 	main_buttons.show()
@@ -53,8 +47,22 @@ func start():
 	$AnimationPlayer.play("enter")
 
 
+func paused():
+	dialog_label.pause_dialog()
+
+
+func exited_pause():
+	dialog_label.resume_dialog()
+
+
 func start_dialogue():
 	dialog_label.start_dialog(tr("REAGENTSMITH_DIALOG_1"))
+
+
+func complete_dialog():
+	dialog_label.complete_dialog()
+	yield(get_tree(), "idle_frame")
+	panel.rect_size.y = 6 + dialog_label.get_content_height()
 
 
 func update_reagent_list(type: String):
@@ -91,6 +99,8 @@ func update_reagent_list(type: String):
 
 func back():
 	if state == "start":
+		$AnimationPlayer.stop()
+		dialog_label.reset()
 		emit_signal("closed")
 	elif state == "upgrading_reagent":
 		state = "start"
@@ -144,6 +154,8 @@ func _on_Upgrade_pressed():
 		return
 	AudioManager.play_sfx("click")
 	state = "upgrading_reagent"
+	complete_dialog()
+	yield(get_tree(), "idle_frame")
 	main_buttons.hide()
 	dialog.hide()
 	reagent_list.show()
@@ -209,6 +221,8 @@ func _on_Transmute_pressed():
 		return
 	AudioManager.play_sfx("click")
 	state = "transmuting_reagent"
+	complete_dialog()
+	yield(get_tree(), "idle_frame")
 	main_buttons.hide()
 	dialog.hide()
 	reagent_list.show()
@@ -290,3 +304,8 @@ func _on_TooltipCollision_enable_tooltip(type : String):
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+
+func _on_AdvanceDialogArea_pressed():
+	dialog_label.speed_up_dialog()
+

@@ -65,6 +65,7 @@ func setup():
 
 func start():
 	$AnimationPlayer.play("enter")
+	AudioManager.play_sfx("shop_entrance")
 
 
 func paused():

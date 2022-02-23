@@ -46,6 +46,7 @@ func setup(node, _player):
 
 func start():
 	$AnimationPlayer.play("enter")
+	AudioManager.play_sfx("smith_entrance")
 
 
 func paused():

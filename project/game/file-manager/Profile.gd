@@ -14,6 +14,8 @@ var tutorials = {
 	"recipe_book": false,
 	"clicked_recipe": false,
 	"map": false,
+	"first_shop": false,
+	"first_smith": false,
 }
 
 var options = {

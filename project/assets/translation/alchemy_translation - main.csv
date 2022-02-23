@@ -58,12 +58,27 @@ TRANSFIGURE_REAGENT,Transfigure Reagent,Transfigurar Reagente
 CONFIRM_UPGRADE,Confirm Upgrade,Confirmar Melhoria
 CONFIRM_TRANSFIGURATION,Confirm Transfiguration,Confirmar Transfiguração
 REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge![wait]
-I can see you carry all sorts of[slow] [shake]trinkets[/shake][/slow] in your ba[slow]g...[/slow][shortwait] I can improve them, [fast]oh yes yes![/fast][wait][slow] ...[/slow]if you spare me some [wave]precious pearls[/wave] in return, of course  [slow][shake][i]hehehe[/i][/shake][/slow]
+I can see you carry all sorts of[slow] [shake]trinkets[/shake][/slow] in your ba[slow]g...[/slow][shortwait] I can improve them, [fast]oh yes yes![/fast][wait][slow] ...[/slow]if you spare me some [wave]precious pearls[/wave] in return, of course [slow][shake][i]hehehe[/i][/shake][/slow]
  
 [shortwait]I can even [wave]transfigure[/wave] them into better reagents,[fast] oh yes yes![/fast][wait] But that will cost [shake]extra[slow] [i]hehehe[/i][/shake][/slow]""","""Oh olá olá aventureiro, bem vindo a minha forja![wait]
 Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacol[slow]a...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [slow][shake][i]hehehe[/i][/shake][/slow]
  
 [shortwait]Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores,[fast] oh sim sim![/fast][wait] Mas isso aí saí um pouco [shake]mais caro[slow] [i]hehehe[/i][/shake][/slow]"""
+REAGENTSMITH_DIALOG_2,"""[fast]Come in come in[/fast] adventurer,[shortwait] let me see those [wave]trinkets[/wave] in your ba[slow]g...[/slow]""","""[fast]Entre entre[/fast] aventureiro,[shortwait] deixe-me ver essas [wave]muambas[/wave] na sua sacol[slow]a...[/slow]"""
+REAGENTSMITH_DIALOG_3,"""[fast]Welcome welcome[/fast] adventurer,[shortwait] what [shake]service[/shake] can I do for you today?""",
+REAGENTSMITH_DIALOG_4,"""[slow]...[wait]
+ ...[wait]
+ ...[wait]
+[shake][/slow]aaaA[fast]AAATCHOO[/shake][wait]
+Sorry[shortwait] sorry, [/fast]my nose caught a Morkhs' hair. [shortwait]What can I do for you today?""",
+REAGENTSMITH_DIALOG_5,"""[wave]Hmmmmmmmm[/wave][wait] is that the smell of [wave]pearls[/wave] I sense?[wait] [shake]Please[/shake] let me know what I can for you, I'm [wave][slow]completely[/slow][/wave] at your services,[fast] oh yes yes![/fast][wait] [shake][slow][i]hehehe[/i][/shake][/slow]""",
+REAGENTSMITH_DIALOG_6,"""Wai[slow]t...[/slow][wait] You don't have [slow]ANY[/slow] pearls? [wait][shake]That won't do, [fast]oh no no![/fast][/shake][wait]
+ 
+Comeback when you have [shake]something[/shake] to trade adventurer.",
+REAGENTSMITH_DIALOG_7,"""No shoes.[shortwait] No shirt.[shortwait] [slow][shake]NO PEARLS...[/shake][/slow][shortwait]
+[fast]No service![/fast]""",
+REAGENTSMITH_DIALOG_8,"""Taking shelter from the cold of the caverns,[shortwait] adventurer? The fire from my forge will keep you warm,[fast] oh yes oh yes![/fast]""",
+REAGENTSMITH_DIALOG_9,"""These ruins are a dangerous place, adventure[slow]r...[/slow][wait] How about we improve those [shake]trinkets[/shake] of yours?[shortwait] We don't need another corpse cluttering the halls[slow]...[shortwait] [i]hehehe[/i][/slow]",
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
 RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
 DESTROY_REAGENT,Are you sure you want to destroy %s for the cost of %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?

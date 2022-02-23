@@ -73,7 +73,7 @@ func get_pitch():
 func get_volume():
 	var volume = 0.0
 	if effects_stack.has("[i]"):
-		volume = -6.0
+		volume = -7.0
 		
 	elif dialog_to_use[0] == dialog_to_use[0].to_upper():
 		volume = 4.0

@@ -57,8 +57,36 @@ func exited_pause():
 	dialog_label.resume_dialog()
 
 
+func get_dialog():
+	if not Profile.get_tutorial("first_smith"):
+		Profile.set_tutorial("first_smith", true)
+		return tr("REAGENTSMITH_DIALOG_1")
+	
+	var dialogs = []
+	for i in range(2, 4+1):
+		dialogs.push_front("REAGENTSMITH_DIALOG_"+str(i))
+	#Having no pearls
+	if player.pearls == 0:
+		for _i in range(4): 
+			dialogs.push_front("REAGENTSMITH_DIALOG_6")
+			dialogs.push_front("REAGENTSMITH_DIALOG_7")
+	 #Having a lot of pearls
+	if player.pearls >= 3:
+		for _i in range(player.pearls - 1):
+			dialogs.push_front("REAGENTSMITH_DIALOG_5")
+	#Caverns Dialog
+	if player.cur_level == 2:
+		dialogs.push_front("REAGENTSMITH_DIALOG_8")
+	#Dungeon Dialog
+	if player.cur_level == 3:
+		dialogs.push_front("REAGENTSMITH_DIALOG_9")
+
+	dialogs.shuffle()
+	return tr(dialogs.pop_front())
+
+
 func start_dialogue():
-	dialog_label.start_dialog(tr("REAGENTSMITH_DIALOG_1"))
+	dialog_label.start_dialog(get_dialog())
 
 
 func complete_dialog():

@@ -2,7 +2,7 @@ extends Node2D
 
 var attempts
 
-onready var label = $Label
+onready var label = $BG/Label
 
 func set_attempts(value):
 	attempts = value

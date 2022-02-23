@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
@@ -30,7 +30,7 @@ font_data = ExtResource( 16 )
 extents = Vector2( 570, 520 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 100
+size = 200
 outline_size = 9
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -40,7 +40,7 @@ font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label:custom_colors/font_color")
+tracks/0/path = NodePath("BG/Label:custom_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -49,13 +49,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label:custom_colors/font_color")
+tracks/0/path = NodePath("BG/Label:custom_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -66,6 +66,45 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BG:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 84.7571, -50.8542 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BG:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 84.7571, -50.8542 ), Vector2( 84.757, -65 ), Vector2( 84.7571, -50.8542 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0.627451 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Laboratory" type="Control"]
 anchor_right = 1.0
@@ -98,21 +137,6 @@ margin_right = 99.9998
 margin_bottom = -70.5555
 theme = ExtResource( 14 )
 text = "BACK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Combine" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 452.634
-margin_top = -321.005
-margin_right = 821.634
-margin_bottom = -207.005
-theme = ExtResource( 14 )
-text = "COMBINE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,35 +248,37 @@ shape = SubResource( 2 )
 position = Vector2( 857.682, 407.528 )
 script = ExtResource( 8 )
 
-[node name="BG" type="TextureRect" parent="Counter"]
-margin_right = 300.0
-margin_bottom = 300.0
+[node name="Cauldron" type="TextureRect" parent="Counter"]
+margin_left = 23.3083
+margin_top = 127.135
+margin_right = 759.308
+margin_bottom = 751.135
 rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG2" type="TextureRect" parent="Counter"]
-margin_left = 82.6381
-margin_top = 116.541
-margin_right = 688.638
-margin_bottom = 593.541
+[node name="BG" type="TextureRect" parent="Counter"]
+margin_left = 84.7571
+margin_top = -50.8542
+margin_right = 690.757
+margin_bottom = 426.146
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Counter"]
-margin_left = 160.0
-margin_top = 135.0
-margin_right = 310.0
-margin_bottom = 285.0
-rect_min_size = Vector2( 150, 150 )
+[node name="Label" type="Label" parent="Counter/BG"]
+margin_left = 155.824
+margin_top = 28.4678
+margin_right = 455.824
+margin_bottom = 304.468
+rect_min_size = Vector2( 300, 276 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "10"
+text = "9"
 align = 1
 valign = 1
 __meta__ = {
@@ -263,6 +289,18 @@ __meta__ = {
 autoplay = "default"
 anims/blink_red = SubResource( 4 )
 anims/default = SubResource( 5 )
+
+[node name="Motion" type="AnimationPlayer" parent="Counter"]
+autoplay = "idle"
+anims/RESET = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="Backdrop" type="Panel" parent="."]
+margin_left = 1328.24
+margin_top = 274.357
+margin_right = 1878.24
+margin_bottom = 924.357
+custom_styles/panel = SubResource( 8 )
 
 [node name="Grid" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5
@@ -281,13 +319,28 @@ margin_right = 1336.92
 margin_bottom = 324.658
 hide_description = true
 
+[node name="Combine" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 452.634
+margin_top = -321.005
+margin_right = 821.634
+margin_bottom = -207.005
+theme = ExtResource( 14 )
+text = "COMBINE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Reagents" type="Node" parent="."]
 
 [connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="mouse_entered" from="Combine" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]
 [connection signal="mouse_entered" from="Book/RecipesButton" to="." method="_on_RecipesButton_mouse_entered"]
 [connection signal="pressed" from="Book/RecipesButton" to="." method="_on_RecipesButton_pressed"]
 [connection signal="dispenser_pressed" from="Book/DispenserReagentList" to="." method="_on_DispenserReagentList_dispenser_pressed"]
 [connection signal="modified" from="Grid" to="." method="_on_Grid_modified"]
+[connection signal="mouse_entered" from="Combine" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Combine" to="." method="_on_Combine_pressed"]

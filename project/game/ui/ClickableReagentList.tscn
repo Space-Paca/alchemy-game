@@ -13,6 +13,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 0.705882 )
+margin_left = 15.7145
+margin_top = 22.4493
+margin_right = 515.714
+margin_bottom = 622.449
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BG" type="TextureRect" parent="."]
 margin_right = 500.0
 margin_bottom = 600.0

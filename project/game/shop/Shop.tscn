@@ -27,7 +27,7 @@
 [ext_resource path="res://game/ui/DialogLabel.tscn" type="PackedScene" id=25]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.807843, 0.8, 0.698039, 1 )
+bg_color = Color( 0.807843, 0.8, 0.698039, 0.862745 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -561,9 +561,9 @@ position = Vector2( 1321.11, 1010.8 )
 [node name="Polygon2D" type="Polygon2D" parent="ShopMenu/ShopkeeperDialogue"]
 show_behind_parent = true
 position = Vector2( -347, -413 )
-color = Color( 0.807843, 0.8, 0.698039, 1 )
+color = Color( 0.807843, 0.8, 0.698039, 0.862745 )
 antialiased = true
-polygon = PoolVector2Array( 460.248, 2.39447, 453.817, -88.7837, 551.12, -3.8418 )
+polygon = PoolVector2Array( 456, -14, 456, -89, 550, -14 )
 
 [node name="Panel" type="Panel" parent="ShopMenu/ShopkeeperDialogue"]
 margin_left = -383.0

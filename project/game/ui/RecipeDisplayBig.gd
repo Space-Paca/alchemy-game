@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 onready var middle_container = $MarginContainer/VBoxContainer/HBoxContainer/Middle
 onready var right_container = $MarginContainer/VBoxContainer/HBoxContainer/Right
@@ -77,7 +77,7 @@ func master_combination():
 	title.text = tr(combination.recipe.name) + "+"
 	update_title_size()
 	description.text = RecipeManager.get_description(combination.recipe, true)
-	texture = MASTERED_TEXTURE
+	$BG.texture = MASTERED_TEXTURE
 
 func enable_tooltips():
 	for reagent in grid.get_children():

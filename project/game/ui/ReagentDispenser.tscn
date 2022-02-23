@@ -2,9 +2,9 @@
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/reagents/rune_shard.png" type="Texture" id=2]
+[ext_resource path="res://assets/themes/general_theme/button_normal.png" type="Texture" id=3]
 [ext_resource path="res://game/ui/ReagentDispenser.gd" type="Script" id=4]
-[ext_resource path="res://assets/images/ui/reagent_dispenser_hover.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/ui/reagent_dispenser_normal.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/general_theme/button_pressed.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -34,7 +34,7 @@ __meta__ = {
 margin_right = 570.0
 margin_bottom = 90.0
 button_mask = 3
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
 expand = true
 __meta__ = {
@@ -66,16 +66,16 @@ margin_left = 135.0
 margin_top = 13.0
 margin_right = 347.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Big Reagent Name"
 
 [node name="Quantity" type="Label" parent="HBoxContainer"]
 margin_left = 367.0
 margin_right = 482.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10/10"
 
 [connection signal="button_down" from="BGButton" to="." method="_on_BGButton_button_down"]

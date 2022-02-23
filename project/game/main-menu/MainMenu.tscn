@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://game/pause/PauseScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/main_menu/Camada 19.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/compendium_icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/main_menu/title.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/main_menu/frame_spikes_ 64%.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/main_menu/sub titulo.png" type="Texture" id=12]
@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/images/ui/menu_button_pressed.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/ui/menu_button_disabled.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/ui/menu_button_normal.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ui/compendium_icon_hover.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/ui/compendium_icon_pressed.png" type="Texture" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -46,7 +48,7 @@ noise = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
-shader_param/value = 0.0
+shader_param/value = 1.0
 shader_param/noise_texture = SubResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=5]
@@ -105,7 +107,7 @@ use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=18]
-size = 23
+size = 42
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -838,10 +840,9 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
+margin_left = 773.0
 margin_top = 556.0
-margin_right = 889.001
+margin_right = 1162.0
 margin_bottom = 702.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -850,35 +851,31 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
-disabled = true
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
-margin_top = 705.0
-margin_right = 918.0
-margin_bottom = 851.0
+margin_left = 757.755
+margin_top = 704.694
+margin_right = 1175.76
+margin_bottom = 850.694
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
-disabled = true
 text = "NEW_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="QuitButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
+margin_left = 790.0
 margin_top = 855.0
-margin_right = 852.99
+margin_right = 1142.99
 margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -887,7 +884,6 @@ custom_styles/hover = SubResource( 13 )
 custom_styles/pressed = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
-disabled = true
 text = "QUIT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -899,7 +895,7 @@ anchor_right = 0.5
 margin_left = -960.0
 margin_right = 962.0
 margin_bottom = 1082.0
-rect_scale = Vector2( 1.3, 1.3 )
+rect_scale = Vector2( 1.01, 1.01 )
 rect_pivot_offset = Vector2( 961, 541 )
 mouse_filter = 2
 texture = ExtResource( 11 )
@@ -963,31 +959,27 @@ text = "NO"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0 )
-disabled = true
 
 [node name="CompendiumButton" type="TextureButton" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 1805.92
-margin_top = 163.04
-margin_right = 1893.92
-margin_bottom = 230.04
-disabled = true
+margin_left = 155.572
+margin_top = 762.196
+margin_right = 355.572
+margin_bottom = 991.196
 texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 9 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
 texture_disabled = ExtResource( 9 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/CompendiumButton"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -16.6489
-margin_top = 67.7848
-margin_right = 107.351
-margin_bottom = 97.7848
+margin_left = -94.6337
+margin_top = 226.788
+margin_right = 305.366
+margin_bottom = 280.788
 custom_fonts/font = SubResource( 18 )
 text = "COMPENDIUM"
 align = 1

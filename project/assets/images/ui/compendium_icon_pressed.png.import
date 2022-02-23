@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/compendium_icon.png-af6d3ed6358083ac5c149e3a587eb283.stex"
+path="res://.import/compendium_icon_pressed.png-ef88d3dc126d5c93a66fa48091c8f931.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/compendium_icon.png"
-dest_files=[ "res://.import/compendium_icon.png-af6d3ed6358083ac5c149e3a587eb283.stex" ]
+source_file="res://assets/images/ui/compendium_icon_pressed.png"
+dest_files=[ "res://.import/compendium_icon_pressed.png-ef88d3dc126d5c93a66fa48091c8f931.stex" ]
 
 [params]
 

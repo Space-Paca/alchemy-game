@@ -65,20 +65,27 @@ Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nes
  
 [shortwait]Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores,[fast] oh sim sim![/fast][wait] Mas isso aí saí um pouco [shake]mais caro[slow] [i]hehehe[/i][/shake][/slow]"""
 REAGENTSMITH_DIALOG_2,"""[fast]Come in come in[/fast] adventurer,[shortwait] let me see those [wave]trinkets[/wave] in your ba[slow]g...[/slow]""","""[fast]Entre entre[/fast] aventureiro,[shortwait] deixe-me ver essas [wave]muambas[/wave] na sua sacol[slow]a...[/slow]"""
-REAGENTSMITH_DIALOG_3,"""[fast]Welcome welcome[/fast] adventurer,[shortwait] what [shake]service[/shake] can I do for you today?""",
+REAGENTSMITH_DIALOG_3,"""[fast]Welcome welcome[/fast] adventurer,[shortwait] what [shake]service[/shake] can I do for you today?""","""[fast]Bem-vindo bem-vindo[/fast] aventureiro,[shortwait] qual [shake]serviço[/shake] posso lhe fazer hoje?"""
 REAGENTSMITH_DIALOG_4,"""[slow]...[wait]
  ...[wait]
  ...[wait]
 [shake][/slow]aaaA[fast]AAATCHOO[/shake][wait]
-Sorry[shortwait] sorry, [/fast]my nose caught a Morkhs' hair. [shortwait]What can I do for you today?""",
-REAGENTSMITH_DIALOG_5,"""[wave]Hmmmmmmmm[/wave][wait] is that the smell of [wave]pearls[/wave] I sense?[wait] [shake]Please[/shake] let me know what I can for you, I'm [wave][slow]completely[/slow][/wave] at your services,[fast] oh yes yes![/fast][wait] [shake][slow][i]hehehe[/i][/shake][/slow]""",
+Sorry[shortwait] sorry, [/fast]my nose caught a Morkhs' hair [slow][i]hehehe[/i][/slow] [shortwait]What can I do for you today?""","""[slow]...[wait]
+ ...[wait]
+ ...[wait]
+[shake][/slow]aaaA[fast]AAATCHIIIIM[/shake][wait]
+Desculpe[shortwait] desculpe, [/fast]entrou um pelo de Morkh aqui no meu nariz [slow][i]hehehe[/i][/slow] [shortwait]O que posso fazer por você hoje?"""
+REAGENTSMITH_DIALOG_5,"""[wave]Hmmmmmmmm[/wave][wait] is that the smell of [wave]pearls[/wave] I sense?[wait] [shake]Please[/shake] let me know what I can for you, I'm [wave][slow]completely[/slow][/wave] at your services,[fast] oh yes yes![/fast][wait] [shake][slow][i]hehehe[/i][/shake][/slow]""","""[wave]Hmmmmmmmm[/wave][wait] isso é o cheiro de [wave]pérolas[/wave] que estou sentindo?[wait] [shake]Por favor[/shake] diga-me o que posso fazer por você, estou [wave][slow]completamente[/slow][/wave] a seu dispor,[fast] oh sim sim![/fast][wait] [shake][slow][i]hehehe[/i][/shake][/slow]"""
 REAGENTSMITH_DIALOG_6,"""Wai[slow]t...[/slow][wait] You don't have [slow]ANY[/slow] pearls? [wait][shake]That won't do, [fast]oh no no![/fast][/shake][wait]
  
-Comeback when you have [shake]something[/shake] to trade adventurer.",
+Comeback when you have [shake]something[/shake] to trade adventurer.""","""Esper[slow]a...[/slow][wait] Você não tem [slow]NENHUMA[/slow] pérola? [wait][shake]Assim não dá, [fast]oh não não![/fast][/shake][wait]
+ 
+Volte quando tiver [shake]algo[/shake] pra trocar."""
 REAGENTSMITH_DIALOG_7,"""No shoes.[shortwait] No shirt.[shortwait] [slow][shake]NO PEARLS...[/shake][/slow][shortwait]
-[fast]No service![/fast]""",
-REAGENTSMITH_DIALOG_8,"""Taking shelter from the cold of the caverns,[shortwait] adventurer? The fire from my forge will keep you warm,[fast] oh yes oh yes![/fast]""",
-REAGENTSMITH_DIALOG_9,"""These ruins are a dangerous place, adventure[slow]r...[/slow][wait] How about we improve those [shake]trinkets[/shake] of yours?[shortwait] We don't need another corpse cluttering the halls[slow]...[shortwait] [i]hehehe[/i][/slow]",
+[fast]No service![/fast] [wait][shake][slow][i]hehehe[/i][/shake][/slow]""","""Sem sapatos.[shortwait] Sem camisa.[shortwait] [slow][shake]SEM PÉROLAS...[/shake][/slow][shortwait]
+[fast]Sem serviço![/fast] [wait][shake][slow][i]hehehe[/i][/shake][/slow]"""
+REAGENTSMITH_DIALOG_8,"""Taking shelter from the cold of the caverns,[shortwait] adventurer? The fire from my forge will keep you warm,[fast] oh yes yes![/fast]""","""Se protegendo do frio das cavernas,[shortwait] aventureiro? O fogo da minha forja irá te esquentar,[fast] oh sim sim![/fast]"""
+REAGENTSMITH_DIALOG_9,"""These ruins are a dangerous place, adventure[slow]r...[/slow][wait] How about we improve those [shake]trinkets[/shake] of yours?[shortwait] We don't need another corpse cluttering the halls[slow]...[shortwait] [i]hehehe[/i][/slow]""","""Estas ruinas são bem perigosas, aventureir[slow]o...[/slow][wait] Que tal melhorarmos estas suas [shake]muambas[/shake] suas?[shortwait] Não precisamos de mais um corpo entulhando os corredores daqui[slow]...[shortwait] [i]hehehe[/i][/slow]"""
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
 RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
 DESTROY_REAGENT,Are you sure you want to destroy %s for the cost of %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?

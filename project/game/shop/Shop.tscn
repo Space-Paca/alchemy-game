@@ -530,10 +530,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 805.0
-margin_top = 920.0
-margin_right = 1314.0
-margin_bottom = 1066.0
+margin_left = -1115.0
+margin_top = -160.0
+margin_right = -606.0
+margin_bottom = -14.0
 theme = ExtResource( 7 )
 text = "SHOP_RECIPES"
 __meta__ = {
@@ -545,10 +545,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1327.0
-margin_top = 920.0
-margin_right = 1905.0
-margin_bottom = 1066.0
+margin_left = -593.0
+margin_top = -160.0
+margin_right = -15.0
+margin_bottom = -14.0
 theme = ExtResource( 7 )
 text = "RID_REAGENTS"
 __meta__ = {
@@ -639,16 +639,45 @@ margin_top = 300.0
 margin_right = 340.0
 margin_bottom = 340.0
 
-[node name="ReagentDestroyLabel" type="Label" parent="ReagentsMenu"]
+[node name="ReagentDestroy" type="Control" parent="ReagentsMenu"]
 visible = false
-margin_left = 798.735
-margin_top = 388.551
-margin_right = 1225.74
-margin_bottom = 433.551
+margin_left = 794.0
+margin_top = 560.0
+margin_right = 834.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="ReagentsMenu/ReagentDestroy"]
+show_behind_parent = true
+position = Vector2( 28.4572, 17.3611 )
+color = Color( 0.807843, 0.8, 0.698039, 0.862745 )
+antialiased = true
+polygon = PoolVector2Array( 480, -17, 480, -82, 375, -17 )
+
+[node name="Panel" type="Panel" parent="ReagentsMenu/ReagentDestroy"]
+margin_right = 740.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 740, 120 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReagentDestroyLabel" type="Label" parent="ReagentsMenu/ReagentDestroy"]
+margin_left = 12.0
+margin_top = 17.0
+margin_right = 244.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "REMOVE_REAGENT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ReagentsMenu/ReagentDestroyLabel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = 5.0
@@ -659,15 +688,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YesButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_right = 305.0
+[node name="YesButton" type="Button" parent="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer"]
+margin_right = 268.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
 text = "YES_EXC"
 
-[node name="NoButton" type="Button" parent="ReagentsMenu/ReagentDestroyLabel/HBoxContainer"]
-margin_left = 345.0
-margin_right = 779.0
+[node name="NoButton" type="Button" parent="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer"]
+margin_left = 308.0
+margin_right = 705.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
 text = "SECOND_THOUGHT"
@@ -694,9 +723,9 @@ anims/init = SubResource( 8 )
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
 [connection signal="pressed" from="ShopMenu/AdvanceDialogArea" to="." method="_on_AdvanceDialogArea_pressed"]
 [connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
-[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
-[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="ReagentsMenu/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="mouse_entered" from="BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

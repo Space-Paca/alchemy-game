@@ -62,13 +62,13 @@ margin_left = 48.8455
 margin_top = -4.24744
 margin_right = 59.8455
 margin_bottom = 27.7526
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.356863, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "+"
 
 [node name="TooltipCollision" parent="." instance=ExtResource( 8 )]
 position = Vector2( 32.0811, 32.0811 )
-TIMEOUT = 0.5
+TIMEOUT = 1.0
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 2 )

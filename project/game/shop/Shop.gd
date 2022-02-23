@@ -8,7 +8,9 @@ signal hint_bought(combination)
 onready var recipes = $RecipeMenu/HBoxContainer
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
-onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroyLabel
+onready var reagent_destroy = $ReagentsMenu/ReagentDestroy
+onready var reagent_destroy_panel = $ReagentsMenu/ReagentDestroy/Panel
+onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroy/ReagentDestroyLabel
 onready var dialog_label = $ShopMenu/ShopkeeperDialogue/Panel/CenterContainer/DialogLabel
 onready var panel = $ShopMenu/ShopkeeperDialogue/Panel
 # MENUS
@@ -152,11 +154,17 @@ func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 	reagent_list.activate_reagent(reagent_index)
 	chosen_reagent_index = reagent_index
 	
-	reagent_destroy_label.show()
+	reagent_destroy.show()
 	var reagent_name = tr(ReagentManager.get_data(reagent).name)
 	if upgraded:
 		reagent_name += "+"
+	reagent_destroy_label.text = ""
+	reagent_destroy_label.rect_size.x = 0 #Resizes so the label.size will be the exact size
+	yield(get_tree(), "idle_frame")
 	reagent_destroy_label.text = tr("DESTROY_REAGENT") % [reagent_name, DESTROY_COST]
+	yield(get_tree(), "idle_frame")
+	var margin = reagent_destroy_label.rect_position.x
+	reagent_destroy_panel.rect_size.x = 2*margin + reagent_destroy_label.rect_size.x
 
 
 func _on_YesButton_pressed():
@@ -164,7 +172,7 @@ func _on_YesButton_pressed():
 		AudioManager.play_sfx("click")
 		player.destroy_reagent(chosen_reagent_index)
 		update_reagents()
-		reagent_destroy_label.hide()
+		reagent_destroy.hide()
 	else:
 		AudioManager.play_sfx("error")
 

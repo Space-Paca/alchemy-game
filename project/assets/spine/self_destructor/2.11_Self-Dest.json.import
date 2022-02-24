@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.11_Self-Dest.json-e63d97a57ed13958a9179d1f18bc20ad.spjson"
+
+[deps]
+
+source_file="res://assets/spine/self_destructor/2.11_Self-Dest.json"
+dest_files=[ "res://.import/2.11_Self-Dest.json-e63d97a57ed13958a9179d1f18bc20ad.spjson" ]
+
+[params]
+

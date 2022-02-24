@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Parasiter.tscn"
 var image = "res://assets/images/enemies/parasiter/idle.png"
 var name = "EN_PARASITER"
 var sfx = "toxic_slime"
@@ -23,12 +24,18 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "hex", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "hex", "value": 2, "target": "self", "positive": true, "animation": "02_atk"}
 	],
 	"drain": [
-		{"name": "drain", "value": [15, 22]}
+		{"name": "drain", "value": [15, 22], "animation": "02_atk"}
 	],
 	"attack": [
-		{"name": "damage", "value": [5,8], "amount": [2,4], "type": "regular"}
+		{"name": "damage", "value": [5,8], "amount": [2,4], "type": "regular", "animation": "02_atk"}
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

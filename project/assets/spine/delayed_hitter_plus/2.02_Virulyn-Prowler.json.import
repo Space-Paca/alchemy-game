@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.02_Virulyn-Prowler.json-c2825ab22cfe87275e2f5b29ac98d1f3.spjson"
+
+[deps]
+
+source_file="res://assets/spine/delayed_hitter_plus/2.02_Virulyn-Prowler.json"
+dest_files=[ "res://.import/2.02_Virulyn-Prowler.json-c2825ab22cfe87275e2f5b29ac98d1f3.spjson" ]
+
+[params]
+

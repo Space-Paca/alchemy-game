@@ -1,0 +1,15 @@
+2.01_BabyRetaliate.png
+size:723,330
+filter:Linear,Linear
+pma:true
+BLegs
+bounds:517,102,204,72
+offsets:0,0,204,73
+BTentacle
+bounds:517,176,194,152
+Body
+bounds:2,2,329,326
+offsets:0,0,331,326
+Head
+bounds:333,8,320,182
+rotate:90

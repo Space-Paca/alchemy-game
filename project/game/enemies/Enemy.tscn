@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
@@ -11,6 +11,98 @@ shader = ExtResource( 4 )
 shader_param/grayscale = 0.0
 shader_param/highlight_thickness = 2.0
 shader_param/highlight_color = Color( 0.937255, 1, 0.737255, 0.784314 )
+
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "01_idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 1.1667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "02_atk",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "03_dmg",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 1.3333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "04_death",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,6 +138,10 @@ margin_bottom = 246.23
 position = Vector2( -14.2544, 32.0723 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/01_idle = SubResource( 4 )
+anims/02_atk = SubResource( 5 )
+anims/03_dmg = SubResource( 6 )
+anims/04_death = SubResource( 7 )
 
 [connection signal="mouse_entered" from="Sprite/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Button" to="." method="_on_Button_mouse_exited"]

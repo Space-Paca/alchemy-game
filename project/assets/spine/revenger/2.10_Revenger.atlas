@@ -1,0 +1,17 @@
+2.10_Revenger.png
+size:166,327
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,154,171,162
+offsets:0,0,175,162
+rotate:90
+Face
+bounds:2,57,96,95
+Flame
+bounds:100,54,98,62
+offsets:0,1,98,63
+rotate:90
+Flame2
+bounds:2,2,79,53
+offsets:2,0,81,53

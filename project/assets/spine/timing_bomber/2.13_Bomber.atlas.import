@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.13_Bomber.atlas-efbacdf9401b4590f026d74fff01f5d8.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/timing_bomber/2.13_Bomber.atlas"
+dest_files=[ "res://.import/2.13_Bomber.atlas-efbacdf9401b4590f026d74fff01f5d8.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

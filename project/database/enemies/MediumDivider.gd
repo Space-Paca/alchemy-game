@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/MediumDivider.tscn"
 var image = "res://assets/images/enemies/medium divider/idle.png"
 var name = "EN_MEDIUM_DIVIDER"
 var sfx = "toxic_slime"
@@ -23,19 +24,25 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}}
+		{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}, "animation": ""}
 	],
 	"attack": [
-		{"name": "damage", "value": [15, 25], "type": "regular"}
+		{"name": "damage", "value": [15, 25], "type": "regular", "animation": "02_atk"}
 	],
 	"defend": [
-		{"name": "shield", "value": [10, 18]},
-		{"name": "damage", "value": [10, 15], "type": "regular"}
+		{"name": "shield", "value": [10, 18], "animation": ""},
+		{"name": "damage", "value": [10, 15], "type": "regular", "animation": "02_atk"}
 	],
 	"poison": [
-		{"name": "damage", "value": [10, 15], "type": "venom"},
+		{"name": "damage", "value": [10, 15], "type": "venom", "animation": "02_atk"},
 	],
 	"first": [
-		{"name": "damage", "value": [5,10], "type": "venom"},
+		{"name": "damage", "value": [5,10], "type": "venom", "animation": "02_atk"},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

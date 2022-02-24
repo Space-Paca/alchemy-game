@@ -40,8 +40,9 @@ const ENEMY_DB = {
 	"boss_3_2" : preload("res://database/enemies/Boss3_2.gd"),
 }
 
+
 func create_object(enemy_type, player):
-#	enemy_type = "boss_1"
+	enemy_type = "boss_2"
 	if not ENEMY_DB.has(enemy_type):
 		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)

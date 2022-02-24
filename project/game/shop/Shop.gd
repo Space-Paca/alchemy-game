@@ -76,8 +76,39 @@ func exited_pause():
 	dialog_label.resume_dialog()
 
 
+func get_dialog():
+	if not Profile.get_tutorial("first_shop"):
+		Profile.set_tutorial("first_shop", true)
+		return tr("SHOP_DIALOG_1")
+	
+	var dialogs = []
+	for i in range(2, 5+1):
+		dialogs.push_front("SHOP_DIALOG_"+str(i))
+	#Having no/little money
+	if player.gold <= 50:
+		for _i in range(4): 
+			dialogs.push_front("SHOP_DIALOG_6")
+			dialogs.push_front("SHOP_DIALOG_7")
+	#Having a lot of money
+	if player.gold >= 500:
+		for _i in range((player.pearls - 400)/100):
+			dialogs.push_front("SHOP_DIALOG_8")
+	#Woods Dialog
+	if player.cur_level == 1:
+		dialogs.push_front("SHOP_DIALOG_9")
+	#Caverns Dialog
+	if player.cur_level == 2:
+		dialogs.push_front("SHOP_DIALOG_10")
+	#Dungeon Dialog
+	if player.cur_level == 3:
+		dialogs.push_front("SHOP_DIALOG_11")
+
+	dialogs.shuffle()
+	return tr(dialogs.pop_front())
+
+
 func start_dialog():
-	dialog_label.start_dialog(tr("SHOP_DIALOG_1"))
+	dialog_label.start_dialog(get_dialog())
 
 
 func complete_dialog():

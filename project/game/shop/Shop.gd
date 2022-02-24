@@ -85,7 +85,7 @@ func get_dialog():
 	for i in range(2, 5+1):
 		dialogs.push_front("SHOP_DIALOG_"+str(i))
 	#Having no/little money
-	if player.gold <= 50:
+	if player.gold <= 10:
 		for _i in range(4): 
 			dialogs.push_front("SHOP_DIALOG_6")
 			dialogs.push_front("SHOP_DIALOG_7")

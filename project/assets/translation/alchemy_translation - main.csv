@@ -99,16 +99,16 @@ SHOP_DIALOG_1,"""Hey there honey, [shortwait]stop by and take a look at my wares
 [shortwait]I bet you would also like to get rid of some of those [wave]pesky[/wave] reagents that find their way back into your magic satchel. [shortwait]I would[slow] LOVE[/slow] to do that for you[slow]...[/slow][i]for a small price...[/i][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]"" ","""Olá querido, [shortwait]que tal dar uma olhadinha no que eu tenho?[shortwait] Eu coleciono todo tipo de receitas de aventureiros que[slow]...[/slow] [shake] não precisam mais delas [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave][/shake][longwait]
  
 [shortwait]Aposto que você adoraria se livrar de alguns desses reagentes [wave]indesejados[/wave] que estão sempre voltando pra sua sacola mágica. [shortwait]Seria um[slow] PRAZER[/slow] te ajudar nisso[slow]...[/slow] [i] por um pequeno preço...[/i][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]"" "
-SHOP_DIALOG_2,"""[wave]Helloooo[/wave] honey,[shortwait] don't be shy,[shortwait] come in and buy![shortwait] I won't bite[slow]...[/slow] [i]unless you want me to[/i][shortwait] [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
-SHOP_DIALOG_3,"""Don't you get tired carrying around all those [wave]pesky[/wave] reagents?[shortwait] I can make your bag lighter, [shortwait]alongside your wallet! [shortwait][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
-SHOP_DIALOG_4,"""Come in honey, [shortwait]you'll [slow][wave]looooove[/wave][/slow] these new recipes that I've collected [i][fast]from some dead corpses[/fast][i] just for you! [shortwait][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
-SHOP_DIALOG_5,"""What's gonna be today honey?""",
-SHOP_DIALOG_6,,
-SHOP_DIALOG_7,,
-SHOP_DIALOG_8,,
+SHOP_DIALOG_2,"""[wave]Helloooo[/wave] honey,[shortwait] don't be shy,[shortwait] come in and buy![shortwait] I won't bite[slow]...[/slow] [i]unless you want me to...[/i][shortwait] [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_3,"""Don't you get tired carrying around all those [wave]pesky[/wave] reagents?[shortwait] I can make your bag lighter, [shortwait]alongside your gold pouch! [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_4,"""Come in honey, [shortwait]you'll [slow][wave]looooove[/wave][/slow] these new recipes that I've collected [i][fast]from some dead corpses[/fast][/i] just for you! [shortwait][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_5,"""What's gonna be today honey?[wait] Don't be shy,[shortwait] browse my wares! [shortwait][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_6,"""[slow]...[/slow][wait]where is you [shake]money[/shake] honey? [shortwait]Come back when you have some more gold, [shortwait]I won't go anywhere...[wait] [i]and neither will you...[/i] [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_7,"""I love your company honey, [shortwait]but I would love it [slow][wave]soooo[/wave][/slow] much more if you had [slow][shake]more gold[/shake][/slow] on your pouch there [wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
+SHOP_DIALOG_8,"""[slow][wave][shake]Oooooohhhhh[/shake][/wave][/slow][shortwait] someone is [slow][wave]glimmering[/wave][/slow] with a HEAVY gold pouch.[shortwait] Come inside love, [shortwait]you can buy [wave][slow]ANYTHING[/slow][/wave] with that kind of influence [wave][shortwait]HO[shortwait]HO[shortwait]HO[/wave]""",
 SHOP_DIALOG_9,"""I'm glad you found my hut in this woods, [shortwait]I've been so lonely here honey. [wait]Care to make me company, [shortwait]you and your coins? [shortwait][wave][shortwait]ho[shortwait]ho[shortwait]ho[/wave]""",
 SHOP_DIALOG_10,"""This cavern is so eerie, [shortwait]how about some recipes [fast][i]and myself[/i][/fast] to keep you safe and warm? [shortwait][wave]ho[shortwait]ho[shortwait]ho[/wave]""",
-SHOP_DIALOG_11,"""How nice of you to come visit me in these ruins honey,[shortwait] this day can only get better if you buy allll my lovely recipes [shortwait][wave]ho[shortwait]ho[shortwait]ho[/wave]"" ",
+SHOP_DIALOG_11,"""How nice of you to come visit me in these ruins honey,[shortwait] this day can only get better if you buy [wave][slow]allll[/slow][/wave] my lovely recipes [shortwait][wave]ho[shortwait]ho[shortwait]ho[/wave]"" ",
 LAB_TITLE,Study Recipes,Estude Receitas
 BACK,Back,Voltar
 APPLY,Apply,Aplicar

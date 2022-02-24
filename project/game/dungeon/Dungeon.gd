@@ -594,7 +594,7 @@ func new_battle(encounter: Encounter):
 	assert(battle == null)
 	create_battle()
 	#AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-#	encounter = EncounterManager.get_tutorial_encounter()
+	encounter = EncounterManager.divider_encounter
 	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level)
 	
 	Transition.end_transition()

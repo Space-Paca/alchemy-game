@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.12_Freezer.atlas-d89b2fe2355c04cdcd6f04928665e555.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/freezer/2.12_Freezer.atlas"
+dest_files=[ "res://.import/2.12_Freezer.atlas-d89b2fe2355c04cdcd6f04928665e555.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

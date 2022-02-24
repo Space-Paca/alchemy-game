@@ -1,0 +1,15 @@
+2.11_Self-Dest.png
+size:272,202
+filter:Linear,Linear
+pma:true
+Flame1
+bounds:206,16,35,64
+rotate:90
+Flame2
+bounds:206,53,71,56
+rotate:90
+Head
+bounds:2,2,202,198
+offsets:3,55,277,311
+Rope
+bounds:206,126,63,74

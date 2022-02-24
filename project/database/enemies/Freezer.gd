@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Freezer.tscn"
 var image = "res://assets/images/enemies/freezer/idle.png"
 var name = "EN_FREEZER"
 var sfx = "toxic_slime"
@@ -27,25 +28,31 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 150},
-		{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true},
-		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false},
+		{"name": "shield", "value": 150, "animation": ""},
+		{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""},
+		{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false, "animation": ""},
 	],
 	"attack": [
-		{"name": "damage", "value": [15, 25], "type": "regular"}
+		{"name": "damage", "value": [15, 25], "type": "regular", "animation": "02_atk"}
 	],
 	"attack2": [
-		{"name": "damage", "value": 5, "amount": 3, "type": "regular"},
-		{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false},
+		{"name": "damage", "value": 5, "amount": 3, "type": "regular", "animation": "02_atk"},
+		{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false, "animation": ""},
 	],
 	"freeze": [
-		{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false},
-		{"name": "shield", "value": [5,10]},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true},
+		{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false, "animation": ""},
+		{"name": "shield", "value": [5,10], "animation": "03_dmg"},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""},
 	],
 	"spawn": [
-		{"name": "status", "status_name": "freeze", "value": 3, "target": "player", "positive": false},
-		{"name": "spawn", "enemy": "self_destructor"},
-		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true},
+		{"name": "status", "status_name": "freeze", "value": 3, "target": "player", "positive": false, "animation": ""},
+		{"name": "spawn", "enemy": "self_destructor", "animation": "03_dmg"},
+		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": ""},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

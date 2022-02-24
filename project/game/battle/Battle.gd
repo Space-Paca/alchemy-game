@@ -70,6 +70,8 @@ func _ready():
 	Debug.connect("battle_won", self, "_on_Debug_battle_won")
 # warning-ignore:return_value_discarded
 	Debug.connect("died", self, "_on_player_died")
+# warning-ignore:return_value_discarded
+	Debug.connect("damage_all", self, "_on_Debug_damage_all")
 	
 	#Hoping to fix dim screen bug
 	targeting_interface.end()
@@ -80,6 +82,9 @@ func _input(event):
 			end_turn()
 		elif not combine_button.disabled and event.is_action_pressed("combine"):
 			combine()
+		else:
+			return
+	get_tree().set_input_as_handled()
 
 
 func get_save_data():
@@ -1395,6 +1400,9 @@ func _on_Grid_modified():
 func _on_EffectManager_target_set():
 	targeting_interface.next_target()
 
+func _on_Debug_damage_all():
+	for enemy in enemies_node.get_children():
+		enemy.take_damage(player, 9999, "piercing", false)
 
 func _on_Debug_battle_won():
 	win()

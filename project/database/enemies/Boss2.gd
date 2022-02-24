@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Boss2.tscn"
 var image = "res://assets/images/enemies/boss2/idle.png"
 var name = "EN_BOSS_2"
 var sfx = "boss_1"
@@ -30,45 +31,52 @@ var first_state = ["start"]
 
 var actions = {
 	"start": [
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false}
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"}
 	],
 	"attack1": [
-		{"name": "damage", "value": [20,25], "type": "regular"},
+		{"name": "damage", "value": [20,25], "type": "regular", "animation": "atk"},
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 2},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": ""},
+		{"name": "damage", "value": [3,4], "type": "regular", "amount": 2, "animation": "atk"},
 	],
 	"attack3": [
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 3},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [3,4], "type": "regular", "amount": 3, "animation": "atk"},
 	],
 	"attack4": [
-		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 4},
+		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [3,4], "type": "regular", "amount": 4, "animation": "atk"},
 	],
 	"attack5": [
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 5},
+		{"name": "damage", "value": [3,4], "type": "regular", "amount": 5, "animation": "atk"},
 	],
 	"restrict_buff": [
-		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "status", "status_name": "restrict_minor", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
 	],
 	"spawn1": [
-		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "spawn", "enemy": "baby_poison", "minion": true},
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "spawn", "enemy": "baby_poison", "minion": true, "animation": ""},
 	],
 	"spawn2": [
-		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "spawn", "enemy": "baby_carapa", "minion": true},
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "spawn", "enemy": "baby_carapa", "minion": true, "animation": ""},
 	],
 	"spawn3": [
-		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false},
-		{"name": "spawn", "enemy": "baby_slasher", "minion": true},
-		{"name": "spawn", "enemy": "baby_slasher", "minion": true},
+		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "spawn", "enemy": "baby_slasher", "minion": true, "animation": ""},
+		{"name": "spawn", "enemy": "baby_slasher", "minion": true, "animation": ""},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "stand"
+	death_anim_name = "death"
+	dmg_anim_name = "dmg"
+	variant_idles = ["idle"]

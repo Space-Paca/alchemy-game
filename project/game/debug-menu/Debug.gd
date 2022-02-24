@@ -16,6 +16,7 @@ signal floor_selected(floor_number)
 signal test_map_creation
 signal event_pressed(id)
 signal artifact_pressed(name)
+signal damage_all
 
 const VERSION := "v0.3.3"
 const MAX_FLOOR := 3
@@ -41,6 +42,9 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("toggle_debug"):
 		bg.visible = !bg.visible
+		get_tree().set_input_as_handled()
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_KP_SUBTRACT and not event.echo:
+		emit_signal("damage_all")
 
 
 func _process(_delta):

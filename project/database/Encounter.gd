@@ -20,6 +20,7 @@ export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"healing": 0, "buff": 0, "poison": 0, "debuff": 0}
 export(Array, float) var extra_loot_chance : Array
 
+var current_phase = 1
 
 func get_loot(is_event: bool) -> Array:
 	var loot := []

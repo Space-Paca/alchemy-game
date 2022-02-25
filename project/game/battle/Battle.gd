@@ -90,6 +90,7 @@ func get_save_data():
 		"enemies": get_enemies_save_data(),
 		"player": get_player_save_data(),
 		"is_event": is_event,
+		"encounter_phase": current_encounter.current_phase
 	}
 
 	
@@ -134,6 +135,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	
 	floor_level = _floor_level
 	current_encounter = EncounterManager.load_resource(data.encounter)
+	current_encounter.current_phase = data.encounter_phase
 	
 	is_event = data.is_event
 	
@@ -232,6 +234,10 @@ func setup_bg():
 	if current_encounter.is_boss:
 		if floor_level == 3:
 			$FinalBossBG.show()
+			if current_encounter.current_phase == 1:
+				$FinalBossBG/AnimationPlayer.play("rotating")
+			else:
+				$FinalBossBG/AnimationPlayer.play("rotating_final_boss")
 		$BG.texture = boss_backgrounds[floor_level-1]
 		$FG.texture = boss_foregrounds[floor_level-1]
 	else:
@@ -1207,6 +1213,8 @@ func _on_enemy_died(enemy):
 
 	if enemy.data.change_phase:
 		yield(get_tree().create_timer(1.5), "timeout")
+		current_encounter.current_phase += 1
+		$FinalBossBG/AnimationPlayer.play("rotating_final_boss")
 		#TODO: Add more cool effects here, like screen shaking
 		spawn_new_enemy(enemy, enemy.data.change_phase, false)
 

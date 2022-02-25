@@ -82,9 +82,6 @@ func _input(event):
 			end_turn()
 		elif not combine_button.disabled and event.is_action_pressed("combine"):
 			combine()
-		else:
-			return
-	get_tree().set_input_as_handled()
 
 
 func get_save_data():

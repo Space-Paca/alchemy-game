@@ -122,6 +122,7 @@ func drain(source: Character, amount: int):
 	
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
+		animation.play(data.dmg_anim_name)
 	
 	#TODO: Change for a "drain" animation （￣︶￣）↗　
 	AnimationManager.play("regular_attack", get_center_position())
@@ -146,6 +147,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
 		AudioManager.play_enemy_hit_sfx(data.sfx)
+		animation.play(data.dmg_anim_name)
 		
 	
 	if hp <= 0 and get_status("soulbind"):

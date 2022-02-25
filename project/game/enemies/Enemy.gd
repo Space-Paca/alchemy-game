@@ -8,7 +8,7 @@ signal action_resolved
 signal resolved
 
 onready var animation = $AnimationPlayer
-onready var button = $Sprite/Button
+onready var button = $Button
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
 onready var tween = $Tween
@@ -418,7 +418,8 @@ func set_image(new_texture):
 	$Intents.position.y = -INTENT_MARGIN - INTENT_H - h/2
 	
 	# Button
-	$Sprite/Button.rect_position = Vector2(-w/2, -h/2)
+	$Button.rect_position = Vector2(-w/2, -h/2)
+	$Button.rect_size = Vector2(w, h)
 	
 	# Tooltip
 	$TooltipCollision.position = Vector2(0, 0)

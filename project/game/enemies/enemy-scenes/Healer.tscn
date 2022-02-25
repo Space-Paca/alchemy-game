@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
+
+[node name="Healer" instance=ExtResource( 1 )]
+
+[editable path="HealthBar"]

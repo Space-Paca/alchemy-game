@@ -593,8 +593,10 @@ func load_battle(data):
 func new_battle(encounter: Encounter):
 	assert(battle == null)
 	create_battle()
-	#AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	encounter = EncounterManager.divider_encounter
+	
+	#DEBUG spawna último boss
+	#encounter = EncounterManager.boss_encounters[3].front()
+	
 	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level)
 	
 	Transition.end_transition()

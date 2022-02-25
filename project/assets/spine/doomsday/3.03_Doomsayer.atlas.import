@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.03_Doomsayer.atlas-84c0e79b40001fe2e6e7c4e76309f9b4.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/doomsday/3.03_Doomsayer.atlas"
+dest_files=[ "res://.import/3.03_Doomsayer.atlas-84c0e79b40001fe2e6e7c4e76309f9b4.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

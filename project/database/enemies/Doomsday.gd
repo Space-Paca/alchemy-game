@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Doomsday.tscn"
 var image = "res://assets/images/enemies/doomsayer/idle.png"
 var name = "EN_DOOMSDAY"
 var sfx = "toxic_slime"
@@ -30,21 +31,27 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true}
+		{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true, "animation": ""}
 	],
 	"attack1": [
-		{"name": "damage", "value": [30, 50], "type": "regular"},
-		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true}
+		{"name": "damage", "value": [30, 50], "type": "regular", "animation": "02_atk"},
+		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true, "animation": ""}
 	],
 	"attack2": [
-		{"name": "damage", "value": [4, 7], "amount": 7, "type": "regular"},
-		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true}
+		{"name": "damage", "value": [4, 7], "amount": 7, "type": "regular", "animation": "02_atk"},
+		{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true, "animation": ""}
 	],
 	"doom": [
-		{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true}
+		{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true, "animation": ""}
 	],
 	"dodge": [
-		{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true},
-		{"name": "status", "status_name": "dodge", "value": 4, "target": "self", "positive": true}
+		{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true, "animation": ""},
+		{"name": "status", "status_name": "dodge", "value": 4, "target": "self", "positive": true, "animation": "03_dmg"}
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Boss3-2.tscn"
 var image = "res://assets/images/enemies/boss3-2/idle.png"
 var name = "EN_BOSS_3_2"
 var sfx = "boss_1"
@@ -71,46 +72,52 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 100},
+		{"name": "shield", "value": 100, "animation": ""},
 	],
 	"start": [
-		{"name": "status", "status_name": "deviation", "value": 1, "target": "player", "positive": false},
-		{"name": "status", "status_name": "divine_protection", "value": 60, "target": "self", "positive": true, "extra_args": {"value": 60}},
+		{"name": "status", "status_name": "deviation", "value": 1, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "divine_protection", "value": 60, "target": "self", "positive": true, "extra_args": {"value": 60}, "animation": ""},
 	],
 	"attack1": [
-		{"name": "damage", "value": 45, "amount":2, "type": "regular"},
-		{"name": "shield", "value": [50,60]},
+		{"name": "damage", "value": 45, "amount":2, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [50,60], "animation": ""},
 	],
 	"attack2": [
-		{"name": "damage", "value": [10,25], "amount":4, "type": "regular"},
-		{"name": "shield", "value": [50,60]},
+		{"name": "damage", "value": [10,25], "amount":4, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [50,60], "animation": ""},
 	],
 	"attack3": [
-		{"name": "damage", "value": 100, "type": "regular"},
-		{"name": "shield", "value": [50,60]},
+		{"name": "damage", "value": 100, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [50,60], "animation": ""},
 	],
 	"attack4": [
-		{"name": "drain", "value": 60},
-		{"name": "shield", "value": [50,60]},
+		{"name": "drain", "value": 60, "animation": "02_atk"},
+		{"name": "shield", "value": [50,60], "animation": ""},
 	],
 	"debuff1": [
-		{"name": "status", "status_name": "burning", "value": 12, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "burning", "value": 12, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff2": [
-		{"name": "status", "status_name": "freeze", "value": 5, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "freeze", "value": 5, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff3": [
-		{"name": "status", "status_name": "time_bomb", "value": 12, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "time_bomb", "value": 12, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff4": [
-		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true}
+		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff5": [
-		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true}
+		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": ""}
 	],
 	
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

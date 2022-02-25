@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Zombie.tscn"
 var image = "res://assets/images/enemies/zombie/idle.png"
 var name = "EN_ZOMBIE"
 var sfx = "toxic_slime"
@@ -23,12 +24,18 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "poison_immunity", "value": 1, "target": "self", "positive": true}
+		{"name": "status", "status_name": "poison_immunity", "value": 1, "target": "self", "positive": true, "animation": ""}
 	],
 	"drain": [
-		{"name": "drain", "value": [15, 20]}
+		{"name": "drain", "value": [15, 20], "animation": "02_atk"}
 	],
 	"attack": [
-		{"name": "damage", "value": [20,30], "type": "regular"}
+		{"name": "damage", "value": [20,30], "type": "regular", "animation": "02_atk"}
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

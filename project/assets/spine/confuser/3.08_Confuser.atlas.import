@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.08_Confuser.atlas-5d8a0a72e6e9294a3f03c73b9586063c.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/confuser/3.08_Confuser.atlas"
+dest_files=[ "res://.import/3.08_Confuser.atlas-5d8a0a72e6e9294a3f03c73b9586063c.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

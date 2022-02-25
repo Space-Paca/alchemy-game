@@ -27,15 +27,15 @@ var actions = {
 		{"name": "status", "status_name": "poison_immunity", "value": 1, "target": "self", "positive": true, "animation": ""}
 	],
 	"drain": [
-		{"name": "drain", "value": [15, 20], "animation": "02_atk"}
+		{"name": "drain", "value": [15, 20], "animation": "02_Atk"}
 	],
 	"attack": [
-		{"name": "damage", "value": [20,30], "type": "regular", "animation": "02_atk"}
+		{"name": "damage", "value": [20,30], "type": "regular", "animation": "02_Atk"}
 	],
 }
 
 
 func _init():
-	idle_anim_name = "01_idle"
-	death_anim_name = "04_death"
-	dmg_anim_name = "03_dmg"
+	idle_anim_name = "01_Idle"
+	death_anim_name = "04_Death"
+	dmg_anim_name = "03_Dmg"

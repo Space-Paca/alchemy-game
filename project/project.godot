@@ -196,6 +196,9 @@ window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
 window/size/fullscreen=true
+mouse_cursor/custom_image="res://assets/images/ui/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 15, 5 )
+mouse_cursor/tooltip_position_offset=Vector2( 20, 20 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

@@ -10,6 +10,7 @@ __meta__ = {
 }
 
 [node name="Guideline" type="TextureRect" parent="."]
+visible = false
 margin_left = -750.0
 margin_top = -515.0
 margin_right = 2530.0

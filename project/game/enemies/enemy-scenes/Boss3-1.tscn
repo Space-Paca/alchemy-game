@@ -108,7 +108,7 @@ tracks/0/keys = {
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 0, 285 )
-scale = Vector2( 0.45, 0.45 )
+scale = Vector2( 1, 1 )
 animation_state_data_res = SubResource( 2 )
 current_animations = [ {
 "animation": "01_idle",
@@ -120,7 +120,7 @@ current_animations = [ {
 "track_id": 0
 } ]
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" parent="." index="7"]
 anims/01_idle = SubResource( 3 )
 anims/02_atk = SubResource( 4 )
 anims/03_dmg = SubResource( 5 )

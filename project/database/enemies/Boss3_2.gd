@@ -10,7 +10,7 @@ var battle_init = true
 var size = "big"
 var change_phase = null
 
-var states = ["start", "attack1", "attack2", "attack3", "attack4", \
+var states = ["start", "attack1", "attack2", "attack3", "attack4", "init",\
 			  "debuff1", "debuff2", "debuff3", "debuff3", "debuff4", "debuff5"]
 var connections = [
 					  ["init", "start", 1],

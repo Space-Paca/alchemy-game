@@ -288,8 +288,8 @@ margin_left = 163.0
 margin_top = 112.0
 margin_right = 507.0
 margin_bottom = 178.0
-custom_fonts/font = ExtResource( 19 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 19 )
 text = "RECIPE_LIST"
 valign = 1
 
@@ -298,8 +298,8 @@ margin_left = 80.0
 margin_top = 262.0
 margin_right = 718.0
 margin_bottom = 339.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "NO_RECIPE_FOUND"
 align = 1
 valign = 1
@@ -412,7 +412,10 @@ margin_bottom = 980.0
 [node name="PlayerInfo" parent="Background/LeftSide" instance=ExtResource( 21 )]
 hide_button = true
 
-[node name="BG" parent="Background/LeftSide/PlayerInfo" index="1"]
+[node name="Shadow" parent="Background/LeftSide/PlayerInfo" index="0"]
+visible = false
+
+[node name="BG" parent="Background/LeftSide/PlayerInfo" index="2"]
 self_modulate = Color( 1, 1, 1, 0 )
 
 [node name="BagIcon" type="TextureRect" parent="Background/LeftSide"]

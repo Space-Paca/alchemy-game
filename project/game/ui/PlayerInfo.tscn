@@ -35,6 +35,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 0.494118 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -285.0
+margin_top = -378.0
+margin_right = 315.0
+margin_bottom = 249.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DownButton" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -53,6 +67,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shadow" type="TextureRect" parent="DownButton"]
+modulate = Color( 0, 0, 0, 0.54902 )
+show_behind_parent = true
+margin_left = 13.0
+margin_top = -7.99988
+margin_right = 153.0
+margin_bottom = 62.0001
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="DownButton"]
 modulate = Color( 0.360784, 0.0509804, 0.0509804, 1 )
 margin_left = 92.1461
@@ -63,6 +90,9 @@ rect_rotation = -90.0
 mouse_filter = 2
 texture = ExtResource( 13 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BG" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -149,8 +179,8 @@ margin_left = 44.0
 margin_right = 114.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 70, 40 )
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "100"
 valign = 1
 
@@ -187,8 +217,8 @@ margin_left = 44.0
 margin_right = 114.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 70, 40 )
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "100"
 valign = 1
 

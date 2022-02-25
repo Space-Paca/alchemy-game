@@ -5,6 +5,7 @@ signal button_pressed
 export var hide_button := false
 
 onready var bg = $BG
+onready var shadow = $Shadow
 onready var downbutton = $DownButton
 onready var gold_label = $BG/CurrencyContainer/Gold/Label
 onready var pearls_label = $BG/CurrencyContainer/Pearls/Label
@@ -18,6 +19,7 @@ onready var pearl_tooltip =  $BG/CurrencyContainer/Pearls/TooltipCollision
 const TWEEN_DURATION = .7
 const HIDDEN_POSITION = Vector2(660, -627)
 const SHOWING_POSITION = Vector2(660, -400)
+const SHADOW_OFFSET = Vector2(15, 12)
 const PEARL_TEXTURE = preload("res://assets/images/ui/pearl.png")
 const GOLD_TEXTURE = preload("res://assets/images/ui/coin.png")
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
@@ -111,6 +113,8 @@ func update_pearls(value: int):
 func animation_hide():
 	tween.interpolate_property(bg, "rect_position", null, HIDDEN_POSITION,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
+	tween.interpolate_property(shadow, "rect_position", null, HIDDEN_POSITION+SHADOW_OFFSET,
+			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
 	tween.interpolate_property(downbutton, "rect_position:y", null, HIDDEN_POSITION,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_IN)
 	tween.start()
@@ -120,6 +124,8 @@ func animation_hide():
 
 func animation_show():
 	tween.interpolate_property(bg, "rect_position", null, SHOWING_POSITION,
+			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_OUT)
+	tween.interpolate_property(shadow, "rect_position", null, SHOWING_POSITION+SHADOW_OFFSET,
 			TWEEN_DURATION, Tween.TRANS_BACK, Tween.EASE_OUT)
 	tween.start()
 	

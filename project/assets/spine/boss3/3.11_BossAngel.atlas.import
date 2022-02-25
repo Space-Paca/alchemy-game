@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.11_BossAngel.atlas-e8219a43755c8ca663b3d0e5be202ef1.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/boss3/3.11_BossAngel.atlas"
+dest_files=[ "res://.import/3.11_BossAngel.atlas-e8219a43755c8ca663b3d0e5be202ef1.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

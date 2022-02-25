@@ -41,8 +41,19 @@ const ENEMY_DB = {
 }
 
 
+func _ready():
+	for enemy_name in ENEMY_DB.keys():
+		var enemy = ENEMY_DB[enemy_name].new()
+		assert(enemy is EnemyData)
+		var actions : Dictionary = enemy.actions
+		for state in actions.keys():
+			var action_array : Array = actions[state]
+			for action in action_array:
+				assert(action is Dictionary)
+				assert((action as Dictionary).has("animation"), 'Enemy %s: missing key "animation" for action in %s' % [enemy_name, state])
+
+
 func create_object(enemy_type, player):
-	enemy_type = "boss_2"
 	if not ENEMY_DB.has(enemy_type):
 		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)

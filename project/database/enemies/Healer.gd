@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Healer.tscn"
 var image = "res://assets/images/enemies/healer/idle.png"
 var name = "EN_HEALER"
 var sfx = "toxic_slime"
@@ -27,18 +28,24 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 50},
+		{"name": "shield", "value": 50, "animation": ""},
 	],
 	"attack": [
-		{"name": "damage", "value": 20, "type": "regular"},
-		{"name": "heal", "value": [10,20], "target": "all_enemies"},
+		{"name": "damage", "value": 20, "type": "regular", "animation": ""},
+		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": ""},
 	],
 	"defend": [
-		{"name": "shield", "value": [10, 50]},
-		{"name": "heal", "value": [10,20], "target": "all_enemies"},
+		{"name": "shield", "value": [10, 50], "animation": ""},
+		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": ""},
 	],
 	"heal": [
-		{"name": "heal", "value": [20,30], "target": "all_enemies"},
-		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true},
+		{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

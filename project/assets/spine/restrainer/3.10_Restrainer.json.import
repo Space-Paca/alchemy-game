@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/3.10_Restrainer.json-d02999668ed6a69e6015da33a80f9ca2.spjson"
+
+[deps]
+
+source_file="res://assets/spine/restrainer/3.10_Restrainer.json"
+dest_files=[ "res://.import/3.10_Restrainer.json-d02999668ed6a69e6015da33a80f9ca2.spjson" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/3.09_small poison plus.json-172b6cfa07906c4e01f739617ad311a7.spjson"
+
+[deps]
+
+source_file="res://assets/spine/baby_poison_plus/3.09_small poison plus.json"
+dest_files=[ "res://.import/3.09_small poison plus.json-172b6cfa07906c4e01f739617ad311a7.spjson" ]
+
+[params]
+

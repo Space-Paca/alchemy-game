@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Restrainer.tscn"
 var image = "res://assets/images/enemies/restrainer/idle.png"
 var name = "EN_RESTRAINER"
 var sfx = "toxic_slime"
@@ -36,26 +37,32 @@ var first_state = ["attack1", "attack2"]
 
 var actions = {
 	"attack1": [
-		{"name": "status", "status_name": "restrain", "value": 6, "target": "player", "positive": false},
-		{"name": "damage", "value": [25, 45], "type": "regular"}
+		{"name": "status", "status_name": "restrain", "value": 6, "target": "player", "positive": false, "animation": ""},
+		{"name": "damage", "value": [25, 45], "type": "regular", "animation": "02_atk"}
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false},
-		{"name": "damage", "value": [30, 40], "type": "regular"}
+		{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false, "animation": ""},
+		{"name": "damage", "value": [30, 40], "type": "regular", "animation": "02_atk"}
 	],
 	"attack3": [
-		{"name": "damage", "value": 66, "type": "regular"}
+		{"name": "damage", "value": 66, "type": "regular", "animation": "02_atk"}
 	],
 	"charging": [
-		{"name": "idle", "sfx": "charge"}
+		{"name": "idle", "sfx": "charge", "animation": ""}
 	],
 	"big_restrain": [
-		{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false},
-		{"name": "damage", "value": 15, "type": "piercing"},
-		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true},
+		{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false, "animation": ""},
+		{"name": "damage", "value": 15, "type": "piercing", "animation": "02_atk"},
+		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
 	],
 	"medium_restrain": [
-		{"name": "status", "status_name": "restrain", "value": 14, "target": "player", "positive": false},
-		{"name": "status", "status_name": "temp_strength", "value": 20, "target": "self", "positive": true},
+		{"name": "status", "status_name": "restrain", "value": 14, "target": "player", "positive": false, "animation": "02_atk"},
+		{"name": "status", "status_name": "temp_strength", "value": 20, "target": "self", "positive": true, "animation": ""},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

@@ -1,5 +1,6 @@
-extends Reference
+extends EnemyData
 
+var scene_path = "res://game/enemies/enemy-scenes/Necromancer.tscn"
 var image = "res://assets/images/enemies/necromancer/idle.png"
 var name = "EN_NECROMANCER"
 var sfx = "toxic_slime"
@@ -25,24 +26,30 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false}
+		{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false, "animation": ""}
 	],
 	"attack1": [
-		{"name": "damage", "value": [30, 35], "type": "regular"}
+		{"name": "damage", "value": [30, 35], "type": "regular", "animation": "02_atk"}
 	],
 	"attack2": [
-		{"name": "damage", "value": [30, 35], "type": "regular"}
+		{"name": "damage", "value": [30, 35], "type": "regular", "animation": "02_atk"}
 	],
 	"defense": [
-		{"name": "damage", "value": [20, 22], "type": "regular"},
-		{"name": "shield", "value": [30, 45]}
+		{"name": "damage", "value": [20, 22], "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [30, 45], "animation": ""}
 	],
 	"debuff": [
-		{"name": "damage", "value": [20, 22], "type": "regular"},
-		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false}
+		{"name": "damage", "value": [20, 22], "type": "regular", "animation": "02_atk"},
+		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""}
 	],
 	"spawn": [
-		{"name": "shield", "value": [25, 35]},
-		{"name": "spawn", "enemy": "zombie", "minion": true},
+		{"name": "shield", "value": [25, 35], "animation": ""},
+		{"name": "spawn", "enemy": "zombie", "minion": true, "animation": ""},
 	],
 }
+
+
+func _init():
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.09_small poison plus.atlas-31c1d6c82328c06f7e08e85f175ec9a2.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/baby_poison_plus/3.09_small poison plus.atlas"
+dest_files=[ "res://.import/3.09_small poison plus.atlas-31c1d6c82328c06f7e08e85f175ec9a2.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

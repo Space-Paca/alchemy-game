@@ -31,27 +31,29 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "time_bomb", "value": 4, "target": "player", "positive": false, "animation": ""}
+		{"name": "status", "status_name": "time_bomb", "value": 4, "target": "player", "positive": false, "animation": "taunt2"}
 	],
 	"bomb-time": [
-		{"name": "status", "status_name": "time_bomb", "value": 8, "target": "player", "positive": false, "animation": ""}
+		{"name": "status", "status_name": "time_bomb", "value": 8, "target": "player", "positive": false, "animation": "taunt2"}
 	],
 	"attack": [
-		{"name": "status", "status_name": "time_bomb", "value": 3, "target": "player", "positive": false, "animation": ""},
-		{"name": "damage", "value": [15,17], "type": "regular", "animation": ""},
+		{"name": "status", "status_name": "time_bomb", "value": 3, "target": "player", "positive": false, "animation": "taunt2"},
+		{"name": "damage", "value": [15,17], "type": "regular", "animation": "atk"},
 	],
 	"big-attack": [
-		{"name": "status", "status_name": "time_bomb", "value": 2, "target": "player", "positive": false, "animation": ""},
-		{"name": "damage", "value": [19,25], "type": "regular", "animation": ""},
+		{"name": "status", "status_name": "time_bomb", "value": 2, "target": "player", "positive": false, "animation": "taunt2"},
+		{"name": "damage", "value": [19,25], "type": "regular", "animation": "atk"},
 	],
 	"defend": [
-		{"name": "status", "status_name": "time_bomb", "value": 4, "target": "player", "positive": false, "animation": ""},
-		{"name": "shield", "value": [14,15], "animation": ""}
+		{"name": "status", "status_name": "time_bomb", "value": 4, "target": "player", "positive": false, "animation": "taunt2"},
+		{"name": "shield", "value": [14,15], "animation": "atk"}
 	],
 }
 
 
 func _init():
-	idle_anim_name = ""
-	death_anim_name = ""
-	dmg_anim_name = ""
+	idle_anim_name = "stand"
+	death_anim_name = "death2"
+	dmg_anim_name = "dmg2"
+	entry_anim_name = "enter"
+	variant_idles = ["idle", "idle2"]

@@ -247,7 +247,7 @@ CRUSHING_DAMAGE_DESC,Crushing damage deals damage both to shield and health dire
 VENOM_DAMAGE,poison damage,dano venenoso
 VENOM_DAMAGE_TITLE,Venom Damage,Dano Venenoso
 VENOM_DAMAGE_DESC,Unblocked venom damage applies poison to target instead of damage.,Dano venenoso que não for bloqueado vai aplicar veneno ao usuário em vez de dano.
-DRAIN,drain,drena
+DRAIN,drain,drenar
 DRAIN_2,drain,drene
 DRAIN_TITLE,Drain,Drenar
 DRAIN_DESC,Deals regular damage and heals any unblocked damage.,Inflige dano normal e cura o usuário em qualquer dano não bloqueado.

@@ -38,13 +38,13 @@ var keywords = {
 		"text": "VENOM_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_venom.png"),
 	},
-	"DRAIN": {
+	"DRAIN_2": {
 		"type": "tooltip",
 		"title": "DRAIN_TITLE",
 		"text": "DRAIN_DESC",
 		"title_image": preload("res://assets/images/intents/attack_drain.png"),
 	},
-	"DRAIN_2": {
+	"DRAIN": {
 		"type": "tooltip",
 		"title": "DRAIN_TITLE",
 		"text": "DRAIN_DESC",

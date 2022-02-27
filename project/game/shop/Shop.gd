@@ -211,7 +211,7 @@ func _on_YesButton_pressed():
 
 func _on_NoButton_pressed():
 	AudioManager.play_sfx("click")
-	reagent_destroy_label.hide()
+	reagent_destroy.hide()
 	reagent_list.deactivate_reagents()
 
 

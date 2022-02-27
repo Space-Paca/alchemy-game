@@ -75,16 +75,16 @@ func get_progression_level(type, cur_xp):
 
 func get_unlock(level, type):
 	assert(UNLOCKS.has(type), "Not a valid unlock type: " + str(type))
-	if UNLOCKS[type].size() > level:
+	if UNLOCKS[type].size() >= level:
 		return UNLOCKS[type][level - 1]
 	else:
 		print("No " + str(type) + " unlocks for this level: " + str(level))
-		return false
+		return {}
 
 
 func get_unlock_data(type):
 	var level = Profile.get_progression_level(type)
-	assert(UNLOCKS[type].size() > level,
+	assert(UNLOCKS[type].size() >= level,
 			"No " + str(type) + " unlocks for this level: " + str(level))
 	
 	var data := {}

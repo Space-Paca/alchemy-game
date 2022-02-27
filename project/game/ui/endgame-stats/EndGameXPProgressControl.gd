@@ -7,7 +7,7 @@ const MODIFIED_COLOR = Color.aqua
 const NORMAL_COLOR = Color.white
 const PREVIEW_DUR = .3
 const BAR_NORMAL_COLOR = Color(0x89ff00ff)
-const BAR_MAX_COLOR = Color(0x0000ffff)
+const BAR_MAX_COLOR = Color(0x00f9ffff)
 
 onready var stat_name = $NameContainer/Name
 onready var stat_level = $NameContainer/Level
@@ -47,7 +47,7 @@ func start_max_level():
 func max_level(name):
 	slider.editable = false
 	var dur = .8
-	stat_name.text = tr("UNLOCK") + " " + str(name) + " -"
+	stat_name.text = tr("UNLOCK") + " " + tr(name) + " -"
 	stat_level.text = tr("MAX_LEVEL")
 	progress_bar.value = max_xp
 	$Tween.interpolate_property(slider, "modulate", slider.modulate, Color(1,1,1,0), dur, Tween.TRANS_QUAD, Tween.EASE_OUT)

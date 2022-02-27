@@ -75,7 +75,7 @@ func _on_Next_pressed():
 	$Page2.show()
 	$Page2/CompendiumProgress.enable_tooltips()
 	if Debug.give_xp:
-		xpdivider.set_initial_xp_pool(10000)
+		xpdivider.set_initial_xp_pool(5000)
 	else:
 		xpdivider.set_initial_xp_pool($Page1/RunStats.total_xp)
 	yield(xpdivider, "setup_animation_complete")

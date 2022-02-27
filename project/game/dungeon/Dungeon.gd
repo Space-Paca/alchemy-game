@@ -127,6 +127,7 @@ func get_save_data():
 		"map": map.get_save_data(),
 		"cur_lab_attempts": cur_lab_attempts,
 		"first_shop_visit": first_shop_visit,
+		"shop_data": [] if first_shop_visit else shop.get_save_data(),
 		"battle": battle.get_save_data() if battle else false,
 		"current_node": "" if (not current_node or not is_instance_valid(current_node)) else current_node.name,
 		"time_of_run": time_of_run,
@@ -291,6 +292,12 @@ func load_level(data):
 	
 	# SHOP
 	first_shop_visit = data.first_shop_visit
+	#If already went to shop before, must load saved combinations
+	if not first_shop_visit:
+		var shop_combinations = []
+		for recipe_name in data.shop_data:
+			shop_combinations.append(get_combination_by_name(recipe_name))
+		shop.load_combinations(shop_combinations, player)
 	
 	#LAB
 	cur_lab_attempts = data.cur_lab_attempts

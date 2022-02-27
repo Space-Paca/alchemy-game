@@ -55,6 +55,28 @@ func first_setup(combinations: Array, _player: Player):
 			recipe.hide()
 
 
+func get_save_data():
+	var data = []
+	for recipe in recipes.get_children():
+		data.append(recipe.combination.recipe.name)
+	return data
+
+
+func load_combinations(combinations, _player):
+	player = _player
+	update_reagents()
+	
+	for child in recipes.get_children():
+		recipes.remove_child(child)
+	
+	for i in combinations.size():
+		var recipe = SHOP_RECIPE.instance()
+		recipes.add_child(recipe)
+		recipe.connect("bought", self, "_on_ShopRecipe_bought")
+		recipe.connect("hint_bought", self, "_on_ShopRecipe_hint_bought")
+		recipe.set_combination(combinations[i])
+		recipe.player = player
+
 func setup():
 	$AnimationPlayer.play("init")
 	dialog_label.reset()

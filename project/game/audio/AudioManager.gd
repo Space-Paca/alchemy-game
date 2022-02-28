@@ -103,51 +103,15 @@ func setup_locs():
 		while file_name != "":
 			if not dir.current_is_dir() and file_name != "." and file_name != "..":
 				#Found enemy loc, first parse name, then create data on memory
-				#Check for die sfx
-				regex.compile("(\\w+)_dies.tres")
+				regex.compile("(\\w+)_(\\w+).tres")
 				var result = regex.search(file_name)
 				if result:
 					var name = result.get_string(1)
+					var type = result.get_string(2)
 					if not LOCS.has(name):
 						LOCS[name] = {} 
-					LOCS[name].dies = load(LOC_PATH + file_name)
-				#Check for hit
-				else:
-					regex.compile("(\\w+)_hit.tres")
-					result = regex.search(file_name)
-					if result:
-						var name = result.get_string(1)
-						if not LOCS.has(name):
-							LOCS[name] = {} 
-						LOCS[name]["hit"] = load(LOC_PATH + file_name)
-					#Check for idle
-					else:
-						regex.compile("(\\w+)_idle.tres")
-						result = regex.search(file_name)
-						if result:
-							var name = result.get_string(1)
-							if not LOCS.has(name):
-								LOCS[name] = {} 
-							LOCS[name]["idle"] = load(LOC_PATH + file_name)
-						#Check for spawn
-						else:
-							regex.compile("(\\w+)_spawn.tres")
-							result = regex.search(file_name)
-							if result:
-								var name = result.get_string(1)
-								if not LOCS.has(name):
-									LOCS[name] = {} 
-								LOCS[name]["spawn"] = load(LOC_PATH + file_name)
-							#Check for attack
-							else:
-								regex.compile("(\\w+)_attack.tres")
-								result = regex.search(file_name)
-								if result:
-									var name = result.get_string(1)
-									if not LOCS.has(name):
-										LOCS[name] = {} 
-									LOCS[name]["attack"] = load(LOC_PATH + file_name)
-						
+					LOCS[name][type] = load(LOC_PATH + file_name)
+
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access locutions path.")
@@ -572,23 +536,6 @@ func play_enemy_sfx(enemy: String, type:String):
 	
 	player.play()
 	return player
-
-
-func play_enemy_idle_sfx(enemy):
-	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
-		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
-		assert(false)
-	
-	if CUR_IDLE_SFX.has(enemy):
-		#Already has this enemy sfx playing
-		return
-	
-	var sfx = LOCS[enemy].idle
-	var player = get_idle_sfx_player()
-	CUR_IDLE_SFX[enemy] = player
-
-	
-	return play_enemy_sfx(sfx, player)
 
 
 func stop_enemy_idle_sfx(enemy):

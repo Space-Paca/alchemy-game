@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/audio/loc/carapa/hit.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/loc/morhk/dmg.wav" type="AudioStream" id=1]
 [ext_resource path="res://database/audio/LOC.gd" type="Script" id=2]
 
 [resource]

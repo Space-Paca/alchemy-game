@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/SelfDestructor.tscn"
 var image = "res://assets/images/enemies/self destructor/idle.png"
 var name = "EN_SELF_DESTRUCTOR"
-var sfx = "toxic_slime_minion"
+var sfx = "self-destruct"
 var use_idle_sfx = false
 var hp = 5
 var battle_init = true

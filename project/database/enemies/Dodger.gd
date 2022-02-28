@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Dodger.tscn"
 var image = "res://assets/images/enemies/dodge enemy/idle.png"
 var name = "EN_DODGER"
-var sfx = "rhyno_bird"
+var sfx = "nimble"
 var use_idle_sfx = false
 var hp = 28
 var battle_init = true

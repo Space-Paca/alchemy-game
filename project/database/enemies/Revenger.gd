@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Revenger.tscn"
 var image = "res://assets/images/enemies/revenger/idle.png"
 var name = "EN_REVENGER"
-var sfx = "toxic_slime"
+var sfx = "revenger"
 var use_idle_sfx = false
 var hp = 35
 var battle_init = true

@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Burner.tscn"
 var image = "res://assets/images/enemies/burner/idle.png"
 var name = "EN_BURNER"
-var sfx = "toxic_slime"
+var sfx = "burner"
 var use_idle_sfx = false
 var hp = 220
 var battle_init = false

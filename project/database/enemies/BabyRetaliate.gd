@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BabyRetaliate.tscn"
 var image = "res://assets/images/enemies/baby retaliate/idle.png"
 var name = "EN_BABY_RETALIATE"
-var sfx = "wolftopus"
+var sfx = "virulyn-prickler"
 var use_idle_sfx = false
 var hp = 42
 var battle_init = true

@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Parasiter.tscn"
 var image = "res://assets/images/enemies/parasiter/idle.png"
 var name = "EN_PARASITER"
-var sfx = "toxic_slime"
+var sfx = "parasiter"
 var use_idle_sfx = false
 var hp = 125
 var battle_init = true

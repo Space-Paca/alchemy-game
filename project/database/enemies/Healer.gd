@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Healer.tscn"
 var image = "res://assets/images/enemies/healer/idle.png"
 var name = "EN_HEALER"
-var sfx = "toxic_slime"
+var sfx = "healer"
 var use_idle_sfx = false
 var hp = 170
 var battle_init = true

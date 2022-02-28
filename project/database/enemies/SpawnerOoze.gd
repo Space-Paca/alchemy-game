@@ -3,8 +3,8 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/SpawnerOoze.tscn"
 var image = "res://assets/images/enemies/spawner poison enemy/idle.png"
 var name = "EN_SPAWNER_OOZE"
-var sfx = "toxic_slime"
-var use_idle_sfx = true
+var sfx = "ooze"
+var use_idle_sfx = false
 var hp = 25
 var battle_init = true
 var size = "small"

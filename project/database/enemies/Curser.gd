@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Curser.tscn"
 var image = "res://assets/images/enemies/curser/idle.png"
 var name = "EN_CURSER"
-var sfx = "toxic_slime"
+var sfx = "curser"
 var use_idle_sfx = false
 var hp = 100
 var battle_init = true

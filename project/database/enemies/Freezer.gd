@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Freezer.tscn"
 var image = "res://assets/images/enemies/freezer/idle.png"
 var name = "EN_FREEZER"
-var sfx = "toxic_slime"
+var sfx = "freezer"
 var use_idle_sfx = false
 var hp = 50
 var battle_init = true

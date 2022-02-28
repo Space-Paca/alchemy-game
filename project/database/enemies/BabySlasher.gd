@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BabySlasher.tscn"
 var image = "res://assets/images/enemies/small piercing/idle.png"
 var name = "EN_BABY_SLASHER"
-var sfx = "eye_crab_minion"
+var sfx = "needler-spawn"
 var use_idle_sfx = false
 var hp = 5
 var battle_init = false

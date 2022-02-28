@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BabyCarapaPlus.tscn"
 var image = "res://assets/images/enemies/small regular enemy plus/idle.png"
 var name = "EN_BABY_CARAPA_PLUS"
-var sfx = "wolftopus"
+var sfx = "carapa"
 var use_idle_sfx = false
 var hp = 45
 var battle_init = false

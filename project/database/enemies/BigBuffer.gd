@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BigBuffer.tscn"
 var image = "res://assets/images/enemies/buffing big enemy/idle.png"
 var name = "EN_BIG_BUFFER"
-var sfx = "goblintaur"
+var sfx = "morhk"
 var use_idle_sfx = false
 var hp = 90
 var battle_init = false

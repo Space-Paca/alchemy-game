@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Overkiller.tscn"
 var image = "res://assets/images/enemies/overkiller/idle.png"
 var name = "EN_OVERKILLER"
-var sfx = "toxic_slime"
+var sfx = "overkiller"
 var use_idle_sfx = false
 var hp = 90
 var battle_init = true

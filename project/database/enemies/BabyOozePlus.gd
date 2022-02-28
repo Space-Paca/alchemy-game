@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BabyPoisonPlus.tscn"
 var image = "res://assets/images/enemies/small poison enemy plus/idle.png"
 var name = "EN_BABY_OOZE_PLUS"
-var sfx = "toxic_slime_minion"
+var sfx = "oozeling-plus"
 var use_idle_sfx = false
 var hp = 90
 var battle_init = true

@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Necromancer.tscn"
 var image = "res://assets/images/enemies/necromancer/idle.png"
 var name = "EN_NECROMANCER"
-var sfx = "toxic_slime"
+var sfx = "necromancer"
 var use_idle_sfx = false
 var hp = 180
 var battle_init = true

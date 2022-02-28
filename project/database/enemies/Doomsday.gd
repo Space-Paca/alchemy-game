@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Doomsday.tscn"
 var image = "res://assets/images/enemies/doomsayer/idle.png"
 var name = "EN_DOOMSDAY"
-var sfx = "toxic_slime"
+var sfx = "doomsayer"
 var use_idle_sfx = false
 var hp = 460
 var battle_init = true

@@ -3,8 +3,8 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Poison.tscn"
 var image = "res://assets/images/enemies/poison elite/idle.png"
 var name = "EN_POISUN"
-var sfx = "fat_monster"
-var use_idle_sfx = true
+var sfx = "subject-13"
+var use_idle_sfx = false
 var hp = 80
 var battle_init = false
 var size = "big"

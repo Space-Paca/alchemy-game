@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Rager.tscn"
 var image = "res://assets/images/enemies/rager/idle.png"
 var name = "EN_RAGER"
-var sfx = "toxic_slime"
+var sfx = "rager"
 var use_idle_sfx = false
 var hp = 100
 var battle_init = true

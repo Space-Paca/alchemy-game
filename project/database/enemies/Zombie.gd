@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Zombie.tscn"
 var image = "res://assets/images/enemies/zombie/idle.png"
 var name = "EN_ZOMBIE"
-var sfx = "toxic_slime"
+var sfx = "zombie"
 var use_idle_sfx = false
 var hp = 60
 var battle_init = true

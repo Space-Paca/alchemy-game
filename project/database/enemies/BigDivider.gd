@@ -3,8 +3,8 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/BigDivider.tscn"
 var image = "res://assets/images/enemies/big divider/idle.png"
 var name = "EN_BIG_DIVIDER"
-var sfx = "toxic_slime"
-var use_idle_sfx = true
+var sfx = "divider"
+var use_idle_sfx = false
 var hp = 80
 var battle_init = true
 var size = "medium"

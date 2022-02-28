@@ -3,8 +3,8 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/EliteDodger.tscn"
 var image = "res://assets/images/enemies/elite dodger/idle.png"
 var name = "EN_ELITE_DODGER"
-var sfx = "eye_crab"
-var use_idle_sfx = true
+var sfx = "needler-queen"
+var use_idle_sfx = false
 var hp = 45
 var battle_init = true
 var size = "medium"

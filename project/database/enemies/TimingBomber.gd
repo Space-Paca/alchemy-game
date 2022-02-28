@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/TimingBomber.tscn"
 var image = "res://assets/images/enemies/timing bomber/idle.png"
 var name = "EN_TIMING_BOMBER"
-var sfx = "toxic_slime"
+var sfx = "bomber"
 var use_idle_sfx = false
 var hp = 202
 var battle_init = true

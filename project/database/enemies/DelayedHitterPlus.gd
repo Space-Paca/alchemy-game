@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/DelayedHitterPlus.tscn"
 var image = "res://assets/images/enemies/delayed hitter/idle.png"
 var name = "EN_DELAYED_HITTER_PLUS"
-var sfx = "stone_golem"
+var sfx = "virulyn-prowler-plus"
 var use_idle_sfx = false
 var hp = 130
 var battle_init = false

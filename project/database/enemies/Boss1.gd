@@ -3,7 +3,7 @@ extends EnemyData
 var scene_path = "res://game/enemies/enemy-scenes/Boss1.tscn"
 var image = "res://assets/images/enemies/boss1/idle.png"
 var name = "EN_BOSS_1"
-var sfx = "boss_1"
+var sfx = "boss-1"
 var use_idle_sfx = false
 var hp = 100
 var battle_init = true

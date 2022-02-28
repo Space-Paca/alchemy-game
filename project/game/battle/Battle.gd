@@ -1068,6 +1068,7 @@ func _on_enemy_acted(enemy, actions):
 		if name == "damage":
 			for i in range(0, args.amount):
 				enemy.play_animation(args.animation)
+				AudioManager.play_enemy_sfx(enemy.data.sfx, "attack")
 				var func_state = player.take_damage(enemy, args.value + \
 													enemy.get_damage_modifiers(),\
 													args.type)
@@ -1084,6 +1085,7 @@ func _on_enemy_acted(enemy, actions):
 		if name == "drain":
 			for i in range(0, args.amount):
 				enemy.play_animation(args.animation)
+				AudioManager.play_enemy_sfx(enemy.data.sfx, "attack")
 				var func_state = player.drain(enemy, args.value + \
 											  enemy.get_damage_modifiers())
 				if i == args.amount - 1:

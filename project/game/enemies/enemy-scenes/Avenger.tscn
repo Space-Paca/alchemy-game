@@ -461,7 +461,7 @@ scale = Vector2( 0.5, 0.5 )
 animation_state_data_res = SubResource( 2 )
 packed_skin_resource = SubResource( 3 )
 current_animations = [ {
-"animation": "stand",
+"animation": "01_idle",
 "clear": false,
 "delay": 0.0,
 "empty": false,
@@ -470,7 +470,7 @@ current_animations = [ {
 "track_id": 0
 } ]
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" parent="." index="7"]
 anims/atk = SubResource( 4 )
 anims/atk2 = SubResource( 5 )
 anims/atk3_arc = SubResource( 6 )

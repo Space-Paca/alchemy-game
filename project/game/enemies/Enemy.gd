@@ -90,7 +90,6 @@ func heal(amount : int):
 	emit_signal("resolved")
 
 
-
 func die(_reason=false):
 	#Audio
 	AudioManager.play_enemy_dies_sfx(data.sfx)
@@ -578,7 +577,7 @@ func _on_TooltipCollision_enable_tooltip():
 
 func _on_Sprite_animation_complete(_animation_state, track_entry, _event):
 	var anim_name = track_entry.get_animation().get_anim_name()
-	if anim_name == data.death_anim_name:
+	if anim_name == data.death_anim_name or hp == 0:
 		emit_signal("died", self)
 	elif anim_name == data.idle_anim_name:
 		var variant_idle = data.get_variant_idle()

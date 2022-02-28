@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Blockbuster Bomb"
+name = "RE_ATAQUE_MULTIPLO_PLUSPLUS"
 grid_size = 3
 sfx = "bomb"
 must_unlock = false

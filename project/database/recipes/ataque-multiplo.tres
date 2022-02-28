@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Frag Bomb"
+name = "RE_ATAQUE_MULTIPLO"
 grid_size = 2
 sfx = "frag_bomb"
 must_unlock = false

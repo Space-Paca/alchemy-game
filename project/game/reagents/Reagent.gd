@@ -88,7 +88,7 @@ func _process(delta):
 				if not disable_drag:
 					can_drag = true
 				rect_position = target_position
-				target_position = null
+				#target_position = null
 				emit_signal("reached_target_pos")
 	if not is_drag:
 		rect_rotation = lerp(rect_rotation, 0, ROTATION_FACTOR*delta)

@@ -4,6 +4,7 @@ signal closed
 
 const MAX_TITLE_FONT_SIZE = 228
 const MAX_TYPE_FONT_SIZE = 110
+const DEFAULT_MARGIN = 16
 const BGS = {
 	"recipes": preload("res://assets/images/ui/recompensa1.png"),
 	"artifacts": preload("res://assets/images/ui/recompensa2.png"),

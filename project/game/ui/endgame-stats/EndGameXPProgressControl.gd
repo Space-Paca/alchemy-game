@@ -64,7 +64,7 @@ func apply():
 	var dur = 1.2
 	var target_rect = Rect2(0, 0, 0, progress_bar.rect_size.y)
 	var target_percentage = ((initial_xp + modified_xp)/float(max_xp))
-	var target_x = target_percentage*progress_bar.rect_size.x
+	var target_x = progress_bar.rect_size.x*target_percentage
 	
 	initial_xp += modified_xp 
 	modified_xp = 0
@@ -123,15 +123,12 @@ func reset_preview():
 	preview.scale.x = progress_bar.rect_size.x/float(preview.texture.get_width())
 	preview.scale.y = progress_bar.rect_size.y/float(preview.texture.get_height())
 	preview.position.x = progress_bar.rect_position.x + progress_bar.rect_size.x/2
-	preview.position.y = progress_bar.rect_position.y + progress_bar.rect_size.y/2
 	
 	var cur_xp_percentage = (initial_xp/float(max_xp))
-	var y = progress_bar.rect_position.y + progress_bar.rect_size.y/2
 	preview.region_rect = Rect2(0, 0, 0, progress_bar.rect_size.y)
-	preview.position = Vector2(cur_xp_percentage*progress_bar.rect_size.x, y)
+	preview.position.x = cur_xp_percentage*progress_bar.rect_size.x
 
 func update_preview():
-	var cur_xp_percentage = (initial_xp/float(max_xp))
 	var gain_percent = (modified_xp / float(max_xp))
 	
 	#Calculate what region of the texture to cut
@@ -139,15 +136,12 @@ func update_preview():
 	var h = progress_bar.rect_size.y
 	var target_rect = Rect2(0, 0, w, h)
 	
-	#Since it is a sprite, position pivot is in the middle
-	var y = progress_bar.rect_position.y + progress_bar.rect_size.y/2
-	var target_pos = Vector2((cur_xp_percentage + gain_percent/2)*progress_bar.rect_size.x, y)
+	preview.position.x = progress_bar.rect_size.x*(initial_xp/float(max_xp))
 	
 	#Stretch effect
 	$Tween.remove_all()
 	var dur = PREVIEW_DUR
 	$Tween.interpolate_property(preview, "region_rect", preview.region_rect, target_rect, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property(preview, "position", preview.position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	var mod = .6
 	var sfx_name = "bar_preview" if w > preview.region_rect.size.x else "bar_erase"
 	AudioManager.play_sfx(sfx_name, 1.0 + mod*gain_percent)

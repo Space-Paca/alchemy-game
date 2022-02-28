@@ -26,7 +26,7 @@ void fragment(){
 
 [resource]
 shader = SubResource( 1 )
-shader_param/strength = 0.02
-shader_param/speed = 0.0
+shader_param/strength = 0.008
+shader_param/speed = 0.03
 shader_param/frames = 1
 shader_param/flowMap = ExtResource( 1 )

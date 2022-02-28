@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/images/ui/recompensa_ok.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/effects/random_selection.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/ui/recompensa3.png" type="Texture" id=11]
+[ext_resource path="res://assets/shaders/reward_text_shader.tres" type="Material" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=9]
 blend_mode = 1
@@ -50,7 +51,7 @@ anim_offset = 1.0
 anim_offset_random = 1.0
 
 [sub_resource type="DynamicFont" id=16]
-size = 128
+size = 98
 outline_size = 14
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -65,7 +66,7 @@ shortcut = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 228
-outline_size = 12
+outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -73,8 +74,8 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 110
-outline_size = 12
-outline_color = Color( 0, 0, 0, 1 )
+outline_size = 8
+outline_color = Color( 0, 0, 0, 0.635294 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -146,7 +147,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.901961 ), Color( 1, 1, 1, 0.901961 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.941176 ), Color( 1, 1, 1, 0.941176 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("BG/Particles2D:emitting")
@@ -177,7 +178,7 @@ tracks/0/keys = {
 }
 
 [node name="UnlockablePopup" type="ColorRect"]
-self_modulate = Color( 1, 1, 1, 0.901961 )
+self_modulate = Color( 1, 1, 1, 0.941176 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.784314 )
@@ -232,10 +233,11 @@ process_material = SubResource( 13 )
 texture = ExtResource( 10 )
 
 [node name="UnlockLabel" type="Label" parent="BG"]
-margin_left = 252.0
-margin_top = -10.0
-margin_right = 2052.0
-margin_bottom = 373.0
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 248.0
+margin_top = 14.0
+margin_right = 2048.0
+margin_bottom = 397.0
 custom_colors/font_color = Color( 0.54902, 1, 0.737255, 1 )
 custom_fonts/font = SubResource( 16 )
 text = "CERTIFICATE_ACQ"
@@ -279,8 +281,15 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="BG/VBoxContainer"]
+modulate = Color( 0.427451, 0.188235, 0.0901961, 1 )
+material = ExtResource( 12 )
 margin_right = 1100.0
 margin_bottom = 289.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 2 )
 text = "Unlockable"
 align = 1
@@ -294,6 +303,7 @@ __meta__ = {
 margin_top = 271.0
 margin_right = 1100.0
 margin_bottom = 434.0
+custom_colors/font_color = Color( 0.917647, 0.917647, 0.917647, 0.933333 )
 custom_fonts/font = SubResource( 3 )
 text = "Type"
 align = 1

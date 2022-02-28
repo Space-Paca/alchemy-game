@@ -220,10 +220,11 @@ __meta__ = {
 }
 
 [node name="PreviewProgress" type="Sprite" parent="."]
-position = Vector2( 288, 69 )
+position = Vector2( 250, 54 )
 texture = ExtResource( 3 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 30, 30 )
+region_rect = Rect2( 0, 0, 50, 30 )
 
 [node name="Border" type="TextureRect" parent="."]
 margin_left = -10.7272

@@ -60,6 +60,7 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 	event = new_event
 	title_label.text = tr(event.title)
 	update_title_size()
+	
 	if override_text != "":
 		text_label.bbcode_text = translate_and_format(override_text)
 	else:

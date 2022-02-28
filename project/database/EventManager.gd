@@ -153,6 +153,7 @@ func load_leave_event(event_display, player, text: String, title := "", type := 
 	dummy_leave_event.text = tr(text)
 	dummy_leave_event.title = current_event.title if title == "" else title
 	dummy_leave_event.type = current_event.type if type == -1 else type
+	dummy_leave_event.image = current_event.image
 	load_new_event(event_display, player, dummy_leave_event.id)
 
 
@@ -335,12 +336,12 @@ func coins_for_blood(event_display, player, times):
 	
 	if times <= 1:
 		player.add_gold(gold)
-		text = tr(text)
-		text = events_by_id[13].text.replace("<amount>", str(gold))
+		text = tr(events_by_id[13].text)
+		text = text.replace("<amount>", str(gold))
 	else:
 		player.add_gold(gold)
-		text = tr(text)
-		text = current_event.leave_text_1.replace("<amount>", str(gold))
+		text = tr(current_event.leave_text_1)
+		text = text.replace("<amount>", str(gold))
 	
 	load_new_event(event_display, player, 13, text)
 

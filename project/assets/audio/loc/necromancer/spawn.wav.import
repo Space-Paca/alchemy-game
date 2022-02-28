@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn.wav-60e5bc7564753e6b25d95c72f7ba73ad.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/necromancer/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-60e5bc7564753e6b25d95c72f7ba73ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

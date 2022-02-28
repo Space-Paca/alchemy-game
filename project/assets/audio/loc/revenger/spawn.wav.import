@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn.wav-8bd5c5f95ba9ba21098a2db5e15a1041.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/revenger/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-8bd5c5f95ba9ba21098a2db5e15a1041.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

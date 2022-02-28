@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn.wav-6b383423c6d8de064b4a2522a3532ea1.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/needler-queen/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-6b383423c6d8de064b4a2522a3532ea1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

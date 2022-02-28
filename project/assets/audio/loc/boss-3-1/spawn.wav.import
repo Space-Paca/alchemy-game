@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn.wav-e773446381d1846d7526df867b2e2686.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/boss-3-1/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-e773446381d1846d7526df867b2e2686.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

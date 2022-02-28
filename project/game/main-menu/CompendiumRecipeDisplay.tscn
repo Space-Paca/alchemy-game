@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/main-menu/CompendiumRecipeDisplay.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/recipe-icons/dano.png" type="Texture" id=9]
+[ext_resource path="res://assets/shaders/painting_shader_material.tres" type="Material" id=10]
 
 [sub_resource type="DynamicFont" id=7]
 size = 28
@@ -226,10 +227,11 @@ texture = ExtResource( 8 )
 expand = true
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_left = 14.0
-margin_top = 23.0
-margin_right = 62.0
-margin_bottom = 71.0
+material = ExtResource( 10 )
+margin_left = 10.0
+margin_top = 22.0
+margin_right = 65.0
+margin_bottom = 77.0
 texture = ExtResource( 9 )
 expand = true
 __meta__ = {

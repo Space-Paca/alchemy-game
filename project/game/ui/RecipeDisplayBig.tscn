@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/recipe-icons/dano.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/recipe_page.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/arrow.png" type="Texture" id=3]
 [ext_resource path="res://game/ui/RecipeDisplayBig.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/shaders/painting_shader_material.tres" type="Material" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -167,9 +168,10 @@ align = 1
 autowrap = true
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_left = 22.7183
-margin_top = 66.0358
-margin_right = 122.718
-margin_bottom = 166.036
+material = ExtResource( 6 )
+margin_left = 17.0
+margin_top = 50.0
+margin_right = 127.0
+margin_bottom = 160.0
 texture = ExtResource( 1 )
 expand = true

@@ -1003,8 +1003,8 @@ func combine():
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, true)
 
-	yield(reagent_list.back(), "finished_combine_animation")
-
+	yield(reagent_list.front(), "finished_combine_animation")
+	
 	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())
 

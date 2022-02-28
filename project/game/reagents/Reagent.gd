@@ -88,6 +88,7 @@ func _process(delta):
 				if not disable_drag:
 					can_drag = true
 				rect_position = target_position
+				target_position = null
 				emit_signal("reached_target_pos")
 	if not is_drag:
 		rect_rotation = lerp(rect_rotation, 0, ROTATION_FACTOR*delta)
@@ -197,7 +198,6 @@ func combine_animation(grid_center: Vector2, duration: float, second_animation: 
 		stop_auto_moving = true
 	else:
 		stop_auto_moving = false
-		
 	emit_signal("finished_combine_animation")
 
 
@@ -205,6 +205,7 @@ func reset_to_gridslot(gridslot):
 	gridslot.set_reagent(self)
 	$CombineTween.interpolate_method(self, "set_grayscale", 1, 0, .15, Tween.TRANS_QUAD, Tween.EASE_IN) 
 	$CombineTween.start()
+
 
 func set_grayscale(value: float):
 	image.material.set_shader_param("grayscale", value)

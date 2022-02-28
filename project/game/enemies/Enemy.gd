@@ -92,7 +92,7 @@ func heal(amount : int):
 
 func die(_reason=false):
 	#Audio
-	AudioManager.play_enemy_dies_sfx(data.sfx)
+	AudioManager.play_enemy_sfx(data.sfx, "dies")
 	disable()
 	
 	#Death animation
@@ -120,7 +120,7 @@ func drain(source: Character, amount: int):
 		source.heal(unblocked_dmg)
 	
 	if hp > 0 and unblocked_dmg > 0:
-		AudioManager.play_enemy_hit_sfx(data.sfx)
+		AudioManager.play_enemy_sfx(data.sfx, "hit")
 		animation.play(data.dmg_anim_name)
 	
 	#TODO: Change for a "drain" animation （￣︶￣）↗　
@@ -145,7 +145,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
-		AudioManager.play_enemy_hit_sfx(data.sfx)
+		AudioManager.play_enemy_sfx(data.sfx, "hit")
 		animation.play(data.dmg_anim_name)
 		
 	

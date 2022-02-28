@@ -113,14 +113,13 @@ func setup_locs():
 					LOCS[name].dies = load(LOC_PATH + file_name)
 				#Check for hit
 				else:
-					regex.compile("(\\w+)_hit_var(\\d+).tres")
+					regex.compile("(\\w+)_hit.tres")
 					result = regex.search(file_name)
 					if result:
 						var name = result.get_string(1)
-						var number = result.get_string(2)
 						if not LOCS.has(name):
 							LOCS[name] = {} 
-						LOCS[name]["hit_var"+str(number)] = load(LOC_PATH + file_name)
+						LOCS[name]["hit"] = load(LOC_PATH + file_name)
 					#Check for idle
 					else:
 						regex.compile("(\\w+)_idle.tres")
@@ -132,14 +131,22 @@ func setup_locs():
 							LOCS[name]["idle"] = load(LOC_PATH + file_name)
 						#Check for spawn
 						else:
-							regex.compile("(\\w+)_spawn_var(\\d+).tres")
+							regex.compile("(\\w+)_spawn.tres")
 							result = regex.search(file_name)
 							if result:
 								var name = result.get_string(1)
-								var number = result.get_string(2)
 								if not LOCS.has(name):
 									LOCS[name] = {} 
-								LOCS[name]["spawn_var"+str(number)] = load(LOC_PATH + file_name)
+								LOCS[name]["spawn"] = load(LOC_PATH + file_name)
+							#Check for attack
+							else:
+								regex.compile("(\\w+)_attack.tres")
+								result = regex.search(file_name)
+								if result:
+									var name = result.get_string(1)
+									if not LOCS.has(name):
+										LOCS[name] = {} 
+									LOCS[name]["attack"] = load(LOC_PATH + file_name)
 						
 			file_name = dir.get_next()
 	else:
@@ -530,12 +537,28 @@ func get_sfx_duration(name: String):
 	return SFXS[name].asset.get_length()
 
 
-func play_enemy_sfx(sfx, given_player = null):
+func play_enemy_sfx(enemy: String, type:String):
+	if not LOCS.has(enemy) or not LOCS[enemy].has(type):
+		push_error("There isn't a " + type + " sfx file for this enemy: " + str(enemy))
+		return
+		
+	var sfx = LOCS[enemy][type]
 	var player
-	if not given_player:
-		player= get_sfx_player()
+	
+	if type == "idle":
+		if CUR_IDLE_SFX.has(enemy):
+			#Already has this enemy sfx playing
+			return
+		player = get_idle_sfx_player()
+		CUR_IDLE_SFX[enemy] = player
+		
+		#Get random initial position
+		randomize()
+		player.seek(rand_range(0.0, sfx.asset.get_length()))
 	else:
-		player = given_player
+		player = get_sfx_player()
+		
+
 	player.stop()
 	
 	randomize()
@@ -551,30 +574,6 @@ func play_enemy_sfx(sfx, given_player = null):
 	return player
 
 
-func play_enemy_hit_sfx(enemy: String):
-	#Get a random hit sfx
-	randomize()
-	var number = randi()%3 + 1
-	
-	if not LOCS.has(enemy) or not LOCS[enemy].has("hit_var"+str(number)):
-		push_error("There isn't a hit sfx file for this enemy: " + str(enemy))
-		assert(false)
-	
-	play_enemy_sfx(LOCS[enemy]["hit_var"+str(number)])
-
-
-func play_enemy_spawn_sfx(enemy: String):
-	#Get a random hit sfx
-	randomize()
-	var number = randi()%3 + 1
-	
-	if not LOCS.has(enemy) or not LOCS[enemy].has("spawn_var"+str(number)):
-		push_error("There isn't a spawn sfx file for this enemy: " + str(enemy))
-		assert(false)
-	
-	play_enemy_sfx(LOCS[enemy]["spawn_var"+str(number)])
-
-
 func play_enemy_idle_sfx(enemy):
 	if not LOCS.has(enemy) or not LOCS[enemy].has("idle"):
 		push_error("There isn't an idle sfx file for this enemy: " + str(enemy))
@@ -587,11 +586,7 @@ func play_enemy_idle_sfx(enemy):
 	var sfx = LOCS[enemy].idle
 	var player = get_idle_sfx_player()
 	CUR_IDLE_SFX[enemy] = player
-	
-	#Get random initial position
-	randomize()
-	var pos = rand_range(0.0, sfx.asset.get_length())
-	player.seek(pos)
+
 	
 	return play_enemy_sfx(sfx, player)
 
@@ -605,11 +600,3 @@ func stop_enemy_idle_sfx(enemy):
 func stop_all_enemy_idle_sfx():
 	for name in CUR_IDLE_SFX.keys():
 		stop_enemy_idle_sfx(name)
-
-
-func play_enemy_dies_sfx(enemy):
-	if not LOCS.has(enemy) or not LOCS[enemy].has("dies"):
-		push_error("There isn't a death sfx file for this enemy: " + str(enemy))
-		assert(false)
-	
-	play_enemy_sfx(LOCS[enemy].dies)

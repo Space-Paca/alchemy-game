@@ -416,7 +416,7 @@ func load_enemy(data):
 
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
-		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
+		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "idle")
 
 	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
@@ -427,7 +427,7 @@ func load_enemy(data):
 
 	randomize()
 	yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
-	AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+	AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
 
 	enemy_node.logic.set_state(data.current_state)
 	enemy_node.load_actions(data.actions)
@@ -449,7 +449,7 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
-		AudioManager.play_enemy_idle_sfx(enemy_node.data.sfx)
+		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "idle")
 
 	enemy_node.connect("action", self, "_on_enemy_acted")
 	enemy_node.connect("died", self, "_on_enemy_died")
@@ -459,11 +459,11 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	effect_manager.add_enemy(enemy_node)
 
 	if just_spawned:
-		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
 	else:
 		randomize()
 		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
-		AudioManager.play_enemy_spawn_sfx(enemy_node.data.sfx)
+		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
 
 	enemy_node.update_actions()
 

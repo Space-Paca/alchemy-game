@@ -577,8 +577,11 @@ func _on_TooltipCollision_enable_tooltip():
 
 func _on_Sprite_animation_complete(_animation_state, track_entry, _event):
 	var anim_name = track_entry.get_animation().get_anim_name()
-	if anim_name == data.death_anim_name or hp == 0:
+	if anim_name == data.death_anim_name:
 		emit_signal("died", self)
+	elif hp == 0:
+		#Weird condition race where another animation was finished at the same time enemy is dying
+		animation.play(data.death_anim_name)
 	elif anim_name == data.idle_anim_name:
 		var variant_idle = data.get_variant_idle()
 		if variant_idle and randf() < VARIANT_IDLE_CHANCE:

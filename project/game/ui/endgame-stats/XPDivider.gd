@@ -88,6 +88,7 @@ func setup_xp_progress_bars():
 		var init_xp = get_level_xp(prog_type)
 		var lvl_prog = UnlockManager.get_progression(prog_type)
 		var max_xp
+		child.slider.editable = false
 		if cur_level == 0:
 			max_xp = lvl_prog[cur_level]
 			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
@@ -101,6 +102,8 @@ func setup_xp_progress_bars():
 		$Tween.interpolate_property(child, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		$Tween.start()
 		yield($Tween, "tween_completed")
+		if not Profile.is_max_level(prog_type):
+			child.slider.editable = true
 		yield(get_tree().create_timer(.4),"timeout")
 	$Tween.interpolate_property(apply_button, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$Tween.start()

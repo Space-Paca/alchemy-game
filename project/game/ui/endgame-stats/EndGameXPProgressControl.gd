@@ -102,7 +102,7 @@ func setup(name, level, _initial_xp, _max_xp, total_available_xp):
 	max_xp = _max_xp
 	
 	update_xp_text()
-	
+
 	available_xp = total_available_xp
 	slider.max_value = total_available_xp
 	progress_bar.max_value = max_xp

@@ -65,7 +65,7 @@ action = "ui_accept"
 shortcut = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 228
+size = 208
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -73,7 +73,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 110
+size = 85
 outline_size = 8
 outline_color = Color( 0, 0, 0, 0.635294 )
 use_mipmaps = true
@@ -281,10 +281,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="BG/VBoxContainer"]
-modulate = Color( 0.427451, 0.188235, 0.0901961, 1 )
+modulate = Color( 0.0901961, 0.427451, 0.317647, 1 )
 material = ExtResource( 12 )
 margin_right = 1100.0
-margin_bottom = 289.0
+margin_bottom = 263.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
@@ -300,9 +300,9 @@ __meta__ = {
 }
 
 [node name="Type" type="Label" parent="BG/VBoxContainer"]
-margin_top = 271.0
+margin_top = 245.0
 margin_right = 1100.0
-margin_bottom = 434.0
+margin_bottom = 372.0
 custom_colors/font_color = Color( 0.917647, 0.917647, 0.917647, 0.933333 )
 custom_fonts/font = SubResource( 3 )
 text = "Type"

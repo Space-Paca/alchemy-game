@@ -18,7 +18,7 @@ signal event_pressed(id)
 signal artifact_pressed(name)
 signal damage_all
 
-const VERSION := "v0.3.3"
+const VERSION := "v0.4.0"
 const MAX_FLOOR := 3
 
 var floor_to_go := -1

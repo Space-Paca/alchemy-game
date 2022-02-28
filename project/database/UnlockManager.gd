@@ -113,6 +113,7 @@ func get_unlock_data(type):
 			else:
 				data["texture"] = load(data.texture_path)
 	
+	data.style = type
 	return data
 
 

@@ -16,13 +16,13 @@ particles_anim_loop = false
 offsets = PoolRealArray( 0, 0.469595, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=8]
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 3.27644, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
+[sub_resource type="CurveTexture" id=9]
 curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
@@ -35,8 +35,8 @@ angle = 360.0
 angle_random = 1.0
 scale = 1.3
 scale_random = 0.5
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 8 )
 hue_variation = 0.25
 hue_variation_random = 0.03
 anim_offset = 1.0

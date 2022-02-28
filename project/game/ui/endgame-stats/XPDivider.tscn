@@ -94,8 +94,8 @@ margin_left = 124.029
 margin_top = 108.832
 margin_right = 742.029
 margin_bottom = 184.832
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "KNOWLEDGE_ADMIN"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -131,8 +131,8 @@ __meta__ = {
 margin_top = 20.0
 margin_right = 421.0
 margin_bottom = 59.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "EMPIRIC_AVAILABLE"
 __meta__ = {
 "_edit_use_anchors_": false

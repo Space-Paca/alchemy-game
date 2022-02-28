@@ -165,7 +165,9 @@ func _on_ApplyButton_pressed():
 		if xp > 0:
 			initial_xp_pool -= xp
 			child.apply()
+
 			yield(child, "finished_applying")
+
 			var prog_type = PROGRESSIONS[idx]
 			var cur_level = get_level(prog_type)
 			var prog_data = Profile.get_progression(PROGRESSIONS[idx])

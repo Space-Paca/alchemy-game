@@ -220,7 +220,7 @@ __meta__ = {
 }
 
 [node name="PreviewProgress" type="Sprite" parent="."]
-position = Vector2( 288.774, 69.2016 )
+position = Vector2( 288, 69 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 30, 30 )

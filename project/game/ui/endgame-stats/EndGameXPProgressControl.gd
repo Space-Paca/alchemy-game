@@ -75,8 +75,9 @@ func apply():
 	$Tween.interpolate_property(preview, "position:x", preview.position.x, target_x, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	AudioManager.play_sfx("bar_growing", bar_growing_sfx_len/dur)
 	$Tween.start()
-	
+
 	yield($Tween, "tween_all_completed")
+
 	update_xp_text()
 	ignore_callback = false
 	slider.editable = true

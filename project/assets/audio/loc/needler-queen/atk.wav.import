@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/atk.wav-941762ba1ab719384f918c7506876953.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/needler-queen/atk.wav"
+dest_files=[ "res://.import/atk.wav-941762ba1ab719384f918c7506876953.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

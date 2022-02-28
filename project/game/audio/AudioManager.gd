@@ -103,7 +103,7 @@ func setup_locs():
 		while file_name != "":
 			if not dir.current_is_dir() and file_name != "." and file_name != "..":
 				#Found enemy loc, first parse name, then create data on memory
-				regex.compile("(\\w+)_(\\w+).tres")
+				regex.compile("([a-zA-Z0-9_\\-]+)_(\\w+).tres")
 				var result = regex.search(file_name)
 				if result:
 					var name = result.get_string(1)

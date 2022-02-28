@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmg.wav-1ef9d4b373d040410a447853a16dcbb5.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/subject-13/dmg.wav"
+dest_files=[ "res://.import/dmg.wav-1ef9d4b373d040410a447853a16dcbb5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

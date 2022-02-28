@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmg.wav-8107af7a3ff0fc5932607ec011a1af06.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/needler-queen/dmg.wav"
+dest_files=[ "res://.import/dmg.wav-8107af7a3ff0fc5932607ec011a1af06.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

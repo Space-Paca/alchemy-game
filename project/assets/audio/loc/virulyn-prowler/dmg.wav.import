@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmg.wav-8ae503c95089134a66af152c8c9231bc.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/virulyn-prowler/dmg.wav"
+dest_files=[ "res://.import/dmg.wav-8ae503c95089134a66af152c8c9231bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

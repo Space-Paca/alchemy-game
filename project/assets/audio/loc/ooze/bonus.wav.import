@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bonus.wav-4bc480b08686f39510e527b687edfe7a.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/ooze/bonus.wav"
+dest_files=[ "res://.import/bonus.wav-4bc480b08686f39510e527b687edfe7a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

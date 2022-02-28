@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmg.wav-5ad98d97c54051b1a1b90e056cbc1dca.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/parasiter/dmg.wav"
+dest_files=[ "res://.import/dmg.wav-5ad98d97c54051b1a1b90e056cbc1dca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

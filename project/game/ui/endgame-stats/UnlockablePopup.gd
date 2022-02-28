@@ -21,6 +21,8 @@ const TITLE_COLOR = {
 	"misc": Color(0x176d51ff),
 }
 
+var sfx = null
+
 func setup(unlock_data: Dictionary):
 	$BG.texture = BGS[unlock_data.style]
 	$BG/UnlockLabel.set("custom_colors/font_color", FONT_COLOR[unlock_data.style])
@@ -32,6 +34,7 @@ func setup(unlock_data: Dictionary):
 	$BG/TextureRect.texture = unlock_data.texture
 	$BG/TextureRect/Shadow.texture = unlock_data.texture
 	$BG/Description.text = unlock_data.description
+	sfx = unlock_data.sfx
 
 func update_label_size(label, max_size):
 	var font = label.get("custom_fonts/font")
@@ -44,10 +47,19 @@ func update_label_size(label, max_size):
 
 func appear():
 	$AnimationPlayer.play("appear")
+	$Tween.interpolate_property($LoopSFX, "volume_db", -80, 0, 1.0)
+	$Tween.start()
+
+
+func play_sfx():
+	AudioManager.play_sfx(sfx)
 
 
 func _on_Continue_pressed():
 	AudioManager.play_sfx("click")
+	$Tween.remove_all()
+	$Tween.interpolate_property($LoopSFX, "volume_db", $LoopSFX.volume_db, -80, .5)
+	$Tween.start()
 	emit_signal("closed")
 
 

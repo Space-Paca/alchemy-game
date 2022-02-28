@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/images/effects/random_selection.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/ui/recompensa3.png" type="Texture" id=11]
 [ext_resource path="res://assets/shaders/reward_text_shader.tres" type="Material" id=12]
+[ext_resource path="res://assets/audio/sfx/reward_loop.wav" type="AudioStream" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=9]
 blend_mode = 1
@@ -34,7 +35,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 3.27644, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 curve = SubResource( 12 )
 
 [sub_resource type="ParticlesMaterial" id=13]
-lifetime_randomness = 0.02
+lifetime_randomness = 0.05
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
@@ -66,7 +67,7 @@ shortcut = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 208
-outline_size = 4
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -161,6 +162,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false, false, true ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_sfx"
+} ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "init"
@@ -226,9 +241,10 @@ __meta__ = {
 
 [node name="Particles2D" type="Particles2D" parent="BG"]
 material = SubResource( 9 )
-position = Vector2( 638, 1072 )
+position = Vector2( 608, 1008 )
 scale = Vector2( 4, 4 )
 amount = 7
+lifetime = 1.2
 process_material = SubResource( 13 )
 texture = ExtResource( 10 )
 
@@ -271,9 +287,9 @@ expand = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -600.0
-margin_top = 250.0
+margin_top = 278.0
 margin_right = 500.0
-margin_bottom = 706.0
+margin_bottom = 734.0
 rect_min_size = Vector2( 1100, 0 )
 custom_constants/separation = -18
 __meta__ = {
@@ -287,8 +303,8 @@ margin_right = 1100.0
 margin_bottom = 263.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = 4
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 2 )
 text = "Unlockable"
@@ -315,10 +331,10 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="BG"]
 material = ExtResource( 8 )
-margin_left = 290.0
-margin_top = 732.0
-margin_right = 955.0
-margin_bottom = 1397.0
+margin_left = 278.0
+margin_top = 658.0
+margin_right = 943.0
+margin_bottom = 1323.0
 rect_min_size = Vector2( 200, 200 )
 texture = ExtResource( 4 )
 stretch_mode = 6
@@ -330,10 +346,10 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 0.913725 )
 show_behind_parent = true
 material = ExtResource( 8 )
-margin_left = 16.0
-margin_top = 22.0
-margin_right = 681.0
-margin_bottom = 687.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 680.0
+margin_bottom = 680.0
 rect_min_size = Vector2( 200, 200 )
 texture = ExtResource( 4 )
 stretch_mode = 6
@@ -342,10 +358,10 @@ __meta__ = {
 }
 
 [node name="Description" type="Label" parent="BG"]
-margin_left = 982.0
-margin_top = 780.0
-margin_right = 1642.0
-margin_bottom = 1380.0
+margin_left = 1002.0
+margin_top = 718.0
+margin_right = 1962.0
+margin_bottom = 1118.0
 rect_min_size = Vector2( 550, 200 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -360,6 +376,14 @@ __meta__ = {
 autoplay = "init"
 anims/appear = SubResource( 14 )
 anims/init = SubResource( 15 )
+
+[node name="LoopSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -80.0
+autoplay = true
+bus = "SFX"
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="mouse_entered" from="BG/Continue" to="." method="_on_Continue_mouse_entered"]
 [connection signal="pressed" from="BG/Continue" to="." method="_on_Continue_pressed"]

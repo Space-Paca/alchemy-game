@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reward_loop.wav-cf0ca2cf73b95629dbd528600f16756d.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/reward_loop.wav"
+dest_files=[ "res://.import/reward_loop.wav-cf0ca2cf73b95629dbd528600f16756d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

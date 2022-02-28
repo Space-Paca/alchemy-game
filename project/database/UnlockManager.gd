@@ -32,19 +32,22 @@ const UNLOCKS = {
 			"type": "MISC",
 			"name": "COMPENDIUM",
 			"description": "COMPENDIUM_UNLOCK_DESC",
-			"texture_path": "res://assets/images/ui/compendium_icon.png"
+			"texture_path": "res://assets/images/ui/compendium_icon.png",
+			"sfx": "unlock_compendium",
 		},
 		{
 			"type": "LOCATION",
 			"name": "LABORATORY",
 			"description": "LABORATORY_UNLOCK_DESC",
-			"texture_path": "res://assets/images/ui/cauldron.png"
+			"texture_path": "res://assets/images/ui/cauldron.png",
+			"sfx": "unlock_lab",
 		},
 		{
 			"type": "LOCATION",
 			"name": "REAGENT_SMITH",
 			"description": "REAGENT_SMITH_UNLOCK_DESC",
-			"texture_path": "res://assets/images/map/smith.png"
+			"texture_path": "res://assets/images/map/smith.png",
+			"sfx": "unlock_reagent_smith",
 		},
 		{
 			"type": "EVENT",
@@ -97,6 +100,7 @@ func get_unlock_data(type):
 			data["name"] = recipe.name
 			data["texture"] = recipe.fav_icon
 			data["description"] = RecipeManager.get_description(recipe)
+			data["sfx"] = "unlock_recipe"
 		"artifacts":
 			var artifact_name = get_unlock(level, type)
 			var artifact_data = ArtifactDB.get_from_name(artifact_name)
@@ -104,12 +108,14 @@ func get_unlock_data(type):
 			data["name"] = artifact_data.name
 			data["texture"] = artifact_data.image
 			data["description"] = artifact_data.description
+			data["sfx"] = "unlock_artifact"
 		"misc":
 			data = get_unlock(level, type)
 			if data.type == "EVENT":
 				var event = EventManager.get_event_by_id(data.event_id)
 				data["name"] = event.title
 				data["texture"] = EventManager.IMAGES[event.type]
+				data["sfx"] = "unlock_events"
 			else:
 				data["texture"] = load(data.texture_path)
 	

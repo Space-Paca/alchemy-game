@@ -54,15 +54,15 @@ func _ready():
 #	animation.playback_speed = _playback_speed
 	
 	#Setup spawn animation
-	scale = Vector2(0,0)
-	tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2,
-			Tween.TRANS_BACK, Tween.EASE_OUT)
-	tween.interpolate_property(sprite, "modulate", Color.black, Color.white,
-			.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	tween.start()
 	if data.entry_anim_name:
 		animation.play(data.entry_anim_name)
 	else:
+		scale = Vector2(0,0)
+		tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), .2,
+			Tween.TRANS_BACK, Tween.EASE_OUT)
+		tween.interpolate_property(sprite, "modulate", Color.black, Color.white,
+			.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
+		tween.start()
 		animation.play(data.idle_anim_name)
 	
 # warning-ignore:return_value_discarded
@@ -467,10 +467,12 @@ func update_intents_position():
 
 func set_pos(target_pos):
 	randomize()
-	var speed = rand_range(2000, 2500)
+	var tw = $MoveTween
+	var speed = rand_range(1800, 2200)
 	var dur = (position - target_pos).length()/speed
-	tween.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.start()
+	tw.remove_all()
+	tw.interpolate_property(self, "position", position, target_pos, dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tw.start()
 
 
 func update_intents_by_data(intent_data):

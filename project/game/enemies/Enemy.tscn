@@ -137,6 +137,8 @@ margin_bottom = 246.23
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="MoveTween" type="Tween" parent="."]
+
 [node name="TooltipCollision" parent="." instance=ExtResource( 5 )]
 position = Vector2( -14.2544, 32.0723 )
 

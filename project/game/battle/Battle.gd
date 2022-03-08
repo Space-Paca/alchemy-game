@@ -343,11 +343,13 @@ func setup_enemy(encounter: Encounter, load_enemies_data = false):
 	if not load_enemies_data:
 		for enemy in encounter.enemies:
 			add_enemy(enemy)
+			update_enemy_positions(encounter.enemies.size())
+			yield(get_tree().create_timer(rand_range(.3, .7)), "timeout")
 	else:
 		for enemy_data in load_enemies_data:
 			load_enemy(enemy_data)
-
-	update_enemy_positions()
+			update_enemy_positions(load_enemies_data.size())
+			yield(get_tree().create_timer(rand_range(.3, .7)), "timeout")
 
 
 func enemies_init():
@@ -460,16 +462,18 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 
 	if just_spawned:
 		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
+		yield(get_tree().create_timer(.15), "timeout")
+		AnimationManager.play("spawn", enemy_node.get_center_position())
 	else:
 		randomize()
-		yield(get_tree().create_timer(rand_range(.3, .4)), "timeout")
+		yield(get_tree().create_timer(rand_range(.2, .5)), "timeout")
 		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
 
 	enemy_node.update_actions()
 
 
-func update_enemy_positions():
-	var enemy_count = enemies_node.get_child_count()
+func update_enemy_positions(override_count = -1):
+	var enemy_count = enemies_node.get_child_count() if override_count == -1 else override_count
 	if enemy_count == 4:
 		set_enemy_pos(0, 1)
 		set_enemy_pos(1, 2)
@@ -802,6 +806,8 @@ func show_victory_screen(combinations: Array):
 
 
 func set_enemy_pos(enemy_idx, pos_idx):
+	if enemies_node.get_child_count() < enemy_idx + 1:
+		return
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
 	enemy.set_pos(target_pos.position)
@@ -900,7 +906,6 @@ func display_name_for_combination(combination, mastered):
 
 func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):
 	if enemies_node.get_child_count()  < MAX_ENEMIES:
-		AnimationManager.play("spawn", origin.get_center_position())
 		add_enemy(new_enemy, origin.get_center_position(), true, is_minion)
 		update_enemy_positions()
 

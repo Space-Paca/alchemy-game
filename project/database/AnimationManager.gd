@@ -32,10 +32,11 @@ func play(name: String, pos: Vector2):
 		return
 	
 	var animation = ANIM[name].duplicate()
+	
+	$AnimationLayer.add_child(animation)
 	animation.position = pos
 	animation.show()
 	
-	$AnimationLayer.add_child(animation)
 	yield(animation.get_node("AnimationPlayer"), "animation_finished")
 	
 	animation.queue_free()

@@ -33,6 +33,7 @@ OPT_END_TURN,End Turn,Terminar Turno
 OPT_TOGGLE_FULLSCREEN,Toggle Fullscreen,Ativar/Desativar Tela Cheia
 OPT_AUTO_END_TURN,Auto End Turn,Terminar Turno Automaticamente
 OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
+OPT_SCREEN_SHAKE,Enable Screen Shake,Habilitar Tremor de Tela
 OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
 OPT_LANGUAGE,Language,Linguagem
 CHOOSE_ONE,Choose One,Escolha Um

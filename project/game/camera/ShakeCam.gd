@@ -57,6 +57,8 @@ func _process(delta):
 
 
 func shake(shake: float, priority: int) -> void:
+	if not Profile.get_option("screen_shake"):
+		return
 	if priority > cur_priority:
 		cur_priority = priority
 		screen_shake = shake

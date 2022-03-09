@@ -27,6 +27,7 @@ var options = {
 	"window_size": 0,
 	"auto_end_turn": false,
 	"show_timer": false,
+	"screen_shake": true,
 	"locale": 0,
 	"choose_language": false,
 	"disable_map_fog": false,

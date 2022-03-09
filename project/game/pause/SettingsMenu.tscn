@@ -159,6 +159,7 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -790,7 +791,6 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -801,35 +801,35 @@ theme = ExtResource( 1 )
 tab_align = 0
 scrolling_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay"]
-margin_left = 144.453
-margin_top = 101.594
-margin_right = 763.453
-margin_bottom = 317.594
-custom_constants/separation = 20
+[node name="VBoxContainer" type="Control" parent="TabContainer/Gameplay"]
+margin_right = 1090.0
+margin_bottom = 529.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AutoPassContainer" type="HBoxContainer" parent="TabContainer/Gameplay/VBoxContainer"]
-margin_right = 989.0
-margin_bottom = 50.0
-custom_constants/separation = 91
+margin_top = 99.0
+margin_right = 1090.0
+margin_bottom = 159.0
+custom_constants/separation = 90
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer/AutoPassContainer"]
-margin_top = 7.0
-margin_right = 282.0
-margin_bottom = 42.0
+margin_top = 12.0
+margin_right = 500.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 500, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_AUTO_END_TURN"
+align = 2
 
 [node name="AutoPassCheckBox" type="CheckBox" parent="TabContainer/Gameplay/VBoxContainer/AutoPassContainer"]
-margin_left = 373.0
-margin_right = 423.0
-margin_bottom = 50.0
+margin_left = 590.0
+margin_right = 640.0
+margin_bottom = 60.0
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
 custom_fonts/font = SubResource( 6 )
@@ -848,9 +848,9 @@ __meta__ = {
 }
 
 [node name="ShowTimerContainer" type="HBoxContainer" parent="TabContainer/Gameplay/VBoxContainer"]
-margin_top = 70.0
-margin_right = 989.0
-margin_bottom = 120.0
+margin_top = 179.0
+margin_right = 1090.0
+margin_bottom = 229.0
 custom_constants/separation = 91
 __meta__ = {
 "_edit_use_anchors_": false
@@ -858,14 +858,55 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer/ShowTimerContainer"]
 margin_top = 7.0
-margin_right = 233.0
+margin_right = 500.0
 margin_bottom = 42.0
+rect_min_size = Vector2( 500, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_SHOW_TIMER"
+align = 2
 
 [node name="ShowTimerCheckBox" type="CheckBox" parent="TabContainer/Gameplay/VBoxContainer/ShowTimerContainer"]
-margin_left = 324.0
-margin_right = 374.0
+margin_left = 591.0
+margin_right = 641.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+custom_constants/hseparation = 40
+custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked = ExtResource( 9 )
+custom_icons/checked = ExtResource( 9 )
+custom_icons/radio_unchecked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenShakeContainer" type="HBoxContainer" parent="TabContainer/Gameplay/VBoxContainer"]
+margin_top = 256.0
+margin_right = 1090.0
+margin_bottom = 306.0
+custom_constants/separation = 91
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer"]
+margin_top = 7.0
+margin_right = 500.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 500, 0 )
+custom_fonts/font = SubResource( 6 )
+text = "OPT_SCREEN_SHAKE"
+align = 2
+
+[node name="ScreenShakeCheckBox" type="CheckBox" parent="TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer"]
+margin_left = 591.0
+margin_right = 641.0
 margin_bottom = 50.0
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
@@ -885,9 +926,10 @@ __meta__ = {
 }
 
 [node name="ResetTutorial" type="Button" parent="TabContainer/Gameplay/VBoxContainer"]
-margin_top = 140.0
-margin_right = 450.0
-margin_bottom = 260.0
+margin_left = 198.0
+margin_top = 329.0
+margin_right = 900.0
+margin_bottom = 449.0
 rect_min_size = Vector2( 450, 120 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
@@ -1097,6 +1139,7 @@ text = "BACK"
 [connection signal="value_changed" from="TabContainer/Audio/VBoxContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
 [connection signal="toggled" from="TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox" to="." method="_on_AutoPassCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox" to="." method="_on_ShowTimerCheckBox_toggled"]
+[connection signal="toggled" from="TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox" to="." method="_on_ScreenShakeCheckBox_toggled"]
 [connection signal="pressed" from="TabContainer/Gameplay/VBoxContainer/ResetTutorial" to="." method="_on_ResetTutorial_pressed"]
 [connection signal="toggled" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/LanguageButton" to="." method="_on_LanguageButton_toggled"]
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]

@@ -11,6 +11,7 @@ onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessCont
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
 onready var auto_end_button = $TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var show_timer_button = $TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
+onready var screen_shake_button = $TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox
 onready var end_turn_button = $TabContainer/Controls/VBoxContainer/EndTurn/Button
 onready var bgmslider = $TabContainer/Audio/VBoxContainer/MusicVolume
 onready var bgm_label = $TabContainer/Audio/VBoxContainer/MusicLabel/Amount
@@ -83,6 +84,7 @@ func update_buttons():
 	resolution_dropdown.visible = false
 	language_dropdown.visible = false
 	show_timer_button.pressed = Profile.get_option("show_timer")
+	screen_shake_button.pressed = Profile.get_option("screen_shake")
 	end_turn_button = Profile.get_option("auto_end_turn")
 	window_size_buttons[size_index].pressed = true
 
@@ -284,3 +286,8 @@ func _on_MusicVolume_focus_exited():
 func _on_CloseDropdown_pressed():
 	AudioManager.play_sfx("close_filter")
 	close_dropdowns()
+
+
+func _on_ScreenShakeCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	Profile.set_option("screen_shake", button_pressed)

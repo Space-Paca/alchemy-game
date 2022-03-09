@@ -5,6 +5,7 @@ signal map_node_pressed(node)
 signal finished_active_paths
 
 const VISIBLE_MAP_MATERIAL = preload("res://game/map/VisibleMapMaterial.tres")
+const HIDDEN_MAP_MATERIAL = preload("res://game/map/HiddenMapMaterial.tres")
 const FLOOR_POSITIONS = [
 	preload("res://game/map/Floor1Positions.tscn"),
 	preload("res://game/map/Floor2Positions.tscn"),
@@ -154,6 +155,7 @@ func recipe_toogle(active : bool):
 
 func enable_map_fog():
 	visible_bg.material = VISIBLE_MAP_MATERIAL
+	bg.material = HIDDEN_MAP_MATERIAL
 	for map_node in nodes.get_children():
 		map_node.enable_lights()
 	for map_line in lines.get_children():
@@ -161,6 +163,7 @@ func enable_map_fog():
 
 func disable_map_fog():
 	visible_bg.material = null
+	bg.material = null
 	for map_node in nodes.get_children():
 		map_node.disable_lights()
 	for map_line in lines.get_children():

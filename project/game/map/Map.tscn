@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/map/mapa01_floresta_inexplorado.jpg" type="Texture" id=1]
 [ext_resource path="res://game/map/Camera.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/map/mapa01_floresta_explorado.jpg" type="Texture" id=6]
 [ext_resource path="res://game/map/VisibleMapMaterial.tres" type="Material" id=7]
+[ext_resource path="res://game/map/HiddenMapMaterial.tres" type="Material" id=8]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -23,91 +24,6 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float _size : hint_range(0, 10) = 5;
-uniform sampler2D noise;
-uniform vec2 moving_offset = vec2(.05,.03);
-uniform float shadow_strength = .5;
-uniform float shadow_factor = 0.3;
-uniform float brightness_anchor = .24;
-uniform float brightness_variance = .015;
-uniform float brightness_frequency = 2.0;
-uniform float rotation_intensity = 5.0;
-uniform float rotation_frequency = .25;
-
-float pascal_tra(int depth, int order) {
-	if (order < 1 || order == depth) {
-		return 1.0;
-	} else {
-		float Temp_o = 1.0;
-		for (int i = 1; i <= order; i++) {
-			Temp_o = Temp_o * float(i);
-		}
-		float Temp_d = 1.0;
-		for (int i = 1; i <= depth; i++) {
-			Temp_d = Temp_d * float(i);
-		}
-		float Temp_od = 1.0;
-		for (int i = 1; i <= (depth - order); i++) {
-			Temp_od = Temp_od * float(i);
-		}
-		return Temp_d / (Temp_o * Temp_od);
-	}
-}
-
-void fragment( )
-{
-	float intensity = sin(brightness_frequency*TIME)*brightness_variance + brightness_anchor;
-	float Count = pow(2.0, _size * 2.0) * pow(2.0, _size * 2.0);
-	vec4 col = vec4(0.0);
-	vec2 offset = vec2(moving_offset.x * rotation_intensity*cos(rotation_frequency*TIME), moving_offset.y * rotation_intensity*sin(rotation_frequency*TIME));
-	if (rotation_intensity <= 0.0){
-		offset = moving_offset*TIME;
-	}
-	float modi = 1.0 - pow(texture(noise, UV + offset).r, shadow_strength) * shadow_factor;
-	for (int i = int(-_size); i <= int(_size); i++) {
-		for (int j = int(-_size); j <= int(_size); j++) {
-			vec2 quat_xy = vec2( float(i) * SCREEN_PIXEL_SIZE.x, float(j) * SCREEN_PIXEL_SIZE.y );
-			float temp_x = (intensity + modi) * pascal_tra(int(_size) * 2, i + int(_size));
-			float temp_y = (intensity + modi) * pascal_tra(int(_size) * 2, j + int(_size));
-			col += textureLod(TEXTURE, UV + quat_xy, 0.0) * temp_x * temp_y / Count;
-		}
-	}
-	
-	COLOR = col;
-}"
-
-[sub_resource type="OpenSimplexNoise" id=6]
-seed = 16
-octaves = 1
-period = 92.6
-persistence = 0.823
-lacunarity = 1.72
-
-[sub_resource type="NoiseTexture" id=7]
-flags = 15
-width = 1024
-height = 1024
-seamless = true
-bump_strength = 12.8
-noise = SubResource( 6 )
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/_size = 5.0
-shader_param/moving_offset = Vector2( 0.05, 0.03 )
-shader_param/shadow_strength = 0.5
-shader_param/shadow_factor = 0.3
-shader_param/brightness_anchor = 0.13
-shader_param/brightness_variance = 0.03
-shader_param/brightness_frequency = 1.0
-shader_param/rotation_intensity = 20.0
-shader_param/rotation_frequency = 0.05
-shader_param/noise = SubResource( 7 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 110
@@ -169,7 +85,7 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
-material = SubResource( 5 )
+material = ExtResource( 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -750.0

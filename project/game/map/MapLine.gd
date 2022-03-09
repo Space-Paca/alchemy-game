@@ -37,20 +37,10 @@ func _process(delta):
 
 
 func _draw():
-	var disable_light = Profile.get_option("disable_map_fog")
 	for i in ball_amount:
 		var pos := line_vector.clamped(i * BALL_DIST)
 		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
 		radius_multiplier = clamp(radius_multiplier, 0, 1)
-		var light = $Lights.get_child(i)
-		var energy = max(radius_multiplier*.8, 0.01)
-		if energy < .9:
-			light.mode = Light2D.MODE_ADD
-			energy = clamp(energy, 0, .28)
-		else:
-			light.mode = Light2D.MODE_MIX
-		light.energy = energy
-		light.enabled = not disable_light
 		var size = BALL_SIZE * radius_multiplier
 		draw_texture_rect(balls[i], Rect2(pos - size / 2, size), false)
 
@@ -60,15 +50,6 @@ func begin_fill():
 	ball_count = 0
 	$Tween.interpolate_method(self, "play_sfx", 0, ball_amount, PATH_FILL_TIME, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
-#	for i in ball_amount:
-#		var light = $Lights.get_child(i)
-#		light.mode = Light2D.MODE_ADD
-#		var dur = PATH_FILL_TIME/float(ball_amount)
-#		$Tween.interpolate_property(light, "energy", 0.01, .3, dur, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-#		$Tween.start()
-#		yield(get_tree().create_timer(dur), "timeout")
-#		light.mode = Light2D.MODE_MIX
-#		light.energy = 1
 
 
 func play_sfx(value):
@@ -88,16 +69,16 @@ func set_line(origin:Vector2, target:Vector2, current_level:int):
 	randomize()
 	for i in ball_amount:
 		balls.append(IMAGES[randi() % IMAGES.size()])
-		var light = Light2D.new()
-		light.texture = LIGHT_TEX
-		light.mode = Light2D.MODE_MIX
-		light.texture_scale = rand_range(.5, .8)
-		light.rotation = rand_range(0, 360)
-		light.position = line_vector.clamped(i * BALL_DIST)
-		light.energy = 0
-		light.range_item_cull_mask = 16 #bit 4
-		$Lights.add_child(light)
-		light.enabled = not Profile.get_option("disable_map_fog")
+#		var light = Light2D.new()
+#		light.texture = LIGHT_TEX
+#		light.mode = Light2D.MODE_MIX
+#		light.texture_scale = rand_range(.5, .8)
+#		light.rotation = rand_range(0, 360)
+#		light.position = line_vector.clamped(i * BALL_DIST)
+#		light.energy = 0
+#		light.range_item_cull_mask = 16 #bit 4
+#		$Lights.add_child(light)
+#		light.enabled = not Profile.get_option("disable_map_fog")
 
 
 func enable_lights():

@@ -114,7 +114,7 @@ func get_unlock_data(type):
 			if data.type == "EVENT":
 				var event = EventManager.get_event_by_id(data.event_id)
 				data["name"] = event.title
-				data["texture"] = EventManager.IMAGES[event.type]
+				data["texture"] = EventManager.get_event_image(data.event_id)
 				data["sfx"] = "unlock_events"
 			else:
 				data["texture"] = load(data.texture_path)

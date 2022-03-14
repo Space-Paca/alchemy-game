@@ -100,6 +100,9 @@ func get_event_by_id(id: int) -> Event:
 	return current_event
 
 
+func get_event_image(id: int) -> Texture:
+	return events_by_id[id].image
+
 ####### SAVE/LOAD METHODS #######
 
 func get_save_data():

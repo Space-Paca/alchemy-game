@@ -1,7 +1,7 @@
 extends TextureRect
 
 onready var anim = $AnimationPlayer
-onready var compendium_button = $UI/CompendiumButton
+onready var compendium_button = $CompendiumButton
 onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 
 const ALPHA_SPEED = 6
@@ -36,7 +36,7 @@ func _ready():
 
 
 func _process(dt):
-	var label = $UI/CompendiumButton/Label
+	var label = $CompendiumButton/Label
 	if hover_compendium:
 		label.modulate.a = min(label.modulate.a + ALPHA_SPEED*dt, 1.0)
 	else:
@@ -114,18 +114,18 @@ func _on_CompendiumButton_pressed():
 	hover_compendium = false
 	$RecipeCompendium.show()
 	$UI/PauseButton.hide()
-	$UI/CompendiumButton.hide()
+	$CompendiumButton.hide()
 
 
 func _on_RecipeCompendium_closed():
 	AudioManager.play_sfx("close_compendium")
 	$RecipeCompendium.hide()
 	$UI/PauseButton.show()
-	$UI/CompendiumButton.show()
+	$CompendiumButton.show()
 
 
 func _on_CompendiumButton_mouse_entered():
-	if not $UI/CompendiumButton.disabled:
+	if not $CompendiumButton.disabled:
 		AudioManager.play_sfx("hover_compendium")
 		hover_compendium = true
 

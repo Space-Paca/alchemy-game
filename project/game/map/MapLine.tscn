@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/map/MapLine.gd" type="Script" id=1]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+// Texture must have 'Filter'-flag enabled!
+vec4 texturePointSmooth(sampler2D smp, vec2 uv, vec2 pixel_size)
+{
+	vec2 ddx = dFdx(uv);
+	vec2 ddy = dFdy(uv);
+	vec2 lxy = sqrt(ddx * ddx + ddy * ddy);
+	
+	vec2 uv_pixels = uv / pixel_size;
+	
+	vec2 uv_pixels_floor = round(uv_pixels) - vec2(0.5f);
+	vec2 uv_dxy_pixels = uv_pixels - uv_pixels_floor;
+	
+	uv_dxy_pixels = clamp((uv_dxy_pixels - vec2(0.5f)) * pixel_size / lxy + vec2(0.5f), 0.0f, 1.0f);
+	
+	uv = uv_pixels_floor * pixel_size;
+	
+	return textureGrad(smp, uv + uv_dxy_pixels * pixel_size, ddx, ddy);
+}
+
+void fragment()
+{
+	COLOR = texturePointSmooth(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
 [node name="MapLine" type="Node2D"]
+material = SubResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Lights" type="Node2D" parent="."]

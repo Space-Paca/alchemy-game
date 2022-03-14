@@ -921,10 +921,12 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 		lab.combination_success()
 	else:
 		AudioManager.play_sfx("combine_fail")
-
+		combination = "failure"
 		if not failed_combinations.has(reagent_matrix):
 			failed_combinations.append(reagent_matrix)
 		lab.combination_failed()
+	
+	lab.display_name_for_combination(combination)
 	
 
 func _on_Laboratory_grid_modified(reagent_matrix: Array, grid_size : int):

@@ -86,6 +86,7 @@ func _ready():
 	
 	yield(map, "finished_active_paths")
 	if battle_load_data:
+		map.set_disabled(true)
 		yield(get_tree().create_timer(.5), "timeout")
 		$PauseScreen.set_block_pause(false)
 		load_battle(battle_load_data)

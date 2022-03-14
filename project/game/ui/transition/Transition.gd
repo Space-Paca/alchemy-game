@@ -39,6 +39,7 @@ func transition_to(scene_path: String):
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(scene_path)
+	yield(get_tree(), "idle_frame")
 	
 	invert_direction()
 	tween.interpolate_property(material, "shader_param/value", 1, 0, DURATION_2)

@@ -138,6 +138,7 @@ __meta__ = {
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
 current = true
+smoothing_enabled = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true

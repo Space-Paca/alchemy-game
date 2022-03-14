@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/images/map/boss-open2.png" type="Texture" id=1]
 [ext_resource path="res://game/map/MapNode.gd" type="Script" id=2]
@@ -7,6 +7,37 @@
 [ext_resource path="res://assets/images/map/boss-closed.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/map/boss-open1.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=7]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+// Texture must have 'Filter'-flag enabled!
+vec4 texturePointSmooth(sampler2D smp, vec2 uv, vec2 pixel_size)
+{
+	vec2 ddx = dFdx(uv);
+	vec2 ddy = dFdy(uv);
+	vec2 lxy = sqrt(ddx * ddx + ddy * ddy);
+	
+	vec2 uv_pixels = uv / pixel_size;
+	
+	vec2 uv_pixels_floor = round(uv_pixels) - vec2(0.5f);
+	vec2 uv_dxy_pixels = uv_pixels - uv_pixels_floor;
+	
+	uv_dxy_pixels = clamp((uv_dxy_pixels - vec2(0.5f)) * pixel_size / lxy + vec2(0.5f), 0.0f, 1.0f);
+	
+	uv = uv_pixels_floor * pixel_size;
+	
+	return textureGrad(smp, uv + uv_dxy_pixels * pixel_size, ddx, ddy);
+}
+
+void fragment()
+{
+	COLOR = texturePointSmooth(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
@@ -89,22 +120,22 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "BossIntro"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Button:texture_normal")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Button/Sprite:texture")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Button:texture_normal")
+tracks/0/path = NodePath("Button/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -120,7 +151,7 @@ tracks/0/keys = {
 resource_name = "idle"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Button:texture_normal")
+tracks/0/path = NodePath("Button/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -138,7 +169,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="."]
+[node name="Button" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
@@ -146,10 +178,14 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 32, 32 )
 disabled = true
-texture_normal = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="Button"]
+material = SubResource( 9 )
+position = Vector2( 32, 32 )
+texture = ExtResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0

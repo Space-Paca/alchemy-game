@@ -70,7 +70,7 @@ func duplicate_stored_positions(level: int):
 	add_child(stored_map_positions)
 
 
-func _process(dt):
+func _physics_process(dt):
 	if update_camera:
 		#Get camera target pos
 		var target_pos = get_screen_center()

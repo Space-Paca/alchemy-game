@@ -154,9 +154,9 @@ func set_type(new_type:int):
 	type = new_type
 	
 	if type == BOSS:
-		button.texture_normal = BOSS_IMAGES[0]
+		button.get_node("Sprite").texture = BOSS_IMAGES[0]
 	else:
-		button.texture_normal = IMAGES[type]
+		button.get_node("Sprite").texture = IMAGES[type]
 	if SFXS[type]:
 		$HoverSFX.stream = SFXS[type]
 	

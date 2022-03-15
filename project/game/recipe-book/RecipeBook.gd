@@ -34,6 +34,8 @@ const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_bt
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
 const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
+const AWAY_OFFSET = Vector2(-1800, 0)
+const ENTER_SPEED = 2000
 const NOTHING_FOUND_LABEL_SPEED = 3
 
 enum States {BATTLE, MAP, LAB}
@@ -47,6 +49,7 @@ var state : int = States.MAP
 var battle_draw_bag
 var battle_discard_bag
 var player : Player
+var is_open := false
 
 
 func _ready():
@@ -54,6 +57,7 @@ func _ready():
 	draw_bag.disable()
 	disable_tooltips()
 	no_recipes_label.modulate.a = 0
+	rect_position = AWAY_OFFSET
 
 
 func _process(dt):
@@ -61,6 +65,12 @@ func _process(dt):
 		no_recipes_label.modulate.a = min(no_recipes_label.modulate.a + NOTHING_FOUND_LABEL_SPEED*dt, 1)
 	else:
 		no_recipes_label.modulate.a = 0
+	
+	if state == States.MAP:
+		if is_open:
+			rect_position = lerp(rect_position, MAP_POS, .5)
+		else:
+			rect_position = lerp(rect_position, AWAY_OFFSET, .2)
 
 
 func update_player_info():
@@ -80,6 +90,7 @@ func change_state(new_state: int):
 	match new_state:
 		States.BATTLE:
 			rect_position = BATTLE_POS
+			visible = false
 			hand_rect.visible = true
 			scroll.rect_size.y -= hand_rect.rect_size.y
 			lower_divider.show()
@@ -88,8 +99,9 @@ func change_state(new_state: int):
 			hand_tag_button.show()
 			reset_recipe_visibility()
 		States.MAP:
+			visible = true
+			rect_position = AWAY_OFFSET
 			if state == States.BATTLE:
-				rect_position = MAP_POS
 				remove_hand()
 				lower_divider.hide()
 				scroll.rect_size.y += hand_rect.rect_size.y
@@ -98,6 +110,8 @@ func change_state(new_state: int):
 				filter_by_tag(DECK)
 				update_tag_buttons(DECK)
 		States.LAB:
+			rect_position = BATTLE_POS
+			visible = false
 			reset_recipe_visibility()
 			filter_by_tag(INCOMPLETE)
 			update_tag_buttons(INCOMPLETE)
@@ -171,7 +185,7 @@ func create_hand(battle):
 			hand_container.rect_scale = Vector2(1, 1)
 			hand_container.rect_position -= (hand_container.rect_size*.2)/2
 	
-	if visible:
+	if is_open:
 		enable_tooltips()
 	
 
@@ -219,9 +233,11 @@ func disable_tooltips():
 
 
 func toggle_visibility():
-	visible = !visible
+	is_open = !is_open
+	if state == States.BATTLE or state == States.LAB:
+		visible = is_open
 	
-	if visible:
+	if is_open:
 		AudioManager.play_sfx("open_recipe_list")
 		enable_tooltips()
 		
@@ -236,7 +252,7 @@ func toggle_visibility():
 		_on_recipe_display_unhovered()
 	
 	if state == States.BATTLE:
-		if visible:
+		if is_open:
 			update_bags()
 			draw_bag.enable()
 			discard_bag.enable()
@@ -244,7 +260,7 @@ func toggle_visibility():
 			draw_bag.disable()
 			discard_bag.disable()
 	
-	return visible
+	return is_open
 
 
 func is_mastered(combination : Combination):
@@ -265,7 +281,7 @@ func update_hand(reagents: Array):
 	for i in reagents.size():
 		hand_reagents[i].set_reagent(reagents[i])
 	reapply_tag_and_filters()
-	if visible:
+	if is_open:
 		enable_tooltips()
 
 
@@ -411,7 +427,7 @@ func tag_all_combinations():
 func update_recipes_shown():
 	for recipe_display in recipe_displays.values():
 		recipe_display.visible = recipe_display.tagged and recipe_display.filtered
-	if visible:
+	if is_open:
 		enable_tooltips()
 
 

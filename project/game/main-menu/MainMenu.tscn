@@ -1005,7 +1005,8 @@ mode = 1
 visible = false
 
 [node name="RecipeCompendium" parent="." instance=ExtResource( 2 )]
-visible = false
+margin_left = -910.0
+margin_right = -910.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro = SubResource( 21 )

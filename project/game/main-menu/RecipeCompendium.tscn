@@ -42,6 +42,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shadow" type="TextureRect" parent="Background"]
+modulate = Color( 0, 0, 0, 0.584314 )
+margin_left = -807.0
+margin_top = 30.0
+margin_right = 915.0
+margin_bottom = 1114.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Part1" type="TextureRect" parent="Background/Shadow"]
+margin_left = -36.0
+margin_top = -9.0
+margin_right = 1686.0
+margin_bottom = 1071.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Book3" type="TextureRect" parent="Background"]
 margin_left = -870.0
 margin_right = 852.0
@@ -59,6 +80,19 @@ margin_bottom = 158.0
 texture_normal = ExtResource( 12 )
 texture_hover = ExtResource( 14 )
 texture_disabled = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="TextureRect" parent="Background/CloseButton"]
+modulate = Color( 0, 0, 0, 0.584314 )
+show_behind_parent = true
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 159.0
+margin_bottom = 108.0
+texture = ExtResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -15,13 +15,11 @@ func _ready():
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
 	FileManager.set_current_run(false)
 	set_process_input(false)
-	$RecipeCompendium.show()
 	compendium_button.visible = UnlockManager.is_misc_unlocked("COMPENDIUM")
 	
 	yield(get_tree(),"idle_frame")
 	
 	AudioManager.play_bgm("menu")
-	$RecipeCompendium.hide()
 	$ContinueButton.visible = FileManager.run_file_exists()
 	
 	yield(Transition, "finished")
@@ -112,14 +110,13 @@ func _on_ContinueButton_pressed():
 func _on_CompendiumButton_pressed():
 	AudioManager.play_sfx("open_compendium")
 	hover_compendium = false
-	$RecipeCompendium.show()
+	$RecipeCompendium.open()
 	$UI/PauseButton.hide()
 	$CompendiumButton.hide()
 
 
 func _on_RecipeCompendium_closed():
 	AudioManager.play_sfx("close_compendium")
-	$RecipeCompendium.hide()
 	$UI/PauseButton.show()
 	$CompendiumButton.show()
 

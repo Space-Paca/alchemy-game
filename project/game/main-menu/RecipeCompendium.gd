@@ -7,8 +7,12 @@ onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var filter_menu = $Background/FilterMenu
 
 const RECIPE = preload("res://game/main-menu/CompendiumRecipeDisplay.tscn")
+const OPENED_POSITION = Vector2(910, 0)
+const CLOSED_POSITION = Vector2(-960, 0)
+const ENTER_SPEED = 40
 
 var recipe_displays := {}
+var is_open = false
 
 
 class RecipeSorter:
@@ -18,8 +22,20 @@ class RecipeSorter:
 		return a.combination.grid_size < b.combination.grid_size
 
 
+func _physics_process(dt):
+	if is_open:
+		rect_position = lerp(rect_position, OPENED_POSITION, ENTER_SPEED*dt)
+	else:
+		rect_position = lerp(rect_position, CLOSED_POSITION, ENTER_SPEED*dt)
+
+
 func _ready():
+	rect_position = CLOSED_POSITION
 	populate()
+
+
+func open():
+	is_open = true
 
 
 func populate():
@@ -89,4 +105,5 @@ func _on_button_mouse_entered():
 
 
 func _on_CloseButton_pressed():
+	is_open = false
 	emit_signal("closed")

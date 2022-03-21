@@ -14,6 +14,7 @@ onready var draw_bag = $Background/HandRect/DrawBag
 onready var discard_bag = $Background/HandRect/DiscardBag
 onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
+onready var fader = $Background/Fader
 onready var lower_divider = $Background/LowerDivider
 onready var hand_tag_button = $Background/TagButtons/HandBtn
 onready var filter_menu = $Background/FilterMenu
@@ -71,6 +72,7 @@ func _process(dt):
 			rect_position = lerp(rect_position, MAP_POS, .5)
 		else:
 			rect_position = lerp(rect_position, AWAY_OFFSET, .2)
+	fader.update_scroll_fading(scroll)
 
 
 func update_player_info():

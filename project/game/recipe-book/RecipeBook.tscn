@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/RecipeBookNotFoundFont_en.tres" type="DynamicFont" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://game/ui/PlayerInfo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=22]
 [ext_resource path="res://game/recipe-book/TagButton.gd" type="Script" id=23]
+[ext_resource path="res://game/ui/Fader.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -56,6 +57,29 @@ shader_param/offset = 0.0
 [sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 1 )
 shader_param/offset = 0.0
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform float top_offset : hint_range(0, 1);
+uniform float bottom_offset : hint_range(0, 1);
+uniform float right_margin : hint_range(0, 1);
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	if (UV.x <= 1.0 - right_margin) {
+		COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+	}
+	else {
+		COLOR.a = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/top_offset = 0.0
+shader_param/bottom_offset = 0.625
+shader_param/right_margin = 0.085
 
 [node name="RecipeBook" type="Control"]
 anchor_right = 1.0
@@ -328,6 +352,10 @@ size_flags_horizontal = 10
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
+
+[node name="Fader" parent="Background" instance=ExtResource( 24 )]
+material = SubResource( 9 )
+default_shader_offset = 0.0
 
 [node name="HandRect" type="Control" parent="Background"]
 visible = false

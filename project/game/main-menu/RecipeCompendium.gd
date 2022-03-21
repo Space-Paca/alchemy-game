@@ -28,7 +28,7 @@ func _physics_process(dt):
 		rect_position = lerp(rect_position, OPENED_POSITION, ENTER_SPEED*dt)
 	else:
 		rect_position = lerp(rect_position, CLOSED_POSITION, ENTER_SPEED*dt)
-	update_scroll_fading()
+	fader.update_scroll_fading(scroll)
 
 
 func _ready():
@@ -96,20 +96,6 @@ func reset_recipe_visibility():
 	for recipe_display in recipe_displays.values():
 		recipe_display.filtered = true
 		recipe_display.show()
-
-
-func update_scroll_fading():
-	var v_scroll = scroll.get_v_scrollbar()
-	var margin = 80
-	var default_shader_offset = .48
-	var max_shader_value = 1.0 - fader.material.get_shader_param("bottom_offset")
-	var cur_pos = v_scroll.value + scroll.rect_size.y
-	var bottom = v_scroll.max_value - margin
-	var value = 0
-	if cur_pos > bottom: 
-		value = (cur_pos - bottom)/float(margin)
-	var shader_value = default_shader_offset*(1.0 - value) + value*max_shader_value
-	fader.material.set_shader_param("top_offset", shader_value)
 
 
 func _on_FilterMenu_filters_updated(filters: Array):

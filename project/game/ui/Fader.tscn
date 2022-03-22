@@ -6,6 +6,7 @@
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
+uniform bool invert = false;
 uniform float top_offset : hint_range(0, 1);
 uniform float bottom_offset : hint_range(0, 1);
 uniform float right_margin : hint_range(0, 1);
@@ -13,7 +14,20 @@ uniform float right_margin : hint_range(0, 1);
 void fragment(){
 	COLOR = texture(TEXTURE, UV);
 	if (UV.x <= 1.0 - right_margin) {
-		COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+		if (invert){
+			if (UV.y < bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = 1.0 - smoothstep(bottom_offset, 1.0 - top_offset, UV.y);
+			}
+		}
+		else {
+			if (UV.y > 1.0 - bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+			}
+		}
 	}
 	else {
 		COLOR.a = 0.0;
@@ -22,7 +36,8 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/top_offset = 0.48
+shader_param/invert = false
+shader_param/top_offset = 0.56
 shader_param/bottom_offset = 0.1
 shader_param/right_margin = 0.085
 

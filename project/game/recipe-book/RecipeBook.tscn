@@ -1,9 +1,9 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://game/recipe-book/RecipeBook.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/RecipeBookNotFoundFont_en.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/book/divisor_no_border.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/book/icon_recipe_list.png" type="Texture" id=5]
 [ext_resource path="res://game/battle/hand/DiscardBag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/battle/hand/DrawBag.tscn" type="PackedScene" id=7]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/images/ui/book/draw_bag.png" type="Texture" id=22]
 [ext_resource path="res://game/recipe-book/TagButton.gd" type="Script" id=23]
 [ext_resource path="res://game/ui/Fader.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/images/ui/book/bookshaderypart_top.png" type="Texture" id=25]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -61,6 +62,7 @@ shader_param/offset = 0.0
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
+uniform bool invert = false;
 uniform float top_offset : hint_range(0, 1);
 uniform float bottom_offset : hint_range(0, 1);
 uniform float right_margin : hint_range(0, 1);
@@ -68,7 +70,20 @@ uniform float right_margin : hint_range(0, 1);
 void fragment(){
 	COLOR = texture(TEXTURE, UV);
 	if (UV.x <= 1.0 - right_margin) {
-		COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+		if (invert){
+			if (UV.y < bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = 1.0 - smoothstep(bottom_offset, 1.0 - top_offset, UV.y);
+			}
+		}
+		else {
+			if (UV.y > 1.0 - bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+			}
+		}
 	}
 	else {
 		COLOR.a = 0.0;
@@ -77,8 +92,47 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = SubResource( 8 )
+shader_param/invert = false
 shader_param/top_offset = 0.0
 shader_param/bottom_offset = 0.625
+shader_param/right_margin = 0.085
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform bool invert = false;
+uniform float top_offset : hint_range(0, 1);
+uniform float bottom_offset : hint_range(0, 1);
+uniform float right_margin : hint_range(0, 1);
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	if (UV.x <= 1.0 - right_margin) {
+		if (invert){
+			if (UV.y < bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = 1.0 - smoothstep(bottom_offset, 1.0 - top_offset, UV.y);
+			}
+		}
+		else {
+			if (UV.y > 1.0 - bottom_offset){
+				COLOR.a = 0.0
+			}else {
+				COLOR.a = smoothstep(top_offset, 1.0 - bottom_offset, UV.y);
+			}
+		}
+	}
+	else {
+		COLOR.a = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
+shader_param/invert = true
+shader_param/top_offset = 0.0
+shader_param/bottom_offset = 0.323
 shader_param/right_margin = 0.085
 
 [node name="RecipeBook" type="Control"]
@@ -357,6 +411,15 @@ columns = 2
 material = SubResource( 9 )
 default_shader_offset = 0.0
 
+[node name="FaderTop" parent="Background" instance=ExtResource( 24 )]
+material = SubResource( 11 )
+margin_left = -7.0
+margin_top = 92.0
+margin_right = 738.0
+margin_bottom = 360.0
+texture = ExtResource( 25 )
+default_shader_offset = 0.56
+
 [node name="HandRect" type="Control" parent="Background"]
 visible = false
 margin_left = 20.0
@@ -401,9 +464,9 @@ alignment = 1
 
 [node name="UpperDivider" type="TextureRect" parent="Background"]
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 41.5304
+margin_left = 77.5304
 margin_top = 169.847
-margin_right = 774.53
+margin_right = 715.53
 margin_bottom = 229.847
 mouse_filter = 2
 texture = ExtResource( 4 )
@@ -414,10 +477,10 @@ __meta__ = {
 
 [node name="LowerDivider" type="TextureRect" parent="Background"]
 modulate = Color( 1, 1, 1, 0.501961 )
-margin_left = 8.23267
-margin_top = 752.559
-margin_right = 741.232
-margin_bottom = 812.559
+margin_left = 79.0
+margin_top = 755.0
+margin_right = 717.0
+margin_bottom = 815.0
 mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true

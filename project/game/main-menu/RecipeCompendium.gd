@@ -6,6 +6,7 @@ onready var recipe_grid : GridContainer = $Background/ScrollContainer/RecipeGrid
 onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var filter_menu = $Background/FilterMenu
 onready var fader = $Background/Fader
+onready var top_fader = $Background/TopFader
 
 const RECIPE = preload("res://game/main-menu/CompendiumRecipeDisplay.tscn")
 const OPENED_POSITION = Vector2(910, 0)
@@ -28,7 +29,8 @@ func _physics_process(dt):
 		rect_position = lerp(rect_position, OPENED_POSITION, ENTER_SPEED*dt)
 	else:
 		rect_position = lerp(rect_position, CLOSED_POSITION, ENTER_SPEED*dt)
-	fader.update_scroll_fading(scroll)
+	fader.update_scroll_fading(scroll, dt)
+	top_fader.update_scroll_fading(scroll, dt)
 
 
 func _ready():

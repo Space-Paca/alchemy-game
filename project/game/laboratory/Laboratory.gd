@@ -12,6 +12,7 @@ onready var reagents = $Reagents
 onready var grid = $Grid
 onready var counter = $Counter
 onready var recipe_name_display = $RecipeNameDisplay
+onready var recipe_button = $Book/RecipesButton
 
 var map_node : MapNode
 var player
@@ -91,10 +92,14 @@ func combination_failed():
 
 func recipe_book_visibility(is_visible):
 	if is_visible:
+		recipe_button.visible = false
 		disable_player()
 	else:
+		recipe_button.visible = true
 		enable_player()
-	
+
+
+
 
 
 func _on_BackButton_pressed():

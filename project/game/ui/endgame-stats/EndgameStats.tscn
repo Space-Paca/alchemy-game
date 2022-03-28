@@ -6,11 +6,11 @@
 [ext_resource path="res://game/ui/endgame-stats/EndgameStats.gd" type="Script" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
 [ext_resource path="res://game/ui/endgame-stats/CompendiumProgress.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/images/ui/question_mark.jpg" type="Texture" id=7]
 [ext_resource path="res://game/ui/endgame-stats/PostMortem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/ui/endgame-stats/XPDivider.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/ui/endgame-stats/RunStats.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/ui/endgame-stats/UnlockablePopup.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/images/intents/random.png" type="Texture" id=12]
 [ext_resource path="res://assets/shaders/scribble.shader" type="Shader" id=13]
 [ext_resource path="res://assets/images/ui/tooltip_bg.png" type="Texture" id=14]
 
@@ -152,7 +152,7 @@ margin_top = 230.0
 margin_right = 1200.0
 margin_bottom = 290.0
 rect_scale = Vector2( 8.81291, 8.67483 )
-texture = ExtResource( 12 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

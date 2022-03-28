@@ -8,6 +8,7 @@ signal artifact_looted(artifact_name)
 signal reagent_sold(gold_value)
 signal pearl_collected(quantity)
 
+onready var animation = $AnimationPlayer
 onready var loot_list = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/LootList
 onready var pearl_container = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer
 onready var pearl_button = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Button
@@ -36,6 +37,10 @@ var curr_state : int = States.LOOT
 var rewarded_combinations := []
 var pearl_amount := 0
 var player = null
+
+func _ready():
+	animation.play("enter")
+
 
 func setup(_player):
 	player = _player
@@ -210,7 +215,9 @@ func _on_WinRecipe_chosen(chosen_recipe):
 	
 	check_loot_left()
 	
-	tween.interpolate_property(chosen_recipe, "rect_position:x", null, 1264,
+	tween.interpolate_property(chosen_recipe, "rect_position:x", null, 1250,
+			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(chosen_recipe, "rect_position:y", null, 100,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(recipes_container, "rect_position:x", null, 0,
 			MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)

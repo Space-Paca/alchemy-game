@@ -141,7 +141,8 @@ __meta__ = {
 [node name="MovingScreen" type="Control" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -0.000488281
+margin_right = 1920.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -184,10 +185,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -600.0
-margin_top = -900.0
-margin_right = 600.0
-margin_bottom = -20.0
+margin_left = -1560.0
+margin_top = -1986.0
+margin_right = -360.0
+margin_bottom = -1106.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 1

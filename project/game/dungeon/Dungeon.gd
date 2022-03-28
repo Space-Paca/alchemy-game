@@ -596,6 +596,7 @@ func load_battle(data):
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
+	map.set_disabled(false)
 
 
 func new_battle(encounter: Encounter):

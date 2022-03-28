@@ -202,6 +202,7 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="UnlockablePopup" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [connection signal="animation_finished" from="Page1/RunStats" to="." method="_on_RunStats_animation_finished"]
 [connection signal="button_down" from="Page1/Next" to="." method="_on_Button_button_down"]

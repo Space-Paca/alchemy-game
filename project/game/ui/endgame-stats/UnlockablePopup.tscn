@@ -358,10 +358,10 @@ __meta__ = {
 }
 
 [node name="Description" type="Label" parent="BG"]
-margin_left = 1002.0
-margin_top = 718.0
-margin_right = 1962.0
-margin_bottom = 1118.0
+margin_left = 1030.0
+margin_top = 664.0
+margin_right = 1990.0
+margin_bottom = 1064.0
 rect_min_size = Vector2( 550, 200 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )

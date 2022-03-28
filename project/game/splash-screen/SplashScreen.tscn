@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/splash-screen/SplashScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/splash_screen/splash_screen.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/flags/Brazil.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/flags/USA.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/flags/Brazil_selected.png" type="Texture" id=6]
+[ext_resource path="res://assets/shaders/reward_shader_material.tres" type="Material" id=7]
 
 [node name="SplashScreen" type="Control"]
 anchor_right = 1.0
@@ -26,7 +27,6 @@ __meta__ = {
 }
 
 [node name="ChooseLanguage" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -35,6 +35,7 @@ __meta__ = {
 }
 
 [node name="English" type="TextureButton" parent="ChooseLanguage"]
+material = ExtResource( 7 )
 margin_left = 295.0
 margin_top = 355.0
 margin_right = 945.0
@@ -48,6 +49,7 @@ __meta__ = {
 }
 
 [node name="Portugues" type="TextureButton" parent="ChooseLanguage"]
+material = ExtResource( 7 )
 margin_left = 1025.0
 margin_top = 355.0
 margin_right = 1675.0

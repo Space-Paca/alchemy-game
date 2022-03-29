@@ -1,15 +1,22 @@
 extends TextureRect
 
 onready var anim = $AnimationPlayer
+onready var sheen_tween = $Title/TitleSheen/Tween
+onready var sheen_timer = $Title/TitleSheen/SheenTimer
+onready var sheen_material = $Title/TitleSheen.material
 onready var compendium_button = $CompendiumButton
 onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 
 const ALPHA_SPEED = 6
+const SHEEN_DUR = .8
+const SHEEN_INTERVAL = 5.0
 
 var hover_compendium = false
 
 func _ready():
+	
 	anim.play("reset")
+	sheen_timer.wait_time = SHEEN_INTERVAL
 	
 	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
@@ -137,3 +144,11 @@ func _on_Yes_mouse_entered():
 
 func _on_No_mouse_entered():
 	AudioManager.play_sfx("hover_button")
+
+
+func _on_SheenTimer_timeout():
+	sheen_tween.interpolate_property(sheen_material, "shader_param/shine_location", 0.0, 1.0, SHEEN_DUR, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	sheen_tween.start()
+	yield(sheen_tween, "tween_completed")
+	sheen_material.set_shader_param("shine_location", 0.0)
+	

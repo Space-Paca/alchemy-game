@@ -1250,10 +1250,10 @@ __meta__ = {
 }
 
 [node name="CompendiumButton" type="TextureButton" parent="."]
-margin_left = 155.572
-margin_top = 762.196
-margin_right = 355.572
-margin_bottom = 991.196
+margin_left = 156.0
+margin_top = 762.0
+margin_right = 356.0
+margin_bottom = 991.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 23 )

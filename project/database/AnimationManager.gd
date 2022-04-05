@@ -2,8 +2,6 @@ extends Node
 
 const RISING = preload("res://game/character/RisingNumber.tscn")
 
-const SHIELD = preload("res://game/vfx/shield/Shield.tscn")
-
 onready var ANIM = {
 	"area_attack": $Animations/AreaAttack,
 	"regular_attack": $Animations/RegularAttack,
@@ -15,7 +13,8 @@ onready var ANIM = {
 	"buff": $Animations/Buff,
 	"debuff": $Animations/Debuff,
 	"drain": $Animations/Drain,
-	"spawn": $Animations/Summon
+	"spawn": $Animations/Summon,
+	"shield": preload("res://game/vfx/shield/Shield.tscn")
 }
 
 func play_rising_number(value, pos: Vector2):
@@ -31,7 +30,7 @@ func play(name: String, pos: Vector2):
 	
 	var animation
 	if name == "shield":
-		animation = SHIELD.instance()
+		animation = ANIM[name].instance()
 	else:
 		animation = ANIM[name].duplicate()
 	

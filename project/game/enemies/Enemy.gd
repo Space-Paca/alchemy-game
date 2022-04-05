@@ -310,6 +310,9 @@ func update_actions():
 			assert(false)
 		cur_actions.append(act)
 	
+	#DEBUG: Enemy shield
+	cur_actions = [["shield", {"value": 1, "animation": ""}]]
+	
 	update_intent()
 
 

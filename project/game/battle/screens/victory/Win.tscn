@@ -64,6 +64,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BG/MovingScreen/LootBackground:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 324, 182 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "enter"
@@ -102,6 +114,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BG/MovingScreen/LootBackground:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 324, 182 ) ]
 }
 
 [node name="Win" type="CanvasLayer"]
@@ -185,10 +209,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -1560.0
-margin_top = -1986.0
-margin_right = -360.0
-margin_bottom = -1106.0
+margin_left = -2556.0
+margin_top = -3058.0
+margin_right = -1356.0
+margin_bottom = -2178.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 1

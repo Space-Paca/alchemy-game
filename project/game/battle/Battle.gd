@@ -438,9 +438,6 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	var enemy_node = EnemyManager.create_object(enemy, player)
 	enemies_node.add_child(enemy_node)
 
-	if is_minion:
-		enemy_node.add_status("minion", 1, false)
-
 	if initial_pos:
 		enemy_node.position = initial_pos
 	else:
@@ -470,6 +467,11 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
 
 	enemy_node.update_actions()
+	
+	if is_minion:
+		yield(get_tree().create_timer(.1), "timeout")
+		enemy_node.add_status("minion", 1, false)
+
 
 
 func update_enemy_positions(override_count = -1):

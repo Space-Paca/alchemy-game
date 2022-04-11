@@ -311,7 +311,7 @@ func update_actions():
 		cur_actions.append(act)
 	
 	#DEBUG: Enemy shield
-	cur_actions = [["shield", {"value": 1, "animation": ""}]]
+#	cur_actions = [["shield", {"value": 1, "animation": ""}]]
 	
 	update_intent()
 
@@ -350,7 +350,7 @@ func update_status_bar():
 
 
 func get_center_position():
-	return $Sprite.global_position
+	return $Sprite/CenterPosition.global_position
 
 
 func setup(enemy_logic, new_texture, enemy_data, _player):

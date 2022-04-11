@@ -144,7 +144,10 @@ current_animations = [ {
 "track_id": 0
 } ]
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="CenterPosition" parent="Sprite" index="0"]
+position = Vector2( 18.6877, -421.809 )
+
+[node name="AnimationPlayer" parent="." index="8"]
 anims/01_stand = SubResource( 3 )
 "anims/atk 1" = SubResource( 4 )
 "anims/atk 2" = SubResource( 5 )

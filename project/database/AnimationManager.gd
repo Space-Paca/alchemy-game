@@ -3,8 +3,8 @@ extends Node
 const RISING = preload("res://game/character/RisingNumber.tscn")
 
 onready var ANIM = {
-	"area_attack": $Animations/AreaAttack,
-	"regular_attack": $Animations/RegularAttack,
+	"area_attack": preload("res://game/vfx/area-attack/AreaAttack.tscn"),
+	"regular_attack": preload("res://game/vfx/regular-attack/RegularAttack.tscn"),
 	"piercing_attack": $Animations/PiercingAttack,
 	"crushing_attack": $Animations/CrushingAttack,
 	"venom_attack": $Animations/Poison,
@@ -29,14 +29,14 @@ func play(name: String, pos: Vector2):
 		assert(false)
 	
 	var animation
-	if name == "shield":
+	if name in ["shield", "regular_attack"]:
 		animation = ANIM[name].instance()
 	else:
 		animation = ANIM[name].duplicate()
+		animation.show()
 	
-	$AnimationLayer.add_child(animation)
 	animation.position = pos
-	animation.show()
+	$AnimationLayer.add_child(animation)
 	
 	yield(animation.get_node("AnimationPlayer"), "animation_finished")
 	

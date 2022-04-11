@@ -4,4 +4,7 @@
 
 [node name="Healer" instance=ExtResource( 1 )]
 
+[node name="CenterPosition" parent="Sprite" index="0"]
+position = Vector2( -15.3033, -154.211 )
+
 [editable path="HealthBar"]

@@ -29,6 +29,9 @@ current_animations = [ {
 "track_id": 0
 } ]
 
+[node name="CenterPosition" parent="Sprite" index="0"]
+position = Vector2( -1.68182, -117.725 )
+
 [connection signal="animation_complete" from="Sprite" to="." method="_on_Sprite_animation_complete"]
 
 [editable path="HealthBar"]

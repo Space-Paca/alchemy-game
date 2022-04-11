@@ -111,6 +111,14 @@ func setup_locs():
 					if not LOCS.has(name):
 						LOCS[name] = {} 
 					LOCS[name][type] = load(LOC_PATH + file_name)
+					
+#					#Use here to correct audio attributes of locs
+#					if type != "spawn":
+#						LOCS[name][type].base_db = 0
+#					else:
+#						LOCS[name][type].base_db = -1.5
+#					ResourceSaver.save(LOC_PATH + file_name, LOCS[name][type])
+#					printt("saving: ", name, type)
 
 			file_name = dir.get_next()
 	else:

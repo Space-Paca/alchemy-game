@@ -4,16 +4,16 @@ const RISING = preload("res://game/character/RisingNumber.tscn")
 
 onready var ANIM = {
 	"area_attack": preload("res://game/vfx/area-attack/AreaAttack.tscn"),
-	"regular_attack": preload("res://game/vfx/regular-attack/RegularAttack.tscn"),
-	"piercing_attack": $Animations/PiercingAttack,
-	"crushing_attack": $Animations/CrushingAttack,
-	"venom_attack": $Animations/Poison,
-	"poison": $Animations/Poison,
-	"heal": $Animations/Heal,
-	"buff": $Animations/Buff,
-	"debuff": $Animations/Debuff,
-	"drain": $Animations/Drain,
-	"spawn": $Animations/Summon,
+	"regular_attack": preload("res://game/vfx/regular/RegularAttack.tscn"),
+	"piercing_attack": preload("res://game/vfx/piercing/PiercingAttack.tscn"),
+	"crushing_attack": preload("res://game/vfx/crushing/CrushingAttack.tscn"),
+	"venom_attack": preload("res://game/vfx/venom/VenomAttack.tscn"),
+	"poison": preload("res://game/vfx/poison/Poison.tscn"),
+	"heal": preload("res://game/vfx/heal/Heal.tscn"),
+	"buff": preload("res://game/vfx/buff/Buff.tscn"),
+	"debuff": preload("res://game/vfx/debuff/Debuff.tscn"),
+	"drain": preload("res://game/vfx/drain/Drain.tscn"),
+	"spawn": preload("res://game/vfx/spawn/Summon.tscn"),
 	"shield": preload("res://game/vfx/shield/Shield.tscn")
 }
 
@@ -28,12 +28,7 @@ func play(name: String, pos: Vector2):
 		push_error("Not a valid animation:" + str(name))
 		assert(false)
 	
-	var animation
-	if name in ["shield", "regular_attack"]:
-		animation = ANIM[name].instance()
-	else:
-		animation = ANIM[name].duplicate()
-		animation.show()
+	var animation = ANIM[name].instance()
 	
 	animation.position = pos
 	$AnimationLayer.add_child(animation)

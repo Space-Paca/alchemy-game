@@ -311,7 +311,7 @@ func update_actions():
 		cur_actions.append(act)
 	
 	#DEBUG: Override enemy action
-#	cur_actions = [["status", {"status": "poison", "value": 1, "target": "player", "positive": false, "animation": ""}]]
+#	cur_actions = [["damage", {"value": 1, "type": "piercing", "amount": 1, "animation": ""}]]
 	
 	update_intent()
 

@@ -41,6 +41,9 @@ var ignore_signal = false
 func _ready():
 	favorite_button.get_node("Label").modulate.a = 0.0
 	favorite_button.hide()
+	var font = title.get("custom_fonts/font").duplicate(true)
+	title.set("custom_fonts/font", font)
+	
 
 
 func _process(delta):
@@ -63,8 +66,9 @@ func update_title_size():
 	font.set("size", MAX_TITLE_FONT_SIZE)
 	var font_size = MAX_TITLE_FONT_SIZE
 	while title.get_visible_line_count() < title.get_line_count():
-		font_size = font_size-1
+		font_size = font_size-4
 		font.set("size", font_size)
+
 
 
 func set_combination(_combination: Combination):

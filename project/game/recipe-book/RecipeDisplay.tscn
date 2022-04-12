@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://assets/shaders/painting_shader_material.tres" type="Material" id=11]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 28
 use_mipmaps = true
 use_filter = true
@@ -107,11 +107,11 @@ margin_right = 274.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 225, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "RECIPE NAME"
 align = 1
+valign = 1
 autowrap = true
-clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 margin_left = 1.0

@@ -20,12 +20,17 @@ const MAX_TITLE_FONT_SIZE = 50
 var combination : Combination
 
 
+func _ready():
+	var font = title.get("custom_fonts/font").duplicate(true)
+	title.set("custom_fonts/font", font)
+
+
 func update_title_size():
 	var font = title.get("custom_fonts/font")
 	font.set("size", MAX_TITLE_FONT_SIZE)
 	var font_size = MAX_TITLE_FONT_SIZE
 	while title.get_visible_line_count() < title.get_line_count():
-		font_size = font_size-1
+		font_size = font_size-4
 		font.set("size", font_size)
 		
 

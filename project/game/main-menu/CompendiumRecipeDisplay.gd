@@ -30,6 +30,11 @@ var filtered := true
 var hovered := false
 
 
+func _ready():
+	var font = title.get("custom_fonts/font").duplicate(true)
+	title.set("custom_fonts/font", font)
+
+
 func _process(delta):
 	if unknown_bg.visible:
 		return
@@ -46,7 +51,7 @@ func update_title_size():
 	font.set("size", MAX_TITLE_FONT_SIZE)
 	var font_size = MAX_TITLE_FONT_SIZE
 	while title.get_visible_line_count() < title.get_line_count():
-		font_size = font_size-1
+		font_size = font_size-3
 		font.set("size", font_size)
 
 

@@ -163,9 +163,9 @@ __meta__ = {
 
 [node name="Image" type="TextureRect" parent="."]
 material = SubResource( 1 )
-margin_left = -29.764
+margin_left = -30.0
 margin_top = -30.0
-margin_right = 30.236
+margin_right = 30.0
 margin_bottom = 30.0
 texture = ExtResource( 1 )
 expand = true

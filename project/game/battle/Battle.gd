@@ -675,10 +675,11 @@ func add_recipe_deviation(name):
 func apply_effects(effects: Array, effect_args: Array = [[]],
 		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
+		grid.misfire_animation()
 		used_all_reagents_in_recipes = false
 		effect_manager.combination_failure(effect_args, grid)
 		yield(effect_manager, "failure_resolved")
-
+		grid.end_misfire_animation()
 	else:
 		# Destroy reagents if needed
 		for reagent in destroy_reagents:
@@ -687,7 +688,10 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 
 		# Discard reagents
 		grid.clean()
-
+		
+		# Show grid animation
+		grid.recipe_made_animation()
+		
 		# Show targeting interface if needed
 		var total_targets = get_targeted_effect_total(effects)
 		if total_targets:
@@ -1009,6 +1013,7 @@ func combine():
 	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, true)
+	grid.combination_animation(dur)
 
 	yield(reagent_list.front(), "finished_combine_animation")
 	
@@ -1020,6 +1025,7 @@ func combine():
 	var curse = player.get_status("curse")
 	if curse:
 		combine_button.set_curse(recipes_created, curse.amount)
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)

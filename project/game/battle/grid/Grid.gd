@@ -14,6 +14,7 @@ const SEPARATION = 4
 
 onready var container = $CenterContainer
 onready var slots = $CenterContainer/GridContainer
+onready var combine_player = $CenterContainer/CenterPoint/AnimationPlayer
 
 var discard_bag = null # Set by parent
 var hand = null # Set by parent
@@ -264,6 +265,7 @@ func clear_hints():
 	for slot in slots.get_children():
 		slot.set_hint(null)
 
+
 func restrict(amount: int, type: String):
 	var unrestricted_slots = []
 	
@@ -295,10 +297,12 @@ func restrict(amount: int, type: String):
 			slot.restrict()
 			amount -= 1
 
+
 func unrestrict_all_slots():
 	for slot in slots.get_children():
 		if slot.is_restricted():
 			slot.unrestrict()
+
 
 func restrain(amount : int):
 	var restrain_slots = []
@@ -319,10 +323,32 @@ func restrain(amount : int):
 	if emit:
 		emit_signal("restrained")
 
+
 func unrestrain_all_slots():
 	for slot in slots.get_children():
 		if slot.is_restrained():
 			slot.unrestrain()
+
+
+func combination_animation(duration: float):
+	combine_player.playback_speed = 1/duration
+	combine_player.play("combine")
+
+
+func misfire_animation(autoend := false):
+	combine_player.play("missfire")
+	if autoend:
+		yield(combine_player, "animation_finished")
+		combine_player.play("missfire_end")
+
+
+func end_misfire_animation():
+	combine_player.play("missfire_end")
+
+
+func recipe_made_animation():
+	combine_player.play("recipe_made")
+
 
 func _on_slot_changed():
 	emit_signal("modified")

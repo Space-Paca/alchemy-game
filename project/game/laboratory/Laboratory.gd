@@ -76,6 +76,7 @@ func display_name_for_combination(combination):
 	recipe_name_display.display_name_for_combination(combination, false)
 
 func combination_success():
+	grid.recipe_made_animation()
 	var func_state = grid.dispense_reagents()
 	if func_state and func_state.is_valid():
 		yield(grid, "dispensed_reagents")
@@ -83,6 +84,7 @@ func combination_success():
 	enable_player()
 
 func combination_failed():
+	grid.misfire_animation(true)
 	var func_state = grid.reposition_reagents()
 	if func_state and func_state.is_valid():
 		yield(grid, "repositioned_reagents")
@@ -179,6 +181,7 @@ func _on_Combine_pressed():
 	AudioManager.play_sfx("combine", sfx_dur/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, false)
+	grid.combination_animation(dur)
 
 	yield(reagent_list.back(), "finished_combine_animation")
 	

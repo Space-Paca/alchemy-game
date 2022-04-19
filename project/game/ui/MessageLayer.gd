@@ -3,6 +3,8 @@ extends CanvasLayer
 signal continued
 signal favorite_recipe
 
+onready var animation = $AnimationPlayer
+onready var particles = $Control/Particles2D
 onready var default_position = $DefaultPosition
 onready var title = $Control/Title
 onready var recipes = $Control/Recipes
@@ -11,6 +13,7 @@ onready var continue_button = $Control/Buttons/Continue
 onready var favorite_button = $Control/Buttons/FavoriteRecipe
 onready var favorite_error_label = $Control/Buttons/FavoriteRecipe/FavoriteError
 
+const PARTICLE_POSITIONS = [Vector2(951, 525),Vector2(1170, 540)]
 const DEFAULT_DURATION = 1
 const MESSAGE = preload("res://game/ui/Message.tscn")
 const RECIPE_DISPLAY = preload("res://game/recipe-book/RecipeDisplay.tscn")
@@ -22,6 +25,7 @@ var current_combination
 
 func _ready():
 	$Control.hide()
+	animation.play("hide")
 	var message = MESSAGE.instance()
 	message_height = message.rect_size.y
 	message.queue_free()
@@ -36,8 +40,9 @@ func _process(_delta):
 
 func recipe_mastered(combination: Combination, favorited: bool):
 	AudioManager.play_sfx("recipe_mastered")
-	$Control.show()
-	
+	particles.position = PARTICLE_POSITIONS[1]
+	arrow.show()
+	animation.play("show")
 	current_combination = combination
 	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
 	
@@ -57,15 +62,14 @@ func recipe_mastered(combination: Combination, favorited: bool):
 	display_mastered.set_combination(combination)
 	display_mastered.preview_mode(true)
 	
-	arrow.show()
 	
 	title.text = "MASTERED_RECIPE_EXC"
 
 
 func new_recipe_discovered(combination: Combination):
-	$Control.show()
+	particles.position = PARTICLE_POSITIONS[0]
+	animation.play("show")
 	arrow.hide()
-	
 	current_combination = combination
 	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
 	
@@ -98,10 +102,10 @@ func add_message(text: String, duration: float = DEFAULT_DURATION):
 
 
 func exit():
-	$Control.hide()
-	arrow.hide()
+	animation.play("hide")
 	for display in $Control/Recipes.get_children():
 		$Control/Recipes.remove_child(display)
+	
 	emit_signal("continued")
 
 

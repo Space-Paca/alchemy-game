@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/images/effects/offset_glow.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/grid/Grid.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/recipe-icons/dano.png" type="Texture" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -156,6 +157,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("RecipeIcon:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("RecipeIcon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "combine"
@@ -253,7 +278,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "recipe_made"
-length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("RecipeParticles:emitting")
 tracks/0/interp = 1
@@ -277,6 +301,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RecipeIcon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.54902 ), Color( 1, 1, 1, 0.54902 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RecipeIcon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -100 ) ]
 }
 
 [node name="Grid" type="Control"]
@@ -310,6 +358,11 @@ margin_left = 160.0
 margin_top = 160.0
 margin_right = 160.0
 margin_bottom = 160.0
+
+[node name="RecipeIcon" type="Sprite" parent="CenterContainer/CenterPoint"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
 
 [node name="CombineParticles" type="Particles2D" parent="CenterContainer/CenterPoint"]
 material = SubResource( 1 )

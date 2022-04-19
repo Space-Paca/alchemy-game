@@ -72,16 +72,20 @@ func enable_player():
 	for reagent in reagents.get_children():
 		reagent.can_drag = true
 
+
 func display_name_for_combination(combination):
 	recipe_name_display.display_name_for_combination(combination, false)
 
-func combination_success():
+
+func combination_success(combination: Combination):
+	grid.set_combination_icon(combination.recipe.fav_icon)
 	grid.recipe_made_animation()
 	var func_state = grid.dispense_reagents()
 	if func_state and func_state.is_valid():
 		yield(grid, "dispensed_reagents")
 	
 	enable_player()
+
 
 func combination_failed():
 	grid.misfire_animation(true)
@@ -101,9 +105,6 @@ func recipe_book_visibility(is_visible):
 		enable_player()
 
 
-
-
-
 func _on_BackButton_pressed():
 	$Book/ReagentDropZone.monitorable = false
 	dispenser_list.clear()
@@ -115,6 +116,7 @@ func _on_BackButton_pressed():
 		map_node.set_type(MapNode.EMPTY)
 	
 	emit_signal("closed")
+
 
 func _on_reagent_drag(reagent):
 	reagents.move_child(reagent, reagents.get_child_count()-1)
@@ -142,6 +144,7 @@ func _on_reagent_quick_place(reagent):
 		AudioManager.play_sfx("quick_place_hand")
 		if reagent.slot.type == "grid":
 			reagent.return_to_dispenser()
+
 
 func _on_DispenserReagentList_dispenser_pressed(dispenser, reagent, quick_place):
 	create_reagent(dispenser, reagent, quick_place)

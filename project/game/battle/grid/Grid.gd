@@ -330,6 +330,10 @@ func unrestrain_all_slots():
 			slot.unrestrain()
 
 
+func set_combination_icon(texture: Texture):
+	$CenterContainer/CenterPoint/RecipeIcon.texture = texture
+
+
 func combination_animation(duration: float):
 	combine_player.playback_speed = 1/duration
 	combine_player.play("combine")

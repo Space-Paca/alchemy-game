@@ -508,6 +508,7 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 	if apply_effects:
 		player.made_recipe(recipe.id)
 		battle.add_recipe_deviation(recipe.id)
+		battle.grid.set_combination_icon(recipe.fav_icon)
 		if not times_recipe_made.has(recipe.id):
 			times_recipe_made[recipe.id] = 1
 		else:
@@ -920,7 +921,7 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 	if combination:
 		AudioManager.play_sfx("combine_success")
 		make_combination("laboratory", combination, {}, false)
-		lab.combination_success()
+		lab.combination_success(combination)
 	else:
 		AudioManager.play_sfx("combine_fail")
 		combination = "failure"

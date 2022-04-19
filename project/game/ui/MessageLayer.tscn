@@ -35,12 +35,11 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
-scale = 1.6
+scale = 1.7
 scale_random = 0.5
 scale_curve = SubResource( 9 )
 color_ramp = SubResource( 8 )
-hue_variation = 0.6
-hue_variation_random = 0.03
+hue_variation_random = 0.46
 anim_offset = 1.0
 anim_offset_random = 1.0
 
@@ -195,6 +194,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "hide"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/Particles2D:emitting")
 tracks/0/interp = 1
@@ -214,7 +214,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -226,7 +226,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -238,7 +238,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -250,7 +250,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -262,7 +262,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -274,10 +274,22 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/Particles2D:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 2.32, 5.21, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -391,6 +403,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Control/Particles2D:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 2.32, 5.21, 1 ) ]
+}
 
 [node name="MessageLayer" type="CanvasLayer"]
 layer = 3
@@ -404,6 +428,7 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -411,6 +436,7 @@ __meta__ = {
 }
 
 [node name="Particles2D" type="Particles2D" parent="Control"]
+modulate = Color( 0, 2.32, 5.21, 0 )
 material = SubResource( 10 )
 position = Vector2( 1170, 540 )
 scale = Vector2( 2.3, 3 )
@@ -482,7 +508,7 @@ __meta__ = {
 [node name="FavoriteRecipe" type="Button" parent="Control/Buttons"]
 margin_left = 476.0
 margin_right = 1068.0
-margin_bottom = 114.0
+margin_bottom = 214.0
 theme = ExtResource( 3 )
 text = "FAVORITE_THIS_RECIPE"
 
@@ -501,7 +527,7 @@ __meta__ = {
 [node name="Continue" type="Button" parent="Control/Buttons"]
 margin_left = 1091.0
 margin_right = 1443.0
-margin_bottom = 114.0
+margin_bottom = 214.0
 theme = ExtResource( 3 )
 text = "CONTINUE"
 __meta__ = {

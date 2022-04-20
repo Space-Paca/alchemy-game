@@ -19,6 +19,7 @@ onready var combine_player = $CenterContainer/CenterPoint/AnimationPlayer
 var discard_bag = null # Set by parent
 var hand = null # Set by parent
 var grid_size : int
+var recipe_sfx : String
 
 
 func _draw():
@@ -332,6 +333,20 @@ func unrestrain_all_slots():
 
 func set_combination_icon(texture: Texture):
 	$CenterContainer/CenterPoint/RecipeIcon.texture = texture
+
+
+func set_combination_sfx(sfx):
+	if sfx:
+		recipe_sfx = "recipe_" + sfx
+	else:
+		recipe_sfx = ""
+
+
+func play_recipe_sfx():
+	if not recipe_sfx or recipe_sfx == "":
+		return
+		
+	AudioManager.play_sfx(recipe_sfx)
 
 
 func combination_animation(duration: float):

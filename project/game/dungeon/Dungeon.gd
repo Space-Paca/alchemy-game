@@ -509,6 +509,7 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 		player.made_recipe(recipe.id)
 		battle.add_recipe_deviation(recipe.id)
 		battle.grid.set_combination_icon(recipe.fav_icon)
+		battle.grid.set_combination_sfx(recipe.sfx)
 		if not times_recipe_made.has(recipe.id):
 			times_recipe_made[recipe.id] = 1
 		else:
@@ -890,10 +891,6 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 				reagent.toggle_unstable()
 		# Not using AudioManager.get_sfx_duration("combine_success") since it has some silence at the end
 		yield(get_tree().create_timer(1.0), "timeout")
-		var sfx = "recipe_" + combination.recipe.sfx
-		if sfx:
-			AudioManager.play_sfx(sfx)
-			yield(get_tree().create_timer(AudioManager.get_sfx_duration(sfx)), "timeout")
 		make_combination("battle", combination, extract_boost_effects(reagent_list))
 	else:
 		AudioManager.play_sfx("combine_fail")

@@ -79,6 +79,7 @@ func display_name_for_combination(combination):
 
 func combination_success(combination: Combination):
 	grid.set_combination_icon(combination.recipe.fav_icon)
+	grid.set_combination_sfx(combination.recipe.sfx)
 	grid.recipe_made_animation()
 	var func_state = grid.dispense_reagents()
 	if func_state and func_state.is_valid():

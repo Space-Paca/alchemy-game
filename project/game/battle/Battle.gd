@@ -1013,7 +1013,7 @@ func combine():
 	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, true)
-	grid.combination_animation(dur)
+	grid.combination_animation(dur*1.3)
 
 	yield(reagent_list.front(), "finished_combine_animation")
 	

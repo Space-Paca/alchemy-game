@@ -96,8 +96,8 @@ func change_state(new_state: int):
 			rect_position = BATTLE_POS
 			visible = false
 			hand_rect.visible = true
-			scroll.rect_size.y -= hand_rect.rect_size.y
-			lower_divider.show()
+			#scroll.rect_size.y -= hand_rect.rect_size.y
+			#lower_divider.show()
 			draw_bag.disable()
 			discard_bag.disable()
 			hand_tag_button.show()
@@ -107,20 +107,40 @@ func change_state(new_state: int):
 			rect_position = AWAY_OFFSET
 			if state == States.BATTLE:
 				remove_hand()
-				lower_divider.hide()
-				scroll.rect_size.y += hand_rect.rect_size.y
+				#lower_divider.hide()
+				#scroll.rect_size.y += hand_rect.rect_size.y
 				hand_tag_button.hide()
+			if state != States.MAP:
 				reset_recipe_visibility()
 				filter_by_tag(DECK)
 				update_tag_buttons(DECK)
 		States.LAB:
 			rect_position = BATTLE_POS
+			if state == States.BATTLE:
+				remove_hand()
+				#lower_divider.hide()
+				#scroll.rect_size.y += hand_rect.rect_size.y
+				hand_tag_button.hide()
+			if state != States.LAB:
+				reset_recipe_visibility()
+				filter_by_tag(INCOMPLETE)
+				update_tag_buttons(INCOMPLETE)
 			visible = false
-			reset_recipe_visibility()
-			filter_by_tag(INCOMPLETE)
-			update_tag_buttons(INCOMPLETE)
+
 	
 	state = new_state
+	#update_fader_shader()
+
+
+func update_fader_shader():
+	if state == States.LAB:
+		fader.default_shader_offset = .56
+		fader.material.set_shader_param("top_offset", 0.56)
+		fader.material.set_shader_param("bottom_offset", 0.1)
+	else:
+		fader.default_shader_offset = 0
+		fader.material.set_shader_param("top_offset", 0.0)
+		fader.material.set_shader_param("bottom_offset", 0.625)
 
 
 func reapply_tag_and_filters():

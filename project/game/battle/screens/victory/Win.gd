@@ -23,6 +23,7 @@ onready var recipes_button = $BG/MovingScreen/LootBackground/ScrollContainer/Rew
 onready var continue_button = $BG/MovingScreen/LootBackground/ContinueButton
 onready var pearl_label = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Label
 onready var moving_screen = $BG/MovingScreen
+onready var title = $BG/Title
 onready var bg = $BG
 onready var tween = $Tween
 
@@ -39,7 +40,13 @@ var pearl_amount := 0
 var player = null
 
 func _ready():
+	reset()
 	animation.play("enter")
+
+
+func reset():
+	title.modulate.a = 0
+	moving_screen.modulate.a = 0
 
 
 func setup(_player):

@@ -93,8 +93,8 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=9]
 shader = SubResource( 8 )
 shader_param/invert = false
-shader_param/top_offset = 0.0
-shader_param/bottom_offset = 0.625
+shader_param/top_offset = 0.111
+shader_param/bottom_offset = 0.092
 shader_param/right_margin = 0.085
 
 [sub_resource type="Shader" id=10]

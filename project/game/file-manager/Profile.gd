@@ -19,7 +19,7 @@ var tutorials = {
 }
 
 var options = {
-	"master_volume": 1.0,
+	"master_volume": 0.7,
 	"bgm_volume": 1.0,
 	"sfx_volume": 1.0,
 	"fullscreen": true,

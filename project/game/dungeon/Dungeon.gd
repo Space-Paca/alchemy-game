@@ -496,7 +496,8 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 	
 	if not player.known_recipes.has(recipe.id) or not combination.discovered:
 		combination.discover_all_reagents(type)
-		player.discover_combination(combination, true)
+		player.discover_combination(combination)
+		AudioManager.play_sfx("discover_new_recipe")
 		MessageLayer.new_recipe_discovered(combination)
 		recipe_book.update_combination(combination)
 		if battle:

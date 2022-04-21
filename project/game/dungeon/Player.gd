@@ -452,15 +452,13 @@ func made_recipe(id):
 		made_recipes[id].amount += 1
 
 
-func discover_combination(combination: Combination, play_sfx := false):
-	if (known_recipes.has(combination.recipe.id)):
+func discover_combination(combination: Combination):
+	if known_recipes.has(combination.recipe.id):
 		return
 	
 	var recipe_id = combination.recipe.id
 	var index = known_recipes.bsearch(recipe_id)
 	known_recipes.insert(index, recipe_id)
-	if play_sfx:
-		AudioManager.play_sfx("discover_new_recipe")
 	emit_signal("combination_discovered", combination, index)
 
 

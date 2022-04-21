@@ -247,7 +247,7 @@ PIERCING_DAMAGE_DESC,Piercing damage ignores shield and deals damage directly to
 CRUSHING_DAMAGE,crushing damage,dano esmagador
 CRUSHING_DAMAGE_TITLE,Crushing Damage,Dano Esmagador
 CRUSHING_DAMAGE_DESC,Crushing damage deals damage both to shield and health directly.,Dano esmagador inflige dano tanto ao escudo quanto diretamente à vida.
-VENOM_DAMAGE,poison damage,dano venenoso
+VENOM_DAMAGE,venom damage,dano venenoso
 VENOM_DAMAGE_TITLE,Venom Damage,Dano Venenoso
 VENOM_DAMAGE_DESC,Unblocked venom damage applies poison to target instead of damage.,Dano venenoso que não for bloqueado vai aplicar veneno ao usuário em vez de dano.
 DRAIN,drain,drenar

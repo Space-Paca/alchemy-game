@@ -421,11 +421,12 @@ func push_luck(event_display, player, times: int):
 		text = events_by_id[19].leave_text_2
 		reward_random_artifact(player, ArtifactDB.get_artifacts("rare"))
 	
+	text = tr(text)
 	if times + 1 >= 3:
-		text += "this time, as close as you can bear. It's time to leave this place."
+		text += tr("EVENT_18_MUST_LEAVE")
 		load_leave_event(event_display, player, text)
 	else:
-		text += "maybe it's time to stop searching and leave before finding yourself in a undesirable conflict?"
+		text += tr("EVENT_18_SHOULD_LEAVE")
 		load_new_event(event_display, player, 19, text)
 
 #20

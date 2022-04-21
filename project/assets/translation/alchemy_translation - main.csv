@@ -1223,6 +1223,8 @@ You resume your journey, leaving the (highlight)Boneyard(/highlight) behind.","P
 Você retoma sua jornada, deixando o (highlight)Cemitério de Ossos(/highlight) para trás."
 EVENT_18_OPT_1,Search for something valuable.,Procurar por algo valioso.
 EVENT_18_OPT_2,Ignore.,Ignorar.
+EVENT_18_SHOULD_LEAVE,maybe it's time to stop searching and leave before finding yourself in a undesirable conflict?,"talvez seja hora de interromper sua procura e sair daqui, antes que você se depare com um conflito indesejável?"
+EVENT_18_MUST_LEAVE,"this time, as close as you can bear. It's time to leave this place.","desta vez, perto demais. É hora de sair deste lugar."
 EVENT_19_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
 
 After some time, you find something remarkable! Next to the bones of a massive beast, in what seems to once be inside its belly, (highlight)a powerful artifact(/highlight) is resting. You quickly pick it up and stash it.

@@ -4,6 +4,7 @@ onready var bg = $Background
 onready var tween = $Tween
 onready var floor_button = $Background/CenterContainer/VBoxContainer/FloorButton
 onready var fps_label = $Info/FPS
+onready var demo_label = $Info/Demo
 onready var unlock_btn = $Background/CenterContainer/VBoxContainer/UnlockCombBtn
 onready var version_label = $Info/Version
 onready var id_box = $Background/CenterContainer/VBoxContainer/Event/IdBox
@@ -20,6 +21,7 @@ signal damage_all
 
 const VERSION := "v0.4.0"
 const MAX_FLOOR := 3
+const IS_DEMO = false
 
 var floor_to_go := -1
 var recipes_unlocked := false
@@ -31,6 +33,7 @@ var give_xp := false
 func _ready():
 	set_process(false)
 	version_label.text = VERSION
+	demo_label.visible = IS_DEMO
 	
 	floor_button.add_item("Go to floor")
 	floor_button.add_separator()

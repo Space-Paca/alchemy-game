@@ -178,14 +178,30 @@ __meta__ = {
 }
 
 [node name="Version" type="Label" parent="Info"]
-margin_left = 40.0
-margin_top = 14.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 47.0
+margin_right = 47.0
+margin_bottom = 26.0
 size_flags_horizontal = 8
 custom_fonts/font = SubResource( 1 )
 
 [node name="Panel" type="Panel" parent="Info/Version"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Demo" type="Label" parent="Info"]
+margin_top = 30.0
+margin_right = 47.0
+margin_bottom = 56.0
+size_flags_horizontal = 8
+custom_fonts/font = SubResource( 1 )
+text = "Demo"
+
+[node name="Panel" type="Panel" parent="Info/Demo"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -317,14 +317,20 @@ func create_level(level: int, debug := false):
 	var smith_amount = 1 if UnlockManager.is_misc_unlocked("REAGENT_SMITH") else 0
 	var lab_amount = 1 if UnlockManager.is_misc_unlocked("LABORATORY") else 0
 	map.set_level(level)
+	# ( *∀*)y─┛
+	#  ______________
+	# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
 	match level:
 		1:
-			# ( *∀*)y─┛
-			#  ______________
-			# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
-			map.create_map(level, 7, 2, 0, 2, 1, 1, lab_amount, 1)
+			if Debug.IS_DEMO:
+				map.create_map(level, 3, 1, 0, 1, 1, 1, lab_amount, 1)
+			else:
+				map.create_map(level, 7, 2, 0, 2, 1, 1, lab_amount, 1)
 		2:
-			map.create_map(level, 7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
+			if Debug.IS_DEMO:
+				map.create_map(level, 3, 1, smith_amount, 1, 1, 1, lab_amount, 1)
+			else:
+				map.create_map(level, 7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		3:
 			map.create_map(level, 8, 2, smith_amount, 2, 1, 1, lab_amount, 1)
 		var invalid:

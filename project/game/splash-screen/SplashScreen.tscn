@@ -19,8 +19,8 @@ __meta__ = {
 }
 
 [node name="LoadingSplashScreen" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1920.0
+margin_bottom = 1081.0
 rect_min_size = Vector2( 1920, 1081 )
 texture = ExtResource( 2 )
 expand = true

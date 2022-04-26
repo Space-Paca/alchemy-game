@@ -843,12 +843,13 @@ func _on_Battle_finished(is_boss):
 	
 	Transition.end_transition()
 	
+	var should_save = true
 	if is_boss:
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
 		if (not Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR))\
-			or Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR-1):
+			or (Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR-1)):
 			play_map_bgm()
 			create_level(floor_level)
 			$Player.level_up()
@@ -857,6 +858,7 @@ func _on_Battle_finished(is_boss):
 			yield(Transition, "finished")
 			time_running = true
 		else:
+			should_save = false
 			enable_map()
 			thanks_for_playing()
 	else:
@@ -873,7 +875,8 @@ func _on_Battle_finished(is_boss):
 		yield(Transition, "finished")
 		time_running = true
 	
-	FileManager.save_game()
+	if should_save:
+		FileManager.save_game()
 
 
 func _on_new_combinations_seen(new_combinations: Array):

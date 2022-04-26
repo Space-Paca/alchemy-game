@@ -19,9 +19,9 @@ signal event_pressed(id)
 signal artifact_pressed(name)
 signal damage_all
 
-const VERSION := "v0.4.0"
+const VERSION := "v0.5.0"
 const MAX_FLOOR := 3
-const IS_DEMO = false
+const IS_DEMO = true
 
 var floor_to_go := -1
 var recipes_unlocked := false

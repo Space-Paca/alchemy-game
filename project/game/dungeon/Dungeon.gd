@@ -763,7 +763,11 @@ func favorite_combination(combination, active, play_sfx = true):
 
 func thanks_for_playing():
 	FileManager.delete_run_file()
-	var scene = load("res://game/ui/ThanksScreen.tscn").instance()
+	var scene
+	if not Debug.IS_DEMO:
+		scene = load("res://game/ui/ThanksScreen.tscn").instance()
+	else:
+		scene = load("res://game/ui/ThanksScreenDemo.tscn").instance()
 	add_child(scene)
 
 
@@ -843,7 +847,8 @@ func _on_Battle_finished(is_boss):
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
-		if floor_level <= Debug.MAX_FLOOR:
+		if (not Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR))\
+			or Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR-1):
 			play_map_bgm()
 			create_level(floor_level)
 			$Player.level_up()

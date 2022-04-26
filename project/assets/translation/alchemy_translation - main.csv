@@ -191,6 +191,14 @@ RESOURCE,Resource,Recurso
 RARE_RESOURCE,Rare Resource,Recurso Raro
 NO_RECIPE_FOUND,No recipes found...,Nenhuma receita encontrada...
 CURSED,CURSED,ALMALDIÇOADO
+THANKS_FOR_DEMO,Thank you for playing the demo!,Obrigado por jogar o demo!
+ENJOYED_DEMO,"If you've enjoyed it, the complete game has much more to offer! Including:","Se você se gostou, o jogo completo tem muito mais a oferecer! Incluindo:"
+DEMO_LIST_1,  * The Final Region with the Final Guardian!,  * A Região Final com o Guardião Final!
+DEMO_LIST_2,  * Bigger Maps!,  * Mapas Maiores!
+DEMO_LIST_3,  * More Enemies!,  * Mais Inimigos!
+DEMO_LIST_4,  * More Recipes!,  * Mais Receitas Mágicas!
+DEMO_LIST_5,  * More Artifacts!,  * Mais Artefatos!
+DEMO_LIST_6,  * More Events!,  * Mais Eventos!
 FLOOR_NAME_1,Forgotten Kingdom,Reino Esquecido
 FLOOR_NAME_2,Caves of Sorrow,Cavernas do Sofrimento
 FLOOR_NAME_3,Ruins of Bygone Knowledge,Ruinas do Conhecimento Perdido

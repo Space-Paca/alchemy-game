@@ -66,6 +66,7 @@ func delete_run_file():
 	if run_file.file_exists("user://run.save"):
 		var dir = Directory.new()
 		dir.remove("user://run.save")
+		print("deleted")
 	else:
 		#Run file not found. Aborting deletion.
 		return

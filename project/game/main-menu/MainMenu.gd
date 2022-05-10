@@ -26,7 +26,7 @@ func _ready():
 	
 	yield(get_tree(),"idle_frame")
 	
-	AudioManager.play_bgm("menu")
+	AudioManager.play_bgm("menu", false, true)
 	$ContinueButton.visible = FileManager.run_file_exists()
 	
 	yield(Transition, "finished")

@@ -769,6 +769,7 @@ func thanks_for_playing():
 	else:
 		scene = load("res://game/ui/ThanksScreenDemo.tscn").instance()
 	add_child(scene)
+	scene.player = player
 
 
 func _on_Combination_fully_discovered(combination: Combination, source: String):
@@ -860,6 +861,8 @@ func _on_Battle_finished(is_boss):
 		else:
 			should_save = false
 			enable_map()
+			player.cur_level += 1
+			player.increase_stat("time", time_of_run)
 			thanks_for_playing()
 	else:
 		play_map_bgm()

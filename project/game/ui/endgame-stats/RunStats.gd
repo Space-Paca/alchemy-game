@@ -23,7 +23,7 @@ func _input(event):
 
 
 func set_player(p: Player):
-	for i in p.cur_level:
+	for i in min(p.cur_level, Debug.MAX_FLOOR):
 		var floor_stats = FLOOR_STATS.instance()
 		var cleared = i < p.cur_level - 1
 		floor_stats.set_amounts(i, cleared, p.floor_stats[i])

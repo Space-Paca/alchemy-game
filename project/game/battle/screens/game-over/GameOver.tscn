@@ -22,7 +22,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/grayscale = 1.0
+shader_param/grayscale = 0.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "gameover"

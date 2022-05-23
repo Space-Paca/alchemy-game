@@ -70,7 +70,7 @@ func setup_bgms():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name != "." and file_name != "..":
-				#Found enemy sfx file, creating data on memory
+				#Found bgm file, creating data on memory
 				BGMS[file_name.replace(".tres", "")] = load(BGM_PATH + file_name)
 				
 			file_name = dir.get_next()

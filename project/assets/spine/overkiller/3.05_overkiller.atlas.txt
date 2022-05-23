@@ -1,0 +1,29 @@
+3.05_overkiller_voodoo.png
+size:474,486
+filter:Linear,Linear
+pma:true
+arm 1
+bounds:414,197,48,95
+offsets:0,0,49,96
+arm 2
+bounds:320,294,74,141
+rotate:90
+body
+bounds:2,2,195,201
+offsets:1,28,197,230
+head
+bounds:199,29,173,192
+offsets:1,1,175,194
+rotate:90
+knife
+bounds:320,370,152,114
+offsets:1,2,155,117
+leg 1
+bounds:393,134,61,61
+offsets:1,2,63,64
+leg 2
+bounds:320,204,92,88
+offsets:1,1,94,90
+ref
+bounds:2,205,316,279
+offsets:1,1,319,281

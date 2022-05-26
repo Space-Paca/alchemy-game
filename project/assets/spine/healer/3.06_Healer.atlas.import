@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.06_Healer.atlas-0dd20f26f926ba17700c68a6f93c2b2f.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/healer/3.06_Healer.atlas"
+dest_files=[ "res://.import/3.06_Healer.atlas-0dd20f26f926ba17700c68a6f93c2b2f.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

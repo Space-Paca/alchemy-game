@@ -31,15 +31,15 @@ var actions = {
 		{"name": "shield", "value": 50, "animation": ""},
 	],
 	"attack": [
-		{"name": "damage", "value": 20, "type": "regular", "animation": ""},
-		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": ""},
+		{"name": "damage", "value": 20, "type": "regular", "animation": "02_atk"},
+		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": "02_atk"},
 	],
 	"defend": [
-		{"name": "shield", "value": [10, 50], "animation": ""},
-		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": ""},
+		{"name": "shield", "value": [10, 50], "animation": "02_atk"},
+		{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": "02_atk"},
 	],
 	"heal": [
-		{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": ""},
+		{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": "02_atk"},
 		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""},
 	],
 }

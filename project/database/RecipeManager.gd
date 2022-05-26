@@ -13,7 +13,6 @@ func _ready():
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
 				var recipe := load(str(path, file_name)) as Recipe
-				
 				# DEBUG
 				if recipe.reagents.size() < 2:
 					push_error("RecipeManager: %s has less than 2 reagents" % str(path, file_name))
@@ -21,6 +20,7 @@ func _ready():
 				if recipe.effects.size() != recipe.effect_args.size():
 					push_error("RecipeManager: %s effect and arguments size mismatch" % str(path, file_name))
 					assert(false)
+				
 				recipe.id = file_name.replace(".tres", "")
 				recipes[recipe.id] = recipe
 			file_name = dir.get_next()

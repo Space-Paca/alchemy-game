@@ -9,6 +9,7 @@ name = "RE_DRAIN"
 grid_size = 3
 sfx = "drain"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "damaging", "damaging", "damaging", "super_damaging", "healing" ]
 effects = [ "drain" ]

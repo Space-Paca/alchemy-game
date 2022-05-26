@@ -9,6 +9,7 @@ name = "RE_DRAW_PLUSPLUS"
 grid_size = 3
 sfx = "transmutation"
 must_unlock = true
+use_on_demo = true
 floor_sold_in = 3
 reagents = [ "rare", "rare", "uncommon", "uncommon", "uncommon" ]
 effects = [ "draw" ]

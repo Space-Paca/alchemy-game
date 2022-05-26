@@ -9,6 +9,7 @@ name = "RE_DANO_PLUSPLUS"
 grid_size = 3
 sfx = "bottled_lightning"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "uncommon", "damaging", "super_damaging" ]
 effects = [ "damage" ]

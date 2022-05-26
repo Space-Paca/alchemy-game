@@ -9,6 +9,7 @@ name = "RE_RETALIATE"
 grid_size = 3
 sfx = "drink_potion"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "defensive", "defensive", "buff" ]
 effects = [ "add_status" ]

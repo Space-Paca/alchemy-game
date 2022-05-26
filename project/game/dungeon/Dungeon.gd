@@ -237,7 +237,8 @@ func create_combinations():
 	var unlocked_recipes = UnlockManager.get_all_unlocked_recipes()
 	for recipe_id in RecipeManager.recipes.keys():
 		var recipe = RecipeManager.recipes[recipe_id]
-		if recipe.must_unlock and unlocked_recipes.find(recipe_id) == -1:
+		if (recipe.must_unlock and unlocked_recipes.find(recipe_id) == -1) or\
+		 	(Debug.IS_DEMO and not recipe.use_on_demo):
 			continue
 		
 		var combination = Combination.new()

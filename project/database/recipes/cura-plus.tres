@@ -9,6 +9,7 @@ name = "RE_CURA_PLUS"
 grid_size = 3
 sfx = "drink_potion"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "common", "common", "uncommon", "uncommon", "healing" ]
 effects = [ "heal" ]

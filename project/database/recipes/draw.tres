@@ -9,6 +9,7 @@ name = "RE_DRAW"
 grid_size = 2
 sfx = "drain"
 must_unlock = true
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "common", "uncommon" ]
 effects = [ "draw" ]

@@ -9,6 +9,7 @@ name = "RE_SHIELD_LIXO"
 grid_size = 2
 sfx = "shield_potion"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 1
 reagents = [ "trash", "defensive" ]
 effects = [ "shield" ]

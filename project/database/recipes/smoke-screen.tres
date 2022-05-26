@@ -9,6 +9,7 @@ name = "RE_SMOKESCREEN"
 grid_size = 2
 sfx = "smokescreen_tonic"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "buff", "defensive", "defensive" ]
 effects = [ "add_status" ]

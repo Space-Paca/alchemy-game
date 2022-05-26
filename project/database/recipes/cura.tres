@@ -9,6 +9,7 @@ name = "RE_CURA"
 grid_size = 2
 sfx = "healing_salve"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 1
 reagents = [ "common", "common", "healing" ]
 effects = [ "heal" ]

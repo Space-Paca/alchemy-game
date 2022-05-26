@@ -9,6 +9,7 @@ name = "RE_DANO"
 grid_size = 2
 sfx = "bomb"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 1
 reagents = [ "common", "damaging" ]
 effects = [ "damage" ]

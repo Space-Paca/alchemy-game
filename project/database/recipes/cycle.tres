@@ -9,6 +9,7 @@ name = "RE_CYCLE"
 grid_size = 3
 sfx = "transmutation"
 must_unlock = true
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "common", "common", "common", "common" ]
 effects = [ "draw" ]

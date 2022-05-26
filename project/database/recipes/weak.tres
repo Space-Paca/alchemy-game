@@ -9,6 +9,7 @@ name = "RE_WEAK"
 grid_size = 2
 sfx = "throw_potion"
 must_unlock = false
+use_on_demo = true
 floor_sold_in = 2
 reagents = [ "common", "debuff" ]
 effects = [ "add_status" ]

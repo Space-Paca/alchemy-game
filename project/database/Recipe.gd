@@ -9,6 +9,7 @@ export(String) var name
 export(int) var grid_size
 export(String) var sfx := "drink_potion"
 export(bool) var must_unlock := false
+export(bool) var use_on_demo := false
 export(int) var floor_sold_in
 export(Array, String) var reagents
 export(Array, String) var effects

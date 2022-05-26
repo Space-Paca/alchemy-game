@@ -8,6 +8,7 @@ script = ExtResource( 1 )
 id = 6
 title = "EVENT_6_TITLE"
 image = ExtResource( 2 )
+use_on_demo = false
 bgm = "event_bloody_bet"
 text = "EVENT_6_TEXT"
 leave_text_1 = "EVENT_6_LEAVE_1"

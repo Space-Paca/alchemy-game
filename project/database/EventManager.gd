@@ -51,7 +51,8 @@ func reset_events():
 	for event in events_by_id.values():
 		for f in FLOORS:
 			if event.floor_appearance[f] and\
-					not UnlockManager.get_locked_events().has(event.id):
+			   not UnlockManager.get_locked_events().has(event.id) and\
+			   (not Debug.IS_DEMO or event.use_on_demo):
 				event_ids_by_floor[f].append(event.id)
 	
 	for f in FLOORS:

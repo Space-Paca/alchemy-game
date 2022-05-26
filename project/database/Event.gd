@@ -7,6 +7,7 @@ enum Type {LUCK, CHALLENGE, TRADEOFF, POSITIVE, QUEST}
 export(int) var id = 0
 export(String) var title = ""
 export(Texture) var image
+export var use_on_demo = false
 export(String, "event_bloody_bet", "event_positive") var bgm = "event_bloody_bet"
 export(String, MULTILINE) var text = ""
 export(String, MULTILINE) var leave_text_1 = ""

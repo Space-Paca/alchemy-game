@@ -7,6 +7,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/poison_kit.png"),
 		"description": "ART_POISON_KIT_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
    {
 		"id": "buff_poison",
@@ -14,6 +15,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/buff_poison.png"),
 		"description": "ART_BUFF_POISON_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 	{
 		"id": "strength",
@@ -21,6 +23,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/strength.png"),
 		"description": "ART_STRENGTH_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "max_hp",
@@ -28,6 +31,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/max_hp.png"),
 		"description": "ART_MAX_HP_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "temp_strength",
@@ -35,6 +39,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/temp_strength.png"),
 		"description": "ART_TEMP_STRENGTH_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 	{
 		"id": "great_rest",
@@ -42,6 +47,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/great_rest.png"),
 		"description": "ART_GREAT_REST_DESC",
 		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "money_bag",
@@ -49,6 +55,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/money_bag.png"),
 		"description": "ART_MONEY_BAG_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "blue_oyster",
@@ -56,6 +63,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/blue_oyster.png"),
 		"description": "ART_BLUE_OYSTER_DESC",
 		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "mender_belt",
@@ -63,6 +71,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/mender_belt.png"),
 		"description": "ART_MENDER_BELT_DESC",
 		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "carapa_buckler",
@@ -70,6 +79,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/carapa_buckler.png"),
 		"description": "ART_CARAPA_BUCKLER_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "vulture_mask",
@@ -77,6 +87,7 @@ const COMMON = [
 		"image": preload("res://assets/images/artifacts/vulture_mask.png"),
 		"description": "ART_VULTURE_MASK_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 ]
 
@@ -87,6 +98,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/full_rest.png"),
 		"description": "ART_FULL_REST_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 	{
 		"id": "buff_kit",
@@ -94,6 +106,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/buff_kit.png"),
 		"description": "ART_BUFF_KIT_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "debuff_kit",
@@ -101,6 +114,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/debuff_kit.png"),
 		"description": "ART_DEBUFF_KIT_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "trash_heal",
@@ -108,6 +122,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/trash_heal.png"),
 		"description": "ART_TRASH_HEAL_DESC",
 		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "strength_plus",
@@ -115,6 +130,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/strength_plus.png"),
 		"description": "ART_STRENGTH_PLUS_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 	{
 		"id": "temp_strength_plus",
@@ -122,6 +138,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/temp_strength_plus.png"),
 		"description": "ART_TEMP_STRENGTH_PLUS_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "random_kit",
@@ -129,6 +146,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/random_kit.png"),
 		"description": "ART_RANDOM_KIT_DESC",
 		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "poisoned_dagger",
@@ -136,6 +154,7 @@ const UNCOMMON = [
 		"image": preload("res://assets/images/artifacts/poisoned_dagger.png"),
 		"description": "ART_POISONED_DAGGER_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 ]
 
@@ -146,6 +165,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/buff_heal.png"),
 		"description": "ART_BUFF_HEAL_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "midas",
@@ -153,6 +173,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/midas.png"),
 		"description": "ART_MIDAS_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 	{
 		"id": "heal_leftover",
@@ -160,6 +181,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/heal_leftover.png"),
 		"description": "ART_HEAL_LEFTOVER_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "damage_optimize",
@@ -167,6 +189,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/damage_optimize.png"),
 		"description": "ART_DAMAGE_OPTIMIZE_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "heal_optimize",
@@ -174,6 +197,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/heal_optimize.png"),
 		"description": "ART_HEAL_OPTIMIZE_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "strength_optimize",
@@ -181,6 +205,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/strength_optimize.png"),
 		"description": "ART_STRENGTH_OPTIMIZE_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "reveal_map",
@@ -188,6 +213,7 @@ const RARE = [
 		"image": preload("res://assets/images/artifacts/reveal_map.png"),
 		"description": "ART_REVEAL_MAP_DESC",
 		"must_unlock": true,
+		"use_on_demo": true,
 	},
 ]
 
@@ -198,6 +224,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/cursed_pearls.png"),
 		"description": "ART_CURSED_PEARLS_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "cursed_halberd",
@@ -205,6 +232,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/cursed_halberd.png"),
 		"description": "ART_CURSED_HALBERD_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "cursed_shield",
@@ -212,6 +240,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/cursed_shield.png"),
 		"description": "ART_CURSED_SHIELD_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "bloodcursed_grimoire",
@@ -219,6 +248,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/bloodcursed_grimoire.png"),
 		"description": "ART_BLOODCURSED_GRIMOIRE_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "gold_ankh",
@@ -226,6 +256,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/gold_ankh.png"),
 		"description": "ART_GOLD_ANKH_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 	{
 		"id": "cursed_scholar_mask",
@@ -233,6 +264,7 @@ const EVENT = [
 		"image": preload("res://assets/images/artifacts/cursed_scholar_mask.png"),
 		"description": "ART_CURSED_MASK_DESC",
 		"must_unlock": false,
+		"use_on_demo": true,
 	},
 ]
 
@@ -254,7 +286,8 @@ static func get_artifacts_data(rarity : String, get_only_unlocked := true) -> Ar
 	if get_only_unlocked:
 		var to_remove = []
 		for artifact in pool:
-			if artifact.must_unlock and not unlocked_artifacts.has(artifact.id):
+			if artifact.must_unlock and not unlocked_artifacts.has(artifact.id) and\
+				(not Debug.IS_DEMO or artifact.use_on_demo):
 				to_remove.append(artifact)
 		for rem_art in to_remove:
 			pool.remove(pool.find(rem_art))
@@ -278,8 +311,9 @@ static func get_artifacts(rarity : String, get_only_unlocked := true) -> Array:
 		return []
 
 	for artifact in pool:
-		if not get_only_unlocked or not artifact.must_unlock or unlocked_artifacts.has(artifact.id):
-			artifacts.append(artifact.id)
+		if (not get_only_unlocked or not artifact.must_unlock or unlocked_artifacts.has(artifact.id))and\
+		   (not Debug.IS_DEMO or artifact.use_on_demo):
+				artifacts.append(artifact.id)
 	return artifacts
 
 

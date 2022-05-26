@@ -26,18 +26,19 @@ func _ready():
 			if not dir.current_is_dir() and file_name.get_extension() == "tres":
 				var encounter := load(str(PATH, file_name)) as Encounter
 				encounter.resource_name = file_name
-				if encounter.is_boss:
-					if not boss_encounters.has(encounter.level):
-						boss_encounters[encounter.level] = []
-					boss_encounters[encounter.level].append(encounter)
-				elif encounter.is_elite:
-					if not elite_encounters.has(encounter.level):
-						elite_encounters[encounter.level] = []
-					elite_encounters[encounter.level].append(encounter)
-				else:
-					if not encounters.has(encounter.level):
-						encounters[encounter.level] = []
-					encounters[encounter.level].append(encounter)
+				if not Debug.IS_DEMO or encounter.use_on_demo:
+					if encounter.is_boss:
+						if not boss_encounters.has(encounter.level):
+							boss_encounters[encounter.level] = []
+						boss_encounters[encounter.level].append(encounter)
+					elif encounter.is_elite:
+						if not elite_encounters.has(encounter.level):
+							elite_encounters[encounter.level] = []
+						elite_encounters[encounter.level].append(encounter)
+					else:
+						if not encounters.has(encounter.level):
+							encounters[encounter.level] = []
+						encounters[encounter.level].append(encounter)
 				
 				if encounter.resource_name == TUTORIAL_ENCOUNTER_NAME:
 					tutorial_encounter = encounter

@@ -19,6 +19,7 @@ export(Dictionary) var loot_table := {"common": 0, "uncommon": 0, "rare": 0,
 	"damaging": 0, "defensive": 0, "super_damaging": 0, "super_defensive": 0,
 	"healing": 0, "buff": 0, "poison": 0, "debuff": 0}
 export(Array, float) var extra_loot_chance : Array
+export var use_on_demo = false
 
 var current_phase = 1
 

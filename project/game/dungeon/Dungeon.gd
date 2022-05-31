@@ -766,6 +766,8 @@ func thanks_for_playing():
 	FileManager.delete_run_file()
 	var scene
 	if not Debug.IS_DEMO:
+		var stat_name = "times_finished_"+str(player.player_class.name)
+		Profile.set_stat(stat_name, Profile.get_stat(stat_name) + 1)
 		scene = load("res://game/ui/ThanksScreen.tscn").instance()
 	else:
 		scene = load("res://game/ui/ThanksScreenDemo.tscn").instance()

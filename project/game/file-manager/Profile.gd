@@ -55,6 +55,12 @@ var progression = {
 	}
 }
 
+
+var stats = {
+	"times_finished_alchemist": 0,
+}
+
+
 var known_recipes = {}
 
 func _ready():
@@ -79,6 +85,7 @@ func update_translation():
 func reset_progression():
 	for category in progression:
 		progression[category].cur_xp = 0
+	FileManager.save_profile()
 
 
 func reset_known_recipes():
@@ -99,6 +106,7 @@ func get_save_data():
 		"controls": controls,
 		"known_recipes": known_recipes,
 		"progression": progression,
+		"stats": stats,
 	}
 	
 	return data
@@ -115,6 +123,7 @@ func set_save_data(data):
 	set_data(data, "controls", controls)
 	set_data(data, "known_recipes", known_recipes)
 	set_data(data, "progression", progression)
+	set_data(data, "stats", stats)
 	
 	AudioManager.set_bus_volume(AudioManager.MASTER_BUS, options.master_volume)
 	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
@@ -159,7 +168,7 @@ func get_option(name):
 func set_option(name: String, value):
 	assert(options.has(name), "Not a valid option: " + str(name))
 	options[name] = value
-
+	FileManager.save_profile()
 
 func get_control(name):
 	assert(controls.has(name), "Not a valid control action: " + str(name))
@@ -170,6 +179,7 @@ func set_control(name: String, value):
 	assert(controls.has(name), "Not a valid control action: " + str(name))
 	controls[name] = value
 	edit_control_action(name, value)
+	FileManager.save_profile()
 
 
 func edit_control_action(action: String, scancode:int):
@@ -241,3 +251,14 @@ func increase_progression(type, amount):
 func set_progression_xp(type, value):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	progression[type].cur_xp = value
+
+
+func get_stat(type):
+	assert(stats.has(type), "Not a valid stat: "+str(type))
+	return stats[type]
+
+
+func set_stat(type, value):
+	assert(stats.has(type), "Not a valid stat: "+str(type))
+	stats[type] = value
+	FileManager.save_profile()

@@ -212,7 +212,10 @@ func memorize_recipe(name):
 
 func is_max_level(prog_type):
 	var prog = UnlockManager.get_progression(prog_type)
-	return get_progression_level(prog_type) == prog.size()
+	if Debug.IS_DEMO:
+		return get_progression_level(prog_type) >= 3
+	else:
+		return get_progression_level(prog_type) == prog.size()
 
 
 func get_progression(type):

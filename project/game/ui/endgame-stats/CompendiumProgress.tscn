@@ -123,10 +123,10 @@ __meta__ = {
 }
 
 [node name="Header3" type="Label" parent="Table"]
-margin_left = 308.337
-margin_top = 85.0
-margin_right = 588.337
-margin_bottom = 145.0
+margin_left = 324.0
+margin_top = 86.0
+margin_right = 604.0
+margin_bottom = 146.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "MEMORIZATION_PROGRESS"

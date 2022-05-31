@@ -18,7 +18,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 56
+size = 52
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
@@ -157,10 +157,22 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("List/Label7:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "enter"
-length = 10.0
+length = 11.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("BG:modulate")
 tracks/0/interp = 1
@@ -269,6 +281,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("List/Label7:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 9.6, 10.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="ThanksScreenDemo" type="CanvasLayer"]
 layer = 6
@@ -290,14 +314,17 @@ custom_fonts/font = SubResource( 1 )
 text = "THANKS_FOR_DEMO"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CheckBack" type="Label" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
+margin_left = 15.0
 margin_top = -831.0
-margin_right = 5.0
+margin_right = -25.0
 margin_bottom = -51.0
 custom_constants/line_spacing = -47
 custom_fonts/font = SubResource( 2 )
@@ -309,8 +336,10 @@ autowrap = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -525.0
-margin_bottom = -171.0
+margin_left = 33.0
+margin_top = -578.0
+margin_right = 33.0
+margin_bottom = -26.0
 custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
@@ -318,44 +347,51 @@ __meta__ = {
 
 [node name="Label1" type="Label" parent="List"]
 margin_right = 1920.0
-margin_bottom = 72.0
+margin_bottom = 66.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_1"
 
 [node name="Label2" type="Label" parent="List"]
-margin_top = 87.0
+margin_top = 81.0
 margin_right = 1920.0
-margin_bottom = 159.0
+margin_bottom = 147.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_2"
 
 [node name="Label3" type="Label" parent="List"]
-margin_top = 174.0
+margin_top = 162.0
 margin_right = 1920.0
-margin_bottom = 246.0
+margin_bottom = 228.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_3"
 
 [node name="Label4" type="Label" parent="List"]
-margin_top = 261.0
+margin_top = 243.0
 margin_right = 1920.0
-margin_bottom = 333.0
+margin_bottom = 309.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_4"
 
 [node name="Label5" type="Label" parent="List"]
-margin_top = 348.0
+margin_top = 324.0
 margin_right = 1920.0
-margin_bottom = 420.0
+margin_bottom = 390.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_5"
 
 [node name="Label6" type="Label" parent="List"]
-margin_top = 435.0
+margin_top = 405.0
 margin_right = 1920.0
-margin_bottom = 507.0
+margin_bottom = 471.0
 custom_fonts/font = SubResource( 3 )
 text = "DEMO_LIST_6"
+
+[node name="Label7" type="Label" parent="List"]
+margin_top = 486.0
+margin_right = 1920.0
+margin_bottom = 552.0
+custom_fonts/font = SubResource( 3 )
+text = "DEMO_LIST_7"
 
 [node name="FadeOut" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )

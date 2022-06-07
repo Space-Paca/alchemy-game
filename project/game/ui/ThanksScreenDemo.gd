@@ -8,7 +8,7 @@ onready var anim = $AnimationPlayer
 var player
 
 func _ready():
-	AudioManager.play_bgm("gameover", false, true)
+	AudioManager.play_bgm("demo_ending", false, true)
 	$BG.modulate.a = 0
 	$Thanks.modulate.a = 0
 	$CheckBack.modulate.a = 0

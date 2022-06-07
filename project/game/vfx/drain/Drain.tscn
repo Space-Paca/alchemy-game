@@ -1,40 +1,447 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://assets/animations/Debuff.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/effects/offset_glow.png" type="Texture" id=1]
 
-[sub_resource type="Animation" id=9]
-resource_name = "DebuffAnim"
-length = 0.9
+[sub_resource type="CanvasItemMaterial" id=81]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=90]
+offsets = PoolRealArray( 0, 0.804688, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=91]
+gradient = SubResource( 90 )
+
+[sub_resource type="ParticlesMaterial" id=82]
+lifetime_randomness = 0.9
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 0.5
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.1
+orbit_velocity_random = 0.0
+radial_accel = 90.0
+radial_accel_random = 1.0
+damping = 100.0
+damping_random = 1.0
+color = Color( 0.270588, 1, 0.145098, 1 )
+color_ramp = SubResource( 91 )
+
+[sub_resource type="Gradient" id=92]
+offsets = PoolRealArray( 0, 0.882812, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=93]
+gradient = SubResource( 92 )
+
+[sub_resource type="ParticlesMaterial" id=83]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.5
+orbit_velocity_random = 0.0
+damping = 1.0
+damping_random = 1.0
+color = Color( 0.270588, 1, 0.145098, 1 )
+color_ramp = SubResource( 93 )
+
+[sub_resource type="VisualShaderNodeVectorInterp" id=84]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeVectorDistance" id=13]
+default_input_values = [ 0, Vector3( 0.5, 0.5, 0 ), 1, Vector3( 0, 0, 0 ) ]
+
+[sub_resource type="VisualShaderNodeScalarSmoothStep" id=15]
+output_port_for_preview = 0
+default_input_values = [ 0, 0.55, 1, 0.6, 2, 0.0 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=16]
+output_port_for_preview = 0
+default_input_values = [ 0, 1.0, 1, 0.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=17]
+function = 31
+
+[sub_resource type="OpenSimplexNoise" id=18]
+seed = 1231
+period = 91.5
+persistence = 0.228
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=19]
+seamless = true
+bump_strength = 32.0
+noise = SubResource( 18 )
+
+[sub_resource type="VisualShaderNodeTexture" id=20]
+output_port_for_preview = 0
+texture = SubResource( 19 )
+
+[sub_resource type="VisualShaderNodeInput" id=25]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=27]
+default_input_values = [ 0, 0.0, 1, 0.07 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=32]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=33]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=34]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=36]
+default_input_values = [ 0, 0.5, 1, 0.0 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=37]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=65]
+uniform_name = "Fill"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=67]
+function = 31
+
+[sub_resource type="VisualShaderNodeScalarOp" id=79]
+default_input_values = [ 0, 1.0, 1, 1.0 ]
+operator = 9
+
+[sub_resource type="VisualShaderNodeScalarSmoothStep" id=80]
+default_input_values = [ 0, 0.6, 1, 1.0, 2, 0.0 ]
+
+[sub_resource type="VisualShaderNodeInput" id=85]
+input_name = "screen_texture"
+
+[sub_resource type="VisualShaderNodeInput" id=86]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeTexture" id=87]
+source = 5
+
+[sub_resource type="VisualShaderNodeVectorFunc" id=88]
+function = 34
+
+[sub_resource type="VisualShader" id=2]
+code = "shader_type canvas_item;
+uniform sampler2D tex_frg_16;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:96
+	vec3 n_out96p0 = vec3(SCREEN_UV, 0.0);
+
+// Input:95
+
+// Texture:97
+	vec3 n_out97p0;
+	float n_out97p1;
+	{
+		vec4 SCREEN_TEXTURE_tex_read = texture(SCREEN_TEXTURE, n_out96p0.xy);
+		n_out97p0 = SCREEN_TEXTURE_tex_read.rgb;
+		n_out97p1 = SCREEN_TEXTURE_tex_read.a;
+	}
+
+// VectorFunc:98
+	vec3 n_out98p0 = vec3(1.0, 1.0, 1.0) - n_out97p0;
+
+// Input:26
+	vec3 n_out26p0 = vec3(UV, 0.0);
+
+// Distance:11
+	vec3 n_in11p0 = vec3(0.50000, 0.50000, 0.00000);
+	float n_out11p0 = distance(n_in11p0, n_out26p0);
+
+// ScalarFunc:15
+	float n_out15p0 = 1.0 - n_out11p0;
+
+// VectorDecompose:27
+	float n_out27p0 = n_out26p0.x;
+	float n_out27p1 = n_out26p0.y;
+	float n_out27p2 = n_out26p0.z;
+
+// Input:19
+	float n_out19p0 = TIME;
+
+// ScalarOp:32
+	float n_out32p0 = n_out27p1 + n_out19p0;
+
+// VectorCompose:28
+	float n_in28p2 = 0.00000;
+	vec3 n_out28p0 = vec3(n_out27p0, n_out32p0, n_in28p2);
+
+// Texture:16
+	vec4 tex_frg_16_read = texture(tex_frg_16, n_out28p0.xy);
+	vec3 n_out16p0 = tex_frg_16_read.rgb;
+	float n_out16p1 = tex_frg_16_read.a;
+
+// ScalarOp:21
+	float n_in21p1 = 0.07000;
+	float n_out21p0 = dot(n_out16p0, vec3(0.333333, 0.333333, 0.333333)) * n_in21p1;
+
+// ScalarOp:33
+	float n_out33p0 = n_out15p0 + n_out21p0;
+
+// ScalarSmoothStep:13
+	float n_in13p0 = 0.55000;
+	float n_in13p1 = 0.60000;
+	float n_out13p0 = smoothstep(n_in13p0, n_in13p1, n_out33p0);
+
+// ScalarOp:14
+	float n_in14p0 = 1.00000;
+	float n_out14p0 = n_in14p0 * n_out13p0;
+
+// VectorMix:100
+	vec3 n_out100p0 = mix(n_out97p0, n_out98p0, vec3(n_out14p0));
+
+// Output:0
+	COLOR.rgb = n_out100p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 363.246, 303.207 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 1240, 460 )
+nodes/fragment/11/node = SubResource( 13 )
+nodes/fragment/11/position = Vector2( -60, 540 )
+nodes/fragment/13/node = SubResource( 15 )
+nodes/fragment/13/position = Vector2( 400, 580 )
+nodes/fragment/14/node = SubResource( 16 )
+nodes/fragment/14/position = Vector2( 780, 600 )
+nodes/fragment/15/node = SubResource( 17 )
+nodes/fragment/15/position = Vector2( -60, 620 )
+nodes/fragment/16/node = SubResource( 20 )
+nodes/fragment/16/position = Vector2( -800, 100 )
+nodes/fragment/19/node = SubResource( 25 )
+nodes/fragment/19/position = Vector2( -1460, 280 )
+nodes/fragment/21/node = SubResource( 27 )
+nodes/fragment/21/position = Vector2( -60, 700 )
+nodes/fragment/26/node = SubResource( 32 )
+nodes/fragment/26/position = Vector2( -1460, 340 )
+nodes/fragment/27/node = SubResource( 33 )
+nodes/fragment/27/position = Vector2( -1260, 140 )
+nodes/fragment/28/node = SubResource( 34 )
+nodes/fragment/28/position = Vector2( -980, 240 )
+nodes/fragment/32/node = SubResource( 36 )
+nodes/fragment/32/position = Vector2( -1260, 240 )
+nodes/fragment/33/node = SubResource( 37 )
+nodes/fragment/33/position = Vector2( 220, 620 )
+nodes/fragment/79/node = SubResource( 65 )
+nodes/fragment/79/position = Vector2( -700, 700 )
+nodes/fragment/81/node = SubResource( 67 )
+nodes/fragment/81/position = Vector2( -300, 380 )
+nodes/fragment/93/node = SubResource( 79 )
+nodes/fragment/93/position = Vector2( -280, 480 )
+nodes/fragment/94/node = SubResource( 80 )
+nodes/fragment/94/position = Vector2( -300, 600 )
+nodes/fragment/95/node = SubResource( 85 )
+nodes/fragment/95/position = Vector2( 380, 400 )
+nodes/fragment/96/node = SubResource( 86 )
+nodes/fragment/96/position = Vector2( 380, 340 )
+nodes/fragment/97/node = SubResource( 87 )
+nodes/fragment/97/position = Vector2( 580, 340 )
+nodes/fragment/98/node = SubResource( 88 )
+nodes/fragment/98/position = Vector2( 780, 360 )
+nodes/fragment/100/node = SubResource( 84 )
+nodes/fragment/100/position = Vector2( 1020, 460 )
+nodes/fragment/connections = PoolIntArray( 13, 0, 14, 1, 28, 0, 16, 0, 27, 1, 32, 0, 32, 0, 28, 1, 19, 0, 32, 1, 27, 0, 28, 0, 26, 0, 27, 0, 26, 0, 11, 1, 16, 0, 21, 0, 33, 0, 13, 2, 21, 0, 33, 1, 11, 0, 15, 0, 15, 0, 33, 0, 79, 0, 93, 0, 79, 0, 94, 2, 94, 0, 81, 0, 95, 0, 97, 2, 96, 0, 97, 0, 97, 0, 98, 0, 98, 0, 100, 1, 14, 0, 100, 2, 97, 0, 100, 0, 100, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=89]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+
+[sub_resource type="Animation" id=94]
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Invert:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath("OutwardParticles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InnerParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Invert:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InnerParticles:process_material:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.270588, 1, 0.145098, 1 ) ]
 }
 
-[node name="Drain" type="Sprite"]
+[sub_resource type="Animation" id=95]
+resource_name = "anim"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Invert:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OutwardParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InnerParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Invert:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2, 2.3 ),
+"transitions": PoolRealArray( 1, 5.27803, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InnerParticles:process_material:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.290196, 0, 1, 0 ), Color( 0.270588, 1, 0.145098, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="Drain" type="Node2D"]
+
+[node name="OutwardParticles" type="Particles2D" parent="."]
+material = SubResource( 81 )
+position = Vector2( 0, -46 )
+emitting = false
+amount = 50
+explosiveness = 0.8
+process_material = SubResource( 82 )
 texture = ExtResource( 1 )
-hframes = 5
-vframes = 2
+
+[node name="InnerParticles" type="Particles2D" parent="."]
+material = SubResource( 81 )
+position = Vector2( 0, -46 )
+amount = 400
+lifetime = 1.6
+preprocess = 1.0
+process_material = SubResource( 83 )
+texture = ExtResource( 1 )
+
+[node name="Invert" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 89 )
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 200 )
+rect_pivot_offset = Vector2( 100, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "DebuffAnim"
-anims/DebuffAnim = SubResource( 9 )
+autoplay = "anim"
+anims/RESET = SubResource( 94 )
+anims/anim = SubResource( 95 )

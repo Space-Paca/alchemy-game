@@ -15,8 +15,8 @@ const EXTREME_DANGER_CUTOFF = 2000 #Cutoff when player is < 20hp
 #Bus
 enum {MASTER_BUS, BGM_BUS, SFX_BUS}
 #Fade
-const FADEOUT_SPEED = 20 #Speed bgms fadein
-const FADEIN_SPEED = 60 #Speed bgms fadeout
+const FADEOUT_SPEED = 20 #Speed bgms fadeout
+const FADEIN_SPEED = 60 #Speed bgms fadein
 const TRACK_FADEOUT_SPEED = 20 #Speed individual bgm tracks fadein
 const TRACK_FADEIN_SPEED = 60 #Speed individual bgm tracks fadeout
 const AUX_FADEOUT_SPEED = 40 #Speed aux bgm fadein

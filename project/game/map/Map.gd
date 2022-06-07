@@ -39,6 +39,12 @@ const MAPS_BG = [
 		"explored": preload("res://assets/images/map/mapa03_masmorra_explorado.jpg"),
 	},
 ]
+const MAPS_MODULATE = [
+	Color(0.792157, 0.992157, 0.737255),
+	Color(0.992157, 0.792157, 0.737255),
+	Color(0.670588, 0.662745, 0.941176),
+]
+
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
 const EPSILON = 1
@@ -174,7 +180,9 @@ func set_level(level:int):
 	current_level = level
 	floor_label.text = FLOOR_LABEL[current_level-1]
 	bg.texture = MAPS_BG[current_level-1].unexplored
+	bg.modulate = MAPS_MODULATE[current_level-1]
 	visible_bg.texture = MAPS_BG[current_level-1].explored
+	visible_bg.modulate = MAPS_MODULATE[current_level-1]
 	remove_child(get_node("FixedPositions"))
 	duplicate_stored_positions(current_level-1)
 

@@ -1,41 +1,297 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/animations/Summoning.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/effects/effect_5.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/effects/blue_flare.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=10]
-length = 1.02
-step = 0.06
+[sub_resource type="VisualShaderNodeInput" id=10]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=11]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=12]
+output_port_for_preview = 0
+default_input_values = [ 0, 0.0, 1, 0.5 ]
+operator = 9
+
+[sub_resource type="VisualShader" id=13]
+code = "shader_type canvas_item;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// VectorDecompose:3
+	float n_out3p0 = n_out2p0.x;
+	float n_out3p1 = n_out2p0.y;
+	float n_out3p2 = n_out2p0.z;
+
+// ScalarOp:4
+	float n_in4p1 = 0.50000;
+	float n_out4p0 = step(n_out3p1, n_in4p1);
+
+// Output:0
+	COLOR.a = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -246.675, -5.22081 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 500, 120 )
+nodes/fragment/2/node = SubResource( 10 )
+nodes/fragment/2/position = Vector2( -180, 120 )
+nodes/fragment/3/node = SubResource( 11 )
+nodes/fragment/3/position = Vector2( -40, 120 )
+nodes/fragment/4/node = SubResource( 12 )
+nodes/fragment/4/position = Vector2( 160, 120 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 3, 0, 3, 1, 4, 0, 4, 0, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.171875, 0.75, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.854305, 0.988636 ), -0.00879976, -0.00879976, 0, 0, Vector2( 1, 0 ), -11.1289, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+emission_shape = 5
+emission_ring_radius = 200.0
+emission_ring_inner_radius = 200.0
+emission_ring_height = 20.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_align_y = true
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 100.0
+scale_curve = SubResource( 9 )
+color = Color( 0.784314, 0.913725, 0.466667, 1 )
+color_ramp = SubResource( 7 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.148438, 0.828125, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_box_extents = Vector3( 100, 15, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+color = Color( 0.784314, 0.913725, 0.466667, 1 )
+color_ramp = SubResource( 20 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_box_extents = Vector3( 100, 15, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+color = Color( 0.784314, 0.913725, 0.466667, 1 )
+color_ramp = SubResource( 20 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Circle/Particles:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72, 0.78, 0.84, 0.9, 0.96, 1.02 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath("Circle/Particles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.96, 1.02 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParticlesFront:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ParticlesBack:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
-[node name="Summon" type="Sprite"]
-visible = false
+[sub_resource type="Animation" id=2]
+resource_name = "anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Circle/Particles:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 120.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Circle/Particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParticlesFront:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ParticlesBack:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="Summon" type="Node2D"]
+
+[node name="Circle" type="Node2D" parent="."]
+material = SubResource( 14 )
+position = Vector2( 0, 50 )
+scale = Vector2( 1, 0.5 )
+
+[node name="Particles" type="Particles2D" parent="Circle"]
+material = SubResource( 5 )
+amount = 150
+process_material = SubResource( 15 )
 texture = ExtResource( 1 )
-hframes = 5
-vframes = 4
+
+[node name="ParticlesFront" type="Particles2D" parent="."]
+material = SubResource( 16 )
+position = Vector2( 0, 80 )
+amount = 10
+randomness = 1.0
+process_material = SubResource( 17 )
+texture = ExtResource( 2 )
+
+[node name="ParticlesBack" type="Particles2D" parent="."]
+material = SubResource( 16 )
+position = Vector2( 0, 20 )
+amount = 10
+randomness = 1.0
+process_material = SubResource( 18 )
+texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "SummonAnim"
-anims/SummonAnim = SubResource( 10 )
+autoplay = "anim"
+anims/RESET = SubResource( 1 )
+anims/anim = SubResource( 2 )

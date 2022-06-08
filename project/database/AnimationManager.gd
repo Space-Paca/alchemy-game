@@ -3,7 +3,6 @@ extends Node
 const RISING = preload("res://game/character/RisingNumber.tscn")
 
 onready var ANIM = {
-	"area_attack": preload("res://game/vfx/area-attack/AreaAttack.tscn"),
 	"regular_attack": preload("res://game/vfx/regular/RegularAttack.tscn"),
 	"piercing_attack": preload("res://game/vfx/piercing/PiercingAttack.tscn"),
 	"crushing_attack": preload("res://game/vfx/crushing/CrushingAttack.tscn"),

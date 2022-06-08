@@ -123,8 +123,7 @@ func drain(source: Character, amount: int):
 		AudioManager.play_enemy_sfx(data.sfx, "hit")
 		animation.play(data.dmg_anim_name)
 	
-	#TODO: Change for a "drain" animation （￣︶￣）↗　
-	AnimationManager.play("regular_attack", get_center_position())
+	AnimationManager.play("drain", get_center_position())
 	
 	update_status_bar()
 	

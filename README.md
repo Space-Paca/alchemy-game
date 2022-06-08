@@ -13,7 +13,7 @@ The game resembles deckbuilder roguelikes, such as Slay the Spire, but with an i
 
 ## How to run
 
-You can download the game for your platform of choice in our [releases page](https://github.com/Space-Paca/alchemy-game/releases), or download the project and run it in the [Godot](https://godotengine.org/download) game engine (version 3.4). From version 0.4.0 onwards we added Spine animations, so in order to run the project from inside the engine you'll need to [build Godot from source](https://docs.godotengine.org/en/stable/development/compiling/index.html) along with rayxuln's [Spine Runtime for Godot Engine](https://github.com/rayxuln/spine-runtime-for-godot).
+You can download the game for your platform of choice in our [releases page](https://github.com/Space-Paca/alchemy-game/releases), or download the project and run it in the [Godot](https://godotengine.org/download) game engine (version 3.4). From game version 0.4.0 onwards we added Spine animations, so in order to run the project from inside the engine you'll need to [build Godot from source](https://docs.godotengine.org/en/stable/development/compiling/index.html) along with rayxuln's [Spine Runtime for Godot Engine](https://github.com/rayxuln/spine-runtime-for-godot).
 
 ## How to play
 

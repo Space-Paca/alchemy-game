@@ -21,7 +21,8 @@ signal damage_all
 
 const VERSION := "v0.5.0"
 const MAX_FLOOR := 3
-const IS_DEMO = false
+const IS_DEMO = true
+const ALLOW_DEBUGGING = true
 
 var floor_to_go := -1
 var recipes_unlocked := false
@@ -43,6 +44,8 @@ func _ready():
 
 
 func _input(event):
+	if not ALLOW_DEBUGGING:
+		return
 	if event.is_action_pressed("toggle_debug"):
 		bg.visible = !bg.visible
 		get_tree().set_input_as_handled()

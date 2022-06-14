@@ -21,7 +21,7 @@ signal damage_all
 
 const VERSION := "v0.5.0"
 const MAX_FLOOR := 3
-const IS_DEMO = true
+const IS_DEMO = false
 const ALLOW_DEBUGGING = true
 
 var floor_to_go := -1

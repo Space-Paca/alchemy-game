@@ -21,13 +21,13 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "status", "status_name": "enrage", "value": 8, "target": "self", "positive": true, "animation": "02_atk"}
+		{"name": "status", "status_name": "enrage", "value": 4, "target": "self", "positive": true, "animation": "02_atk"}
 	],
 	"attack1": [
-		{"name": "damage", "value": [4, 7], "type": "regular", "animation": "02_atk"}
+		{"name": "damage", "value": [4, 9], "type": "regular", "animation": "02_atk"}
 	],
 	"attack2": [
-		{"name": "damage", "value": [4, 7], "type": "regular", "animation": "02_atk"}
+		{"name": "damage", "value": [4, 9], "type": "regular", "animation": "02_atk"}
 	],
 	"attack3": [
 		{"name": "damage", "value": 1, "amount": 3, "type": "regular", "animation": "02_atk"}

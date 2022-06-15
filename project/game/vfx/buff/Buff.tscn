@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/images/effects/effect_5.png" type="Texture" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 6
 particles_anim_v_frames = 1
@@ -106,6 +107,7 @@ position = Vector2( -1.16638, 2.3327 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 2 )
+position = Vector2( 0, 50 )
 emitting = false
 amount = 20
 lifetime = 1.4

@@ -32,16 +32,21 @@ func update_display():
 		buy_cost /= 2
 		hint_cost /= 2
 	
-	buy_button.text = tr("BUY_RECIPE")+" (%d)" % buy_cost
-	hint_button.text = tr("BUY_HINT")+" (%d)" % hint_cost
+	buy_button.text = tr("BUY_RECIPE")+": %d     " % buy_cost
+	hint_button.text = tr("BUY_HINT")+": %d      " % hint_cost
+	$VBoxContainer/Buy/Label.text = buy_button.text
+	$VBoxContainer/Hint/Label.text = hint_button.text
 	
 	if combination.discovered:
 		buy_button.disabled = true
 		hint_button.visible = false
 		buy_button.text = "ALREADY_KNOWN"
+		$VBoxContainer/Buy/Label.hide()
+		$VBoxContainer/Hint/Label.hide()
 	elif combination.hints >= 2:
 		hint_button.disabled = true
 		hint_button.text = "BUY_HINT"
+		$VBoxContainer/Hint/Label.hide()
 
 
 func enable_tooltips():

@@ -3,6 +3,17 @@ extends Control
 signal hovered(reagent_array)
 signal unhovered()
 
+const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
+const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
+const MAX_REAGENT_COLUMN = 4
+const HOVERED_SCALE = 1.05
+const SCALE_SPEED = 5
+const MAX_TITLE_FONT_SIZE = 38
+const RECIPE_PAGE_NORMAL = preload("res://assets/images/ui/book/recipe_page.png")
+const RECIPE_PAGE_MEMORIZED = preload("res://assets/images/ui/book/mastered_recipe_page.png")
+const BAR_NORMAL_COLOR = Color(0x89ff00ff)
+const BAR_MAX_COLOR = Color(0xffffffff)
+
 onready var window_y = get_viewport_rect().size.y
 onready var bg = $Background
 onready var unknown_bg = $UnknownBG
@@ -17,13 +28,6 @@ onready var left_column = $Background/MarginContainer/VBoxContainer/HBoxContaine
 onready var right_column = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
 onready var icon = $Icon
 
-const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
-const REAGENT_AMOUNT = preload("res://game/shop/ReagentAmount.tscn")
-const MAX_REAGENT_COLUMN = 4
-const HOVERED_SCALE = 1.05
-const SCALE_SPEED = 5
-const MAX_TITLE_FONT_SIZE = 38
-
 var combination : Combination
 var reagent_array := []
 var filtered := true
@@ -33,6 +37,7 @@ var hovered := false
 func _ready():
 	var font = title.get("custom_fonts/font").duplicate(true)
 	title.set("custom_fonts/font", font)
+	memorization_progress.set("custom_styles/fg", memorization_progress.get_stylebox("fg").duplicate(true))
 
 
 func _process(delta):
@@ -96,7 +101,14 @@ func set_progress(recipe_id: String):
 	else:
 		memorization_progress.max_value = threshold
 		memorization_progress.value = amount
-		memorization_label.text = tr("MEMORIZATION") + " " + str(amount) + "/" + str(threshold)
+		if amount >= threshold:
+			bg.texture = RECIPE_PAGE_MEMORIZED
+			memorization_label.text = tr("MEMORIZED") + " " + str(amount) + "/" + str(threshold)
+			memorization_progress.get_stylebox("fg").modulate_color = BAR_MAX_COLOR
+		else:
+			bg.texture = RECIPE_PAGE_NORMAL
+			memorization_label.text = tr("MEMORIZATION") + " " + str(amount) + "/" + str(threshold)
+			memorization_progress.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
 
 
 func enable_tooltips():

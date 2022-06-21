@@ -18,7 +18,7 @@ var first_state = ["attack"]
 
 var actions = {
 	"attack": [
-		{"name": "damage", "value": [8,25], "type": "regular", "animation": "atk2"}
+		{"name": "damage", "value": [8,15], "type": "regular", "animation": "atk2"}
 	]
 }
 

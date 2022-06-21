@@ -94,9 +94,9 @@ func set_progress(recipe_id: String):
 		bg.hide()
 		unknown_bg.show()
 	else:
-		memorization_label.text = tr("MEMORIZATION") + " " + str(amount) + "/" + str(threshold)
 		memorization_progress.max_value = threshold
 		memorization_progress.value = amount
+		memorization_label.text = tr("MEMORIZATION") + " " + str(amount) + "/" + str(threshold)
 
 
 func enable_tooltips():

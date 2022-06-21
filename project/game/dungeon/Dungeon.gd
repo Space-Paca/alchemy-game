@@ -269,6 +269,7 @@ func set_favorite_data(data):
 	for recipe_name in data:
 		var combination = get_combination_by_name(recipe_name)
 		favorite_combination(combination, true, false)
+		recipe_book.set_favorite_button(combination, true, true)
 
 
 func load_level(data):
@@ -598,7 +599,7 @@ func load_battle(data):
 	
 	create_battle()
 	
-	battle.load_state(data, player, recipe_book.favorite_combinations, floor_level)
+	battle.load_state(data, player, recipe_book.favorite_combinations, floor_level, recipe_book)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -616,7 +617,7 @@ func new_battle(encounter: Encounter):
 	#DEBUG spawna último boss
 	#encounter = EncounterManager.boss_encounters[3].front()
 	
-	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level)
+	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level, recipe_book)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -755,7 +756,7 @@ func favorite_combination(combination, active, play_sfx = true):
 				AudioManager.play_sfx("apply_favorite")
 			recipe_book.favorite_combinations.append(combination)
 			if battle:
-				battle.add_favorite(combination)
+				battle.add_favorite(combination, recipe_book.is_mastered(combination))
 	else:
 		recipe_book.favorite_combinations.erase(combination)
 		if battle:
@@ -1233,3 +1234,8 @@ func _on_Battle_player_died():
 
 func _on_PauseScreen_block_pause_update(value):
 	$UI/PauseButton.set_blocked(value)
+
+
+func _on_RecipeBook_update_favorite_mastery(combination):
+	if battle:
+		battle.update_favorite_mastery(combination)

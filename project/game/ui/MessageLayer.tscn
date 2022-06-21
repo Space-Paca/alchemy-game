@@ -508,7 +508,7 @@ __meta__ = {
 [node name="FavoriteRecipe" type="Button" parent="Control/Buttons"]
 margin_left = 476.0
 margin_right = 1068.0
-margin_bottom = 214.0
+margin_bottom = 114.0
 theme = ExtResource( 3 )
 text = "FAVORITE_THIS_RECIPE"
 
@@ -527,7 +527,7 @@ __meta__ = {
 [node name="Continue" type="Button" parent="Control/Buttons"]
 margin_left = 1091.0
 margin_right = 1443.0
-margin_bottom = 214.0
+margin_bottom = 114.0
 theme = ExtResource( 3 )
 text = "CONTINUE"
 __meta__ = {

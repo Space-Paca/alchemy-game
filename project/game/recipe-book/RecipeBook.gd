@@ -5,6 +5,7 @@ signal recipe_pressed(combination, mastery_unlocked)
 signal recipe_pressed_lab(combination)
 signal favorite_toggled(combination, button_pressed)
 signal close
+signal update_favorite_mastery
 
 onready var hand_rect : Control = $Background/HandRect
 onready var hand_container : Control = $Background/HandRect/CenterContainer
@@ -296,6 +297,7 @@ func unlock_mastery(combination: Combination, show_message := true):
 	if recipe_displays[combination.recipe.id].unlock_mastery(show_message,
 			favorite_combinations.has(combination)) and show_message:
 		player.increase_stat("recipes_mastered")
+		emit_signal("update_favorite_mastery", combination)
 
 
 func update_mastery(combination: Combination, current_value: int, threshold: int):

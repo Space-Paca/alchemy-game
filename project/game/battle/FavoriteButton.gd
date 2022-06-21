@@ -4,11 +4,13 @@ class_name FavoriteButton
 signal pressed
 
 onready var button = $Button
+onready var mastered_label = $Button/MasteredLabel
 
 const MAX_SCALE = 1.1
 const SCALE_SPEED = 2
 
 var combination : Combination
+var is_mastered : bool
 var reagent_array : Array
 var mouse_over := false
 var tooltips_enabled := false
@@ -24,11 +26,18 @@ func _process(delta):
 		button.rect_scale.y = max(button.rect_scale.y - 1.5*SCALE_SPEED*delta, 1) 
 
 
-func set_combination(new_combination: Combination):
+func set_combination(new_combination: Combination, mastered := false):
 	combination = new_combination
+	is_mastered = mastered
+	mastered_label.visible = is_mastered
 	if combination:
 		button.texture_normal = combination.recipe.fav_icon
 		reagent_array = combination.recipe.reagents
+
+
+func set_mastery(value):
+	is_mastered = value
+	mastered_label.visible = is_mastered
 
 
 func enable():
@@ -83,7 +92,7 @@ func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips or not combination:
 		return
 	tooltips_enabled = true
-	var tooltip = RecipeManager.get_tooltip(combination.recipe, true)
+	var tooltip = RecipeManager.get_tooltip(combination.recipe, is_mastered)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 							 tr(tooltip.text), tooltip.title_image, tooltip.subtitle, true)
 

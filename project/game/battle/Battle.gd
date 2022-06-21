@@ -130,7 +130,7 @@ func get_enemies_save_data():
 	return data
 
 
-func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int):
+func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int, recipe_book : RecipeBook):
 	emit_signal("block_pause", true)
 	
 	floor_level = _floor_level
@@ -147,7 +147,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	effect_manager.setup(_player)
 
-	setup_favorites(favorite_combinations)
+	setup_favorites(favorite_combinations, recipe_book)
 
 	setup_player_ui()
 
@@ -179,7 +179,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	emit_signal("block_pause", false)
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int,  recipe_book : RecipeBook):
 	emit_signal("block_pause", true)
 	
 	floor_level = _floor_level
@@ -193,7 +193,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 
 	effect_manager.setup(_player)
 
-	setup_favorites(favorite_combinations)
+	setup_favorites(favorite_combinations, recipe_book)
 
 	setup_player_ui()
 
@@ -315,9 +315,9 @@ func setup_player(_player, player_data = null):
 		return reagents_to_be_draw
 
 
-func setup_favorites(favorite_combinations: Array):
+func setup_favorites(favorite_combinations: Array, recipe_book : RecipeBook):
 	for combination in favorite_combinations:
-		add_favorite(combination)
+		add_favorite(combination, recipe_book.is_mastered(combination))
 
 
 func setup_player_ui():
@@ -895,10 +895,10 @@ func has_reagents(reagent_array: Array):
 	return false
 
 
-func add_favorite(combination: Combination):
+func add_favorite(combination: Combination, is_mastered : bool):
 	for button in favorites.get_children():
 		if not button.combination:
-			button.set_combination(combination)
+			button.set_combination(combination, is_mastered)
 			button.show_button()
 			break
 
@@ -908,6 +908,12 @@ func remove_favorite(combination: Combination):
 		if button.combination == combination:
 			button.set_combination(null)
 			button.hide_button()
+
+
+func update_favorite_mastery(combination):
+	for button in favorites.get_children():
+		if button.combination == combination:
+			button.set_mastery(true)
 
 
 func display_name_for_combination(combination, mastered):

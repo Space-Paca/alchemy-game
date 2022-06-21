@@ -60,6 +60,7 @@ margin_bottom = -29.6021
 [connection signal="favorite_toggled" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_favorite_toggled"]
 [connection signal="recipe_pressed" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed"]
 [connection signal="recipe_pressed_lab" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_recipe_pressed_lab"]
+[connection signal="update_favorite_mastery" from="BookLayer/RecipeBook" to="." method="_on_RecipeBook_update_favorite_mastery"]
 [connection signal="button_pressed" from="BookLayer/PlayerInfo" to="." method="_on_PlayerInfo_button_pressed"]
 [connection signal="closed" from="Shop" to="." method="_on_Shop_closed"]
 [connection signal="combination_bought" from="Shop" to="." method="_on_Shop_combination_bought"]

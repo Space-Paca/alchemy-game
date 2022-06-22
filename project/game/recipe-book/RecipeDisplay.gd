@@ -154,6 +154,7 @@ func unlock_mastery(show_message: bool, favorited: bool) -> bool:
 	description.text = RecipeManager.get_description(combination.recipe, true)
 	mastery_unlocked = true
 	mastery_progress.visible = false
+	favorite_button.visible = true
 	mastery_label.get_node("Mastery").text = "MASTERED"
 	mastery_label.get_node("Amount").text = ""
 	bg.texture = RECIPE_MASTERED_BG

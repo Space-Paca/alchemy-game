@@ -13,7 +13,13 @@ var change_phase = null
 var states = ["init", "attack"]
 var connections = [
 					  ["init", "attack", 1],
-					  ["attack", "attack", 1],
+					  ["attack", "attack", 3],
+					  ["attack", "bigattack", 1],
+					  ["attack", "bigbuff", 1],
+					  ["bigbuff", "attack", 2],
+					  ["bigbuff", "bigattack", 1],
+					  ["bigattack", "attack", 2],
+					  ["bigattack", "bigbuff", 1],
 				  ]
 var first_state = ["init"]
 
@@ -23,7 +29,13 @@ var actions = {
 	],
 	"attack": [
 		{"name": "status", "status_name": "retaliate", "value": 5, "target": "self", "positive": true, "animation": "03_dmg"},
-		{"name": "damage", "value": [9,18], "type": "regular", "animation": "02_atk"}
+		{"name": "damage", "value": [6,10], "type": "regular", "animation": "02_atk"}
+	],
+	"bigattack": [
+		{"name": "damage", "value": [9,15], "type": "regular", "animation": "02_atk"}
+	],
+	"bigbuff": [
+		{"name": "status", "status_name": "retaliate", "value": 15, "target": "self", "positive": true, "animation": "03_dmg"},
 	]
 }
 

@@ -458,15 +458,12 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 	enemy_node.connect("damage_player", self, "damage_player")
 	enemy_node.connect("add_status_all_enemies", self, "add_status_all_enemies")
 	effect_manager.add_enemy(enemy_node)
-
+	
 	if just_spawned:
 		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
-		yield(get_tree().create_timer(.15), "timeout")
-		AnimationManager.play("spawn", enemy_node.get_center_position())
+		AnimationManager.play("spawn", enemy_node.get_center_position(), .15)
 	else:
-		randomize()
-		yield(get_tree().create_timer(rand_range(.2, .5)), "timeout")
-		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn")
+		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "spawn", rand_range(.2, .5))
 
 	enemy_node.update_actions()
 	

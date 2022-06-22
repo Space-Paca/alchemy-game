@@ -13,6 +13,8 @@ signal add_status_all_enemies
 signal damage_player
 signal freeze_hand
 signal restrict
+signal status_effect_completed
+signal finished_updating_status
 
 var max_hp := 0
 var hp : int
@@ -283,6 +285,8 @@ func on_death_splitting():
 	var status = get_status("splitting")
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
 	emit_signal("spawn_new_enemy", self, status.extra_args.enemy)
+	yield(get_tree().create_timer(1.5), "timeout")
+	emit_signal("status_effect_completed")
 
 func on_death_martyr():
 	var status = get_status("martyr")

@@ -509,7 +509,7 @@ func get_sfx_duration(name: String):
 	return SFXS[name].asset.get_length()
 
 
-func play_enemy_sfx(enemy: String, type:String):
+func play_enemy_sfx(enemy: String, type:String, delay := 0.0):
 	if not LOCS.has(enemy) or not LOCS[enemy].has(type):
 		push_error("There isn't a " + type + " sfx file for this enemy: " + str(enemy))
 		return
@@ -541,6 +541,9 @@ func play_enemy_sfx(enemy: String, type:String):
 	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
 	
 	player.stream.audio_stream = sfx.asset
+	
+	if delay >= 0:
+		yield(get_tree().create_timer(delay), "timeout")
 	
 	player.play()
 	return player

@@ -22,12 +22,14 @@ func play_rising_number(value, pos: Vector2):
 	rising_number.position = pos
 	rising_number.setup(value)
 
-func play(name: String, pos: Vector2):
+func play(name: String, pos: Vector2, delay := 0.0):
 	if not ANIM.has(name):
 		push_error("Not a valid animation:" + str(name))
 		assert(false)
 	
 	var animation = ANIM[name].instance()
+	if delay >= 0:
+		yield(get_tree().create_timer(delay), "timeout")
 	
 	animation.position = pos
 	$AnimationLayer.add_child(animation)

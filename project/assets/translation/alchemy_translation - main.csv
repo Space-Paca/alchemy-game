@@ -221,7 +221,7 @@ BOSS,Guardian,Guardião
 SHOP,Shop,Loja
 RESTING_CIRCLE,Resting Circle,Círculo do Descanso
 REAGENT_SMITH,Reagent Smith,Forjador de Reagentes
-REAGENT_SMITH_UNLOCK_DESC,"A misterious figure can now appear on your journeys, be on the lookout for the Reagent Smith. Some say he is mad in love for Pearls...","Uma figura misteriosa poderá aparecer em suas jornadas, fique atento ao Forjador de Reagentes. Alguns dizem que ele é um fanático por Pérolas..."
+REAGENT_SMITH_UNLOCK_DESC,"A mysterious figure can now appear on your journeys, be on the lookout for the Reagent Smith. Some say he is mad in love for Pearls...","Uma figura misteriosa poderá aparecer em suas jornadas, fique atento ao Forjador de Reagentes. Alguns dizem que ele é um fanático por Pérolas..."
 EVENT,Event,Evento
 EVENT_UNLOCK_DESC,A new event can now appear on your journeys!,Um novo evento poderá aparecer em suas jornadas!
 LABORATORY,Laboratory,Laboratório
@@ -609,7 +609,7 @@ EVENT_DUMMY_BATTLE_OPT_1,Battle!,Batalhar!
 EVENT_DUMMY_LEAVE_OPT_1,Leave.,Sair.
 EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Ir para o círculo de descanso.
 EVENT_1_TITLE,Travellin' Gamblin' Man,Ambulante Andante Extravagante
-EVENT_1_TEXT,"While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
+EVENT_1_TEXT,"While exploring, you pass by a mysterious figure hidden beneath a dusty cloak.
 
 (shake)""Hey, wanna gamble?""(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
 

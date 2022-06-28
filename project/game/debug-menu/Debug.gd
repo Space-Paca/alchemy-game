@@ -19,7 +19,7 @@ signal event_pressed(id)
 signal artifact_pressed(name)
 signal damage_all
 
-const VERSION := "v0.5.0"
+const VERSION := "v0.5.1"
 const MAX_FLOOR := 3
 const IS_DEMO = false
 const ALLOW_DEBUGGING = true

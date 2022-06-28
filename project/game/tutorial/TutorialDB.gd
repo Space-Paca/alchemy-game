@@ -47,7 +47,7 @@ const TUTORIAL = {
 		{"position": Vector2(800,900), "dimension": Vector2(260,120), 
 		 "text_side": "top", "text": "TUT_CR_5",
 		"text_width": 850},
-		{"position": Vector2(250,680), "dimension": Vector2(290,220),
+		{"position": Vector2(280,710), "dimension": Vector2(230,160),
 		 "text_side": "top", "text": "TUT_CR_6",
 		"text_width": 420},
 		{"position": Vector2(250,680), "dimension": Vector2(290,220),

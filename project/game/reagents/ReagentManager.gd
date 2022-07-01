@@ -133,6 +133,7 @@ func is_same_reagent_array(array1, array2):
 		return true
 	return false
 
+
 #Returns an array containing all possible one-reagent upgrade from a given array
 #(upgrade means that another reagent can substitute intp one of its reagents)
 func upgraded_arrays(reagent_array):
@@ -145,6 +146,34 @@ func upgraded_arrays(reagent_array):
 			upgraded_array_list.append(new_array)
 	
 	return upgraded_array_list
+
+#Returns an array containing all possible one-reagent upgrade from a given reagent matrix
+func substitution_matrix(reagent_matrix):
+	var substituted_matrices = []
+	var all_reagents = ReagentDB.get_reagents()
+	for i in reagent_matrix.size():
+		for j in reagent_matrix[i].size():
+			var reagent = reagent_matrix[i][j]
+			if reagent:
+				for substitute_reagent in all_reagents[reagent].substitute:
+					var new_matrix = reagent_matrix.duplicate(true)
+					new_matrix[i][j] = substitute_reagent
+					substituted_matrices.append(new_matrix)
+	return substituted_matrices
+
+
+#Given a reagent matrix, returns all possible matrixes considering its reagent substitutions
+func get_all_substitution_matrices(reagent_matrix):
+	var possible_matrices = []
+	var to_check = [reagent_matrix]
+	while not to_check.empty():
+		var cur_matrix = to_check.pop_front()
+		possible_matrices.append(cur_matrix)
+		for matrix in substitution_matrix(cur_matrix):
+			if not possible_matrices.has(matrix):
+				to_check.append(matrix)
+	return possible_matrices
+
 
 #Checks if the given hand reagents contains all reagents needed for reagent array
 func try_reagents(reagent_array, hand_reagents_array):

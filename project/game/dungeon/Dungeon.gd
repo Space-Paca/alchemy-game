@@ -763,6 +763,12 @@ func favorite_combination(combination, active, play_sfx = true):
 			battle.remove_favorite(combination)
 
 
+func add_all_possible_failed_combinations(reagent_matrix):
+	for matrix in ReagentManager.get_all_substitution_matrices(reagent_matrix):
+		if not failed_combinations.has(matrix):
+			failed_combinations.append(matrix)
+
+
 func thanks_for_playing():
 	FileManager.delete_run_file()
 	var scene
@@ -917,9 +923,8 @@ func _on_Battle_combination_made(reagent_matrix: Array, reagent_list: Array):
 	else:
 		AudioManager.play_sfx("combine_fail")
 		battle.apply_effects(["combination_failure"], reagent_list)
-
-		if not failed_combinations.has(reagent_matrix):
-			failed_combinations.append(reagent_matrix)
+		
+		add_all_possible_failed_combinations(reagent_matrix)
 
 
 func _on_Battle_grid_modified(reagent_matrix: Array):
@@ -944,8 +949,7 @@ func _on_Laboratory_combination_made(reagent_matrix: Array, grid_size : int):
 	else:
 		AudioManager.play_sfx("combine_fail")
 		combination = "failure"
-		if not failed_combinations.has(reagent_matrix):
-			failed_combinations.append(reagent_matrix)
+		add_all_possible_failed_combinations(reagent_matrix)
 		lab.combination_failed()
 	
 	lab.display_name_for_combination(combination)

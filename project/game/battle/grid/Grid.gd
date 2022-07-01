@@ -110,6 +110,7 @@ func is_empty():
 			return false
 	return true
 
+
 func is_full():
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()

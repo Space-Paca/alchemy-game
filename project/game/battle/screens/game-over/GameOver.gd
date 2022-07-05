@@ -3,6 +3,10 @@ extends CanvasLayer
 onready var tween = $Tween
 
 
+func _ready():
+	$BG.hide()
+
+
 func set_player(p: Player):
 	$BG/EndgameStats.set_player(p)
 

@@ -343,7 +343,7 @@ func end_turn_freeze():
 	remove_status("freeze")
 
 
-func end_turn_restrained():
+func end_turn_restrain():
 	remove_status("restrain")
 
 func end_turn_restrict_minor():

@@ -126,6 +126,19 @@ func setup_locs():
 		assert(false)
 
 
+func change_group_of_sfx(contain_this_string, attribute_to_change, value):
+	for key in SFXS.keys():
+		var tres = SFXS[key]
+		assert(tres.get(attribute_to_change) != null, "Resource doesn't have this attribute:" + str(attribute_to_change))
+		var path = SFX_PATH + key + ".tres"
+		if key.find(contain_this_string) != -1:
+			tres[attribute_to_change] = value
+			var err = ResourceSaver.save(path, tres)
+			assert(err == OK, "Couldn't save resource:" + str(path)) 
+			printt("Saving sfx resource: ", contain_this_string, attribute_to_change, value)
+	
+
+
 func enable_bgm_filter_effect(target_db = -17, speed_mod = 1.0, id = null):
 	if bgm_filter_enabled:
 		bgm_filter_enabled = id if id else true

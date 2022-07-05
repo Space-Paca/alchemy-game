@@ -54,14 +54,19 @@ func _ready():
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-
+#	change_group_of_loc("necromancer", "", "base_pitch", 1.0)
+#	change_group_of_bgm("battle1", "base_db", 0.0)
+#	change_group_of_sfx("map_points", "base_db", -12)
+	
 func get_bgm_last_pos(name):
 	if not bgms_last_pos.has(name):
 		bgms_last_pos[name] = 0
 	return bgms_last_pos[name]
 
+
 func set_bgm_last_pos(name, pos):
 	bgms_last_pos[name] = pos
+
 
 func setup_bgms():
 	var dir = Directory.new()
@@ -70,9 +75,7 @@ func setup_bgms():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name != "." and file_name != "..":
-				#Found bgm file, creating data on memory
 				BGMS[file_name.replace(".tres", "")] = load(BGM_PATH + file_name)
-				
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access bgms path.")
@@ -87,7 +90,6 @@ func setup_sfxs():
 		while file_name != "":
 			if not dir.current_is_dir() and file_name != "." and file_name != "..":
 				SFXS[file_name.replace(".tres", "")] = load(SFX_PATH + file_name)
-				
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access sfxs path.")
@@ -111,32 +113,44 @@ func setup_locs():
 					if not LOCS.has(name):
 						LOCS[name] = {} 
 					LOCS[name][type] = load(LOC_PATH + file_name)
-					
-#					#Use here to correct audio attributes of locs
-#					if type != "spawn":
-#						LOCS[name][type].base_db = 0
-#					else:
-#						LOCS[name][type].base_db = -1.5
-#					ResourceSaver.save(LOC_PATH + file_name, LOCS[name][type])
-#					printt("saving: ", name, type)
-
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access locutions path.")
 		assert(false)
 
 
-func change_group_of_sfx(contain_this_string, attribute_to_change, value):
+func change_group_of_loc(name_contains_this_string, type_contains_this_string, attribute_to_change, value):
+	for name_key in LOCS.keys():
+		if name_contains_this_string == "" or name_key.find(name_contains_this_string) != -1:
+			for type_key in LOCS[name_key].keys():
+				if type_contains_this_string == "" or type_key.find(type_contains_this_string) != -1:
+					var tres = LOCS[name_key][type_key]
+					var path = LOC_PATH + name_key + "_" + type_key + ".tres"
+					change_tres(tres, path, attribute_to_change, value)
+
+
+func change_group_of_bgm(contains_this_string, attribute_to_change, value):
+	for key in BGMS.keys():
+		var tres = BGMS[key]
+		var path = BGM_PATH + key + ".tres"
+		if contains_this_string == "" or key.find(contains_this_string) != -1:
+			change_tres(tres, path, attribute_to_change, value)
+
+
+func change_group_of_sfx(contains_this_string, attribute_to_change, value):
 	for key in SFXS.keys():
 		var tres = SFXS[key]
-		assert(tres.get(attribute_to_change) != null, "Resource doesn't have this attribute:" + str(attribute_to_change))
 		var path = SFX_PATH + key + ".tres"
-		if key.find(contain_this_string) != -1:
-			tres[attribute_to_change] = value
-			var err = ResourceSaver.save(path, tres)
-			assert(err == OK, "Couldn't save resource:" + str(path)) 
-			printt("Saving sfx resource: ", contain_this_string, attribute_to_change, value)
-	
+		if contains_this_string == "" or key.find(contains_this_string) != -1:
+			change_tres(tres, path, attribute_to_change, value)
+
+
+func change_tres(tres, path, attribute_to_change, value):
+	assert(tres.get(attribute_to_change) != null, "Resource doesn't have this attribute:" + str(attribute_to_change))
+	tres[attribute_to_change] = value
+	var err = ResourceSaver.save(path, tres)
+	assert(err == OK, "Couldn't save resource:" + str(path)) 
+	printt("Saving resource: ", path, attribute_to_change, value)
 
 
 func enable_bgm_filter_effect(target_db = -17, speed_mod = 1.0, id = null):

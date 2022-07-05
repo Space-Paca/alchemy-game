@@ -125,4 +125,6 @@ anims/death = SubResource( 4 )
 anims/dmg = SubResource( 5 )
 anims/stand = SubResource( 6 )
 
+[connection signal="animation_complete" from="Sprite" to="." method="_on_Sprite_animation_complete"]
+
 [editable path="HealthBar"]

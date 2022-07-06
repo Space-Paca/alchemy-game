@@ -33,6 +33,7 @@ onready var favorites = $Book/Favorites
 onready var targeting_interface = $TargetingInterface
 
 export(Array, Texture) var backgrounds
+export(Array, Color) var backgrounds_elite_modulate
 export(Array, Texture) var foregrounds
 export(Array, Texture) var boss_backgrounds
 export(Array, Texture) var boss_foregrounds
@@ -242,9 +243,14 @@ func setup_bg():
 		$FG.texture = boss_foregrounds[floor_level-1]
 	else:
 		$BG.texture = backgrounds[floor_level-1]
+		$BGEliteEffect.texture = backgrounds[floor_level-1]
+		$BGEliteEffect.modulate = backgrounds_elite_modulate[floor_level-1]
 		$FG.texture = foregrounds[floor_level-1]
-
+	
+	$BGEliteEffect.visible = current_encounter.is_elite
+		
 	$BGTween.interpolate_property($BG, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$BGTween.interpolate_property($BGEliteEffect, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.interpolate_property($FG, "rect_position:x", 150, -499, FG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.start()
 

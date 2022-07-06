@@ -10,7 +10,7 @@ var battle_init = true
 var size = "small"
 var change_phase = null
 
-var states = ["init", "attack"]
+var states = ["init", "attack", "bigattack", "bigbuff"]
 var connections = [
 					  ["init", "attack", 1],
 					  ["attack", "attack", 3],

@@ -134,6 +134,7 @@ shader_param/offset = 0.0
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
 backgrounds = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 23 ) ]
+backgrounds_elite_modulate = [ Color( 0.509804, 0.0784314, 0.580392, 0.8 ), Color( 0.509804, 0.0784314, 0.580392, 0.8 ), Color( 0.509804, 0.0784314, 0.580392, 0.8 ) ]
 foregrounds = [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 22 ) ]
 boss_backgrounds = [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 18 ) ]
 boss_foregrounds = [ ExtResource( 19 ), ExtResource( 25 ), null ]
@@ -146,8 +147,6 @@ margin_left = 162.064
 margin_top = -272.776
 margin_right = 2658.06
 margin_bottom = 989.225
-rect_rotation = 357.6
-rect_scale = Vector2( 1.02148, 1.02148 )
 rect_pivot_offset = Vector2( 1050, 530 )
 texture = ExtResource( 26 )
 __meta__ = {
@@ -166,7 +165,18 @@ margin_left = -499.0
 margin_top = -59.0
 margin_right = 1997.0
 margin_bottom = 1131.0
-texture = ExtResource( 18 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGEliteEffect" type="TextureRect" parent="."]
+modulate = Color( 0.509804, 0.0784314, 0.580392, 0.8 )
+margin_left = -499.0
+margin_top = -59.0
+margin_right = 1997.0
+margin_bottom = 1131.0
+texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

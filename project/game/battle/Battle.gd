@@ -77,12 +77,19 @@ func _ready():
 	#Hoping to fix dim screen bug
 	targeting_interface.end()
 
+
 func _input(event):
 	if not TutorialLayer.is_active() and not recipe_book_visible:
-		if not pass_turn_button.disabled and event.is_action_pressed("end_turn"):
-			end_turn()
-		elif not combine_button.disabled and event.is_action_pressed("combine"):
-			combine()
+		if event.is_action_pressed("end_turn"):
+			if not pass_turn_button.disabled:
+				end_turn()
+			else:
+				AudioManager.play_sfx("error")
+		elif event.is_action_pressed("combine"):
+			if not combine_button.disabled and not is_grabbing_reagent():
+				combine()
+			else:
+				AudioManager.play_sfx("error")
 
 
 func get_save_data():
@@ -824,6 +831,13 @@ func set_enemy_pos(enemy_idx, pos_idx):
 	var enemy = enemies_node.get_child(enemy_idx)
 	var target_pos = get_node("EnemiesPositions/Pos"+str(pos_idx))
 	enemy.set_pos(target_pos.position)
+
+
+func is_grabbing_reagent():
+	for reagent in reagents.get_children():
+		if reagent.is_drag:
+			return true
+	return false
 
 
 func autocomplete_grid(combination: Combination):

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/event_give_life_1.wav-f986cfc5561e1d39d3ad1ef291dfc74c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/events/event_give_life_1.wav"
+dest_files=[ "res://.import/event_give_life_1.wav-f986cfc5561e1d39d3ad1ef291dfc74c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drain.wav-9c083e2991675d6a8dbe0ff3cb17522e.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/drain.wav"
+dest_files=[ "res://.import/drain.wav-9c083e2991675d6a8dbe0ff3cb17522e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

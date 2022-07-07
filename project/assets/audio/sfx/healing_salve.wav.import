@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/healing_salve.wav-d94dc3149e9bdcc7c46aceade5279833.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/healing_salve.wav"
+dest_files=[ "res://.import/healing_salve.wav-d94dc3149e9bdcc7c46aceade5279833.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/give_life_2.wav-0954e1ea654e7a3020eefdb6ce649e3b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/give_life_2.wav"
+dest_files=[ "res://.import/give_life_2.wav-0954e1ea654e7a3020eefdb6ce649e3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

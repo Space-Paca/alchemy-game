@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/buff_generic.wav-4d121c9517ad2da6fdea3d5ee9395d3e.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/dialogue/buff_generic.wav"
+dest_files=[ "res://.import/buff_generic.wav-4d121c9517ad2da6fdea3d5ee9395d3e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

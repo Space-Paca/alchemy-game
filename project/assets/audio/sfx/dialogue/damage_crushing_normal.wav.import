@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/damage_crushing_normal.wav-cc3ebc231e89caa9c62d38ad05b52327.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/dialogue/damage_crushing_normal.wav"
+dest_files=[ "res://.import/damage_crushing_normal.wav-cc3ebc231e89caa9c62d38ad05b52327.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_divider.wav-2e40c1246d83dbe8b71fa593e684a123.sample"
+
+[deps]
+
+source_file="res://assets/audio/status_divider.wav"
+dest_files=[ "res://.import/status_divider.wav-2e40c1246d83dbe8b71fa593e684a123.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

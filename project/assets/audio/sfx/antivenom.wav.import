@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/antivenom.wav-446b5862cfad7d2447363fee7b4c9580.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/antivenom.wav"
+dest_files=[ "res://.import/antivenom.wav-446b5862cfad7d2447363fee7b4c9580.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dialogue_option_hover.wav-61d3b2d5a0cdc30dbc624958c9c13ea1.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/dialogue/dialogue_option_hover.wav"
+dest_files=[ "res://.import/dialogue_option_hover.wav-61d3b2d5a0cdc30dbc624958c9c13ea1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

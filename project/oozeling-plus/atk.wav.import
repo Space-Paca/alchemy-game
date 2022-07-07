@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/atk.wav-f2aaff5f36c040a2e78bea053758f235.sample"
+
+[deps]
+
+source_file="res://oozeling-plus/atk.wav"
+dest_files=[ "res://.import/atk.wav-f2aaff5f36c040a2e78bea053758f235.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

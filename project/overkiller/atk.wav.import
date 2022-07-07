@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/atk.wav-f1ff5630d0237fdabc9837778542f902.sample"
+
+[deps]
+
+source_file="res://overkiller/atk.wav"
+dest_files=[ "res://.import/atk.wav-f1ff5630d0237fdabc9837778542f902.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

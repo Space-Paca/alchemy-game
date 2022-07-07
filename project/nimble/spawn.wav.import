@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn.wav-e0c2db8b1350085c394bd3203609a1aa.sample"
+
+[deps]
+
+source_file="res://nimble/spawn.wav"
+dest_files=[ "res://.import/spawn.wav-e0c2db8b1350085c394bd3203609a1aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

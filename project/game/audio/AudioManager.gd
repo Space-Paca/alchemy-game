@@ -54,9 +54,10 @@ func _ready():
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-#	change_group_of_loc("necromancer", "", "base_pitch", 1.0)
-#	change_group_of_bgm("battle1", "base_db", 0.0)
-#	change_group_of_sfx("map_points", "base_db", -12)
+#	change_group_of_loc("", "", "base_db", 0)
+#	change_group_of_loc("", "spawn", "base_db", -10)
+#	change_group_of_bgm("", "base_db", 0)
+#	change_group_of_sfx("voice", "base_db", -10)
 	
 func get_bgm_last_pos(name):
 	if not bgms_last_pos.has(name):

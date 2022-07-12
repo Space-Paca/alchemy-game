@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/spawn.wav-35ef20fe8f6c8781d58a70232a0cb8c7.sample"
+path="res://.import/dmg.wav-d5058f287334340ecc2aa6e5774030c4.sample"
 
 [deps]
 
-source_file="res://self-destruct/spawn.wav"
-dest_files=[ "res://.import/spawn.wav-35ef20fe8f6c8781d58a70232a0cb8c7.sample" ]
+source_file="res://assets/audio/loc/carapa/dmg.wav"
+dest_files=[ "res://.import/dmg.wav-d5058f287334340ecc2aa6e5774030c4.sample" ]
 
 [params]
 

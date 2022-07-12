@@ -59,11 +59,11 @@ func _on_SellButton_pressed():
 
 
 func _on_Button_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_reward_button")
 
 
 func _on_Button_button_down():
-	AudioManager.play_sfx("click")
+	AudioManager.play_sfx("click_reward_button")
 
 
 func _on_TooltipCollision_disable_tooltip():

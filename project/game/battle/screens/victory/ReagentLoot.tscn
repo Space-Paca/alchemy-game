@@ -65,15 +65,15 @@ margin_right = 247.0
 margin_bottom = 85.0
 rect_min_size = Vector2( 130, 75 )
 size_flags_vertical = 6
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 0.396078 )
+custom_colors/font_color_pressed = Color( 0.537255, 0.537255, 0.537255, 1 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 0.396078 )
-custom_colors/font_color_pressed = Color( 0.537255, 0.537255, 0.537255, 1 )
 text = "GET"
 
 [node name="SellButton" type="Button" parent="."]

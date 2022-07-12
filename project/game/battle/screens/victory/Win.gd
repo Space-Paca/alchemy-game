@@ -204,11 +204,11 @@ func _on_pearl_collected():
 
 
 func _on_Button_button_down():
-	AudioManager.play_sfx("click")
+	AudioManager.play_sfx("click_reward_button")
 
 
 func _on_Button_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_reward_button")
 
 
 func _on_WinRecipe_chosen(chosen_recipe):
@@ -246,4 +246,4 @@ func _on_RecipesButton_pressed():
 
 
 func _on_button_mouse_entered():
-	AudioManager.play_sfx("hover_button")
+	AudioManager.play_sfx("hover_reward_button")

@@ -3,10 +3,10 @@ size:343,123
 filter:Linear,Linear
 pma:true
 04_Nees/eye
-bounds:301,4,29,31
-offsets:1,1,31,34
+bounds:301,4,31,34
+rotate:90
 04_Nees/needs/body
-bounds:145,2,99,119
+bounds:2,2,99,119
 04_Nees/needs/eyelid
 bounds:246,3,58,53
 offsets:0,3,58,56
@@ -19,7 +19,7 @@ bounds:325,67,26,16
 offsets:1,0,27,16
 rotate:90
 04_Nees/needs2/body
-bounds:2,8,113,141
+bounds:103,8,113,141
 offsets:0,0,127,157
 rotate:90
 04_Nees/needs2/eyelid
@@ -33,5 +33,3 @@ rotate:90
 bounds:325,95,26,16
 offsets:1,0,27,16
 rotate:90
-pupil
-bounds:325,51,9,14

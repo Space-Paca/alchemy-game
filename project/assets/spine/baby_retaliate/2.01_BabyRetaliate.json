@@ -1,7 +1,7 @@
 {
 "skeleton": {
-	"hash": "yvp4dsBVycs",
-	"spine": "4.0.59",
+	"hash": "qqEgDRr19Ck",
+	"spine": "4.0.64",
 	"x": -160,
 	"y": -10,
 	"width": 337.41,
@@ -506,9 +506,9 @@
 			"Mouth1": {
 				"translate": [
 					{},
-					{ "time": 0.2667, "x": 30.02, "y": -8.83 },
+					{ "time": 0.1667, "x": 30.02, "y": -8.83 },
 					{ "time": 0.4333, "x": 36, "y": -5.94 },
-					{ "time": 0.6, "x": 22.56, "y": -11.88 },
+					{ "time": 0.6, "x": 27.47, "y": -3.29 },
 					{ "time": 0.8, "x": 25.41, "y": -1.53 },
 					{ "time": 1 }
 				]
@@ -654,7 +654,7 @@
 			"Body": {
 				"translate": [
 					{},
-					{ "time": 0.1, "x": 5.69, "y": -10.75 },
+					{ "time": 0.1, "x": -6.58, "y": -24.25 },
 					{ "time": 0.6667 }
 				]
 			},
@@ -701,8 +701,8 @@
 				],
 				"translate": [
 					{},
-					{ "time": 0.1, "x": 24.03, "y": -10.75 },
-					{ "time": 0.3333, "x": 21.09, "y": 4.43 },
+					{ "time": 0.1, "x": 32.62, "y": -8.3 },
+					{ "time": 0.3333, "x": 22.32, "y": 3.2 },
 					{ "time": 0.6667 }
 				]
 			},
@@ -715,7 +715,7 @@
 				],
 				"translate": [
 					{},
-					{ "time": 0.1333, "x": -6.96, "y": -43.64 },
+					{ "time": 0.1333, "x": -5.73, "y": -78 },
 					{ "time": 0.3333, "x": -49.88, "y": -16.52 },
 					{ "time": 0.6667 }
 				]
@@ -737,15 +737,15 @@
 				],
 				"translate": [
 					{},
-					{ "time": 0.1667, "x": -12.02, "y": -47.43 },
-					{ "time": 0.4, "x": 10.67, "y": 2.53 },
+					{ "time": 0.1667, "x": -14.47, "y": -73.21 },
+					{ "time": 0.4, "x": 9.44, "y": -2.38 },
 					{ "time": 0.6667 }
 				]
 			},
 			"BSTentacle3": {
 				"translate": [
 					{},
-					{ "time": 0.0667, "x": 1.26, "y": -19.61 },
+					{ "time": 0.0667, "x": 2, "y": -29.84 },
 					{ "time": 0.2667, "x": 7.17, "y": -4.85 },
 					{ "time": 0.6667 }
 				]
@@ -753,7 +753,7 @@
 			"FSTentacle3": {
 				"translate": [
 					{},
-					{ "time": 0.1, "x": -9.57, "y": -10.57 },
+					{ "time": 0.1, "x": -14.69, "y": -30.31 },
 					{ "time": 0.3, "x": 0.23, "y": 6.67 },
 					{ "time": 0.6667 }
 				]
@@ -775,68 +775,6 @@
 		}
 	},
 	"04_death": {
-		"slots": {
-			"BLegs": {
-				"rgba": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 0.7333, "color": "ffffff00" },
-					{ "time": 0.8, "color": "ffffffff" },
-					{ "time": 0.8667, "color": "ffffff00" },
-					{ "time": 0.9333, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" },
-					{ "time": 1.0667, "color": "ffffffff" },
-					{ "time": 1.1333, "color": "ffffff00" },
-					{ "time": 1.2, "color": "ffffffff" },
-					{ "time": 1.2667, "color": "ffffff00" },
-					{ "time": 1.3333, "color": "ffffffff" }
-				]
-			},
-			"Body": {
-				"rgba": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 0.7333, "color": "ffffff00" },
-					{ "time": 0.8, "color": "ffffffff" },
-					{ "time": 0.8667, "color": "ffffff00" },
-					{ "time": 0.9333, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" },
-					{ "time": 1.0667, "color": "ffffffff" },
-					{ "time": 1.1333, "color": "ffffff00" },
-					{ "time": 1.2, "color": "ffffffff" },
-					{ "time": 1.2667, "color": "ffffff00" },
-					{ "time": 1.3333, "color": "ffffffff" }
-				]
-			},
-			"BTentacle": {
-				"rgba": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 0.7333, "color": "ffffff00" },
-					{ "time": 0.8, "color": "ffffffff" },
-					{ "time": 0.8667, "color": "ffffff00" },
-					{ "time": 0.9333, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" },
-					{ "time": 1.0667, "color": "ffffffff" },
-					{ "time": 1.1333, "color": "ffffff00" },
-					{ "time": 1.2, "color": "ffffffff" },
-					{ "time": 1.2667, "color": "ffffff00" },
-					{ "time": 1.3333, "color": "ffffffff" }
-				]
-			},
-			"Head": {
-				"rgba": [
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 0.7333, "color": "ffffff00" },
-					{ "time": 0.8, "color": "ffffffff" },
-					{ "time": 0.8667, "color": "ffffff00" },
-					{ "time": 0.9333, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" },
-					{ "time": 1.0667, "color": "ffffffff" },
-					{ "time": 1.1333, "color": "ffffff00" },
-					{ "time": 1.2, "color": "ffffffff" },
-					{ "time": 1.2667, "color": "ffffff00" },
-					{ "time": 1.3333, "color": "ffffffff" }
-				]
-			}
-		},
 		"bones": {
 			"Body": {
 				"translate": [
@@ -874,9 +812,9 @@
 					{},
 					{ "time": 0.0667, "x": -2.67, "y": -11.67 },
 					{ "time": 0.2333, "x": -40.86, "y": 51.24 },
-					{ "time": 0.4667, "x": -41.55, "y": -10.88 },
-					{ "time": 0.6667, "x": -41.55, "y": -4.15 },
-					{ "time": 1.3333, "x": -48.22, "y": -305.83 }
+					{ "time": 0.4667, "x": -39.6, "y": -31.95 },
+					{ "time": 0.5667, "x": -35.63, "y": -15.99 },
+					{ "time": 0.9667, "x": -60.67, "y": -163.87 }
 				]
 			},
 			"HFur2": {
@@ -897,6 +835,14 @@
 					{ "time": 0.6667, "value": -26.6 }
 				]
 			},
+			"Mouth1": {
+				"translate": [
+					{},
+					{ "time": 0.1667, "x": 45.38, "y": -4.93 },
+					{ "time": 0.4667, "x": 18.48, "y": -6.02 },
+					{ "time": 0.6667 }
+				]
+			},
 			"FTentacleBoneTip": {
 				"rotate": [
 					{},
@@ -905,10 +851,9 @@
 					{ "time": 0.2667, "value": -192.09 },
 					{ "time": 0.4667, "value": 15.2 },
 					{ "time": 0.5667, "value": 43.78 },
-					{ "time": 0.6667, "value": 45.29 },
 					{ "time": 0.7333, "value": -45.99 },
 					{ "time": 0.8667, "value": -160.72 },
-					{ "time": 1.3333, "value": 45.06 }
+					{ "time": 0.9667, "value": -195.21 }
 				],
 				"translate": [
 					{},
@@ -918,10 +863,9 @@
 					{ "time": 0.3667, "x": -15.12, "y": -46.97 },
 					{ "time": 0.4667, "x": -38.78, "y": -29.08 },
 					{ "time": 0.5667, "x": -6.37, "y": -129.25 },
-					{ "time": 0.6667, "x": -4.67, "y": -134.52 },
 					{ "time": 0.7333, "x": 92.25, "y": -123.14 },
 					{ "time": 0.8667, "x": 84.19, "y": -260.98 },
-					{ "time": 1.3333, "x": -4.92, "y": -133.73 }
+					{ "time": 0.9667, "x": 82.4, "y": -299.6 }
 				]
 			},
 			"FTentacleBoneMod": {
@@ -942,8 +886,9 @@
 					{ "time": 0.3667, "value": -27.32 },
 					{ "time": 0.4667 },
 					{ "time": 0.5667, "value": 138.25 },
-					{ "time": 0.6667, "value": 145.53 },
-					{ "time": 0.7333, "value": 144.8 }
+					{ "time": 0.6667, "value": 17.23 },
+					{ "time": 0.8333, "value": 52.72 },
+					{ "time": 0.9667, "value": 144.8 }
 				],
 				"translate": [
 					{},
@@ -952,8 +897,8 @@
 					{ "time": 0.2667, "x": 29.31, "y": -22.62 },
 					{ "time": 0.3667, "x": -37.28, "y": -31.39 },
 					{ "time": 0.4667 },
-					{ "time": 1.0667, "x": -35.92, "y": -246.62 },
-					{ "time": 1.3333, "x": -37.62, "y": -258.31 }
+					{ "time": 0.8333, "x": -59.86, "y": -186.06 },
+					{ "time": 0.9667, "x": -21.07, "y": -259.67 }
 				]
 			},
 			"BSTentacle3": {
@@ -999,8 +944,8 @@
 				"scale": [
 					{ "time": 0.4333 },
 					{ "time": 0.5333, "x": 1.042, "y": 0.95 },
-					{ "time": 0.6667 },
-					{ "time": 1.3333, "x": 1.084, "y": 0.101 }
+					{ "time": 0.6667, "curve": "stepped" },
+					{ "time": 1 }
 				]
 			}
 		}

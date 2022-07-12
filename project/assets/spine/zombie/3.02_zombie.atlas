@@ -1,54 +1,50 @@
 3.02_zombie.png
-size:669,127
+size:650,141
 filter:Linear,Linear
 pma:true
 antebraco 1
-bounds:464,2,62,60
+bounds:384,2,62,60
 offsets:1,1,65,63
 antebraco 2
-bounds:493,82,43,76
+bounds:572,96,43,76
 offsets:2,1,46,78
 rotate:90
 braco 1
-bounds:311,10,45,83
+bounds:487,94,45,83
 offsets:1,1,47,85
 rotate:90
 braco 2
-bounds:605,7,37,48
+bounds:448,14,37,48
 offsets:1,1,42,50
-rotate:90
 cabeca
-bounds:2,16,109,130
-offsets:1,1,111,132
-rotate:90
+bounds:2,7,111,132
 canela 1
-bounds:627,89,36,40
+bounds:546,12,36,40
 offsets:7,1,44,42
-rotate:90
 canela 2
-bounds:396,2,66,60
+bounds:316,2,66,60
 offsets:1,1,70,62
 coxa 1
-bounds:395,64,96,61
+bounds:227,78,96,61
 offsets:1,1,98,63
 coxa 2
-bounds:571,84,54,41
+bounds:584,53,54,41
 offsets:1,1,57,43
 flies
-bounds:229,45,75,80
+bounds:325,64,75,80
+rotate:90
 mao 1
-bounds:528,2,75,78
+bounds:407,64,75,78
 offsets:1,1,78,80
+rotate:90
 mao 2
-bounds:306,57,68,87
+bounds:227,8,68,87
 offsets:1,1,70,89
 rotate:90
 pé 1
-bounds:605,46,55,36
-offsets:1,1,57,38
+bounds:487,14,57,38
 pé 2
-bounds:229,7,80,36
-offsets:1,1,82,38
+bounds:487,54,82,38
 tronco
-bounds:134,5,93,120
-offsets:63,68,230,246
+bounds:115,9,110,130
+offsets:52,64,230,246

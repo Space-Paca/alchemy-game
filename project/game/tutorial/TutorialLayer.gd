@@ -76,6 +76,7 @@ func _input(event):
 				yield(get_tree(), "idle_frame")
 				rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
+				AudioManager.play_sfx("tutorial_advanced")
 				update_elements()
 
 
@@ -86,6 +87,7 @@ func is_active():
 func start(name):
 	AudioManager.enable_bgm_filter_effect(-8)
 	set_regions(DB.get(name))
+	AudioManager.play_sfx("tutorial_advanced")
 
 
 func set_regions(new_regions):

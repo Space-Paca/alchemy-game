@@ -1,10 +1,45 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/battle/FavoriteButton.gd" type="Script" id=1]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/ui/background_favorites.png" type="Texture" id=3]
-[ext_resource path="res://assets/shaders/painting_shader_material.tres" type="Material" id=4]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/shaders/norm_map2.png" type="Texture" id=6]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D flowMap; //Displacement map
+uniform float strength;    //Force of the effect
+uniform float speed;       //Speed of the effect
+uniform int frames : hint_range(1, 10); //Frames of the effect
+uniform float greyscale : hint_range(0.0, 1.0);
+
+//Returns a value between 0 and 1 depending of the frames -> exemple: frames = 4, frame 1 = 0.25
+float clock(float time){
+	float fframes = float(frames);
+	return abs(sin(mod(time * speed, fframes)));
+}
+
+void fragment(){
+	float c = clock(TIME); //Get clock frame
+	vec4 offset = texture(flowMap, vec2(UV.x + c, UV.y + c)) * strength; //Get offset 
+	//COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + normal.xy); //Apply offset
+	COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + offset.xy - vec2(0.5,0.5)*strength); //We need to remove the displacement
+	
+	//Apply borders
+	COLOR.a = 1.0 - smoothstep(.25, .5, distance(UV, vec2(.5,.5)));
+	float grey = (COLOR.r+COLOR.g+COLOR.b)/3.0;
+	COLOR.rgb = COLOR.rgb + (vec3(grey,grey,grey) - COLOR.rgb)*greyscale;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/strength = 0.01
+shader_param/speed = 0.0
+shader_param/frames = 1
+shader_param/greyscale = 0.0
+shader_param/flowMap = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 31
@@ -14,7 +49,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 40 )
 
 [node name="FavoriteButton" type="Control"]
@@ -35,7 +70,7 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="Button" type="TextureButton" parent="."]
-material = ExtResource( 4 )
+material = SubResource( 3 )
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 84.0
@@ -67,7 +102,7 @@ position = Vector2( 42.8115, 46.3791 )
 
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 position = Vector2( 1.18921, -2.37842 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( 118.92, -90.3798 )

@@ -9,6 +9,7 @@ uniform sampler2D flowMap; //Displacement map
 uniform float strength;    //Force of the effect
 uniform float speed;       //Speed of the effect
 uniform int frames : hint_range(1, 10); //Frames of the effect
+uniform float greyscale : hint_range(0.0, 1.0);
 
 //Returns a value between 0 and 1 depending of the frames -> exemple: frames = 4, frame 1 = 0.25
 float clock(float time){
@@ -24,6 +25,8 @@ void fragment(){
 	
 	//Apply borders
 	COLOR.a = 1.0 - smoothstep(.25, .5, distance(UV, vec2(.5,.5)));
+	float grey = (COLOR.r+COLOR.g+COLOR.b)/3.0;
+	COLOR.rgb = COLOR.rgb + (vec3(grey,grey,grey) - COLOR.rgb)*greyscale;
 }"
 
 [resource]
@@ -31,4 +34,5 @@ shader = SubResource( 1 )
 shader_param/strength = 0.0
 shader_param/speed = 0.0
 shader_param/frames = 1
+shader_param/greyscale = null
 shader_param/flowMap = ExtResource( 1 )

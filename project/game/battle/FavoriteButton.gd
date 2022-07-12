@@ -8,6 +8,7 @@ onready var mastered_label = $Button/MasteredLabel
 
 const MAX_SCALE = 1.1
 const SCALE_SPEED = 2
+const GREYSCALE_SPEED = 1.5
 
 var combination : Combination
 var is_mastered : bool
@@ -24,6 +25,13 @@ func _process(delta):
 	else:
 		button.rect_scale.x = max(button.rect_scale.x - 1.5*SCALE_SPEED*delta, 1)
 		button.rect_scale.y = max(button.rect_scale.y - 1.5*SCALE_SPEED*delta, 1) 
+	
+	var value = button.material.get_shader_param("greyscale")
+	if button.disabled:
+		value = min(value + GREYSCALE_SPEED*delta, 1.0)
+	else:
+		value = max(value - GREYSCALE_SPEED*delta, 0.0)
+	button.material.set_shader_param("greyscale", value)
 
 
 func set_combination(new_combination: Combination, mastered := false):

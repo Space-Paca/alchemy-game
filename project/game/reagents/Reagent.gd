@@ -5,6 +5,7 @@ const FREEZE_SPEED = 3
 const HIGHLIGHT_SPEED = 5
 const HIGHLIGHT_TARGET = 1.6
 const ROTATION_FACTOR = 50
+const SPEED = .35
 
 signal reached_target_pos
 signal started_dragging
@@ -83,7 +84,7 @@ func _process(delta):
 		rect_position = target
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
-			rect_position += (target_position - rect_position)*.35*speed_mod
+			rect_position += (target_position - rect_position)*SPEED*speed_mod
 			if (target_position - rect_position).length() < 1:
 				if not disable_drag:
 					can_drag = true

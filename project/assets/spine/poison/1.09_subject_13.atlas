@@ -21,7 +21,8 @@ rotate:90
 ooze
 bounds:270,2,168,88
 teeth
-bounds:440,11,79,83
+bounds:440,13,77,81
+offsets:1,1,79,83
 rotate:90
 tongue
 bounds:2,664,369,380

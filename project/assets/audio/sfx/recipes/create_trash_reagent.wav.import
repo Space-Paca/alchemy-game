@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/create_trash_reagent.wav-576ae805c936ffe3fe5e03934d3b7b8f.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/recipes/create_trash_reagent.wav"
+dest_files=[ "res://.import/create_trash_reagent.wav-576ae805c936ffe3fe5e03934d3b7b8f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/audio/SFX.gd" type="Script" id=1]
-[ext_resource path="res://assets/audio/sfx/combine_button_click.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/tutorial/highlight_appear.wav" type="AudioStream" id=2]
 
 [resource]
 script = ExtResource( 1 )

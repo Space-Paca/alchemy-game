@@ -54,9 +54,9 @@ func _ready():
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-#	change_group_of_loc("virulyn", "spawn", "base_db", 1.5)
-#	change_group_of_bgm("", "base_db", 2)
-#	change_group_of_sfx("voice", "base_db", -10)
+#	change_group_of_loc("", "", "base_db", -5)
+#	change_group_of_bgm("", "base_db", -5)
+#	change_group_of_sfx("status", "base_db", -5)
 
 
 func get_bgm_last_pos(name):

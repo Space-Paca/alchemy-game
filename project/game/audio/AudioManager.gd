@@ -57,7 +57,7 @@ func _ready():
 #	change_group_of_loc("", "", "base_db", -5)
 #	change_group_of_bgm("", "base_db", -5)
 #	change_group_of_sfx("status", "base_db", -5)
-
+	
 
 func get_bgm_last_pos(name):
 	if not bgms_last_pos.has(name):

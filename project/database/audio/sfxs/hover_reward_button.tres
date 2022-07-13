@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 asset = ExtResource( 2 )
 base_db = -6.0
 random_db_var = 0.5
-base_pitch = 0.0
+base_pitch = 1.0
 random_pitch_var = 0.01

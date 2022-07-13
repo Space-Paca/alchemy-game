@@ -9,6 +9,7 @@ name = "RE_CURA_POISON_PLUS"
 grid_size = 3
 sfx = "antivenom"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 2
 reagents = [ "defensive", "poison", "defensive" ]
 effects = [ "reduce_status" ]

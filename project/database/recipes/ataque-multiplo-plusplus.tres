@@ -9,6 +9,7 @@ name = "RE_ATAQUE_MULTIPLO_PLUSPLUS"
 grid_size = 3
 sfx = "bomb"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 3
 reagents = [ "rare", "damaging", "damaging", "damaging" ]
 effects = [ "damage", "damage", "damage", "damage", "damage" ]

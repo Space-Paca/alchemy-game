@@ -9,6 +9,7 @@ name = "RE_DANO_OMEGA"
 grid_size = 4
 sfx = "supernova"
 must_unlock = true
+use_on_demo = false
 floor_sold_in = 3
 reagents = [ "rare", "uncommon", "damaging", "super_damaging", "super_damaging" ]
 effects = [ "damage" ]

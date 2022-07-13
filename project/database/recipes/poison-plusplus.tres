@@ -9,6 +9,7 @@ name = "RE_POISON_PLUSPLUS"
 grid_size = 3
 sfx = "poison_vial"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 3
 reagents = [ "poison", "damaging", "super_damaging" ]
 effects = [ "add_status" ]

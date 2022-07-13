@@ -9,6 +9,7 @@ name = "RE_DANO_ESCUDO_OMEGA"
 grid_size = 4
 sfx = "travelers_mixture"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 3
 reagents = [ "uncommon", "uncommon", "uncommon", "defensive", "defensive", "super_defensive", "super_defensive", "damaging", "damaging", "super_damaging", "super_damaging" ]
 effects = [ "shield", "damage" ]

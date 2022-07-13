@@ -9,6 +9,7 @@ name = "RE_TEMP_STRENGTH_PLUS"
 grid_size = 3
 sfx = "drink_potion"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 2
 reagents = [ "common", "uncommon", "buff" ]
 effects = [ "add_status" ]

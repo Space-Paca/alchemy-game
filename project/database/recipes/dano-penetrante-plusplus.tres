@@ -9,6 +9,7 @@ name = "RE_DANO_PEN_PLUSPLUS"
 grid_size = 4
 sfx = "alchemists_fire"
 must_unlock = false
+use_on_demo = false
 floor_sold_in = 3
 reagents = [ "damaging", "damaging", "damaging", "damaging", "super_damaging" ]
 effects = [ "damage" ]

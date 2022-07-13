@@ -1208,7 +1208,7 @@ func _on_PauseButton_mouse_entered():
 
 
 func _on_PauseButton_button_down():
-	AudioManager.play_sfx("click_menu_button")
+	AudioManager.play_sfx("click_pause_button")
 
 
 func _on_RecipeBook_recipe_pressed_lab(combination: Combination):

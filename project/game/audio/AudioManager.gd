@@ -34,7 +34,7 @@ onready var AUX_BGMS = ["","",""]
 const AMBIENCE_VARIATIONS = 3
 const AMBIENCE_NAME_MAP = ["forest", "cave", "dungeon"]
 #SFX
-const MAX_SFXS = 30
+const MAX_SFXS = 100
 const SFX_PATH = "res://database/audio/sfxs/"
 onready var SFXS = {}
 onready var CUR_IDLE_SFX = {}
@@ -54,7 +54,7 @@ func _ready():
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-#	change_group_of_loc("", "", "base_db", -5)
+#	change_group_of_loc("", "", "base_pitch", 1.0)
 #	change_group_of_bgm("", "base_db", -5)
 #	change_group_of_sfx("status", "base_db", -5)
 	

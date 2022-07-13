@@ -310,7 +310,7 @@ func play_bgm(name, layers = false, start_from_beginning = false):
 		$Tween.start()
 
 
-func stop_bgm():
+func stop_bgm(speed_mod := 1.0):
 	stop_all_aux_bgm()
 	remove_bgm_effect()
 	for i in range(1, MAX_LAYERS + 1):
@@ -326,6 +326,7 @@ func stop_bgm():
 			fadeout.stream = fadein.stream
 			fadeout.play(pos)
 			var duration = (vol - MUTE_DB)/FADEOUT_SPEED
+			duration /= speed_mod
 			$Tween.remove(fadeout, "volume_db")
 			$Tween.interpolate_property(fadeout, "volume_db", vol, MUTE_DB, duration, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$Tween.start()

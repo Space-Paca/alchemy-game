@@ -10,6 +10,7 @@ onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 const ALPHA_SPEED = 6
 const SHEEN_DUR = .8
 const SHEEN_INTERVAL = 5.0
+const BGM_STOP_SPEED = 7.0
 
 var hover_compendium = false
 
@@ -70,6 +71,7 @@ func skip_intro_animation():
 
 
 func _on_NewGameButton_pressed():
+	AudioManager.stop_bgm(BGM_STOP_SPEED)
 	AudioManager.play_sfx("start_new_game")
 	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
 
@@ -109,6 +111,7 @@ func _on_button_mouse_entered(button):
 
 
 func _on_ContinueButton_pressed():
+	AudioManager.stop_bgm(BGM_STOP_SPEED)
 	AudioManager.play_sfx("start_new_game")
 	FileManager.continue_game = true
 	Transition.transition_to("res://game/dungeon/Dungeon.tscn")

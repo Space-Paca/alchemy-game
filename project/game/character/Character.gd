@@ -352,7 +352,7 @@ func end_turn_restrict_minor():
 func end_turn_restrict_major():
 	remove_status("restrict_major")
 
-func end_turn_weak():
+func end_turn_weakness():
 	var status = get_status("weakness")
 	status.amount -= 1
 	if status.amount <= 0:

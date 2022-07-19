@@ -723,8 +723,9 @@ func recipe_book_toggle():
 	var book_visible = recipe_book.toggle_visibility()
 	if book_visible:
 		recipe_book.update_player_info()
-	map.recipe_toogle(book_visible)
-	if battle:
+	if map and is_instance_valid(map):
+		map.recipe_toogle(book_visible)
+	if battle and is_instance_valid(battle):
 		battle.recipe_book_toggled(book_visible)
 	elif not lab.visible:
 		player_info.visible = !book_visible
@@ -822,6 +823,7 @@ func _on_map_node_selected(node: MapNode):
 
 func _on_Battle_won():
 	var rewarded_combinations := []
+	battle.disable_player()
 	
 	if battle.is_boss:
 		var size = min(player.grid_size + 1, player.GRID_SIZES.back())

@@ -36,6 +36,7 @@ const AMBIENCE_NAME_MAP = ["forest", "cave", "dungeon"]
 #SFX
 const MAX_SFXS = 100
 const SFX_PATH = "res://database/audio/sfxs/"
+const MIN_DUPLICATE_INTERVAL = .1 #Minimum time needed to play same sfx again
 onready var SFXS = {}
 onready var CUR_IDLE_SFX = {}
 #LOCS
@@ -44,6 +45,7 @@ onready var LOCS = {}
 
 var last_ambience_bgm_idx = false
 var bgms_last_pos = {}
+var just_played_sfxs = {}
 var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false
@@ -58,6 +60,13 @@ func _ready():
 #	change_group_of_bgm("", "base_db", -5)
 #	change_group_of_sfx("status", "base_db", -5)
 	
+
+func _process(dt):
+	for name in just_played_sfxs.keys():
+		just_played_sfxs[name] -= dt
+		if just_played_sfxs[name] <= 0.0:
+			just_played_sfxs.erase(name)
+
 
 func get_bgm_last_pos(name):
 	if not bgms_last_pos.has(name):
@@ -511,6 +520,12 @@ func play_sfx(name: String, override_pitch = false, db_mod := 0.0):
 	if not SFXS.has(name):
 		push_error("Not a valid sfx name: " + name)
 		assert(false)
+	
+	#Check if sfxs was just played, don't playit if thats the case
+	if just_played_sfxs.has(name):
+		return
+	just_played_sfxs[name] = MIN_DUPLICATE_INTERVAL
+
 	var sfx = SFXS[name]
 	var player = get_sfx_player()
 	player.stop()

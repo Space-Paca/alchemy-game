@@ -3,7 +3,7 @@ tool
 extends Node2D
 
 signal won
-signal finished(is_boss)
+signal finished(is_boss, is_elite, is_final_boss)
 signal combination_made(reagent_matrix)
 signal current_reagents_updated(curr_reagents)
 signal finished_enemies_init
@@ -779,6 +779,12 @@ func enable_elements():
 		reagent.enable_tooltips()
 
 
+func is_final_boss():
+	return is_boss and\
+			((not Debug.IS_DEMO and floor_level >= Debug.MAX_FLOOR) or\
+			(Debug.IS_DEMO and floor_level >= Debug.MAX_FLOOR - 1))
+
+
 func win():
 	if ended:
 		return
@@ -797,9 +803,9 @@ func win():
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
 
-	if not is_boss or\
-		(not Debug.IS_DEMO and floor_level < Debug.MAX_FLOOR) or\
-		(Debug.IS_DEMO and floor_level < Debug.MAX_FLOOR - 1):
+	if is_final_boss():
+		_on_win_screen_continue_pressed(true)
+	else:
 		setup_win_screen(current_encounter)
 
 		TooltipLayer.clean_tooltips()
@@ -816,9 +822,6 @@ func win():
 			AudioManager.play_bgm("win_boss_battle", false, true)
 		else:
 			AudioManager.play_bgm("win_normal_battle", false, true)
-
-	else:
-		_on_win_screen_continue_pressed()
 
 
 func show_victory_screen(combinations: Array):
@@ -1343,13 +1346,15 @@ func _on_DiscardBag_reagent_discarded(reagent):
 func _on_PassTurnButton_pressed():
 	end_turn()
 
+
 func _on_RecipesButton_pressed():
 	emit_signal("recipe_book_toggle")
 
 
-func _on_win_screen_continue_pressed():
+func _on_win_screen_continue_pressed(final_boss := false):
 	emit_signal("block_pause", false)
-	emit_signal("finished", is_boss)
+	emit_signal("finished", is_boss and not is_event, is_elite, final_boss)
+
 
 func _on_win_screen_reagent_looted(reagent: String):
 	player.add_reagent(reagent, false)

@@ -843,26 +843,24 @@ func _on_Battle_won():
 	battle.show_victory_screen(rewarded_combinations)
 
 
-func _on_Battle_finished(is_boss):
-	Transition.begin_transition()
+func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 	time_running = false
-	yield(Transition, "screen_dimmed")
-	
-	is_boss = not battle.is_event and is_boss
-	var is_elite = battle.is_elite
-	battle.queue_free()
-	battle = null
-	recipe_book.change_state(RecipeBook.States.MAP)
-	
-	Transition.end_transition()
+	if not is_final_boss:
+		Transition.begin_transition()
+		yield(Transition, "screen_dimmed")
+		
+		battle.queue_free()
+		battle = null
+		recipe_book.change_state(RecipeBook.States.MAP)
+		
+		Transition.end_transition()
 	
 	var should_save = true
 	if is_boss:
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
-		if (not Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR))\
-			or (Debug.IS_DEMO and (floor_level <= Debug.MAX_FLOOR-1)):
+		if not is_final_boss:
 			play_map_bgm()
 			create_level(floor_level)
 			$Player.level_up()
@@ -872,7 +870,7 @@ func _on_Battle_finished(is_boss):
 			time_running = true
 		else:
 			should_save = false
-			enable_map()
+#			enable_map()
 			player.cur_level += 1
 			player.increase_stat("time", time_of_run)
 			thanks_for_playing()

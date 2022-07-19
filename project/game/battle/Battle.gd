@@ -842,9 +842,14 @@ func is_grabbing_reagent():
 
 
 func autocomplete_grid(combination: Combination):
+	var to_return = []
 	for slot in grid.slots.get_children():
 		if slot.current_reagent:
-			hand.place_reagent(slot.current_reagent)
+			to_return.append(slot.current_reagent)
+	for i in to_return.size():
+		var reagent = to_return[i]
+		hand.place_reagent(reagent)
+		if i == to_return.size() - 1:
 			yield(hand, "reagent_placed")
 	
 	yield(get_tree(), "idle_frame")

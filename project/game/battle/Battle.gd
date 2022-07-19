@@ -15,6 +15,7 @@ signal hand_set
 signal update_recipes_display
 signal block_pause
 signal player_died
+signal finished_autocomplete
 
 onready var effect_manager = $EffectManager
 onready var book = $Book
@@ -844,7 +845,9 @@ func autocomplete_grid(combination: Combination):
 	for slot in grid.slots.get_children():
 		if slot.current_reagent:
 			hand.place_reagent(slot.current_reagent)
-
+			yield(hand, "reagent_placed")
+	
+	yield(get_tree(), "idle_frame")
 	var recipe_reagents = combination.recipe.reagents.duplicate()
 	var available_reagents := []
 	for reagent in reagents.get_children():
@@ -888,8 +891,14 @@ func autocomplete_grid(combination: Combination):
 											player.take_damage(player, 9, "regular", false)
 										slot.set_reagent(reagent)
 										break
-					return true
-	return false
+					#Could autocomplete
+					emit_signal("finished_autocomplete")
+					return
+	#Couldn't autocomplete
+	AudioManager.play_sfx("error")
+	grid.highlight_blocked_slots()
+	emit_signal("finished_autocomplete")
+	return
 
 
 func unhighlight_reagents():
@@ -1399,19 +1408,18 @@ func _on_PassTurnButton_button_down():
 
 func _on_FavoriteButton_pressed(index: int):
 	AudioManager.play_sfx("click")
-
+	disable_player()
 	var button : FavoriteButton = favorites.get_child(index)
 	var selected_reagents = has_reagents(button.reagent_array)
 	if selected_reagents:
-		if not autocomplete_grid(button.combination):
-			AudioManager.play_sfx("error")
-			grid.highlight_blocked_slots()
+		autocomplete_grid(button.combination)
+		yield(self, "finished_autocomplete")
 	else:
 		AudioManager.play_sfx("error")
 		for reagent in reagents.get_children():
 			reagent.error_effect()
-
-
+	enable_player()
+	
 func _on_FavoriteButton_mouse_entered(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
 # warning-ignore:return_value_discarded

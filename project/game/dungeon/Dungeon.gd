@@ -974,9 +974,11 @@ func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: b
 	recipe_book_toggle()
 	battle.grid.clear_hints()
 	if mastery_unlocked:
-		if not battle.autocomplete_grid(combination):
-			AudioManager.play_sfx("error")
-			#TODO: Blink restrain/restricted slots
+		battle.disable_player()
+		battle.autocomplete_grid(combination)
+		yield(battle, "finished_autocomplete")
+		battle.enable_player()
+		#TODO: Blink restrain/restricted slots
 	else:
 		if not battle.grid.show_combination_hint(combination):
 			AudioManager.play_sfx("error")

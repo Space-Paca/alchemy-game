@@ -22,9 +22,6 @@ func update_known_recipe(recipe_id: String, amount_made: int) -> int:
 		Profile.known_recipes[recipe_id].amount = amount_made
 	else:
 		Profile.known_recipes[recipe_id].amount += amount_made
-		if Profile.known_recipes[recipe_id].amount >\
-				Profile.known_recipes[recipe_id].memorized_threshold:
-			Profile.memorize_recipe(recipe_id)
 	
 	return Profile.known_recipes[recipe_id].amount
 

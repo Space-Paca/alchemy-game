@@ -23,8 +23,8 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 24
+[sub_resource type="DynamicFont" id=10]
+size = 22
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -197,8 +197,8 @@ margin_right = 287.0
 margin_bottom = 305.0
 rect_min_size = Vector2( 272, 33 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "Memorization 0/5"
+custom_fonts/font = SubResource( 10 )
+text = "Memorization 0/5 - Level 1"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

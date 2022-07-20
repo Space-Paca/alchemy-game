@@ -44,13 +44,13 @@ func recipe_mastered(combination: Combination, favorited: bool):
 	arrow.show()
 	animation.play("show")
 	current_combination = combination
-	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
+	var memorized_level = Profile.get_recipe_memorized_level(combination.recipe.id)
 	
 	favorite_button.show()
 	favorite_error_label.hide()
 	favorite_button.text = "FAVORITE_THIS_RECIPE"
-	favorite_button.disabled = memorized and favorited
-	if memorized and favorited:
+	favorite_button.disabled = memorized_level >= 2 and favorited
+	if memorized_level >= 2 and favorited:
 		favorite_button.text = "FAVORITED_EXC"
 	
 	var display_normal = RECIPE_DISPLAY.instance()
@@ -71,9 +71,9 @@ func new_recipe_discovered(combination: Combination):
 	animation.play("show")
 	arrow.hide()
 	current_combination = combination
-	var memorized = Profile.is_recipe_memorized(combination.recipe.id)
+	var memorized_level = Profile.get_recipe_memorized_level(combination.recipe.id)
 	
-	if memorized:
+	if memorized_level >= 2:
 		title.text = "DISC_MEMORIZED_RECIPE"
 		favorite_button.show()
 		favorite_error_label.hide()

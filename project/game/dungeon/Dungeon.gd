@@ -253,7 +253,7 @@ func create_combinations():
 		if player.known_recipes.has(recipe.id):
 			combination.discover_all_reagents("new_game")
 			recipe_book.add_combination(combination, mastery_threshold(combination))
-			if Profile.is_recipe_memorized(combination.recipe.id):
+			if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
 				favorite_combination(combination, true, false)
 				recipe_book.set_favorite_button(combination, true, true)
 

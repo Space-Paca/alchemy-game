@@ -101,7 +101,7 @@ func set_combination(_combination: Combination):
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
 	
-	if Profile.is_recipe_memorized(combination.recipe.id):
+	if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
 		memorized = true
 		favorite_button.visible = true
 

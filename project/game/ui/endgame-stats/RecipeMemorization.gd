@@ -39,12 +39,15 @@ func set_recipe(id, _amount_made: int, _final_amount: int, new: bool):
 	new_label.visible = new
 	
 	var amount = final_amount - amount_made
-	var threshold = Profile.known_recipes[recipe_id].memorized_threshold
+	var level = Profile.get_recipe_memorized_level(recipe_id)
+	var thresholds = Profile.get_memorized_thresholds(recipe_id)
+	var threshold = thresholds[level] if level < Profile.MAX_MEMORIZATION_LEVEL\
+									  else thresholds[Profile.MAX_MEMORIZATION_LEVEL - 1]
 	
 	current_label.text = str(amount)
 	total_label.text = "/" + str(threshold)
 	progress.max_value = threshold
-	progress.value = amount
+	progress.value = min(amount, threshold)
 
 
 func animate_progress():

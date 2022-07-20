@@ -93,21 +93,23 @@ func set_combination(_combination: Combination):
 
 func set_progress(recipe_id: String):
 	var amount = Profile.known_recipes[recipe_id]["amount"]
-	var threshold = Profile.known_recipes[recipe_id]["memorized_threshold"]
-	
+	var level = Profile.get_recipe_memorized_level(recipe_id)
+	var thresholds = Profile.get_memorized_thresholds(recipe_id)
+	var threshold = thresholds[level] if level < Profile.MAX_MEMORIZATION_LEVEL\
+									  else thresholds[Profile.MAX_MEMORIZATION_LEVEL - 1]
 	if amount == -1:
 		bg.hide()
 		unknown_bg.show()
 	else:
 		memorization_progress.max_value = threshold
-		memorization_progress.value = amount
+		memorization_progress.value = min(amount, threshold)
 		if amount >= threshold:
 			bg.texture = RECIPE_PAGE_MEMORIZED
-			memorization_label.text = tr("MEMORIZED") + " " + str(amount) + "/" + str(threshold)
+			memorization_label.text = tr("MEMORIZED") % [str(amount), str(level)]
 			memorization_progress.get_stylebox("fg").modulate_color = BAR_MAX_COLOR
 		else:
 			bg.texture = RECIPE_PAGE_NORMAL
-			memorization_label.text = tr("MEMORIZATION") + " " + str(amount) + "/" + str(threshold)
+			memorization_label.text = tr("MEMORIZATION") % [str(amount), str(threshold), str(level)]
 			memorization_progress.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
 
 

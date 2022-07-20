@@ -2,7 +2,7 @@ extends Node
 
 const WINDOW_SIZES = [Vector2(1920, 1080), Vector2(1600, 900),
 		Vector2(1366, 768), Vector2(1280, 720)]
-
+const MAX_MEMORIZATION_LEVEL = 4
 const LANGUAGES = [
 	{"locale":"en", "name": "English"},
 	{"locale":"pt_BR", "name": "Português"},
@@ -92,9 +92,7 @@ func reset_known_recipes():
 	known_recipes.clear()
 	for recipe_id in RecipeManager.recipes.keys():
 		known_recipes[recipe_id] = {
-			"memorized_threshold": memorized_threshold(recipe_id),
 			"amount": -1,
-			"memorized": false,
 		}
 
 
@@ -114,10 +112,14 @@ func get_save_data():
 
 func set_save_data(data):
 	if data.version != Debug.VERSION:
-		#Handle version diff here. For now, just print a warning.
+		#Handle version diff here.
 		push_warning("Different save version for profile. Its version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
-		push_warning("Properly updating to new save version") #Lol ||ヽ(*￣▽￣*)ノミ
-		
+		push_warning("Properly updating to new save version")
+		push_warning("Profile updated!")#lol ヽ(*￣▽￣*)ノミ
+	
+	if known_recipes.empty():
+		reset_known_recipes()
+	
 	set_data(data, "tutorials", tutorials)
 	set_data(data, "options", options)
 	set_data(data, "controls", controls)
@@ -140,13 +142,21 @@ func set_data(data, name, default_values):
 	if not data.has(name):
 		return
 	
-	#Update received data with missing default values, only checking for 1 depth
+	#Update received data with missing default values
 	for key in default_values.keys():
 		if not data[name].has(key):
 			data[name][key] = default_values[key]
+			push_warning("Adding new profile entry '" + str(key) + str("' for " + str(name)))
+		elif typeof(default_values[key]) == TYPE_DICTIONARY:
+			set_data(data[name], key, default_values[key])
 			
 	for key in data[name].keys():
-		default_values[key] = data[name][key]
+		#Ignore deprecated values
+		if default_values.has(key):
+			default_values[key] = data[name][key]
+		else:
+			data[name].erase(key)
+			push_warning("Removing deprecated value '" + str(key) + str("' for " + str(name)))
 
 
 func get_tutorial(name):
@@ -202,22 +212,21 @@ func reset_compendium():
 	FileManager.save_profile()
 
 
-func memorized_threshold(recipe_id: String) -> int:
+func get_memorized_thresholds(recipe_id: String) -> Array:
 	var recipe = RecipeManager.recipes[recipe_id]
-	var threshold = min(10, 18 - recipe.reagents.size() - 3*recipe.destroy_reagents.size() - 2*recipe.grid_size)
-	threshold = 3*max(threshold, 2)
-	return threshold
+	var threshold_v = min(12, 18 - recipe.reagents.size() - 3*recipe.destroy_reagents.size() - recipe.grid_size*recipe.grid_size)
+	threshold_v = max(threshold_v, 3)
+	var thresholds = [2*threshold_v, 3*threshold_v, 5*threshold_v, 8*threshold_v]
+	return thresholds
 
 
-func is_recipe_memorized(name):
+func get_recipe_memorized_level(name):
 	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
-	return known_recipes[name].memorized
-
-
-func memorize_recipe(name):
-	assert(known_recipes.has(name), "Not a valid recipe name: "+str(name))
-	known_recipes[name].memorized = true
-	known_recipes[name].amount = known_recipes[name].memorized_threshold
+	var thresholds = get_memorized_thresholds(name)
+	for i in range(thresholds.size()-1, -1, -1):
+		if known_recipes[name].amount >= thresholds[i]:
+			return i + 1
+	return 0
 
 
 func is_max_level(prog_type):

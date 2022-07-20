@@ -37,7 +37,7 @@ func load_profile():
 		Profile.set_save_data(data)
 		
 	profile_file.close()
-
+	save_profile()
 
 func save_profile():
 	var profile_file = File.new()

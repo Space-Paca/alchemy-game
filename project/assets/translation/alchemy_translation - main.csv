@@ -115,7 +115,7 @@ BACK,Back,Voltar
 APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
 COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey. Find it on the main menu.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada. Ache-o no menu principal.
-COMPENDIUM_INFO,"The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll be Memorized, making them easier to create in future adventures","O Compêndio guarda todas as receitas que você fez, junto de quantas vezes você criou elas. Se você fizer uma receita vezes suficiente, ela sera Memorizada, deixando-a muito mais facll de se fazer em aventuras futuras."
+COMPENDIUM_INFO,"The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll improve, making them easier to create in future adventures","O Compêndio guarda todas as receitas que você fez, junto de quantas vezes você criou elas. Se você fizer uma receita vezes suficiente, ela sera melhorada, deixando-a muito mais facll de se fazer em aventuras futuras."
 COMPENDIUM_LORE_HEADER,"To my dear alchemist,","Para meu caro alquimista,"
 COMPENDIUM_LORE_TEXT,"I hope this book will be as much of an asset to you as it was once to me.
 Study whenever you can, avoid unnecessary danger, and remember to always stay hydrated.
@@ -130,8 +130,8 @@ COMPENDIUM_PROG,Compendium Progress,Progresso de Compêndio
 RECIPE_IN_BOOK,Recipes in book,Receitas no livro
 TIMES_MADE,Times made,Vezes feita
 MEMORIZATION_PROGRESS,Memorization progress,Progresso de Memorização
-MEMORIZATION,Memorization,Memorização
-MEMORIZED,Memorized!,Memorizada!
+MEMORIZATION,Memorization %s/%s - Level %s,Memorização %s/%s - Nível %s
+MEMORIZED,Memorized! %s - Nível %s,Memorizada! %s - Nível %s
 NEW,New!,Nova!
 KILLED_BY,Killed by:,Morto por:
 NO_ARTIFACTS_COLLECTED,No artifacts collected,Nenhum artefato coletado
@@ -221,7 +221,7 @@ BOSS,Guardian,Guardião
 SHOP,Shop,Loja
 RESTING_CIRCLE,Resting Circle,Círculo do Descanso
 REAGENT_SMITH,Reagent Smith,Forjador de Reagentes
-REAGENT_SMITH_UNLOCK_DESC,"A mysterious figure can now appear on your journeys, be on the lookout for the Reagent Smith. Some say he is mad in love for Pearls...","Uma figura misteriosa poderá aparecer em suas jornadas, fique atento ao Forjador de Reagentes. Alguns dizem que ele é um fanático por Pérolas..."
+REAGENT_SMITH_UNLOCK_DESC,"A misterious figure can now appear on your journeys, be on the lookout for the Reagent Smith. Some say he is mad in love for Pearls...","Uma figura misteriosa poderá aparecer em suas jornadas, fique atento ao Forjador de Reagentes. Alguns dizem que ele é um fanático por Pérolas..."
 EVENT,Event,Evento
 EVENT_UNLOCK_DESC,A new event can now appear on your journeys!,Um novo evento poderá aparecer em suas jornadas!
 LABORATORY,Laboratory,Laboratório
@@ -609,7 +609,7 @@ EVENT_DUMMY_BATTLE_OPT_1,Battle!,Batalhar!
 EVENT_DUMMY_LEAVE_OPT_1,Leave.,Sair.
 EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Ir para o círculo de descanso.
 EVENT_1_TITLE,Travellin' Gamblin' Man,Ambulante Andante Extravagante
-EVENT_1_TEXT,"While exploring, you pass by a mysterious figure hidden beneath a dusty cloak.
+EVENT_1_TEXT,"While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
 
 (shake)""Hey, wanna gamble?""(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
 

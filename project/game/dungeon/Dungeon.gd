@@ -551,10 +551,12 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 		times_recipe_made[recipe.id] = 0
 
 
-func mastery_threshold(combination: Combination) -> int:
+func mastery_threshold(combination: Combination, force_reduction := false) -> int:
 	if Debug.lower_threshold:
 		return 1
 	var threshold = min(10, 18 - combination.recipe.reagents.size() - 3*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
+	if force_reduction or Profile.get_recipe_memorized_level(combination.recipe.id) >= 3:
+		threshold = min(floor(threshold*.8), threshold - 1)
 	threshold = max(threshold, 2)
 	return threshold
 

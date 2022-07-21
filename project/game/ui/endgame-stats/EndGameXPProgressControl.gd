@@ -29,6 +29,7 @@ var max_xp = 100
 
 func _ready():
 	reset_preview()
+	progress_bar.set("custom_styles/fg", progress_bar.get_stylebox("fg").duplicate(true))
 	progress_bar.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
 
 

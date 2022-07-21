@@ -969,11 +969,11 @@ func _on_Player_combination_discovered(combination, _index):
 	recipe_book.add_combination(combination, mastery_threshold(combination))
 
 
-func _on_RecipeBook_recipe_pressed(combination: Combination, mastery_unlocked: bool):
+func _on_RecipeBook_recipe_pressed(combination: Combination, should_autocomplete: bool):
 	assert(battle.grid.grid_size >= combination.grid_size)
 	recipe_book_toggle()
 	battle.grid.clear_hints()
-	if mastery_unlocked:
+	if should_autocomplete:
 		battle.disable_player()
 		battle.autocomplete_grid(combination)
 		yield(battle, "finished_autocomplete")

@@ -133,6 +133,7 @@ MEMORIZATION_PROGRESS,Memorization progress,Progresso de Memorização
 MEMORIZATION,Memorization %s/%s - Level %s,Memorização %s/%s - Nível %s
 MEMORIZED,Memorized! %s - Nível %s,Memorizada! %s - Nível %s
 NEW,New!,Nova!
+LEVEL_UP,Level Up!,Subiu de Nível!
 KILLED_BY,Killed by:,Morto por:
 NO_ARTIFACTS_COLLECTED,No artifacts collected,Nenhum artefato coletado
 STATS,Stats,Estatísticas

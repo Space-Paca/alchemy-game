@@ -1,7 +1,7 @@
 extends Control
 class_name RecipeBook
 
-signal recipe_pressed(combination, mastery_unlocked)
+signal recipe_pressed(combination, should_autocomplete)
 signal recipe_pressed_lab(combination)
 signal favorite_toggled(combination, button_pressed)
 signal close
@@ -495,7 +495,7 @@ func _on_recipe_display_unhovered():
 		reset_hand_reagents_color()
 
 
-func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool):
+func _on_recipe_display_pressed(combination: Combination, should_autocomplete: bool):
 	if state != States.BATTLE and state != States.LAB:
 		return
 	if state == States.BATTLE:
@@ -509,7 +509,7 @@ func _on_recipe_display_pressed(combination: Combination, mastery_unlocked: bool
 			hand_array.append(reagent_display.reagent_name)
 		var valid_reagents = ReagentManager.get_reagents_to_use(combination_reagents, hand_array)
 		if valid_reagents:
-			emit_signal("recipe_pressed", combination, mastery_unlocked)
+			emit_signal("recipe_pressed", combination, should_autocomplete)
 		else:
 			error_effect()
 	else:

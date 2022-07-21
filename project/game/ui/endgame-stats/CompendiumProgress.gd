@@ -28,17 +28,18 @@ func update_known_recipe(recipe_id: String, amount_made: int) -> int:
 
 func populate():
 	for recipe_id in Profile.known_recipes.keys():
+		var level = Profile.get_recipe_memorized_level(recipe_id)
 		var recipe = Profile.known_recipes[recipe_id]
-		if recipe.memorized:
-			continue
 		
 		var amount_made = player.made_recipes[recipe_id].amount
-		if amount_made >= 0 or amount_made > recipe.amount:
-			var new = Profile.known_recipes[recipe_id].amount == -1
-			var total_amount = update_known_recipe(recipe_id, amount_made)
+		if amount_made > 0 or amount_made > recipe.amount: 
 			var recipe_obj = RECIPE.instance()
 			recipe_container.add_child(recipe_obj)
-			recipe_obj.set_recipe(recipe_id, amount_made, total_amount, new)
+			var new = recipe.amount == -1
+			var total_amount = update_known_recipe(recipe_id, amount_made)
+			var level_up = Profile.get_recipe_memorized_level(recipe_id) > level
+			recipe_obj.set_recipe(recipe_id, amount_made, total_amount, new, level_up)
+			recipe_obj.animate_progress()
 
 
 func get_compendium_hint_tooltip():

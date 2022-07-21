@@ -2,7 +2,7 @@ extends Control
 
 signal hovered(reagent_array)
 signal unhovered()
-signal pressed(combination, mastery_unlocked)
+signal pressed(combination, should_autocomplete)
 signal favorite_toggled(combination, button_pressed)
 
 onready var bg = $Panel
@@ -207,7 +207,8 @@ func _on_Panel_mouse_exited():
 
 
 func _on_Button_pressed():
-	emit_signal("pressed", combination, mastery_unlocked)
+	var should_autocomplete = mastery_unlocked #TODO CHECK FOR LEVEL 2 MEMORIZATION
+	emit_signal("pressed", combination, should_autocomplete)
 
 
 func _on_FavoriteButton_toggled(button_pressed):

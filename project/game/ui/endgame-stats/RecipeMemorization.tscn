@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/ui/book/mastery_bar.png" type="Texture" id=2]
@@ -47,6 +47,31 @@ modulate_color = Color( 0.537255, 1, 0, 1 )
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "wow"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.137255, 0.137255, 1 ), Color( 1, 0.45098, 0.0392157, 1 ), Color( 1, 1, 0, 1 ), Color( 0.156863, 1, 0.27451, 1 ), Color( 0.196078, 0.745098, 1, 1 ), Color( 0, 0.176471, 1, 1 ), Color( 0.588235, 0, 1, 1 ), Color( 1, 0.137255, 0.137255, 1 ) ]
+}
 
 [node name="RecipeMemorization" type="HBoxContainer"]
 margin_right = 475.0
@@ -182,5 +207,25 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "/YY"
 valign = 1
+
+[node name="LevelUp" type="Label" parent="Amount/Total"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -224.0
+margin_top = -23.0
+margin_right = -74.0
+margin_bottom = 8.0
+custom_colors/font_color = Color( 1, 0.137255, 0.137255, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "LEVEL_UP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Amount/Total/LevelUp"]
+autoplay = "wow"
+playback_speed = 2.5
+anims/wow = SubResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]

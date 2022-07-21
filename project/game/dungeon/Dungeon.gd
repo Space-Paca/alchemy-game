@@ -256,6 +256,13 @@ func create_combinations():
 			if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
 				favorite_combination(combination, true, false)
 				recipe_book.set_favorite_button(combination, true, true)
+		if Profile.get_recipe_memorized_level(combination.recipe.id) >= 1:
+			player.discover_combination(combination)
+			player.saw_recipe(combination.recipe.id)
+		if Profile.get_recipe_memorized_level(combination.recipe.id) >= 4:
+			combination.reveal_all_but(3)
+			recipe_book.update_combination(combination)
+		
 
 
 func get_favorite_data():

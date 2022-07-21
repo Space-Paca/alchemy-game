@@ -87,9 +87,13 @@ func set_combination(_combination: Combination):
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
+	if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
+		memorized = true
 	if combination.discovered:
 		right_container.queue_free()
 		middle_container.queue_free()
+		if memorized:
+			favorite_button.visible = true
 	else:
 		var columns := [left_column, right_column]
 		var i := 0
@@ -100,10 +104,6 @@ func set_combination(_combination: Combination):
 			reagent_amount.set_reagent(reagent)
 			reagent_amount.set_amount(combination.reagent_amounts[reagent])
 			i += 1
-	
-	if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
-		memorized = true
-		favorite_button.visible = true
 
 
 func update_combination():

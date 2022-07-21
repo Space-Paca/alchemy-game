@@ -40,6 +40,8 @@ func populate():
 			var level_up = Profile.get_recipe_memorized_level(recipe_id) > level
 			recipe_obj.set_recipe(recipe_id, amount_made, total_amount, new, level_up)
 			recipe_obj.animate_progress()
+	#Save new updates to recipes made
+	FileManager.save_profile()
 
 
 func get_compendium_hint_tooltip():

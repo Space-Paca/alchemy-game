@@ -9,6 +9,13 @@ const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
 const MAX_TITLE_FONT_SIZE = 38
+const BG_COLORS = [
+	Color(0xffffffff),
+	Color(0xfffd6aff),
+	Color(0x8bff6aff),
+	Color(0x6afff1ff),
+	Color(0xffffffff),
+]
 const RECIPE_PAGE_NORMAL = preload("res://assets/images/ui/book/recipe_page.png")
 const RECIPE_PAGE_MEMORIZED = preload("res://assets/images/ui/book/mastered_recipe_page.png")
 const BAR_NORMAL_COLOR = Color(0x89ff00ff)
@@ -105,10 +112,12 @@ func set_progress(recipe_id: String):
 		memorization_progress.value = min(amount, threshold)
 		if amount >= threshold:
 			bg.texture = RECIPE_PAGE_MEMORIZED
+			bg.self_modulate = Color(0xffffffff)
 			memorization_label.text = tr("MEMORIZED") % [str(amount), str(level)]
 			memorization_progress.get_stylebox("fg").modulate_color = BAR_MAX_COLOR
 		else:
 			bg.texture = RECIPE_PAGE_NORMAL
+			bg.self_modulate = BG_COLORS[level]
 			memorization_label.text = tr("MEMORIZATION") % [str(amount), str(threshold), str(level)]
 			memorization_progress.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
 

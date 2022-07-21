@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://game/ui/Fader.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://assets/images/ui/book/Label Red Hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/font-data/font-lore.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/images/ui/book/bookshaderypart_top.png" type="Texture" id=16]
+[ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/images/map/elementCircle.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -73,6 +76,15 @@ size = 48
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 17 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 27.391, 27.6441 )
 
 [node name="RecipeCompendium" type="Control"]
 anchor_right = 1.0
@@ -282,8 +294,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Info" type="TextureRect" parent="."]
+margin_left = 657.0
+margin_top = 64.0
+margin_right = 707.0
+margin_bottom = 114.0
+texture = ExtResource( 19 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -25.5
+margin_right = 20.0
+margin_bottom = 25.5
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "i"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TooltipCollision" parent="Info" instance=ExtResource( 18 )]
+position = Vector2( 25.1501, 24.5362 )
+
+[node name="CollisionShape2D" parent="Info/TooltipCollision" index="0"]
+shape = SubResource( 7 )
+
 [connection signal="mouse_entered" from="Background/CloseButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="filters_updated" from="Background/FilterMenu" to="." method="_on_FilterMenu_filters_updated"]
+[connection signal="disable_tooltip" from="Info/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="Info/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 
 [editable path="Background/TopFader"]
+[editable path="Info/TooltipCollision"]

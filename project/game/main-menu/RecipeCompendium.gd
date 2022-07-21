@@ -7,6 +7,7 @@ onready var scroll : ScrollContainer = $Background/ScrollContainer
 onready var filter_menu = $Background/FilterMenu
 onready var fader = $Background/Fader
 onready var top_fader = $Background/TopFader
+onready var compendium_tooltip = $Info/TooltipCollision
 
 const RECIPE = preload("res://game/main-menu/CompendiumRecipeDisplay.tscn")
 const OPENED_POSITION = Vector2(910, 0)
@@ -15,7 +16,8 @@ const ENTER_SPEED = 40
 
 var recipe_displays := {}
 var is_open = false
-
+var tooltip_enabled = false
+var block_tooltips = false
 
 class RecipeSorter:
 	static func sort_ascending(a, b):
@@ -60,7 +62,15 @@ func populate():
 		display.set_combination(display.combination)
 
 
+func get_compendium_hint_tooltip():
+	var tip = {"title": tr("COMPENDIUM"), "text": tr("COMPENDIUM_LEVEL_INFO"),
+			"title_image": "res://assets/images/ui/compendium_icon.png",
+			"subtitle": ""}
+	return tip
+
+
 func enable_tooltips():
+	block_tooltips = false
 	for display in recipe_grid.get_children():
 		if display.visible:
 			display.enable_tooltips()
@@ -69,8 +79,16 @@ func enable_tooltips():
 
 
 func disable_tooltips():
+	block_tooltips = true
 	for display in recipe_grid.get_children():
 		display.disable_tooltips()
+	remove_tooltips()
+
+
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
 
 
 func filter_combinations(filters: Array):
@@ -111,3 +129,18 @@ func _on_button_mouse_entered():
 func _on_CloseButton_pressed():
 	is_open = false
 	emit_signal("closed")
+
+
+func _on_TooltipCollision_disable_tooltip():
+	if tooltip_enabled:
+		remove_tooltips()
+
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
+	
+	tooltip_enabled = true
+	var tip = get_compendium_hint_tooltip()
+	TooltipLayer.add_tooltip(compendium_tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)

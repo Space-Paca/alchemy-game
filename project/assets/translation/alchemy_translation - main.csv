@@ -116,6 +116,7 @@ APPLY,Apply,Aplicar
 COMPENDIUM,Compendium,Compêndio
 COMPENDIUM_UNLOCK_DESC,You unlocked The Compendium! With it you can write down discovered recipes on your journey. Find it on the main menu.,Você desbloqueou O Compêndio! Com ele você pode anotar receitas descobertas durante sua jornada. Ache-o no menu principal.
 COMPENDIUM_INFO,"The Compendium stores all recipes you've made, and how many times you've created them. If you do them enough times, they'll improve, making them easier to create in future adventures","O Compêndio guarda todas as receitas que você fez, junto de quantas vezes você criou elas. Se você fizer uma receita vezes suficiente, ela sera melhorada, deixando-a muito mais facll de se fazer em aventuras futuras."
+COMPENDIUM_LEVEL_INFO,Level 1: Start each run with the uncompleted recipe on your book - Level 2: The first time you make the recipe you can favorite it for quick creation - Level 3: The recipe is a bit easier to master - Level 4: Start each run with a hint on the recipe,Nível 1: Comece cada partida com a receita incompleta em seu livro - Nível 2: A primeira vez que você fizer a receita você pode favorita-la para  - rápida criação - Nível 3: A receita é um pouco mais fácil de masterizar - Nível 4: Comece cada partida com uma dica na receita
 COMPENDIUM_LORE_HEADER,"To my dear alchemist,","Para meu caro alquimista,"
 COMPENDIUM_LORE_TEXT,"I hope this book will be as much of an asset to you as it was once to me.
 Study whenever you can, avoid unnecessary danger, and remember to always stay hydrated.

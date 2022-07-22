@@ -1367,3 +1367,15 @@ EN_SELF_DESTRUCTOR,Unstable Craggium,Rochum Instável
 EN_SPAWNER_OOZE,Noxious Ooze,Lodo Nocivo
 EN_TIMING_BOMBER,Dr. Bomberson,Dr. Bomberson
 EN_ZOMBIE,Reanimated Corpse,Cadáver Reanimado
+ENDING_TEXT_1,"""The relic I've fought for so long to get is finally within my reach.
+The means to leave this godforsaken place...""","""A relíquia que eu busquei por tanto tempo está finalmente ao meu alcance.
+A maneira de sair desse maldito lugar..."""
+ENDING_TEXT_2,"""What? Is the relic itself resisting, as if it didn't want to be taken?
+Why am I being whisked away from here? No!""","""O que? A relíquia está resistindo, como se não quisesse ser tomada?
+Por que eu estou sendo levado embora daqui? Não!"""
+ENDING_TEXT_3,"""Was this all in vain?
+Am I doomed to repeat this journey again and again only to fail at the end?""","""Foi tudo em vão?
+Eu estou fadado a repetir essa jornada de novo e de novo só pra falhar no fim?"""
+ENDING_TEXT_4,"""No, that can't be... there must be another way.
+And I will find it!""","""Não, não pode ser... tem que haver outro jeito.
+E eu vou encontrá-lo!"""

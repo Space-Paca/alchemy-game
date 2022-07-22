@@ -7,7 +7,7 @@ const XP_MULT = [
 	{"normal": 15, "elite": 30, "monsters": 6, "map": 1.25},
 	{"normal": 20, "elite": 40, "monsters": 8, "map": 1.5},
 ]
-const REGION_XP = [100, 200, 300]
+const REGION_XP = [100, 200, 400]
 
 var total_xp : int
 var should_skip := false

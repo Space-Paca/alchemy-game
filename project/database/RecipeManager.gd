@@ -149,6 +149,8 @@ func describe_effects(effects_list, effect_args, short:= false):
 				text += tr("DESC_"+short_text+"DAMAGE_MULT") % [args[0], tr(args[1].to_upper()+"_DAMAGE"), count]
 		elif effect == "damage_all":
 			text += tr("DESC_"+short_text+"DAMAGE_ALL") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]
+		elif effect == "damage_self":
+			text += tr("DESC_"+short_text+"DAMAGE_SELF") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]	
 		elif effect == "heal":
 			text += tr("DESC_"+short_text+"HEAL") % [args[0]]
 		elif effect == "reduce_status":

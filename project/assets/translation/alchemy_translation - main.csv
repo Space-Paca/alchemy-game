@@ -474,6 +474,7 @@ INTENT_IDLE_DESC,This enemy is preparing something...,Este inimigo está prepara
 DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflija %d de %s ao inimigo alvo.
 DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
 DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
+DESC_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
 DESC_HEAL,Heals %d HP.,Cure %d PV.
 DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remova até %d de %s de si mesmo.
 DESC_DRAW,Draw %d reagents.,Compre %d reagentes.
@@ -485,6 +486,7 @@ DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplique %d de %s a todos inimigos.
 DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflija %d de %s.
 DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
 DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
+DESC_SHORT_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
 DESC_SHORT_HEAL,Heals %d HP.,Cure %d PV.
 DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remova até %d de %s de si mesmo.
 DESC_SHORT_DRAW,Draw %d reagents.,Compre %d reagentes.

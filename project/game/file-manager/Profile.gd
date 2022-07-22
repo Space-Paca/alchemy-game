@@ -57,7 +57,9 @@ var progression = {
 
 
 var stats = {
-	"times_finished_alchemist": 0,
+	"times_finished": {
+		"alchemist": 0,
+	}
 }
 
 
@@ -115,7 +117,11 @@ func set_save_data(data):
 		#Handle version diff here.
 		push_warning("Different save version for profile. Its version: " + str(data.version) + " Current version: " + str(Debug.VERSION)) 
 		push_warning("Properly updating to new save version")
-		push_warning("Profile updated!")#lol ヽ(*￣▽￣*)ノミ
+		if data.stats.has("times_finished_alchemist"):
+			data.stats["times_finished"] = {
+				"alchemist": data.stats.times_finished_alchemist
+			}
+		push_warning("Profile updated!")#ヽ(*￣▽￣*)ノミ
 	
 	if known_recipes.empty():
 		reset_known_recipes()

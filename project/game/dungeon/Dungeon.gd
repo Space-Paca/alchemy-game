@@ -238,7 +238,7 @@ func create_combinations():
 	for recipe_id in RecipeManager.recipes.keys():
 		var recipe = RecipeManager.recipes[recipe_id]
 		if (recipe.must_unlock and unlocked_recipes.find(recipe_id) == -1) or\
-		 	(Debug.IS_DEMO and not recipe.use_on_demo):
+		 	(Debug.is_demo and not recipe.use_on_demo):
 			continue
 		
 		var combination = Combination.new()
@@ -331,12 +331,12 @@ func create_level(level: int, debug := false):
 	# (̅_̅_̅_̅(̅_̅_̅_̅_̅_̅_̅_̅_̅̅_̅()ڪے~
 	match level:
 		1:
-			if Debug.IS_DEMO:
+			if Debug.is_demo:
 				map.create_map(level, 3, 1, 0, 1, 1, 1, lab_amount, 1)
 			else:
 				map.create_map(level, 7, 2, 0, 2, 1, 1, lab_amount, 1)
 		2:
-			if Debug.IS_DEMO:
+			if Debug.is_demo:
 				map.create_map(level, 3, 1, smith_amount, 1, 1, 1, lab_amount, 1)
 			else:
 				map.create_map(level, 7, 2, smith_amount, 2, 1, 1, lab_amount, 1)
@@ -782,7 +782,7 @@ func add_all_possible_failed_combinations(reagent_matrix):
 func thanks_for_playing():
 	FileManager.delete_run_file()
 	var scene
-	if not Debug.IS_DEMO:
+	if not Debug.is_demo:
 		var times_finished = Profile.get_stat("times_finished")
 		assert(times_finished.has(player.player_class.name))
 		times_finished[player.player_class.name] += 1

@@ -287,7 +287,7 @@ static func get_artifacts_data(rarity : String, get_only_unlocked := true) -> Ar
 		var to_remove = []
 		for artifact in pool:
 			if artifact.must_unlock and not unlocked_artifacts.has(artifact.id) and\
-				(not Debug.IS_DEMO or artifact.use_on_demo):
+				(not Debug.is_demo or artifact.use_on_demo):
 				to_remove.append(artifact)
 		for rem_art in to_remove:
 			pool.remove(pool.find(rem_art))
@@ -312,7 +312,7 @@ static func get_artifacts(rarity : String, get_only_unlocked := true) -> Array:
 
 	for artifact in pool:
 		if (not get_only_unlocked or not artifact.must_unlock or unlocked_artifacts.has(artifact.id))and\
-		   (not Debug.IS_DEMO or artifact.use_on_demo):
+		   (not Debug.is_demo or artifact.use_on_demo):
 				artifacts.append(artifact.id)
 	return artifacts
 

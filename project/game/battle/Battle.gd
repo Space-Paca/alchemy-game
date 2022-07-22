@@ -781,8 +781,8 @@ func enable_elements():
 
 func is_final_boss():
 	return is_boss and\
-			((not Debug.IS_DEMO and floor_level >= Debug.MAX_FLOOR) or\
-			(Debug.IS_DEMO and floor_level >= Debug.MAX_FLOOR - 1))
+			((not Debug.is_demo and floor_level >= Debug.MAX_FLOOR) or\
+			(Debug.is_demo and floor_level >= Debug.MAX_FLOOR - 1))
 
 
 func win():

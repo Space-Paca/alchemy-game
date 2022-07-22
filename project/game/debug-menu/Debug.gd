@@ -21,9 +21,9 @@ signal damage_all
 
 const VERSION := "v0.6.0"
 const MAX_FLOOR := 3
-const IS_DEMO = false
-const ALLOW_DEBUGGING = true
 
+var allow_debugging = false
+var is_demo = false
 var floor_to_go := -1
 var recipes_unlocked := false
 var reveal_map := false
@@ -33,8 +33,15 @@ var give_xp := false
 
 func _ready():
 	set_process(false)
+	
+	for arg in OS.get_cmdline_args():
+		if arg == "--is_demo":
+			is_demo = true
+		if arg == "--allow_debug":
+			allow_debugging = true
+	
 	version_label.text = VERSION
-	demo_label.visible = IS_DEMO
+	demo_label.visible = is_demo
 	
 	floor_button.add_item("Go to floor")
 	floor_button.add_separator()
@@ -44,7 +51,7 @@ func _ready():
 
 
 func _input(event):
-	if not ALLOW_DEBUGGING:
+	if not allow_debugging:
 		return
 	if event.is_action_pressed("toggle_debug"):
 		bg.visible = !bg.visible

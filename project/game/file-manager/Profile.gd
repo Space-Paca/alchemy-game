@@ -238,7 +238,7 @@ func get_recipe_memorized_level(name):
 
 func is_max_level(prog_type):
 	var prog = UnlockManager.get_progression(prog_type)
-	if Debug.IS_DEMO:
+	if Debug.is_demo:
 		return get_progression_level(prog_type) >= 3
 	else:
 		return get_progression_level(prog_type) == prog.size()

@@ -204,7 +204,7 @@ window/stretch/aspect="keep"
 
 [editor]
 
-main_run_args="--is_demo --allow_debug"
+main_run_args="--allow_debug"
 
 [global]
 

@@ -1315,6 +1315,7 @@ func _on_player_died(_player):
 	ended = true
 	disable_player()
 	disable_elements()
+	Profile.set_stat("gameover", Profile.get_stat("gameover") + 1)
 	FileManager.delete_run_file()
 	var gameover = GAMEOVER_SCENE.instance()
 	gameover.set_player(player)

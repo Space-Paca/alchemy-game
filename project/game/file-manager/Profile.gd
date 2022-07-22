@@ -59,7 +59,8 @@ var progression = {
 var stats = {
 	"times_finished": {
 		"alchemist": 0,
-	}
+	},
+	"gameover": 0,
 }
 
 

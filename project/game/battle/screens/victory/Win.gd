@@ -38,19 +38,16 @@ var curr_state : int = States.LOOT
 var rewarded_combinations := []
 var pearl_amount := 0
 var player = null
+var recipe_taken = false
+
 
 func _ready():
-	reset()
 	animation.play("enter")
-
-
-func reset():
-	title.modulate.a = 0
-	moving_screen.modulate.a = 0
 
 
 func setup(_player):
 	player = _player
+
 
 func set_loot(loot: Array):
 	for loot_name in loot:
@@ -155,23 +152,33 @@ func enable_buttons():
 			back_button.disabled = false
 
 
-func check_loot_left():
+func check_loot_left() -> bool:
 	for child in loot_list.get_children():
 		if child.visible:
-			return
+			return true
 	
 	loot_list.hide()
 	
 	for child in rewards_container.get_children():
 		if child.visible:
-			return
+			return true
 	
 	$BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/Nothing.show()
+	return not recipe_taken
+
+
+func close_popup():
+	$Popup.hide()
+	enable_tooltips()
 
 
 func _on_ContinueButton_pressed():
-	TooltipLayer.clean_tooltips()
-	emit_signal("continue_pressed")
+	if check_loot_left():
+		$Popup.show()
+		disable_tooltips()
+	else:
+		TooltipLayer.clean_tooltips()
+		emit_signal("continue_pressed")
 
 
 func _on_reagent_looted(reagent_loot):
@@ -179,6 +186,7 @@ func _on_reagent_looted(reagent_loot):
 	emit_signal("reagent_looted", reagent_loot.reagent)
 	reagent_loot.hide()
 	reagent_loot.queue_free()
+# warning-ignore:return_value_discarded
 	check_loot_left()
 
 
@@ -186,6 +194,7 @@ func _on_reagent_sold(reagent_loot):
 	emit_signal("reagent_sold", reagent_loot.gold_value)
 	reagent_loot.hide()
 	reagent_loot.queue_free()
+# warning-ignore:return_value_discarded
 	check_loot_left()
 
 
@@ -194,12 +203,14 @@ func _on_artifact_looted(artifact_loot):
 	emit_signal("artifact_looted", artifact_loot.artifact)
 	artifact_loot.hide()
 	artifact_loot.queue_free()
+# warning-ignore:return_value_discarded
 	check_loot_left()
 
 
 func _on_pearl_collected():
 	emit_signal("pearl_collected", pearl_amount)
 	pearl_container.hide()
+# warning-ignore:return_value_discarded
 	check_loot_left()
 
 
@@ -217,9 +228,11 @@ func _on_WinRecipe_chosen(chosen_recipe):
 			recipe_display.hide()
 			recipe_display.disable_tooltips()
 	
+	recipe_taken = true
 	recipes_button.hide()
 	back_button.hide()
 	
+# warning-ignore:return_value_discarded
 	check_loot_left()
 	
 	tween.interpolate_property(chosen_recipe, "rect_position:x", null, 1250,
@@ -247,3 +260,12 @@ func _on_RecipesButton_pressed():
 
 func _on_button_mouse_entered():
 	AudioManager.play_sfx("hover_reward_button")
+
+
+func _on_Popup_Continue_pressed():
+	TooltipLayer.clean_tooltips()
+	emit_signal("continue_pressed")
+
+
+func _on_Popup_Back_pressed():
+	close_popup()

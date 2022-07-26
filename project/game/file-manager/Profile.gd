@@ -32,6 +32,8 @@ var options = {
 	"choose_language": false,
 	"disable_map_fog": false,
 	"large_ui": false,
+	"enable_colorblind": false,
+	"colorblind_mode": 0, #Protanopia
 }
 
 var controls = {
@@ -75,7 +77,7 @@ func _ready():
 
 func get_locale_idx(locale):
 	var idx = 0
-	for lang in Profile.LANGUAGES:
+	for lang in LANGUAGES:
 		if lang.locale == locale:
 			return idx
 		idx += 1
@@ -141,6 +143,11 @@ func set_save_data(data):
 	OS.window_fullscreen = options.fullscreen
 	OS.window_borderless = options.borderless
 	OS.window_size = WINDOW_SIZES[options.window_size]
+	if options.enable_colorblind:
+		ColorblindnessShader.enable()
+	else:
+		ColorblindnessShader.disable()
+	ColorblindnessShader.set_mode(options.colorblind_mode)
 	
 	for action in controls.keys():
 		edit_control_action(action, controls[action])

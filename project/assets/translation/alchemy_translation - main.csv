@@ -2,12 +2,14 @@ key,en,pt_BR
 NEW_GAME,New Game,Novo Jogo
 QUIT,Quit,Sair
 CONTINUE,Continue,Continuar
+CONFIRM,Confirm,Confirmar
 RESUME,Resume,Continuar
 SETTINGS,Settings,Configurações
 SAVE_RETURN_MENU,Save & Return to Menu,Salvar e Retornar ao Menu
 SAVE_RETURN_DESKTOP,Save & Exit to Desktop,Salvar e Sair do Jogo
 ARE_YOU_SURE,Are you sure?,Tem certeza?
 ARE_YOU_SURE_EXIT,Are you sure you want to exit the game?,Tem certeza que quer sair do jogo?
+ARE_YOU_SURE_NEW_GAME,Your previous progress will be lost. Are you sure you want to start a new journey?,Seu progresso anterior será perdido. Tem certeza que quer começar uma nova jornada?
 YES,Yes,Sim
 YES_EXC,Yes!,Sim!
 NO,No,Não
@@ -26,6 +28,7 @@ OPT_BORDERLESS,Borderless,Sem Borda
 OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
 OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
 OPT_LARGEUI,Enlarge Tooltips,Aumentar Tamanho de Dicas
+OPT_COLORBLIND,Enable Colorblind Mode,Habilitar Modo Daltônico
 OPT_MASTER_VOLUME,Master Volume,Volume Mestre
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música
 OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros
@@ -1383,6 +1386,6 @@ Eu estou fadado a repetir essa jornada de novo e de novo só pra falhar no fim?"
 ENDING_TEXT_4,"""No, that can't be... there must be another way.
 And I will find it!""","""Não, não pode ser... tem que haver outro jeito.
 E eu vou encontrá-lo!"""
-REWARD_SKIP_CONFIRMATION_TEXT,"There are still rewards to be taken, are you sure you want to continue?","Ainda tem recompensas a serem resgatadas, tem certeza que você deseja continuar?"
+REWARD_SKIP_CONFIRMATION_TEXT,"There are still rewards to be taken, are you sure you want to continue to the map?","Ainda tem recompensas a serem resgatadas, tem certeza que você deseja continuar ao mapa?"
 REWARD_SKIP_CONFIRMATION_BACK,Back,Voltar
 REWARD_SKIP_CONFIRMATION_CONTINUE,Continue,Continuar

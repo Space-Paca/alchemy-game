@@ -185,6 +185,7 @@ Profile="*res://game/file-manager/Profile.gd"
 Transition="*res://game/ui/transition/Transition.tscn"
 UnlockManager="*res://database/UnlockManager.gd"
 ShakeCam="*res://game/camera/ShakeCam.tscn"
+ColorblindnessShader="*res://game/ui/ColorblindnessShader.tscn"
 
 [debug]
 

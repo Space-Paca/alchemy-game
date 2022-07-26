@@ -159,6 +159,7 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1111,7 +1112,6 @@ group = SubResource( 19 )
 text = "Português"
 
 [node name="Accesibility" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1147,11 +1147,52 @@ margin_right = 664.0
 margin_bottom = 47.0
 custom_fonts/font = SubResource( 6 )
 text = "OPT_LARGEUI"
-align = 1
+align = 2
 
 [node name="LargeUICheckBox" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/LargeUI"]
 margin_left = 754.0
 margin_right = 804.0
+margin_bottom = 60.0
+theme = ExtResource( 1 )
+custom_constants/hseparation = 40
+custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked = ExtResource( 9 )
+custom_icons/checked = ExtResource( 9 )
+custom_icons/radio_unchecked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorBlindness" type="HBoxContainer" parent="TabContainer/Accesibility/VBoxContainer"]
+margin_top = 137.0
+margin_right = 1300.0
+margin_bottom = 197.0
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 90
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Accesibility/VBoxContainer/ColorBlindness"]
+margin_left = 470.0
+margin_top = 12.0
+margin_right = 690.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 6 )
+text = "OPT_COLORBLIND"
+align = 2
+
+[node name="ColorBlindnessCheckBox" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/ColorBlindness"]
+margin_left = 780.0
+margin_right = 830.0
 margin_bottom = 60.0
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
@@ -1206,4 +1247,5 @@ text = "BACK"
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/En" to="." method="_on_LanguageButton_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/Pt_BR" to="." method="_on_LanguageButton_pressed" binds= [ 1 ]]
 [connection signal="toggled" from="TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox" to="." method="_on_LargeUICheckBox_toggled"]
+[connection signal="toggled" from="TabContainer/Accesibility/VBoxContainer/ColorBlindness/ColorBlindnessCheckBox" to="." method="_on_ColorBlindnessCheckBox_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

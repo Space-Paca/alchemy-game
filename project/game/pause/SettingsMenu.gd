@@ -10,6 +10,7 @@ onready var fullscreen_button = $TabContainer/Video/VBoxContainer/FullscreenCont
 onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
 onready var largeui_button = $TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox
+onready var colorblind_button = $TabContainer/Accesibility/VBoxContainer/ColorBlindness/ColorBlindnessCheckBox
 onready var auto_end_button = $TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var show_timer_button = $TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
 onready var screen_shake_button = $TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox
@@ -81,6 +82,7 @@ func update_buttons():
 	borderless_button.pressed = Profile.get_option("borderless")
 	mapfog_button.pressed = Profile.get_option("disable_map_fog")
 	largeui_button.pressed = Profile.get_option("large_ui")
+	colorblind_button.pressed = Profile.get_option("enable_colorblind")
 	auto_end_button.pressed = Profile.get_option("auto_end_turn")
 	resolution_button.disabled = fullscreen_button.pressed
 	resolution_dropdown.visible = false
@@ -298,3 +300,12 @@ func _on_ScreenShakeCheckBox_toggled(button_pressed):
 func _on_LargeUICheckBox_toggled(button_pressed):
 	AudioManager.play_sfx("click")
 	Profile.set_option("large_ui", button_pressed)
+
+
+func _on_ColorBlindnessCheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	Profile.set_option("enable_colorblind", button_pressed)
+	if button_pressed:
+		ColorblindnessShader.enable()
+	else:
+		ColorblindnessShader.disable()

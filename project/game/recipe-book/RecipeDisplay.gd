@@ -182,6 +182,7 @@ func favorite_error():
 
 
 func enable_tooltips():
+	block_tooltips = false
 	for reagent_amount in grid.get_children():
 		reagent_amount.enable_tooltips()
 	
@@ -194,6 +195,7 @@ func enable_tooltips():
 
 
 func disable_tooltips():
+	block_tooltips = true
 	for reagent_amount in grid.get_children():
 		reagent_amount.disable_tooltips()
 	remove_tooltips()

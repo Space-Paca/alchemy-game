@@ -9,6 +9,7 @@ onready var reagent_list = $MarginContainer/VBoxContainer/HBoxContainer/Right/Re
 onready var left_column = $MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
 onready var right_column = $MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
 onready var icon = $Icon
+onready var tooltip = $MarginContainer/VBoxContainer/Description/TooltipCollision
 
 const REAGENT = preload("res://game/recipe-book/ReagentDisplay.tscn")
 const REAGENT_SIZE = 50
@@ -18,7 +19,9 @@ const MAX_REAGENT_COLUMN = 4
 const MAX_TITLE_FONT_SIZE = 50
 
 var combination : Combination
-
+var mastery_unlocked = false
+var tooltip_enabled = false
+var block_tooltips = false
 
 func _ready():
 	var font = title.get("custom_fonts/font").duplicate(true)
@@ -83,8 +86,10 @@ func master_combination():
 	update_title_size()
 	description.text = RecipeManager.get_description(combination.recipe, true)
 	$BG.texture = MASTERED_TEXTURE
+	mastery_unlocked = true
 
 func enable_tooltips():
+	block_tooltips = false
 	for reagent in grid.get_children():
 		reagent.enable_tooltips()
 	if left_column and is_instance_valid(left_column):
@@ -96,6 +101,7 @@ func enable_tooltips():
 
 
 func disable_tooltips():
+	block_tooltips = true
 	for reagent in grid.get_children():
 		reagent.disable_tooltips()
 	if left_column and is_instance_valid(left_column):
@@ -104,3 +110,24 @@ func disable_tooltips():
 	if right_column and is_instance_valid(right_column):
 		for reagent in right_column.get_children():
 			reagent.disable_tooltips()
+	remove_tooltips()
+
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
+
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips or not combination:
+		return
+	
+	tooltip_enabled = true
+	var tip = RecipeManager.get_tooltip(combination.recipe, mastery_unlocked)
+	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)
+
+
+func _on_TooltipCollision_disable_tooltip():
+	if tooltip_enabled:
+		remove_tooltips()

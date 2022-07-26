@@ -31,6 +31,7 @@ var options = {
 	"locale": 0,
 	"choose_language": false,
 	"disable_map_fog": false,
+	"large_ui": false,
 }
 
 var controls = {

@@ -6,6 +6,8 @@ const SEPARATION_TITLE_SUBTITLE = 2
 const SEPARATION_TITLE_TEXT = 9
 const SEPARATION_TITLE_IMAGE = 15
 const TITLE_IMAGE_SIZE = 48
+const FONT_NORMAL = preload("res://assets/fonts/TooltipFontNormal.tres")
+const FONT_BIG = preload("res://assets/fonts/TooltipFontBig.tres")
 
 signal set_up
 
@@ -17,6 +19,11 @@ func fade_in():
 	$Tween.start()
 
 func setup(_title, _text, _title_image, _subtitle = false, expanded = false, stylize = true):
+	if Profile.get_option("large_ui"):
+		$Text.add_font_override("normal_font", FONT_BIG)
+	else:
+		$Text.add_font_override("normal_font", FONT_NORMAL)
+	
 	modulate = Color(1,1,1,0)
 	$Title.rect_position.y = MARGIN_Y
 	$Title.rect_position.x = MARGIN_X

@@ -9,6 +9,7 @@ onready var window_size_buttons = $TabContainer/Video/VBoxContainer/ResolutionCo
 onready var fullscreen_button = $TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
 onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
+onready var largeui_button = $TabContainer/Video/VBoxContainer/LargeUI/LargeUICheckBox
 onready var auto_end_button = $TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var show_timer_button = $TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
 onready var screen_shake_button = $TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox
@@ -79,6 +80,7 @@ func update_buttons():
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
 	mapfog_button.pressed = Profile.get_option("disable_map_fog")
+	largeui_button.pressed = Profile.get_option("large_ui")
 	auto_end_button.pressed = Profile.get_option("auto_end_turn")
 	resolution_button.disabled = fullscreen_button.pressed
 	resolution_dropdown.visible = false
@@ -291,3 +293,8 @@ func _on_CloseDropdown_pressed():
 func _on_ScreenShakeCheckBox_toggled(button_pressed):
 	AudioManager.play_sfx("click")
 	Profile.set_option("screen_shake", button_pressed)
+
+
+func _on_LargeUICheckBox_toggled(button_pressed):
+	AudioManager.play_sfx("click")
+	Profile.set_option("large_ui", button_pressed)

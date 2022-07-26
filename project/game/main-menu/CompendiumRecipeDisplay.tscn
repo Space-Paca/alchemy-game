@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://game/main-menu/CompendiumRecipeDisplay.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/recipe-icons/dano.png" type="Texture" id=9]
 [ext_resource path="res://assets/shaders/painting_shader_material.tres" type="Material" id=10]
+[ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=7]
 size = 28
@@ -22,6 +23,9 @@ size = 18
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 137, 32 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 22
@@ -190,6 +194,15 @@ custom_fonts/font = SubResource( 2 )
 align = 1
 autowrap = true
 
+[node name="TooltipCollision" parent="Background/MarginContainer/VBoxContainer/Description" instance=ExtResource( 11 )]
+position = Vector2( 135, 31 )
+
+[node name="CollisionShape2D" parent="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" index="0"]
+shape = SubResource( 11 )
+
+[node name="TooltipPosition" parent="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" index="1"]
+position = Vector2( 149, -30 )
+
 [node name="MemorizationLabel" type="Label" parent="Background"]
 margin_left = 15.0
 margin_top = 272.0
@@ -266,5 +279,9 @@ margin_bottom = 118.5
 custom_fonts/font = SubResource( 6 )
 text = "?"
 
+[connection signal="disable_tooltip" from="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
+[connection signal="enable_tooltip" from="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]
+
+[editable path="Background/MarginContainer/VBoxContainer/Description/TooltipCollision"]

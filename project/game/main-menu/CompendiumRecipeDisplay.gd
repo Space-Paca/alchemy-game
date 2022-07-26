@@ -34,11 +34,14 @@ onready var title = $Background/MarginContainer/VBoxContainer/TitleContainer/Tit
 onready var left_column = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/LeftColumn
 onready var right_column = $Background/MarginContainer/VBoxContainer/HBoxContainer/Right/ReagentList/RightColumn
 onready var icon = $Icon
+onready var tooltip = $Background/MarginContainer/VBoxContainer/Description/TooltipCollision
 
 var combination : Combination
 var reagent_array := []
 var filtered := true
 var hovered := false
+var tooltip_enabled = false
+var block_tooltips = false
 
 
 func _ready():
@@ -123,6 +126,7 @@ func set_progress(recipe_id: String):
 
 
 func enable_tooltips():
+	block_tooltips = false
 	for reagent_amount in grid.get_children():
 		reagent_amount.enable_tooltips()
 	
@@ -135,8 +139,16 @@ func enable_tooltips():
 
 
 func disable_tooltips():
+	block_tooltips = true
 	for reagent_amount in grid.get_children():
 		reagent_amount.disable_tooltips()
+	remove_tooltips()
+
+
+func remove_tooltips():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
 
 
 func _on_Panel_mouse_entered():
@@ -148,3 +160,18 @@ func _on_Panel_mouse_entered():
 func _on_Panel_mouse_exited():
 	hovered = false
 	emit_signal("unhovered")
+
+
+func _on_TooltipCollision_enable_tooltip():
+	if block_tooltips:
+		return
+	
+	tooltip_enabled = true
+	var tip = RecipeManager.get_tooltip(combination.recipe, false)
+	TooltipLayer.add_tooltip(tooltip.get_position(), tip.title, \
+							 tip.text, tip.title_image, tip.subtitle, true)
+
+
+func _on_TooltipCollision_disable_tooltip():
+	if tooltip_enabled:
+		remove_tooltips()

@@ -9,7 +9,7 @@ onready var window_size_buttons = $TabContainer/Video/VBoxContainer/ResolutionCo
 onready var fullscreen_button = $TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
 onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
-onready var largeui_button = $TabContainer/Video/VBoxContainer/LargeUI/LargeUICheckBox
+onready var largeui_button = $TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox
 onready var auto_end_button = $TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var show_timer_button = $TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
 onready var screen_shake_button = $TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox
@@ -33,7 +33,7 @@ onready var language_label = $TabContainer/Language/VBoxContainer/LanguageContai
 onready var language_buttons = $TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer.get_children()
 
 const SLIDER_COOLDOWN = .18
-const TABS = ["VIDEO", "AUDIO", "CONTROLS", "GAMEPLAY", "LANGUAGE"]
+const TABS = ["VIDEO", "AUDIO", "CONTROLS", "GAMEPLAY", "LANGUAGE", "ACCESIBILITY"]
 
 var is_keybinding = false
 var keybinding = {"button": null, "action": "", "text": ""}

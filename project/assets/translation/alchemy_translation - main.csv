@@ -19,13 +19,13 @@ AUDIO,Audio,Áudio
 CONTROLS,Controls,Controles
 GAMEPLAY,Gameplay,Jogabilidade
 LANGUAGE,Language,Linguagem
+ACCESIBILITY,Accesibility,Acessibilidade
 OPT_WINDOW_SIZE,Window Size,Tamanho da Janela
 OPT_FULLSCREEN,Fullscreen,Tela Cheia
 OPT_BORDERLESS,Borderless,Sem Borda
 OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
 OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
-OPT_LARGEUI,Enlarge UI,Aumentar Interface
-OPT_LARGEUI_DESC,increases size of some UI elements,aumenta o tamanho de alguns elementos visuais
+OPT_LARGEUI,Enlarge Tooltips,Aumentar Tamanho de Dicas
 OPT_MASTER_VOLUME,Master Volume,Volume Mestre
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música
 OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros
@@ -1383,3 +1383,6 @@ Eu estou fadado a repetir essa jornada de novo e de novo só pra falhar no fim?"
 ENDING_TEXT_4,"""No, that can't be... there must be another way.
 And I will find it!""","""Não, não pode ser... tem que haver outro jeito.
 E eu vou encontrá-lo!"""
+REWARD_SKIP_CONFIRMATION_TEXT,"There are still rewards to be taken, are you sure you want to continue?","Ainda tem recompensas a serem resgatadas, tem certeza que você deseja continuar?"
+REWARD_SKIP_CONFIRMATION_BACK,Back,Voltar
+REWARD_SKIP_CONFIRMATION_CONTINUE,Continue,Continuar

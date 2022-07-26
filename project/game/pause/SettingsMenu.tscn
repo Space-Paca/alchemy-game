@@ -142,10 +142,10 @@ __meta__ = {
 }
 
 [node name="TabContainer" type="TabContainer" parent="."]
-margin_left = 410.0
-margin_right = 1510.0
+margin_left = 310.0
+margin_right = 1610.0
 margin_bottom = 600.0
-rect_min_size = Vector2( 1100, 600 )
+rect_min_size = Vector2( 1300, 600 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource( 1 )
@@ -159,10 +159,11 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 66.0
+margin_top = 61.0
 margin_right = -5.0
 margin_bottom = -5.0
 theme = ExtResource( 1 )
@@ -287,59 +288,6 @@ __meta__ = {
 }
 
 [node name="MapFogCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/MapFog"]
-margin_left = 590.0
-margin_right = 640.0
-margin_bottom = 60.0
-theme = ExtResource( 1 )
-custom_constants/hseparation = 40
-custom_fonts/font = SubResource( 6 )
-custom_icons/radio_checked = ExtResource( 9 )
-custom_icons/checked = ExtResource( 9 )
-custom_icons/radio_unchecked = ExtResource( 4 )
-custom_icons/unchecked = ExtResource( 4 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/hover_pressed = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LargeUI" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
-margin_top = 429.0
-margin_right = 1090.0
-margin_bottom = 489.0
-rect_min_size = Vector2( 0, 60 )
-custom_constants/separation = 90
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/LargeUI"]
-margin_top = 12.0
-margin_right = 500.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 500, 0 )
-custom_fonts/font = SubResource( 6 )
-text = "OPT_LARGEUI"
-align = 2
-
-[node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/LargeUI/Label"]
-margin_top = 29.0
-margin_right = 500.0
-margin_bottom = 59.0
-rect_min_size = Vector2( 500, 0 )
-custom_colors/font_color = Color( 1, 0.803922, 0.545098, 1 )
-custom_fonts/font = SubResource( 13 )
-text = "OPT_LARGEUI_DESC"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LargeUICheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/LargeUI"]
 margin_left = 590.0
 margin_right = 640.0
 margin_bottom = 60.0
@@ -565,7 +513,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 66.0
+margin_top = 61.0
 margin_right = -5.0
 margin_bottom = -5.0
 theme = ExtResource( 1 )
@@ -694,7 +642,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 66.0
+margin_top = 61.0
 margin_right = -5.0
 margin_bottom = -5.0
 theme = ExtResource( 1 )
@@ -847,7 +795,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 66.0
+margin_top = 61.0
 margin_right = -5.0
 margin_bottom = -5.0
 theme = ExtResource( 1 )
@@ -996,7 +944,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 66.0
+margin_top = 61.0
 margin_right = -5.0
 margin_bottom = -5.0
 theme = ExtResource( 1 )
@@ -1163,6 +1111,65 @@ custom_styles/normal = SubResource( 20 )
 group = SubResource( 19 )
 text = "Português"
 
+[node name="Accesibility" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 61.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 1 )
+tab_align = 0
+scrolling_enabled = false
+
+[node name="VBoxContainer" type="Control" parent="TabContainer/Accesibility"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LargeUI" type="HBoxContainer" parent="TabContainer/Accesibility/VBoxContainer"]
+margin_top = 57.0
+margin_right = 1300.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 90
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Accesibility/VBoxContainer/LargeUI"]
+margin_left = 495.0
+margin_top = 12.0
+margin_right = 664.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 6 )
+text = "OPT_LARGEUI"
+align = 1
+
+[node name="LargeUICheckBox" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/LargeUI"]
+margin_left = 754.0
+margin_right = 804.0
+margin_bottom = 60.0
+theme = ExtResource( 1 )
+custom_constants/hseparation = 40
+custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked = ExtResource( 9 )
+custom_icons/checked = ExtResource( 9 )
+custom_icons/radio_unchecked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Back" type="Button" parent="."]
 margin_left = 785.0
 margin_top = 620.0
@@ -1177,7 +1184,6 @@ text = "BACK"
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox" to="." method="_on_MapFogCheckBox_toggled"]
-[connection signal="toggled" from="TabContainer/Video/VBoxContainer/LargeUI/LargeUICheckBox" to="." method="_on_LargeUICheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton" to="." method="_on_ResolutionButton_toggled"]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1920x1080" to="." method="_on_Resolution_button_pressed" binds= [ 0 ]]
@@ -1199,4 +1205,5 @@ text = "BACK"
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/En" to="." method="_on_LanguageButton_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer/Pt_BR" to="." method="_on_LanguageButton_pressed" binds= [ 1 ]]
+[connection signal="toggled" from="TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox" to="." method="_on_LargeUICheckBox_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

@@ -297,7 +297,7 @@ func load_level(data):
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
-					player.known_recipes.has(combination.recipe.id):
+					combination.discovered:
 				possible_rewarded_combinations.append(combination)
 	
 	# SHOP
@@ -349,7 +349,7 @@ func create_level(level: int, debug := false):
 	for grid_size in combinations:
 		for combination in combinations[grid_size]:
 			if combination.recipe.floor_sold_in == level and not\
-					player.known_recipes.has(combination.recipe.id):
+					combination.discovered:
 				possible_rewarded_combinations.append(combination)
 	
 	# SHOP

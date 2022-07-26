@@ -8,6 +8,10 @@ const SEPARATION_TITLE_IMAGE = 15
 const TITLE_IMAGE_SIZE = 48
 const FONT_NORMAL = preload("res://assets/fonts/TooltipFontNormal.tres")
 const FONT_BIG = preload("res://assets/fonts/TooltipFontBig.tres")
+const FONT_TITLE_NORMAL = preload("res://assets/fonts/TooltipTitleFontNormal.tres")
+const FONT_TITLE_BIG = preload("res://assets/fonts/TooltipTitleFontBig.tres")
+const FONT_SUBTITLE_NORMAL = preload("res://assets/fonts/TooltipSubtitleFontNormal.tres")
+const FONT_SUBTITLE_BIG = preload("res://assets/fonts/TooltipSubtitleFontBig.tres")
 
 signal set_up
 
@@ -21,8 +25,12 @@ func fade_in():
 func setup(_title, _text, _title_image, _subtitle = false, expanded = false, stylize = true):
 	if Profile.get_option("large_ui"):
 		$Text.add_font_override("normal_font", FONT_BIG)
+		$Title.add_font_override("font", FONT_TITLE_BIG)
+		$Subtitle.add_font_override("font", FONT_SUBTITLE_BIG)
 	else:
 		$Text.add_font_override("normal_font", FONT_NORMAL)
+		$Title.add_font_override("font", FONT_TITLE_NORMAL)
+		$Subtitle.add_font_override("font", FONT_SUBTITLE_NORMAL)
 	
 	modulate = Color(1,1,1,0)
 	$Title.rect_position.y = MARGIN_Y

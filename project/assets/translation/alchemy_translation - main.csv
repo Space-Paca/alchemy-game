@@ -24,7 +24,7 @@ OPT_FULLSCREEN,Fullscreen,Tela Cheia
 OPT_BORDERLESS,Borderless,Sem Borda
 OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
 OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
-OPT_LARGEUI,Large UI,Interface Grande
+OPT_LARGEUI,Enlarge UI,Aumentar Interface
 OPT_LARGEUI_DESC,increases size of some UI elements,aumenta o tamanho de alguns elementos visuais
 OPT_MASTER_VOLUME,Master Volume,Volume Mestre
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música

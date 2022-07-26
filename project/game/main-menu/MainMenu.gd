@@ -70,10 +70,18 @@ func skip_intro_animation():
 		button.disabled = false
 
 
-func _on_NewGameButton_pressed():
+func start_game(continue_save := false):
+	FileManager.continue_game = continue_save
 	AudioManager.stop_bgm(BGM_STOP_SPEED)
 	AudioManager.play_sfx("start_new_game")
 	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
+
+
+func _on_NewGameButton_pressed():
+	if FileManager.run_file_exists():
+		$PopupBG.show()
+	else:
+		start_game()
 
 
 func _on_QuitButton_pressed():
@@ -111,10 +119,7 @@ func _on_button_mouse_entered(button):
 
 
 func _on_ContinueButton_pressed():
-	AudioManager.stop_bgm(BGM_STOP_SPEED)
-	AudioManager.play_sfx("start_new_game")
-	FileManager.continue_game = true
-	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
+	start_game(true)
 
 
 func _on_CompendiumButton_pressed():
@@ -154,4 +159,13 @@ func _on_SheenTimer_timeout():
 	sheen_tween.start()
 	yield(sheen_tween, "tween_completed")
 	sheen_material.set_shader_param("shine_location", 0.0)
-	
+
+
+func _on_Popup_Back_pressed():
+	AudioManager.play_sfx("click")
+	$PopupBG.hide()
+
+
+func _on_Popup_Confirm_pressed():
+	AudioManager.play_sfx("click")
+	start_game()

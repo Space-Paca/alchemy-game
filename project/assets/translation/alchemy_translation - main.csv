@@ -22,6 +22,9 @@ CONTROLS,Controls,Controles
 GAMEPLAY,Gameplay,Jogabilidade
 LANGUAGE,Language,Linguagem
 ACCESIBILITY,Accesibility,Acessibilidade
+PROTANOPIA,Protanopia,Protanopia
+DEUTRANOPIA,Deuteranopia,Deuteranopia
+TRITANOPIA,Tritanopia,Tritanopia
 OPT_WINDOW_SIZE,Window Size,Tamanho da Janela
 OPT_FULLSCREEN,Fullscreen,Tela Cheia
 OPT_BORDERLESS,Borderless,Sem Borda
@@ -29,6 +32,7 @@ OPT_DISABLEFOG,Disable Map Fog,Desabilitar Névoa do Mapa
 OPT_DISABLEFOG_DESC,might improve lag on map screen,pode diminuir lag na tela de mapa
 OPT_LARGEUI,Enlarge Tooltips,Aumentar Tamanho de Dicas
 OPT_COLORBLIND,Enable Colorblind Mode,Habilitar Modo Daltônico
+OPT_COLORBLIND_MODE,Colorblind Type,Tipo de Daltonismo
 OPT_MASTER_VOLUME,Master Volume,Volume Mestre
 OPT_MUSIC_VOLUME,Music Volume,Volume da Música
 OPT_SFX_VOLUME,Sound Effects Volume,Volume de Efeitos Sonoros

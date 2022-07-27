@@ -11,6 +11,10 @@ onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessCont
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
 onready var largeui_button = $TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox
 onready var colorblind_button = $TabContainer/Accesibility/VBoxContainer/ColorBlindness/ColorBlindnessCheckBox
+onready var colorblindmode_button = $TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/ColorblindModeButton
+onready var colorblindmode_dropdown = $TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown
+onready var colorblindmode_label = $TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/ColorblindModeButton/Label
+onready var colorblindmode_buttons = $TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown/ModesContainer.get_children()
 onready var auto_end_button = $TabContainer/Gameplay/VBoxContainer/AutoPassContainer/AutoPassCheckBox
 onready var show_timer_button = $TabContainer/Gameplay/VBoxContainer/ShowTimerContainer/ShowTimerCheckBox
 onready var screen_shake_button = $TabContainer/Gameplay/VBoxContainer/ScreenShakeContainer/ScreenShakeCheckBox
@@ -74,10 +78,10 @@ func update_buttons():
 	var size_index = Profile.get_option("window_size")
 	var size = Profile.WINDOW_SIZES[size_index]
 	var locale_index = Profile.get_option("locale")
-	var lang = Profile.LANGUAGES[locale_index]
+	var colorblind_index = Profile.get_option("colorblind_mode")
 	window_size_label.text = str(size.x, "x", size.y)
 	language_buttons[locale_index].pressed = true
-	language_label.text = lang.name
+	language_label.text = Profile.LANGUAGES[locale_index].name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
 	mapfog_button.pressed = Profile.get_option("disable_map_fog")
@@ -87,10 +91,13 @@ func update_buttons():
 	resolution_button.disabled = fullscreen_button.pressed
 	resolution_dropdown.visible = false
 	language_dropdown.visible = false
+	colorblindmode_dropdown.visible = false
+	colorblindmode_label.text = tr(ColorblindnessShader.MODES_NAME[colorblind_index])
 	show_timer_button.pressed = Profile.get_option("show_timer")
 	screen_shake_button.pressed = Profile.get_option("screen_shake")
 	end_turn_button = Profile.get_option("auto_end_turn")
 	window_size_buttons[size_index].pressed = true
+	colorblindmode_buttons[colorblind_index].pressed = true
 
 
 func update_music_volumes():
@@ -145,6 +152,9 @@ func close_dropdowns():
 	if language_dropdown.visible:
 		language_dropdown.visible = false
 		language_button.pressed = false
+	if colorblindmode_dropdown.visible:
+		colorblindmode_dropdown.visible = false
+		colorblindmode_button.pressed = false
 
 
 func _on_MasterVolume_value_changed(value):
@@ -309,3 +319,22 @@ func _on_ColorBlindnessCheckBox_toggled(button_pressed):
 		ColorblindnessShader.enable()
 	else:
 		ColorblindnessShader.disable()
+
+
+func _on_ColorblindModeButton_toggled(button_pressed):
+	colorblindmode_dropdown.visible = button_pressed
+	if button_pressed:
+		AudioManager.play_sfx("open_filter")
+	else:
+		AudioManager.play_sfx("close_filter")
+
+
+func _on_ColorblindMode_button_pressed(button_id: int):
+	AudioManager.play_sfx("click")
+	if button_id != Profile.get_option("colorblind_mode"):
+		colorblindmode_label.text = tr(ColorblindnessShader.MODES_NAME[button_id])
+		ColorblindnessShader.set_mode(button_id)
+		Profile.set_option("colorblind_mode", button_id)
+	
+	AudioManager.play_sfx("close_filter")
+	close_dropdowns()

@@ -61,6 +61,10 @@ func end_shake():
 	shaking = false
 
 
+func start_background_animation():
+	$Ending/Background/AnimationPlayer.play("Loop")
+
+
 func enable_skip():
 	skip_enabled = true
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/Ending.atlas-a2fdbc67a517648ac076cdfb0d6df6a4.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/ending/Ending.atlas"
+dest_files=[ "res://.import/Ending.atlas-a2fdbc67a517648ac076cdfb0d6df6a4.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

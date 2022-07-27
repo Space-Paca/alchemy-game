@@ -787,7 +787,7 @@ func thanks_for_playing():
 		assert(times_finished.has(player.player_class.name))
 		times_finished[player.player_class.name] += 1
 		Profile.set_stat("times_finished", times_finished)
-		scene = load("res://game/ui/ThanksScreen.tscn").instance()
+		scene = load("res://game/ui/Ending.tscn").instance()
 	else:
 		scene = load("res://game/ui/ThanksScreenDemo.tscn").instance()
 	add_child(scene)

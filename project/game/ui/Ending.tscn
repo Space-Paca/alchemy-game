@@ -1,13 +1,15 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://assets/images/ending/background.png" type="Texture" id=1]
-[ext_resource path="res://game/ui/ThanksScreen.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/effects/effect_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/effects/offset_glow.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/main_menu/circle.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ending/relic.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/effects/effect_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/effects/offset_glow.png" type="Texture" id=7]
-[ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=8]
-[ext_resource path="res://assets/images/main_menu/circle.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/effects/effect_2.png" type="Texture" id=5]
+[ext_resource path="res://game/ui/Ending.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/effects/effect_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ending/background.png" type="Texture" id=8]
+[ext_resource path="res://assets/spine/ending/Ending.json" type="SpineSkeletonJsonDataResource" id=9]
+[ext_resource path="res://assets/spine/ending/Ending.atlas" type="SpineAtlasResource" id=10]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -111,6 +113,7 @@ tracks/7/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "ending"
 length = 62.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer/FadeOut:modulate")
 tracks/0/interp = 1
@@ -130,8 +133,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5.1, 6.5, 9, 23, 37, 51 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 5.1, 6.5, 6.501, 9, 23, 37, 51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ true ],
 "method": "set_process"
@@ -141,6 +144,9 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "enable_skip"
+}, {
+"args": [  ],
+"method": "start_background_animation"
 }, {
 "args": [ 0, 7.0 ],
 "method": "show_subtitle_text"
@@ -250,6 +256,38 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 0.366021, 0.366021 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 4, 4 ) ]
+}
+
+[sub_resource type="SpineSkeletonDataResource" id=20]
+atlas_res = ExtResource( 10 )
+skeleton_json_res = ExtResource( 9 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=21]
+skeleton = SubResource( 20 )
+
+[sub_resource type="Animation" id=22]
+length = 18.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "Loop",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
 }
 
 [sub_resource type="GDScript" id=5]
@@ -389,9 +427,9 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 16
 
-[node name="ThanksScreen" type="CanvasLayer"]
+[node name="Ending" type="CanvasLayer"]
 layer = 6
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -406,10 +444,29 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -2638.0
 margin_right = 1920.0
-texture = ExtResource( 1 )
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background" type="SpineSprite" parent="Ending"]
+position = Vector2( 960, 1319 )
+scale = Vector2( 0.81, 0.81 )
+animation_state_data_res = SubResource( 21 )
+current_animations = [ {
+"animation": "Loop",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ending/Background"]
+root_node = NodePath("../..")
+playback_speed = 0.5
+anims/Loop = SubResource( 22 )
 
 [node name="Artifact" type="Node2D" parent="Ending"]
 position = Vector2( 960, 540 )
@@ -421,7 +478,7 @@ material = SubResource( 6 )
 amount = 10
 visibility_rect = Rect2( -350, -350, 700, 700 )
 process_material = SubResource( 9 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="OuterGlow" type="Particles2D" parent="Ending/Artifact"]
 material = SubResource( 6 )
@@ -429,14 +486,14 @@ amount = 5
 lifetime = 3.0
 visibility_rect = Rect2( -470, -470, 940, 940 )
 process_material = SubResource( 13 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="InnerGlow" type="Particles2D" parent="Ending/Artifact"]
 material = SubResource( 6 )
 amount = 30
 visibility_rect = Rect2( -170, -170, 340, 340 )
 process_material = SubResource( 10 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Particles" type="Particles2D" parent="Ending/Artifact"]
 material = SubResource( 14 )
@@ -445,11 +502,11 @@ lifetime = 4.0
 randomness = 1.0
 visibility_rect = Rect2( -800, -800, 1600, 1600 )
 process_material = SubResource( 17 )
-texture = ExtResource( 7 )
+texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.911202 )
-position = Vector2( 0, 0.331535 )
+modulate = Color( 1, 1, 1, 0.970268 )
+position = Vector2( 0, -9.3286 )
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -474,7 +531,6 @@ __meta__ = {
 }
 
 [node name="ShakeVar" type="Node2D" parent="."]
-position = Vector2( 0.5, 0 )
 
 [node name="SubtitleContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5
@@ -494,7 +550,7 @@ margin_right = 960.0
 margin_bottom = 175.0
 size_flags_horizontal = 7
 size_flags_vertical = 13
-theme = ExtResource( 8 )
+theme = ExtResource( 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -542,7 +598,7 @@ margin_right = 161.0
 margin_bottom = 161.0
 max_value = 1.0
 step = 0.01
-texture_progress = ExtResource( 9 )
+texture_progress = ExtResource( 3 )
 fill_mode = 4
 radial_initial_angle = 225.0
 
@@ -551,7 +607,7 @@ margin_left = 165.0
 margin_top = 55.0
 margin_right = 422.0
 margin_bottom = 106.0
-theme = ExtResource( 8 )
+theme = ExtResource( 1 )
 text = "ESC (hold): Skip"
 
 [node name="SkipShowTimer" type="Timer" parent="."]

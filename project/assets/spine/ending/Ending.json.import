@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/Ending.json-274faef74729e8ef4f48018cebbf3265.spjson"
+
+[deps]
+
+source_file="res://assets/spine/ending/Ending.json"
+dest_files=[ "res://.import/Ending.json-274faef74729e8ef4f48018cebbf3265.spjson" ]
+
+[params]
+

@@ -44,6 +44,8 @@ OPT_AUTO_END_TURN,Auto End Turn,Terminar Turno Automaticamente
 OPT_SHOW_TIMER,Show Timer,Mostrar Cronômetro
 OPT_SCREEN_SHAKE,Enable Screen Shake,Habilitar Tremor de Tela
 OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
+OPT_TURBO_MODE,Enable Turbo Mode,Habilitar Modo Turbo
+OPT_TURBO_MODE_DESC,Makes several game elements faster,Deixa vários elementos do jogo mais rápido
 OPT_LANGUAGE,Language,Linguagem
 CHOOSE_ONE,Choose One,Escolha Um
 CHOOSE_TARGET,Choose Target,Escolher Alvo

@@ -44,15 +44,6 @@ var tooltip_enabled = false
 func _ready():
 	set_button_disabled(true)
 	
-	#Setup idle animation
-#	animation.play(data.idle_anim_name)
-#	animation.seek(rand_range(0, animation.current_animation_length))
-#	randomize()
-#	animation.seek(rand_range(0.0, 2.0))
-#	randomize()
-#	_playback_speed = rand_range(1.0, 1.3)
-#	animation.playback_speed = _playback_speed
-	
 	#Setup spawn animation
 	if data.entry_anim_name:
 		animation.play(data.entry_anim_name)
@@ -326,12 +317,6 @@ func get_random_value(interval : Array):
 
 
 func play_animation(name: String):
-#	animation.play(name)
-#	yield(animation, "animation_finished")
-#	animation.play("idle")
-#	randomize()
-#	animation.seek(rand_range(0.0, 2.0))
-#	animation.playback_speed = _playback_speed
 	if name and name != "":
 		animation.play(name)
 

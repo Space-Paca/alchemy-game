@@ -114,6 +114,15 @@ position = Vector2( -414.401, 136.992 )
 material = SubResource( 1 )
 position = Vector2( 0, 150 )
 scale = Vector2( 0.9, 0.9 )
+current_animations = [ {
+"animation": "01_idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
 
 [node name="CenterPosition" type="Position2D" parent="Sprite"]
 

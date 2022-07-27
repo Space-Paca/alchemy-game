@@ -34,6 +34,7 @@ var options = {
 	"large_ui": false,
 	"enable_colorblind": false,
 	"colorblind_mode": 0, #Protanopia
+	"turbo_mode": false,
 }
 
 var controls = {

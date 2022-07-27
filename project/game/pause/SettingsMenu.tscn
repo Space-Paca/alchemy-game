@@ -159,7 +159,6 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1112,6 +1111,7 @@ group = SubResource( 19 )
 text = "Português"
 
 [node name="Accesibility" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

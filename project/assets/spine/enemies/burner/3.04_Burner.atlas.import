@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.04_Burner.atlas-cbce87d13d9e1f60aa0e271ad85c53f9.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/burner/3.04_Burner.atlas"
+dest_files=[ "res://.import/3.04_Burner.atlas-cbce87d13d9e1f60aa0e271ad85c53f9.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

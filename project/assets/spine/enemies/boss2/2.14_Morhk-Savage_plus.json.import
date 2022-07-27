@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.14_Morhk-Savage_plus.json-7226fa2a4f39da33ba00d6facdcd68a5.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/boss2/2.14_Morhk-Savage_plus.json"
+dest_files=[ "res://.import/2.14_Morhk-Savage_plus.json-7226fa2a4f39da33ba00d6facdcd68a5.spjson" ]
+
+[params]
+

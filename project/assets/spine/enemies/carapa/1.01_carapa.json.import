@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.01_carapa.json-82d11f257de2799e9de41f7970a856dc.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/carapa/1.01_carapa.json"
+dest_files=[ "res://.import/1.01_carapa.json-82d11f257de2799e9de41f7970a856dc.spjson" ]
+
+[params]
+

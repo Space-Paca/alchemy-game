@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.05_overkiller.atlas-8b1f17245b0819900bf4f1605d2a314c.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/overkiller/3.05_overkiller.atlas"
+dest_files=[ "res://.import/3.05_overkiller.atlas-8b1f17245b0819900bf4f1605d2a314c.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

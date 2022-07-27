@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.01_BabyRetaliate.json-7b6d1d673edc455ddb9aad65d550d0f3.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/baby_retaliate/2.01_BabyRetaliate.json"
+dest_files=[ "res://.import/2.01_BabyRetaliate.json-7b6d1d673edc455ddb9aad65d550d0f3.spjson" ]
+
+[params]
+

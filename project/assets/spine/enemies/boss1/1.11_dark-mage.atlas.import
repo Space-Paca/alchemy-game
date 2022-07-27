@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.11_dark-mage.atlas-beb6a1254783d7839442a165fbd74386.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/boss1/1.11_dark-mage.atlas"
+dest_files=[ "res://.import/1.11_dark-mage.atlas-beb6a1254783d7839442a165fbd74386.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

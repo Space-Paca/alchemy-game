@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/baby_carapa_plus.atlas-d4b65830162acf4b1f38623ba474cefc.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/carapa/baby_carapa_plus.atlas"
+dest_files=[ "res://.import/baby_carapa_plus.atlas-d4b65830162acf4b1f38623ba474cefc.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

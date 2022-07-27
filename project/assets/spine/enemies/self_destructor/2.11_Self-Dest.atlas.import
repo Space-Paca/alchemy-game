@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.11_Self-Dest.atlas-919f8001d7565080df09273d975a2f1f.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/self_destructor/2.11_Self-Dest.atlas"
+dest_files=[ "res://.import/2.11_Self-Dest.atlas-919f8001d7565080df09273d975a2f1f.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

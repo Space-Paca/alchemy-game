@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://assets/spine/carapa/1.01_carapa.atlas" type="SpineAtlasResource" id=1]
+[ext_resource path="res://assets/spine/enemies/carapa/1.01_carapa.atlas" type="SpineAtlasResource" id=1]
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/spine/carapa/1.01_carapa.json" type="SpineSkeletonJsonDataResource" id=3]
+[ext_resource path="res://assets/spine/enemies/carapa/1.01_carapa.json" type="SpineSkeletonJsonDataResource" id=3]
 
 [sub_resource type="SpineSkeletonDataResource" id=1]
 atlas_res = ExtResource( 1 )

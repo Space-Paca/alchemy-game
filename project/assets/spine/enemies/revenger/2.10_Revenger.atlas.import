@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.10_Revenger.atlas-4243536ba5ec215e8da218b189b39aba.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/revenger/2.10_Revenger.atlas"
+dest_files=[ "res://.import/2.10_Revenger.atlas-4243536ba5ec215e8da218b189b39aba.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

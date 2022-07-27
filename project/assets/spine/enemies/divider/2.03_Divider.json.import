@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.03_Divider.json-30d4d809aa875bb17f91d6785e2d25f0.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/divider/2.03_Divider.json"
+dest_files=[ "res://.import/2.03_Divider.json-30d4d809aa875bb17f91d6785e2d25f0.spjson" ]
+
+[params]
+

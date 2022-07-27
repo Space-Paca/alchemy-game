@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/spine/baby_poison_plus/3.09_small poison plus.json" type="SpineSkeletonJsonDataResource" id=2]
-[ext_resource path="res://assets/spine/baby_poison_plus/3.09_small poison plus.atlas" type="SpineAtlasResource" id=3]
+[ext_resource path="res://assets/spine/enemies/baby_poison_plus/3.09_small poison plus.json" type="SpineSkeletonJsonDataResource" id=2]
+[ext_resource path="res://assets/spine/enemies/baby_poison_plus/3.09_small poison plus.atlas" type="SpineAtlasResource" id=3]
 
 [sub_resource type="SpineSkeletonDataResource" id=1]
 atlas_res = ExtResource( 3 )

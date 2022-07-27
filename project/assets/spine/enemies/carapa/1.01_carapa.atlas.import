@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.01_carapa.atlas-3624e5e29cefe3f8bc296e53485eff60.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/carapa/1.01_carapa.atlas"
+dest_files=[ "res://.import/1.01_carapa.atlas-3624e5e29cefe3f8bc296e53485eff60.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

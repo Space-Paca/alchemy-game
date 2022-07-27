@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/3.05_overkiller.json-e01d23d04f2f891ea88b89424686a7eb.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/overkiller/3.05_overkiller.json"
+dest_files=[ "res://.import/3.05_overkiller.json-e01d23d04f2f891ea88b89424686a7eb.spjson" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/3.04_Burner.json-79e62d3c3a8e0ad3180d7c4d0adaab20.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/burner/3.04_Burner.json"
+dest_files=[ "res://.import/3.04_Burner.json-79e62d3c3a8e0ad3180d7c4d0adaab20.spjson" ]
+
+[params]
+

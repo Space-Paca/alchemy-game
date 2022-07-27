@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.13_Bomber.json-1947cff3274d7571b2e0f4e2a0fe0dc9.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/timing_bomber/2.13_Bomber.json"
+dest_files=[ "res://.import/2.13_Bomber.json-1947cff3274d7571b2e0f4e2a0fe0dc9.spjson" ]
+
+[params]
+

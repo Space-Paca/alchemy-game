@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/spine/divider/2.05_Divider_small.json" type="SpineSkeletonJsonDataResource" id=2]
-[ext_resource path="res://assets/spine/divider/2.03_Divider.atlas" type="SpineAtlasResource" id=7]
+[ext_resource path="res://assets/spine/enemies/divider/2.05_Divider_small.json" type="SpineSkeletonJsonDataResource" id=2]
+[ext_resource path="res://assets/spine/enemies/divider/2.03_Divider.atlas" type="SpineAtlasResource" id=7]
 
 [sub_resource type="SpineSkeletonDataResource" id=1]
 atlas_res = ExtResource( 7 )

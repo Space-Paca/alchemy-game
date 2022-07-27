@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.02_zombie.atlas-a10f9c8031f2d4f4814a16c3d53fc80a.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/zombie/3.02_zombie.atlas"
+dest_files=[ "res://.import/3.02_zombie.atlas-a10f9c8031f2d4f4814a16c3d53fc80a.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

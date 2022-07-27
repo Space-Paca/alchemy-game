@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.09_Rager.json-ace01d58bb8d23e7e8400a6a8a49ff1b.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/rager/2.09_Rager.json"
+dest_files=[ "res://.import/2.09_Rager.json-ace01d58bb8d23e7e8400a6a8a49ff1b.spjson" ]
+
+[params]
+

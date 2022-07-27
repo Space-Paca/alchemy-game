@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.10_Revenger.json-a171680f524aee111134cf8c8f729cd6.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/revenger/2.10_Revenger.json"
+dest_files=[ "res://.import/2.10_Revenger.json-a171680f524aee111134cf8c8f729cd6.spjson" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.08_Nimble Homunculus.json-7f964a80bcbff8e692f99079790399cb.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/dodger/1.08_Nimble Homunculus.json"
+dest_files=[ "res://.import/1.08_Nimble Homunculus.json-7f964a80bcbff8e692f99079790399cb.spjson" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/3.11_BossAngel.json-d378a1445bc153b802ee26a2dc33233f.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/boss3/3.11_BossAngel.json"
+dest_files=[ "res://.import/3.11_BossAngel.json-d378a1445bc153b802ee26a2dc33233f.spjson" ]
+
+[params]
+

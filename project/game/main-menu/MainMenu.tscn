@@ -1,6 +1,6 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=55 format=2]
 
-[ext_resource path="res://assets/images/main_menu/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/main-menu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://game/ui/PauseButton.tscn" type="PackedScene" id=4]
@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/images/main_menu/frame_spikes_ 64%.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/main_menu/sub titulo.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/main_menu/circle.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/main_menu/glow.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/main_menu/lines.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/main_menu/half_moon1.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/main_menu/circle 2_big.png" type="Texture" id=17]
@@ -24,6 +23,39 @@
 [ext_resource path="res://assets/images/ui/menu_button_normal.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/ui/compendium_icon_hover.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/ui/compendium_icon_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/spine/mainmenu/start screen_spine.atlas" type="SpineAtlasResource" id=25]
+
+[sub_resource type="SpineSkeletonDataResource" id=30]
+atlas_res = ExtResource( 25 )
+skeleton_json_res = ExtResource( 1 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=31]
+skeleton = SubResource( 30 )
+
+[sub_resource type="Animation" id=32]
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "01_idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -48,7 +80,7 @@ noise = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
-shader_param/value = 1.0
+shader_param/value = 0.0
 shader_param/noise_texture = SubResource( 3 )
 
 [sub_resource type="Animation" id=24]
@@ -89,28 +121,32 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("../BackTitleDetail:rect_position:x")
+tracks/3/type = "value"
+tracks/3/path = NodePath("../BackTitleDetail:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 489.567, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("../BackTitleDetail:rect_position:y")
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BackTitleDetail:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 259.247, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 578, 378 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../BackTitleDetail:rect_position")
+tracks/5/path = NodePath("../BackTitleDetail:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -119,99 +155,15 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 489.567, 259.247 ) ]
+"values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../BackTitleDetail:rect_scale")
+tracks/6/path = NodePath("../BackTitleDetail:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("../BackTitleDetail:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("../BackTitleDetail:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 578, 378 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("../BackTitleDetail:rotation_degrees")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("../Glow:rect_scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("../Glow:rotation_degrees")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("../Glow:scale")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("../BackTitleDetail:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -295,24 +247,12 @@ tracks/5/keys = {
 "values": [ 0.0, 25.7, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../Glow:scale")
-tracks/6/interp = 1
+tracks/6/path = NodePath("../BackTitleDetail:modulate")
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.7, 1.5, 2.3, 3.1, 4.1, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.26, 1.26 ), Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("../BackTitleDetail:modulate")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0, 1.1, 2.3, 3.7, 5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
@@ -1065,14 +1005,28 @@ tracks/17/keys = {
 "values": [ false ]
 }
 
-[node name="MainMenu" type="TextureRect"]
+[node name="MainMenu" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 1 )
+rect_min_size = Vector2( 1920, 1080 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Background" type="SpineSprite" parent="."]
+position = Vector2( 960, 540 )
+animation_state_data_res = SubResource( 31 )
+current_animations = [ {
+"animation": "01_idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../..")
+anims/01_idle = SubResource( 32 )
 
 [node name="BackTitleDetail" type="Sprite" parent="."]
 material = SubResource( 4 )
@@ -1152,11 +1106,6 @@ playback_speed = 0.4
 anims/RESET = SubResource( 24 )
 anims/idle = SubResource( 25 )
 
-[node name="Glow" type="Sprite" parent="."]
-material = SubResource( 4 )
-position = Vector2( 1269, 797 )
-texture = ExtResource( 14 )
-
 [node name="Title" type="TextureRect" parent="."]
 material = SubResource( 4 )
 anchor_left = 0.5
@@ -1197,10 +1146,11 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="."]
-margin_left = 773.0
-margin_top = 556.0
-margin_right = 1162.0
-margin_bottom = 702.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 500.0
+margin_top = 504.672
+margin_right = 889.0
+margin_bottom = 650.672
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1208,16 +1158,18 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
+disabled = true
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="."]
-margin_left = 757.755
-margin_top = 704.694
-margin_right = 1175.76
-margin_bottom = 850.694
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 500.0
+margin_top = 680.0
+margin_right = 918.005
+margin_bottom = 826.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1225,15 +1177,17 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
+disabled = true
 text = "NEW_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="QuitButton" type="Button" parent="."]
-margin_left = 790.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 500.0
 margin_top = 855.0
-margin_right = 1142.99
+margin_right = 852.99
 margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -1242,6 +1196,7 @@ custom_styles/hover = SubResource( 13 )
 custom_styles/pressed = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
+disabled = true
 text = "QUIT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1253,7 +1208,7 @@ anchor_right = 0.5
 margin_left = -960.0
 margin_right = 962.0
 margin_bottom = 1082.0
-rect_scale = Vector2( 1.01, 1.01 )
+rect_scale = Vector2( 1.3, 1.3 )
 rect_pivot_offset = Vector2( 961, 541 )
 mouse_filter = 2
 texture = ExtResource( 11 )
@@ -1263,10 +1218,12 @@ __meta__ = {
 }
 
 [node name="CompendiumButton" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 156.0
 margin_top = 762.0
 margin_right = 356.0
 margin_bottom = 991.0
+disabled = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 23 )
@@ -1344,6 +1301,8 @@ text = "NO"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+disabled = true
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1

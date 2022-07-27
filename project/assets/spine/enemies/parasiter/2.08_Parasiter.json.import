@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/2.08_Parasiter.json-d61c1efc739a8a1943bb1fbe6a4a253e.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/parasiter/2.08_Parasiter.json"
+dest_files=[ "res://.import/2.08_Parasiter.json-d61c1efc739a8a1943bb1fbe6a4a253e.spjson" ]
+
+[params]
+

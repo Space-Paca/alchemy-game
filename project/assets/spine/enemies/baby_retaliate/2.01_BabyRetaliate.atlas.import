@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.01_BabyRetaliate.atlas-88eb2c6d461c107eb21f3ef2436f78af.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/baby_retaliate/2.01_BabyRetaliate.atlas"
+dest_files=[ "res://.import/2.01_BabyRetaliate.atlas-88eb2c6d461c107eb21f3ef2436f78af.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

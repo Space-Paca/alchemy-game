@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 onready var anim = $AnimationPlayer
 onready var sheen_tween = $Title/TitleSheen/Tween

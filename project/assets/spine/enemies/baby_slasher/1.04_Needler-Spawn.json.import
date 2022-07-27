@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.04_Needler-Spawn.json-5168157689e194be4d0b0efaf02ea282.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/baby_slasher/1.04_Needler-Spawn.json"
+dest_files=[ "res://.import/1.04_Needler-Spawn.json-5168157689e194be4d0b0efaf02ea282.spjson" ]
+
+[params]
+

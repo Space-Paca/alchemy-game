@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/start screen_spine.json-3d86773b9911b8db41dfed851b54a2a1.spjson"
+
+[deps]
+
+source_file="res://assets/spine/mainmenu/start screen_spine.json"
+dest_files=[ "res://.import/start screen_spine.json-3d86773b9911b8db41dfed851b54a2a1.spjson" ]
+
+[params]
+

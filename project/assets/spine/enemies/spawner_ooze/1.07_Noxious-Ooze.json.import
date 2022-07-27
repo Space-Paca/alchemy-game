@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.07_Noxious-Ooze.json-64454b73c187baaa1d52b141bcbc2e55.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/spawner_ooze/1.07_Noxious-Ooze.json"
+dest_files=[ "res://.import/1.07_Noxious-Ooze.json-64454b73c187baaa1d52b141bcbc2e55.spjson" ]
+
+[params]
+

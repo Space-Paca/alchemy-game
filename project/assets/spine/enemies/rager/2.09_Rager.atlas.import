@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.09_Rager.atlas-c4d5c1434169cd5bb2c56d3b89eb3274.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/rager/2.09_Rager.atlas"
+dest_files=[ "res://.import/2.09_Rager.atlas-c4d5c1434169cd5bb2c56d3b89eb3274.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

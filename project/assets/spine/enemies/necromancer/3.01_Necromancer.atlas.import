@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.01_Necromancer.atlas-7eeade39a9dfd8b4a4cbf34e0ddb428f.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/necromancer/3.01_Necromancer.atlas"
+dest_files=[ "res://.import/3.01_Necromancer.atlas-7eeade39a9dfd8b4a4cbf34e0ddb428f.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

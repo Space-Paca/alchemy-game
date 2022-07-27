@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/1.03_Noxious-Oozeling.json-dd09eabe325d77ed16ef6305aa0d251f.spjson"
+
+[deps]
+
+source_file="res://assets/spine/enemies/baby_poison/1.03_Noxious-Oozeling.json"
+dest_files=[ "res://.import/1.03_Noxious-Oozeling.json-dd09eabe325d77ed16ef6305aa0d251f.spjson" ]
+
+[params]
+

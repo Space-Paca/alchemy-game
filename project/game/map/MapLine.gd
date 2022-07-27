@@ -11,6 +11,8 @@ const BALL_SIZE = Vector2(10, 10)
 const MAP_NODE_SIZE = 64
 const PATH_FILL_TIME = 1.8
 const WAIT_TIMER = .1
+const PATH_FILL_TIME_TURBO = .5
+const WAIT_TIMER_TURBO = 0.05
 const IMAGES = [preload("res://assets/images/map/path-map-1.png"),
 	preload("res://assets/images/map/path-map-2.png"),
 	preload("res://assets/images/map/path-map-3.png")]
@@ -30,25 +32,43 @@ func _ready():
 func _process(delta):
 	time += delta
 	update()
-	if time >= PATH_FILL_TIME:
+	var fill_time
+	var wait_time
+	if Profile.get_option("turbo_mode"):
+		fill_time = PATH_FILL_TIME_TURBO
+		wait_time = WAIT_TIMER_TURBO
+	else:
+		fill_time = PATH_FILL_TIME
+		wait_time = WAIT_TIMER
+	if time >= fill_time:
 		set_process(false)
-		yield(get_tree().create_timer(WAIT_TIMER), "timeout")
+		yield(get_tree().create_timer(wait_time), "timeout")
 		emit_signal("filled")
 
 
 func _draw():
+	var fill_time
+	if Profile.get_option("turbo_mode"):
+		fill_time = PATH_FILL_TIME_TURBO
+	else:
+		fill_time = PATH_FILL_TIME
 	for i in ball_amount:
 		var pos := line_vector.clamped(i * BALL_DIST)
-		var radius_multiplier = ball_amount * time / PATH_FILL_TIME - i
+		var radius_multiplier = ball_amount * time / fill_time - i
 		radius_multiplier = clamp(radius_multiplier, 0, 1)
 		var size = BALL_SIZE * radius_multiplier
 		draw_texture_rect(balls[i], Rect2(pos - size / 2, size), false)
 
 
 func begin_fill():
+	var fill_time
+	if Profile.get_option("turbo_mode"):
+		fill_time = PATH_FILL_TIME_TURBO
+	else:
+		fill_time = PATH_FILL_TIME
 	set_process(true)
 	ball_count = 0
-	$Tween.interpolate_method(self, "play_sfx", 0, ball_amount, PATH_FILL_TIME, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_method(self, "play_sfx", 0, ball_amount, fill_time, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 

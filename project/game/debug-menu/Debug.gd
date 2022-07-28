@@ -21,6 +21,7 @@ signal damage_all
 
 const VERSION := "v0.6.0"
 const MAX_FLOOR := 3
+const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 
 var allow_debugging = false
 var is_demo = false
@@ -30,10 +31,13 @@ var reveal_map := false
 var lower_threshold := false
 var give_xp := false
 var custom_portrait = false
+var portraits = {}
 
 
 func _ready():
 	set_process(false)
+	
+	load_portraits()
 	
 	for arg in OS.get_cmdline_args():
 		if arg == "--is_demo":
@@ -45,7 +49,11 @@ func _ready():
 			var key = key_value[0]
 			var value = key_value[1]
 			if key == "--custom_portrait":
-				custom_portrait = value
+				if not portraits.has(value):
+					push_warning("Not a valid custom portrait: " + str(value))
+					custom_portrait = false
+				else:
+					custom_portrait = value
 
 
 	version_label.text = VERSION
@@ -74,6 +82,28 @@ func _process(_delta):
 
 func set_version_visible(enable: bool):
 	version_label.visible = enable
+
+
+func load_portraits():
+	var dir = Directory.new()
+	if dir.open(PORTRAITS_PATH) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name != "." and file_name != "..":
+				if file_name.find(".import") == -1: 
+					portraits[file_name.replace(".png", "")] = load(PORTRAITS_PATH + file_name)
+			file_name = dir.get_next()
+	else:
+		push_error("An error occurred when trying to access portraits path.")
+		assert(false)
+
+
+func get_portrait():
+	if custom_portrait:
+		return portraits[custom_portrait]
+	else:
+		return portraits["alchemist"]
 
 
 func _on_WinBtn_pressed():

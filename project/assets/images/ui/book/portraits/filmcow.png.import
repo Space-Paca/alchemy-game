@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/retro.png-db9e42cbe90bc7da18e2a9821cf329b4.stex"
+path="res://.import/filmcow.png-9d3a4f60f3c7afdc93f08696b78c62fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/book/portraits/retro.png"
-dest_files=[ "res://.import/retro.png-db9e42cbe90bc7da18e2a9821cf329b4.stex" ]
+source_file="res://assets/images/ui/book/portraits/filmcow.png"
+dest_files=[ "res://.import/filmcow.png-9d3a4f60f3c7afdc93f08696b78c62fe.stex" ]
 
 [params]
 

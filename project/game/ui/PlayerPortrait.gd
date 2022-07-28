@@ -6,7 +6,7 @@ const MIDLIFE_COLOR = Color(0.9, 0.9, 0.0)
 const DYING_COLOR = Color(0.96, 0.13, 0.13)
 const PORTRAITS = {
 	"alchemist": preload("res://assets/images/ui/book/portraits/alchemist.png"),
-	"retromation": preload("res://assets/images/ui/book/portraits/alchemist.png"),
+	"retro": preload("res://assets/images/ui/book/portraits/retro.png"),
 }
 
 onready var bg = $BG

@@ -5,8 +5,21 @@ export var poison_texture : Texture
 
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
+const PORTRAITS = {
+	"alchemist": preload("res://assets/images/ui/book/portraits/alchemist.png"),
+	"retro": preload("res://assets/images/ui/book/portraits/retro.png"),
+}
+
+onready var portrait = $PlayerInfo/Image
+
 
 func _ready():
+	if Debug.custom_portrait:
+		assert(PORTRAITS.has(Debug.custom_portrait), "Not a valid custom portrait: " + str(Debug.custom_portrait))
+		portrait.texture = PORTRAITS[Debug.custom_portrait]
+	else:
+		portrait.texture = PORTRAITS["alchemist"]
+	
 	$Killer/Name.set("custom_colors/font_color", sketch_color)
 	$Killer/Image.material.set_shader_param("outline_color", sketch_color)
 

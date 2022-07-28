@@ -1053,11 +1053,7 @@ func combine():
 
 	#Combination animation
 	var sfx_dur = AudioManager.get_sfx_duration("combine")
-	var dur
-	if Profile.get_option("turbo_mode"):
-		dur = .1
-	else:
-		dur = reagent_list.size()*.3
+	var dur = .2 if Profile.get_option("turbo_mode") else reagent_list.size()*.3
 	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, true)
@@ -1137,11 +1133,13 @@ func _on_enemy_acted(enemy, actions):
 					enemy.remove_intent()
 				#Wait before going to next action/enemy
 				if args.amount > 1 and i != args.amount - 1:
-					yield(get_tree().create_timer(.8/args.amount), "timeout")
+					var dur = .3 if Profile.get_option("turbo_mode") else .8
+					yield(get_tree().create_timer(dur/args.amount), "timeout")
 				elif func_state and func_state.is_valid():
 					yield(player, "resolved")
 				else:
-					yield(get_tree().create_timer(.5), "timeout")
+					var dur = .1 if Profile.get_option("turbo_mode") else .5
+					yield(get_tree().create_timer(dur), "timeout")
 			enemy.remove_status("temp_strength")
 		if name == "drain":
 			for i in range(0, args.amount):
@@ -1155,7 +1153,8 @@ func _on_enemy_acted(enemy, actions):
 				if func_state and func_state.is_valid():
 					yield(player, "resolved")
 				else:
-					yield(get_tree().create_timer(.5), "timeout")
+					var dur = .1 if Profile.get_option("turbo_mode") else .5
+					yield(get_tree().create_timer(dur), "timeout")
 			enemy.remove_status("temp_strength")
 		if name == "self_destruct":
 			#enemy.play_animation("self_destruct")
@@ -1168,11 +1167,13 @@ func _on_enemy_acted(enemy, actions):
 			if func_state and func_state.is_valid():
 				yield(player, "resolved")
 			else:
-				yield(get_tree().create_timer(.5), "timeout")
+				var dur = .1 if Profile.get_option("turbo_mode") else .5
+				yield(get_tree().create_timer(dur), "timeout")
 
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.5), "timeout")
+			var dur = .1 if Profile.get_option("turbo_mode") else .5
+			yield(get_tree().create_timer(dur), "timeout")
 		elif name == "shield":
 			enemy.play_animation(args.animation)
 			enemy.gain_shield(args.value)
@@ -1201,7 +1202,8 @@ func _on_enemy_acted(enemy, actions):
 				assert(false)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.5), "timeout")
+			var dur = .1 if Profile.get_option("turbo_mode") else .5
+			yield(get_tree().create_timer(dur), "timeout")
 		elif name == "heal":
 			enemy.play_animation(args.animation)
 			var value = args.value
@@ -1210,24 +1212,28 @@ func _on_enemy_acted(enemy, actions):
 				if func_state and func_state.is_valid():
 					yield(enemy, "resolved")
 				else:
-					yield(get_tree().create_timer(.5), "timeout")
+					var dur = .1 if Profile.get_option("turbo_mode") else .5
+					yield(get_tree().create_timer(dur), "timeout")
 			elif args.target == "all_enemies":
 				for e in enemies_node.get_children():
 					e.heal(value)
-					yield(get_tree().create_timer(.5), "timeout")
+					var dur = .1 if Profile.get_option("turbo_mode") else .5
+					yield(get_tree().create_timer(dur), "timeout")
 			else:
 				push_error("Not a valid target for heal effect:" + str(args.target))
 				assert(false)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.5), "timeout")
+			var dur = .1 if Profile.get_option("turbo_mode") else .5
+			yield(get_tree().create_timer(dur), "timeout")
 		elif name == "spawn":
 			enemy.play_animation(args.animation)
 			var minion = args.has("minion")
 			spawn_new_enemy(enemy, args.enemy, minion)
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.6), "timeout")
+			var dur = .2 if Profile.get_option("turbo_mode") else .6
+			yield(get_tree().create_timer(dur), "timeout")
 		elif name == "add_reagent":
 			enemy.play_animation(args.animation)
 			for _i in range(0, args.value):
@@ -1238,20 +1244,24 @@ func _on_enemy_acted(enemy, actions):
 				var offset = Vector2(rand_range(-10, 10), rand_range(-10, 10))
 				reagent.rect_position = enemy.position + offset
 				reagent.super_grow()
-				yield(get_tree().create_timer(.2), "timeout")
+				var dur = .1 if Profile.get_option("turbo_mode") else .2
+				yield(get_tree().create_timer(dur), "timeout")
 				discard_bag.discard(reagent)
-				yield(get_tree().create_timer(.3), "timeout")
+				dur = .1 if Profile.get_option("turbo_mode") else .3
+				yield(get_tree().create_timer(dur), "timeout")
 			enemy.remove_intent()
 			emit_signal("update_recipes_display")
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.6), "timeout")
+			var dur = .1 if Profile.get_option("turbo_mode") else .5
+			yield(get_tree().create_timer(dur), "timeout")
 		elif name == "idle":
 			if args.has("sfx"):
 				AudioManager.play_sfx(args.sfx)
 
 			enemy.remove_intent()
 			#Wait a bit before going to next action/enemy
-			yield(get_tree().create_timer(.6), "timeout")
+			var dur = .1 if Profile.get_option("turbo_mode") else .5
+			yield(get_tree().create_timer(dur), "timeout")
 
 	enemy.action_resolved()
 
@@ -1275,7 +1285,8 @@ func _on_enemy_died(enemy):
 			yield(ally_enemy, "finished_updating_status")
 
 	if enemy.data.change_phase:
-		yield(get_tree().create_timer(1.5), "timeout")
+		var dur = .5 if Profile.get_option("turbo_mode") else 1.5
+		yield(get_tree().create_timer(dur), "timeout")
 		current_encounter.current_phase += 1
 		$FinalBossBG/AnimationPlayer.play("rotating_final_boss")
 		#TODO: Add more cool effects here, like screen shaking

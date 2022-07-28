@@ -181,7 +181,7 @@ func _on_Combine_pressed():
 	
 	#Combination animation
 	var sfx_dur = AudioManager.get_sfx_duration("combine")
-	var dur = reagent_list.size()*.3
+	var dur = .2 if Profile.get_option("turbo_mode") else reagent_list.size()*.3
 	AudioManager.play_sfx("combine", sfx_dur/dur)
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, false)

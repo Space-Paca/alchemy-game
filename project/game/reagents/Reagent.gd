@@ -6,6 +6,7 @@ const HIGHLIGHT_SPEED = 5
 const HIGHLIGHT_TARGET = 1.6
 const ROTATION_FACTOR = 50
 const SPEED = .35
+const SPEED_TURBO = .7
 
 signal reached_target_pos
 signal started_dragging
@@ -84,7 +85,8 @@ func _process(delta):
 		rect_position = target
 	elif not is_drag and target_position and not stop_auto_moving:
 		if rect_position.distance_to(target_position) > 0:
-			rect_position += (target_position - rect_position)*SPEED*speed_mod
+			var speed = SPEED_TURBO if Profile.get_option("turbo_mode") else SPEED
+			rect_position += (target_position - rect_position)*speed*speed_mod
 			if (target_position - rect_position).length() < 1:
 				if not disable_drag:
 					can_drag = true

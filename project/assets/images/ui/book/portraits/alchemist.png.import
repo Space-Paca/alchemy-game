@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/char portrait animation.png-41e46d49a48e9ff74d2d12b8f9b71b99.stex"
+path="res://.import/alchemist.png-76fb949e0464715adb0397a956df8598.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/book/char portrait animation.png"
-dest_files=[ "res://.import/char portrait animation.png-41e46d49a48e9ff74d2d12b8f9b71b99.stex" ]
+source_file="res://assets/images/ui/book/portraits/alchemist.png"
+dest_files=[ "res://.import/alchemist.png-76fb949e0464715adb0397a956df8598.stex" ]
 
 [params]
 
@@ -21,13 +21,14 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

@@ -29,6 +29,7 @@ var recipes_unlocked := false
 var reveal_map := false
 var lower_threshold := false
 var give_xp := false
+var custom_portrait = false
 
 
 func _ready():
@@ -37,9 +38,16 @@ func _ready():
 	for arg in OS.get_cmdline_args():
 		if arg == "--is_demo":
 			is_demo = true
-		if arg == "--allow_debug":
+		elif arg == "--allow_debug":
 			allow_debugging = true
-	
+		elif arg.find("=") > -1:
+			var key_value = arg.split("=")
+			var key = key_value[0]
+			var value = key_value[1]
+			if key == "--custom_portrait":
+				custom_portrait = value
+
+
 	version_label.text = VERSION
 	demo_label.visible = is_demo
 	

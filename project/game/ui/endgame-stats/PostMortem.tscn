@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/themes/general_theme/h_scroller_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/themes/general_theme/scroller_mini.png" type="Texture" id=20]
 [ext_resource path="res://assets/themes/general_theme/scroller_mini_hover.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/ui/book/player portrait.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/ui/coin.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=24]
 [ext_resource path="res://assets/shaders/scribble.shader" type="Shader" id=25]

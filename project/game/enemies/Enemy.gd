@@ -13,6 +13,7 @@ onready var health_bar = $HealthBar
 onready var sprite = $Sprite
 onready var tween = $Tween
 onready var tooltip = $TooltipCollision
+onready var target_particle = $Sprite/CenterPosition/TargetParticle
 
 const INTENT = preload("res://game/enemies/Intent.tscn")
 
@@ -24,9 +25,11 @@ const INTENT_H = 60
 
 # Highlight constants
 const HL_SPEED = 100
-const HL_MAX_THICKNESS = 15
-const HL_MIN_THICKNESS = 2
+#const HL_MAX_THICKNESS = 15
+#const HL_MIN_THICKNESS = 2
 const HL_COLOR = Color(0.937255, 1, 0.737255, 0.784314)
+const HL_SCALE = Vector2(1, 1)
+const HL_HOVER_SCALE = Vector2(1.5, 1.5)
 
 const VARIANT_IDLE_CHANCE = .15
 
@@ -501,7 +504,7 @@ func set_button_disabled(disable: bool):
 	
 	var color := HL_COLOR
 	color.a = 0 if disable else 1
-	sprite.material.set_shader_param("highlight_color", color)
+	target_particle.modulate = color
 
 
 func get_tooltip():
@@ -527,27 +530,23 @@ func remove_tooltips():
 
 
 func _on_Button_pressed():
-	tween.stop(sprite.material)
-	sprite.material.set_shader_param("highlight_thickness", HL_MIN_THICKNESS)
+	tween.stop(target_particle)
+	target_particle.scale = HL_SCALE
 	emit_signal("selected", self)
 
 
 func _on_Button_mouse_entered():
-	var duration = (-sprite.material.get_shader_param("highlight_thickness") +\
-			HL_MAX_THICKNESS) / HL_SPEED
-	tween.stop(sprite.material)
-	tween.interpolate_property(sprite.material,
-			"shader_param/highlight_thickness", null, HL_MAX_THICKNESS,
+	var duration = (1 - target_particle.modulate.a) / HL_SPEED
+	tween.stop(target_particle)
+	tween.interpolate_property(target_particle, "scale", null, HL_HOVER_SCALE,
 			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 
 
 func _on_Button_mouse_exited():
-	var duration = (sprite.material.get_shader_param("highlight_thickness") -\
-			HL_MIN_THICKNESS) / HL_SPEED
-	tween.stop(sprite.material)
-	tween.interpolate_property(sprite.material,
-			"shader_param/highlight_thickness", null, HL_MIN_THICKNESS,
+	var duration = target_particle.modulate.a / HL_SPEED
+	tween.stop(target_particle)
+	tween.interpolate_property(target_particle, "scale", null, HL_SCALE,
 			duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 

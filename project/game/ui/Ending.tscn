@@ -528,8 +528,8 @@ process_material = SubResource( 17 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.924963 )
-position = Vector2( 0, -1.24054 )
+modulate = Color( 1, 1, 1, 0.918901 )
+position = Vector2( 0, 4.5006 )
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -554,7 +554,6 @@ __meta__ = {
 }
 
 [node name="ShakeVar" type="Node2D" parent="."]
-position = Vector2( 0.5, 0 )
 
 [node name="SubtitleContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5

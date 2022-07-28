@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://game/character/HealthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/effects/random_selection.png" type="Texture" id=3]
 [ext_resource path="res://assets/shaders/highlight.shader" type="Shader" id=4]
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/character/StatusBar.tscn" type="PackedScene" id=7]
@@ -9,8 +10,38 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/grayscale = 0.0
-shader_param/highlight_thickness = 2.0
+shader_param/highlight_thickness = 2.176
 shader_param/highlight_color = Color( 0.937255, 1, 0.737255, 0.784314 )
+
+[sub_resource type="CanvasItemMaterial" id=8]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.125, 0.890625, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = -50.0
+angular_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 1.5
+scale_random = 0.5
+color = Color( 1, 1, 1, 0.501961 )
+color_ramp = SubResource( 10 )
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -125,6 +156,14 @@ current_animations = [ {
 } ]
 
 [node name="CenterPosition" type="Position2D" parent="Sprite"]
+show_behind_parent = true
+
+[node name="TargetParticle" type="Particles2D" parent="Sprite/CenterPosition"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 8 )
+preprocess = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )

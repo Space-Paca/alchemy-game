@@ -19,7 +19,7 @@ signal event_pressed(id)
 signal artifact_pressed(name)
 signal damage_all
 
-const VERSION := "v0.6.0"
+const VERSION := "v0.7.0"
 const MAX_FLOOR := 3
 const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 

@@ -91,8 +91,8 @@ func load_portraits():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name != "." and file_name != "..":
-				if file_name.find(".import") == -1: 
-					portraits[file_name.replace(".png", "")] = load(PORTRAITS_PATH + file_name)
+					file_name = file_name.replace('.import', '')
+					portraits[file_name.replace(".png", "")] = ResourceLoader.load(PORTRAITS_PATH + file_name)
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access portraits path.")

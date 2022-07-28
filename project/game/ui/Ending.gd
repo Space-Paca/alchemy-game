@@ -107,3 +107,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		return
 	
 	show_gameover()
+
+
+func _on_SpineAnimation_animation_finished(anim_name):
+	if anim_name == "Loop":
+		$Ending/Background/AnimationPlayer.stop()
+		$Ending/Background/AnimationPlayer.play("Loop2")

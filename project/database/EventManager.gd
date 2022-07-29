@@ -93,6 +93,9 @@ func get_random_event(current_floor: int) -> Event:
 	for f in FLOORS:
 		event_ids_by_floor[f].erase(id)
 	
+	#Temporary fix to ignore event 8
+	if id == 8:
+		return get_random_event(current_floor)
 	return get_event_by_id(id)
 
 

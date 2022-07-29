@@ -148,10 +148,10 @@ __meta__ = {
 }
 
 [node name="TabContainer" type="TabContainer" parent="."]
-margin_left = 310.0
-margin_right = 1610.0
+margin_left = 285.0
+margin_right = 1635.0
 margin_bottom = 600.0
-rect_min_size = Vector2( 1300, 600 )
+rect_min_size = Vector2( 1350, 600 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource( 1 )
@@ -165,7 +165,6 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -194,9 +193,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/FullscreenContainer"]
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 650.0
-margin_bottom = 47.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_FULLSCREEN"
@@ -235,9 +234,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/BorderlessContainer"]
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 650.0
-margin_bottom = 47.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_BORDERLESS"
@@ -275,9 +274,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/MapFog"]
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 650.0
-margin_bottom = 47.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_DISABLEFOG"
@@ -328,9 +327,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/ResolutionContainer"]
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 650.0
-margin_bottom = 47.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_WINDOW_SIZE"
@@ -387,7 +386,7 @@ __meta__ = {
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
 margin_top = 65.0
 margin_right = 203.0
-margin_bottom = 315.0
+margin_bottom = 434.0
 mouse_filter = 0
 texture = ExtResource( 7 )
 patch_margin_left = 50
@@ -431,10 +430,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -83.5
-margin_top = -107.5
-margin_right = 83.5
-margin_bottom = 107.5
+margin_left = -89.5
+margin_top = -178.5
+margin_right = 88.5
+margin_bottom = 174.5
 mouse_filter = 0
 custom_constants/separation = 25
 alignment = 1
@@ -442,9 +441,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Res_3840x2160" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_right = 178.0
+margin_bottom = 38.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 10 )
+custom_icons/unchecked = ExtResource( 10 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 20 )
+group = SubResource( 19 )
+text = "3840x2160"
+
+[node name="Res_2560x1440" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
+margin_top = 63.0
+margin_right = 178.0
+margin_bottom = 101.0
+custom_constants/hseparation = 15
+custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked = ExtResource( 8 )
+custom_icons/checked = ExtResource( 8 )
+custom_icons/radio_unchecked = ExtResource( 10 )
+custom_icons/unchecked = ExtResource( 10 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/hover_pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 20 )
+group = SubResource( 19 )
+text = "2560x1440"
+
 [node name="Res_1920x1080" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
-margin_right = 167.0
-margin_bottom = 35.0
+margin_top = 126.0
+margin_right = 178.0
+margin_bottom = 164.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -461,9 +498,9 @@ group = SubResource( 19 )
 text = "1920x1080"
 
 [node name="Res_1600x900" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
-margin_top = 60.0
-margin_right = 167.0
-margin_bottom = 95.0
+margin_top = 189.0
+margin_right = 178.0
+margin_bottom = 227.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -480,9 +517,9 @@ group = SubResource( 19 )
 text = "1600x900"
 
 [node name="Res_1366x768" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
-margin_top = 120.0
-margin_right = 167.0
-margin_bottom = 155.0
+margin_top = 252.0
+margin_right = 178.0
+margin_bottom = 290.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -499,9 +536,9 @@ group = SubResource( 19 )
 text = "1366x768"
 
 [node name="Res_1280x720" type="CheckBox" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer"]
-margin_top = 180.0
-margin_right = 167.0
-margin_bottom = 215.0
+margin_top = 315.0
+margin_right = 178.0
+margin_bottom = 353.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -800,6 +837,7 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1477,6 +1515,8 @@ text = "BACK"
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox" to="." method="_on_MapFogCheckBox_toggled"]
 [connection signal="toggled" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton" to="." method="_on_ResolutionButton_toggled"]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/CloseDropdown" to="." method="_on_CloseDropdown_pressed"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_3840x2160" to="." method="_on_Resolution_button_pressed" binds= [ 5 ]]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_2560x1440" to="." method="_on_Resolution_button_pressed" binds= [ 4 ]]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1920x1080" to="." method="_on_Resolution_button_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1600x900" to="." method="_on_Resolution_button_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer/Res_1366x768" to="." method="_on_Resolution_button_pressed" binds= [ 2 ]]

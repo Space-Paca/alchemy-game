@@ -9,9 +9,10 @@ is_elite = false
 level = 1
 enemies = [ "spawner_ooze" ]
 loot_table = {
-"buffing": 0,
+"buff": 0,
 "common": 0,
 "damaging": 0,
+"debuff": 0,
 "defensive": 0,
 "healing": 1,
 "poison": 3,

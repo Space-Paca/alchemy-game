@@ -9,9 +9,10 @@ is_elite = false
 level = 1
 enemies = [ "big_buffer" ]
 loot_table = {
-"buffing": 0,
+"buff": 0,
 "common": 1,
 "damaging": 3,
+"debuff": 0,
 "defensive": 0,
 "healing": 1,
 "poison": 0,

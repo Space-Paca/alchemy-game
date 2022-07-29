@@ -9,9 +9,10 @@ is_elite = false
 level = 2
 enemies = [ "big_divider" ]
 loot_table = {
-"buffing": 0,
+"buff": 0,
 "common": 0,
 "damaging": 0,
+"debuff": 0,
 "defensive": 0,
 "healing": 0,
 "poison": 3,

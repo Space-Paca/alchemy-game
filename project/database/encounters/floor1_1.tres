@@ -9,9 +9,10 @@ is_elite = false
 level = 1
 enemies = [ "carapa" ]
 loot_table = {
-"buffing": 0,
+"buff": 0,
 "common": 1,
 "damaging": 2,
+"debuff": 0,
 "defensive": 1,
 "healing": 0,
 "poison": 0,

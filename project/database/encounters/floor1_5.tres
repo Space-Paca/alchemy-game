@@ -12,6 +12,7 @@ loot_table = {
 "buff": 0,
 "common": 0,
 "damaging": 2,
+"debuff": 0,
 "defensive": 4,
 "healing": 1,
 "poison": 0,

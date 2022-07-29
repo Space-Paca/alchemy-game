@@ -9,9 +9,10 @@ is_elite = false
 level = 2
 enemies = [ "revenger", "rager", "revenger" ]
 loot_table = {
-"buffing": 3,
+"buff": 3,
 "common": 0,
 "damaging": 0,
+"debuff": 0,
 "defensive": 0,
 "healing": 1,
 "poison": 0,

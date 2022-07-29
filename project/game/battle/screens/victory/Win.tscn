@@ -29,6 +29,7 @@ font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 768, 432 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 36

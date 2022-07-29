@@ -22,6 +22,7 @@ onready var back_button = $BG/MovingScreen/RecipesContainer/BackButton
 onready var recipes_button = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/RecipesButton
 onready var continue_button = $BG/MovingScreen/LootBackground/ContinueButton
 onready var pearl_label = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/PearlContainer/Label
+onready var nothing_label = $BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/Nothing
 onready var moving_screen = $BG/MovingScreen
 onready var title = $BG/Title
 onready var bg = $BG
@@ -160,7 +161,7 @@ func check_loot_left() -> bool:
 	loot_list.hide()
 	
 	for child in rewards_container.get_children():
-		if child.visible:
+		if child != nothing_label and child.visible:
 			return true
 	
 	$BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/Nothing.show()

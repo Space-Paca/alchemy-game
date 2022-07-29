@@ -6,6 +6,7 @@ signal action
 signal selected
 signal action_resolved
 signal resolved
+signal updated_visuals_complete
 
 onready var animation = $AnimationPlayer
 onready var button = $Button
@@ -223,7 +224,10 @@ func remove_status(status: String):
 
 func new_turn():
 	update_status("start_turn")
-	health_bar.update_visuals(hp, shield)
+	var func_state = (health_bar.update_visuals(hp, shield) as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(health_bar, "animation_completed") 
+		emit_signal("updated_visuals_complete")
 
 
 func update_status(type: String):

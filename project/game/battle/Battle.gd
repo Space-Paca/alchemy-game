@@ -574,7 +574,9 @@ func new_player_turn():
 func new_enemy_turn():
 	for enemy in enemies_node.get_children():
 		if not enemy.just_spawned:
-			enemy.new_turn()
+			var func_state = (enemy.new_turn() as GDScriptFunctionState)
+			if func_state and func_state.is_valid():
+				yield(enemy, "updated_visuals_complete")
 			enemy.act()
 			yield(enemy, "acted")
 		if ended:

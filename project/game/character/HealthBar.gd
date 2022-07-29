@@ -60,7 +60,7 @@ func update_visuals(new_hp, new_shield):
 		if updated_shield:
 			shield_tween.start()
 		yield($Tween, "tween_all_completed")
-		emit_signal('animation_completed')
+		emit_signal("animation_completed")
 
 func update_shield(value):
 	var cur_shield = int(shield_label.text)

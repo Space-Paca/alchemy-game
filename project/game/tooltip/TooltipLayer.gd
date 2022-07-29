@@ -17,6 +17,12 @@ var keywords = {
 		"text": "CRUSHING_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
 	},
+	"POISON_DAMAGE": {
+		"type": "tooltip",
+		"title": "POISON_DAMAGE_TITLE",
+		"text": "POISON_DAMAGE_DESC",
+		"title_image": preload("res://assets/images/status/poison.png"),
+	},
 	"REGULAR_DAMAGE": {
 		"type": "no_tooltip",
 	},

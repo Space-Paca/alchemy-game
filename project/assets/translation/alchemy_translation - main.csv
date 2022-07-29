@@ -278,13 +278,16 @@ SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reage
 REGULAR_DAMAGE,regular damage,dano normal
 PIERCING_DAMAGE,piercing damage,dano penetrante
 PIERCING_DAMAGE_TITLE,Piercing Damage,Dano Penetrante
-PIERCING_DAMAGE_DESC,Piercing damage ignores shield and deals damage directly to health.,Dano penetrante ignora escuda e inflige dano diretamente à vida.
+PIERCING_DAMAGE_DESC,Piercing damage ignores shield and deals damage directly to health.,Dano penetrante ignora escudo e inflige dano diretamente à vida.
+POISON_DAMAGE,poison damage,dano venenoso
+POISON_DAMAGE_TITLE,Poison Damage,Dano Venenoso
+POISON_DAMAGE_DESC,Poison damage ignores shield and deals damage directly to health.,Dano venenoso ignora escudo e inflige dano diretamente à vida.
 CRUSHING_DAMAGE,crushing damage,dano esmagador
 CRUSHING_DAMAGE_TITLE,Crushing Damage,Dano Esmagador
 CRUSHING_DAMAGE_DESC,Crushing damage deals damage both to shield and health directly.,Dano esmagador inflige dano tanto ao escudo quanto diretamente à vida.
-VENOM_DAMAGE,venom damage,dano venenoso
-VENOM_DAMAGE_TITLE,Venom Damage,Dano Venenoso
-VENOM_DAMAGE_DESC,Unblocked venom damage applies poison to target instead of damage.,Dano venenoso que não for bloqueado vai aplicar veneno ao usuário em vez de dano.
+VENOM_DAMAGE,venom damage,dano tóxico
+VENOM_DAMAGE_TITLE,Venom Damage,Dano Tóxico
+VENOM_DAMAGE_DESC,Unblocked venom damage applies poison to target instead of damage.,Dano tóxico que não for bloqueado vai aplicar veneno ao usuário em vez de dano.
 DRAIN,drain,drenar
 DRAIN_2,drain,drene
 DRAIN_TITLE,Drain,Drenar

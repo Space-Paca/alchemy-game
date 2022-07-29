@@ -84,7 +84,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		source.take_damage(self, status_list["retaliate"].amount, "regular", false)
 	
 	#Check for evasion
-	if status_list.has("evasion"):
+	if type != "poison" and status_list.has("evasion"):
 		randomize()
 		if randf() >= .5:
 			AudioManager.play_sfx("dodge")
@@ -95,7 +95,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			return unblocked_damage
 	
 	#Check for dodge
-	if status_list.has("dodge"):
+	if type != "poison" and status_list.has("dodge"):
 		AudioManager.play_sfx("dodge")
 		status_list["dodge"].amount -= 1
 		unblocked_damage = 0

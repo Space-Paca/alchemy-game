@@ -66,6 +66,8 @@ func set_loot(loot: Array):
 			artifact_loot.connect("artifact_looted", self, "_on_artifact_looted")
 			var rarity = loot_name.replace("artifact_", "")
 			artifact_loot.set_artifact(rarity, player)
+		else:
+			push_error("Not a valid loot:" + str(loot_name))
 	
 	if pearl_amount:
 		if player.has_artifact("blue_oyster"):

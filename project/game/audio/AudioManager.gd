@@ -56,10 +56,14 @@ func _ready():
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-#	change_group_of_loc("", "", "base_pitch", 1.0)
+#	change_group_of_loc("", "hit", "base_db", 1)
+#	change_group_of_loc("", "attack", "base_db", 1)
+	change_group_of_loc("carapa", "", "base_db", 5)
+#	change_group_of_loc("", "spawn", "base_db", 1)
 #	change_group_of_bgm("", "base_db", -5)
-#	change_group_of_sfx("status", "base_db", -5)
-	
+#	change_group_of_sfx("compendium", "base_db", 15)
+#	change_group_of_sfx("recipe", "base_db", 1)
+#	change_group_of_sfx("shield", "base_db", 1)
 
 func _process(dt):
 	for name in just_played_sfxs.keys():

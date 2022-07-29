@@ -58,7 +58,7 @@ func _ready():
 	setup_locs()
 #	change_group_of_loc("", "hit", "base_db", 1)
 #	change_group_of_loc("", "attack", "base_db", 1)
-	change_group_of_loc("carapa", "", "base_db", 5)
+#	change_group_of_loc("carapa", "", "base_db", 5)
 #	change_group_of_loc("", "spawn", "base_db", 1)
 #	change_group_of_bgm("", "base_db", -5)
 #	change_group_of_sfx("compendium", "base_db", 15)

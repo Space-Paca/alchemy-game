@@ -25,8 +25,11 @@ var shaking := true
 var showing_gameover := false
 var time := .0
 var skip_enabled := false
+var bg_sfx_player = false
+
 
 func _ready():
+	TooltipLayer.clean_tooltips()
 	AudioManager.play_bgm("demo_ending", false, true)
 
 
@@ -51,6 +54,8 @@ func _process(delta):
 	
 	if progress.value == 1:
 		set_process(false)
+		if bg_sfx_player:
+			bg_sfx_player.stop()
 		show_gameover()
 	elif skip_timer.is_stopped() and progress.value == 0:
 		skip.modulate.a -= SKIP_HIDE_SPEED * delta
@@ -62,6 +67,8 @@ func end_shake():
 
 
 func start_background_animation():
+	TooltipLayer.clean_tooltips()
+	bg_sfx_player = AudioManager.play_sfx("ending")
 	$Ending/Background/AnimationPlayer.play("Loop")
 
 

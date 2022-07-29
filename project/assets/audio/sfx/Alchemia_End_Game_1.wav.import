@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Alchemia_End_Game_1.wav-db812320929d570d3e6e0a4def601d0c.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Alchemia_End_Game_1.wav"
+dest_files=[ "res://.import/Alchemia_End_Game_1.wav-db812320929d570d3e6e0a4def601d0c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

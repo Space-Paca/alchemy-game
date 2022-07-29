@@ -544,6 +544,8 @@ func play_sfx(name: String, override_pitch = false, db_mod := 0.0):
 	player.stream.random_pitch = 1.0 + sfx.random_pitch_var
 	
 	player.play()
+	
+	return player
 
 
 func get_sfx_duration(name: String):

@@ -73,7 +73,7 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/mode = 0
-shader_param/intensity = 1.0
+shader_param/intensity = 0.0
 
 [node name="ColorblindnessShader" type="CanvasLayer"]
 layer = 4

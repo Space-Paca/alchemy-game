@@ -6,6 +6,10 @@ const MODES_NAME =  ["PROTANOPIA", "DEUTRANOPIA", "TRITANOPIA"]
 const SPEED = 2.5
 
 
+func _ready():
+	$Shader.material.set_shader_param("intensity", 0.0)
+
+
 func set_mode(value):
 	assert(value >= 0 and value < COLORBLIND_MODES.size(), "Not a valid colorblind mode: " + str(value))
 	$Shader.material.set_shader_param("mode", value)

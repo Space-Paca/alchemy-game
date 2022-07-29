@@ -51,6 +51,7 @@ CHOOSE_ONE,Choose One,Escolha Um
 CHOOSE_TARGET,Choose Target,Escolher Alvo
 ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...
 IGNORE,Ignore,Ignorar
+COOL,Cool,Dahora
 CHOOSE_ONLY_ONE,Choose only one,Escolha apenas um
 HEAL_TEXT,[center]Heal [color=green]%d HP[/color] ([color=%s]%d%%[/color] max hp)[/center],[center]Cura [color=green]%d PV[/color] ([color=%s]%d%%[/color] da vida máx.)[/center]
 CANT_HEAL,CAN'T HEAL,NÃO PODE CURAR

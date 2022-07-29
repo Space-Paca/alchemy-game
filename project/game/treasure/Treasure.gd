@@ -31,7 +31,7 @@ func setup(node, _player, level):
 	
 	if artifacts_found.size() == 0:
 		$AllArtifacts.show()
-		$BackButton.text = "Cool"
+		$BackButton.text = "COOL"
 	else:
 		for artifact_data in artifacts_found:
 			var loot = ARTIFACT_LOOT.instance()
@@ -84,7 +84,7 @@ func reset_room():
 	
 func reset():
 	$AllArtifacts.hide()
-	$BackButton.text = "Ignore"
+	$BackButton.text = "IGNORE"
 
 func _on_BackButton_pressed():
 	reset_room()

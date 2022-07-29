@@ -836,7 +836,7 @@ func _on_Battle_won():
 	var rewarded_combinations := []
 	battle.disable_player()
 	
-	if battle.is_boss:
+	if battle.is_boss and not battle.is_event:
 		var size = min(player.grid_size + 1, player.GRID_SIZES.back())
 		var indices = range(combinations[size].size())
 		indices.shuffle()
@@ -855,6 +855,7 @@ func _on_Battle_won():
 
 
 func _on_Battle_finished(is_boss, is_elite, is_final_boss):
+	var is_event = battle.is_event
 	time_running = false
 	if not is_final_boss:
 		Transition.begin_transition()
@@ -867,7 +868,7 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 		Transition.end_transition()
 	
 	var should_save = true
-	if is_boss:
+	if is_boss and not is_event:
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
@@ -887,10 +888,10 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 			thanks_for_playing()
 	else:
 		play_map_bgm()
-		if is_elite:
-			player.increase_floor_stat("elite_encounters_finished")
-		else:
+		if not is_elite:
 			player.increase_floor_stat("normal_encounters_finished")
+		else:
+			player.increase_floor_stat("elite_encounters_finished")
 		enable_map()
 		current_node.set_type(MapNode.EMPTY)
 		player.set_floor_stat("percentage_done", map.get_done_percentage())

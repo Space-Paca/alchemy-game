@@ -271,7 +271,7 @@ UNSTABLE_TITLE,Unstable,Instável
 UNSTABLE_DESC,"An unstable reagent, if used in a miscombination or not used until end of turn, explodes dealing 10 regular damage.","Um reagente instável, se usado em uma má combinação ou se não for utilizado até o final do turno, explodirá infligindo 10 de dano normal."
 ON_FIRE,On fire,Pegando fogo
 ON_FIRE_TITLE,On Fire,Pegando Fogo
-ON_FIRE_DESC,"This reagent, when touched, will deal 9 regular damage to user.","Este reagente, quando tocado, irá dar 9 de dano normal ao usuário."
+ON_FIRE_DESC,"This reagent, when touched, will deal 6 regular damage to user.","Este reagente, quando tocado, irá dar 6 de dano normal ao usuário."
 SUBSTITUTES,Substitutes,Substituições
 SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este outro reagente
 SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes outros reagentes

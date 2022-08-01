@@ -890,17 +890,14 @@ func autocomplete_grid(combination: Combination):
 								var slot = grid.slots.get_child((i+off_i) * grid.grid_size + (j+off_j))
 								for idx in selected_reagents.size():
 									if selected_reagents[idx] and selected_reagents[idx] == combination.matrix[i][j]:
-										selected_reagents[idx] = false
 										var reagent = reagents.get_child(idx)
-										if not reagent.slot:
-											push_error("reagent isn't in slot")
-											assert(false)
-										if reagent.is_burned():
-											reagent.unburn()
-											AudioManager.play_sfx("fire_reagent")
-											player.take_damage(player, 9, "regular", false)
-										slot.set_reagent(reagent)
-										break
+										if not reagent.is_burned():
+											selected_reagents[idx] = false
+											if not reagent.slot:
+												push_error("reagent isn't in slot")
+												assert(false)
+											slot.set_reagent(reagent)
+											break
 					#Could autocomplete
 					emit_signal("finished_autocomplete")
 					return

@@ -163,6 +163,7 @@ func add_combination(combination: Combination, threshold: int):
 	var recipe_display = RECIPE.instance()
 	recipe_grid.add_child(recipe_display)
 	recipe_display.set_combination(combination)
+	recipe_display.disable_tooltips()
 	recipe_display.connect("hovered", self, "_on_recipe_display_hovered")
 	recipe_display.connect("unhovered", self, "_on_recipe_display_unhovered")
 	recipe_display.connect("pressed", self, "_on_recipe_display_pressed")

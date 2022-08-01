@@ -49,6 +49,7 @@ func first_setup(combinations: Array, _player: Player):
 		if i < combinations.size() and combinations[i]:
 			recipe.set_combination(combinations[i])
 			recipe.player = player
+			recipe.disable_tooltips()
 			shown_combinations.append(combinations[i])
 		else:
 			print("Shop.gd: Not enough combinations to fill shop")
@@ -76,6 +77,7 @@ func load_combinations(combinations, _player):
 		recipe.connect("hint_bought", self, "_on_ShopRecipe_hint_bought")
 		recipe.set_combination(combinations[i])
 		recipe.player = player
+		recipe.disable_tooltips()
 
 func setup():
 	$AnimationPlayer.play("init")

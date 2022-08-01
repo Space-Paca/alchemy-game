@@ -50,7 +50,7 @@ func set_mastery(value):
 
 func enable():
 	button.disabled = false
-	block_tooltips = false
+	enable_tooltips()
 
 
 func disable():
@@ -75,7 +75,12 @@ func error_effect():
 	$Tween.start()
 
 
+func enable_tooltips():
+	block_tooltips = false
+
+
 func disable_tooltips():
+	block_tooltips = true
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()

@@ -651,6 +651,8 @@ func recipe_book_toggled(visible: bool):
 		for reagent in reagents.get_children():
 			reagent.disable_tooltips()
 			reagent.disable_dragging()
+		for favorite in favorites.get_children():
+			favorite.disable_tooltips()
 		draw_bag.disable()
 		discard_bag.disable()
 		grid.hide_effects()
@@ -670,6 +672,8 @@ func recipe_book_toggled(visible: bool):
 		for reagent in reagents.get_children():
 			reagent.enable_tooltips()
 			reagent.enable_dragging()
+		for favorite in favorites.get_children():
+			favorite.enable_tooltips()
 		draw_bag.enable()
 		discard_bag.disable()
 		grid.show_effects()

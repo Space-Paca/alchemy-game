@@ -266,6 +266,7 @@ func toggle_visibility():
 	
 	if is_open:
 		AudioManager.play_sfx("open_recipe_list")
+		filter_by_tag(current_tag)
 		enable_tooltips()
 		
 		if not Profile.get_tutorial("recipe_book"):
@@ -393,6 +394,9 @@ func filter_combinations(filters: Array):
 func get_valid_combinations(combinations : Array, available_reagents : Array):
 	var valid_combinations = []
 	for combination in combinations:
+		if player.grid_size < combination.recipe.grid_size:
+			# Skip any recipe that requires a grid bigger than the player's
+			continue
 		for possible_reagent_combination in combination.recipe.reagent_combinations:
 			if has_necessary_reagents(possible_reagent_combination, available_reagents):
 				valid_combinations.append(combination)

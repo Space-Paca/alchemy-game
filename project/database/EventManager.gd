@@ -150,12 +150,13 @@ func load_battle_event(event_display, player, text: String, encounter: Encounter
 	dummy_battle_event.title = tr(current_event.title if title == "" else title)
 	dummy_battle_event.type = current_event.type if type == -1 else type
 	dummy_battle_event.options[0].args[0] = encounter
+	dummy_battle_event.image = current_event.image
 	load_new_event(event_display, player, dummy_battle_event.id)
 
 
 func load_leave_event(event_display, player, text: String, title := "", type := -1):
 	dummy_leave_event.text = tr(text)
-	dummy_leave_event.title = current_event.title if title == "" else title
+	dummy_leave_event.title = tr(current_event.title if title == "" else title)
 	dummy_leave_event.type = current_event.type if type == -1 else type
 	dummy_leave_event.image = current_event.image
 	load_new_event(event_display, player, dummy_leave_event.id)

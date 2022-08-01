@@ -165,7 +165,7 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 	setup_enemy(current_encounter, data.enemies)
 
-	setup_audio(current_encounter)
+	setup_audio()
 
 	AudioManager.play_sfx("start_battle")
 	
@@ -216,7 +216,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array,
 
 	setup_enemy(encounter)
 
-	setup_audio(encounter)
+	setup_audio()
 
 	AudioManager.play_sfx("start_battle")
 
@@ -385,7 +385,7 @@ func enemies_init():
 	return had_init
 
 
-func setup_audio(encounter : Encounter):
+func setup_audio():
 	if is_boss:
 		AudioManager.play_bgm("boss" + str(floor_level), 3)
 	elif is_elite:

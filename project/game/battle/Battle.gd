@@ -148,6 +148,9 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	
 	is_event = data.is_event
 	
+	is_boss = current_encounter.is_boss and not is_event
+	is_elite = current_encounter.is_elite or (current_encounter.is_boss and is_event)
+	
 	setup_bg()
 
 	setup_nodes(_player)
@@ -188,11 +191,16 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	emit_signal("block_pause", false)
 
 
-func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, _floor_level: int,  recipe_book : RecipeBook):
+func setup(_player: Player, encounter: Encounter, favorite_combinations: Array,
+		_floor_level: int,  recipe_book : RecipeBook, _is_event := false):
 	emit_signal("block_pause", true)
 	
 	floor_level = _floor_level
 	current_encounter = encounter
+	is_event = _is_event
+	
+	is_boss = encounter.is_boss and not is_event
+	is_elite = encounter.is_elite or (encounter.is_boss and is_event)
 
 	setup_bg()
 
@@ -240,7 +248,7 @@ func setup(_player: Player, encounter: Encounter, favorite_combinations: Array, 
 func setup_bg():
 	book.rect_position.x = BOOK_START_X
 
-	if current_encounter.is_boss:
+	if is_boss:
 		if floor_level == 3:
 			$FinalBossBG.show()
 			if current_encounter.current_phase == 1:
@@ -255,8 +263,7 @@ func setup_bg():
 		$BGEliteEffect.modulate = backgrounds_elite_modulate[floor_level-1]
 		$FG.texture = foregrounds[floor_level-1]
 	
-	$BGEliteEffect.visible = current_encounter.is_elite
-		
+	$BGEliteEffect.visible = is_elite
 	$BGTween.interpolate_property($BG, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.interpolate_property($BGEliteEffect, "rect_position:x", 0, -499, BG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$BGTween.interpolate_property($FG, "rect_position:x", 150, -499, FG_ENTER_DUR, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -342,11 +349,6 @@ func setup_player_ui():
 	player_ui.update_artifacts(player)
 
 func setup_enemy(encounter: Encounter, load_enemies_data = false):
-	if encounter.is_boss:
-		is_boss = true
-	if encounter.is_elite:
-		is_elite = true
-
 	#Clean up dummy enemies
 	for child in enemies_node.get_children():
 		enemies_node.remove_child(child)
@@ -384,9 +386,9 @@ func enemies_init():
 
 
 func setup_audio(encounter : Encounter):
-	if encounter.is_boss:
+	if is_boss:
 		AudioManager.play_bgm("boss" + str(floor_level), 3)
-	elif encounter.is_elite:
+	elif is_elite:
 		AudioManager.play_bgm("elite" + str(floor_level), 3)
 	else:
 		AudioManager.play_bgm("battle" + str(floor_level), 3)
@@ -790,7 +792,7 @@ func is_final_boss():
 func win():
 	if ended:
 		return
-
+	
 	ended = true
 	disable_elements()
 	emit_signal("block_pause", true)
@@ -1368,7 +1370,7 @@ func _on_RecipesButton_pressed():
 
 func _on_win_screen_continue_pressed(final_boss := false):
 	emit_signal("block_pause", false)
-	emit_signal("finished", is_boss and not is_event, is_elite, final_boss)
+	emit_signal("finished", is_boss, is_elite, final_boss)
 
 
 func _on_win_screen_reagent_looted(reagent: String):

@@ -619,14 +619,14 @@ func load_battle(data):
 	map.set_disabled(false)
 
 
-func new_battle(encounter: Encounter):
+func new_battle(encounter: Encounter, is_event := false):
 	assert(battle == null)
 	create_battle()
 	
 	#DEBUG spawna último boss
 	#encounter = EncounterManager.boss_encounters[3].front()
 	
-	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level, recipe_book)
+	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level, recipe_book, is_event)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -836,7 +836,7 @@ func _on_Battle_won():
 	var rewarded_combinations := []
 	battle.disable_player()
 	
-	if battle.is_boss and not battle.is_event:
+	if battle.is_boss:
 		var size = min(player.grid_size + 1, player.GRID_SIZES.back())
 		var indices = range(combinations[size].size())
 		indices.shuffle()
@@ -855,7 +855,6 @@ func _on_Battle_won():
 
 
 func _on_Battle_finished(is_boss, is_elite, is_final_boss):
-	var is_event = battle.is_event
 	time_running = false
 	if not is_final_boss:
 		Transition.begin_transition()
@@ -868,7 +867,7 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 		Transition.end_transition()
 	
 	var should_save = true
-	if is_boss and not is_event:
+	if is_boss:
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
@@ -1119,8 +1118,7 @@ func _on_EventDisplay_event_spawned_battle(encounter):
 	
 	hide_event()
 	current_node = event_display.map_node
-	new_battle(encounter)
-	battle.is_event = true
+	new_battle(encounter, true)
 
 
 func _on_EventDisplay_event_spawned_rest():

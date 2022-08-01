@@ -1,6 +1,0 @@
-Godot Engine v3.2.3.stable.official - https://godotengine.org
-OpenGL ES 3.0 Renderer: AMD Radeon HD 6900 Series
-**ERROR**: hint:SDL_GAMECONTROLLER_USE_BUTTON_LABELS:=1
-Unrecognised output string: hint
-   At: main/input_default.cpp:1141:parse_mapping() - Condition "output_button == JOY_INVALID_OPTION && output_axis == JOY_INVALID_OPTION" is true. Continuing.
- 

@@ -11,3 +11,7 @@ data_*/
 # Releases
 *.exe
 *.x86_64
+
+# Misc runtime or temporary files
+/project/logs/
+*.TMP

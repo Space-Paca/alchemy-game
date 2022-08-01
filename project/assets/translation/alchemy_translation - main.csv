@@ -629,7 +629,7 @@ EVENT_DUMMY_BATTLE_OPT_1,Battle!,Batalhar!
 EVENT_DUMMY_LEAVE_OPT_1,Leave.,Sair.
 EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Ir para o círculo de descanso.
 EVENT_1_TITLE,Travellin' Gamblin' Man,Ambulante Andante Extravagante
-EVENT_1_TEXT,"While exploring, you pass by a misterious figure hidden beneath a dusty cloak.
+EVENT_1_TEXT,"While exploring, you pass by a mysterious figure hidden beneath a dusty cloak.
 
 (shake)""Hey, wanna gamble?""(/shake) you hear from the figure as a wide smile emerges from the shadowy hood.
 
@@ -672,7 +672,7 @@ A carta olha de volta, revelando uma pintura rubra da morte. Calafrios percorrem
 Uma risada maníaca desvia sua atenção para o lado oposto da mesa, mas no lugar onde jazia a figura encoberta, você só enxerga o vazio...
 
 O ser misterioso se foi, junto de suas moedas."
-EVENT_1_LEAVE_4,"You don't trust luck is by your side, and you certainly don't feel confortable interacting with unknown creepy figures.
+EVENT_1_LEAVE_4,"You don't trust luck is by your side, and you certainly don't feel comfortable interacting with unknown creepy figures.
 
 As you hesitate to accept the gambling offer, the hooded disappears in the blink of an eye. Maybe for the best.
 
@@ -705,7 +705,7 @@ After a moment of silence, a faint splashing sound hits your eardrums.
 
 You stare blankly for a few minutes, hoping something would magically happen.
 
-Suddenly a golden glimmer catches you attention on the other side of well. You walk to it, to find an unnatended satchel full of gold!
+Suddenly a golden glimmer catches you attention on the other side of well. You walk to it, to find an unattended satchel full of gold!
 ""Was this here before?"" the thought passes by your head while you hastily pick up every coin you can carry.
 
 You walk away from the well, happier and a bit heavier than before.
@@ -726,7 +726,7 @@ After a moment of silence, a faint splashing sound hits your eardrums.
 
 You stare blankly for a few minutes, hoping something would magically happen.
 
-In disbelief you start walking away when you immediatly stumble upon an (highlight)artifact(/highlight) that was lying right behind your feet!
+In disbelief you start walking away when you immediately stumble upon an (highlight)artifact(/highlight) that was lying right behind your feet!
 Amazed, you pickup the object, and continue onto your journey.","O estrépito de suas moedas batendo nas paredes internas do poço lentamente dissipam-se na grande escuridão.
 Após momentos de silêncio, um som tênue de metal mergulhando atinge seus tímpanos.
 
@@ -797,7 +797,7 @@ An old-woman, with bushy eyebrows and vulpine eyes, welcomes you, and after peek
 
 ""What some lovely trinkets you have there, care to make a deal? An offer I lay bare, one-for-one, what a steal!""
 
-She brings up a relative large bag, it's contents hidden from sight. You may grab bindly from it, but for each one a reagent you must leave behind.","Você se depara com uma pequena cabana, e o cheiro de ervas frescas o convida a entrar.
+She brings up a relative large bag, it's contents hidden from sight. You may grab blindly from it, but for each one a reagent you must leave behind.","Você se depara com uma pequena cabana, e o cheiro de ervas frescas o convida a entrar.
 
 Uma mulher idosa, com sobrancelhas grossas e olhos vulpinos, lhe dá as boas-vindas e, depois de espiar os reagentes pendurados em sua bolsa, fala com uma voz rouca:
 
@@ -854,7 +854,7 @@ EVENT_6_OPT_2,Walk away.,Se afaste do acampamento.
 EVENT_7_TITLE,A Dangerous Proposition,Uma Proposição Perigosa
 EVENT_7_TEXT,"You notice an (highlight)eerie cave(/highlight) in the distance, and as you approach, the shadow of a terrible creature moving through the walls asserts this is their lair. 
 
-However, dark as it is, surely you'll be able to pass without a fight, but as you exame your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
+However, dark as it is, surely you'll be able to pass without a fight, but as you examine your surroundings you see a stolen (highlight)treasure chest(/highlight), exactly like the ones you've seen containing powerful artifacts from this forgotten kingdom.
 
 ""Maybe I can get it without drawing attention, but is it worth the risk?"" you think to yourself as the prospect of treasure tempts you to get even closer...","Você avista uma (highlight)caverna misteriosa(/highlight) à distância, e conforme você se aproxima, a sombra de uma criatura terrível movendo-se surge nas paredes cavernosas, afirmando que este é um covil inimigo. 
 
@@ -914,7 +914,7 @@ EVENT_8_OPT_2,Walk away.,Se afaste do santuário.
 EVENT_9_TITLE,Cursed Pearls,Pérolas Amaldiçoadas
 EVENT_9_TEXT,"While treading an unconventional path, you step into puddle, where a (wave)shiny sparkle(/wave) catches your attention. You lean down and reach into the shallow pool and find a handful of (highlight)precious pearls(/highlight)!
 
-However, unlike the ones you've seen before, these emanate somekind of (highlight)ghoulish aura(/highlight), as if embedded with an (highlight)ancient evil(/highlight).
+However, unlike the ones you've seen before, these emanate some kind of (highlight)ghoulish aura(/highlight), as if embedded with an (highlight)ancient evil(/highlight).
 
 You ponder for a moment if it's worth keeping them, unafraid of the consequences, or if it's better to leave this fate to another soul...","Enquanto trilha em um caminho não convencional, você acaba pisando em uma poça, onde (wave)algo brilhante(/wave) chama sua atenção. Você se inclina e enfia a mão na poça, puxando de volta um punhado de (highlight)pérolas preciosas(/highlight)!
 
@@ -960,9 +960,9 @@ EVENT_10_OPT_3,Don't take anything.,Não pegar nada.
 EVENT_11_TITLE,Decomposing Corpse,Cadáver em Decomposição
 EVENT_11_TEXT,"Turning a corner, you are stunned by a (shake)rancid stench(/shake) emanating from nearby. You spot the origin of the foul smell: a dead body of an unlucky adventurer who passed by this path, no more than a few moons ago.
 
-You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongs its carcass. However, the corpse its completely infested in (shake)bugs and worms(/shake).
+You close your nostrils and try to walk around the corpse, but as you pass beside it, you notice the poor soul has some (highlight)fortunes(/highlight) amongst its carcass. However, the corpse its completely infested in (shake)bugs and worms(/shake).
 
-You could power throught the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?","Ao virar uma esquina, você é atordoado por um (shake)fedor rançoso(/shake) que emana de algo perto. Você identifica a origem do mau cheiro: um cadáver de um aventureiro azarado que passou por este caminho, não mais do que algumas luas atrás.
+You could power through the stench and search for something valuable... but is it worth the risk of getting your backpack infested in everything that is (shake)gnawing(/shake) the dead adventurer?","Ao virar uma esquina, você é atordoado por um (shake)fedor rançoso(/shake) que emana de algo perto. Você identifica a origem do mau cheiro: um cadáver de um aventureiro azarado que passou por este caminho, não mais do que algumas luas atrás.
 
 Você fecha as narinas e tenta contornar o cadáver, mas ao passar ao lado dele, percebe que a pobre alma tem algumas (highlight)fortunas(/highlight) ao meio de sua carcaça. No entanto, o cadáver está completamente infestado de (shake)insetos e vermes(/shake).
 
@@ -987,7 +987,7 @@ Quando você está prestes a desistir dessa tarefa desagradável, você percebe 
 Você sacode os insetos do artefato e de si mesmo o melhor que pode e o guarda em sua mochila, saindo rapidamente para respirar um pouco de ar fresco, (small)sem perceber alguns passageiros extras que permaneceram em sua bolsa... (/small)"
 EVENT_11_LEAVE_3,"""Well, let's do this"", you whisper to yourself as you drop your belongings and frantically start searching the body for something important.
 
-This maddening task takes unbearing amounts of time, but it finally pays off when you find, deep into the rotting corpse, (highlight)a legendary artifact!(/highlight)
+This maddening task takes an unbearably long time, but it finally pays off when you find, deep into the rotting corpse, (highlight)a legendary artifact!(/highlight)
 
 You immediately retrieve it and get away from the body, trying your best to remove all the (shake)crawling life(/shake) away from you.
 
@@ -1018,7 +1018,7 @@ EVENT_11_OPT_4,Ignore the body and move on.,Ignorar o corpo e seguir em frente.
 EVENT_12_TITLE,Blood Fountain,Fonte de Sangue
 EVENT_12_TEXT,"Your journey is halted by a demonic altar.
 
-What looks to be a fountain pouring an unending flow stream of blood, an ominious statue inside of it catches your attention. It's of an unholy demon, its dark ebony body covered from the fountain splashes, and from its open mouth, his sharp teeth are dripping in blood, inviting you to contribute yourself to this pagan ritual. 
+What looks to be a fountain pouring an unending flow stream of blood, an ominous statue inside of it catches your attention. It's of an unholy demon, its dark ebony body covered from the fountain splashes, and from its open mouth, his sharp teeth are dripping in blood, inviting you to contribute yourself to this pagan ritual. 
 
 Will you participate in this sinister offering? It is known those who pay the price of life are generously compensated in the eyes of the dark gods...","Sua jornada é interrompida por um altar demoníaco.
 
@@ -1029,7 +1029,7 @@ EVENT_12_LEAVE_1,"At the brink of death, you stab yourself into the demon's mout
 
 An act of unquestionable devotion or just complete foolishness, this deed of madness has interested something powerful, because suddenly you are blasted from the fountain, coughing and dripping blood, with a thin thread of life still in you.
 
-And your life isn't the only gift you have received: in your arms resides a most powerful artifact, spoken only in miths and legends: (highlight)The Bloodcursed Grimorie(/highlight).
+And your life isn't the only gift you have received: in your arms resides a most powerful artifact, spoken only in myths and legends: (highlight)The Bloodcursed Grimorie(/highlight).
 
 You gather your belongings, and with the little strength you still have, resume your journey.
 
@@ -1113,7 +1113,7 @@ EVENT_14_LEAVE_1,"You could use a little gold.
 
 You signal to the vampire, and they nod with an unsettling smirk on their face.
 
-You grab their hand and a quick flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quicky fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure.","Você poderia ter um pouco mais de ouro.
+You grab their hand and a flow of energy pulses from your hand into theirs. You feel slightly weak, but the feeling quickly fades when you hear the clatter of coins, dropping from the caravan on the floor next to you, follow by a subtle laugh of the figure.","Você poderia ter um pouco mais de ouro.
 
 Você sinaliza para o vampiro, e ele acena com um sorriso perturbador no rosto.
 
@@ -1163,7 +1163,7 @@ EVENT_15_OPT_2,Pay 15 life for a pearl.,Pagar 15 de vida por uma pérola.
 EVENT_15_OPT_3,Pay 25 life for a common artifact.,Pagar 25 de vida por um artefato comum.
 EVENT_15_OPT_4,Stop bartering.,Parar de barganhar.
 EVENT_16_TITLE,The Golden Summoning,A Invocação Dourada
-EVENT_16_TEXT,"While exploring the caverns, you find a secluse chamber, hidden in the shadows of one of the many rocky corridors.
+EVENT_16_TEXT,"While exploring the caverns, you find a secluded chamber, hidden in the shadows of one of the many rocky corridors.
 
 Inside lies an ornamental chest, covered in dust and debris. Using some force you manage to open it, and inside you find an ancient scroll detailing about a (highlight)mystical artifact (/highlight)capable of immense(highlight) healing properties(/highlight). Furthermore, at the bottom of the scroll, instructions on how to summon it.
 
@@ -1174,7 +1174,7 @@ Dentro está um baú ornamental, coberto de poeira e detritos. Usando um pouco d
 Você acha que tem os materiais necessários para tentar a invocação ali mesmo, porém o pergaminho é muito descritivo sobre como (shake)(highlight)perigoso(/highlight)(/shake) esse processo é. Será que é prudente conjurar este artefato, apesar das consequências?"
 EVENT_16_LEAVE_1,"The thought of acquiring a (highlight)legendary(/highlight) artifact fills you with determination. You make all the necessary preparations, and begin the summoning.
 
-It doesn't take long for the ground to start to shake, and a flow of energy to accumulate at the center the chamber. Just as the artifact is starting to materialize, an (shake)explosion(/shake) erupts from it, and you are thrown violently to the wall behind you. You fall unconcious.
+It doesn't take long for the ground to start to shake, and a flow of energy to accumulate at the center the chamber. Just as the artifact is starting to materialize, an (shake)explosion(/shake) erupts from it, and you are thrown violently to the wall behind you. You fall unconscious.
 
 After a while you come to yourself, body in bruises and pain. But just across you lies the result of the summoning, a beautifully golden Ankh resting peacefully in the middle of the room. You slowly get up, grab your reward, and leave the chamber to resume your journey.","O prospecto de adquirir um (highlight)artefato lendário(highlight) lhe enche de determinação. Você faz todos os preparativos necessários e começa a convocação.
 
@@ -1229,7 +1229,7 @@ You could spend sometime searching the discarded remains in hopes of finding (hi
 Você chegou no infame (highlight)Cemitério de Ossos(/highlight).
 
 Você poderia passar algum tempo procurando os restos descartados na esperança de achar (highlight)algo de valor(/highlight), mas estaria arriscando topar com (shake)inimigos poderosos(/shake) fazendo o mesmo..."
-EVENT_18_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+EVENT_18_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search thoroughly...
 
 You fail to find anything useful, only weirdly shaped bones and a few decaying Morhks left to their fate.
 
@@ -1238,7 +1238,7 @@ You then hear unappealing sounds, not far away... ","Você escolhe uma seção a
 Você não encontra nada útil, só ossos com formatos bizarros e alguns Morhks em decomposição.
 
 Você então ouve barulhos desagradáveis, vindo de não tão distante..."
-EVENT_18_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+EVENT_18_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search thoroughly...
 
 You then find a small but very promising chest, buried deep on a pile of bones! You dig up, open it, and inside you find a humble amount of (highlight)gold coins!(/highlight)
 
@@ -1256,7 +1256,7 @@ You then hear unattractive sounds, not far away... ","Você escolhe uma seção 
 Após um tempo, você encontra algo bastante interessante! (highlight)Uma bugiganga(/highlight) escondida atrás dos restos de um Carapa a muito tempo morto. Você limpa o artefato e o guarda dentro de sua bolsa.
 
 Você então ouve barulhos ominosos, vindo de não tão distante..."
-EVENT_18_LEAVE_4,"As attractive as rumaging through remains and scraps looks, you figure you have better things to do.
+EVENT_18_LEAVE_4,"As attractive as rummaging through remains and scraps looks, you figure you have better things to do.
 
 You resume your journey, leaving the (highlight)Boneyard(/highlight) behind.","Por mais atraente que fuçar restos apodrecidos alheios seja, você decide que tem coisas melhores para fazer.
 
@@ -1265,7 +1265,7 @@ EVENT_18_OPT_1,Search for something valuable.,Procurar por algo valioso.
 EVENT_18_OPT_2,Ignore.,Ignorar.
 EVENT_18_SHOULD_LEAVE,maybe it's time to stop searching and leave before finding yourself in a undesirable conflict?,"talvez seja hora de interromper sua procura e sair daqui, antes que você se depare com um conflito indesejável?"
 EVENT_18_MUST_LEAVE,"this time, as close as you can bear. It's time to leave this place.","desta vez, perto demais. É hora de sair deste lugar."
-EVENT_19_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+EVENT_19_LEAVE_1,"You pick a random section of the (highlight)Boneyard(/highlight) and search thoroughly...
 
 After some time, you find something remarkable! Next to the bones of a massive beast, in what seems to once be inside its belly, (highlight)a powerful artifact(/highlight) is resting. You quickly pick it up and stash it.
 
@@ -1274,7 +1274,7 @@ You then hear unappetizing sounds, not far away... ","Você escolhe uma seção 
 Após certo tempo, você encontra algo extraordinário! Ao lado de ossos de uma besta massiva, dentro do que em algum momento foi sua barriga, (highlight)um artefato poderoso(/highlight) está encostado. Rapidamente você pega o objeto e o guarda.
 
 Você então ouve barulhos nada apetitosos, vindo de não tão distante..."
-EVENT_19_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+EVENT_19_LEAVE_2,"You pick a random section of the (highlight)Boneyard(/highlight) and search thoroughly...
 
 You are almost giving up, when suddenly something (highlight)peculiar(/highlight) catches your attention: resting on the corner of a fence, amidst piles of bones, lies the remains of a long dead adventurer. However, his bony hands are clutching something in such a away you could feel his demise was related to protecting whatever its in his hands.
 
@@ -1287,7 +1287,7 @@ Você está quase desistindo quando, subitamente, algo (highlight)peculiar(/high
 Você se aproxima e finalmente descobre o que é: (highlight)um artefato lendário!(/highlight) Imediatamente você pega ela pra sí, maravilhado com sua sorte em ter encontrado algo assim.
 
 Você então ouve barulhos desconfortantes, vindo de não tão distante..."
-EVENT_19_LEAVE_3,"You pick a random section of the (highlight)Boneyard(/highlight) and search throughly...
+EVENT_19_LEAVE_3,"You pick a random section of the (highlight)Boneyard(/highlight) and search thoroughly...
 
 You spend some time searching for something useful, but just as when you are most distracted in your task, you turn around and find yourself face to face to a most uninviting encounter, another foe that had the same idea as you, and not at all happy with this rendezvous.
 
@@ -1298,7 +1298,7 @@ Você gastou bastante tempo procurando por algo útil, mas bem quando você esta
 Você vai ter que lutar pra sair dessa vivo."
 EVENT_19_LEAVE_4,"You pushed your luck in this place, and prudently decide it's time to leave.
 
-You pack your things and swiflty leave to resume your journey.","Você abusou demais da sua sorte neste lugar e, prudentemente, decidiu que é hora de partir.
+You pack your things and swiftly leave to resume your journey.","Você abusou demais da sua sorte neste lugar e, prudentemente, decidiu que é hora de partir.
 
 Você pega seus pertences e sai rapidamente para retomar sua jornada.
 

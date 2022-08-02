@@ -165,6 +165,7 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1039,7 +1040,6 @@ __meta__ = {
 }
 
 [node name="Language" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -1060,11 +1060,8 @@ __meta__ = {
 }
 
 [node name="LanguageContainer" type="HBoxContainer" parent="TabContainer/Language/VBoxContainer"]
-anchor_top = 0.259259
-anchor_bottom = 0.259259
-margin_top = -56.0
-margin_right = 1090.0
-margin_bottom = -18.0
+margin_right = 914.0
+margin_bottom = 38.0
 custom_constants/separation = 61
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1074,9 +1071,24 @@ __meta__ = {
 margin_right = 650.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 650, 0 )
+rect_pivot_offset = Vector2( 0, 92 )
 custom_fonts/font = SubResource( 6 )
 text = "OPT_LANGUAGE"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Label"]
+margin_top = 34.0
+margin_right = 650.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 1, 0.803922, 0.545098, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "OPT_LANGUAGE_DESC"
+align = 2
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -47,6 +47,7 @@ OPT_RESET_TUTORIAL_HINTS,Reset Tutorial Hints,Resetar Dicas de Tutorial
 OPT_TURBO_MODE,Enable Turbo Mode,Habilitar Modo Turbo
 OPT_TURBO_MODE_DESC,Makes several game elements faster,Deixa vários elementos do jogo mais rápidos
 OPT_LANGUAGE,Language,Linguagem
+OPT_LANGUAGE_DESC,some changes only appear after restarting the game,algumas mudanças apenas ocorrem após reiniciar o jogo
 CHOOSE_ONE,Choose One,Escolha Um
 CHOOSE_TARGET,Choose Target,Escolher Alvo
 ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...

@@ -85,6 +85,7 @@ func update_buttons():
 	language_label.text = Profile.LANGUAGES[locale_index].name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
 	borderless_button.pressed = Profile.get_option("borderless")
+	borderless_button.disabled = fullscreen_button.pressed
 	mapfog_button.pressed = Profile.get_option("disable_map_fog")
 	largeui_button.pressed = Profile.get_option("large_ui")
 	turbomode_button.pressed = Profile.get_option("turbo_mode")
@@ -202,6 +203,10 @@ func _on_FullscreenCheckBox_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
 	Profile.set_option("fullscreen", button_pressed)
 	resolution_button.disabled = button_pressed
+	borderless_button.pressed = OS.window_fullscreen
+	borderless_button.disabled = button_pressed
+	if not button_pressed:
+		OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
 
 
 func _on_BorderlessCheckBox_toggled(button_pressed):

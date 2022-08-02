@@ -143,8 +143,14 @@ func set_save_data(data):
 	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
 	AudioManager.set_bus_volume(AudioManager.SFX_BUS, options.sfx_volume)
 	OS.window_fullscreen = options.fullscreen
-	OS.window_borderless = options.borderless
-	OS.window_size = WINDOW_SIZES[options.window_size]
+	yield(get_tree(), "idle_frame")
+	if OS.window_fullscreen:
+		options.borderless = true
+		OS.window_borderless = true
+	else:
+		OS.window_borderless = options.borderless
+		yield(get_tree(), "idle_frame")
+		OS.window_size = WINDOW_SIZES[options.window_size]
 	if options.enable_colorblind:
 		ColorblindnessShader.enable()
 	else:

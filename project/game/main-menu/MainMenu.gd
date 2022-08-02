@@ -59,6 +59,11 @@ func _input(event):
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		OS.window_borderless = OS.window_fullscreen
+		Profile.set_option("fullscreen", OS.window_fullscreen)
+		Profile.set_option("borderless", OS.window_borderless)
+		if not OS.window_fullscreen:
+			yield(get_tree(), "idle_frame")
+			OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
 
 
 func skip_intro_animation():

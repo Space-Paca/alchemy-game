@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/themes/general_theme/check off-small.png" type="Texture" id=10]
 [ext_resource path="res://game/pause/HorizontalSlider.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/pause/SettingsMenu.gd" type="Script" id=12]
+[ext_resource path="res://assets/themes/general_theme/check off_disabled.png" type="Texture" id=13]
+[ext_resource path="res://assets/themes/general_theme/check on_disabled.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 20.0
@@ -165,7 +167,6 @@ __meta__ = {
 }
 
 [node name="Video" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -250,9 +251,13 @@ margin_bottom = 60.0
 theme = ExtResource( 1 )
 custom_constants/hseparation = 40
 custom_fonts/font = SubResource( 6 )
+custom_icons/radio_checked_disabled = ExtResource( 14 )
 custom_icons/radio_checked = ExtResource( 9 )
+custom_icons/checked_disabled = ExtResource( 14 )
+custom_icons/radio_unchecked_disabled = ExtResource( 13 )
 custom_icons/checked = ExtResource( 9 )
 custom_icons/radio_unchecked = ExtResource( 4 )
+custom_icons/unchecked_disabled = ExtResource( 13 )
 custom_icons/unchecked = ExtResource( 4 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
@@ -385,6 +390,7 @@ __meta__ = {
 }
 
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
+visible = false
 margin_top = 65.0
 margin_right = 203.0
 margin_bottom = 434.0
@@ -1040,6 +1046,7 @@ __meta__ = {
 }
 
 [node name="Language" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0

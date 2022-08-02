@@ -22,3 +22,4 @@ loot_table = {
 "uncommon": 0
 }
 extra_loot_chance = [ 0.1, 0.5 ]
+use_on_demo = false

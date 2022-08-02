@@ -9,6 +9,7 @@ onready var unlock_btn = $Background/CenterContainer/VBoxContainer/UnlockCombBtn
 onready var version_label = $Info/Version
 onready var id_box = $Background/CenterContainer/VBoxContainer/Event/IdBox
 onready var artifact_box = $Background/CenterContainer/VBoxContainer/Artifact/TextEdit
+onready var recipes_button = $Background/CenterContainer/VBoxContainer/HBoxContainer/Recipes
 
 signal combinations_unlocked
 signal battle_won
@@ -18,6 +19,7 @@ signal test_map_creation
 signal event_pressed(id)
 signal artifact_pressed(name)
 signal damage_all
+signal recipe_simulated(recipe)
 
 const VERSION := "v0.7.1"
 const MAX_FLOOR := 3
@@ -32,6 +34,7 @@ var lower_threshold := false
 var give_xp := false
 var custom_portrait = false
 var portraits = {}
+var recipes := []
 
 
 func _ready():
@@ -64,6 +67,13 @@ func _ready():
 	floor_button.add_item("1")
 	floor_button.add_item("2")
 	floor_button.add_item("3")
+	
+	if RecipeManager.recipes.empty():
+		yield(RecipeManager, "ready")
+	var i = 0
+	for recipe in RecipeManager.recipes.values():
+		recipes_button.add_item(recipe.id, i)
+		recipes.append(recipe)
 
 
 func _input(event):
@@ -176,3 +186,8 @@ func _on_ResetProgress_pressed():
 
 func _on_GiveXp_toggled(button_pressed):
 	give_xp = button_pressed
+
+
+func _on_Simulate_pressed():
+	emit_signal("recipe_simulated", recipes[recipes_button.selected])
+	bg.hide()

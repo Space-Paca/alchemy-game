@@ -30,9 +30,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 840.0
-margin_top = 332.0
+margin_top = 320.0
 margin_right = 1079.0
-margin_bottom = 748.0
+margin_bottom = 760.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 239.0
@@ -78,42 +78,42 @@ __meta__ = {
 }
 
 [node name="GiveXp" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 164.0
+margin_top = 208.0
 margin_right = 239.0
-margin_bottom = 204.0
+margin_bottom = 248.0
 text = "Give XP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TestMapCreation" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 208.0
+margin_top = 252.0
 margin_right = 239.0
-margin_bottom = 228.0
+margin_bottom = 272.0
 text = "Test Map Creation"
 
 [node name="RecipeThreshold" type="CheckButton" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 232.0
+margin_top = 276.0
 margin_right = 239.0
-margin_bottom = 272.0
+margin_bottom = 316.0
 text = "Lower Recipes Threshold"
 
 [node name="ResetCompendium" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 276.0
+margin_top = 320.0
 margin_right = 239.0
-margin_bottom = 296.0
+margin_bottom = 340.0
 text = "Reset Compendium"
 
 [node name="ResetProgression" type="Button" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 276.0
+margin_top = 344.0
 margin_right = 239.0
-margin_bottom = 296.0
+margin_bottom = 364.0
 text = "Reset Progression"
 
 [node name="Event" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 300.0
+margin_top = 368.0
 margin_right = 239.0
-margin_bottom = 324.0
+margin_bottom = 392.0
 
 [node name="EventButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Event"]
 margin_right = 161.0
@@ -130,9 +130,9 @@ value = 1.0
 align = 3
 
 [node name="Artifact" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 328.0
+margin_top = 396.0
 margin_right = 239.0
-margin_bottom = 348.0
+margin_bottom = 416.0
 
 [node name="ArtifactButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Artifact"]
 margin_right = 89.0
@@ -145,6 +145,23 @@ margin_right = 239.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 420.0
+margin_right = 239.0
+margin_bottom = 440.0
+
+[node name="Simulate" type="Button" parent="Background/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 119.0
+margin_bottom = 20.0
+text = "Simulate Recipe:"
+
+[node name="Recipes" type="OptionButton" parent="Background/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 123.0
+margin_right = 239.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+clip_text = true
 
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -226,3 +243,4 @@ __meta__ = {
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/ResetProgression" to="." method="_on_ResetProgress_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Event/EventButton" to="." method="_on_EventButton_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Artifact/ArtifactButton" to="." method="_on_ArtifactButton_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/HBoxContainer/Simulate" to="." method="_on_Simulate_pressed"]

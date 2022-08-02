@@ -65,6 +65,7 @@ var first_turn = true
 var used_all_reagents_in_recipes = false
 var recipe_book_visible = false
 var is_event = false
+var killing_minions = false
 
 func _ready():
 	# DEBUG
@@ -74,6 +75,8 @@ func _ready():
 	Debug.connect("died", self, "_on_player_died")
 # warning-ignore:return_value_discarded
 	Debug.connect("damage_all", self, "_on_Debug_damage_all")
+# warning-ignore:return_value_discarded
+	Debug.connect("recipe_simulated", self, "_on_Debug_recipe_simulated")
 	
 	#Hoping to fix dim screen bug
 	targeting_interface.end()
@@ -82,10 +85,7 @@ func _ready():
 func _input(event):
 	if not TutorialLayer.is_active() and not recipe_book_visible:
 		if event.is_action_pressed("end_turn"):
-			if not pass_turn_button.disabled:
-				end_turn()
-			else:
-				AudioManager.play_sfx("error")
+				try_end_turn()
 		elif event.is_action_pressed("combine"):
 			if not combine_button.disabled and not is_grabbing_reagent():
 				combine()
@@ -613,7 +613,7 @@ func disable_player():
 
 
 func enable_player():
-	if ended:
+	if ended or killing_minions:
 		return
 	draw_bag.enable()
 	discard_bag.enable()
@@ -706,7 +706,7 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 		for reagent in destroy_reagents:
 			if grid.destroy_reagent(reagent):
 				yield(grid, "reagent_destroyed")
-
+	
 		# Discard reagents
 		grid.clean()
 		
@@ -737,13 +737,13 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 			else:
 				print("Effect %s not found" % effects[i])
 				assert(false)
-
+	
 		if used_temp_strength:
 			player.remove_status("temp_strength")
-
+	
 		if total_targets:
 			targeting_interface.end()
-
+	
 	#Resolve enemies spawned in player turn
 	for enemy in enemies_node.get_children():
 		if enemy.just_spawned:
@@ -757,7 +757,7 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 	enable_player()
 	if Profile.get_option("auto_end_turn") and hand.is_empty():
 		yield(get_tree().create_timer(.2), "timeout")
-		end_turn()
+		try_end_turn()
 
 
 func get_targeted_effect_total(effects: Array) -> int:
@@ -974,6 +974,14 @@ func damage_player(source, value, type, use_modifiers:= true):
 func add_status_all_enemies(status, amount, positive, extra_args = {}):
 	for enemy in enemies_node.get_children():
 		enemy.add_status(status, amount, positive, extra_args)
+
+
+func try_end_turn():
+	if pass_turn_button.disabled:
+		AudioManager.play_sfx("error")
+	else:
+		end_turn()
+
 
 func end_turn():
 	if player_disabled:
@@ -1322,6 +1330,7 @@ func _on_enemy_died(enemy):
 			all_minions = false
 			break
 	if all_minions:
+		killing_minions = true
 		for enemy in enemies_node.get_children():
 			if enemy.get_status("minion"):
 				enemy.die()
@@ -1486,12 +1495,22 @@ func _on_Grid_modified():
 func _on_EffectManager_target_set():
 	targeting_interface.next_target()
 
+
 func _on_Debug_damage_all():
 	for enemy in enemies_node.get_children():
 		enemy.take_damage(player, 9999, "piercing", false)
+	disable_player()
+
 
 func _on_Debug_battle_won():
 	win()
 
+
 func _on_CombineButton_pressed():
 	combine()
+
+
+func _on_Debug_recipe_simulated(recipe: Recipe):
+	disable_player()
+	apply_effects(recipe.effects, recipe.effect_args, [], {"all": 0,
+			"damage": 0, "shield": 0, "status": 0, "heal": 0})

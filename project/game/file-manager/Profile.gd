@@ -272,11 +272,14 @@ func get_progression_xp(type):
 func increase_progression(type, amount):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	progression[type].cur_xp += amount
+	FileManager.save_profile()
+	
 
 
 func set_progression_xp(type, value):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	progression[type].cur_xp = value
+	FileManager.save_profile()
 
 
 func get_stat(type):

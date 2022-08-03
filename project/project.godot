@@ -167,6 +167,7 @@ config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 
+Debug="*res://game/debug-menu/Debug.tscn"
 IntentManager="*res://game/enemies/IntentManager.gd"
 EnemyManager="*res://game/enemies/EnemyManager.gd"
 ReagentManager="*res://game/reagents/ReagentManager.gd"
@@ -176,7 +177,6 @@ EncounterManager="*res://database/EncounterManager.gd"
 TooltipLayer="*res://game/tooltip/TooltipLayer.tscn"
 MessageLayer="*res://game/ui/MessageLayer.tscn"
 AnimationManager="*res://database/AnimationManager.tscn"
-Debug="*res://game/debug-menu/Debug.tscn"
 ArtifactCallbacks="*res://database/ArtifactCallbacks.gd"
 EventManager="*res://database/EventManager.gd"
 TutorialLayer="*res://game/tutorial/TutorialLayer.tscn"
@@ -196,7 +196,6 @@ gdscript/warnings/integer_division=false
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/fullscreen=true
 mouse_cursor/custom_image="res://assets/images/ui/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 15, 5 )
 mouse_cursor/tooltip_position_offset=Vector2( 20, 20 )

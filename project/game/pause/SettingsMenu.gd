@@ -7,7 +7,6 @@ onready var resolution_dropdown = $TabContainer/Video/VBoxContainer/ResolutionCo
 onready var window_size_label = $TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/ResolutionButton/Label
 onready var window_size_buttons = $TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution/DropDown/ResolutionsContainer.get_children()
 onready var fullscreen_button = $TabContainer/Video/VBoxContainer/FullscreenContainer/FullscreenCheckBox
-onready var borderless_button = $TabContainer/Video/VBoxContainer/BorderlessContainer/BorderlessCheckBox
 onready var mapfog_button = $TabContainer/Video/VBoxContainer/MapFog/MapFogCheckBox
 onready var largeui_button = $TabContainer/Accesibility/VBoxContainer/LargeUI/LargeUICheckBox
 onready var turbomode_button = $TabContainer/Gameplay/VBoxContainer/TurboModeContainer/TurboModeCheckBox
@@ -84,8 +83,6 @@ func update_buttons():
 	language_buttons[locale_index].pressed = true
 	language_label.text = Profile.LANGUAGES[locale_index].name
 	fullscreen_button.pressed = Profile.get_option("fullscreen")
-	borderless_button.pressed = Profile.get_option("borderless")
-	borderless_button.disabled = fullscreen_button.pressed
 	mapfog_button.pressed = Profile.get_option("disable_map_fog")
 	largeui_button.pressed = Profile.get_option("large_ui")
 	turbomode_button.pressed = Profile.get_option("turbo_mode")
@@ -203,19 +200,13 @@ func _on_FullscreenCheckBox_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
 	Profile.set_option("fullscreen", button_pressed)
 	resolution_button.disabled = button_pressed
-	borderless_button.pressed = OS.window_fullscreen
-	borderless_button.disabled = button_pressed
 	if not button_pressed:
 		OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
 
 
-func _on_BorderlessCheckBox_toggled(button_pressed):
-	AudioManager.play_sfx("click")
-	OS.window_borderless = button_pressed
-	Profile.set_option("borderless", button_pressed)
-
-
 func _on_Resolution_button_pressed(button_id: int):
+	if OS.window_fullscreen:
+		return
 	AudioManager.play_sfx("click")
 	if button_id != Profile.get_option("window_size"):
 		var size = Profile.WINDOW_SIZES[button_id]

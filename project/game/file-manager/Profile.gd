@@ -24,8 +24,7 @@ var options = {
 	"bgm_volume": 1.0,
 	"sfx_volume": 1.0,
 	"fullscreen": true,
-	"borderless": false,
-	"window_size": 0,
+	"window_size": 3,
 	"auto_end_turn": false,
 	"show_timer": false,
 	"screen_shake": true,
@@ -143,12 +142,7 @@ func set_save_data(data):
 	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
 	AudioManager.set_bus_volume(AudioManager.SFX_BUS, options.sfx_volume)
 	OS.window_fullscreen = options.fullscreen
-	yield(get_tree(), "idle_frame")
-	if OS.window_fullscreen:
-		options.borderless = true
-		OS.window_borderless = true
-	else:
-		OS.window_borderless = options.borderless
+	if not OS.window_fullscreen:
 		yield(get_tree(), "idle_frame")
 		OS.window_size = WINDOW_SIZES[options.window_size]
 	if options.enable_colorblind:

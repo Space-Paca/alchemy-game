@@ -4,6 +4,7 @@ extends Control
 func _ready():
 	yield(get_tree(), "idle_frame")
 	Debug.set_version_visible(true)
+	FileManager.load_game()
 	if Profile.get_option("choose_language"):
 		var locale = Profile.LANGUAGES[Profile.get_option("locale")].locale
 		TranslationServer.set_locale(locale)

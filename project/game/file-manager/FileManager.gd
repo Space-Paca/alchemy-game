@@ -24,7 +24,6 @@ func load_profile():
 	if not profile_file.file_exists("user://profile.save"):
 		print("Profile file not found. Starting a new profile file.")
 		save_profile()
-		return
 		
 	profile_file.open("user://profile.save", File.READ)
 	while profile_file.get_position() < profile_file.get_len():

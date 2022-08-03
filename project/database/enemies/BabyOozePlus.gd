@@ -5,7 +5,7 @@ var image = "res://assets/images/enemies/small poison enemy plus/idle.png"
 var name = "EN_BABY_OOZE_PLUS"
 var sfx = "oozeling-plus"
 var use_idle_sfx = false
-var hp = 90
+var hp = 80
 var battle_init = true
 var size = "small"
 var change_phase = null
@@ -25,10 +25,10 @@ var actions = {
 		{"name": "shield", "value": 30, "animation": ""}
 	],
 	"poison": [
-		{"name": "damage", "value": [12,20], "type": "venom", "animation": "02_atk"}
+		{"name": "damage", "value": [10,12], "type": "venom", "animation": "02_atk"}
 	],
 	"medium-poison": [
-		{"name": "status", "status_name": "poison", "value": [2, 4], "target": "player", "positive": false, "animation": "02_atk"},
+		{"name": "status", "status_name": "poison", "value": [1, 3], "target": "player", "positive": false, "animation": "02_atk"},
 		{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
 		
 	],

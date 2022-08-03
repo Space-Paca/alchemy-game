@@ -138,7 +138,7 @@ func set_save_data(data):
 	set_data(data, "progression", progression)
 	set_data(data, "stats", stats)
 	
-	printt("here", options.master_volume, options.fullscreen, options.window_size)
+	
 	AudioManager.set_bus_volume(AudioManager.MASTER_BUS, options.master_volume)
 	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
 	AudioManager.set_bus_volume(AudioManager.SFX_BUS, options.sfx_volume)

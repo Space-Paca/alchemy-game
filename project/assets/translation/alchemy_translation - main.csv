@@ -145,7 +145,7 @@ RECIPE_IN_BOOK,Recipes in book,Receitas no livro
 TIMES_MADE,Times made,Vezes feita
 MEMORIZATION_PROGRESS,Memorization progress,Progresso de Memorização
 MEMORIZATION,Memorization %s/%s - Level %s,Memorização %s/%s - Nível %s
-MEMORIZED,Memorized! %s - Nível %s,Memorizada! %s - Nível %s
+MEMORIZED,Memorized! %s - Level %s,Memorizada! %s - Nível %s
 NEW,New!,Nova!
 LEVEL_UP,Level Up!,Subiu de Nível!
 KILLED_BY,Killed by:,Morto por:

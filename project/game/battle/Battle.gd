@@ -558,13 +558,12 @@ func new_player_turn():
 		var func_state = hand.randomize_reagents()
 		if func_state and func_state.is_valid():
 			yield(hand, "reagents_randomized")
-			emit_signal("update_recipes_display")
-
+			emit_signal("current_reagents_updated", hand.get_reagent_names())
+	
 	if player.get_status("restrain"):
 		var func_state = grid.restrain(player.get_status("restrain").amount)
 		if func_state and func_state.is_valid():
 			yield(grid, "restrained")
-
 
 	enable_player()
 
@@ -583,7 +582,6 @@ func new_enemy_turn():
 			yield(enemy, "acted")
 		if ended:
 			return
-
 	#Resolve enemies spawned in enemy turn
 	#and trigger end turn status
 	for enemy in enemies_node.get_children():
@@ -621,7 +619,6 @@ func enable_player():
 	player_disabled = false
 	if Profile.get_tutorial("recipe_book"):
 		pass_turn_button.disabled = false
-
 	#Check curse
 	var curse = player.get_status("curse")
 	if curse:
@@ -664,7 +661,6 @@ func recipe_book_toggled(visible: bool):
 			Profile.set_tutorial("recipe_book", true)
 			pass_turn_button.disabled = false
 			combine_button.enable()
-
 	else:
 		player_ui.enable_tooltips()
 		recipes_button.show()

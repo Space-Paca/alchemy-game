@@ -44,6 +44,9 @@ var _playback_speed := 1.0
 var already_inited = false
 var tooltip_enabled = false
 
+# Quick fix (see _on_AnimationPlayer_animation_finished)
+var died := false
+
 
 func _ready():
 	set_button_disabled(true)
@@ -570,7 +573,9 @@ func _on_TooltipCollision_enable_tooltip():
 func _on_Sprite_animation_complete(_animation_state, track_entry, _event):
 	var anim_name = track_entry.get_animation().get_anim_name()
 	if anim_name == data.death_anim_name:
-		emit_signal("died", self)
+		if not died:
+			emit_signal("died", self)
+			died = true
 	elif hp == 0:
 		#Weird condition race where another animation was finished at the same time enemy is dying
 		animation.play(data.death_anim_name)
@@ -580,3 +585,14 @@ func _on_Sprite_animation_complete(_animation_state, track_entry, _event):
 			animation.play(variant_idle)
 	elif data.should_idle(anim_name):
 		animation.play(data.idle_anim_name)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	# Quick fix to speed up baby poison death
+	if anim_name == data.death_anim_name:
+		if not died:
+			emit_signal("died", self)
+			died = true
+	elif hp == 0:
+		#Weird condition race where another animation was finished at the same time enemy is dying
+		animation.play(data.death_anim_name)

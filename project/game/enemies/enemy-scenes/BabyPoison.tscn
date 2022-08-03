@@ -37,7 +37,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 3.8
+length = 2.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:current_animations")
 tracks/0/interp = 1
@@ -181,12 +181,12 @@ position = Vector2( 0, 50 )
 scale = Vector2( 1, 1 )
 animation_state_data_res = SubResource( 2 )
 current_animations = [ {
-"animation": "stand",
+"animation": "death",
 "clear": false,
 "delay": 0.0,
 "empty": false,
 "empty_animation_duration": true,
-"loop": true,
+"loop": false,
 "track_id": 0
 } ]
 
@@ -203,5 +203,6 @@ anims/stand3 = SubResource( 8 )
 anims/stand4 = SubResource( 9 )
 
 [connection signal="animation_complete" from="Sprite" to="." method="_on_Sprite_animation_complete"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="HealthBar"]

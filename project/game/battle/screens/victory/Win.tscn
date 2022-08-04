@@ -343,7 +343,6 @@ __meta__ = {
 }
 
 [node name="Popup" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -440,5 +439,7 @@ anims/enter = SubResource( 4 )
 [connection signal="button_down" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="mouse_entered" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_Popup_Back_pressed"]
+[connection signal="mouse_entered" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Continue" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Continue" to="." method="_on_Popup_Continue_pressed"]

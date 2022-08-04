@@ -149,11 +149,7 @@ func _on_CompendiumButton_mouse_exited():
 	hover_compendium = false
 
 
-func _on_Yes_mouse_entered():
-	AudioManager.play_sfx("hover_button")
-
-
-func _on_No_mouse_entered():
+func _on_Button_mouse_entered():
 	AudioManager.play_sfx("hover_button")
 
 

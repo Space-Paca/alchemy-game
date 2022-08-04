@@ -5,7 +5,7 @@ var image = "res://assets/images/enemies/burner/idle.png"
 var name = "EN_BURNER"
 var sfx = "burner"
 var use_idle_sfx = false
-var hp = 220
+var hp = 200
 var battle_init = false
 var size = "medium"
 var change_phase = null
@@ -19,11 +19,10 @@ var connections = [
 					  ["defend", "attack1", 5],
 					  ["defend", "attack2", 5],
 					  ["defend", "defend", 3],
-					  ["defend", "burn", 4],
-					  ["burn", "burn", 1],
+					  ["defend", "burn", 2],
 					  ["burn", "attack1", 2],
 					  ["burn", "attack2", 2],
-					  ["burn", "defend", 2],
+					  ["burn", "defend", 1],
 					  ["attack2", "attack2", 2],
 					  ["attack2", "attack1", 2],
 					  ["attack2", "defend", 2],

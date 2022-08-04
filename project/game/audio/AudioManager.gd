@@ -49,37 +49,32 @@ var just_played_sfxs = {}
 var cur_bgm = null
 var cur_aux_bgm = null
 var using_layers = false
-var cur_sfx_player := 1
+var cur_sfx_player := 0
 var bgm_filter_enabled = false
 
+
 func _ready():
+	setup_nodes()
 	setup_bgms()
 	setup_sfxs()
 	setup_locs()
-#	change_group_of_loc("", "hit", "base_db", 1)
-#	change_group_of_loc("", "attack", "base_db", 1)
-#	change_group_of_loc("carapa", "", "base_db", 5)
-#	change_group_of_loc("", "spawn", "base_db", 1)
-#	change_group_of_bgm("", "base_db", -5)
-#	change_group_of_sfx("compendium", "base_db", 15)
-#	change_group_of_sfx("recipe", "base_db", 1)
-#	change_group_of_sfx("shield", "base_db", 1)
+
 
 func _process(dt):
-	for name in just_played_sfxs.keys():
-		just_played_sfxs[name] -= dt
-		if just_played_sfxs[name] <= 0.0:
-			just_played_sfxs.erase(name)
+	for sfx_name in just_played_sfxs.keys():
+		just_played_sfxs[sfx_name] -= dt
+		if just_played_sfxs[sfx_name] <= 0.0:
+			just_played_sfxs.erase(sfx_name)
 
+# Setups
 
-func get_bgm_last_pos(name):
-	if not bgms_last_pos.has(name):
-		bgms_last_pos[name] = 0
-	return bgms_last_pos[name]
-
-
-func set_bgm_last_pos(name, pos):
-	bgms_last_pos[name] = pos
+func setup_nodes():
+	for _i in range(MAX_SFXS + 1):
+		var node = AudioStreamPlayer.new()
+		node.stream = AudioStreamRandomPitch.new()
+		node.stream.random_pitch = 1.0
+		node.bus = "SFX"
+		$SFXS.add_child(node)
 
 
 func setup_bgms():
@@ -133,6 +128,9 @@ func setup_locs():
 		assert(false)
 
 
+# Debug Methods
+
+
 func change_group_of_loc(name_contains_this_string, type_contains_this_string, attribute_to_change, value):
 	for name_key in LOCS.keys():
 		if name_contains_this_string == "" or name_key.find(name_contains_this_string) != -1:
@@ -166,6 +164,40 @@ func change_tres(tres, path, attribute_to_change, value):
 	assert(err == OK, "Couldn't save resource:" + str(path)) 
 	printt("Saving resource: ", path, attribute_to_change, value)
 
+# Bus Methods
+
+#Expects a value between 0 and 1
+func set_bus_volume(which_bus: int, value: float):
+	var db
+	if value <= 0.0:
+		db = MUTE_DB
+	else:
+		db = (1-value)*MUTE_DB/CONTROL_MULTIPLIER
+	
+	if which_bus in [MASTER_BUS, BGM_BUS, SFX_BUS]:
+		AudioServer.set_bus_volume_db(which_bus, db)
+	else:
+		assert(false, "Not a valid bus to set volume: " + str(which_bus))
+
+
+func get_bus_volume(which_bus: int):
+	if which_bus in [MASTER_BUS, SFX_BUS, BGM_BUS]:
+		return clamp(1.0 - AudioServer.get_bus_volume_db(which_bus)/float(MUTE_DB/CONTROL_MULTIPLIER), 0.0, 1.0)
+	else:
+		assert(false, "Not a valid bus to set volume: " + str(which_bus))
+
+
+# BGM Methods
+
+func get_bgm_last_pos(name):
+	if not bgms_last_pos.has(name):
+		bgms_last_pos[name] = 0
+	return bgms_last_pos[name]
+
+
+func set_bgm_last_pos(name, pos):
+	bgms_last_pos[name] = pos
+
 
 func enable_bgm_filter_effect(target_db = -17, speed_mod = 1.0, id = null):
 	if bgm_filter_enabled:
@@ -197,27 +229,6 @@ func disable_bgm_filter_effect(speed_mod = 1.0, id = null):
 
 	if not bgm_filter_enabled and AudioServer.get_bus_effect_count(1) == 3:
 		AudioServer.remove_bus_effect(1, 2)
-	
-
-#Expects a value between 0 and 1
-func set_bus_volume(which_bus: int, value: float):
-	var db
-	if value <= 0.0:
-		db = MUTE_DB
-	else:
-		db = (1-value)*MUTE_DB/CONTROL_MULTIPLIER
-	
-	if which_bus in [MASTER_BUS, BGM_BUS, SFX_BUS]:
-		AudioServer.set_bus_volume_db(which_bus, db)
-	else:
-		assert(false, "Not a valid bus to set volume: " + str(which_bus))
-
-
-func get_bus_volume(which_bus: int):
-	if which_bus in [MASTER_BUS, SFX_BUS, BGM_BUS]:
-		return clamp(1.0 - AudioServer.get_bus_volume_db(which_bus)/float(MUTE_DB/CONTROL_MULTIPLIER), 0.0, 1.0)
-	else:
-		assert(false, "Not a valid bus to set volume: " + str(which_bus))
 
 
 func get_bgm_layer(name, layer):
@@ -424,6 +435,8 @@ func start_bgm_effect(type: String):
 		$BusEffectTween.start()
 
 
+# Aux BGM Methods
+
 func play_aux_bgm(name: String):
 	var free_slot = false
 	var i = 1
@@ -502,9 +515,11 @@ func play_ambience(index: int):
 	play_aux_bgm(source_name)
 
 
+#SFX Methods
+
 func get_sfx_player():
-	var player = $SFXS.get_node("SFXPlayer"+str(cur_sfx_player))
-	cur_sfx_player = (cur_sfx_player%MAX_SFXS) + 1
+	var player = $SFXS.get_child(cur_sfx_player)
+	cur_sfx_player = (cur_sfx_player+ 1)%MAX_SFXS
 	return player
 
 

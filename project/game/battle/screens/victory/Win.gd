@@ -89,8 +89,9 @@ func set_combinations(combinations: Array):
 			rewarded_combinations.append(combinations[i])
 		else:
 			if i == 0:
+				recipe_taken = true
 				recipes_button.hide()
-			print("Win.gd: Not enough combinations to fill victory screen")
+				return
 			recipe_displays[i].hide()
 
 
@@ -166,7 +167,7 @@ func check_loot_left() -> bool:
 		if child != nothing_label and child.visible:
 			return true
 	
-	$BG/MovingScreen/LootBackground/ScrollContainer/RewardsContainer/Nothing.show()
+	nothing_label.show()
 	return not recipe_taken
 
 

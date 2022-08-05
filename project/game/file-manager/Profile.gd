@@ -234,7 +234,7 @@ func get_memorized_thresholds(recipe_id: String) -> Array:
 	var recipe = RecipeManager.recipes[recipe_id]
 	var threshold_v = min(12, 18 - recipe.reagents.size() - 3*recipe.destroy_reagents.size() - recipe.grid_size*recipe.grid_size)
 	threshold_v = max(threshold_v, 3)
-	var thresholds = [2*threshold_v, 3*threshold_v, 5*threshold_v, 8*threshold_v]
+	var thresholds = [threshold_v, 3*threshold_v, 5*threshold_v, 8*threshold_v]
 	return thresholds
 
 

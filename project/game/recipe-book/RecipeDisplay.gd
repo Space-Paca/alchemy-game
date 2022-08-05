@@ -90,7 +90,7 @@ func set_combination(_combination: Combination):
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
-	if Profile.get_recipe_memorized_level(combination.recipe.id) >= 2:
+	if Profile.get_recipe_memorized_level(combination.recipe.id) >= 1:
 		memorized = true
 	if combination.discovered:
 		right_container.queue_free()

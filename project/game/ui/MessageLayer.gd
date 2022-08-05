@@ -49,8 +49,8 @@ func recipe_mastered(combination: Combination, favorited: bool):
 	favorite_button.show()
 	favorite_error_label.hide()
 	favorite_button.text = "FAVORITE_THIS_RECIPE"
-	favorite_button.disabled = memorized_level >= 2 and favorited
-	if memorized_level >= 2 and favorited:
+	favorite_button.disabled = memorized_level >= 1 and favorited
+	if memorized_level >= 1 and favorited:
 		favorite_button.text = "FAVORITED_EXC"
 	
 	var display_normal = RECIPE_DISPLAY.instance()
@@ -73,7 +73,7 @@ func new_recipe_discovered(combination: Combination):
 	current_combination = combination
 	var memorized_level = Profile.get_recipe_memorized_level(combination.recipe.id)
 	
-	if memorized_level >= 2:
+	if memorized_level >= 1:
 		title.text = "DISC_MEMORIZED_RECIPE"
 		favorite_button.show()
 		favorite_error_label.hide()

@@ -36,7 +36,7 @@ const AMBIENCE_NAME_MAP = ["forest", "cave", "dungeon"]
 #SFX
 const MAX_SFXS = 100
 const SFX_PATH = "res://database/audio/sfxs/"
-const MIN_DUPLICATE_INTERVAL = .1 #Minimum time needed to play same sfx again
+const MIN_DUPLICATE_INTERVAL = .08 #Minimum time needed to play same sfx again
 onready var SFXS = {}
 onready var CUR_IDLE_SFX = {}
 #LOCS

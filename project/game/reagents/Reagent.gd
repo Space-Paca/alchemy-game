@@ -175,9 +175,11 @@ func clear_tweens():
 
 
 func start_shaking_and_destroy():
-	$Tween.interpolate_property(self, "shake", 0, 4, .9, Tween.TRANS_QUAD, Tween.EASE_IN)
+	var dur = .1 if Profile.get_option("turbo_mode") else .9
+	$Tween.interpolate_property(self, "shake", 0, 4, dur, Tween.TRANS_QUAD, Tween.EASE_IN)
 	$Tween.start()
-	yield(get_tree().create_timer(.2), "timeout")
+	if not Profile.get_option("turbo_mode"):
+		yield(get_tree().create_timer(.2), "timeout")
 	AudioManager.play_sfx("destroy_reagent")
 
 
@@ -223,7 +225,8 @@ func destroy():
 	orbit = false
 	stop_auto_moving = false
 	start_shaking_and_destroy()
-	$AnimationPlayer.play("destroy")
+	var speed = 9 if Profile.get_option("turbo_mode") else 1
+	$AnimationPlayer.play("destroy", -1, speed)
 	yield($AnimationPlayer, "animation_finished")
 	emit_signal("destroyed", self)
 	queue_free()

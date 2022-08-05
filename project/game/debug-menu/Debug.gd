@@ -21,7 +21,7 @@ signal artifact_pressed(name)
 signal damage_all
 signal recipe_simulated(recipe)
 
-const VERSION := "v0.7.2"
+const VERSION := "v0.7.3"
 const MAX_FLOOR := 3
 const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 

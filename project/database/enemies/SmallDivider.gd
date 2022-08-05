@@ -5,23 +5,28 @@ var image = "res://assets/images/enemies/small divider/idle.png"
 var name = "EN_SMALL_DIVIDER"
 var sfx = "divider"
 var use_idle_sfx = false
-var hp = 20
-var battle_init = false
+var hp = 25
+var battle_init = true
 var size = "small"
 var change_phase = null
 
-var states = ["first","attack", "defend", "poison"]
+var states = ["init", "first", "attack", "defend", "poison", "second"]
 var connections = [
-					  ["first", "poison", 1],
+					  ["init", "first", 1],
+					  ["first", "second", 1],
+					  ["second", "poison", 1],
 					  ["attack", "poison", 1],
 					  ["defend", "poison", 1],
 					  ["poison", "attack", 1],
 					  ["poison", "defend", 1],
 					
 				  ]
-var first_state = ["first"]
+var first_state = ["init"]
 
 var actions = {
+	"init": [
+		{"name": "shield", "value": [14, 15], "animation": "02_atk"},
+	],
 	"attack": [
 		{"name": "status", "status_name": "poison", "value": [2,3], "target": "player", "positive": false, "animation": "02_atk"}
 	],
@@ -33,7 +38,10 @@ var actions = {
 		{"name": "damage", "value": [10, 12], "type": "venom", "animation": "02_atk"},
 	],
 	"first": [
-		{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false, "animation": "02_atk"}
+		{"name": "shield", "value": [14, 15], "animation": "02_atk"},
+	],
+	"second": [
+		{"name": "status", "status_name": "poison", "value": 2, "target": "player", "positive": false, "animation": "02_atk"}
 	],
 }
 

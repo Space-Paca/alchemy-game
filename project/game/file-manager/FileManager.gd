@@ -25,7 +25,10 @@ func load_profile():
 		print("Profile file not found. Starting a new profile file.")
 		save_profile()
 		
-	profile_file.open("user://profile.save", File.READ)
+	var err = profile_file.open("user://profile.save", File.READ)
+	if err != OK:
+		push_error("Error trying to open profile whilst loading:" + str(err))
+		
 	while profile_file.get_position() < profile_file.get_len():
 		# Get the saved dictionary from the next line in the save file
 		var data = parse_json(profile_file.get_line())
@@ -36,7 +39,9 @@ func load_profile():
 
 func save_profile():
 	var profile_file = File.new()
-	profile_file.open("user://profile.save", File.WRITE)
+	var err = profile_file.open("user://profile.save", File.WRITE)
+	if err != OK:
+		push_error("Error trying to open profile whilst saving:" + str(err))
 	var profile_data = Profile.get_save_data()
 	profile_file.store_line(to_json(profile_data))
 	profile_file.close()
@@ -70,7 +75,9 @@ func save_run():
 	assert(dungeon, "Dungeon reference invalid.")
 	create_run_backup()
 	var run_file = File.new()
-	run_file.open("user://run.save", File.WRITE)
+	var err = run_file.open("user://run.save", File.WRITE)
+	if err != OK:
+		push_error("Error trying to open run file whilst saving:" + str(err))
 	var run_data = dungeon.get_save_data()
 	run_file.store_line(to_json(run_data))
 	run_file.close()
@@ -80,9 +87,16 @@ func create_run_backup():
 	var run_file = File.new()
 	if not run_file.file_exists("user://run.save"):
 		return
-	run_file.open("user://run.save", File.READ)
+	
+	var err = run_file.open("user://run.save", File.READ)
+	if err != OK:
+		push_error("Error trying to open run file whilst creating backup:" + str(err))
+	
 	var backup_file = File.new()
-	backup_file.open("user://run.backup", File.WRITE)
+	err = backup_file.open("user://run.backup", File.WRITE)
+	if err != OK:
+		push_error("Error trying to open backup run file:" + str(err))
+	
 	while run_file.get_position() < run_file.get_len():
 		var data = parse_json(run_file.get_line())
 		backup_file.store_line(to_json(data))
@@ -92,9 +106,11 @@ func create_run_backup():
 func load_run():
 	var run_file = File.new()
 	if not run_file.file_exists("user://run.save"):
-		#Run file not found. Aborting load.
+		push_error("Run file not found. Aborting load.")
 		return
-	run_file.open("user://run.save", File.READ)
+	var err = run_file.open("user://run.save", File.READ)
+	if err != OK:
+		push_error("Error trying to run file whilst loading:" + str(err))
 	assert(dungeon, "Dungeon reference invalid.")
 	while run_file.get_position() < run_file.get_len():
 		var data = parse_json(run_file.get_line())

@@ -70,10 +70,10 @@ var stats = {
 
 var known_recipes = {}
 
+
 func _ready():
 	if known_recipes.empty():
 		reset_known_recipes()
-	update_translation()
 
 
 func get_locale_idx(locale):

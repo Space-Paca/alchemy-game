@@ -11,6 +11,7 @@ const FULL_REST_HEAL_PERCENTAGE = 100
 onready var warning = $Warning
 onready var warning_label = $Warning/Label
 onready var heal_button_label = $ButtonContainer/HealButton/Text
+onready var hint_button_label = $ButtonContainer/HintButton/Text
 onready var recipes_container = $Panel/Recipes/HBox
 
 var map_node : MapNode
@@ -26,6 +27,8 @@ func setup(node, _player, _combinations):
 	combinations = _combinations
 	
 	update_heal_button()
+	
+	hint_button_label.bbcode_text = tr("DISCOVER_RECIPE")
 	
 	$Warning.modulate.a = 0
 	$BackButton.show()

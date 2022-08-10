@@ -164,7 +164,23 @@ margin_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 0, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="ButtonContainer/HintButton"]
+anchor_top = 0.126
+anchor_bottom = 0.357
+margin_left = 31.27
+margin_top = 31.767
+margin_right = 1073.27
+margin_bottom = 78.467
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "DISCOVER_RECIPE"
 text = "DISCOVER_RECIPE"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -57,8 +57,8 @@ func on_add_trash_heal(args):
 
 func on_add_max_hp(args):
 	AudioManager.play_sfx("heal")
-	args.player.max_hp += 20
-	args.player.hp += 20
+	args.player.set_max_hp(args.player.max_hp + 20)
+	args.player.set_hp(args.player.hp + 20)
 
 func on_add_midas(args):
 	AudioManager.play_sfx("get_coins")

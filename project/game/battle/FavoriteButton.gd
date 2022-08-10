@@ -14,8 +14,8 @@ var combination : Combination
 var is_mastered : bool
 var reagent_array : Array
 var mouse_over := false
-var tooltips_enabled := false
-var block_tooltips := false
+var tooltip_enabled := false
+var block_tooltip := false
 
 
 func _process(delta):
@@ -56,7 +56,6 @@ func enable():
 func disable():
 	button.disabled = true
 	disable_tooltips()
-	block_tooltips = true
 
 
 func hide_button():
@@ -75,16 +74,20 @@ func error_effect():
 	$Tween.start()
 
 
+func remove_tooltip():
+	if tooltip_enabled:
+		tooltip_enabled = false
+		TooltipLayer.clean_tooltips()
+
+
 func enable_tooltips():
-	block_tooltips = false
+	block_tooltip = false
 
 
 func disable_tooltips():
-	block_tooltips = true
-	if tooltips_enabled:
-		tooltips_enabled = false
-		TooltipLayer.clean_tooltips()
-		
+	block_tooltip = true
+	remove_tooltip()
+
 
 func _on_Button_pressed():
 	if combination:
@@ -102,12 +105,13 @@ func _on_Button_mouse_exited():
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips or not combination:
+	if block_tooltip or not combination:
 		return
-	tooltips_enabled = true
+	tooltip_enabled = true
 	var tooltip = RecipeManager.get_tooltip(combination.recipe, is_mastered)
 	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
 							 tr(tooltip.text), tooltip.title_image, tooltip.subtitle, true)
 
 func _on_TooltipCollision_disable_tooltip():
-	disable_tooltips()
+	if tooltip_enabled:
+		remove_tooltip()

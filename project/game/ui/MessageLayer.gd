@@ -60,6 +60,7 @@ func recipe_mastered(combination: Combination, favorited: bool):
 	display_normal.enable_tooltips()
 	var display_mastered = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display_mastered)
+	display_mastered.mastery_unlocked = true
 	display_mastered.set_combination(combination)
 	display_mastered.preview_mode(true)
 	display_mastered.enable_tooltips()

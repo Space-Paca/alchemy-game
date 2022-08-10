@@ -16,6 +16,8 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=3]

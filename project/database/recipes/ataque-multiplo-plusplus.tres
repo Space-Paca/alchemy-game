@@ -26,4 +26,3 @@ master_destroy_reagents = [  ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "damaging", "damaging", "damaging", "rare" ], [ "damaging", "damaging", "rare", "weak_damaging" ], [ "damaging", "damaging", "rare", "super_damaging" ], [ "damaging", "rare", "weak_damaging", "weak_damaging" ], [ "damaging", "rare", "super_damaging", "weak_damaging" ], [ "damaging", "rare", "super_damaging", "super_damaging" ], [ "rare", "weak_damaging", "weak_damaging", "weak_damaging" ], [ "rare", "super_damaging", "weak_damaging", "weak_damaging" ], [ "rare", "super_damaging", "super_damaging", "weak_damaging" ], [ "rare", "super_damaging", "super_damaging", "super_damaging" ] ]
-reagent_substitutions = [ [ "rare", "damaging", "damaging", "damaging" ], [ "uncommon", "damaging", "damaging", "damaging" ], [ "common", "damaging", "damaging", "damaging" ] ]

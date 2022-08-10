@@ -23,6 +23,7 @@ func create_object(type: String):
 	reagent.set_image(reagent_data.image)
 	return reagent
 
+
 func get_data(type: String):
 	return ReagentDB.get_from_name(type)
 
@@ -37,11 +38,13 @@ func substitute_into(base_reagent):
 				break
 	return upgrade_list
 
+
 func randomize_reagent(reagent):
 	var type = random_type()
 	var reagent_data = ReagentDB.get_from_name(type)
 	reagent.type = type
 	reagent.set_image(reagent_data.image)
+
 
 func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= false):
 	var data = get_data(type)
@@ -69,6 +72,7 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 				   "title_image": data.tooltip_image_path, "subtitle": subtitle}
 
 	return tooltip
+
 
 func get_substitution_tooltip(type):
 	var data = get_data(type)
@@ -161,31 +165,49 @@ func upgraded_arrays(reagent_array):
 	
 	return upgraded_array_list
 
-#Returns an array containing all possible one-reagent upgrade from a given reagent matrix
-func substitution_matrix(reagent_matrix):
-	var substituted_matrices = []
-	var all_reagents = ReagentDB.get_reagents()
+
+func get_array_from_matrix(reagent_matrix):
+	var array = []
 	for i in reagent_matrix.size():
-		for j in reagent_matrix[i].size():
-			var reagent = reagent_matrix[i][j]
+		for reagent in reagent_matrix[i]:
 			if reagent:
-				for substitute_reagent in all_reagents[reagent].substitute:
-					var new_matrix = reagent_matrix.duplicate(true)
-					new_matrix[i][j] = substitute_reagent
-					substituted_matrices.append(new_matrix)
-	return substituted_matrices
+				array.append(reagent)
+	return array
+
+
+func create_matrix_from_array(original_matrix, reagent_array):
+	var matrix = original_matrix.duplicate(true)
+	var count = 0
+	for i in matrix.size():
+		for j in matrix[i].size():
+			if matrix[i][j]:
+				matrix[i][j] = reagent_array[count]
+				count += 1
+	return matrix
 
 
 #Given a reagent matrix, returns all possible matrixes considering its reagent substitutions
-func get_all_substitution_matrices(reagent_matrix):
+func get_all_substitution_matrices(original_reagent_matrix):
+	var final_arrays = []
+	var original_reagent_array = get_array_from_matrix(original_reagent_matrix)
+	var reagent_arrays_to_check = [original_reagent_array]
+	var reagent_arrays_viewed = [original_reagent_array]
+	while not reagent_arrays_to_check.empty():
+		var cur_reagents_array = reagent_arrays_to_check.pop_front()
+		final_arrays.append(cur_reagents_array)
+		for substituted_array in ReagentManager.downgraded_arrays(cur_reagents_array):
+			var unique = true
+			for array_viewed in reagent_arrays_viewed:
+				if ReagentManager.is_same_reagent_array(array_viewed, substituted_array):
+					unique = false
+					break
+			if unique:
+				reagent_arrays_to_check.append(substituted_array)
+				reagent_arrays_viewed.append(substituted_array)
+	
 	var possible_matrices = []
-	var to_check = [reagent_matrix]
-	while not to_check.empty():
-		var cur_matrix = to_check.pop_front()
-		possible_matrices.append(cur_matrix)
-		for matrix in substitution_matrix(cur_matrix):
-			if not possible_matrices.has(matrix):
-				to_check.append(matrix)
+	for array in final_arrays:
+		possible_matrices.append(create_matrix_from_array(original_reagent_matrix, array))
 	return possible_matrices
 
 

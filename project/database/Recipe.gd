@@ -26,4 +26,3 @@ export(Array, String) var master_destroy_reagents
 export(String) var override_master_description
 export(String) var override_master_short_description
 export(Array, String) var reagent_combinations
-export(Array, String) var reagent_substitutions

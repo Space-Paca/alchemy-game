@@ -26,4 +26,3 @@ master_destroy_reagents = [  ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "common", "rare", "uncommon" ], [ "faint", "rare", "uncommon" ], [ "rare", "uncommon", "uncommon" ], [ "rare", "rare", "uncommon" ], [ "common", "rare", "rare" ], [ "faint", "rare", "rare" ], [ "rare", "rare", "rare" ] ]
-reagent_substitutions = [ [ "rare", "uncommon", "common" ], [ "uncommon", "uncommon", "common" ], [ "common", "uncommon", "common" ], [ "rare", "common", "common" ], [ "common", "common", "common" ] ]

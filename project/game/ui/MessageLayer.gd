@@ -57,10 +57,12 @@ func recipe_mastered(combination: Combination, favorited: bool):
 	$Control/Recipes.add_child(display_normal)
 	display_normal.set_combination(combination)
 	display_normal.preview_mode(false)
+	display_normal.enable_tooltips()
 	var display_mastered = RECIPE_DISPLAY.instance()
 	$Control/Recipes.add_child(display_mastered)
 	display_mastered.set_combination(combination)
 	display_mastered.preview_mode(true)
+	display_mastered.enable_tooltips()
 	
 	
 	title.text = "MASTERED_RECIPE_EXC"
@@ -87,6 +89,7 @@ func new_recipe_discovered(combination: Combination):
 	$Control/Recipes.add_child(display)
 	display.set_combination(combination)
 	display.preview_mode(false)
+	display.enable_tooltips()
 
 
 func add_message(text: String, duration: float = DEFAULT_DURATION):

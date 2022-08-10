@@ -26,3 +26,4 @@ master_destroy_reagents = [  ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "buff", "defensive", "defensive", "uncommon" ], [ "buff", "defensive", "uncommon", "weak_defensive" ], [ "buff", "defensive", "super_defensive", "uncommon" ], [ "buff", "defensive", "defensive", "rare" ], [ "buff", "uncommon", "weak_defensive", "weak_defensive" ], [ "buff", "super_defensive", "uncommon", "weak_defensive" ], [ "buff", "defensive", "rare", "weak_defensive" ], [ "buff", "super_defensive", "super_defensive", "uncommon" ], [ "buff", "defensive", "rare", "super_defensive" ], [ "buff", "rare", "weak_defensive", "weak_defensive" ], [ "buff", "rare", "super_defensive", "weak_defensive" ], [ "buff", "rare", "super_defensive", "super_defensive" ] ]
+reagent_substitutions = [ [ "buff", "uncommon", "defensive", "defensive" ], [ "buff", "common", "defensive", "defensive" ] ]

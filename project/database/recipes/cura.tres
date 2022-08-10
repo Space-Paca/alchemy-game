@@ -26,3 +26,4 @@ master_destroy_reagents = [ "healing" ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "common", "common", "healing" ], [ "common", "faint", "healing" ], [ "common", "healing", "uncommon" ], [ "common", "healing", "rare" ], [ "faint", "faint", "healing" ], [ "faint", "healing", "uncommon" ], [ "faint", "healing", "rare" ], [ "healing", "uncommon", "uncommon" ], [ "healing", "rare", "uncommon" ], [ "healing", "rare", "rare" ] ]
+reagent_substitutions = [ [ "common", "common", "healing" ] ]

@@ -26,3 +26,4 @@ master_destroy_reagents = [ "trash" ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "damaging", "trash" ], [ "trash", "weak_damaging" ], [ "super_damaging", "trash" ], [ "damaging", "trash_plus" ], [ "trash_plus", "weak_damaging" ], [ "super_damaging", "trash_plus" ] ]
+reagent_substitutions = [ [ "trash", "damaging" ] ]

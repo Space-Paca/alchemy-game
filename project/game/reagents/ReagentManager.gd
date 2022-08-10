@@ -133,9 +133,23 @@ func is_same_reagent_array(array1, array2):
 		return true
 	return false
 
+#Returns an array containing all possible one-reagent downgrade from a given array
+#(downgrade means that the original reagent substitutes into another)
+func downgraded_arrays(reagent_array):
+	var downgraded_array_list = []
+	for i in reagent_array.size():
+		var reagent = reagent_array[i]
+		var data = get_data(reagent)
+		for substitute in data.substitute:
+			var new_array = reagent_array.duplicate()
+			new_array[i] = substitute
+			downgraded_array_list.append(new_array)
+	
+	return downgraded_array_list
+
 
 #Returns an array containing all possible one-reagent upgrade from a given array
-#(upgrade means that another reagent can substitute intp one of its reagents)
+#(upgrade means that another reagent can substitute into one of its reagents)
 func upgraded_arrays(reagent_array):
 	var upgraded_array_list = []
 	for i in reagent_array.size():

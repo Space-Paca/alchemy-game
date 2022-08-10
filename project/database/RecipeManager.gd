@@ -30,6 +30,10 @@ func _ready():
 
 func update_recipes_reagent_combinations():
 	for recipe in recipes.values():
+		print("STARTING RECIPE: " + str(recipe.name))
+		
+		#Get upgraded arrays to avoid amibuous recipes
+		print("Starting upgraded array calculation")
 		recipe.reagent_combinations = []
 		var reagent_arrays_to_check = [recipe.reagents.duplicate()]
 		var reagent_arrays_viewed = [recipe.reagents.duplicate()]
@@ -46,8 +50,28 @@ func update_recipes_reagent_combinations():
 				if unique:
 					reagent_arrays_to_check.append(upgraded_array)
 					reagent_arrays_viewed.append(upgraded_array)
+		
+		#Get valid substitution arrays to quickly add miscombinations
+		print("Starting downgraded array calculation")
+		recipe.reagent_substitutions = []
+		reagent_arrays_to_check = [recipe.reagents.duplicate()]
+		reagent_arrays_viewed = [recipe.reagents.duplicate()]
+		while not reagent_arrays_to_check.empty():
+			var cur_reagents_array = reagent_arrays_to_check.pop_front()
+			#cur_reagents_array.sort()
+			recipe.reagent_substitutions.append(cur_reagents_array)
+			for substituted_array in ReagentManager.downgraded_arrays(cur_reagents_array):
+				var unique = true
+				for array_viewed in reagent_arrays_viewed:
+					if ReagentManager.is_same_reagent_array(array_viewed, substituted_array):
+						unique = false
+						break
+				if unique:
+					reagent_arrays_to_check.append(substituted_array)
+					reagent_arrays_viewed.append(substituted_array)
 		var err = ResourceSaver.save(recipe.resource_path, recipe)
 		assert(not err, "Something went wrong trying to save recipe resource: " + str(recipe.name) + " Error:" + str(err))
+		print("FINISHED RECIPE: " + str(recipe.name))
 
 
 func get_short_description(recipe, is_master := false):

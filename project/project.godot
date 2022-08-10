@@ -305,6 +305,7 @@ translation_remaps={
 
 [network]
 
+limits/debugger_stdout/max_chars_per_second=20480
 limits/debugger_stdout/max_warnings_per_second=10000000
 
 [rendering]

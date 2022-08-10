@@ -26,3 +26,4 @@ master_destroy_reagents = [  ]
 override_master_description = ""
 override_master_short_description = ""
 reagent_combinations = [ [ "common", "damaging" ], [ "damaging", "faint" ], [ "damaging", "uncommon" ], [ "damaging", "rare" ], [ "common", "weak_damaging" ], [ "common", "super_damaging" ], [ "faint", "weak_damaging" ], [ "faint", "super_damaging" ], [ "uncommon", "weak_damaging" ], [ "super_damaging", "uncommon" ], [ "rare", "weak_damaging" ], [ "rare", "super_damaging" ] ]
+reagent_substitutions = [ [ "common", "damaging" ] ]

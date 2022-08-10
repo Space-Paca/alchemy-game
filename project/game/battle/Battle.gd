@@ -1086,7 +1086,7 @@ func _on_reagent_drag(reagent):
 	if reagent.is_burned():
 		reagent.unburn()
 		AudioManager.play_sfx("fire_reagent")
-		player.take_damage(player, 9, "regular", false)
+		player.take_damage(player, 6, "regular", false)
 
 
 func _on_reagent_stop_drag(_reagent):

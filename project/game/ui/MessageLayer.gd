@@ -105,8 +105,13 @@ func add_message(text: String, duration: float = DEFAULT_DURATION):
 	set_process(true)
 
 
+func is_active():
+	return not not current_combination
+
+
 func exit():
 	animation.play("hide")
+	current_combination = false
 	for display in $Control/Recipes.get_children():
 		$Control/Recipes.remove_child(display)
 	

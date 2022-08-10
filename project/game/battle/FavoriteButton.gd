@@ -48,6 +48,15 @@ func set_mastery(value):
 	mastered_label.visible = is_mastered
 
 
+func activate():
+	if combination:
+		emit_signal("pressed")
+
+
+func is_enabled():
+	return not button.disabled
+
+
 func enable():
 	button.disabled = false
 	enable_tooltips()
@@ -90,8 +99,7 @@ func disable_tooltips():
 
 
 func _on_Button_pressed():
-	if combination:
-		emit_signal("pressed")
+	activate()
 
 
 func _on_Button_mouse_entered():

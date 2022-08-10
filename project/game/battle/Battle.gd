@@ -83,7 +83,8 @@ func _ready():
 
 
 func _input(event):
-	if not TutorialLayer.is_active() and not recipe_book_visible:
+	if not TutorialLayer.is_active() and not recipe_book_visible and\
+	   not MessageLayer.is_active():
 		if event.is_action_pressed("end_turn"):
 				try_end_turn()
 		elif event.is_action_pressed("combine"):
@@ -91,6 +92,15 @@ func _input(event):
 				combine()
 			else:
 				AudioManager.play_sfx("error")
+		else:
+			for i in range(1, 7): #7 since it goes 1 below, so actually 6 favorite buttons
+				if event.is_action_pressed("favorite_"+str(i)):
+					var fav = favorites.get_child(i - 1)
+					if fav.is_enabled():
+						fav.activate()
+					else:
+						AudioManager.play_sfx("error")
+					
 
 
 func get_save_data():

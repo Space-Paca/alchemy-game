@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/ui/book/mastery_border.png" type="Texture" id=2]
@@ -9,6 +9,16 @@
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://game/ui/endgame-stats/XPControlSlider.gd" type="Script" id=8]
 [ext_resource path="res://assets/images/ui/background_xp.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/slider/bar_small.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/slider/bar_small_fill.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/slider/bar_cursor.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/slider/bar_points.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/slider/btn_plus_hold.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/ui/slider/btn_plus.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/ui/slider/btn_plus_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/ui/slider/btn_minus.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/ui/slider/btn_minus_pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/ui/slider/btn_minus_hold.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -41,6 +51,14 @@ modulate_color = Color( 0.243137, 1, 0, 1 )
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 1, 7 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 1, 5 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 63
@@ -238,14 +256,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 105.0
 margin_right = 570.0
 margin_bottom = 134.0
+rect_min_size = Vector2( 570, 29 )
+custom_constants/separation = -3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minus" type="TextureButton" parent="HBoxContainer"]
+margin_right = 27.0
+margin_bottom = 29.0
+action_mode = 0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+texture_disabled = ExtResource( 17 )
+texture_focused = ExtResource( 19 )
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+show_behind_parent = true
+margin_left = 24.0
+margin_right = 546.0
+margin_bottom = 28.0
+size_flags_horizontal = 7
+custom_icons/tick = ExtResource( 13 )
+custom_icons/grabber_disabled = ExtResource( 12 )
+custom_icons/grabber_highlight = ExtResource( 12 )
+custom_icons/grabber = ExtResource( 12 )
+custom_styles/slider = SubResource( 8 )
+custom_styles/grabber_area_highlight = SubResource( 10 )
+custom_styles/grabber_area = SubResource( 10 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Plus" type="TextureButton" parent="HBoxContainer"]
+margin_left = 543.0
+margin_right = 570.0
+margin_bottom = 29.0
+action_mode = 0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 15 )
+texture_focused = ExtResource( 14 )
 
 [node name="CurrentAllocatedXP" type="Label" parent="."]
 margin_top = 96.3641
@@ -263,4 +321,4 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/level_up = SubResource( 7 )
 
-[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]

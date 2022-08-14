@@ -13,7 +13,9 @@ onready var stat_name = $NameContainer/Name
 onready var stat_level = $NameContainer/Level
 onready var current_xp_node = $NumberContainer/Current
 onready var max_xp_node = $NumberContainer/Max
-onready var slider = $HSlider
+onready var slider = $HBoxContainer/HSlider
+onready var minus_button = $HBoxContainer/Minus
+onready var plus_button = $HBoxContainer/Plus
 onready var allocated_label = $CurrentAllocatedXP
 onready var preview = $PreviewProgress
 onready var progress_bar = $StatProgress
@@ -31,6 +33,15 @@ func _ready():
 	reset_preview()
 	progress_bar.set("custom_styles/fg", progress_bar.get_stylebox("fg").duplicate(true))
 	progress_bar.get_stylebox("fg").modulate_color = BAR_NORMAL_COLOR
+
+
+func _process(_delta):
+	var value_change := 0
+	if plus_button.pressed:
+		value_change += 1
+	if minus_button.pressed:
+		value_change -= 1
+	set_slider_value(slider.value + value_change)
 
 
 func level_up():

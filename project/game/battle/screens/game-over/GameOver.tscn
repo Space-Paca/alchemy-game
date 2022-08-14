@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/white_pixel.png" type="Texture" id=1]
 [ext_resource path="res://game/battle/screens/game-over/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/background/game_over.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=4]
 [ext_resource path="res://game/ui/endgame-stats/EndgameStats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/background/game_over2.jpg" type="Texture" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -59,6 +60,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG2" type="TextureRect" parent="BG"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

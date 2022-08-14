@@ -5,6 +5,7 @@ onready var tween = $Tween
 
 func _ready():
 	$BG.hide()
+	$BG/BG2.visible = randi()%2
 
 
 func set_player(p: Player):

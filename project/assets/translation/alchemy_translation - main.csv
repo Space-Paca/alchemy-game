@@ -171,7 +171,7 @@ STAT_BLOCK_GAINED,Total block gained: ,Escudo ganho:
 TOTAL,Total: ,Total:
 EP,EP,PE
 EMPIRIC_POINTS,Empiric Points,Pontos Empíricos
-KNOWLEDGE_ADMIN,Knowledge Administration,Gestor de Conhecimento
+KNOWLEDGE_ADMIN,Knowledge Administration,Gestão de Conhecimento
 EMPIRIC_AVAILABLE,Empiric Points:,Pontos Empíricos:
 UNLOCK,Unlock,Desbloquear
 CERTIFICATE_ACQ,Certificate of Acquisition,Certificado de Aquisição
@@ -1401,3 +1401,5 @@ E eu vou encontrá-lo!"""
 REWARD_SKIP_CONFIRMATION_TEXT,"There are still rewards to be taken, are you sure you want to continue to the map?","Ainda tem recompensas a serem resgatadas, tem certeza que você deseja continuar ao mapa?"
 REWARD_SKIP_CONFIRMATION_BACK,Back,Voltar
 REWARD_SKIP_CONFIRMATION_CONTINUE,Continue,Continuar
+SKIP_TUTORIAL,Skip Tutorials,Pular Tutoriais
+ARE_YOU_SURE_SKIP_TUTORIAL,Are you sure you want to skip tutorials? You can reset them in the options later if you do.,"Tem certeza que quer pular os tutoriais? Se sim, você pode resetá-los mais tarde nas opções."

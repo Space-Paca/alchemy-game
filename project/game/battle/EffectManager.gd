@@ -67,7 +67,7 @@ func combination_failure(reagent_list, grid):
 		elif effect.type == "damage_all":
 			damage_all(value, "regular", boost, false)
 		elif effect.type == "damage_self":
-			damage_self(value, "regular", boost)
+			damage_self(value, "regular")
 		elif effect.type == "shield":
 			shield(value, boost)
 		elif effect.type == "heal":
@@ -183,10 +183,9 @@ func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage"
 	
 	resolve()
 
-func damage_self(amount: int, type: String, boost_effects:= {"all":0, "damage":0}):
+func damage_self(amount: int, type: String, _boost_effects:= {}):
 	ShakeCam.shake(.2, ShakeCam.PLAYER_HIT)
-	var boost = boost_effects.all + boost_effects.damage
-	var func_state = player.take_damage(player, amount + boost, type)
+	var func_state = player.take_damage(player, amount, type)
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")
 	else:

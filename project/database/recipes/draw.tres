@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 name = "RE_DRAW"
 grid_size = 2
-sfx = "drain"
+sfx = "transmutation"
 must_unlock = true
 use_on_demo = true
 floor_sold_in = 2

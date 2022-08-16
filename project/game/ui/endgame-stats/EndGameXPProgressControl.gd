@@ -45,7 +45,6 @@ func _process(_delta):
 
 
 func level_up():
-	AudioManager.play_sfx("level_up")
 	$AnimationPlayer.play("level_up")
 
 

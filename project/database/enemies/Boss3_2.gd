@@ -5,7 +5,7 @@ var image = "res://assets/images/enemies/boss3-2/idle.png"
 var name = "EN_BOSS_3_2"
 var sfx = "boss-3-2"
 var use_idle_sfx = false
-var hp = 420
+var hp = 450
 var battle_init = true
 var size = "big"
 var change_phase = null
@@ -72,46 +72,47 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": 100, "animation": ""},
+		{"name": "shield", "value": 150, "animation": ""},
 	],
 	"start": [
+		{"name": "shield", "value": 100, "animation": ""},
 		{"name": "status", "status_name": "deviation", "value": 1, "target": "player", "positive": false, "animation": ""},
 		{"name": "status", "status_name": "divine_protection", "value": 60, "target": "self", "positive": true, "extra_args": {"value": 60}, "animation": ""},
 	],
 	"attack1": [
-		{"name": "damage", "value": 45, "amount":2, "type": "regular", "animation": "02_atk"},
-		{"name": "shield", "value": [50,60], "animation": ""},
+		{"name": "damage", "value": [55,58], "amount":2, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [60,70], "animation": ""},
 	],
 	"attack2": [
-		{"name": "damage", "value": [10,25], "amount":4, "type": "regular", "animation": "02_atk"},
-		{"name": "shield", "value": [50,60], "animation": ""},
+		{"name": "damage", "value": [20,25], "amount":4, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [60,70], "animation": ""},
 	],
 	"attack3": [
-		{"name": "damage", "value": 100, "type": "regular", "animation": "02_atk"},
-		{"name": "shield", "value": [50,60], "animation": ""},
+		{"name": "damage", "value": 120, "type": "regular", "animation": "02_atk"},
+		{"name": "shield", "value": [60,70], "animation": ""},
 	],
 	"attack4": [
 		{"name": "drain", "value": 60, "animation": "02_atk"},
-		{"name": "shield", "value": [50,60], "animation": ""},
+		{"name": "shield", "value": [60,70], "animation": ""},
 	],
 	"debuff1": [
 		{"name": "status", "status_name": "burning", "value": 12, "target": "player", "positive": false, "animation": ""},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
+		{"name": "status", "status_name": "perm_strength", "value": 10, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff2": [
-		{"name": "status", "status_name": "freeze", "value": 5, "target": "player", "positive": false, "animation": ""},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
+		{"name": "status", "status_name": "freeze", "value": 6, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff3": [
 		{"name": "status", "status_name": "time_bomb", "value": 12, "target": "player", "positive": false, "animation": ""},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
+		{"name": "status", "status_name": "perm_strength", "value": 10, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff4": [
-		{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""},
-		{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
+		{"name": "status", "status_name": "weakness", "value": 3, "target": "player", "positive": false, "animation": ""},
+		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""}
 	],
 	"debuff5": [
-		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": ""}
+		{"name": "status", "status_name": "perm_strength", "value": 15, "target": "self", "positive": true, "animation": ""}
 	],
 	
 }

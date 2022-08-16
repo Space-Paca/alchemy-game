@@ -1071,14 +1071,18 @@ func combine():
 	disable_player()
 
 	#Combination animation
-	var sfx_dur = AudioManager.get_sfx_duration("combine")
-	var dur = .2 if Profile.get_option("turbo_mode") else reagent_list.size()*.3
-	AudioManager.play_sfx("combine", float(sfx_dur)/dur)
+	var sfx_player = AudioManager.play_sfx("combine")
+	var dur
+	if Profile.get_option("turbo_mode"):
+		dur = .2
+	else:
+		dur = min(reagent_list.size()*.3, AudioManager.get_sfx_duration("combine"))
 	for reagent in reagent_list:
 		reagent.combine_animation(grid.get_center(), dur, true)
 	grid.combination_animation(dur*1.3)
 
 	yield(reagent_list.front(), "finished_combine_animation")
+	sfx_player.stop()
 	
 	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())

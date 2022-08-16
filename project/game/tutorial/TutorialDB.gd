@@ -81,3 +81,7 @@ const TUTORIAL = {
 func get(name):
 	assert(TUTORIAL.has(name), "Not a valid tutorial name: " + str(name))
 	return TUTORIAL[name]
+
+
+func get_keys():
+	return TUTORIAL.keys()

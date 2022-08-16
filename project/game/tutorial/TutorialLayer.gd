@@ -11,6 +11,8 @@ const DEFAULT_WIDTH = 400
 onready var rect = $Rect
 onready var label = $Label
 onready var image = $Image
+onready var skip_button = $MarginContainer/SkipButton
+onready var confirmation_popup = $PopupBG
 
 var active = false
 var current_region = 0
@@ -61,23 +63,8 @@ func _process(delta):
 		rect.modulate.a = max(rect.modulate.a - ALPHA_SPEED*delta, 0)
 		label.modulate.a = rect.modulate.a
 		image.modulate.a = rect.modulate.a
-
-
-func _input(event):
-	if event is InputEventMouseButton and event.pressed:
-		if active:
-			current_region += 1
-			if current_region >= regions.size():
-				active = false
-				regions = null
-				current_region = false
-				emit_signal("tutorial_finished")
-				AudioManager.disable_bgm_filter_effect()
-				yield(get_tree(), "idle_frame")
-				rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			else:
-				AudioManager.play_sfx("tutorial_advanced")
-				update_elements()
+	
+	skip_button.modulate.a = rect.modulate.a
 
 
 func is_active():
@@ -90,6 +77,17 @@ func start(name):
 	AudioManager.play_sfx("tutorial_advanced")
 
 
+func end():
+	active = false
+	skip_button.disabled = true
+	regions = null
+	current_region = false
+	emit_signal("tutorial_finished")
+	AudioManager.disable_bgm_filter_effect()
+	yield(get_tree(), "idle_frame")
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
 func set_regions(new_regions):
 	current_region = 0
 	regions = new_regions
@@ -98,6 +96,7 @@ func set_regions(new_regions):
 	update_elements()
 	rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	active = true
+	skip_button.disabled = false
 
 
 func set_position(position):
@@ -148,7 +147,8 @@ func update_elements():
 	
 	#Now image
 	update_image()
-	
+
+
 func update_image():
 	var region = regions[current_region]
 	if region.has("image"):
@@ -177,3 +177,36 @@ func update_image():
 			image.rect_position.y = label.rect_position.y + label.rect_size.y + MARGIN
 	else:
 		image.hide()
+
+
+func _on_SkipButton_pressed():
+	AudioManager.play_sfx("click")
+	confirmation_popup.show()
+
+
+func _on_Back_pressed():
+	AudioManager.play_sfx("click")
+	confirmation_popup.hide()
+
+
+func _on_Confirm_pressed():
+	AudioManager.play_sfx("click")
+	for key in DB.get_keys():
+		Profile.set_tutorial(key, true)
+	confirmation_popup.hide()
+	end()
+
+
+func _on_Button_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_Rect_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if active and not confirmation_popup.visible:
+			current_region += 1
+			if current_region >= regions.size():
+				end()
+			else:
+				AudioManager.play_sfx("tutorial_advanced")
+				update_elements()

@@ -146,6 +146,7 @@ func set_save_data(data):
 	if not OS.window_fullscreen:
 		yield(get_tree(), "idle_frame")
 		OS.window_size = WINDOW_SIZES[options.window_size]
+		OS.window_position = Vector2(0,0)
 	if options.enable_colorblind:
 		ColorblindnessShader.enable()
 	else:

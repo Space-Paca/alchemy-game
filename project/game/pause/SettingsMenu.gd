@@ -202,6 +202,7 @@ func _on_FullscreenCheckBox_toggled(button_pressed):
 	resolution_button.disabled = button_pressed
 	if not button_pressed:
 		OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
+		OS.window_position = Vector2(0,0)
 
 
 func _on_Resolution_button_pressed(button_id: int):
@@ -212,6 +213,7 @@ func _on_Resolution_button_pressed(button_id: int):
 		var size = Profile.WINDOW_SIZES[button_id]
 		window_size_label.text = str(size.x, "x", size.y)
 		OS.window_size = size
+		OS.window_position = Vector2(0,0)
 		Profile.set_option("window_size", button_id)
 	
 	AudioManager.play_sfx("close_filter")

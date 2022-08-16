@@ -62,6 +62,7 @@ func _input(event):
 		if not OS.window_fullscreen:
 			yield(get_tree(), "idle_frame")
 			OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
+			OS.window_position = Vector2(0,0)
 
 
 func skip_intro_animation():

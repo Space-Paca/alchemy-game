@@ -5,7 +5,7 @@ var image = "res://assets/images/enemies/boss2/idle.png"
 var name = "EN_BOSS_2"
 var sfx = "boss-2"
 var use_idle_sfx = false
-var hp = 300
+var hp = 380
 var battle_init = true
 var size = "medium"
 var change_phase = null
@@ -31,25 +31,27 @@ var first_state = ["start"]
 
 var actions = {
 	"start": [
-		{"name": "status", "status_name": "restrict_minor", "value": 3, "target": "player", "positive": false, "animation": "atk2"}
+		{"name": "status", "status_name": "restrict_minor", "value": 4, "target": "player", "positive": false, "animation": "atk2"}
 	],
 	"attack1": [
-		{"name": "damage", "value": [20,25], "type": "regular", "animation": "atk"},
+		{"name": "status", "status_name": "restrict_minor", "value": 4, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [22,30], "type": "regular", "animation": "atk"},
 	],
 	"attack2": [
-		{"name": "status", "status_name": "restrict_minor", "value": 3, "target": "player", "positive": false, "animation": ""},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 2, "animation": "atk"},
+		{"name": "status", "status_name": "restrict_minor", "value": 4, "target": "player", "positive": false, "animation": ""},
+		{"name": "damage", "value": [4,5], "type": "regular", "amount": 2, "animation": "atk"},
 	],
 	"attack3": [
-		{"name": "status", "status_name": "restrict_minor", "value": 3, "target": "player", "positive": false, "animation": "atk2"},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 3, "animation": "atk"},
+		{"name": "status", "status_name": "restrict_minor", "value": 4, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [4,5], "type": "regular", "amount": 3, "animation": "atk"},
 	],
 	"attack4": [
-		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 4, "animation": "atk"},
+		{"name": "status", "status_name": "restrict_minor", "value": 3, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [4,5], "type": "regular", "amount": 4, "animation": "atk"},
 	],
 	"attack5": [
-		{"name": "damage", "value": [3,4], "type": "regular", "amount": 5, "animation": "atk"},
+		{"name": "status", "status_name": "restrict_minor", "value": 2, "target": "player", "positive": false, "animation": "atk2"},
+		{"name": "damage", "value": [4,5], "type": "regular", "amount": 5, "animation": "atk"},
 	],
 	"restrict_buff": [
 		{"name": "status", "status_name": "restrict_major", "value": 1, "target": "player", "positive": false, "animation": "atk2"},

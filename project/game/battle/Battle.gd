@@ -580,6 +580,7 @@ func new_player_turn():
 	if first_turn:
 		first_turn = false
 		emit_signal("hand_set")
+	FileManager.save_run()
 
 
 func new_enemy_turn():

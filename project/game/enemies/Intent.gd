@@ -6,6 +6,7 @@ signal set_up
 var block_tooltips := false
 var tooltips_enabled := false
 var enemy = null
+var player = null
 var action = null
 
 func _ready():
@@ -14,7 +15,8 @@ func _ready():
 	$Tween.start()
 
 
-func setup(_enemy, _action, texture, value, multiplier):
+func setup(_enemy, _player, _action, texture, value, multiplier):
+	player = _player
 	enemy = _enemy
 	action = _action
 	$Image.texture = texture
@@ -82,7 +84,7 @@ func vanish():
 	emit_signal("vanished")
 
 func get_self_tooltip():
-	return IntentManager.get_intent_tooltip(action, enemy)
+	return IntentManager.get_intent_tooltip(action, enemy, player)
 
 func disable():
 	block_tooltips = true

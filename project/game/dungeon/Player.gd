@@ -313,7 +313,11 @@ func draw(amount:int):
 
 func drain(source: Character, value: int):
 	#Check for weakness status
-	value = int(ceil(2*value/3.0)) if source.get_status("weakness") else value
+	if source.get_status("weakness"):
+		if is_player() and not source.is_player() and has_artifact("debuff_kit"):
+			value = int(ceil(value/2.0))
+		else:
+			value = int(ceil(2*value/3.0))
 	
 	var unblocked_dmg = .take_damage(source, value, "drain")
 	
@@ -337,7 +341,11 @@ func drain(source: Character, value: int):
 
 func take_damage(source: Character, value: int, type: String, retaliate := true):
 	#Check for weakness status
-	value = int(ceil(2*value/3.0)) if source.get_status("weakness") else value
+	if source.get_status("weakness"):
+		if is_player() and not source.is_player() and has_artifact("debuff_kit"):
+			value = int(ceil(value/2.0))
+		else:
+			value = int(ceil(2*value/3.0))
 	
 	var unblocked_dmg = .take_damage(source, value, type, retaliate)
 	

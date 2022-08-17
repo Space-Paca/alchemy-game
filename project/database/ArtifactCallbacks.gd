@@ -49,6 +49,9 @@ func on_add_random_kit(args):
 	AudioManager.play_sfx("get_loot")
 	for _i in 4:
 		args.player.add_reagent(ReagentManager.random_type(), false)
+	var increase = ceil(float(args.player.max_hp)*0.2)
+	args.player.set_max_hp(args.player.max_hp + increase)
+	args.player.set_hp(args.player.hp + increase)
 
 func on_add_trash_heal(args):
 	AudioManager.play_sfx("debuff")

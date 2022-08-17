@@ -69,14 +69,19 @@ func create_intent_data(action):
 	
 	return intent
 
-func get_intent_tooltip(action, enemy):
+func get_intent_tooltip(action, enemy, player):
 	var tooltip = {}
 	var name = action[0]
 	var args = action[1]
 	if name == "damage":
 		var value = args.value
 		value += enemy.get_damage_modifiers()
-		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
+		if enemy.get_status("weakness"):
+			if player and player.has_artifact("debuff_kit"):
+				value = int(ceil(value/2.0))
+			else:
+				value = int(ceil(2*value/3.0))
+		
 		tooltip.title = tr("INTENT_ATTACKING_TITLE")
 		if args.amount > 1:
 			tooltip.text = tr("INTENT_ATTACKING_PLURAL_DESC") % [value, tr((args.type + "_DAMAGE").to_upper()), args.amount]
@@ -94,7 +99,12 @@ func get_intent_tooltip(action, enemy):
 	elif name == "drain":
 		var value = args.value
 		value += enemy.get_damage_modifiers()
-		value = int(ceil(2*value/3.0)) if enemy.get_status("weakness") else value
+		if enemy.get_status("weakness"):
+			if player and player.has_artifact("debuff_kit"):
+				value = int(ceil(value/2.0))
+			else:
+				value = int(ceil(2*value/3.0))
+		
 		tooltip.title = tr("INTENT_DRAINING_TITLE")
 		if args.amount > 1:
 			tooltip.text = tr("INTENT_DRAINING_PLURAL_DESC") % [value, args.amount]

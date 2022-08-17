@@ -110,7 +110,11 @@ func set_grayscale(value: float):
 
 func drain(source: Character, amount: int):
 	#Check for weakness status
-	amount = int(ceil(2*amount/3.0)) if source.get_status("weakness") else amount
+	if source.get_status("weakness"):
+		if not source.is_player() and player.has_artifact("debuff_kit"):
+			amount = int(ceil(amount/2.0))
+		else:
+			amount = int(ceil(2*amount/3.0))
 	
 	var unblocked_dmg = .take_damage(source, amount, "drain")
 	
@@ -136,9 +140,14 @@ func drain(source: Character, amount: int):
 
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
-	#Check for weakness status
 	var prev_hp = hp
-	damage = int(ceil(2*damage/3.0)) if source.get_status("weakness") else damage
+	#Check for weakness status
+	if source.get_status("weakness"):
+		if not source.is_player() and player.has_artifact("debuff_kit"):
+			damage = int(ceil(damage/2.0))
+		else:
+			damage = int(ceil(2*damage/3.0))
+	
 	
 	var unblocked_dmg = .take_damage(source, damage, type, retaliate)
 	if hp > 0 and unblocked_dmg > 0:
@@ -444,7 +453,7 @@ func clear_intents():
 func add_intent(action, texture, value, multiplier):
 	var intent = INTENT.instance()
 	$Intents.add_child(intent)
-	intent.setup(self, action, texture, value, multiplier)
+	intent.setup(self, player, action, texture, value, multiplier)
 	yield(intent, "set_up")
 	update_intents_position()
 
@@ -488,7 +497,11 @@ func update_intent():
 			var name = action[0]
 			if name == "damage" or name == "drain":
 				value += get_damage_modifiers()
-				value = int(ceil(2*value/3.0)) if get_status("weakness") else value
+				if get_status("weakness"):
+					if player and player.has_artifact("debuff_kit"):
+						value = int(ceil(value/2.0))
+					else:
+						value = int(ceil(2*value/3.0))
 			if intent.has("multiplier"):
 				add_intent(intent.action, intent.image, value, intent.multiplier)
 			else:

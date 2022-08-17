@@ -95,7 +95,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	#Check for evasion
 	if type != "poison" and status_list.has("evasion"):
 		randomize()
-		if randf() >= .5:
+		var chance = .5
+		if is_player() and has_artifact("buff_kit"):
+			chance = .75
+		if randf() <= chance:
 			AudioManager.play_sfx("dodge")
 			status_list["evasion"].amount -= 1
 			unblocked_damage = 0

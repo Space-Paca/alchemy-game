@@ -625,7 +625,7 @@ ART_BLOODCURSED_GRIMOIRE_DESC,"Whenever you defeat an enemy, heal 10% of your ma
 ART_GOLD_ANKH_NAME,Gold Ankh,Ankh Dourado
 ART_GOLD_ANKH_DESC,"Whenever you finish a battle, gain 10 max health","Sempre que você terminar uma batalha, ganhe 10 de vida máxima"
 ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso 
-ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 15% of your max life (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 15% da vida máxima (não funciona em receitas compradas)"
+ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 8% of your max life (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 8% da vida máxima (não funciona em receitas compradas)"
 EVENT_DUMMY_BATTLE_OPT_1,Battle!,Batalhar!
 EVENT_DUMMY_LEAVE_OPT_1,Leave.,Sair.
 EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Ir para o círculo de descanso.

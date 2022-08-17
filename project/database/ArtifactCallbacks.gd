@@ -127,7 +127,7 @@ func on_enemy_died_bloodcursed_grimoire(args):
 
 func on_discover_recipe_cursed_scholar_mask(args):
 	AudioManager.play_sfx("heal")
-	var amount = ceil(args.player.max_hp*.15)
+	var amount = ceil(args.player.max_hp*.08)
 	if args.source == "battle_win" or args.source == "battle":
 		args.player.heal(amount)
 	else:

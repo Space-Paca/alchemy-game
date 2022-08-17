@@ -185,7 +185,7 @@ noise = SubResource( 9 )
 [sub_resource type="ShaderMaterial" id=11]
 shader = SubResource( 8 )
 shader_param/speed = 20.0
-shader_param/strength = 0.005
+shader_param/strength = 0.01
 shader_param/Noise = SubResource( 10 )
 
 [sub_resource type="Animation" id=12]
@@ -205,7 +205,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "idle"
-length = 3.0
+length = 4.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -214,10 +214,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.2, 2.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.137255 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.137255 ) ]
+"values": [ Color( 1, 1, 1, 0.215686 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.215686 ) ]
 }
 
 [node name="Reagent" type="Control"]

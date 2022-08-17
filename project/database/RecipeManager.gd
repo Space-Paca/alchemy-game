@@ -33,7 +33,6 @@ func update_recipes_reagent_combinations():
 		print("STARTING RECIPE: " + str(recipe.name))
 		
 		#Get upgraded arrays to avoid amibuous recipes
-		print("Starting upgraded array calculation")
 		recipe.reagent_combinations = []
 		var reagent_arrays_to_check = [recipe.reagents.duplicate()]
 		var reagent_arrays_viewed = [recipe.reagents.duplicate()]

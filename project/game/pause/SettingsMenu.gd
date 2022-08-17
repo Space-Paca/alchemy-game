@@ -196,6 +196,8 @@ func _on_ResolutionButton_toggled(button_pressed):
 
 
 func _on_FullscreenCheckBox_toggled(button_pressed):
+	if OS.window_fullscreen == button_pressed:
+		return
 	AudioManager.play_sfx("click")
 	OS.window_fullscreen = button_pressed
 	Profile.set_option("fullscreen", button_pressed)

@@ -4,6 +4,8 @@ class_name MapNode
 signal pressed
 
 onready var button = $Button
+onready var hover_sfx = $HoverSFX
+onready var light = $Light2D
 
 enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 
@@ -59,10 +61,10 @@ var camera = null
 
 
 func _ready():
-	$HoverSFX.volume_db = MUTE_DB
+	hover_sfx.volume_db = MUTE_DB
 	randomize()
-	$Light2D.rotation = rand_range(0, 360)
-	$Light2D.texture_scale = rand_range(1.8, 2.7)
+	light.rotation = rand_range(0, 360)
+	light.texture_scale = rand_range(1.8, 2.7)
 	if Profile.get_option("disable_map_fog"):
 		disable_lights()
 	else:
@@ -71,27 +73,27 @@ func _ready():
 
 func _process(dt):
 	if mouse_over and type != EMPTY:
-		$Button.rect_scale.x = min($Button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
-		$Button.rect_scale.y = min($Button.rect_scale.y + SCALE_SPEED*dt, TARGET_SCALE)
-		$HoverSFX.volume_db = min($HoverSFX.volume_db + SFX_SPEED*dt, 0.0)
+		button.rect_scale.x = min(button.rect_scale.x + SCALE_SPEED*dt, TARGET_SCALE)
+		button.rect_scale.y = min(button.rect_scale.y + SCALE_SPEED*dt, TARGET_SCALE)
+		hover_sfx.volume_db = min(hover_sfx.volume_db + SFX_SPEED*dt, 0.0)
 	else:
-		$Button.rect_scale.x = max($Button.rect_scale.x - SCALE_SPEED*dt, 1)
-		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1)
-		$HoverSFX.volume_db = max($HoverSFX.volume_db - 1.7*SFX_SPEED*dt, MUTE_DB)
+		button.rect_scale.x = max(button.rect_scale.x - SCALE_SPEED*dt, 1)
+		button.rect_scale.y = max(button.rect_scale.y - SCALE_SPEED*dt, 1)
+		hover_sfx.volume_db = max(hover_sfx.volume_db - 1.7*SFX_SPEED*dt, MUTE_DB)
 	
-	if $HoverSFX.stream:
-		if $HoverSFX.volume_db > MUTE_DB and not $HoverSFX.playing:
-			$HoverSFX.play(rand_range(0.0, $HoverSFX.stream.get_length()))
-		elif $HoverSFX.volume_db <= MUTE_DB and $HoverSFX.playing:
-			$HoverSFX.stop()
+	if hover_sfx.stream:
+		if hover_sfx.volume_db > MUTE_DB and not hover_sfx.playing:
+			hover_sfx.play(rand_range(0.0, hover_sfx.stream.get_length()))
+		elif hover_sfx.volume_db <= MUTE_DB and hover_sfx.playing:
+			hover_sfx.stop()
 
 
 func enable_lights():
-	$Light2D.enabled = true
+	light.enabled = true
 
 
 func disable_lights():
-	$Light2D.enabled = false
+	light.enabled = false
 
 
 func disable_tooltips():
@@ -101,7 +103,7 @@ func disable_tooltips():
 
 
 func enable_tooltips():
-	$Button.disabled = type == EMPTY and true or false
+	button.disabled = type == EMPTY and true or false
 	$TooltipCollision.enable()
 
 
@@ -111,7 +113,7 @@ func get_alpha():
 
 func light_up():
 	var dur = .5
-	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
+	$Tween.interpolate_property(light, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	is_revealed = true
@@ -124,9 +126,9 @@ func fade_in():
 	var dur = LIGHT_UP_DUR + rand_range(-offset, offset)
 	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1),
 								dur/3.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property($Light2D, "energy", 0.5, 1,
+	$Tween.interpolate_property(light, "energy", 0.5, 1,
 							dur, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.interpolate_property($Light2D, "scale", Vector2(0,0), Vector2(1,1),
+	$Tween.interpolate_property(light, "scale", Vector2(0,0), Vector2(1,1),
 							dur, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 	AudioManager.play_sfx("map_expand")
@@ -158,7 +160,7 @@ func set_type(new_type:int):
 	else:
 		button.get_node("Sprite").texture = IMAGES[type]
 	if SFXS[type]:
-		$HoverSFX.stream = SFXS[type]
+		hover_sfx.stream = SFXS[type]
 	
 	if type == ENEMY:
 		encounter = EncounterManager.get_random_encounter()

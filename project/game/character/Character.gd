@@ -308,7 +308,7 @@ func on_death_revenge():
 	var status = get_status("revenge")
 	emit_signal("damage_player", self, status.amount, "regular")
 
-func on_remove_doomsday():
+func on_remove_impending_doom():
 	add_status("perm_strength", 999, true, {})
 
 func start_turn_shield():

@@ -25,7 +25,7 @@ var first_state = ["init"]
 
 var actions = {
 	"init": [
-		{"name": "shield", "value": [14, 15], "animation": "02_atk"},
+		{"name": "shield", "value": [6, 8], "animation": "02_atk"},
 	],
 	"attack": [
 		{"name": "status", "status_name": "poison", "value": [2,3], "target": "player", "positive": false, "animation": "02_atk"}
@@ -35,10 +35,10 @@ var actions = {
 		{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false, "animation": "02_atk"}
 	],
 	"poison": [
-		{"name": "damage", "value": [10, 12], "type": "venom", "animation": "02_atk"},
+		{"name": "damage", "value": [6, 8], "type": "venom", "animation": "02_atk"},
 	],
 	"first": [
-		{"name": "shield", "value": [14, 15], "animation": "02_atk"},
+		{"name": "shield", "value": [6, 8], "animation": "02_atk"},
 	],
 	"second": [
 		{"name": "status", "status_name": "poison", "value": 2, "target": "player", "positive": false, "animation": "02_atk"}

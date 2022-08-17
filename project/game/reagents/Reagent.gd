@@ -2,6 +2,7 @@ extends Control
 
 const SHAKE_DEGREE = 5
 const FREEZE_SPEED = 3
+const BURN_SPEED = 3
 const HIGHLIGHT_SPEED = 5
 const HIGHLIGHT_TARGET = 1.6
 const ROTATION_FACTOR = 50
@@ -21,6 +22,7 @@ signal exploded
 
 onready var image = $Image
 onready var tooltip = $TooltipCollision
+onready var burned_node = $Burned
 
 var stop_auto_moving := false
 var orbit = false
@@ -47,8 +49,9 @@ var highlighted := false
 var tooltip_enabled = false
 
 
-func set_image(texture):
-	$Image.texture = texture
+func _ready():
+	burned_node.self_modulate.a = 0
+	burned_node.get_node("AnimationPlayer").playback_speed = rand_range(0.6, 1.4)
 
 
 func _process(delta):
@@ -64,6 +67,14 @@ func _process(delta):
 		$Image.modulate.r = min($Image.modulate.r + FREEZE_SPEED*delta, 1)
 	else:
 		$Image.modulate.r = max($Image.modulate.r - FREEZE_SPEED*delta, 0)
+	
+	
+	#Freeze effect
+	if not is_burned():
+		burned_node.self_modulate.a = max(burned_node.self_modulate.a - BURN_SPEED*delta, 0)
+	else:
+		burned_node.self_modulate.a = min(burned_node.self_modulate.a + BURN_SPEED*delta, 1)
+	
 	
 	#Highlight effect
 	if highlighted:
@@ -105,6 +116,11 @@ func _process(delta):
 		dir = dir*delta
 		orbit_dir += dir
 		rect_position += orbit_dir + centripetal_force
+
+
+func set_image(texture):
+	$Image.texture = texture
+
 
 func get_data():
 	var data = {
@@ -157,12 +173,13 @@ func is_burned():
 func burn():
 	AudioManager.play_sfx("burn_reagent")
 	burned = true
-	$Burned.show()
+	burned_node.get_node("AnimationPlayer").play("idle")
 
 
 func unburn():
 	burned = false
-	$Burned.hide()
+	burned_node.get_node("AnimationPlayer").stop()
+
 
 
 func enable_dragging():

@@ -72,7 +72,7 @@ var keywords = {
 		"type": "tooltip",
 		"title": "ON_FIRE_TITLE",
 		"text": "ON_FIRE_DESC",
-		"title_image": preload("res://assets/images/status/random_status.png"),
+		"title_image": preload("res://assets/images/ui/burned_reagent.png"),
 	}
 }
 

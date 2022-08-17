@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/images/reagents/invigorating_root.png" type="Texture" id=1]
 [ext_resource path="res://game/reagents/ReagentCollision.gd" type="Script" id=2]
@@ -155,6 +155,71 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform sampler2D Noise;
+uniform float speed;
+uniform float strength;
+
+void fragment(){
+	vec4 noise = texture(Noise, UV);
+	float x_off = cos(noise.r*TIME*speed) * strength;
+	float y_off = sin(noise.r*TIME*speed) * strength;
+	COLOR = texture(TEXTURE, UV + vec2(x_off, y_off));
+}"
+
+[sub_resource type="OpenSimplexNoise" id=9]
+seed = 13
+octaves = 4
+period = 201.4
+persistence = 0.528
+lacunarity = 1.04
+
+[sub_resource type="NoiseTexture" id=10]
+width = 40
+height = 40
+seamless = true
+noise = SubResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 8 )
+shader_param/speed = 20.0
+shader_param/strength = 0.005
+shader_param/Noise = SubResource( 10 )
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.482353 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.137255 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.137255 ) ]
+}
+
 [node name="Reagent" type="Control"]
 script = ExtResource( 3 )
 __meta__ = {
@@ -219,16 +284,21 @@ __meta__ = {
 }
 
 [node name="Burned" type="TextureRect" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.560784 )
-margin_left = -30.3064
-margin_top = -30.0258
-margin_right = 29.6936
-margin_bottom = 29.9742
+modulate = Color( 1, 1, 1, 0.482353 )
+material = SubResource( 11 )
+margin_left = -41.0
+margin_top = -53.0
+margin_right = 48.0
+margin_bottom = 43.0
+rect_scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Burned"]
+anims/RESET = SubResource( 12 )
+anims/idle = SubResource( 13 )
 
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

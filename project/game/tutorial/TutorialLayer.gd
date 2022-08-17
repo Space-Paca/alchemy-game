@@ -71,6 +71,14 @@ func is_active():
 	return active
 
 
+func set_active(a: bool):
+	active = a
+	skip_button.disabled = not a
+	for control in [skip_button, rect]:
+		control.mouse_filter = Control.MOUSE_FILTER_STOP if a else\
+				Control.MOUSE_FILTER_IGNORE
+
+
 func start(name):
 	AudioManager.enable_bgm_filter_effect(-8)
 	set_regions(DB.get(name))
@@ -78,14 +86,12 @@ func start(name):
 
 
 func end():
-	active = false
-	skip_button.disabled = true
+	set_active(false)
 	regions = null
 	current_region = false
 	emit_signal("tutorial_finished")
 	AudioManager.disable_bgm_filter_effect()
 	yield(get_tree(), "idle_frame")
-	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func set_regions(new_regions):
@@ -94,9 +100,7 @@ func set_regions(new_regions):
 	set_position(regions[0].position + regions[0].dimension/2)
 	set_dimension(Vector2(0,0))
 	update_elements()
-	rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	active = true
-	skip_button.disabled = false
+	set_active(true)
 
 
 func set_position(position):

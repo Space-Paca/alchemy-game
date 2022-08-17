@@ -1038,7 +1038,7 @@ func _on_Rest_closed():
 	
 	rest.hide()
 	enable_map()
-	if current_node:
+	if current_node and is_instance_valid(current_node):
 		map.reveal_paths(current_node)
 		current_node = null
 	play_map_bgm()

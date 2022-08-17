@@ -74,9 +74,9 @@ func combination_failure(reagent_list, grid):
 			heal(value, boost)
 		elif effect.type == "status":
 			if effect.target == "random_enemy":
-				add_status_random(effect.status_type, value, effect.positive, boost)
+				add_status_random(effect.status_type, value, effect.positive, boost, true)
 			elif effect.target == "self":
-				add_status("self", effect.status_type, value, effect.positive, boost)
+				add_status("self", effect.status_type, value, effect.positive, boost, true)
 		yield(self, "effect_resolved")
 		
 		if reagent.type == "trash":
@@ -93,10 +93,10 @@ func combination_failure(reagent_list, grid):
 
 
 #Gives a status to a random enemy
-func add_status_random(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
+func add_status_random(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.status
-	if status == "poison" and player.has_artifact("buff_poison"):
-		boost += 1
+	if not is_miscombination and status == "poison" and player.has_artifact("buff_poison"):
+		boost += 3
 	var possible_enemies = enemies.duplicate()
 	randomize()
 	possible_enemies.shuffle()
@@ -133,20 +133,20 @@ func draw(amount:int, _boost_effects: Dictionary):
 
 	resolve()
 
-func add_status_all(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
+func add_status_all(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.status
-	if status == "poison" and player.has_artifact("buff_poison"):
-		boost += 1
+	if not is_miscombination and status == "poison" and player.has_artifact("buff_poison"):
+		boost += 3
 	var temp_enemies = enemies.duplicate()
 	for enemy in temp_enemies:
 			enemy.add_status(status, amount + boost, positive)
 			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
 
-func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}):
+func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.status
-	if status == "poison" and player.has_artifact("buff_poison"):
-		boost += 1
+	if not is_miscombination and status == "poison" and player.has_artifact("buff_poison"):
+		boost += 3
 	if targeting == "self":
 		player.add_status(status, amount + boost, positive)
 		yield(get_tree().create_timer(.5), "timeout")

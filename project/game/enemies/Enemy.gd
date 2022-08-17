@@ -175,7 +175,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	if hp > 0 and unblocked_dmg > 0 and source == player and\
 	   player.has_artifact("poisoned_dagger"):
-		add_status("poison", 1, false)
+		add_status("poison", 2, false)
 		
 	
 	emit_signal("resolved")

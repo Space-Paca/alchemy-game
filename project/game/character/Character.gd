@@ -31,6 +31,15 @@ func init(_name: String, _max_hp: int):
 	shield = 0
 
 
+func is_player():
+	return char_name == "player"
+
+
+#Implemented in player class
+func has_artifact(_name):
+	return false
+
+
 func set_max_hp(value):
 	max_hp = value
 
@@ -335,7 +344,10 @@ func start_turn_divine_protection():
 func end_turn_poison():
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
-	status.amount -= 1
+	if is_player() and self.has_artifact("poison_kit"):
+		status.amount -= 2
+	else:
+		status.amount -= 1
 	if status.amount <= 0:
 		remove_status("poison")
 

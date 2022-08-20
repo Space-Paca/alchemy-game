@@ -98,34 +98,68 @@ func get_substitution_tooltip(type):
 #checks if you can create the recipe with the given reagents, taking into
 #consideration substitutions. If possible, will return an array of indexes
 #for which reagents to use in the given_reagents array
-func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
-	var reagent_arrays_to_check = [given_reagents]
-	var reagent_arrays_viewed = []
-	var correct_reagents
-	while not reagent_arrays_to_check.empty():
-		var cur_reagents_array = reagent_arrays_to_check.pop_front()
-		correct_reagents = try_reagents(recipe_array, cur_reagents_array)
-		if correct_reagents:
-			return correct_reagents
-		else:
-			#Previous hand isn't valid, will add all possible 1-substitution available from it
-			for i in cur_reagents_array.size():
-				var reagent = cur_reagents_array[i]
-				if reagent:
-					var reagent_data = ReagentManager.get_data(reagent)
-					for sub_reagent in reagent_data.substitute:
-						var new_array = cur_reagents_array.duplicate(true)
-						new_array[i] = sub_reagent
-						var unique = true
-						for array_viewed in reagent_arrays_viewed:
-							if is_same_reagent_array(array_viewed, new_array):
-								unique = false
-								break
-						if unique:
-							reagent_arrays_to_check.append(new_array)
-							reagent_arrays_viewed.append(new_array)
-	return false
+#func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
+#	var reagent_arrays_to_check = [given_reagents]
+#	var reagent_arrays_viewed = []
+#	var correct_reagents
+#	while not reagent_arrays_to_check.empty():
+#		var cur_reagents_array = reagent_arrays_to_check.pop_front()
+#		correct_reagents = try_reagents(recipe_array, cur_reagents_array)
+#		if correct_reagents:
+#			return correct_reagents
+#		else:
+#			#Previous hand isn't valid, will add all possible 1-substitution available from it
+#			for i in cur_reagents_array.size():
+#				var reagent = cur_reagents_array[i]
+#				if reagent:
+#					var reagent_data = ReagentManager.get_data(reagent)
+#					for sub_reagent in reagent_data.substitute:
+#						var new_array = cur_reagents_array.duplicate(true)
+#						new_array[i] = sub_reagent
+#						var unique = true
+#						for array_viewed in reagent_arrays_viewed:
+#							if is_same_reagent_array(array_viewed, new_array):
+#								unique = false
+#								break
+#						if unique:
+#							reagent_arrays_to_check.append(new_array)
+#							reagent_arrays_viewed.append(new_array)
+#	return false
 
+# With this refactor (check out ReagentDB.gd), you don't need to make all matrix
+# permutations of each recipe. By some clever data structure refactor, adding power_level
+# and rarity_level to the ReagentDB, you can make a near-optimal integer-comparison algorithm
+# to fill a recipe from a given hand. Worst-case scenario here is O(r*h) where r is number
+# of reagents in recipe and h is # of reagents in hand.
+# You can get rid of most other functions in this file with this, AFAICT.
+# You may also get rid of the "substitute" field in ReagentDB, at least for this
+# Manager's sake, again AFAICT
+func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
+	var used_reagents = []
+	# I don't know if py passes arrays by copy, I assume so. Otherwise you have
+	# to copy given_reags here if you want it preserved
+	for reagent_name in recipe_array:
+		var needed_reagent = ReagentManager.get_data(reagent_name)
+		var used_reagent = null
+		for r_name in given_reagents:
+			var reagent = ReagentManager.get_data(r_name)
+			if (reagent.type == needed_reagent.type && reagent.power_level >= needed_reagent.power_level):
+				if (used_reagent == null):
+					used_reagent = reagent;
+				else:
+					if (used_reagent.rarity_level > reagent.rarity_level):
+						used_reagent = reagent
+		
+		if (used_reagent == null):
+			# couldn't hit this reagent, can't complete this recipe:
+			return false
+		else:
+			used_reagents.push(used_reagent.name)
+			given_reagents.remove(used_reagent.name)
+	
+	# If we got this far, we just completed the recipe with minimum rarity reags:
+	return used_reagents
+	
 func is_same_reagent_array(array1, array2):
 	var a1 = array1.duplicate()
 	for reagent in array2:

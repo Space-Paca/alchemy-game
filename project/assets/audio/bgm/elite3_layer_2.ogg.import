@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/elite3_layer_2.ogg-8e548aa464ee2abae64f1ceb9439246c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/elite3_layer_2.ogg"
+dest_files=[ "res://.import/elite3_layer_2.ogg-8e548aa464ee2abae64f1ceb9439246c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

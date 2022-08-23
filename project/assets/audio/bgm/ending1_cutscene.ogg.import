@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ending1_cutscene.ogg-cea7aeb7e80da25a2fe55f1a657caf65.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/ending1_cutscene.ogg"
+dest_files=[ "res://.import/ending1_cutscene.ogg-cea7aeb7e80da25a2fe55f1a657caf65.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -94,6 +94,60 @@ func get_substitution_tooltip(type):
 	
 	return tooltip
 
+
+#Given an array of reagents for a recipe, and and array of given reagentes, 
+#checks if you can create the recipe with the given reagents, taking into
+#consideration substitutions. If possible, will return an array of indexes
+#for which reagents to use in the given_reagents array
+func get_reagents_to_use_2(recipe_array: Array, given_reagents : Array):
+	var given = []
+	var given_rank = []
+	#Bitmask where 1 means we still need this reagent from recipe array
+	var need_to_use = (1 << recipe_array.size()) - 1
+	#Memoization bitmask matrix, where each line if for each given reagent,
+	#And inside is an array of each possible bitmap
+	var memoization = []
+	
+	for i in given_reagents.size():
+		var reagent = given_reagents[i]
+		var data = ReagentDB.get_from_name(reagent)
+		var possible_substitutions = data.substitute
+		possible_substitutions.append(reagent)
+		given.append([])
+		given_rank.append(data.rank)
+		memoization.append([])
+		for _j in need_to_use + 1:
+			memoization[i].append(-1)
+		for j in recipe_array.size():
+			if possible_substitutions.has(recipe_array[j]):
+				given[i].append(j)
+
+	var result = pd_recursion(given, given_rank, memoization, 0, need_to_use)
+	if result >= INF:
+		return false
+	else:
+		#Fazer o parse dos resultados pra dizer quais reagentes usar
+		return result
+
+
+func pd_recursion(given, given_rank, memoization, idx, mask):
+	if idx == given.size():
+		if mask == 0: #Used all reagents sucessfully
+			return 0
+		else: #Didn't use all reagents sucessfully
+			return INF
+
+	
+	var result = memoization[idx][mask]
+	if result == -1: #Didn't check this given reagent
+		result = pd_recursion(given, given_rank, memoization, idx+1, mask)
+		
+		for reagent in given[idx]:
+			if (mask >> reagent)%2 == 1:
+				result = min(result, given_rank[idx] + pd_recursion(given, given_rank, memoization, idx+1, mask^(1<<reagent)))
+	return result
+
+
 #Given an array of reagents for a recipe, and and array of given reagentes, 
 #checks if you can create the recipe with the given reagents, taking into
 #consideration substitutions. If possible, will return an array of indexes

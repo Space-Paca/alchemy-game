@@ -99,86 +99,83 @@ func get_substitution_tooltip(type):
 #checks if you can create the recipe with the given reagents, taking into
 #consideration substitutions. If possible, will return an array of indexes
 #for which reagents to use in the given_reagents array
-func get_reagents_to_use_2(recipe_array: Array, given_reagents : Array):
+func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
 	var given = []
 	var given_rank = []
-	#Bitmask where 1 means we still need this reagent from recipe array
-	var need_to_use = (1 << recipe_array.size()) - 1
-	#Memoization bitmask matrix, where each line if for each given reagent,
-	#And inside is an array of each possible bitmap
+	#Initial bitmask where 1 means we still need this reagent from recipe array
+	var starting_bitmask = (1 << recipe_array.size()) - 1
+	#Memoization bitmask matrix, where each position on the first dimension represents a given reagent,
+	#And the second dimension is an array of each possible bitmap for that reagent
+	#The final value inside is the total rank cost of this solution
 	var memoization = []
-	
 	for i in given_reagents.size():
-		var reagent = given_reagents[i]
-		var data = ReagentDB.get_from_name(reagent)
-		var possible_substitutions = data.substitute
-		possible_substitutions.append(reagent)
 		given.append([])
-		given_rank.append(data.rank)
 		memoization.append([])
-		for _j in need_to_use + 1:
+		for _j in starting_bitmask + 1:
 			memoization[i].append(-1)
-		for j in recipe_array.size():
-			if possible_substitutions.has(recipe_array[j]):
-				given[i].append(j)
+		var reagent = given_reagents[i]
+		if reagent:
+			var data = ReagentDB.get_from_name(reagent)
+			var possible_substitutions = data.substitute
+			possible_substitutions.append(reagent)
+			given_rank.append(data.rank)
+			for j in recipe_array.size():
+				if possible_substitutions.has(recipe_array[j]):
+					given[i].append(j)
+		else:
+			given_rank.append(INF)
 
-	var result = pd_recursion(given, given_rank, memoization, 0, need_to_use)
+	var result = pd_recursion(given, given_rank, memoization, 0, starting_bitmask)
 	if result >= INF:
 		return false
 	else:
-		#Fazer o parse dos resultados pra dizer quais reagentes usar
-		return result
+		var solution = []
+		for _i in given.size():
+			solution.append(false)
+		reconstruct_solution(solution, recipe_array, given, given_rank, memoization, 0, starting_bitmask)
+		return solution
 
 
+#Recursive method that invariably returns the total cost of using all given reagents with index >=idx
 func pd_recursion(given, given_rank, memoization, idx, mask):
-	if idx == given.size():
-		if mask == 0: #Used all reagents sucessfully
-			return 0
-		else: #Didn't use all reagents sucessfully
-			return INF
-
+	if mask == 0: #Fullfilled all reagents requirements sucessfully
+		return 0
+	if idx == given.size(): 
+		return INF #Didn't use all reagents sucessfully (guaranteed given previous return)
 	
 	var result = memoization[idx][mask]
 	if result == -1: #Didn't check this given reagent
 		result = pd_recursion(given, given_rank, memoization, idx+1, mask)
-		
+		memoization[idx][mask] = result
 		for reagent in given[idx]:
 			if (mask >> reagent)%2 == 1:
 				result = min(result, given_rank[idx] + pd_recursion(given, given_rank, memoization, idx+1, mask^(1<<reagent)))
+				memoization[idx][mask] = result
 	return result
 
+#Recursive method that reconstructs the final solution array
+#At the end of the function, invariably all given reagents with index >= idx are sorted and used in the final solution array
+func reconstruct_solution(solution, recipe_array, given, given_rank, memoization, idx, mask):
+	if mask == 0: #Fullfilled all reagents requirements sucessfully
+		return
+	if idx == given.size(): 
+		push_error("Something is wrong, mask isn't empty at end of recursion")
+		return
+		
+	var result = memoization[idx][mask]
+	if result == pd_recursion(given, given_rank, memoization, idx+1, mask):
+		#Can progress through this solution without using this reagent
+		reconstruct_solution(solution, recipe_array, given, given_rank, memoization, idx+1, mask)
+	else:
+		for reagent_idx in given[idx]:
+			if (mask >> reagent_idx)%2 == 1:
+				var new_mask = mask^(1<<reagent_idx)
+				if result == given_rank[idx] + pd_recursion(given, given_rank, memoization, idx+1, new_mask):
+					#I am using this exact substitution on the solution, mark on the solution
+					solution[idx] = recipe_array[reagent_idx]
+					reconstruct_solution(solution, recipe_array, given, given_rank, memoization, idx+1, new_mask)
+					return #Avoids checking other substitutions
 
-#Given an array of reagents for a recipe, and and array of given reagentes, 
-#checks if you can create the recipe with the given reagents, taking into
-#consideration substitutions. If possible, will return an array of indexes
-#for which reagents to use in the given_reagents array
-func get_reagents_to_use(recipe_array: Array, given_reagents : Array):
-	var reagent_arrays_to_check = [given_reagents]
-	var reagent_arrays_viewed = []
-	var correct_reagents
-	while not reagent_arrays_to_check.empty():
-		var cur_reagents_array = reagent_arrays_to_check.pop_front()
-		correct_reagents = try_reagents(recipe_array, cur_reagents_array)
-		if correct_reagents:
-			return correct_reagents
-		else:
-			#Previous hand isn't valid, will add all possible 1-substitution available from it
-			for i in cur_reagents_array.size():
-				var reagent = cur_reagents_array[i]
-				if reagent:
-					var reagent_data = ReagentManager.get_data(reagent)
-					for sub_reagent in reagent_data.substitute:
-						var new_array = cur_reagents_array.duplicate(true)
-						new_array[i] = sub_reagent
-						var unique = true
-						for array_viewed in reagent_arrays_viewed:
-							if is_same_reagent_array(array_viewed, new_array):
-								unique = false
-								break
-						if unique:
-							reagent_arrays_to_check.append(new_array)
-							reagent_arrays_viewed.append(new_array)
-	return false
 
 func is_same_reagent_array(array1, array2):
 	var a1 = array1.duplicate()
@@ -263,24 +260,3 @@ func get_all_substitution_matrices(original_reagent_matrix):
 	for array in final_arrays:
 		possible_matrices.append(create_matrix_from_array(original_reagent_matrix, array))
 	return possible_matrices
-
-
-#Checks if the given hand reagents contains all reagents needed for reagent array
-func try_reagents(reagent_array, hand_reagents_array):
-	var comparing_reagents = reagent_array.duplicate() 
-	var correct_reagent_displays := []
-	for i in hand_reagents_array.size():
-		correct_reagent_displays.append(false)
-	var i = 0
-	while not comparing_reagents.empty() and i < hand_reagents_array.size():
-		var reagent = hand_reagents_array[i]
-		for other in comparing_reagents:
-			if reagent == other:
-				correct_reagent_displays[i] = reagent
-				comparing_reagents.erase(other)
-				break
-		i += 1
-	if comparing_reagents.empty():
-		return correct_reagent_displays
-	else:
-		return null

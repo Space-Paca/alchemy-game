@@ -11,7 +11,7 @@ const DB = {
 		"gold_value" : 5,
 		"substitute" : ["common"],
 		"transmutations" : ["common", "weak_damaging", "weak_defensive"],
-		"rank": 0,
+		"rank": 1,
 	},
 	"common": {
 		"name": "RGNT_COM_ELEM_NAME",
@@ -23,7 +23,7 @@ const DB = {
 		"gold_value" : 15,
 		"substitute" : [],
 		"transmutations" : ["uncommon", "damaging", "defensive"],
-		"rank": 1,
+		"rank": 2,
 	},
 	"uncommon": {
 		"name": "RGNT_UNC_ELEM_NAME",
@@ -35,7 +35,7 @@ const DB = {
 		"gold_value" : 25,
 		"substitute" : ["common"],
 		"transmutations" : ["rare", "super_damaging", "super_defensive"],
-		"rank": 2,
+		"rank": 3,
 	},
 	"rare": {
 		"name": "RGNT_RARE_ELEM_NAME",
@@ -47,7 +47,7 @@ const DB = {
 		"gold_value" : 50,
 		"substitute" : ["uncommon", "common"],
 		"transmutations" : [],
-		"rank": 3,
+		"rank": 4,
 	},
 	"weak_damaging": {
 		"name": "RGNT_FAIN_DAMAGE_NAME",
@@ -59,7 +59,7 @@ const DB = {
 		"gold_value" : 5,
 		"substitute" : ["damaging"],
 		"transmutations" : ["damaging"],
-		"rank": 0,
+		"rank": 1,
 	},
 	"damaging": {
 		"name": "RGNT_COM_DAMAGE_NAME",
@@ -71,7 +71,7 @@ const DB = {
 		"gold_value" : 15,
 		"substitute" : [],
 		"transmutations" : ["super_damaging"],
-		"rank": 1,
+		"rank": 2,
 	},
 	"super_damaging": {
 		"name": "RGNT_UNC_DAMAGE_NAME",
@@ -83,7 +83,7 @@ const DB = {
 		"gold_value" : 35,
 		"substitute" : ["damaging"],
 		"transmutations" : [],
-		"rank": 2,
+		"rank": 3,
 	},
 	"weak_defensive": {
 		"name": "RGNT_FAIN_DEFENSE_NAME",
@@ -95,7 +95,7 @@ const DB = {
 		"gold_value" : 5,
 		"substitute" : ["defensive"],
 		"transmutations" : ["defensive"],
-		"rank": 0,
+		"rank": 1,
 	},
 	"defensive": {
 		"name": "RGNT_COM_DEFENSE_NAME",
@@ -107,7 +107,7 @@ const DB = {
 		"gold_value" : 15,
 		"substitute" : [],
 		"transmutations" : ["super_defensive"],
-		"rank": 1,
+		"rank": 2,
 	},
 	"super_defensive": {
 		"name": "RGNT_UNC_DEFENSE_NAME",
@@ -119,7 +119,7 @@ const DB = {
 		"gold_value" : 35,
 		"substitute" : ["defensive"],
 		"transmutations" : [],
-		"rank": 2,
+		"rank": 3,
 	},
 	"healing": {
 		"name": "RGNT_HEALING_NAME",
@@ -131,7 +131,7 @@ const DB = {
 		"gold_value" : 45,
 		"substitute" : [],
 		"transmutations" : [],
-		"rank": 2,
+		"rank": 3,
 	},
 	"poison": {
 		"name": "RGNT_POISON_NAME",
@@ -143,7 +143,7 @@ const DB = {
 		"gold_value" : 20,
 		"substitute" : [],
 		"transmutations" : [],
-		"rank": 2,
+		"rank": 3,
 	},
 	"buff": {
 		"name": "RGNT_BUFF_NAME",
@@ -155,7 +155,7 @@ const DB = {
 		"gold_value" : 25,
 		"substitute" : [],
 		"transmutations" : ["debuff"],
-		"rank": 2,
+		"rank": 3,
 	},
 	"debuff": {
 		"name": "RGNT_DEBUFF_NAME",
@@ -167,7 +167,7 @@ const DB = {
 		"gold_value" : 25,
 		"substitute" : [],
 		"transmutations" : ["buff"],
-		"rank": 2,
+		"rank": 3,
 	},
 	"trash": {
 		"name": "RGNT_TRASH_NAME",
@@ -179,7 +179,7 @@ const DB = {
 		"gold_value" : 1,
 		"substitute" : [],
 		"transmutations" : ["common"],
-		"rank": 1,
+		"rank": 2,
 	},
 	"trash_plus": {
 		"name": "RGNT_TRASH_PLUS_NAME",
@@ -191,7 +191,7 @@ const DB = {
 		"gold_value" : 25,
 		"substitute" : ["trash"],
 		"transmutations" : ["uncommon"],
-		"rank": 2,
+		"rank": 3,
 	},
 	"unknown": {
 		"name": "UNKNOWN",
@@ -203,7 +203,7 @@ const DB = {
 		"gold_value" : 1,
 		"substitute" : [],
 		"transmutations" : [],
-		"rank": 0,
+		"rank": 1,
 	}
 }
 

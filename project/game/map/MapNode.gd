@@ -4,8 +4,10 @@ class_name MapNode
 signal pressed
 
 onready var button = $Button
+onready var sprite = $Button/Sprite
 onready var hover_sfx = $HoverSFX
 onready var light = $Light2D
+onready var particles = $Button/Sprite/Particles2D
 
 enum {EMPTY, ENEMY, ELITE, BOSS, SHOP, REST, SMITH, EVENT, LABORATORY, TREASURE}
 
@@ -15,32 +17,66 @@ const TARGET_SCALE = 1.2
 const LIGHT_UP_DUR = 2.972
 const LIGHT_TEX = preload("res://assets/images/map/light_tex_2.png")
 const IMAGES = [
-		preload("res://assets/images/map/elementCircle.png"),
-		preload("res://assets/images/map/enemy.png"),
-		preload("res://assets/images/map/elite.png"),
-		preload("res://assets/images/map/boss-open2.png"),
-		preload("res://assets/images/map/shop.png"),
-		preload("res://assets/images/map/descanso.png"),
-		preload("res://assets/images/map/smith.png"),
-		preload("res://assets/images/map/event.png"),
-		preload("res://assets/images/map/laboratory.png"),
-		preload("res://assets/images/map/treasure.png")]
+	preload("res://assets/images/map/elementCircle.png"),
+	preload("res://assets/images/map/enemy.png"),
+	preload("res://assets/images/map/elite.png"),
+	preload("res://assets/images/map/boss-open2.png"),
+	preload("res://assets/images/map/shop.png"),
+	preload("res://assets/images/map/descanso.png"),
+	preload("res://assets/images/map/smith.png"),
+	preload("res://assets/images/map/event.png"),
+	preload("res://assets/images/map/laboratory.png"),
+	preload("res://assets/images/map/treasure.png")]
+const PARTICLE_TEX = [
+	preload("res://assets/images/map/elementCircle.png"),
+	preload("res://assets/images/map/particles/enemy.tres"),
+	preload("res://assets/images/map/particles/elite.tres"),
+	preload("res://assets/images/map/particles/boss.tres"),
+	preload("res://assets/images/map/particles/shop.tres"),
+	preload("res://assets/images/map/particles/rest.tres"),
+	preload("res://assets/images/map/particles/smith.tres"),
+	preload("res://assets/images/map/particles/event.tres"),
+	preload("res://assets/images/map/particles/laboratory.tres"),
+	preload("res://assets/images/map/particles/treasure.tres")
+]
+const PARTICLE_COLOR = [
+	Color(0, 0, 0),
+	Color(0.698039, 0.141176, 0.25098),
+	Color(0.898039, 0.513726, 0.611765),
+	Color(0.839216, 0, 0),
+	Color(0.592157, 0, 0.713726),
+	Color(0.498039, 0.615686, 0.498039),
+	Color(0.631373, 0.631373, 0.631373),
+	Color(0, 0.482353, 0.839216),
+	Color(0.0313726, 0.447059, 0.054902),
+	Color(0.737255, 0.737255, 0.643137)
+]
 const SFXS = [
-		false,
-		preload("res://assets/audio/sfx/normal_battle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/elite_battle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/boss_battle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/shop_icon_hover.wav"),
-		preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/blacksmith_icon_hover.wav"),
-		preload("res://assets/audio/sfx/event_battle_icon_hover.wav"),
-		preload("res://assets/audio/sfx/cauldron_icon_hover.wav"),
-		preload("res://assets/audio/sfx/treasure_icon_hover.wav")
+	false,
+	preload("res://assets/audio/sfx/normal_battle_icon_hover.wav"),
+	preload("res://assets/audio/sfx/elite_battle_icon_hover.wav"),
+	preload("res://assets/audio/sfx/boss_battle_icon_hover.wav"),
+	preload("res://assets/audio/sfx/shop_icon_hover.wav"),
+	preload("res://assets/audio/sfx/resting_circle_icon_hover.wav"),
+	preload("res://assets/audio/sfx/blacksmith_icon_hover.wav"),
+	preload("res://assets/audio/sfx/event_battle_icon_hover.wav"),
+	preload("res://assets/audio/sfx/cauldron_icon_hover.wav"),
+	preload("res://assets/audio/sfx/treasure_icon_hover.wav")
 ]
 const MUTE_DB = -60
 const SFX_SPEED = 40
-const LEGEND = ["", "ENEMY", "ELITE", "BOSS",
-		"SHOP", "RESTING_CIRCLE", "REAGENT_SMITH", "EVENT", "LABORATORY", "TREASURE"]
+const LEGEND = [
+	"",
+	"ENEMY",
+	"ELITE",
+	"BOSS",
+	"SHOP",
+	"RESTING_CIRCLE",
+	"REAGENT_SMITH",
+	"EVENT",
+	"LABORATORY",
+	"TREASURE"
+]
 
 const BOSS_IMAGES = [
 	preload("res://assets/images/map/boss-closed.png"),
@@ -69,6 +105,8 @@ func _ready():
 		disable_lights()
 	else:
 		enable_lights()
+	
+	particles.process_material = particles.process_material.duplicate()
 
 
 func _process(dt):
@@ -168,6 +206,14 @@ func set_type(new_type:int):
 		encounter = EncounterManager.get_random_elite_encounter()
 	elif type == BOSS:
 		encounter = EncounterManager.get_random_boss_encounter()
+	
+	# Particles
+	particles.emitting = type != EMPTY
+	particles.visible = particles.emitting
+	if type != EMPTY:
+		particles.position = - sprite.texture.get_size() / 2
+		particles.process_material.emission_point_texture = PARTICLE_TEX[type]
+		particles.modulate = PARTICLE_COLOR[type]
 
 
 func should_autoreveal() -> bool:

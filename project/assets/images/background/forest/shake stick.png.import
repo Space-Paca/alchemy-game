@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest.jpg-7bfd8feae1cda21aa7416070a2d5c574.stex"
+path="res://.import/shake stick.png-32a77e8351a0e4a878af9beae5908e39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/forest.jpg"
-dest_files=[ "res://.import/forest.jpg-7bfd8feae1cda21aa7416070a2d5c574.stex" ]
+source_file="res://assets/images/background/forest/shake stick.png"
+dest_files=[ "res://.import/shake stick.png-32a77e8351a0e4a878af9beae5908e39.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

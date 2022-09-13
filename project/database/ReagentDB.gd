@@ -128,7 +128,7 @@ const DB = {
 		"tooltip_image_path": "res://assets/images/reagents/invigorating_root_borderless.png",
 		"tooltip" : "RGNT_HEALING_TOOLTIP",
 		"effect" : {"type": "heal", "value": 1, "upgraded_value": 3, "upgraded_boost": {"type": "heal", "value": 5}},
-		"gold_value" : 45,
+		"gold_value" : 30,
 		"substitute" : [],
 		"transmutations" : [],
 		"rank": 3,

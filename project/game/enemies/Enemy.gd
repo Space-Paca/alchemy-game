@@ -441,8 +441,9 @@ func remove_intent():
 		var intent = $Intents.get_child(0)
 		intent.vanish()
 		yield(intent, "vanished")
-		$Intents.remove_child(intent)
-		update_intents_position()
+		if $Intents.get_children().has(intent):
+			$Intents.remove_child(intent)
+			update_intents_position()
 
 
 func clear_intents():

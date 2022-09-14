@@ -93,6 +93,14 @@ func _process(_delta):
 func set_version_visible(enable: bool):
 	version_label.visible = enable
 
+#Returns true if datetime1 is exclusevely more recent than datetime2
+#false otherwise
+func compare_datetimes(datetime1, datetime2):
+	for key in ["year", "month", "day", "hour", "minute", "second"]:
+		if datetime1[key] > datetime2[key]:
+			return true
+	return false
+
 
 func load_portraits():
 	var dir = Directory.new()

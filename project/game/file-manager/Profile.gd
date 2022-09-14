@@ -105,6 +105,7 @@ func reset_known_recipes():
 
 func get_save_data():
 	var data = {
+		"time": OS.get_datetime(),
 		"version": Debug.VERSION,
 		"tutorials": tutorials,
 		"options": options,

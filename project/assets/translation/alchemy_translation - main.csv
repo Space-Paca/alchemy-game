@@ -60,7 +60,7 @@ CANT_HEAL_SCHOLAR_MASK,Can't heal while wearing the Cursed Scholar's Mask,Não p
 DISCOVER_RECIPE,[center][color=purple]Study[/color] - Discover and Master 1 Recipe[/center],[center][color=purple]Estudar[/color] - Descubra e Aperfeiçoe 1 Receita[/center]
 FAVORITE_THIS_RECIPE,Favorite this Recipe,Favoritar esta Receita
 MASTERED_RECIPE_EXC,Mastered Recipe!,Receita Aperfeiçoada!
-DISC_MEMORIZED_RECIPE,Discovered Memorized Recipe!,Descobriu Receira Memorizada!
+DISC_MEMORIZED_RECIPE,Discovered Memorized Recipe!,Descobriu Receita Memorizada!
 DISC_NEW_RECIPE,Discovered New Recipe!,Descobriu Receita Nova!
 UNAVAILABLE_FAV_SLOT,Unavailable favorite slot,Sem espaço para favoritar
 ALREADY_FAV,Recipe already favorited,Receita já favoritada
@@ -563,9 +563,9 @@ RE_TEMP_STRENGTH,Lesser Strength Tonic,Tônico de Fortalecimento
 RE_WEAK_AREA,Feebleness Gas,Gás Enfraquecedor
 RE_WEAK,Feebleness Oil,Óleo Enfraquecedor
 ART_POISON_KIT_NAME,Slimy Satchel,Mochila Gosmenta
-ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag","Quando adquirida, adicione 3 Essência Nociva à sua bolsa"
+ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag. You lose 1 extra Poison stack per turn","Quando adquirida, adicione 3 Essência Nociva à sua bolsa. Você perde um marcador extra de Veneno por turno"
 ART_BUFF_POISON_NAME,Poisoner's Thesis,Tese de Envenenador
-ART_BUFF_POISON_DESC,"Whenever you apply Poison, apply 1 extra Poison","Sempre que você aplicar Veneno, aplica 1 Veneno extra"
+ART_BUFF_POISON_DESC,"Whenever you apply Poison with recipes, apply 3 extra Poison","Sempre que você aplicar Veneno com uma receita, aplica 3 de Veneno extra"
 ART_STRENGTH_NAME,Powerstone,Pedra do Poder
 ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida
@@ -587,9 +587,9 @@ ART_VULTURE_MASK_DESC,Start each battle against an elite with 5 Permanent Streng
 ART_FULL_REST_NAME,Soothing Teapot,Bule Calmante
 ART_FULL_REST_DESC,"When resting, you heal completely","Quando for descansar, cure completamente"
 ART_BUFF_KIT_NAME,Powerful Satchel,Sacola Poderosa
-ART_BUFF_KIT_DESC,"When acquired, add 3 Horn Fragment reagents to your bag","Quando adquirida, adicione 3 Lasca de Chifre à sua bolsa"
+ART_BUFF_KIT_DESC,"When acquired, add 3 Horn Fragment reagents to your bag. Evasion has a 75% chance of working instead of 50%","Quando adquirida, adicione 3 Lasca de Chifre à sua bolsa. Evasão tem 75% de chance de funcionar em vez de 50%"
 ART_DEBUFF_KIT_NAME,Wicked Satchel,Sacola Malvada
-ART_DEBUFF_KIT_DESC,"When acquired, add 3 Cracked Skull reagents to your bag","Quando adquirida, adicione 3 Crânio Rachado à sua bolsa"
+ART_DEBUFF_KIT_DESC,"When acquired, add 3 Cracked Skull reagents to your bag. Weakness decreases enemies attack by 50% instead of 33%","Quando adquirida, adicione 3 Crânio Rachado à sua bolsa. Fraqueza diminui ataque de inimigos em 50% em vez de 33%"
 ART_TRASH_HEAL_NAME,Mortar and Pestle,Almofariz e Pilão
 ART_TRASH_HEAL_DESC,"When acquired, add 4 Putrid Beetle reagents to your bag. Misused Beetle reagents will heal you instead of harm you","Quando adquirida, adicione 4 Besouro Preservado à sua bolsa. Reagentes besouro mal utilizados vão te curar em vez de te machucar"
 ART_STRENGTH_PLUS_NAME,Mightstone,Pedra da Força
@@ -597,9 +597,9 @@ ART_STRENGTH_PLUS_DESC,Start each battle with 8 Permanent Strength,Comece cada b
 ART_TEMP_STRENGTH_PLUS_NAME,Morhk Chain,Corrente de Morhk
 ART_TEMP_STRENGTH_PLUS_DESC,Start each battle with 12 Temporary Buff,Comece cada batalha com 12 de Poder Temporário
 ART_RANDOM_KIT_NAME,Unpredictable Satchel,Sacola Imprevisível
-ART_RANDOM_KIT_DESC,"When acquired, add 4 random reagents to your bag","Quando adquirida, adicione 4 reagentes aleatórios à sua bolsa"
+ART_RANDOM_KIT_DESC,"When acquired, add 4 random reagents to your bag and increases max health by 20%","Quando adquirida, adicione 4 reagentes aleatórios à sua bolsa e aumenta a vida máxima em 20%"
 ART_POISONED_DAGGER_NAME,Poisoned Dagger,Adaga Envenenada
-ART_POISONED_DAGGER_DESC,"Whenever you deal unblocked damage to an enemy, apply 1 Poison to it","Sempre que você inflingir dano não bloqueado a algum inimigo, aplique 1 de Veneno a ele"
+ART_POISONED_DAGGER_DESC,"Whenever you deal unblocked damage to an enemy, apply 2 Poison to it","Sempre que você inflingir dano não bloqueado a algum inimigo, aplique 2 de Veneno a ele"
 ART_BUFF_HEAL_NAME,Ivory Cup,Taça de Marfim
 ART_BUFF_HEAL_DESC,"Whenever you heal yourself during battle, heal 50% more","Sempre que você se curar durante a batalha, cure 50% mais"
 ART_MIDAS_NAME,Midas' Finger,Dedo de Midas

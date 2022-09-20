@@ -3,6 +3,8 @@ extends CanvasLayer
 enum Modes {DUNGEON, MENU}
 export(Modes) var mode
 
+const ALPHA_SPEED = 7.0
+
 signal exited_pause
 signal block_pause_update
 
@@ -18,6 +20,7 @@ var block_pause = false
 
 
 func _ready():
+	bg.modulate.a = 0
 	bg.hide()
 	
 	if mode == Modes.MENU:
@@ -40,6 +43,17 @@ func _unhandled_input(event):
 		get_tree().set_input_as_handled()
 
 
+func _process(dt):
+	if paused:
+		bg.modulate.a = min(bg.modulate.a + ALPHA_SPEED*dt, 1.0)
+		if bg.modulate.a > 0.0:
+			bg.show()
+	else:
+		bg.modulate.a = max(bg.modulate.a - ALPHA_SPEED*dt, 0.0)
+		if bg.modulate.a <= 0.0:
+			bg.hide()
+
+
 func toggle_pause():
 	if block_pause or Transition.active:
 		AudioManager.play_sfx("error")
@@ -50,7 +64,6 @@ func toggle_pause():
 func set_pause(p: bool):
 	paused = p
 	get_tree().paused = p
-	bg.visible = p
 	if p:
 		AudioManager.enable_bgm_filter_effect()
 		settings.update_music_volumes()
@@ -80,6 +93,19 @@ func settings_back():
 	screen_title.text = "GAME_PAUSED"
 	settings.hide()
 	menu.show()
+
+
+func set_mouse_filter(should_block):
+	for node in [menu, confirm, settings]:
+		if should_block:
+			node.mouse_filter = Control.MOUSE_FILTER_PASS
+		else:
+			node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for node in [bg, screen_title]:
+		if should_block:
+			node.mouse_filter = Control.MOUSE_FILTER_STOP
+		else:
+			node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func _on_Resume_pressed():

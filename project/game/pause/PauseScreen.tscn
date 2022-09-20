@@ -150,6 +150,8 @@ visible = false
 [connection signal="pressed" from="Background/Menu/Return" to="." method="_on_Return_pressed"]
 [connection signal="mouse_entered" from="Background/Menu/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/Menu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="mouse_entered" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="mouse_entered" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Background/ConfirmMenu/HBoxContainer/No" to="." method="_on_No_pressed"]
 [connection signal="back" from="Background/SettingsMenu" to="." method="settings_back"]

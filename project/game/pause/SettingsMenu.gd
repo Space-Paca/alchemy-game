@@ -345,3 +345,7 @@ func _on_ColorblindMode_button_pressed(button_id: int):
 func _on_TurboModeCheckBox_toggled(button_pressed):
 	AudioManager.play_sfx("click")
 	Profile.set_option("turbo_mode", button_pressed)
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")

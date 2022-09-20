@@ -15,6 +15,7 @@ var reagent_name
 var tooltip_enabled
 var entered = false
 
+
 func _process(_dt):
 	if not entered and tooltip.enabled and tooltip.entered:
 		entered = true

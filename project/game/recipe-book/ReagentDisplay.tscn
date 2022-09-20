@@ -6,7 +6,7 @@
 [ext_resource path="res://game/tooltip/TooltipCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14, 14 )
+extents = Vector2( 16, 16 )
 
 [node name="ReagentDisplay" type="TextureRect"]
 margin_right = 30.0
@@ -23,7 +23,7 @@ unknown_texture = ExtResource( 2 )
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 custom_constants/margin_right = 1
 custom_constants/margin_top = 1
 custom_constants/margin_left = 1
@@ -37,6 +37,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = 29.0
 margin_bottom = 29.0
+mouse_filter = 2
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,6 +52,7 @@ shape = SubResource( 1 )
 
 [node name="TooltipPosition" parent="TooltipCollision" index="1"]
 position = Vector2( 22.5768, -20.431 )
+
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 

@@ -26,6 +26,8 @@ const MAX_REAGENT_COLUMN = 4
 const HOVERED_SCALE = 1.05
 const SCALE_SPEED = 5
 const ALPHA_SPEED = 4
+const GRID_SPEED = 8.5
+const MAX_GRID_SCALE = 2.5
 const MAX_TITLE_FONT_SIZE = 38
 
 var combination : Combination
@@ -39,6 +41,7 @@ var mouse_over_favorite := false
 var ignore_signal = false
 var tooltip_enabled = false
 var block_tooltips = false
+var displays_entered = []
 
 
 func _ready():
@@ -62,6 +65,18 @@ func _process(delta):
 		fav_label.modulate.a = min(fav_label.modulate.a + delta*ALPHA_SPEED, 1.0)
 	else:
 		fav_label.modulate.a = max(fav_label.modulate.a - delta*ALPHA_SPEED, 0.0)
+	
+	grid.rect_pivot_offset = grid.rect_size/2
+	if not displays_entered.empty():
+		grid.rect_scale.x = min(grid.rect_scale.x + delta*GRID_SPEED, MAX_GRID_SCALE)
+		grid.rect_scale.y = min(grid.rect_scale.y + delta*GRID_SPEED, MAX_GRID_SCALE)
+		for node in [icon, title, description, mastery_label, mastery_progress]:
+			node.modulate.a = max(node.modulate.a - delta*GRID_SPEED, 0.0) 
+	else:
+		grid.rect_scale.x = max(grid.rect_scale.x - delta*GRID_SPEED, 1.0)
+		grid.rect_scale.y = max(grid.rect_scale.y - delta*GRID_SPEED, 1.0)
+		for node in [icon, title, description, mastery_label, mastery_progress]:
+			node.modulate.a = min(node.modulate.a + delta*GRID_SPEED, 1.0) 
 
 
 func update_title_size():
@@ -87,6 +102,8 @@ func set_combination(_combination: Combination):
 		for j in range(combination.grid_size):
 			var reagent = REAGENT.instance()
 			reagent.set_mode("grid")
+			reagent.connect("entered", self, "_on_mouse_entered_reagent_display", [reagent])
+			reagent.connect("exited", self, "_on_mouse_exited_reagent_display", [reagent])
 			grid.add_child(reagent)
 			reagent.set_reagent(combination.known_matrix[i][j])
 	
@@ -206,6 +223,17 @@ func remove_tooltips():
 		tooltip_enabled = false
 		TooltipLayer.clean_tooltips()
 
+
+func _on_mouse_entered_reagent_display(reagent):
+	if not displays_entered.has(reagent):
+		displays_entered.append(reagent)
+
+
+func _on_mouse_exited_reagent_display(reagent):
+	if displays_entered.has(reagent):
+		displays_entered.erase(reagent)
+
+
 func _on_Panel_mouse_entered():
 	hovered = true
 	AudioManager.play_sfx("hover_recipe_button")
@@ -242,7 +270,7 @@ func _on_FavoriteButton_mouse_exited():
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if block_tooltips:
+	if block_tooltips or not displays_entered.empty():
 		return
 	
 	tooltip_enabled = true

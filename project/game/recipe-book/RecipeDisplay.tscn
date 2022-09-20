@@ -156,11 +156,13 @@ margin_left = 123.0
 margin_right = 148.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
+mouse_filter = 2
 
 [node name="Arrow" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Middle"]
 margin_top = 75.0
 margin_right = 25.0
 margin_bottom = 125.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 
 [node name="Right" type="CenterContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -303,6 +305,7 @@ margin_left = 9.0
 margin_top = 24.0
 margin_right = 64.0
 margin_bottom = 79.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {

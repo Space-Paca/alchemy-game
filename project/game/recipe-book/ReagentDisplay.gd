@@ -1,5 +1,8 @@
 extends TextureRect
 
+signal entered
+signal exited
+
 onready var reagent = $MarginContainer/ReagentTexture
 onready var tooltip = $TooltipCollision
 
@@ -10,6 +13,15 @@ export(Texture) var unknown_texture
 
 var reagent_name
 var tooltip_enabled
+var entered = false
+
+func _process(_dt):
+	if not entered and tooltip.enabled and tooltip.entered:
+		entered = true
+		emit_signal("entered")
+	elif entered and (not tooltip.enabled or not tooltip.entered):
+		entered = false
+		emit_signal("exited")
 
 
 func set_mode(mode : String):
@@ -31,10 +43,7 @@ func set_reagent(_reagent_name):
 		reagent.texture = ReagentDB.get_from_name(reagent_name).image
 	else:
 		reagent.texture = null
-	
-	if reagent.texture:
-		tooltip.position = reagent.rect_size/2
-		tooltip.set_collision_shape(reagent.rect_size)
+
 
 func disable_tooltips():
 	remove_tooltips()
@@ -51,13 +60,17 @@ func remove_tooltips():
 		TooltipLayer.clean_tooltips()
 
 
+func cant_show_tooltip():
+	return not reagent_name or reagent_name == "unknown"
+
+
 func _on_TooltipCollision_disable_tooltip():
 	if tooltip_enabled:
 		remove_tooltips()
 
 
 func _on_TooltipCollision_enable_tooltip():
-	if not reagent_name or reagent_name == "unknown":
+	if cant_show_tooltip():
 		return
 	tooltip_enabled = true
 	var tip = ReagentManager.get_tooltip(reagent_name, false, false, false)

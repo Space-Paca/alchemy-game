@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cave.jpg-86ced6c339957c3130edcab3c6f75313.stex"
+path="res://.import/decor_bone.png-080e39a27af618e9c508e83ce52ec85f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/cave.jpg"
-dest_files=[ "res://.import/cave.jpg-86ced6c339957c3130edcab3c6f75313.stex" ]
+source_file="res://assets/images/background/cave/decor_bone.png"
+dest_files=[ "res://.import/decor_bone.png-080e39a27af618e9c508e83ce52ec85f.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

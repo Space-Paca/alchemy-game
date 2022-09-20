@@ -16,11 +16,11 @@
 [ext_resource path="res://assets/images/background/forest/bg.jpg" type="Texture" id=14]
 [ext_resource path="res://assets/images/background/forest/fg.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/background/cave_fg.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/background/cave/bg.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/background/temple.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/background/village.jpg" type="Texture" id=19]
 [ext_resource path="res://game/ui/TargetingInterface.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/images/background/cave.jpg" type="Texture" id=21]
+[ext_resource path="res://assets/images/background/cave/fg.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/background/dungeon_fg.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/background/dungeon.jpg" type="Texture" id=23]
 [ext_resource path="res://assets/images/background/fire.jpg" type="Texture" id=24]
@@ -133,9 +133,9 @@ shader_param/offset = 0.0
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 5 )
-backgrounds = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 23 ) ]
+backgrounds = [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 23 ) ]
 backgrounds_elite_modulate = [ Color( 0.509804, 0.0784314, 0.580392, 0.8 ), Color( 0.509804, 0.0784314, 0.580392, 0.8 ), Color( 0.509804, 0.0784314, 0.580392, 0.8 ) ]
-foregrounds = [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 22 ) ]
+foregrounds = [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ) ]
 boss_backgrounds = [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 18 ) ]
 boss_foregrounds = [ ExtResource( 19 ), ExtResource( 25 ), null ]
 

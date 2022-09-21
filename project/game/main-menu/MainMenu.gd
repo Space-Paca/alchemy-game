@@ -46,6 +46,8 @@ func _ready():
 	
 	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
+	for button in growing_buttons.values():
+		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
 	
 	
 	FileManager.set_current_run(false)
@@ -213,8 +215,14 @@ func _on_growing_button_mouse_exited(which:String):
 
 
 func _on_Discord_pressed():
-	OS.shell_open("https://discord.gg/PqRRHVk39B")
+	AudioManager.play_sfx("click")
+	var err = OS.shell_open("https://discord.gg/PqRRHVk39B")
+	if err != OK:
+		push_error("Error trying to open Discord page: " + str(err))
 
 
 func _on_Steam_pressed():
-	OS.shell_open("https://store.steampowered.com/app/1960330/Alchemia_Creatio_Ex_Nihilo/")
+	AudioManager.play_sfx("click")
+	var err = OS.shell_open("https://store.steampowered.com/app/1960330/Alchemia_Creatio_Ex_Nihilo/")
+	if err != OK:
+		push_error("Error trying to open Steam page: " + str(err))

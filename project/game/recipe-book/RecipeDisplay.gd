@@ -70,13 +70,17 @@ func _process(delta):
 	if not displays_entered.empty():
 		grid.rect_scale.x = min(grid.rect_scale.x + delta*GRID_SPEED, MAX_GRID_SCALE)
 		grid.rect_scale.y = min(grid.rect_scale.y + delta*GRID_SPEED, MAX_GRID_SCALE)
-		for node in [icon, title, description, mastery_label, mastery_progress]:
-			node.modulate.a = max(node.modulate.a - delta*GRID_SPEED, 0.0) 
+		for node in [icon, title, description, mastery_label, \
+					 mastery_progress, middle_container, right_container]:
+			if is_instance_valid(node):
+				node.modulate.a = max(node.modulate.a - delta*GRID_SPEED, 0.0) 
 	else:
 		grid.rect_scale.x = max(grid.rect_scale.x - delta*GRID_SPEED, 1.0)
 		grid.rect_scale.y = max(grid.rect_scale.y - delta*GRID_SPEED, 1.0)
-		for node in [icon, title, description, mastery_label, mastery_progress]:
-			node.modulate.a = min(node.modulate.a + delta*GRID_SPEED, 1.0) 
+		for node in [icon, title, description, mastery_label, \
+					 mastery_progress, middle_container, right_container]:
+			if is_instance_valid(node):
+				node.modulate.a = min(node.modulate.a + delta*GRID_SPEED, 1.0) 
 
 
 func update_title_size():

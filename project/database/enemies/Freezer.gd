@@ -9,6 +9,7 @@ var hp = 80
 var battle_init = true
 var size = "medium"
 var change_phase = null
+var unique_bgm = null
 
 var states = ["init", "attack", "attack2", "freeze", "spawn", "buff"]
 var connections = [   

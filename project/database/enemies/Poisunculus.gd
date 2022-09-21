@@ -9,6 +9,7 @@ var hp = 80
 var battle_init = false
 var size = "big"
 var change_phase = null
+var unique_bgm = null
 
 var states = ["poison", "defend-poison", "attack-poison", "poison-attack"]
 var connections = [

@@ -92,7 +92,6 @@ func update_title_size():
 		font.set("size", font_size)
 
 
-
 func set_combination(_combination: Combination):
 	combination = _combination
 	reagent_array = combination.recipe.reagents

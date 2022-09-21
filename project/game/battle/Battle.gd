@@ -473,7 +473,11 @@ func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = fal
 
 	if just_spawned:
 		enemy_node.just_spawned = true
-
+	
+	#Check for unique bgm for this enemy
+	if enemy_node.data.unique_bgm:
+		AudioManager.play_bgm(enemy_node.data.unique_bgm, 3)
+	
 	#Idle sfx
 	if enemy_node.data.use_idle_sfx:
 		AudioManager.play_enemy_sfx(enemy_node.data.sfx, "idle")
@@ -1309,6 +1313,7 @@ func _on_enemy_died(enemy):
 			yield(ally_enemy, "finished_updating_status")
 
 	if enemy.data.change_phase:
+		AudioManager.stop_bgm(.5, false)
 		var dur = .5 if Profile.get_option("turbo_mode") else 1.5
 		yield(get_tree().create_timer(dur), "timeout")
 		current_encounter.current_phase += 1

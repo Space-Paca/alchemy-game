@@ -334,8 +334,9 @@ func play_bgm(name, layers = false, start_from_beginning = false):
 		$Tween.start()
 
 
-func stop_bgm(speed_mod := 1.0):
-	stop_all_aux_bgm()
+func stop_bgm(speed_mod := 1.0, stop_aux_bgm := true):
+	if stop_aux_bgm:
+		stop_all_aux_bgm()
 	remove_bgm_effect()
 	for i in range(1, MAX_LAYERS + 1):
 		var fadein = get_node("BGMPlayer"+str(i))

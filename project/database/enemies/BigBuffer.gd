@@ -9,6 +9,7 @@ var hp = 80
 var battle_init = false
 var size = "medium"
 var change_phase = null
+var unique_bgm = null
 
 var states = ["temp_buff", "perm_buff", "attack"]
 var connections = [["temp_buff", "attack", 3],

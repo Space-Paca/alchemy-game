@@ -9,6 +9,7 @@ var hp = 600
 var battle_init = false
 var size = "big"
 var change_phase = "boss_3_2"
+var unique_bgm = null
 
 var states = ["start", "attack1", "attack2", "attack3", "attack4", "attack5-1", \
 			  "attack5-2", "buff1", "buff2", "buff3", "buff3", "buff4", "buff5"]

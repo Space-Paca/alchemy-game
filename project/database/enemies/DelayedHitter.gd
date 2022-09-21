@@ -9,6 +9,7 @@ var hp = 25
 var battle_init = false
 var size = "small"
 var change_phase = null
+var unique_bgm = null
 
 var states = ["attack", "preparing1", "preparing2", "preparing3"]
 var connections = [

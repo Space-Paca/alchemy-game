@@ -204,7 +204,7 @@ window/stretch/aspect="keep"
 
 [editor]
 
-main_run_args="--allow_debug"
+main_run_args="--allow_debug --is_steam"
 
 [global]
 

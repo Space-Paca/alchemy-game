@@ -39,8 +39,15 @@ func _ready():
 	anim.play("reset")
 	sheen_timer.wait_time = SHEEN_INTERVAL
 	
+	if not Debug.is_steam or Debug.is_demo:
+		growing_buttons.steam.show()
+	else:
+		growing_buttons.steam.hide()
+	
 	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
+	
+	
 	FileManager.set_current_run(false)
 	set_process_input(false)
 	compendium_button.visible = UnlockManager.is_misc_unlocked("COMPENDIUM")

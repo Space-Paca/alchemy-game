@@ -6,13 +6,33 @@ onready var sheen_timer = $Title/TitleSheen/SheenTimer
 onready var sheen_material = $Title/TitleSheen.material
 onready var compendium_button = $CompendiumButton
 onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
+onready var growing_buttons = {
+	"discord": $UI/VBoxContainer/Discord,
+	"steam": $UI/VBoxContainer/Steam
+}
 
 const ALPHA_SPEED = 6
 const SHEEN_DUR = .8
 const SHEEN_INTERVAL = 5.0
 const BGM_STOP_SPEED = 7.0
+const BUTTON_GROWTH_LERP_FACTOR = .3
+const GROWING_BUTTON_WIDTH = {
+	"original": 220,
+	"discord": {
+		"en": 344,
+		"pt_BR": 463
+	},
+	"steam": {
+		"en": 363,
+		"pt_BR": 731
+	}
+}
 
 var hover_compendium = false
+var is_hovered = {
+	"discord": false,
+	"steam": false
+}
 
 func _ready():
 	
@@ -47,6 +67,12 @@ func _process(dt):
 		label.modulate.a = min(label.modulate.a + ALPHA_SPEED*dt, 1.0)
 	else:
 		label.modulate.a = max(label.modulate.a - ALPHA_SPEED*dt, 0.0)
+	
+	for btn_name in ["discord", "steam"]:
+		var btn : Button = growing_buttons[btn_name]
+		var target_width = GROWING_BUTTON_WIDTH[btn_name][TranslationServer.get_locale()] if is_hovered[btn_name] else GROWING_BUTTON_WIDTH.original
+		btn.rect_size.x = lerp(btn.rect_size.x, target_width,
+				BUTTON_GROWTH_LERP_FACTOR)
 
 
 func _input(event):
@@ -169,3 +195,19 @@ func _on_Popup_Back_pressed():
 func _on_Popup_Confirm_pressed():
 	AudioManager.play_sfx("click")
 	start_game()
+
+
+func _on_growing_button_mouse_entered(which:String):
+	is_hovered[which] = true
+
+
+func _on_growing_button_mouse_exited(which:String):
+	is_hovered[which] = false
+
+
+func _on_Discord_pressed():
+	OS.shell_open("https://discord.gg/PqRRHVk39B")
+
+
+func _on_Steam_pressed():
+	OS.shell_open("https://store.steampowered.com/app/1960330/Alchemia_Creatio_Ex_Nihilo/")

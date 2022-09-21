@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/images/main_menu/frame_spikes_ 64%.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/main_menu/sub titulo.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/main_menu/circle.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/logo_discord__alchemia.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/main_menu/lines.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/main_menu/half_moon1.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/main_menu/circle 2_big.png" type="Texture" id=17]
@@ -24,6 +25,7 @@
 [ext_resource path="res://assets/images/ui/compendium_icon_hover.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/ui/compendium_icon_pressed.png" type="Texture" id=24]
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.atlas" type="SpineAtlasResource" id=25]
+[ext_resource path="res://assets/images/ui/logo_steam__alchemia.png" type="Texture" id=26]
 
 [sub_resource type="SpineSkeletonDataResource" id=30]
 atlas_res = ExtResource( 25 )
@@ -80,7 +82,7 @@ noise = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
-shader_param/value = 0.0
+shader_param/value = 1.0
 shader_param/noise_texture = SubResource( 3 )
 
 [sub_resource type="Animation" id=24]
@@ -371,6 +373,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=21]
 length = 5.0
@@ -582,6 +620,42 @@ tracks/17/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("UI/VBoxContainer:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 4.1, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=22]
 length = 5.0
@@ -792,6 +866,42 @@ tracks/17/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("UI/VBoxContainer:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 4.1, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -1010,6 +1120,9 @@ margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1920, 1080 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="SpineSprite" parent="."]
 position = Vector2( 960, 540 )
@@ -1146,11 +1259,10 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
-margin_top = 504.672
-margin_right = 889.0
-margin_bottom = 650.672
+margin_left = 773.0
+margin_top = 556.0
+margin_right = 1162.0
+margin_bottom = 702.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1158,18 +1270,16 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
-disabled = true
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
-margin_top = 680.0
-margin_right = 918.005
-margin_bottom = 826.0
+margin_left = 757.755
+margin_top = 704.694
+margin_right = 1175.76
+margin_bottom = 850.694
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1177,17 +1287,15 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
-disabled = true
 text = "NEW_GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="QuitButton" type="Button" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 500.0
+margin_left = 790.0
 margin_top = 855.0
-margin_right = 852.99
+margin_right = 1142.99
 margin_bottom = 1001.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -1196,7 +1304,6 @@ custom_styles/hover = SubResource( 13 )
 custom_styles/pressed = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
-disabled = true
 text = "QUIT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1208,7 +1315,7 @@ anchor_right = 0.5
 margin_left = -960.0
 margin_right = 962.0
 margin_bottom = 1082.0
-rect_scale = Vector2( 1.3, 1.3 )
+rect_scale = Vector2( 1.01, 1.01 )
 rect_pivot_offset = Vector2( 961, 541 )
 mouse_filter = 2
 texture = ExtResource( 11 )
@@ -1218,12 +1325,10 @@ __meta__ = {
 }
 
 [node name="CompendiumButton" type="TextureButton" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 156.0
 margin_top = 762.0
 margin_right = 356.0
 margin_bottom = 991.0
-disabled = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 23 )
@@ -1301,8 +1406,39 @@ text = "NO"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 4 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 264.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Discord" type="Button" parent="UI/VBoxContainer"]
+margin_right = 220.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 220, 120 )
+focus_mode = 1
 disabled = true
+text = "DISCORD_BUTTON"
+icon = ExtResource( 14 )
+clip_text = true
+align = 0
+
+[node name="Steam" type="Button" parent="UI/VBoxContainer"]
+margin_top = 124.0
+margin_right = 220.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 220, 120 )
+disabled = true
+text = "STEAM_BUTTON"
+icon = ExtResource( 26 )
+clip_text = true
+align = 0
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
@@ -1406,6 +1542,12 @@ anims/reset = SubResource( 23 )
 [connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]
 [connection signal="mouse_entered" from="UI/PauseButton" to="." method="_on_PauseButton_mouse_entered"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="mouse_entered" from="UI/VBoxContainer/Discord" to="." method="_on_growing_button_mouse_entered" binds= [ "discord" ]]
+[connection signal="mouse_exited" from="UI/VBoxContainer/Discord" to="." method="_on_growing_button_mouse_exited" binds= [ "discord" ]]
+[connection signal="pressed" from="UI/VBoxContainer/Discord" to="." method="_on_Discord_pressed"]
+[connection signal="mouse_entered" from="UI/VBoxContainer/Steam" to="." method="_on_growing_button_mouse_entered" binds= [ "steam" ]]
+[connection signal="mouse_exited" from="UI/VBoxContainer/Steam" to="." method="_on_growing_button_mouse_exited" binds= [ "steam" ]]
+[connection signal="pressed" from="UI/VBoxContainer/Steam" to="." method="_on_Steam_pressed"]
 [connection signal="closed" from="RecipeCompendium" to="." method="_on_RecipeCompendium_closed"]
 [connection signal="mouse_entered" from="PopupBG/Panel/HBoxContainer/Back" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="PopupBG/Panel/HBoxContainer/Back" to="." method="_on_Popup_Back_pressed"]

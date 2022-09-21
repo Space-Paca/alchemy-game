@@ -80,8 +80,8 @@ func load_event(new_event: Event, player: Player, override_text: String = ""):
 		vbox.add_child(button)
 		button.text = "  -  " + tr(option.button_text)
 		button.align = Button.ALIGN_LEFT
-		button.connect("pressed", EventManager, option.callback,
-				[self, player] + option.args)
+		button.connect("pressed", self, "_on_button_pressed", [option, player])
+		button.connect("mouse_entered", self, "_on_button_mouse_entered")
 		button.theme = THEME
 		button.disabled = true
 		button.modulate.a = 0
@@ -157,3 +157,12 @@ func _on_event_spawned_battle(encounter: Encounter):
 func _on_event_spawned_rest():
 	map_node.set_type(MapNode.REST)
 	emit_signal("event_spawned_rest")
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("hover_button")
+
+
+func _on_button_pressed(option, player):
+	AudioManager.play_sfx("click")
+	EventManager.callv(option.callback, [self, player] + option.args)

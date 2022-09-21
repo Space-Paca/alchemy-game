@@ -27,6 +27,7 @@ const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 
 var allow_debugging = false
 var is_demo = false
+var is_steam = false
 var floor_to_go := -1
 var recipes_unlocked := false
 var reveal_map := false
@@ -47,6 +48,8 @@ func _ready():
 			is_demo = true
 		elif arg == "--allow_debug":
 			allow_debugging = true
+		elif arg == "--is_steam":
+			is_steam = true
 		elif arg.find("=") > -1:
 			var key_value = arg.split("=")
 			var key = key_value[0]

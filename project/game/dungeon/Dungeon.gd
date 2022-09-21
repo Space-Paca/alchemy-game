@@ -32,6 +32,7 @@ var laboratory_attempts = [6,7,8]
 var cur_lab_attempts
 var battle_load_data = false
 var first_shop_visit = true
+var times_removed_reagent = 0
 
 
 func _ready():
@@ -136,6 +137,7 @@ func get_save_data():
 		"battle": battle.get_save_data() if battle else false,
 		"current_node": "" if (not current_node or not is_instance_valid(current_node)) else current_node.name,
 		"time_of_run": time_of_run,
+		"times_removed_reagent": times_removed_reagent,
 	}
 	return data
 
@@ -156,6 +158,7 @@ func set_save_data(data):
 	battle_load_data = data.battle
 	current_node = null if data.current_node == "" else map.get_map_node(data.current_node)
 	time_of_run = data.time_of_run
+	times_removed_reagent = data.times_removed_reagent if data.has("times_removed_reagent") else 0
 	timer.update_timer(time_of_run)
 
 
@@ -311,7 +314,7 @@ func load_level(data):
 		var shop_combinations = []
 		for recipe_name in data.shop_data:
 			shop_combinations.append(get_combination_by_name(recipe_name))
-		shop.load_combinations(shop_combinations, player)
+		shop.load_combinations(shop_combinations, player, self)
 	
 	#LAB
 	cur_lab_attempts = data.cur_lab_attempts
@@ -407,7 +410,7 @@ func setup_shop():
 		if shop_combinations.size() == i:
 			shop_combinations.append(null)
 	
-	shop.first_setup(shop_combinations, player)
+	shop.first_setup(shop_combinations, player, self)
 
 
 func updateMapFog():

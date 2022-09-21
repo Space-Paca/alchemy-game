@@ -20,11 +20,13 @@ onready var recipe_menu = $RecipeMenu
 
 enum States {MENU, RECIPES, REAGENTS}
 
-const DESTROY_COST := 30
+const DESTROY_BASE_COST := 20
+const DESTROY_INCREMENTAL_COST := 10
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 
 var chosen_reagent_index : int
 var player : Player
+var dungeon_ref
 var curr_state = States.MENU
 var shown_combinations := []
 
@@ -34,7 +36,8 @@ func _process(dt):
 	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*lerp_speed)
 
 
-func first_setup(combinations: Array, _player: Player):
+func first_setup(combinations: Array, _player: Player, _dungeon):
+	dungeon_ref = _dungeon
 	player = _player
 	update_reagents()
 	
@@ -63,7 +66,8 @@ func get_save_data():
 	return data
 
 
-func load_combinations(combinations, _player):
+func load_combinations(combinations, _player, _dungeon):
+	dungeon_ref = _dungeon
 	player = _player
 	update_reagents()
 	
@@ -155,6 +159,10 @@ func update_reagents():
 	reagent_list.populate(reagent_array)
 
 
+func get_destroy_cost():
+	return DESTROY_BASE_COST + DESTROY_INCREMENTAL_COST*dungeon_ref.times_removed_reagent
+
+
 func _on_BackButton_pressed():
 	AudioManager.play_sfx("click")
 	match curr_state:
@@ -217,16 +225,18 @@ func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 	reagent_destroy_label.text = ""
 	reagent_destroy_label.rect_size.x = 0 #Resizes so the label.size will be the exact size
 	yield(get_tree(), "idle_frame")
-	reagent_destroy_label.text = tr("DESTROY_REAGENT") % [reagent_name, DESTROY_COST]
+	reagent_destroy_label.text = tr("DESTROY_REAGENT") % [reagent_name, get_destroy_cost()]
 	yield(get_tree(), "idle_frame")
 	var margin = reagent_destroy_label.rect_position.x
 	reagent_destroy_panel.rect_size.x = 2*margin + reagent_destroy_label.rect_size.x
 
 
 func _on_YesButton_pressed():
-	if player.spend_gold(DESTROY_COST):
-		AudioManager.play_sfx("click")
+	if player.spend_gold(get_destroy_cost()):
+		AudioManager.play_sfx("remove_reagent_from_bag")
+		AudioManager.play_sfx("buy")
 		player.destroy_reagent(chosen_reagent_index)
+		dungeon_ref.times_removed_reagent += 1
 		update_reagents()
 		reagent_destroy.hide()
 	else:

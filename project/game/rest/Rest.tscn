@@ -1,10 +1,44 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/rest/Rest.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/rest/RestRecipe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/background/rest.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/spine/rest/Well.json" type="SpineSkeletonJsonDataResource" id=6]
+[ext_resource path="res://assets/spine/rest/Well.atlas" type="SpineAtlasResource" id=7]
+
+[sub_resource type="SpineSkeletonDataResource" id=3]
+atlas_res = ExtResource( 7 )
+skeleton_json_res = ExtResource( 6 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=4]
+skeleton = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedBackground:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "Loop",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.831373 )
@@ -41,6 +75,23 @@ texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedBackground" type="SpineSprite" parent="."]
+position = Vector2( 960, 540 )
+animation_state_data_res = SubResource( 4 )
+current_animations = [ {
+"animation": "Loop",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedBackground"]
+root_node = NodePath("../..")
+anims/Loop = SubResource( 5 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5

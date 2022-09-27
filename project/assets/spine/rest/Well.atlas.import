@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/Well.atlas-191ce79aa488d1038c165c553f43be7d.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/rest/Well.atlas"
+dest_files=[ "res://.import/Well.atlas-191ce79aa488d1038c165c553f43be7d.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

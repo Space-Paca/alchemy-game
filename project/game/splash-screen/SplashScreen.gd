@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	$ChooseLanguage.hide()
 	yield(get_tree(), "idle_frame")
 	Debug.set_version_visible(true)
 	FileManager.load_game()

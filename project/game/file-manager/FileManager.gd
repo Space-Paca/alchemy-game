@@ -4,8 +4,15 @@ var dungeon = false
 var continue_game = false
 
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		save_profile()
+		arquive_file("user://profile.save", false)
+
+
 func save_and_quit():
 	save_game()
+	arquive_file("user://profile.save", false)
 	get_tree().quit()
 
 
@@ -24,7 +31,7 @@ func load_profile():
 	var dir = Directory.new()
 	
 	if profile_file.file_exists("user://profile.backup"):
-		push_warning("Something went wrong with profile in a previous sessions, try to fix it")
+		push_warning("Something went wrong with profile in a previous sessions, trying to fix it")
 		if not profile_file.file_exists("user://profile.save"):
 			push_warning("No original profile found")
 			#If there isn't an official profile, just rename the backup
@@ -68,7 +75,7 @@ func load_profile():
 
 
 	if not profile_file.file_exists("user://profile.save"):
-		print("Profile file not found. Starting a new profile file.")
+		push_warning("Profile file not found. Starting a new profile file.")
 		save_profile()
 		
 	var err = profile_file.open("user://profile.save", File.READ)
@@ -79,9 +86,10 @@ func load_profile():
 		# Get the saved dictionary from the next line in the save file
 		var data = parse_json(profile_file.get_line())
 		Profile.set_save_data(data)
+		break
 		
 	profile_file.close()
-	save_profile()
+
 
 func save_profile():
 	var profile_data = Profile.get_save_data()
@@ -180,7 +188,7 @@ func load_run():
 	run_file.close()
 	
 	
-func arquive_file(path):
+func arquive_file(path, use_warning := true):
 	var dir = Directory.new()
 	if not dir.dir_exists("user://archived_files"):
 		push_warning("Making archived files directory")
@@ -193,4 +201,7 @@ func arquive_file(path):
 	if err != OK:
 		push_error("Error trying to duplicate file whilst archiving:" + str(err))
 	
-	push_warning("Archived file: " + str(archive_filename))
+	if use_warning:
+		push_warning("Archived file: " + str(archive_filename))
+	else:
+		print("Archived file: " + str(archive_filename))

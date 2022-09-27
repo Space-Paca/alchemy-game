@@ -109,7 +109,7 @@ func _input(event):
 			TooltipLayer.clean_tooltips()
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
-		Profile.set_option("fullscreen", OS.window_fullscreen)
+		Profile.set_option("fullscreen", OS.window_fullscreen, true)
 		if not OS.window_fullscreen:
 			yield(get_tree(), "idle_frame")
 			OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]

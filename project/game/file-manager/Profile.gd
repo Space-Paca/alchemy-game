@@ -41,7 +41,7 @@ var controls = {
 	"show_recipe_book": KEY_TAB,
 	"combine": KEY_SPACE,
 	"end_turn": KEY_E,
-	"toggle_fullscreen": KEY_F4 
+	"toggle_fullscreen": KEY_F11 
 }
 
 var progression = {
@@ -195,10 +195,11 @@ func get_option(name):
 	return options[name]
 
 
-func set_option(name: String, value):
+func set_option(name: String, value, should_save := false):
 	assert(options.has(name), "Not a valid option: " + str(name))
 	options[name] = value
-	FileManager.save_profile()
+	if should_save:
+		FileManager.save_profile()
 
 func get_control(name):
 	assert(controls.has(name), "Not a valid control action: " + str(name))

@@ -67,6 +67,7 @@ func _ready():
 		anim.play("intro-no-continue")
 	
 	set_process_input(true)
+	
 # (❁´◡`❁)
 
 
@@ -93,7 +94,7 @@ func _input(event):
 		 $PauseScreen.toggle_pause()#Toggle pause again so it actually doesn't pauses
 	elif event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
-		Profile.set_option("fullscreen", OS.window_fullscreen)
+		Profile.set_option("fullscreen", OS.window_fullscreen, true)
 		if not OS.window_fullscreen:
 			yield(get_tree(), "idle_frame")
 			OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]

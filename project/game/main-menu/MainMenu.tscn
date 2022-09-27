@@ -374,7 +374,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/1/path = NodePath("VBoxContainer/Discord:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -386,7 +386,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/2/path = NodePath("VBoxContainer/Steam:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -398,7 +398,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("UI/VBoxContainer:modulate")
+tracks/3/path = NodePath("VBoxContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -621,7 +621,7 @@ tracks/17/keys = {
 "values": [ false, true ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/18/path = NodePath("VBoxContainer/Discord:disabled")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -633,7 +633,7 @@ tracks/18/keys = {
 "values": [ true, false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/19/path = NodePath("VBoxContainer/Steam:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -645,7 +645,7 @@ tracks/19/keys = {
 "values": [ true, false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("UI/VBoxContainer:modulate")
+tracks/20/path = NodePath("VBoxContainer:modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -868,7 +868,7 @@ tracks/17/keys = {
 "values": [ false, true ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("UI/VBoxContainer/Discord:disabled")
+tracks/18/path = NodePath("VBoxContainer/Discord:disabled")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -880,7 +880,7 @@ tracks/18/keys = {
 "values": [ true, false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("UI/VBoxContainer/Steam:disabled")
+tracks/19/path = NodePath("VBoxContainer/Steam:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -892,7 +892,7 @@ tracks/19/keys = {
 "values": [ true, false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("UI/VBoxContainer:modulate")
+tracks/20/path = NodePath("VBoxContainer:modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1324,6 +1324,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 264.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Discord" type="Button" parent="VBoxContainer"]
+margin_right = 220.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 220, 120 )
+focus_mode = 1
+disabled = true
+text = "DISCORD_BUTTON"
+icon = ExtResource( 14 )
+clip_text = true
+align = 0
+
+[node name="Steam" type="Button" parent="VBoxContainer"]
+margin_top = 124.0
+margin_right = 220.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 220, 120 )
+disabled = true
+text = "STEAM_BUTTON"
+icon = ExtResource( 26 )
+clip_text = true
+align = 0
+
 [node name="CompendiumButton" type="TextureButton" parent="."]
 margin_left = 156.0
 margin_top = 762.0
@@ -1406,39 +1439,6 @@ text = "NO"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseButton" parent="UI" instance=ExtResource( 4 )]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 240.0
-margin_bottom = 264.0
-theme = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Discord" type="Button" parent="UI/VBoxContainer"]
-margin_right = 220.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 220, 120 )
-focus_mode = 1
-disabled = true
-text = "DISCORD_BUTTON"
-icon = ExtResource( 14 )
-clip_text = true
-align = 0
-
-[node name="Steam" type="Button" parent="UI/VBoxContainer"]
-margin_top = 124.0
-margin_right = 220.0
-margin_bottom = 244.0
-rect_min_size = Vector2( 220, 120 )
-disabled = true
-text = "STEAM_BUTTON"
-icon = ExtResource( 26 )
-clip_text = true
-align = 0
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 mode = 1
@@ -1532,6 +1532,12 @@ anims/reset = SubResource( 23 )
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Discord" to="." method="_on_growing_button_mouse_entered" binds= [ "discord" ]]
+[connection signal="mouse_exited" from="VBoxContainer/Discord" to="." method="_on_growing_button_mouse_exited" binds= [ "discord" ]]
+[connection signal="pressed" from="VBoxContainer/Discord" to="." method="_on_Discord_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Steam" to="." method="_on_growing_button_mouse_entered" binds= [ "steam" ]]
+[connection signal="mouse_exited" from="VBoxContainer/Steam" to="." method="_on_growing_button_mouse_exited" binds= [ "steam" ]]
+[connection signal="pressed" from="VBoxContainer/Steam" to="." method="_on_Steam_pressed"]
 [connection signal="mouse_entered" from="CompendiumButton" to="." method="_on_CompendiumButton_mouse_entered"]
 [connection signal="mouse_exited" from="CompendiumButton" to="." method="_on_CompendiumButton_mouse_exited"]
 [connection signal="pressed" from="CompendiumButton" to="." method="_on_CompendiumButton_pressed"]
@@ -1542,12 +1548,6 @@ anims/reset = SubResource( 23 )
 [connection signal="button_down" from="UI/PauseButton" to="." method="_on_PauseButton_button_down"]
 [connection signal="mouse_entered" from="UI/PauseButton" to="." method="_on_PauseButton_mouse_entered"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_PauseButton_pressed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Discord" to="." method="_on_growing_button_mouse_entered" binds= [ "discord" ]]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Discord" to="." method="_on_growing_button_mouse_exited" binds= [ "discord" ]]
-[connection signal="pressed" from="UI/VBoxContainer/Discord" to="." method="_on_Discord_pressed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Steam" to="." method="_on_growing_button_mouse_entered" binds= [ "steam" ]]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Steam" to="." method="_on_growing_button_mouse_exited" binds= [ "steam" ]]
-[connection signal="pressed" from="UI/VBoxContainer/Steam" to="." method="_on_Steam_pressed"]
 [connection signal="closed" from="RecipeCompendium" to="." method="_on_RecipeCompendium_closed"]
 [connection signal="mouse_entered" from="PopupBG/Panel/HBoxContainer/Back" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="PopupBG/Panel/HBoxContainer/Back" to="." method="_on_Popup_Back_pressed"]

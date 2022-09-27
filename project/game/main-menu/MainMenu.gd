@@ -7,8 +7,8 @@ onready var sheen_material = $Title/TitleSheen.material
 onready var compendium_button = $CompendiumButton
 onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 onready var growing_buttons = {
-	"discord": $UI/VBoxContainer/Discord,
-	"steam": $UI/VBoxContainer/Steam
+	"discord": $VBoxContainer/Discord,
+	"steam": $VBoxContainer/Steam
 }
 
 const ALPHA_SPEED = 6

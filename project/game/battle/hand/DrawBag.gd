@@ -128,11 +128,13 @@ func refill_hand():
 	
 	emit_signal("hand_refilled")
 
-func draw_reagents(amount: int):
+func draw_reagents(amount: int, should_reshuffle := false):
 	var reagents_to_be_drawn = []
 # warning-ignore:narrowing_conversion
 	amount = min(amount, hand.available_slot_count())
 	if amount <= 0:
+		yield(get_tree().create_timer(.1), "timeout")
+		emit_signal("drew_reagents")
 		return
 	for _i in range(amount):
 		if drawable_reagents.get_child_count() == 0:
@@ -140,14 +142,17 @@ func draw_reagents(amount: int):
 				start_drawing(reagents_to_be_drawn)
 				yield(self, "given_reagents_drawn")
 			yield(get_tree().create_timer(.25), "timeout")
-			if not discard_bag.is_empty():
+			if not discard_bag.is_empty() and should_reshuffle:
 				reshuffle()
 				yield(self, "reshuffled")
 				yield(get_tree().create_timer(.25), "timeout")
-			else:
+			elif discard_bag.is_empty():
 				break
-
-		reagents_to_be_drawn.append(draw_reagent())
+		
+		if not drawable_reagents.get_child_count() == 0:
+			reagents_to_be_drawn.append(draw_reagent())
+		else:
+			break
 	
 	if not reagents_to_be_drawn.empty():
 		start_drawing(reagents_to_be_drawn)
@@ -159,6 +164,10 @@ func draw_reagents(amount: int):
 #Shuffle discarded reagents in draw bag
 func reshuffle():
 	var discarded_reagents = discard_bag.return_reagents()
+	if discarded_reagents.empty():
+		yield(get_tree().create_timer(.01), "timeout")
+		emit_signal("reshuffled")
+		return
 	while not discarded_reagents.empty():
 		var reagent = discarded_reagents.pop_back()
 		shuffle_reagent(reagent)

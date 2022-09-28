@@ -126,6 +126,26 @@ func reduce_status(targeting: String, status: String, amount: int, boost_effects
 	
 	resolve()
 
+
+func reshuffle(_boost_effects: Dictionary):
+	var func_state = player.reshuffle()
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+
+	resolve()
+
+
+func reshuffle_draw(amount:int, _boost_effects: Dictionary):
+	var func_state = player.reshuffle()
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+	func_state = player.draw(amount)
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+
+	resolve()
+
+
 func draw(amount:int, _boost_effects: Dictionary):
 	var func_state = player.draw(amount)
 	if func_state and func_state.is_valid():

@@ -332,6 +332,7 @@ func setup_player(_player, player_data = null):
 
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
+	player.connect("reshuffle", self, "_on_player_reshuffle")
 	player.connect("freeze_hand", self, "_on_player_freeze_hand")
 	player.connect("restrict", self, "_on_player_restrict")
 
@@ -1372,8 +1373,14 @@ func _on_player_died(_player):
 	AudioManager.stop_all_enemy_idle_sfx()
 
 
-func _on_player_draw_reagent(amount):
-	draw_bag.draw_reagents(amount)
+func _on_player_reshuffle():
+	draw_bag.reshuffle()
+	yield(draw_bag, "reshuffled")
+	player.reshuffle_resolve()
+
+
+func _on_player_draw_reagent(amount, should_reshuffle):
+	draw_bag.draw_reagents(amount, should_reshuffle)
 	yield(draw_bag, "drew_reagents")
 	player.draw_reagents_resolve()
 	emit_signal("update_recipes_display")
@@ -1477,7 +1484,8 @@ func _on_FavoriteButton_pressed(index: int):
 		for reagent in reagents.get_children():
 			reagent.error_effect()
 	enable_player()
-	
+
+
 func _on_FavoriteButton_mouse_entered(index: int):
 	var button : FavoriteButton = favorites.get_child(index)
 # warning-ignore:return_value_discarded

@@ -162,6 +162,10 @@ func describe_effects(effects_list, effect_args, short:= false):
 			var status = StatusDB.get_from_name(args[1])["title_name"]
 			if args[0] == "self":
 				text += tr("DESC_"+short_text+"REDUCE_STATUS_SELF") % [args[2], tr(status)]
+		elif effect == "reshuffle":
+			text += tr("DESC_"+short_text+"RESHUFFLE")
+		elif effect == "reshuffle_draw":
+			text += tr("DESC_"+short_text+"RESHUFFLE_DRAW") % [args[0]]
 		elif effect == "draw":
 			text += tr("DESC_"+short_text+"DRAW") % [args[0]]
 		elif effect == "shield":

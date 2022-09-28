@@ -494,7 +494,9 @@ DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
 DESC_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
 DESC_HEAL,Heals %d HP.,Cure %d PV.
 DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remova até %d de %s de si mesmo.
-DESC_DRAW,Draw %d reagents.,Compre %d reagentes.
+DESC_RESHUFFLE,Reshuffle your discard bag into your draw bag.,Reembaralhe sua bolsa de discarte em sua bolsa de compra.
+DESC_RESHUFFLE_DRAW,Reshuffle your discard bag into your draw bag. Draw %d reagents.,Reembaralhe sua bolsa de discarte em sua bolsa de compra. Compre %d reagentes.
+DESC_DRAW,Draw %d reagents. This won't cause reshuffling.,Compre %d reagentes. Isso não causa reembaralhamento.
 DESC_SHIELD,Gain %d shield until end of turn.,Ganhe %d de escudo até o fim do turno.
 DESC_DRAIN,Drain %d life from target enemy.,Drene %d de vida do inimigo alvo.
 DESC_STATUS_ENEMY,Applies %d %s to target enemy.,Aplique %d de %s ao inimigo alvo.
@@ -506,7 +508,9 @@ DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimi
 DESC_SHORT_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
 DESC_SHORT_HEAL,Heals %d HP.,Cure %d PV.
 DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remova até %d de %s de si mesmo.
-DESC_SHORT_DRAW,Draw %d reagents.,Compre %d reagentes.
+DESC_SHORT_RESHUFFLE,Reshuffle your bags.,Reembaralhe suas bolsas.
+DESC_SHORT_RESHUFFLE_DRAW,Reshuffle your bags. Draw %d reagents.,Reembaralhe suas bolsas. Compre %d reagentes.
+DESC_SHORT_DRAW,Draw %d reagents. Doesn't reshuffle bags.,Compre %d reagentes. Não reembaralha bolsas.
 DESC_SHORT_SHIELD,Gain %d shield.,Ganhe %d de escudo.
 DESC_SHORT_DRAIN,Drain %d life.,Drene %d de vida.
 DESC_SHORT_STATUS_ENEMY,Applies %d %s.,Aplique %d de %s.

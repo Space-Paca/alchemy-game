@@ -4,7 +4,9 @@ class_name Player
 signal combination_discovered(combination, index)
 signal resolved
 signal draw_reagent
+signal reshuffle
 signal draw_resolve
+signal reshuffle_resolve
 signal hp_updated(hp, max_hp)
 signal gold_updated(gold)
 signal pearls_updated(pearl)
@@ -151,6 +153,11 @@ class BagSorter:
 
 func sort_bag():
 	bag.sort_custom(BagSorter, "sort_ascending_name")
+
+
+func reshuffle_resolve():
+	emit_signal("reshuffle_resolve")
+
 
 func draw_reagents_resolve():
 	emit_signal("draw_resolve")
@@ -303,8 +310,16 @@ func heal(amount : int):
 	emit_signal("resolved")
 
 
+func reshuffle():
+	emit_signal("reshuffle")
+	
+	yield(self, "reshuffle_resolve")
+	
+	emit_signal("resolved")
+
+
 func draw(amount:int):
-	emit_signal("draw_reagent", amount)
+	emit_signal("draw_reagent", amount, false)
 	
 	yield(self, "draw_resolve")
 	

@@ -93,14 +93,16 @@ func _input(event):
 			else:
 				AudioManager.play_sfx("error")
 		else:
-			for i in range(1, 7): #7 since it goes 1 below, so actually 6 favorite buttons
-				if event.is_action_pressed("favorite_"+str(i)):
-					var fav = favorites.get_child(i - 1)
-					if fav.is_enabled():
-						fav.activate()
-					else:
-						AudioManager.play_sfx("error")
-					
+			#Disabling shortcuts for now until we fix the related bugs
+			pass
+#			for i in range(1, 7): #7 since it goes 1 below, so actually 6 favorite buttons
+#				if event.is_action_pressed("favorite_"+str(i)):
+#					var fav = favorites.get_child(i - 1)
+#					if fav.is_enabled():
+#						fav.activate()
+#					else:
+#						AudioManager.play_sfx("error")
+#
 
 
 func get_save_data():

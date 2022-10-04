@@ -7,7 +7,7 @@
 script = ExtResource( 1 )
 name = "RE_CYCLE"
 grid_size = 3
-sfx = "transmutation"
+sfx = "shuffle_discard_pile"
 must_unlock = true
 use_on_demo = true
 mastery_offset = 0

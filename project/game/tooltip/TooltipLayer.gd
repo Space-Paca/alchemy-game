@@ -26,6 +26,12 @@ var keywords = {
 	"REGULAR_DAMAGE": {
 		"type": "no_tooltip",
 	},
+	"ELITE": {
+		"type": "no_tooltip",
+	},
+	"KEYWORD_ELITE": {
+		"type": "no_tooltip",
+	},
 	"HEALING": {
 		"type": "no_tooltip",
 	},

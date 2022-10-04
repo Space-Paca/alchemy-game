@@ -23,8 +23,8 @@ const GROWING_BUTTON_WIDTH = {
 		"pt_BR": 470,
 	},
 	"steam": {
-		"en": 363,
-		"pt_BR": 731
+		"en": 370,
+		"pt_BR": 735,
 	}
 }
 

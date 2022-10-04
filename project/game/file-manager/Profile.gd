@@ -258,6 +258,12 @@ func is_max_level(prog_type):
 		return get_progression_level(prog_type) == prog.size()
 
 
+func unlock_all_progression():
+	for category in progression:
+		progression[category].cur_xp = 999999999
+	FileManager.save_profile()
+
+
 func get_progression(type):
 	assert(progression.has(type), "Not a valid progression type: "+str(type))
 	return progression[type]

@@ -16,7 +16,6 @@ layer = 10
 script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.784314 )
@@ -30,9 +29,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer"]
 margin_left = 840.0
-margin_top = 320.0
+margin_top = 308.0
 margin_right = 1079.0
-margin_bottom = 760.0
+margin_bottom = 772.0
 
 [node name="WinBtn" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_right = 239.0
@@ -110,10 +109,16 @@ margin_right = 239.0
 margin_bottom = 364.0
 text = "Reset Progression"
 
-[node name="Event" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
+[node name="UnlockAllProgression" type="Button" parent="Background/CenterContainer/VBoxContainer"]
 margin_top = 368.0
 margin_right = 239.0
-margin_bottom = 392.0
+margin_bottom = 388.0
+text = "Unlock All Progression"
+
+[node name="Event" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
+margin_top = 392.0
+margin_right = 239.0
+margin_bottom = 416.0
 
 [node name="EventButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Event"]
 margin_right = 161.0
@@ -130,9 +135,9 @@ value = 1.0
 align = 3
 
 [node name="Artifact" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 420.0
 margin_right = 239.0
-margin_bottom = 416.0
+margin_bottom = 440.0
 
 [node name="ArtifactButton" type="Button" parent="Background/CenterContainer/VBoxContainer/Artifact"]
 margin_right = 89.0
@@ -147,9 +152,9 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/CenterContainer/VBoxContainer"]
-margin_top = 420.0
+margin_top = 444.0
 margin_right = 239.0
-margin_bottom = 440.0
+margin_bottom = 464.0
 
 [node name="Simulate" type="Button" parent="Background/CenterContainer/VBoxContainer/HBoxContainer"]
 margin_right = 119.0
@@ -241,6 +246,7 @@ __meta__ = {
 [connection signal="toggled" from="Background/CenterContainer/VBoxContainer/RecipeThreshold" to="." method="_on_RecipeThreshold_toggled"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/ResetCompendium" to="." method="_on_ResetCompendium_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/ResetProgression" to="." method="_on_ResetProgress_pressed"]
+[connection signal="pressed" from="Background/CenterContainer/VBoxContainer/UnlockAllProgression" to="." method="_on_UnlockAllProgression_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Event/EventButton" to="." method="_on_EventButton_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/Artifact/ArtifactButton" to="." method="_on_ArtifactButton_pressed"]
 [connection signal="pressed" from="Background/CenterContainer/VBoxContainer/HBoxContainer/Simulate" to="." method="_on_Simulate_pressed"]

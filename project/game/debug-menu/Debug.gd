@@ -39,6 +39,8 @@ var recipes := []
 
 
 func _ready():
+	$Background.hide()
+	
 	set_process(false)
 	
 	load_portraits()
@@ -202,3 +204,7 @@ func _on_GiveXp_toggled(button_pressed):
 func _on_Simulate_pressed():
 	emit_signal("recipe_simulated", recipes[recipes_button.selected])
 	bg.hide()
+
+
+func _on_UnlockAllProgression_pressed():
+	Profile.unlock_all_progression()

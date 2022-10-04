@@ -33,10 +33,12 @@ func setup(node, _player, level):
 		$AllArtifacts.show()
 		$BackButton.text = "COOL"
 	else:
+		var side = "left"
 		for artifact_data in artifacts_found:
 			var loot = ARTIFACT_LOOT.instance()
 			$Artifacts.add_child(loot)
-			loot.setup(artifact_data[0], artifact_data[1])
+			loot.setup(artifact_data[0], artifact_data[1], side)
+			side = "right"
 			loot.connect("pressed", self, "_on_loot_pressed")
 	
 	AudioManager.play_sfx("enter_treasure_room")

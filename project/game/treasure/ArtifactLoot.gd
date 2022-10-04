@@ -3,6 +3,12 @@ extends Control
 signal pressed
 
 const HOVER_SPEED = 4
+const TOOLTIP_POSITIONS = {
+	"right": Vector2(200,-170),
+	"left": Vector2(-470 ,-170),
+}
+
+onready var Tooltip = $TooltipCollision
 
 var artifact = null
 var artifact_id = null
@@ -20,7 +26,7 @@ func _process(dt):
 		$Image.rect_scale.y = max($Image.rect_scale.y - HOVER_SPEED*dt, 1.0)
 
 
-func setup(_artifact, rarity):
+func setup(_artifact, rarity, side:= "right"):
 	artifact = _artifact
 	$Image.texture = artifact.image
 	if rarity == "common":
@@ -31,31 +37,39 @@ func setup(_artifact, rarity):
 		$Particles2D.process_material.hue_variation = .25
 	else:
 		push_error("Not a valid rarity: " + str(rarity))
+	
+	assert(TOOLTIP_POSITIONS.has(side), "Not a valid side for tooltip: " + str(side))
+	Tooltip.set_position(TOOLTIP_POSITIONS[side])
+
 
 func disable():
 	disable_tooltips()
 	block_tooltips = true
 	$Button.disabled = true
 
+
 func collected():
 	var offset = 200
 	$Tween.interpolate_property(self, "rect_position:y", rect_position.y, rect_position.y - offset, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
-	
+
+
 func disable_tooltips():
 	if tooltips_enabled:
 		tooltips_enabled = false
 		TooltipLayer.clean_tooltips()
 
+
 func _on_Button_pressed():
 	emit_signal("pressed", artifact)
+
 
 func _on_TooltipCollision_enable_tooltip():
 	if block_tooltips:
 		return
 	tooltips_enabled = true
 	var tooltip = ArtifactDB.get_tooltip(artifact.id)
-	TooltipLayer.add_tooltip($TooltipPosition.global_position, tooltip.title, \
+	TooltipLayer.add_tooltip(Tooltip.get_position(), tooltip.title, \
 							 tr(tooltip.text), tooltip.title_image, tooltip.subtitle, true)
 
 

@@ -46,6 +46,10 @@ func set_collision_height(h : float):
 	$CollisionShape2D.shape.extents.y = h/2
 
 
+func set_position(pos):
+	$TooltipPosition.position = pos
+
+
 func get_position():
 	return $TooltipPosition.global_position
 

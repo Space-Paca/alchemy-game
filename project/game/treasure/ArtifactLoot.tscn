@@ -94,8 +94,8 @@ position = Vector2( 100, 100 )
 [node name="CollisionShape2D" parent="TooltipCollision" index="0"]
 shape = SubResource( 7 )
 
-[node name="TooltipPosition" type="Position2D" parent="."]
-position = Vector2( 268.251, -73.712 )
+[node name="TooltipPosition" parent="TooltipCollision" index="1"]
+position = Vector2( 200, -170 )
 
 [node name="Tween" type="Tween" parent="."]
 

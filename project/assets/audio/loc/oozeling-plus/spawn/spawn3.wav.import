@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn3.wav-6d2aca6c0ee2534226d8140bb8de1faa.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/oozeling-plus/spawn/spawn3.wav"
+dest_files=[ "res://.import/spawn3.wav-6d2aca6c0ee2534226d8140bb8de1faa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

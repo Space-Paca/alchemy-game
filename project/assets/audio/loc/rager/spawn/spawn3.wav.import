@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn3.wav-17ae3e348001ec9a858cc4a65bf4b6c0.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/rager/spawn/spawn3.wav"
+dest_files=[ "res://.import/spawn3.wav-17ae3e348001ec9a858cc4a65bf4b6c0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn2.wav-4c77cf2b25f5129aa8fee342225c1fc5.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/parasiter/spawn/spawn2.wav"
+dest_files=[ "res://.import/spawn2.wav-4c77cf2b25f5129aa8fee342225c1fc5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

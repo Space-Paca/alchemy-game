@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spawn1.wav-30901a4e39609306aa565496dd26f664.sample"
+
+[deps]
+
+source_file="res://assets/audio/loc/doomsayer/spawn/spawn1.wav"
+dest_files=[ "res://.import/spawn1.wav-30901a4e39609306aa565496dd26f664.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

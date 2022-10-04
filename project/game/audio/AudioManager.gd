@@ -110,18 +110,28 @@ func setup_locs():
 	if dir.open(LOC_PATH) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		var regex = RegEx.new()
+		var enemy_regex = RegEx.new()
+		enemy_regex.compile("([a-zA-Z0-9_\\-]+)_(\\w+).tres")
+		var type_regex = RegEx.new()
+		type_regex.compile("(\\w+)(\\d+)")
 		while file_name != "":
 			if not dir.current_is_dir() and file_name != "." and file_name != "..":
+				var result = enemy_regex.search(file_name)
 				#Found enemy loc, first parse name, then create data on memory
-				regex.compile("([a-zA-Z0-9_\\-]+)_(\\w+).tres")
-				var result = regex.search(file_name)
 				if result:
 					var name = result.get_string(1)
 					var type = result.get_string(2)
 					if not LOCS.has(name):
 						LOCS[name] = {} 
-					LOCS[name][type] = load(LOC_PATH + file_name)
+					result = type_regex.search(type)
+					#Found a variation of type
+					if result:
+						type = result.get_string(1)
+						if not LOCS[name].has(type):
+							LOCS[name][type] = []
+						LOCS[name][type].append(load(LOC_PATH + file_name))
+					else:
+						LOCS[name][type] = load(LOC_PATH + file_name)
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access locutions path.")
@@ -581,6 +591,9 @@ func play_enemy_sfx(enemy: String, type:String, delay := 0.0):
 		return
 		
 	var sfx = LOCS[enemy][type]
+	#If there are variations, pick one at random
+	if typeof(sfx) == TYPE_ARRAY:
+		sfx = sfx[randi()%sfx.size()]
 	var player
 	
 	if type == "idle":

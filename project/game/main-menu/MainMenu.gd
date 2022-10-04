@@ -19,8 +19,8 @@ const BUTTON_GROWTH_LERP_FACTOR = .3
 const GROWING_BUTTON_WIDTH = {
 	"original": 220,
 	"discord": {
-		"en": 344,
-		"pt_BR": 463
+		"en": 350,
+		"pt_BR": 470,
 	},
 	"steam": {
 		"en": 363,

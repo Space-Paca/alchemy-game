@@ -595,17 +595,18 @@ func play_enemy_sfx(enemy: String, type:String, delay := 0.0):
 	#If there are variations, pick one at random
 	if typeof(sfx) == TYPE_ARRAY:
 		sfx = sfx[randi()%sfx.size()]
-	#Try to play different variation each time
-	if not just_played_variations.has(enemy):
-		just_played_variations[enemy] = {}
-	if not just_played_variations[enemy].has(type):
-		just_played_variations[enemy][type] = sfx
-	else:
-		var variations = LOCS[enemy][type]
-		if variations.size() > 1:
-			while just_played_variations[enemy][type] == sfx:
-				sfx = variations[randi()%variations.size()]
+		
+		#Try to play different variation each time
+		if not just_played_variations.has(enemy):
+			just_played_variations[enemy] = {}
+		if not just_played_variations[enemy].has(type):
 			just_played_variations[enemy][type] = sfx
+		else:
+			var variations = LOCS[enemy][type]
+			if variations.size() > 1:
+				while just_played_variations[enemy][type] == sfx:
+					sfx = variations[randi()%variations.size()]
+				just_played_variations[enemy][type] = sfx
 	var player
 	
 	if type == "idle":

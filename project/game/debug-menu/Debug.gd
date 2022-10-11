@@ -28,6 +28,7 @@ const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 var allow_debugging = false
 var is_demo = false
 var is_steam = false
+var seasonal_event = false
 var floor_to_go := -1
 var recipes_unlocked := false
 var reveal_map := false
@@ -44,6 +45,8 @@ func _ready():
 	set_process(false)
 	
 	load_portraits()
+	
+	check_seasonal_events()
 	
 	for arg in OS.get_cmdline_args():
 		if arg == "--is_demo":
@@ -62,6 +65,8 @@ func _ready():
 					custom_portrait = false
 				else:
 					custom_portrait = value
+			if key == "--test_seasonal":
+				seasonal_event = str(value)
 
 
 	version_label.text = VERSION
@@ -105,6 +110,15 @@ func compare_datetimes(datetime1, datetime2):
 		if datetime1[key] > datetime2[key]:
 			return true
 	return false
+
+
+func check_seasonal_events():
+	var date = OS.get_date()
+	
+	#Halloween
+	if (date.month == 10 and date.day >= 25) or\
+	   (date.month == 11 and date.day <= 2):
+		seasonal_event = "halloween"
 
 
 func load_portraits():

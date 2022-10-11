@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/images/ui/compendium_icon_pressed.png" type="Texture" id=24]
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.atlas" type="SpineAtlasResource" id=25]
 [ext_resource path="res://assets/images/ui/logo_steam__alchemia.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/ui/logo_update__alchemia.png" type="Texture" id=27]
 
 [sub_resource type="SpineSkeletonDataResource" id=30]
 atlas_res = ExtResource( 25 )
@@ -409,6 +410,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Updates:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=21]
 length = 5.0
@@ -656,6 +669,18 @@ tracks/20/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/21/type = "value"
+tracks/21/path = NodePath("VBoxContainer/Updates:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=22]
 length = 5.0
@@ -902,6 +927,18 @@ tracks/20/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("VBoxContainer/Updates:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -1259,10 +1296,11 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="."]
-margin_left = 773.0
-margin_top = 556.0
-margin_right = 1162.0
-margin_bottom = 702.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 600.0
+margin_top = 504.672
+margin_right = 989.0
+margin_bottom = 650.672
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1270,16 +1308,17 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
+disabled = true
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="."]
-margin_left = 757.755
-margin_top = 704.694
-margin_right = 1175.76
-margin_bottom = 850.694
+margin_left = 750.0
+margin_top = 545.0
+margin_right = 1168.0
+margin_bottom = 691.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1293,10 +1332,10 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="."]
-margin_left = 790.0
-margin_top = 855.0
-margin_right = 1142.99
-margin_bottom = 1001.0
+margin_left = 780.0
+margin_top = 830.0
+margin_right = 1132.99
+margin_bottom = 976.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 19 )
@@ -1335,9 +1374,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Discord" type="Button" parent="VBoxContainer"]
-margin_right = 220.0
+[node name="Updates" type="Button" parent="VBoxContainer"]
+margin_right = 229.0
 margin_bottom = 120.0
+rect_min_size = Vector2( 220, 120 )
+focus_mode = 1
+disabled = true
+text = "UPDATES_BUTTON"
+icon = ExtResource( 27 )
+clip_text = true
+align = 0
+
+[node name="Discord" type="Button" parent="VBoxContainer"]
+margin_top = 124.0
+margin_right = 229.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 220, 120 )
 focus_mode = 1
 disabled = true
@@ -1347,9 +1398,9 @@ clip_text = true
 align = 0
 
 [node name="Steam" type="Button" parent="VBoxContainer"]
-margin_top = 124.0
-margin_right = 220.0
-margin_bottom = 244.0
+margin_top = 248.0
+margin_right = 229.0
+margin_bottom = 368.0
 rect_min_size = Vector2( 220, 120 )
 disabled = true
 text = "STEAM_BUTTON"
@@ -1532,6 +1583,9 @@ anims/reset = SubResource( 23 )
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Updates" to="." method="_on_growing_button_mouse_entered" binds= [ "updates" ]]
+[connection signal="mouse_exited" from="VBoxContainer/Updates" to="." method="_on_growing_button_mouse_exited" binds= [ "updates" ]]
+[connection signal="pressed" from="VBoxContainer/Updates" to="." method="_on_Updates_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Discord" to="." method="_on_growing_button_mouse_entered" binds= [ "discord" ]]
 [connection signal="mouse_exited" from="VBoxContainer/Discord" to="." method="_on_growing_button_mouse_exited" binds= [ "discord" ]]
 [connection signal="pressed" from="VBoxContainer/Discord" to="." method="_on_Discord_pressed"]

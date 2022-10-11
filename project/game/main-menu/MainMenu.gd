@@ -8,7 +8,8 @@ onready var compendium_button = $CompendiumButton
 onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
 onready var growing_buttons = {
 	"discord": $VBoxContainer/Discord,
-	"steam": $VBoxContainer/Steam
+	"steam": $VBoxContainer/Steam,
+	"updates": $VBoxContainer/Updates,
 }
 
 const ALPHA_SPEED = 6
@@ -25,13 +26,18 @@ const GROWING_BUTTON_WIDTH = {
 	"steam": {
 		"en": 370,
 		"pt_BR": 735,
-	}
+	},
+	"updates": {
+		"en": 465,
+		"pt_BR": 520,
+	},
 }
 
 var hover_compendium = false
 var is_hovered = {
 	"discord": false,
-	"steam": false
+	"steam": false,
+	"updates": false,
 }
 
 func _ready():
@@ -78,7 +84,7 @@ func _process(dt):
 	else:
 		label.modulate.a = max(label.modulate.a - ALPHA_SPEED*dt, 0.0)
 	
-	for btn_name in ["discord", "steam"]:
+	for btn_name in ["discord", "steam", "updates"]:
 		var btn : Button = growing_buttons[btn_name]
 		var target_width = GROWING_BUTTON_WIDTH[btn_name][TranslationServer.get_locale()] if is_hovered[btn_name] else GROWING_BUTTON_WIDTH.original
 		btn.rect_size.x = lerp(btn.rect_size.x, target_width,
@@ -227,3 +233,10 @@ func _on_Steam_pressed():
 	var err = OS.shell_open("https://store.steampowered.com/app/1960330/Alchemia_Creatio_Ex_Nihilo/")
 	if err != OK:
 		push_error("Error trying to open Steam page: " + str(err))
+
+
+func _on_Updates_pressed():
+	AudioManager.play_sfx("click")
+	var err = OS.shell_open("https://store.steampowered.com/news/app/1960330?updates=true")
+	if err != OK:
+		push_error("Error trying to open Updates page: " + str(err))

@@ -10,6 +10,7 @@ grid_size = 3
 sfx = "alchemists_fire"
 must_unlock = false
 use_on_demo = false
+mastery_offset = 0
 floor_sold_in = 2
 reagents = [ "damaging", "damaging", "damaging", "damaging" ]
 effects = [ "damage" ]

@@ -10,6 +10,7 @@ grid_size = 3
 sfx = "bottled_lightning"
 must_unlock = false
 use_on_demo = true
+mastery_offset = 0
 floor_sold_in = 2
 reagents = [ "uncommon", "damaging", "super_damaging" ]
 effects = [ "damage" ]

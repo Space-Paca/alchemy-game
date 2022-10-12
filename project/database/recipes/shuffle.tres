@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/bag_recycle.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "RE_SHUFFLE"
+grid_size = 4
+sfx = "shuffle_discard_pile"
+must_unlock = false
+use_on_demo = false
+mastery_offset = 0
+floor_sold_in = 3
+reagents = [ "rare", "rare" ]
+effects = [ "reshuffle", "damage_self" ]
+effect_args = [ [  ], [ 5, "regular" ] ]
+destroy_reagents = [  ]
+override_description = ""
+override_short_description = ""
+filters = [ 6 ]
+fav_icon = ExtResource( 2 )
+shop_cost = 60
+master_effects = [ "reshuffle" ]
+master_effect_args = [ [  ] ]
+master_destroy_reagents = [  ]
+override_master_description = ""
+override_master_short_description = ""
+reagent_combinations = [ [ "rare", "rare" ] ]

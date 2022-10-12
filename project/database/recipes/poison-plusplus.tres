@@ -10,6 +10,7 @@ grid_size = 3
 sfx = "poison_vial"
 must_unlock = false
 use_on_demo = false
+mastery_offset = 0
 floor_sold_in = 3
 reagents = [ "poison", "damaging", "super_damaging" ]
 effects = [ "add_status" ]

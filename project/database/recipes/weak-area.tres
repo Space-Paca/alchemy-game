@@ -10,6 +10,7 @@ grid_size = 3
 sfx = "smokescreen_tonic"
 must_unlock = false
 use_on_demo = true
+mastery_offset = 0
 floor_sold_in = 2
 reagents = [ "uncommon", "debuff" ]
 effects = [ "add_status_all" ]

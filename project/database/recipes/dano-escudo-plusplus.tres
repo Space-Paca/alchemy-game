@@ -10,6 +10,7 @@ grid_size = 3
 sfx = "travelers_mixture"
 must_unlock = false
 use_on_demo = false
+mastery_offset = 0
 floor_sold_in = 3
 reagents = [ "uncommon", "uncommon", "defensive", "super_defensive", "damaging", "super_damaging" ]
 effects = [ "shield", "damage" ]

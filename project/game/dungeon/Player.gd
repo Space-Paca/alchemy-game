@@ -17,6 +17,9 @@ signal reveal_map
 const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
+const CLASSES = {
+	"alchemist": preload("res://database/player-classes/alchemist.tres"),
+}
 
 export var initial_gold := 50
 
@@ -72,7 +75,7 @@ var player_class : PlayerClass
 
 func _ready():
 	# Only class we have right now
-	player_class = load("res://database/player-classes/alchemist.tres") as PlayerClass
+	player_class = CLASSES.alchemist as PlayerClass
 	cur_level = 1
 	
 	init("player", player_class.max_hps[cur_level-1])
@@ -114,12 +117,18 @@ func get_save_data():
 		"max_hp": max_hp,
 		"floor_stats": floor_stats.duplicate(true),
 		"stats": stats.duplicate(true),
+		"class": player_class.name,
 	}
 	
 	return data
 
 
 func set_save_data(data):
+	if data.has("class"):
+		assert(CLASSES.has(data.class), "Not a valid player class: " + str(data.class))
+		player_class = CLASSES[data.class] as PlayerClass
+	else:
+		player_class = CLASSES.alchemist
 	bag = data.bag
 	gold = data.gold
 	pearls = data.pearls

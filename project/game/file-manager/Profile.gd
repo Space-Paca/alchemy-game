@@ -46,15 +46,12 @@ var controls = {
 
 var progression = {
 	"recipes": {
-		"name": "RECIPES",
 		"cur_xp": 0,
 	},
 	"artifacts": {
-		"name": "ARTIFACTS",
 		"cur_xp": 0,
 	},
 	"misc": {
-		"name": "THE_WORLD",
 		"cur_xp": 0,
 	}
 }

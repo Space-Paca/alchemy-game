@@ -192,7 +192,9 @@ HEAL_H,Heal,Cura
 MISC,Misc,Diversos
 END_TURN,End Turn,Terminar   Turno
 ARTIFACTS,Artifacts,Artefatos
+TREASURES,Treasures,Tesouros
 THE_WORLD,The World,O Mundo
+WISDOM,Wisdom,Sabedoria
 RECIPES,Recipes,Receitas
 RECIPE,Recipe,Receita
 MASTERED_RECIPE,Mastered Recipe,Receita Aperfeiçoada

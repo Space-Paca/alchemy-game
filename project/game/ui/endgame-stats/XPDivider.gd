@@ -7,6 +7,7 @@ signal content_unlocked(unlock_data)
 signal unlock_popup_closed
 
 const PROGRESSIONS = ["recipes", "artifacts", "misc"]
+const PROGRESSIONS_NAME = ["WISDOM", "TREASURES", "THE_WORLD"]
 const AMOUNT_DIGIT = preload("res://game/ui/endgame-stats/AmountDigit.tscn")
 
 onready var xp_pool_amount = $HBoxContainer/AmountContainer
@@ -83,7 +84,7 @@ func setup_xp_progress_bars():
 	for child in progress_cont.get_children():
 		child.connect("changed_xp", self, "_on_changed_xp")
 		var prog_type = PROGRESSIONS[idx]
-		var prog_data = Profile.get_progression(prog_type)
+		var prog_name = PROGRESSIONS_NAME[idx]
 		var cur_level = get_level(prog_type)
 		var init_xp = get_level_xp(prog_type)
 		var lvl_prog = UnlockManager.get_progression(prog_type)
@@ -91,13 +92,13 @@ func setup_xp_progress_bars():
 		child.slider.editable = false
 		if cur_level == 0:
 			max_xp = lvl_prog[cur_level]
-			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
+			child.setup(prog_name, cur_level, init_xp, max_xp, xp_pool)
 		elif not Profile.is_max_level(prog_type):
 			max_xp = lvl_prog[cur_level] - lvl_prog[cur_level-1]
-			child.setup(prog_data.name, cur_level, init_xp, max_xp, xp_pool)
+			child.setup(prog_name, cur_level, init_xp, max_xp, xp_pool)
 		else:
 			child.start_max_level()
-			child.max_level(prog_data.name)
+			child.max_level(prog_name)
 		idx += 1
 		$Tween.interpolate_property(child, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		$Tween.start()
@@ -172,17 +173,17 @@ func _on_ApplyButton_pressed():
 			yield(child, "finished_applying")
 
 			var prog_type = PROGRESSIONS[idx]
+			var prog_name = PROGRESSIONS_NAME[idx]
 			var cur_level = get_level(prog_type)
-			var prog_data = Profile.get_progression(PROGRESSIONS[idx])
 			Profile.increase_progression(prog_type, xp)
 			if get_level(prog_type) > cur_level:
 				if Profile.is_max_level(prog_type):
-					child.max_level(prog_data.name)
+					child.max_level(prog_name)
 				else:
 					var new_level = get_level(prog_type)
 					var lvl_prog = UnlockManager.get_progression(prog_type)
 					var max_xp = lvl_prog[new_level] - lvl_prog[new_level-1]
-					child.setup(prog_data.name, new_level, 0, max_xp, xp_pool)
+					child.setup(prog_name, new_level, 0, max_xp, xp_pool)
 				unlock_content(idx)
 				yield(self, "unlock_popup_closed")
 				

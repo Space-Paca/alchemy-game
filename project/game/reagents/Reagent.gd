@@ -18,6 +18,7 @@ signal stopped_hovering
 signal finished_combine_animation
 signal unrestrained_slot
 signal destroyed
+signal exiled
 signal exploded
 
 onready var image = $Image
@@ -200,6 +201,15 @@ func start_shaking_and_destroy():
 	AudioManager.play_sfx("destroy_reagent")
 
 
+func start_shaking_and_exile():
+	var dur = .1 if Profile.get_option("turbo_mode") else .9
+	$Tween.interpolate_property(self, "shake", 0, 4, dur, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.start()
+	if not Profile.get_option("turbo_mode"):
+		yield(get_tree().create_timer(.2), "timeout")
+	AudioManager.play_sfx("exile_reagent")
+
+
 func combine_animation(grid_center: Vector2, duration: float, second_animation: bool):
 	unhighlight()
 	var center = grid_center + -rect_size/2
@@ -246,6 +256,17 @@ func destroy():
 	$AnimationPlayer.play("destroy", -1, speed)
 	yield($AnimationPlayer, "animation_finished")
 	emit_signal("destroyed", self)
+	queue_free()
+
+
+func exile():
+	orbit = false
+	stop_auto_moving = false
+	start_shaking_and_exile()
+	var speed = 9 if Profile.get_option("turbo_mode") else 1
+	$AnimationPlayer.play("exile", -1, speed)
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("exiled", self)
 	queue_free()
 
 

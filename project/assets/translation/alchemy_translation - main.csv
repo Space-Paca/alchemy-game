@@ -523,6 +523,10 @@ DESC_DESTROY_REAGENTS_ALL,Destroys all the %s in the process.,Destrua todas/todo
 DESC_DESTROY_REAGENTS_SOME,Destroys %d %s in the process.,Destrua %d %s no processo.
 DESC_DESTROY_REAGENTS_ONLY,Destroys the %s in the process.,Destrua %s no processo.
 DESC_DESTROY_REAGENTS_ONE,Destroys one %s in the process.,Destrua 1 %s no processo.
+DESC_EXILE_REAGENTS_ALL,Exiles all the %s in the process.,Exila todas/todos %s no processo.
+DESC_EXILE_REAGENTS_SOME,Exiles %d %s in the process.,Exila %d %s no processo.
+DESC_EXILE_REAGENTS_ONLY,Exiles the %s in the process.,Exila %s no processo.
+DESC_EXILE_REAGENTS_ONE,Exiles one %s in the process.,Exila 1 %s no processo.
 RE_ATAQUE_AREA_PLUS,Acid Cloud,Nuvem Ácida
 RE_ATAQUE_AREA,Acid Gas,Gás Ácido
 RE_ATAQUE_MULTIPLO_PLUS,Cluster Bomb,Bomba Esmigalhadora

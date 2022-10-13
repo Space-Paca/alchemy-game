@@ -5,6 +5,7 @@ signal cleaned
 signal modified
 signal returned_to_hand
 signal reagent_destroyed
+signal reagent_exiled
 signal dispensed_reagents
 signal repositioned_reagents
 signal restrained
@@ -151,6 +152,7 @@ func quick_place(reagent):
 	#If got here, don't have an available space
 	AudioManager.play_sfx("error")
 
+
 func destroy_reagent(reagent_type):
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
@@ -162,6 +164,20 @@ func destroy_reagent(reagent_type):
 			return true
 
 	return false
+
+
+func exile_reagent(reagent_type):
+	for slot in slots.get_children():
+		var reagent = slot.get_reagent()
+		if reagent and reagent.type == reagent_type:
+			slot.remove_reagent()
+			reagent.exile()
+			yield(reagent, "exiled")
+			emit_signal("reagent_exiled")
+			return true
+
+	return false
+
 
 func return_to_hand():
 	var reagents_to_be_sent = []

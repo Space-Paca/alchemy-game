@@ -1,7 +1,8 @@
 extends Node
 
-var recipes = {}
+const VALID_REMOVAL_TYPES = ["DESTROY", "EXILE"]
 
+var recipes = {}
 
 func _ready():
 	var dir := Directory.new()
@@ -75,12 +76,14 @@ func get_description(recipe, is_master := false):
 		if recipe.override_master_description and recipe.override_master_description != "":
 			return recipe.override_master_description
 		text += describe_effects(recipe.master_effects, recipe.master_effect_args)
-		text += describe_destructions(recipe.reagents, recipe.master_destroy_reagents)
+		text += describe_removals(recipe.reagents, recipe.master_destroy_reagents, "DESTROY")
+		text += describe_removals(recipe.reagents, recipe.master_exile_reagents, "EXILE")
 	else:
 		if recipe.override_description and recipe.override_description != "":
 			return recipe.override_description
 		text += describe_effects(recipe.effects, recipe.effect_args)
-		text += describe_destructions(recipe.reagents, recipe.destroy_reagents)
+		text += describe_removals(recipe.reagents, recipe.destroy_reagents, "DESTROY")
+		text += describe_removals(recipe.reagents, recipe.exile_reagents, "EXILE")
 	
 	return text
 
@@ -98,34 +101,35 @@ func get_tooltip(recipe, mastered):
 		tooltip.text = get_description(recipe, false)
 	return tooltip
 
-
-func describe_destructions(reagents, destroyed_reagents):
+#Describe both destructions or exiles
+func describe_removals(reagents, removed_reagents, type):
+	assert(VALID_REMOVAL_TYPES.has(type), "Not a valid type of removal: " + str(type))
 	var text = ""
-	var copy_destroyed = destroyed_reagents.duplicate()
+	var copy_removed = removed_reagents.duplicate()
 	
-	while not copy_destroyed.empty():
-		var destroyed_reagent = copy_destroyed.pop_front()
-		var reagent_name = ReagentManager.get_data(destroyed_reagent).name
-		#Search for how many of this type is being destroyed
+	while not copy_removed.empty():
+		var removed_reagent = copy_removed.pop_front()
+		var reagent_name = ReagentManager.get_data(removed_reagent).name
+		#Search for how many of this type is being removed
 		var count = 1
-		for i in range(copy_destroyed.size()-1, -1, -1):
-			if copy_destroyed[i] == destroyed_reagent:
+		for i in range(copy_removed.size()-1, -1, -1):
+			if copy_removed[i] == removed_reagent:
 				count += 1
-				copy_destroyed.remove(i)
+				copy_removed.remove(i)
 		#Count how many reagents in the recipe of this type are there
 		var recipe_count = 0
 		for reagent in reagents:
-			if reagent == destroyed_reagent:
+			if reagent == removed_reagent:
 				recipe_count += 1
 		text += " "
 		if recipe_count == count and count > 1:
-			text += tr("DESC_DESTROY_REAGENTS_ALL") % [tr(reagent_name)]
+			text += tr("DESC_"+type+"_REAGENTS_ALL") % [tr(reagent_name)]
 		elif count > 1:
-			text += tr("DESC_DESTROY_REAGENTS_SOME") % [count, tr(reagent_name)]
+			text += tr("DESC_"+type+"_REAGENTS_SOME") % [count, tr(reagent_name)]
 		elif recipe_count == count:
-			text += tr("DESC_DESTROY_REAGENTS_ONLY") % [tr(reagent_name)]
+			text += tr("DESC_"+type+"_REAGENTS_ONLY") % [tr(reagent_name)]
 		else:
-			text += tr("DESC_DESTROY_REAGENTS_ONE") % [tr(reagent_name)]
+			text += tr("DESC_"+type+"_REAGENTS_ONE") % [tr(reagent_name)]
 	
 	return text
 

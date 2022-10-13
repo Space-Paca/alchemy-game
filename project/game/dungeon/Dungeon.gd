@@ -550,9 +550,11 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 					mastery_threshold(combination))
 		
 		if recipe_book.is_mastered(combination):
-			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, recipe.master_destroy_reagents, boost_effects)
+			battle.apply_effects(recipe.master_effects, recipe.master_effect_args, \
+								 recipe.master_destroy_reagents, recipe.master_exile_reagents, boost_effects)
 		else:
-			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents, boost_effects)
+			battle.apply_effects(recipe.effects, recipe.effect_args, recipe.destroy_reagents,\
+								 recipe.exile_reagents, boost_effects)
 		
 	elif not times_recipe_made.has(recipe.id):
 		times_recipe_made[recipe.id] = 0
@@ -561,7 +563,8 @@ func make_combination(type: String, combination: Combination, boost_effects: Dic
 func mastery_threshold(combination: Combination, force_reduction := false) -> int:
 	if Debug.lower_threshold:
 		return 1
-	var threshold = min(10, 18 - combination.recipe.reagents.size() - 6*combination.recipe.destroy_reagents.size() - 2*combination.recipe.grid_size)
+	var threshold = min(10, 18 - combination.recipe.reagents.size() - 6*combination.recipe.destroy_reagents.size()\
+					-2*combination.recipe.exile_reagents.size() - 2*combination.recipe.grid_size)
 	if combination.recipe.mastery_offset:
 		threshold += combination.recipe.mastery_offset
 	if force_reduction or Profile.get_recipe_memorized_level(combination.recipe.id) >= 3:

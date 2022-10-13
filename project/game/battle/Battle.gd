@@ -66,6 +66,7 @@ var used_all_reagents_in_recipes = false
 var recipe_book_visible = false
 var is_event = false
 var killing_minions = false
+var exiled_reagents = []
 
 func _ready():
 	# DEBUG
@@ -111,7 +112,8 @@ func get_save_data():
 		"enemies": get_enemies_save_data(),
 		"player": get_player_save_data(),
 		"is_event": is_event,
-		"encounter_phase": current_encounter.current_phase
+		"encounter_phase": current_encounter.current_phase,
+		"exiled_reagents": exiled_reagents,
 	}
 
 	
@@ -178,6 +180,11 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 	setup_enemy(current_encounter, data.enemies)
 
 	setup_audio()
+	
+	if data.has("exiled_reagents"):
+		exiled_reagents = data.exiled_reagents
+	else:
+		exiled_reagents = []
 
 	AudioManager.play_sfx("start_battle")
 	
@@ -433,6 +440,7 @@ func create_reagent(type):
 	reagent.connect("stopped_hovering", self, "_on_reagent_stop_hover")
 	reagent.connect("quick_place", self, "_on_reagent_quick_place")
 	reagent.connect("destroyed", self, "_on_reagent_destroyed")
+	reagent.connect("exiled", self, "_on_reagent_exiled")
 	reagent.connect("unrestrained_slot", self, "_on_reagent_unrestrained_slot")
 	return reagent
 
@@ -708,7 +716,7 @@ func add_recipe_deviation(name):
 
 
 func apply_effects(effects: Array, effect_args: Array = [[]],
-		destroy_reagents: Array = [], boost_effects: Dictionary = {}):
+		destroy_reagents: Array = [], exile_reagents: Array = [], boost_effects: Dictionary = {}):
 	if effects[0] == "combination_failure":
 		grid.misfire_animation()
 		used_all_reagents_in_recipes = false
@@ -720,6 +728,10 @@ func apply_effects(effects: Array, effect_args: Array = [[]],
 		for reagent in destroy_reagents:
 			if grid.destroy_reagent(reagent):
 				yield(grid, "reagent_destroyed")
+		# Exile reagents if needed
+		for reagent in exile_reagents:
+			if grid.exile_reagent(reagent):
+				yield(grid, "reagent_exiled")
 	
 		# Discard reagents
 		grid.clean()
@@ -1142,6 +1154,11 @@ func _on_reagent_quick_place(reagent):
 func _on_reagent_destroyed(reagent):
 	player.remove_reagent(reagent.type, reagent.upgraded)
 
+
+func _on_reagent_exiled(reagent):
+	exiled_reagents.append(reagent)
+
+
 func _on_reagent_unrestrained_slot(reagent, slot):
 	slot.unrestrain()
 	reagent.slot.remove_reagent()
@@ -1538,5 +1555,5 @@ func _on_CombineButton_pressed():
 
 func _on_Debug_recipe_simulated(recipe: Recipe):
 	disable_player()
-	apply_effects(recipe.effects, recipe.effect_args, [], {"all": 0,
+	apply_effects(recipe.effects, recipe.effect_args, [], [], {"all": 0,
 			"damage": 0, "shield": 0, "status": 0, "heal": 0})

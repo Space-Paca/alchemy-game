@@ -16,6 +16,7 @@ export(Array, String) var reagents
 export(Array, String) var effects
 export(Array, Array) var effect_args
 export(Array, String) var destroy_reagents
+export(Array, String) var exile_reagents
 export(String) var override_description
 export(String) var override_short_description
 export(Array, FILTERS) var filters = [FILTERS.ATTACK]
@@ -24,6 +25,7 @@ export(int) var shop_cost
 export(Array, String) var master_effects
 export(Array, Array) var master_effect_args
 export(Array, String) var master_destroy_reagents
+export(Array, String) var master_exile_reagents
 export(String) var override_master_description
 export(String) var override_master_short_description
 export(Array, String) var reagent_combinations

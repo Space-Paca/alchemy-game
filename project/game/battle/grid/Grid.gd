@@ -154,28 +154,46 @@ func quick_place(reagent):
 
 
 func destroy_reagent(reagent_type):
+	var possible_removal_slot = false
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
-		if reagent and reagent.type == reagent_type:
-			slot.remove_reagent()
-			reagent.destroy()
-			yield(reagent, "destroyed")
-			emit_signal("reagent_destroyed")
-			return true
+		if reagent:
+			var substitutions = ReagentDB.get_substitutions(reagent.type)
+			if reagent.type == reagent_type or substitutions.has(reagent_type):
+				if not possible_removal_slot or \
+				  ReagentDB.get_rank(possible_removal_slot.reagent.type) > ReagentDB.get_rank(reagent.type):
+					possible_removal_slot = slot
+	
+	if possible_removal_slot:
+		var reagent = possible_removal_slot.get_reagent()
+		possible_removal_slot.remove_reagent()
+		reagent.destroy()
+		yield(reagent, "destroyed")
+		emit_signal("reagent_destroyed")
+		return true
 
 	return false
 
 
 func exile_reagent(reagent_type):
+	var possible_removal_slot = false
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
-		if reagent and reagent.type == reagent_type:
-			slot.remove_reagent()
-			reagent.exile()
-			yield(reagent, "exiled")
-			emit_signal("reagent_exiled")
-			return true
+		if reagent:
+			var substitutions = ReagentDB.get_substitutions(reagent.type)
+			if reagent.type == reagent_type or substitutions.has(reagent_type):
+				if not possible_removal_slot or \
+				  ReagentDB.get_rank(possible_removal_slot.get_reagent().type) > ReagentDB.get_rank(reagent.type):
+					possible_removal_slot = slot
 
+	if possible_removal_slot:
+		var reagent = possible_removal_slot.get_reagent()
+		possible_removal_slot.remove_reagent()
+		reagent.exile()
+		yield(reagent, "exiled")
+		emit_signal("reagent_exiled")
+		return true
+	
 	return false
 
 

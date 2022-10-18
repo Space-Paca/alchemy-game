@@ -211,11 +211,24 @@ const DB = {
 static func get_types() -> Array:
 	return DB.keys()
 
+
 static func get_reagents() -> Dictionary:
 	return DB
+
 
 static func get_from_name(name: String) -> Dictionary:
 	if not DB.has(name):
 		push_error("Given type of reagent doesn't exist: " + str(name))
-		assert(false)
 	return DB[name].duplicate(true)
+
+
+static func get_rank(name: String) -> int:
+	if not DB.has(name):
+		push_error("Given type of reagent doesn't exist: " + str(name))
+	return DB[name].rank
+
+
+static func get_substitutions(name: String) -> int:
+	if not DB.has(name):
+		push_error("Given type of reagent doesn't exist: " + str(name))
+	return DB[name].substitute.duplicate(true)

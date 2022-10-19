@@ -271,6 +271,7 @@ func _on_LanguageButton_pressed(button_id: int):
 	var lang = Profile.LANGUAGES[button_id]
 	language_label.text = lang.name
 	TranslationServer.set_locale(lang.locale)
+	Profile.translation_updated()
 	Profile.set_option("locale", button_id)
 
 

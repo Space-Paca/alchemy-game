@@ -4,113 +4,146 @@ const TOOLTIP = preload("res://game/tooltip/Tooltip.tscn")
 const SCREEN_MARGIN = 10
 const TOOLTIP_WIDTH = 250
 
-var keywords = {
-	"PIERCING_DAMAGE": {
+var keywords = [
+	{
+		"keyword": "PIERCING_DAMAGE",
 		"type": "tooltip",
 		"title": "PIERCING_DAMAGE_TITLE",
 		"text": "PIERCING_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
 	},
-	"CRUSHING_DAMAGE": {
+	{
+		"keyword": "CRUSHING_DAMAGE",
 		"type": "tooltip",
 		"title": "CRUSHING_DAMAGE_TITLE",
 		"text": "CRUSHING_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_piercing.png"),
 	},
-	"POISON_DAMAGE": {
+	{
+		"keyword": "POISON_DAMAGE",
 		"type": "tooltip",
 		"title": "POISON_DAMAGE_TITLE",
 		"text": "POISON_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/status/poison.png"),
 	},
-	"REGULAR_DAMAGE": {
+	{
+		"keyword": "REGULAR_DAMAGE",
 		"type": "no_tooltip",
 	},
-	"ELITE": {
+	{
+		"keyword": "ELITE",
 		"type": "no_tooltip",
 	},
-	"KEYWORD_ELITE": {
+	{
+		"keyword": "KEYWORD_ELITE",
 		"type": "no_tooltip",
 	},
-	"HEALING": {
+	{
+		"keyword": "SHIELD",
 		"type": "no_tooltip",
 	},
-	"HEALTH": {
+	{
+		"keyword": "HEALING",
 		"type": "no_tooltip",
 	},
-	"HEALS": {
+	{
+		"keyword": "HEALTH",
 		"type": "no_tooltip",
 	},
-	"HEAL": {
+	{
+		"keyword": "HEALS",
 		"type": "no_tooltip",
 	},
-	"EXILES": {
+	{
+		"keyword": "HEAL",
+		"type": "no_tooltip",
+	},
+	{
+		"keyword": "EXILES",
 		"type": "tooltip",
 		"title": "EXILE_TITLE",
 		"text": "EXILE_DESC",
 		"title_image": preload("res://assets/images/ui/exiled_reagent.png"),
 	},
-	"VENOM_DAMAGE": {
+	{
+		"keyword": "VENOM_DAMAGE",
 		"type": "tooltip",
 		"title": "VENOM_DAMAGE_TITLE",
 		"text": "VENOM_DAMAGE_DESC",
 		"title_image": preload("res://assets/images/intents/attack_venom.png"),
 	},
-	"DRAIN_2": {
+	{
+		"keyword": "DRAIN_2",
 		"type": "tooltip",
 		"title": "DRAIN_TITLE",
 		"text": "DRAIN_DESC",
 		"title_image": preload("res://assets/images/intents/attack_drain.png"),
 	},
-	"DRAIN": {
+	{
+		"keyword": "DRAIN",
 		"type": "tooltip",
 		"title": "DRAIN_TITLE",
 		"text": "DRAIN_DESC",
 		"title_image": preload("res://assets/images/intents/attack_drain.png"),
 	},
-	"UNSTABLE": {
+	{
+		"keyword": "UNSTABLE",
 		"type": "tooltip",
 		"title": "UNSTABLE_TITLE",
 		"text": "UNSTABLE_DESC",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
-	"UNSTABLE_2": {
+	{
+		"keyword": "UNSTABLE_2",
 		"type": "tooltip",
 		"title": "UNSTABLE_TITLE",
 		"text": "UNSTABLE_DESC",
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
-	"ON_FIRE": {
+	{
+		"keyword": "ON_FIRE",
 		"type": "tooltip",
 		"title": "ON_FIRE_TITLE",
 		"text": "ON_FIRE_DESC",
 		"title_image": preload("res://assets/images/ui/burned_reagent.png"),
 	}
-}
+]
+
 
 func _ready():
 	import_status_keywords()
 	import_reagents_keywords()
+	sort_keywords()
+
 
 func import_status_keywords():
 	var all_status = StatusDB.get_all_status()
 	for status_name in all_status.keys():
 		var status = all_status[status_name]
-		keywords[status["title_name"]] = {
+		keywords.append({
+			"keyword": status.title_name,
 			"type": "status",
 			"name": status_name
-		}
+		})
 
 
 func import_reagents_keywords():
 	var all_reagents = ReagentDB.get_reagents()
 	for reagent_name in all_reagents.keys():
 		var reagent_data =  all_reagents[reagent_name]
-		keywords[reagent_data.name] = {
+		keywords.append({
+			"keyword": reagent_data.name,
 			"type": "reagent",
 			"name": reagent_name
-		}
+		})
 
+#Sorts keywords by name length bigger strings first
+func sort_keywords():
+	keywords.sort_custom(self, "sort_by_name_length")
+
+
+func sort_by_name_length(a, b):
+	return tr(b.keyword).length() < tr(a.keyword).length()
 
 func get_keywords():
 	return keywords
@@ -131,25 +164,23 @@ func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = fal
 	
 	call_deferred("fade_tooltip", tip, play_sfx)
 	
-	for keyword in tip.get_keywords():
-		if keywords.has(keyword):
-			var tp_data = keywords[keyword]
-			if tp_data.type == "tooltip":
-				add_tooltip(pos, tp_data.title, tr(tp_data.text), tp_data.title_image, false, true)
-			elif tp_data.type == "status":
-				var data = StatusDB.get_from_name(tp_data.name)
-				var tip_text
-				if data.use_value_on_tooltip:
-					tip_text = tr(data.description+"_GENERIC")
-				else:
-					tip_text = tr(data.description)
-				add_tooltip(pos, data.title_name, tip_text, data.image, false, true)
-			elif tp_data.type == "reagent":
-				var tip_data = ReagentManager.get_tooltip(tp_data.name, false, false, false)
-				add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, tip_data.subtitle, true)
-				tip_data = ReagentManager.get_substitution_tooltip(tp_data.name)
-				if tip_data:
-					add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, null, false, true, false)
+	for keyword_data in tip.get_keywords_data():
+		if keyword_data.type == "tooltip":
+			add_tooltip(pos, keyword_data.title, tr(keyword_data.text), keyword_data.title_image, false, true)
+		elif keyword_data.type == "status":
+			var data = StatusDB.get_from_name(keyword_data.name)
+			var tip_text
+			if data.use_value_on_tooltip:
+				tip_text = tr(data.description+"_GENERIC")
+			else:
+				tip_text = tr(data.description)
+			add_tooltip(pos, data.title_name, tip_text, data.image, false, true)
+		elif keyword_data.type == "reagent":
+			var tip_data = ReagentManager.get_tooltip(keyword_data.name, false, false, false)
+			add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, tip_data.subtitle, true)
+			tip_data = ReagentManager.get_substitution_tooltip(keyword_data.name)
+			if tip_data:
+				add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, null, false, true, false)
 
 func fade_tooltip(tip, play_sfx):
 	#Check if tip wasn't freed (trying to fix annoying tween not added error)

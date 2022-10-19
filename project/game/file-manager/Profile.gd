@@ -84,7 +84,7 @@ func get_locale_idx(locale):
 
 func update_translation():
 	TranslationServer.set_locale(LANGUAGES[Profile.get_option("locale")].locale)
-
+	translation_updated()
 
 func reset_progression():
 	for category in progression:
@@ -299,3 +299,7 @@ func set_stat(type, value):
 	assert(stats.has(type), "Not a valid stat: "+str(type))
 	stats[type] = value
 	FileManager.save_profile()
+
+
+func translation_updated():
+	TooltipLayer.sort_keywords()

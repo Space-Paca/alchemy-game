@@ -295,6 +295,7 @@ DRAIN,drain,drenar
 DRAIN_2,drain,drene
 DRAIN_TITLE,Drain,Drenar
 DRAIN_DESC,Deals regular damage and heals any unblocked damage.,Inflige dano normal e cura o usuário em qualquer dano não bloqueado.
+SHIELD,shield,escudo
 EXILES,exiles,exila
 EXILE_TITLE,Exile,Exilar
 EXILE_DESC,Removes a reagent from your bag until end of battle.,Remove um reagente da sua sacola até o fim da batalha.

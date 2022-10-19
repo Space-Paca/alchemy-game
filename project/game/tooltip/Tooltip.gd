@@ -15,6 +15,10 @@ const FONT_SUBTITLE_BIG = preload("res://assets/fonts/TooltipSubtitleFontBig.tre
 
 signal set_up
 
+
+var keywords_data = []
+
+
 func get_title():
 	return $Title.text
 
@@ -45,6 +49,7 @@ func setup(_title, _text, _title_image, _subtitle = false, expanded = false, sty
 		$Subtitle.text = ""
 		$Text.rect_position.y -= 40
 	
+	parse_keywords_data(_text)
 	if stylize:
 		$Text.bbcode_text = stylize_text(_text)
 	else:
@@ -68,10 +73,17 @@ func setup(_title, _text, _title_image, _subtitle = false, expanded = false, sty
 	update_size()
 
 func stylize_text(text):
+	var prefix = "[color=lime]"
+	var sufix =  "[/color]"
 	#Color keywords
-	for keyword in TooltipLayer.get_keywords():
-		text = text.replace(tr(keyword), "[color=lime]" + tr(keyword) + "[/color]")
-	
+	for keyword_data in TooltipLayer.get_keywords():
+		var key = tr(keyword_data.keyword)
+		var pos = text.findn(key)
+		while pos != -1:
+			text = text.insert(pos, prefix)
+			text = text.insert(pos + prefix.length() + key.length(), sufix)
+			pos = text.findn(tr(keyword_data.keyword), pos + prefix.length() + key.length() + sufix.length())
+			
 	#Color numbers
 	#It works with two equal numbers now! (*/ω＼*)
 	var regex = RegEx.new()
@@ -127,15 +139,24 @@ func update_size():
 	
 	emit_signal("set_up")
 
+
 func get_width():
 	return $BG.rect_size.x
+
 
 func get_height():
 	return $BG.rect_size.y
 
-func get_keywords():
-	var keywords = []
-	for keyword in TooltipLayer.get_keywords():
-		if $Text.bbcode_text.find(tr(keyword)) != -1:
-			keywords.append(keyword)
-	return keywords
+
+#IMPORTANT: It can get keywords inside of keywords
+#like poison damage will return both 'poison damage' and 'poison'
+#For now this seems like its never a problem, but we should be wary
+func parse_keywords_data(text):
+	keywords_data = []
+	for data in TooltipLayer.get_keywords():
+		if text.findn(tr(data.keyword)) != -1:
+			keywords_data.append(data)
+
+
+func get_keywords_data():
+	return keywords_data

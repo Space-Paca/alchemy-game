@@ -84,6 +84,7 @@ var keywords = {
 
 func _ready():
 	import_status_keywords()
+	import_reagents_keywords()
 
 func import_status_keywords():
 	var all_status = StatusDB.get_all_status()
@@ -93,6 +94,17 @@ func import_status_keywords():
 			"type": "status",
 			"name": status_name
 		}
+
+
+func import_reagents_keywords():
+	var all_reagents = ReagentDB.get_reagents()
+	for reagent_name in all_reagents.keys():
+		var reagent_data =  all_reagents[reagent_name]
+		keywords[reagent_data.name] = {
+			"type": "reagent",
+			"name": reagent_name
+		}
+
 
 func get_keywords():
 	return keywords
@@ -126,6 +138,12 @@ func add_tooltip(pos, title, text, title_image, subtitle = false, play_sfx = fal
 				else:
 					tip_text = tr(data.description)
 				add_tooltip(pos, data.title_name, tip_text, data.image, false, true)
+			elif tp_data.type == "reagent":
+				var tip_data = ReagentManager.get_tooltip(tp_data.name, false, false, false)
+				add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, tip_data.subtitle, true)
+				tip_data = ReagentManager.get_substitution_tooltip(tp_data.name)
+				if tip_data:
+					add_tooltip(pos, tip_data.title, tip_data.text, tip_data.title_image, null, false, true, false)
 
 func fade_tooltip(tip, play_sfx):
 	#Check if tip wasn't freed (trying to fix annoying tween not added error)

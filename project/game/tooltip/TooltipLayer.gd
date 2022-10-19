@@ -44,6 +44,12 @@ var keywords = {
 	"HEAL": {
 		"type": "no_tooltip",
 	},
+	"EXILES": {
+		"type": "tooltip",
+		"title": "EXILE_TITLE",
+		"text": "EXILE_DESC",
+		"title_image": preload("res://assets/images/ui/exiled_reagent.png"),
+	},
 	"VENOM_DAMAGE": {
 		"type": "tooltip",
 		"title": "VENOM_DAMAGE_TITLE",

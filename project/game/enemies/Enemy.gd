@@ -497,7 +497,7 @@ func update_intent():
 			var value = intent.value
 			var name = action[0]
 			if name == "damage" or name == "drain":
-				value += get_damage_modifiers()
+				value = max(0, value + get_damage_modifiers())
 				if get_status("weakness"):
 					if player and player.has_artifact("debuff_kit"):
 						value = int(ceil(value/2.0))
@@ -508,6 +508,7 @@ func update_intent():
 			else:
 				add_intent(intent.action, intent.image, value, null)
 		else:
+			printt(intent.action, "here")
 			add_intent(intent.action, intent.image, null, null)
 
 

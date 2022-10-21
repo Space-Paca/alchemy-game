@@ -269,12 +269,16 @@ UNKNOWN,Unknown,Desconhecido
 UNKNOWN_REAGENT,Unknown Reagent,Reagente Desconhecido
 BOOST_RECIPES,Boost %s recipes by,Impulsiona receitas de %s por
 UNSTABLE,Unstable,Instável
-UNSTABLE_2,unstable,instáveis
+UNSTABLE_PLURAL,unstable,instáveis
 UNSTABLE_TITLE,Unstable,Instável
 UNSTABLE_DESC,"An unstable reagent, if used in a miscombination or not used until end of turn, explodes dealing 10 regular damage.","Um reagente instável, se usado em uma má combinação ou se não for utilizado até o final do turno, explodirá infligindo 10 de dano normal."
 ON_FIRE,On fire,Pegando fogo
 ON_FIRE_TITLE,On Fire,Pegando Fogo
 ON_FIRE_DESC,"This reagent, when touched, will deal 6 regular damage to user.","Este reagente, quando tocado, irá dar 6 de dano normal ao usuário."
+UNBLOCKED,unblocked,não-bloqueado
+ABSORB,absorb,absorve
+ABSORB_TITLE,Absorb,Absorver
+ABSORB_DESC,Decreases Permanent Strength from an enemy and gain that much yourself.,Diminui Força Permanente de um inimigo e ganhe você mesmo a mesma quantidade.
 SUBSTITUTES,Substitutes,Substituições
 SUBSTITUTION_TOOLTIP_SINGULAR,This reagent can serve as substitute for this reagent,Este reagente pode substituir este outro reagente
 SUBSTITUTION_TOOLTIP_PLURAL,This reagent can serve as substitute for these reagents,Este reagente pode substituir estes outros reagentes
@@ -379,6 +383,10 @@ ST_PERM_STRENGTH_TITLE,Permanent Strength,Força Permanente
 ST_PERM_STRENGTH_DESC,Permanently increases this character attack damage by %d,Permanentemente aumenta o dano de ataque deste personagem por %d
 ST_PERM_STRENGTH_DESC_GENERIC,Permanently increases this character attack damage,Permanentemente aumenta o dano de ataque deste personagem
 ST_PERM_STRENGTH_INTENT,Powering up,Fortalecendo
+ST_LOSING_STRENGTH_TITLE,Losing Strength,Perdendo Força
+ST_LOSING_STRENGTH_DESC,Permanently decreases this character attack damage by %d,Permanentemente diminui o dano de ataque deste personagem por %d
+ST_LOSING_STRENGTH_DESC_GENERIC,Permanently decreases this character attack damage,Permanentemente diminui o dano de ataque deste personagem
+ST_LOSING_STRENGTH_INTENT,Losing Strength,Perdendo Força
 ST_POISON_TITLE,Poison,Veneno
 ST_POISON_DESC,This character is dealt %d poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar %d de dano venenoso no final de seu turno. Diminui a cada turno
 ST_POISON_DESC_GENERIC,This character is dealt poison damage at the end of its turn. Decreases every turn,Este personagem irá tomar dano venenoso no final de seu turno. Diminui a cada turno
@@ -586,6 +594,8 @@ ART_STRENGTH_NAME,Powerstone,Pedra do Poder
 ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida
 ART_MAX_HP_DESC,"When acquired, your total life is increased by 20","Quando adquirido, sua vida total aumenta em 20"
+ART_HAND_VEKNOR_NAME,Hand of Veknor,Mão de Veknor
+ART_HAND_VEKNOR_DESC,"When acquired, decreased your total life by 25%. Whenever you deal 10 or more unblocked damage to an enemy, absorb 2.","Quando adquirido, diminui sua vida total em 25%. Sempre que você infligir 10 ou mais de dano não-bloqueado a um inimigo, absorve 2."
 ART_TEMP_STRENGTH_NAME,Morhk Nosering,Piercing de Morhk
 ART_TEMP_STRENGTH_DESC,Start each battle with 6 Temporary Buff,Comece cada batalha com 3 de Poder Temporário
 ART_GREAT_REST_NAME,Warm Blanket,Cobertor Quentinho
@@ -615,7 +625,7 @@ ART_TEMP_STRENGTH_PLUS_DESC,Start each battle with 12 Temporary Buff,Comece cada
 ART_RANDOM_KIT_NAME,Unpredictable Satchel,Sacola Imprevisível
 ART_RANDOM_KIT_DESC,"When acquired, add 4 random reagents to your bag and increases max health by 20%","Quando adquirida, adicione 4 reagentes aleatórios à sua bolsa e aumenta a vida máxima em 20%"
 ART_POISONED_DAGGER_NAME,Poisoned Dagger,Adaga Envenenada
-ART_POISONED_DAGGER_DESC,"Whenever you deal unblocked damage to an enemy, apply 2 Poison to it","Sempre que você inflingir dano não bloqueado a algum inimigo, aplique 2 de Veneno a ele"
+ART_POISONED_DAGGER_DESC,"Whenever you deal unblocked damage to an enemy, apply 2 Poison to it","Sempre que você inflingir dano não-bloqueado a algum inimigo, aplique 2 de Veneno a ele"
 ART_BUFF_HEAL_NAME,Ivory Cup,Taça de Marfim
 ART_BUFF_HEAL_DESC,"Whenever you heal yourself during battle, heal 50% more","Sempre que você se curar durante a batalha, cure 50% mais"
 ART_MIDAS_NAME,Midas' Finger,Dedo de Midas

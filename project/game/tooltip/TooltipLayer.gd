@@ -43,6 +43,10 @@ var keywords = [
 		"type": "no_tooltip",
 	},
 	{
+		"keyword": "UNBLOCKED",
+		"type": "no_tooltip",
+	},
+	{
 		"keyword": "HEALING",
 		"type": "no_tooltip",
 	},
@@ -94,7 +98,7 @@ var keywords = [
 		"title_image": preload("res://assets/images/status/random_status.png"),
 	},
 	{
-		"keyword": "UNSTABLE_2",
+		"keyword": "UNSTABLE_PLURAL",
 		"type": "tooltip",
 		"title": "UNSTABLE_TITLE",
 		"text": "UNSTABLE_DESC",
@@ -106,7 +110,14 @@ var keywords = [
 		"title": "ON_FIRE_TITLE",
 		"text": "ON_FIRE_DESC",
 		"title_image": preload("res://assets/images/ui/burned_reagent.png"),
-	}
+	},
+	{
+		"keyword": "ABSORB",
+		"type": "tooltip",
+		"title": "ABSORB_TITLE",
+		"text": "ABSORB_DESC",
+		"title_image": preload("res://assets/images/status/losing_strength.png"),
+	},
 ]
 
 

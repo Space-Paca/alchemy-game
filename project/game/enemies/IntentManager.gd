@@ -74,8 +74,7 @@ func get_intent_tooltip(action, enemy, player):
 	var name = action[0]
 	var args = action[1]
 	if name == "damage":
-		var value = args.value
-		value += enemy.get_damage_modifiers()
+		var value = max(0, args.value + enemy.get_damage_modifiers())
 		if enemy.get_status("weakness"):
 			if player and player.has_artifact("debuff_kit"):
 				value = int(ceil(value/2.0))
@@ -97,8 +96,7 @@ func get_intent_tooltip(action, enemy, player):
 		elif args.type == "venom":
 			tooltip.title_image = IMAGES.venom_attack
 	elif name == "drain":
-		var value = args.value
-		value += enemy.get_damage_modifiers()
+		var value = max(0, args.value + enemy.get_damage_modifiers())
 		if enemy.get_status("weakness"):
 			if player and player.has_artifact("debuff_kit"):
 				value = int(ceil(value/2.0))

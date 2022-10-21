@@ -343,6 +343,11 @@ func drain(source: Character, value: int):
 		else:
 			value = int(ceil(2*value/3.0))
 	
+	if value <= 0:
+		yield(get_tree().create_timer(.1),"timeout")
+		emit_signal("resolved")
+		return
+	
 	var unblocked_dmg = .take_damage(source, value, "drain")
 	
 	increase_stat("damage_blocked", value - unblocked_dmg)
@@ -370,6 +375,11 @@ func take_damage(source: Character, value: int, type: String, retaliate := true)
 			value = int(ceil(value/2.0))
 		else:
 			value = int(ceil(2*value/3.0))
+	
+	if value <= 0:
+		yield(get_tree().create_timer(.1),"timeout")
+		emit_signal("resolved")
+		return
 	
 	var unblocked_dmg = .take_damage(source, value, type, retaliate)
 	

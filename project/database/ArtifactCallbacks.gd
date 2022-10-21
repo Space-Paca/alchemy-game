@@ -74,6 +74,11 @@ func on_add_money_bag(args):
 func on_add_reveal_map(args):
 	args.player.reveal_map()
 
+func on_add_hand_veknor(args):
+	var loss = ceil(args.player.max_hp*0.25)
+	args.player.set_max_hp(args.player.max_hp - loss)
+	args.player.set_hp(min(args.player.hp, args.player.max_hp))
+
 
 #On battle start methods
 

@@ -121,6 +121,14 @@ const STATUSES = {
 	"show_value": true,
 	"use_value_on_tooltip": false,
 	},
+	"losing_strength": {
+	"title_name": "ST_LOSING_STRENGTH_TITLE",
+	"description": "ST_LOSING_STRENGTH_DESC",
+	"image": preload("res://assets/images/status/losing_strength.png"),
+	"intent_title": "ST_LOSING_STRENGTH_INTENT",
+	"show_value": true,
+	"use_value_on_tooltip": true,
+	},
    "martyr": {
 	"title_name": "ST_MARTYR_TITLE",
 	"description": "ST_MARTYR_DESC",

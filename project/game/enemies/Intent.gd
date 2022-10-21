@@ -23,7 +23,7 @@ func setup(_enemy, _player, _action, texture, value, multiplier):
 	
 	#Add value
 	
-	if value:
+	if typeof(value) == TYPE_INT:
 		$Value.text = str(value)
 	else:
 		$Value.text = ""

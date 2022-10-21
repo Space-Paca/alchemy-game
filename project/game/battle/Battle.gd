@@ -993,7 +993,7 @@ func spawn_new_enemy(origin: Enemy, new_enemy: String, is_minion:= false):
 
 func damage_player(source, value, type, use_modifiers:= true):
 	var mod = source.get_damage_modifiers() if use_modifiers else 0
-	var amount = value + mod
+	var amount = max(0, value + mod)
 	player.take_damage(source, amount, type)
 
 
@@ -1171,12 +1171,11 @@ func _on_enemy_acted(enemy, actions):
 		var name = action[0]
 		var args = action[1]
 		if name == "damage":
+			var amount = max(0, args.value + enemy.get_damage_modifiers())
 			for i in range(0, args.amount):
 				enemy.play_animation(args.animation)
 				AudioManager.play_enemy_sfx(enemy.data.sfx, "attack")
-				var func_state = player.take_damage(enemy, args.value + \
-													enemy.get_damage_modifiers(),\
-													args.type)
+				var func_state = player.take_damage(enemy, amount, args.type)
 				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy
@@ -1190,11 +1189,11 @@ func _on_enemy_acted(enemy, actions):
 					yield(get_tree().create_timer(dur), "timeout")
 			enemy.remove_status("temp_strength")
 		if name == "drain":
+			var amount = max(0, args.value + enemy.get_damage_modifiers())
 			for i in range(0, args.amount):
 				enemy.play_animation(args.animation)
 				AudioManager.play_enemy_sfx(enemy.data.sfx, "attack")
-				var func_state = player.drain(enemy, args.value + \
-											  enemy.get_damage_modifiers())
+				var func_state = player.drain(enemy, amount)
 				if i == args.amount - 1:
 					enemy.remove_intent()
 				#Wait before going to next action/enemy
@@ -1208,9 +1207,8 @@ func _on_enemy_acted(enemy, actions):
 			#enemy.play_animation("self_destruct")
 			enemy.take_damage(enemy, enemy.hp, "piercing")
 			yield(get_tree().create_timer(.1), "timeout")
-
-			var func_state = player.take_damage(enemy, args.value +\
-					enemy.get_damage_modifiers(), "piercing")
+			var amount = max(0, args.value + enemy.get_damage_modifiers())
+			var func_state = player.take_damage(enemy, amount, "piercing")
 			#Wait before going to next action/enemy
 			if func_state and func_state.is_valid():
 				yield(player, "resolved")

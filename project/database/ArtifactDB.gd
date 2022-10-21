@@ -101,6 +101,14 @@ const UNCOMMON = [
 		"use_on_demo": true,
 	},
 	{
+		"id": "hand_veknor",
+		"name": "ART_HAND_VEKNOR_NAME",
+		"image": preload("res://assets/images/artifacts/hand_veknor.png"),
+		"description": "ART_HAND_VEKNOR_DESC",
+		"must_unlock": false,
+		"use_on_demo": false,
+	},
+	{
 		"id": "buff_kit",
 		"name": "ART_BUFF_KIT_NAME",
 		"image": preload("res://assets/images/artifacts/buff_kit.png"),

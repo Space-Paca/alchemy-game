@@ -189,12 +189,14 @@ func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage"
 	var possible_enemies = enemies.duplicate()
 	var boost = boost_effects.all + boost_effects.damage
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+# warning-ignore:narrowing_conversion
+	amount = max(0, amount + boost)
 	randomize()
 	possible_enemies.shuffle()
 	for enemy in possible_enemies:
 		if enemy.hp > 0:
-			player.increase_stat("damage_dealt", amount + boost)
-			var func_state = enemy.take_damage(player, amount + boost, type)
+			player.increase_stat("damage_dealt", amount)
+			var func_state = enemy.take_damage(player, amount, type)
 			if func_state and func_state.is_valid():
 				yield(enemy, "resolved")
 			else:
@@ -220,8 +222,10 @@ func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, us
 	ShakeCam.shake(.2, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
-	player.increase_stat("damage_dealt", amount + boost)
-	func_state = target.take_damage(player, amount + boost, type)
+# warning-ignore:narrowing_conversion
+	amount = max(0, amount + boost)
+	player.increase_stat("damage_dealt", amount)
+	func_state = target.take_damage(player, amount, type)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
 	else:
@@ -236,8 +240,10 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 	ShakeCam.shake(.3, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.heal + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
-	player.increase_stat("damage_dealt", amount + boost)
-	func_state = target.drain(player, amount + boost)
+# warning-ignore:narrowing_conversion
+	amount = max(0, amount + boost)
+	player.increase_stat("damage_dealt", amount)
+	func_state = target.drain(player, amount)
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
 	else:
@@ -249,10 +255,12 @@ func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}
 	ShakeCam.shake(.5, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+# warning-ignore:narrowing_conversion
+	amount = max(0, amount + boost)
 	var temp_enemies = enemies.duplicate()
 	for enemy in temp_enemies:
-		player.increase_stat("damage_dealt", amount + boost)
-		var func_state = (enemy as Enemy).take_damage(player, amount + boost, type)
+		player.increase_stat("damage_dealt", amount)
+		var func_state = (enemy as Enemy).take_damage(player, amount, type)
 		if func_state and func_state.is_valid():
 			yield(enemy, "resolved")
 		else:

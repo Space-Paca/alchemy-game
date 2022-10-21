@@ -63,12 +63,19 @@ func heal(amount: int):
 	return hp - old_hp
 
 
+func absorb(source, amount):
+	source.add_status("perm_strength", amount, true, {})
+	add_status("losing_strength", amount, false, {})
+
+
 func get_damage_modifiers():
 	var mod = 0
 	if get_status("temp_strength"):
 		mod += get_status("temp_strength").amount
 	if get_status("perm_strength"):
 		mod += get_status("perm_strength").amount
+	if get_status("losing_strength"):
+		mod -= get_status("losing_strength").amount
 	return mod
 
 
@@ -212,12 +219,16 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		if pre_shield <= 0 and damage > 0 and status_list.has("arcane_aegis"):
 			AudioManager.play_sfx("shield_gain")
 			shield += status_list.arcane_aegis.amount
-		if unblocked_damage > 0 and status_list.has("enrage"):
-			add_status("perm_strength", status_list.enrage.amount, true, {})
-		if unblocked_damage > 0 and status_list.has("concentration"):
-			reduce_status("concentration", unblocked_damage)
-			if not status_list.has("concentration"):
-				emit_signal("remove_attack")
+		if unblocked_damage > 0:
+			if status_list.has("enrage"):
+				add_status("perm_strength", status_list.enrage.amount, true, {})
+			if status_list.has("concentration"):
+				reduce_status("concentration", unblocked_damage)
+				if not status_list.has("concentration"):
+					emit_signal("remove_attack")
+			if source.is_player() and source.has_artifact("hand_veknor") and unblocked_damage >= 10 and\
+			   type != "poison" and type != "venom":
+				absorb(source, 2)
 	
 	return unblocked_damage
 

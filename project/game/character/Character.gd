@@ -298,11 +298,17 @@ func update_status(type: String):
 	if emit:
 		emit_signal("finished_updating_status")
 
+###############
 #STATUS METHODS
+###############
+
+# ON ALLY DIED METHODS
 
 func on_ally_died_avenge():
 	var status = get_status("avenge")
 	add_status("perm_strength", status.amount, true, {})
+
+# ON DEATH METHODS
 
 func on_death_splitting():
 	var status = get_status("splitting")
@@ -321,6 +327,8 @@ func on_death_revenge():
 
 func on_remove_impending_doom():
 	add_status("perm_strength", 999, true, {})
+
+# START TURN METHODS
 
 func start_turn_shield():
 	if not get_status("tough"):
@@ -355,6 +363,8 @@ func start_turn_divine_protection():
 	#Resets each turn
 	status.amount = status.extra_args.value
 
+# END TURN METHODS
+
 func end_turn_poison():
 	var status = get_status("poison")
 	take_damage(self, status.amount, "poison")
@@ -367,7 +377,6 @@ func end_turn_poison():
 
 func end_turn_freeze():
 	remove_status("freeze")
-
 
 func end_turn_restrain():
 	remove_status("restrain")

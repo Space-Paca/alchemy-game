@@ -9,7 +9,7 @@ export(Array, String, "carapa", "baby_carapa", "dodger", "big_buffer", \
 					  "delayed_hitter", "baby_slasher", "elite_dodger", "baby_retaliate", \
 					  "delayed_hitter_plus", "boss_1", "big_divider", "medium_divider", \
 					  "small_divider", "revenger", "rager", "curser", "parasiter", \
-					  "timing_bomber", "baby_carapa_plus", "freezer", "boss_2", \
+					  "timing_bomber", "baby_carapa_plus", "freezer", "undead_morkh","boss_2", \
 					  "self_destructor", "avenger", "necromancer", "zombie", "doomsday", \
 					  "healer", "overkiller", "burner", "confuser", "baby_poison_plus", \
 					  "restrainer", "boss_3_1", "boss_3_2") var enemies

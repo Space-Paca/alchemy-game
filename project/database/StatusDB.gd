@@ -57,6 +57,14 @@ const STATUSES = {
 	"show_value": false,
 	"use_value_on_tooltip": false,
 	},
+   "deterioration": {
+	"title_name": "ST_DETERIORATION_TITLE",
+	"description": "ST_DETERIORATION_DESC",
+	"image": preload("res://assets/images/status/deterioration.png"),
+	"intent_title": "ST_DETERIORATION_INTENT",
+	"show_value": false,
+	"use_value_on_tooltip": false,
+	},
    "deviation": {
 	"title_name": "ST_DEVIATION_TITLE",
 	"description": "ST_DEVIATION_DESC",

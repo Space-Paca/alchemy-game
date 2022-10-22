@@ -347,6 +347,9 @@ ST_DEEP_WOUND_INTENT,Wounding,Ferindo
 ST_DEVIATION_TITLE,Deviation,Divergência
 ST_DEVIATION_DESC,This character can't repeat recipes on the same turn,Este personagem não pode repetir receitas no mesmo turno
 ST_DEVIATION_INTENT,Deviating,Divergindo
+ST_DETERIORATION_TITLE,Deterioration,Deterioração
+ST_DETERIORATION_DESC,"At start of turn, will exiles 1 random reagent from hand","No começo do turno, exila 1 reagente aleatório da mão "
+ST_DETERIORATION_INTENT,Deteriorating,Deteriorando
 ST_DIVINE_PROTECTION_TITLE,Divine Protection,Proteção Divina
 ST_DIVINE_PROTECTION_DESC,"Every turn, this character becomes invincible after taking %d damage","Em cada turno, este personagem fica invencível depois de tomar %d de dano"
 ST_DIVINE_PROTECTION_DESC_GENERIC,"Every turn, this character becomes invincible after taking some damage","Em cada turno, este personagem fica invencível depois de tomar certa quantidade de dano"

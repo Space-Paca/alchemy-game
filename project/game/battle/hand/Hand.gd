@@ -4,6 +4,7 @@ extends Node2D
 signal reagent_placed
 signal hand_slot_reagent_set
 signal reagents_randomized
+signal reagents_exiled
 
 onready var slots = $Slots
 onready var upper_slots = $Slots/UpperSlots
@@ -76,6 +77,27 @@ func set_hand(number: int):
 func error_effect():
 	for slot in get_slots():
 		slot.error_effect()
+
+
+func exile_reagents(amount : int):
+	var reagents = []
+	for slot in get_slots():
+		var reagent = slot.get_reagent()
+		if reagent:
+			reagents.append(slot)
+
+# warning-ignore:narrowing_conversion
+	amount = min(amount, reagents.size())
+	randomize()
+	reagents.shuffle()
+	for i in range(0, amount):
+		var slot = reagents[i]
+		var reagent = slot.get_reagent()
+		slot.remove_reagent()
+		reagent.exile()
+		yield(reagent, "exiled")
+		emit_signal("reagents_exiled")
+
 
 
 func freeze_slots(amount: int):

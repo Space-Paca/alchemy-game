@@ -576,6 +576,9 @@ func new_player_turn():
 		yield(draw_bag,"hand_refilled")
 		emit_signal("update_recipes_display")
 
+	if player.get_status("deterioration"):
+		hand.exile_reagents(1)
+
 	if player.get_status("burning"):
 		hand.burn_reagents(player.get_status("burning").amount)
 

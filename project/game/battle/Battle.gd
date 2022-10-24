@@ -49,6 +49,19 @@ const FG_ENTER_DUR = 1.0
 const BOOK_ENTER_DUR = .4
 const BOOK_START_X = -1920
 const BOOK_TARGET_X = -812
+const EVENT_BACKGROUNDS = {
+	"halloween": [
+		preload("res://assets/images/background/halloween/forest.png"),
+		preload("res://assets/images/background/halloween/cave.png"),
+		preload("res://assets/images/background/halloween/dungeon.png")
+	]
+}
+const BOSS_EVENT_BACKGROUNDS = {
+	"halloween": [
+		preload("res://assets/images/background/halloween/village.png"),
+		preload("res://assets/images/background/halloween/fire.png")
+	]
+}
 
 var floor_level
 var ended := false
@@ -274,11 +287,17 @@ func setup_bg():
 				$FinalBossBG/AnimationPlayer.play("rotating")
 			else:
 				$FinalBossBG/AnimationPlayer.play("rotating_final_boss")
-		$BG.texture = boss_backgrounds[floor_level-1]
+		if Debug.seasonal_event and floor_level < 3:
+			$BG.texture = BOSS_EVENT_BACKGROUNDS[Debug.seasonal_event][floor_level-1]
+		else:
+			$BG.texture = boss_backgrounds[floor_level-1]
 		$FG.texture = boss_foregrounds[floor_level-1]
 	else:
-		$BG.texture = backgrounds[floor_level-1]
-		$BGEliteEffect.texture = backgrounds[floor_level-1]
+		if Debug.seasonal_event:
+			$BG.texture = EVENT_BACKGROUNDS[Debug.seasonal_event][floor_level-1]
+		else:
+			$BG.texture = backgrounds[floor_level-1]
+		$BGEliteEffect.texture = $BG.texture
 		$BGEliteEffect.modulate = backgrounds_elite_modulate[floor_level-1]
 		$FG.texture = foregrounds[floor_level-1]
 	

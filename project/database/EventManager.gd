@@ -439,3 +439,7 @@ func helpful_homunculus(event_display, player, increase_max_hp):
 	else:
 		player.set_hp(player.hp + 40)
 		load_leave_event(event_display, player, current_event.leave_text_1)
+
+#21
+func veknor_castle(event_display, player):
+	load_leave_event(event_display, player, current_event.leave_text_1)

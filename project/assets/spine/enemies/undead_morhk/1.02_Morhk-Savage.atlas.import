@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.02_Morhk-Savage.atlas-02a5af31ea16b8c857ff7c1ce71ff478.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies/undead_morhk/1.02_Morhk-Savage.atlas"
+dest_files=[ "res://.import/1.02_Morhk-Savage.atlas-02a5af31ea16b8c857ff7c1ce71ff478.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

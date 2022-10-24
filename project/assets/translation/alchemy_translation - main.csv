@@ -1377,6 +1377,10 @@ Depois de lhe dar toda a força que podia o Curandeiro para, oferecendo a mão e
 Você retoma sua jornada, em paz após esse encontro e melhor preparado para o que há por vir."
 EVENT_20_OPT_1,Accept a healing blessing (heal 35 life).,Aceitar uma benção de cura (cura 35 de vida).
 EVENT_20_OPT_2,Accept a life blessing (increase max life by 10).,Aceitar uma benção de vida (aumenta a vida máxima em 10).
+EVENT_21_TITLE,The Castle of Veknor,O Castelo de Veknor
+EVENT_21_TEXT,text,texto
+EVENT_21_LEAVE_1,leave,sair
+EVENT_21_OPT_1,aaa,bbb
 SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos primeiro.
 EN_AVENGER,Carapa Vindicator,Carapa Vindicador
 EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor

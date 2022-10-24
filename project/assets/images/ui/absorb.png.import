@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exiled_reagent.png-3c8870ca34ef4c1b680ee5b0bcbd1d4a.stex"
+path="res://.import/absorb.png-1e3d54ff4770915584bf144b14230d34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/exiled_reagent.png"
-dest_files=[ "res://.import/exiled_reagent.png-3c8870ca34ef4c1b680ee5b0bcbd1d4a.stex" ]
+source_file="res://assets/images/ui/absorb.png"
+dest_files=[ "res://.import/absorb.png-1e3d54ff4770915584bf144b14230d34.stex" ]
 
 [params]
 

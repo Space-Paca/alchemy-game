@@ -76,9 +76,8 @@ func _ready():
 		anim.play("intro-no-continue")
 	
 	set_process_input(true)
-	
-# (❁´◡`❁)
 
+# (❁´◡`❁)
 
 func _process(dt):
 	var label = $CompendiumButton/Label

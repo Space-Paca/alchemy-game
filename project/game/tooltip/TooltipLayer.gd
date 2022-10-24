@@ -116,7 +116,7 @@ var keywords = [
 		"type": "tooltip",
 		"title": "ABSORB_TITLE",
 		"text": "ABSORB_DESC",
-		"title_image": preload("res://assets/images/status/losing_strength.png"),
+		"title_image": preload("res://assets/images/ui/absorb.png"),
 	},
 ]
 

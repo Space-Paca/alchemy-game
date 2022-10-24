@@ -308,12 +308,9 @@ func resume_bgm_volume():
 
 func play_bgm(name, layers = false, start_from_beginning = false):
 	if Debug.seasonal_event:
-		var season_name
-		if not layers:
-			season_name = Debug.seasonal_event + "_" + name
-		else:
-			season_name = Debug.seasonal_event + "_" + name + "-l" + str(layers)
-		if BGMS.has(season_name):
+		var season_name = Debug.seasonal_event + "_" + name
+		var posfix = "" if not layers else "-l" + str(layers)
+		if BGMS.has(season_name+posfix):
 			name = season_name
 		
 	if not layers:

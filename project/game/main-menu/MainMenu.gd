@@ -50,6 +50,9 @@ func _ready():
 	else:
 		growing_buttons.steam.hide()
 	
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+	
 	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])
 	for button in growing_buttons.values():
@@ -105,6 +108,12 @@ func _input(event):
 			yield(get_tree(), "idle_frame")
 			OS.window_size = Profile.WINDOW_SIZES[Profile.get_option("window_size")]
 			OS.window_position = Vector2(0,0)
+
+
+func set_seasonal_look(event_string):
+	$Background.animation_state_data_res.skeleton.atlas_res = load("res://assets/spine/mainmenu/start screen_spine_%s.atlas" % event_string)
+	$Title.texture = load("res://assets/images/main_menu/%s/title.png" % event_string)
+	$Frame.texture = load("res://assets/images/main_menu/%s/border.png" % event_string)
 
 
 func skip_intro_animation():

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame_spikes_ 64%.png-0b377f817299bcaa39900c45675eecde.stex"
+path="res://.import/title.png-65bbb3b01b3be2e528a20b173d06fd16.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/main_menu/frame_spikes_ 64%.png"
-dest_files=[ "res://.import/frame_spikes_ 64%.png-0b377f817299bcaa39900c45675eecde.stex" ]
+source_file="res://assets/images/main_menu/halloween/title.png"
+dest_files=[ "res://.import/title.png-65bbb3b01b3be2e528a20b173d06fd16.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

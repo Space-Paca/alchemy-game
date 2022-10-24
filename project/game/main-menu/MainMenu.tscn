@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/images/main_menu/Camada 19.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/ui/compendium_icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/main_menu/title.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/main_menu/frame_spikes_ 64%.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/main_menu/border.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/main_menu/sub titulo.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/main_menu/circle.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/ui/logo_discord__alchemia.png" type="Texture" id=14]
@@ -1176,6 +1176,7 @@ current_animations = [ {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 root_node = NodePath("../..")
+autoplay = "01_idle"
 anims/01_idle = SubResource( 32 )
 
 [node name="BackTitleDetail" type="Sprite" parent="."]

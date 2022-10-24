@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/start screen_spine_halloween.atlas-2ac76ad3de1d720d98095b8c22d48346.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/mainmenu/start screen_spine_halloween.atlas"
+dest_files=[ "res://.import/start screen_spine_halloween.atlas-2ac76ad3de1d720d98095b8c22d48346.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

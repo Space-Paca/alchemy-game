@@ -32,6 +32,9 @@ const GROWING_BUTTON_WIDTH = {
 		"pt_BR": 520,
 	},
 }
+const SEASONAL_MOD = {
+	"halloween": Color("ff9126")
+}
 
 var hover_compendium = false
 var is_hovered = {
@@ -110,9 +113,22 @@ func _input(event):
 
 
 func set_seasonal_look(event_string):
+	var path = "res://assets/images/main_menu/%s/" % event_string
 	$Background.animation_state_data_res.skeleton.atlas_res = load("res://assets/spine/mainmenu/start screen_spine_%s.atlas" % event_string)
-	$Title.texture = load("res://assets/images/main_menu/%s/title.png" % event_string)
-	$Frame.texture = load("res://assets/images/main_menu/%s/border.png" % event_string)
+	$Title.texture = load(path + "title.png")
+	$Title/TitleSheen.texture = load(path + "title.png")
+	$Frame.texture = load(path + "border.png")
+	$SpinningThing.texture = load(path + "lines.png")
+	$SpinningThing/Part1.texture = load(path + "circle 2_big.png")
+	$SpinningThing/Part2.texture = load(path + "half_moon1.png")
+	$SpinningThing/Part3.texture = load(path + "circle.png")
+	$SpinningThing/Part4.texture = load(path + "circle 2_big.png")
+	$BackTitleDetail.texture = load(path + "Camada 19.png")
+	$Subtitle.texture = load(path + "sub titulo.png")
+	
+	for node in [$ContinueButton, $NewGameButton, $QuitButton,
+			$VBoxContainer/Updates, $VBoxContainer/Discord, $VBoxContainer/Steam]:
+		node.self_modulate = SEASONAL_MOD[event_string]
 
 
 func skip_intro_animation():

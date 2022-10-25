@@ -104,16 +104,11 @@ func setup():
 
 func set_seasonal_look(event_string):
 	var path = "res://assets/images/background/shop/%s/" % event_string
-#	$Title.texture = load(path + "title.png")
-#	$Title/TitleSheen.texture = load(path + "title.png")
-#	$Frame.texture = load(path + "border.png")
-#	$SpinningThing.texture = load(path + "lines.png")
-#	$SpinningThing/Part1.texture = load(path + "circle 2_big.png")
-#	$SpinningThing/Part2.texture = load(path + "half_moon1.png")
-#	$SpinningThing/Part3.texture = load(path + "circle.png")
-#	$SpinningThing/Part4.texture = load(path + "circle 2_big.png")
-#	$BackTitleDetail.texture = load(path + "Camada 19.png")
-#	$Subtitle.texture = load(path + "sub titulo.png")
+	$Witch.texture = load(path + "witch.png")
+	for child in $Witch.get_children():
+		child.hide()
+	$BG.texture = load(path + "bg.png")
+	$TableGlass.texture = load(path + "table_glass.png")
 	
 	for node in [recipe_button, reagents_button, back_button]:
 		node.self_modulate = SEASONAL_MOD[event_string]

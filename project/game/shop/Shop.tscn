@@ -87,7 +87,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 947.461, 156.23 ) ]
+"values": [ Vector2( 947.461, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("TableGlass:rect_position")
@@ -176,7 +176,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.12, 0.84, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -932.539, 156.23 ), Vector2( -932.539, 156.23 ), Vector2( 947.461, 156.23 ), Vector2( 947.461, 156.23 ) ]
+"values": [ Vector2( -932.539, 0 ), Vector2( -932.539, 0 ), Vector2( 947.461, 0 ), Vector2( 947.461, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("TableGlass:rect_position")
@@ -254,7 +254,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2000, 156.23 ) ]
+"values": [ Vector2( -2000, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ShopMenu/ShopkeeperDialogue:modulate")
@@ -470,9 +470,8 @@ __meta__ = {
 
 [node name="Witch" type="TextureRect" parent="."]
 margin_left = 947.461
-margin_top = 156.23
 margin_right = 1714.46
-margin_bottom = 815.23
+margin_bottom = 816.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -480,9 +479,9 @@ __meta__ = {
 
 [node name="Eye" type="TextureRect" parent="Witch"]
 margin_left = 262.064
-margin_top = 196.548
+margin_top = 354.548
 margin_right = 326.064
-margin_bottom = 262.548
+margin_bottom = 420.548
 texture = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -490,9 +489,9 @@ __meta__ = {
 
 [node name="EyeLid" type="TextureRect" parent="Witch"]
 margin_left = 246.944
-margin_top = 188.988
+margin_top = 346.988
 margin_right = 341.944
-margin_bottom = 233.988
+margin_bottom = 391.988
 texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -500,9 +499,9 @@ __meta__ = {
 
 [node name="Glasses" type="TextureRect" parent="Witch"]
 margin_left = 236.865
-margin_top = 166.31
+margin_top = 324.31
 margin_right = 352.865
-margin_bottom = 288.31
+margin_bottom = 446.31
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -533,7 +532,7 @@ anchor_bottom = 1.0
 margin_left = -1115.0
 margin_top = -160.0
 margin_right = -606.0
-margin_bottom = -14.0
+margin_bottom = -13.9998
 theme = ExtResource( 7 )
 text = "SHOP_RECIPES"
 __meta__ = {
@@ -548,7 +547,7 @@ anchor_bottom = 1.0
 margin_left = -593.0
 margin_top = -160.0
 margin_right = -15.0
-margin_bottom = -14.0
+margin_bottom = -13.9999
 theme = ExtResource( 7 )
 text = "RID_REAGENTS"
 __meta__ = {

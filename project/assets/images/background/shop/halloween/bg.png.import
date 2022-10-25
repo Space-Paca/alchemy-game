@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/01_shop_bruxa_2_0000s_0003_vendedora.png-9c84bc3edbd2ee33704a71390d55afe2.stex"
+path="res://.import/bg.png-c0fb4b8be011564db629fcddb4825a9c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/shop/01_shop_bruxa_2_0000s_0003_vendedora.png"
-dest_files=[ "res://.import/01_shop_bruxa_2_0000s_0003_vendedora.png-9c84bc3edbd2ee33704a71390d55afe2.stex" ]
+source_file="res://assets/images/background/shop/halloween/bg.png"
+dest_files=[ "res://.import/bg.png-c0fb4b8be011564db629fcddb4825a9c.stex" ]
 
 [params]
 

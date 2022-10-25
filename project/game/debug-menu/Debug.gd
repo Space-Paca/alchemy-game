@@ -68,7 +68,7 @@ func _ready():
 			if key == "--test_seasonal":
 				seasonal_event = str(value)
 
-
+	#seasonal_event = false
 	version_label.text = VERSION
 	demo_label.visible = is_demo
 	

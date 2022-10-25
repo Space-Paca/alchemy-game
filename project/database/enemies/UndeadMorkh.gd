@@ -1,7 +1,7 @@
 extends EnemyData
 
 var scene_path = "res://game/enemies/enemy-scenes/UndeadMorkh.tscn"
-var image = "res://assets/images/enemies/buffing big enemy/idle.png"
+var image = "res://assets/images/enemies/undead_morkh/idle.png"
 var name = "EN_UNDEAD_MORKH"
 var sfx = "morhk"
 var use_idle_sfx = false

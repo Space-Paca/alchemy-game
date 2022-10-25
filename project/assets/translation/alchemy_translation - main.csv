@@ -1393,7 +1393,7 @@ EVENT_21_LEAVE_1,"A few moments after entering its gloomy halls, (wave)a glow(/w
 
 Spooked, you quickly find the source of the brightness: it's the (highlight)decayed hand(/highlight) you've been carrying all this time. Maybe it is somewhat connected to this place?
 
-Suddenly the hand starts pointing towards the darkness of the corridors, and you soon realise it's giving you directions. To what exactly you don't know, but you blindly decide to trust the magical artifact.
+Suddenly the hand starts pointing towards the darkness of the corridors, and you soon realize it's giving you directions. To what exactly you don't know, but you blindly decide to trust the magical artifact.
 
 And thankfully that trust is quickly rewarded!
 
@@ -1401,15 +1401,15 @@ The hand guides you to a secret door, and revealed inside is a mountain of gold 
 
 As you step out of the spooky structure, heavy with all the gold you collected, you also notice (highlight)all your wounds and tiredness have vanished!(/highlight) It seems that keeping that sinister hand has been beneficial, as it appears it wants you better alive than dead...","Poucos momentos depois de entrar em seus corredores sombrios, (wave)um brilho(/wave) emana de você.
 
-Assustado, você rapidamente encontra a fonte da claridade: é a highlight)mão decepada(/highlight) que você tem carregado todo esse tempo. Talvez ela esteja de alguma forma conectada com este lugar?
+Assustado, você rapidamente encontra a fonte da claridade: é a (highlight)mão decepada(/highlight) que você tem carregado todo esse tempo. Talvez ela esteja de alguma forma conectada com este lugar?
 
-De repente a mão começa a apontar para os corredores soturnos, e você rapidamente percebe que ela está leh dando direções. Para o que exatamente, você não sabe, mas decide cegamente confiar no artefato mágico.
+De repente a mão começa a apontar para os corredores soturnos, e você rapidamente percebe que ela está lhe dando direções. Para o que exatamente, você não sabe, mas decide cegamente confiar no artefato mágico.
 
 E felizmente essa confiança é rapidamente recompensada!
 
 A mão lhe guia até uma porta secreta, revelando adentro uma montanha de ouro e jóias. Você apanha o máximo que consegue, até que as paredes começam a emanar um som arrepiante, lhe instigando a sair das premissas o mais rápido possível.
 
-Assim que você pisa para fora do castelo horripilante, agora pesado com todo o ouro que coletou, you percebe que (highlight) todas suas feridas e cansaço desapareceram!(/highlight) Parece que manter aquela mão sinistra valeu muito a pena, já que aparentemente ela deseja você mais vivo do que morto..."
+Assim que você pisa para fora do castelo horripilante, agora pesado com todo o ouro que coletou, você percebe que (highlight)todas suas feridas e cansaço desapareceram!(/highlight) Parece que manter aquela mão sinistra valeu muito a pena, já que aparentemente ela deseja você mais vivo do que morto..."
 EVENT_21_LEAVE_4,"You don't trust this place, and neither your senses to affirm if it's actually real or not.
 
 You return to your journey, perhaps a bit more scared than before, but safe and sound nonetheless.","Você não confia nesse lugar, e muito menos nos seus sentidos em afirmar se ele é de fato real ou não.
@@ -1449,7 +1449,7 @@ De cima, você sente um cheiro pungente, levememte ácido.
 De baixo, você sente um cheiro de podridão, quase nauseante.
 
 Qual caminho você irá seguir?"
-EVENT_23_LEAVE_1,"After walking for hours through the corridors, panic starts to sink as you realise you might be lost here forever.
+EVENT_23_LEAVE_1,"After walking for hours through the corridors, panic starts to sink as you realize you might be lost here forever.
 
 Suddenly, by the end of yet another corridor, you find a curious fountain of water, a heavenly sight in such a dusty place.
 
@@ -1474,7 +1474,7 @@ EVENT_23_LEAVE_2,"After hours of looking for something, you finally give up and 
 
 Just as you are about to leave the castle, a terrifying sound comes from behind you. You turn around, and the an aberration stands before you, mumbling incoherent sounds, and emanating a putrid smell that invades your nostrils.
 
-Shaken, you realise you won't be leaving here before dealing with that thing. Scared, you fear ""leaving here"" might not be an option at all.","Após horas em sua procura por algo, você finalmente desiste e começa a voltar por onde veio.
+Shaken, you realize you won't be leaving here before dealing with that thing. Scared, you fear ""leaving here"" might not be an option at all.","Após horas em sua procura por algo, você finalmente desiste e começa a voltar por onde veio.
 
 Bem quando está prestes a sair do castelo, um som aterrorizador emana de suas costas. Você se vira, e uma aberração se impõe a sua frente, murmurando barulhos incompreensíveis e exalando um cheiro pútrido que invade suas narinas.
 
@@ -1498,7 +1498,7 @@ Tired, you sit down to rest for a bit, when you notice a faint glow coming out o
 
 On this room, (highlight)mountains of gold and jewels(/highlight) lay resting on the floor and shelves, you mind races as you try to collect as much as you can, meanwhile completely ignoring the eerie sounds emanating from the walls. Little by little, you feel more sleepy, and before you know you have collapsed onto the ground.
 
-You wake up, not sure how long after, outside the castle. Surrounding you, all the gold you managed to put your hands on! However, you soon realise all your artifacts you have been collecting in your adventure are now gone... Perhaps taken by the castle as retribution?
+You wake up, not sure how long after, outside the castle. Surrounding you, all the gold you managed to put your hands on! However, you soon realize all your artifacts you have been collecting in your adventure are now gone... Perhaps taken by the castle as retribution?
 
 You quickly dismiss the idea of going back to retrieve them, swearing to yourself to never set foot in that place ever again, and glad you got out with your life and a considerate amount of coin too...","Você tem seguido o mesmo longo corredor já faz um tempo, agora ficando preocupado com a possibilidade de ter andado em círculo por todo esse tempo.
 
@@ -1511,6 +1511,7 @@ Você acorda, incerto de quanto tempo depois, fora do castelo. Em sua volta, est
 Velozmente você abandona a ideia de voltar para encontrá-los, prometendo a sí mesmo nunca mais pisar naquele lugar, feliz que saiu vivo e ao menos com uma quantidade considerável de moedas..."
 EVENT_23_OPT_1,Go up the stairs,Subir as escadas
 EVENT_23_OPT_2,Go down the stairs,Descer as escadas
+EVENT_GO_ON,Continuar,
 SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos primeiro.
 EN_AVENGER,Carapa Vindicator,Carapa Vindicador
 EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor
@@ -1549,6 +1550,7 @@ EN_SELF_DESTRUCTOR,Unstable Craggium,Rochum Instável
 EN_SPAWNER_OOZE,Noxious Ooze,Lodo Nocivo
 EN_TIMING_BOMBER,Dr. Bomberson,Dr. Bomberson
 EN_ZOMBIE,Reanimated Corpse,Cadáver Reanimado
+EN_UNDEAD_MORKH,Undead Morkh,Morkho-Vivo
 ENDING_TEXT_1,"""The relic I've fought for so long to get is finally within my reach.
 The means to leave this godforsaken place...""","""A relíquia que eu busquei por tanto tempo está finalmente ao meu alcance.
 A maneira de sair desse maldito lugar..."""

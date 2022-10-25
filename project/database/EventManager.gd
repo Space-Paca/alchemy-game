@@ -442,4 +442,32 @@ func helpful_homunculus(event_display, player, increase_max_hp):
 
 #21
 func veknor_castle(event_display, player):
-	load_leave_event(event_display, player, current_event.leave_text_1)
+	if player.has_artifact("hand_veknor"):
+		player.full_heal()
+		player.add_gold(666)
+		load_leave_event(event_display, player, current_event.leave_text_1)
+	load_new_event(event_display, player, 22)
+
+#22
+func veknor_castle_2(event_display, player, right):
+	var text = current_event.leave_text_1
+	if right:
+		text = current_event.leave_text_2
+	load_new_event(event_display, player, 23, text)
+
+#24
+func veknor_castle_3(event_display, player):
+	if player.hp <= player.max_hp * .4 and randf() < .3:
+		player.set_max_hp(player.max_hp - 20)
+		player.full_heal
+		load_leave_event(event_display, player, current_event.leave_text_1)
+	elif not player.has_artifact("hand_veknor") and randf() < .3:
+		player.add_artifact("hand_veknor")
+		load_leave_event(event_display, player, current_event.leave_text_3)
+	elif player.artifacts.size() >= 2 and randf() < .3:
+		for a in player.artifacts:
+			player.remove_artifact(a)
+		player.add_gold(666)
+		load_leave_event(event_display, player, current_event.leave_text_4)
+	else:
+		load_battle_event(event_display, player, current_event.leave_text_2, EncounterManager.undead_morhk_encounter)

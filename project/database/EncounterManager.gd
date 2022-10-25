@@ -13,7 +13,7 @@ var elite_encounter_index : int
 var boss_encounter_pool : Array
 var tutorial_encounter
 
-var divider_encounter
+var undead_morhk_encounter
 
 
 func _ready():
@@ -42,8 +42,8 @@ func _ready():
 				
 				if encounter.resource_name == TUTORIAL_ENCOUNTER_NAME:
 					tutorial_encounter = encounter
-				if encounter.resource_name == "floor2_2.tres":
-					divider_encounter = encounter
+				if encounter.resource_name == "floor2_elite3.tres":
+					undead_morhk_encounter = encounter
 			file_name = dir.get_next()
 	else:
 		print("EncounterManager: An error occurred when trying to access the path.")

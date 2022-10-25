@@ -5,6 +5,15 @@ signal combinations_seen(combinations)
 signal combination_bought(combination)
 signal hint_bought(combination)
 
+enum States {MENU, RECIPES, REAGENTS}
+
+const DESTROY_BASE_COST := 20
+const DESTROY_INCREMENTAL_COST := 10
+const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
+const SEASONAL_MOD = {
+	"halloween": Color("ff9126")
+}
+
 onready var recipes = $RecipeMenu/HBoxContainer
 onready var sold_amount = $RecipeMenu/HBoxContainer.get_children().size()
 onready var reagent_list = $ReagentsMenu/ClickableReagentList
@@ -17,18 +26,21 @@ onready var panel = $ShopMenu/ShopkeeperDialogue/Panel
 onready var shop_menu = $ShopMenu
 onready var reagents_menu = $ReagentsMenu
 onready var recipe_menu = $RecipeMenu
-
-enum States {MENU, RECIPES, REAGENTS}
-
-const DESTROY_BASE_COST := 20
-const DESTROY_INCREMENTAL_COST := 10
-const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
+# BUTTONS
+onready var recipe_button = $ShopMenu/RecipesButton
+onready var reagents_button = $ShopMenu/ReagentsButton
+onready var back_button = $BackButton
 
 var chosen_reagent_index : int
 var player : Player
 var dungeon_ref
 var curr_state = States.MENU
 var shown_combinations := []
+
+func _ready():
+	#if Debug.seasonal_event:
+	#	set_seasonal_look(Debug.seasonal_event)
+	pass
 
 
 func _process(dt):
@@ -89,6 +101,11 @@ func setup():
 	panel.rect_size.y = 6
 	update_combinations()
 	update_reagents()
+
+
+func set_seasonal_look(event_string):
+	for node in [recipe_button, reagents_button, back_button]:
+		node.self_modulate = SEASONAL_MOD[event_string]
 
 
 func start():

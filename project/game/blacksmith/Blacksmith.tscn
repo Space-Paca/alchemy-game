@@ -378,7 +378,7 @@ __meta__ = {
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
 margin_left = -1000.0
-margin_right = 12650.0
+margin_right = 1650.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 text = "UPGRADE_REAGENT"

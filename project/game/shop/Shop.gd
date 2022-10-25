@@ -11,7 +11,10 @@ const DESTROY_BASE_COST := 20
 const DESTROY_INCREMENTAL_COST := 10
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 const SEASONAL_MOD = {
-	"halloween": Color("ff9126")
+	"halloween": {
+		"ui": Color("ff9126"),
+		"dialogue": Color("dcb491d4"),
+	}
 }
 
 onready var recipes = $RecipeMenu/HBoxContainer
@@ -22,6 +25,8 @@ onready var reagent_destroy_panel = $ReagentsMenu/ReagentDestroy/Panel
 onready var reagent_destroy_label = $ReagentsMenu/ReagentDestroy/ReagentDestroyLabel
 onready var dialog_label = $ShopMenu/ShopkeeperDialogue/Panel/CenterContainer/DialogLabel
 onready var panel = $ShopMenu/ShopkeeperDialogue/Panel
+onready var dialogue_panel_point = $ShopMenu/ShopkeeperDialogue/Polygon2D
+onready var destroy_panel_point = $ReagentsMenu/ReagentDestroy/Polygon2D
 # MENUS
 onready var shop_menu = $ShopMenu
 onready var reagents_menu = $ReagentsMenu
@@ -115,7 +120,10 @@ func set_seasonal_look(event_string):
 	
 	for node in [recipe_button, reagents_button, back_button,\
 				 destroy_yes_button, destroy_no_button]:
-		node.self_modulate = SEASONAL_MOD[event_string]
+		node.self_modulate = SEASONAL_MOD[event_string].ui
+	dialogue_panel_point.color = SEASONAL_MOD[event_string].dialogue
+	destroy_panel_point.color = SEASONAL_MOD[event_string].dialogue
+	panel.get_stylebox("panel", "" ).bg_color = SEASONAL_MOD[event_string].dialogue
 
 
 func start():

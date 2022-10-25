@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.10_Revenger_festas.atlas-56e0b22a03098beda0cc276d2c4e97ab.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/revenger/2.10_Revenger_festas.atlas"
+dest_files=[ "res://.import/2.10_Revenger_festas.atlas-56e0b22a03098beda0cc276d2c4e97ab.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

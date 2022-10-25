@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.02_zombie_festas.atlas-29f0769db5cba6caddef84cb90a85631.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/zombie/3.02_zombie_festas.atlas"
+dest_files=[ "res://.import/3.02_zombie_festas.atlas-29f0769db5cba6caddef84cb90a85631.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

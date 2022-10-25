@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.01_Necromancer_festas.atlas-e383be487d08789760aafa0b2bb2e30d.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/necromancer/3.01_Necromancer_festas.atlas"
+dest_files=[ "res://.import/3.01_Necromancer_festas.atlas-e383be487d08789760aafa0b2bb2e30d.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

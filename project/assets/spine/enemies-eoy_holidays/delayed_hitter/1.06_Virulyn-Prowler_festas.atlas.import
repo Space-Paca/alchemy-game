@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.06_Virulyn-Prowler_festas.atlas-ac27b6a2eb9df7d4692ca68a183b16e6.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/delayed_hitter/1.06_Virulyn-Prowler_festas.atlas"
+dest_files=[ "res://.import/1.06_Virulyn-Prowler_festas.atlas-ac27b6a2eb9df7d4692ca68a183b16e6.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

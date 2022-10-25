@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.05_Overkiller_voodoo_festas.atlas-5d6e56a969a8c31d5f8f554619ce965b.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/overkiller/3.05_Overkiller_voodoo_festas.atlas"
+dest_files=[ "res://.import/3.05_Overkiller_voodoo_festas.atlas-5d6e56a969a8c31d5f8f554619ce965b.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

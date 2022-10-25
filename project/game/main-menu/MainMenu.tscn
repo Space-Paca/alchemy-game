@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -1273,6 +1273,18 @@ tracks/3/keys = {
 "values": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ) ]
 }
 
+[sub_resource type="ParticlesMaterial" id=35]
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 10.0
+
 [node name="MainMenu" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1597,22 +1609,22 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="QuitConfirm/VBoxContainer"]
 margin_top = 201.0
 margin_right = 1304.0
-margin_bottom = 347.0
+margin_bottom = 321.0
 theme = ExtResource( 5 )
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Yes" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
-margin_left = 427.0
-margin_right = 627.0
-margin_bottom = 146.0
+margin_left = 405.0
+margin_right = 632.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 200, 120 )
 text = "YES"
 
 [node name="No" type="Button" parent="QuitConfirm/VBoxContainer/HBoxContainer"]
-margin_left = 677.0
-margin_right = 877.0
-margin_bottom = 146.0
+margin_left = 682.0
+margin_right = 899.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 200, 120 )
 text = "NO"
 
@@ -1713,6 +1725,13 @@ root_node = NodePath("../AnimationPlayer")
 autoplay = "RESET"
 anims/RESET = SubResource( 33 )
 anims/eoy_holidays = SubResource( 34 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 960, -100 )
+amount = 500
+lifetime = 15.0
+visibility_rect = Rect2( -1060, -100, 2120, 1380 )
+process_material = SubResource( 35 )
 
 [connection signal="timeout" from="Title/TitleSheen/SheenTimer" to="." method="_on_SheenTimer_timeout"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

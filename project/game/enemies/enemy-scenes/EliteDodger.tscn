@@ -1,111 +1,25 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/spine/enemies/elite_dodger/1.05_Queen-Needler.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/enemies/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/spine/enemies/elite_dodger/1.05_Queen-Needler.atlas" type="SpineAtlasResource" id=3]
+[ext_resource path="res://assets/spine/enemies-halloween/05 queen/1.05_Queen-Needler_ghost.atlas" type="SpineAtlasResource" id=4]
+[ext_resource path="res://assets/spine/enemies-halloween/05 queen/1.05_Queen-Needler_knife.atlas" type="SpineAtlasResource" id=5]
+[ext_resource path="res://assets/spine/enemies-halloween/05 queen/1.05_Queen-Needler_pumpkin.atlas" type="SpineAtlasResource" id=6]
+[ext_resource path="res://assets/spine/enemies-eoy_holidays/elite_dodger/1.05_Queen-Needler_festas.atlas" type="SpineAtlasResource" id=7]
 
-[sub_resource type="SpineSkeletonDataResource" id=1]
+[sub_resource type="SpineSkeletonDataResource" id=8]
+resource_local_to_scene = true
 atlas_res = ExtResource( 3 )
 skeleton_json_res = ExtResource( 1 )
 animations = null
 skins = null
 
 [sub_resource type="SpineAnimationStateDataResource" id=2]
-skeleton = SubResource( 1 )
+resource_local_to_scene = true
+skeleton = SubResource( 8 )
 
-[sub_resource type="Animation" id=3]
-length = 1.5333
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:current_animations")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ [ {
-"animation": "atk",
-"clear": false,
-"delay": 0.0,
-"empty": false,
-"empty_animation_duration": true,
-"loop": false,
-"track_id": 0
-} ] ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 2.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:current_animations")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ [ {
-"animation": "death",
-"clear": false,
-"delay": 0.0,
-"empty": false,
-"empty_animation_duration": true,
-"loop": false,
-"track_id": 0
-} ] ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 0.8333
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:current_animations")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ [ {
-"animation": "divider",
-"clear": false,
-"delay": 0.0,
-"empty": false,
-"empty_animation_duration": true,
-"loop": false,
-"track_id": 0
-} ] ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 2.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:current_animations")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ [ {
-"animation": "dmg",
-"clear": false,
-"delay": 0.0,
-"empty": false,
-"empty_animation_duration": true,
-"loop": false,
-"track_id": 0
-} ] ]
-}
-
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:current_animations")
@@ -118,7 +32,7 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ [ {
-"animation": "stand",
+"animation": "01_idle",
 "clear": false,
 "delay": 0.0,
 "empty": false,
@@ -128,18 +42,112 @@ tracks/0/keys = {
 } ] ]
 }
 
+[sub_resource type="Animation" id=10]
+length = 1.5333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "02_atk",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "03_dmg",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 1.1667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "04_death",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.8333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "05_divider",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
 [node name="EliteDodger" instance=ExtResource( 2 )]
+halloween_atlases = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+eoy_holidays_atlases = [ ExtResource( 7 ) ]
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 0, 270 )
 animation_state_data_res = SubResource( 2 )
 current_animations = [ {
-"animation": "stand",
+"animation": "05_divider",
 "clear": false,
 "delay": 0.0,
 "empty": false,
 "empty_animation_duration": true,
-"loop": true,
+"loop": false,
 "track_id": 0
 } ]
 
@@ -147,11 +155,11 @@ current_animations = [ {
 position = Vector2( -39.8525, -271.626 )
 
 [node name="AnimationPlayer" parent="." index="8"]
-anims/atk = SubResource( 3 )
-anims/death = SubResource( 4 )
-anims/divider = SubResource( 5 )
-anims/dmg = SubResource( 6 )
-anims/stand = SubResource( 7 )
+anims/01_idle = SubResource( 9 )
+anims/02_atk = SubResource( 10 )
+anims/03_dmg = SubResource( 11 )
+anims/04_death = SubResource( 12 )
+anims/05_divider = SubResource( 13 )
 
 [connection signal="animation_complete" from="Sprite" to="." method="_on_Sprite_animation_complete"]
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.01_BabyRetaliate_festas.atlas-01753ca9199392adfd6831a8e3cf8bcf.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/baby_retaliate/2.01_BabyRetaliate_festas.atlas"
+dest_files=[ "res://.import/2.01_BabyRetaliate_festas.atlas-01753ca9199392adfd6831a8e3cf8bcf.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

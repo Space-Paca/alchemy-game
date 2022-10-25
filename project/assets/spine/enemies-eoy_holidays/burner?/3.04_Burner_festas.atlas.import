@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.04_Burner_festas.atlas-9b160ab1d6f093af684b4aefa3cc3f76.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/burner?/3.04_Burner_festas.atlas"
+dest_files=[ "res://.import/3.04_Burner_festas.atlas-9b160ab1d6f093af684b4aefa3cc3f76.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

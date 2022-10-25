@@ -63,77 +63,77 @@ var first_state = {
 var actions = {
 	"easy": {
 		"attack1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"attack2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"buff1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 		],
 		"buff2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 		],
 	},
 	"normal": {
 		"attack1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"attack2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"buff1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
 		],
 		"buff2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 		],
 	},
 	"hard": {
 		"attack1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"attack2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "atk"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"buff1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""}
 		],
 		"buff2": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 3, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
-			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 3, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
+			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 		],
 	},
 }
 
 
 func _init():
-	idle_anim_name = "stand"
-	death_anim_name = "death"
-	dmg_anim_name = "dmg"
+	idle_anim_name = "01_idle"
+	death_anim_name = "04_death"
+	dmg_anim_name = "03_dmg"

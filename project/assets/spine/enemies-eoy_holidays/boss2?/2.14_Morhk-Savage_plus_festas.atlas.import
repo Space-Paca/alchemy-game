@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.14_Morhk-Savage_plus_festas.atlas-d4cdb39051ea074ce4e598bef156ea7e.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/boss2?/2.14_Morhk-Savage_plus_festas.atlas"
+dest_files=[ "res://.import/2.14_Morhk-Savage_plus_festas.atlas-d4cdb39051ea074ce4e598bef156ea7e.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

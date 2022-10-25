@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.08_Nimble Homunculus_festas.atlas-3470e424375aa493ef3e1ce73bef9c56.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/dodger?/1.08_Nimble Homunculus_festas.atlas"
+dest_files=[ "res://.import/1.08_Nimble Homunculus_festas.atlas-3470e424375aa493ef3e1ce73bef9c56.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

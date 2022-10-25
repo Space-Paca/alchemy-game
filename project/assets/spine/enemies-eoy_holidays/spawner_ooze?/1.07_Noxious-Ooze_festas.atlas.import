@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.07_Noxious-Ooze_festas.atlas-1cb136b72ed8b297c29534bff7893366.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/spawner_ooze?/1.07_Noxious-Ooze_festas.atlas"
+dest_files=[ "res://.import/1.07_Noxious-Ooze_festas.atlas-1cb136b72ed8b297c29534bff7893366.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

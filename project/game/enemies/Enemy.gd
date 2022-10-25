@@ -15,6 +15,13 @@ onready var sprite = $Sprite
 onready var tween = $Tween
 onready var tooltip = $TooltipCollision
 onready var target_particle = $Sprite/CenterPosition/TargetParticle
+onready var seasonal_atlases = {
+	"halloween": halloween_atlases,
+	"eoy_holidays": eoy_holidays_atlases
+}
+
+export(Array, Resource) var halloween_atlases
+export(Array, Resource) var eoy_holidays_atlases
 
 const INTENT = preload("res://game/enemies/Intent.tscn")
 
@@ -51,6 +58,17 @@ var died := false
 
 func _ready():
 	set_button_disabled(true)
+	
+	if Debug.seasonal_event:
+		var atlases = seasonal_atlases[Debug.seasonal_event]
+		if atlases.size():
+			sprite.animation_state_data_res.skeleton.disconnect("atlas_res_changed",
+					sprite.animation_state_data_res, "_on_skeleton_data_changed")
+			sprite.animation_state_data_res.skeleton.disconnect("skeleton_data_loaded",
+					sprite.animation_state_data_res, "_on_skeleton_data_loaded")
+			sprite.animation_state_data_res.skeleton.disconnect("skeleton_json_res_changed",
+					sprite.animation_state_data_res, "_on_skeleton_data_changed")
+			sprite.animation_state_data_res.skeleton.atlas_res = atlases[randi() % atlases.size()]
 	
 	#Setup spawn animation
 	if data.entry_anim_name:
@@ -96,13 +114,6 @@ func die(_reason=false):
 	
 	#Death animation
 	animation.play(data.death_anim_name)
-#	tween.interpolate_method(self, "set_grayscale", 0, 1, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
-#	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-#	tween.start()
-#
-#	yield(get_tree().create_timer(.5), "timeout")
-#	modulate = Color(1,1,1,0)
-#	emit_signal("died", self)
 
 
 func set_grayscale(value: float):

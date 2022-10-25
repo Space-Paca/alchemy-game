@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.02_Morhk-Savage_festas.atlas-897bb212874717d426847dd847d34bd6.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/big_buffer?/1.02_Morhk-Savage_festas.atlas"
+dest_files=[ "res://.import/1.02_Morhk-Savage_festas.atlas-897bb212874717d426847dd847d34bd6.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

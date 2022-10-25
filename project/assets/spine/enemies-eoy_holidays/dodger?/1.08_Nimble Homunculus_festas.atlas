@@ -1,0 +1,23 @@
+1.08_Nimble Homunculus_festas.png
+size:404,147
+filter:Linear,Linear
+pma:true
+arm1_lower
+bounds:225,72,73,103
+offsets:0,0,94,103
+rotate:90
+arm1_upper
+bounds:330,10,60,57
+offsets:1,1,62,59
+arm2_lower
+bounds:330,69,72,76
+arm2_upper
+bounds:298,17,53,30
+offsets:1,1,55,32
+rotate:90
+body
+bounds:2,2,221,143
+offsets:0,0,238,154
+head
+bounds:225,12,58,71
+rotate:90

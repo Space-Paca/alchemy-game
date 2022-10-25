@@ -1,0 +1,17 @@
+2.12_Freezer_festass.png
+size:315,530
+filter:Linear,Linear
+pma:true
+Flame1
+bounds:247,36,35,64
+Flame2
+bounds:247,102,71,56
+rotate:90
+Head
+bounds:2,251,277,311
+rotate:90
+Rope
+bounds:247,175,63,74
+Shine
+bounds:2,2,247,243
+rotate:90

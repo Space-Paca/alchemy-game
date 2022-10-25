@@ -1,0 +1,14 @@
+2.13_Bomber_festas.png
+size:511,369
+filter:Linear,Linear
+pma:true
+bomber/berserker/arm1
+bounds:379,29,109,133
+bomber/berserker/body
+bounds:2,2,365,375
+offsets:7,12,413,392
+rotate:90
+bomber/berserker/hand2b
+bounds:379,164,130,203
+pupil
+bounds:379,13,9,14

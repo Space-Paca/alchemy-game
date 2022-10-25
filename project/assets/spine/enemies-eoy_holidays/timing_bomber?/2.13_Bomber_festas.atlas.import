@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/2.13_Bomber_festas.atlas-0b23cb9f1bb912dd2fb955bb92197b44.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/timing_bomber?/2.13_Bomber_festas.atlas"
+dest_files=[ "res://.import/2.13_Bomber_festas.atlas-0b23cb9f1bb912dd2fb955bb92197b44.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

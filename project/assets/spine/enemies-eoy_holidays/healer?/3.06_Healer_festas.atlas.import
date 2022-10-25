@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/3.06_Healer_festas.atlas-44cd8948c8199079df4090c064f8be0f.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/healer?/3.06_Healer_festas.atlas"
+dest_files=[ "res://.import/3.06_Healer_festas.atlas-44cd8948c8199079df4090c064f8be0f.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

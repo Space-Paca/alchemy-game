@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.09_subject_13_festas.atlas-b3397db2e666cc48c20f9754ca4c4158.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-eoy_holidays/poison?/1.09_subject_13_festas.atlas"
+dest_files=[ "res://.import/1.09_subject_13_festas.atlas-b3397db2e666cc48c20f9754ca4c4158.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

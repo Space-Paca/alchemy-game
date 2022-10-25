@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/1.05_Queen-Needler_ghost.atlas-34b780bd74b72e9225503c9376b9f5ba.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/enemies-halloween/05 queen/1.05_Queen-Needler_ghost.atlas"
+dest_files=[ "res://.import/1.05_Queen-Needler_ghost.atlas-34b780bd74b72e9225503c9376b9f5ba.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

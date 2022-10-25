@@ -26,6 +26,9 @@ const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 const DOWNBUTTON_START_Y = 130
 const DOWNBUTTON_TARGET_Y = 150
 const BUTTON_SPEED = 300
+const SEASONAL_MOD = {
+	"halloween": Color("ff9126")
+}
 
 var tooltip_enabled = false
 var mouse_over_downbutton = false
@@ -37,6 +40,8 @@ func _ready():
 		downbutton.hide()
 	for artifact in artifacts.get_children():
 		artifacts.remove_child(artifact)
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
 
 
 func _process(dt):
@@ -55,6 +60,10 @@ func show():
 	.show()
 	enable_tooltips()
 	updateDownButton()
+
+
+func set_seasonal_look(event_string):
+	$BG.self_modulate = SEASONAL_MOD[event_string]
 
 
 func updateDownButton():

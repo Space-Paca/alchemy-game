@@ -16,6 +16,10 @@ onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/Tooltip
 onready var dialog = $ShopkeeperDialogue
 onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/DialogLabel
 onready var panel = $ShopkeeperDialogue/Panel
+#Buttons
+onready var upgrade_button = $MainButtons/Upgrade
+onready var transmute_button = $MainButtons/Transmute
+onready var back_button = $BackButton
 
 var player
 var map_node : MapNode
@@ -60,7 +64,7 @@ func set_seasonal_look(event_string):
 	$Seller.texture = load(path + "seller.png")
 	$Table.texture = load(path + "table.png")
 	
-	for node in main_buttons.get_children():
+	for node in [upgrade_button, transmute_button, back_button]:
 		node.self_modulate = SEASONAL_MOD[event_string]
 
 

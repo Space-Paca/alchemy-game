@@ -30,6 +30,9 @@ onready var recipe_menu = $RecipeMenu
 onready var recipe_button = $ShopMenu/RecipesButton
 onready var reagents_button = $ShopMenu/ReagentsButton
 onready var back_button = $BackButton
+onready var destroy_yes_button = $ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton
+onready var destroy_no_button = $ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/NoButton
+
 
 var chosen_reagent_index : int
 var player : Player
@@ -110,7 +113,8 @@ func set_seasonal_look(event_string):
 	$BG.texture = load(path + "bg.png")
 	$TableGlass.texture = load(path + "table_glass.png")
 	
-	for node in [recipe_button, reagents_button, back_button]:
+	for node in [recipe_button, reagents_button, back_button,\
+				 destroy_yes_button, destroy_no_button]:
 		node.self_modulate = SEASONAL_MOD[event_string]
 
 

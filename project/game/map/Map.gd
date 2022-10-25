@@ -11,15 +11,6 @@ const FLOOR_POSITIONS = [
 	preload("res://game/map/Floor2Positions.tscn"),
 	preload("res://game/map/Floor3Positions.tscn")
 ]
-
-onready var bg = $Background
-onready var visible_bg = $VisibleBackground
-onready var lines = $Lines
-onready var camera = $Camera
-onready var click_block = $ClickBlock
-onready var nodes = $Nodes
-onready var floor_label = $CanvasLayer/FloorLabel
-
 const FLOOR_LABEL = [
 	"FLOOR_NAME_1",
 	"FLOOR_NAME_2",
@@ -44,6 +35,13 @@ const MAPS_MODULATE = [
 	Color(0.992157, 0.792157, 0.737255),
 	Color(0.670588, 0.662745, 0.941176),
 ]
+const SEASONAL_MODULATES = {
+	"halloween": [
+		Color(0xff7827ff),
+		Color(0x8e27ffff),
+		Color(0xff2727ff),
+	],
+}
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")
 const MAP_LINE = preload("res://game/map/MapLine.tscn")
@@ -52,6 +50,14 @@ const CAMERA_SPEED = .6
 const CAMERA_ZOOM_SPEED = .7
 const CENTRAL_NODE_CHILDREN_SIZE = 2
 const PLAYER_UI_HEIGHT = 400
+
+onready var bg = $Background
+onready var visible_bg = $VisibleBackground
+onready var lines = $Lines
+onready var camera = $Camera
+onready var click_block = $ClickBlock
+onready var nodes = $Nodes
+onready var floor_label = $CanvasLayer/FloorLabel
 
 var active_paths := 0
 var active_nodes := []
@@ -68,12 +74,6 @@ var total_number_nodes := -1
 
 func _ready():
 	duplicate_stored_positions(0)
-
-
-func duplicate_stored_positions(level: int):
-	var floor_positions = FLOOR_POSITIONS[level].instance()
-	stored_map_positions = floor_positions.duplicate(7)
-	add_child(stored_map_positions)
 
 
 func _physics_process(dt):
@@ -114,6 +114,23 @@ func _physics_process(dt):
 			camera.position = target_pos
 
 
+func duplicate_stored_positions(level: int):
+	var floor_positions = FLOOR_POSITIONS[level].instance()
+	stored_map_positions = floor_positions.duplicate(7)
+	add_child(stored_map_positions)
+
+
+func modulate_backgrounds():
+	var event = Debug.seasonal_event
+	if event:
+		assert(SEASONAL_MODULATES.has(event), "Not a valid seasonal event to modulate: " + str(event))
+		bg.modulate = SEASONAL_MODULATES[event][current_level-1]
+		visible_bg.modulate = SEASONAL_MODULATES[event][current_level-1]
+	else:
+		bg.modulate = MAPS_MODULATE[current_level-1]
+		visible_bg.modulate = MAPS_MODULATE[current_level-1]
+
+
 func set_disabled(toggle:bool):
 	click_block.visible = toggle
 
@@ -137,10 +154,12 @@ func disable():
 	reset_camera()
 	ShakeCam.make_current()
 
+
 func enable_tooltips():
 	for node in $Nodes.get_children():
 		if node.is_revealed:
 			node.enable_tooltips()
+
 
 func disable_tooltips():
 	for node in $Nodes.get_children():
@@ -167,6 +186,7 @@ func enable_map_fog():
 	for map_line in lines.get_children():
 		map_line.enable_lights()
 
+
 func disable_map_fog():
 	visible_bg.material = null
 	bg.material = null
@@ -180,9 +200,8 @@ func set_level(level:int):
 	current_level = level
 	floor_label.text = FLOOR_LABEL[current_level-1]
 	bg.texture = MAPS_BG[current_level-1].unexplored
-	bg.modulate = MAPS_MODULATE[current_level-1]
 	visible_bg.texture = MAPS_BG[current_level-1].explored
-	visible_bg.modulate = MAPS_MODULATE[current_level-1]
+	modulate_backgrounds()
 	remove_child(get_node("FixedPositions"))
 	duplicate_stored_positions(current_level-1)
 

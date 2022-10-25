@@ -37,7 +37,7 @@ const MAPS_MODULATE = [
 ]
 const SEASONAL_MODULATES = {
 	"halloween": [
-		Color(0xff7827ff),
+		Color(0xe7aa86ff),
 		Color(0x8e27ffff),
 		Color(0xff2727ff),
 	],

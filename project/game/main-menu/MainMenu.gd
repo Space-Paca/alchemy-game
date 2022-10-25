@@ -1,17 +1,5 @@
 extends Control
 
-onready var anim = $AnimationPlayer
-onready var sheen_tween = $Title/TitleSheen/Tween
-onready var sheen_timer = $Title/TitleSheen/SheenTimer
-onready var sheen_material = $Title/TitleSheen.material
-onready var compendium_button = $CompendiumButton
-onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
-onready var growing_buttons = {
-	"discord": $VBoxContainer/Discord,
-	"steam": $VBoxContainer/Steam,
-	"updates": $VBoxContainer/Updates,
-}
-
 const ALPHA_SPEED = 6
 const SHEEN_DUR = .8
 const SHEEN_INTERVAL = 5.0
@@ -35,6 +23,22 @@ const GROWING_BUTTON_WIDTH = {
 const SEASONAL_MOD = {
 	"halloween": Color("ff9126")
 }
+
+onready var anim = $AnimationPlayer
+onready var sheen_tween = $Title/TitleSheen/Tween
+onready var sheen_timer = $Title/TitleSheen/SheenTimer
+onready var sheen_material = $Title/TitleSheen.material
+onready var compendium_button = $CompendiumButton
+onready var buttons = [$ContinueButton, $NewGameButton, $QuitButton]
+onready var growing_buttons = {
+	"discord": $VBoxContainer/Discord,
+	"steam": $VBoxContainer/Steam,
+	"updates": $VBoxContainer/Updates,
+}
+onready var quit_yes_button = $QuitConfirm/VBoxContainer/HBoxContainer/Yes
+onready var quit_no_button = $QuitConfirm/VBoxContainer/HBoxContainer/No
+onready var popup_back_button = $PopupBG/Panel/HBoxContainer/Back
+onready var popup_confirm_button = $PopupBG/Panel/HBoxContainer/Confirm
 
 var hover_compendium = false
 var is_hovered = {
@@ -127,7 +131,8 @@ func set_seasonal_look(event_string):
 	$Subtitle.texture = load(path + "sub titulo.png")
 	
 	for node in [$ContinueButton, $NewGameButton, $QuitButton,
-			$VBoxContainer/Updates, $VBoxContainer/Discord, $VBoxContainer/Steam]:
+			$VBoxContainer/Updates, $VBoxContainer/Discord, $VBoxContainer/Steam,
+			quit_yes_button, quit_no_button, popup_confirm_button, popup_back_button]:
 		node.self_modulate = SEASONAL_MOD[event_string]
 
 

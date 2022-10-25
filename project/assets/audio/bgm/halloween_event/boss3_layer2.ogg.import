@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/boss3_layer2.ogg-eb17eb9c4375fd8a64d0d22cfd49e7a3.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/halloween_event/boss3_layer2.ogg"
+dest_files=[ "res://.import/boss3_layer2.ogg-eb17eb9c4375fd8a64d0d22cfd49e7a3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

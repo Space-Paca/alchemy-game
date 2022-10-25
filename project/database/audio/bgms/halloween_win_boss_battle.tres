@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/audio/bgm/win_boss_battle_loop.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/bgm/halloween_event/win_bossloop.ogg" type="AudioStream" id=1]
 [ext_resource path="res://database/audio/BGM.gd" type="Script" id=2]
 
 [resource]

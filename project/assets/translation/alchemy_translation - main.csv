@@ -348,7 +348,7 @@ ST_DEVIATION_TITLE,Deviation,Divergência
 ST_DEVIATION_DESC,This character can't repeat recipes on the same turn,Este personagem não pode repetir receitas no mesmo turno
 ST_DEVIATION_INTENT,Deviating,Divergindo
 ST_DETERIORATION_TITLE,Deterioration,Deterioração
-ST_DETERIORATION_DESC,"At start of turn, will exiles 1 random reagent from hand","No começo do turno, exila 1 reagente aleatório da mão "
+ST_DETERIORATION_DESC,"At start of turn, exiles 1 random reagent from hand","No começo do turno, exila 1 reagente aleatório da mão "
 ST_DETERIORATION_INTENT,Deteriorating,Deteriorando
 ST_DIVINE_PROTECTION_TITLE,Divine Protection,Proteção Divina
 ST_DIVINE_PROTECTION_DESC,"Every turn, this character becomes invincible after taking %d damage","Em cada turno, este personagem fica invencível depois de tomar %d de dano"
@@ -1378,9 +1378,139 @@ Você retoma sua jornada, em paz após esse encontro e melhor preparado para o q
 EVENT_20_OPT_1,Accept a healing blessing (heal 35 life).,Aceitar uma benção de cura (cura 35 de vida).
 EVENT_20_OPT_2,Accept a life blessing (increase max life by 10).,Aceitar uma benção de vida (aumenta a vida máxima em 10).
 EVENT_21_TITLE,The Castle of Veknor,O Castelo de Veknor
-EVENT_21_TEXT,text,texto
-EVENT_21_LEAVE_1,leave,sair
-EVENT_21_OPT_1,aaa,bbb
+EVENT_21_TEXT,"You're suddenly contemplated by a surreal view. Something that shouldn't be there, but rubbing your eyes confirms it's indeed real.
+Before you lies the infamous (highlight)Castle of Veknor.(/highlight)
+
+Despite the legends and murmurs, little is actually known about what really lies inside, and few have come back from exploring it to tell any tales.
+
+Is it wise to enter its supposed abandoned halls? Your head urges you it's not. But something inside you itches for a glimpse of its mysteries.","Você é repentinamente contemplado por uma visão surreal. Algo que não deveria estar lá, mas esfregar seus olhos confirma que é de fato real. 
+Na frente de seus olhos se impõe o infame (highlight)Castelo de Veknor.(/highlight)
+
+Apesar das lendas e murmúrios, pouco é realmente conhecido do que reside dentro dele, e pouco que já exploram seus interiores voltaram para contar história.
+
+Será que é sábio entrar em seus supostos corredores abandonados? Sua mente grita que não. Mas alguma coisa dentro de você se inquieta, sedenta por um gosto dos mistérios que lá habitam."
+EVENT_21_LEAVE_1,"A few moments after entering its gloomy halls, (wave)a glow(/wave) emanates from yourself.
+
+Spooked, you quickly find the source of the brightness: it's the (highlight)decayed hand(/highlight) you've been carrying all this time. Maybe it is somewhat connected to this place?
+
+Suddenly the hand starts pointing towards the darkness of the corridors, and you soon realise it's giving you directions. To what exactly you don't know, but you blindly decide to trust the magical artifact.
+
+And thankfully that trust is quickly rewarded!
+
+The hand guides you to a secret door, and revealed inside is a mountain of gold and jewels. You gather all you can before the walls start emanating an eerie sound, prompting you to leave the premises at once.
+
+As you step out of the spooky structure, heavy with all the gold you collected, you also notice (highlight)all your wounds and tiredness have vanished!(/highlight) It seems that keeping that sinister hand has been beneficial, as it appears it wants you better alive than dead...","Poucos momentos depois de entrar em seus corredores sombrios, (wave)um brilho(/wave) emana de você.
+
+Assustado, você rapidamente encontra a fonte da claridade: é a highlight)mão decepada(/highlight) que você tem carregado todo esse tempo. Talvez ela esteja de alguma forma conectada com este lugar?
+
+De repente a mão começa a apontar para os corredores soturnos, e você rapidamente percebe que ela está leh dando direções. Para o que exatamente, você não sabe, mas decide cegamente confiar no artefato mágico.
+
+E felizmente essa confiança é rapidamente recompensada!
+
+A mão lhe guia até uma porta secreta, revelando adentro uma montanha de ouro e jóias. Você apanha o máximo que consegue, até que as paredes começam a emanar um som arrepiante, lhe instigando a sair das premissas o mais rápido possível.
+
+Assim que você pisa para fora do castelo horripilante, agora pesado com todo o ouro que coletou, you percebe que (highlight) todas suas feridas e cansaço desapareceram!(/highlight) Parece que manter aquela mão sinistra valeu muito a pena, já que aparentemente ela deseja você mais vivo do que morto..."
+EVENT_21_LEAVE_4,"You don't trust this place, and neither your senses to affirm if it's actually real or not.
+
+You return to your journey, perhaps a bit more scared than before, but safe and sound nonetheless.","Você não confia nesse lugar, e muito menos nos seus sentidos em afirmar se ele é de fato real ou não.
+
+Você retorna à sua jornada, talvez um pouco mais assustado do que antes, mas ao menos bem e vivo."
+EVENT_21_OPT_1,Enter the castle,Entrar no castelo
+EVENT_21_OPT_2,Don't enter the castle,Não entrar no castelo
+EVENT_22_TEXT,"The inside of the castle is dark and dusty. You try to fumble your way around the corridors, looking for anything of interest.
+
+Abruptly, the corridor you are traversing splits into two directions. You can hear faint clicking sounds from the left side, meanwhile the right side emanates a low-pitch humming.
+
+Which way should you go?","O interior do castelo é escuro e empoeirado. Você tenta tatear seu caminho pelos corredores, procurando por qualquer coisa de interesse.
+
+Abruptamente, o corredor em que você estava percorrendo se bifurca em duas direções. Você consegue ouvir suaves barulhos mecânicos vindo do lado esquerdo, enquanto do lado direito um som de frequência bem baixa parece estar zunindo.
+
+Para qual lado você deveria ir?"
+EVENT_22_LEAVE_1,"Using barely any coherent explanation, you decide to go left.
+
+The walls here are dustier, and you notice an abundance of spider webs on the corners. You carry on into the darkness.","Com uma auto-justificativa praticamente incoerente, você decide ir para a esquerda.
+
+As paredes aqui são bem mais empoeiradas, e você percebe uma abundância de teias de aranha nos cantos. Você segue pela escuridão."
+EVENT_22_LEAVE_2,"Using questionable logic to help in your decision, you decide to go right.
+
+The walls here are damp, the carpet on the floor squishy. You shudder as you move deeper into the unknown.","Usando uma lógica extremamente questionável, você chega na conclusão de ir para a direita.
+
+As paredes aqui são úmidas, o carpete no chão afunda em cada pisada de um jeito desagradável. Você se estremece enquanto se aprofunda cada vez mais ao desconhecido."
+EVENT_22_OPT_1,Go left on the corridor,Ir para o corredor na esquerda
+EVENT_22_OPT_2,Go right on the corridor,Ir para o corredor na direita
+EVENT_23_TEXT,"The corridor finishes into an immense set of stairs, spiraling both upwards and downwards.
+
+From above, you can sense a pungent, faintly acidic smell.
+From below, you sense a decayed, barely rotten smell.
+
+Which way will you go?","O corredor termina numa imensa escadaria em espiral, se extendendo tanto para cima quanto para baixo.
+
+De cima, você sente um cheiro pungente, levememte ácido.
+De baixo, você sente um cheiro de podridão, quase nauseante.
+
+Qual caminho você irá seguir?"
+EVENT_23_LEAVE_1,"After walking for hours through the corridors, panic starts to sink as you realise you might be lost here forever.
+
+Suddenly, by the end of yet another corridor, you find a curious fountain of water, a heavenly sight in such a dusty place.
+
+Barely thinking straight, you immediately push your head into the fountain and start gulping down the pristine liquid. You close your eyes, if only for a moment, and all your worries fade away alongside your thirst.
+
+You then feel a breeze at the back of your head. You open your eyes. You are outside the castle, standing still, as if moments before entering it.
+
+Was it all an illusion? Have you been standing here this whole time? You don't care, you are just happy you are finally out of that place, promising yourself to never do that again.
+
+As you resume your journey, you notice all your wounds have vanished, albeit you feel weaker than usual...","Depois de caminhar por o que parecem ser horas, pânico começa aos poucos tomar conta de sí, ao tomar conta de que talvez você fique preso aqui para sempre.
+
+Repentinamente, no fim de mais um corredor, você se depara com uma estranha fonte d'água, uma visão celestial em um lugar tenebroso como este.
+
+Mal pensando direito, você imediatamente afunda sua cabeça na fonte e começa a engolir freneticamente o líquido  imaculado. Você fecha seus olhos, e por alguns breves momentos, todas suas preocupações se desvanecem junto de sua sede.
+
+Você então sente uma brisa batendo em sua nuca. Você abre seus olhos. Vocês está fora do castelo, imóvel e em pé, como se estive segundos antes de entrar no local.
+
+Será que foi tudo uma ilusão? Será que você esteve parado aqui esse tempo todo? Você não liga pra nada disso, você só está feliz que finalmente saiu daquele lugar, prometendo a sí mesmo nunca mais fazer isso novamente.
+
+Ao retornar à sua jornada, você nota que todos seus ferimentos sumiram, porém um sentimento de fraqueza permeia seu corpo..."
+EVENT_23_LEAVE_2,"After hours of looking for something, you finally give up and start tracing back to where you came.
+
+Just as you are about to leave the castle, a terrifying sound comes from behind you. You turn around, and the an aberration stands before you, mumbling incoherent sounds, and emanating a putrid smell that invades your nostrils.
+
+Shaken, you realise you won't be leaving here before dealing with that thing. Scared, you fear ""leaving here"" might not be an option at all.","Após horas em sua procura por algo, você finalmente desiste e começa a voltar por onde veio.
+
+Bem quando está prestes a sair do castelo, um som aterrorizador emana de suas costas. Você se vira, e uma aberração se impõe a sua frente, murmurando barulhos incompreensíveis e exalando um cheiro pútrido que invade suas narinas.
+
+Tremendo, você percebe que não vai conseguir sair daqui antes de lidar com esta coisa. Amedrontado, você teme que talvez ""sair daqui"" não seja mais possível."
+EVENT_23_LEAVE_3,"You walk for a while until an oddly preserved door steals your attention. With suspicion, you slowly open the door, to find a small room, completely empty except for a dark black altar centered in the chamber.
+
+Rested on the altar is a (highlight)severed hand(/highlight), unnaturally preserved. A voice echoes in your head, repeating the same words over and over: (wave)""Take me! Take me! Take me!""(/wave)
+
+Before you notice, you have already bagged the artifact, and sprinted towards the exit of the castle. 
+
+As you resume your journey, you ponder if that was a wise decision...","Você andar por um bom tempo até que uma porta estranhamente bem preservada rouba sua atenção. Suspeito, você lentamente abre a porta, encontrando um pequeno quarto completamente vazio, exceto por um altar negro centralizado na câmara.
+
+Descansando no altar você encontra uma (highlight)mão decepada(/highlight), bizarramente bem preservada. Uma voz ecoa por sua mente, repetindo as mesmas palavras incessantemente: (wave)""Me pegue! Me pegue! Me pegue!""(/wave)
+
+Antes que você perceba, você já ensacou o artefato e saí correndo até a saída do castelo.
+
+Ao voltar para sua jornada, você pondera se isso foi uma decisão sábia ou não..."
+EVENT_23_LEAVE_4,"You've been following the same long corridor for a while now, now worried you might be walking in circles.
+
+Tired, you sit down to rest for a bit, when you notice a faint glow coming out of the wall across you. You get up up and try to push it, revealing a hidden room!
+
+On this room, (highlight)mountains of gold and jewels(/highlight) lay resting on the floor and shelves, you mind races as you try to collect as much as you can, meanwhile completely ignoring the eerie sounds emanating from the walls. Little by little, you feel more sleepy, and before you know you have collapsed onto the ground.
+
+You wake up, not sure how long after, outside the castle. Surrounding you, all the gold you managed to put your hands on! However, you soon realise all your artifacts you have been collecting in your adventure are now gone... Perhaps taken by the castle as retribution?
+
+You quickly dismiss the idea of going back to retrieve them, swearing to yourself to never set foot in that place ever again, and glad you got out with your life and a considerate amount of coin too...","Você tem seguido o mesmo longo corredor já faz um tempo, agora ficando preocupado com a possibilidade de ter andado em círculo por todo esse tempo.
+
+Cansado, você senta para descansar um pouco, quando percebe um pequeno brilho emanando da parede oposta. Você se levanta e tenta empurra-la, revelando uma câmara secreta!
+
+Nesta sala, (highlight)montanhas de ouro e jóias(/highlight) estão dispostas no chão e prateleiras, e sua mente acelera enquanto você tenta apanha o máximo possível, ignorando complemtante os barulho sinistros que estão saindo das paredes. Pouco a pouco você se sente mais cansado, e antes que perceba, colapsa no chão.
+
+Você acorda, incerto de quanto tempo depois, fora do castelo. Em sua volta, está rodeado de todo o ouro que conseguiu coletar! Porém, rapidamente nota que todos os artefatos que você coletou durante sua aventura estão desaparecidos... Talvez pegos pelo castelo como retribuição?
+
+Velozmente você abandona a ideia de voltar para encontrá-los, prometendo a sí mesmo nunca mais pisar naquele lugar, feliz que saiu vivo e ao menos com uma quantidade considerável de moedas..."
+EVENT_23_OPT_1,Go up the stairs,Subir as escadas
+EVENT_23_OPT_2,Go down the stairs,Descer as escadas
 SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos primeiro.
 EN_AVENGER,Carapa Vindicator,Carapa Vindicador
 EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor

@@ -310,7 +310,7 @@ show_behind_parent = true
 position = Vector2( -347.828, -413.13 )
 color = Color( 0.807843, 0.8, 0.698039, 0.862745 )
 antialiased = true
-polygon = PoolVector2Array( 454, -14, 454, -89, 546, -14 )
+polygon = PoolVector2Array( 454, -14.5, 454, -89, 546, -14.5 )
 
 [node name="Panel" type="Panel" parent="ShopkeeperDialogue"]
 margin_left = -383.0
@@ -378,7 +378,7 @@ __meta__ = {
 
 [node name="Upgrade" type="Button" parent="MainButtons"]
 margin_left = -1000.0
-margin_right = 650.0
+margin_right = 12650.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 text = "UPGRADE_REAGENT"

@@ -4,8 +4,18 @@ class_name ClickableReagentList
 signal reagent_pressed(reagent_name, reagent_index)
 
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
+const SEASONAL_MOD = {
+	"halloween": Color("ff9126")
+}
 
 onready var grid = $ScrollContainer/GridContainer
+
+func _ready():
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
+func set_seasonal_look(event_string):
+	$BG.self_modulate = SEASONAL_MOD[event_string]
 
 
 func populate(reagent_array: Array):

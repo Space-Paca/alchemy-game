@@ -5,7 +5,10 @@ signal closed
 const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn")
 const DIALOG_SPEED = 25
 const SEASONAL_MOD = {
-	"halloween": Color("ff9126")
+	"halloween": {
+		"ui": Color("ff9126"),
+		"dialogue": Color("dcb491d4"),
+	}
 }
 
 onready var reagent_list = $ClickableReagentList
@@ -16,10 +19,16 @@ onready var upgraded_reagent_tooltip = $UpgradingReagent/ReagentUpgraded/Tooltip
 onready var dialog = $ShopkeeperDialogue
 onready var dialog_label = $ShopkeeperDialogue/Panel/CenterContainer/DialogLabel
 onready var panel = $ShopkeeperDialogue/Panel
+onready var upgrading_bg = $UpgradingReagent
+onready var transmuting_bg = $TransmutingReagent
+onready var dialogue_panel_point = $ShopkeeperDialogue/Polygon2D
+onready var dialogue_panel = $ShopkeeperDialogue/Panel
 #Buttons
 onready var upgrade_button = $MainButtons/Upgrade
 onready var transmute_button = $MainButtons/Transmute
 onready var back_button = $BackButton
+onready var upgrade_confirm_button = $UpgradingReagent/ConfirmUpgrade
+onready var transmute_confirm_button = $TransmutingReagent/ConfirmUpgrade
 
 var player
 var map_node : MapNode
@@ -64,9 +73,12 @@ func set_seasonal_look(event_string):
 	$Seller.texture = load(path + "seller.png")
 	$Table.texture = load(path + "table.png")
 	
-	for node in [upgrade_button, transmute_button, back_button]:
-		node.self_modulate = SEASONAL_MOD[event_string]
-
+	for node in [upgrade_button, transmute_button, back_button,
+				 upgrade_confirm_button, transmute_confirm_button,
+				 upgrading_bg, transmuting_bg]:
+		node.self_modulate = SEASONAL_MOD[event_string].ui
+	dialogue_panel_point.color = SEASONAL_MOD[event_string].dialogue
+	dialogue_panel.get_stylebox("panel", "" ).bg_color = SEASONAL_MOD[event_string].dialogue
 
 func start():
 	$AnimationPlayer.play("enter")

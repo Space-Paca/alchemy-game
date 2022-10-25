@@ -508,7 +508,6 @@ func update_intent():
 			else:
 				add_intent(intent.action, intent.image, value, null)
 		else:
-			printt(intent.action, "here")
 			add_intent(intent.action, intent.image, null, null)
 
 

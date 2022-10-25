@@ -21,7 +21,7 @@ signal artifact_pressed(name)
 signal damage_all
 signal recipe_simulated(recipe)
 
-const VERSION := "v0.8.0"
+const VERSION := "v0.8.1dev"
 const MAX_FLOOR := 3
 const PORTRAITS_PATH = "res://assets/images/ui/book/portraits/"
 
@@ -68,7 +68,6 @@ func _ready():
 			if key == "--test_seasonal":
 				seasonal_event = str(value)
 
-	#seasonal_event = false
 	version_label.text = VERSION
 	demo_label.visible = is_demo
 	

@@ -4,6 +4,9 @@ signal closed
 
 const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn")
 const DIALOG_SPEED = 25
+const SEASONAL_MOD = {
+	"halloween": Color("ff9126")
+}
 
 onready var reagent_list = $ClickableReagentList
 onready var main_buttons = $MainButtons
@@ -24,6 +27,12 @@ var chosen_reagent_upgraded : bool
 var index_map = []
 var tooltips_enabled = false
 
+
+func _ready():
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
+
 func _process(dt):
 	var lerp_speed = 6.5 if not dialog_label.is_complete() else 25.0
 	panel.rect_size.y = lerp(panel.rect_size.y, 6 + dialog_label.get_content_height(), dt*lerp_speed)
@@ -43,6 +52,17 @@ func setup(node, _player):
 	map_node = node
 	transmuting_reagent_tooltip.disable()
 	remove_transmuting_possibilities()
+
+
+func set_seasonal_look(event_string):
+	var path = "res://assets/images/background/blacksmith/%s/" % event_string
+	$BG.texture = load(path + "bg.png")
+	$Seller.texture = load(path + "seller.png")
+	$Table.texture = load(path + "table.png")
+	
+	for node in main_buttons.get_children():
+		node.self_modulate = SEASONAL_MOD[event_string]
+
 
 func start():
 	$AnimationPlayer.play("enter")

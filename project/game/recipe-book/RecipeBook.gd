@@ -7,6 +7,26 @@ signal favorite_toggled(combination, button_pressed)
 signal close
 signal update_favorite_mastery
 
+enum States {BATTLE, MAP, LAB}
+enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
+
+const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
+const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
+const LONG_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn.png")
+const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short.png")
+const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
+const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
+const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
+const BATTLE_POS = Vector2.ZERO
+const MAP_POS = Vector2(820, 0)
+const AWAY_OFFSET = Vector2(-1800, 0)
+const ENTER_SPEED = 2000
+const NOTHING_FOUND_LABEL_SPEED = 3
+const SCROLL_SIZE = {
+	"short": 580,
+	"long": 720,
+}
+
 onready var hand_rect : Control = $Background/HandRect
 onready var hand_container : Control = $Background/HandRect/CenterContainer
 onready var upper_hand = $Background/HandRect/CenterContainer/HandReagents/Upper
@@ -28,26 +48,6 @@ onready var tag_buttons := [$Background/CloseButton,
 	$Background/TagButtons/IncompleteBtn, $Background/TagButtons/CompleteBtn,
 	$Background/TagButtons/AllBtn]
 
-const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
-const REAGENT_DISPLAY = preload("res://game/recipe-book/ReagentDisplay.tscn")
-const LONG_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn.png")
-const SHORT_TAG_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short.png")
-const LONG_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_hover.png")
-const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_btn_short_hover.png")
-const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
-const BATTLE_POS = Vector2.ZERO
-const MAP_POS = Vector2(820, 0)
-const AWAY_OFFSET = Vector2(-1800, 0)
-const ENTER_SPEED = 2000
-const NOTHING_FOUND_LABEL_SPEED = 3
-const SCROLL_SIZE = {
-	"short": 580,
-	"long": 720,
-}
-
-enum States {BATTLE, MAP, LAB}
-enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
-
 var recipe_displays := {}
 var favorite_combinations := []
 var hand_reagents : Array
@@ -66,6 +66,7 @@ func _ready():
 	disable_tooltips()
 	no_recipes_label.modulate.a = 0
 	rect_position = AWAY_OFFSET
+	$Background/LeftSide/PlayerInfo/BG.self_modulate.a = 0.0
 
 
 func _process(dt):

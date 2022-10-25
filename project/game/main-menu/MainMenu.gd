@@ -118,7 +118,10 @@ func _input(event):
 
 func set_seasonal_look(event_string):
 	var path = "res://assets/images/main_menu/%s/" % event_string
-	$Background.animation_state_data_res.skeleton.atlas_res = load("res://assets/spine/mainmenu/start screen_spine_%s.atlas" % event_string)
+	var data_res = $Background.animation_state_data_res
+	var skeleton = data_res.skeleton
+	skeleton.disconnect("atlas_res_changed", data_res, "_on_skeleton_data_changed")
+	skeleton.atlas_res = load("res://assets/spine/mainmenu/start screen_spine_%s.atlas" % event_string)
 	$Title.texture = load(path + "title.png")
 	$Title/TitleSheen.texture = load(path + "title.png")
 	$Frame.texture = load(path + "border.png")

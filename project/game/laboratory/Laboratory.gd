@@ -6,6 +6,11 @@ signal grid_modified(reagent_matrix)
 signal combination_made(reagent_matrix)
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
+const SEASONAL_MOD = {
+	"halloween": {
+		"ui": Color("ff9126"),
+	}
+}
 
 onready var dispenser_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
@@ -13,10 +18,19 @@ onready var grid = $Grid
 onready var counter = $Counter
 onready var recipe_name_display = $RecipeNameDisplay
 onready var recipe_button = $Book/RecipesButton
+#Buttons
+onready var back_button = $BackButton
+onready var combine_button = $Combine
 
 var map_node : MapNode
 var player
 var is_dragging_reagent := false
+
+
+func _ready():
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
 
 func setup(node, _player, attempts):
 	$Book/ReagentDropZone.monitorable = true
@@ -27,6 +41,12 @@ func setup(node, _player, attempts):
 	counter.set_attempts(attempts)
 	$Counter/AnimationPlayer.play("default")
 	recipe_name_display.reset()
+
+
+func set_seasonal_look(event_string):
+	for node in [back_button, combine_button]:
+		node.self_modulate = SEASONAL_MOD[event_string].ui
+
 
 func create_reagent(dispenser, type, quick_place):
 	if dispenser.get_quantity() > 0 and (not quick_place or not grid.is_full()):
@@ -52,11 +72,14 @@ func create_reagent(dispenser, type, quick_place):
 	else:
 		grid.quick_place(reagent)
 
+
 func get_attempts():
 	return counter.get_attempts()
 
+
 func reset_room():
 	map_node.set_type(MapNode.EMPTY)
+
 
 func disable_player():
 	$Combine.disabled = true
@@ -64,6 +87,7 @@ func disable_player():
 	dispenser_list.disable()
 	for reagent in reagents.get_children():
 		reagent.can_drag = false
+
 
 func enable_player():
 	$Combine.disabled = false

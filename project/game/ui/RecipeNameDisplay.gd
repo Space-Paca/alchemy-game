@@ -1,14 +1,20 @@
 extends Control
 
-export var hide_description := false
-
-onready var recipe_name_label = $RecipeName
-onready var recipe_description_label = $RecipeDescription
-
 const RED = Color(1,0.3,0.3,1)
 const BLACK = Color(0,0,0,1)
 const NORMAL_FONT = preload("res://game/ui/RecipeNameNormalFont.tres")
 const OUTLINE_FONT = preload("res://game/ui/RecipeNameOutlineFont.tres")
+const SEASONAL_MOD = {
+	"halloween": {
+		"ui": Color("ff9126"),
+	}
+}
+
+export var hide_description := false
+
+onready var recipe_name_bg = $RecipeNameBG
+onready var recipe_name_label = $RecipeName
+onready var recipe_description_label = $RecipeDescription
 
 
 func _ready():
@@ -16,6 +22,12 @@ func _ready():
 	if hide_description:
 		recipe_description_label.hide()
 		$RecipeDescriptionBG.hide()
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
+
+func set_seasonal_look(event_string):
+	recipe_name_bg.self_modulate = SEASONAL_MOD[event_string].ui
 
 
 func display_name_for_combination(combination, update_description : bool, mastered := false):

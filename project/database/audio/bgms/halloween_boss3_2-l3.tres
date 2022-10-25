@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/audio/bgm/boss3_2_layer3.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/bgm/halloween_event/boss3_2_layer3.ogg" type="AudioStream" id=1]
 [ext_resource path="res://database/audio/BGM.gd" type="Script" id=2]
 
 [resource]

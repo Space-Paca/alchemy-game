@@ -459,7 +459,7 @@ func veknor_castle_2(event_display, player, right):
 func veknor_castle_3(event_display, player):
 	if player.hp <= player.max_hp * .4 and randf() < .3:
 		player.set_max_hp(player.max_hp - 20)
-		player.full_heal
+		player.full_heal()
 		load_leave_event(event_display, player, current_event.leave_text_1)
 	elif not player.has_artifact("hand_veknor") and randf() < .3:
 		player.add_artifact("hand_veknor")

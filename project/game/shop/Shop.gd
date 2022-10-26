@@ -208,6 +208,7 @@ func _on_BackButton_pressed():
 		States.REAGENTS:
 			curr_state = States.MENU
 			reagents_menu.hide()
+			reagent_destroy.hide()
 			reagent_list.disable_tooltips()
 			reagent_list.deactivate_reagents()
 			shop_menu.show()
@@ -264,6 +265,7 @@ func _on_ClickableReagentList_reagent_pressed(reagent, reagent_index, upgraded):
 	yield(get_tree(), "idle_frame")
 	var margin = reagent_destroy_label.rect_position.x
 	reagent_destroy_panel.rect_size.x = 2*margin + reagent_destroy_label.rect_size.x
+	destroy_yes_button.disabled = player.get_gold() < get_destroy_cost()
 
 
 func _on_YesButton_pressed():
@@ -290,3 +292,8 @@ func _on_button_mouse_entered():
 
 func _on_AdvanceDialogArea_pressed():
 	dialog_label.speed_up_dialog()
+
+
+func _on_YesButton_mouse_entered():
+	if not destroy_yes_button.disabled:
+		AudioManager.play_sfx("hover_button")

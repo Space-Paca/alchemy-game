@@ -722,7 +722,7 @@ anims/init = SubResource( 8 )
 [connection signal="pressed" from="ShopMenu/ReagentsButton" to="." method="_on_ReagentsButton_pressed"]
 [connection signal="pressed" from="ShopMenu/AdvanceDialogArea" to="." method="_on_AdvanceDialogArea_pressed"]
 [connection signal="reagent_pressed" from="ReagentsMenu/ClickableReagentList" to="." method="_on_ClickableReagentList_reagent_pressed"]
-[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_mouse_entered"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="mouse_entered" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ReagentsMenu/ReagentDestroy/ReagentDestroyLabel/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]

@@ -222,6 +222,10 @@ func set_max_hp(value):
 	emit_signal("hp_updated", hp, max_hp)
 
 
+func get_gold():
+	return gold
+
+
 func add_gold(amount: int):
 	assert(amount > 0, "Amount must be positive")
 	AudioManager.play_sfx("get_coins")

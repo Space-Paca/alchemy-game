@@ -318,6 +318,8 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="AnimationTween" type="Tween" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/level_up = SubResource( 7 )
 

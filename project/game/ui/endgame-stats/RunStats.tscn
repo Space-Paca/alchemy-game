@@ -554,9 +554,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 22 )
 
 [node name="TotalContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_left = 140.0
+margin_left = 161.0
 margin_top = 581.0
-margin_right = 469.0
+margin_right = 490.0
 margin_bottom = 620.0
 grow_horizontal = 0
 size_flags_horizontal = 8

@@ -2,12 +2,14 @@ extends Control
 
 signal changed_xp
 signal finished_applying
+signal animation_finished
 
 const MODIFIED_COLOR = Color.aqua
 const NORMAL_COLOR = Color.white
 const PREVIEW_DUR = .3
 const BAR_NORMAL_COLOR = Color(0x89ff00ff)
 const BAR_MAX_COLOR = Color(0x00f9ffff)
+const FADE_IN_DUR = .8
 
 onready var stat_name = $NameContainer/Name
 onready var stat_level = $NameContainer/Level
@@ -27,6 +29,8 @@ var available_xp = 10
 var initial_xp = 20
 var modified_xp = 0
 var max_xp = 100
+var skip := false
+var animation_active := false
 
 
 func _ready():
@@ -42,6 +46,30 @@ func _process(_delta):
 	if minus_button.pressed:
 		value_change -= 1
 	set_slider_value(slider.value + value_change)
+
+
+func enter_animation(s: bool):
+	animation_active = true
+	skip = s
+	if not skip:
+		$AnimationTween.interpolate_property(self, "modulate:a", 0, 1, FADE_IN_DUR, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		$AnimationTween.start()
+		yield($AnimationTween, "tween_completed")
+	else:
+		modulate.a = 1.0
+	
+	if not skip:
+		emit_signal("animation_finished")
+		animation_active = false
+
+func skip_animation():
+	skip = true
+	if $AnimationTween.is_active():
+# warning-ignore:return_value_discarded
+		$AnimationTween.seek(FADE_IN_DUR)
+		emit_signal("animation_finished")
+		
+	animation_active = false
 
 
 func level_up():

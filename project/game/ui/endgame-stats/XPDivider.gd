@@ -18,6 +18,8 @@ onready var increasing_xp_sfx_len = preload("res://assets/audio/sfx/increasing_x
 
 var initial_xp_pool = 0
 var xp_pool = 0
+var animation_active = false
+var skip = false
 
 func _ready():
 	for child in xp_pool_amount.get_children():
@@ -26,6 +28,11 @@ func _ready():
 		child.modulate.a = 0
 	apply_button.modulate.a = 0
 	empiric_label.modulate.a = 0
+
+
+func _input(event):
+	if event.is_action_pressed("left_mouse_button") and animation_active:
+		skip_animations()
 
 
 func get_level_xp(prog_type):
@@ -54,28 +61,32 @@ func get_level(prog_type):
 
 
 func set_initial_xp_pool(value):
-	yield(get_tree().create_timer(.2),"timeout")
+	animation_active = true
+	if not skip:
+		yield(get_tree().create_timer(.2),"timeout")
+		
 	initial_xp_pool = value
 	xp_pool = value
 	for child in xp_pool_amount.get_children():
 		child.modulate.a = 0
 	update_apply_button()
-	var delay = .7
-	$Tween.interpolate_property(empiric_label, "modulate:a", 0, 1, delay, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.start()
-	yield($Tween, "tween_completed")
-	var dur = 1.0
+	
+	empiric_label.enter_animation(skip)
+	if not skip:
+		yield(empiric_label, "animation_finished")
+
 	set_xp_pool_label(value)
-	for child in xp_pool_amount.get_children():
-		child.modulate.a = 0
 	yield(get_tree(),"idle_frame")
+	
 	var count = xp_pool_amount.get_child_count()
 	for child in xp_pool_amount.get_children():
-		$Tween.interpolate_property(child, "modulate:a", 0, 1.0, dur/float(count), Tween.TRANS_QUAD, Tween.EASE_OUT)
-		$Tween.start()
+		child.fade_in_dur = 1.0/float(count)
+		child.enter_animation(skip)
 		AudioManager.play_sfx("increasing_empiric_points", 1.0 + (count-1)*.025)
-		yield($Tween, "tween_completed")
-	yield(get_tree().create_timer(.2),"timeout")
+		if not skip:
+			yield(child, "animation_finished")
+	if not skip:
+		yield(get_tree().create_timer(.2),"timeout")
 	setup_xp_progress_bars()
 
 
@@ -100,16 +111,37 @@ func setup_xp_progress_bars():
 			child.start_max_level()
 			child.max_level(prog_name)
 		idx += 1
-		$Tween.interpolate_property(child, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-		$Tween.start()
-		yield($Tween, "tween_completed")
+		child.enter_animation(skip)
+		if not skip:
+			yield(child, "animation_finished")
 		if not Profile.is_max_level(prog_type):
 			child.slider.editable = true
-		yield(get_tree().create_timer(.4),"timeout")
-	$Tween.interpolate_property(apply_button, "modulate:a", 0, 1, .8, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	$Tween.start()
-	yield($Tween, "tween_completed")
+		if not skip:
+			yield(get_tree().create_timer(.4),"timeout")
+	
+	apply_button.enter_animation(skip)
+	if not skip:
+		yield(apply_button, "animation_finished")
+		
+	animation_active = false
+	#Safety measure for yield in higher function
+	yield(get_tree().create_timer(.01),"timeout")
 	emit_signal("setup_animation_complete")
+
+
+func skip_animations():
+	animation_active = false
+	skip = true
+	var elements := []
+	elements.append(empiric_label)
+	elements.append_array(xp_pool_amount.get_children())
+	elements.append_array(progress_cont.get_children())
+	elements.append(apply_button)
+	
+	for element in elements:
+		if element.has_method("animate") and element.animation_active:
+			element.skip_animation()
+			break
 
 
 func set_xp_pool_label(value):
@@ -141,7 +173,6 @@ func update_particle_control():
 	else:
 		var digit = xp_pool_amount.get_child(floor(xp_pool_amount.get_child_count()/2.0))
 		$ParticleControl.rect_global_position = digit.rect_global_position + digit.rect_size/2
-		
 
 
 func get_available_xp():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/images/ui/book/mastery_bar.png" type="Texture" id=7]
 [ext_resource path="res://game/ui/endgame-stats/AmountDigit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/ui/endgame-stats/AnimatedObject.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -134,9 +135,11 @@ margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "EMPIRIC_AVAILABLE"
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+fade_in_dur = 0.7
 
 [node name="AmountContainer" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 438.0
@@ -217,6 +220,7 @@ margin_right = 596.664
 margin_bottom = 998.02
 theme = ExtResource( 6 )
 text = "APPLY"
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

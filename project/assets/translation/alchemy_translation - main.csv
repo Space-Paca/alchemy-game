@@ -598,7 +598,7 @@ ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalh
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida
 ART_MAX_HP_DESC,"When acquired, your total life is increased by 20","Quando adquirido, sua vida total aumenta em 20"
 ART_HAND_VEKNOR_NAME,Hand of Veknor,Mão de Veknor
-ART_HAND_VEKNOR_DESC,"When acquired, decreased your total life by 25%. Whenever you deal 10 or more unblocked damage to an enemy, absorb 2.","Quando adquirido, diminui sua vida total em 25%. Sempre que você infligir 10 ou mais de dano não-bloqueado a um inimigo, absorve 2."
+ART_HAND_VEKNOR_DESC,"When acquired, decreased your total life by 40%. Whenever you deal 20 or more unblocked damage to an enemy, absorb 1.","Quando adquirido, diminui sua vida total em 40%. Sempre que você infligir 20 ou mais de dano não-bloqueado a um inimigo, absorve 1."
 ART_TEMP_STRENGTH_NAME,Morhk Nosering,Piercing de Morhk
 ART_TEMP_STRENGTH_DESC,Start each battle with 6 Temporary Buff,Comece cada batalha com 3 de Poder Temporário
 ART_GREAT_REST_NAME,Warm Blanket,Cobertor Quentinho

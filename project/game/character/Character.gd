@@ -226,9 +226,9 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 				reduce_status("concentration", unblocked_damage)
 				if not status_list.has("concentration"):
 					emit_signal("remove_attack")
-			if source.is_player() and source.has_artifact("hand_veknor") and unblocked_damage >= 10 and\
+			if source.is_player() and source.has_artifact("hand_veknor") and unblocked_damage >= 20 and\
 			   type != "poison" and type != "venom":
-				absorb(source, 2)
+				absorb(source, 1)
 	
 	return unblocked_damage
 

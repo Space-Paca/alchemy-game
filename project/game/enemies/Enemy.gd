@@ -494,7 +494,7 @@ func update_intent():
 	for action in cur_actions:
 		var intent = IntentManager.create_intent_data(action)
 		if intent.has("value"):
-			var value = intent.value
+			var value = int(intent.value)
 			var name = action[0]
 			if name == "damage" or name == "drain":
 				value = max(0, value + get_damage_modifiers())

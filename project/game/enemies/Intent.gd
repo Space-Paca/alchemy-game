@@ -22,7 +22,6 @@ func setup(_enemy, _player, _action, texture, value, multiplier):
 	$Image.texture = texture
 	
 	#Add value
-	
 	if typeof(value) == TYPE_INT:
 		$Value.text = str(value)
 	else:

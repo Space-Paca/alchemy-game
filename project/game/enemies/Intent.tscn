@@ -86,5 +86,6 @@ position = Vector2( 72.7488, 30.7013 )
 
 [node name="TooltipPosition" type="Position2D" parent="."]
 position = Vector2( 150.169, -14.0158 )
+
 [connection signal="disable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]

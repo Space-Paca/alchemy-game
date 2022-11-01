@@ -158,6 +158,9 @@ func destroy_reagent(reagent_type):
 	for slot in slots.get_children():
 		var reagent = slot.get_reagent()
 		if reagent:
+			if reagent_type == "trash" and reagent.type == "trash_plus":
+				continue
+			
 			var substitutions = ReagentDB.get_substitutions(reagent.type)
 			if reagent.type == reagent_type or substitutions.has(reagent_type):
 				if not possible_removal_slot or \

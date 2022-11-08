@@ -106,7 +106,7 @@ func _input(event):
 				combine()
 			else:
 				AudioManager.play_sfx("error")
-		else:
+		elif not is_dragging_reagent:
 			#Disabling shortcuts for now until we fix the related bugs
 			for i in range(1, favorites.get_child_count() + 1):
 				if event.is_action_pressed("favorite_"+str(i)):
@@ -900,6 +900,9 @@ func is_grabbing_reagent():
 
 
 func autocomplete_grid(combination: Combination):
+	yield(get_tree(), "idle_frame")
+	
+	#Return already placed reagents to hand
 	var to_return = []
 	for slot in grid.slots.get_children():
 		if slot.current_reagent:
@@ -907,10 +910,9 @@ func autocomplete_grid(combination: Combination):
 	for i in to_return.size():
 		var reagent = to_return[i]
 		hand.place_reagent(reagent)
-		if i == to_return.size() - 1:
+		if i == to_return.size() -1:
 			yield(hand, "reagent_placed")
 	
-	yield(get_tree(), "idle_frame")
 	var recipe_reagents = combination.recipe.reagents.duplicate()
 	var available_reagents := []
 	for reagent in reagents.get_children():
@@ -928,15 +930,12 @@ func autocomplete_grid(combination: Combination):
 							var slot = grid.slots.get_child((i+off_i) * grid.grid_size + (j+off_j))
 							if slot.is_restrained() or slot.is_restricted():
 								valid_hint = false
-								#Return already placed reagents to hand
-								for gridslot in grid.slots.get_children():
-									if gridslot.current_reagent:
-										hand.place_reagent(gridslot.current_reagent)
 								break
 					if not valid_hint:
 						break
 				#Found valid offset
 				if valid_hint:
+					var count = selected_reagents.size()
 					for i in range(combination.grid_size):
 						for j in range(combination.grid_size):
 							if combination.matrix[i][j]:
@@ -946,10 +945,15 @@ func autocomplete_grid(combination: Combination):
 										var reagent = reagents.get_child(idx)
 										if not reagent.is_burned():
 											selected_reagents[idx] = false
+											count -= 1
 											if not reagent.slot:
 												push_error("reagent isn't in slot")
-												assert(false)
-											slot.set_reagent(reagent)
+											var func_state = slot.set_reagent(reagent)
+											if count <= 0:
+												if func_state and func_state.is_valid():
+													yield(slot, "reagent_set")
+												else:
+													yield(get_tree(), "idle_frame")
 											break
 					#Could autocomplete
 					emit_signal("finished_autocomplete")
@@ -1508,6 +1512,9 @@ func _on_PassTurnButton_button_down():
 
 
 func _on_FavoriteButton_pressed(index: int):
+	if is_dragging_reagent:
+		AudioManager.play_sfx("error")
+		return
 	AudioManager.play_sfx("click")
 	disable_player()
 	var button : FavoriteButton = favorites.get_child(index)

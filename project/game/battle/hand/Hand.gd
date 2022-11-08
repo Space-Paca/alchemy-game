@@ -169,8 +169,11 @@ func place_reagent(reagent):
 	for slot in get_slots():
 		if not slot.get_reagent() and \
 		   (not slot.is_frozen() or reagent.frozen):
-			slot.set_reagent(reagent)
-			yield(slot, "reagent_set")
+			var func_state = slot.set_reagent(reagent)
+			if func_state and func_state.is_valid():
+				yield(slot, "reagent_set")
+			else:
+				yield(get_tree(), "idle_frame")
 			emit_signal("reagent_placed")
 			return
 	push_error("Can't place reagent in hand, hand is full.")

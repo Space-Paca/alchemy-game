@@ -23,7 +23,10 @@ func set_reagent(reagent):
 	current_reagent = reagent
 	reagent.slot = self
 	reagent.target_position = area.global_position
-	yield(reagent, "reached_target_pos")
+	if reagent.rect_position.distance_to(reagent.target_position) > 0:
+		yield(reagent, "reached_target_pos")
+	else:
+		yield(get_tree(), "idle_frame")
 	emit_signal("reagent_set")
 
 

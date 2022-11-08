@@ -120,11 +120,19 @@ func is_full():
 	return true
 
 func quick_place(reagent):
+	var can_drag = reagent.can_drag
+	reagent.can_drag = false
+	
 	#Search for available hint first
 	for slot in slots.get_children():
 		if not slot.get_reagent() and slot.get_hint() == reagent.type:
 			AudioManager.play_sfx("quick_place_grid")
-			slot.set_reagent(reagent)
+			var func_state = slot.set_reagent(reagent)
+			if func_state and func_state.is_valid():
+				yield(slot, "reagent_set")
+			else:
+				yield(get_tree(), "idle_frame")
+			reagent.can_drag = can_drag
 			return
 
 	#Then search for substitutes the reagent may have
@@ -133,21 +141,36 @@ func quick_place(reagent):
 		for slot in slots.get_children():
 			if not slot.get_reagent() and slot.get_hint() == sub_reagent:
 				AudioManager.play_sfx("quick_place_grid")
-				slot.set_reagent(reagent)
+				var func_state = slot.set_reagent(reagent)
+				if func_state and func_state.is_valid():
+					yield(slot, "reagent_set")
+				else:
+					yield(get_tree(), "idle_frame")
+				reagent.can_drag = can_drag
 				return
 
 	#Then search for unknown hints on the grid
 	for slot in slots.get_children():
 		if not slot.get_reagent() and slot.get_hint() == "unknown":
 			AudioManager.play_sfx("quick_place_grid")
-			slot.set_reagent(reagent)
+			var func_state = slot.set_reagent(reagent)
+			if func_state and func_state.is_valid():
+				yield(slot, "reagent_set")
+			else:
+				yield(get_tree(), "idle_frame")
+			reagent.can_drag = can_drag
 			return
 
 	#Finally search for empty space after
 	for slot in slots.get_children():
 		if not slot.get_reagent() and not slot.is_restrained() and not slot.is_restricted():
 			AudioManager.play_sfx("quick_place_grid")
-			slot.set_reagent(reagent)
+			var func_state = slot.set_reagent(reagent)
+			if func_state and func_state.is_valid():
+				yield(slot, "reagent_set")
+			else:
+				yield(get_tree(), "idle_frame")
+			reagent.can_drag = can_drag
 			return
 	#If got here, don't have an available space
 	AudioManager.play_sfx("error")

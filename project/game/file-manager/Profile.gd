@@ -59,7 +59,10 @@ var progression = {
 
 var stats = {
 	"times_finished": {
-		"alchemist": 0,
+		"alchemist": {
+			"normal" : 0,
+			"hard" : 0,
+		}
 	},
 	"gameover": 0,
 }
@@ -122,7 +125,15 @@ func set_save_data(data):
 		push_warning("Properly updating to new save version")
 		if data.stats.has("times_finished_alchemist"):
 			data.stats["times_finished"] = {
-				"alchemist": data.stats.times_finished_alchemist
+				"alchemist": {
+					"normal": int(data.stats.times_finished_alchemist),
+					"hard": 0,
+				}
+			}
+		if typeof(data.stats["times_finished"].alchemist) == TYPE_INT:
+			data.stats["times_finished"].alchemist = {
+				"normal": int(data.stats["times_finished"].alchemist),
+				"hard": 0,
 			}
 		push_warning("Profile updated!")#ヽ(*￣▽￣*)ノミ
 	

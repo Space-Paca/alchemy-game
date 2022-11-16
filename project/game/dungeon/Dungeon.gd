@@ -22,6 +22,7 @@ var combinations := {}
 var failed_combinations := []
 var time_of_run = 0.0
 var time_running = false
+var difficulty = "normal"
 var floor_level := 1
 var times_recipe_made := {}
 var max_favorites := 8
@@ -73,6 +74,7 @@ func _ready():
 		if Debug.floor_to_go != -1:
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
+		difficulty = FileManager.difficulty_to_use
 		create_combinations()
 		EventManager.reset_events()
 		create_level(floor_level)
@@ -138,6 +140,7 @@ func get_save_data():
 		"current_node": "" if (not current_node or not is_instance_valid(current_node)) else current_node.name,
 		"time_of_run": time_of_run,
 		"times_removed_reagent": times_removed_reagent,
+		"difficulty": difficulty,
 	}
 	return data
 
@@ -146,7 +149,8 @@ func set_save_data(data):
 	if data.save_version != SAVE_VERSION:
 		print("Different save version on loaded run.")
 		print("Game version: " + str(SAVE_VERSION) + "; Saved run version: " + str(data.save_version))
-		#For now does nothing, but we should convert the save files if needed
+		if not data.has("difficulty"):
+			data.difficulty = "normal"
 	
 	player.set_save_data(data.player)
 	player_info.update_artifacts(player.artifacts)
@@ -160,6 +164,7 @@ func set_save_data(data):
 	time_of_run = data.time_of_run
 	times_removed_reagent = data.times_removed_reagent if data.has("times_removed_reagent") else 0
 	timer.update_timer(time_of_run)
+	difficulty = data.difficulty
 
 
 func play_map_bgm():
@@ -796,8 +801,9 @@ func thanks_for_playing():
 	var scene
 	if not Debug.is_demo:
 		var times_finished = Profile.get_stat("times_finished")
-		assert(times_finished.has(player.player_class.name))
-		times_finished[player.player_class.name] += 1
+		assert(times_finished.has(player.player_class.name), "Not a valid class name: " + str(player.player_class.name))
+		assert(times_finished[player.player_class.name].has(difficulty), "Not a valid difficulty: " + str(difficulty))
+		times_finished[player.player_class.name][difficulty] += 1
 		Profile.set_stat("times_finished", times_finished)
 		scene = load("res://game/ui/Ending.tscn").instance()
 	else:

@@ -2,6 +2,7 @@ extends Node
 
 var dungeon = false
 var continue_game = false
+var difficulty_to_use = "normal"
 
 
 func _notification(what):

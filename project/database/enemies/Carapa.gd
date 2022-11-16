@@ -5,28 +5,57 @@ var image = "res://assets/images/enemies/regular enemy/idle.png"
 var name = "EN_CARAPA"
 var sfx = "carapa"
 var use_idle_sfx = false
-var hp = 45
+var hp = {
+	"normal": 45,
+	"hard": 45,
+}
 var battle_init = false
 var size = "medium"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["attack", "defend"]
-var connections = [
-					  ["attack", "defend", 5],
-					  ["attack", "attack", 5],
-					  ["defend", "attack", 1],
-				  ]
-var first_state = ["attack", "defend"]
+var states = {
+	"normal": ["attack", "defend"],
+	"hard": ["attack", "defend"],
+}
+
+var connections = {
+	"normal": [
+		["attack", "defend", 5],
+		["attack", "attack", 5],
+		["defend", "attack", 1],
+	],
+	"hard": [
+		["attack", "defend", 5],
+		["attack", "attack", 5],
+		["defend", "attack", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["attack", "defend"],
+	"hard": ["attack", "defend"],
+}
 
 var actions = {
-	"attack": [
-		{"name": "damage", "value": [10, 15], "type": "regular", "animation": "atk2"}
-	],
-	"defend": [
-		{"name": "shield", "value": [4, 6], "animation": "defense"},
-		{"name": "damage", "value": [5, 7], "type": "regular", "animation": "atk"}
-	],
+	"normal": {
+		"attack": [
+			{"name": "damage", "value": [10, 15], "type": "regular", "animation": "atk2"}
+		],
+		"defend": [
+			{"name": "shield", "value": [4, 6], "animation": "defense"},
+			{"name": "damage", "value": [5, 7], "type": "regular", "animation": "atk"}
+		],
+	},
+	"hard": {
+		"attack": [
+			{"name": "damage", "value": [10, 15], "type": "regular", "animation": "atk2"}
+		],
+		"defend": [
+			{"name": "shield", "value": [4, 6], "animation": "defense"},
+			{"name": "damage", "value": [5, 7], "type": "regular", "animation": "atk"}
+		],
+	},
 }
 
 

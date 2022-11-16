@@ -64,6 +64,7 @@ const BOSS_EVENT_BACKGROUNDS = {
 }
 
 var floor_level
+var difficulty := "normal"
 var ended := false
 var player_disabled := true
 var is_boss
@@ -165,9 +166,10 @@ func get_enemies_save_data():
 	return data
 
 
-func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int, recipe_book : RecipeBook):
+func load_state(data: Dictionary, _player: Player, favorite_combinations: Array, _floor_level: int, recipe_book : RecipeBook, _difficulty: String):
 	emit_signal("block_pause", true)
 	
+	difficulty = _difficulty
 	floor_level = _floor_level
 	current_encounter = EncounterManager.load_resource(data.encounter)
 	current_encounter.current_phase = data.encounter_phase
@@ -223,9 +225,10 @@ func load_state(data: Dictionary, _player: Player, favorite_combinations: Array,
 
 
 func setup(_player: Player, encounter: Encounter, favorite_combinations: Array,
-		_floor_level: int,  recipe_book : RecipeBook, _is_event := false):
+		_floor_level: int,  recipe_book : RecipeBook, _is_event := false, _difficulty := "normal"):
 	emit_signal("block_pause", true)
 	
+	difficulty = _difficulty
 	floor_level = _floor_level
 	current_encounter = encounter
 	is_event = _is_event
@@ -464,7 +467,7 @@ func create_reagent(type):
 
 
 func load_enemy(data):
-	var enemy_node = EnemyManager.create_object(data.name, player)
+	var enemy_node = EnemyManager.create_object(data.name, player, difficulty)
 	enemies_node.add_child(enemy_node)
 
 	enemy_node.position = $EnemyStartPosition.position
@@ -492,7 +495,7 @@ func load_enemy(data):
 	enemy_node.load_actions(data.actions)
 
 func add_enemy(enemy, initial_pos = false, just_spawned = false, is_minion = false):
-	var enemy_node = EnemyManager.create_object(enemy, player)
+	var enemy_node = EnemyManager.create_object(enemy, player, difficulty)
 	enemies_node.add_child(enemy_node)
 
 	if initial_pos:

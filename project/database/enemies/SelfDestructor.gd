@@ -5,31 +5,63 @@ var image = "res://assets/images/enemies/self destructor/idle.png"
 var name = "EN_SELF_DESTRUCTOR"
 var sfx = "self-destruct"
 var use_idle_sfx = false
-var hp = 5
+var hp = {
+	"normal": 5,
+	"hard": 5,
+}
 var battle_init = true
 var size = "small"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["init","attack", "self_destruct"]
-var connections = [
-					  ["init", "attack", 1],
-					  ["attack", "self_destruct", 1],
-					  ["self_destruct", "self_destruct", 1],
-				  ]
-var first_state = ["init"]
+var states = {
+	"normal": ["init","attack", "self_destruct"],
+	"hard": ["init","attack", "self_destruct"],
+}
+
+var connections = {
+	"normal": [
+		["init", "attack", 1],
+		["attack", "self_destruct", 1],
+		["self_destruct", "self_destruct", 1],
+	],
+	"hard": [
+		["init", "attack", 1],
+		["attack", "self_destruct", 1],
+		["self_destruct", "self_destruct", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["init"],
+	"hard": ["init"],
+}
 
 var actions = {
-	"init": [
-		{"name": "shield", "value": 30, "animation": ""},
-		{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""}
-	],
-	"attack": [
-		{"name": "damage", "value": [4,5], "amount": 2, "type": "regular", "animation": "02_atk"}
-	],
-	"self_destruct": [
-		{"name": "self_destruct", "value": 30, "animation": "02_atk"}
-	]
+	"normal": {
+		"init": [
+			{"name": "shield", "value": 30, "animation": ""},
+			{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""}
+		],
+		"attack": [
+			{"name": "damage", "value": [4,5], "amount": 2, "type": "regular", "animation": "02_atk"}
+		],
+		"self_destruct": [
+			{"name": "self_destruct", "value": 30, "animation": "02_atk"}
+		]
+	},
+	"hard": {
+		"init": [
+			{"name": "shield", "value": 30, "animation": ""},
+			{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""}
+		],
+		"attack": [
+			{"name": "damage", "value": [4,5], "amount": 2, "type": "regular", "animation": "02_atk"}
+		],
+		"self_destruct": [
+			{"name": "self_destruct", "value": 30, "animation": "02_atk"}
+		]
+	},
 }
 
 

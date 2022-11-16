@@ -5,23 +5,45 @@ var image = "res://assets/images/enemies/small regular enemy/idle.png"
 var name = "EN_BABY_CARAPA"
 var sfx = "carapa"
 var use_idle_sfx = false
-var hp = 15
+var hp = {
+	"normal": 15,
+	"hard": 15,
+}
 var battle_init = false
 var size = "small"
 var change_phase = null
 var unique_bgm = null
 
+var states = {
+	"normal": ["attack"],
+	"hard": ["attack"],
+}
 
-var states = ["attack"]
-var connections = [
-					  ["attack", "attack", 1],
-				  ]
-var first_state = ["attack"]
+var connections = {
+	"normal":[
+		["attack", "attack", 1],
+	],
+	"hard":[
+		["attack", "attack", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["attack"],
+	"hard": ["attack"],
+}
 
 var actions = {
-	"attack": [
-		{"name": "damage", "value": [5,7], "type": "regular", "animation": "atk"}
-	]
+	"normal": {
+		"attack": [
+			{"name": "damage", "value": [5,7], "type": "regular", "animation": "atk"}
+		]
+	},
+	"hard": {
+		"attack": [
+			{"name": "damage", "value": [5,7], "type": "regular", "animation": "atk"}
+		]
+	},
 }
 
 

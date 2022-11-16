@@ -5,32 +5,67 @@ var image = "res://assets/images/enemies/buffing big enemy/idle.png"
 var name = "EN_BIG_BUFFER"
 var sfx = "morhk"
 var use_idle_sfx = false
-var hp = 80
+var hp = {
+	"normal": 80,
+	"hard": 80,
+}
 var battle_init = false
 var size = "medium"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["temp_buff", "perm_buff", "attack"]
-var connections = [["temp_buff", "attack", 3],
-				   ["temp_buff", "temp_buff", 1],
-				   ["attack", "perm_buff", 1],
-				   ["perm_buff", "temp_buff", 1],
-				   ["perm_buff", "attack", 3],
-				   ["perm_buff", "temp_buff", 1],
-						 ]
-var first_state = ["temp_buff"]
+var states = {
+	"normal": ["temp_buff", "perm_buff", "attack"],
+	"hard": ["temp_buff", "perm_buff", "attack"],
+}
+
+var connections = {
+	"normal": [
+		["temp_buff", "attack", 3],
+		["temp_buff", "temp_buff", 1],
+		["attack", "perm_buff", 1],
+		["perm_buff", "temp_buff", 1],
+		["perm_buff", "attack", 3],
+		["perm_buff", "temp_buff", 1],
+	],
+	"hard": [
+		["temp_buff", "attack", 3],
+		["temp_buff", "temp_buff", 1],
+		["attack", "perm_buff", 1],
+		["perm_buff", "temp_buff", 1],
+		["perm_buff", "attack", 3],
+		["perm_buff", "temp_buff", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["temp_buff"],
+	"hard": ["temp_buff"],
+}
 
 var actions = {
-	"temp_buff": [
-		{"name": "status", "status_name": "temp_strength", "value": 11, "target": "self", "positive": true, "animation": "idle"}
-	],
-	"perm_buff": [
-		{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": "idle"}
-	],
-	"attack": [
-		{"name": "damage", "value": [4,6], "type": "regular", "animation": "atk"},
-	]
+	"normal": {
+		"temp_buff": [
+			{"name": "status", "status_name": "temp_strength", "value": 11, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"perm_buff": [
+			{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"attack": [
+			{"name": "damage", "value": [4,6], "type": "regular", "animation": "atk"},
+		]
+	},
+	"hard": {
+		"temp_buff": [
+			{"name": "status", "status_name": "temp_strength", "value": 11, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"perm_buff": [
+			{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"attack": [
+			{"name": "damage", "value": [4,6], "type": "regular", "animation": "atk"},
+		]
+	},
 }
 
 

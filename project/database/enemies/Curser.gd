@@ -5,33 +5,67 @@ var image = "res://assets/images/enemies/curser/idle.png"
 var name = "EN_CURSER"
 var sfx = "curser"
 var use_idle_sfx = false
-var hp = 100
+var hp = {
+	"normal": 100,
+	"hard": 100,
+}
 var battle_init = true
 var size = "medium"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["init", "attack", "debuff"]
-var connections = [
-					  ["init", "attack", 1],
-					  ["init", "debuff", 1],
-					  ["attack", "attack", 2],
-					  ["attack", "debuff", 1],
-					  ["debuff", "attack", 1],
-				  ]
-var first_state = ["init"]
+var states = {
+	"normal": ["init", "attack", "debuff"],
+	"hard": ["init", "attack", "debuff"],
+}
+
+var connections = {
+	"normal": [
+		["init", "attack", 1],
+		["init", "debuff", 1],
+		["attack", "attack", 2],
+		["attack", "debuff", 1],
+		["debuff", "attack", 1],
+	],
+	"hard": [
+		["init", "attack", 1],
+		["init", "debuff", 1],
+		["attack", "attack", 2],
+		["attack", "debuff", 1],
+		["debuff", "attack", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["init"],
+	"hard": ["init"],
+}
 
 var actions = {
-	"init": [
-		{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}
-	],
-	"attack": [
-		{"name": "damage", "value": [8, 15], "type": "regular", "animation": "02_atk"}
-	],
-	"debuff": [
-		{"name": "shield", "value": [5, 18], "animation": ""},
-		{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false, "animation": "02_atk"}
-	],
+	"normal": {
+		"init": [
+			{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+		"attack": [
+			{"name": "damage", "value": [8, 15], "type": "regular", "animation": "02_atk"}
+		],
+		"debuff": [
+			{"name": "shield", "value": [5, 18], "animation": ""},
+			{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+	},
+	"hard": {
+		"init": [
+			{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+		"attack": [
+			{"name": "damage", "value": [8, 15], "type": "regular", "animation": "02_atk"}
+		],
+		"debuff": [
+			{"name": "shield", "value": [5, 18], "animation": ""},
+			{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+	},
 }
 
 

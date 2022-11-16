@@ -5,23 +5,46 @@ var image = "res://assets/images/enemies/small regular enemy plus/idle.png"
 var name = "EN_BABY_CARAPA_PLUS"
 var sfx = "carapa"
 var use_idle_sfx = false
-var hp = 45
+var hp = {
+	"normal": 45,
+	"hard": 45,
+}
 var battle_init = false
 var size = "small"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["attack"]
-var connections = [
-					  ["attack", "attack", 1],
-				  ]
-var first_state = ["attack"]
+var states = {
+	"normal": ["attack"],
+	"hard": ["attack"],
+}
+
+var connections = {
+	"normal":[
+		["attack", "attack", 1],
+	],
+	"hard":[
+		["attack", "attack", 1],
+	],
+} 
+
+var first_state = {
+	"normal": ["attack"],
+	"hard": ["attack"],
+}
 
 var actions = {
-	"attack": [
-		{"name": "damage", "value": [8,15], "type": "regular", "animation": "atk2"}
-	]
-}
+	"normal": {
+		"attack": [
+			{"name": "damage", "value": [8,15], "type": "regular", "animation": "atk2"}
+		]
+	},
+	"hard": {
+		"attack": [
+			{"name": "damage", "value": [8,15], "type": "regular", "animation": "atk2"}
+		]
+	},
+} 
 
 
 func _init():

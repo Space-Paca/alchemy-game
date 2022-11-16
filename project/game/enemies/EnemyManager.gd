@@ -46,15 +46,15 @@ func _ready():
 	for enemy_name in ENEMY_DB.keys():
 		var enemy = ENEMY_DB[enemy_name].new()
 		assert(enemy is EnemyData)
-		var actions : Dictionary = enemy.actions
-		for state in actions.keys():
-			var action_array : Array = actions[state]
-			for action in action_array:
-				assert(action is Dictionary)
-				assert((action as Dictionary).has("animation"), 'Enemy %s: missing key "animation" for action in %s' % [enemy_name, state])
+		for actions in enemy.actions.values():
+			for state in actions.keys():
+				var action_array : Array = actions[state]
+				for action in action_array:
+					assert(action is Dictionary)
+					assert((action as Dictionary).has("animation"), 'Enemy %s: missing key "animation" for action in %s' % [enemy_name, state])
 
 
-func create_object(enemy_type, player):
+func create_object(enemy_type, player, difficulty):
 	if not ENEMY_DB.has(enemy_type):
 		push_error("Given type of enemy doesn't exist: " + str(enemy_type))
 		assert(false)
@@ -66,15 +66,15 @@ func create_object(enemy_type, player):
 	var mat_override = enemy.get_node("Sprite").get_material().duplicate()
 	enemy.get_node("Sprite").set_material(mat_override)
 	
-	enemy.init(enemy_data.name, enemy_data.hp)
+	enemy.init(enemy_data.name, enemy_data.hp[difficulty])
 	enemy.enemy_type = enemy_type
 	
-	var logic = {"states":enemy_data.states,
-				 "connections": enemy_data.connections,
-				 "first_state": enemy_data.first_state,
+	var logic = {"states":enemy_data.states[difficulty],
+				 "connections": enemy_data.connections[difficulty],
+				 "first_state": enemy_data.first_state[difficulty],
 				}
 
-	enemy.setup(logic, load(enemy_data.image), enemy_data, player)
+	enemy.setup(logic, load(enemy_data.image), enemy_data, player, difficulty)
 	return enemy
 
 

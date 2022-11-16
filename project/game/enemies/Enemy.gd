@@ -36,6 +36,7 @@ const VARIANT_IDLE_CHANCE = .15
 
 var logic
 var data
+var difficulty
 var enemy_type
 var cur_actions
 var player
@@ -280,7 +281,7 @@ func update_actions():
 	var state = logic.get_current_state()
 	
 	cur_actions = []
-	for action in data.actions[state]:
+	for action in data.actions[difficulty][state]:
 		var act
 		if action.name == "damage":
 			var value = get_random_value(action.value) if action.value is Array else action.value
@@ -356,11 +357,12 @@ func get_center_position():
 	return $Sprite/CenterPosition.global_position
 
 
-func setup(enemy_logic, new_texture, enemy_data, _player):
+func setup(enemy_logic, new_texture, enemy_data, _player, _difficulty):
 	set_logic(enemy_logic)
 	set_life(enemy_data)
 	set_image(new_texture)
 	data = enemy_data #Store enemy data
+	difficulty = _difficulty
 	player = _player
 
 func set_logic(enemy_logic):

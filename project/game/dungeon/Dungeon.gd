@@ -625,7 +625,7 @@ func load_battle(data):
 	
 	create_battle()
 	
-	battle.load_state(data, player, recipe_book.favorite_combinations, floor_level, recipe_book)
+	battle.load_state(data, player, recipe_book.favorite_combinations, floor_level, recipe_book, difficulty)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")
@@ -643,7 +643,7 @@ func new_battle(encounter: Encounter, is_event := false):
 	#DEBUG spawna último boss
 	#encounter = EncounterManager.boss_encounters[3].front()
 	
-	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level, recipe_book, is_event)
+	battle.setup(player, encounter, recipe_book.favorite_combinations, floor_level, recipe_book, is_event, difficulty)
 	
 	Transition.end_transition()
 	yield(Transition, "finished")

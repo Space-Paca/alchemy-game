@@ -5,37 +5,75 @@ var image = "res://assets/images/enemies/undead_morkh/idle.png"
 var name = "EN_UNDEAD_MORKH"
 var sfx = "morhk"
 var use_idle_sfx = false
-var hp = 160
+var hp = {
+	"normal": 160,
+	"hard": 160,
+}
 var battle_init = true
 var size = "medium"
 var change_phase = null
 var unique_bgm = null
 
-var states = ["init","temp_buff", "perm_buff", "attack"]
-var connections = [
-				   ["init", "temp_buff", 1],
-				   ["temp_buff", "attack", 3],
-				   ["temp_buff", "temp_buff", 1],
-				   ["attack", "perm_buff", 1],
-				   ["perm_buff", "temp_buff", 1],
-				   ["perm_buff", "attack", 3],
-				   ["perm_buff", "temp_buff", 1],
-						 ]
-var first_state = ["init"]
+var states = {
+	"normal": ["init","temp_buff", "perm_buff", "attack"],
+	"hard": ["init","temp_buff", "perm_buff", "attack"],
+}
+
+var connections = {
+	"normal": [
+		["init", "temp_buff", 1],
+		["temp_buff", "attack", 3],
+		["temp_buff", "temp_buff", 1],
+		["attack", "perm_buff", 1],
+		["perm_buff", "temp_buff", 1],
+		["perm_buff", "attack", 3],
+		["perm_buff", "temp_buff", 1],
+	],
+	"hard": [
+		["init", "temp_buff", 1],
+		["temp_buff", "attack", 3],
+		["temp_buff", "temp_buff", 1],
+		["attack", "perm_buff", 1],
+		["perm_buff", "temp_buff", 1],
+		["perm_buff", "attack", 3],
+		["perm_buff", "temp_buff", 1],
+	],
+}
+
+var first_state = {
+	"normal": ["init"],
+	"hard": ["init"],
+}
 
 var actions = {
-	"init": [
-		{"name": "status", "status_name": "deterioration", "value": 1, "target": "player", "positive": false, "animation": "idle"}
-	],
-	"temp_buff": [
-		{"name": "status", "status_name": "temp_strength", "value": 15, "target": "self", "positive": true, "animation": "idle"}
-	],
-	"perm_buff": [
-		{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
-	],
-	"attack": [
-		{"name": "damage", "value": [6,9], "type": "regular", "animation": "atk"},
-	]
+	"normal": {
+		"init": [
+			{"name": "status", "status_name": "deterioration", "value": 1, "target": "player", "positive": false, "animation": "idle"}
+		],
+		"temp_buff": [
+			{"name": "status", "status_name": "temp_strength", "value": 15, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"perm_buff": [
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"attack": [
+			{"name": "damage", "value": [6,9], "type": "regular", "animation": "atk"},
+		]
+	},
+	"hard": {
+		"init": [
+			{"name": "status", "status_name": "deterioration", "value": 1, "target": "player", "positive": false, "animation": "idle"}
+		],
+		"temp_buff": [
+			{"name": "status", "status_name": "temp_strength", "value": 15, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"perm_buff": [
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"attack": [
+			{"name": "damage", "value": [6,9], "type": "regular", "animation": "atk"},
+		]
+	},
 }
 
 

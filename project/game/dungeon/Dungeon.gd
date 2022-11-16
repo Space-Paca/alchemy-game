@@ -798,6 +798,7 @@ func add_all_possible_failed_combinations(reagent_matrix):
 
 func thanks_for_playing():
 	FileManager.delete_run_file()
+	$PauseScreen.set_block_pause(true)
 	var scene
 	if not Debug.is_demo:
 		var times_finished = Profile.get_stat("times_finished")

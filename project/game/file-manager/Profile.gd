@@ -130,7 +130,7 @@ func set_save_data(data):
 					"hard": 0,
 				}
 			}
-		if typeof(data.stats["times_finished"].alchemist) == TYPE_INT:
+		if typeof(data.stats["times_finished"].alchemist) != TYPE_DICTIONARY:
 			data.stats["times_finished"].alchemist = {
 				"normal": int(data.stats["times_finished"].alchemist),
 				"hard": 0,

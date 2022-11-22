@@ -7,7 +7,7 @@ var sfx = "carapa"
 var use_idle_sfx = false
 var hp = {
 	"normal": 125,
-	"hard": 125,
+	"hard": 150,
 }
 var battle_init = true
 var size = "small"
@@ -70,7 +70,7 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "avenge", "value": 20, "target": "self", "positive": true, "animation": "taunt"}
+			{"name": "status", "status_name": "avenge", "value": 40, "target": "self", "positive": true, "animation": "taunt"}
 		],
 		"attack1": [
 			{"name": "damage", "value": [30, 35], "type": "regular", "animation": "atk3_arc"}

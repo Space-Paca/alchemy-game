@@ -7,7 +7,7 @@ var sfx = "oozeling-plus"
 var use_idle_sfx = false
 var hp = {
 	"normal": 80,
-	"hard": 80,
+	"hard": 100,
 }
 var battle_init = true
 var size = "small"
@@ -61,19 +61,19 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": 30, "animation": ""}
+			{"name": "shield", "value": 40, "animation": ""}
 		],
 		"poison": [
-			{"name": "damage", "value": [10,12], "type": "venom", "animation": "02_atk"}
+			{"name": "damage", "value": [13,15], "type": "venom", "animation": "02_atk"}
 		],
 		"medium-poison": [
-			{"name": "status", "status_name": "poison", "value": [1, 3], "target": "player", "positive": false, "animation": "02_atk"},
-			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
+			{"name": "status", "status_name": "poison", "value": [2, 4], "target": "player", "positive": false, "animation": "02_atk"},
+			{"name": "status", "status_name": "perm_strength", "value": 7, "target": "self", "positive": true, "animation": ""},
 			
 		],
 		"defend-poison": [
-			{"name": "shield", "value": [20,25], "animation": ""},
-			{"name": "damage", "value": [5,6], "amount": 2, "type": "venom", "animation": "02_atk"}
+			{"name": "shield", "value": [20,30], "animation": ""},
+			{"name": "damage", "value": [3,4], "amount": 3, "type": "venom", "animation": "02_atk"}
 		]
 	},
 }

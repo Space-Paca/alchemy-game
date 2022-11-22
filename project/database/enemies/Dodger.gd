@@ -7,7 +7,7 @@ var sfx = "nimble"
 var use_idle_sfx = false
 var hp = {
 	"normal": 21,
-	"hard": 21,
+	"hard": 25,
 }
 var battle_init = true
 var size = "small"
@@ -48,16 +48,17 @@ var first_state = {
 var actions = {
 	"normal": {
 		"init": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"}
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge"}
 		],
 		"dodge": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge2"}
+			{"name": "status", "status_name": "dodge", "value": 3, "target": "self", "positive": true, "animation": "dodge2"}
 		],
 		"attack": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"},
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge"},
 			{"name": "damage", "value": [7, 9], "type": "regular", "animation": "02_atk"},
 		],
 		"big_attack": [
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"},
 			{"name": "damage", "value": [9, 13], "type": "regular", "animation": "02_atk"},
 		],
 	},

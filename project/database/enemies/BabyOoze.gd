@@ -7,7 +7,7 @@ var sfx = "oozeling"
 var use_idle_sfx = false
 var hp = {
 	"normal": 6,
-	"hard": 6,
+	"hard": 10,
 }
 var battle_init = true
 var size = "small"
@@ -61,18 +61,18 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": 6, "animation": "stand"}
+			{"name": "shield", "value": 10, "animation": "stand"}
 		],
 		"poison": [
-			{"name": "damage", "value": [5,7], "type": "venom", "animation": "atk"}
+			{"name": "damage", "value": [6,8], "type": "venom", "animation": "atk"}
 		],
 		"medium-poison": [
-			{"name": "damage", "value": [3,6], "type": "venom", "animation": "atk"}
+			{"name": "damage", "value": [5,7], "type": "venom", "animation": "atk"}
 			
 		],
 		"defend-poison": [
-			{"name": "shield", "value": [7,9], "animation": ""},
-			{"name": "damage", "value": [2,4], "type": "venom", "animation": "atk"}
+			{"name": "shield", "value": [10,12], "animation": ""},
+			{"name": "damage", "value": [4,6], "type": "venom", "animation": "atk"}
 		]
 	},
 }

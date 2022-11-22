@@ -7,7 +7,7 @@ var sfx = "morhk"
 var use_idle_sfx = false
 var hp = {
 	"normal": 80,
-	"hard": 80,
+	"hard": 100,
 }
 var battle_init = false
 var size = "medium"
@@ -57,10 +57,10 @@ var actions = {
 	},
 	"hard": {
 		"temp_buff": [
-			{"name": "status", "status_name": "temp_strength", "value": 11, "target": "self", "positive": true, "animation": "idle"}
+			{"name": "status", "status_name": "temp_strength", "value": 15, "target": "self", "positive": true, "animation": "idle"}
 		],
 		"perm_buff": [
-			{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": "idle"}
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
 		],
 		"attack": [
 			{"name": "damage", "value": [4,6], "type": "regular", "animation": "atk"},

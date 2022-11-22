@@ -7,7 +7,7 @@ var sfx = "divider"
 var use_idle_sfx = false
 var hp = {
 	"normal": 80,
-	"hard": 80,
+	"hard": 100,
 }
 var battle_init = true
 var size = "medium"
@@ -47,14 +47,14 @@ var actions = {
 			{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "medium_divider"}, "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [20, 30], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [25, 35], "type": "regular", "animation": "02_atk"}
 		],
 		"defend": [
-			{"name": "shield", "value": [15, 20], "animation": ""},
-			{"name": "damage", "value": [10, 20], "type": "regular", "animation": "02_atk"}
+			{"name": "shield", "value": [20, 25], "animation": ""},
+			{"name": "damage", "value": [17, 27], "type": "regular", "animation": "02_atk"}
 		],
 		"poison": [
-			{"name": "damage", "value": [15, 25], "type": "venom", "animation": "02_atk"},
+			{"name": "damage", "value": [20, 32], "type": "venom", "animation": "02_atk"},
 		],
 	},
 	"hard": {
@@ -62,14 +62,14 @@ var actions = {
 			{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "medium_divider"}, "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [20, 30], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [25, 35], "type": "regular", "animation": "02_atk"}
 		],
 		"defend": [
-			{"name": "shield", "value": [15, 20], "animation": ""},
-			{"name": "damage", "value": [10, 20], "type": "regular", "animation": "02_atk"}
+			{"name": "shield", "value": [20, 25], "animation": ""},
+			{"name": "damage", "value": [17, 27], "type": "regular", "animation": "02_atk"}
 		],
 		"poison": [
-			{"name": "damage", "value": [15, 25], "type": "venom", "animation": "02_atk"},
+			{"name": "damage", "value": [20, 32], "type": "venom", "animation": "02_atk"},
 		],
 	},
 }

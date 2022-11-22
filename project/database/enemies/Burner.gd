@@ -7,7 +7,7 @@ var sfx = "burner"
 var use_idle_sfx = false
 var hp = {
 	"normal": 200,
-	"hard": 200,
+	"hard": 250,
 }
 var battle_init = false
 var size = "medium"
@@ -81,19 +81,19 @@ var actions = {
 	},
 	"hard": {
 		"burn": [
-			{"name": "status", "status_name": "burning", "value": 10, "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "status", "status_name": "burning", "value": 11, "target": "player", "positive": false, "animation": "02_atk"}
 		],
 		"attack1": [
-			{"name": "damage", "value": [10, 50], "type": "regular", "animation": "02_atk"},
-			{"name": "status", "status_name": "burning", "value": 4, "target": "player", "positive": false, "animation": ""}
-		],
-		"attack2": [
-			{"name": "damage", "value": [25, 40], "type": "regular", "animation": "02_atk"},
+			{"name": "damage", "value": [20, 51], "type": "regular", "animation": "02_atk"},
 			{"name": "status", "status_name": "burning", "value": 5, "target": "player", "positive": false, "animation": ""}
 		],
+		"attack2": [
+			{"name": "damage", "value": [30, 41], "type": "regular", "animation": "02_atk"},
+			{"name": "status", "status_name": "burning", "value": 6, "target": "player", "positive": false, "animation": ""}
+		],
 		"defend": [
-			{"name": "shield", "value": [5, 18], "animation": ""},
-			{"name": "status", "status_name": "burning", "value": 6, "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "shield", "value": [10, 21], "animation": ""},
+			{"name": "status", "status_name": "burning", "value": 7, "target": "player", "positive": false, "animation": "02_atk"}
 		],
 	},
 }

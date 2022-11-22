@@ -7,7 +7,7 @@ var sfx = "needler-queen"
 var use_idle_sfx = false
 var hp = {
 	"normal": 45,
-	"hard": 45,
+	"hard": 65,
 }
 var battle_init = true
 var size = "medium"
@@ -86,10 +86,10 @@ var actions = {
 		],
 		"buff2": [
 			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "divider"},
-			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "divider"},
+			{"name": "status", "status_name": "dodge", "value": 3, "target": "self", "positive": true, "animation": "divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "divider"},
 		],

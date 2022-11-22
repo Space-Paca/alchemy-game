@@ -7,7 +7,7 @@ var sfx = "boss-1"
 var use_idle_sfx = false
 var hp = {
 	"normal": 170,
-	"hard": 170,
+	"hard": 230,
 }
 var battle_init = true
 var size = "big"
@@ -62,10 +62,10 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "arcane_aegis", "value": 6, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "arcane_aegis", "value": 20, "target": "self", "positive": true, "animation": ""}
 		],
 		"start": [
-			{"name": "add_reagent", "type": "trash", "value": 6, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"}
 		],
 		"attack1": [
 			{"name": "damage", "value": 2, "type": "regular", "amount": 2, "animation": "atk 1"},
@@ -74,8 +74,8 @@ var actions = {
 			{"name": "damage", "value": 2, "type": "regular", "amount": 3, "animation": "atk 1"},
 		],
 		"buff-reagent": [
-			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""},
-			{"name": "add_reagent", "type": "trash", "value": 6, "animation": "atk 2"}
+			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
+			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"}
 		]
 	},
 }

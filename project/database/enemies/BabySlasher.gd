@@ -7,7 +7,7 @@ var sfx = "needler-spawn"
 var use_idle_sfx = false
 var hp = {
 	"normal": 5,
-	"hard": 5,
+	"hard": 10,
 }
 var battle_init = false
 var size = "small"
@@ -41,7 +41,7 @@ var actions = {
 	},
 	"hard": {
 		"attack": [
-			{"name": "damage", "value": [2,3], "type": "piercing", "animation": "atk"}
+			{"name": "damage", "value": [3,5], "type": "piercing", "animation": "atk"}
 		]
 	},
 }

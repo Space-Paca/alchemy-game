@@ -7,7 +7,7 @@ var sfx = "doomsayer"
 var use_idle_sfx = false
 var hp = {
 	"normal": 560,
-	"hard": 560,
+	"hard": 600,
 }
 var battle_init = true
 var size = "big"
@@ -82,7 +82,7 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "impending_doom", "value": 69, "target": "self", "positive": true, "animation": ""}
 		],
 		"attack1": [
 			{"name": "damage", "value": [30, 50], "type": "regular", "animation": "02_atk"},

@@ -7,7 +7,7 @@ var sfx = "virulyn-prickler"
 var use_idle_sfx = false
 var hp = {
 	"normal": 42,
-	"hard": 42,
+	"hard": 65,
 }
 var battle_init = true
 var size = "small"
@@ -65,7 +65,7 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "retaliate", "value": 5, "target": "self", "positive": true, "animation": "03_dmg"},
+			{"name": "status", "status_name": "retaliate", "value": 10, "target": "self", "positive": true, "animation": "03_dmg"},
 		],
 		"attack": [
 			{"name": "status", "status_name": "retaliate", "value": 5, "target": "self", "positive": true, "animation": "03_dmg"},

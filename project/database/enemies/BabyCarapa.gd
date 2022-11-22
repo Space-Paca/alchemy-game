@@ -7,7 +7,7 @@ var sfx = "carapa"
 var use_idle_sfx = false
 var hp = {
 	"normal": 15,
-	"hard": 15,
+	"hard": 25,
 }
 var battle_init = false
 var size = "small"
@@ -41,7 +41,7 @@ var actions = {
 	},
 	"hard": {
 		"attack": [
-			{"name": "damage", "value": [5,7], "type": "regular", "animation": "atk"}
+			{"name": "damage", "value": [7,9], "type": "regular", "animation": "atk"}
 		]
 	},
 }

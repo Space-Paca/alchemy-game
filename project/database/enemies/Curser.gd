@@ -7,7 +7,7 @@ var sfx = "curser"
 var use_idle_sfx = false
 var hp = {
 	"normal": 100,
-	"hard": 100,
+	"hard": 120,
 }
 var battle_init = true
 var size = "medium"
@@ -56,13 +56,13 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "status", "status_name": "curse", "value": 2, "target": "player", "positive": false, "animation": "02_atk"}
 		],
 		"attack": [
-			{"name": "damage", "value": [8, 15], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [10, 16], "type": "regular", "animation": "02_atk"}
 		],
 		"debuff": [
-			{"name": "shield", "value": [5, 18], "animation": ""},
+			{"name": "shield", "value": [7, 20], "animation": ""},
 			{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false, "animation": "02_atk"}
 		],
 	},

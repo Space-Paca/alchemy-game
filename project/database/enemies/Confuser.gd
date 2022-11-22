@@ -7,7 +7,7 @@ var sfx = "confuser"
 var use_idle_sfx = false
 var hp = {
 	"normal": 315,
-	"hard": 315,
+	"hard": 420,
 }
 var battle_init = true
 var size = "medium"
@@ -76,18 +76,18 @@ var actions = {
 			{"name": "status", "status_name": "confusion", "value": 1, "target": "player", "positive": false, "animation": ""}
 		],
 		"attack1": [
-			{"name": "damage", "value": [2, 4], "amount": 3, "type": "venom", "animation": "02_atk"}
+			{"name": "damage", "value": [2, 4], "amount": 4, "type": "venom", "animation": "02_atk"}
 		],
 		"attack2": [
-			{"name": "damage", "value": [5, 7], "amount": 2, "type": "venom", "animation": "02_atk"}
+			{"name": "damage", "value": [5, 7], "amount": 3, "type": "venom", "animation": "02_atk"}
 		],
 		"defend1": [
-			{"name": "shield", "value": [12, 30], "animation": ""},
+			{"name": "shield", "value": [18, 40], "animation": ""},
 			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
 		],
 		"defend2": [
-			{"name": "shield", "value": [15, 25], "animation": ""},
-			{"name": "status", "status_name": "poison", "value": [3, 6], "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "shield", "value": [15, 35], "animation": ""},
+			{"name": "status", "status_name": "poison", "value": [5, 10], "target": "player", "positive": false, "animation": "02_atk"}
 		],
 	},
 }

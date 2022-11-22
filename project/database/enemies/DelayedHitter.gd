@@ -7,7 +7,7 @@ var sfx = "virulyn-prowler"
 var use_idle_sfx = false
 var hp = {
 	"normal": 25,
-	"hard": 25,
+	"hard": 35,
 }
 var battle_init = false
 var size = "small"
@@ -65,7 +65,7 @@ var actions = {
 			{"name": "idle", "sfx": "charge", "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [16, 18], "type": "regular", "animation": "atk"},
+			{"name": "damage", "value": [16, 20], "type": "piercing", "animation": "atk"},
 		],
 	},
 }

@@ -7,7 +7,7 @@ var sfx = "boss-3-1"
 var use_idle_sfx = false
 var hp = {
 	"normal": 600,
-	"hard": 600,
+	"hard": 800,
 }
 var battle_init = false
 var size = "big"
@@ -132,7 +132,7 @@ var actions = {
 		],
 		"buff3": [
 			{"name": "damage", "value": 30, "type": "regular", "animation": "02_atk"},
-			{"name": "status", "status_name": "concentration", "value": 80, "target": "self", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "concentration", "value": 100, "target": "self", "positive": false, "animation": ""},
 		],
 		"attack3": [
 			{"name": "damage", "value": [38,40], "amount":3, "type": "regular", "animation": "02_atk"},
@@ -140,14 +140,14 @@ var actions = {
 		],
 		"buff4": [
 			{"name": "damage", "value": 30, "type": "regular", "animation": "02_atk"},
-			{"name": "status", "status_name": "concentration", "value": 90, "target": "self", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "concentration", "value": 110, "target": "self", "positive": false, "animation": ""},
 		],
 		"attack4": [
 			{"name": "damage", "value": [38,40], "amount":3, "type": "regular", "animation": "02_atk"},
 			{"name": "shield", "value": [50,70], "type": "regular", "animation": ""},
 		],
 		"buff5": [
-			{"name": "status", "status_name": "concentration", "value": 100, "target": "self", "positive": false, "animation": "02_atk"},
+			{"name": "status", "status_name": "concentration", "value": 120, "target": "self", "positive": false, "animation": "02_atk"},
 			{"name": "status", "status_name": "perm_strength", "value": 20, "target": "self", "positive": true, "animation": ""},
 		],
 		"attack5-1": [

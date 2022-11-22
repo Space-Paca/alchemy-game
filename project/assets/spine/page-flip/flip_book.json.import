@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/flip_book.json-b43caf9d7a708120f45feb07a41a7ab6.spjson"
+
+[deps]
+
+source_file="res://assets/spine/page-flip/flip_book.json"
+dest_files=[ "res://.import/flip_book.json-b43caf9d7a708120f45feb07a41a7ab6.spjson" ]
+
+[params]
+

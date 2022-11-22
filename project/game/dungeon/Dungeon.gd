@@ -10,6 +10,7 @@ onready var smith = $Blacksmith
 onready var treasure = $Treasure
 onready var event_display = $EventDisplay
 onready var timer = $UI/Timer
+onready var page_flip = $BookLayer/PageFlip
 
 const BATTLE_SCENE = preload("res://game/battle/Battle.tscn")
 const MAP_SCENE = preload("res://game/map/Map.tscn")
@@ -746,6 +747,16 @@ func enable_map():
 
 
 func recipe_book_toggle():
+	if battle and is_instance_valid(battle):
+		if page_flip.flipping:
+			return
+		if recipe_book.is_open:
+			page_flip.flip_right()
+			yield(page_flip, "animation_ended")
+		else:
+			page_flip.flip_left()
+			yield(page_flip, "fade_ended")
+	
 	var book_visible = recipe_book.toggle_visibility()
 	if book_visible:
 		recipe_book.update_player_info()

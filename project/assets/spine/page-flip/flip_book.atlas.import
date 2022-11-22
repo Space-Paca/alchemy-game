@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/flip_book.atlas-8fdc256b9f4806d68ab5babf43152088.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/page-flip/flip_book.atlas"
+dest_files=[ "res://.import/flip_book.atlas-8fdc256b9f4806d68ab5babf43152088.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

@@ -1,0 +1,6 @@
+flip_book.png
+	size: 1322, 1252
+	filter: Linear, Linear
+	pma: true
+book_page
+	bounds: 1, 1, 1320, 1250

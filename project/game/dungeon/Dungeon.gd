@@ -747,7 +747,8 @@ func enable_map():
 
 
 func recipe_book_toggle():
-	if battle and is_instance_valid(battle):
+	if (battle and is_instance_valid(battle)) or\
+		(lab and is_instance_valid(lab)):
 		if page_flip.flipping:
 			return
 		if recipe_book.is_open:

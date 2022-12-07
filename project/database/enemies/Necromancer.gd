@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 180,
 	"normal": 180,
-	"hard": 180,
+	"hard": 220,
 }
 var battle_init = true
 var size = "medium"
@@ -79,21 +79,21 @@ var actions = {
 			{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false, "animation": ""}
 		],
 		"attack1": [
-			{"name": "damage", "value": [30, 35], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [35, 40], "type": "regular", "animation": "02_atk"}
 		],
 		"attack2": [
-			{"name": "damage", "value": [30, 35], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [35, 40], "type": "regular", "animation": "02_atk"}
 		],
 		"defense": [
-			{"name": "damage", "value": [20, 22], "type": "regular", "animation": "02_atk"},
-			{"name": "shield", "value": [30, 45], "animation": ""}
+			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"},
+			{"name": "shield", "value": [40, 45], "animation": ""}
 		],
 		"debuff": [
-			{"name": "damage", "value": [20, 22], "type": "regular", "animation": "02_atk"},
+			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"},
 			{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""}
 		],
 		"spawn": [
-			{"name": "shield", "value": [25, 35], "animation": ""},
+			{"name": "shield", "value": [30, 40], "animation": ""},
 			{"name": "spawn", "enemy": "zombie", "minion": true, "animation": ""},
 		],
 	},

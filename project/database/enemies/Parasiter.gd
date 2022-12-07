@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 125,
 	"normal": 125,
-	"hard": 125,
+	"hard": 150,
 }
 var battle_init = true
 var size = "medium"
@@ -58,13 +58,13 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "hex", "value": 2, "target": "self", "positive": true, "animation": "02_atk"}
+			{"name": "status", "status_name": "hex", "value": 5, "target": "self", "positive": true, "animation": "02_atk"}
 		],
 		"drain": [
-			{"name": "drain", "value": [15, 22], "animation": "02_atk"}
+			{"name": "drain", "value": [20, 28], "animation": "02_atk"}
 		],
 		"attack": [
-			{"name": "damage", "value": [5,8], "amount": [2,4], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [5,10], "amount": [2,4], "type": "regular", "animation": "02_atk"}
 		],
 	},
 }

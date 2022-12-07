@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 90,
 	"normal": 90,
-	"hard": 90,
+	"hard": 120,
 }
 var battle_init = true
 var size = "small"
@@ -94,21 +94,21 @@ var actions = {
 	"hard": {
 		"init": [
 			{"name": "status", "status_name": "soulbind", "value": 1, "target": "self", "positive": true, "animation": ""},
-			{"name": "shield", "value": [15, 40], "animation": ""},
-		],
-		"attack1": [
-			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"},
-			{"name": "shield", "value": [10, 30], "animation": ""},
-		],
-		"attack2": [
-			{"name": "damage", "value": [10, 50], "type": "regular", "animation": "02_atk"},
-			{"name": "shield", "value": [10, 30], "animation": ""},
-		],
-		"defend": [
 			{"name": "shield", "value": [25, 50], "animation": ""},
 		],
+		"attack1": [
+			{"name": "damage", "value": [25, 40], "type": "regular", "animation": "02_atk"},
+			{"name": "shield", "value": [10, 40], "animation": ""},
+		],
+		"attack2": [
+			{"name": "damage", "value": [10, 60], "type": "regular", "animation": "02_atk"},
+			{"name": "shield", "value": [10, 40], "animation": ""},
+		],
+		"defend": [
+			{"name": "shield", "value": [25, 60], "animation": ""},
+		],
 		"buff": [
-			{"name": "status", "status_name": "perm_strength", "value": 15, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "perm_strength", "value": 20, "target": "self", "positive": true, "animation": ""}
 		],
 	},
 }

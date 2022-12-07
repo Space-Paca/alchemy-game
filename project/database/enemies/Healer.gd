@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 170,
 	"normal": 170,
-	"hard": 170,
+	"hard": 180,
 }
 var battle_init = true
 var size = "small"
@@ -72,19 +72,19 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": 50, "animation": ""},
+			{"name": "shield", "value": 60, "animation": ""},
 		],
 		"attack": [
 			{"name": "damage", "value": 20, "type": "regular", "animation": "02_atk"},
-			{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": "02_atk"},
+			{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": "02_atk"},
 		],
 		"defend": [
 			{"name": "shield", "value": [10, 50], "animation": "02_atk"},
-			{"name": "heal", "value": [10,20], "target": "all_enemies", "animation": "02_atk"},
+			{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": "02_atk"},
 		],
 		"heal": [
-			{"name": "heal", "value": [20,30], "target": "all_enemies", "animation": "02_atk"},
-			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""},
+			{"name": "heal", "value": [30,40], "target": "all_enemies", "animation": "02_atk"},
+			{"name": "status", "status_name": "perm_strength", "value": 10, "target": "self", "positive": true, "animation": ""},
 		],
 	},
 }

@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 60,
 	"normal": 60,
-	"hard": 60,
+	"hard": 80,
 }
 var battle_init = true
 var size = "medium"
@@ -71,24 +71,24 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": [8, 12], "animation": ""},
+			{"name": "shield", "value": [10, 14], "animation": ""},
 			{"name": "status", "status_name": "splitting", "value": 1, "target": "self", "positive": true, "extra_args": {"enemy": "small_divider"}, "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [15, 25], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [20, 28], "type": "regular", "animation": "02_atk"}
 		],
 		"defend": [
-			{"name": "shield", "value": [10, 15], "animation": ""},
-			{"name": "damage", "value": [10, 15], "type": "regular", "animation": "02_atk"}
+			{"name": "shield", "value": [15, 20], "animation": ""},
+			{"name": "damage", "value": [15, 20], "type": "regular", "animation": "02_atk"}
 		],
 		"poison": [
-			{"name": "damage", "value": [8, 12], "type": "venom", "animation": "02_atk"},
+			{"name": "damage", "value": [10, 14], "type": "venom", "animation": "02_atk"},
 		],
 		"first": [
-			{"name": "shield", "value": [8, 12], "animation": ""},
+			{"name": "shield", "value": [10, 14], "animation": ""},
 		],
 		"second": [
-			{"name": "damage", "value": [8,10], "type": "venom", "animation": "02_atk"},
+			{"name": "damage", "value": [12, 14], "type": "venom", "animation": "02_atk"},
 		],
 	},
 }

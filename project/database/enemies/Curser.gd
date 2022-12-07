@@ -6,6 +6,7 @@ var name = "EN_CURSER"
 var sfx = "curser"
 var use_idle_sfx = false
 var hp = {
+	"easy": 85,
 	"normal": 100,
 	"hard": 120,
 }

@@ -6,6 +6,7 @@ var name = "EN_BIG_DIVIDER"
 var sfx = "divider"
 var use_idle_sfx = false
 var hp = {
+	"easy": 60,
 	"normal": 80,
 	"hard": 100,
 }

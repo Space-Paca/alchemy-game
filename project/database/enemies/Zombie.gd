@@ -6,6 +6,7 @@ var name = "EN_ZOMBIE"
 var sfx = "zombie"
 var use_idle_sfx = false
 var hp = {
+	"easy": 60,
 	"normal": 60,
 	"hard": 60,
 }

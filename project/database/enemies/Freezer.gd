@@ -6,8 +6,9 @@ var name = "EN_FREEZER"
 var sfx = "freezer"
 var use_idle_sfx = false
 var hp = {
+	"easy": 60,
 	"normal": 80,
-	"hard": 80,
+	"hard": 100,
 }
 var battle_init = true
 var size = "medium"
@@ -80,26 +81,26 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": 150, "animation": ""},
+			{"name": "shield", "value": 200, "animation": ""},
 			{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""},
-			{"name": "status", "status_name": "freeze", "value": 2, "target": "player", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "freeze", "value": 3, "target": "player", "positive": false, "animation": ""},
 		],
 		"attack": [
 			{"name": "damage", "value": [15, 25], "type": "regular", "animation": "02_atk"}
 		],
 		"attack2": [
-			{"name": "damage", "value": 5, "amount": 3, "type": "regular", "animation": "02_atk"},
+			{"name": "damage", "value": 5, "amount": 4, "type": "regular", "animation": "02_atk"},
 			{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false, "animation": ""},
 		],
 		"freeze": [
-			{"name": "status", "status_name": "freeze", "value": 4, "target": "player", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "freeze", "value": 5, "target": "player", "positive": false, "animation": ""},
 			{"name": "shield", "value": [5,10], "animation": "03_dmg"},
-			{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""},
+			{"name": "status", "status_name": "perm_strength", "value": 4, "target": "self", "positive": true, "animation": ""},
 		],
 		"spawn": [
 			{"name": "status", "status_name": "freeze", "value": 3, "target": "player", "positive": false, "animation": ""},
 			{"name": "spawn", "enemy": "self_destructor", "animation": "03_dmg"},
-			{"name": "status", "status_name": "perm_strength", "value": 6, "target": "self", "positive": true, "animation": ""},
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""},
 		],
 	},
 }

@@ -6,8 +6,9 @@ var name = "EN_CARAPA"
 var sfx = "carapa"
 var use_idle_sfx = false
 var hp = {
-	"normal": 45,
-	"hard": 60,
+	"easy": 30,
+	"normal": 38,
+	"hard": 55,
 }
 var battle_init = false
 var size = "medium"

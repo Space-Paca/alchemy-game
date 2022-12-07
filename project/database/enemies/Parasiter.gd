@@ -6,6 +6,7 @@ var name = "EN_PARASITER"
 var sfx = "parasiter"
 var use_idle_sfx = false
 var hp = {
+	"easy": 125,
 	"normal": 125,
 	"hard": 125,
 }

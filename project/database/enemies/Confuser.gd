@@ -6,6 +6,7 @@ var name = "EN_CONFUSER"
 var sfx = "confuser"
 var use_idle_sfx = false
 var hp = {
+	"easy": 280,
 	"normal": 315,
 	"hard": 420,
 }

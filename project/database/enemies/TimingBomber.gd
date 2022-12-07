@@ -6,6 +6,7 @@ var name = "EN_TIMING_BOMBER"
 var sfx = "bomber"
 var use_idle_sfx = false
 var hp = {
+	"easy": 202,
 	"normal": 202,
 	"hard": 202,
 }

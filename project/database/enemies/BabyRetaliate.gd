@@ -6,6 +6,7 @@ var name = "EN_BABY_RETALIATE"
 var sfx = "virulyn-prickler"
 var use_idle_sfx = false
 var hp = {
+	"easy": 35,
 	"normal": 42,
 	"hard": 65,
 }

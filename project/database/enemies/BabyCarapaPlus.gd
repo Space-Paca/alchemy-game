@@ -6,6 +6,7 @@ var name = "EN_BABY_CARAPA_PLUS"
 var sfx = "carapa"
 var use_idle_sfx = false
 var hp = {
+	"easy": 38,
 	"normal": 45,
 	"hard": 60,
 }

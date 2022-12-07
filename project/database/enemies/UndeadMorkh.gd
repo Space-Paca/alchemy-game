@@ -6,6 +6,7 @@ var name = "EN_UNDEAD_MORKH"
 var sfx = "morhk"
 var use_idle_sfx = false
 var hp = {
+	"easy": 160,
 	"normal": 160,
 	"hard": 160,
 }

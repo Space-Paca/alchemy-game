@@ -6,6 +6,7 @@ var name = "EN_BABY_OOZE"
 var sfx = "oozeling"
 var use_idle_sfx = false
 var hp = {
+	"easy": 5,
 	"normal": 6,
 	"hard": 10,
 }

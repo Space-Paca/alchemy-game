@@ -6,6 +6,7 @@ var name = "EN_BABY_SLASHER"
 var sfx = "needler-spawn"
 var use_idle_sfx = false
 var hp = {
+	"easy": 3,
 	"normal": 5,
 	"hard": 10,
 }

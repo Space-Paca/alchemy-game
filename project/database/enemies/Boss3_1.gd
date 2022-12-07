@@ -6,6 +6,7 @@ var name = "EN_BOSS_3_1"
 var sfx = "boss-3-1"
 var use_idle_sfx = false
 var hp = {
+	"easy": 500,
 	"normal": 600,
 	"hard": 800,
 }

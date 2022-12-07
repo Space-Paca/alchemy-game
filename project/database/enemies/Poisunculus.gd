@@ -6,6 +6,7 @@ var name = "EN_POISUN"
 var sfx = "subject-13"
 var use_idle_sfx = false
 var hp = {
+	"easy": 80,
 	"normal": 80,
 	"hard": 80,
 }

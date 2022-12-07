@@ -6,6 +6,7 @@ var name = "EN_DELAYED_HITTER"
 var sfx = "virulyn-prowler"
 var use_idle_sfx = false
 var hp = {
+	"easy": 20,
 	"normal": 25,
 	"hard": 35,
 }

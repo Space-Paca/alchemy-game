@@ -6,6 +6,7 @@ var name = "EN_SELF_DESTRUCTOR"
 var sfx = "self-destruct"
 var use_idle_sfx = false
 var hp = {
+	"easy": 5,
 	"normal": 5,
 	"hard": 5,
 }

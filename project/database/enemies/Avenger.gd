@@ -6,6 +6,7 @@ var name = "EN_AVENGER"
 var sfx = "carapa"
 var use_idle_sfx = false
 var hp = {
+	"easy": 100,
 	"normal": 125,
 	"hard": 150,
 }

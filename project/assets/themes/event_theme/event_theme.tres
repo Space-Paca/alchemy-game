@@ -2,6 +2,12 @@
 
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=1]
 
+[sub_resource type="DynamicFont" id=5]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0.0392157, 0.913725 )
 corner_radius_top_left = 15
@@ -25,12 +31,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=5]
-size = 30
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
 [resource]
 default_font = SubResource( 5 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -38,7 +38,7 @@ Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = null
+Button/fonts/font = SubResource( 5 )
 Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )

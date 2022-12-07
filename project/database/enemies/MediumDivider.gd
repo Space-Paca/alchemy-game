@@ -5,7 +5,11 @@ var image = "res://assets/images/enemies/medium divider/idle.png"
 var name = "EN_MEDIUM_DIVIDER"
 var sfx = "divider"
 var use_idle_sfx = false
-var hp = 60
+var hp = {
+	"easy": 60,
+	"normal": 60,
+	"hard": 60,
+}
 var battle_init = true
 var size = "medium"
 var change_phase = null

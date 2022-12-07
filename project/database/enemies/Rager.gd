@@ -6,6 +6,7 @@ var name = "EN_RAGER"
 var sfx = "rager"
 var use_idle_sfx = false
 var hp = {
+	"easy": 100,
 	"normal": 100,
 	"hard": 100,
 }

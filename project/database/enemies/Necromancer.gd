@@ -5,7 +5,11 @@ var image = "res://assets/images/enemies/necromancer/idle.png"
 var name = "EN_NECROMANCER"
 var sfx = "necromancer"
 var use_idle_sfx = false
-var hp = 180
+var hp = {
+	"easy": 180,
+	"normal": 180,
+	"hard": 180,
+}
 var battle_init = true
 var size = "medium"
 var change_phase = null

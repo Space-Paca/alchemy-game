@@ -6,6 +6,7 @@ var name = "EN_RESTRAINER"
 var sfx = "restrainer"
 var use_idle_sfx = false
 var hp = {
+	"easy": 450,
 	"normal": 450,
 	"hard": 450,
 }

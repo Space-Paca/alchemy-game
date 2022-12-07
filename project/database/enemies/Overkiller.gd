@@ -6,6 +6,7 @@ var name = "EN_OVERKILLER"
 var sfx = "overkiller"
 var use_idle_sfx = false
 var hp = {
+	"easy": 90,
 	"normal": 90,
 	"hard": 90,
 }

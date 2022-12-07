@@ -6,6 +6,7 @@ var name = "EN_DODGER"
 var sfx = "nimble"
 var use_idle_sfx = false
 var hp = {
+	"easy": 15,
 	"normal": 21,
 	"hard": 25,
 }

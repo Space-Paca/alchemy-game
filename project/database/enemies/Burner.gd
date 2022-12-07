@@ -6,6 +6,7 @@ var name = "EN_BURNER"
 var sfx = "burner"
 var use_idle_sfx = false
 var hp = {
+	"easy": 180,
 	"normal": 200,
 	"hard": 250,
 }

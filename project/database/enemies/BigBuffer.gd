@@ -6,6 +6,7 @@ var name = "EN_BIG_BUFFER"
 var sfx = "morhk"
 var use_idle_sfx = false
 var hp = {
+	"easy": 70,
 	"normal": 80,
 	"hard": 100,
 }

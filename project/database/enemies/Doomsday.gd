@@ -6,6 +6,7 @@ var name = "EN_DOOMSDAY"
 var sfx = "doomsayer"
 var use_idle_sfx = false
 var hp = {
+	"easy": 480,
 	"normal": 560,
 	"hard": 600,
 }

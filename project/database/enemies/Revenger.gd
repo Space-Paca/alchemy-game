@@ -6,6 +6,7 @@ var name = "EN_REVENGER"
 var sfx = "revenger"
 var use_idle_sfx = false
 var hp = {
+	"easy": 35,
 	"normal": 35,
 	"hard": 35,
 }

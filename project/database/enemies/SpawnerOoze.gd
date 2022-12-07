@@ -6,6 +6,7 @@ var name = "EN_SPAWNER_OOZE"
 var sfx = "ooze"
 var use_idle_sfx = false
 var hp = {
+	"easy": 25,
 	"normal": 25,
 	"hard": 25,
 }

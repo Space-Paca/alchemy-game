@@ -6,6 +6,7 @@ var name = "EN_HEALER"
 var sfx = "healer"
 var use_idle_sfx = false
 var hp = {
+	"easy": 170,
 	"normal": 170,
 	"hard": 170,
 }

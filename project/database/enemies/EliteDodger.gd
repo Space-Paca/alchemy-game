@@ -6,6 +6,7 @@ var name = "EN_ELITE_DODGER"
 var sfx = "needler-queen"
 var use_idle_sfx = false
 var hp = {
+	"easy": 38,
 	"normal": 45,
 	"hard": 65,
 }

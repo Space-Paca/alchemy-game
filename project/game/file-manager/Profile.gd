@@ -60,6 +60,7 @@ var progression = {
 var stats = {
 	"times_finished": {
 		"alchemist": {
+			"easy" : 0,
 			"normal" : 0,
 			"hard" : 0,
 		}
@@ -126,12 +127,14 @@ func set_save_data(data):
 		if data.stats.has("times_finished_alchemist"):
 			data.stats["times_finished"] = {
 				"alchemist": {
+					"easy": 0,
 					"normal": int(data.stats.times_finished_alchemist),
 					"hard": 0,
 				}
 			}
 		if typeof(data.stats["times_finished"].alchemist) != TYPE_DICTIONARY:
 			data.stats["times_finished"].alchemist = {
+				"easy": 0,
 				"normal": int(data.stats["times_finished"].alchemist),
 				"hard": 0,
 			}

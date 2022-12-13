@@ -6,9 +6,9 @@ var name = "EN_DOOMSDAY"
 var sfx = "doomsayer"
 var use_idle_sfx = false
 var hp = {
-	"easy": 480,
+	"easy": 530,
 	"normal": 560,
-	"hard": 600,
+	"hard": 569,
 }
 var battle_init = true
 var size = "big"
@@ -16,11 +16,28 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["init", "attack1", "attack2", "doom", "dodge"],
 	"normal": ["init", "attack1", "attack2", "doom", "dodge"],
 	"hard": ["init", "attack1", "attack2", "doom", "dodge"],
 }
 
 var connections = {
+	"easy": [
+		["init", "attack1", 1],
+		["init", "attack2", 1],
+		["attack1", "attack2", 3],
+		["attack1", "doom", 2],
+		["attack1", "dodge", 2],
+		["attack2", "attack1", 3],
+		["attack2", "doom", 2],
+		["attack2", "dodge", 2],
+		["doom", "attack1", 2],
+		["doom", "attack2", 2],
+		["doom", "dodge", 1],
+		["dodge", "attack1", 2],
+		["dodge", "attack2", 2],
+		["dodge", "doom", 1],
+	],
 	"normal": [
 		["init", "attack1", 1],
 		["init", "attack2", 1],
@@ -56,11 +73,32 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["init"],
 	"normal": ["init"],
 	"hard": ["init"],
 }
 
 var actions = {
+	"easy": {
+		"init": [
+			{"name": "status", "status_name": "impending_doom", "value": 109, "target": "self", "positive": true, "animation": ""}
+		],
+		"attack1": [
+			{"name": "damage", "value": [30, 50], "type": "regular", "animation": "02_atk"},
+			{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true, "animation": ""}
+		],
+		"attack2": [
+			{"name": "damage", "value": [4, 7], "amount": 7, "type": "regular", "animation": "02_atk"},
+			{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true, "animation": ""}
+		],
+		"doom": [
+			{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true, "animation": ""}
+		],
+		"dodge": [
+			{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true, "animation": ""},
+			{"name": "status", "status_name": "dodge", "value": 4, "target": "self", "positive": true, "animation": "03_dmg"}
+		],
+	},
 	"normal": {
 		"init": [
 			{"name": "status", "status_name": "impending_doom", "value": 99, "target": "self", "positive": true, "animation": ""}
@@ -83,7 +121,7 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "impending_doom", "value": 69, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "impending_doom", "value": 79, "target": "self", "positive": true, "animation": ""}
 		],
 		"attack1": [
 			{"name": "damage", "value": [30, 50], "type": "regular", "animation": "02_atk"},
@@ -94,7 +132,7 @@ var actions = {
 			{"name": "status", "status_name": "impending_doom", "value": [4,5], "target": "self", "positive": true, "reduce": true, "animation": ""}
 		],
 		"doom": [
-			{"name": "status", "status_name": "impending_doom", "value": [15,20], "target": "self", "positive": true, "reduce": true, "animation": ""}
+			{"name": "status", "status_name": "impending_doom", "value": [18,20], "target": "self", "positive": true, "reduce": true, "animation": ""}
 		],
 		"dodge": [
 			{"name": "status", "status_name": "impending_doom", "value": [8,12], "target": "self", "positive": true, "reduce": true, "animation": ""},

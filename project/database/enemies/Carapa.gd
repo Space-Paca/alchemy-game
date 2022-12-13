@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 30,
 	"normal": 38,
-	"hard": 55,
+	"hard": 48,
 }
 var battle_init = false
 var size = "medium"
@@ -16,11 +16,17 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["attack", "defend"],
 	"normal": ["attack", "defend"],
 	"hard": ["attack", "defend"],
 }
 
 var connections = {
+	"easy": [
+		["attack", "defend", 5],
+		["attack", "attack", 5],
+		["defend", "attack", 1],
+	],
 	"normal": [
 		["attack", "defend", 5],
 		["attack", "attack", 5],
@@ -34,11 +40,21 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["attack", "defend"],
 	"normal": ["attack", "defend"],
 	"hard": ["attack", "defend"],
 }
 
 var actions = {
+	"easy": {
+		"attack": [
+			{"name": "damage", "value": [8, 12], "type": "regular", "animation": "atk2"}
+		],
+		"defend": [
+			{"name": "shield", "value": [2, 3], "animation": "defense"},
+			{"name": "damage", "value": [3, 5], "type": "regular", "animation": "atk"}
+		],
+	},
 	"normal": {
 		"attack": [
 			{"name": "damage", "value": [10, 15], "type": "regular", "animation": "atk2"}

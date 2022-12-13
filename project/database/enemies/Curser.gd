@@ -6,7 +6,7 @@ var name = "EN_CURSER"
 var sfx = "curser"
 var use_idle_sfx = false
 var hp = {
-	"easy": 85,
+	"easy": 80,
 	"normal": 100,
 	"hard": 120,
 }
@@ -16,11 +16,19 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["init", "attack", "debuff"],
 	"normal": ["init", "attack", "debuff"],
 	"hard": ["init", "attack", "debuff"],
 }
 
 var connections = {
+	"easy": [
+		["init", "attack", 1],
+		["init", "debuff", 1],
+		["attack", "attack", 2],
+		["attack", "debuff", 1],
+		["debuff", "attack", 1],
+	],
 	"normal": [
 		["init", "attack", 1],
 		["init", "debuff", 1],
@@ -38,11 +46,24 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["init"],
 	"normal": ["init"],
 	"hard": ["init"],
 }
 
 var actions = {
+	"easy": {
+		"init": [
+			{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+		"attack": [
+			{"name": "damage", "value": [8, 10], "type": "regular", "animation": "02_atk"}
+		],
+		"debuff": [
+			{"name": "shield", "value": [5, 15], "animation": ""},
+			{"name": "status", "status_name": "weakness", "value": 1, "target": "player", "positive": false, "animation": "02_atk"}
+		],
+	},
 	"normal": {
 		"init": [
 			{"name": "status", "status_name": "curse", "value": 3, "target": "player", "positive": false, "animation": "02_atk"}

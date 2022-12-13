@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 160,
 	"normal": 160,
-	"hard": 160,
+	"hard": 180,
 }
 var battle_init = true
 var size = "medium"
@@ -66,13 +66,13 @@ var actions = {
 			{"name": "status", "status_name": "deterioration", "value": 1, "target": "player", "positive": false, "animation": "idle"}
 		],
 		"temp_buff": [
-			{"name": "status", "status_name": "temp_strength", "value": 15, "target": "self", "positive": true, "animation": "idle"}
+			{"name": "status", "status_name": "temp_strength", "value": 20, "target": "self", "positive": true, "animation": "idle"}
 		],
 		"perm_buff": [
-			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
+			{"name": "status", "status_name": "perm_strength", "value": 12, "target": "self", "positive": true, "animation": "idle"}
 		],
 		"attack": [
-			{"name": "damage", "value": [6,9], "type": "regular", "animation": "atk"},
+			{"name": "damage", "value": [7,10], "type": "regular", "animation": "atk"},
 		]
 	},
 }

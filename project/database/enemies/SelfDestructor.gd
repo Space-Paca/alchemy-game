@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 5,
 	"normal": 5,
-	"hard": 5,
+	"hard": 10,
 }
 var battle_init = true
 var size = "small"
@@ -53,14 +53,14 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": 30, "animation": ""},
+			{"name": "shield", "value": 35, "animation": ""},
 			{"name": "status", "status_name": "tough", "value": 1, "target": "self", "positive": true, "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [4,5], "amount": 2, "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [4,5], "amount": 3, "type": "regular", "animation": "02_atk"}
 		],
 		"self_destruct": [
-			{"name": "self_destruct", "value": 30, "animation": "02_atk"}
+			{"name": "self_destruct", "value": 40, "animation": "02_atk"}
 		]
 	},
 }

@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 25,
 	"normal": 25,
-	"hard": 25,
+	"hard": 40,
 }
 var battle_init = true
 var size = "small"
@@ -86,14 +86,14 @@ var actions = {
 			{"name": "spawn", "enemy": "baby_poison", "animation": "divider"},
 		],
 		"attack": [
-			{"name": "shield", "value": [4,5], "animation": ""},
-			{"name": "damage", "value": [5,6], "type": "regular", "animation": "atk"},
+			{"name": "shield", "value": [5,7], "animation": ""},
+			{"name": "damage", "value": [7,9], "type": "regular", "animation": "atk"},
 		],
 		"defend": [
-			{"name": "shield", "value": [8,10], "animation": ""},
+			{"name": "shield", "value": [9,12], "animation": ""},
 		],
 		"poison": [
-			{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
+			{"name": "damage", "value": [7,9], "type": "venom", "animation": "atk"},
 		],
 		"spawn": [
 			{"name": "spawn", "enemy": "baby_poison", "animation": "divider"},

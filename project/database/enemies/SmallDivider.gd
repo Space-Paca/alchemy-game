@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 25,
 	"normal": 25,
-	"hard": 25,
+	"hard": 30,
 }
 var battle_init = true
 var size = "small"
@@ -69,23 +69,23 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "shield", "value": [6, 8], "animation": "02_atk"},
+			{"name": "shield", "value": [8, 10], "animation": "02_atk"},
 		],
 		"attack": [
-			{"name": "status", "status_name": "poison", "value": [2,3], "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "status", "status_name": "poison", "value": [3,5], "target": "player", "positive": false, "animation": "02_atk"}
 		],
 		"defend": [
 			{"name": "shield", "value": [10, 15], "animation": "02_atk"},
-			{"name": "status", "status_name": "poison", "value": [1,2], "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "status", "status_name": "poison", "value": [2,4], "target": "player", "positive": false, "animation": "02_atk"}
 		],
 		"poison": [
-			{"name": "damage", "value": [6, 8], "type": "venom", "animation": "02_atk"},
+			{"name": "damage", "value": [8, 10], "type": "venom", "animation": "02_atk"},
 		],
 		"first": [
 			{"name": "shield", "value": [6, 8], "animation": "02_atk"},
 		],
 		"second": [
-			{"name": "status", "status_name": "poison", "value": 2, "target": "player", "positive": false, "animation": "02_atk"}
+			{"name": "status", "status_name": "poison", "value": 4, "target": "player", "positive": false, "animation": "02_atk"}
 		],
 	},
 }

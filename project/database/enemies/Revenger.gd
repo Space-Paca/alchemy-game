@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 35,
 	"normal": 35,
-	"hard": 35,
+	"hard": 45,
 }
 var battle_init = true
 var size = "small"
@@ -56,13 +56,13 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "revenge", "value": 15, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "revenge", "value": 25, "target": "self", "positive": true, "animation": ""}
 		],
 		"attack": [
-			{"name": "damage", "value": [12, 15], "type": "regular", "animation": "02_atk"}
+			{"name": "damage", "value": [14, 15], "type": "regular", "animation": "02_atk"}
 		],
 		"defend": [
-			{"name": "shield", "value": [10, 15], "animation": "03_dmg"},
+			{"name": "shield", "value": [10, 18], "animation": "03_dmg"},
 		],
 	},
 }

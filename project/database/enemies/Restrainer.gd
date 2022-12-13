@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 450,
 	"normal": 450,
-	"hard": 450,
+	"hard": 480,
 }
 var battle_init = false
 var size = "big"
@@ -99,11 +99,11 @@ var actions = {
 	},
 	"hard": {
 		"attack1": [
-			{"name": "status", "status_name": "restrain", "value": 6, "target": "player", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "restrain", "value": 10, "target": "player", "positive": false, "animation": ""},
 			{"name": "damage", "value": [25, 45], "type": "regular", "animation": "02_atk"}
 		],
 		"attack2": [
-			{"name": "status", "status_name": "restrain", "value": 8, "target": "player", "positive": false, "animation": ""},
+			{"name": "status", "status_name": "restrain", "value": 12, "target": "player", "positive": false, "animation": ""},
 			{"name": "damage", "value": [30, 40], "type": "regular", "animation": "02_atk"}
 		],
 		"attack3": [
@@ -114,12 +114,12 @@ var actions = {
 		],
 		"big_restrain": [
 			{"name": "status", "status_name": "restrain", "value": 16, "target": "player", "positive": false, "animation": ""},
-			{"name": "damage", "value": 15, "type": "piercing", "animation": "02_atk"},
-			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
+			{"name": "damage", "value": 25, "type": "piercing", "animation": "02_atk"},
+			{"name": "status", "status_name": "perm_strength", "value": 8, "target": "self", "positive": true, "animation": ""},
 		],
 		"medium_restrain": [
 			{"name": "status", "status_name": "restrain", "value": 14, "target": "player", "positive": false, "animation": "02_atk"},
-			{"name": "status", "status_name": "temp_strength", "value": 20, "target": "self", "positive": true, "animation": ""},
+			{"name": "status", "status_name": "temp_strength", "value": 24, "target": "self", "positive": true, "animation": ""},
 		],
 	},
 }

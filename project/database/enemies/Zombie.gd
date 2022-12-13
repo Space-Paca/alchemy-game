@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 60,
 	"normal": 60,
-	"hard": 60,
+	"hard": 70,
 }
 var battle_init = true
 var size = "small"
@@ -61,10 +61,10 @@ var actions = {
 			{"name": "status", "status_name": "poison_immunity", "value": 1, "target": "self", "positive": true, "animation": ""}
 		],
 		"drain": [
-			{"name": "drain", "value": [15, 20], "animation": "02_Atk"}
+			{"name": "drain", "value": [20, 25], "animation": "02_Atk"}
 		],
 		"attack": [
-			{"name": "damage", "value": [20,30], "type": "regular", "animation": "02_Atk"}
+			{"name": "damage", "value": [20,40], "type": "regular", "animation": "02_Atk"}
 		],
 	},
 }

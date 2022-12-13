@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 80,
 	"normal": 80,
-	"hard": 80,
+	"hard": 90,
 }
 var battle_init = false
 var size = "big"
@@ -64,19 +64,19 @@ var actions = {
 	},
 	"hard": {
 		"poison": [
-			{"name": "damage", "value": [8, 15], "type": "venom", "animation": "atk"},
+			{"name": "damage", "value": [14, 18], "type": "venom", "animation": "atk"},
 		],
 		"attack-poison": [
-			{"name": "damage", "value": [3,8], "type": "regular", "animation": "atk"},
+			{"name": "damage", "value": [9,10], "type": "regular", "animation": "atk"},
 			{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
 		],
 		"poison-attack": [
 			{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
-			{"name": "damage", "value": [10,12], "type": "regular", "animation": "atk"},
+			{"name": "damage", "value": [13,15], "type": "regular", "animation": "atk"},
 		],
 		"defend-poison": [
-			{"name": "shield", "value": [13,15], "animation": ""},
-			{"name": "damage", "value": [5, 10], "type": "venom", "animation": "atk"},
+			{"name": "shield", "value": [15,18], "animation": ""},
+			{"name": "damage", "value": [9, 10], "type": "venom", "animation": "atk"},
 		]
 	},
 }

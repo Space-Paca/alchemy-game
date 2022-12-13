@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 70,
 	"normal": 80,
-	"hard": 100,
+	"hard": 85,
 }
 var battle_init = false
 var size = "medium"
@@ -16,11 +16,20 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["temp_buff", "perm_buff", "attack"],
 	"normal": ["temp_buff", "perm_buff", "attack"],
 	"hard": ["temp_buff", "perm_buff", "attack"],
 }
 
 var connections = {
+	"easy": [
+		["temp_buff", "attack", 3],
+		["temp_buff", "temp_buff", 1],
+		["attack", "perm_buff", 1],
+		["perm_buff", "temp_buff", 1],
+		["perm_buff", "attack", 3],
+		["perm_buff", "temp_buff", 1],
+	],
 	"normal": [
 		["temp_buff", "attack", 3],
 		["temp_buff", "temp_buff", 1],
@@ -40,11 +49,23 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["temp_buff"],
 	"normal": ["temp_buff"],
 	"hard": ["temp_buff"],
 }
 
 var actions = {
+	"easy": {
+		"temp_buff": [
+			{"name": "status", "status_name": "temp_strength", "value": 8, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"perm_buff": [
+			{"name": "status", "status_name": "perm_strength", "value": 4, "target": "self", "positive": true, "animation": "idle"}
+		],
+		"attack": [
+			{"name": "damage", "value": [4,6], "type": "regular", "animation": "atk"},
+		]
+	},
 	"normal": {
 		"temp_buff": [
 			{"name": "status", "status_name": "temp_strength", "value": 11, "target": "self", "positive": true, "animation": "idle"}

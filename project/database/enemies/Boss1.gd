@@ -6,9 +6,9 @@ var name = "EN_BOSS_1"
 var sfx = "boss-1"
 var use_idle_sfx = false
 var hp = {
-	"easy": 150,
+	"easy": 155,
 	"normal": 170,
-	"hard": 230,
+	"hard": 180,
 }
 var battle_init = true
 var size = "big"
@@ -16,11 +16,19 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["init", "start", "attack1", "attack2", "buff-reagent"],
 	"normal": ["init", "start", "attack1", "attack2", "buff-reagent"],
 	"hard": ["init", "start", "attack1", "attack2", "buff-reagent"],
 }
 
 var connections = {
+	"easy": [
+		["init", "start", 1],
+		["start", "attack1", 1],
+		["attack1", "attack2", 1],
+		["attack2", "buff-reagent", 1],
+		["buff-reagent", "attack1", 1],
+	],
 	"normal": [
 		["init", "start", 1],
 		["start", "attack1", 1],
@@ -38,11 +46,30 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["init"],
 	"normal": ["init"],
 	"hard": ["init"],
 }
 
 var actions = {
+	"easy": {
+		"init": [
+			{"name": "status", "status_name": "arcane_aegis", "value": 5, "target": "self", "positive": true, "animation": ""}
+		],
+		"start": [
+			{"name": "add_reagent", "type": "trash", "value": 5, "animation": "atk 2"}
+		],
+		"attack1": [
+			{"name": "damage", "value": 2, "type": "regular", "amount": 2, "animation": "atk 1"},
+		],
+		"attack2": [
+			{"name": "damage", "value": 2, "type": "regular", "amount": 3, "animation": "atk 1"},
+		],
+		"buff-reagent": [
+			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""},
+			{"name": "add_reagent", "type": "trash", "value": 5, "animation": "atk 2"}
+		]
+	},
 	"normal": {
 		"init": [
 			{"name": "status", "status_name": "arcane_aegis", "value": 6, "target": "self", "positive": true, "animation": ""}
@@ -63,20 +90,22 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "arcane_aegis", "value": 20, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "arcane_aegis", "value": 10, "target": "self", "positive": true, "animation": ""}
 		],
 		"start": [
-			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"},
 		],
 		"attack1": [
+			{"name": "add_reagent", "type": "trash", "value": 2, "animation": "atk 2"},
 			{"name": "damage", "value": 2, "type": "regular", "amount": 2, "animation": "atk 1"},
 		],
 		"attack2": [
+			{"name": "add_reagent", "type": "trash", "value": 2, "animation": "atk 2"},
 			{"name": "damage", "value": 2, "type": "regular", "amount": 3, "animation": "atk 1"},
 		],
 		"buff-reagent": [
 			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
-			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"},
 		]
 	},
 }

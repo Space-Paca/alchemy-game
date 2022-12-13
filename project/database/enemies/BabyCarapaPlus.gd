@@ -16,11 +16,15 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["attack"],
 	"normal": ["attack"],
 	"hard": ["attack"],
 }
 
 var connections = {
+	"easy":[
+		["attack", "attack", 1],
+	],
 	"normal":[
 		["attack", "attack", 1],
 	],
@@ -30,11 +34,17 @@ var connections = {
 } 
 
 var first_state = {
+	"easy": ["attack"],
 	"normal": ["attack"],
 	"hard": ["attack"],
 }
 
 var actions = {
+	"easy": {
+		"attack": [
+			{"name": "damage", "value": [7,13], "type": "regular", "animation": "atk2"}
+		]
+	},
 	"normal": {
 		"attack": [
 			{"name": "damage", "value": [8,15], "type": "regular", "animation": "atk2"}
@@ -42,7 +52,7 @@ var actions = {
 	},
 	"hard": {
 		"attack": [
-			{"name": "damage", "value": [13,18], "type": "regular", "animation": "atk2"}
+			{"name": "damage", "value": [12,18], "type": "regular", "animation": "atk2"}
 		]
 	},
 } 

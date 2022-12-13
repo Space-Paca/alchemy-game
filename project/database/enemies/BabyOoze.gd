@@ -17,11 +17,19 @@ var unique_bgm = null
 
 
 var states = {
+	"easy": ["init", "poison", "defend-poison", "medium-poison"],
 	"normal": ["init", "poison", "defend-poison", "medium-poison"],
 	"hard": ["init", "poison", "defend-poison", "medium-poison"],
 }
 
 var connections = {
+	"easy": [
+		["init", "poison", 1],
+		["poison", "defend-poison", 5],
+		["poison", "medium-poison", 3],
+		["defend-poison", "medium-poison", 1],
+		["medium-poison", "defend-poison", 1],
+	],
 	"normal": [
 		["init", "poison", 1],
 		["poison", "defend-poison", 5],
@@ -39,11 +47,28 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["init"],
 	"normal": ["init"],
 	"hard": ["init"],
 }
 
 var actions = {
+	"easy": {
+		"init": [
+			{"name": "shield", "value": 5, "animation": "stand"}
+		],
+		"poison": [
+			{"name": "damage", "value": [4,6], "type": "venom", "animation": "atk"}
+		],
+		"medium-poison": [
+			{"name": "damage", "value": [2,4], "type": "venom", "animation": "atk"}
+			
+		],
+		"defend-poison": [
+			{"name": "shield", "value": [6,8], "animation": ""},
+			{"name": "damage", "value": [1,3], "type": "venom", "animation": "atk"}
+		]
+	},
 	"normal": {
 		"init": [
 			{"name": "shield", "value": 6, "animation": "stand"}

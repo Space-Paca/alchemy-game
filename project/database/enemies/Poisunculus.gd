@@ -6,7 +6,7 @@ var name = "EN_POISUN"
 var sfx = "subject-13"
 var use_idle_sfx = false
 var hp = {
-	"easy": 80,
+	"easy": 70,
 	"normal": 80,
 	"hard": 90,
 }
@@ -16,11 +16,20 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["poison", "defend-poison", "attack-poison", "poison-attack"],
 	"normal": ["poison", "defend-poison", "attack-poison", "poison-attack"],
 	"hard": ["poison", "defend-poison", "attack-poison", "poison-attack"],
 }
 
 var connections = {
+	"easy": [
+		["poison", "defend-poison", 5],
+		["poison", "attack-poison", 3],
+		["poison", "poison-attack", 3],
+		["defend-poison", "poison", 1],
+		["attack-poison", "poison", 1],
+		["poison-attack", "poison", 1],
+	],
 	"normal": [
 		["poison", "defend-poison", 5],
 		["poison", "attack-poison", 3],
@@ -40,11 +49,29 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["poison"],
 	"normal": ["poison"],
 	"hard": ["poison"],
 }
 
 var actions = {
+	"easy": {
+		"poison": [
+			{"name": "damage", "value": [8, 12], "type": "venom", "animation": "atk"},
+		],
+		"attack-poison": [
+			{"name": "damage", "value": [1,6], "type": "regular", "animation": "atk"},
+			{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
+		],
+		"poison-attack": [
+			{"name": "damage", "value": [5,6], "type": "venom", "animation": "atk"},
+			{"name": "damage", "value": [8,10], "type": "regular", "animation": "atk"},
+		],
+		"defend-poison": [
+			{"name": "shield", "value": [10,12], "animation": ""},
+			{"name": "damage", "value": [5, 8], "type": "venom", "animation": "atk"},
+		]
+	},
 	"normal": {
 		"poison": [
 			{"name": "damage", "value": [8, 15], "type": "venom", "animation": "atk"},

@@ -6,9 +6,9 @@ var name = "EN_NECROMANCER"
 var sfx = "necromancer"
 var use_idle_sfx = false
 var hp = {
-	"easy": 180,
+	"easy": 170,
 	"normal": 180,
-	"hard": 220,
+	"hard": 200,
 }
 var battle_init = true
 var size = "medium"
@@ -16,11 +16,23 @@ var change_phase = null
 var unique_bgm = null
 
 var states = {
+	"easy": ["init", "spawn", "attack1", "attack2", "defense", "debuff"],
 	"normal": ["init", "spawn", "attack1", "attack2", "defense", "debuff"],
 	"hard": ["init", "spawn", "attack1", "attack2", "defense", "debuff"],
 }
 
 var connections = {
+	"easy": [
+		["init", "spawn", 1],
+		["spawn", "attack1", 1],
+		["spawn", "defense", 1],
+		["attack1", "debuff", 2],
+		["attack1", "attack2", 2],
+		["defense", "debuff", 1],
+		["defense", "attack2", 1],
+		["attack2", "spawn", 1],
+		["debuff", "spawn", 1],
+	],
 	"normal": [
 		["init", "spawn", 1],
 		["spawn", "attack1", 1],
@@ -46,11 +58,35 @@ var connections = {
 }
 
 var first_state = {
+	"easy": ["init"],
 	"normal": ["init"],
 	"hard": ["init"],
 }
 
 var actions = {
+	"easy": {
+		"init": [
+			{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false, "animation": ""}
+		],
+		"attack1": [
+			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"}
+		],
+		"attack2": [
+			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"}
+		],
+		"defense": [
+			{"name": "damage", "value": [15, 20], "type": "regular", "animation": "02_atk"},
+			{"name": "shield", "value": [30, 35], "animation": ""}
+		],
+		"debuff": [
+			{"name": "damage", "value": [15, 20], "type": "regular", "animation": "02_atk"},
+			{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""}
+		],
+		"spawn": [
+			{"name": "shield", "value": [25, 30], "animation": ""},
+			{"name": "spawn", "enemy": "zombie", "minion": true, "animation": ""},
+		],
+	},
 	"normal": {
 		"init": [
 			{"name": "status", "status_name": "deep_wound", "value": 1, "target": "player", "positive": false, "animation": ""}
@@ -89,11 +125,11 @@ var actions = {
 			{"name": "shield", "value": [40, 45], "animation": ""}
 		],
 		"debuff": [
-			{"name": "damage", "value": [25, 30], "type": "regular", "animation": "02_atk"},
+			{"name": "damage", "value": [20, 30], "type": "regular", "animation": "02_atk"},
 			{"name": "status", "status_name": "weakness", "value": 2, "target": "player", "positive": false, "animation": ""}
 		],
 		"spawn": [
-			{"name": "shield", "value": [30, 40], "animation": ""},
+			{"name": "shield", "value": [25, 40], "animation": ""},
 			{"name": "spawn", "enemy": "zombie", "minion": true, "animation": ""},
 		],
 	},

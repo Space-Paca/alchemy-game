@@ -154,7 +154,7 @@ func set_save_data(data):
 			data.difficulty = "normal"
 	
 	player.set_save_data(data.player)
-	player_info.update_artifacts(player.artifacts)
+	player_info.update_artifacts(player)
 	floor_level = player.cur_level
 	load_combinations(data.combinations)
 	set_favorite_data(data.favorites)

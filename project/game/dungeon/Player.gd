@@ -11,7 +11,7 @@ signal hp_updated(hp, max_hp)
 signal gold_updated(gold)
 signal pearls_updated(pearl)
 signal bag_updated(bag)
-signal artifacts_updated(artifacts)
+signal artifacts_updated(player)
 signal reveal_map
 
 const HAND_SIZES = [5,8,12]
@@ -526,7 +526,7 @@ func add_artifact(name : String):
 		AudioManager.play_sfx("get_artifact")
 		artifacts.append(name)
 		ArtifactCallbacks.call_on_add(name, {"player": self})
-		emit_signal("artifacts_updated", artifacts)
+		emit_signal("artifacts_updated", self)
 	else:
 		assert(false, "Player already has artifact: " + str(name))
 
@@ -534,7 +534,7 @@ func add_artifact(name : String):
 func remove_artifact(name : String):
 	if has_artifact(name):
 		artifacts.remove(artifacts.find(name))
-		emit_signal("artifacts_updated", artifacts)
+		emit_signal("artifacts_updated", self)
 	else:
 		assert(false, "Player doesn't have artifact: " + str(name))
 

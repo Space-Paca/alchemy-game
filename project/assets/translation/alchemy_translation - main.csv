@@ -372,6 +372,9 @@ ST_HEX_TITLE,Hex,Feitiço
 ST_HEX_DESC,This character gains %d Permanent Strength each time you misuse a reagent,Este personagem ganha %d de Força Permanente sempre o jogador utiliza incorretamente algum reagente
 ST_HEX_DESC_GENERIC,This character gains Permanent Strength each time you misuse a reagent,Este personagem ganha Força Permanente sempre o jogador utiliza incorretamente algum reagente
 ST_HEX_INTENT,Hexing,Enfeitiçando
+ST_INVULNERABLE_TITLE,Invulnerable,Invulnerável
+ST_INVULNERABLE_DESC,You can't take damage until end of turn,Você não toma dano até o fim do turno
+ST_INVULNERABLE_INTENT,Becoming Invulnerable,Se Tornando Invulnerável
 ST_DOOM_TITLE,Impending Doom,Perdição Inevitável
 ST_DOOM_DESC,"When the Doom Counter reaches 0, this character will receive 999 Permanent Strength","Quando o Contador de Perdição chegar em 0, este personagem irá receber 999 de Força Permanente"
 ST_DOOM_INTENT,Dooming,Perdição
@@ -620,7 +623,7 @@ ART_BUFF_KIT_DESC,"When acquired, add 3 Horn Fragment reagents to your bag. Evas
 ART_DEBUFF_KIT_NAME,Wicked Satchel,Sacola Malvada
 ART_DEBUFF_KIT_DESC,"When acquired, add 3 Cracked Skull reagents to your bag. Weakness decreases enemies attack by 50% instead of 33%","Quando adquirida, adicione 3 Crânio Rachado à sua bolsa. Fraqueza diminui ataque de inimigos em 50% em vez de 33%"
 ART_TRASH_HEAL_NAME,Mortar and Pestle,Almofariz e Pilão
-ART_TRASH_HEAL_DESC,"When acquired, add 4 Putrid Beetle reagents to your bag. Misused Beetle reagents will heal you instead of harm you","Quando adquirida, adicione 4 Besouro Preservado à sua bolsa. Reagentes besouro mal utilizados vão te curar em vez de te machucar"
+ART_TRASH_HEAL_DESC,"When acquired, add 4 Preserved Beetle reagents to your bag. Misused Beetle reagents will heal you instead of harm you","Quando adquirida, adicione 4 Besouro Preservado à sua bolsa. Reagentes besouro mal utilizados vão te curar em vez de te machucar"
 ART_STRENGTH_PLUS_NAME,Mightstone,Pedra da Força
 ART_STRENGTH_PLUS_DESC,Start each battle with 8 Permanent Strength,Comece cada batalha com 8 de Força Permanente
 ART_TEMP_STRENGTH_PLUS_NAME,Morhk Chain,Corrente de Morhk
@@ -654,7 +657,9 @@ ART_BLOODCURSED_GRIMOIRE_DESC,"Whenever you defeat an enemy, heal 10% of your ma
 ART_GOLD_ANKH_NAME,Gold Ankh,Ankh Dourado
 ART_GOLD_ANKH_DESC,"Whenever you finish a battle, gain 10 max health","Sempre que você terminar uma batalha, ganhe 10 de vida máxima"
 ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso 
-ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 8% of your max life (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 8% da vida máxima (não funciona em receitas compradas)"
+ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 8% of your max health (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 8% da vida máxima (não funciona em receitas compradas)"
+ART_AVOID_DEATH_NAME,Ring of the Frozen Soul,Anel da Alma Congelada
+ART_AVOID_DEATH_DESC,"When you would die, instead heal to 10% of your max health, gain Invulnerable and destroy this artifact","Quando você for morrer, em vez disso cure até 10% de sua vida máxima, ganhe Invulnerável e destrua este artefato."
 EVENT_DUMMY_BATTLE_OPT_1,Battle!,Batalhar!
 EVENT_DUMMY_LEAVE_OPT_1,Leave.,Sair.
 EVENT_DUMMY_REST_OPT_1,Go to resting circle.,Ir para o círculo de descanso.

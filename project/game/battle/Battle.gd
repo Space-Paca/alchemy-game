@@ -357,7 +357,8 @@ func setup_player(_player, player_data = null):
 	grid.set_grid(player.grid_size)
 	if player_data:
 		grid.load_data(player_data.grid)
-
+	
+	player.connect("artifacts_updated", player_ui, "update_artifacts")
 	player.connect("died", self, "_on_player_died")
 	player.connect("draw_reagent", self, "_on_player_draw_reagent")
 	player.connect("reshuffle", self, "_on_player_reshuffle")

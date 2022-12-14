@@ -92,10 +92,10 @@ func update_values(player: Player):
 	update_pearls(player.pearls)
 
 
-func update_artifacts(player_artifacts):
+func update_artifacts(player):
 	for artifact in artifacts.get_children():
 		artifacts.remove_child(artifact)
-	for artifact_type in player_artifacts:
+	for artifact_type in player.get_artifacts():
 		var artifact = ARTIFACT.instance()
 		artifacts.add_child(artifact)
 		artifact.init(artifact_type)

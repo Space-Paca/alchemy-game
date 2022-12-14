@@ -129,6 +129,14 @@ const STATUSES = {
 	"show_value": true,
 	"use_value_on_tooltip": false,
 	},
+   "invulnerable": {
+	"title_name": "ST_INVULNERABLE_TITLE",
+	"description": "ST_INVULNERABLE_DESC",
+	"image": preload("res://assets/images/status/invulnerable.png"),
+	"intent_title": "ST_INVULNERABLE_INTENT",
+	"show_value": false,
+	"use_value_on_tooltip": false,
+	},
 	"losing_strength": {
 	"title_name": "ST_LOSING_STRENGTH_TITLE",
 	"description": "ST_LOSING_STRENGTH_DESC",

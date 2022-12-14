@@ -40,6 +40,11 @@ func has_artifact(_name):
 	return false
 
 
+#Implemented in player class
+func remove_artifact(_name):
+	return false
+
+
 func set_max_hp(value):
 	max_hp = value
 
@@ -89,7 +94,7 @@ func damage_strength(damage):
 	
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
-	if hp <= 0:
+	if hp <= 0 or get_status("invulnerable"):
 		return 0
 	
 	var pre_shield = shield
@@ -237,6 +242,12 @@ func gain_shield(value):
 	shield += value
 
 func die(reason = false):
+	if is_player() and has_artifact("avoid_death"):
+		hp = ceil(.1*max_hp)
+		AudioManager.play_sfx("heal")
+		remove_artifact("avoid_death")
+		add_status("invulnerable", 1, true, {})
+		return
 	what_killed_me = reason
 	emit_signal("died", self)
 
@@ -377,6 +388,9 @@ func end_turn_poison():
 
 func end_turn_freeze():
 	remove_status("freeze")
+
+func end_turn_invulnerable():
+	remove_status("invulnerable")
 
 func end_turn_restrain():
 	remove_status("restrain")

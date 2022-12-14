@@ -164,6 +164,14 @@ const UNCOMMON = [
 		"must_unlock": true,
 		"use_on_demo": true,
 	},
+	{
+		"id": "avoid_death",
+		"name": "ART_AVOID_DEATH_NAME",
+		"image": preload("res://assets/images/artifacts/avoid_death.png"),
+		"description": "ART_AVOID_DEATH_DESC",
+		"must_unlock": false,
+		"use_on_demo": false,
+	},
 ]
 
 const RARE = [

@@ -165,7 +165,7 @@ func set_save_data(data):
 	time_of_run = data.time_of_run
 	times_removed_reagent = data.times_removed_reagent if data.has("times_removed_reagent") else 0
 	timer.update_timer(time_of_run)
-	difficulty = data.difficulty
+	difficulty = data.difficulty if data.has("difficulty") else "normal"
 
 
 func play_map_bgm():

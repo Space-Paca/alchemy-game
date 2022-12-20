@@ -41,6 +41,11 @@ const SEASONAL_MODULATES = {
 		Color(0x8e27ffff),
 		Color(0xff2727ff),
 	],
+	"eoy_holidays": [
+		Color(0xe7aa86ff),
+		Color(0x8e27ffff),
+		Color(0xff2727ff),
+	],
 }
 
 const MAP_NODE_SCENE = preload("res://game/map/MapNode.tscn")

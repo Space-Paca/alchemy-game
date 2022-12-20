@@ -8,7 +8,10 @@ const ARTIFACT_LOOT = preload("res://game/treasure/ArtifactLoot.tscn")
 const SEASONAL_MOD = {
 	"halloween": {
 		"ui": Color("ff9126"),
-	}
+	},
+	"eoy_holidays": {
+		"ui": Color("00d3f6"),
+	},
 }
 
 onready var button = $BackButton

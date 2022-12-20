@@ -144,7 +144,7 @@ func set_seasonal_look(event_string):
 			$VBoxContainer/Updates, $VBoxContainer/Discord, $VBoxContainer/Steam,
 			quit_yes_button, quit_no_button, popup_confirm_button, popup_back_button]:
 		#Button color
-		for style_name in ["hover", "pressed", "normal"]:
+		for style_name in ["hover", "pressed", "normal", "disabled"]:
 			var style = node.get_stylebox(style_name)
 			style.modulate_color = SEASONAL_MOD[event_string].button
 		#Fonts color

@@ -27,7 +27,8 @@ const DOWNBUTTON_START_Y = 130
 const DOWNBUTTON_TARGET_Y = 150
 const BUTTON_SPEED = 300
 const SEASONAL_MOD = {
-	"halloween": Color("ff9126")
+	"halloween": Color("ff9126"),
+	"eoy_holidays": Color("00d3f6"),
 }
 
 var tooltip_enabled = false

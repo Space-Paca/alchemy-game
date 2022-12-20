@@ -54,13 +54,22 @@ const EVENT_BACKGROUNDS = {
 		preload("res://assets/images/background/halloween/forest.png"),
 		preload("res://assets/images/background/halloween/cave.png"),
 		preload("res://assets/images/background/halloween/dungeon.png")
-	]
+	],
+	"eoy_holidays": [
+		preload("res://assets/images/background/eoy_holidays/forest.png"),
+		preload("res://assets/images/background/eoy_holidays/cave.png"),
+		preload("res://assets/images/background/eoy_holidays/dungeon.png")
+	],
 }
 const BOSS_EVENT_BACKGROUNDS = {
 	"halloween": [
 		preload("res://assets/images/background/halloween/village.png"),
 		preload("res://assets/images/background/halloween/fire.png")
-	]
+	],
+	"eoy_holidays": [
+		preload("res://assets/images/background/eoy_holidays/village.png"),
+		preload("res://assets/images/background/eoy_holidays/fire.png")
+	],
 }
 
 var floor_level

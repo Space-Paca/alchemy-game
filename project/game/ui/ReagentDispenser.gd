@@ -5,7 +5,10 @@ signal dispenser_pressed
 const SEASONAL_MOD = {
 	"halloween": {
 		"ui": Color("ff9126"),
-	}
+	},
+	"eoy_holidays": {
+		"ui": Color("00d3f6"),
+	},
 }
 
 onready var image = $HBoxContainer/Image

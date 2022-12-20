@@ -14,6 +14,10 @@ const SEASONAL_MOD = {
 	"halloween": {
 		"ui": Color("ff9126"),
 		"dialogue": Color("dcb491d4"),
+	},
+	"eoy_holidays": {
+		"ui": Color("00d3f6"),
+		"dialogue": Color("89ffbad4"),
 	}
 }
 

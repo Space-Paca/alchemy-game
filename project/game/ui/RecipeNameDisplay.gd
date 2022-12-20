@@ -7,7 +7,10 @@ const OUTLINE_FONT = preload("res://game/ui/RecipeNameOutlineFont.tres")
 const SEASONAL_MOD = {
 	"halloween": {
 		"ui": Color("ff9126"),
-	}
+	},
+	"eoy_holidays": {
+		"ui": Color("00d3f6"),
+	},
 }
 
 export var hide_description := false

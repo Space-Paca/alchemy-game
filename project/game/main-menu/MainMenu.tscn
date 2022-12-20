@@ -1156,6 +1156,7 @@ tracks/17/keys = {
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1920, 1080 )
+theme = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

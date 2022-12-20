@@ -5,24 +5,11 @@ signal room_reset
 
 const ARTIFACTS_NUMBER = 2
 const ARTIFACT_LOOT = preload("res://game/treasure/ArtifactLoot.tscn")
-const SEASONAL_MOD = {
-	"halloween": {
-		"ui": Color("ff9126"),
-	},
-	"eoy_holidays": {
-		"ui": Color("00d3f6"),
-	},
-}
 
 onready var button = $BackButton
 
 var map_node : MapNode
 var player
-
-
-func _ready():
-	if Debug.seasonal_event:
-		set_seasonal_look(Debug.seasonal_event)
 
 
 func setup(node, _player, level):
@@ -60,10 +47,6 @@ func setup(node, _player, level):
 	AudioManager.play_sfx("enter_treasure_room")
 	
 	enter_animation()
-
-
-func set_seasonal_look(event_string):
-	button.self_modulate = SEASONAL_MOD[event_string].ui
 
 
 func enter_animation():

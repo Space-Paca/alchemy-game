@@ -124,6 +124,14 @@ func _input(event):
 
 
 func set_seasonal_look(event_string):
+	var theme = get_theme()
+	theme.set_theme_item(Theme.DATA_TYPE_COLOR, "font_color", "Button", SEASONAL_MOD[event_string].font)
+	theme.set_theme_item(Theme.DATA_TYPE_COLOR, "font_color_focus", "Button", SEASONAL_MOD[event_string].font)
+	theme.set_theme_item(Theme.DATA_TYPE_COLOR, "font_color_hover", "Button", SEASONAL_MOD[event_string].font)
+	for style_name in ["hover", "pressed", "normal", "disabled"]:
+		var style = theme.get_stylebox(style_name, "Button")
+		style.modulate_color = SEASONAL_MOD[event_string].button
+	
 	var path = "res://assets/images/main_menu/%s/" % event_string
 	var data_res = $Background.animation_state_data_res
 	var skeleton = data_res.skeleton
@@ -157,6 +165,7 @@ func set_seasonal_look(event_string):
 	$VBoxContainer/Updates.icon = load(path + "logo_update__alchemia.png")
 	$VBoxContainer/Discord.icon = load(path + "logo_discord__alchemia.png")
 	$VBoxContainer/Steam.icon = load(path + "logo_steam__alchemia.png")
+
 
 func skip_intro_animation():
 	anim.seek(anim.get_animation("intro").length, true)

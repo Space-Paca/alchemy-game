@@ -27,8 +27,12 @@ const DOWNBUTTON_START_Y = 130
 const DOWNBUTTON_TARGET_Y = 150
 const BUTTON_SPEED = 300
 const SEASONAL_MOD = {
-	"halloween": Color("ff9126"),
-	"eoy_holidays": Color("00d3f6"),
+	"halloween": {
+		"ui": Color("ff9126"),
+	},
+	"eoy_holidays": {
+		"ui": Color("00d3f6"),
+	},
 }
 
 var tooltip_enabled = false
@@ -64,7 +68,7 @@ func show():
 
 
 func set_seasonal_look(event_string):
-	$BG.self_modulate = SEASONAL_MOD[event_string]
+	$BG.self_modulate = SEASONAL_MOD[event_string].ui
 
 
 func updateDownButton():

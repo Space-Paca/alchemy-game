@@ -6,14 +6,6 @@ signal grid_modified(reagent_matrix)
 signal combination_made(reagent_matrix)
 
 const RECIPE = preload("res://game/battle/screens/victory/WinRecipe.tscn")
-const SEASONAL_MOD = {
-	"halloween": {
-		"ui": Color("ff9126"),
-	},
-	"eoy_holidays": {
-		"ui": Color("00d3f6"),
-	},
-}
 
 onready var dispenser_list = $Book/DispenserReagentList
 onready var reagents = $Reagents
@@ -29,12 +21,6 @@ var map_node : MapNode
 var player
 var is_dragging_reagent := false
 
-
-func _ready():
-	if Debug.seasonal_event:
-		set_seasonal_look(Debug.seasonal_event)
-
-
 func setup(node, _player, attempts):
 	$Book/ReagentDropZone.monitorable = true
 	map_node = node
@@ -44,11 +30,6 @@ func setup(node, _player, attempts):
 	counter.set_attempts(attempts)
 	$Counter/AnimationPlayer.play("default")
 	recipe_name_display.reset()
-
-
-func set_seasonal_look(event_string):
-	for node in [back_button, combine_button]:
-		node.self_modulate = SEASONAL_MOD[event_string].ui
 
 
 func create_reagent(dispenser, type, quick_place):

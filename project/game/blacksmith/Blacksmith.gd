@@ -6,12 +6,10 @@ const REAGENT_TRANSMUTED = preload("res://game/blacksmith/ReagentTransmuted.tscn
 const DIALOG_SPEED = 25
 const SEASONAL_MOD = {
 	"halloween": {
-		"ui": Color("ff9126"),
 		"dialogue": Color("dcb491d4"),
 	},
 	"eoy_holidays": {
-		"ui": Color("00d3f6"),
-		"dialogue": Color("89ffbad4"),
+		"dialogue": Color("dca0f9ab"),
 	},
 }
 
@@ -77,10 +75,6 @@ func set_seasonal_look(event_string):
 	$Seller.texture = load(path + "seller.png")
 	$Table.texture = load(path + "table.png")
 	
-	for node in [upgrade_button, transmute_button, back_button,
-				 upgrade_confirm_button, transmute_confirm_button,
-				 upgrading_bg, transmuting_bg]:
-		node.self_modulate = SEASONAL_MOD[event_string].ui
 	dialogue_panel_point.color = SEASONAL_MOD[event_string].dialogue
 	dialogue_panel.get_stylebox("panel", "" ).bg_color = SEASONAL_MOD[event_string].dialogue
 

@@ -12,12 +12,10 @@ const DESTROY_INCREMENTAL_COST := 10
 const SHOP_RECIPE = preload("res://game/shop/ShopRecipe.tscn")
 const SEASONAL_MOD = {
 	"halloween": {
-		"ui": Color("ff9126"),
 		"dialogue": Color("dcb491d4"),
 	},
 	"eoy_holidays": {
-		"ui": Color("00d3f6"),
-		"dialogue": Color("89ffbad4"),
+		"dialogue": Color("dca0f9ab"),
 	}
 }
 
@@ -122,12 +120,9 @@ func set_seasonal_look(event_string):
 	$BG.texture = load(path + "bg.png")
 	$TableGlass.texture = load(path + "table_glass.png")
 	
-	for node in [recipe_button, reagents_button, back_button,\
-				 destroy_yes_button, destroy_no_button]:
-		node.self_modulate = SEASONAL_MOD[event_string].ui
 	dialogue_panel_point.color = SEASONAL_MOD[event_string].dialogue
 	destroy_panel_point.color = SEASONAL_MOD[event_string].dialogue
-	panel.get_stylebox("panel", "" ).bg_color = SEASONAL_MOD[event_string].dialogue
+	panel.get_stylebox("panel", "").bg_color = SEASONAL_MOD[event_string].dialogue
 
 
 func start():

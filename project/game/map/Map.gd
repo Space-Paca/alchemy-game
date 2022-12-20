@@ -42,9 +42,9 @@ const SEASONAL_MODULATES = {
 		Color(0xff2727ff),
 	],
 	"eoy_holidays": [
-		Color(0xe7aa86ff),
-		Color(0x8e27ffff),
-		Color(0xff2727ff),
+		Color(0xd3ff9eff),
+		Color(0xff9e9eff),
+		Color(0x68f4ffff),
 	],
 }
 

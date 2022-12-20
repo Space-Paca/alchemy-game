@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo_discord__alchemia.png-822a2d7a1a9cc5742ec02372ef145eb2.stex"
+path="res://.import/logo_discord__alchemia.png-6e0716a46b433c3160c77f24a8fe2e00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/logo_discord__alchemia.png"
-dest_files=[ "res://.import/logo_discord__alchemia.png-822a2d7a1a9cc5742ec02372ef145eb2.stex" ]
+source_file="res://assets/images/ui/halloween/logo_discord__alchemia.png"
+dest_files=[ "res://.import/logo_discord__alchemia.png-6e0716a46b433c3160c77f24a8fe2e00.stex" ]
 
 [params]
 

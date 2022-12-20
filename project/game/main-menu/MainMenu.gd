@@ -152,7 +152,11 @@ func set_seasonal_look(event_string):
 		node.add_color_override("font_color_hover", SEASONAL_MOD[event_string].font)
 		node.add_color_override("font_color_pressed", SEASONAL_MOD[event_string].font)
 		node.add_color_override("font_color_focus", SEASONAL_MOD[event_string].font)
-
+	
+	path = "res://assets/images/ui/%s/" % event_string
+	$VBoxContainer/Updates.icon = load(path + "logo_update__alchemia.png")
+	$VBoxContainer/Discord.icon = load(path + "logo_discord__alchemia.png")
+	$VBoxContainer/Steam.icon = load(path + "logo_steam__alchemia.png")
 
 func skip_intro_animation():
 	anim.seek(anim.get_animation("intro").length, true)

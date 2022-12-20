@@ -22,11 +22,11 @@ const GROWING_BUTTON_WIDTH = {
 }
 const SEASONAL_MOD = {
 	"halloween": {
-		"button": Color("ff9126"),
+		"ui": Color("ff9126"),
 		"font": Color("000000"),
 	},
 	"eoy_holidays": {
-		"button": Color("00d3f6"),
+		"ui": Color("00d3f6"),
 		"font": Color("c1feff"),
 	},
 }
@@ -130,7 +130,7 @@ func set_seasonal_look(event_string):
 	theme.set_theme_item(Theme.DATA_TYPE_COLOR, "font_color_hover", "Button", SEASONAL_MOD[event_string].font)
 	for style_name in ["hover", "pressed", "normal", "disabled"]:
 		var style = theme.get_stylebox(style_name, "Button")
-		style.modulate_color = SEASONAL_MOD[event_string].button
+		style.modulate_color = SEASONAL_MOD[event_string].ui
 	
 	var path = "res://assets/images/main_menu/%s/" % event_string
 	var data_res = $Background.animation_state_data_res
@@ -154,7 +154,7 @@ func set_seasonal_look(event_string):
 		#Button color
 		for style_name in ["hover", "pressed", "normal", "disabled"]:
 			var style = node.get_stylebox(style_name)
-			style.modulate_color = SEASONAL_MOD[event_string].button
+			style.modulate_color = SEASONAL_MOD[event_string].ui
 		#Fonts color
 		node.add_color_override("font_color", SEASONAL_MOD[event_string].font)
 		node.add_color_override("font_color_hover", SEASONAL_MOD[event_string].font)

@@ -7,11 +7,9 @@ const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
 const SEASONAL_MOD = {
 	"halloween": {
 		"ui": Color("ff9126"),
-		"font": Color("000000"),
 	},
 	"eoy_holidays": {
 		"ui": Color("00d3f6"),
-		"font": Color("c1feff"),
 	},
 }
 

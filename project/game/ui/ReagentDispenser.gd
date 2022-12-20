@@ -41,6 +41,8 @@ func setup(reagent, amount):
 
 func set_seasonal_look(event_string):
 	button.self_modulate = SEASONAL_MOD[event_string].ui
+	for node in [quantity_label, name_label]:
+		node.add_color_override("font_color", SEASONAL_MOD[event_string].font)
 
 
 func get_pos():

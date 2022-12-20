@@ -7,6 +7,22 @@ const RECIPE = preload("res://game/rest/RestRecipe.tscn")
 const REST_HEAL_PERCENTAGE = 35
 const GREAT_REST_HEAL_PERCENTAGE = 70
 const FULL_REST_HEAL_PERCENTAGE = 100
+const SEASONAL_MOD = {
+	"halloween": {
+		"green_color": "green",
+		"purple_color": "purple",
+		"fuchsia_color": "fuchsia",
+		"regular_color": "black",
+		"cant_rest_color": "#870900",
+	},
+	"eoy_holidays": {
+		"green_color": "yellow",
+		"purple_color": "purple",
+		"fuchsia_color": "purple",
+		"regular_color": "#c1feffff",
+		"cant_rest_color": "#870900",
+	},
+}
 
 onready var warning = $Warning
 onready var warning_label = $Warning/Label
@@ -19,6 +35,16 @@ var player
 var combinations
 var state = "main"
 var disable_heal_text = false
+var green_color = "green"
+var purple_color = "purple"
+var fuchsia_color = "fuchsia"
+var regular_color = "black"
+var cant_rest_color = "#870900"
+
+func _ready():
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
 
 func setup(node, _player, _combinations):
 	state = "main"
@@ -28,7 +54,7 @@ func setup(node, _player, _combinations):
 	
 	update_heal_button()
 	
-	hint_button_label.bbcode_text = tr("DISCOVER_RECIPE")
+	hint_button_label.bbcode_text = tr("DISCOVER_RECIPE")%[purple_color]
 	
 	$Warning.modulate.a = 0
 	$BackButton.show()
@@ -38,13 +64,24 @@ func setup(node, _player, _combinations):
 	$ContinueButton.hide()
 
 
+func set_seasonal_look(event_string):
+	regular_color = SEASONAL_MOD[event_string].regular_color
+	green_color = SEASONAL_MOD[event_string].green_color
+	purple_color = SEASONAL_MOD[event_string].purple_color
+	fuchsia_color = SEASONAL_MOD[event_string].fuchsia_color
+	cant_rest_color = SEASONAL_MOD[event_string].cant_rest_color
+	
+	for node in [heal_button_label, hint_button_label]:
+		node.add_color_override("default_color", regular_color)
+
+
 func get_percent_heal_color():
 	if player.has_artifact("full_rest"):
-		return "fuchsia"
+		return fuchsia_color
 	elif player.has_artifact("great_rest"):
-		return "green"
+		return green_color
 	else:
-		return "black"
+		return regular_color
 
 
 func get_percent_heal():
@@ -68,13 +105,13 @@ func get_heal_value():
 func update_heal_button():
 	var button = $ButtonContainer/HealButton
 	if player.has_artifact("cursed_scholar_mask"):
-		heal_button_label.bbcode_text = "[center][color=#870900]"+tr("CANT_HEAL")+"[/color][/center]"
+		heal_button_label.bbcode_text = "[center][color="+cant_rest_color+"]"+tr("CANT_HEAL")+"[/color][/center]"
 		disable_heal_text = "CANT_HEAL_SCHOLAR_MASK"
 	else:
 		disable_heal_text = false
 		button.modulate.r = 1.0; button.modulate.g = 1.0; button.modulate.b = 1.0
 		heal_button_label.bbcode_text = tr("HEAL_TEXT") % \
-				[get_heal_value(), get_percent_heal_color(), get_percent_heal()] 
+				[purple_color, green_color, get_heal_value(), get_percent_heal_color(), get_percent_heal()] 
 
 
 func reset_room():

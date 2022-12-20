@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/start screen_spine_eoy_holidays.atlas-ff43d270bbb072629dd557315695dd2a.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/mainmenu/start screen_spine_eoy_holidays.atlas"
+dest_files=[ "res://.import/start screen_spine_eoy_holidays.atlas-ff43d270bbb072629dd557315695dd2a.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

@@ -21,7 +21,14 @@ const GROWING_BUTTON_WIDTH = {
 	},
 }
 const SEASONAL_MOD = {
-	"halloween": Color("ff9126")
+	"halloween": {
+		"button": Color("ff9126"),
+		"font": Color("000000"),
+	},
+	"eoy_holidays": {
+		"button": Color("00d3f6"),
+		"font": Color("c1feff"),
+	},
 }
 
 onready var anim = $AnimationPlayer
@@ -136,7 +143,15 @@ func set_seasonal_look(event_string):
 	for node in [$ContinueButton, $NewGameButton, $QuitButton,
 			$VBoxContainer/Updates, $VBoxContainer/Discord, $VBoxContainer/Steam,
 			quit_yes_button, quit_no_button, popup_confirm_button, popup_back_button]:
-		node.self_modulate = SEASONAL_MOD[event_string]
+		#Button color
+		for style_name in ["hover", "pressed", "normal"]:
+			var style = node.get_stylebox(style_name)
+			style.modulate_color = SEASONAL_MOD[event_string].button
+		#Fonts color
+		node.add_color_override("font_color", SEASONAL_MOD[event_string].font)
+		node.add_color_override("font_color_hover", SEASONAL_MOD[event_string].font)
+		node.add_color_override("font_color_pressed", SEASONAL_MOD[event_string].font)
+		node.add_color_override("font_color_focus", SEASONAL_MOD[event_string].font)
 
 
 func skip_intro_animation():

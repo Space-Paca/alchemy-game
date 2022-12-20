@@ -118,6 +118,11 @@ func check_seasonal_events():
 	if (date.month == 10 and date.day >= 25) or\
 	   (date.month == 11 and date.day <= 2):
 		seasonal_event = "halloween"
+	
+	#End of Year Holidays
+	if (date.month == 12 and date.day >= 22) or\
+	   (date.month == 1 and date.day <= 1):
+		seasonal_event = "eoy_holidays"
 
 
 func load_portraits():

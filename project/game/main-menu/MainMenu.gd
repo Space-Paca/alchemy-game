@@ -178,19 +178,21 @@ func skip_intro_animation():
 		button.disabled = false
 
 
-func start_game(continue_save := false, difficulty := "normal"):
-	FileManager.continue_game = continue_save
-	FileManager.difficulty_to_use = difficulty
-	AudioManager.stop_bgm(BGM_STOP_SPEED)
-	AudioManager.play_sfx("start_new_game")
-	Transition.transition_to("res://game/dungeon/Dungeon.tscn")
+func start_game(continue_save := false):
+	if continue_save:
+		FileManager.continue_game = continue_save
+		AudioManager.stop_bgm(BGM_STOP_SPEED)
+		AudioManager.play_sfx("start_new_game")
+		Transition.transition_to("res://game/dungeon/Dungeon.tscn")
+	else:
+		Transition.transition_to("res://game/pre-run/PreRunScreen.tscn")
 
 
 func _on_NewGameButton_pressed():
 	if FileManager.run_file_exists():
 		$PopupBG.show()
 	else:
-		start_game(false, "normal")
+		start_game(false)
 
 
 func _on_QuitButton_pressed():
@@ -273,7 +275,7 @@ func _on_Popup_Back_pressed():
 
 func _on_Popup_Confirm_pressed():
 	AudioManager.play_sfx("click")
-	start_game(false, "normal")
+	start_game(false)
 
 
 func _on_growing_button_mouse_entered(which:String):

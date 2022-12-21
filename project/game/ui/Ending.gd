@@ -95,6 +95,8 @@ func show_gameover():
 		return
 	showing_gameover = true
 	
+	AudioManager.play_bgm("demo_ending")
+	
 	var gameover = GAME_OVER_SCENE.instance()
 	gameover.set_player(player)
 	

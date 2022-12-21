@@ -865,9 +865,15 @@ func win():
 		emit_signal("recipe_book_toggle")
 	
 	if is_boss:
-		AudioManager.play_sfx("win_boss_battle")
+		if Debug.seasonal_event and AudioManager.has_sfx(Debug.seasonal_event+"_win_boss_battle"):
+			AudioManager.play_sfx(Debug.seasonal_event+"_win_boss_battle")
+		else:
+			AudioManager.play_sfx("win_boss_battle")
 	else:
-		AudioManager.play_sfx("win_normal_battle")
+		if Debug.seasonal_event and AudioManager.has_sfx(Debug.seasonal_event+"_win_normal_battle"):
+			AudioManager.play_sfx(Debug.seasonal_event+"_win_normal_battle")
+		else:
+			AudioManager.play_sfx("win_normal_battle")
 	AudioManager.stop_bgm()
 	AudioManager.stop_all_enemy_idle_sfx()
 

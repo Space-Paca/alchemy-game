@@ -180,7 +180,7 @@ func skip_intro_animation():
 
 func start_game(continue_save := false):
 	if continue_save:
-		FileManager.continue_game = continue_save
+		FileManager.continue_game = true
 		AudioManager.stop_bgm(BGM_STOP_SPEED)
 		AudioManager.play_sfx("start_new_game")
 		Transition.transition_to("res://game/dungeon/Dungeon.tscn")

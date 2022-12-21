@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://game/laboratory/Laboratory.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/book/bookmark_btn.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/DispenserReagentList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/ui/book/book2.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/background/cauldron_bg.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/images/background/cauldron_fg.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/book/book3.png" type="Texture" id=6]
 [ext_resource path="res://game/battle/grid/Grid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/laboratory/Counter.gd" type="Script" id=8]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/images/ui/book/divisor.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/images/ui/book/book1.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/background/cauldron_bg.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -116,6 +117,19 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
+margin_left = -30.0
+margin_top = -481.0
+margin_right = 2445.0
+margin_bottom = 1275.0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foreground" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.258824 )
 margin_left = -30.0
 margin_top = -481.0
 margin_right = 2445.0
@@ -319,6 +333,7 @@ margin_top = 324.658
 margin_right = 1336.92
 margin_bottom = 324.658
 hide_description = true
+use_seasonal_tint = true
 
 [node name="Combine" type="Button" parent="."]
 anchor_left = 0.5

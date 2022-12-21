@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cauldron_bg.jpg-19a8cc1b9b74e48ea62a8c7e55779ee6.stex"
+path="res://.import/cauldron_bg.png-c8e9bf83ddb3e09f363f712047465679.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/cauldron_bg.jpg"
-dest_files=[ "res://.import/cauldron_bg.jpg-19a8cc1b9b74e48ea62a8c7e55779ee6.stex" ]
+source_file="res://assets/images/background/eoy_holidays/cauldron_bg.png"
+dest_files=[ "res://.import/cauldron_bg.png-c8e9bf83ddb3e09f363f712047465679.stex" ]
 
 [params]
 

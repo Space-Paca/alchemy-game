@@ -21,6 +21,17 @@ var map_node : MapNode
 var player
 var is_dragging_reagent := false
 
+
+func _ready():
+	if Debug.seasonal_event:
+		set_seasonal_look(Debug.seasonal_event)
+
+
+func set_seasonal_look(event_string):
+	var path = "res://assets/images/background/%s/" % event_string
+	$Background.texture = load(path + "cauldron_bg.png")
+
+
 func setup(node, _player, attempts):
 	$Book/ReagentDropZone.monitorable = true
 	map_node = node

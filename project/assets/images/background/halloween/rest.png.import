@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cauldron_fg.png-c8bf3a462476c2752d39842d9a56d673.stex"
+path="res://.import/rest.png-06c6916eef594c747ed6feb5bec8d2d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/cauldron_fg.png"
-dest_files=[ "res://.import/cauldron_fg.png-c8bf3a462476c2752d39842d9a56d673.stex" ]
+source_file="res://assets/images/background/halloween/rest.png"
+dest_files=[ "res://.import/rest.png-06c6916eef594c747ed6feb5bec8d2d9.stex" ]
 
 [params]
 

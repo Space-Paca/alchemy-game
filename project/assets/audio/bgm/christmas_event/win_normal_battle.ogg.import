@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/win_normal_battle.ogg-3a587f1d997b36c881ccba6adbd5e7b5.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/christmas_event/win_normal_battle.ogg"
+dest_files=[ "res://.import/win_normal_battle.ogg-3a587f1d997b36c881ccba6adbd5e7b5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

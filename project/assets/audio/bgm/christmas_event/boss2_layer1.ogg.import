@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/boss2_layer1.ogg-f0754024de58780d79a717b875bbd118.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/christmas_event/boss2_layer1.ogg"
+dest_files=[ "res://.import/boss2_layer1.ogg-f0754024de58780d79a717b875bbd118.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

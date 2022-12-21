@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/map1.ogg-aec629a18e4585d29fd8b52c755b7ce0.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/christmas_event/map1.ogg"
+dest_files=[ "res://.import/map1.ogg-aec629a18e4585d29fd8b52c755b7ce0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

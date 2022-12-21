@@ -94,7 +94,10 @@ func damage_strength(damage):
 	
 
 func take_damage(source: Character, damage: int, type: String, retaliate := true):
-	if hp <= 0 or get_status("invulnerable"):
+	if hp <= 0:
+		return 0
+	if get_status("invulnerable"):
+		AudioManager.play_sfx("damage_none")
 		return 0
 	
 	var pre_shield = shield
@@ -246,6 +249,7 @@ func die(reason = false):
 		hp = ceil(.1*max_hp)
 		AudioManager.play_sfx("heal")
 		remove_artifact("avoid_death")
+		AudioManager.play_sfx("artifact_break")
 		add_status("invulnerable", 1, true, {})
 		return
 	what_killed_me = reason

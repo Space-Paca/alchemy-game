@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/elite3_layer_3.ogg-d563884c2cb4f658ad620987b79cae60.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/christmas_event/elite3_layer_3.ogg"
+dest_files=[ "res://.import/elite3_layer_3.ogg-d563884c2cb4f658ad620987b79cae60.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

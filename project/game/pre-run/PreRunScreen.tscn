@@ -60,8 +60,8 @@ __meta__ = {
 }
 
 [node name="HeroContainer" type="PanelContainer" parent="HBoxContainer"]
-margin_left = 64.0
-margin_right = 1144.0
+margin_left = 9.0
+margin_right = 1089.0
 margin_bottom = 639.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
@@ -87,7 +87,7 @@ custom_constants/separation = 20
 margin_right = 980.0
 margin_bottom = 108.0
 custom_fonts/font = SubResource( 6 )
-text = "Choose your hero"
+text = "CHOOSE_HERO"
 align = 1
 valign = 1
 
@@ -141,7 +141,7 @@ __meta__ = {
 margin_right = 300.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
-text = "Bobdude"
+text = "ALCHEMIST"
 align = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -149,7 +149,7 @@ margin_left = 340.0
 margin_right = 640.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
-text = "Coming soon"
+text = "???_CHAR"
 align = 1
 
 [node name="Label3" type="Label" parent="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -157,12 +157,12 @@ margin_left = 680.0
 margin_right = 980.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
-text = "Coming soon"
+text = "???_CHAR"
 align = 1
 
 [node name="DifficultyContainer" type="PanelContainer" parent="HBoxContainer"]
-margin_left = 1244.0
-margin_right = 1856.0
+margin_left = 1189.0
+margin_right = 1911.0
 margin_bottom = 639.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
@@ -170,7 +170,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DifficultyContainer"]
-margin_right = 612.0
+margin_right = 722.0
 margin_bottom = 639.0
 custom_constants/margin_right = 50
 custom_constants/margin_top = 50
@@ -180,31 +180,31 @@ custom_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer"]
 margin_left = 50.0
 margin_top = 50.0
-margin_right = 562.0
+margin_right = 672.0
 margin_bottom = 589.0
 
 [node name="Label" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer"]
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 108.0
 custom_fonts/font = SubResource( 6 )
-text = "Difficulty selection"
+text = "CHOOSE_DIFFICULTY"
 align = 1
 valign = 1
 
 [node name="Spacer" type="Control" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer"]
 margin_top = 112.0
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 162.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer"]
 margin_top = 166.0
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 286.0
 rect_min_size = Vector2( 0, 120 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 86.0
 custom_constants/separation = 20
 
@@ -218,29 +218,29 @@ group = SubResource( 7 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 86.0
-margin_right = 512.0
+margin_right = 255.0
 margin_bottom = 86.0
 
 [node name="Title" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 426.0
+margin_right = 169.0
 margin_bottom = 51.0
-text = "Easy peasy lemon squeezy"
+text = "DIF_EASY"
 
 [node name="Description" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 55.0
-margin_right = 426.0
+margin_right = 169.0
 margin_bottom = 86.0
 custom_fonts/font = SubResource( 8 )
-text = "It's easy I guess"
+text = "DIF_EASY_DESC"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer"]
 margin_top = 290.0
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 410.0
 rect_min_size = Vector2( 0, 120 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 86.0
 custom_constants/separation = 20
 
@@ -257,29 +257,29 @@ difficulty_color = Color( 0.898039, 0.611765, 0, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
 margin_left = 86.0
-margin_right = 472.0
+margin_right = 321.0
 margin_bottom = 86.0
 
 [node name="Title" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
-margin_right = 386.0
+margin_right = 235.0
 margin_bottom = 51.0
-text = "Choose this one"
+text = "DIF_MEDIUM"
 
 [node name="Description" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
 margin_top = 55.0
-margin_right = 386.0
+margin_right = 235.0
 margin_bottom = 86.0
 custom_fonts/font = SubResource( 8 )
-text = "We want you to play the game this way"
+text = "DIF_MEDIUM_DESC"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer"]
 margin_top = 414.0
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 534.0
 rect_min_size = Vector2( 0, 120 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-margin_right = 512.0
+margin_right = 622.0
 margin_bottom = 86.0
 custom_constants/separation = 20
 
@@ -295,22 +295,22 @@ difficulty_color = Color( 0, 1, 0, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 margin_left = 86.0
-margin_right = 429.0
+margin_right = 379.0
 margin_bottom = 86.0
 
 [node name="Title" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_right = 343.0
+margin_right = 293.0
 margin_bottom = 51.0
-text = "Hard Nightmare Hell"
+text = "DIF_HARD_DESC"
 
 [node name="Description" type="Label" parent="HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
 margin_top = 55.0
-margin_right = 343.0
+margin_right = 293.0
 margin_bottom = 86.0
 custom_fonts/font = SubResource( 8 )
-text = "Lorem ipsum dolor sit amet"
+text = "DIF_HARD_DESC"
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -320,4 +320,27 @@ margin_top = -210.0
 margin_right = 195.5
 margin_bottom = -90.0
 rect_min_size = Vector2( 0, 120 )
-text = "Begin journey"
+text = "BEGIN_JOURNEY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -949.0
+margin_top = -1066.0
+margin_right = -691.0
+margin_bottom = -946.0
+rect_min_size = Vector2( 0, 120 )
+text = "BACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="StartButton" to="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="StartButton" to="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_StartButton_pressed"]
+[connection signal="mouse_entered" from="BackButton" to="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="BackButton" to="HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_BackButton_pressed"]

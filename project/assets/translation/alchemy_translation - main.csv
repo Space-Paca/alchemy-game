@@ -48,6 +48,17 @@ OPT_TURBO_MODE,Enable Turbo Mode,Habilitar Modo Turbo
 OPT_TURBO_MODE_DESC,Makes several game elements faster,Deixa vários elementos do jogo mais rápidos
 OPT_LANGUAGE,Language,Linguagem
 OPT_LANGUAGE_DESC,some changes only appear after restarting the game,algumas mudanças apenas ocorrem após reiniciar o jogo
+CHOOSE_HERO,Choose your Hero,Escolha seu Herói
+CHOOSE_DIFFICULTY,Choose Difficulty,Escolha a Dificuldade
+BEGIN_JOURNEY,Begin Journey!,Começar Jornada!
+ALCHEMIST,Alchemist,Alquimista
+???_CHAR,???,???
+DIF_EASY,Apprentice,Aprendiz
+DIF_EASY_DESC,"An easier experience for newcomers, but still challenging.","Uma experiência mais tranquila para iniciantes, mas ainda desafiadora."
+DIF_MEDIUM,Savant,Erudito
+DIF_MEDIUM_DESC,Alchemia's intended difficulty. Very challenging.,A dificuldade destinada à Alchemia. Muito desafiadora.
+DIF_HARD,Master,Mestre
+DIF_HARD_DESC,A brutal and unforgiving experience. Good luck.,Uma experiência brutal e implacável. Boa sorte.
 CHOOSE_ONE,Choose One,Escolha Um
 CHOOSE_TARGET,Choose Target,Escolher Alvo
 ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...

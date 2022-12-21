@@ -56,3 +56,11 @@ func _on_Button_toggled(button_pressed):
 
 func _on_Button_pressed():
 	print('aa')
+
+
+func _on_StartButton_pressed():
+	pass # Replace with function body.
+
+
+func _on_BackButton_pressed():
+	pass # Replace with function body.

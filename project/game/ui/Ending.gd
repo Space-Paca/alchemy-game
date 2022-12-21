@@ -30,7 +30,7 @@ var bg_sfx_player = false
 
 func _ready():
 	TooltipLayer.clean_tooltips()
-	AudioManager.play_bgm("demo_ending", false, true)
+	AudioManager.play_bgm("ending_cutscene1", false, true)
 
 
 func _input(event):

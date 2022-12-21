@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/win_boss.wav-8faf770a75fcf1365622e9a9e5d8ee8f.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/eoy_holidays/win_boss.wav"
+dest_files=[ "res://.import/win_boss.wav-8faf770a75fcf1365622e9a9e5d8ee8f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

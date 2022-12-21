@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hover_character.ogg-c1a8002953de83ed2aaa09d69a1d4709.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/hover_character.ogg"
+dest_files=[ "res://.import/hover_character.ogg-c1a8002953de83ed2aaa09d69a1d4709.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

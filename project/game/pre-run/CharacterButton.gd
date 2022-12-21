@@ -1,11 +1,17 @@
 extends Button
 
+const MUTE_DB = -60
+const SFX_SPEED = 320
+const MAX_DB = 9
+
 onready var particles = $Particles2D
 onready var anim = $AnimationPlayer
+onready var hover_sfx = $HoverSFX
 
 var mouse_in = false
 
 func _ready():
+	hover_sfx.volume_db = MUTE_DB
 	if pressed:
 		start_particles()
 
@@ -15,6 +21,19 @@ func _gui_input(event):
 			event.pressed:
 		if disabled:
 			anim.play("error")
+			AudioManager.play_sfx("error")
+
+
+func _process(dt):
+	if mouse_in and not pressed:
+		hover_sfx.volume_db = min(hover_sfx.volume_db + SFX_SPEED*dt, MAX_DB)
+	else:
+		hover_sfx.volume_db = max(hover_sfx.volume_db - .6*SFX_SPEED*dt, MUTE_DB)
+	
+	if hover_sfx.volume_db > MUTE_DB and not hover_sfx.playing:
+		hover_sfx.play(rand_range(0.0, hover_sfx.stream.get_length()))
+	elif hover_sfx.volume_db <= MUTE_DB and hover_sfx.playing:
+		hover_sfx.stop()
 
 
 func start_particles():
@@ -55,4 +74,4 @@ func _on_Button_toggled(button_pressed):
 
 
 func _on_Button_pressed():
-	print('aa')
+	AudioManager.play_sfx("select_character")

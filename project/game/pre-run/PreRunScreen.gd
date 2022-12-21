@@ -28,7 +28,8 @@ func get_selected_difficulty():
 	else:
 		push_error("No valid difficulty selected")
 		return "normal"
-	
+
+
 func _on_StartButton_pressed():
 	FileManager.difficulty_to_use = get_selected_difficulty()
 	FileManager.continue_game = false

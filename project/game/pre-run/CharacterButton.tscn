@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/effects/glow.png" type="Texture" id=2]
 [ext_resource path="res://game/pre-run/CharacterButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/sfx/hover_character.ogg" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0.0392157, 0.152941, 1 )
@@ -129,6 +130,9 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 10 )
 anims/error = SubResource( 11 )
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Button_mouse_exited"]

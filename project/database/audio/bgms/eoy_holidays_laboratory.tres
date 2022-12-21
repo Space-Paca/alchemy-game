@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 asset = ExtResource( 1 )
-base_db = -5
+base_db = 5.0
 lowered_db = -20.0

@@ -66,6 +66,8 @@ func _ready():
 	
 	if Debug.seasonal_event:
 		set_seasonal_look(Debug.seasonal_event)
+		if $SeasonalAnimation.has_animation(Debug.seasonal_event):
+			$SeasonalAnimation.play(Debug.seasonal_event)
 	
 	for button in buttons:
 		button.connect("mouse_entered", self, "_on_button_mouse_entered", [button])

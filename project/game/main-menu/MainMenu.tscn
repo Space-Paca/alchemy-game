@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -27,6 +27,11 @@
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.atlas" type="SpineAtlasResource" id=25]
 [ext_resource path="res://assets/images/ui/logo_steam__alchemia.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/ui/logo_update__alchemia.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/main_menu/eoy_holidays/title.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/main_menu/eoy_holidays/title2.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/main_menu/eoy_holidays/noel voando.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/main_menu/eoy_holidays/sub titulo2.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/main_menu/eoy_holidays/sub titulo.png" type="Texture" id=32]
 
 [sub_resource type="SpineSkeletonDataResource" id=30]
 atlas_res = ExtResource( 25 )
@@ -1152,6 +1157,122 @@ tracks/17/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=33]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Title:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Subtitle:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../SeasonalBG/Santa:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -100, 371 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../SeasonalBG/Santa:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 30 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Title/TitleSheen:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "eoy_holidays"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Title:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.05, 1.025, 2.025, 3.025, 4.025, 5.025, 6.025, 7.075, 8, 9, 9.95, 11, 12, 13, 14, 15, 16, 17.05, 17.975, 18.975, 19.925 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Subtitle:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../SeasonalBG/Santa:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6.8, 12.8, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -85, 704 ), Vector2( -85, 704 ), Vector2( 2133, 151 ), Vector2( 2133, 151 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Title/TitleSheen:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 15.9, 16.9, 17.9, 18.9, 19.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ) ]
+}
+
 [node name="MainMenu" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1184,6 +1305,12 @@ anims/01_idle = SubResource( 32 )
 material = SubResource( 4 )
 position = Vector2( 578, 378 )
 texture = ExtResource( 8 )
+
+[node name="SeasonalBG" type="Node2D" parent="."]
+
+[node name="Santa" type="Sprite" parent="SeasonalBG"]
+position = Vector2( -100, 371 )
+texture = ExtResource( 30 )
 
 [node name="SpinningThing" type="TextureRect" parent="."]
 material = SubResource( 4 )
@@ -1580,6 +1707,12 @@ anims/RESET = SubResource( 28 )
 anims/intro = SubResource( 21 )
 anims/intro-no-continue = SubResource( 22 )
 anims/reset = SubResource( 23 )
+
+[node name="SeasonalAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+autoplay = "RESET"
+anims/RESET = SubResource( 33 )
+anims/eoy_holidays = SubResource( 34 )
 
 [connection signal="timeout" from="Title/TitleSheen/SheenTimer" to="." method="_on_SheenTimer_timeout"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

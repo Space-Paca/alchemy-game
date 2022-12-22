@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://assets/spine/mainmenu/start screen_spine.json" type="SpineSkeletonJsonDataResource" id=1]
 [ext_resource path="res://game/main-menu/RecipeCompendium.tscn" type="PackedScene" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/images/main_menu/eoy_holidays/noel voando.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/main_menu/eoy_holidays/sub titulo2.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/main_menu/eoy_holidays/sub titulo.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/effects/snowflakes.png" type="Texture" id=33]
 
 [sub_resource type="SpineSkeletonDataResource" id=30]
 atlas_res = ExtResource( 25 )
@@ -344,6 +345,30 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
+
+[sub_resource type="CanvasItemMaterial" id=36]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=35]
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+angular_velocity = 30.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [sub_resource type="DynamicFont" id=17]
 size = 80
@@ -1273,18 +1298,6 @@ tracks/3/keys = {
 "values": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 28 ) ]
 }
 
-[sub_resource type="ParticlesMaterial" id=35]
-emission_shape = 2
-emission_box_extents = Vector3( 1000, 1, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 1, 0 )
-spread = 20.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 80.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 10.0
-
 [node name="MainMenu" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1576,6 +1589,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SnowParticles" type="Particles2D" parent="."]
+visible = false
+material = SubResource( 36 )
+position = Vector2( 960, -100 )
+amount = 200
+lifetime = 15.0
+visibility_rect = Rect2( -1060, -100, 2120, 1380 )
+process_material = SubResource( 35 )
+texture = ExtResource( 33 )
+
 [node name="QuitConfirm" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -1725,13 +1748,6 @@ root_node = NodePath("../AnimationPlayer")
 autoplay = "RESET"
 anims/RESET = SubResource( 33 )
 anims/eoy_holidays = SubResource( 34 )
-
-[node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 960, -100 )
-amount = 500
-lifetime = 15.0
-visibility_rect = Rect2( -1060, -100, 2120, 1380 )
-process_material = SubResource( 35 )
 
 [connection signal="timeout" from="Title/TitleSheen/SheenTimer" to="." method="_on_SheenTimer_timeout"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

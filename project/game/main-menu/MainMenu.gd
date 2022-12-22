@@ -46,6 +46,9 @@ onready var quit_yes_button = $QuitConfirm/VBoxContainer/HBoxContainer/Yes
 onready var quit_no_button = $QuitConfirm/VBoxContainer/HBoxContainer/No
 onready var popup_back_button = $PopupBG/Panel/HBoxContainer/Back
 onready var popup_confirm_button = $PopupBG/Panel/HBoxContainer/Confirm
+onready var seasonal_particles = {
+	"eoy_holidays": $SnowParticles
+}
 
 var hover_compendium = false
 var is_hovered = {
@@ -162,6 +165,9 @@ func set_seasonal_look(event_string):
 		node.add_color_override("font_color_hover", SEASONAL_MOD[event_string].font)
 		node.add_color_override("font_color_pressed", SEASONAL_MOD[event_string].font)
 		node.add_color_override("font_color_focus", SEASONAL_MOD[event_string].font)
+	
+	#Particles
+	seasonal_particles[event_string].show()
 	
 	path = "res://assets/images/ui/%s/" % event_string
 	$VBoxContainer/Updates.icon = load(path + "logo_update__alchemia.png")

@@ -121,7 +121,7 @@ func check_seasonal_events():
 	
 	#End of Year Holidays
 	if (date.month == 12 and date.day >= 22) or\
-	   (date.month == 1 and date.day <= 1):
+	   (date.month == 1 and date.day <= 5):
 		seasonal_event = "eoy_holidays"
 
 

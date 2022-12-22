@@ -16,10 +16,12 @@ func _ready():
 
 
 func flip_left():
+	AudioManager.play_sfx("left_page_animation")
 	_flip("flip-to-left")
 
 
 func flip_right():
+	AudioManager.play_sfx("right_page_animation")
 	_flip("flip-to-right")
 
 

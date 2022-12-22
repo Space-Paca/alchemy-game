@@ -444,12 +444,38 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 20 )
 text = "123"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerInfo"]
+margin_left = 10.0
+margin_top = 150.0
+margin_right = 310.0
+margin_bottom = 183.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PlayerInfo/HBoxContainer"]
+margin_right = 231.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
+text = "DIFFICULTY_HEADER"
+
+[node name="Difficulty" type="Label" parent="PlayerInfo/HBoxContainer"]
+margin_left = 231.0
+margin_right = 366.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
+text = "Ultraviolence"
+
 [node name="Panel" type="Panel" parent="PlayerInfo"]
 margin_left = 20.0
-margin_top = 160.0
+margin_top = 200.0
 margin_right = 290.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 270, 161 )
+margin_bottom = 330.0
+rect_min_size = Vector2( 270, 130 )
 custom_styles/panel = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false

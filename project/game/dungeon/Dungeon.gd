@@ -76,6 +76,7 @@ func _ready():
 			floor_level = Debug.floor_to_go
 			player.set_level(floor_level)
 		difficulty = FileManager.difficulty_to_use
+		player.difficulty = difficulty
 		create_combinations()
 		EventManager.reset_events()
 		create_level(floor_level)

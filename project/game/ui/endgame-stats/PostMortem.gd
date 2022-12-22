@@ -34,6 +34,16 @@ func set_player(p: Player):
 	
 	set_reagents(p.bag)
 	set_artifacts(p.artifacts)
+	
+	var difficulty
+	match p.difficulty:
+		"easy":
+			difficulty = "DIF_EASY"
+		"normal":
+			difficulty = "DIF_MEDIUM"
+		"hard":
+			difficulty = "DIF_HARD"
+	$PlayerInfo/HBoxContainer/Difficulty.text = difficulty
 
 
 func clear_elements():

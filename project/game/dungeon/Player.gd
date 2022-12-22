@@ -71,6 +71,7 @@ var stats = {
 }
 
 var player_class : PlayerClass
+var difficulty
 
 
 func _ready():

@@ -52,6 +52,7 @@ CHOOSE_HERO,Choose your Hero,Escolha seu Herói
 CHOOSE_DIFFICULTY,Choose Difficulty,Escolha a Dificuldade
 BEGIN_JOURNEY,Begin Journey!,Começar Jornada!
 ALCHEMIST,Alchemist,Alquimista
+DIFFICULTY_HEADER,Difficulty: ,Dificuldade: 
 ???_CHAR,???,???
 DIF_EASY,Apprentice,Aprendiz
 DIF_EASY_DESC,"An easier experience for newcomers, but still challenging.","Uma experiência mais tranquila para iniciantes, mas ainda desafiadora."

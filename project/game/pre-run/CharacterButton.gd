@@ -2,7 +2,7 @@ extends Button
 
 const MUTE_DB = -60
 const SFX_SPEED = 320
-const MAX_DB = 9
+const MAX_DB = 15
 
 onready var particles = $Particles2D
 onready var anim = $AnimationPlayer

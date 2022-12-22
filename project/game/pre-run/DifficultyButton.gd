@@ -2,7 +2,7 @@ extends Button
 
 const MUTE_DB = -60
 const SFX_SPEED = 270
-const MAX_DB = 2
+const MAX_DB = 17
 
 onready var pressed_particles = $PressedParticles
 onready var hover_particles = $HoverParticles

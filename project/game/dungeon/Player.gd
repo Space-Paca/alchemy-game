@@ -93,12 +93,9 @@ func _ready():
 		saw_recipe(recipe_id)
 	
 	# Initial bag
-	for _i in range(5):
-		add_reagent("faint", false)
-	for _i in range(3):
-		add_reagent("weak_damaging", false)
-	for _i in range(3):
-		add_reagent("weak_defensive", false)
+	for reagent_data in player_class.initial_reagents:
+		for _i in range(reagent_data[1]):
+			add_reagent(reagent_data[0], false)
 	
 	# DEBUG
 # warning-ignore:return_value_discarded

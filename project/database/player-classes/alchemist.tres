@@ -6,4 +6,5 @@
 script = ExtResource( 1 )
 name = "alchemist"
 initial_recipes = [ "dano", "escudo", "ataque-area" ]
+initial_reagents = [ [ "faint", 5 ], [ "weak_damaging", 3 ], [ "weak_defensive", 3 ] ]
 max_hps = [ 100, 180, 250 ]

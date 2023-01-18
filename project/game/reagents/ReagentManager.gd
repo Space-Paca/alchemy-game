@@ -52,15 +52,31 @@ func get_tooltip(type: String, upgraded:= false, unstable:= false, burned:= fals
 	var title
 	data.tooltip = tr(data.tooltip)
 	data.name = tr(data.name)
+	var value; var upgraded_value
+	if typeof(data.effect) == TYPE_ARRAY:
+		value = []
+		upgraded_value = []
+		for effect in data.effect:
+			value.append(effect.value)
+			upgraded_value.append(effect.upgraded_value)
+	else:
+		value = data.effect.value
+		upgraded_value = data.effect.upgraded_value
 	if not upgraded:
 		title = data.name
-		text = data.tooltip % data.effect.value
+		text = data.tooltip % value
 	else:
 		title = data.name + "+"
-		text = data.tooltip % data.effect.upgraded_value + ". "
-		text += tr("BOOST_RECIPES") % \
-				tr(data.effect.upgraded_boost.type)
-		text += " " + str(data.effect.upgraded_boost.value) + "."
+		text = data.tooltip % upgraded_value + ". "
+		if typeof(data.effect) == TYPE_ARRAY:
+			for effect in data.effect:
+				text += tr("BOOST_RECIPES") % \
+					tr(effect.upgraded_boost.type)
+				text += " " + str(effect.upgraded_boost.value) + ". "
+		else:
+			text += tr("BOOST_RECIPES") % \
+					tr(data.effect.upgraded_boost.type)
+			text += " " + str(data.effect.upgraded_boost.value) + "."
 	if unstable:
 		text += " " + tr("UNSTABLE") + "."
 	if burned:

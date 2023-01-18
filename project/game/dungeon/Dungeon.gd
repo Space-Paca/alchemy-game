@@ -736,8 +736,15 @@ func extract_boost_effects(reagents):
 	}
 	for reagent in reagents:
 		if reagent.is_upgraded():
-			var effect = ReagentDB.get_from_name(reagent.type).effect.upgraded_boost
-			effects[effect.type] += effect.value
+			var data = ReagentDB.get_from_name(reagent.type).effect
+			var boost
+			if typeof(data) == TYPE_ARRAY:
+				for effect in data:
+					boost = effect.upgraded_boost
+					effects[boost.type] += boost.value
+			else:
+				boost = data.upgraded_boost
+				effects[boost.type] += boost.value
 	return effects
 
 

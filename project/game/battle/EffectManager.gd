@@ -44,40 +44,48 @@ func require_target():
 		enemy.set_button_disabled(true)
 
 
+func reagent_effect(reagent, effect):
+	var value = effect.value if not reagent.upgraded else effect.upgraded_value
+	var boost = {
+		"all": 0,
+		"damage": 0,
+		"shield": 0,
+		"heal": 0,
+		"status": 0,
+	}
+	
+	if (reagent.type == "trash" or reagent.type == "trash_plus") and player.has_artifact("trash_heal"):
+		effect.type = "heal"
+	if effect.type == "damage":
+		damage_random(value, "regular", boost, false)
+	elif effect.type == "damage_all":
+		damage_all(value, "regular", boost, false)
+	elif effect.type == "damage_self":
+		damage_self(value, "regular")
+	elif effect.type == "shield":
+		shield(value, boost)
+	elif effect.type == "heal":
+		heal(value, boost)
+	elif effect.type == "status":
+		if effect.target == "random_enemy":
+			add_status_random(effect.status_type, value, effect.positive, boost, true)
+		elif effect.target == "self":
+			add_status("self", effect.status_type, value, effect.positive, boost, true)
+
+
 func combination_failure(reagent_list, grid):
 	for reagent in reagent_list:
-		var effect = ReagentDB.get_from_name(reagent.type).effect
-		var value = effect.value if not reagent.upgraded else effect.upgraded_value
-		var boost = {
-			"all": 0,
-			"damage": 0,
-			"shield": 0,
-			"heal": 0,
-			"status": 0,
-		}
-
 		if reagent.type != "trash":
 			grid.remove_reagent(reagent)
 		
-		if (reagent.type == "trash" or reagent.type == "trash_plus") and player.has_artifact("trash_heal"):
-			effect.type = "heal"
-			
-		if effect.type == "damage":
-			damage_random(value, "regular", boost, false)
-		elif effect.type == "damage_all":
-			damage_all(value, "regular", boost, false)
-		elif effect.type == "damage_self":
-			damage_self(value, "regular")
-		elif effect.type == "shield":
-			shield(value, boost)
-		elif effect.type == "heal":
-			heal(value, boost)
-		elif effect.type == "status":
-			if effect.target == "random_enemy":
-				add_status_random(effect.status_type, value, effect.positive, boost, true)
-			elif effect.target == "self":
-				add_status("self", effect.status_type, value, effect.positive, boost, true)
-		yield(self, "effect_resolved")
+		var data = ReagentDB.get_from_name(reagent.type).effect
+		if typeof(data)== TYPE_ARRAY:
+			for effect in data:
+				reagent_effect(reagent, effect)
+				yield(self, "effect_resolved")
+		else:
+			reagent_effect(reagent, data)
+			yield(self, "effect_resolved")
 		
 		if reagent.type == "trash":
 			grid.destroy_reagent(reagent.type)

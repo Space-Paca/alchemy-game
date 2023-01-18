@@ -31,8 +31,8 @@ func _ready():
 
 func update_recipes_reagent_combinations():
 	for recipe in recipes.values():
-		print("STARTING RECIPE: " + str(recipe.name))
-		
+		print("Starting Recipe: " + str(recipe.name))
+		yield(get_tree(), "idle_frame")
 		#Get upgraded arrays to avoid amibuous recipes
 		recipe.reagent_combinations = []
 		var reagent_arrays_to_check = [recipe.reagents.duplicate()]
@@ -53,8 +53,9 @@ func update_recipes_reagent_combinations():
 
 		var err = ResourceSaver.save(recipe.resource_path, recipe)
 		assert(not err, "Something went wrong trying to save recipe resource: " + str(recipe.name) + " Error:" + str(err))
-		print("FINISHED RECIPE: " + str(recipe.name))
-
+		print("Finished Recipe: " + str(recipe.name))
+	print("==================")
+	print("FINISHED UPDATING ALL DEPENDENCIES!")
 
 func get_short_description(recipe, is_master := false):
 	var text = ""

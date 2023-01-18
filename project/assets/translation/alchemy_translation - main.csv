@@ -465,6 +465,8 @@ RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
 RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, conceda %s de escudo ao usuário"
+RGNT_ATTACK_DEFENSE_NAME,Attack Defense,Attack Defense
+RGNT_ATTACK_DEFENSE_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy and gives %s shield to user","Se usado em uma má combinação, inflija %s de dano normal a um inimigo aleatório e conceda %s de escudo ao usuário"
 RGNT_HEALING_NAME,Invigorating Root,Raíz Revigorante
 RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %d HP","Se usado em uma má combinação, cura o usuário em %d PV"
 RGNT_POISON_NAME,Noxious Essence,Essência Nociva

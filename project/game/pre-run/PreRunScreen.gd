@@ -15,6 +15,7 @@ func _ready():
 		if char_data.normal > 0:
 			HardContainer.show()
 	
+	MediumButton.skip_sfx = true
 	MediumButton.pressed = true
 
 

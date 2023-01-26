@@ -7,6 +7,7 @@ const MAX_DB = 17
 onready var pressed_particles = $PressedParticles
 onready var hover_particles = $HoverParticles
 onready var hover_sfx = $HoverSFX
+export var skip_sfx = false
 
 export(Color) var difficulty_color = Color.red
 
@@ -17,6 +18,9 @@ var pressed_a = 0
 var hover_a = 0
 
 func _ready():
+	#Gambiarra to make hardest difficulty sfx not play at startup but work after
+	if skip_sfx:
+		skip_sfx = false 
 	hover_sfx.volume_db = MUTE_DB
 	hover_particles.process_material.color = difficulty_color
 	pressed_particles.process_material.color = difficulty_color.inverted().darkened(.5)
@@ -51,4 +55,7 @@ func _on_DifficultyButton_mouse_exited():
 func _on_DifficultyButton_toggled(button_pressed):
 	pressed_a = 1 if button_pressed else 0
 	if pressed_a:
-		AudioManager.play_sfx("select_difficulty")
+		if skip_sfx:
+			skip_sfx = false
+		else:
+			AudioManager.play_sfx("select_difficulty")

@@ -346,7 +346,13 @@ func on_remove_impending_doom():
 # START TURN METHODS
 
 func start_turn_shield():
-	if not get_status("tough"):
+	if get_status("tough") or\
+	   (is_player() and has_artifact("keep_shield_total")):
+		return
+	if is_player() and has_artifact("keep_shield_partial"):
+# warning-ignore:narrowing_conversion
+		shield = floor(shield/2)
+	else:
 		shield = 0
 
 func start_turn_freeze():

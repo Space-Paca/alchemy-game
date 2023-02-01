@@ -461,6 +461,8 @@ RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
 RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negra
 RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
 RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflija %s de dano normal a todos inimigos"
+RGNT_PIERCING_NAME,Piercing Reagent,Piercing Reagent
+RGNT_PIERCING_TOOLTIP,"If used in a miscombination, deals %s piercing damage to a random enemy","Se usado em uma má combinação, inflija %s de dano penetrante a um inimigo aleatório"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
@@ -527,6 +529,12 @@ DESC_DAMAGE_SINGLE,Deals %d %s to target enemy.,Inflija %d de %s ao inimigo alvo
 DESC_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
 DESC_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
 DESC_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
+DESC_SHIELD_BASH,Deals %s to target enemy equal to your current shield.,Inflija %s ao inimigo alvo em valor igual ao seu escudo atual.
+DESC_SHIELD_BASH_ALL,Deals %s to all enemies equal to your current shield.,Inflija %s a todos inimigos em valor igual ao seu escudo atual.
+DESC_SHIELD_BASH_PERCENT,Deals %s to target enemy equal to %d%% of your current shield.,Inflija %s ao inimigo alvo em valor igual à %d%% de seu escudo atual.
+DESC_SHIELD_BASH_ALL_PERCENT,Deals %s to all enemies equal to %d%% of your current shield.,Inflija %s a todos inimigos em valor igual à %d%% de seu escudo atual.
+DESC_LOSE_SHIELD_ALL,Lose all of your current shield.,Perca todo seu escudo atual.
+DESC_LOSE_SHIELD_PERCENT,Lose %d%% of your current shield.,Perca %d%% de seu escudo atual.
 DESC_HEAL,Heals %d HP.,Cure %d PV.
 DESC_REDUCE_STATUS_SELF,Removes up to %d %s from yourself.,Remova até %d de %s de si mesmo.
 DESC_RESHUFFLE,Reshuffle your discard bag into your draw bag.,Reembaralhe sua bolsa de discarte em sua bolsa de compra.
@@ -541,6 +549,12 @@ DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflija %d de %s.
 DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
 DESC_SHORT_DAMAGE_ALL,Deals %d %s to all enemies.,Inflija %d de %s a todos inimigos.
 DESC_SHORT_DAMAGE_SELF,Deals %d %s to self.,Inflija %d de %s a sí mesmo.
+DESC_SHORT_SHIELD_BASH,Deals %s equal to your shield.,Inflija %s igual ao seu escudo.
+DESC_SHORT_SHIELD_BASH_ALL,Deals %s to all enemies equal to your shield.,Inflija %s a todos inimigos igual ao seu escudo.
+DESC_SHORT_SHIELD_BASH_PERCENT,Deals %s equal to %d%% of your shield.,Inflija %s igual a %d%% de seu escudo.
+DESC_SHORT_SHIELD_BASH_ALL_PERCENT,Deals %s to all enemies equal to %d%% of your shield.,Inflija %s a todos inimigos igual a %d%% de seu escudo.
+DESC_SHORT_LOSE_SHIELD_ALL,Lose all shield.,Perca todo escudo.
+DESC_SHORT_LOSE_SHIELD_PERCENT,Lose %d%% of shield.,Perca %d%% de escudo.
 DESC_SHORT_HEAL,Heals %d HP.,Cure %d PV.
 DESC_SHORT_REDUCE_STATUS_SELF,Removes up to %d %s from self.,Remova até %d de %s de si mesmo.
 DESC_SHORT_RESHUFFLE,Reshuffle your bags.,Reembaralhe suas bolsas.
@@ -571,6 +585,11 @@ RE_CURA_POISON_PLUS,Strong Antivenom,Antiveneno Poderoso
 RE_CURA_POISON,Antivenom,Antiveneno
 RE_CYCLE,Elemental Transmutation,Transmutação Elemental
 RE_SHUFFLE,Spatial Logistics,Logística Espacial
+RE_SHIELD_BASH,Shield Bash,Shield Bash
+RE_SHIELD_BASH_ALL,Shield Bash All,Shield Bash All
+RE_SHIELD_EXPLOSION,Shield Explosion,Shield Explosion
+RE_SHIELD_EXPLOSION_PLUS,Shield Explosion Plus,Shield Explosion Plus
+RE_SHIELD_EXPLOSION_ALL,Shield Explosion All,Shield Explosion All
 RE_DANO_ESCUDO_OMEGA,Hero's Mixture,Mistura Heróica
 RE_DANO_ESCUDOPLUS,Explorer's Mixture,Mistura do Explorador
 RE_DANO_ESCUDOPLUSPLUS,Adventurer's Mixture,Mistura do Aventureiro

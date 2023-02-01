@@ -60,6 +60,8 @@ func reagent_effect(reagent, effect):
 		damage_random(value, "regular", boost, false)
 	elif effect.type == "damage_all":
 		damage_all(value, "regular", boost, false)
+	elif effect.type == "damage_piercing":
+		damage_random(value, "piercing", boost, false)
 	elif effect.type == "damage_self":
 		damage_self(value, "regular")
 	elif effect.type == "shield":
@@ -150,7 +152,6 @@ func reshuffle_draw(amount:int, _boost_effects: Dictionary):
 	func_state = player.draw(amount)
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")
-
 	resolve()
 
 
@@ -158,8 +159,8 @@ func draw(amount:int, _boost_effects: Dictionary):
 	var func_state = player.draw(amount)
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")
-
 	resolve()
+
 
 func add_status_all(status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.status
@@ -170,6 +171,7 @@ func add_status_all(status: String, amount: int, positive: bool, boost_effects:=
 			enemy.add_status(status, amount + boost, positive)
 			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
+
 
 func add_status(targeting: String, status: String, amount: int, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.status
@@ -187,9 +189,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool, 
 	else:
 		push_error("Not a valid target: " + str(targeting))
 		assert(false)
-	
 	resolve()
-
 
 #Damage a random enemy
 func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
@@ -210,8 +210,8 @@ func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage"
 			else:
 				yield(get_tree().create_timer(.5), "timeout")
 			break
-	
 	resolve()
+
 
 func damage_self(amount: int, type: String, _boost_effects:= {}):
 	ShakeCam.shake(.2, ShakeCam.PLAYER_HIT)
@@ -220,8 +220,8 @@ func damage_self(amount: int, type: String, _boost_effects:= {}):
 		yield(player, "resolved")
 	else:
 		yield(get_tree().create_timer(.5), "timeout")
-	
 	resolve()
+
 
 func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
 	var func_state = (require_target() as GDScriptFunctionState)
@@ -238,8 +238,8 @@ func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, us
 		yield(target, "resolved")
 	else:
 		yield(get_tree().create_timer(.5), "timeout")
-	
 	resolve()
+
 
 func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_damage_mod := true):
 	var func_state = (require_target() as GDScriptFunctionState)
@@ -255,9 +255,9 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 	if func_state and func_state.is_valid():
 		yield(target, "resolved")
 	else:
-		yield(get_tree().create_timer(.5), "timeout")
-	
+		yield(get_tree().create_timer(.3), "timeout")
 	resolve()
+
 
 func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
 	ShakeCam.shake(.5, ShakeCam.ENEMY_HIT)
@@ -272,8 +272,7 @@ func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}
 		if func_state and func_state.is_valid():
 			yield(enemy, "resolved")
 		else:
-			yield(get_tree().create_timer(.5), "timeout")
-	
+			yield(get_tree().create_timer(.3), "timeout")
 	resolve()
 
 
@@ -284,7 +283,55 @@ func shield(amount: int, boost_effects:= {"all":0, "shield":0}):
 		yield(player, "resolved")
 	else:
 		yield(get_tree().create_timer(.5), "timeout")
+	resolve()
+
+
+func shield_bash(shield_mult: float, shield_reduction: float, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+	var func_state = (require_target() as GDScriptFunctionState)
+	if func_state and func_state.is_valid():
+		yield(self, "target_set")
+	ShakeCam.shake(.2, ShakeCam.ENEMY_HIT)
+	var boost = boost_effects.damage + boost_effects.all
+	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+# warning-ignore:narrowing_conversion
+	var amount = max(0, player.shield*shield_mult + boost)
+	player.increase_stat("damage_dealt", amount)
+	func_state = target.take_damage(player, amount, type)
+	if func_state and func_state.is_valid():
+		yield(target, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
 	
+	if shield_reduction > 0:
+		func_state = player.lose_shield(ceil(player.shield*shield_reduction))
+		if func_state and func_state.is_valid():
+			yield(player, "resolved")
+		else:
+			yield(get_tree().create_timer(.5), "timeout")
+	resolve()
+
+
+func shield_bash_all(shield_mult: float, shield_reduction: float, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+	ShakeCam.shake(.5, ShakeCam.ENEMY_HIT)
+	var boost = boost_effects.damage + boost_effects.all
+	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
+# warning-ignore:narrowing_conversion
+	var amount = max(0, player.shield*shield_mult + boost)
+	var temp_enemies = enemies.duplicate()
+	for enemy in temp_enemies:
+		player.increase_stat("damage_dealt", amount)
+		var func_state = (enemy as Enemy).take_damage(player, amount, type)
+		if func_state and func_state.is_valid():
+			yield(enemy, "resolved")
+		else:
+			yield(get_tree().create_timer(.3), "timeout")
+	
+	if shield_reduction > 0:
+		var func_state = player.lose_shield(ceil(player.shield*shield_reduction))
+		if func_state and func_state.is_valid():
+			yield(player, "resolved")
+		else:
+			yield(get_tree().create_timer(.5), "timeout")
 	resolve()
 
 
@@ -295,7 +342,6 @@ func heal(amount: int, boost_effects:= {"all":0, "heal":0}):
 		yield(player, "resolved")
 	else:
 		yield(get_tree().create_timer(.5), "timeout")
-	
 	resolve()
 
 

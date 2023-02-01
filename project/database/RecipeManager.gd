@@ -160,7 +160,29 @@ func describe_effects(effects_list, effect_args, short:= false):
 		elif effect == "damage_all":
 			text += tr("DESC_"+short_text+"DAMAGE_ALL") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]
 		elif effect == "damage_self":
-			text += tr("DESC_"+short_text+"DAMAGE_SELF") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]	
+			text += tr("DESC_"+short_text+"DAMAGE_SELF") % [args[0], tr(args[1].to_upper()+"_DAMAGE")]
+		elif effect == "shield_bash":
+			if args[0] == 1.0:
+				text += tr("DESC_"+short_text+"SHIELD_BASH") % [tr(args[2].to_upper()+"_DAMAGE")]
+			else:
+				text += tr("DESC_"+short_text+"SHIELD_BASH_PERCENT") % [tr(args[2].to_upper()+"_DAMAGE"), args[0]*100]
+			if args[1] > 0:
+				text += " "
+				if args[1] == 1.0:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_ALL")
+				else:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_PERCENT") % [args[1]*100]
+		elif effect == "shield_bash_all":
+			if args[0] == 1.0:
+				text += tr("DESC_"+short_text+"SHIELD_BASH_ALL") % [tr(args[2].to_upper()+"_DAMAGE")]
+			else:
+				text += tr("DESC_"+short_text+"SHIELD_BASH_ALL_PERCENT") % [tr(args[2].to_upper()+"_DAMAGE"), args[0]*100]
+			if args[1] > 0:
+				text += " "
+				if args[1] == 1.0:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_ALL")
+				else:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_PERCENT") % [args[1]*100]
 		elif effect == "heal":
 			text += tr("DESC_"+short_text+"HEAL") % [args[0]]
 		elif effect == "reduce_status":

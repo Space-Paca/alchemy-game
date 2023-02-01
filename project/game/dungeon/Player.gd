@@ -453,6 +453,16 @@ func gain_shield(amount: int):
 	emit_signal("resolved")
 
 
+func lose_shield(amount: int):
+	if amount > 0:
+		.lose_shield(amount)
+		
+		hud.update_visuals(self)
+		yield(hud, "animation_completed")
+	
+	emit_signal("resolved")
+
+
 func new_turn():
 	update_status("start_turn")
 	call_artifacts("turn_start", {"player": self})

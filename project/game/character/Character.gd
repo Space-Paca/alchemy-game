@@ -240,12 +240,23 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 	
 	return unblocked_damage
 
+
 func gain_shield(value):
 	AudioManager.play_sfx("shield_gain")
 	shield += value
 
+
+func lose_shield(value):
+	shield = max(0, shield - value)
+	if shield > 0:
+		AudioManager.play_sfx("shield_hit")
+	else:
+		AudioManager.play_sfx("shield_breaks")
+
+
 func die(reason = false):
 	if is_player() and has_artifact("avoid_death"):
+# warning-ignore:narrowing_conversion
 		hp = ceil(.1*max_hp)
 		AudioManager.play_sfx("heal")
 		remove_artifact("avoid_death")

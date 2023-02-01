@@ -219,6 +219,18 @@ const DB = {
 		"transmutations" : ["uncommon"],
 		"rank": 3,
 	},
+	"piercing": {
+		"name": "RGNT_PIERCING_NAME",
+		"rarity": "COMMON",
+		"image": preload("res://assets/images/reagents/black_powder.png"),
+		"tooltip_image_path": "res://assets/images/reagents/black_powder_borderless.png",
+		"tooltip" : "RGNT_PIERCING_TOOLTIP",
+		"effect" : {"type": "damage_piercing", "value": 4, "upgraded_value": 6, "upgraded_boost": {"type": "damage", "value": 2}},
+		"gold_value" : 16,
+		"substitute" : ["damaging"],
+		"transmutations" : ["damaging"],
+		"rank": 2,
+	},
 	"unknown": {
 		"name": "UNKNOWN",
 		"rarity": "UNKNOWN",
@@ -230,7 +242,7 @@ const DB = {
 		"substitute" : [],
 		"transmutations" : [],
 		"rank": 1,
-	}
+	},
 }
 
 

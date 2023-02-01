@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://database/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/recipe-icons/dano-plus.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "RE_SHIELD_EXPLOSION_ALL"
+grid_size = 3
+sfx = "thunderstone"
+must_unlock = false
+use_on_demo = false
+mastery_offset = 0
+floor_sold_in = 3
+reagents = [ "super_damaging", "super_attack_defense", "rare" ]
+effects = [ "shield_bash_all" ]
+effect_args = [ [ 2.0, "1.0", "regular" ] ]
+destroy_reagents = [  ]
+exile_reagents = [  ]
+override_description = ""
+override_short_description = ""
+filters = [ 0 ]
+fav_icon = ExtResource( 2 )
+shop_cost = 60
+master_effects = [ "shield", "shield_bash_all" ]
+master_effect_args = [ [ 15 ], [ 3.0, 1.0, "regular" ] ]
+master_destroy_reagents = [  ]
+master_exile_reagents = [  ]
+override_master_description = ""
+override_master_short_description = ""
+reagent_combinations = [  ]

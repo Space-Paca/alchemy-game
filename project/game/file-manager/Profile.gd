@@ -104,6 +104,11 @@ func reset_known_recipes():
 		}
 
 
+func discover_all_known_recipes():
+	for recipe_id in known_recipes.keys():
+		known_recipes[recipe_id].amount = max(known_recipes[recipe_id].amount, 1)
+
+
 func get_save_data():
 	var data = {
 		"time": OS.get_datetime(),
@@ -241,6 +246,11 @@ func reset_tutorials():
 
 func reset_compendium():
 	reset_known_recipes()
+	FileManager.save_profile()
+
+
+func unlock_all_compendium():
+	discover_all_known_recipes()
 	FileManager.save_profile()
 
 

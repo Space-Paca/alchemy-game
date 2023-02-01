@@ -226,3 +226,7 @@ func _on_Simulate_pressed():
 
 func _on_UnlockAllProgression_pressed():
 	Profile.unlock_all_progression()
+
+
+func _on_UnlockAllCompendium_pressed():
+	Profile.unlock_all_compendium()

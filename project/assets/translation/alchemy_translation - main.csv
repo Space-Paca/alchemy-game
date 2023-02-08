@@ -590,6 +590,10 @@ RE_SHIELD_BASH_ALL,Shield Bash All,Shield Bash All
 RE_SHIELD_EXPLOSION,Shield Explosion,Shield Explosion
 RE_SHIELD_EXPLOSION_PLUS,Shield Explosion Plus,Shield Explosion Plus
 RE_SHIELD_EXPLOSION_ALL,Shield Explosion All,Shield Explosion All
+RE_SHIELD_HEAL,Shield Heal,Shield Heal
+RE_SHIELD_HEAL_PLUS,Shield Heal,Shield Heal
+RE_SHIELD_FRAGMENT,Shield Fragment,Shield Fragment
+RE_SHIELD_FRAGMENT_ALL,Shield Fragment All,Shield Fragment All
 RE_DANO_ESCUDO_OMEGA,Hero's Mixture,Mistura Heróica
 RE_DANO_ESCUDOPLUS,Explorer's Mixture,Mistura do Explorador
 RE_DANO_ESCUDOPLUSPLUS,Adventurer's Mixture,Mistura do Aventureiro

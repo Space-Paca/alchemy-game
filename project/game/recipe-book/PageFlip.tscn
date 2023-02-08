@@ -12,9 +12,10 @@ skins = null
 
 [sub_resource type="SpineAnimationStateDataResource" id=2]
 skeleton = SubResource( 1 )
+default_mix = 0.0
 
 [sub_resource type="Animation" id=3]
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpineSprite:current_animations")
 tracks/0/interp = 1
@@ -37,7 +38,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 0.55
+length = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpineSprite:current_animations")
 tracks/0/interp = 1
@@ -97,11 +98,11 @@ current_animations = [ {
 "track_id": 0
 } ]
 
+[node name="Tween" type="Tween" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/flip-to-left = SubResource( 3 )
 anims/flip-to-right = SubResource( 4 )
 anims/idle = SubResource( 5 )
-
-[node name="Tween" type="Tween" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

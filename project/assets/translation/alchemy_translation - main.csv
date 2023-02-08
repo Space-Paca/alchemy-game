@@ -533,6 +533,8 @@ DESC_SHIELD_BASH,Deals %s to target enemy equal to your current shield.,Inflija 
 DESC_SHIELD_BASH_ALL,Deals %s to all enemies equal to your current shield.,Inflija %s a todos inimigos em valor igual ao seu escudo atual.
 DESC_SHIELD_BASH_PERCENT,Deals %s to target enemy equal to %d%% of your current shield.,Inflija %s ao inimigo alvo em valor igual à %d%% de seu escudo atual.
 DESC_SHIELD_BASH_ALL_PERCENT,Deals %s to all enemies equal to %d%% of your current shield.,Inflija %s a todos inimigos em valor igual à %d%% de seu escudo atual.
+DESC_SHIELD_HEAL,Heal HP equal to your current shield.,Cure PV em valor igual ao seu escudo atual.
+DESC_SHIELD_HEAL_PERCENT,Heal HP equal to %d%% of your current shield.,Cure PV em valor igual à %d%% de seu escudo atual.
 DESC_LOSE_SHIELD_ALL,Lose all of your current shield.,Perca todo seu escudo atual.
 DESC_LOSE_SHIELD_PERCENT,Lose %d%% of your current shield.,Perca %d%% de seu escudo atual.
 DESC_HEAL,Heals %d HP.,Cure %d PV.
@@ -553,6 +555,8 @@ DESC_SHORT_SHIELD_BASH,Deals %s equal to your shield.,Inflija %s igual ao seu es
 DESC_SHORT_SHIELD_BASH_ALL,Deals %s to all enemies equal to your shield.,Inflija %s a todos inimigos igual ao seu escudo.
 DESC_SHORT_SHIELD_BASH_PERCENT,Deals %s equal to %d%% of your shield.,Inflija %s igual a %d%% de seu escudo.
 DESC_SHORT_SHIELD_BASH_ALL_PERCENT,Deals %s to all enemies equal to %d%% of your shield.,Inflija %s a todos inimigos igual a %d%% de seu escudo.
+DESC_SHORT_SHIELD_HEAL,Heal HP equal to your shield.,Cure PV igual ao seu escudo.
+DESC_SHORT_SHIELD_HEAL_PERCENT,Heal HP equal to %d%% of your shield.,Cure PV igual à %d%% de seu escudo.
 DESC_SHORT_LOSE_SHIELD_ALL,Lose all shield.,Perca todo escudo.
 DESC_SHORT_LOSE_SHIELD_PERCENT,Lose %d%% of shield.,Perca %d%% de escudo.
 DESC_SHORT_HEAL,Heals %d HP.,Cure %d PV.

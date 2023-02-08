@@ -183,6 +183,17 @@ func describe_effects(effects_list, effect_args, short:= false):
 					text += tr("DESC_"+short_text+"LOSE_SHIELD_ALL")
 				else:
 					text += tr("DESC_"+short_text+"LOSE_SHIELD_PERCENT") % [args[1]*100]
+		elif effect == "shield_heal":
+			if args[0] == 1.0:
+				text += tr("DESC_"+short_text+"SHIELD_HEAL")
+			else:
+				text += tr("DESC_"+short_text+"SHIELD_HEAL_PERCENT") % [args[0]*100]
+			if args[1] > 0:
+				text += " "
+				if args[1] == 1.0:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_ALL")
+				else:
+					text += tr("DESC_"+short_text+"LOSE_SHIELD_PERCENT") % [args[1]*100]
 		elif effect == "heal":
 			text += tr("DESC_"+short_text+"HEAL") % [args[0]]
 		elif effect == "reduce_status":

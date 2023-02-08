@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/dano-plus.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "RE_SHIELD_HEAL"
+grid_size = 2
+sfx = "thunderstone"
+must_unlock = false
+use_on_demo = false
+mastery_offset = 0
+floor_sold_in = 2
+reagents = [ "healing", "attack_defense" ]
+effects = [ "shield_heal" ]
+effect_args = [ [ 0.5, 0.5 ] ]
+destroy_reagents = [ "healing" ]
+exile_reagents = [  ]
+override_description = ""
+override_short_description = ""
+filters = [ 5 ]
+fav_icon = ExtResource( 1 )
+shop_cost = 42
+master_effects = [ "shield_heal" ]
+master_effect_args = [ [ 1.0, 0.5 ] ]
+master_destroy_reagents = [ "healing" ]
+master_exile_reagents = [  ]
+override_master_description = ""
+override_master_short_description = ""
+reagent_combinations = [ [ "attack_defense", "healing" ] ]

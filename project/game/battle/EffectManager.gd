@@ -286,6 +286,24 @@ func shield(amount: int, boost_effects:= {"all":0, "shield":0}):
 	resolve()
 
 
+func shield_heal(shield_mult: float, shield_reduction: float, boost_effects:= {"all":0, "damage":0}):
+	var boost = boost_effects.all + boost_effects.heal
+	var amount = max(0, player.shield*shield_mult + boost)
+	var func_state = player.heal(amount + boost)
+	if func_state and func_state.is_valid():
+		yield(player, "resolved")
+	else:
+		yield(get_tree().create_timer(.5), "timeout")
+	
+	if shield_reduction > 0:
+		func_state = player.lose_shield(ceil(player.shield*shield_reduction))
+		if func_state and func_state.is_valid():
+			yield(player, "resolved")
+		else:
+			yield(get_tree().create_timer(.5), "timeout")
+	resolve()
+
+
 func shield_bash(shield_mult: float, shield_reduction: float, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():

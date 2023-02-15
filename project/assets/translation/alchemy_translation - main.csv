@@ -463,6 +463,8 @@ RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
 RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflija %s de dano normal a todos inimigos"
 RGNT_PIERCING_NAME,Piercing Reagent,Piercing Reagent
 RGNT_PIERCING_TOOLTIP,"If used in a miscombination, deals %s piercing damage to a random enemy","Se usado em uma má combinação, inflija %s de dano penetrante a um inimigo aleatório"
+RGNT_PIERCING_PLUS_NAME,Piercing Reagent Plus,Piercing Reagent Plus
+RGNT_PIERCING_PLUS_TOOLTIP,"If used in a miscombination, deals %s piercing damage to a random enemy","Se usado em uma má combinação, inflija %s de dano penetrante a um inimigo aleatório"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa

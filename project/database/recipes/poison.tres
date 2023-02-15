@@ -28,4 +28,4 @@ master_destroy_reagents = [  ]
 master_exile_reagents = [  ]
 override_master_description = ""
 override_master_short_description = ""
-reagent_combinations = [ [ "damaging", "poison" ], [ "poison", "weak_damaging" ], [ "poison", "super_damaging" ], [ "attack_defense", "poison" ], [ "poison", "super_attack_defense" ], [ "piercing", "poison" ] ]
+reagent_combinations = [ [ "damaging", "poison" ], [ "poison", "weak_damaging" ], [ "poison", "super_damaging" ], [ "attack_defense", "poison" ], [ "poison", "super_attack_defense" ], [ "piercing", "poison" ], [ "poison", "super_piercing" ] ]

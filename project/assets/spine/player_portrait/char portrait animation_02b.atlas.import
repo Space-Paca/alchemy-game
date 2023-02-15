@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/char portrait animation_02b.atlas-5440c7ab47921675019e047c47da2363.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/char portrait animation_02b.atlas"
+dest_files=[ "res://.import/char portrait animation_02b.atlas-5440c7ab47921675019e047c47da2363.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

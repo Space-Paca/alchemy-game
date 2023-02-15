@@ -1,8 +1,179 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/images/ui/book/portrait_life.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/PlayerPortrait.gd" type="Script" id=3]
+[ext_resource path="res://assets/spine/player_portrait/char portrait animation_02b.atlas" type="SpineAtlasResource" id=4]
+[ext_resource path="res://assets/spine/player_portrait/char portrait animation_02b.json" type="SpineSkeletonJsonDataResource" id=5]
+
+[sub_resource type="SpineSkeletonDataResource" id=1]
+atlas_res = ExtResource( 4 )
+skeleton_json_res = ExtResource( 5 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=2]
+skeleton = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.6667
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "blink 1",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "blink 2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.3333
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg1_weak",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg2_middle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg3_strong",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": false,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
 
 [node name="Portrait" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,3 +189,29 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 64.602, 112.36 )
 texture = ExtResource( 2 )
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+visible = false
+position = Vector2( -221, -108 )
+animation_state_data_res = SubResource( 2 )
+current_animations = [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/atk = SubResource( 3 )
+"anims/blink 1" = SubResource( 4 )
+"anims/blink 2" = SubResource( 5 )
+anims/dmg1_weak = SubResource( 6 )
+anims/dmg2_middle = SubResource( 7 )
+anims/dmg3_strong = SubResource( 8 )
+anims/idle = SubResource( 9 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

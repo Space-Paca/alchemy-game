@@ -11,6 +11,7 @@ onready var portrait = $Portrait
 func _ready():
 	for artifact in $Artifacts.get_children():
 		$Artifacts.remove_child(artifact)
+	portrait.set_battle_mode()
 
 func enable_tooltips():
 	$StatusBar.enable()
@@ -92,3 +93,12 @@ func update_portrait(hp, max_hp):
 #Returns the global position of the center of portrait
 func get_animation_position():
 	return $AnimationPosition.global_position
+
+
+func play_damage_animation(damage: int):
+	if damage < 10:
+		portrait.play_animation("dmg1_weak")
+	elif damage < 20:
+		portrait.play_animation("dmg2_middle")
+	else:
+		portrait.play_animation("dmg3_strong")

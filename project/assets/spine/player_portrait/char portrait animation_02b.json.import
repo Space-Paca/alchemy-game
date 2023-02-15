@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/char portrait animation_02b.json-8d51d085cacb1d8e23dbc17da33801c7.spjson"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/char portrait animation_02b.json"
+dest_files=[ "res://.import/char portrait animation_02b.json-8d51d085cacb1d8e23dbc17da33801c7.spjson" ]
+
+[params]
+

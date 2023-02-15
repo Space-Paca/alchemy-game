@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/recipe-icons/poison-plusplus.png" type="Texture" id=1]
+[ext_resource path="res://database/Recipe.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "RE_POISON_ATTACK_PLUSPLUS"
+grid_size = 3
+sfx = "poison_vial"
+must_unlock = false
+use_on_demo = false
+mastery_offset = 0
+floor_sold_in = 3
+reagents = [ "poison", "damaging", "super_damaging" ]
+effects = [ "add_status" ]
+effect_args = [ [ "enemy", "poison", 18, false ] ]
+destroy_reagents = [  ]
+exile_reagents = [  ]
+override_description = ""
+override_short_description = ""
+filters = [ 4 ]
+fav_icon = ExtResource( 1 )
+shop_cost = 70
+master_effects = [ "add_status" ]
+master_effect_args = [ [ "enemy", "poison", 25, false ] ]
+master_destroy_reagents = [  ]
+master_exile_reagents = [  ]
+override_master_description = ""
+override_master_short_description = ""
+reagent_combinations = [ [ "damaging", "poison", "super_damaging" ], [ "poison", "super_damaging", "weak_damaging" ], [ "poison", "super_damaging", "super_damaging" ], [ "attack_defense", "poison", "super_damaging" ], [ "poison", "super_attack_defense", "super_damaging" ], [ "piercing", "poison", "super_damaging" ], [ "poison", "super_damaging", "super_piercing" ], [ "damaging", "poison", "super_attack_defense" ], [ "damaging", "poison", "super_piercing" ], [ "poison", "super_attack_defense", "weak_damaging" ], [ "poison", "super_piercing", "weak_damaging" ], [ "attack_defense", "poison", "super_attack_defense" ], [ "attack_defense", "poison", "super_piercing" ], [ "poison", "super_attack_defense", "super_attack_defense" ], [ "poison", "super_attack_defense", "super_piercing" ], [ "piercing", "poison", "super_attack_defense" ], [ "piercing", "poison", "super_piercing" ], [ "poison", "super_piercing", "super_piercing" ] ]

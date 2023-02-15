@@ -65,7 +65,7 @@ func reagent_effect(reagent, effect):
 	elif effect.type == "damage_self":
 		damage_self(value, "regular")
 	elif effect.type == "shield":
-		shield(value, boost)
+		shield(value, boost, true)
 	elif effect.type == "heal":
 		heal(value, boost)
 	elif effect.type == "status":
@@ -276,8 +276,13 @@ func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}
 	resolve()
 
 
-func shield(amount: int, boost_effects:= {"all":0, "shield":0}):
+func shield(amount: int, boost_effects:= {"all":0, "shield":0}, is_miscombination := false):
 	var boost = boost_effects.all + boost_effects.shield
+	if not is_miscombination:
+		if player.has_artifact("buff_shield"):
+			amount += 2
+		if player.has_artifact("buff_shield_plus"):
+			amount += 8
 	var func_state = player.gain_shield(amount + boost)
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")
@@ -296,6 +301,7 @@ func shield_heal(shield_mult: float, shield_reduction: float, boost_effects:= {"
 		yield(get_tree().create_timer(.5), "timeout")
 	
 	if shield_reduction > 0:
+# warning-ignore:narrowing_conversion
 		func_state = player.lose_shield(ceil(player.shield*shield_reduction))
 		if func_state and func_state.is_valid():
 			yield(player, "resolved")

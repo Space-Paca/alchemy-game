@@ -637,6 +637,10 @@ ART_POISON_KIT_NAME,Slimy Satchel,Mochila Gosmenta
 ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag. You lose 1 extra Poison stack per turn","Quando adquirida, adicione 3 Essência Nociva à sua bolsa. Você perde um marcador extra de Veneno por turno"
 ART_BUFF_POISON_NAME,Poisoner's Thesis,Tese de Envenenador
 ART_BUFF_POISON_DESC,"Whenever you apply Poison with recipes, apply 3 extra Poison","Sempre que você aplicar Veneno com uma receita, aplica 3 de Veneno extra"
+ART_BUFF_SHIELD_NAME,Buff Shield,Buff Shield
+ART_BUFF_SHIELD_DESC,"Whenever you gain shield with recipes, gain 2 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 2 de escudo extra"
+ART_BUFF_SHIELD_PLUS_NAME,Buff Shield Plus,Buff Shield Plus
+ART_BUFF_SHIELD_PLUS_DESC,"Whenever you gain shield with recipes, gain 8 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 8 de escudo extra"
 ART_STRENGTH_NAME,Powerstone,Pedra do Poder
 ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida

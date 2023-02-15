@@ -18,6 +18,14 @@ const COMMON = [
 		"use_on_demo": true,
 	},
 	{
+		"id": "buff_shield",
+		"name": "ART_BUFF_SHIELD_NAME",
+		"image": preload("res://assets/images/artifacts/buff_poison.png"),
+		"description": "ART_BUFF_SHIELD_DESC",
+		"must_unlock": false,
+		"use_on_demo": false,
+	},
+	{
 		"id": "carapa_buckler",
 		"name": "ART_CARAPA_BUCKLER_NAME",
 		"image": preload("res://assets/images/artifacts/carapa_buckler.png"),
@@ -107,6 +115,14 @@ const UNCOMMON = [
 		"description": "ART_BUFF_KIT_DESC",
 		"must_unlock": false,
 		"use_on_demo": true,
+	},
+	{
+		"id": "buff_shield_plus",
+		"name": "ART_BUFF_SHIELD_PLUS_NAME",
+		"image": preload("res://assets/images/artifacts/buff_poison.png"),
+		"description": "ART_BUFF_SHIELD_PLUS_DESC",
+		"must_unlock": false,
+		"use_on_demo": false,
 	},
 	{
 		"id": "debuff_kit",

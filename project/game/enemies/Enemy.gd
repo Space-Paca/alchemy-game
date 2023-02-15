@@ -194,9 +194,11 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		else:
 			yield(self, "died")
 	
-	if hp > 0 and unblocked_dmg > 0 and source == player and\
-	   player.has_artifact("poisoned_dagger"):
-		add_status("poison", 2, false)
+	if unblocked_dmg > 0 and source == player:
+		if hp > 0 and player.has_artifact("poisoned_dagger"):
+			add_status("poison", 2, false)
+		if player.has_artifact("shield_damage"):
+			player.gain_shield(floor(unblocked_dmg*.5))
 		
 	
 	emit_signal("resolved")

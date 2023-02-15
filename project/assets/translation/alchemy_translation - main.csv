@@ -641,6 +641,8 @@ ART_BUFF_SHIELD_NAME,Buff Shield,Buff Shield
 ART_BUFF_SHIELD_DESC,"Whenever you gain shield with recipes, gain 2 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 2 de escudo extra"
 ART_BUFF_SHIELD_PLUS_NAME,Buff Shield Plus,Buff Shield Plus
 ART_BUFF_SHIELD_PLUS_DESC,"Whenever you gain shield with recipes, gain 8 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 8 de escudo extra"
+ART_BUFF_SHIELD_DAMAGE_NAME,Shield Damage,Shield Damage
+ART_BUFF_SHIELD_DAMAGE_DESC,"Whenever you deal unblocked damage to an enemy, gain 50% of that damage as shield","Sempre que você inflingir dano não-bloqueado a algum inimigo, ganhe 50% desse ano como escudo"
 ART_STRENGTH_NAME,Powerstone,Pedra do Poder
 ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida

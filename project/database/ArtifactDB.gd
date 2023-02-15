@@ -256,6 +256,14 @@ const RARE = [
 		"use_on_demo": true,
 	},
 	{
+		"id": "shield_damage",
+		"name": "ART_SHIELD_DAMAGE_NAME",
+		"image": preload("res://assets/images/artifacts/reveal_map.png"),
+		"description": "ART_SHIELD_DAMAGE_DESC",
+		"must_unlock": false,
+		"use_on_demo": false,
+	},
+	{
 		"id": "strength_optimize",
 		"name": "ART_STRENGTH_OPTIMIZE_NAME",
 		"image": preload("res://assets/images/artifacts/strength_optimize.png"),

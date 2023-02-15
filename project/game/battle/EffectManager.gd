@@ -57,11 +57,11 @@ func reagent_effect(reagent, effect):
 	if (reagent.type == "trash" or reagent.type == "trash_plus") and player.has_artifact("trash_heal"):
 		effect.type = "heal"
 	if effect.type == "damage":
-		damage_random(value, "regular", boost, false)
+		damage_random(value, "regular", boost, false, true)
 	elif effect.type == "damage_all":
-		damage_all(value, "regular", boost, false)
+		damage_all(value, "regular", boost, false, true)
 	elif effect.type == "damage_piercing":
-		damage_random(value, "piercing", boost, false)
+		damage_random(value, "piercing", boost, false, true)
 	elif effect.type == "damage_self":
 		damage_self(value, "regular")
 	elif effect.type == "shield":
@@ -192,7 +192,7 @@ func add_status(targeting: String, status: String, amount: int, positive: bool, 
 	resolve()
 
 #Damage a random enemy
-func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+func damage_random(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true, _is_miscombination := false):
 	ShakeCam.shake(.2, ShakeCam.ENEMY_HIT)
 	var possible_enemies = enemies.duplicate()
 	var boost = boost_effects.all + boost_effects.damage
@@ -223,7 +223,7 @@ func damage_self(amount: int, type: String, _boost_effects:= {}):
 	resolve()
 
 
-func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true, _is_miscombination := false):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
@@ -238,10 +238,11 @@ func damage(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, us
 		yield(target, "resolved")
 	else:
 		yield(get_tree().create_timer(.5), "timeout")
+	
 	resolve()
 
 
-func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_damage_mod := true):
+func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_damage_mod := true, _is_miscombination := false):
 	var func_state = (require_target() as GDScriptFunctionState)
 	if func_state and func_state.is_valid():
 		yield(self, "target_set")
@@ -256,10 +257,11 @@ func drain(amount: int, boost_effects:= {"all":0, "damage":0, "heal":0}, use_dam
 		yield(target, "resolved")
 	else:
 		yield(get_tree().create_timer(.3), "timeout")
+	
 	resolve()
 
 
-func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true):
+func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}, use_damage_mod := true, _is_miscombination := false):
 	ShakeCam.shake(.5, ShakeCam.ENEMY_HIT)
 	var boost = boost_effects.damage + boost_effects.all
 	boost = boost if not use_damage_mod else boost + player.get_damage_modifiers()
@@ -273,6 +275,7 @@ func damage_all(amount: int, type: String, boost_effects:= {"all":0, "damage":0}
 			yield(enemy, "resolved")
 		else:
 			yield(get_tree().create_timer(.3), "timeout")
+	
 	resolve()
 
 
@@ -283,6 +286,7 @@ func shield(amount: int, boost_effects:= {"all":0, "shield":0}, is_miscombinatio
 			amount += 2
 		if player.has_artifact("buff_shield_plus"):
 			amount += 8
+		
 	var func_state = player.gain_shield(amount + boost)
 	if func_state and func_state.is_valid():
 		yield(player, "resolved")

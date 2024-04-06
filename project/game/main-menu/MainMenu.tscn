@@ -1529,6 +1529,7 @@ __meta__ = {
 }
 
 [node name="Updates" type="Button" parent="VBoxContainer"]
+visible = false
 margin_right = 229.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 220, 120 )
@@ -1540,9 +1541,8 @@ clip_text = true
 align = 0
 
 [node name="Discord" type="Button" parent="VBoxContainer"]
-margin_top = 124.0
-margin_right = 229.0
-margin_bottom = 244.0
+margin_right = 220.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 220, 120 )
 focus_mode = 1
 disabled = true
@@ -1552,9 +1552,9 @@ clip_text = true
 align = 0
 
 [node name="Steam" type="Button" parent="VBoxContainer"]
-margin_top = 248.0
-margin_right = 229.0
-margin_bottom = 368.0
+margin_top = 124.0
+margin_right = 220.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 220, 120 )
 disabled = true
 text = "STEAM_BUTTON"

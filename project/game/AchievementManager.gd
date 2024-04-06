@@ -68,7 +68,7 @@ func check_for_all():
 func unlock(ach_name):
 	if not Debug.is_steam:
 		return
-	Steam.set_achievement("ach_name")
+	Steam.set_achievement(ach_name)
 
 
 func check_enemy_achievement(enemy_type):

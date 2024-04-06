@@ -63,6 +63,16 @@ var stats = {
 			"easy" : 0,
 			"normal" : 0,
 			"hard" : 0,
+		},
+		"toxicologist": {
+			"easy" : 0,
+			"normal" : 0,
+			"hard" : 0,
+		},
+		"steadfast": {
+			"easy" : 0,
+			"normal" : 0,
+			"hard" : 0,
 		}
 	},
 	"gameover": 0,

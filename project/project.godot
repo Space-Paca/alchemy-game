@@ -193,6 +193,7 @@ UnlockManager="*res://database/UnlockManager.gd"
 ShakeCam="*res://game/camera/ShakeCam.tscn"
 ColorblindnessShader="*res://game/ui/ColorblindnessShader.tscn"
 Steam="*res://addons/godotsteam/steam.gd"
+AchievementManager="*res://game/AchievementManager.gd"
 
 [debug]
 

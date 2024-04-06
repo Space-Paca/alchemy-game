@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 	Steam.run_callbacks()
 
 
-func set_Achievement(ach_name: String) -> void:
+func set_achievement(ach_name: String) -> void:
 	print("Setting Steam achievement: "+str(ach_name))
 	var WAS_SET: bool = Steam.setAchievement(ach_name)
 	print("Steam achievement "+str(ach_name)+" set: "+str(WAS_SET))

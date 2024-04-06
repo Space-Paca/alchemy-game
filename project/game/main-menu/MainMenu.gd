@@ -95,6 +95,7 @@ func _ready():
 		anim.play("intro-no-continue")
 	
 	set_process_input(true)
+	AchievementManager.check_for_all()
 
 # (❁´◡`❁)
 

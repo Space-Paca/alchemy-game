@@ -279,9 +279,14 @@ margin_bottom = 118.5
 custom_fonts/font = SubResource( 6 )
 text = "?"
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( 0, 0, 307, 385 )
+
 [connection signal="disable_tooltip" from="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" to="." method="_on_TooltipCollision_disable_tooltip"]
 [connection signal="enable_tooltip" from="Background/MarginContainer/VBoxContainer/Description/TooltipCollision" to="." method="_on_TooltipCollision_enable_tooltip"]
 [connection signal="mouse_entered" from="Panel" to="." method="_on_Panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_Panel_mouse_exited"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="Background/MarginContainer/VBoxContainer/Description/TooltipCollision"]

@@ -6,13 +6,19 @@ export var enabled = true
 signal enable_tooltip
 signal disable_tooltip
 
+onready var collision_shape = $CollisionShape2D
+
 var timer = 0
 var entered = false
 
 
+func _ready():
+	set_process_input(enabled)
+
+
 func _input(event):
-	var shape = $CollisionShape2D.shape
 	if event is InputEventMouseMotion:
+		var shape = collision_shape.shape
 		var mouse_pos = get_local_mouse_position()
 		if mouse_pos.x >= -shape.extents.x and mouse_pos.x <= shape.extents.x and \
 		   mouse_pos.y >= -shape.extents.y and mouse_pos.y <= shape.extents.y:
@@ -56,8 +62,10 @@ func get_position():
 
 func enable():
 	enabled = true
+	set_process_input(enabled)
 
 
 func disable():
 	enabled = false
 	timer = 0
+	set_process_input(enabled)

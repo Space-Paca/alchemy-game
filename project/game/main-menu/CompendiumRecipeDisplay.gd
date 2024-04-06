@@ -48,6 +48,7 @@ func _ready():
 	var font = title.get("custom_fonts/font").duplicate(true)
 	title.set("custom_fonts/font", font)
 	memorization_progress.set("custom_styles/fg", memorization_progress.get_stylebox("fg").duplicate(true))
+	tooltip.disable()
 
 
 func _process(delta):
@@ -175,3 +176,11 @@ func _on_TooltipCollision_enable_tooltip():
 func _on_TooltipCollision_disable_tooltip():
 	if tooltip_enabled:
 		remove_tooltips()
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	tooltip.enable()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	tooltip.disable()

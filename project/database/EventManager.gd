@@ -383,7 +383,7 @@ func life_trade(event_display, player, option_id, life_amount):
 func blood_pact(event_display, player):
 	player.set_hp(int(ceil(player.hp * 1.0 / 3.0)))
 	player.add_artifact("gold_ankh")
-	
+	AchievementManager.unlock("artifact_gold_ankh")
 	load_leave_event(event_display, player, current_event.leave_text_1)
 
 #17
@@ -391,6 +391,7 @@ func resting_place(event_display, player, chose_artifact: bool):
 	var text : String
 	if chose_artifact:
 		player.add_artifact("cursed_scholar_mask")
+		AchievementManager.unlock("artifact_cursed_scholar_mask")
 		text = current_event.leave_text_2
 	else:
 		text = current_event.leave_text_1
@@ -447,6 +448,7 @@ func veknor_castle(event_display, player):
 	if player.has_artifact("hand_veknor"):
 		player.full_heal()
 		player.add_gold(666)
+		AchievementManager.unlock("use_hand_veknor")
 		load_leave_event(event_display, player, current_event.leave_text_1)
 	load_new_event(event_display, player, 22)
 

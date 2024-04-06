@@ -153,7 +153,7 @@ const UNCOMMON = [
 		"name": "ART_KEEP_SHIELD_TOTAL_NAME",
 		"image": preload("res://assets/images/artifacts/hand_veknor.png"),
 		"description": "ART_KEEP_SHIELD_TOTAL_DESC",
-		"must_unlock": false,
+		"must_unlock": true,
 		"use_on_demo": false,
 	},
 	{
@@ -260,7 +260,7 @@ const RARE = [
 		"name": "ART_SHIELD_DAMAGE_NAME",
 		"image": preload("res://assets/images/artifacts/reveal_map.png"),
 		"description": "ART_SHIELD_DAMAGE_DESC",
-		"must_unlock": false,
+		"must_unlock": true,
 		"use_on_demo": false,
 	},
 	{

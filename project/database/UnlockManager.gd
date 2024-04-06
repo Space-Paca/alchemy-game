@@ -2,8 +2,8 @@ extends Node
 
 
 const PROGRESSIONS = {
-	"recipes": [300, 650, 1200, 1800, 2700, 3850, 5000, 7300],
-	"artifacts": [500, 1150, 2000, 3200, 4700, 6800, 8900, 11000],
+	"recipes": [300, 650, 1200, 1800, 2700, 3850, 5000, 6300, 7900, 10000],
+	"artifacts": [300, 500, 1150, 2000, 3200, 4700, 6300, 7900, 10000, 11800],
 	"misc": [100, 600, 1200, 2000, 3000],
 }
 const UNLOCKS = {
@@ -13,17 +13,21 @@ const UNLOCKS = {
 		"draw",
 		"poison-plus",
 		"dano-omega",
+		"shield_explosion-plus",
+		"poison_attack-plusplus",
 		"draw-plus",
 		"dano-omegaplus",
 		"draw-plusplus",
 	],
 	"artifacts": [
 		"buff_poison",
+		"shield_damage",
 		"reveal_map",
 		"temp_strength",
 		"vulture_mask",
 		"strength_plus",
 		"full_rest",
+		"keep_shield_total",
 		"poisoned_dagger",
 		"midas"
 	],

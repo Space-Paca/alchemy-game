@@ -35,7 +35,7 @@ func set_player(p: Player):
 	set_reagents(p.bag)
 	set_artifacts(p.artifacts)
 	
-	var difficulty
+	var difficulty = "DIF_MEDIUM"
 	match p.difficulty:
 		"easy":
 			difficulty = "DIF_EASY"

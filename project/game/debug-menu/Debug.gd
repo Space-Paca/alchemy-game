@@ -84,7 +84,6 @@ func _ready():
 		recipes_button.add_item(recipe.id, i)
 		recipes.append(recipe)
 
-
 func _input(event):
 	if not allow_debugging:
 		return

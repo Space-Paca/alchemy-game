@@ -327,6 +327,7 @@ func coins_for_blood(event_display, player, times):
 	if player.hp <= 4:
 		player.set_hp(1)
 		player.add_artifact("bloodcursed_grimoire")
+		AchievementManager.unlock("artifact_bloodcursed_grimoire")
 		load_leave_event(event_display, player, events_by_id[12].leave_text_1)
 		return
 	

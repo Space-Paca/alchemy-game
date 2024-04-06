@@ -114,6 +114,8 @@ func die(_reason=false):
 	
 	#Death animation
 	animation.play(data.death_anim_name)
+	
+	AchievementManager.check_enemy_achievement(data.enemy_type)
 
 
 func set_grayscale(value: float):

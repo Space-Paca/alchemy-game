@@ -1,5 +1,11 @@
 extends Node
 
+#Killing this enemies gives out an achievement
+const ELITE_ENEMIES = [
+	"restrainer","confuser","undead_morkh","freezer","timing_bomber",
+	"elite_dodger","poison"
+]
+
 
 func check_for_all():
 	if not Debug.is_steam:
@@ -63,3 +69,8 @@ func unlock(ach_name):
 	if not Debug.is_steam:
 		return
 	Steam.set_achievement("ach_name")
+
+
+func check_enemy_achievement(enemy_type):
+	if ELITE_ENEMIES.has(enemy_type):
+		Steam.set_achievement("enemy_defeated_"+str(enemy_type))

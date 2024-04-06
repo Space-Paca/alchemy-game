@@ -9,16 +9,20 @@ is_elite = false
 level = 1
 enemies = [ "dodger", "dodger" ]
 loot_table = {
+"attack_defense": 2,
 "buff": 0,
 "common": 0,
-"damaging": 2,
+"damaging": 1,
 "debuff": 0,
-"defensive": 4,
+"defensive": 3,
 "healing": 1,
+"piercing": 0,
 "poison": 0,
 "rare": 0,
+"super_attack_defense": 0,
 "super_damaging": 0,
 "super_defensive": 0,
+"super_piercing": 0,
 "uncommon": 0
 }
 extra_loot_chance = [ 0.5, 0.1 ]

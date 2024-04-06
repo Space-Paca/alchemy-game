@@ -9,16 +9,20 @@ is_elite = false
 level = 1
 enemies = [ "baby_carapa", "baby_carapa", "baby_carapa" ]
 loot_table = {
+"attack_defense": 1,
 "buff": 0,
 "common": 1,
 "damaging": 2,
 "debuff": 0,
 "defensive": 2,
 "healing": 0,
+"piercing": 1,
 "poison": 0,
 "rare": 0,
+"super_attack_defense": 0,
 "super_damaging": 0,
 "super_defensive": 0,
+"super_piercing": 0,
 "uncommon": 0
 }
 extra_loot_chance = [ 0.1 ]

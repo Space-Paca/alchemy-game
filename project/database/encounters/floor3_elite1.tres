@@ -9,17 +9,21 @@ is_elite = true
 level = 3
 enemies = [ "baby_poison_plus", "confuser", "baby_poison_plus" ]
 loot_table = {
+"attack_defense": 0,
 "buff": 0,
 "common": 0,
 "damaging": 0,
 "debuff": 0,
 "defensive": 0,
 "healing": 2,
+"piercing": 0,
 "poison": 4,
-"rare": 3,
+"rare": 2,
+"super_attack_defense": 0,
 "super_damaging": 0,
 "super_defensive": 0,
-"uncommon": 3
+"super_piercing": 4,
+"uncommon": 0
 }
 extra_loot_chance = [ 1.0, 0.5, 0.1 ]
 use_on_demo = true

@@ -9,16 +9,20 @@ is_elite = false
 level = 1
 enemies = [ "spawner_ooze" ]
 loot_table = {
+"attack_defense": 0,
 "buff": 0,
 "common": 0,
 "damaging": 0,
 "debuff": 0,
 "defensive": 0,
 "healing": 1,
-"poison": 3,
+"piercing": 1,
+"poison": 4,
 "rare": 0,
+"super_attack_defense": 0,
 "super_damaging": 0,
 "super_defensive": 0,
+"super_piercing": 0,
 "uncommon": 0
 }
 extra_loot_chance = [ 0.5, 0.1 ]

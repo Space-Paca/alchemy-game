@@ -9,16 +9,20 @@ is_elite = true
 level = 1
 enemies = [ "poison" ]
 loot_table = {
+"attack_defense": 0,
 "buff": 0,
-"common": 2,
+"common": 0,
 "damaging": 0,
 "debuff": 0,
 "defensive": 0,
 "healing": 4,
+"piercing": 2,
 "poison": 4,
 "rare": 0,
+"super_attack_defense": 0,
 "super_damaging": 0,
 "super_defensive": 0,
+"super_piercing": 0,
 "uncommon": 1
 }
 extra_loot_chance = [ 1.0, 0.5, 0.1 ]

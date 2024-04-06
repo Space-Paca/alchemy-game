@@ -9,17 +9,21 @@ is_elite = false
 level = 3
 enemies = [ "avenger", "avenger", "avenger" ]
 loot_table = {
-"buff": 4,
+"attack_defense": 0,
+"buff": 3,
 "common": 0,
 "damaging": 0,
 "debuff": 0,
 "defensive": 0,
 "healing": 0,
+"piercing": 0,
 "poison": 0,
 "rare": 2,
-"super_damaging": 4,
+"super_attack_defense": 0,
+"super_damaging": 0,
 "super_defensive": 0,
-"uncommon": 3
+"super_piercing": 4,
+"uncommon": 0
 }
 extra_loot_chance = [ 0.1 ]
 use_on_demo = true

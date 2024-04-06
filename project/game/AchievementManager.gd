@@ -2,6 +2,9 @@ extends Node
 
 
 func check_for_all():
+	if not Debug.is_steam:
+		return
+	
 	var stats = Profile.stats
 	#Finished game
 	for character_name in stats.times_finished.keys():
@@ -21,6 +24,8 @@ func check_for_all():
 			Steam.set_achievement("finished_hard")
 		if done:
 			Steam.set_achievement("finished_"+str(character_name))
+			Steam.set_achievement("reached_floor2")
+			Steam.set_achievement("reached_floor3")
 	
 	#Progression
 	if Profile.is_max_level("recipes"):
@@ -30,7 +35,31 @@ func check_for_all():
 	if Profile.is_max_level("misc"):
 		Steam.set_achievement("max_prog_misc")
 	
+	#Compendium
+	var saw_all = true
+	var memorized_all = true
+	var memorized_one = false
+	for recipe_id in Profile.known_recipes.keys():
+		var level = Profile.get_recipe_memorized_level(recipe_id)
+		if level < Profile.MAX_MEMORIZATION_LEVEL:
+			memorized_all = false
+		else:
+			memorized_one = true
+		if Profile.known_recipes[recipe_id].amount < 1:
+			saw_all = false
+	if saw_all:
+		Steam.set_achievement("compendium_complete")
+	if memorized_all:
+		Steam.set_achievement("compendium_memorized")
+	if memorized_one:
+		Steam.set_achievement("recipe_memorized")
 	
 	#Other
 	if stats.gameover > 0:
 		Steam.set_achievement("died_once")
+
+
+func unlock(ach_name):
+	if not Debug.is_steam:
+		return
+	Steam.set_achievement("ach_name")

@@ -25,24 +25,23 @@ func _ready() -> void:
 	if initialize_response['status'] != 1:
 		# If Steam fails to start up, shut down the app
 		print("[STEAM] Failed to initialize Steam: %s" % initialize_response['verbal'])
-#		get_tree().quit()
-
-	# Some example functions to run after initializing.
-	# These can be deleted or commented out if not needed.
-	#############################################
-	#Is the user online?
-	is_online = Steam.loggedOn()
-
-	# Get the user's Stean name and ID
-	steam_id = Steam.getSteamID()
-	steam_username = Steam.getPersonaName()
-
-	# Is this app owned or is it a free weekend?
-	is_owned = Steam.isSubscribed()
-	is_free_weekend = Steam.isSubscribedFromFreeWeekend()
-
-	# Is the game running on the Steam Deck
-	is_on_steam_deck = Steam.isSteamRunningOnSteamDeck()
+	else:
+		Debug.is_steam = true
+	
+	
+#	#Is the user online?
+#	is_online = Steam.loggedOn()
+#
+#	# Get the user's Stean name and ID
+#	steam_id = Steam.getSteamID()
+#	steam_username = Steam.getPersonaName()
+#
+#	# Is this app owned or is it a free weekend?
+#	is_owned = Steam.isSubscribed()
+#	is_free_weekend = Steam.isSubscribedFromFreeWeekend()
+#
+#	# Is the game running on the Steam Deck
+#	is_on_steam_deck = Steam.isSteamRunningOnSteamDeck()
 
 
 func _process(_delta: float) -> void:
@@ -51,9 +50,9 @@ func _process(_delta: float) -> void:
 
 
 func set_achievement(ach_name: String) -> void:
-	print("Setting Steam achievement: "+str(ach_name))
-	var WAS_SET: bool = Steam.setAchievement(ach_name)
-	print("Steam achievement "+str(ach_name)+" set: "+str(WAS_SET))
+#	print("Setting Steam achievement: "+str(ach_name))
+	var _was_set: bool = Steam.setAchievement(ach_name)
+#	print("Steam achievement "+str(ach_name)+" set: "+str(_was_set))
 	Steam.storeStats()
 
 

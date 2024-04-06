@@ -346,8 +346,8 @@ __meta__ = {
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Video/VBoxContainer/ResolutionContainer/Resolution"]
 visible = false
 margin_top = 65.0
-margin_right = 203.0
-margin_bottom = 434.0
+margin_right = 218.0
+margin_bottom = 453.0
 mouse_filter = 0
 texture = ExtResource( 7 )
 patch_margin_left = 50
@@ -1096,9 +1096,11 @@ __meta__ = {
 
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language"]
 visible = false
-margin_top = 65.0
-margin_right = 203.0
-margin_bottom = 315.0
+anchor_top = 1.711
+anchor_right = 1.0
+anchor_bottom = 5.526
+margin_top = -0.0180054
+margin_bottom = 0.0119781
 mouse_filter = 0
 texture = ExtResource( 7 )
 patch_margin_left = 50
@@ -1150,7 +1152,7 @@ __meta__ = {
 }
 
 [node name="En" type="CheckBox" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer"]
-margin_top = 60.0
+margin_top = 57.0
 margin_right = 167.0
 margin_bottom = 95.0
 custom_constants/hseparation = 15
@@ -1171,7 +1173,7 @@ text = "English"
 [node name="Pt_BR" type="CheckBox" parent="TabContainer/Language/VBoxContainer/LanguageContainer/Language/DropDown/ResolutionsContainer"]
 margin_top = 120.0
 margin_right = 167.0
-margin_bottom = 155.0
+margin_bottom = 158.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
 custom_icons/radio_checked = ExtResource( 8 )
@@ -1357,10 +1359,13 @@ __meta__ = {
 }
 
 [node name="DropDown" type="NinePatchRect" parent="TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode"]
+visible = false
+anchor_top = 1.283
+anchor_right = 0.544
+anchor_bottom = 4.60033
 margin_left = -2.0
-margin_top = 77.0
-margin_right = 231.0
-margin_bottom = 262.0
+margin_top = 0.0199966
+margin_bottom = -0.0200195
 mouse_filter = 0
 texture = ExtResource( 7 )
 patch_margin_left = 50
@@ -1400,14 +1405,13 @@ __meta__ = {
 }
 
 [node name="ModesContainer" type="VBoxContainer" parent="TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown"]
-anchor_left = 0.5
+anchor_left = 0.05
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.101
 anchor_bottom = 0.5
-margin_left = -96.5
-margin_top = -108.5
-margin_right = 123.5
-margin_bottom = 106.5
+margin_top = -107.5
+margin_right = 230.0
+margin_bottom = 107.5
 mouse_filter = 0
 custom_constants/separation = 25
 alignment = 1
@@ -1417,7 +1421,7 @@ __meta__ = {
 
 [node name="Protanopia" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown/ModesContainer"]
 margin_top = 25.0
-margin_right = 230.0
+margin_right = 243.0
 margin_bottom = 63.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
@@ -1436,7 +1440,7 @@ text = "PROTANOPIA"
 
 [node name="Deuteranopia" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown/ModesContainer"]
 margin_top = 88.0
-margin_right = 230.0
+margin_right = 243.0
 margin_bottom = 126.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )
@@ -1455,7 +1459,7 @@ text = "DEUTRANOPIA"
 
 [node name="Tritanopia" type="CheckBox" parent="TabContainer/Accesibility/VBoxContainer/ColorblindModeContainer/ColorblindMode/DropDown/ModesContainer"]
 margin_top = 151.0
-margin_right = 230.0
+margin_right = 243.0
 margin_bottom = 189.0
 custom_constants/hseparation = 15
 custom_fonts/font = SubResource( 6 )

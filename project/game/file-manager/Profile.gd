@@ -82,6 +82,13 @@ var stats = {
 var known_recipes = {}
 
 
+var unlocked_backgrounds = {
+	"alchemist": true,
+	"toxicologist": false,
+	"steadfast": false,
+}
+
+
 func _ready():
 	if known_recipes.empty():
 		reset_known_recipes()
@@ -99,6 +106,7 @@ func get_locale_idx(locale):
 func update_translation():
 	TranslationServer.set_locale(LANGUAGES[Profile.get_option("locale")].locale)
 	translation_updated()
+
 
 func reset_progression():
 	for category in progression:
@@ -129,6 +137,7 @@ func get_save_data():
 		"known_recipes": known_recipes,
 		"progression": progression,
 		"stats": stats,
+		"unlocked_backgrounds": unlocked_backgrounds,
 	}
 	
 	return data
@@ -153,6 +162,21 @@ func set_save_data(data):
 				"normal": int(data.stats["times_finished"].alchemist),
 				"hard": 0,
 			}
+		#Unlock backgrounds
+		if not data.has("unlocked_backgrounds"):
+			var all_unlocked = false
+			for difficulty in data.stats.times_finished.alchemist:
+				if data.stats.times_finished.alchemist[difficulty]:
+					data["unlocked_backgrounds"] = {
+						"alchemist": true,
+						"toxicologist": true,
+						"steadfast": true,
+					}
+					all_unlocked = true
+					break
+			if not all_unlocked:
+				#Check for known recipes of 2nd or 3rd floor
+				pass
 		push_warning("Profile updated!")#ヽ(*￣▽￣*)ノミ
 	
 	if known_recipes.empty():
@@ -164,6 +188,7 @@ func set_save_data(data):
 	set_data(data, "known_recipes", known_recipes)
 	set_data(data, "progression", progression)
 	set_data(data, "stats", stats)
+	set_data(data, "unlocked_backgrounds", unlocked_backgrounds)
 	
 	
 	AudioManager.set_bus_volume(AudioManager.MASTER_BUS, options.master_volume)
@@ -337,3 +362,14 @@ func set_stat(type, value):
 
 func translation_updated():
 	TooltipLayer.sort_keywords()
+
+
+func unlock_background(name):
+	assert(unlocked_backgrounds.has(name), "Not a valid background: "+str(name))
+	unlocked_backgrounds[name] = true
+	FileManager.save_profile()
+
+
+func background_unlocked(name):
+	assert(unlocked_backgrounds.has(name), "Not a valid background: "+str(name))
+	return unlocked_backgrounds[name]

@@ -164,7 +164,6 @@ func set_save_data(data):
 			}
 		#Unlock backgrounds
 		if not data.has("unlocked_backgrounds"):
-			var all_unlocked = false
 			for difficulty in data.stats.times_finished.alchemist:
 				if data.stats.times_finished.alchemist[difficulty]:
 					data["unlocked_backgrounds"] = {
@@ -172,11 +171,7 @@ func set_save_data(data):
 						"toxicologist": true,
 						"steadfast": true,
 					}
-					all_unlocked = true
 					break
-			if not all_unlocked:
-				#Check for known recipes of 2nd or 3rd floor
-				pass
 		push_warning("Profile updated!")#ヽ(*￣▽￣*)ノミ
 	
 	if known_recipes.empty():
@@ -190,6 +185,7 @@ func set_save_data(data):
 	set_data(data, "stats", stats)
 	set_data(data, "unlocked_backgrounds", unlocked_backgrounds)
 	
+	check_if_reached_floors()
 	
 	AudioManager.set_bus_volume(AudioManager.MASTER_BUS, options.master_volume)
 	AudioManager.set_bus_volume(AudioManager.BGM_BUS, options.bgm_volume)
@@ -373,3 +369,17 @@ func unlock_background(name):
 func background_unlocked(name):
 	assert(unlocked_backgrounds.has(name), "Not a valid background: "+str(name))
 	return unlocked_backgrounds[name]
+
+
+func check_if_reached_floors():
+	for recipe_id in known_recipes.keys():
+		var recipe = RecipeManager.recipes[recipe_id]
+		if known_recipes[recipe_id].amount > 0 and recipe.floor_sold_in >= 3:
+			AchievementManager.unlock("reached_floor3")
+			AchievementManager.unlock("reached_floor2")
+			unlock_background("steadfast")
+			unlock_background("toxicologist")
+			break
+		elif known_recipes[recipe_id].amount > 0 and recipe.floor_sold_in >= 3:
+			AchievementManager.unlock("reached_floor2")
+			unlock_background("toxicologist")

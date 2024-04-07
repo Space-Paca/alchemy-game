@@ -380,6 +380,6 @@ func check_if_reached_floors():
 			unlock_background("steadfast")
 			unlock_background("toxicologist")
 			break
-		elif known_recipes[recipe_id].amount > 0 and recipe.floor_sold_in >= 3:
+		elif known_recipes[recipe_id].amount > 0 and recipe.floor_sold_in >= 2:
 			AchievementManager.unlock("reached_floor2")
 			unlock_background("toxicologist")

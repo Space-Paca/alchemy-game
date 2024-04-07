@@ -911,6 +911,13 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 		map.queue_free()
 		floor_level += 1
 		if not is_final_boss:
+			if floor_level == 2:
+				AchievementManager.unlock("reached_floor2")
+				Profile.unlock_background("toxicologist")
+			elif floor_level == 3:
+				AchievementManager.unlock("reached_floor3")
+				Profile.unlock_background("steadfast")
+			
 			play_map_bgm()
 			create_level(floor_level)
 			$Player.level_up()

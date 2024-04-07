@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"english"
+	"Tokens"
+	{
+		"#AtMainMenu"	"At main menu"
+		"#InBattle"	"Fighting %enemy_type% at %floor%"
+		"#InMap"	"Exploring the %floor%"
+		"#PostMortem"	"Spending empiric points"
+		"#InShop"	"Shopping for recipes at %floor%"
+		"#InLab"	"Learning recipes at %floor%"
+		"#InSmith"	"Improving reagents at %floor%"
+    "#InRest"	"Resting at %floor%"
+	}
+  "Language"	"brazilian"
+  "Tokens"
+  {
+    "#AtMainMenu"	"No menu principal"
+    "#InBattle"	"Enfrentando %enemy_type% - %floor%"
+    "#InMap"	"Explorando %floor%"
+    "#PostMortem"	"Gastando pontos empíricos"
+    "#InShop"	"Fazendo compras - %floor%"
+    "#InLab"	"Aprendendo receitas - %floor%"
+    "#InSmith"	"Melhorando reagentes - %floor%"
+    "#InRest"	"Descansando - %floor%"
+  }
+}

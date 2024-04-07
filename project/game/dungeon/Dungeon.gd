@@ -80,6 +80,11 @@ func _ready():
 		create_combinations()
 		EventManager.reset_events()
 		create_level(floor_level)
+	if floor_level >= 1 and floor_level <= 3:
+		Steam.set_rich_presence(tr("FLOOR_NAME_" + str(floor_level)), "floor")
+	else:
+		Steam.set_rich_presence(tr("FLOOR_NAME_1"), "floor")
+		
 	
 	play_map_bgm()
 	
@@ -636,6 +641,15 @@ func load_battle(data):
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
 	map.set_disabled(false)
+	
+	var encounter = EncounterManager.load_resource(data.encounter)
+	if encounter.is_boss:
+		Steam.set_rich_presence(tr("BOSS"), "enemy_type")
+	elif encounter.is_elite:
+		Steam.set_rich_presence(tr("ELITE"), "enemy_type")
+	else:
+		Steam.set_rich_presence(tr("ENEMY"), "enemy_type")
+	Steam.set_rich_presence("#InBattle")
 
 
 func new_battle(encounter: Encounter, is_event := false):
@@ -653,6 +667,14 @@ func new_battle(encounter: Encounter, is_event := false):
 	
 	recipe_book.change_state(RecipeBook.States.BATTLE)
 	recipe_book.create_hand(battle)
+	
+	if encounter.is_boss:
+		Steam.set_rich_presence(tr("BOSS"), "enemy_type")
+	elif encounter.is_elite:
+		Steam.set_rich_presence(tr("ELITE"), "enemy_type")
+	else:
+		Steam.set_rich_presence(tr("ENEMY"), "enemy_type")
+	Steam.set_rich_presence("#InBattle")
 
 func open_shop():
 	AudioManager.play_bgm("shop")
@@ -668,6 +690,7 @@ func open_shop():
 	yield(Transition, "finished")
 	shop.start()
 	time_running = true
+	Steam.set_rich_presence("#InShop")
 
 
 func open_rest(room, _player):
@@ -678,6 +701,7 @@ func open_rest(room, _player):
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	Steam.set_rich_presence("#InRest")
 
 
 func open_smith(room, _player):
@@ -689,6 +713,7 @@ func open_smith(room, _player):
 	yield(Transition, "finished")
 	smith.start()
 	time_running = true
+	Steam.set_rich_presence("#InSmith")
 
 
 func open_lab(room, _player):
@@ -701,6 +726,7 @@ func open_lab(room, _player):
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	Steam.set_rich_presence("#InLab")
 
 
 func open_treasure(room, _player):
@@ -711,6 +737,7 @@ func open_treasure(room, _player):
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	Steam.set_rich_presence("#InTreasure")
 
 
 func open_event(map_node: MapNode):
@@ -724,6 +751,7 @@ func open_event(map_node: MapNode):
 	Transition.end_transition()
 	yield(Transition, "finished")
 	time_running = true
+	Steam.set_rich_presence("#InEvent")
 
 
 func extract_boost_effects(reagents):
@@ -752,6 +780,7 @@ func enable_map():
 	map.enable()
 	player_info.update_values(player)
 	player_info.show()
+	Steam.set_rich_presence("#InMap")
 
 
 func recipe_book_toggle():
@@ -817,6 +846,8 @@ func add_all_possible_failed_combinations(reagent_matrix):
 
 
 func thanks_for_playing():
+	Steam.set_rich_presence("#PostMortem")
+	Steam.set_rich_presence("#PostMortem")
 	FileManager.delete_run_file()
 	$PauseScreen.set_block_pause(true)
 	var scene
@@ -910,6 +941,8 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 		player.set_floor_stat("percentage_done", map.get_done_percentage(true))
 		map.queue_free()
 		floor_level += 1
+		if floor_level >= 1 and floor_level <= 3:
+			Steam.set_rich_presence(tr("FLOOR_NAME_" + str(floor_level)), "floor")
 		if not is_final_boss:
 			if floor_level == 2:
 				AchievementManager.unlock("reached_floor2")
@@ -925,6 +958,8 @@ func _on_Battle_finished(is_boss, is_elite, is_final_boss):
 			player_info.show()
 			yield(Transition, "finished")
 			time_running = true
+			Steam.set_rich_presence("#InMap")
+			
 		else:
 			should_save = false
 #			enable_map()
@@ -1292,6 +1327,7 @@ func _on_Battle_player_died():
 	time_running = false
 	set_process(false)
 	player.increase_stat("time", time_of_run)
+	Steam.set_rich_presence("#PostMortem")
 
 
 func _on_PauseScreen_block_pause_update(value):

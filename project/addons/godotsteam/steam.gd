@@ -50,22 +50,14 @@ func _process(_delta: float) -> void:
 
 
 func set_achievement(ach_name: String) -> void:
-#	print("Setting Steam achievement: "+str(ach_name))
 	var _was_set: bool = Steam.setAchievement(ach_name)
-#	print("Steam achievement "+str(ach_name)+" set: "+str(_was_set))
 	Steam.storeStats()
 
 
-###
-# You can add more functionality here and just call it through GDScript like so: 
-#	Steam._set_Achievements( achievement_name )
-#
-# The corresponding function in this file would be something like:
-#	func _set_Achievement(this_achievement: String) -> void:
-#		print("Setting Steam achievement: "+str(this_achievement))
-#		var WAS_SET: bool = Steam.setAchievement(this_achievement)
-#		print("Steam achievement "+str(this_achievement)+" set: "+str(WAS_SET))
-#		Steam.storeStats()
-#
-# Due to how GDNative works, the functions must either reside here or be called with Steam.Steam. since we are calling this singleton script then the Steamworks class.
-###
+func set_rich_presence(string: String, token = false) -> void:
+	if not Debug.is_steam:
+		return
+	if token:
+		Steam.setRichPresence(token, string)
+	else:
+		Steam.setRichPresence("steam_display", string)

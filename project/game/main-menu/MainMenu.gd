@@ -96,6 +96,7 @@ func _ready():
 	
 	set_process_input(true)
 	AchievementManager.check_for_all()
+	Steam.set_rich_presence("#AtMainMenu")
 
 # (❁´◡`❁)
 

@@ -91,6 +91,7 @@ func _ready():
 	recipe_book.set_player(player)
 	player.connect("bag_updated", $BookLayer/RecipeBook, "update_reagents")
 	player_info.set_player(player)
+	player_info.update_artifacts(player)
 	
 	$PauseScreen.set_block_pause(true)
 	

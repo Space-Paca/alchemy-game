@@ -13,9 +13,6 @@ script = ExtResource( 6 )
 position = Vector2( 350, 240 )
 texture = ExtResource( 3 )
 
-[node name="Portrait" parent="." instance=ExtResource( 2 )]
-position = Vector2( 11.7725, 28.5905 )
-
 [node name="Artifacts" type="HBoxContainer" parent="."]
 margin_left = 217.0
 margin_top = 35.0
@@ -36,6 +33,9 @@ margin_bottom = 225.0
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 240, 115 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Portrait" parent="." instance=ExtResource( 2 )]
+position = Vector2( 11.7725, 28.5905 )
 
 [node name="AnimationPosition" type="Position2D" parent="."]
 position = Vector2( 112, 132 )

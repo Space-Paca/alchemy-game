@@ -48,21 +48,26 @@ OPT_TURBO_MODE,Enable Turbo Mode,Habilitar Modo Turbo
 OPT_TURBO_MODE_DESC,Makes several game elements faster,Deixa vários elementos do jogo mais rápidos
 OPT_LANGUAGE,Language,Linguagem
 OPT_LANGUAGE_DESC,some changes only appear after restarting the game,algumas mudanças apenas ocorrem após reiniciar o jogo
-CHOOSE_HERO,Choose your Hero,Escolha seu Herói
-CHOOSE_DIFFICULTY,Choose Difficulty,Escolha a Dificuldade
+CHOOSE_HERO,Choose your background,Escolha sua origem
+CHOOSE_DIFFICULTY,Choose the difficulty,Escolha a dificuldade
 BEGIN_JOURNEY,Begin Journey!,Começar Jornada!
 ALCHEMIST,Alchemist,Alquimista
+TOXICOLOGIST,Toxicologist,Toxicologista
+STEADFAST,Steadfast,Resoluto
 DIFFICULTY_HEADER,Difficulty: ,Dificuldade: 
 ???_CHAR,???,???
+TOXICOLOGIST_COND,??? - Reach the Caves of Sorrow,??? - Chegue nas Cavernas do Sofrimento
+STEADFAST_COND,??? - Reach the Ruins of Bygone Knowledge,??? - Chegue nas Ruínas do Conhecimento Perdido
 DIF_EASY,Apprentice,Aprendiz
 DIF_EASY_DESC,"An easier experience for newcomers, but still challenging.","Uma experiência mais tranquila para iniciantes, mas ainda desafiadora."
 DIF_MEDIUM,Savant,Erudito
 DIF_MEDIUM_DESC,Alchemia's intended difficulty. Very challenging.,A dificuldade destinada à Alchemia. Muito desafiadora.
 DIF_HARD,Master,Mestre
 DIF_HARD_DESC,A brutal and unforgiving experience. Good luck.,Uma experiência brutal e implacável. Boa sorte.
+DIF_HARD_COND,Clear the game on Savant difficulty.,Termine o jogo na dificuldade Erudito.
 CHOOSE_ONE,Choose One,Escolha Um
 CHOOSE_TARGET,Choose Target,Escolher Alvo
-ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos tesouros no mundo...
+ALL_ARTIFACTS,You apparently have all the treasure in the world...,Você aparentemente tem todos os tesouros do mundo...
 IGNORE,Ignore,Ignorar
 COOL,Cool,Dahora
 CHOOSE_ONLY_ONE,Choose only one,Escolha apenas um
@@ -111,7 +116,7 @@ REAGENTSMITH_DIALOG_7,"""No shoes.[shortwait] No shirt.[shortwait] [slow][shake]
 [fast]No service![/fast] [wait][shake][slow][i]hehehe[/i][/shake][/slow]""","""Sem sapatos.[shortwait] Sem camisa.[shortwait] [slow][shake]SEM PÉROLAS...[/shake][/slow][shortwait]
 [fast]Sem serviço![/fast] [wait][shake][slow][i]hehehe[/i][/shake][/slow]"""
 REAGENTSMITH_DIALOG_8,"""Taking shelter from the cold of the caverns,[shortwait] adventurer? The fire from my forge will keep you warm,[fast] oh yes yes![/fast]""","""Se protegendo do frio das cavernas,[shortwait] aventureiro? O fogo da minha forja irá te esquentar,[fast] oh sim sim![/fast]"""
-REAGENTSMITH_DIALOG_9,"""These ruins are a dangerous place, adventure[slow]r...[/slow][wait] How about we improve those [shake]trinkets[/shake] of yours?[shortwait] We don't need another corpse cluttering the halls[slow]...[shortwait] [i]hehehe[/i][/slow]""","""Estas ruinas são bem perigosas, aventureir[slow]o...[/slow][wait] Que tal melhorarmos estas suas [shake]muambas[/shake] suas?[shortwait] Não precisamos de mais um corpo entulhando os corredores daqui[slow]...[shortwait] [i]hehehe[/i][/slow]"""
+REAGENTSMITH_DIALOG_9,"""These ruins are a dangerous place, adventure[slow]r...[/slow][wait] How about we improve those [shake]trinkets[/shake] of yours?[shortwait] We don't need another corpse cluttering the halls[slow]...[shortwait] [i]hehehe[/i][/slow]""","""Estas ruínas são bem perigosas, aventureir[slow]o...[/slow][wait] Que tal melhorarmos estas suas [shake]muambas[/shake] suas?[shortwait] Não precisamos de mais um corpo entulhando os corredores daqui[slow]...[shortwait] [i]hehehe[/i][/slow]"""
 SHOP_RECIPES,Shop for Recipes,Comprar Receitas
 RID_REAGENTS,Get Rid of Reagents,Se Livrar de Reagentes
 DESTROY_REAGENT,Are you sure you want to destroy %s for the cost of %d gold?,Tem certeza que quer destruir %s pagando %d de ouro?
@@ -242,7 +247,7 @@ DEMO_LIST_6,  * More Events!,  * Mais Eventos!
 DEMO_LIST_7,  * More Unlockable Content!,  * Mais Conteúdo Desbloqueável!
 FLOOR_NAME_1,Forgotten Kingdom,Reino Esquecido
 FLOOR_NAME_2,Caves of Sorrow,Cavernas do Sofrimento
-FLOOR_NAME_3,Ruins of Bygone Knowledge,Ruinas do Conhecimento Perdido
+FLOOR_NAME_3,Ruins of Bygone Knowledge,Ruínas do Conhecimento Perdido
 LOCATION,Location,Local
 ENEMY,Enemy,Inimigo
 ELITE,Elite,Inimigo Elite
@@ -713,7 +718,7 @@ ART_BLOODCURSED_GRIMOIRE_NAME,Bloodcursed Grimoire,Grimório Sangrento
 ART_BLOODCURSED_GRIMOIRE_DESC,"Whenever you defeat an enemy, heal 10% of your max health","Sempre que você derrotar um inimigo, cure 10% da sua vida máxima"
 ART_GOLD_ANKH_NAME,Gold Ankh,Ankh Dourado
 ART_GOLD_ANKH_DESC,"Whenever you finish a battle, gain 10 max health","Sempre que você terminar uma batalha, ganhe 10 de vida máxima"
-ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso 
+ART_CURSED_MASK_NAME,Cursed Scholar's Mask,Máscara Amaldiçoada do Estudioso
 ART_CURSED_MASK_DESC,"You can't heal in resting circles. Whenever you discover a new recipe, you heal 8% of your max health (doesn't apply on bought recipes)","Você não pode mais curar quando descansa. Sempre que você descobrir uma receita nova, cre 8% da vida máxima (não funciona em receitas compradas)"
 ART_AVOID_DEATH_NAME,Ring of the Frozen Soul,Anel da Alma Congelada
 ART_AVOID_DEATH_DESC,"When you would die, instead heal to 10% of your max health, gain Invulnerable and destroy this artifact","Quando você for morrer, em vez disso cure até 10% de sua vida máxima, ganhe Invulnerável e destrua este artefato."

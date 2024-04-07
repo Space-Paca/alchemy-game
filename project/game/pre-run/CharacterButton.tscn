@@ -48,7 +48,7 @@ anti_aliasing_size = 5.0
 shader = ExtResource( 5 )
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 shader_param/freq = 0.0
-shader_param/fill = 5.0
+shader_param/fill = 3.0
 
 [sub_resource type="CanvasItemMaterial" id=5]
 blend_mode = 1

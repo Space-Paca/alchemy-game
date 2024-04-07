@@ -1,15 +1,26 @@
 extends Control
 
 const BGM_STOP_SPEED = 7.0
+const BACKGROUNDS = {
+	"alchemist": preload("res://database/player-classes/alchemist.tres"),
+	"toxicologist": preload("res://database/player-classes/toxicologist.tres"),
+	"steadfast": preload("res://database/player-classes/steadfast.tres"),
+}
 
 onready var HardContainer = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer
 onready var EasyButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/EasyContainer/HBoxContainer/DifficultyButton
 onready var MediumButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/MediumContainer/HBoxContainer/DifficultyButton
 onready var HardButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer/HBoxContainer/DifficultyButton
-onready var hero_1_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero1Button
-onready var hero_2_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero2Button
-onready var hero_3_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero3Button
-
+onready var bg_buttons = {
+	"alchemist": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Hero1Button,
+	"toxicologist": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Hero2Button,
+	"steadfast": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/Hero3Button,
+}
+onready var bg_labels = {
+	"alchemist": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/Label,
+	"toxicologist": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/Label2,
+	"steadfast": $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/Label3,
+}
 
 func _ready():
 	HardContainer.hide()
@@ -18,20 +29,25 @@ func _ready():
 		if char_data.normal > 0:
 			HardContainer.show()
 	
+	for background in BACKGROUNDS:
+		var unlocked = Profile.background_unlocked(background)
+		bg_buttons[background].set_unlocked(unlocked)
+		bg_buttons[background].set_portrait(BACKGROUNDS[background].portrait)
+		bg_labels[background].text = background.to_upper() if unlocked else\
+				background.to_upper() + "_COND"
+		if not unlocked:
+			bg_labels[background].modulate.a = .5
+	
 	MediumButton.skip_sfx = true
 	MediumButton.pressed = true
 
 
 func get_selected_background():
-	if hero_1_button.pressed:
-		return "alchemist"
-	elif hero_2_button.pressed:
-		return "toxicologist"
-	elif hero_3_button.pressed:
-		return "steadfast"
-	else:
-		push_error("No valid background selected")
-		return "alchemist"
+	for background in bg_buttons:
+		if bg_buttons[background].pressed:
+			return background
+	push_error("No valid background selected")
+	return "alchemist"
 
 
 func get_selected_difficulty():

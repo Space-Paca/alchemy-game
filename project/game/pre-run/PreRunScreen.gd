@@ -7,7 +7,8 @@ const BACKGROUNDS = {
 	"steadfast": preload("res://database/player-classes/steadfast.tres"),
 }
 
-onready var HardContainer = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer
+onready var hard_text_container = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer/HBoxContainer/VBoxContainer
+onready var hard_desc_label = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer/HBoxContainer/VBoxContainer/Description
 onready var EasyButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/EasyContainer/HBoxContainer/DifficultyButton
 onready var MediumButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/MediumContainer/HBoxContainer/DifficultyButton
 onready var HardButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer/HBoxContainer/DifficultyButton
@@ -23,11 +24,14 @@ onready var bg_labels = {
 }
 
 func _ready():
-	HardContainer.hide()
+	HardButton.set_process(false)
 	var times_finished = Profile.get_stat("times_finished")
 	for char_data in times_finished.values():
 		if char_data.normal > 0:
-			HardContainer.show()
+			HardButton.disabled = false
+			HardButton.set_process(true)
+			hard_text_container.modulate.a = 1
+			hard_desc_label.text = "DIF_HARD_DESC"
 	
 	for background in BACKGROUNDS:
 		var unlocked = Profile.background_unlocked(background)

@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://database/PlayerClass.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=2]
-[ext_resource path="res://assets/spine/player_portrait/char portrait animation_02b.png" type="Texture" id=3]
+[ext_resource path="res://assets/spine/player_portrait/steadfast.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/book/portraits/steadfast.png" type="Texture" id=3]
 
 [resource]
 script = ExtResource( 1 )
-name = "alchemist"
+name = "steadfast"
 initial_recipes = [ "dano", "escudo", "ataque-area" ]
 initial_reagents = [ [ "faint", 5 ], [ "weak_damaging", 3 ], [ "weak_defensive", 3 ] ]
 max_hps = [ 100, 180, 250 ]
-portrait = ExtResource( 2 )
-atlas_texture = ExtResource( 3 )
+portrait = ExtResource( 3 )
+atlas_texture = ExtResource( 2 )

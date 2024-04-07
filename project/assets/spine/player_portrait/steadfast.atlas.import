@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/steadfast.atlas-03204afd476dbfc623e27096d80189cf.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/steadfast.atlas"
+dest_files=[ "res://.import/steadfast.atlas-03204afd476dbfc623e27096d80189cf.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

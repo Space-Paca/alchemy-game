@@ -375,6 +375,7 @@ func setup_player(_player, player_data = null):
 	player.connect("restrict", self, "_on_player_restrict")
 
 	player.set_hud(player_ui)
+	player_ui.set_player(player)
 	
 	if player_data:
 		for status_name in player_data.status_list:

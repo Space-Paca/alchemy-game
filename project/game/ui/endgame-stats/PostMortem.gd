@@ -6,17 +6,19 @@ export var poison_texture : Texture
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
 
-onready var portrait = $PlayerInfo/Image
-
 
 func _ready():
-	portrait.texture = Debug.get_portrait()
-	
 	$Killer/Name.set("custom_colors/font_color", sketch_color)
 	$Killer/Image.material.set_shader_param("outline_color", sketch_color)
 
 
 func set_player(p: Player):
+	var debug_portrait = Debug.get_portrait()
+	if debug_portrait:
+		$PlayerInfo/Image.texture = debug_portrait
+	else:
+		$PlayerInfo/Image.texture = p.player_class.portrait
+	
 	if not p.what_killed_me:
 		pass
 	elif p.what_killed_me.source != p:

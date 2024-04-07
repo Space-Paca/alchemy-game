@@ -89,6 +89,7 @@ func set_player(player: Player):
 	player.connect("artifacts_updated", self, "update_artifacts")
 	
 	update_values(player)
+	portrait.set_player(player)
 
 
 func update_values(player: Player):

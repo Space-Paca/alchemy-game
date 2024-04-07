@@ -19,6 +19,8 @@ const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 const CLASSES = {
 	"alchemist": preload("res://database/player-classes/alchemist.tres"),
+	"toxicologist": preload("res://database/player-classes/toxicologist.tres"),
+	"steadfast": preload("res://database/player-classes/steadfast.tres"),
 }
 
 export var initial_gold := 50
@@ -76,7 +78,7 @@ var difficulty
 
 func _ready():
 	# Only class we have right now
-	player_class = CLASSES.alchemist as PlayerClass
+	player_class = CLASSES[FileManager.player_class] as PlayerClass
 	cur_level = 1
 	
 	init("player", player_class.max_hps[cur_level-1])

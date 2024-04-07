@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/effects/glow.png" type="Texture" id=2]
 [ext_resource path="res://game/pre-run/CharacterButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/sfx/hover_character.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/shaders/scribble.shader" type="Shader" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0.0392157, 0.152941, 1 )
@@ -42,6 +43,12 @@ corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 corner_detail = 20
 anti_aliasing_size = 5.0
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 5 )
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/freq = 0.0
+shader_param/fill = 5.0
 
 [sub_resource type="CanvasItemMaterial" id=5]
 blend_mode = 1
@@ -109,9 +116,19 @@ custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-icon = ExtResource( 1 )
 align = 0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="."]
+material = SubResource( 12 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -3,17 +3,18 @@ extends Node
 var dungeon = false
 var continue_game = false
 var difficulty_to_use = "normal"
+var player_class = "alchemist"
 
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save_profile()
-		arquive_file("user://profile.save", false)
+		archive_file("user://profile.save", false)
 
 
 func save_and_quit():
 	save_game()
-	arquive_file("user://profile.save", false)
+	archive_file("user://profile.save", false)
 	get_tree().quit()
 
 
@@ -58,19 +59,19 @@ func load_profile():
 				if profile_data.has("time"):
 					if Debug.compare_datetimes(backup_data.time, profile_data.time):
 						push_warning("Backup data is more recent... using backup")
-						arquive_file("user://profile.save")
+						archive_file("user://profile.save")
 						dir.rename("user://profile.backup", "user://profile.save")
 					else:
 						push_warning("Original profile data is more recent... arquiving backup")
-						arquive_file("user://profile.backup")
+						archive_file("user://profile.backup")
 						dir.remove("user://profile.backup")
 				else:
 					push_warning("Profile data has no time information... using backup")
-					arquive_file("user://profile.save")
+					archive_file("user://profile.save")
 					dir.rename("user://profile.backup", "user://profile.save")
 			else:
 				push_warning("Backup data has no time information... this shouldn't happen aaaah")
-				arquive_file("user://profile.backup")
+				archive_file("user://profile.backup")
 				
 		push_warning("Fixed it!")
 
@@ -116,7 +117,8 @@ func save_profile():
 	err = dir.remove("user://profile.backup")
 	if err != OK:
 		push_error("Error trying to delete backup profile whilst saving:" + str(err))
-		
+
+
 func current_run_exists():
 	return not not dungeon
 
@@ -173,6 +175,7 @@ func create_run_backup():
 	run_file.close()
 	backup_file.close()
 
+
 func load_run():
 	var run_file = File.new()
 	if not run_file.file_exists("user://run.save"):
@@ -187,9 +190,9 @@ func load_run():
 		dungeon.set_save_data(data)
 		
 	run_file.close()
-	
-	
-func arquive_file(path, use_warning := true):
+
+
+func archive_file(path, use_warning := true):
 	var dir = Directory.new()
 	if not dir.dir_exists("user://archived_files"):
 		push_warning("Making archived files directory")

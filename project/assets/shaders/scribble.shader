@@ -1,7 +1,8 @@
 shader_type canvas_item;
 
 uniform vec4 outline_color : hint_color = vec4(.0, .0, .0, 1.0);
-uniform float freq : hint_range(1.0, 20.0);
+uniform float freq : hint_range(0.0, 20.0);
+uniform float fill;
 
 float rand(float x) {
 	return fract(sin(x) * 43758.5453);
@@ -23,7 +24,7 @@ void fragment() {
 			triangle(p.x * rand(time * 1.7) * 4.0) * rand(time * 0.05) * 0.01);
 	p += vec2(rand(p.x * 3.1 + p.y * 8.7) * 0.01,
 			rand(p.x * 1.1 + p.y * 6.7) * 0.01);
-	edges = vec4(1.2) - (base_color / vec4(texture(TEXTURE, p)));
+	edges = vec4(fill) - (base_color / vec4(texture(TEXTURE, p)));
 	color.rgb = vec3(base_color.r);
 	color = color / vec4(length(edges));
 	color.rbg = vec3(1.0 - max(.0, min(1.0, color.r)));

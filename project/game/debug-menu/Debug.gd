@@ -143,7 +143,7 @@ func get_portrait():
 	if custom_portrait:
 		return portraits[custom_portrait]
 	else:
-		return portraits["alchemist"]
+		return false
 
 
 func _on_WinBtn_pressed():

@@ -7,10 +7,13 @@ const MAX_DB = 15
 onready var particles = $Particles2D
 onready var anim = $AnimationPlayer
 onready var hover_sfx = $HoverSFX
+onready var portrait = $Portrait
 
 var mouse_in = false
 
 func _ready():
+	if not disabled:
+		portrait.set_material(null)
 	hover_sfx.volume_db = MUTE_DB
 	if pressed:
 		start_particles()
@@ -34,6 +37,10 @@ func _process(dt):
 		hover_sfx.play(rand_range(0.0, hover_sfx.stream.get_length()))
 	elif hover_sfx.volume_db <= MUTE_DB and hover_sfx.playing:
 		hover_sfx.stop()
+
+
+func set_portrait(texture):
+	portrait.texture = texture
 
 
 func start_particles():

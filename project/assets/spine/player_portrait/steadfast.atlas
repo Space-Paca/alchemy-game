@@ -1,0 +1,44 @@
+steadfast.png
+	size: 1079, 216
+	filter: Linear, Linear
+	pma: true
+arm_a
+	bounds: 735, 9, 77, 25
+arm_b
+	bounds: 624, 9, 110, 25
+bg_circle
+	bounds: 153, 12, 203, 203
+body_lower
+	bounds: 357, 78, 151, 137
+body_upper
+	bounds: 1, 6, 151, 209
+cloth
+	bounds: 996, 56, 82, 51
+face_angry
+	bounds: 907, 108, 52, 48
+face_blink
+	bounds: 960, 108, 52, 48
+face_dmg
+	bounds: 1013, 110, 52, 48
+face_idle
+	bounds: 996, 7, 52, 48
+hair
+	bounds: 779, 108, 127, 107
+hair_back
+	bounds: 446, 12, 42, 65
+hair_front_1
+	bounds: 489, 12, 29, 65
+hand1
+	bounds: 907, 157, 83, 58
+head
+	bounds: 893, 1, 102, 106
+hood
+	bounds: 519, 5, 104, 89
+pernas
+	bounds: 509, 95, 269, 120
+sleeve
+	bounds: 357, 9, 88, 68
+sleeve_back
+	bounds: 991, 159, 49, 56
+staff
+	bounds: 624, 35, 268, 59

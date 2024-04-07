@@ -4,6 +4,11 @@ const SPEED = 2
 const HEALTHY_COLOR = Color(0.0, 0.9, 0.94)
 const MIDLIFE_COLOR = Color(0.9, 0.9, 0.0)
 const DYING_COLOR = Color(0.96, 0.13, 0.13)
+const ATLANTES = {
+	"alchemist": preload("res://assets/spine/player_portrait/alchemist.atlas"),
+	"toxicologist": preload("res://assets/spine/player_portrait/toxicologist.atlas"),
+	"steadfast": preload("res://assets/spine/player_portrait/steadfast.atlas"),
+}
 
 onready var bg = $BG
 onready var image = $Sprite
@@ -13,8 +18,20 @@ onready var spine_sprite = $SpineSprite
 var state = "normal"
 
 
-func _ready():
-	image.texture = Debug.get_portrait()
+func set_player(player):
+	var debug_portrait = Debug.get_portrait()
+	if debug_portrait:
+		image.texture = debug_portrait
+	else:
+		image.texture = player.player_class.portrait
+	spine_sprite.animation_state_data_res.skeleton.disconnect("atlas_res_changed",
+			spine_sprite.animation_state_data_res, "_on_skeleton_data_changed")
+	spine_sprite.animation_state_data_res.skeleton.disconnect("skeleton_data_loaded",
+			spine_sprite.animation_state_data_res, "_on_skeleton_data_loaded")
+	spine_sprite.animation_state_data_res.skeleton.disconnect("skeleton_json_res_changed",
+			spine_sprite.animation_state_data_res, "_on_skeleton_data_changed")
+	spine_sprite.animation_state_data_res.skeleton.atlas_res = ATLANTES[player.player_class.name]
+
 
 
 func _process(delta):

@@ -6,6 +6,9 @@ onready var HardContainer = $HBoxContainer/DifficultyContainer/MarginContainer/V
 onready var EasyButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/EasyContainer/HBoxContainer/DifficultyButton
 onready var MediumButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/MediumContainer/HBoxContainer/DifficultyButton
 onready var HardButton = $HBoxContainer/DifficultyContainer/MarginContainer/VBoxContainer/HardContainer/HBoxContainer/DifficultyButton
+onready var hero_1_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero1Button
+onready var hero_2_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero2Button
+onready var hero_3_button = $HBoxContainer/HeroContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero3Button
 
 
 func _ready():
@@ -17,6 +20,18 @@ func _ready():
 	
 	MediumButton.skip_sfx = true
 	MediumButton.pressed = true
+
+
+func get_selected_background():
+	if hero_1_button.pressed:
+		return "alchemist"
+	elif hero_2_button.pressed:
+		return "toxicologist"
+	elif hero_3_button.pressed:
+		return "steadfast"
+	else:
+		push_error("No valid background selected")
+		return "alchemist"
 
 
 func get_selected_difficulty():
@@ -33,6 +48,7 @@ func get_selected_difficulty():
 
 func _on_StartButton_pressed():
 	FileManager.difficulty_to_use = get_selected_difficulty()
+	FileManager.player_class = get_selected_background()
 	FileManager.continue_game = false
 	AudioManager.stop_bgm(BGM_STOP_SPEED)
 	AudioManager.play_sfx("start_new_game")

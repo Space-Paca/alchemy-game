@@ -13,6 +13,11 @@ func _ready():
 		$Artifacts.remove_child(artifact)
 	portrait.set_battle_mode()
 
+
+func set_player(player):
+	portrait.set_player(player)
+
+
 func enable_tooltips():
 	$StatusBar.enable()
 	for artifact in $Artifacts.get_children():

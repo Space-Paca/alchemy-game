@@ -8,6 +8,7 @@
 script = ExtResource( 1 )
 name = "steadfast"
 initial_recipes = [ "dano", "escudo", "ataque-area" ]
+initial_artifacts = [  ]
 initial_reagents = [ [ "faint", 5 ], [ "weak_damaging", 3 ], [ "weak_defensive", 3 ] ]
 max_hps = [ 100, 180, 250 ]
 portrait = ExtResource( 3 )

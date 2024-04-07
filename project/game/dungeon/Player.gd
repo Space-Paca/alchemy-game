@@ -99,6 +99,10 @@ func _ready():
 		for _i in range(reagent_data[1]):
 			add_reagent(reagent_data[0], false)
 	
+	# Initial artifacts
+	for artifact_name in player_class.initial_artifacts:
+		add_artifact(artifact_name)
+	
 	# DEBUG
 # warning-ignore:return_value_discarded
 	Debug.connect("artifact_pressed", self, "_on_Debug_artifact_added")

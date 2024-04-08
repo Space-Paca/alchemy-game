@@ -7,9 +7,10 @@
 [resource]
 script = ExtResource( 1 )
 name = "steadfast"
-initial_recipes = [ "dano", "escudo", "ataque-area" ]
-initial_artifacts = [  ]
-initial_reagents = [ [ "faint", 5 ], [ "weak_damaging", 3 ], [ "weak_defensive", 3 ] ]
-max_hps = [ 100, 180, 250 ]
+initial_recipes = [ "shield_bash", "escudo", "ataque-area" ]
+initial_artifacts = [ "keep_shield_partial", "buff_shield" ]
+initial_reagents = [ [ "faint", 3 ], [ "attack_defense", 2 ], [ "weak_defensive", 3 ] ]
+max_hps = [ 120, 220, 300 ]
+hand_size = [ 5, 7, 11 ]
 portrait = ExtResource( 3 )
 atlas_texture = ExtResource( 2 )

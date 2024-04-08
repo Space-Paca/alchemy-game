@@ -7,9 +7,10 @@
 [resource]
 script = ExtResource( 1 )
 name = "toxicologist"
-initial_recipes = [ "dano", "escudo", "ataque-area" ]
-initial_artifacts = [  ]
-initial_reagents = [ [ "trash", 10 ] ]
-max_hps = [ 100, 180, 250 ]
+initial_recipes = [ "poison_attack", "escudo", "cure-poison" ]
+initial_artifacts = [ "buff_poison" ]
+initial_reagents = [ [ "faint", 3 ], [ "weak_damaging", 3 ], [ "poison", 3 ], [ "weak_defensive", 3 ] ]
+max_hps = [ 80, 160, 220 ]
+hand_size = [ 6, 9, 12 ]
 portrait = ExtResource( 3 )
 atlas_texture = ExtResource( 2 )

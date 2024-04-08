@@ -14,7 +14,6 @@ signal bag_updated(bag)
 signal artifacts_updated(player)
 signal reveal_map
 
-const HAND_SIZES = [5,8,12]
 const GRID_SIZES = [2,3,4]
 const MAX_LEVEL = 3
 const CLASSES = {
@@ -77,12 +76,11 @@ var difficulty
 
 
 func _ready():
-	# Only class we have right now
 	player_class = CLASSES[FileManager.player_class] as PlayerClass
 	cur_level = 1
 	
 	init("player", player_class.max_hps[cur_level-1])
-	hand_size = HAND_SIZES[cur_level-1]
+	hand_size = player_class.hand_size[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	gold = initial_gold
 	pearls = 0
@@ -137,7 +135,7 @@ func set_save_data(data):
 	gold = data.gold
 	pearls = data.pearls
 	cur_level = data.cur_level
-	hand_size = HAND_SIZES[cur_level-1]
+	hand_size = player_class.hand_size[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	artifacts = data.artifacts
 	known_recipes = data.known_recipes
@@ -179,7 +177,7 @@ func draw_reagents_resolve():
 func level_up():
 	cur_level += 1
 	if cur_level <= MAX_LEVEL:
-		hand_size = HAND_SIZES[cur_level-1]
+		hand_size = player_class.hand_size[cur_level-1]
 		grid_size = GRID_SIZES[cur_level-1]
 		if cur_level > 1:
 			increase_max_hp(player_class.max_hps[cur_level-1] - player_class.max_hps[cur_level-2])
@@ -191,7 +189,7 @@ func level_up():
 func set_level(level:int):
 	assert(level in [1, 2, 3], "Invalid level")
 	cur_level = level
-	hand_size = HAND_SIZES[cur_level-1]
+	hand_size = player_class.hand_size[cur_level-1]
 	grid_size = GRID_SIZES[cur_level-1]
 	set_max_hp(player_class.max_hps[cur_level-1])
 	full_heal()

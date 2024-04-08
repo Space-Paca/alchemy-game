@@ -11,5 +11,6 @@ initial_recipes = [ "dano", "escudo", "ataque-area" ]
 initial_artifacts = [  ]
 initial_reagents = [ [ "faint", 5 ], [ "weak_damaging", 3 ], [ "weak_defensive", 3 ] ]
 max_hps = [ 100, 180, 250 ]
+hand_size = [ 5, 8, 12 ]
 portrait = ExtResource( 2 )
 atlas_texture = ExtResource( 3 )

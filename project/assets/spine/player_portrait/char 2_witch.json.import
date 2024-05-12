@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/char 2_witch.json-0a18268bf32ceda288861ed8f587eed3.spjson"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/char 2_witch.json"
+dest_files=[ "res://.import/char 2_witch.json-0a18268bf32ceda288861ed8f587eed3.spjson" ]
+
+[params]
+

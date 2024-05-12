@@ -1,0 +1,34 @@
+char 2_witch.png
+	size: 984, 694
+	filter: Linear, Linear
+	pma: true
+amr2b
+	bounds: 530, 544, 74, 149
+arm1
+	bounds: 293, 610, 93, 83
+bg_circle
+	bounds: 328, 340, 203, 203
+body
+	bounds: 660, 1, 323, 257
+cloak
+	bounds: 327, 41, 332, 252
+eye
+	bounds: 1, 676, 73, 17
+face
+	bounds: 75, 641, 122, 52
+hand 2
+	bounds: 387, 601, 142, 92
+hand1
+	bounds: 198, 616, 94, 77
+hand21 aura
+	bounds: 185, 419, 142, 190
+hand2_aura
+	bounds: 532, 294, 211, 231
+hood F
+	bounds: 1, 187, 325, 231
+hood back
+	bounds: 605, 526, 340, 167
+sleeve 2
+	bounds: 744, 259, 179, 266
+sleeve1
+	bounds: 1, 455, 183, 185

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/steadfast.png-7fd5197b9587c23b752fd60fe509fc71.stex"
+path="res://.import/char 3_fighter.png-88816f25e1d69c7869b0073a4ebcb894.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/player_portrait/steadfast.png"
-dest_files=[ "res://.import/steadfast.png-7fd5197b9587c23b752fd60fe509fc71.stex" ]
+source_file="res://assets/spine/player_portrait/char 3_fighter.png"
+dest_files=[ "res://.import/char 3_fighter.png-88816f25e1d69c7869b0073a4ebcb894.stex" ]
 
 [params]
 

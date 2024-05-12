@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/toxicologist.png-4321a76db235bd55bda6001f2675a693.stex"
+path="res://.import/char 2_witch.png-e71d2a87fcecbab1903c7eab0ee5ec04.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spine/player_portrait/toxicologist.png"
-dest_files=[ "res://.import/toxicologist.png-4321a76db235bd55bda6001f2675a693.stex" ]
+source_file="res://assets/spine/player_portrait/char 2_witch.png"
+dest_files=[ "res://.import/char 2_witch.png-e71d2a87fcecbab1903c7eab0ee5ec04.stex" ]
 
 [params]
 

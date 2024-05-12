@@ -4,18 +4,57 @@ const SPEED = 2
 const HEALTHY_COLOR = Color(0.0, 0.9, 0.94)
 const MIDLIFE_COLOR = Color(0.9, 0.9, 0.0)
 const DYING_COLOR = Color(0.96, 0.13, 0.13)
-const ATLANTES = {
-	"alchemist": preload("res://assets/spine/player_portrait/alchemist.atlas"),
-	"toxicologist": preload("res://assets/spine/player_portrait/toxicologist.atlas"),
-	"steadfast": preload("res://assets/spine/player_portrait/steadfast.atlas"),
+const ANIMATIONS = {
+	"alchemist": {
+		"idle": "idle",
+		"weak_damage": "dmg1_weak",
+		"average_damage": "dmg2_middle",
+		"strong_damage": "dmg3_strong",
+		"attack": ["atk"],
+		"blink": ["blink1", "blink2"],
+	},
+	"steadfast": {
+		"idle": "idle",
+		"weak_damage": "dmg1",
+		"average_damage": "dmg1",
+		"strong_damage": "dmg2",
+		"attack": ["atk1", "atk2", "atk3"],
+		"blink": ["idle"]
+	},
+	"toxicologist": {
+		"idle": "idle",
+		"weak_damage": "dmg1",
+		"average_damage": "dmg1",
+		"strong_damage": "dmg2",
+		"attack": ["atk1", "atk2"],
+		"blink": ["blink"]
+	},
 }
 
 onready var bg = $BG
-onready var image = $Sprite
-onready var anim = $AnimationPlayer
-onready var spine_sprite = $SpineSprite
+onready var static_portraits = $Static
+onready var animated_portraits = $Animated
+onready var portraits = {
+	"alchemist": $Static/AlcSprite,
+	"steadfast": $Static/SteSprite,
+	"toxicologist": $Static/ToxSprite,
+}
+onready var animation_players = {
+	"alchemist": $Animated/AlcSpineSprite/AnimationPlayer,
+	"steadfast": $Animated/SteSpineSprite/AnimationPlayer,
+	"toxicologist": $Animated/ToxSpineSprite/AnimationPlayer,
+}
+onready var spine_sprites = {
+	"alchemist": $Animated/AlcSpineSprite,
+	"steadfast": $Animated/SteSpineSprite,
+	"toxicologist": $Animated/ToxSpineSprite,
+}
 
 var state = "normal"
+var player_class = "alchemist"
+var anim
+var spine_sprite
+var image
 
 
 func set_player(player):
@@ -23,15 +62,14 @@ func set_player(player):
 	if debug_portrait:
 		image.texture = debug_portrait
 	else:
-		image.texture = player.player_class.portrait
-	spine_sprite.animation_state_data_res.skeleton.disconnect("atlas_res_changed",
-			spine_sprite.animation_state_data_res, "_on_skeleton_data_changed")
-	spine_sprite.animation_state_data_res.skeleton.disconnect("skeleton_data_loaded",
-			spine_sprite.animation_state_data_res, "_on_skeleton_data_loaded")
-	spine_sprite.animation_state_data_res.skeleton.disconnect("skeleton_json_res_changed",
-			spine_sprite.animation_state_data_res, "_on_skeleton_data_changed")
-	spine_sprite.animation_state_data_res.skeleton.atlas_res = ATLANTES[player.player_class.name]
-
+		player_class = player.player_class.name
+		anim = animation_players[player_class]
+		spine_sprite = spine_sprites[player_class]
+		image = portraits[player_class]
+		for portrait in portraits.values():
+			portrait.visible = portrait == image
+		for sprite in spine_sprites.values():
+			sprite.visible = sprite == spine_sprite
 
 
 func _process(delta):
@@ -62,27 +100,37 @@ func set_battle_mode():
 	if Debug.custom_portrait:
 		return
 	
-	spine_sprite.show()
-	image.hide()
-	anim.play("idle")
+	animated_portraits.show()
+	static_portraits.hide()
 
 
 func set_state(new_state):
 	state = new_state
 
 
-func play_animation(name: String):
-	anim.play(name)
+func get_random_animation(anim_array: Array):
+	return anim_array[randi() % anim_array.size()]
+
+
+func get_animation_name(action: String):
+	match action:
+		"blink":
+			return get_random_animation(ANIMATIONS[player_class]["blink"])
+		"attack":
+			return get_random_animation(ANIMATIONS[player_class]["attack"])
+		var other_action:
+			return ANIMATIONS[player_class][other_action]
+
+
+func play_animation(action: String):
+	if Debug.custom_portrait:
+		return
+	
+	anim.play(get_animation_name(action))
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name != "idle":
-		anim.play("idle")
+	if anim_name == "idle" and randf() < .3:
+		play_animation("blink")
 	else:
-		var rand = randf()
-		if rand < .2:
-			anim.play("blink 1")
-		elif rand < .4:
-			anim.play("blink 2")
-		else:
-			anim.play("idle")
+		play_animation("idle")

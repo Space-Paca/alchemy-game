@@ -1,0 +1,13 @@
+[remap]
+
+importer="raiix.spine_runtime.json"
+type="SpineSkeletonJsonDataResource"
+path="res://.import/char 3_fighter.json-53c7e94163c08bb0ddc2b87b71f5b049.spjson"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/char 3_fighter.json"
+dest_files=[ "res://.import/char 3_fighter.json-53c7e94163c08bb0ddc2b87b71f5b049.spjson" ]
+
+[params]
+

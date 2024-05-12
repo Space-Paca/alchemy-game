@@ -1148,7 +1148,7 @@ func combine():
 
 	yield(reagent_list.front(), "finished_combine_animation")
 	sfx_player.stop()
-	player_ui.portrait.play_animation("atk")
+	player_ui.portrait.play_animation("attack")
 	
 	emit_signal("combination_made", reagent_matrix, reagent_list)
 	emit_signal("current_reagents_updated", hand.get_reagent_names())

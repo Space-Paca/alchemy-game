@@ -1,10 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/images/ui/book/portrait_life.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/book/portraits/alchemist.png" type="Texture" id=2]
 [ext_resource path="res://game/ui/PlayerPortrait.gd" type="Script" id=3]
 [ext_resource path="res://assets/spine/player_portrait/char portrait animation_02b.atlas" type="SpineAtlasResource" id=4]
 [ext_resource path="res://assets/spine/player_portrait/char portrait animation_02b.json" type="SpineSkeletonJsonDataResource" id=5]
+[ext_resource path="res://assets/images/ui/book/portraits/steadfast.png" type="Texture" id=6]
+[ext_resource path="res://assets/spine/player_portrait/char 2_witch.json" type="SpineSkeletonJsonDataResource" id=7]
+[ext_resource path="res://assets/spine/player_portrait/char 3_fighter.atlas" type="SpineAtlasResource" id=8]
+[ext_resource path="res://assets/spine/player_portrait/char 3_fighter.json" type="SpineSkeletonJsonDataResource" id=9]
+[ext_resource path="res://assets/images/ui/book/portraits/toxicologist.png" type="Texture" id=10]
+[ext_resource path="res://assets/spine/player_portrait/char 2_witch.atlas" type="SpineAtlasResource" id=11]
 
 [sub_resource type="SpineSkeletonDataResource" id=1]
 atlas_res = ExtResource( 4 )
@@ -18,7 +24,7 @@ skeleton = SubResource( 1 )
 [sub_resource type="Animation" id=3]
 length = 0.6667
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,7 +47,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -64,7 +70,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -87,7 +93,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 length = 0.3333
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,7 +115,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -132,7 +138,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=8]
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -155,7 +161,298 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpineSprite:current_animations")
+tracks/0/path = NodePath("AlcSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="SpineSkeletonDataResource" id=10]
+atlas_res = ExtResource( 8 )
+skeleton_json_res = ExtResource( 9 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=11]
+skeleton = SubResource( 10 )
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk1",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=13]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk3",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg1",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 2.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("SteSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="SpineSkeletonDataResource" id=18]
+atlas_res = ExtResource( 11 )
+skeleton_json_res = ExtResource( 7 )
+animations = null
+skins = null
+
+[sub_resource type="SpineAnimationStateDataResource" id=19]
+skeleton = SubResource( 18 )
+
+[sub_resource type="Animation" id=20]
+length = 0.5333
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk1",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "atk2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "blink",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg1",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ {
+"animation": "dmg2",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ] ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 2.0333
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToxSpineSprite:current_animations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -186,11 +483,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Static" type="Node2D" parent="."]
+
+[node name="AlcSprite" type="Sprite" parent="Static"]
+visible = false
 position = Vector2( 64.602, 112.36 )
 texture = ExtResource( 2 )
 
-[node name="SpineSprite" type="SpineSprite" parent="."]
+[node name="SteSprite" type="Sprite" parent="Static"]
+visible = false
+position = Vector2( 90, 131 )
+texture = ExtResource( 6 )
+
+[node name="ToxSprite" type="Sprite" parent="Static"]
+visible = false
+position = Vector2( 110, 123 )
+texture = ExtResource( 10 )
+
+[node name="Animated" type="Node2D" parent="."]
+visible = false
+
+[node name="AlcSpineSprite" type="SpineSprite" parent="Animated"]
 visible = false
 position = Vector2( -221, -108 )
 animation_state_data_res = SubResource( 2 )
@@ -204,7 +517,8 @@ current_animations = [ {
 "track_id": 0
 } ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animated/AlcSpineSprite"]
+root_node = NodePath("../../..")
 autoplay = "idle"
 anims/atk = SubResource( 3 )
 "anims/blink 1" = SubResource( 4 )
@@ -214,4 +528,54 @@ anims/dmg2_middle = SubResource( 7 )
 anims/dmg3_strong = SubResource( 8 )
 anims/idle = SubResource( 9 )
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[node name="SteSpineSprite" type="SpineSprite" parent="Animated"]
+visible = false
+position = Vector2( 113, -10 )
+animation_state_data_res = SubResource( 11 )
+current_animations = [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animated/SteSpineSprite"]
+root_node = NodePath("../../..")
+autoplay = "idle"
+anims/atk1 = SubResource( 12 )
+anims/atk2 = SubResource( 13 )
+anims/atk3 = SubResource( 14 )
+anims/dmg1 = SubResource( 15 )
+anims/dmg2 = SubResource( 16 )
+anims/idle = SubResource( 17 )
+
+[node name="ToxSpineSprite" type="SpineSprite" parent="Animated"]
+visible = false
+position = Vector2( 60, 194 )
+animation_state_data_res = SubResource( 19 )
+current_animations = [ {
+"animation": "idle",
+"clear": false,
+"delay": 0.0,
+"empty": false,
+"empty_animation_duration": true,
+"loop": true,
+"track_id": 0
+} ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animated/ToxSpineSprite"]
+root_node = NodePath("../../..")
+autoplay = "idle"
+anims/atk1 = SubResource( 20 )
+anims/atk2 = SubResource( 21 )
+anims/blink = SubResource( 22 )
+anims/dmg1 = SubResource( 23 )
+anims/dmg2 = SubResource( 24 )
+anims/idle = SubResource( 25 )
+
+[connection signal="animation_finished" from="Animated/AlcSpineSprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Animated/SteSpineSprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Animated/ToxSpineSprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

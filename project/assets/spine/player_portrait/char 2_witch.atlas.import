@@ -1,0 +1,14 @@
+[remap]
+
+importer="raiix.spine_runtime.atlas"
+type="SpineAtlasResource"
+path="res://.import/char 2_witch.atlas-1f2c72f0aeccbc2341e56d3315768c53.spatlas"
+
+[deps]
+
+source_file="res://assets/spine/player_portrait/char 2_witch.atlas"
+dest_files=[ "res://.import/char 2_witch.atlas-1f2c72f0aeccbc2341e56d3315768c53.spatlas" ]
+
+[params]
+
+normal_texture_prefix="n"

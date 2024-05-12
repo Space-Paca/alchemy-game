@@ -1,0 +1,20 @@
+char 3_fighter.png
+	size: 2819, 2124
+	filter: Linear, Linear
+	pma: true
+bg_circle
+	bounds: 1, 1, 888, 889
+body
+	bounds: 890, 143, 818, 747
+head
+	bounds: 2219, 232, 528, 493
+shield
+	bounds: 2046, 726, 731, 711
+shoulder 1
+	bounds: 1709, 229, 509, 496
+shoulder 2
+	bounds: 1593, 893, 452, 544
+template
+	bounds: 1, 891, 1591, 1232
+weapon
+	bounds: 1593, 1438, 1225, 685

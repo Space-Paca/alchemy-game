@@ -1,7 +1,6 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://database/PlayerClass.gd" type="Script" id=1]
-[ext_resource path="res://assets/spine/player_portrait/steadfast.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/book/portraits/steadfast.png" type="Texture" id=3]
 
 [resource]
@@ -13,4 +12,3 @@ initial_reagents = [ [ "faint", 3 ], [ "attack_defense", 2 ], [ "weak_defensive"
 max_hps = [ 120, 220, 300 ]
 hand_size = [ 5, 7, 11 ]
 portrait = ExtResource( 3 )
-atlas_texture = ExtResource( 2 )

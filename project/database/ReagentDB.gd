@@ -124,7 +124,7 @@ const DB = {
 	"attack_defense": {
 		"name": "RGNT_ATTACK_DEFENSE_NAME",
 		"rarity": "COMMON",
-		"image": preload("res://assets/images/reagents/rune_shard.png"),
+		"image": preload("res://assets/images/reagents/attack_def.png"),
 		"tooltip_image_path": "res://assets/images/reagents/rune_shard_borderless.png",
 		"tooltip" : "RGNT_ATTACK_DEFENSE_TOOLTIP",
 		"effect" : [{"type": "damage", "value": 2, "upgraded_value": 3, "upgraded_boost": {"type": "damage", "value": 1}},
@@ -137,7 +137,7 @@ const DB = {
 	"super_attack_defense": {
 		"name": "RGNT_SUPER_ATTACK_DEFENSE_NAME",
 		"rarity": "UNCOMMON",
-		"image": preload("res://assets/images/reagents/rune_shard.png"),
+		"image": preload("res://assets/images/reagents/attack_def_plus.png"),
 		"tooltip_image_path": "res://assets/images/reagents/rune_shard_borderless.png",
 		"tooltip" : "RGNT_SUPER_ATTACK_DEFENSE_TOOLTIP",
 		"effect" : [{"type": "damage", "value": 3, "upgraded_value": 5, "upgraded_boost": {"type": "damage", "value": 2}},
@@ -222,7 +222,7 @@ const DB = {
 	"piercing": {
 		"name": "RGNT_PIERCING_NAME",
 		"rarity": "UNCOMMON",
-		"image": preload("res://assets/images/reagents/unknown_reagent.png"),
+		"image": preload("res://assets/images/reagents/piercing.png"),
 		"tooltip_image_path": "res://assets/images/reagents/unknown_reagent.png",
 		"tooltip" : "RGNT_PIERCING_TOOLTIP",
 		"effect" : {"type": "damage_piercing", "value": 4, "upgraded_value": 6, "upgraded_boost": {"type": "damage", "value": 2}},
@@ -234,7 +234,7 @@ const DB = {
 	"super_piercing": {
 		"name": "RGNT_PIERCING_PLUS_NAME",
 		"rarity": "RARE",
-		"image": preload("res://assets/images/reagents/unknown_reagent.png"),
+		"image": preload("res://assets/images/reagents/piercing_plus.png"),
 		"tooltip_image_path": "res://assets/images/reagents/unknown_reagent.png",
 		"tooltip" : "RGNT_PIERCING_PLUS_TOOLTIP",
 		"effect" : {"type": "damage_piercing", "value": 7, "upgraded_value": 10, "upgraded_boost": {"type": "damage", "value": 4}},

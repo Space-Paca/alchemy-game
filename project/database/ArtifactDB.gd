@@ -20,7 +20,7 @@ const COMMON = [
 	{
 		"id": "buff_shield",
 		"name": "ART_BUFF_SHIELD_NAME",
-		"image": preload("res://assets/images/artifacts/buff_poison.png"),
+		"image": preload("res://assets/images/artifacts/buff_shield.png"),
 		"description": "ART_BUFF_SHIELD_DESC",
 		"must_unlock": false,
 		"use_on_demo": false,
@@ -44,7 +44,7 @@ const COMMON = [
 	{
 		"id": "keep_shield_partial",
 		"name": "ART_KEEP_SHIELD_PARTIAL_NAME",
-		"image": preload("res://assets/images/artifacts/hand_veknor.png"),
+		"image": preload("res://assets/images/artifacts/keep_shield_partial.png"),
 		"description": "ART_KEEP_SHIELD_PARTIAL_DESC",
 		"must_unlock": false,
 		"use_on_demo": false,
@@ -119,7 +119,7 @@ const UNCOMMON = [
 	{
 		"id": "buff_shield_plus",
 		"name": "ART_BUFF_SHIELD_PLUS_NAME",
-		"image": preload("res://assets/images/artifacts/buff_poison.png"),
+		"image": preload("res://assets/images/artifacts/buff_shield_plus.png"),
 		"description": "ART_BUFF_SHIELD_PLUS_DESC",
 		"must_unlock": false,
 		"use_on_demo": false,
@@ -151,7 +151,7 @@ const UNCOMMON = [
 	{
 		"id": "keep_shield_total",
 		"name": "ART_KEEP_SHIELD_TOTAL_NAME",
-		"image": preload("res://assets/images/artifacts/hand_veknor.png"),
+		"image": preload("res://assets/images/artifacts/keep_shield_total.png"),
 		"description": "ART_KEEP_SHIELD_TOTAL_DESC",
 		"must_unlock": true,
 		"use_on_demo": false,
@@ -258,7 +258,7 @@ const RARE = [
 	{
 		"id": "shield_damage",
 		"name": "ART_SHIELD_DAMAGE_NAME",
-		"image": preload("res://assets/images/artifacts/reveal_map.png"),
+		"image": preload("res://assets/images/artifacts/shield_damage.png"),
 		"description": "ART_SHIELD_DAMAGE_DESC",
 		"must_unlock": true,
 		"use_on_demo": false,

@@ -466,16 +466,18 @@ RGNT_FAIN_DAMAGE_NAME,Black Salt,Sal Negro
 RGNT_COM_DAMAGE_NAME,Black Powder,Pólvora Negra
 RGNT_UNC_DAMAGE_NAME,Black Quartz,Quartzo Negro
 RGNT_DAMAGE_TOOLTIP,"If used in a miscombination, deals %s regular damage to all enemies","Se usado em uma má combinação, inflija %s de dano normal a todos inimigos"
-RGNT_PIERCING_NAME,Piercing Reagent,Piercing Reagent
+RGNT_PIERCING_NAME,Sharp Acutite,Acutita Afiada
 RGNT_PIERCING_TOOLTIP,"If used in a miscombination, deals %s piercing damage to a random enemy","Se usado em uma má combinação, inflija %s de dano penetrante a um inimigo aleatório"
-RGNT_PIERCING_PLUS_NAME,Piercing Reagent Plus,Piercing Reagent Plus
+RGNT_PIERCING_PLUS_NAME,Sharp Arcanite,Arcanita Afiada
 RGNT_PIERCING_PLUS_TOOLTIP,"If used in a miscombination, deals %s piercing damage to a random enemy","Se usado em uma má combinação, inflija %s de dano penetrante a um inimigo aleatório"
 RGNT_FAIN_DEFENSE_NAME,Scale Shard,Fragmento de Escama
 RGNT_COM_DEFENSE_NAME,Shell Shard,Fragmento de Casco
 RGNT_UNC_DEFENSE_NAME,Rune Shard,Fragmento de Runa
 RGNT_DEFENSE_TOOLTIP,"If used in a miscombination, gives %s shield to user","Se usado em uma má combinação, conceda %s de escudo ao usuário"
-RGNT_ATTACK_DEFENSE_NAME,Attack Defense Name,Attack Defense Nome
+RGNT_ATTACK_DEFENSE_NAME,Impetum Motor,Motor Impetum
 RGNT_ATTACK_DEFENSE_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy and gives %s shield to user","Se usado em uma má combinação, inflija %s de dano normal a um inimigo aleatório e conceda %s de escudo ao usuário"
+RGNT_SUPER_ATTACK_DEFENSE_NAME,Impetum Reactor,Reator Impetum
+RGNT_SUPER_ATTACK_DEFENSE_TOOLTIP,"If used in a miscombination, deals %s regular damage to a random enemy and gives %s shield to user","Se usado em uma má combinação, inflija %s de dano normal a um inimigo aleatório e conceda %s de escudo ao usuário"
 RGNT_HEALING_NAME,Invigorating Root,Raíz Revigorante
 RGNT_HEALING_TOOLTIP,"If used in a miscombination, heals the user %d HP","Se usado em uma má combinação, cura o usuário em %d PV"
 RGNT_POISON_NAME,Noxious Essence,Essência Nociva
@@ -648,21 +650,21 @@ ART_POISON_KIT_NAME,Slimy Satchel,Mochila Gosmenta
 ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag. You lose 1 extra Poison stack per turn","Quando adquirida, adicione 3 Essência Nociva à sua bolsa. Você perde um marcador extra de Veneno por turno"
 ART_BUFF_POISON_NAME,Poisoner's Thesis,Tese de Envenenador
 ART_BUFF_POISON_DESC,"Whenever you apply Poison with recipes, apply 3 extra Poison","Sempre que você aplicar Veneno com uma receita, aplica 3 de Veneno extra"
-ART_BUFF_SHIELD_NAME,Buff Shield,Buff Shield
+ART_BUFF_SHIELD_NAME,Noble Escutcheon,Escudete Nobre
 ART_BUFF_SHIELD_DESC,"Whenever you gain shield with recipes, gain 2 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 2 de escudo extra"
-ART_BUFF_SHIELD_PLUS_NAME,Buff Shield Plus,Buff Shield Plus
+ART_BUFF_SHIELD_PLUS_NAME,Regal Escutcheon,Escudete Régio
 ART_BUFF_SHIELD_PLUS_DESC,"Whenever you gain shield with recipes, gain 8 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 8 de escudo extra"
-ART_BUFF_SHIELD_DAMAGE_NAME,Shield Damage,Shield Damage
-ART_BUFF_SHIELD_DAMAGE_DESC,"Whenever you deal unblocked damage to an enemy, gain 50% of that damage as shield","Sempre que você inflingir dano não-bloqueado a algum inimigo, ganhe 50% desse ano como escudo"
+ART_SHIELD_DAMAGE_NAME,Impaled Buckler,Broquel Impalado
+ART_SHIELD_DAMAGE_DESC,"Whenever you deal unblocked damage to an enemy, gain 50% of that damage as shield","Sempre que você inflingir dano não-bloqueado a algum inimigo, ganhe 50% desse ano como escudo"
 ART_STRENGTH_NAME,Powerstone,Pedra do Poder
 ART_STRENGTH_DESC,Start each battle with 3 Permanent Strength,Comece cada batalha com 3 de Força Permanente
 ART_MAX_HP_NAME,Chalice of Life,Cálice da Vida
 ART_MAX_HP_DESC,"When acquired, your total life is increased by 20","Quando adquirido, sua vida total aumenta em 20"
 ART_HAND_VEKNOR_NAME,Hand of Veknor,Mão de Veknor
 ART_HAND_VEKNOR_DESC,"When acquired, decreased your total life by 40%. Whenever you deal 20 or more unblocked damage to an enemy, absorb 1.","Quando adquirido, diminui sua vida total em 40%. Sempre que você infligir 20 ou mais de dano não-bloqueado a um inimigo, absorve 1."
-ART_KEEP_SHIELD_PARTIAL_NAME,Keep Shield Partial Artifact,Keep Shield Partial Artifact
+ART_KEEP_SHIELD_PARTIAL_NAME,Protective Heraldry,Heráldico de Proteção
 ART_KEEP_SHIELD_PARTIAL_DESC,"At the start of your turn, keep 50% of remaining shield.","No começo do seu turno, mantenha 50% de escudo remanescente."
-ART_KEEP_SHIELD_TOTAL_NAME,Keep Shield Total Artifact,Keep Shield Total Artifact
+ART_KEEP_SHIELD_TOTAL_NAME,Safeguard Heraldry,Heráldica da Salvaguarda
 ART_KEEP_SHIELD_TOTAL_DESC,"At the start of your turn, you keep any remaining shield.","No começo do seu turno, mantenha qualquer escudo remanescente."
 ART_TEMP_STRENGTH_NAME,Morhk Nosering,Piercing de Morhk
 ART_TEMP_STRENGTH_DESC,Start each battle with 6 Temporary Buff,Comece cada batalha com 3 de Poder Temporário

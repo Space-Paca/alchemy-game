@@ -189,6 +189,7 @@ func destroy_reagent(reagent_type):
 				if not possible_removal_slot or \
 				  ReagentDB.get_rank(possible_removal_slot.reagent.type) > ReagentDB.get_rank(reagent.type):
 					possible_removal_slot = slot
+					break
 	
 	if possible_removal_slot:
 		var reagent = possible_removal_slot.get_reagent()

@@ -160,3 +160,10 @@ func parse_keywords_data(text):
 
 func get_keywords_data():
 	return keywords_data
+
+
+func _on_BG_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			TooltipLayer.clean_tooltips()
+		

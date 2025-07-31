@@ -1584,7 +1584,7 @@ EVENT_GO_ON,Continue,Continuar
 SPEND_XP_WARNING,Spend your Empiric Points first.,Gaste seus Pontos Empíricos primeiro.
 EN_AVENGER,Carapa Vindicator,Carapa Vindicador
 EN_BABY_CARAPA,Carapa Outrider,Carapa Batedor
-EN_BABY_CARAPA_PLUS,Carapa Beserker,Carapa Bárbaro
+EN_BABY_CARAPA_PLUS,Carapa Berserker,Carapa Bárbaro
 EN_BABY_OOZE,Noxious Oozeling,Lodim Nocivo
 EN_BABY_OOZE_PLUS,Toxic Oozeling,Lodim Tóxico
 EN_BABY_RETALIATE,Virulyn Prickler,Virulen Afiado
@@ -1632,6 +1632,14 @@ Eu estou fadado a repetir essa jornada de novo e de novo só pra falhar no fim?"
 ENDING_TEXT_4,"""No, that can't be... there must be another way.
 And I will find it!""","""Não, não pode ser... tem que haver outro jeito.
 E eu vou encontrá-lo!"""
+ENDING2_TEXT_1,Text1,Text1
+ENDING2_TEXT_2,Text2,Text2
+ENDING2_TEXT_3,Text3,Text3
+ENDING2_TEXT_4,Text4,Text4
+CR_THANKS,Thank you for playing!,Obrigado por jogar!
+CR_DEV,Game Designer & Programmer,Game Designer & Programador
+CR_ARTIST,Graphic Designer & Artist,Designer Gráfico & Artista
+CR_MUSIC,Audio Designer & Musician,Designer de Som & Músico
 REWARD_SKIP_CONFIRMATION_TEXT,"There are still rewards to be taken, are you sure you want to continue to the map?","Ainda tem recompensas a serem resgatadas, tem certeza que você deseja continuar ao mapa?"
 REWARD_SKIP_CONFIRMATION_BACK,Back,Voltar
 REWARD_SKIP_CONFIRMATION_CONTINUE,Continue,Continuar

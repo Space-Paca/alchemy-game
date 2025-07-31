@@ -858,7 +858,10 @@ func thanks_for_playing():
 		assert(times_finished[player.player_class.name].has(difficulty), "Not a valid difficulty: " + str(difficulty))
 		times_finished[player.player_class.name][difficulty] += 1
 		Profile.set_stat("times_finished", times_finished)
-		scene = load("res://game/ui/Ending.tscn").instance()
+		if difficulty == "hard":
+			scene = load("res://game/ui/Ending2.tscn").instance()
+		else:
+			scene = load("res://game/ui/Ending.tscn").instance()
 	else:
 		scene = load("res://game/ui/ThanksScreenDemo.tscn").instance()
 	add_child(scene)

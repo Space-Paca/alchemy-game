@@ -635,10 +635,10 @@ RE_POISON_AREA,Toxic Gas,Gás Tóxico
 RE_POISON_PLUS,Noxious Vial,Frasco Nocivo
 RE_POISON_PLUSPLUS,Plague Vial,Frasco Pandêmico
 RE_POISON,Poison Vial,Frasco de Veneno
-RE_POISON_ATTACK_AREA,Poison Attack Area,Poison Attack Area
-RE_POISON_ATTACK_PLUS,Poison Attack Plus,Poison Attack Plus
-RE_POISON_ATTACK_PLUSPLUS,Poison Attack Plus Plus,Poison Attack Plus Plus
-RE_POISON_ATTACK,Poison Attack,Poison Attack
+RE_POISON_ATTACK_AREA,Venom Volley,Rajada Venenosa
+RE_POISON_ATTACK_PLUS,Viper's Fang,Presa de Víbora
+RE_POISON_ATTACK_PLUSPLUS,Serpent’s Wrath,Fúria da Serpente
+RE_POISON_ATTACK,Toxic Strike,Investida Venenosa
 RE_RETALIATE,Thornskin Tonic,Tônico Espinhoso
 RE_SMOKESCREEN_PLUS,Greater Smokescreen Tonic,Tônico Nebuloso
 RE_SMOKESCREEN,Lesser Smokescreen Tonic,Tônico Esfumaçado

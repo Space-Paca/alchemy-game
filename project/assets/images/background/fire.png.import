@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/village.jpg-ab5026c6f1465eae9d9b1809700bba40.stex"
+path="res://.import/fire.png-15f90b838996c7cc4b3a8570c628d0c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/village.jpg"
-dest_files=[ "res://.import/village.jpg-ab5026c6f1465eae9d9b1809700bba40.stex" ]
+source_file="res://assets/images/background/fire.png"
+dest_files=[ "res://.import/fire.png-15f90b838996c7cc4b3a8570c628d0c2.stex" ]
 
 [params]
 

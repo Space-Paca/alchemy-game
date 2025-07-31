@@ -2,7 +2,7 @@ extends Node
 
 
 const PROGRESSIONS = {
-	"recipes": [300, 650, 1200, 1800, 2700, 3850, 5000, 6300, 7900, 10000],
+	"recipes": [300, 650, 900, 1200, 1800, 2700, 3850, 5000, 6300, 7900, 9900, 12000],
 	"artifacts": [300, 500, 1150, 2000, 3200, 4700, 6300, 7900, 10000, 11800],
 	"misc": [100, 600, 1200, 2000, 3000],
 }
@@ -13,6 +13,8 @@ const UNLOCKS = {
 		"draw",
 		"poison-plus",
 		"dano-omega",
+		"shield_bash_all",
+		"poison-plusplus",
 		"shield_explosion-plus",
 		"poison_attack-plusplus",
 		"draw-plus",

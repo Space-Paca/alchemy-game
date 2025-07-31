@@ -25,6 +25,7 @@ shortcut = SubResource( 4 )
 shader = ExtResource( 13 )
 shader_param/outline_color = Color( 0.572549, 0.427451, 0.333333, 1 )
 shader_param/freq = 4.0
+shader_param/fill = 1.2
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 14 )

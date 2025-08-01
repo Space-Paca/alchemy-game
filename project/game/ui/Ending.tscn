@@ -465,8 +465,9 @@ anims/ending = SubResource( 4 )
 visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -2638.0
+margin_top = -1558.0
 margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -528,9 +529,9 @@ process_material = SubResource( 17 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.934908 )
+modulate = Color( 1, 1, 1, 0.944818 )
 self_modulate = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
-position = Vector2( 0, 5.3134 )
+position = Vector2( 0, 9.96453 )
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

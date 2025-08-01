@@ -97,6 +97,7 @@ func show_credits():
 	AudioManager.play_bgm("demo_ending")
 	
 	var credits = CREDITS_SCENE.instance()
+	credits.set_player(player)
 	
 	#Please Lord, forgive me for I have sinned; child, avert your eyes for the next line of code
 	#May God have mercy on my soul
@@ -105,6 +106,7 @@ func show_credits():
 	
 	Transition.begin_transition()
 	yield(Transition, "screen_dimmed")
+	Transition.end_transition()
 	queue_free()
 
 

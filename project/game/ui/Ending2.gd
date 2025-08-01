@@ -7,7 +7,7 @@ onready var progress = $Skip/HBoxContainer/TextureProgress
 onready var skip = $Skip
 onready var skip_timer = $SkipShowTimer
 
-const GAME_OVER_SCENE = preload("res://game/battle/screens/game-over/GameOver.tscn")
+const CREDITS_SCENE = preload("res://game/ui/Credits.tscn")
 const SUBTITLE_FADE_DURATION = .5
 const ENDING_TEXT = [
 	"ENDING2_TEXT_1",
@@ -22,7 +22,7 @@ const SKIP_HIDE_SPEED = 1
 
 var player
 var shaking := true
-var showing_gameover := false
+var showing_credits := false
 var time := .0
 var skip_enabled := false
 var bg_sfx_player = false
@@ -56,7 +56,7 @@ func _process(delta):
 		set_process(false)
 		if bg_sfx_player:
 			bg_sfx_player.stop()
-		show_gameover()
+		show_credits()
 	elif skip_timer.is_stopped() and progress.value == 0:
 		skip.modulate.a -= SKIP_HIDE_SPEED * delta
 
@@ -89,24 +89,22 @@ func show_subtitle_text(index: int, duration: float):
 	tween.start()
 
 
-func show_gameover():
-	if showing_gameover:
+func show_credits():
+	if showing_credits:
 		return
-	showing_gameover = true
+	showing_credits = true
 	
 	AudioManager.play_bgm("demo_ending")
 	
-	var gameover = GAME_OVER_SCENE.instance()
-	gameover.set_player(player)
+	var credits = CREDITS_SCENE.instance()
 	
 	#Please Lord, forgive me for I have sinned; child, avert your eyes for the next line of code
 	#May God have mercy on my soul
-	get_parent().add_child(gameover)
+	get_parent().add_child(credits)
 	# (╯°□°）╯︵ ┻━┻
 	
 	Transition.begin_transition()
 	yield(Transition, "screen_dimmed")
-	gameover.win_game()
 	queue_free()
 
 
@@ -114,4 +112,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name != "ending":
 		return
 	
-	show_gameover()
+	show_credits()

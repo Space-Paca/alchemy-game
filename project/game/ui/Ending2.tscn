@@ -423,6 +423,21 @@ scale = 2.0
 scale_random = 1.0
 color_ramp = SubResource( 16 )
 
+[sub_resource type="ParticlesMaterial" id=20]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale = 10.0
+scale_random = 1.0
+color = Color( 1, 1, 1, 0.423529 )
+color_ramp = SubResource( 8 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0, 0, 0, 0.980392 )
 corner_radius_top_left = 20
@@ -442,21 +457,6 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 16
 
-[sub_resource type="ParticlesMaterial" id=20]
-emission_shape = 2
-emission_box_extents = Vector3( 300, 1, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle_random = 1.0
-scale = 10.0
-scale_random = 1.0
-color = Color( 1, 1, 1, 0.423529 )
-color_ramp = SubResource( 8 )
-hue_variation = 1.0
-hue_variation_random = 1.0
-
 [node name="Ending" type="CanvasLayer"]
 layer = 6
 script = ExtResource( 6 )
@@ -472,8 +472,9 @@ anims/ending = SubResource( 4 )
 visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -2638.0
+margin_top = -1558.0
 margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -516,9 +517,33 @@ process_material = SubResource( 17 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.956549 )
-position = Vector2( 0, -2.66206 )
+modulate = Color( 1, 1, 1, 0.944355 )
+position = Vector2( 0, -5.29939 )
 texture = ExtResource( 4 )
+
+[node name="LeftGlow" type="Particles2D" parent="."]
+visible = false
+material = SubResource( 6 )
+position = Vector2( -200, 540 )
+rotation = 1.5708
+amount = 150
+lifetime = 3.0
+preprocess = 10.0
+visibility_rect = Rect2( -800, -800, 1600, 1600 )
+process_material = SubResource( 20 )
+texture = ExtResource( 9 )
+
+[node name="RightGlow" type="Particles2D" parent="."]
+visible = false
+material = SubResource( 6 )
+position = Vector2( 2120, 540 )
+rotation = -1.5708
+amount = 500
+lifetime = 3.0
+preprocess = 10.0
+visibility_rect = Rect2( -800, -800, 1600, 1600 )
+process_material = SubResource( 20 )
+texture = ExtResource( 9 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -624,29 +649,5 @@ text = "ESC (hold): Skip"
 [node name="SkipShowTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-
-[node name="LeftGlow" type="Particles2D" parent="."]
-visible = false
-material = SubResource( 6 )
-position = Vector2( -200, 540 )
-rotation = 1.5708
-amount = 150
-lifetime = 3.0
-preprocess = 10.0
-visibility_rect = Rect2( -800, -800, 1600, 1600 )
-process_material = SubResource( 20 )
-texture = ExtResource( 9 )
-
-[node name="RightGlow" type="Particles2D" parent="."]
-visible = false
-material = SubResource( 6 )
-position = Vector2( 2120, 540 )
-rotation = -1.5708
-amount = 500
-lifetime = 3.0
-preprocess = 10.0
-visibility_rect = Rect2( -800, -800, 1600, 1600 )
-process_material = SubResource( 20 )
-texture = ExtResource( 9 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

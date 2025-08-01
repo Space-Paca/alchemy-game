@@ -528,8 +528,9 @@ process_material = SubResource( 17 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.915758 )
-position = Vector2( 0, 2.77532 )
+modulate = Color( 1, 1, 1, 0.977006 )
+self_modulate = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+position = Vector2( 0, 8.06821 )
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

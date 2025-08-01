@@ -69,7 +69,6 @@ func end_shake():
 func start_background_animation():
 	TooltipLayer.clean_tooltips()
 	bg_sfx_player = AudioManager.play_sfx("ending")
-	$Ending/Background/AnimationPlayer.play("Loop")
 
 
 func enable_skip():
@@ -116,9 +115,3 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		return
 	
 	show_gameover()
-
-
-func _on_SpineAnimation_animation_finished(anim_name):
-	if anim_name == "Loop":
-		$Ending/Background/AnimationPlayer.stop()
-		$Ending/Background/AnimationPlayer.play("Loop2")

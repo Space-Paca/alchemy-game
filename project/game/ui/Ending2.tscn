@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/effects/effect_2.png" type="Texture" id=5]
 [ext_resource path="res://game/ui/Ending2.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/effects/effect_1.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/ending/background.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ending/ending.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/effects/effect_5.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=3]
@@ -474,7 +474,10 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -2638.0
 margin_right = 1920.0
+margin_bottom = 622.0
 texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -516,8 +519,8 @@ process_material = SubResource( 17 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ending/Artifact"]
-modulate = Color( 1, 1, 1, 0.937336 )
-position = Vector2( 0, 3.2945 )
+modulate = Color( 1, 1, 1, 0.946063 )
+position = Vector2( 0, -9.45426 )
 texture = ExtResource( 4 )
 
 [node name="LeftGlow" type="Particles2D" parent="."]

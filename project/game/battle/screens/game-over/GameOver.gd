@@ -5,7 +5,7 @@ onready var tween = $Tween
 
 func _ready():
 	$BG.hide()
-	$BG/BG2.visible = randi()%2
+	$BG/BG2.visible = true #Always use second BG
 	var mod = 2.0 if Profile.get_option("turbo_mode") else 1.0
 	$AnimationPlayer.playback_speed = mod
 

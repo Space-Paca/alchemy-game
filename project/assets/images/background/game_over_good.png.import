@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_over2.jpg-daa49e4b8e1dcae09689029147cdd484.stex"
+path="res://.import/game_over_good.png-2c1a005c36ced20d4657135e329740ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/background/game_over2.jpg"
-dest_files=[ "res://.import/game_over2.jpg-daa49e4b8e1dcae09689029147cdd484.stex" ]
+source_file="res://assets/images/background/game_over_good.png"
+dest_files=[ "res://.import/game_over_good.png-2c1a005c36ced20d4657135e329740ef.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/normal_map=0
 flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
-flags/anisotropic=false
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

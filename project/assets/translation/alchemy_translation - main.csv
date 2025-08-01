@@ -1632,10 +1632,18 @@ Eu estou fadado a repetir essa jornada de novo e de novo só pra falhar no fim?"
 ENDING_TEXT_4,"""No, that can't be... there must be another way.
 And I will find it!""","""Não, não pode ser... tem que haver outro jeito.
 E eu vou encontrá-lo!"""
-ENDING2_TEXT_1,Text1,Text1
-ENDING2_TEXT_2,Text2,Text2
-ENDING2_TEXT_3,Text3,Text3
-ENDING2_TEXT_4,Text4,Text4
+ENDING2_TEXT_1,"""The relic I've fought for so long to get is finally within my reach.
+Its power hums softly, as if it’s been waiting for me all along...""","""A relíquia que eu busquei por tanto tempo está finalmente ao meu alcance.
+Seu poder vibra, como se estivesse esperando por mim..."""
+ENDING2_TEXT_2,"""No resistance, no tricks. Only silence.
+This is not an escape... but an invitation. A choice.""","""Sem resistência, sem truques. Apenas silêncio.
+Isto não é uma fuga... mas um convite. Uma escolha."""
+ENDING2_TEXT_3,"""Was this journey a trial? A test I was meant to overcome?
+If so, I understand now... and I am ready.""","""Essa jornada foi uma provação? Um teste que eu deveria superar?
+Se sim, agora eu entendo... e estou pronto."""
+ENDING2_TEXT_4,"""This is not the end.
+It's the beginning of something far greater.""","""Este não é o fim.
+É o começo de algo muito maior."""
 CR_THANKS,Thank you for playing!,Obrigado por jogar!
 CR_DEV,Game Designer & Programmer,Game Designer & Programador
 CR_ARTIST,Graphic Designer & Artist,Designer Gráfico & Artista

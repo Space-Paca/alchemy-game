@@ -90,10 +90,8 @@ CONFIRM_UPGRADE,Confirm Upgrade,Confirmar Melhoria
 CONFIRM_TRANSFIGURATION,Confirm Transfiguration,Confirmar Transfiguração
 REAGENTSMITH_DIALOG_1,"""Oh hello hello adventurer, welcome to my forge![wait] You can call me Lotter.[wait]
 I can see you carry all sorts of[slow] [shake]trinkets[/shake][/slow] in your bag[slow]...[/slow][shortwait] I can improve them, [fast]oh yes yes![/fast][wait][slow] ...[/slow]if you spare me some [wave]precious pearls[/wave] in return, of course [slow][shake][i]hehehe[/i][/shake][/slow]
- 
 [shortwait]I can even [wave]transfigure[/wave] them into better reagents,[fast] oh yes yes![/fast][wait] But that will cost [shake]extra[slow] [i]hehehe[/i][/shake][/slow]""","""Oh olá olá aventureiro, bem vindo a minha forja![wait] Pode me chamar de Lotter.[wait]
-Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacola[slow]...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [slow][shake][i]hehehe[/i][/shake][/slow]
- 
+Posso ver que você carrega todo tipo de[slow] [shake]muambas[/shake][/slow] nessa sua sacola[slow]...[/slow][shortwait] Eu posso melhorá-las, [fast]oh sim sim![/fast][wait][slow] ...[/slow]isso se você puder compartilhar algumas dessas [wave]preciosas pérolas[/wave] em troca, é claro [slow][shake][i]hehehe[/i][/shake][/slow] 
 [shortwait]Eu consigo até [wave]transfigurar[/wave] elas em reagentes melhores,[fast] oh sim sim![/fast][wait] Mas isso aí saí um pouco [shake]mais caro[slow] [i]hehehe[/i][/shake][/slow]"""
 REAGENTSMITH_DIALOG_2,"""[fast]Come in come in[/fast] adventurer,[shortwait] let me see those [wave]trinkets[/wave] in your ba[slow]g...[/slow]""","""[fast]Entre entre[/fast] aventureiro,[shortwait] deixe-me ver essas [wave]muambas[/wave] na sua sacol[slow]a...[/slow]"""
 REAGENTSMITH_DIALOG_3,"""[fast]Welcome welcome[/fast] adventurer,[shortwait] what [shake]service[/shake] can I do for you today?""","""[fast]Bem-vindo bem-vindo[/fast] aventureiro,[shortwait] qual [shake]serviço[/shake] posso lhe fazer hoje?"""
@@ -1455,7 +1453,7 @@ Despite the legends and murmurs, little is actually known about what really lies
 Is it wise to enter its supposed abandoned halls? Your head urges you it's not. But something inside you itches for a glimpse of its mysteries.","Você é repentinamente contemplado por uma visão surreal. Algo que não deveria estar lá, mas esfregar seus olhos confirma que é de fato real. 
 Na frente de seus olhos se impõe o infame (highlight)Castelo de Veknor.(/highlight)
 
-Apesar das lendas e murmúrios, pouco é realmente conhecido do que reside dentro dele, e pouco que já exploram seus interiores voltaram para contar história.
+Apesar das lendas e murmúrios, pouco é realmente conhecido do que reside dentro dele, e poucos que já exploraram seus interiores voltaram para contar história.
 
 Será que é sábio entrar em seus supostos corredores abandonados? Sua mente grita que não. Mas alguma coisa dentro de você se inquieta, sedenta por um gosto dos mistérios que lá habitam."
 EVENT_21_LEAVE_1,"A few moments after entering its gloomy halls, (wave)a glow(/wave) emanates from yourself.
@@ -1554,7 +1552,7 @@ Rested on the altar is a (highlight)severed hand(/highlight), unnaturally preser
 
 Before you notice, you have already bagged the artifact, and sprinted towards the exit of the castle. 
 
-As you resume your journey, you ponder if that was a wise decision...","Você andar por um bom tempo até que uma porta estranhamente bem preservada rouba sua atenção. Suspeito, você lentamente abre a porta, encontrando um pequeno quarto completamente vazio, exceto por um altar negro centralizado na câmara.
+As you resume your journey, you ponder if that was a wise decision...","Você anda por um bom tempo até que uma porta estranhamente bem preservada rouba sua atenção. Suspeito, você lentamente abre a porta, encontrando um pequeno quarto completamente vazio, exceto por um altar negro centralizado na câmara.
 
 Descansando no altar você encontra uma (highlight)mão decepada(/highlight), bizarramente bem preservada. Uma voz ecoa por sua mente, repetindo as mesmas palavras incessantemente: (wave)""Me pegue! Me pegue! Me pegue!""(/wave)
 
@@ -1573,7 +1571,7 @@ You quickly dismiss the idea of going back to retrieve them, swearing to yoursel
 
 Cansado, você senta para descansar um pouco, quando percebe um pequeno brilho emanando da parede oposta. Você se levanta e tenta empurra-la, revelando uma câmara secreta!
 
-Nesta sala, (highlight)montanhas de ouro e jóias(/highlight) estão dispostas no chão e prateleiras, e sua mente acelera enquanto você tenta apanha o máximo possível, ignorando complemtante os barulho sinistros que estão saindo das paredes. Pouco a pouco você se sente mais cansado, e antes que perceba, colapsa no chão.
+Nesta sala, (highlight)montanhas de ouro e jóias(/highlight) estão dispostas no chão e prateleiras, e sua mente acelera enquanto você tenta apanhar o máximo possível, ignorando completamente os barulho sinistros que estão saindo das paredes. Pouco a pouco você se sente mais cansado, e antes que perceba, colapsa no chão.
 
 Você acorda, incerto de quanto tempo depois, fora do castelo. Em sua volta, está rodeado de todo o ouro que conseguiu coletar! Porém, rapidamente nota que todos os artefatos que você coletou durante sua aventura estão desaparecidos... Talvez pegos pelo castelo como retribuição?
 

@@ -216,6 +216,12 @@ func describe_effects(effects_list, effect_args, short:= false):
 				text += tr("DESC_"+short_text+"STATUS_ENEMY") % [args[2], tr(status)]
 			elif args[0] == "self":
 				text += tr("DESC_"+short_text+"STATUS_SELF") % [args[2], tr(status)]
+		elif effect == "multiply_status":
+			var status = StatusDB.get_from_name(args[1])["title_name"]
+			if args[0] == "enemy":
+				text += tr("DESC_"+short_text+"STATUS_MUL_ENEMY") % [tr(status), args[2]]
+			elif args[0] == "self":
+				text += tr("DESC_"+short_text+"STATUS_MUL_SELF") % [tr(status), args[2]]
 		elif effect == "add_status_all":
 			var status = StatusDB.get_from_name(args[0])["title_name"]
 			text += tr("DESC_"+short_text+"STATUS_ALL") % [args[1], tr(status)]

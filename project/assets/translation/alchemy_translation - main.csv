@@ -553,6 +553,8 @@ DESC_SHIELD,Gain %d shield until end of turn.,Ganhe %d de escudo até o fim do t
 DESC_DRAIN,Drain %d life from target enemy.,Drene %d de vida do inimigo alvo.
 DESC_STATUS_ENEMY,Applies %d %s to target enemy.,Aplique %d de %s ao inimigo alvo.
 DESC_STATUS_SELF,Gain %d %s.,Receba %d de %s.
+DESC_STATUS_MUL_ENEMY,Multiplies %s in target enemy by %d%%.,Multiplique %s no inimigo alvo em %d%%.
+DESC_STATUS_MUL_SELF,Multiply your %s by %d%%.,Multiplique seu %s em %d%%.
 DESC_STATUS_ALL,Applies %d %s to all enemies.,Aplique %d de %s a todos inimigos.
 DESC_SHORT_DAMAGE_SINGLE,Deals %d %s.,Inflija %d de %s.
 DESC_SHORT_DAMAGE_MULT,Deals %d %s %d times.,Inflija %d de %s %d vezes.
@@ -633,6 +635,7 @@ RE_POISON_AREA,Toxic Gas,Gás Tóxico
 RE_POISON_PLUS,Noxious Vial,Frasco Nocivo
 RE_POISON_PLUSPLUS,Plague Vial,Frasco Pandêmico
 RE_POISON,Poison Vial,Frasco de Veneno
+RE_POISON_DOUBLE,Mushroom Cloud,Nuvem de Cogumelos
 RE_POISON_ATTACK_AREA,Venom Volley,Rajada Venenosa
 RE_POISON_ATTACK_PLUS,Viper's Fang,Presa de Víbora
 RE_POISON_ATTACK_PLUSPLUS,Serpent’s Wrath,Fúria da Serpente

@@ -289,6 +289,22 @@ func add_status(status: String, amount: int, positive: bool, extra_args: Diction
 	else:
 		status_list[status] = {"amount": amount, "positive": positive, "extra_args": extra_args}
 
+func multiply_status(status: String, amount: float, positive: bool, extra_args: Dictionary):
+	if AudioManager.has_sfx("status_"+status):
+		AudioManager.play_sfx("status_"+status)
+	else:
+		if positive:
+			AudioManager.play_sfx("buff")
+		else:
+			AudioManager.play_sfx("debuff")
+	
+	if status == "poison" and get_status("poison_immunity"):
+		return
+	
+	if status_list.has(status):
+		status_list[status].amount *= amount
+
+
 func reduce_status(status: String, amount: int):
 	if status_list.has(status):
 		status_list[status].amount -= amount

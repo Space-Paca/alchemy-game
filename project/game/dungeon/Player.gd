@@ -427,6 +427,17 @@ func hard_set_status(status, amount, positive, extra_args):
 	hud.update_status_bar(self)
 
 
+func multiply_status(status: String, amount: float, positive: bool, extra_args:= {}):
+	.multiply_status(status, amount, positive, extra_args)
+	hud.update_status_bar(self)
+	
+	#Animations
+	if positive:
+		AnimationManager.play("buff", hud.get_animation_position())
+	else:
+		AnimationManager.play("debuff", hud.get_animation_position())
+
+
 func add_status(status: String, amount: int, positive: bool, extra_args:= {}):
 	.add_status(status, amount, positive, extra_args)
 	hud.update_status_bar(self)

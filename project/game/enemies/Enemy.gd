@@ -230,6 +230,21 @@ func hard_set_status(status, amount, positive, extra_args):
 	update_status_bar()
 
 
+func multiply_status(status: String, amount, positive: bool, extra_args:= {}):
+	var has_weak = get_status("weakness")
+	var damage_mod = get_damage_modifiers()
+	.multiply_status(status, amount, positive, extra_args)
+	update_status_bar()
+	if has_weak != get_status("weakness") or damage_mod != get_damage_modifiers():
+		update_intent()
+	
+	#Animations
+	if positive:
+		AnimationManager.play("buff", get_center_position())
+	else:
+		AnimationManager.play("debuff", get_center_position())
+
+
 func add_status(status: String, amount, positive: bool, extra_args:= {}):
 	var has_weak = get_status("weakness")
 	var damage_mod = get_damage_modifiers()

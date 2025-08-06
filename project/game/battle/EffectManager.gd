@@ -4,7 +4,7 @@ signal effect_resolved
 signal failure_resolved
 signal target_set
 
-const TARGETED_EFFECTS := ["reduce_status", "add_status", "damage", "drain"]
+const TARGETED_EFFECTS := ["reduce_status", "add_status", "multiply_status", "damage", "drain"]
 
 var enemies : Array
 var player : Player
@@ -170,6 +170,29 @@ func add_status_all(status: String, amount: int, positive: bool, boost_effects:=
 	for enemy in temp_enemies:
 			enemy.add_status(status, amount + boost, positive)
 			yield(get_tree().create_timer(.3), "timeout")
+	resolve()
+
+
+func multiply_status(targeting: String, status: String, amount: float, positive: bool, boost_effects:= {"all":0, "status":0}, is_miscombination := false):
+	var boost = boost_effects.all + boost_effects.status
+	if not is_miscombination and status == "poison" and player.has_artifact("buff_poison"):
+		boost += 3
+	if targeting == "self":
+		player.multiply_status(status, amount, positive)
+		if boost:
+			player.add_status(status, boost, positive)
+		yield(get_tree().create_timer(.5), "timeout")
+	elif targeting == "enemy":
+		var func_state = (require_target() as GDScriptFunctionState)
+		if func_state and func_state.is_valid():
+			yield(self, "target_set")
+		target.multiply_status(status, amount, positive)
+		if boost:
+			target.add_status(status, boost, positive)
+		yield(get_tree().create_timer(.5), "timeout")
+	else:
+		push_error("Not a valid target: " + str(targeting))
+		assert(false)
 	resolve()
 
 

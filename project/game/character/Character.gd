@@ -289,7 +289,7 @@ func add_status(status: String, amount: int, positive: bool, extra_args: Diction
 	else:
 		status_list[status] = {"amount": amount, "positive": positive, "extra_args": extra_args}
 
-func multiply_status(status: String, amount: float, positive: bool, extra_args: Dictionary):
+func multiply_status(status: String, amount: float, positive: bool, _extra_args: Dictionary):
 	if AudioManager.has_sfx("status_"+status):
 		AudioManager.play_sfx("status_"+status)
 	else:

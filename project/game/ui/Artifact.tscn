@@ -10,7 +10,7 @@
 margin_right = 45.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 size_flags_vertical = 2
 texture = ExtResource( 3 )
 expand = true

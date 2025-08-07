@@ -6,9 +6,9 @@ var name = "EN_OVERKILLER"
 var sfx = "overkiller"
 var use_idle_sfx = false
 var hp = {
-	"easy": 80,
-	"normal": 90,
-	"hard": 99,
+	"easy": 70,
+	"normal": 80,
+	"hard": 90,
 }
 var battle_init = true
 var size = "small"

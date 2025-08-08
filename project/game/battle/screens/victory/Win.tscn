@@ -1,16 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/themes/metal_theme/MetalTheme.tres" type="Theme" id=1]
 [ext_resource path="res://game/battle/screens/victory/Win.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/ui/loot/loot_window1.png" type="Texture" id=3]
+[ext_resource path="res://game/recipe-book/RecipeBook.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/battle/screens/victory/WinRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/themes/general_theme/general_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/images/ui/pearl.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/book/Label Red Hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/font-data/font-style.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/images/ui/loot/title loot screen.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/font-data/font-read.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/images/ui/loot/loot_window2_scrolls.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/ui/loot/slot_reward.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/book/Label Red.png" type="Texture" id=14]
+[ext_resource path="res://game/recipe-book/TagButton.gd" type="Script" id=15]
+[ext_resource path="res://assets/fonts/BagCounter.tres" type="DynamicFont" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -20,6 +25,66 @@ use_mipmaps = true
 use_filter = true
 extra_spacing_bottom = 8
 font_data = ExtResource( 9 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float offset : hint_range(0, 36);
+
+void vertex() {
+	VERTEX = VERTEX + vec2(offset, 0);
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/offset = 0.0
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -152, 120 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -152, 120 ), Vector2( -350, 120 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -350, 120 ), Vector2( -152, 120 ) ]
+}
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -169,12 +234,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BookButton" type="TextureButton" parent="BG"]
+material = SubResource( 8 )
+margin_left = -152.0
+margin_top = 120.0
+margin_right = 193.0
+margin_bottom = 218.0
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 8 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BG/BookButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.5
+margin_top = 1.0
+margin_right = 121.5
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 16 )
+text = "RECIPES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BG/BookButton"]
+anims/RESET = SubResource( 9 )
+anims/hide = SubResource( 10 )
+anims/show = SubResource( 11 )
+
 [node name="MovingScreen" type="Control" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 1000.0
 margin_right = 5760.0
 margin_bottom = 4240.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -342,6 +441,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RecipeBook" parent="BG/MovingScreen" instance=ExtResource( 4 )]
+margin_left = -1073.0
+margin_top = -1538.0
+margin_right = -1073.0
+margin_bottom = -1538.0
+
 [node name="Popup" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -425,6 +530,7 @@ text = "REWARD_SKIP_CONFIRMATION_CONTINUE"
 anims/RESET = SubResource( 3 )
 anims/enter = SubResource( 4 )
 
+[connection signal="pressed" from="BG/BookButton" to="." method="_on_BookButton_pressed"]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe1" to="." method="_on_WinRecipe_chosen"]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe2" to="." method="_on_WinRecipe_chosen"]
 [connection signal="chosen" from="BG/MovingScreen/RecipesContainer/WinRecipe3" to="." method="_on_WinRecipe_chosen"]
@@ -440,6 +546,7 @@ anims/enter = SubResource( 4 )
 [connection signal="button_down" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_button_down"]
 [connection signal="mouse_entered" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="BG/MovingScreen/LootBackground/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="close" from="BG/MovingScreen/RecipeBook" to="." method="_on_RecipeBook_close"]
 [connection signal="mouse_entered" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_Popup_Back_pressed"]
 [connection signal="mouse_entered" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/Continue" to="." method="_on_button_mouse_entered"]

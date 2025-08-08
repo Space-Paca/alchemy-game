@@ -7,7 +7,7 @@ signal favorite_toggled(combination, button_pressed)
 signal close
 signal update_favorite_mastery
 
-enum States {BATTLE, MAP, LAB}
+enum States {BATTLE, MAP, LAB, WIN}
 enum {HAND, DECK, INCOMPLETE, COMPLETE, ALL}
 
 const RECIPE = preload("res://game/recipe-book/RecipeDisplay.tscn")
@@ -19,6 +19,7 @@ const SHORT_TAG_HOVER_TEXTURE = preload("res://assets/images/ui/book/book_tag_bt
 const CLICKABLE_REAGENT = preload("res://game/ui/ClickableReagent.tscn")
 const BATTLE_POS = Vector2.ZERO
 const MAP_POS = Vector2(820, 0)
+const WIN_POS = Vector2(-1070, -1620)
 const AWAY_OFFSET = Vector2(-1800, 0)
 const ENTER_SPEED = 2000
 const NOTHING_FOUND_LABEL_SPEED = 3
@@ -130,6 +131,16 @@ func change_state(new_state: int):
 			filter_by_tag(INCOMPLETE)
 			update_tag_buttons(INCOMPLETE)
 			visible = false
+		States.WIN:
+			visible = true
+			rect_position = WIN_POS
+			remove_hand()
+			scroll.rect_size.y = SCROLL_SIZE.long
+			lower_divider.hide()
+			hand_tag_button.hide()
+			reset_recipe_visibility()
+			filter_by_tag(DECK)
+			update_tag_buttons(DECK)
 	
 	state = new_state
 	update_fader_shader()

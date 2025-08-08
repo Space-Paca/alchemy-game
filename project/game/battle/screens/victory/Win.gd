@@ -27,11 +27,14 @@ onready var moving_screen = $BG/MovingScreen
 onready var title = $BG/Title
 onready var bg = $BG
 onready var tween = $Tween
+onready var recipe_book = $BG/MovingScreen/RecipeBook
+onready var book_button = $BG/BookButton
+onready var book_button_animation = $BG/BookButton/AnimationPlayer
 
-enum States {LOOT, RECIPE}
+enum States {LOOT, RECIPE, BOOK}
 
 const MOVE_DURATION = .5
-const MOVE_POS = [0, -1920]
+const MOVE_POS = [0, -1920, 1920]
 const REAGENT_LOOT = preload("res://game/battle/screens/victory/ReagentLoot.tscn")
 const ARTIFACT_LOOT = preload("res://game/battle/screens/victory/ArtifactLoot.tscn")
 
@@ -48,6 +51,9 @@ func _ready():
 
 func setup(_player):
 	player = _player
+	recipe_book.set_player(_player)
+	recipe_book.change_state(recipe_book.States.WIN)
+	recipe_book.toggle_visibility()
 
 
 func set_loot(loot: Array):
@@ -121,6 +127,11 @@ func change_state(new_state:int):
 func move_screen():
 	var target_pos_x = MOVE_POS[curr_state]
 	disable_buttons()
+	
+	if curr_state == States.LOOT:
+		book_button_animation.play('show')
+	else:
+		book_button_animation.play('hide')
 	
 	tween.interpolate_property(moving_screen, "rect_position:x", null,
 			target_pos_x, MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -273,3 +284,11 @@ func _on_Popup_Continue_pressed():
 
 func _on_Popup_Back_pressed():
 	close_popup()
+
+
+func _on_BookButton_pressed():
+	change_state(States.BOOK)
+
+
+func _on_RecipeBook_close():
+	change_state(States.LOOT)

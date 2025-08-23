@@ -5,6 +5,9 @@ signal animation_completed
 
 const ARTIFACT = preload("res://game/ui/Artifact.tscn")
 
+const STEADFAST_HB_POSITION = Vector2(295, 116)
+const STEADFAST_HB_SCALE = Vector2(.4, .4)
+
 onready var health_bar = $HealthBar
 onready var portrait = $Portrait
 
@@ -15,6 +18,9 @@ func _ready():
 
 
 func set_player(player):
+	if player.player_class.name == "steadfast":
+		$HealthBar.position = STEADFAST_HB_POSITION
+		$HealthBar.scale = STEADFAST_HB_SCALE
 	portrait.set_player(player)
 
 

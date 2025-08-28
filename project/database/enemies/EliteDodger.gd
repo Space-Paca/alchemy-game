@@ -63,7 +63,7 @@ var first_state = {
 var actions = {
 	"easy": {
 		"attack1": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "damage", "value": [2, 4], "type": "regular", "animation": "02_atk"},
 		],
 		"attack2": [
@@ -79,7 +79,7 @@ var actions = {
 			{"name": "status", "status_name": "perm_strength", "value": 2, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 		],
@@ -102,7 +102,7 @@ var actions = {
 			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""}
 		],
 		"spawn": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "05_divider"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "05_divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 			{"name": "spawn", "enemy": "baby_slasher", "animation": "05_divider"},
 		],

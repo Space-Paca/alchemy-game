@@ -224,10 +224,10 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 			"type": type,
 		})
 	else:
-		if pre_shield <= 0 and damage > 0 and status_list.has("arcane_aegis"):
+		if pre_shield <= 0 and damage > 0 and status_list.has("arcane_aegis") and type != "venom":
 			AudioManager.play_sfx("shield_gain")
 			shield += status_list.arcane_aegis.amount
-		if unblocked_damage > 0:
+		if unblocked_damage > 0 and type != "venom":
 			if status_list.has("enrage"):
 				add_status("perm_strength", status_list.enrage.amount, true, {})
 			if status_list.has("concentration"):
@@ -235,7 +235,7 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 				if not status_list.has("concentration"):
 					emit_signal("remove_attack")
 			if source.is_player() and source.has_artifact("hand_veknor") and unblocked_damage >= 20 and\
-			   type != "poison" and type != "venom":
+			   type != "poison":
 				absorb(source, 1)
 	
 	return unblocked_damage

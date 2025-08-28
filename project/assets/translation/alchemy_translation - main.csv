@@ -650,7 +650,7 @@ RE_WEAK,Feebleness Oil,Óleo Enfraquecedor
 ART_POISON_KIT_NAME,Slimy Satchel,Mochila Gosmenta
 ART_POISON_KIT_DESC,"When acquired, add 3 Noxious Essence reagents to your bag. You lose 1 extra Poison stack per turn","Quando adquirida, adicione 3 Essência Nociva à sua bolsa. Você perde um marcador extra de Veneno por turno"
 ART_BUFF_POISON_NAME,Poisoner's Thesis,Tese de Envenenador
-ART_BUFF_POISON_DESC,"Whenever you apply Poison with recipes, apply 3 extra Poison","Sempre que você aplicar Veneno com uma receita, aplica 3 de Veneno extra"
+ART_BUFF_POISON_DESC,"Whenever you apply Poison with recipes or Venom Damage, apply 3 extra Poison","Sempre que você aplicar Veneno com uma receita ou Dano Tóxico, aplica 3 de Veneno extra"
 ART_BUFF_SHIELD_NAME,Noble Escutcheon,Escudete Nobre
 ART_BUFF_SHIELD_DESC,"Whenever you gain shield with recipes, gain 2 extra shield","Sempre que você ganhar escudo com uma receita, ganhe 2 de escudo extra"
 ART_BUFF_SHIELD_PLUS_NAME,Regal Escutcheon,Escudete Régio

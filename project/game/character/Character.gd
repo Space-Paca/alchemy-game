@@ -199,7 +199,8 @@ func take_damage(source: Character, damage: int, type: String, retaliate := true
 		shield = max(shield - damage, 0)
 		
 		if unblocked_damage > 0:
-			self.add_status("poison", unblocked_damage, false, {})
+			var buff = 3 if source.has_artifact("buff_poison") else 0
+			self.add_status("poison", unblocked_damage + buff, false, {})
 			AudioManager.play_sfx("damage_poison")
 		
 		if had_shield and shield > 0:

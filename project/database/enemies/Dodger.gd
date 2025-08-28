@@ -8,7 +8,7 @@ var use_idle_sfx = false
 var hp = {
 	"easy": 18,
 	"normal": 21,
-	"hard": 25,
+	"hard": 23,
 }
 var battle_init = true
 var size = "small"
@@ -60,13 +60,12 @@ var first_state = {
 var actions = {
 	"easy": {
 		"init": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"}
+			{"name": "shield", "value": [2, 2], "animation": "dodge"},
 		],
 		"dodge": [
 			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge2"}
 		],
 		"attack": [
-			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"},
 			{"name": "damage", "value": [6, 8], "type": "regular", "animation": "02_atk"},
 		],
 		"big_attack": [
@@ -90,18 +89,18 @@ var actions = {
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge"}
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"}
 		],
 		"dodge": [
-			{"name": "status", "status_name": "dodge", "value": 3, "target": "self", "positive": true, "animation": "dodge2"}
+			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge2"}
 		],
 		"attack": [
-			{"name": "status", "status_name": "dodge", "value": 2, "target": "self", "positive": true, "animation": "dodge"},
-			{"name": "damage", "value": [7, 9], "type": "regular", "animation": "02_atk"},
+			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"},
+			{"name": "damage", "value": [7, 10], "type": "regular", "animation": "02_atk"},
 		],
 		"big_attack": [
 			{"name": "status", "status_name": "dodge", "value": 1, "target": "self", "positive": true, "animation": "dodge"},
-			{"name": "damage", "value": [9, 13], "type": "regular", "animation": "02_atk"},
+			{"name": "damage", "value": [9, 14], "type": "regular", "animation": "02_atk"},
 		],
 	},
 }

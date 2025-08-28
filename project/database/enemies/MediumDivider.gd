@@ -6,9 +6,9 @@ var name = "EN_MEDIUM_DIVIDER"
 var sfx = "divider"
 var use_idle_sfx = false
 var hp = {
-	"easy": 50,
-	"normal": 60,
-	"hard": 70,
+	"easy": 40,
+	"normal": 50,
+	"hard": 60,
 }
 var battle_init = true
 var size = "medium"

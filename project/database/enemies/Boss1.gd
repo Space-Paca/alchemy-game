@@ -57,7 +57,7 @@ var actions = {
 			{"name": "status", "status_name": "arcane_aegis", "value": 5, "target": "self", "positive": true, "animation": ""}
 		],
 		"start": [
-			{"name": "add_reagent", "type": "trash", "value": 5, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 3, "animation": "atk 2"}
 		],
 		"attack1": [
 			{"name": "damage", "value": 2, "type": "regular", "amount": 2, "animation": "atk 1"},
@@ -67,7 +67,7 @@ var actions = {
 		],
 		"buff-reagent": [
 			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""},
-			{"name": "add_reagent", "type": "trash", "value": 5, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 3, "animation": "atk 2"}
 		]
 	},
 	"normal": {
@@ -75,7 +75,7 @@ var actions = {
 			{"name": "status", "status_name": "arcane_aegis", "value": 6, "target": "self", "positive": true, "animation": ""}
 		],
 		"start": [
-			{"name": "add_reagent", "type": "trash", "value": 6, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 4, "animation": "atk 2"}
 		],
 		"attack1": [
 			{"name": "damage", "value": 2, "type": "regular", "amount": 2, "animation": "atk 1"},
@@ -85,15 +85,15 @@ var actions = {
 		],
 		"buff-reagent": [
 			{"name": "status", "status_name": "perm_strength", "value": 3, "target": "self", "positive": true, "animation": ""},
-			{"name": "add_reagent", "type": "trash", "value": 6, "animation": "atk 2"}
+			{"name": "add_reagent", "type": "trash", "value": 4, "animation": "atk 2"}
 		]
 	},
 	"hard": {
 		"init": [
-			{"name": "status", "status_name": "arcane_aegis", "value": 10, "target": "self", "positive": true, "animation": ""}
+			{"name": "status", "status_name": "arcane_aegis", "value": 8, "target": "self", "positive": true, "animation": ""}
 		],
 		"start": [
-			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"},
+			{"name": "add_reagent", "type": "trash", "value": 5, "animation": "atk 2"},
 		],
 		"attack1": [
 			{"name": "add_reagent", "type": "trash", "value": 2, "animation": "atk 2"},
@@ -105,7 +105,7 @@ var actions = {
 		],
 		"buff-reagent": [
 			{"name": "status", "status_name": "perm_strength", "value": 5, "target": "self", "positive": true, "animation": ""},
-			{"name": "add_reagent", "type": "trash", "value": 8, "animation": "atk 2"},
+			{"name": "add_reagent", "type": "trash", "value": 4, "animation": "atk 2"},
 		]
 	},
 }
